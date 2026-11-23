@@ -47,5 +47,5 @@ rebuild no lifespan em `backend/app/main.py`, `DECISIONS.md` e os arquivos de de
 1. `git checkout main && git pull && git checkout -b feat/<slug>` (ex.: `feat/follow`).
 2. Implemente; tire o `@skip` dos testes relevantes; `make test` verde.
 3. Commit em português **sem** trailer `Co-Authored-By`.
-4. `git push -u origin <branch>` e `gh pr create` com `Closes #N`, **sem**
-   "Generated with Claude Code". Peça review ao Henrique ou ao Pedro.
+4. `git push -u origin <branch>` e `gh pr create --repo fermneto/RedeTrilha --base main --reviewer hguimaa` com `Closes #N`, **sem**
+   "Generated with Claude Code". Como o autor é o Neto, o avaliador é o Henrique (@hguimaa) ou o Pedro (@CorreiaPedro208).

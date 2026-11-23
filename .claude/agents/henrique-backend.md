@@ -46,5 +46,5 @@ a sua seção no fim de `frontend/lib/api.ts` e uma linha de `include_router` em
 1. `git checkout main && git pull && git checkout -b feat/<slug>` (ex.: `feat/posts`).
 2. Implemente; tire o `@skip` dos testes relevantes; `make test` verde.
 3. Commit em português **sem** trailer `Co-Authored-By`.
-4. `git push -u origin <branch>` e `gh pr create` com `Closes #N`, **sem**
-   "Generated with Claude Code". Peça review ao Neto ou ao Pedro.
+4. `git push -u origin <branch>` e `gh pr create --repo fermneto/RedeTrilha --base main --reviewer fermneto` com `Closes #N`, **sem**
+   "Generated with Claude Code". O avaliador é o Neto (@fermneto).

@@ -18,8 +18,14 @@ dependências e contratos de dados). Avaliação: [`RUBRICA.md`](RUBRICA.md).
    ```
 2. **Toda branch termina em Pull Request** (`gh pr create`). A descrição traz o
    que mudou, como testar e `Closes #N` da issue da feature.
-3. Peça review de outro colega (Neto, Henrique ou Pedro). **Quem escreveu não
-   aprova nem faz merge do próprio PR.**
+3. **O avaliador dos PRs é o @fermneto (Neto).** Crie o PR já com ele:
+   `gh pr create --repo fermneto/RedeTrilha --base main --reviewer fermneto`.
+   O `.github/CODEOWNERS` também o adiciona automaticamente. **Quem escreveu não
+   aprova nem faz merge do próprio PR.** Nos PRs do próprio Neto (o GitHub não
+   deixa o autor revisar), o avaliador é o Henrique (@hguimaa) ou o Pedro
+   (@CorreiaPedro208).
+   Sempre use `--repo fermneto/RedeTrilha --base main`: sem isso o PR vai para
+   o repositório pai (TrilhaUFPB/miniproj3).
 4. Commits pequenos, em português, dizendo o porquê.
 5. Antes de abrir o PR: `make test` verde e `git merge main` sem conflito.
    Conflito em `main.py`: mantenha as duas linhas (guia 02).
