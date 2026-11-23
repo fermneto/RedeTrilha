@@ -1,0 +1,19 @@
+{
+  "username": "augusto_dos_anjos",
+  "name": "Augusto dos Anjos",
+  "bio": "Poeta paraibano, nascido no Engenho Pau d'Arco. Autor de um único livro, Eu (1912).",
+  "avatar_url": "",
+  "nascimento": 1884,
+  "morte": 1914,
+  "poemas": [
+    {
+      "titulo": "Versos Íntimos",
+      "texto": "Vês! Ninguém assistiu ao formidável\nEnterro de tua última quimera.\nSomente a Ingratidão — esta pantera —\nFoi tua companheira inseparável!\n\nAcostuma-te à lama que te espera!\nO Homem, que, nesta terra miserável,\nMora, entre feras, sente inevitável\nNecessidade de também ser fera.\n\nToma um fósforo. Acende teu cigarro!\nO beijo, amigo, é a véspera do escarro,\nA mão que afaga é a mesma que apedreja.\n\nSe a alguém causa inda pena a tua chaga,\nApedreja essa mão vil que te afaga,\nEscarra nessa boca que te beija!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Versos_%C3%8Dntimos",
+      "tags": ["desilusao", "ingratidao"]
+    }
+  ]
+}
