@@ -17,6 +17,13 @@ def listar(db: Session, offset: int, limit: int) -> tuple[list[User], int]:
     return users, total
 
 
+def buscar_por_username(db: Session, username: str) -> User:
+    user = db.scalar(select(User).where(User.username == username))
+    if user is None:
+        raise HTTPException(status_code=404, detail="usuário não encontrado")
+    return user
+
+
 def criar(db: Session, dados: UserCreate) -> User:
     ja_existe = db.scalar(select(User).where(User.username == dados.username))
     if ja_existe:
