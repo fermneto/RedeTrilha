@@ -1,6 +1,6 @@
 # Decisões do time
 
-**Time:** _(nomes e usernames do GitHub)_
+**Time:** Neto (@fermneto), Henrique (@hguimaa), Pedro (@CorreiaPedro208)
 
 Este arquivo acompanha o projeto. Comecem com o que já sabem e atualizem quando
 as decisões mudarem.
@@ -9,12 +9,16 @@ as decisões mudarem.
 
 Respondam antes de escolher features. O pitch sai daqui.
 
-- **Público:** _(quem usa a rede, o mais específico possível: "corredores
-  iniciantes da UFPB", não "pessoas que gostam de esporte")_
-- **Problema:** _(o que essa pessoa tenta fazer hoje e onde isso falha)_
-- **Como a rede resolve:** _(uma ou duas frases)_
-- **Como saberíamos que funcionou:** _(um sinal observável: "a pessoa volta
-  no dia seguinte para ver o treino dos amigos")_
+- **Público:** poetas iniciantes universitários (UFPB e outras) que escrevem,
+  mas não têm onde publicar e ser lidos.
+- **Problema:** no X o limite de caracteres quebra o poema; no Instagram o poema
+  vira imagem e não dá para citar um verso; os feeds algorítmicos enterram texto
+  longo. E o iniciante lê pouco os clássicos.
+- **Como a rede resolve:** o poema é um post de verdade (título, corpo sem
+  limite e com as quebras preservadas, forma), com conversa em árvore,
+  repost/citação de versos e os poetas consagrados (domínio público) no mesmo feed.
+- **Como saberíamos que funcionou:** o iniciante cita um verso de um consagrado
+  ou de um colega e recebe respostas na árvore de comentários.
 
 ## Decisões de produto
 
@@ -47,14 +51,19 @@ tirem linhas quando mudarem de ideia.
 
 | Feature | Dono | Por quê (1 frase) |
 |---|---|---|
-| Auth (núcleo) | | |
-| Posts (núcleo) | | |
-| Feed (núcleo) | | |
-| Perfil (núcleo) | | |
-| Follow (núcleo) | | |
-| Curtidas (núcleo) | | |
-| Comentários (núcleo) | | |
-| Seed fake (núcleo) | | |
+| Auth (núcleo) | Pedro | Consagrados existem como contas sem login; o resto entra com senha. |
+| Posts/poemas (núcleo) | Henrique | Título, corpo sem limite e forma: o poema como unidade, não como tweet. |
+| Feed (núcleo) | Henrique | Cronológico: o iniciante quer ver o que os colegas escreveram hoje. |
+| Perfil (núcleo) | Pedro | Mostra o selo e os anos de vida dos consagrados. |
+| Follow (núcleo) | Neto | Seguir um consagrado traz os clássicos para o feed. |
+| Curtidas (núcleo) | Henrique | Feedback mínimo para quem está começando. |
+| Comentários em árvore | Henrique | A crítica de poema vira conversa, não uma lista solta. |
+| Seed fake (núcleo) | Neto | A demo abre com poetas universitários e poemas de verdade. |
+| Consagrados (importador) | Neto | Os clássicos de domínio público convivem com os iniciantes. |
+| Repost + citação | Henrique | Citar um verso é o gesto central de quem lê poesia. |
+| Formas/temas (hashtags) | Neto | Descobrir sonetos, haicais e temas; trending do que se escreve. |
+| Antologias | Pedro | O leitor monta coleções ("poemas de chuva"), como uma antologia de verdade. |
+| Deploy | Neto | A banca usa a rede na URL pública. |
 
 ## Uma escolha técnica
 
