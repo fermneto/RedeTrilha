@@ -2,14 +2,17 @@
 
 Python puro: a API passa só ids, strings e datas.
 
-Esta versão fixa a interface do contrato (PLANO.md) para que o service de
-posts já possa chamar `indexar` e `remover`. O índice invertido de verdade
-(tag -> post_ids, com trending) entra na task N3 sem mudar as assinaturas.
+Índice invertido em memória: tag -> {post_id: criado_em}, mais o inverso
+post_id -> (tags, criado_em) para remover e reindexar sem varrer as tags.
+O service de posts chama `indexar` ao criar ou editar e `remover` ao apagar;
+o lifespan chama `reconstruir` com todos os posts do banco.
 """
 
+import heapq
 import re
 import unicodedata
-from datetime import datetime
+from collections import Counter
+from datetime import UTC, datetime
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
 
@@ -28,25 +31,85 @@ def extrair_tags(texto: str, forma: str | None) -> set[str]:
     return tags
 
 
+def _para_utc(momento: datetime) -> datetime:
+    """Datas sem fuso (o SQLite devolve naive) são tratadas como UTC.
+
+    Assim naive e aware comparam sem TypeError.
+    """
+    if momento.tzinfo is None:
+        return momento.replace(tzinfo=UTC)
+    return momento.astimezone(UTC)
+
+
 class IndiceTags:
-    """Interface do índice. Implementação real na N3."""
+    """Índice invertido tag -> posts.
+
+    - indexar/remover: O(t), t = tags do post (lookups em hash)
+    - posts_da_tag: O(p log p), p = posts da tag (ordena na leitura)
+    - trending: O(n·t + m log k), n = posts indexados, m = tags distintas na janela
+    - reconstruir do zero: O(n·t), por isso só acontece no startup
+    """
+
+    def __init__(self) -> None:
+        self._por_tag: dict[str, dict[int, datetime]] = {}
+        self._por_post: dict[int, tuple[frozenset[str], datetime]] = {}
 
     def reconstruir(self, posts: list[tuple[int, set[str], datetime]]) -> None:
-        """Chamado no startup com (post_id, tags, criado_em) de todos os posts."""
+        """Chamado no startup com (post_id, tags, criado_em) de todos os posts. O(n·t)."""
+        self._por_tag = {}
+        self._por_post = {}
+        for post_id, tags, criado_em in posts:
+            self.indexar(post_id, tags, criado_em)
 
     def indexar(self, post_id: int, tags: set[str], criado_em: datetime) -> None:
-        """Chamado ao criar ou editar um poema (editar reindexa)."""
+        """Chamado ao criar ou editar um poema. O(t).
+
+        Editar reindexa: as tags antigas saem antes de as novas entrarem.
+        """
+        self.remover(post_id)
+        normalizadas = frozenset(n for n in (normalizar(t) for t in tags) if n)
+        momento = _para_utc(criado_em)
+        self._por_post[post_id] = (normalizadas, momento)
+        for tag in normalizadas:
+            self._por_tag.setdefault(tag, {})[post_id] = momento
 
     def remover(self, post_id: int) -> None:
-        """Chamado ao apagar um poema."""
+        """Chamado ao apagar um poema. O(t). Post não indexado é ignorado."""
+        registro = self._por_post.pop(post_id, None)
+        if registro is None:
+            return
+        for tag in registro[0]:
+            posts = self._por_tag[tag]
+            del posts[post_id]
+            if not posts:
+                del self._por_tag[tag]
 
     def posts_da_tag(self, tag: str) -> list[int]:
-        """Ids dos poemas com a tag, mais novo primeiro."""
-        return []
+        """Ids dos poemas com a tag, mais novo primeiro. O(p log p).
+
+        Empate de data: maior id primeiro. A tag passa por `normalizar`,
+        então 'Solidão' acha 'solidao'.
+        """
+        posts = self._por_tag.get(normalizar(tag), {})
+        return [
+            post_id
+            for post_id, _ in sorted(
+                posts.items(), key=lambda par: (par[1], par[0]), reverse=True
+            )
+        ]
 
     def trending(self, desde: datetime, k: int = 5) -> list[tuple[str, int]]:
-        """Top k tags desde `desde`: maior contagem primeiro, empate alfabético."""
-        return []
+        """Top k tags dos posts com criado_em >= desde. O(n·t + m log k).
+
+        Maior contagem primeiro, empate alfabético. O heap de tamanho k
+        (nsmallest) evita ordenar as m tags inteiras.
+        """
+        inicio = _para_utc(desde)
+        contagem: Counter[str] = Counter()
+        for tags, criado_em in self._por_post.values():
+            if criado_em >= inicio:
+                contagem.update(tags)
+        return heapq.nsmallest(k, contagem.items(), key=lambda par: (-par[1], par[0]))
 
 
 indice_tags = IndiceTags()
