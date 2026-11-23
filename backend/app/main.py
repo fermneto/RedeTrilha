@@ -7,7 +7,7 @@ from sqlalchemy import select
 from app.core.contadores import contador_iniciais
 from app.db import Base, SessionLocal, engine
 from app.models.user import User
-from app.routers import users
+from app.routers import follows, users
 
 
 @asynccontextmanager
@@ -33,3 +33,4 @@ app.add_middleware(
 
 # 1 linha por feature — registre o seu router aqui.
 app.include_router(users.router)
+app.include_router(follows.router)

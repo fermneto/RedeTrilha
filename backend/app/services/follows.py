@@ -1,0 +1,81 @@
+from fastapi import HTTPException
+from sqlalchemy import delete, func, select
+from sqlalchemy.orm import Session
+
+from app.models.follow import Follow
+from app.models.user import User
+from app.services.users import buscar_por_username
+
+
+def seguir(db: Session, seguidor: User, username: str) -> None:
+    """Idempotente: seguir quem já segue não faz nada."""
+    seguido = buscar_por_username(db, username)
+    if seguido.id == seguidor.id:
+        raise HTTPException(status_code=422, detail="não dá para seguir a si mesmo")
+
+    ja_segue = db.scalar(
+        select(Follow).where(
+            Follow.seguidor_id == seguidor.id, Follow.seguido_id == seguido.id
+        )
+    )
+    if ja_segue is None:
+        db.add(Follow(seguidor_id=seguidor.id, seguido_id=seguido.id))
+        db.commit()
+
+
+def deixar_de_seguir(db: Session, seguidor: User, username: str) -> None:
+    """Idempotente: deixar de seguir quem não segue não faz nada."""
+    seguido = buscar_por_username(db, username)
+    db.execute(
+        delete(Follow).where(
+            Follow.seguidor_id == seguidor.id, Follow.seguido_id == seguido.id
+        )
+    )
+    db.commit()
+
+
+def contar_seguidores(db: Session, user_id: int) -> int:
+    return db.scalar(
+        select(func.count()).select_from(Follow).where(Follow.seguido_id == user_id)
+    ) or 0
+
+
+def contar_seguindo(db: Session, user_id: int) -> int:
+    return db.scalar(
+        select(func.count()).select_from(Follow).where(Follow.seguidor_id == user_id)
+    ) or 0
+
+
+def ids_seguidos(db: Session, user_id: int) -> list[int]:
+    """Quem o usuário segue. Usado pelo feed."""
+    return list(db.scalars(select(Follow.seguido_id).where(Follow.seguidor_id == user_id)))
+
+
+def listar_seguidores(
+    db: Session, username: str, offset: int, limit: int
+) -> tuple[list[User], int]:
+    user = buscar_por_username(db, username)
+    return _pagina(db, Follow.seguido_id == user.id, Follow.seguidor_id, offset, limit)
+
+
+def listar_seguindo(
+    db: Session, username: str, offset: int, limit: int
+) -> tuple[list[User], int]:
+    user = buscar_por_username(db, username)
+    return _pagina(db, Follow.seguidor_id == user.id, Follow.seguido_id, offset, limit)
+
+
+def _pagina(db: Session, filtro, coluna_outro, offset: int, limit: int):
+    """Usuários do outro lado da relação, quem seguiu por último primeiro."""
+    total = db.scalar(select(func.count()).select_from(Follow).where(filtro)) or 0
+    users = list(
+        db.scalars(
+            select(User)
+            .join(Follow, coluna_outro == User.id)
+            .where(filtro)
+            .order_by(Follow.created_at.desc(), Follow.id.desc())
+            .offset(offset)
+            .limit(limit)
+        )
+    )
+    return users, total
