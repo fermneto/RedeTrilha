@@ -35,24 +35,45 @@ function headers(): HeadersInit {
 
 // Erro de resposta não-ok: a mensagem é o `detail` do backend, e o status fica
 // disponível para quem precisa distinguir (ex.: 404 = não existe mais).
+// No 422, `campos` guarda a mensagem de cada campo do corpo (ex.: { username: "..." }),
+// para o formulário mostrar o erro ao lado do campo certo.
 export class ErroDaApi extends Error {
   constructor(
     message: string,
     readonly status: number,
+    readonly campos: Record<string, string> = {},
   ) {
     super(message);
   }
 }
 
+type ErroDoPydantic = { msg?: unknown; loc?: unknown };
+
+// As mensagens dos validadores vêm com "Value error, " na frente.
+function textoDoErro(e: ErroDoPydantic): string | null {
+  return typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null;
+}
+
 // O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
-// de erros com `msg`. As mensagens dos validadores vêm com "Value error, " na frente.
+// de erros com `msg`.
 function mensagemDoErro(detail: unknown): string | null {
   if (typeof detail === "string") return detail;
   if (!Array.isArray(detail)) return null;
-  const msgs = detail
-    .map((e) => (typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null))
-    .filter((m): m is string => Boolean(m));
+  const msgs = detail.map(textoDoErro).filter((m): m is string => Boolean(m));
   return msgs.length > 0 ? msgs.join("; ") : null;
+}
+
+// loc do pydantic: ["body", "username"]. Fica a primeira mensagem de cada campo.
+function camposDoErro(detail: unknown): Record<string, string> {
+  const campos: Record<string, string> = {};
+  if (!Array.isArray(detail)) return campos;
+  for (const e of detail as ErroDoPydantic[]) {
+    const loc = Array.isArray(e?.loc) ? e.loc : [];
+    const campo = loc[0] === "body" && typeof loc[1] === "string" ? loc[1] : null;
+    const texto = textoDoErro(e);
+    if (campo && texto && !(campo in campos)) campos[campo] = texto;
+  }
+  return campos;
 }
 
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
@@ -67,13 +88,17 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   // servidor do deploy reiniciou). Joga o token fora e volta para o login.
   if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem(CHAVE_TOKEN)) {
     esquecerToken();
-    if (window.location.pathname !== "/login") window.location.href = "/login";
+    if (window.location.pathname !== "/login") window.location.href = caminhoDoLogin();
   }
 
   if (!res.ok) {
     // 422 = corpo inválido; 409 = conflito (ex.: username repetido). Ver guia 04.
     const erro = await res.json().catch(() => null);
-    throw new ErroDaApi(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`, res.status);
+    throw new ErroDaApi(
+      mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`,
+      res.status,
+      camposDoErro(erro?.detail),
+    );
   }
 
   // 204 No Content (seguir, curtir, apagar...) não tem corpo: não há JSON para ler.
@@ -210,6 +235,41 @@ export type NovoPoema = {
 // Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
 export function temToken(): boolean {
   return typeof window !== "undefined" && Boolean(localStorage.getItem(CHAVE_TOKEN));
+}
+
+// ---- Login e cadastro (P3): espelham backend/app/schemas/auth.py ----
+
+// Mesmas regras do Username e do RegistroIn no backend.
+export const USERNAME_MIN = 3;
+export const USERNAME_MAX = 30;
+export const USERNAME_FORMATO = /^[a-z0-9_]+$/;
+export const SENHA_MIN = 8;
+export const SENHA_MAX = 72;
+
+export type NovoCadastro = { username: string; name: string; password: string };
+
+export function entrar(username: string, password: string): Promise<{ token: string }> {
+  return apiPost<{ token: string }>("/auth/login", { username, password });
+}
+
+export function cadastrar(dados: NovoCadastro): Promise<User> {
+  return apiPost<User>("/auth/registro", dados);
+}
+
+// Para onde ir depois do login. Só caminhos internos ("/feed", "/poema/3"):
+// "//site.com" e "/\site.com" levariam para fora do Verso (open redirect).
+export function destinoSeguro(proximo: string | null): string {
+  if (!proximo || !proximo.startsWith("/") || proximo.startsWith("//") || proximo.startsWith("/\\")) {
+    return "/";
+  }
+  return proximo;
+}
+
+// "/login?proximo=<página atual>", para voltar a ela depois de entrar.
+export function caminhoDoLogin(): string {
+  if (typeof window === "undefined") return "/login";
+  const atual = window.location.pathname + window.location.search;
+  return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
 }
 
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
