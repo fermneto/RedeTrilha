@@ -1,0 +1,19 @@
+{
+  "username": "filinto_elisio",
+  "name": "Filinto Elísio",
+  "bio": "Poeta português do Arcadismo, exilado em Paris, que assinou Filinto Elísio. Defendeu o purismo da língua e deixou odes, epístolas e sátiras que o século XIX leu como mestre do verso solto.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Filinto_El%C3%ADsio.jpg",
+  "morte": 1819,
+  "poemas": [
+    {
+      "titulo": "Christo morreu ha mil e tantos annos",
+      "texto": "Christo morreu ha mil e tantos annos;\nFoi descido da cruz, logo enterrado;\nE ainda assim de pedir não tem cessado\nPara o sepulchro d′elle os franciscanos!\n\nTornou a resurgir d′entre os humanos;\nSubiu da terra ao céo, lá está sentado;\nE á saúde d′elle sepultado\nComem á nossa custa estes maganos:\n\nCuidam os que lhes dão a sua esmola\nQue ella se gasta na funcção mais pia...\nQuanto vos enganais, oh gente tola!\n\nO altar mór com dous côtos se allumia:\nE o fradinho co′a puta, que o consola.\nGasta de noute o que lhe daes de dia.",
+      "forma": "soneto",
+      "obra": "pt.wikisource: Filinto Elísio",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Christo_morreu_ha_mil_e_tantos_annos",
+      "tags": []
+    }
+  ],
+  "nascimento": 1734
+}

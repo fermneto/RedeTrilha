@@ -108,6 +108,663 @@
         "desconfianca",
         "latim"
       ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen X",
+      "texto": "Varus me meus ad suos amores\nVisum duxerat e foro otiosum,\nScortillum, ut mihi tunc repente uisum est,\nNon sane inlepidum neque inuenustum. 5\nHuc ut uenimus, incidere nobis\nSermones uarii, in quibus, quid esset\nIam Bithynia, quo modo se haberet,\nEcquonam mihi profuisset aere.\nRespondi id quod erat, nihil neque ipsis 10\nNec praetoribus esse nec cohorti,\nCur quisquam caput unctius referret,–\nPraesertim quibus esset irrumator\nPraetor nec faceret pili cohortem.\n'At certe tamen' inquiunt, 'quod illic 15\nNatum dicitur esse, comparasti,\nAd lecticam homines.' Ego, ut puellae\nVnum me facerem beatiorem,\n'Non' inquam, 'mihi tam fuit maligne,\nVt, prouincia quod mala incidisset, 20\nNon possem octo homines parare rectos.'\nAt mi nullus erat neque hic neque illic\nFractum qui ueteris pedem grabati\nIn collo sibi conlocare posset.\nHic illa, ut decuit cinaediorem, 25\n'Quaeso' inquit, 'mihi, mi Catulle, paulum\nIstos commoda: nam uolo ad Serapim\nDeferri.'  'Mane,' inquii puellae,\n'Istud quod modo dixeram, me habere,\nFugit me ratio: meus sodalis 30\nCinna est Gaius; is sibi parauit.\nVerum, utrum illius an mei, quid ad me?\nVtor tam bene quam mihi pararim.\nSed tu insulsa male et molesta uiuis,\nPer quam non licet esse neglegentem.'",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_X",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen C",
+      "texto": "Caelius Aufilenum et Quintius Aufilenam\n     Flos Veronensum depereunt iuuenum,\nHic fratrem, ille sororem. Hoc est quod dicitur illud\n     Fraternum uere dulce sodalicium.\nCui faveam potius? Caeli, tibi: nam tua nobis\n     Per facta exhibita est unica amicitia\nCum uesana meas torreret flamma medullas.\n     Sis felix, Caeli, sis in amore potens.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_C",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CI",
+      "texto": "Multas per gentes et multa per aequora uectus\n     Aduenio has miseras, frater, ad inferias,\nVt te postremo donarem munere mortis\n     Et mutam nequiquam adloquerer cinerem,\nQuandoquidem fortuna mihi tete abstulit ipsum,\n     Heu miser indigne frater adempte mihi.\nNunc tamen interea haec, prisco quae more parentum\n     Tradita sunt tristi munere ad inferias,\nAccipe fraterno multum manantia fletu\n     Atque in perpetuum, frater, ave atque uale.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CII",
+      "texto": "Si quicquam tacito commissum est fido ab amico\n    Cuius sit penitus nota fides animi,\nMeque esse inuenies illorum iure sacratum,\n    Corneli, et factum me esse puta Harpocratem.",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CV",
+      "texto": "Mentula conatur Pipleum scandere montem:\n     Musae furcillis praecipitem eiciunt.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CV",
+      "tags": [
+        "natureza"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CVI",
+      "texto": "Cum puero bello praeconem qui uidet esse,\n     Quid credat, nisi se uendere discupere?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CIX",
+      "texto": "Iūcundum, mea vīta, mihī prōpōnis amōrem\n  hunc nostrum inter nōs perpetuumque fore.\nDī magnī, facite ut vērē prōmittere possit,\n  atque id sincērē dīcat et ex animō,\nut liceat nōbīs tōtā perdūcere vītā\n  aeternum hoc sānctae foedus amīcitiae.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CIX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XI",
+      "texto": "Furi et Aureli, comites Catulli,\nSiue in extremos penetrabit Indos,\nLitus ut longe resonante Eoa\n          Tunditur unda,\n\nSiue in Hyrcanos Arabesue molles,\nSeu Sacas sagittiferosue Parthos,\nSiue quae septemgeminus colorat\n          Aequora Nilus,\n\nSiue trans altas gradietur Alpes\nCaesaris uisens monimenta magni,\nGallicum Rhenum, horribile aequor, ulti-\n          mosque Britannos,\n\nOmnia haec, quaecumque feret uoluntas\nCaelitum, temptare simul parati,\nPauca nuntiate meae puellae\n          Non bona dicta.\n\nCum suis uiuat ualeatque moechis,\nQuos simul complexa tenet trecentos,\nNullum amans uere, sed identidem omnium\n          Ilia rumpens;\n\nNec meum respectet, ut ante, amorem,\nQui illius culpa cecidit uelut prati\nVltimi flos, praetereunte postquam\n          Tactus aratro est.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CX",
+      "texto": "Aufilena, bonae semper laudantur amicae:\n     Accipiunt pretium quod facere instituunt.\nTu, quod promisti mihi, quod mentita, inimica es;\n     Quod nec das et fers saepe, facis facinus.\nAut facere ingenuae est, aut non promisse pudicae,\n     Aufilena, fuit: sed data corripere\nFraudando †efficit plus quam meretricis auarae est,\n     Quae sese toto corpore prostituit.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CXI",
+      "texto": "Aufilena, uiro contentam uiuere solo\n     Nuptarum laus e laudibus eximiis:\nSed cuiuis quamuis potius succumbere par est\n     Quam matrem fratres ex patruo parere.",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CXI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CXIV",
+      "texto": "Firmanus saltu non falso Mentula diues\n     Fertur, qui tot res in se habet egregias,\nAucupium omne genus, piscis, prata, arva, ferasque.\n     Nequiquam: fructus sumptibus exsuperat.\nQuare concedo sit diues, dum omnia desint;\n     Saltum laudemus, dum domo ipse egeat.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CXIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CXV",
+      "texto": "Mentula habet iuxta triginta iugera prati,\n     Quadraginta arui: cetera sunt maria.\nCur non diuitiis Croesum superare potis sit\n     Vno qui in saltu tot bona possideat,\nPrata, arua, ingentis siluas saltusque paludesque\n     Vsque ad Hyperboreos et mare ad Oceanum?\nOmnia magna haec sunt, tamen ipse est maximus ultro,\n     Non homo, sed uero mentula magna minax.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CXV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen CXVI",
+      "texto": "Saepe tibi studioso animo venante requirens\ncarmina uti possem mittere Battiadae,\nqui te lenirem nobis, neu conarere\ntela infesta mittere in usque caput,\nhunc video mihi nunc frustra sumptum esse laborem,\nGelli, nec nostras hic valuisse preces.\ncontra nos tela ista tua evitabimus amictu\nat fixus nostris tu dabis supplicium.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_CXVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XII",
+      "texto": "Marrucine Asini, manu sinistra\nNon belle uteris in ioco atque uino:\nTollis lintea neglegentiorum.\nHoc salsum esse putas? Fugit te, inepte!\nQuamuis sordida res et inuenusta est.\nNon credis mihi? Crede Pollioni\nFratri, qui tua furta uel talento\nMutari uelit; est enim leporum\nDisertus puer ac facetiarum.\nQuare aut hendecasyllabos trecentos\nExspecta, aut mihi linteum remitte,\nQuod me non mouet aestimatione,\nVerum est mnemosynum mei sodalis.\nNam sudaria Saetaba ex Hiberis\nMiserunt mihi muneri Fabullus\nEt Veranius: haec amem necesse est\nUt Veraniolum meum et Fabullum.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XIII",
+      "texto": "Cenabis bene, mi Fabulle, apud me\nPaucis, si tibi di fauent, diebus,\nSi tecum attuleris bonam atque magnam\nCenam, non sine candida puella\nEt uino et sale et omnibus cachinnis.\nHaec si, inquam, attuleris, uenuste noster,\nCenabis bene; nam tui Catulli\nPlenus sacculus est aranearum.\nSed contra accipies meros amores\nSeu quid suauius elegantiusue est:\nNam unguentum dabo, quod meae puellae\nDonarunt Veneres Cupidinesque,\nQuod tu cum olfacies, deos rogabis\nTotum ut te faciant, Fabulle, nasum",
+      "forma": "soneto",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XIV",
+      "texto": "Ni te plus oculis meis amarem,\nIucundissime Calue, munere isto\nOdissem te odio Vatiniano:\nNam quid feci ego quidue sum locutus,\nCur me tot male perderes poetis?\nIsti di mala multa dent clienti\nQui tantum tibi misit impiorum.\nQuod si, ut suspicor, hoc nouum ac repertum\nMunus dat tibi Sulla litterator,\nNon est mi male, sed bene ac beate,\nQuod non dispereunt tui labores.\nDi magni, horribilem et sacrum libellum,\nQuem tu scilicet ad tuum Catullum\nMisti, continuo ut die periret,\nSaturnalibus, optimo dierum!\nNon, non hoc tibi, false, sic abibit.\nNam, si luxerit, ad librariorum\nCurram scrinia, Caesios, Aquinos,\nSuffenum, omnia colligam uenena,\nAc te his suppliciis remunerabor.\nVos hinc interea ualete, abite\nIlluc, unde malum pedem attulistis,\nSaecli incommoda, pessimi poetae.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XIVb",
+      "texto": "Si qui forte mearum ineptiarum\nLectores eritis manusque vestras\nNon horrebitis admouere nobis,\n                            *",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XIVb",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XV",
+      "texto": "Commendo tibi me ac meos amores,\nAureli. Veniam peto pudentem,\nVt, si quicquam animo tuo cupisti\nQuod castum expeteres et integellum,\nConserues puerum mihi pudice,\nNon dico a populo: nihil ueremur\nIstos qui in platea modo huc modo illuc\nIn re praetereunt sua occupati;\nVerum a te metuo tuoque pene\nInfesto pueris bonis malisque.\nQuem tu qua lubet, ut lubet moueto\nQuantum uis, ubi erit foris paratum:\nHunc unum excipio, ut puto, pudenter.\nQuod si te mala mens furorque uecors\nIn tantam impulerit, sceleste, culpam,\nVt nostrum insidiis caput lacessas,\nAh tum te miserum malique fati,\nQuem attractis pedibus patente porta\nPercurrent raphanique mugilesque.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XVI",
+      "texto": "Pedicabo ego vos et irrumabo,\nAureli pathice et cinaede Furi,\nQui me ex versiculis meis putastis,\nQuod sunt molliculi, parum pudicum.\nNam castum esse decet pium poetam\nIpsum, versiculos nihil necesse est,\nQui tum denique habent salem ac leporem,\nSi sunt molliculi ac parum pudici\nEt quod pruriat incitare possunt,\nNon dico pueris, sed his pilosis,\nQui duros nequeunt mouere lumbos.\nVos quod milia multa basiorum\nLegistis, male me marem putatis?\nPedicabo ego vos et irrumabo.",
+      "forma": "soneto",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXI",
+      "texto": "Aureli, pater esuritionum,\nNon harum modo, sed quot aut fuerunt\nAut sunt aut aliis erunt in annis,\nPedicare cupis meos amores. 5\nNec clam: nam simul es, iocaris una,\nHaerens ad latus omnia experiris.\nFrustra: nam insidias mihi instruentem\nTangam te prior irrumatione.\nAtque id si faceres satur, tacerem: 10\nNunc ipsum id doleo, quod esurire,\nAh me me, puer et sitire discet.\nQuare desine, dum licet pudico,\nNe finem facias, sed irrumatus.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXIV",
+      "texto": "O qui flosculus es Iuuentiorum,\nNon horum modo, sed quot aut fuerunt\nAut posthac aliis erunt in annis,\nMallem diuitias Midae dedisses\nIsti cui neque seruus est neque arca,\nQuam sic te sineres ab illo amari.\n'Quid? Non est homo bellus?' inquies. Est:\nSed bello huic neque seruus est neque arca.\nHoc tu quam libet abice eleuaque:\nNec seruum tamen ille habet neque arcam.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXVIII",
+      "texto": "Pisonis comites, cohors inanis\nAptis sarcinulis et expeditis,\nVerani optime tuque mi Fabulle,\nQuid rerum geritis? Satisne cum isto\nVappa frigoraque et famem tulistis?\nEcquidnam in tabulis patet lucelli\nExpensum, ut mihi, qui meum secutus\nPraetorem refero datum lucello,\n'O Memmi, bene me ac diu supinum\nTota ista trabe lentus irrumasti.'\nSed, quantum uideo, pari fuistis\nCasu: nam nihilo minore uerpa\nFarti estis. Pete nobiles amicos.\nAt uobis mala multa di deaeque\nDent, opprobria Romuli Remique.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXVIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXIX",
+      "texto": "Quis hoc potest uidere, quis potest pati,\nNisi impudicus et uorax et aleo,\nMamurram habere quod comata Gallia\nHabebat ante et ultima Britannia?\nCinaede Romule, haec uidebis et feres?\nEt ille nunc superbus et superfluens\nPerambulabit omnium cubilia\nVt albulus columbus aut Adoneus?\nCinaede Romule, haec uidebis et feres?\nEs impudicus et uorax et aleo.\nEone nomine, imperator unice,\nFuisti in ultima occidentis insula,\nVt ista vestra diffututa mentula\nDucenties comesset aut trecenties?\nQuid est alid sinistra liberalitas?\nParum expatrauit an parum elluatus est?\nPaterna prima lancinata sunt bona;\nSecunda praeda Pontica; inde tertia\nHibera, quam scit amnis aurifer Tagus.\nNunc Galliae timetur et Britanniae.\nQuid hunc malum fouetis? aut quid hic potest\nNisi uncta deuorare patrimonia?\nEone nomine †urbis opulentissime\nSocer generque, perdidistis omnia?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXIX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen III",
+      "texto": "Lugete, o Veneres Cupidinesque\nEt quantum est hominum venustiorum!\nPasser mortuus est meae puellae,\nPasser, deliciae meae puellae, 5\nQuem plus illa oculis suis amabat;\nNam mellitus erat, suamque norat\nIpsam tam bene quam puella matrem,\nNec sese a gremio illius movebat,\nSed circumsiliens modo huc modo illuc 10\nAd solam dominam usque pipiabat.\nQui nunc it per iter tenebricosum\nIlluc, unde negant redire quemquam.\nAt uobis male sit, malae tenebrae\nOrci, quae omnia bella deuoratis; 15\nTam bellum mihi passerem abstulistis.\nO factum male! io miselle passer!\nTua nunc opera meae puellae\nFlendo turgiduli rubent ocelli.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_III",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXXI",
+      "texto": "Paene insularum, Sirmio, insularumque\nOcelle, quascumque in liquentibus stagnis\nMarique uasto fert uterque Neptunus,\nQuam te libenter quamque laetus inuiso,\nVix mi ipse credens Thyniam atque Bithynos\nLiquisse campos et uidere te in tuto!\nO quid solutis est beatius curis,\nCum mens onus reponit, ac peregrino\nLabore fessi uenimus larem ad nostrum\nDesideratoque acquiescimus lecto?\nHoc est quod unum est pro laboribus tantis.\nSalue, o uenusta Sirmio, atque ero gaude;\nGaudete, uosque, o Lydiae lacus undae;\nRidete, quidquid est domi cachinnorum.",
+      "forma": "soneto",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXXI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXXIII",
+      "texto": "O furum optime balneariorum\nVibenni pater, et cinaede fili,\n(Nam dextra pater inquinatiore,\nCulo filius est uoraciore)\nCur non exilium malasque in oras\nItis, quandoquidem patris rapinae\nNotae sunt populo, et natis pilosas,\nFili, non potes asse uenditare?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXXIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXXIV",
+      "texto": "Dianae sumus in fide\nPuellae et pueri integri;\nDianam pueri integri\nPuellaeque canamus.\n\nO Latonia, maximi\nMagna progenies Iouis,\nQuam mater prope Deliam\nDeposiuit oliuam,\n\nMontium domina ut fores\nSiluarumque uirentium\nSaltuumque reconditorum\nAmniumque sonantum;\n\nTu Lucina dolentibus\nIuno dicta puerperis,\nTu potens Triuia et notho es\nDicta lumine Luna.\n\nTu cursu, dea, menstruo\nMetiens iter annuum\nRustica agricolae bonis\nTecta frugibus exples.\n\nSis quocumque tibi placet\nSancta nomine, Romulique,\nAntique ut solita es, bona\nSospites ope gentem.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXXIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XXXVII",
+      "texto": "Salāx taberna vosque contubernālēs,\nā pilleātis nōna frātribus pīla,\nsōlīs putātis esse mentulās vōbīs,\nsōlīs licēre, quidquid est puellārum,\nconfutuēre et putāre cēterōs hircōs? 5\n\nAn, continenter quod sedētis insulsī\ncentum an ducenti, nōn putātis ausūrum\nmē ūnā ducentōs irrumāre sessōrēs?\nAtquī putāte: namque tōtius vōbīs\nfrontem tabernae sopiōnibus scrībam. 10\n\nPuella nam mī, quae meō sinū fūgit,\namāta tantum quantum amābitur nūlla,\nprō quā mihī sunt magna bella pugnāta,\nconsēdit istic. Hanc bonī beātīque\nomnēs amātis, et quidem, quod indignum est, 15\n\nomnēs pusilli et sēmitāriī moechī;\ntū praeter omnēs ūne dē capillātis,\ncunīculōsae Celtibēriae fīlī,\nEgnāti. Opācā quem bonum facit barbā\net dens Hibēra dēfricātus ūrīnā. 20",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XXXVII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen IV",
+      "texto": "Phasellus ille, quem videtis, hospites,\nAit fuisse navium celerrimus,\nNeque ullius natantis impetum trabis\nNequisse praeterire, sive palmulis 5\nOpus foret volare siue linteo.\nEt hoc negat minacis Hadriatici\nNegare litus insulasve Cycladas\nRhodumque nobilem horridamque Thraciam\nPropontida trucemve Ponticum sinum, 10\nUbi iste post phaselus antea fuit\nComata silva: nam Cytorio in iugo\nLoquente saepe sibilum edidit coma.\nAmastri Pontica et Cytore buxifer,\nTibi haec fuisse et esse cognitissima 15\nAit phaselus; ultima ex origine\nTuo stetisse dicit in cacumine,\nTuo imbuisse palmulas in aequore,\nEt inde tot per impotentia freta\nErum tulisse, laeva sive dextera 20\nVocaret aura, sive utrumque Iuppiter\nSimul secundus incidisset in pedem;\nNeque ulla vota litoralibus diis\nSibi esse facta, cum veniret a mari\nNovissimo hunc ad usque limpidum lacum. 25\nSed haec prius fuere: nunc recondita\nSenet quiete seque dedicat tibi,\nGemelle Castor et gemelle Castoris.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_IV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XL",
+      "texto": "Quaenam te mala mens, miselle Rauide,\nAgit praecipitem in meos iambos?\nQuis deus tibi non bene aduocatus\nVecordem parat excitare rixam?\nAn ut peruenias in ora uulgi?\nQuid uis? qua libet esse notus optas?\nEris, quandoquidem meos amores\nCum longa uoluisti amare poena.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XL",
+      "tags": [
+        "religiao"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLI",
+      "texto": "Ameana puella defututa\nTota milia me decem poposcit,\nIsta turpiculo puella naso,\nDecoctoris amica Formiani.\nPropinqui, quibus est puella curae,\nAmicos medicosque conuocate:\nNon est sana puella, nec rogare\nQualis sit solet aes imaginosum.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLII",
+      "texto": "Adeste, hendecasyllabi, quot estis\nOmnes undique, quotquot estis omnes.\nIocum me putat esse moecha turpis\nEt negat mihi uestra reddituram\nPugillaria, si pati potestis.\nPersequamur eam, et reflagitemus.\nQuae sit quaeritis? Illa quam uidetis\nTurpe incedere, mimice ac moleste\nRidentem catuli ore Gallicani.\nCircumsistite eam, et reflagitate:\n'Moecha putida, redde codicillos,\nRedde, putida moecha, codicillos.'\nNon assis facis? o lutum, lupanar,\nAut si perditius potes quid esse.\nSed non est tamen hoc satis putandum.\nQuod si non aliud potest, ruborem\nFerreo canis exprimamus ore.\nConclamate iterum altiore uoce\n'Moecha putida, redde codicillos,\nRedde, putida moecha, codicillos.'\nSed nil proficimus, nihil mouetur.\nMutanda est ratio modusque nobis,\nSi quid proficere amplius potestis,\n'Pudica et proba, redde codicillos.'",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLIII",
+      "texto": "Salue, nec minimo puella naso\nNec bello pede nec nigris ocellis\nNec longis digitis nec ore sicco\nNec sane nimis elegante lingua,\nDecoctoris amica Formiani.\nTen prouincia narrat esse bellam?\nTecum Lesbia nostra comparatur?\nO saeclum insapiens et infacetum!",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLIV",
+      "texto": "O funde noster seu Sabine seu Tiburs \n(Nam te esse Tiburtem autumant quibus non est\nCordi Catullum laedere: at quibus cordi est\nQuouis Sabinum pignore esse contendunt),\nSed seu Sabine siue uerius Tiburs, 5\nFui libenter in tua suburbana\nVilla malamque pectore expuli tussim,\nNon immerenti quam mihi meus uenter,\nDum sumptuosas adpeto, dedit, cenas.\nNam, Sestianus dum uolo esse conuiua, 10\nOrationem in Antium petitorem\nPlenam ueneni et pestilentiae legi.\nHic me grauido frigida et frequens tussis\nQuassauit usque dum in tuum sinum fugi\nEt me recuraui otioque et urtica. 15\nQuare refectus maximas tibi grates\nAgo, meum quod non es ulta peccatum.\nNec deprecor iam, si nefaria scripta\nSesti recepso, quin grauedinem et tussim\nNon mi, sed ipsi Sestio ferat frigus, 20\nQui tunc uocat me cum malum librum legi.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLV",
+      "texto": "Acmen Septimius suos amores\nTenens in gremio 'Mea' inquit, 'Acme,\nNi te perdite amo atque amare porro\nOmnes sum adsidue paratus annos\nQuantum qui pote plurimum perire,\nSolus in Libya Indiaque tosta\nCaesio veniam obvius leoni.'\nHoc ut dixit, Amor sinistra ut ante,\nDextra sternuit approbationem.\nAt Acme leuiter caput reflectens\nEt dulcis pueri ebrios ocellos\nIllo purpureo ore suaviata\n'Sic' inquit, 'mea vita, Septimille,\nHuic uni domino usque serviamus,\nUt multo mihi maior acriorque\nIgnis mollibus ardet in medullis.'\nHoc ut dixit, Amor sinistra ut ante\nDextra sternuit approbationem.\nNunc ab auspicio bono profecti\nMutuis animis amant amantur.\nUnam Septimius misellus Acmen\nMavult quam Syrias Britanniasque:\nUno in Septimio fidelis Acme\nFacit delicias libidinisque.\nQuis ullos homines beatiores\nVidit, quis Venerem auspicatiorem?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLV",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLVI",
+      "texto": "Iam uer egelidos refert tepores,\nIam caeli furor aequinoctialis\nIucundis Zephyri silescit auris.\nLinquantur Phrygii, Catulle, campi\nNicaeaeque ager uber aestuosae:\nAd claras Asiae uolemus urbes.\nIam mens praetrepidans auet uagari,\nIam laeti studio pedes uigescunt.\nO dulces comitum valete coetus,\nLonge quos simul a domo profectos\nDiuersae uarie uiae reportant.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLVII",
+      "texto": "Porci et Socration, duae sinistrae\nPisonis, scabies famesque mundi,\nVos Veraniolo meo et Fabullo\nVerpus praeposuit Priapus ille?\nVos conuiuia lauta sumptuose\nDe die facitis? mei sodales\nQuaerunt in triuio uocationes?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLVII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLVIII",
+      "texto": "Mellitos oculos tuos, Iuuenti,\nSiquis me sinat usque basiare,\nVsque ad milia basiem trecenta,\nNec unquam uidear satur futurus,\nNon si densior aridis aristis\nSit nostrae seges osculationis.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLVIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XLIX",
+      "texto": "Disertissime Romuli nepotum,\nQuot sunt quotque fuere, Marce Tulli,\nQuotque post aliis erunt in annis,\nGratias tibi maximas Catullus\nAgit pessimus omnium poeta,\nTanto pessimus omnium poeta\nQuanto tu optimus omnium patronus.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XLIX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen L",
+      "texto": "Hesterno, Licini, die otiosi\nMultum lusimus in meis tabellis,\nVt conuenerat esse delicatos.\nScribens uersiculos uterque nostrum\nLudebat numero modo hoc modo illoc,\nReddens mutua per iocum atque uinum.\nAtque illinc abii tuo lepore\nIncensus, Licini, facetiisque,\nVt nec me miserum cibus iuuaret,\nNec somnus tegeret quiete ocellos,\nSed toto indomitus furore lecto\nVersarer cupiens uidere lucem,\nVt tecum loquerer simulque ut essem.\nAt defessa labore membra postquam\nSemimortua lectulo iacebant,\nHoc, iucunde, tibi poema feci,\nEx quo perspiceres meum dolorem.\nNunc audax caue sis, precesque nostras,\nOramus, caue despuas, ocelle,\nNe poenas Nemesis reposcat a te.\nEst uehemens dea: laedere hanc caueto.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_L",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LI",
+      "texto": "Ille mi par esse deo uidetur，\nIlle, si fas est, superare diuos,\nQui sedens aduersus identidem te\n          Spectat et audit\n\nDulce ridentem, misero quod omnis\nEripit sensus mihi: nam simul te,\nLesbia, adspexi, nihil est super mi\n          •      •      •      •\n\nLingua sed torpet, tenuis sub artus\nFlamma demanat, sonitu suopte\nTintinant aures, gemina teguntur\n          Lumina nocte.\n\nOtium, Catulle, tibi molestum est:\nOtio exsultas nimiumque gestis.\nOtium et reges prius et beatas\n          Perdidit urbes.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LII",
+      "texto": "Quid est, Catulle? quid moraris emori?\nSella in curuli struma Nonius sedet,\nPer consulatum peierat Vatinius:\nQuid est, Catulle? quid moraris emori?",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LIII",
+      "texto": "Risi nescio quem modo e corona,\nQui, cum mirifice Vatiniana\nMeus crimina Caluus explicasset,\nAdmirans ait haec manusque tollens\n'Di magni, salaputium disertum!'",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LIV",
+      "texto": "Othonis caput oppido est pusillum,\n                         *\nEt eri rustica semilauta crura,\nSubtile et leue peditum Libonis,\n                         *\nSi non omnia, displicere uellem\nTibi et Fuficio, seni recocto\n                         *\nIrascere iterum meis iambis\nImmerentibus, unice imperator.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LVI",
+      "texto": "O rem ridiculam, Cato, et iocosam\nDignamque auribus et tuo cachinno.\nRide, quidquid amas, Cato, Catullum:\nRes est ridicula et nimis iocosa.\nDeprendi modo pupulum puellae\nTrusantem: hunc ego, si placet Dionae,\nPro telo rigida mea cecidi.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LVII",
+      "texto": "Pulchre conuenit improbis cinaedis,\nMamurrae pathicoque Caesarique.\nNec mirum: maculae pares utrisque,\nVrbana altera et illa Formiana,\nImpressae resident nec eluentur:\nMorbosi pariter gemelli utrique,\nVno in lecticulo erudituli ambo,\nNon hic quam ille magis uorax adulter,\nRiuales socii puellularum:\nPulchre conuenit improbis cinaedis.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LVII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LVIII",
+      "texto": "Caeli, Lesbia nostra, Lesbia illa,\nIlla Lesbia, quam Catullus unam\nPlus quam se atque suos amauit omnes,\nNunc in quadriuiis et angiportis\nGlubit magnanimi Remi nepotes.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LVIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LIX",
+      "texto": "Bononiensis Rufa Rufulum fellat,\nVxor Meneni, saepe quam in sepulcretis\nVidistis ipso rapere de rogo cenam,\nCum devolutum ex igne prosequens panem\nAb semiraso tunderetur ustore.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LIX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen VI",
+      "texto": "Flāvī, dēliciās tuās Catullō,\nNī sint inlepidae atque inēlegantēs,\nVellēs dīcere, nec tacēre possēs.\nVērum nescio quid febrīculōsī 5\nScortī dīligis: hoc pudet fatērī.\nNam tē nōn viduās jacēre noctēs\nNēquīquam tacitum cubīle clāmat\nSertīs ac Syriō fragrans olīvō,\nPulvīnusque peraeque et hic et īlle 10\nAttrītus, tremulīque quassa lectī\nArgūtātiō inambulātiōque.\nNam nīl stupra valet, nihil, tacēre.\nCūr? nōn tam latera ecfutūta pandās,\nNī tū quid faciās ineptiārum. 15\nQuārē, quidquid habēs bonī malīque,\nDīc nōbīs: volo tē ac tuōs amōrēs\nAd caelum lepidō vocāre versū.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_VI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LX",
+      "texto": "Num te leaena montibus Libystinis\nAut Scylla latrans infima inguinum parte\nTam mente dura procreauit ac taetra,\nVt supplicis uocem in nouissimo casu\nContemptam haberes, ah nimis fero corde?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXII",
+      "texto": "Vesper adest: iuvenes, consurgite: Vesper Olympo\nExspectata diu vix tandem lumina tollit.\nSurgere iam tempus, iam pinguis linquere mensas;\nIam ueniet uirgo, iam dicetur hymenaeus. 5\nHymen o Hymenaee, Hymen ades o Hymenaee.\nCernitis, innuptae, iuvenes? consurgite contra:\nNimirum Oetaeos ostendit Noctifer ignes.\nSic certest: viden ut perniciter exsiluere?\nNon temere exsiluere; canent quod uincere par est. 10\nHymen o Hymenaee, Hymen ades o Hymenaee.\n\nNon facilis nobis, aequales, palma parata est:\nAspicite, innuptae secum ut meditata requirunt.\nNon frustra meditantur; habent memorabile quod sit.\nNec mirum, penitus quae tota mente laborant. 15\nNos alio mentes, alio diuisimus aures:\nIure igitur uincemur; amat uictoria curam.\nQuare nunc animos saltem conuertite uestros:\nDicere iam incipient, iam respondere decebit.\nHymen o Hymenaee, Hymen ades o Hymenaee.\n\n Hespere, qui caelo fertur crudelior ignis?\nQui natam possis complexu auellere matris,\nComplexu matris retinentem auellere natam\nEt iuueni ardenti castam donare puellam.\nQuid faciunt hostes capta crudelius urbe? 25\nHymen o Hymenaee, Hymen ades o Hymenaee.\nHespere, quis caelo lucet iucundior ignis?\nQui desponsa tua firmes conubia flamma,\nQuae pepigere uiri, pepigerunt ante parentes,\nNec iunxere prius quam se tuus extulit ardor. 30\nQuid datur a diuis felici optatius hora?\nHymen o Hymenaee, Hymen ades o Hymenaee.\n\nHesperus e nobis, aequales, abstulit unam\n                                         *\nNamque tuo aduentu uigilat custodia semper.\nNocte latent fures, quos idem saepe reuertens, 35\nHespere, mutato comprendis nomine eosdem.\nAt libet innuptis ficto te carpere questu.\nQuid tum, si carpunt, tacita quem mente requirunt?\nHymen o Hymenaee, Hymen ades o Hymenaee.\n\nVt flos in saeptis secretus nascitur hortis, 40\nIgnotus pecori, nullo conuulsus aratro,\nQuem mulcent aurae, firmat sol, educat imber,\nMulti illum pueri, multae optauere puellae;\nIdem cum tenui carptus defloruit ungui,\nNulli illum pueri, nullae optauere puellae: 45\nSic uirgo, dum intacta manet, dum cara suis est;\nCum castum amisit polluto corpore florem,\nNec pueris iucunda manet nec cara puellis.\nHymen o Hymenaee, Hymen ades o Hymenaee.\n\nVt uidua in nudo uitis quae nascitur aruo 50\nNumquam se extollit, numquam mitem educat uuam,\nSed tenerum prono deflectens pondere corpus\nIam iam contingit summum radice flagellum,\nHanc nulli agricolae, nulli coluere iuuenci;\nAt si forte eadem est ulmo coniuncta marito, 55\nMulti illam agricolae, multi coluere iuuenci:\nSic uirgo, dum intacta manet, dum inculta senescit;\nCum par conubium maturo tempore adepta est,\nCara uiro magis et minus est inuisa parenti.\n\nEt tu ne pugna cum tali coniuge uirgo. 60\nNon aequum est pugnare, pater cui tradidit ipse,\nIpse pater cum matre, quibus parere necesse est.\nVirginitas non tota tua est, ex parte parentum est:\nTertia pars patri, pars est data tertia matri,\nTertia sola tua est. Noli pugnare duobus, 65\nQui genero suo iura simul cum dote dederunt.\nHymen o Hymenaee, Hymen ades o Hymenaee.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXII",
+      "tags": [
+        "tempo"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXIII",
+      "texto": "Super alta vectus Attis celeri rate maria,\nPhrygium ut nemus citato cupide pede tetigit\nadiitque opaca silvis redimita loca deae,\nstimulatus ibi furenti rabie, vagus animis,\ndevolsit ili acuto sibi pondera silice,\nitaque ut relicta sensit sibi membra sine viro,\netiam recente terrae sola sanguine maculans,\nniveis citata cepit manibus leve typanum,\ntypanum tuum, Cybebe, tua, mater, initia,\nquatiensque terga tauri teneris cava digitis\ncanere haec suis adorta est tremebunda comitibus.\n'agite ite ad alta, Gallae, Cybeles nemora simul,\nsimul ite, Dindymenae dominae vaga pecora,\naliena quae petentes velut exules loca\nsectam meam exsecutae duce me mihi comites\nrapidum salum tulistis truculentaque pelagi,\net corpus evirastis Veneris nimio odio;\nhilarate erae citatis erroribus animum.\nmora tarda mente cedat: simul ite, sequimini\nPhrygiam ad domum Cybebes, Phrygia ad nemora deae,\nubi cymbalum sonat vox, ubi tympana reboant,\ntibicen ubi canit Phryx curvo grave calamo,\nubi capita Maenades vi iaciunt hederigerae,\nubi sacra sancta acutis ululatibus agitant,\nubi suevit illa divae volitare vaga cohors,\nquo nos decet citatis celerare tripudiis.'\n\nsimul haec comitibus Attis cecinit notha mulier,\nthiasus repente linguis trepidantibus ululat,\nleve tympanum remugit, cava cymbala recrepant,\nviridem citus adit Idam properante pede chorus.\nfuribunda simul anhelans vaga vadit animam agens\ncomitata tympano Attis per opaca nemora dux,\nveluti iuvenca vitans onus indomita iugi;\nrapidae ducem sequuntur Gallae properipedem.\nitaque, ut domum Cybebes tetigere lassulae,\nnimio e labore somnum capiunt sine Cerere.\npiger his labente languore oculos sopor operit;\nabit in quiete molli rabidus furor animi.\nsed ubi oris aurei Sol radiantibus oculis\nlustravit aethera album, sola dura, mare ferum,\npepulitque noctis umbras vegetis sonipedibus,\nibi Somnus excitam Attin fugiens citus abiit;\ntrepidante eum recepit dea Pasithea sinu.\nita de quiete molli rapida sine rabie\nsimul ipsa pectore Attis sua facta recoluit,\nliquidaque mente vidit sine quis ubique foret,\nanimo aestuante rusum reditum ad vada tetulit.\nibi maria vasta visens lacrimantibus oculis,\npatriam allocuta maesta est ita voce miseriter.\n\n'patria o mei creatrix, patria o mea genetrix,\nego quam miser relinquens, dominos ut erifugae\nfamuli solent, ad Idae tetuli nemora pedem,\nut apud nivem et ferarum gelida stabula forem,\net earum omnia adirem furibunda latibula,\nubinam aut quibus locis te positam, patria, reor?\ncupit ipsa pupula ad te sibi derigere aciem,\nrabie fera carens dum breve tempus animus est.\negone a mea remota haec ferar in nemora domo?\npatria, bonis, amicis, genitoribus abero?\nabero foro, palaestra, stadio et gyminasiis?\nmiser a miser, querendum est etiam atque etiam, anime.\nquod enim genus figurae est, ego non quod obierim?\nego mulier, ego adolescens, ego ephebus, ego puer,\nego gymnasi fui flos, ego eram decus olei:\nmihi ianuae frequentes, mihi limina tepida,\nmihi floridis corollis redimita domus erat,\nlinquendum ubi esset orto mihi Sole cubiculum.\nego nunc deum ministra et Cybeles famula ferar?\nego Maenas, ego mei pars, ego vir sterilis ero?\nego viridis algida Idae nive amicta loca colam?\nego vitam agam sub altis Phrygiae columinibus,\nubi cerva silvicultrix, ubi aper nemorivagus?\niam iam dolet quod egi, iam iamque paenitet.'\n\nroseis ut huic labellis sonitus citus abiit,\ngeminas deorum ad aures nova nuntia referens,\nibi iuncta iuga resolvens Cybele leonibus\nlaevumque pecoris hostem stimulans ita loquitur.\n'agedum', inquit 'age ferox i, fac ut hunc furor agitet,\nfac uti furoris ictu reditum in nemora ferat,\nmea libere nimis qui fugere imperia cupit.\nage caede terga cauda, tua verbera patere,\nfac cuncta mugienti fremitu loca retonent,\nrutilam ferox torosa cervice quate iubam.'\nait haec minax Cybebe religatque iuga manu.\nferus ipse sese adhortans rapidum incitat animo,\nvadit, fremit, refringit virgulta pede vago.\nat ubi umida albicantis loca litoris adiit,\nteneramque vidit Attin prope marmora pelagi,\nfacit impetum. illa demens fugit in nemora fera;\nibi semper omne vitae spatium famula fuit.\n\ndea, magna dea, Cybebe, dea domina Dindymi,\nprocul a mea tuus sit furor omnis, era, domo:\nalios age incitatos, alios age rabidos.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXIII",
+      "tags": [
+        "patria"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXIV",
+      "texto": "Peliaco quondam prognatae uertice pinus\nDicuntur liquidas Neptuni nasse per undas\nPhasidos ad fluctus et fines Aeeteos,\nCum lecti iuuenes, Argiuae robora pubis, 5\nAuratam optantes Colchis auertere pellem\nAusi sunt uada salsa cita decurrere puppi,\nCaerula uerrentes abiegnis aequora palmis.\nDiua quibus retinens in summis urbibus arces\nIpsa leui fecit uolitantem flamine currum, 10\nPinea coniugens inflexae texta carinae.\nIlla rudem cursu prima imbuit Amphitriten.\nQuae simul ac rostro uentosum proscidit aequor\nTortaque remigio spumis incanduit unda,\nEmersere freti candenti e gurgite uultus 15\nAequoreae monstrum Nereides admirantes.\nIlla, siqua alia, uiderunt luce marinas\nMortales oculis nudato corpore nymphas\nNutricum tenus exstantes e gurgite cano.\nTum Thetidis Peleus incensus fertur amore, 20\nTum Thetis humanos non despexit hymenaeos,\nTum Thetidi pater ipse iugandum Pelea sensit.\nO nimis optato saeclorum tempore nati\nHeroes, saluete, deum genus, o bona matrum 23b\nProgenies, saluete iterum . . .\nVos ego saepe meo, uos carmine compellabo, 25\nTeque adeo eximie taedis felicibus aucte\nThessaliae columen Peleu, cui Iuppiter ipse,\nIpse suos diuum genitor concessit amores.\nTene Thetis tenuit pulcherrima Nereine?\nTene suam Tethys concessit ducere neptem 30\nOceanusque, mari totum qui amplectitur orbem?\nQuae simul optatae finito tempore luces\nAduenere, domum conuentu tota frequentat\nThessalia, oppletur laetanti regia coetu:\nDona ferunt prae se, declarant gaudia uultu. 35\nDeseritur Cieros, linquunt Phthiotica Tempe\nCrannonisque domos ac moenia Larisaea,\nPharsalum coeunt, Pharsalia tecta frequentant.\nRura colit nemo, mollescunt colla iuuencis,\nNon humilis curuis purgatur uinea rastris, 40\nNon glebam prono conuellit uomere taurus,\nNon falx attenuat frondatorum arboris umbram,\nSqualida desertis robigo infertur aratris.\nIpsius at sedes, quacumque opulenta recessit\nRegia, fulgenti splendent auro atque argento. 45\nCandet ebur soliis, conlucent pocula mensae,\nTota domus gaudet regali splendida gaza.\nPuluinar uero diuae geniale locatur\nSedibus in mediis, Indo quod dente politum\nTincta tegit roseo conchyli purpura fuco. 50\nHaec uestis priscis hominum uariata figuris\nHeroum mira uirtutes indicat arte.\nNamque fluentisono prospectans litore Diae\nThesea cedentem celeri cum classe tuetur\nIndomitos in corde gerens Ariadna furores, 55\nNecdum etiam sese quae uisit uisere credit,\nVt pote fallaci quae tunc primum excita somno\nDesertam in sola miseram se cernat harena.\nImmemor at iuuenis fugiens pellit uada remis,\nIrrita uentosae linquens promissa procellae. 60\nQuem procul ex alga maestis Minois ocellis\nSaxea ut effigies bacchantis prospicit, eheu,\nProspicit et magnis curarum fluctuat undis,\nNon flauo retinens subtilem uertice mitram,\nNon contecta leui uelatum pectus amictu, 65\nNon tereti strophio lactentis uincta papillas,\nOmnia quae toto delapsa e corpore passim\nIpsius ante pedes fluctus salis adludebant.\nSic neque tum mitrae neque tum fluitantis amictus\nIlla vicem curans toto ex te pectore, Theseu, 70\nToto animo, tota pendebat perita mente.\nAh misera, adsiduis quam luctibus exsternauit\nSpinosas Erycina serens in pectore curas\nIlla tempestate, ferox quo ex tempore Theseus\nEgressus curuis e litoribus Piraei 75\nAttigit iniusti regis Gortynia tecta.\n     Nam perhibent olim crudeli peste coactam\nAndrogeoneae poenas exsoluere caedis\nElectos iuuenes simul et decus innuptarum\nCecropiam solitam esse dapem dare Minotauro. 80\nQuis angusta malis cum moenia uexarentur,\nIpse suum Theseus pro caris corpus Athenis\nProicere optauit potius quam talia Cretam\nFunera Cecropiae nec funera portarentur.\nAtque ita naue leui nitens ac lenibus auris 85\nMagnanimum ad Minoa uenit sedesque superbas.\nHunc simul ac cupido conspexit lumine uirgo\nRegia, quam suauis exspirans castus odores \nLectulus in molli complexu matris alebat,\nQuales Eurotae progignunt flumina myrtos 90\nAuraue distinctos educit uerna colores,\nNon prius ex illo flagrantia declinauit\nLumina quam cuncto concepit corpore flammam\nFunditus atque imis exarsit tota medullis.\nHeu misere exagitans immiti corde furores, 95\nSancte puer, curis hominum qui gaudia misces,\nQuaeque regis Golgos quaeque Idalium frondosum,\nQualibus incensam iactastis mente puellam\nFluctibus in flauo saepe hospite suspirantem!\nQuantos illa tulit languenti corde timores, 100\nQuanto saepe magis fulgore expalluit auri,\nCum saeuum cupiens contra contendere monstrum\nAut mortem appeteret Theseus aut praemia laudis.\n     Non ingrata tamen frustra munuscula diuis\nPromittens tacito succendit uota labello. 105\nNam uelut in summo quatientem bracchia Tauro\nQuercum aut conigeram sudanti cortice pinum\nIndomitus turbo contorquens flamine robur\nEruit (illa procul radicitus exturbata\nProna cadit, †lateque cum eius obuia frangens), 110\nSic domito saeuum prostrauit corpore Theseus\nNequiquam uanis iactantem cornua uentis.\nInde pedem sospes multa cum laude reflexit\nErrabunda regens tenui uestigia filo,\nNe labyrintheis e flexibus egredientem 115\nTecti frustraretur inobseruabilis error.\n     Sed quid ego a primo digressus carmine plura\nCommemorem, ut linquens genitoris filia uultum,\nVt consanguineae complexum, ut denique matris,\nQuae misera in gnata deperdita laetabatur, 120\nOmnibus his Thesei dulcem praeoptarit amorem,\nAut ut uecta rati spumosa ad litora Diae\nVenerit, aut ut eam deuinctam lumina somno\nLiquerit immemori discedens pectore coniunx?\nSaepe illam perhibent ardenti corde furentem 125\nClarisonas imo fudisse ex pectore uoces, \nAc tum praeruptos tristem conscendere montes\nVnde aciem in pelagi uastos protenderet aestus,\nTum tremuli salis aduersas procurrere in undas\nMollia nudatae tollentem tegmina surae, 130\nAtque haec extremis maestam dixisse querelis,\nFrigidulos udo singultus ore cientem:",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXIV",
+      "tags": [
+        "morte",
+        "natureza",
+        "tempo"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXV",
+      "texto": "Etsi me adsiduo defectum cura dolore\n     Seuocat a doctis, Ortale, uirginibus,\nNec potis est dulcis Musarum expromere fetus\n     Mens animi: tantis fluctuat ipsa malis,—\nNamque mei nuper Lethaeo gurgite fratris\n     Pallidulum manans adluit unda pedem,\nTroia Rhoeteo quem subter litore tellus\n     Ereptum nostris obterit ex oculis.\n     . . . . . . .\n     Numquam ego te uita frater amabilior\nAdspiciam posthac: at certe semper amabo,\n     Semper maesta tua carmina morte canam,\nQualia sub densis ramorum concinit umbris\n     Daulias absumpti fata gemens Ityli,—\nSed tamen in tantis maeroribus, Ortale, mitto\n     Haec expressa tibi carmina Battiadae,\nNe tua dicta uagis nequiquam credita uentis\n     Effluxisse meo forte putes animo,\nVt missum sponsi furtiuo munere malum\n     Procurrit casto uirginis e gremio,\nQuod miserae oblitae molli sub ueste locatum,\n     Dum aduentu matris prosilit, excutitur;\nAtque illud prono praeceps agitur decursu,\n     Huic manat tristi conscius ore rubor.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXV",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXVII",
+      "texto": "O dulci iucunda viro, iucunda parenti,\nsalve, teque bona Iuppiter auctet ope,\nianua, quam Balbo dicunt servisse benigne\nolim, cum sedes ipse senex tenuit,\nquamque ferunt rursus gnato servisse maligne, 5\npostquam es porrecto facta marita sene.\ndic agedum nobis, quare mutata feraris\nin dominum veterem deseruisse fidem.\n'Non (ita Caecilio placeam, cui tradita nunc sum)\nculpa mea est, quamquam dicitur esse mea, 10\nnec peccatum a me quisquam pote dicere quicquam:\nverum istius populi ianua qui te facit,\nqui, quacumque aliquid reperitur non bene factum,\nad me omnes clamant: ianua, culpa tua est.'\nnon istuc satis est uno te dicere verbo, 15\nsed facere ut quivis sentiat et videat.\n'Qui possum? nemo quaerit nec scire laborat.'\nNos volumus: nobis dicere ne dubita.\n'Primum igitur, virgo quod fertur tradita nobis,\nfalsum est. non illam vir prior attigerit, 20\nlanguidior tenera cui pendens sicula beta\nnumquam se mediam sustulit ad tunicam;\nsed pater illius gnati violasse cubile\ndicitur et miseram conscelerasse domum,\nsive quod impia mens caeco flagrabat amore, 25\nseu quod iners sterili semine natus erat,\nut quaerendum unde unde foret nervosius illud,\nquod posset zonam solvere virgineam.'\nEgregium narras mira pietate parentem,\nqui ipse sui gnati minxerit in gremium. 30\n'Atqui non solum hoc dicit se cognitum habere\nBrixia Cycneae supposita speculae,\nflavus quam molli praecurrit flumine Mella,\nBrixia Veronae mater amata meae,\nsed de Postumio et Corneli narrat amore, 35\ncum quibus illa malum fecit adulterium.\ndixerit hic aliquis: quid? tu istaec, ianua, nosti,\ncui numquam domini limine abesse licet,\nnec populum auscultare, sed hic suffixa tigillo\ntantum operire soles aut aperire domum? 40\nsaepe illam audivi furtiva voce loquentem\nsolam cum ancillis haec sua flagitia,\nnomine dicentem quos diximus, utpote quae mi\nsperaret nec linguam esse nec auriculam.\npraeterea addebat quendam, quem dicere nolo 45\nnomine, ne tollat rubra supercilia.\nlongus homo est, magnas cui lites intulit olim\nfalsum mendaci ventre puerperium.'",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXVII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen VII",
+      "texto": "Quaeris, quot mihi basiationes\nTuae, Lesbia, sint satis superque.\nQuam magnus numerus Libyssae harenae\nLasarpiciferis iacet Cyrenis, 5\nOraclum Iouis inter aestuosi\nEt Batti ueteris sacrum sepulcrum,\nAut quam sidera multa, cum tacet nox,\nFurtiuos hominum uident amores,\nTam te basia multa basiare 10\nVesano satis et super Catullo est,\nQuae nec pernumerare curiosi\nPossint nec mala fascinare lingua.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_VII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXII",
+      "texto": "Dīcēbas quondam sōlum tē nosse Catullum,\n    Lesbia, nec prae mē uelle tenēre Iouem.\nDīlexī tum tē nōn tantum ut uulgus amīcam,\n    Sed pater ut gnātōs dīligit et generōs.\nNunc tē cognōvī: quārē etsi impensius ūrōr,\n    Multō mī tamen es uīlior et leuior.\nQuī potis est? Inquis. Quod amantem iniūria tālis\n    Cōgit amāre magis, sed bene uelle minus.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXV",
+      "texto": "Huc est mens deducta tua mea, Lesbia, culpa,\n     Atque ita se officio perdidit ipsa suo,\nVt iam nec bene uelle queat tibi, si optuma fias,\n     Nec desistere amare, omnia si facias.",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXVI",
+      "texto": "Si qua recordanti benefacta priora uoluptas \n     Est homini, cum se cogitat esse pium,\nNec sanctam uiolasse fidem, nec foedere in ullo\n     Diuum ad fallendos numine abusum homines,\nMulta parata manent in longa aetate, Catulle, 5\n     Ex hoc ingrato gaudia amore tibi.\nNam quaecumque homines bene cuiquam aut dicere possunt\n     Aut facere, haec a te dictaque factaque sunt:\nOmnia quae ingratae perierunt credita menti.\n     Quare cur tu te iam amplius excrucies? 10\nQuin tu animo offirmas atque istinc teque reducis\n     Et dis inuitis desinis esse miser?\nDifficile est longum subito deponere amorem;\n     Difficile est, uerum hoc qua libet efficias.\nVna salus haec est, hoc est tibi peruincendum; 15\n     Hoc facias, siue id non pote siue pote.\nO di, si uestrum est misereri, aut si quibus unquam\n     Extremam iam ipsa in morte tulistis opem,\nMe miserum aspicite et, si uitam puriter egi,\n     Eripite hanc pestem perniciemque mihi! 20\nHei mihi subrepens imos ut torpor in artus\n     Expulit ex omni pectore laetitias.\nNon iam illud quaero, contra me ut diligat illa,\n     Aut, quod non potis est, esse pudica uelit:\nIpse ualere opto et taetrum hunc deponere morbum. 25\n    O di, reddite mi hoc pro pietate mea.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXVI",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen VIII",
+      "texto": "Miser Catulle, desinas ineptire,\nEt quod uides perisse perditum ducas.\nFulsere quondam candidi tibi soles,\nCum uentitabas quo puella ducebat 5\nAmata nobis quantum amabitur nulla.\nIbi illa multa cum iocosa fiebant,\nQuae tu uolebas nec puella nolebat.\nFulsere uere candidi tibi soles.\nNunc iam illa non uult: tu quoque inpotens, noli, 10\nNec quae fugit sectare, nec miser uiue,\nSed obstinata mente perfer, obdura.\nVale, puella! iam Catullus obdurat,\nNec te requiret nec rogabit inuitam:\nAt tu dolebis, cum rogaberis nulla. 15\nScelesta, uae te! quae tibi manet vita!\nQuis nunc te adibit? cui uideberis bella?\nQuem nunc amabis? cuius esse diceris?\nQuem basiabis? cui labella mordebis?\nAt tu, Catulle, destinatus obdura.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_VIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXXIII",
+      "texto": "Lesbia mi praesente uiro mala plurima dicit:\n    Haec illi fatuo maxima laetitia est.\nMule, nihil sentis. Si nostri oblita taceret,\n    Sana esset: nunc quod gannit et obloquitur,\nNon solum meminit, sed, quae multo acrior est res,\n    Irata est. hoc est, uritur et loquitur.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXXIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXXIV",
+      "texto": "Chommoda dīcēbat, sī quandō commoda vellet\n     dīcere, et īnsidiās Arrius hīnsidiās,\net tum mīrifice spērābat sē esse locūtum\n     cum quantum poterat dīxerat hīnsidiās.\nCrēdō, sīc māter, sīc līber avunculus ejus,\n     sīc māternus avus dīxerat atque avia.\nHōc missō in Syriam requiērant omnibus aurēs:\n     Audībant eadem haec lēniter et leviter,\nnec sibi postilla metuēbant tālia verba,\n     cum subitō adfertur nuntius horribilis\nĪoniōs flūctūs, postquam illūc Arrius īsset,\n     jam nōn Īoniōs esse, sed Hīoniōs.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXXIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXXVI",
+      "texto": "Quintia formosa est multis, mihi candida, longa,\n    Recta est. Haec ego sic singula confiteor,\nTotum illud 'formosa' nego: nam nulla uenustas,\n    Nulla in tam magno est corpore mica salis.\nLesbia formosa est, quae cum pulcherrima tota est,\n    Tum omnibus una omnis subripuit Veneres.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXXVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen LXXXVII",
+      "texto": "Nulla potest mulier tantum se dicere amatam\n    Vere, quantum a me Lesbia amata mea es:\nNulla fides ullo fuit umquam in foedere tanta\n    Quanta in amore tuo ex parte reperta mea est.",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_LXXXVII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen IX",
+      "texto": "Verani, omnibus e meis amicis\nAntistans mihi milibus trecentis,\nVenistine domum ad tuos penates\nFratresque unanimos anumque matrem? 5\nVenisti! o mihi nuntii beati!\nVisam te incolumem audiamque Hiberum\nNarrantem loca, facta, nationes,\nVt mos est tuus, applicansque collum\nIucundum os oculosque sauiabor. 10\nO, quantum est hominum beatiorem,\nQuid me laetius est beatiusue?",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_IX",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XC",
+      "texto": "Nascetur magus ex Gelli matrisque nefando\nconiugio et discat Persicum haruspicium:\nnam magus ex matre et gnato gignatur oportet,\nsi vera est Persarum impia religio,\ngratus ut accepto veneretur carmine divos\nomentum in flamma pingue liquefaciens.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XC",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XCII",
+      "texto": "Lesbia mi dicit semper male nec tacet umquam\n    De me: Lesbia me dispeream nisi amat.\nQuo signo? quia sunt totidem mea: deprecor illam\n    Adsidue, uerum dispeream nisi amo.",
+      "forma": "quadra",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XCII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XCIII",
+      "texto": "Nil nimium studeo, Caesar, tibi uelle placere,\n     Nec scire utrum sis albus an ater homo.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XCIII",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XCIV",
+      "texto": "Mentula moechatur. Moechatur mentula certe.\n     Hoc est quod dicunt, ipsa olera olla legit.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XCIV",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XCVI",
+      "texto": "Si quicquam mutis gratum acceptumue sepulcris\n     Accidere a nostro, Calue, dolore potest,\nQuo desiderio ueteres renouamus amores\n     Atque olim missas flemus amicitias,\nCerte non tanto mors immatura dolori est\n     Quintiliae, quantum gaudet amore tuo.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XCVI",
+      "tags": []
+    },
+    {
+      "titulo": "Carmina (Catullus, ed. Merrill)/Carmen XCVIII",
+      "texto": "In te, si in quemquam, dici pote, putide Victi,\n     Id quod uerbosis dicitur et fatuis:\nIsta cum lingua, si usus veniat tibi, possis\n     Culos et crepidas lingere carpatinas.\nSi nos omnino uis omnes perdere, Victi,\n     Hiscas: omnino quod cupis efficies.",
+      "forma": "outro",
+      "obra": "la.wikisource: Carmina (Catullus)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_%28Catullus%2C_ed._Merrill%29/Carmen_XCVIII",
+      "tags": []
     }
   ]
 }
