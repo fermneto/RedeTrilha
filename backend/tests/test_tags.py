@@ -111,3 +111,31 @@ def test_reconstruir_zera_e_indexa_todos():
     assert indice.posts_da_tag("fantasma") == []
     assert indice.posts_da_tag("amor") == [2, 1]
     assert indice.trending(dias_atras(7)) == [("amor", 2), ("mar", 1)]
+
+
+def test_mais_recente_pega_o_poema_mais_novo_da_tag():
+    indice = IndiceTags()
+    indice.indexar(1, {"mar"}, dias_atras(1))
+    indice.indexar(5, {"mar"}, dias_atras(3))
+    indice.indexar(3, {"mar"}, dias_atras(1))
+    assert indice.mais_recente("Mar") == 3
+    assert indice.mais_recente("inexistente") is None
+
+
+def test_buscar_por_prefixo_mais_usada_primeiro():
+    indice = IndiceTags()
+    indice.indexar(1, {"saudade", "sal"}, dias_atras(1))
+    indice.indexar(2, {"saudade"}, dias_atras(200))
+    indice.indexar(3, {"sabia", "mar"}, dias_atras(1))
+    assert indice.buscar("#Sa") == [("saudade", 2), ("sabia", 1), ("sal", 1)]
+    assert indice.buscar("sa", k=1) == [("saudade", 2)]
+    assert indice.buscar("SAÚ") == [("saudade", 2)]
+    assert indice.buscar("dade") == []
+
+
+def test_buscar_vazio_ou_so_simbolos_nao_acha_nada():
+    indice = IndiceTags()
+    indice.indexar(1, {"mar"}, dias_atras(1))
+    assert indice.buscar("") == []
+    assert indice.buscar("#") == []
+    assert indice.buscar("  !") == []

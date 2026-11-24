@@ -1,19 +1,29 @@
-from fastapi import APIRouter, Depends
+from typing import Annotated
+
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.post import PostPage
-from app.schemas.tags import Trending
+from app.schemas.tags import BuscaDeTags, Trending
 from app.services import tags as service
 
 router = APIRouter(tags=["tags"])
 
 
 @router.get("/tags/trending", response_model=Trending)
-def trending(_: User = Depends(get_current_user)):
-    return service.trending()
+def trending(_: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    return service.trending(db)
+
+
+@router.get("/tags/busca", response_model=BuscaDeTags)
+def buscar_tags(
+    q: Annotated[str, Query(max_length=80)] = "",
+    _: User = Depends(get_current_user),
+):
+    return service.buscar_tags(q)
 
 
 @router.get("/tags/{tag}/posts", response_model=PostPage)

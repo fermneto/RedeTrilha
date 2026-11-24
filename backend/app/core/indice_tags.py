@@ -17,6 +17,7 @@ from datetime import datetime
 from app.core.datas import para_utc
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
+_FORA_DA_TAG = re.compile(r"[^a-z0-9_]")
 # "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
 FORMA_SEM_TAG = "outro"
 
@@ -25,6 +26,11 @@ def normalizar(texto: str) -> str:
     """casefold e sem acento: '#Solidão' e '#solidao' viram a mesma tag."""
     sem_acento = unicodedata.normalize("NFKD", texto.casefold())
     return "".join(c for c in sem_acento if not unicodedata.combining(c))
+
+
+def termo_de_tag(texto: str) -> str:
+    """O que a pessoa digitou na busca, como tag: '#Saudade!' vira 'saudade'."""
+    return _FORA_DA_TAG.sub("", normalizar(texto))
 
 
 def extrair_tags(texto: str, forma: str | None) -> set[str]:
@@ -41,6 +47,8 @@ class IndiceTags:
     - indexar/remover: O(t), t = tags do post (lookups em hash)
     - posts_da_tag: O(p log p), p = posts da tag (ordena na leitura)
     - trending: O(n·t + m log k), n = posts indexados, m = tags distintas na janela
+    - mais_recente: O(p), p = posts da tag
+    - buscar: O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo
     - reconstruir do zero: O(n·t), por isso só acontece no startup
     """
 
@@ -104,6 +112,30 @@ class IndiceTags:
             if criado_em >= inicio:
                 contagem.update(tags)
         return heapq.nsmallest(k, contagem.items(), key=lambda par: (-par[1], par[0]))
+
+    def mais_recente(self, tag: str) -> int | None:
+        """Id do poema mais novo com a tag (empate: maior id), ou None. O(p).
+
+        Um max linear, sem ordenar: o "Em alta" só quer o primeiro.
+        """
+        posts = self._por_tag.get(normalizar(tag))
+        if not posts:
+            return None
+        return max(posts.items(), key=lambda par: (par[1], par[0]))[0]
+
+    def buscar(self, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
+        """Até k tags que começam por `prefixo`, com quantos poemas cada uma tem.
+
+        O(T + T' log k). Mais poemas primeiro, empate alfabético; prefixo vazio
+        (ou só com caracteres fora de uma tag) não acha nada.
+        """
+        termo = termo_de_tag(prefixo)
+        if not termo:
+            return []
+        achadas = (
+            (tag, len(posts)) for tag, posts in self._por_tag.items() if tag.startswith(termo)
+        )
+        return heapq.nsmallest(k, achadas, key=lambda par: (-par[1], par[0]))
 
 
 indice_tags = IndiceTags()

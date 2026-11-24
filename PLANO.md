@@ -327,8 +327,13 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 - `GET /tags/{tag}/posts` 🔒 → página, mais novo primeiro. A tag é normalizada
   (casefold e sem acento: `#Solidão` = `#solidao`).
-- `GET /tags/trending` 🔒 → `{"items": [{"tag", "contagem"}]}`: top 5 das
-  últimas 24 h.
+- `GET /tags/trending` 🔒 → `{"items": [{"tag", "contagem", "trecho"}]}`: top 5
+  das últimas 24 h (contagem de poemas, sem curtidas). `trecho` (opcional,
+  pode ser `null`) é o primeiro verso com texto do poema mais novo com a tag,
+  sem `strip()`.
+- `GET /tags/busca?q=` 🔒 → `{"items": [{"tag", "poemas"}]}`: até 5 tags que
+  começam pelo termo normalizado (`#Saú` acha `saudade`), mais poemas primeiro;
+  termo vazio → lista vazia. A busca de poetas do Explorar usa `GET /acervo?q=`.
 - `GET /explorar?tag=&forma=` 🔒 → página de poemas de todos, sem reposts
   puros; `tag` e `forma` juntos fazem interseção; forma fora de `FORMAS` → 422.
 - `GET /poemas/do-dia` 🔒 → `PostOut`: um poema de consagrado, o mesmo para
@@ -408,6 +413,8 @@ indice_tags.indexar(post_id: int, tags: set[str], criado_em: datetime) -> None
 indice_tags.remover(post_id: int) -> None
 indice_tags.posts_da_tag(tag: str) -> list[int]       # mais novo primeiro
 indice_tags.trending(desde: datetime, k: int = 5) -> list[tuple[str, int]]
+indice_tags.mais_recente(tag: str) -> int | None       # id do poema mais novo
+indice_tags.buscar(prefixo: str, k: int = 5) -> list[tuple[str, int]]  # (tag, poemas)
 extrair_tags(texto: str, forma: str | None) -> set[str]  # #amor, mais a forma
 ```
 
