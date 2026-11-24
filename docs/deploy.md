@@ -16,7 +16,7 @@ pôr a URL da Vercel no CORS.
 |---|---|---|
 | Render | `SEED_ON_BOOT` | `true` (já vem do `render.yaml`) |
 | Render | `CORS_ORIGINS` | `https://<seu-front>.vercel.app`, sem barra no fim. Mais de uma: separe por vírgula |
-| Render | `ANTHROPIC_API_KEY` | opcional, só quando a tradução estiver na `main` (está comentada no `render.yaml`) |
+| Render | `ANTHROPIC_API_KEY` | a chave da API da Anthropic, para a tradução. Sem ela, só a tradução fica fora (503) |
 | Render | `DEBUG` | **não existe. Nunca crie.** |
 | Vercel | `NEXT_PUBLIC_API_URL` | `https://<seu-back>.onrender.com`, sem barra no fim |
 
@@ -35,12 +35,13 @@ pôr a URL da Vercel no CORS.
 4. Ele pede os valores das variáveis com `sync: false`:
 
    ```text
-   CORS_ORIGINS:     http://localhost:3000
+   CORS_ORIGINS:       http://localhost:3000
+   ANTHROPIC_API_KEY:  (a chave da Anthropic)
    ```
 
    Ainda não há URL da Vercel: ponha `http://localhost:3000` por enquanto
-   (o passo 3 troca). Se a `ANTHROPIC_API_KEY` já estiver descomentada no
-   `render.yaml`, cole a chave aqui também.
+   (o passo 3 troca). A `ANTHROPIC_API_KEY` fica só no painel do Render,
+   nunca num arquivo.
 5. **Apply**. O build (`pip install uv && uv sync --frozen`) leva alguns
    minutos. No log, o boot mostra:
 

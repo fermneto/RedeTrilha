@@ -6,13 +6,25 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
-import { buscarPoema, FORMAS, nomeDaForma, publicarPoema, type Post } from "@/lib/api";
+import {
+  buscarPoema,
+  FORMAS,
+  IDIOMAS_DO_COMPOSITOR,
+  nomeDaForma,
+  nomeDoIdioma,
+  publicarPoema,
+  type Post,
+} from "@/lib/api";
+
+// Valor do <select> para "outra" língua: vai como null (desconhecida).
+const OUTRA = "";
 
 export function Compositor({ citarId }: { citarId: number | null }) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState("");
   const [forma, setForma] = useState("");
+  const [idioma, setIdioma] = useState<string>(IDIOMAS_DO_COMPOSITOR[0]);
   const [original, setOriginal] = useState<Post | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
@@ -59,6 +71,7 @@ export function Compositor({ citarId }: { citarId: number | null }) {
         titulo: titulo.trim() ? titulo : null,
         texto,
         forma: forma || null,
+        idioma: idioma === OUTRA ? null : idioma,
         ...(citarId !== null && { repost_de_id: citarId }),
       });
       router.push(`/poema/${novo.id}`);
@@ -110,6 +123,23 @@ export function Compositor({ citarId }: { citarId: number | null }) {
               {nomeDaForma(f)}
             </option>
           ))}
+        </select>
+      </label>
+
+      {/* Discreto: quase todo poema é em português, o padrão. */}
+      <label className="flex items-center gap-2 text-xs text-tinta-suave">
+        língua do poema
+        <select
+          value={idioma}
+          onChange={(e) => setIdioma(e.target.value)}
+          className="min-h-11 cursor-pointer rounded-lg border border-borda bg-papel-alto px-2 text-xs text-tinta focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
+        >
+          {IDIOMAS_DO_COMPOSITOR.map((codigo) => (
+            <option key={codigo} value={codigo}>
+              {nomeDoIdioma(codigo)}
+            </option>
+          ))}
+          <option value={OUTRA}>outra</option>
         </select>
       </label>
 

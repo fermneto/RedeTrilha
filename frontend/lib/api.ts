@@ -227,6 +227,8 @@ export type Post = {
   obra: string | null;
   ano: number | null;
   fonte: string | null;
+  // Código ISO 639-1 da língua do poema ("pt", "en", "zh"); null = desconhecida.
+  idioma: string | null;
   repost_de_id: number | null;
   created_at: string;
   updated_at: string;
@@ -276,8 +278,13 @@ export type NovoPoema = {
   titulo: string | null;
   texto: string;
   forma: string | null;
+  // ISO 639-1; null = outra língua (desconhecida). Sem o campo, o backend usa "pt".
+  idioma?: string | null;
   repost_de_id?: number;
 };
+
+// Línguas do seletor do compositor, português primeiro (o padrão). "outra" manda null.
+export const IDIOMAS_DO_COMPOSITOR = ["pt", "es", "en", "fr", "it", "de", "la"] as const;
 
 // Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
 export function temToken(): boolean {
@@ -478,6 +485,38 @@ export function listarSeguindo(username: string, limit = 100): Promise<Page<User
 export function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
   return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+}
+
+// ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
+
+export type Traducao = {
+  titulo: string | null;
+  texto: string;
+  idioma_origem: string | null;
+  idioma_destino: string;
+  modelo: string;
+  // Veio da tabela de traduções, sem chamar a IA de novo.
+  em_cache: boolean;
+};
+
+// `para` é um código ISO 639-1 ("pt"). 422 se o poema já está nessa língua; 503 sem IA.
+export function traduzirPoema(id: number, para: string): Promise<Traducao> {
+  return apiPost<Traducao>(`/posts/${id}/traduzir`, { para });
+}
+
+// Língua do navegador, só o subtag primário ("pt" de "pt-BR"). null no servidor.
+export function idiomaDoNavegador(): string | null {
+  if (typeof navigator === "undefined" || !navigator.language) return null;
+  return navigator.language.split("-")[0].toLowerCase();
+}
+
+// Nome da língua em português ("en" → "inglês"); o próprio código se o navegador não souber.
+export function nomeDoIdioma(codigo: string): string {
+  try {
+    return new Intl.DisplayNames(["pt-BR"], { type: "language" }).of(codigo)?.toLowerCase() ?? codigo;
+  } catch {
+    return codigo;
+  }
 }
 
 // ---- Antologias (P5): espelham backend/app/schemas/antologia.py ----
