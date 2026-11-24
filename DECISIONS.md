@@ -158,9 +158,9 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     antologias o poema está.
   - As públicas aparecem numa aba do perfil. Uma privada de outra pessoa dá
     404, para não revelar que existe.
-- **O que cortamos e por quê:** reordenar poemas, antologias coletivas e
-  seguir uma antologia. A ordem é a de inserção. Uma antologia é a curadoria de
-  uma pessoa, e isso já ajuda o iniciante a mostrar o que lê.
+- **O que cortamos e por quê:** reordenar os poemas. A ordem é a de inserção,
+  e uma antologia já ajuda o iniciante a mostrar o que lê sem uma tela a mais
+  para arrastar poemas.
 
 ### 6. Visual de leitura e dados que não somem
 
@@ -183,7 +183,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ### O que ficou de fora e por quê
 
-Cada corte foi pensado para o poeta iniciante, num prazo de duas semanas.
+Cada corte foi pensado para o poeta iniciante, num prazo de 12 dias (16/11 a 27/11).
 
 - **Mensagens diretas.** A crítica de um poema serve a quem a lê também. Numa
   DM, ela sai do lugar onde os outros iniciantes aprendem com ela. A conversa
@@ -332,11 +332,12 @@ _(resultado do make bench)_
   #44, #53 e #56). Por isso, a maior parte dos commits está na conta do Neto.
   O Henrique e o Pedro validam essas partes nas issues #57 a #62. O model
   `Post` e o CRUD de `/posts` (#24) foram feitos pelo Henrique.
-- **Revisão: humana.** O Neto leu cada PR e decidiu o merge, em paralelo com
-  um agente de revisão (Claude Code) que roda os testes e confere os
-  contratos. O GitHub não deixa o autor revisar o próprio PR, e quase todos
-  os PRs foram abertos pela conta do Neto. Por isso, a revisão formal aparece
-  só no #24, e as decisões de revisão estão no corpo dos PRs.
+- **Revisão: humana.** O Neto revisou cada PR e decidiu cada merge, com o
+  apoio de um agente de revisão (Claude Code) que rodava os testes e conferia
+  os contratos. Os comentários de revisão estão nos PRs, publicados pela conta
+  do Neto. As reviews formais de outros colegas no GitHub se limitam ao #24. O
+  Henrique e o Pedro registram a validação deles nas issues #57 a #62 e na
+  revisão deste arquivo (#63).
 - **Conteúdo:**
   - Os poemas do seed foram escritos com IA (Claude): os 24 poetas iniciantes,
     os 68 poemas, as citações e as conversas de oficina
