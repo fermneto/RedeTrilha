@@ -3,10 +3,12 @@
 // gosta (escolas e formas), (2) de onde você é (país e, no Brasil, estado), e
 // depois a grade de quem seguir (/sugestoes). "continuar" salva as preferências
 // (PUT /preferencias) e segue; "pular" segue sem salvar o passo. Também serve para
-// ajustar as preferências depois (link na tela de sugestões).
+// ajustar as preferências depois: pelo link na tela de sugestões (o fluxo inteiro)
+// ou por "Preferências" no menu da conta (/boas-vindas?voltar=<página>), que mostra
+// só os dois passos e, no fim, volta para a página de onde a pessoa veio.
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import {
@@ -14,6 +16,7 @@ import {
   buscarOpcoesDePreferencias,
   buscarPreferencias,
   caminhoDoLogin,
+  destinoSeguro,
   nomeDaForma,
   nomeDoPais,
   salvarPreferencias,
@@ -25,13 +28,28 @@ import {
 const BRASIL = "BR";
 const PASSOS = ["Que poesia você gosta?", "De onde você é?"] as const;
 
+// useSearchParams precisa de Suspense no build estático do Next.
 export default function BoasVindasPage() {
+  return (
+    <Suspense>
+      <BoasVindas />
+    </Suspense>
+  );
+}
+
+function BoasVindas() {
   const router = useRouter();
+  const voltar = useSearchParams().get("voltar");
+  // Pelo menu da conta: sem o passo de quem seguir, e o fim volta à página de antes.
+  const ajuste = voltar !== null;
+  const destino = ajuste ? destinoSeguro(voltar) : "/sugestoes";
+  const totalDePassos = ajuste ? PASSOS.length : PASSOS.length + 1;
   const [passo, setPasso] = useState(0);
   const [opcoes, setOpcoes] = useState<OpcoesDePreferencias | null>(null);
   const [prefs, setPrefs] = useState<Preferencias>({ escolas: [], formas: [], pais: null, uf: null });
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  const ultimo = passo === PASSOS.length - 1;
 
   useEffect(() => {
     if (!temToken()) {
@@ -47,8 +65,8 @@ export default function BoasVindasPage() {
   }, [router]);
 
   function avancar() {
-    if (passo < PASSOS.length - 1) setPasso(passo + 1);
-    else router.push("/sugestoes");
+    if (!ultimo) setPasso(passo + 1);
+    else router.push(destino);
   }
 
   async function continuar() {
@@ -66,11 +84,11 @@ export default function BoasVindasPage() {
 
   return (
     <div>
-      <title>Boas-vindas · Verso</title>
-      <CabecalhoPagina titulo="Boas-vindas" />
+      <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
+      <CabecalhoPagina titulo={ajuste ? "Preferências" : "Boas-vindas"} />
       <div className="space-y-5 p-4">
         <p className="text-sm text-tinta-suave tabular-nums">
-          passo {passo + 1} de {PASSOS.length + 1} · tudo é opcional
+          passo {passo + 1} de {totalDePassos} · tudo é opcional
         </p>
         <h2 className="text-xl font-bold">{PASSOS[passo]}</h2>
 
@@ -111,7 +129,7 @@ export default function BoasVindasPage() {
             disabled={!opcoes || salvando}
             className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
           >
-            {salvando ? "salvando..." : "continuar"}
+            {salvando ? "salvando..." : ajuste && ultimo ? "salvar" : "continuar"}
           </button>
         </div>
       </div>

@@ -1,6 +1,8 @@
 "use client";
-// Menu da conta logada: o avatar abre um popover com "Sair de @username" (e, na
-// barra inferior do celular, também "Perfil", que ali não tem item próprio).
+// Menu da conta logada: o avatar abre um popover com "Preferências" (os passos de
+// gostos e região do onboarding, que voltam para a página atual) e "Sair de
+// @username" (e, na barra inferior do celular, também "Perfil", que ali não tem
+// item próprio).
 // Fecha com Esc (o foco volta ao avatar), com clique fora ou quando o Tab sai dele.
 // Ao abrir, o foco vai para o primeiro item; o menu vem depois do botão no DOM.
 
@@ -10,7 +12,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { IconeMais } from "@/components/icones/IconeMais";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
-import type { User } from "@/lib/api";
+import { caminhoDasPreferencias, type User } from "@/lib/api";
 
 type Props = {
   eu: User;
@@ -26,6 +28,8 @@ const ITEM_DO_MENU =
 
 export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
   const [aberto, setAberto] = useState(false);
+  // Página de onde o menu foi aberto, para as preferências voltarem a ela.
+  const [atual, setAtual] = useState("/");
   const caixa = useRef<HTMLDivElement>(null);
   const botao = useRef<HTMLButtonElement>(null);
   const menu = useRef<HTMLDivElement>(null);
@@ -51,7 +55,10 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
       <button
         ref={botao}
         type="button"
-        onClick={() => setAberto((a) => !a)}
+        onClick={() => {
+          setAtual(window.location.pathname + window.location.search);
+          setAberto((a) => !a);
+        }}
         aria-expanded={aberto}
         aria-controls={id}
         aria-label={`Conta de ${eu.name} (@${eu.username})`}
@@ -89,6 +96,13 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
             Perfil
           </Link>
         )}
+        <Link
+          href={caminhoDasPreferencias(atual, eu.username)}
+          onClick={() => setAberto(false)}
+          className={ITEM_DO_MENU}
+        >
+          Preferências
+        </Link>
         <button type="button" onClick={aoSair} className={ITEM_DO_MENU}>
           Sair de @{eu.username}
         </button>
