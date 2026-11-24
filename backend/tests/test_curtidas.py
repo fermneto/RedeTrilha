@@ -47,3 +47,28 @@ def test_apagar_poema_leva_as_curtidas(client, como):
 
     with SessionLocal() as db:
         assert db.scalars(select(Curtida).where(Curtida.post_id == post_id)).all() == []
+
+
+def test_curtir_na_corrida_do_clique_duplo_nao_estoura(client, como, monkeypatch):
+    """A outra requisição curte entre o SELECT e o INSERT: o SELECT não vê a curtida."""
+    from app.db import SessionLocal
+    from app.models.curtida import Curtida
+    from app.models.user import User
+    from app.services import curtidas
+
+    post_id = _poema(client, como)
+    with SessionLocal() as db:
+        ana = db.scalar(select(User).where(User.username == "ana"))
+        db.add(Curtida(user_id=ana.id, post_id=post_id))
+        db.commit()
+
+        ver_sem_curtidas = db.scalar
+        monkeypatch.setattr(
+            db,
+            "scalar",
+            lambda stmt, *a, **k: None if "likes" in str(stmt) else ver_sem_curtidas(stmt, *a, **k),
+        )
+        curtidas.curtir(db, ana, post_id)  # não pode levantar IntegrityError
+
+        monkeypatch.undo()
+        assert len(db.scalars(select(Curtida).where(Curtida.post_id == post_id)).all()) == 1
