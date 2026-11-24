@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { NomeAutor } from "@/components/NomeAutor";
+import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarComentario,
   buscarComentarios,
@@ -161,21 +162,7 @@ function ItemComentario({
   const [erro, setErro] = useState<string | null>(null);
 
   // Clique fora da confirmação ou Esc cancelam o "apagar?".
-  useEffect(() => {
-    if (!confirmando) return;
-    function cliqueFora(e: PointerEvent) {
-      if (!confirmacao.current?.contains(e.target as Node)) setConfirmando(false);
-    }
-    function tecla(e: KeyboardEvent) {
-      if (e.key === "Escape") setConfirmando(false);
-    }
-    document.addEventListener("pointerdown", cliqueFora);
-    document.addEventListener("keydown", tecla);
-    return () => {
-      document.removeEventListener("pointerdown", cliqueFora);
-      document.removeEventListener("keydown", tecla);
-    };
-  }, [confirmando]);
+  useFecharAoSair(confirmando, confirmacao, () => setConfirmando(false));
 
   const faltam = total - respostas.length;
   const autor = removido ? null : comentario.autor;

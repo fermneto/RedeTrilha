@@ -7,6 +7,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { IconeAdicionarAntologia } from "@/components/icones/IconeAdicionarAntologia";
+import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   ANTOLOGIA_NOME_MAX,
   buscarAntologia,
@@ -35,24 +36,11 @@ export function AntologiaSeletor({ postId, classeBotao, classeCirculo, classeIco
     if (devolverFoco) botao.current?.focus();
   }
 
-  useEffect(() => {
-    if (!aberto) return;
-    function fora(e: PointerEvent) {
-      if (!caixa.current?.contains(e.target as Node)) setAberto(false);
-    }
-    function esc(e: KeyboardEvent) {
-      if (e.key !== "Escape") return;
-      e.preventDefault();
-      setAberto(false);
-      botao.current?.focus();
-    }
-    document.addEventListener("pointerdown", fora);
-    document.addEventListener("keydown", esc);
-    return () => {
-      document.removeEventListener("pointerdown", fora);
-      document.removeEventListener("keydown", esc);
-    };
-  }, [aberto]);
+  // Esc devolve o foco ao botão; o clique fora deixa o foco onde o clique o pôs.
+  useFecharAoSair(aberto, caixa, (e) => {
+    if (e.type === "keydown") e.preventDefault();
+    fechar(e.type === "keydown");
+  });
 
   // Tab para fora do popover (ou do botão) também fecha. Sem relatedTarget (o
   // elemento focado saiu da tela, como o "+ nova antologia" ao virar formulário),

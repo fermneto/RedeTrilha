@@ -11,6 +11,7 @@ import { SeloPrivada } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
+import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -186,25 +187,16 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
   const confirmacao = useRef<HTMLSpanElement>(null);
   const botaoApagar = useRef<HTMLButtonElement>(null);
 
+  // O foco vai para o "não": Enter sem querer não apaga nada.
   useEffect(() => {
-    if (!confirmando) return;
-    // O foco vai para o "não": Enter sem querer não apaga nada.
-    confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-    function cliqueFora(e: PointerEvent) {
-      if (!confirmacao.current?.contains(e.target as Node)) setConfirmando(false);
-    }
-    function tecla(e: KeyboardEvent) {
-      if (e.key !== "Escape") return;
-      setConfirmando(false);
-      requestAnimationFrame(() => botaoApagar.current?.focus());
-    }
-    document.addEventListener("pointerdown", cliqueFora);
-    document.addEventListener("keydown", tecla);
-    return () => {
-      document.removeEventListener("pointerdown", cliqueFora);
-      document.removeEventListener("keydown", tecla);
-    };
+    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
   }, [confirmando]);
+
+  // Esc devolve o foco ao "apagar"; o clique fora deixa o foco onde o clique o pôs.
+  useFecharAoSair(confirmando, confirmacao, (e) => {
+    setConfirmando(false);
+    if (e.type === "keydown") requestAnimationFrame(() => botaoApagar.current?.focus());
+  });
 
   async function apagar() {
     setConfirmando(false);
