@@ -1,18 +1,20 @@
-"""Índice de formas e temas (#tags) dos poemas.
+"""Índice de formas e temas (#tags) dos poemas: a lógica, em Python puro.
 
-Python puro: a API passa só ids, strings e datas.
+O índice invertido em si (tag -> poemas) mora no banco, na tabela `post_tags`
+(models/post_tag.py), para valer igual em todos os workers e instâncias da API.
+Aqui fica o que é regra e estrutura de dados, sem banco:
 
-Índice invertido em memória: tag -> {post_id: criado_em}, mais o inverso
-post_id -> (tags, criado_em) para remover e reindexar sem varrer as tags.
-O service de posts chama `indexar` ao publicar e `remover` ao apagar (o poema
-publicado não se edita); o lifespan chama `reconstruir` com todos os posts do
-banco.
+- `normalizar` / `termo_de_tag` / `extrair_tags`: que tags um poema tem.
+- `top_k`: as k tags mais contadas, com um heap de tamanho k.
+- `representantes`: um poema diferente por tag, para o trecho do "Em alta".
+
+O services/indice_tags.py lê as linhas do banco e chama estas funções.
 """
 
 import heapq
 import re
 import unicodedata
-from collections import Counter
+from collections.abc import Iterable
 from datetime import datetime
 
 from app.core.datas import para_utc
@@ -42,120 +44,43 @@ def extrair_tags(texto: str, forma: str | None) -> set[str]:
     return tags
 
 
-class IndiceTags:
-    """Índice invertido tag -> posts.
+def top_k(contagens: Iterable[tuple[str, int]], k: int) -> list[tuple[str, int]]:
+    """As k tags mais contadas: maior contagem primeiro, empate alfabético.
 
-    - indexar/remover: O(t), t = tags do post (lookups em hash)
-    - posts_da_tag: O(p log p), p = posts da tag (ordena na leitura)
-    - trending: O(n·t + m log k), n = posts indexados, m = tags distintas na janela
-    - mais_recente: O(p), p = posts da tag
-    - representantes: O(Σp) das tags pedidas
-    - buscar: O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo
-    - reconstruir do zero: O(n·t), por isso só acontece no startup
+    O(m log k) com m tags: `heapq.nsmallest` guarda só k candidatas num heap,
+    sem ordenar as m inteiras. Usado pelo trending e pela busca.
     """
-
-    def __init__(self) -> None:
-        self._por_tag: dict[str, dict[int, datetime]] = {}
-        self._por_post: dict[int, tuple[frozenset[str], datetime]] = {}
-
-    def reconstruir(self, posts: list[tuple[int, set[str], datetime]]) -> None:
-        """Chamado no startup com (post_id, tags, criado_em) de todos os posts. O(n·t)."""
-        self._por_tag = {}
-        self._por_post = {}
-        for post_id, tags, criado_em in posts:
-            self.indexar(post_id, tags, criado_em)
-
-    def indexar(self, post_id: int, tags: set[str], criado_em: datetime) -> None:
-        """Chamado ao publicar um poema e no `reconstruir`. O(t).
-
-        Indexar de novo o mesmo id reindexa: as tags antigas saem antes de as
-        novas entrarem.
-        """
-        self.remover(post_id)
-        normalizadas = frozenset(n for n in (normalizar(t) for t in tags) if n)
-        momento = para_utc(criado_em)
-        self._por_post[post_id] = (normalizadas, momento)
-        for tag in normalizadas:
-            self._por_tag.setdefault(tag, {})[post_id] = momento
-
-    def remover(self, post_id: int) -> None:
-        """Chamado ao apagar um poema. O(t). Post não indexado é ignorado."""
-        registro = self._por_post.pop(post_id, None)
-        if registro is None:
-            return
-        for tag in registro[0]:
-            posts = self._por_tag[tag]
-            del posts[post_id]
-            if not posts:
-                del self._por_tag[tag]
-
-    def posts_da_tag(self, tag: str) -> list[int]:
-        """Ids dos poemas com a tag, mais novo primeiro. O(p log p).
-
-        Empate de data: maior id primeiro. A tag passa por `normalizar`,
-        então 'Solidão' acha 'solidao'.
-        """
-        posts = self._por_tag.get(normalizar(tag), {})
-        return [
-            post_id
-            for post_id, _ in sorted(
-                posts.items(), key=lambda par: (par[1], par[0]), reverse=True
-            )
-        ]
-
-    def trending(self, desde: datetime, k: int = 5) -> list[tuple[str, int]]:
-        """Top k tags dos posts com criado_em >= desde. O(n·t + m log k).
-
-        Maior contagem primeiro, empate alfabético. O heap de tamanho k
-        (nsmallest) evita ordenar as m tags inteiras.
-        """
-        inicio = para_utc(desde)
-        contagem: Counter[str] = Counter()
-        for tags, criado_em in self._por_post.values():
-            if criado_em >= inicio:
-                contagem.update(tags)
-        return heapq.nsmallest(k, contagem.items(), key=lambda par: (-par[1], par[0]))
-
-    def mais_recente(self, tag: str, evitar: frozenset[int] = frozenset()) -> int | None:
-        """Id do poema mais novo com a tag fora de `evitar` (empate: maior id). O(p).
-
-        Se todos estão em `evitar`, o mais novo mesmo; tag sem poemas dá None.
-        Um max linear, sem ordenar: o "Em alta" só quer um.
-        """
-        posts = self._por_tag.get(normalizar(tag))
-        if not posts:
-            return None
-        livres = [par for par in posts.items() if par[0] not in evitar] or list(posts.items())
-        return max(livres, key=lambda par: (par[1], par[0]))[0]
-
-    def representantes(self, tags: list[str]) -> dict[str, int | None]:
-        """Um poema por tag, na ordem dada, sem repetir o de uma tag de cima. O(Σp).
-
-        Cada tag fica com o poema mais novo dela que ainda não apareceu; se todos
-        já apareceram, com o mais novo mesmo.
-        """
-        usados: set[int] = set()
-        escolhidos: dict[str, int | None] = {}
-        for tag in tags:
-            post_id = self.mais_recente(tag, frozenset(usados))
-            escolhidos[tag] = post_id
-            if post_id is not None:
-                usados.add(post_id)
-        return escolhidos
-
-    def buscar(self, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
-        """Até k tags que começam por `prefixo`, com quantos poemas cada uma tem.
-
-        O(T + T' log k). Mais poemas primeiro, empate alfabético; prefixo vazio
-        (ou só com caracteres fora de uma tag) não acha nada.
-        """
-        termo = termo_de_tag(prefixo)
-        if not termo:
-            return []
-        achadas = (
-            (tag, len(posts)) for tag, posts in self._por_tag.items() if tag.startswith(termo)
-        )
-        return heapq.nsmallest(k, achadas, key=lambda par: (-par[1], par[0]))
+    return heapq.nsmallest(k, contagens, key=lambda par: (-par[1], par[0]))
 
 
-indice_tags = IndiceTags()
+def mais_recente(
+    candidatos: Iterable[tuple[int, datetime]], evitar: frozenset[int] = frozenset()
+) -> int | None:
+    """Id do poema mais novo fora de `evitar` (empate de data: maior id). O(p).
+
+    `candidatos` são (post_id, criado_em) de uma tag. Se todos estão em
+    `evitar`, o mais novo mesmo; sem candidatos, None. Um max linear, sem ordenar.
+    """
+    todos = [(para_utc(criado_em), post_id) for post_id, criado_em in candidatos]
+    livres = [par for par in todos if par[1] not in evitar] or todos
+    return max(livres)[1] if livres else None
+
+
+def representantes(
+    candidatos: dict[str, list[tuple[int, datetime]]], tags: list[str]
+) -> dict[str, int | None]:
+    """Um poema por tag, na ordem dada, sem repetir o de uma tag de cima. O(Σp).
+
+    Cada tag fica com o poema mais novo dela que ainda não apareceu; se todos
+    já apareceram, com o mais novo mesmo. Basta passar os len(tags) poemas mais
+    novos de cada tag: a i-ésima tag encontra no máximo i poemas já usados, então
+    o mais novo livre dela está entre os i + 1 mais novos.
+    """
+    usados: set[int] = set()
+    escolhidos: dict[str, int | None] = {}
+    for tag in tags:
+        post_id = mais_recente(candidatos.get(tag, ()), frozenset(usados))
+        escolhidos[tag] = post_id
+        if post_id is not None:
+            usados.add(post_id)
+    return escolhidos

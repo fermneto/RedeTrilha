@@ -174,11 +174,9 @@ def test_tags_do_seed_no_trending_e_na_busca(client, semeado):
 
 
 def test_tags_aparecem_depois_do_restart(client, semeado):
-    """Com `make seed` o processo é outro: o lifespan reconstrói o índice do banco."""
-    from app.core.indice_tags import indice_tags
+    """Com `make seed` o processo é outro: o índice está no banco, nada a reconstruir."""
     from app.main import app
 
-    indice_tags.reconstruir([])
     with TestClient(app) as reiniciado:
         r = reiniciado.get("/tags/chuva/posts", headers=entrar(reiniciado))
         assert r.json()["total"] >= 3

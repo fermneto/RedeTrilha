@@ -18,11 +18,9 @@ datas espalhadas pelos últimos 14 dias, parte nas últimas 24 h (para o
 trending ter dados), sorteadas por um `random.Random` de semente fixa: o mesmo
 seed gera a mesma rede, só ancorada no `agora` de cada execução.
 
-Índice de tags. O índice vive em memória. O `posts.criar` indexa cada poema, e
-o seed reindexa com a data reescrita: no mesmo processo (os testes) as tags já
-aparecem. Com `make seed` o processo é outro, e quem põe as tags no ar é o
-lifespan da API, que reconstrói o índice a partir do banco no startup. Rodou o
-seed com a API de pé? Reinicie a API.
+Índice de tags. O índice mora no banco (`post_tags`). O `posts.criar` indexa
+cada poema na mesma transação, e o seed reindexa com a data reescrita. A API
+lê dali: rodou o seed com ela de pé, as tags já aparecem, sem restart.
 """
 
 import random
@@ -37,7 +35,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import indice_tags
 from app.db import Base, SessionLocal, engine
 from app.models.antologia import Antologia
 from app.models.comentario import Comentario
@@ -55,6 +52,7 @@ from app.services import antologias as antologias_service
 from app.services import comentarios as comentarios_service
 from app.services import curtidas as curtidas_service
 from app.services import follows as follows_service
+from app.services import indice_tags
 from app.services import posts as posts_service
 from app.services import rengas as rengas_service
 from app.services import reposts as reposts_service
@@ -225,8 +223,8 @@ def _publicar(db: Session, autor: User, momento: datetime, dados: PostCreate) ->
     """Cria pelo service e reescreve a data, reindexando o poema com ela."""
     post = posts_service.criar(db, autor, dados)
     post.created_at = post.updated_at = momento
+    indice_tags.indexar(db, post)
     db.commit()
-    indice_tags.indexar(post.id, posts_service.tags_do_post(post), momento)
     return post
 
 

@@ -56,7 +56,10 @@ def test_rascunho_de_outra_pessoa_da_404(client, como, rascunho):
 
 
 def test_rascunho_fica_fora_do_feed_perfil_tags_e_explorar(client, como, rascunho):
-    from app.core.indice_tags import indice_tags
+    from sqlalchemy import func, select
+
+    from app.db import SessionLocal
+    from app.models.post_tag import PostTag
 
     client.post("/usuarios/ana/follow", headers=como("bia"))
     rascunho(forma="haicai")
@@ -69,7 +72,8 @@ def test_rascunho_fica_fora_do_feed_perfil_tags_e_explorar(client, como, rascunh
         assert client.get("/explorar", headers=h).json()["total"] == 0
         assert client.get("/tags/trending", headers=h).json()["items"] == []
     assert client.get("/usuarios/ana", headers=como("bia")).json()["poemas"] == 0
-    assert indice_tags.posts_da_tag("segredo") == []
+    with SessionLocal() as db:
+        assert db.scalar(select(func.count()).select_from(PostTag)) == 0
 
 
 def test_publicar_cria_o_poema_e_apaga_o_rascunho(client, como, rascunho):

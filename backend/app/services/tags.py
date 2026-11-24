@@ -1,7 +1,7 @@
 """Leitura do índice de tags: poemas por tag, trending, busca e o feed Explorar.
 
-O índice (core/indice_tags.py) devolve só ids na ordem certa; aqui a página
-é recortada antes de ir ao banco, que busca só a fatia.
+O índice (services/indice_tags.py, tabela `post_tags`) devolve só ids na
+ordem certa, já recortados na página; aqui os posts da fatia vêm do banco.
 """
 
 import re
@@ -11,11 +11,13 @@ from fastapi import HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import indice_tags
+from app.core.indice_tags import normalizar
 from app.models.post import Post
+from app.models.post_tag import PostTag
 from app.models.user import User
 from app.schemas.post import FORMAS, PostPage
 from app.schemas.tags import BuscaDeTags, TagContagem, TagEncontrada, Trending
+from app.services import indice_tags
 from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
@@ -29,21 +31,20 @@ _MAIS_NOVO_PRIMEIRO = (Post.created_at.desc(), Post.id.desc())
 def posts_da_tag(
     db: Session, usuario: User, tag: str, offset: int, limit: int
 ) -> PostPage:
-    ids = indice_tags.posts_da_tag(tag)
-    fatia = _buscar_por_ids(db, ids[offset : offset + limit])
-    return _pagina(db, usuario, fatia, len(ids), offset, limit)
+    ids, total = indice_tags.posts_da_tag(db, tag, offset, limit)
+    return _pagina(db, usuario, _buscar_por_ids(db, ids), total, offset, limit)
 
 
 def trending(db: Session, k: int = 5) -> Trending:
-    """Top k tags dos poemas das últimas 24 h (ver IndiceTags.trending).
+    """Top k tags dos poemas das últimas 24 h (ver indice_tags.trending).
 
     Cada uma vem com o primeiro verso de um poema dela, um poema diferente por
-    tag (IndiceTags.representantes): uma consulta só, pelos ids escolhidos.
+    tag (indice_tags.representantes): uma consulta só, pelos ids escolhidos.
     """
-    pares = indice_tags.trending(datetime.now(UTC) - JANELA_TRENDING, k)
-    escolhidos = indice_tags.representantes([tag for tag, _ in pares])
+    pares = indice_tags.trending(db, datetime.now(UTC) - JANELA_TRENDING, k)
+    escolhidos = indice_tags.representantes(db, [tag for tag, _ in pares])
     ids = [post_id for post_id in escolhidos.values() if post_id is not None]
-    textos = dict(db.execute(select(Post.id, Post.texto).where(Post.id.in_(ids))).all()) if ids else {}
+    textos = textos_dos_posts(db, ids)
     return Trending(
         items=[
             TagContagem(tag=tag, contagem=n, trecho=primeiro_verso(textos.get(escolhidos[tag], "")))
@@ -52,9 +53,16 @@ def trending(db: Session, k: int = 5) -> Trending:
     )
 
 
-def buscar_tags(q: str) -> BuscaDeTags:
+def textos_dos_posts(db: Session, ids: list[int]) -> dict[int, str]:
+    """Texto de cada poema; o que foi apagado entre uma consulta e outra não vem."""
+    if not ids:
+        return {}
+    return dict(db.execute(select(Post.id, Post.texto).where(Post.id.in_(ids))).all())
+
+
+def buscar_tags(db: Session, q: str) -> BuscaDeTags:
     """Tags que começam pelo termo (normalizado), mais usadas primeiro."""
-    pares = indice_tags.buscar(q, TAGS_NA_BUSCA)
+    pares = indice_tags.buscar(db, q, TAGS_NA_BUSCA)
     return BuscaDeTags(items=[TagEncontrada(tag=tag, poemas=n) for tag, n in pares])
 
 
@@ -87,17 +95,18 @@ def explorar(
 
     # Repost puro (texto vazio) só faz sentido no feed.
     filtros = [~Post.repost_puro]
-    if tag:
-        filtros.append(Post.id.in_(indice_tags.posts_da_tag(tag)))
     if forma is not None:
         filtros.append(Post.forma == forma)
-    total = db.scalar(select(func.count()).select_from(Post).where(*filtros)) or 0
+    contagem = select(func.count()).select_from(Post)
+    consulta = select(Post)
+    if tag:
+        # tag + forma: JOIN com o índice, uma linha por (poema, tag).
+        filtros.append(PostTag.tag == normalizar(tag))
+        contagem = contagem.join(PostTag, PostTag.post_id == Post.id)
+        consulta = consulta.join(PostTag, PostTag.post_id == Post.id)
+    total = db.scalar(contagem.where(*filtros)) or 0
     posts = db.scalars(
-        select(Post)
-        .where(*filtros)
-        .order_by(*_MAIS_NOVO_PRIMEIRO)
-        .offset(offset)
-        .limit(limit)
+        consulta.where(*filtros).order_by(*_MAIS_NOVO_PRIMEIRO).offset(offset).limit(limit)
     )
     return _pagina(db, usuario, list(posts), total, offset, limit)
 

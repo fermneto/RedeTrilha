@@ -30,7 +30,6 @@ from app.routers import (
     traducao,
     users,
 )
-from app.services.posts import reconstruir_indice
 from app.services.traducao import reconstruir_limite
 
 
@@ -44,16 +43,13 @@ async def lifespan(app: FastAPI):
     Base.metadata.create_all(engine)
     # Deploy: o seed só roda num banco SEM usuários (o primeiro boot no Postgres
     # do Supabase); nos reinícios seguintes os dados criados na URL pública ficam.
-    # Roda ANTES do rebuild, para o índice de tags já nascer com os dados.
     # Import aqui dentro: fora do deploy, o script nem é carregado.
     if os.environ.get("SEED_ON_BOOT") == "true" and _banco_vazio():
         from scripts.seed import main as rodar_seed
 
         rodar_seed()
-    # Reconstrói as estruturas do core/ a partir do banco (memória zera a cada
-    # restart — inclusive no --reload; ver core/README.md).
+    # O índice de tags mora no banco; só o limite de tradução ainda é reconstruído.
     with SessionLocal() as db:
-        reconstruir_indice(db)
         reconstruir_limite(db)
     yield
 
