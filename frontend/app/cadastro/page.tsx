@@ -56,6 +56,7 @@ export default function CadastroPage() {
   const [enviando, setEnviando] = useState(false);
   // Com token salvo, confere se ele ainda vale: quem já está logado vai para o feed.
   const [conferindo, setConferindo] = useState(true);
+  const focarErro = useRef(false);
   const refs = {
     name: useRef<HTMLInputElement>(null),
     username: useRef<HTMLInputElement>(null),
@@ -75,10 +76,22 @@ export default function CadastroPage() {
 
   // Mostra os erros e leva o foco ao primeiro campo com problema.
   function mostrarErros(novos: Erros) {
+    focarErro.current = true;
     setErros(novos);
-    const primeiro = ORDEM.find((c) => novos[c]);
-    if (primeiro) refs[primeiro].current?.focus();
   }
+
+  // O foco vai depois do render, quando o aria-describedby já aponta para o erro:
+  // assim o leitor de tela lê o campo com o erro. Se o foco já está nele (Enter no
+  // próprio campo), sai e volta, para o leitor ler de novo.
+  useEffect(() => {
+    if (!focarErro.current) return;
+    focarErro.current = false;
+    const primeiro = ORDEM.find((c) => erros[c]);
+    const alvo = primeiro && refs[primeiro].current;
+    if (!alvo) return;
+    if (document.activeElement === alvo) alvo.blur();
+    alvo.focus();
+  });
 
   async function aoCadastrar(e: React.FormEvent) {
     e.preventDefault();
@@ -213,12 +226,12 @@ export default function CadastroPage() {
           {erroDoCampo("password")}
         </label>
 
-        {/* Anuncia os erros para leitores de tela; o texto fica também ao lado de cada campo. */}
+        {/* Só o erro geral: o de cada campo fica ao lado dele (aria-describedby) e o
+            foco vai para o primeiro campo com erro, que o leitor de tela lê junto. */}
         <div aria-live="polite">
           {erroGeral && (
             <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
           )}
-          <span className="sr-only">{ORDEM.map((c) => erros[c]).filter(Boolean).join(". ")}</span>
         </div>
 
         <button
