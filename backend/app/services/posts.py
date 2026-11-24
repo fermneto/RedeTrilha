@@ -120,7 +120,12 @@ def buscar(db: Session, post_id: int) -> Post:
 
 
 def original_de(db: Session, post_id: int) -> Post:
-    """O poema que um repost mostra: repostar ou citar um repost puro vai no original."""
+    """O post que recebe a interação feita num repost puro: o original, como no X.
+
+    Público para os services de reposts, curtidas e comentários: repostar, citar,
+    curtir ou comentar um repost puro vai no original. Citação não é resolvida
+    (citar uma citação aponta para a citação). 404 se o post não existe.
+    """
     post = buscar(db, post_id)
     return post.repost_de if post.repost_puro and post.repost_de else post
 
