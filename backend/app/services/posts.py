@@ -5,6 +5,7 @@ from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 from app.core.indice_tags import extrair_tags, indice_tags, normalizar
+from app.models.antologia import AntologiaPoema
 from app.models.curtida import Curtida
 from app.models.post import Post
 from app.models.user import User
@@ -120,6 +121,7 @@ def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
 def apagar(db: Session, usuario: User, post_id: int) -> None:
     post = _buscar_do_autor(db, usuario, post_id)
     db.execute(delete(Curtida).where(Curtida.post_id == post_id))
+    db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id == post_id))
     db.delete(post)
     db.commit()
     indice_tags.remover(post_id)
