@@ -220,6 +220,11 @@ function Popover({ id, postId }: { id: string; postId: number }) {
                 />
                 <span className="min-w-0 flex-1 truncate">{l.nome}</span>
                 {!l.publica && <SeloPrivada />}
+                <span className="shrink-0 text-xs text-tinta-suave tabular-nums">
+                  <span className="sr-only">, </span>
+                  {l.qtd}
+                  <span className="sr-only"> {l.qtd === 1 ? "poema" : "poemas"}</span>
+                </span>
               </label>
             </li>
           ))}
@@ -249,11 +254,11 @@ function Popover({ id, postId }: { id: string; postId: number }) {
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs">
                 {/* Rótulo fixo: o leitor de tela anuncia "Pública, ligado/desligado". */}
-                <label htmlFor={idSwitch} className="cursor-pointer">
+                <label htmlFor={idSwitch} className="cursor-pointer font-semibold">
                   Pública
                 </label>
                 <span className="block text-tinta-suave" aria-live="polite">
-                  {publica ? "aparece no seu perfil" : "privada: só você vê"}
+                  {publica ? "Aparece no seu perfil." : "Privada: só você vê."}
                 </span>
               </span>
               <SwitchPublica id={idSwitch} publica={publica} aoMudar={setPublica} />
@@ -262,14 +267,14 @@ function Popover({ id, postId }: { id: string; postId: number }) {
               <button
                 type="submit"
                 disabled={enviando}
-                className="min-h-9 cursor-pointer rounded-full bg-destaque px-4 text-xs font-bold text-papel disabled:opacity-50"
+                className="min-h-10 cursor-pointer rounded-full bg-destaque px-4 text-xs font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
               >
                 {enviando ? "criando..." : "criar e adicionar"}
               </button>
               <button
                 type="button"
                 onClick={fecharCriacao}
-                className="realce min-h-9 cursor-pointer rounded-full px-3 text-xs"
+                className="realce min-h-10 cursor-pointer rounded-full px-3 text-xs"
               >
                 cancelar
               </button>
