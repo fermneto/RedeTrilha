@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { IconeAntologias } from "@/components/icones/IconeAntologias";
-import type { Antologia, Page } from "@/lib/api";
+import { mensagemDeFalha, type Antologia, type Page } from "@/lib/api";
 
 type Props = {
   // Busca uma página a partir do offset. Para trocar de lista, remonte com outra `key`.
@@ -35,7 +35,7 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
         setTotal(pagina.total);
         setErro(null);
       } catch (e) {
-        setErro(e instanceof Error ? e.message : "não deu para carregar as antologias");
+        setErro(mensagemDeFalha(e, "não deu para carregar as antologias"));
       } finally {
         setCarregando(false);
       }

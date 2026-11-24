@@ -21,6 +21,7 @@ import {
   ErroDaApi,
   formatarData,
   lerUsernames,
+  mensagemDeFalha,
   temToken,
   type RengaDetalhe,
   type User,
@@ -57,7 +58,7 @@ export default function RengaPage() {
       })
       .catch((e) => {
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
-        else setErro(e instanceof Error ? e.message : "não deu para carregar a renga");
+        else setErro(mensagemDeFalha(e, "não deu para carregar a renga"));
       });
   }, [id, router]);
 
@@ -196,7 +197,7 @@ function ProximaEstrofe({
       aoAcrescentar(await acrescentarEstrofe(rengaId, texto));
       setTexto("");
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para acrescentar a estrofe");
+      setErro(mensagemDeFalha(err, "não deu para acrescentar a estrofe"));
       // 409: outra pessoa escreveu antes ou a renga fechou; recarrega para mostrar.
       if (err instanceof ErroDaApi && err.status === 409) {
         buscarRenga(rengaId).then(aoAcrescentar).catch(() => undefined);
@@ -246,7 +247,7 @@ function Convidar({
       aoConvidar(await convidarParaRenga(rengaId, usernames));
       setTexto("");
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para convidar");
+      setErro(mensagemDeFalha(err, "não deu para convidar"));
     } finally {
       setEnviando(false);
     }
@@ -289,7 +290,7 @@ function Encerrar({
     try {
       aoEncerrar(await encerrarRenga(rengaId));
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para encerrar a renga");
+      setErro(mensagemDeFalha(err, "não deu para encerrar a renga"));
       setEnviando(false);
     }
   }

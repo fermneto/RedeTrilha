@@ -1,8 +1,9 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datas import agora_utc
 from app.db import Base
 
 
@@ -24,6 +25,4 @@ class Traducao(Base):
     pedida_por_id: Mapped[int | None] = mapped_column(
         ForeignKey("users.id"), default=None, index=True
     )
-    created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(timezone.utc)
-    )
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)
