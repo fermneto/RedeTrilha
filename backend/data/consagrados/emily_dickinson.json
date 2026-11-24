@@ -1,0 +1,140 @@
+{
+  "username": "emily_dickinson",
+  "name": "Emily Dickinson",
+  "bio": "Emily Dickinson, poetisa norte-americana de Amherst, Massachusetts, que viveu reclusa. Escreveu quase 1.800 poemas curtos, com travessões e rimas imperfeitas, sobre a morte, a natureza e a alma. Quase todos foram publicados após sua morte, a partir de 1890.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Emily_Dickinson_daguerreotype_%28Restored%2C_cropped%2C_blown_up%2C_sepia%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1830,
+  "morte": 1886,
+  "poemas": [
+    {
+      "titulo": "[BECAUSE I could not stop for Death,]",
+      "texto": "BECAUSE I could not stop for Death,\nHe kindly stopped for me;\nThe carriage held but just ourselves\nAnd Immortality.\n\nWe slowly drove, he knew no haste,\nAnd I had put away\nMy labor, and my leisure too,\nFor his civility.\n\nWe passed the school where children played\nAt wrestling in a ring;\nWe passed the fields of gazing grain,\nWe passed the setting sun.\n\nWe paused before a house that seemed\nA swelling of the ground;\nThe roof was scarcely visible,\nThe cornice but a mound.\n\nSince then ’t is centuries; but each\nFeels shorter than the day\nI first surmised the horses’ heads\nWere toward eternity.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/Because_I_could_not_stop_for_Death",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[HOPE is the thing with feathers]",
+      "texto": "HOPE is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.\n\nI ’ve heard it in the chillest land,\nAnd on the strangest sea;\nYet, never, in extremity.\nIt asked a crumb of me.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/Hope_is_the_thing_with_feathers",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[I'M nobody! Who are you?]",
+      "texto": "I'M nobody! Who are you?\nAre you nobody, too?\nThen there's a pair of us—don't tell!\nThey'd banish us, you know.\n\nHow dreary to be somebody!\nHow public, like a frog\nTo tell your name the livelong day\nTo an admiring bog!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems:_Second_Series_(Dickinson)/I'm_nobody!_Who_are_you%3F",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[I HEARD a fly buzz when I died;]",
+      "texto": "I HEARD a fly buzz when I died;\n  The stillness round my form\nWas like the stillness in the air\n  Between the heaves of storm.\n\nThe eyes beside had wrung them dry,\n  And breaths were gathering sure\nFor that last onset, when the king\n  Be witnessed in his power.\n\nI willed my keepsakes, signed away\n  What portion of me I\nCould make assignable,—and then\n  There interposed a fly,\n\nWith blue, uncertain, stumbling buzz,\n  Between the light and me;\nAnd then the windows failed, and then\n  I could not see to see.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/I_heard_a_fly_buzz_when_I_died",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[ISUCCESS is counted sweetest]",
+      "texto": "ISUCCESS is counted sweetest\nBy those who ne’er succeed.\nTo comprehend a nectar\nRequires sorest need.\n\nNot one of all the purple host\nWho took the flag to-day\nCan tell the definition,\nSo clear, of victory,\n\nAs he, defeated, dying,\nOn whose forbidden ear\nThe distant strains of triumph\nBreak, agonized and clear.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/Success_is_counted_sweetest",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[There's a certain slant of light,]",
+      "texto": "There's a certain slant of light,\nOn winter afternoons,\nThat oppresses, like the weight\nOf cathedral tunes.\n\nHeavenly hurt it gives us;\nWe can find no scar,\nBut internal difference\nWhere the meanings are.\n\nNone may teach it anything,\n'T is the seal, despair,—\nAn imperial affliction\nSent us of the air.\n\nWhen it comes, the landscape listens,\nShadows hold their breath;\nWhen it goes, 't is like the distance\nOn the look of death.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_(Dickinson)/There's_a_certain_slant_of_light",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[WILD nights! Wild nights!]",
+      "texto": "WILD nights! Wild nights!\nWere I with thee,\nWild nights should be\nOur luxury!\n\nFutile the winds\nTo a heart in port,—\nDone with the compass,\nDone with the chart.\n\nRowing in Eden!\nAh! the sea!\nMight I but moor\nTo-night in thee!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems:_Second_Series_(Dickinson)/Wild_nights!_Wild_nights!",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[I FELT a funeral in my brain,]",
+      "texto": "I FELT a funeral in my brain,\nAnd mourners, to and fro,\nKept treading, treading, till it seemed\nThat sense was breaking through.\n\nAnd when they all were seated,\nA service like a drum\nKept beating, beating, till I thought\nMy mind was going numb.\n\nAnd then I heard them lift a box,\nAnd creak across my soul\nWith those same boots of lead, again.\nThen space began to toll\n\nAs all the heavens were a bell,\nAnd Being but an ear,\nAnd I and silence some strange race,\nWrecked, solitary, here.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems:_Third_Series/I_felt_a_funeral_in_my_brain",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[THE soul selects her own society,]",
+      "texto": "THE soul selects her own society,\nThen shuts the door;\nOn her divine majority\nObtrude no more.\n\nUnmoved, she notes the chariot’s pausing\nAt her low gate;\nUnmoved, an emperor is kneeling\nUpon her mat.\n\nI’ve known her from an ample nation\nChoose one;\nThen close the valves of her attention\nLike stone.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/The_soul_selects_her_own_society",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "[A BIRD came down the walk:]",
+      "texto": "A BIRD came down the walk:\nHe did not know I saw;\nHe bit an angle-worm in halves\nAnd ate the fellow, raw.\n\nAnd then he drank a dew\nFrom a convenient grass,\nAnd then hopped sidewise to the wall\nTo let a beetle pass.\n\nHe glanced with rapid eyes\nThat hurried all abroad,—\nThey looked like frightened beads, I thought\nHe stirred his velvet head\n\nLike one in danger; cautious,\nI offered him a crumb,\nAnd he unrolled his feathers\nAnd rowed him softer home\n\nThan oars divide the ocean,\nToo silver for a seam,\nOr butterflies, off banks of noon,\nLeap, plashless, as they swim.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poems_of_Emily_Dickinson/A_bird_came_down_the_walk",
+      "tags": [
+        "morte",
+        "alma",
+        "ingles"
+      ]
+    }
+  ]
+}

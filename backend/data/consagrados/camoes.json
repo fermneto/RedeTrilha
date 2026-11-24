@@ -1,0 +1,133 @@
+{
+  "username": "camoes",
+  "name": "Luís de Camões",
+  "bio": "Poeta português do Renascimento, nascido provavelmente em Lisboa. Soldado e viajante, perdeu um olho em Ceuta e viveu anos no Oriente. Autor de Os Lusíadas (1572), a epopeia que fundou a identidade literária da língua portuguesa, e de uma obra lírica de sonetos, canções e redondilhas que até hoje define o amor e o desconcerto do mundo em português.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Cam%C3%B5es%2C_por_Fern%C3%A3o_Gomes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1524,
+  "morte": 1580,
+  "poemas": [
+    {
+      "titulo": "Os Lusíadas — Canto I, estâncias 1–3",
+      "texto": "        1\nAs armas e os barões assinalados,\nQue da ocidental praia Lusitana,\nPor mares nunca de antes navegados,\nPassaram ainda além da Taprobana,\nEm perigos e guerras esforçados,\nMais do que prometia a força humana,\nE entre gente remota edificaram\nNovo Reino, que tanto sublimaram;\n\n        2\nE também as memórias gloriosas\nDaqueles Reis, que foram dilatando\nA Fé, o Império, e as terras viciosas\nDe África e de Ásia andaram devastando;\nE aqueles, que por obras valerosas\nSe vão da lei da morte libertando;\nCantando espalharei por toda parte,\nSe a tanto me ajudar o engenho e arte.\n\n        3\nCessem do sábio Grego e do Troiano\nAs navegações grandes que fizeram;\nCale-se de Alexandro e de Trajano\nA fama das vitórias que tiveram;\nQue eu canto o peito ilustre Lusitano,\nA quem Neptuno e Marte obedeceram:\nCesse tudo o que a Musa antiga canta,\nQue outro valor mais alto se alevanta.",
+      "forma": "outro",
+      "obra": "Os Lusíadas",
+      "ano": 1572,
+      "fonte": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas_(grafia_atualizada)/I",
+      "tags": [
+        "epopeia",
+        "mar",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Os Lusíadas — Canto III, Inês de Castro (estâncias 118–121)",
+      "texto": "        118\n\"Passada esta tão próspera vitória,\nTornando Afonso à Lusitana terra,\nA se lograr da paz com tanta glória\nQuanta soube ganhar na dura guerra,\nO caso triste, e dino da memória,\nQue do sepulcro os homens desenterra,\nAconteceu da mísera e mesquinha\nQue depois de ser morta foi Rainha.\n\n        119\n\"Tu só, tu, puro Amor, com força crua,\nQue os corações humanos tanto obriga,\nDeste causa à molesta morte sua,\nComo se fora pérfida inimiga.\nSe dizem, fero Amor, que a sede tua\nNem com lágrimas tristes se mitiga,\nÉ porque queres, áspero e tirano,\nTuas aras banhar em sangue humano.\n\n        120\n\"Estavas, linda Inês, posta em sossego,\nDe teus anos colhendo doce fruto,\nNaquele engano da alma, ledo e cego,\nQue a fortuna não deixa durar muito,\nNos saudosos campos do Mondego,\nDe teus fermosos olhos nunca enxuto,\nAos montes ensinando e às ervinhas\nO nome que no peito escrito tinhas.\n\n        121\n\"Do teu Príncipe ali te respondiam\nAs lembranças que na alma lhe moravam,\nQue sempre ante seus olhos te traziam,\nQuando dos teus fermosos se apartavam:\nDe noite em doces sonhos, que mentiam,\nDe dia em pensamentos, que voavam.\nE quanto enfim cuidava, e quanto via,\nEram tudo memórias de alegria.",
+      "forma": "outro",
+      "obra": "Os Lusíadas",
+      "ano": 1572,
+      "fonte": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas_(grafia_atualizada)/III",
+      "tags": [
+        "amor",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Os Lusíadas — Canto IV, o Velho do Restelo (estâncias 94–97)",
+      "texto": "        94\n\"Mas um velho d'aspeito venerando,\nQue ficava nas praias, entre a gente,\nPostos em nós os olhos, meneando\nTrês vezes a cabeça, descontente,\nA voz pesada um pouco alevantando,\nQue nós no mar ouvimos claramente,\nC'um saber só de experiências feito,\nTais palavras tirou do experto peito:\n\n        95\n- \"Ó glória de mandar! Ó vã cobiça\nDesta vaidade, a quem chamamos Fama!\nÓ fraudulento gosto, que se atiça\nC'uma aura popular, que honra se chama!\nQue castigo tamanho e que justiça\nFazes no peito vão que muito te ama!\nQue mortes, que perigos, que tormentas,\nQue crueldades neles experimentas!\n\n        96\n- \"Dura inquietação d'alma e da vida,\nFonte de desamparos e adultérios,\nSagaz consumidora conhecida\nDe fazendas, de reinos e de impérios:\nChamam-te ilustre, chamam-te subida,\nSendo dina de infames vitupérios;\nChamam-te Fama e Glória soberana,\nNomes com quem se o povo néscio engana!\n\n        97\n- \"A que novos desastres determinas\nDe levar estes reinos e esta gente?\nQue perigos, que mortes lhe destinas\nDebaixo dalgum nome preminente?\nQue promessas de reinos, e de minas\nD'ouro, que lhe farás tão facilmente?\nQue famas lhe prometerás? que histórias?\nQue triunfos, que palmas, que vitórias?",
+      "forma": "outro",
+      "obra": "Os Lusíadas",
+      "ano": 1572,
+      "fonte": "https://pt.wikisource.org/wiki/Os_Lus%C3%ADadas_(grafia_atualizada)/IV",
+      "tags": [
+        "mar",
+        "ambicao",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Amor é fogo que arde sem se ver",
+      "texto": "Amor he hum fogo que arde sem se ver;\nHe ferida que doe e não se sente;\nHe hum contentamento descontente;\nHe dor que desatina sem doer;\n\nHe hum não querer mais que bem querer;\nHe solitario andar por entre a gente;\nHe hum não contentar-se de contente;\nHe cuidar que se ganha em se perder;\n\nHe hum estar-se preso por vontade;\nHe servir a quem vence o vencedor;\nHe hum ter com quem nos mata lealdade.\n\nMas como causar póde o seu favor\nNos mortaes corações conformidade,\nSendo a si tão contrário o mesmo Amor?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Amor_he_hum_fogo_que_arde_sem_se_ver",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Alma minha gentil, que te partiste",
+      "texto": "ALma minha gentil, que te partiſte\n    Tão cedo deſta vida deſcontente,\n    Repouſa la no ceo eternamente,\n    E viua eu ca na terra ſempre triſte;\nSe la no aſſento Ethereo, onde ſubiſte\n    Memoria deſta vida ſe conſente,\n    Não te eſqueça daquelle amor ardente\n    Que ja nos olhos meus tão puro viſte.\nE ſe vires que pode mereſcerte\n    Algũa couſa a dor que me ficou\n    Da magoa ſem remedio de perderte,\nRoga a Deos que teus annos encurtou,\n    Que tão cedo de cá me leue a verte,\n    Quam cedo de meus olhos te leuou.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Rhythmas_de_Luis_de_Cam%C3%B5es/Alma_minha_gentil,_que_te_partiste",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Sete anos de pastor Jacob servia",
+      "texto": "Sete annos de pastor Jacob servia\nLabão, pae de Raquel, serrana bella:\nMas não servia ao pae, servia a ella,\nQue a ella só por premio pertendia.\n\nOs dias na esperança de hum só dia\nPassava, contentando-se com vella:\nPorém o pae, usando de cautella,\nEm lugar de Raquel lhe deo a Lia.\n\nVendo o triste Pastor que com enganos\nAssi lhe era negada a sua Pastora,\nComo se a não tivera merecida;\n\nComeçou a servir outros sete annos,\nDizendo: Mais servíra, senão fôra\nPara tão longo amor tão curta a vida.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sete_annos_de_pastor_Jacob_servia",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Mudam-se os tempos, mudam-se as vontades",
+      "texto": "Mudão-se os tempos, mudão-se as vontades,\nMuda-se o ser, muda-se a confiança:\nTodo o mundo he composto de mudança,\nTomando sempre novas qualidades.\n\nContinuamente vemos novidades,\nDifferentes em tudo da esperança:\nDo mal ficão as mágoas na lembrança,\nE do bem (se algum houve) as saudades.\n\nO tempo cobre o chão de verde manto,\nQue ja coberto foi de neve fria,\nE em mi converte em chôro o doce canto.\n\nE afora este mudar-se cada dia,\nOutra mudança faz de mor espanto,\nQue não se muda ja como sohia.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Mud%C3%A3o-se_os_tempos,_mud%C3%A3o-se_as_vontades",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Transforma-se o amador na cousa amada",
+      "texto": "Transforma-se o amador na cousa amada,\nPor virtude do muito imaginar:\nNão tenho logo mais que desejar,\nPois em mim tenho a parte desejada.\n\nSe nella está minha alma transformada,\nQue mais deseja o corpo de alcançar?\nEm si somente póde descansar,\nPois com elle tal alma está liada.\n\nMas esta linda e pura semidea,\nQue como o accidente em seu sojeito,\nAssi com a alma minha se confórma;\n\nEstá no pensamento como idea;\nE o vivo e puro amor de que sou feito,\nComo a materia simples busca a fórma.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Transforma-se_o_amador_na_cousa_amada",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Erros meus, má fortuna, amor ardente",
+      "texto": "Erros meus, ma Fortuna, Amor ardente\nEm minha perdição se conjurárão:\nOs erros e a Fortuna sobejárão;\nQue para mi bastava Amor somente.\n\nTudo passei; mas tenho tão presente\nA grande dor das cousas, que passárão,\nQue ja as frequencias suas me ensinárão\nA desejos deixar de ser contente.\n\nErrei todo o discurso de meus anos;\nDei causa a que a Fortuna castigasse\nAs minhas mal fundadas esperanças.\n\nDe Amor não vi senão breves enganos.\nOh quem tanto pudesse, que fartasse\nEste meu duro Genio de vinganças!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Erros_meus,_ma_Fortuna,_Amor_ardente",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Busque Amor novas artes, novo engenho",
+      "texto": "Busque Amor novas artes, novo engenho\nPara matar-me, e novas esquivanças;\nQue não póde tirar-me as esperanças,\nPois mal me tirará o que eu não tenho.\n\nOlhai de que esperanças me mantenho!\nVêde que perigosas seguranças!\nPois não temo contrastes nem mudanças,\nAndando em bravo mar, perdido o lenho.\n\nMas com quanto não póde haver desgôsto\nOnde esperança falta, lá me esconde\nAmor hum mal, que mata e não se vê.\n\nQue dias ha que na alma me tẽe posto\nHum não sei que, que nasce não sei onde;\nVem não sei como; e doe não sei porque.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Busque_Amor_novas_artes,_novo_engenho",
+      "tags": [
+        "amor",
+        "portugues"
+      ]
+    }
+  ]
+}

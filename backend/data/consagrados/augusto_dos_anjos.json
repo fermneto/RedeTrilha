@@ -1,0 +1,140 @@
+{
+  "username": "augusto_dos_anjos",
+  "name": "Augusto dos Anjos",
+  "bio": "Poeta paraibano, nascido no Engenho Pau d'Arco. Autor de um único livro, Eu (1912), mistura vocabulário científico, pessimismo e angústia diante da morte e da matéria. Inclassificável entre o Simbolismo e o Pré-Modernismo, é um dos poetas mais lidos e reeditados do Brasil.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Augusto_Anjos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1884,
+  "morte": 1914,
+  "poemas": [
+    {
+      "titulo": "Versos Íntimos",
+      "texto": "Vês?! Ninguem assistiu ao formidavel\nEnterro de tua ultima chimera.\nSomente a Ingratidão — esta panthera —\nFoi tua companheira inseparavel!\n\nAcostuma-te á lama que te espera!\nO Homem, que, nesta terra miseravel,\nMora, entre féras, sente inevitavel\nNecessidade de tambem ser féra.\n\nToma um phosphoro. Accende teu cigarro!\nO beijo, amigo, é a vespera do escarro,\nA mão que affaga é a mesma que apedreja.\n\nSi a alguem causa inda pena a tua chaga,\nApedreja essa mão vil que te affaga,\nEscarra nessa bocca que te beija!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Versos_intimos",
+      "tags": [
+        "desilusao",
+        "ingratidao",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Psicologia de um Vencido",
+      "texto": "Eu, filho do carbono e do ammoniaco,\nMonstro de escuridão e rutilancia,\nSoffro, desde a epigénesis da infancia,\nA influencia má dos signos do zodiaco.\n\nProfundissimamente hypocondriaco,\nEste ambiente me causa repugnancia.\nSobe-me á bocca uma ancia análoga á ancia\nQue se escapa da bocca de um cardiaco.\n\nJá o verme — este operario das ruinas —\nQue o sangue pôdre das carnificinas\nCome, e á vida em geral declara guerra,\n\nAnda a espreitar meus olhos para roêl-os,\nE ha de deixar-me apenas os cabellos,\nNa frialdade inorganica da terra!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Psychologia_de_um_Vencido",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Monólogo de uma Sombra",
+      "texto": "«Sou uma Sombra! Venho de outras éras,\nDo cosmopolitismo das monéras.\nPolypo de reconditas reintrancias,\nLarva do cháos tel ùrico, procedo\nDa escuridão do cósmico segredo,\nDa substancia de todas as substancias!\n\nA symbiose das coisas me equilibra.\nEm minha ignóta mónada, ampla, vibra\nA alma dos movimentos rotatórios.\nE é de mim que decorrem, simultaneas,\nA saúde das forças subterraneas\nE a morbidez dos sêres illusórios!\n\nPairando acima dos mundanos tectos,\nNão conheço o accidente da Senectus\n— Esta universitaria sanguesuga\nQue produz, sem dispendio algum de virus,\nO amarellecimento do papyrus\nE a miseria anatómica da ruga!\n\nNa existencia social, possuo uma arma\n— O metaphysicismo de Abhidharma —\nE trago, sem brahmánicas tesouras,\nComo um dorso de azémola passiva,\nA solidariedade subjectiva\nDe todas as especies soffredoras.\n\nCom um pouco de saliva quotidiana\nMostro meu nojo á Natureza Humana.\nA podridão me serve de Evangelho...\nAmo o esterco, os residuos ruins dos kiosques\nE o animal inferior que urra nos bosques\nÉ com certeza meu irmão mais velho!\n\nTal qual quem para o proprio tumulo olha,\nAmarguradamente se me antolha,\nÁ luz do americano plenilunio,\nNa alma crepuscular de minha raça\nComo uma vocação para a Desgraça\nE um tropismo ancestral para o infortunio.",
+      "forma": "outro",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Monologo_de_uma_Sombra",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Vandalismo",
+      "texto": "Meu coração tem cathedraes immensas\nTemplos de priscas e longinquas datas,\nOnde um nume de amor, em serenatas,\nCanta a alleluia virginal das crenças.\n\nNa ogiva fulgida e nas columnatas\nVertem lustraes irradiações intensas\nScintillações de lampadas suspensas\nE as amethystas e os florões e as pratas.\n\nComo os velhos Templarios medievaes\nEntrei um dia nessas cathedraes\nE nesses templos cláros e risonhos...\n\nE erguendo os gládios e brandindo as hástas,\nNo desespero dos iconoclastas\nQuebrei a imagem dos meus proprios sonhos!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Vandalismo",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O morcego",
+      "texto": "Meia noite. Ao meu quarto me recolho.\nMeu Deus! E este morcêgo! E, agora, vêde:\nNa bruta ardencia organica da sêde,\nMorde-me a guéla igneo e escaldante môlho.\n\n«Vou mandar levantar outra parêde.»\n— Digo. Ergo-me a tremer. Fecho o ferrolho\nE olho o tecto. E vejo-o ainda, igual a um olho,\nCircularmente sobre a minha rêde!\n\nPégo de um pau. Esforços faço. Chego\nA tocal-o. Minh’alma se concentra.\nQue ventre produziu tão feio parto?!\n\nA Consciência Humana é este morcêgo!\nPor mais que a gente faça, á noite, elle entra\nImperceptivelmente em nosso quarto!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/O_Morc%C3%AAgo",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A Árvore da Serra",
+      "texto": "— As arvores, meu filho, não têm alma!\nE esta arvore me serve de empecilho.\nÉ preciso cortal-a, pois, meu filho,\nPara que eu tenha uma velhice calma!\n\n— Meu pai, porque sua ira não se acalma?!\nNão vê que em tudo existe o mesmo brilho?!\nDeus pôz almas nos cedros... no junquilho.\nEsta arvore, meu pai, possue minh’alma!\n\n— Disse — e ajoelhou-se, numa rogativa:\n«Não mate a arvore, pai, para que eu viva!»\nE quando a arvore, olhando a patria serra,\n\nCahiu aos golpes do machado bronco,\nO moço triste se abraçou com o tronco\nE nunca mais se levantou da terra!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/A_Arvore_da_Serra",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Idealismo",
+      "texto": "Falas de amor, e eu ouço tudo e calo!\nO amor na Humanidade é uma mentira.\nE’. E é por isto que na minha lyra\nDe amores futeis poucas vezes falo.\n\nO amor! Quando virei por fim a amal-o?!\nQuando, si o amor que a Humanidade inspira\nE’ o amor do sybarita e da hetaïra,\nDe Messalina e de Sardanapálo?!\n\nPois é mister que, para o amor sagrado,\nO mundo fique immaterialisado\n— Alavanca desviada do seu fulcro —\n\nE haja só amizade verdadeira\nDuma caveira para outra caveira,\nDo meu sepulchro para o teu sepulchro?!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Idealismo",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Solitário",
+      "texto": "Como um fantasma que se refugia\nNa solidão da natureza morta,\nPor traz dos ermos tumulos, um dia,\nEu fui refugiar-me á tua porta!\n\nFazia frio e o frio que fazia\nNão era esse que a carne nos conforta.\nCortava assim como em carniçaria\nO aço das facas incisivas corta!\n\nMas tu não vieste ver minha Desgraça!\nE eu sahi, como quem tudo repelle,\n— Velho caixão a carregar destroços —\n\nLevando apenas na tumbal carcassa\nO pergaminho singular da pelle\nE o chocalho fatidico dos ossos!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Solitario",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Budismo moderno",
+      "texto": "Tome, Dr., esta tesoura, e.    córte\nMinha singularissima pessoa.\nQue importa a mim que a bicharia rôa\nTodo o meu coração, depois da morte?!\n\nAh! Um urubú pousou na minha sorte!\nTambem, das diatomáceas da lagôa\nA cryptógama cápsula se esbrôa\nAo contacto de bronca dextra forte!\n\nDissolva-se, portanto, minha vida\nIgualmente a uma céllula cahida\nNa aberração de um ovulo infecundo;\n\nMas o aggregado abstracto das saudades\nFique batendo nas perpetuas grades\nDo ultimo verso que eu fizer no mundo!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Budhismo_Moderno",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Último credo",
+      "texto": "Como ama o homem adúltero o adulterio\nE o ebrio a garrafa toxica de rhum,\nAmo o coveiro — este ladrão commum\nQue arrasta a gente para o cemiterio!\n\nE’ o transcendentalissimo mysterio!\nE’ o nous, é o pneuma, é o ego sum qui sum,\nE’ a morte, é esse damnado numero Um\nQue matou Christo e que matou Tiberio!\n\nCreio, como o philósopho mais crente,\nNa generalidade decrescente\nCom que a substancia cósmica evolúe.\n\nCreio, perante a evolução immensa,\nQue o homem universal de amanhã vença\nO homem particular que eu hontem fui!",
+      "forma": "soneto",
+      "obra": "Eu",
+      "ano": 1912,
+      "fonte": "https://pt.wikisource.org/wiki/Eu_(Augusto_dos_Anjos,_1912)/Ultimo_Cr%C3%A9do",
+      "tags": [
+        "morte",
+        "angustia",
+        "portugues"
+      ]
+    }
+  ]
+}

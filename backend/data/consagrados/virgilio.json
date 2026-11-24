@@ -1,0 +1,75 @@
+{
+  "username": "virgilio",
+  "name": "Virgílio",
+  "bio": "Publius Vergilius Maro, poeta romano nascido perto de Mântua. Autor das Bucólicas, das Geórgicas e da Eneida, a epopeia nacional de Roma sobre Eneias. Foi o poeta mais lido e imitado da Europa por séculos, e Dante o fez seu guia na Divina Comédia.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Parco_della_Grotta_di_Posillipo5_%28crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": -70,
+  "morte": -19,
+  "poemas": [
+    {
+      "titulo": "Eneida — Livro I, versos 1–11 (Arma virumque cano)",
+      "texto": "Arma virumque canō, Trōiae quī prīmus ab ōrīs\nĪtaliam, fātō profugus, Lāvīniaque vēnit\nlītora, multum ille et terrīs iactātus et altō\nvī superum saevae memorem Iūnōnis ob īram;\nmulta quoque et bellō passus, dum conderet urbem,\nīnferretque deōs Latiō, genus unde Latīnum,\nAlbānīque patrēs, atque altae moenia Rōmae.\n\nMūsa, mihī causās memorā, quō nūmine laesō,\nquidve dolēns, rēgīna deum tot volvere cāsūs\nīnsignem pietāte virum, tot adīre labōrēs\nimpulerit. Tantaene animīs caelestibus īrae?",
+      "forma": "outro",
+      "obra": "Eneida",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Aeneis/Liber_I",
+      "tags": [
+        "epopeia",
+        "roma",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Eneida — Livro II, versos 1–13 (Conticuere omnes)",
+      "texto": "Conticuēre omnēs intentīque ōra tenēbant\ninde torō pater Aenēās sīc ōrsus ab altō:\n\nĪnfandum, rēgīna, iubēs renouāre dolōrem,\nTrōiānās ut opēs et lāmentābile rēgnum\nēruerint Danaī, quaeque ipse miserrima uīdī\net quōrum pars magna fuī. Quis tālia fandō\nMyrmidonum Dolopumue aut dūrī mīles Ulixī\ntemperet ā lacrimīs? Et iam nox ūmida caelō\npraecipitat suādentque cadentia sīdera somnōs.\nSed sī tantus amor cāsūs cognōscere nostrōs\net breuiter Trōiae suprēmum audīre labōrem,\nquamquam animus meminisse horret lūctūque refūgit,\nincipiam. Fractī bellō fātīsque repulsī",
+      "forma": "outro",
+      "obra": "Eneida",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Aeneis/Liber_II",
+      "tags": [
+        "epopeia",
+        "troia",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Eneida — Livro IV, versos 1–5 (Dido)",
+      "texto": "At rēgīna grauī iamdūdum saucia cūrā\nuulnus alit uēnīs et caecō carpitur ignī.\nMulta uirī uirtūs animō multusque recursat\ngentis honōs: haerent īnfīxī pectore uultūs\nuerbaque nec placidam membrīs dat cūra quiētem.",
+      "forma": "outro",
+      "obra": "Eneida",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Aeneis/Liber_IV",
+      "tags": [
+        "amor",
+        "paixao",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Bucólicas — Écloga IV, versos 1–17",
+      "texto": "Sicelides Musae, paulo maiora canamus.\nnon omnis arbusta iuvant humilesque myricae;\nsi canimus silvas, silvae sint consule dignae.\nUltima Cumaei venit iam carminis aetas;\nmagnus ab integro saeclorum nascitur ordo.\niam redit et Virgo, redeunt Saturnia regna,\niam nova progenies caelo demittitur alto.\ntu modo nascenti puero, quo ferrea primum\ndesinet ac toto surget gens aurea mundo,\ncasta fave Lucina; tuus iam regnat Apollo.\nTeque adeo decus hoc aevi, te consule, inibit,\nPollio, et incipient magni procedere menses;\nte duce, si qua manent sceleris vestigia nostri,\ninrita perpetua solvent formidine terras.\nille deum vitam accipiet divisque videbit\npermixtos heroas et ipse videbitur illis\npacatumque reget patriis virtutibus orbem.",
+      "forma": "outro",
+      "obra": "Bucólicas",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Eclogae_vel_bucolica/Ecloga_IV",
+      "tags": [
+        "profecia",
+        "idade_de_ouro",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Geórgicas — Livro II, O fortunatos nimium",
+      "texto": "O fortunatos nimium, sua si bona norint,\nAgricolas! quibus ipsa, procul discordibus armis,\nFundit humo facilem victum justissima tellus.\nSi non ingentem foribus domus alta superbis\nMane salutantum totis vomit ædibus undam;\nNec varios inhiant pulchra testudine postes,\nIllusasque auro vestes, Ephyreiaque æra,\nAlba neque Assyrio fucatur lana veneno,",
+      "forma": "outro",
+      "obra": "Geórgicas",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Georgica_(Hachette)/Liber_II",
+      "tags": [
+        "natureza",
+        "campo",
+        "latim"
+      ]
+    }
+  ]
+}

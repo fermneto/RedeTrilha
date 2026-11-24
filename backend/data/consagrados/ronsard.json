@@ -1,0 +1,101 @@
+{
+  "username": "ronsard",
+  "name": "Pierre de Ronsard",
+  "bio": "Pierre de Ronsard, poeta francês do Vendômois, chefe do grupo da Plêiade. Chamado príncipe dos poetas, renovou a lírica francesa com odes e sonetos, como os Sonnets pour Hélène e Mignonne, allons voir si la rose, sobre a beleza que passa.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Portrait_de_Ronsard_par_Benjamin_Foulon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1524,
+  "morte": 1585,
+  "poemas": [
+    {
+      "titulo": "Mignonne, allons voir si la rose",
+      "texto": "  Mignonne, allons voir si la rose\nQui ce matin avoit desclose\nSa robe de pourpre au Soleil,\nA point perdu ceste vesprée\nLes plis de sa robe pourprée,\nEt son teint au vostre pareil.\n  Las ! voyez comme en peu d’espace,\n\nMignonne, elle a dessus la place\nLas, las, ses beautez laissé cheoir !\nO vrayment marastre Nature,\nPuis qu’une telle fleur ne dure\nQue du matin jusques au soir !\n   Donc, si vous me croyez mignonne,\nTandis que vostre âge fleuronne\nEn sa plus verte nouveauté,\nCueillez, cueillez vostre jeunesse :\nComme à ceste fleur la vieillesse\nFera ternir vostre beauté.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Odes_(Ronsard)/%C2%AB_Mignonne,_allons_voir_si_la_rose_%C2%BB",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Quand vous serez bien vieille",
+      "texto": "Quand vous serez bien vieille, au soir à la chandelle,\nAssise aupres du feu, devidant et filant,\nDirez chantant mes vers, en vous esmerveillant,\nRonsard me celebroit du temps que j’estois belle.\n\nLors vous n’aurez servante oyant telle nouvelle,\nDesja sous le labeur à demy sommeillant,\nQui au bruit de mon nom ne s’aille resveillant,\nBenissant vostre nom de louange immortelle.\n\nJe seray sous la terre et fantôme sans os\nPar les ombres myrteux je prendray mon repos :\nVous serez au fouyer une vieille accroupie.\n\nRegrettant mon amour et vostre fier desdain.\nVivez, si m’en croyez, n’attendez à demain :\nCueillez dés aujourd’huy les roses de la vie.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_second_livre_des_Sonnets_pour_H%C3%A9l%C3%A8ne/Quand_vous_serez_bien_vieille",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Comme on voit sur la branche",
+      "texto": "Comme on voit sur la branche au mois de May la rose\nEn sa belle jeunesse, en sa premiere fleur\nRendre le ciel jaloux de sa vive couleur,\nQuand l’Aube de ses pleurs au poinct du jour l’arrose :\nLa grace dans sa fueille, et l’amour se repose,\nEmbasmant les jardins et les arbres d’odeur :\n\nMais batue ou de pluye, ou d’excessive ardeur,\nLanguissante elle meurt fueille à fueille déclose :\nAinsi en ta premiere et jeune nouveauté,\nQuand la terre et le ciel honoraient ta beauté,\nLa Parque t’a tuée, et cendre tu reposes.\nPour obseques reçoy mes larmes et mes pleurs,\nCe vase plein de laict, ce panier plein de fleurs,\nAfin que vif, et mort, ton corps ne soit que roses.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Comme_on_voit_sur_la_branche_au_mois_de_May_la_rose",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Ode à Cassandre",
+      "texto": "En vous donnant ce portrait mien,\nDame, je ne vous donne rien :\nCar tout le bien qui estoit nostre.\nAmour dés le jour le fist vostre.\nQue je receu dedans le cœur\nVostre nom et vostre rigueur :\nPuis la chose est bien raisonnable.\nQue la peinture resemblable\nAu corps, qui languist en soucy\nPour vostre amour, soit vostre aussi.\n\nMais voyez comme elle me semble\nPensive, triste et palle ensemble,\nPortraite de mesme couleur\nQu’Amour a portrait son seigneur !\nQue pleust à Dieu que la Nature\nM’eust fait au cœur une ouverture.\nAfin que vous eussiez pouvoir\nDe me cognoistre et de me voir !\nLàs ! ce n’est rien de voir, Maistresse,\nLa face qui est tromperesse.\nEt le front bien souvent moqueur :\nC’est le tout que de voir le cœur.\nVous voirrez du mien la constance,\nLa foy, l’amour, l’obeyssance ;\nEt les voyant, peut estre aussi\nQu’auriez de luy quelque merci.\nEt des angoisses qu’il endure :\nVoire quand vous seriez plus dure\nQue les rochers Caucaseans,\nOu les naufrages Aegeans,\n\nQui sourds, u’enteadent les prières\nDes pauvres barques marinières.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Ode_%C3%A0_Cassandre",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Je n'ai plus que les os",
+      "texto": "Je n’ay plus que les os, un Squelette je semble,\nDecharné, denervé, demusclé, depoulpé,\nQue le trait de la mort sans pardon a frappé,\nJe n’ose voir mes bras que de peur je ne tremble.\nApollon et son fils, deux grans maistres ensemble,\nNe me sçauroient guerir, leur mestier m’a trompé :\nAdieu plaisant Soleil, mon œil est estoupé,\nMon corps s’en va descendre où tout se desassemble.\nQuel amy me voyant en ce poinct despoûillé\nNe remporte au logis un œil triste et mouillé,\nMe consolant au lict et me baisant la face,\nEn essuiant mes yeux par la mort endormis ?\nAdieu chers compagnons, adieux mes chers amis,\nJe m’en vay le premier vous preparer la place.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/%C2%AB_Je_n%E2%80%99ai_plus_que_les_os,_un_Squelette_je_semble_%C2%BB",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Quand je suis vingt ou trente mois",
+      "texto": "  Quand je suis vingt ou trente mois\nSans retourner en Vandomois,\nPlein de pensées vagabondes.\nPlein d’un remors et d’un souci.\nAux rochers je me plains ainsi.\nAux bois, aux antres, et aux ondes.\n\n  Rochers, bien que soyez âgez\nDe trois mil ans, vous ne changez\nJamais ny d’estat ny de forme :\nMais tousjours ma jeunesse fuit.\nEt la vieillesse qui me suit.\nDe jeune en vieillard me transforme.\n\n  Bois, bien que perdiez tous les ans\nEn l’hyver voz cheveux plaisans,\nL’an d’après qui se renouvelle.\nRenouvelle aussi vostre chef :\nMais le mien ne peut derechef\nR’avoir sa perruque nouvelle.\n\n  Antres, je me suis veu chez vous\nAvoir jadis verds les genous.\nLe corps habile, et la main bonne :\nMais ores j’ay le corps plus dur,\nEt les genous, que n’est le mur »\nQui froidement vous environne.\n\n  Ondes, sans fin vous promenez.\nEt vous menez et ramenez\nVoz flots d’un cours qui ne séjourne :\nEt moy sans faire long séjour\nJe m’en vais de nuict et de jour.\nMais comme vous, je ne retourne.\n\n  Si est-ce que je ne voudrois\nAvoir esté rocher ou bois.\nPour avoir la peau plus espesse,\nEt veincre le temps emplumé :\nCar ainsi dur je n’eusse aimé\nToy qui m’as fait vieillir, Maistresse.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Odes_(Ronsard)/Quand_je_suis_vingt_ou_trente_mois",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Comme un chevreuil",
+      "texto": "Comme un Chevreuil, quand le printemps détruit\nDu froid hyver la poignante gelée,\nPour mieux broutter la fueille emmielée,\nHors de son bois avec l’Aube s’enfuit :\nEt seul, et seur, loin de chiens et de bruit,\nOr’ sur un mont, or’ dans une valée,\nOr’ près d’une onde à l’escart recelée,\nLibre, folastre où son pie le conduit :\nDe rets ne d’arc sa liberté n’a crainte\nSinon alors que sa vie est attainte\nD’un trait meurtrier empourpré de son sang.\nAinsi j’alloy sans espoir de dommage,\nLe jour qu’un œil sur l’Avril de mon aage\nTira d’un coup mille traits en mon flanc.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Comme_un_Chevreuil,_quand_le_printemps_d%C3%A9truit",
+      "tags": [
+        "amor",
+        "tempo",
+        "frances"
+      ]
+    }
+  ]
+}

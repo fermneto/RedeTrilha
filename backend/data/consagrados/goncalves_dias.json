@@ -1,0 +1,141 @@
+{
+  "username": "goncalves_dias",
+  "name": "Gonçalves Dias",
+  "bio": "Poeta maranhense, filho de português e de mulher mestiça. Maior nome da primeira geração romântica brasileira, criou o indianismo poético com I-Juca-Pirama e escreveu a Canção do Exílio (1843), um dos poemas mais conhecidos do país. Morreu num naufrágio na costa do Maranhão.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gon%C3%A7alves_Dias.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1823,
+  "morte": 1864,
+  "poemas": [
+    {
+      "titulo": "Canção do Exílio",
+      "texto": "Minha terra tem palmeiras,\nOnde canta o Sabiá;\nAs aves, que aqui gorgeião,\nNão gorgeião como lá.\n\nNosso céo tem mais estrellas,\nNossas varzeas tem mais flores,\nNossos bosques tem mais vida,\nNossa vida mais amores.\n\nEm scismar — sósinho — á noite —\nMais prazer encontro eu lá;\nMinha terra tem palmeiras,\nOnde canta o Sabiá.\n\nMinha terra tem primores,\nQue taes não encontro eu cá;\nEm scismar — sósinho — á noite —\nMais prazer encontro eu lá;\nMinha terra tem palmeiras,\nOnde canta o Sabiá.\n\nNão permitta Deos que eu morra,\nSem que eu volte para lá;\nSem que eu desfructe os primores\nQue não encontro por cá;\nSem qu’inda aviste as palmeiras,\nOnde canta o Sabiá.",
+      "forma": "outro",
+      "obra": "Primeiros Cantos",
+      "ano": 1847,
+      "fonte": "https://pt.wikisource.org/wiki/Can%C3%A7%C3%A3o_do_Ex%C3%ADlio_(Gon%C3%A7alves_Dias)",
+      "tags": [
+        "exilio",
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "I-Juca-Pirama — Canto I",
+      "texto": "No meio das tabas de amenos verdores\nCercadas de troncos — cobertos de flores,\nAlteião-se os tectos d’altiva nação;\nSão muitos seus filhos, nos animos fortes,\nTemiveis na guerra, que em densas cohortes\nAssombrão das matas a immensa extensão\n\nSão rudes, severos, sedentos de gloria,\nJá prelios incitão, já cantão victoria,\nJá meigos attendem a voz do cantor:\nSão todos tymbiras, guerreiros valentes!\nSeu nome la vôa na bocca das gentes,\nCondão de prodigios, de gloria e terror!\n\nAs tribus visinhas sem forças, sem brio,\nAs armas quebrando, lançando-as ao rio,\nO incenso aspirárão dos seus maracás:\nMedrosos das guerras que os fortes accendem,\nCustosos tributos ignavos lá rendem,\nAos duros guerreiros sugeitos na paz\n\nNo centro da taba se extende um terreiro,\nOnde ora se aduna o concilio guerreiro\nDa tribu senhora, das tribus servis:\nOs velhos sentados praticão d’outr’ora,\nE os moços inquietos, que a festa enamora,\nDerramão-se em torno d’um indio infeliz.",
+      "forma": "outro",
+      "obra": "Últimos Cantos",
+      "ano": 1851,
+      "fonte": "https://pt.wikisource.org/wiki/Y-Juca-Pyrama",
+      "tags": [
+        "indianismo",
+        "honra",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Se se morre de amor",
+      "texto": "Se se morre de amor! — Não, não se morre,\nQuando é fascinação que nos surprende\nDe ruidoso saráu entre os festejos;\nQuando luzes, calor, orchestra e flores\nAssomos de prazer nos raião n’alma,\nQue embellezada e solta em tal ambiente\nNo que ouve, e no que vê prazer alcança!\n\nSympathicas feições, cintura breve,\nGraciosa postura, porte airoso,\nUma fita, uma flor entre os cabellos,\nUm quê mal definido, acaso podem\nN’um engano d’amor arrebatar-nos.\nMas isso amor não é; isso é delirio,\nDevaneio, illusão, que se esvaece\nAo som final da orchestra, ao derradeiro\nClarão, que as luzes no morrer despedem!\nSe outro nome lhe dão, se amor o chamão,\nD’amor igual ninguem succumbe â perda.\n\nAmor é vida; é ter constantemente\nAlma, sentidos, coração — abertos,\nAo grande, ao bello; é ser capaz d’extremos,\nD’altas virtudes, té capaz de crimes!\nCompreender o infinito, a immensidade,\nE a natureza e Deos; gostar dos campos,\nD’aves, flores, murmurios solitarios;\nBuscar tristeza, a soledade, o ermo,\nE ter o coração em riso e festa;\nE á branda festa, ao riso da nossa alma\nFontes de pranto intercalar sem custo;\nConhecer o prazer e a desventura\nNo mesmo tempo, e ser no mesmo ponto\nO ditoso, o miserrimo dos entes:\nIsso é amor, e desse amor se morre!\n\nAmar, e não saber, não ter coragem\nPara dizer que amor que em nós sentimos;\nTemer qu’olhos profanos nos devassem\nO templo, onde a melhor porção da vida\nSe concentra; onde avaros recatamos\nEssa fonte de amor, esses thesouros\nInexgotaveis, d’illusões floridas;\nSentir, sem que se veja, a quem se adora,\nCompr’hender, sem lhe ouvir, seos pensamentos,\nSeguil-a, sem poder fitar seos olhos,\nAmal-a, sem ousar dizer que amamos,\nE, temendo roçar os seos vestidos,\nArder por afogal-a em mil abraços:\nIsso é amor, e desse amor se morre!\n\nSe tal paixão porém emfim transborda,\nSe tem na terra o galardão devido\nEm reciproco affecto; e unidos, unas,\nDois seres, duas vidas se procurão,\nEntendem-se, confundem-se e penetrão\nJuntas — em puro céo d’extasis puros:\nSe logo a mão do fado as torna extranhas,\n\nSe os duplíca e separa, quando unidos\nA mesma vida circulava em ambos;\nQue será do que fica, e do que longe\nServe ás borrascas de ludibrio e escarneo?\nPóde o raio n’um pincaro cahindo,\nTornal-o dois, e o mar correr entre ambos;\nPóde rachar o tronco levantado\nE dois cimos depois verem-se erguidos,\nSignaes mostrando da alliança antiga;\nDois corações porém, que juntos batem,\nQue juntos vivem, — se os separão, morrem;\nOu se entre o proprio estrago inda vegetão,\nSe apparencia de vida, em mal, conservão;\nAncias crúas resumem do proscripto,\nQue busca achar no berço a sepultura!\n\nEsse, que sobrevive à propria ruina,\nAo seo viver do coração, — ás gratas\nIllusões, quando em leito solitario,\nEntre as sombras da noite, em larga insomnia,\nDevaneiando, a futurar venturas,\nMostra-se e brinca a apetecida imagem;\nEsse, que á dôr tamanha não succumbe,\nInveja a quem na sepultura encontra\nDos males seos o desejado termo!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Se_se_morre_de_amor",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Ainda uma vez — adeus!",
+      "texto": "Emfim te vejo! — emfim posso,\nCurvado a teos pés, dizer-te,\nQue não cessei de querer-te,\nPezar de quanto soffri.\nMuito penei! Crúas ancias,\nDos teos olhos afastado,\nHouverão-me acabrunhado,\nA não lembrar-me de ti!\n\nII.\n\nD’um mundo a outro impellido,\nDerramei os meos lamentos\nNas surdas azas dos ventos,\nDo mar na crespa cerviz!\nBaldão, ludibrio da sorte\nEm terra estranha, entre gente,\nQue alheios males não sente,\nNem se condóe do infeliz!\n\nIII.\n\nLouco, afflicto, a saciar-me\nD’aggravar minha ferida,\nTomou-me tedio da vida,\nPassos da morte senti; .\nMas quasi no passo extremo,\nNo ultimo arcar da esp’rança,\nTu me vieste á lembrança:\nQuiz viver mais e vivi!\n\nIV.\n\nVivi; pois Deos me guardava\nPara este logar e hora!\nDepois de tanto, senhora,\nVer-te e fallar-te outra vez;\nRever-me em teo rosto amigo,\nPensar em quanto hei perdido,\nE este pranto dolorido\nDeixar correr a teos pés.\n\nV.\n\nMas que tens? Não me conheces?\nDe mim afastas teo rosto?\nPois tanto pôde o desgosto\nTransformar o rosto meo?\nSei a afflicção quanto póde,\nSei quanto ella desfigura,\nE eu não vivi na ventura....\nOlha-me bem, que sou eu!\n\nVI.\n\nNemhuma voz me diriges!...\nJulgas-te acaso offendida?\nDéste-me amor, e a vida\nQue m’a darias — bem sei;\nMas lembrem-te aquelles feros\nCorações, que se metterão\nEntre nós, e se vencerão,\nMal sabes quanto lutei!\n\nVII.\n\nOh! se lutei!... mas devera\nExpôr-te em publica praça,\nComo um alvo á populaça,\nUm alvo aos dicterios seos!\nDevera, podia acaso\nTal sacrificio acceitar-te\nPara no cabo pagar-te,\nMeos dias unindo aos teos?\n\nVIII.\n\nDevera, sim; mas pensava,\nQue de mim t’esquecerias,\nQue, sem mim, alegres dias\nT’esperavão; e em favor\nDe minhas preces, contava\nQue o bom Deos me acceitaria\nO meo quinhão de alegria\nPelo teo quinhão de dôr!\n\nIX.\n\nQue me enganei, ora o vejo;\nNadão-te os olhos em pranto,\nArfa-te o peito, e no entanto\nNem me podes encarar;\nErro foi, mas não foi crime,\nNão te esqueci, eu t’o juro;\nSacrifiquei meo futuro,\nVida e gloria por te amar!\n\nX.\n\nTudo, tudo; e na miseria\nD’um martyrio prolongado,\nLento, cruel, disfarçado,\nQue eu nem a ti confiei;\n«Ella é feliz (me dizia)\n«Seo descanço é obra minha.»\nNegou-m’o a sorte mesquinha.\nPerdoa, que me enganei!\n\nXI.\n\nTantos encantos me tinhão,\nTanta illusão me afagava\nDe noite, quando acordava,\nDe dia em sonhos talvez!\nTudo isso agora onde para?\nOnde a illusão dos meos sonhos?\nTantos projectos risonhos,\nTudo esse engano desfez!\n\nXII.\n\nEnganei-me!... — Horrendo cháos\nNessas palavras se encerra,\nQuando do engano, quem erra,\nNão póde vóltar atraz!\nAmarga irrisão! reflecte:\nQuando eu gozar-te pudera,\nMartyr quiz ser, cuidei qu’era...\nE um louco fui, nada mais!\n\nXIII.\n\nLouco, julguei adornar-me\nCom palmas d’alta virtude!\nQue tinha eu bronco e rude\nCo’o que se chama ideal?\nO meo eras tu, não outro;\nStava em deixar minha vida\nCorrer por ti conduzida,\nPura, na ausencia do mal.\n\nXIY.\n\nPensar eu que o teo destino\nLigado ao meo, outro fôra,\nPensar que te vejo agora,\nPor culpa minha, infeliz;\nPensar que a tua ventura\nDeos ab eterno a fizera,\nNo meo caminho a puzera..\nE eu! eu fui que a não quiz!\n\nXV.\n\nEs d’outro agora, e p’ra sempre!\nEu a misero desterro\nVólto, chorando o meo erro,\nQuazi descrendo dos céos!\nDóe-te de mim, pois me encontras\nEm tanta miseria posto,\nQue a expressão deste desgosto\nSerá um crime ante Deos!\n\nXVI.\n\nDóe-te de mim, que t’imploro\nPerdão, a teos pés curvado;\nPerdão!.. de não ter ousado\nViver contente e feliz!\nPerdão da minha miseria,\nDa dôr que me rala o peito,\nE se do mal que te hei feito,\nTambem do mal que me fiz!\n\nXVII.\n\nAdeos q’eu parto, senhora;\nNegou-me a fado inimigo\nPassar a vida comtigo,\nTer sepultura entre os meos:\nNegou-me nesta hora oxtrema,\nPor extrema despedida,\nOuvir-te a voz commovida\nSoluçar um breve Adeos!\n\nXVIII.\n\nLerás porém algum dia\nMeos versos, d’alma arrancados,\nD’amargo pranto banhados,\nCom sangue escriptos, — e então\nConfio que te commovas,\nQue a minha dôr te apiade,\nQue chores, não de saudade,\nNem de amor, — de compaixão.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Ainda_uma_vez_-_Adeus",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Leito de folhas verdes",
+      "texto": "Porque tardas, Jatyr, que tanto a custo\nÁ voz do meu amor moves teus passos?\nDa noite a viração movendo as folhas,\nJá nos cimos do bosque rumoreja.\n\nEu sob a copa da mangueira altiva\nNosso leito gentil cobri zeloza.\nCom mimoso tapiz de folhas brandas,\nOnde o frouxo luar brinca entre flôres.\n\nDo tamarindo a flôr abriu-se ha pouco,\nJá solta o bogarî mais doce aroma!\nComo prece de amor, como estas preces,\nNo silencio da noite o bosque exhala.\n\nBrilha a lua no céo, brilhão estrellas,\nCorrem perfumes no correr da brisa,\nA cujo influxo magico respira-sc\nUm quebranto de amor melhor que a vida!\n\nA flôr que desabrocha ao romper d’alva\nUm só gyro do sól, não mais, vegeta:\nEu sou aquella flôr que espero ainda\nDoce raio do sól que me dê vida.\n\nSejão valles ou montes, lago ou terra,\nOnde quer que tu vas, ou dia ou noite,\nVai seguindo após ti meu pensamento;\nOutro amor nunca tive: és meu, sou tua!\n\nMeus olhos outros olhos nunca virão,\nNão sentirão meus labios outros labios,\nNem outras mãos, Jatyr, que não as tuas\nA arasoya na cinta me apertarão\n\nDo tamarindo a flôr jaz entre-aberta,\nJá solta o bogarî mais doce aroma;\nTambem meu coração, como estas flores,\nMelhor perfume ao pé da noite exhala!\n\nNão me escutas, Jatyr; nem tardo acodes\nÁ voz do meu amor, que em vão te chama!\nTupan! lá rompe o sól! do leito inutil\nA brisa da manhã sacuda as folhas!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Leito_de_Folhas_Verdes",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Marabá",
+      "texto": "Eu vivo sosinha; ninguem me procura!\n        Acaso feitura\n        Não sou de Tupá!\nSe algum d’entre os homens de mim não se esconde,\n        — Tu és, me responde,\n        — Tu és Marabá!\n\n— Meus olhos são garços, são côr das saphiras,\n— Tem luz das estrellas, tem meigo brilhar;\n— Imitão as nuvens de um céo anilado,\n— As cores imitão das vagas do mar!\n\nSe algum dos guerreiros não foge a meus passos:\n        «Teus olhos são garços,\n\n«Responde anojado; mas és Marabá:\n«Quero antes uns olhos bem pretos, luzentes,\n        «Uns olhos fulgentes\n«Bem pretos, retinctos, não côr de anajá!»\n\n— E’ alvo meu rosto da alvura dos lyrios,\n— Da côr das areias batidas do mar;\n— As aves mais brancas, as conchas mais puras\n— Não tem mais alvura, não tem mais brilhar. —\n\nSe ainda me escuta meus agros delirios:\n        «E’s alva de lyrios\n«Sorrindo responde; mas és marabá:\n«Quero antes um rosto de jambo corado,\n        «Um rosto crestado\n«Do sol do deserto, não flor de cajá.»\n\n— Meu collo de leve se encurva engraçado,\n— Como hastea pendente de cactos em flor;\n— Mimosa, indolente, resvalo no prado,\n— Como um soluçado suspiro de amor! —\n\n«Eu amo a estatura flexivel, ligeira,\n        «Como uma palmeira\n\n«Então me respondem; tu és Marabá:\n«Quero antes o collo da ema orgulhosa,\n        «Que pisa vaidosa,\n«Que as floreas campinas governa, onde está.»\n\n— Meus loiros cabellos em ondas se annelão,\n— O oiro mais puro não tem seu fulgor;\n— As brisas nos bosques de os ver se enamorão,\n— De os ver tão formosos como um beija-flor! —\n\nMas elles respondem: «Teus longos cabellos,\n        «São loiros, são bellos,\n«Mas são annelados; tu és Marabá:\n«Quero antes cabellos, bem lisos, corridos,\n        «Cabellos compridos,\n«Não côr d’oiro fino, nem côr d’anajá.»\n\nE as doces palavras que eu tinha cá dentro\n        A quem n’as direi?\nO ramo d’acacia na fronte de um homem\n        Jámais cingirei:\n\nJámais um guerreiro da minha arasoya\n        Me desprenderá:\nEu vivo sosinha, chorando mesquinha,\n        Que sou Marabá!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Marab%C3%A1",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Olhos verdes",
+      "texto": "São uns olhos verdes, verdes,\nUns olhos de verde-mar,\nQuando o tempo vai bonança;\nUns olhos côr de esperança,\nUns olhos por que morri;\n          Que ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nComo duas esmeraldas,\nIguaes na forma e na côr,\nTem luz mais branda e mais forte,\nDiz uma — vida, outra — morte;\nUma — loucura, outra — amor.\n          Mas ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nSão verdes da côr do prado,\nExprimem qualquer paixão,\nTão facilmente se inflammão,\nTão meigamente derramão\nFogo e luz do coração;\n          Mas ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nSão uns olhos verdes, verdes,\nQue podem tambem brilhar;\nNão são de um verde embaçado,\nMas verdes da côr do prado,\nMas verdes da côr do mar.\n          Mas ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nComo se lê n’um espelho\nPude ler nos olhos seus!\nOs olhos mostrão a alma,\nQue as ondas postas em calma\nTambem reflectem os ceos;\n          Mas ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nDizei vós, oh meos amigos,\nSe vos perguntão por mi,\nQue eu vivo só da lembrança\nDe uns olhos côr de esperança,\nDe uns olhos verdes que vi!\n          Que ai de mi!\nNem ja sei qual fiquei sendo\n          Depois que os vi!\n\nDizei vós; Triste do bardo!\nDeixou-se de amor finar!\nVio uns olhos verdes, verdes,\nUns olhos da côr do mar:\nErão verdes sem espr’ança,\nDavão amor sem amar!\nDizei-o vós, meus amigos,\n          Que ai de mi!\nNão pertenço mais a vida.\n          Depois que os vi!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Olhos_Verdes_(Gon%C3%A7alves_Dias)",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Canção do Tamoio",
+      "texto": "Não chores, meu filho;\nNão chores, que a vida\nÉ luta renhida:\nViver é lular.\nA vida é combate,\nQue os fracos abate,\nQue os fortes, os bravos,\nSó pode exaltar.\n\nUm dia vivemos!\nE o homem que é forte\nNão teme da morte;\nSó teme fugir;\n\nNo arco que enteza\nTem certa uma presa,\nQuer seja tapuya,\nCondor ou tapyr.\n\nO forte, o cobarde\nSeus feitos inveja\nDe o ver na peleja\nGarboso e feroz;\nE os timidos velhos\nNos graves concelhos,\nCurvadas as frontes,\nEscutão-lhe a voz!\n\nDomina, se vive;\nSe morre, descança\nDos seus na lembrança,\nNa voz do porvir.\nNão cures da vida!\nSè bravo, sê forte!\nNão fujas da morte,\nQue a morte hade vir!\n\nE pois que és meu filho,\nMeus brios reveste;\nTamoyo nasceste,\nValente serás.\nSê duro guerreiro,\nRobusto, fraguciro,\nBrasão dos tamoyos\nNa guerra e na paz\n\nTeu grito de guerra\nRetumbe aos ouvidos\nD’imigos transidos\nPor vil commoção;\nE tremão d’ouvil-o\nPeor que o sibilo\nDas setas ligeiras,\nPeor que o trovão.\n\nE a mãe nessas tabas\nQuerendo calados\nOs filhos creados\nNa lei do terror;\n\nTeu nome lhes diga,\nQue a gente inimiga\nTalvez não escute\nSem pranto, sem dor!\n\nPorêm se a fortuna,\nTrahindo teus passos,\nTe arroja nos laços\nDo imigo fallaz!\nNa ultima hora\nTeus feitos memora,\nTranquillo nos gestos,\nImpavido, audaz.\n\nE cae como o tronco\nDo raio tocado,\nPartido, rojado\nPor larga extenção;\nAssim morre o forte!\nNo passo da morte\nTriunfa, conquista\nMais alto brasão.\n\nAs armas ensaia,\nPenetra na vida:\nPesada ou querida,\nViver é lutar.\nSe o duro combate\nOs fracos abate,\nAos fortes, aos bravos,\nSó pode exaltar.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Can%C3%A7%C3%A3o_do_Tamoio",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O canto do Piaga",
+      "texto": "Ó Guerreiros da Taba sagrada,\nÓ Guerreiros da Tribu Tupi,\nFallão Deoses nos cantos do Piaga,\nÓ Guerreiros, meos cantos ouvi.\n\nEsta noite — era a lua já morta —\nAnhangá me vedava sonhar;\nEis na horrivel caverna que habito\nRouca voz comecou-me a chamar.\n\nAbro os olhos — inquieto — medroso,\nManitôs! que prodigios que eu vi!\nArde o páo de resina fumosa,\nNão fui eu ― não fui eu, que o accendi!\n\nEis rebenta a meos pés um phantasma,\nUm phantasma d’immensa extensão;\nLiso craneo repousa a meo lado,\nFeia cóbra se enrosca no chão.\n\nO mco sangue gelou-se nas veias,\nTodo inteiro — ossos — carnes — tremi,\nFrio horror me côou pelos membros,\nFrio vento no rosto senti.\n\nEra feio — medonho — tremendo,\nÓ Guerreiros — o espectro que eu vi.\nFallão Deoses nos cantos do Piaga,\nÓ Guerreiros, meos cantos ouvi!\n\nPorque dormes, ó Piaga divino?\nComeçou-me a Visão a fallar,\nPorque dormes? O sacro instrumento\nDe per si já começa a vibrar,\n\nTu não viste nos céos um negrume\nToda a face do sol offuscar;\nNão ouviste a coruja, de dia,\nSeos estridulos torva soltar?\n\nTu não viste dos bosques a coma\nSem aragem — vergar-se — gemer,\nNem a lua entre nuvens de fogo,\nQual em vestes de sangue, nascer?\n\nE tu dormes, ó Piaga divino!\nE Anhangá te prohibe sonhar!\nE tu dormes, ó Piaga, e não sabes,\nE não podes augurios cantar?!\n\nOuve os sons do phantasma tremendo,\nOuve os sons do fiel maracá;\nManitôs já fugirão da Taba!\nÓ desgraça ― ó ruina — ó Tupá!\n\nPelas ondas do mar sem limites\nBasta selva — sem folhas — hi vem;\nHartos troncos, robustos, gigantes;\nVossas matas taes monstros contêm.\n\nTrás embira dos cimos pendente\n— Brenha espessa de vario cipó —\nDessas brenhas contêm vossas matas,\nTaes e quaes — mas com folhas; —  é só!\n\nNegro monstro os sustenta por baixo\nBrancas azas abrindo ao tufão,\nComo um bando de candidas aves.\nQue nos ares pairando — lá vão.\n\nOh! quem foi das entranhas das aguas,\nO marinho prodigio arrancar?\nNossas terras — demanda — fareja...\nEsse monstro... — que vem cá buscar?\n\nNão sabeis o que o monstro procura?\nNão sabeis a que vem — o que quer?\nVem matar vossos bravos guerreiros,\nVem roubar-vos a filha ― a mulher.\n\nVem traser-vos crueza — impiedade\nDons crueis do cruel Anhangá;\nVem quebrar-vos a maça valente,\nProfanar manitôs — maracás.\n\nVem traser-vos algemas pesadas,\nCom que a tribu Tupi vai gemer,\nHão de os velhos servirem de escravos,\nMesmo o Piaga inda escravo ha de ser.\n\nFugireis procurando um asilo,\nTriste asilo por invio sertão;\n\nAnhangá de praser ha de rir-se\nVendo os vossos quão poucos serão.\n\nVossos Deoses, o Piaga, conjura,\nSusta as iras do féro Anhangá.\nManitós já fugirão da Taba,\nÓ desgraça — ó ruina — ó Tupá!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/O_Canto_do_Piaga",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Seus olhos",
+      "texto": "Oh! rouvre tes grands yeux, dont la paupiére tremble,\nTes yeux pleins de langueur;\nLeur regard est si beau quand nous sommes ensemble!\nRouvre-les; ce regard manque à ma vie, il semble\nQue tu fermes ton coeur.\n-- Turquety\n\nSeus olhos tão negros, tão belos, tão puros,\nDe vivo luzir,\nEstrelas incertas, que as águas dormentes\nDo mar vão ferir;\n\nSeus olhos tão negros, tão belos, tão puros,\nTêm meiga expressão,\nMais doce que a brisa, - mais doce que o nauta\nDe noite cantando, - mais doce que a frauta\nQuebrando a solidão.\n\nSeus olhos tão negros, tão belos, tão puros,\nDe vivo luzir,\nSão meigos infantes, gentis, engraçados\nBrincando a sorrir.\n\nSão meigos infantes, brincando, saltando\nEm jogo infantil,\nInquietos, travessos; - causando tormento,\nCom beijos nos pagam a dor de um momento,\nCom modo gentil.\n\nSeus olhos tão negros, tão belos, tão puros,\nAssim é que são;\nÀs vezes luzindo, serenos, tranqüilos,\nÀs vezes vulcão!\n\nÀs vezes, oh! sim, derramam tão fraco,\nTão frouxo brilhar,\nQue a mim me parece que o ar lhes falece,\nE os olhos tão meigos, que o pranto umedece\nMe fazem chorar.\n\nAssim lindo infante, que dorme tranqüilo,\nDesperta a chorar;\nE mudo e sisudo, cismando mil coisas,\nNão pensa - a pensar.\n\nNas almas tão puras da virgem, do infante,\nÀs vezes do céu\nCai doce harmonia duma Harpa celeste,\nUm vago desejo; e a mente se veste\nDe pranto co'um véu.\n\nQuer sejam saudades, quer sejam desejos\nDa pátria melhor;\nEu amo seus olhos que choram sem causa\nUm pranto sem dor.\n\nEu amo seus olhos tão negros, tão puros,\nDe vivo fulgor;\nSeus olhos que exprimem tão doce harmonia,\nQue falam de amores com tanta poesia.\nCom tanto pudor.\n\nSeus olhos tão negros, tão belos, tão puros,\nAssim é que são;\nEu amo esses olhos que falam de amores\nCom tanta paixão.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Seus_Olhos_(Gon%C3%A7alves_Dias)",
+      "tags": [
+        "saudade",
+        "patria",
+        "portugues"
+      ]
+    }
+  ]
+}

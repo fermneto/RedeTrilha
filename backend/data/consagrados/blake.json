@@ -1,0 +1,114 @@
+{
+  "username": "blake",
+  "name": "William Blake",
+  "bio": "William Blake, poeta, pintor e gravador londrino. Visionário, publicou com gravuras próprias os Songs of Innocence and of Experience, com poemas como The Tyger, e livros proféticos. Pouco reconhecido em vida, é hoje um dos maiores nomes do Romantismo inglês.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/00/William_Blake_by_Thomas_Phillips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1757,
+  "morte": 1827,
+  "poemas": [
+    {
+      "titulo": "The Tyger",
+      "texto": "Tyger Tyger, burning bright,\nIn the forests of the night:\nWhat immortal hand or eye,\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare sieze the fire?\n\nAnd what shoulder, & what art,\nCould twist the sinews of thy heart?\nAnd when thy heart began to beat,\nWhat dread hand? & what dread feet?\n\nWhat the hammer? what the chain,\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp,\nDare its deadly terrors clasp?\n\nWhen the stars threw down their spears\nAnd water'd heaven with their tears:\nDid he smile his work to see?\nDid he who made the Lamb make thee?\n\nTyger, Tyger burning bright,\nIn the forests of the night:\nWhat immortal hand or eye,\nDare frame thy fearful symmetry?",
+      "forma": "outro",
+      "obra": "Songs of Experience",
+      "ano": 1794,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Experience/The_Tyger",
+      "tags": [
+        "criacao",
+        "experiencia",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Lamb",
+      "texto": "Little Lamb who made thee\nDost thou know who made thee\nGave thee life & bid thee feed,\nBy the stream & o'er the mead;\nGave thee clothing of delight,\nSoftest clothing wooly bright;\nGave thee such a tender voice,\nMaking all the vales rejoice:\nLittle Lamb who made thee\nDost thou know who made thee\n\nLittle Lamb I'll tell thee,\nLittle Lamb I'll tell thee:\nHe is called by thy name\nFor he calls himself a Lamb.\nHe is meek & he is mild,\nHe became a little child:\nI a child & thou a lamb,\nWe are called by his name.\nLittle Lamb God bless thee\nLittle Lamb God bless thee.",
+      "forma": "outro",
+      "obra": "Songs of Innocence",
+      "ano": 1789,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Innocence/The_Lamb",
+      "tags": [
+        "inocencia",
+        "criacao",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "London",
+      "texto": "I wander thro' each charter'd street,\nNear where the charter'd Thames does flow\nAnd mark in every face I meet\nMarks of weakness, marks of woe.\n\nIn every cry of every Man,\nIn every Infants cry of fear,\nIn every voice; in every ban,\nThe mind-forg'd manacles I hear\n\nHow the Chimney-sweepers cry\nEvery blackning Church appalls,\nAnd the hapless Soldiers sigh,\nRuns in blood down Palace walls\n\nBut most thro' midnight streets I hear\nHow the youthful Harlots curse\nBlasts the new-born Infants tear\nAnd blights with plagues the Marriage hearse",
+      "forma": "outro",
+      "obra": "Songs of Experience",
+      "ano": 1794,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Experience/London",
+      "tags": [
+        "cidade",
+        "opressao",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "A Poison Tree",
+      "texto": "I was angry with my Friend:\nI told my wrath, my wrath did end.\nI was angry with my foe:\nI told it not, my wrath did grow.\n\nAnd I waterd it in fears,\nNight & morning with my tears:\nAnd I sunned it with smiles,\nAnd with soft deceitful wiles.\n\nAnd it grew both day and night,\nTill it bore an apple bright,\nAnd my foe beheld it shine,\nAnd he knew that it was mine,\n\nAnd into my garden stole,\nWhen the night had veild the pole:\nIn the morning glad I see;\nMy foe outstretchd beneath the tree.",
+      "forma": "outro",
+      "obra": "Songs of Experience",
+      "ano": 1794,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Experience/A_Poison_Tree",
+      "tags": [
+        "raiva",
+        "experiencia",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Chimney Sweeper (Songs of Innocence)",
+      "texto": "When my mother died I was very young,\nAnd my father sold me while yet my tongue,\nCould scarcely cry weep weep weep weep.\nSo your chimneys I sweep & in soot I sleep.\n\nTheres little Tom Dacre who cried when his head\nThat curl'd like a lambs back, was shav'd, so I said,\nHush Tom never mind it, for when your head's bare,\nYou know that the soot cannot spoil your white hair.\n\nAnd so he was quiet, & that very night,\nAs Tom was a sleeping he had such a sight,\nThat thousands of sweepers Dick, Joe, Ned & Jack\nWere all of them lock'd up in coffins of black.\n\nAnd by came an Angel who had a bright key\nAnd he open'd the coffins & set them all free,\nThen down a green plain leaping laughing they run\nAnd wash in a river and shine in the Sun.\n\nThen naked & white, all their bags left behind,\nThey rise upon clouds, and sport in the wind,\nAnd the Angel told Tom if he'd be a good boy,\nHe'd have God for his father & never want joy.\n\nAnd so Tom awoke and we rose in the dark\nAnd got with our bags & our brushes to work.\nTho' the morning was cold, Tom was happy & warm\nSo if all do their duty, they need not fear harm.",
+      "forma": "outro",
+      "obra": "Songs of Innocence",
+      "ano": 1789,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Innocence/The_Chimney_Sweeper",
+      "tags": [
+        "infancia",
+        "inocencia",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Garden of Love",
+      "texto": "I went to the Garden of Love,\nAnd saw what I never had seen:\nA Chapel was built in the midst,\nWhere I used to play on the green.\n\nAnd the gates of this chapel were shut,\nAnd Thou shalt not writ over the door;\nSo I turn'd to the Garden of Love,\nThat so many sweet flowers bore.\n\nAnd I saw it was filled with graves,\nAnd tomb-stones where flowers should be:\nAnd Priests in black gowns, were walking their rounds,\nAnd binding with briars my joys & desires.",
+      "forma": "outro",
+      "obra": "Songs of Experience",
+      "ano": 1794,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Experience/The_Garden_of_Love",
+      "tags": [
+        "amor",
+        "religiao",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Little Black Boy",
+      "texto": "My mother bore me in the southern wild,\nAnd I am black, but O! my soul is white\nWhite as an angel is the English child:\nBut I am black as if bereav'd of light.\n\nMy mother taught me underneath a tree\nAnd sitting down before the heat of day\nShe took me on her lap and kissed me,\nAnd pointing to the east began to say,\n\nLook on the rising sun: there God does live\nAnd gives his light, and gives his heat away\nAnd flowers and trees and beasts and men receiv\nComfort in morning joy in the noon day.\n\nAnd we are put on earth a little space\nThat we may learn to bear the beams of love,\nAnd these black bodies and this sun-burnt face\nIs but a cloud, and like a shady grove.\n\n For when our souls have learn'd the heat to bear\nThe cloud will vanish we shall hear his voice,\nSaying: come out from the grove my love & care,\nAnd round my golden tent like lambs rejoice.\n\nThus did my mother say and kissed me.\nAnd thus I say to little English boy.\nWhen I from black and he from white cloud free,\nAnd round the tent of God like lambs we joy:\n\nI'll shade him from the heat till he can bear,\nTo lean in joy upon our fathers knee.\nAnd then I'll stand and stroke his silver hair,\nAnd be like him and he will then love me.",
+      "forma": "outro",
+      "obra": "Songs of Innocence",
+      "ano": 1789,
+      "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_(1826)/Songs_of_Innocence/The_Little_Black_Boy",
+      "tags": [
+        "inocencia",
+        "fe",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "And did those feet in ancient time",
+      "texto": "And  did those feet in ancient time\nWalk upon England's mountains green?\nAnd was the holy Lamb of God\nOn England's pleasant pastures seen?\n\nAnd did the Countenance Divine\nShine forth upon our clouded hills?\nAnd was Jerusalem builded here\nAmong those dark Satanic mills?\n\nBring me my bow of burning gold:\nBring me my arrows of desire:\nBring me my spear: O clouds unfold!\nBring me my chariot of fire.\n\nI will not cease from mental fight,\nNor shall my sword sleep in my hand\nTill we have built Jerusalem\nIn England's green and pleasant land.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Jerusalem_(Blake)",
+      "tags": [
+        "patria",
+        "fe",
+        "ingles"
+      ]
+    }
+  ]
+}

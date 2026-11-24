@@ -1,0 +1,87 @@
+{
+  "username": "lucrecio",
+  "name": "Lucrécio",
+  "bio": "Titus Lucretius Carus, poeta e filósofo romano do século I a.C. (datas aproximadas). Seu único poema, De rerum natura, expõe em hexâmetros a física e a ética de Epicuro, com átomos, vazio e a libertação do medo da morte. É obra-prima da poesia filosófica.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Lucretius1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": -99,
+  "morte": -55,
+  "poemas": [
+    {
+      "titulo": "De rerum natura — Livro I, hino a Vênus (vv. 1–20)",
+      "texto": "Aeneadum genetrix, hominum divomque voluptas,\nalma Venus, caeli subter labentia signa\nquae mare navigerum, quae terras frugiferentis\nconcelebras, per te quoniam genus omne animantum\nconcipitur visitque exortum lumina solis:\nte, dea, te fugiunt venti, te nubila caeli\nadventumque tuum, tibi suavis daedala tellus\nsummittit flores, tibi rident aequora ponti\nplacatumque nitet diffuso lumine caelum.\nnam simul ac species patefactast verna diei\net reserata viget genitabilis aura favoni,\naeriae primum volucris te, diva, tuumque\nsignificant initum perculsae corda tua vi.\ninde ferae pecudes persultant pabula laeta\net rapidos tranant amnis: ita capta lepore\nte sequitur cupide quo quamque inducere pergis.\ndenique per maria ac montis fluviosque rapacis\nfrondiferasque domos avium camposque virentis\nomnibus incutiens blandum per pectora amorem\nefficis ut cupide generatim saecla propagent.",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_I",
+      "tags": [
+        "filosofia",
+        "natureza",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "De rerum natura — Livro I, Ifigênia: tantum religio (vv. 80–101)",
+      "texto": "Illud in his rebus vereor, ne forte rearis\nimpia te rationis inire elementa viamque\nindugredi sceleris. quod contra saepius illa\nreligio peperit scelerosa atque impia facta.\nAulide quo pacto Triviai virginis aram\nIphianassai turparunt sanguine foede\nductores Danaum delecti, prima virorum.\ncui simul infula virgineos circumdata comptus\nex utraque pari malarum parte profusast,\net maestum simul ante aras adstare parentem\nsensit et hunc propter ferrum celare ministros\naspectuque suo lacrimas effundere civis,\nmuta metu terram genibus summissa petebat.\nnec miserae prodesse in tali tempore quibat,\nquod patrio princeps donarat nomine regem;\nnam sublata virum manibus tremibundaque ad aras\ndeductast, non ut sollemni more sacrorum\nperfecto posset claro comitari Hymenaeo,\nsed casta inceste nubendi tempore in ipso\nhostia concideret mactatu maesta parentis,\nexitus ut classi felix faustusque daretur.\ntantum religio potuit suadere malorum.",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_I",
+      "tags": [
+        "religiao",
+        "filosofia",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "De rerum natura — Livro II, Suave mari magno (vv. 1–13)",
+      "texto": "Suave, mari magno turbantibus aequora ventis\ne terra magnum alterius spectare laborem;\nnon quia vexari quemquamst iucunda voluptas,\nsed quibus ipse malis careas quia cernere suavest.\nsuave etiam belli certamina magna tueri\nper campos instructa tua sine parte pericli;\nsed nihil dulcius est, bene quam munita tenere\nedita doctrina sapientum templa serena,\ndespicere unde queas alios passimque videre\nerrare atque viam palantis quaerere vitae,\ncertare ingenio, contendere nobilitate,\nnoctes atque dies niti praestante labore\nad summas emergere opes rerumque potiri.",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_II",
+      "tags": [
+        "filosofia",
+        "sabedoria",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "De rerum natura — Livro III, elogio de Epicuro (vv. 1–13)",
+      "texto": "E tenebris tantis tam clarum extollere lumen\nqui primus potuisti inlustrans commoda vitae,\nte sequor, o Graiae gentis decus, inque tuis nunc\nficta pedum pono pressis vestigia signis,\nnon ita certandi cupidus quam propter amorem\nquod te imitari aveo; quid enim contendat hirundo\ncycnis, aut quid nam tremulis facere artubus haedi\nconsimile in cursu possint et fortis equi vis?\ntu, pater, es rerum inventor, tu patria nobis\nsuppeditas praecepta, tuisque ex, inclute, chartis,\nfloriferis ut apes in saltibus omnia libant,\nomnia nos itidem depascimur aurea dicta,\naurea, perpetua semper dignissima vita.",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_III",
+      "tags": [
+        "filosofia",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "De rerum natura — Livro III, a morte nada é para nós",
+      "texto": "Nil igitur mors est ad nos neque pertinet hilum,\nquandoquidem natura animi mortalis habetur.\net vel ut ante acto nihil tempore sensimus aegri,\nad confligendum venientibus undique Poenis,\nomnia cum belli trepido concussa tumultu\nhorrida contremuere sub altis aetheris auris,\nin dubioque fuere utrorum ad regna cadendum\nomnibus humanis esset terraque marique,\nsic, ubi non erimus, cum corporis atque animai\ndiscidium fuerit, quibus e sumus uniter apti,\nscilicet haud nobis quicquam, qui non erimus tum,\naccidere omnino poterit sensumque movere,",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_III",
+      "tags": [
+        "morte",
+        "filosofia",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "De rerum natura — Livro V, versos 1–12",
+      "texto": "Quis potis est dignum pollenti pectore carmen\ncondere pro rerum maiestate hisque repertis?\nquisve valet verbis tantum, qui fingere laudes\npro meritis eius possit, qui talia nobis\npectore parta suo quaesitaque praemia liquit?\nnemo, ut opinor, erit mortali corpore cretus.\nnam si, ut ipsa petit maiestas cognita rerum,\ndicendum est, deus ille fuit, deus, inclyte Memmi,\nqui princeps vitae rationem invenit eam quae\nnunc appellatur sapientia, quique per artem\nfluctibus et tantis vitam tantisque tenebris\nin tam tranquillo et tam clara luce locavit.",
+      "forma": "outro",
+      "obra": "De rerum natura",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/De_rerum_natura_(Titus_Lucretius_Carus)/Liber_V",
+      "tags": [
+        "filosofia",
+        "natureza",
+        "latim"
+      ]
+    }
+  ]
+}

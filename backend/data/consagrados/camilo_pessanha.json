@@ -1,0 +1,130 @@
+{
+  "username": "camilo_pessanha",
+  "name": "Camilo Pessanha",
+  "bio": "Poeta português de Coimbra que viveu a maior parte da vida em Macau, como professor e jurista, e lá morreu. Clepsidra (1920) é o cume do Simbolismo português, de grande musicalidade e sentimento de dissolução. Foi admirado pela geração de Orpheu.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Camilo_Pessanha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1867,
+  "morte": 1926,
+  "poemas": [
+    {
+      "titulo": "Ao longe os barcos de flores",
+      "texto": "Só, incessante, um som de flauta chora,\nViúva, grácil, na escuridão tranquila,\n—Perdida voz que de entre as mais se exila,\n—Festões de som dissimulando a hora.\n\nNa orgia, ao longe, que em clarões cintila\nE os lábios, branca, do carmim desflora...\nSó, incessante, um som de flauta chora,\nViúva, grácil, na escuridão tranquila.\n\nE a orquestra? E os beijos? Tudo a noite, fora,\nCauta, detém. Só modulada trila\nA flauta flébil... Quem há-de remi-la?\nQuem sabe a dor que sem razão deplora?\n\nSó, incessante, um som de flauta chora...",
+      "forma": "outro",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Ao_longe_os_barcos_de_flores",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Tatuagens complicadas do meu peito",
+      "texto": "Tatuagens complicadas do meu peito:\n—Trophéos, emblemas, dois leões aládos...\nMais, entre corações engrinaldados,\nUm enorme, soberbo, amor-perfeito...\n\nE o meu brazão... Tem de oiro n'um quartel\nVermelho, um lys; tem no outro uma donzella,\nEm campo azul, de prata o corpo, aquella\nQue é no meu braço como que um broquel.\n\nTimbre: rompante, a megalomania...\nDivisa: um ai,—que insiste noite e dia\nLembrando ruinas, sepulturas rasas...\n\nEntre castelos serpes batalhantes,\nE aguias de negro, desfraldando as azas,\nQue realça de oiro um colar de besantes!",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Tatuagens_complicadas_do_meu_peito",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Estátua",
+      "texto": "Cancei-me de tentar o teu segrêdo:\nNo teu olhar sem côr,—frio escalpello,—\nO meu olhar quebrei, a debate-lo,\nComo a onda na crista d'um rochêdo.\n\nSegrêdo d'essa alma e meu degrêdo\nE minha obcessão! Para bebe-lo\nFui teu labio oscular, n'um pesadêlo,\nPor noites de pavor, cheio de medo.\n\nE o meu osculo ardente, allucinado,\nEsfriou sobre o marmore correcto\nD'esse entreaberto labio gelado...\n\nD'esse labio de marmore, discreto,\nSevero como um tumulo fechado,\nSerêno como um pélago quieto.",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Estatua",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Quando voltei encontrei os meus passos",
+      "texto": "Quando voltei encontrei os meus passos\nAinda frescos sobre a humida areia,\nA fugitiva hora, reevoqueia,\n—Tão redíviva! nos meus olhos baços...\n\nOlhos turvos de lagrimas contidas.\n—Mesquinhos passos, porque doidejastes\nAssim transviados, e depois tornastes\nAo ponto das primeiras despedidas?\n\nOnde fostes sem tino, ao vento vario,\nEm redor, como as aves n'um aviario,\nAté que a azita fôfa lhes falleça...\n\nToda essa extensa pista—para quê?\nSe ha-de vir apagar-vos a maré,\nCom as do novo rasto que começa...",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Quando_voltei_encontrei_os_meus_passos",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Floriram por engano as rosas bravas",
+      "texto": "Floriram por engano as rosas bravas\nNo inverno: veio o vento desfolhal-as...\nEm que scismas, meu bem? Porque me callas\nAs vozes com que ha pouco me enganavas?\n\nCastellos doidos! Tão cedo cahistes!...\nOnde vamos, alheio o pensamento,\nDe mãos dadas? Teus olhos, que um momento\nPrescrutaram nos meus, como vão tristes!\n\nE sobre nós cahe nupcial a neve,\nSurda, em triumpho, petalas, de leve\nJuncando o chão, na acrópole de gelos...\n\nEm redor do teu vulto é como um veo!\n¿Quem as esparze—quanta flôr—, do ceo,\nSobre nós dois, sobre os nossos cabellos?",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Floriram_por_engano_as_rosas_bravas",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Desce em folhedos tenros a colina",
+      "texto": "Desce em folhedos tenros a collina:\n—Em glaucos, frouxos tons adormecidos,\nQue saram, frescos, meus olhos ardidos,\nNos quaes a chamma do furor declina...\n\nOh vem, de branco,—do immo da folhagem!\nOs ramos, leve, a tua mão aparte.\nOh vem! Meus olhos querem desposar-te\nReflectir-te virgem a serena imagem.\n\nDe silva doida uma haste esquíva\nQuão delicada te osculou num dedo\nCom um aljôfar côr de rosa viva!...\n\nLigeira a saia... Doce brisa impelle-a...\nOh vem! De branco! Do immo do arvoredo...\nAlma de sylpho, carne de camelia...",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Desce_em_folhedos_tenros_a_collina",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Esvelta surge! Vem das águas, nua",
+      "texto": "Esvelta surge! Vem das aguas, nua,\nTimonando uma concha alvinitente!\nOs rins flexiveis e o seio fremente...\nMorre-me a bocca por beijar a tua.\n\nSem vil pudôr! Do que ha que ter vergonha?\nEis-me formoso, môço e casto, forte.\nTão branco o peito!—para o expôr á Morte...\nMas que ora—a infame!—não se te anteponha.\n\nA hydra torpe!... Que a estrangulo... Esmago-a\nDe encontro á rocha onde a cabeça te ha-de,\nCom os cabellos escorrendo agua,\n\nIr inclinar-se, desmaiar de amor,\nSob o fervor da minha virgindade\nE o meu pulso de jovem gladiador.",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Esvelta_surge!_Vem_das_aguas,_nua",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Inscripção",
+      "texto": "Eu vi a luz em um paiz perdido.\nA minha alma é languida e inerme.\nOh! Quem podesse deslisar sem ruido!\nNo chão sumir-se, como faz um verme...",
+      "forma": "quadra",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Incrip%C3%A7%C3%A3o",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Imagens que passaes pela retina",
+      "texto": "Imagens que passaes pela retina\nDos meus olhos, porque não vos fixaes?\nQue passaes como a agua crystallina\nPor uma fonte para nunca mais!...\n\nOu para o lago escuro onde termina\nVosso curso, silente de juncaes,\nE o vago mêdo angustioso domina,\n—Porque ides sem mim, não me levaes?\n\nSem vós o que são os meus olhos abertos?\n—O espelho inutil, meus olhos pagãos!\nAridez de successivos desertos...\n\nFica sequer, sombra das minhas mãos,\nFlexão casual de meus dedos incertos,\n—Estranha sombra em movimentos vãos.",
+      "forma": "soneto",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Imagens_que_passaes_pela_retina",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Crepuscular",
+      "texto": "Ha no ambiente um murmurio de queixume,\nDe desejos de amor, d'ais comprimidos...\nUma ternura esparsa de balidos,\nSente-se esmorecer como um perfume.\n\nAs madre-silvas murcham nos silvados\nE o arôma que exhalam pelo espaço,\nTem delíquios de gôso e de cansaço\nNervosos, femininos, delìcados.\n\nSentem-se espasmos, agonias d'ave,\nInaprehensiveis, minimas, serênas...\n—Tenho entre as mãos as tuas mãos pequenas.\nO meu olhar no teu olhar suave.\n\nAs tuas mãos tão brancas d'anemia...\nOs teus olhos tão meigos de tristeza...\n—É este enlanguescer da natureza,\nEste vago sofrer do fim do dia.",
+      "forma": "outro",
+      "obra": "Clepsidra",
+      "ano": 1920,
+      "fonte": "https://pt.wikisource.org/wiki/Crepuscular",
+      "tags": [
+        "melancolia",
+        "portugues"
+      ]
+    }
+  ]
+}

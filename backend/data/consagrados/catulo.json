@@ -1,0 +1,126 @@
+{
+  "username": "catulo",
+  "name": "Catulo",
+  "bio": "Gaius Valerius Catullus, poeta latino de Verona, membro dos poetas novos da Roma do fim da República (datas aproximadas). Seus Carmina, com os poemas a Lésbia, misturam amor, ciúme, ironia e obscenidade numa voz pessoal e moderna que influenciou toda a lírica ocidental.",
+  "avatar_url": "",
+  "nascimento": -84,
+  "morte": -54,
+  "poemas": [
+    {
+      "titulo": "Carmen 5 (Vivamus, mea Lesbia, atque amemus)",
+      "texto": "Vivamus, mea Lesbia, atque amemus,\nrumoresque senum severiorum\nomnes unius aestimemus assis.\nsoles occidere et redire possunt:\nnobis cum semel occidit brevis lux,\nnox est perpetua una dormienda.\nda mi basia mille, deinde centum,\ndein mille altera, dein secunda centum,\ndeinde usque altera mille, deinde centum.\ndein, cum milia multa fecerimus,\nconturbabimus ilia, ne sciamus,\naut nequis malus invidere possit,\ncum tantum sciat esse basiorum.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/5",
+      "tags": [
+        "amor",
+        "beijo",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 85 (Odi et amo)",
+      "texto": "Odi et amo. quare id faciam, fortasse requiris.\n nescio, sed fieri sentio et excrucior.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/85",
+      "tags": [
+        "amor",
+        "odio",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 101 (Multas per gentes)",
+      "texto": "Multas per gentes et multa per aequora vectus\n advenio has miseras, frater, ad inferias,\nut te postremo donarem munere mortis\n et mutam nequiquam alloquerer cinerem,\nquandoquidem fortuna mihi tete abstulit ipsum,\n heu miser indigne frater adempte mihi.\nnunc tamen interea haec, prisco quae more parentum\n tradita sunt tristi munere ad inferias,\naccipe fraterno multum manantia fletu,\n atque in perpetuum, frater, ave atque vale. �",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/101",
+      "tags": [
+        "luto",
+        "irmao",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 8 (Miser Catulle)",
+      "texto": "Miser Catulle, desinas ineptire,\net quod vides perisse perditum ducas.\nfulsere quondam candidi tibi soles,\ncum ventitabas quo puella ducebat\namata nobis quantum amabitur nulla.\nibi illa multa tum iocosa fiebant,\nquae tu volebas nec puella nolebat.\nfulsere vere candidi tibi soles.\nnunc iam illa non vult: tu quoque, impotens, noli,\nnec quae fugit sectare, nec miser vive,\nsed obstinata mente perfer, obdura.\nvale, puella. iam Catullus obdurat,\n\nnec te requiret nec rogabit invitam:\nat tu dolebis, cum rogaberis nulla\nscelesta, *nocte. quae tibi manet vita?\nquis nunc te adibit? cui videberis bella?\nquem nunc amabis? cuius esse diceris?\nquem basiabis? cui labella mordebis?\nat tu, Catulle, destinatus obdura.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/8",
+      "tags": [
+        "amor",
+        "desilusao",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 1 (Cui dono lepidum novum libellum)",
+      "texto": "Cui dono lepidum novum libellum\narido modo pumice expolitum?\nCorneli, tibi: namque tu solebas\nmeas esse aliquid putare nugas,\niam tum cum ausus es unus Italorum\nomne aevum tribus explicare chartis\ndoctis, Iuppiter, et laboriosis.\nquare habe tibi quicquid hoc libelli,\nqualecumque; quod, o patrona virgo,\nplus uno maneat perenne saeclo.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/1",
+      "tags": [
+        "poesia",
+        "amizade",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 3 (Lugete, o Veneres Cupidinesque)",
+      "texto": "Lugete, o Veneres Cupidinesque,\net quantumst hominum venustiorum.\npasser mortuus est meae puellae,\npasser, deliciae meae puellae,\nquem plus illa oculis suis amabat:\nnam mellitus erat suamque norat\nipsam tam bene quam puella matrem;\nnec sese a gremio illius movebat,\nsed circumsiliens modo huc modo illuc\nad solam dominam usque pipiabat.\nqui nunc it per iter tenebricosum\nilluc, unde negant redire quemquam.\nat vobis male sit, malae tenebrae\nOrci, quae omnia bella devoratis:\ntam bellum mihi passerem abstulistis.\nvae factum male! vae miselle passer!\ntua nunc opera meae puellae\nflendo turgiduli rubent ocelli.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/3",
+      "tags": [
+        "luto",
+        "amor",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 2 (Passer, deliciae meae puellae)",
+      "texto": "Passer, deliciae meae puellae,\nquicum ludere, quem in sinu tenere,\ncui primum digitum dare appetenti\net acris solet incitare morsus,\ncum desiderio meo nitenti\ncarum nescio quid libet iocari,\ncredo ut, cum gravis acquiescet ardor,\nsit solaciolum sui doloris,\ntecum ludere sicut ipsa possem\net tristis animi levare curas!",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/2",
+      "tags": [
+        "amor",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 7 (Quaeris, quot mihi basiationes)",
+      "texto": "Quaeris, quot mihi basiationes\ntuae, Lesbia, sint satis superque.\nquam magnus numerus Libyssae harenae\nlasarpiciferis iacet Cyrenis,\noraclum Iovis inter aestuosi\net Batti veteris sacrum sepulcrum,\naut quam sidera multa, cum tacet nox,\nfurtivos hominum vident amores,\ntam te basia multa basiare\nvesano satis et super Catullost,\nquae nec pernumerare curiosi\npossint nec mala fascinare lingua.",
+      "forma": "outro",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/7",
+      "tags": [
+        "amor",
+        "beijo",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Carmen 70 (Nulli se dicit mulier mea nubere malle)",
+      "texto": "Nulli se dicit mulier mea nubere malle\n quam mihi, non si se Iuppiter ipse petat.\ndicit: sed mulier cupido quod dicit amanti\n in vento et rapida scribere oportet aqua.",
+      "forma": "quadra",
+      "obra": "Carmina",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Catullus,_ed._Cornish)/70",
+      "tags": [
+        "amor",
+        "desconfianca",
+        "latim"
+      ]
+    }
+  ]
+}

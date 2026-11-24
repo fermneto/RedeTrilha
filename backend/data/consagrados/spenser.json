@@ -1,0 +1,71 @@
+{
+  "username": "spenser",
+  "name": "Edmund Spenser",
+  "bio": "Edmund Spenser, poeta inglês de Londres que viveu na Irlanda. Autor de The Faerie Queene, longa alegoria épica dedicada a Elizabeth I, e dos sonetos de Amoretti. Criou a estrofe spenseriana e foi chamado o poeta dos poetas.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Edmund_Spenser_oil_painting.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1552,
+  "morte": 1599,
+  "poemas": [
+    {
+      "titulo": "Amoretti — Sonnet 75 (One day I wrote her name upon the strand)",
+      "texto": "Sonnet LXXV\n\nONE day I wrote her name upon the strand,\n  but came the waves and washed it away:\n  again I wrote it with a second hand,\n  but came the tide, and made my pains his prey.\nVain man, said she, that dost in vain assay,\n  a mortal thing so to immortalize,\n  for I myself shall like to this decay,\n  and eke my name be wiped out likewise.\nNot so, (quod I) let baser things devise,\n  to die in dust, but you shall live by fame:\n  my verse your virtues rare shall eternize,\n  and in the heavens write your glorious name.\n  Where when as death shall all the world subdue,\n  our love shall live, and later life renew.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Sonnet_75_(Spenser)",
+      "tags": [
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Faerie Queene — Book I, Canto I, estâncias 1–4",
+      "texto": "The Patrone of true Holinesse,\nFoule Errour doth defeate:\nHypocrisie him to entrappe,\nDoth to his home entreate.\n\nA Gentle Knight was pricking on the plaine,\nYcladd in mightie armes and siluer shielde,\nWherein old dints of deepe woundes did remaine,\nThe cruell markes of many' a bloody fielde;\nYet armes till that time did he neuer wield:\nHis angry steede did chide his foming bitt,\nAs much disdayning to the curbe to yield:\nFull iolly knight he seemd, and faire did sitt,\nAs one for knightly giusts and fierce encounters fitt.\n\nAnd on his brest a bloodie Crosse he bore,\nThe deare remembrance of his dying Lord,\nFor whose sweete sake that glorious badge he wore,\nAnd dead as liuing euer him ador'd:\nVpon his shield the like was also scor'd,\nFor soueraine hope, which in his helpe he had:\nRight faithfull true he was in deede and word,\nBut of his cheere did seeme too solemne sad;\nYet nothing did he dread, but euer was ydrad.\n\nVpon a great aduenture he was bond,\nThat greatest Gloriana to him gaue,\nThat greatest Glorious Queene of Faery lond,\nTo winne him worshippe, and her grace to haue,\n Which of all earthly thinges he most did craue;\nAnd euer as he rode his hart did earne,\nTo proue his puissance in battell braue\nVpon his foe, and his new force to learne;\nVpon his foe, a Dragon horrible and stearne.",
+      "forma": "outro",
+      "obra": "The Faerie Queene",
+      "ano": 1590,
+      "fonte": "https://en.wikisource.org/wiki/The_Faerie_Queene_(1590/1596)/Books_1_to_3_(1590)/Book_I/Canto_I",
+      "tags": [
+        "cavalaria",
+        "alegoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Amoretti — Sonnet 79",
+      "texto": "Sonnet LXXIX\n\nMEN call you fayre, and you doe credit it,\n  For that your selfe ye dayly such doe see:\n  but the trew fayre, that is the gentle wit,\n  and vertuous mind is much more praysd of me.\nFor all the rest, how euer fayre it be,\n  shall turne to nought and loose that glorious hew:\n  but onely that is permanent and free\n  from frayle corruption, that doth flesh ensew.\nThat is true beautie: that doth argue you\n  to be diuine and borne of heauenly seed:\n  deriu'd from that fayre Spirit, from whom all true\n  and perfect beauty did at first proceed.\nHe only fayre, and what he fayre hath made,\n  all other fayre lyke flowres vntymely fade.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Sonnet_79_(Spenser)",
+      "tags": [
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Amoretti — Sonnet 68 (Easter)",
+      "texto": "Sonnet LXVIII\n\nMOST glorious Lord of lyfe that on this day,\n  Didst make thy triumph ouer death and sin:\n  and hauing harrowd hell didst bring away,\n  captiuity thence captiue vs to win.\nThis ioyous day, deare Lord, with ioy begin,\n  and grant that we for whom thou didest dye\n  being with thy deare blood clene washt from sin,\n  may liue foreuer in felicity.\nAnd that thy loue we weighing worthily,\n  may likewise loue thee for the same againe:\n  and for thy sake that all lyke deare didst buy,\n  with loue may one another entertayne.\nSo let vs loue, deare loue, lyke as we ought,\n  loue is the lesson which the Lord vs taught.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Sonnet_68_(Spenser)",
+      "tags": [
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "My Love Is Like to Ice",
+      "texto": "My love is like to ice, and I to fire:\nHow comes it then that this her cold so great\nIs not dissolved through my so hot desire,\nBut harder grows the more I her entreat?\nOr how comes it that my exceeding heat\nIs not allayed by her heart-frozen cold,\nBut that I burn much more in boiling sweat,\nAnd feel my flames augmented manifold?\nWhat more miraculous thing may be told,\nThat fire, which all things melts, should harden ice,\nAnd ice, which is congealed with senseless cold,\nShould kindle fire by wonderful device?\nSuch is the power of love in gentle mind,\nThat it can alter all the course of kind.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/My_Love_Is_Like_to_Ice",
+      "tags": [
+        "amor",
+        "ingles"
+      ]
+    }
+  ]
+}

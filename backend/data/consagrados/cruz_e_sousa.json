@@ -1,0 +1,140 @@
+{
+  "username": "cruz_e_sousa",
+  "name": "Cruz e Sousa",
+  "bio": "Poeta catarinense de Desterro (Florianópolis), filho de escravizados alforriados. Com Missal e Broquéis (1893) fundou o Simbolismo no Brasil, numa poesia musical, sensorial e mística, marcada também pela dor do racismo. Morreu de tuberculose aos 36 anos. É chamado Dante Negro e Cisne Negro.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Cruz_e_Sousa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1861,
+  "morte": 1898,
+  "poemas": [
+    {
+      "titulo": "Antífona",
+      "texto": "Ó Fórmas alvas, brancas, Fórmas claras\nDe luares, de neves, de neblinas!...\nÓ Fórmas vagas, fluidas, crystalinas...\nIncensos dos thuribulos das aras...\n\nFórmas do Amor, constellarmente puras,\nDe Virgens e de Santas vaporosas...\nBrilhos errantes, mádidas frescuras\nE dolencias de lyrios e de rosas...\n\nIndeffiniveis musicas supremas,\nHarmonias da Cor e do Perfume...\nHoras do Occaso, tremulas, extrêmas,\nRequiem do Sol que a Dôr da Luz resume...\n\nVisões, psalmos e canticos serenos,\nSurdinas de orgãos flébeis, soluçantes...\nDormencias de volupicos venenos\nSutis e suaves, mórbidos, radiantes...\n\nInfinitos espiritos dispérsos,\nIneffaveis, edênicos, aéreos,\nFecundai o Mysterio destes versos\nCom a chama ideal de todos os mysterios.\n\nDo Sonho as mais azues diaphaneidades\nQue fúljam, que na Estrofe se levantem\nE as emoções, todas as castidades\nDa alma do Verso, pelos versos cantem.\n\nQue o póllen de ouro dos mais finos astros\nFecunde e inflamme a rima clara e ardente...\nQue brilhe a correção dos alabastros\nSonóramente, luminosamente.\n\nForças originaes, essencia, graça\nDe carnes de mulher, delicadezas...\nTodo esse effluvio que por ondas passa\nDo Éther nas roseas e aureas correntezas...\n\nCristais diluidos de clarões alacres,\nDesejos, vibrações, ansias, alentos,\nFulvas victorias, triunfamentos acres,\nOs mais estranhos estremecimentos...\n\nFlores negras do tédio e flores vagas\nDe amôres vãos, tantalicos, doentios...\nFundas vermelhidões de velhas chagas\nEm sangue, abertas, escorrendo em rios...\n\nTudo! vivo e nervoso e quente e forte,\nNos turbilhões chiméricos do Sonho,\nPasse, cantando, ante o perfil medonho\nE o tropél cabalístico da Morte...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Ant%C3%ADfona_(Cruz_e_Sousa)",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Siderações",
+      "texto": "Para as Estrellas de crystaes gelados\nAs ancias e os desejos vão subindo,\nGalgando azues e sideraes noivados\nDe nuvens brancas a amplidião vestindo...\n\nN'um cortejo de canticos alados\nOs archanjos, as cytharas ferindo,\nPassam, das vestes nos trophéus prateados,\nAs azas de ouro finamente abrindo...\n\nDos ethéreos thuribulos de neve\nClaro incenso aromal, limpido e leve,\nOndas nevoentas de Visões levauta...\n\nE as aneias e os desejos infinitos\nVão com os archanjos formulando ritos\nDa Eternidade que nos Astros canta...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sidera%C3%A7%C3%B5es",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Cárcere das almas",
+      "texto": "Ah! Toda a alma num cárcere anda presa,\nSoluçando nas trevas, entre as grades\nDo calabouço olhando imensidades,\nMares, estrelas, tardes, natureza.\n\nTudo se veste de uma igual grandeza\nQuando a alma entre grilhões as liberdades\nSonha e, sonhando, as imortalidades\nRasga no etéreo o Espaço da Pureza.\n\nÓ almas presas, mudas e fechadas\nNas prisões colossais e abandonadas,\nDa Dor no calabouço, atroz, funéreo!\n\nNesses silêncios solitários, graves,\nque chaveiro do Céu possui as chaves\npara abrir-vos as portas do Mistério?!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/C%C3%A1rcere_das_almas",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Sorriso interior",
+      "texto": "O ser que é ser e que jamais vacila\nNas guerras imortais entra sem susto,\nLeva consigo esse brasão Augusto\nDo grande amor, da nobre fé tranquila.\n\nOs abismos carnais da triste argila\nEle os vence sem ânsias e sem custo...\nFica sereno, num sorriso justo,\nEnquanto tudo em derredor oscila.\n\nOndas interiores de grandeza\nDão-lhe essa glória em frente à Natureza,\nEsse esplendor, todo esse largo eflúvio.\n\nO ser que é ser transforma tudo em flores...\nE para ironizar as próprias dores\nCanta por entre as águas do Dilúvio!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sorriso_interior",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Triunfo supremo",
+      "texto": "Quem anda pelas lágrimas perdido,\nSonâmbulo dos trágicoa flagelos,\nÉ quem deixou para sempre esquecido\nO mundo e os fúteis ouropéis mais belos!\n\nÉ quem ficou no mundo redimido,\nExpurgado dos vícios mais singelos\nE disse a tudo o adeus indefinido\nE desprendeu-se dos carnais anelos!\n\nÉ quem entrou por todas as batalhas\nAs mãos e os pés e o flanco ensangüentado,\nAmortalhado em todas as mortalhas.\n\nQuem florestas e mares foi rasgando\nE entre raios, pedradas e metralhas,\nFicou gemendo mas ficou sonhando!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Triunfo_supremo",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Vida obscura",
+      "texto": "Ninguém sentiu o teu espasmo obscuro,\nÓ ser humilde entre os humildes seres.\nEmbriagado, tonto dos prazeres,\nO mundo para ti foi negro e duro.\n\nAtravessaste num silêncio escuro\nA vida presa a trágicos deveres\nE chegaste ao saber de altos saberes\nTornando-te mais simples e mais puro.\n\nNinguémTe viu o sentimento inquieto,\nMagoado, oculto e aterrador, secreto,\nQue o coração te apunhalou no mundo.\n\nMas eu que sempre te segui os passos\nSei que cruz infernal prendeu-te os braços\nE o teu suspiro como foi profundo!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Vida_obscura",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Acrobata da dor",
+      "texto": "Gargalha, ri, n'um riso de tormenta,\nComo um palhaço, que desengonçado,\nNervoso, ri, n'um riso absurdo, inflado\nDe uma ironia e de uma dôr violenta.\n\nDa gargalhada atroz, sanguinolenta,\nAgita os guizos, e convulsionado\nSalta, gavrochc, salta clown, varado\nPelo estertor dessa agonia lenta...\n\nPédem-te bis e um bis não se despréza!\nVamos! retéza os musculos, retéza\nNessas macabras piruêtas d'aço...\n\nE embóra cáias sobre o chão, fremente,\nAfogado em teu sangue estuoso e quente\nRi! Coração, tristissimo palhaço",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Acrobata_da_Dor",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Monja",
+      "texto": "Ó Lua, Lua triste, amargurada,\nPhantasma de brancnras vaporosas,\nA tua nivea luz ciliciada\nFaz murchecer e congelar as rosas.\n\nNas floridas seáras ondulosas,\nCuja folhagem brilha phosphoreada,\nPassam sombras angélicas, nivosas,\nLua, Monja da cella constellada.\n\nPhiltros dormentes dão aos lagos quiétos,\nAo mar, ao campo, os sonhos mais secretos,\nQue vão pelo ar, noctambulos, pairando...\n\nEntão, ó Monja branca dos espaços,\nParece que abres para mim os braços,\nFria, de joelhos, trémula, rezando...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Monja",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Sonhador",
+      "texto": "Por sóes, por bellos sóes alviçareiros,\nNos trophéus do teu Sonho irás cantando,\nAs purpuras romanas arrastando,\nEngrinaldado de immortaes loureiros.\n\nNobre guerreiro audaz entre os guerreiros,\nDas Idéas as lanças sopesando,\nVerás, a pouco e pouco, desfillando\nTodos os teus desejos condoreiros...\n\nImmaculado, sobre o lôdo immundo,\nHa de subir, com as vivas castidades,\nDas tuas glorias o clarão profundo.\n\nHa de subir, além de eternidades,\nDiante do tôrvo crocitar do mundo,\nPara o branco Sacrario das Saudades !",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sonhador",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Lésbia",
+      "texto": "Cróton selvagem, tinhorão lascivo,\nPlanta mortal, carnivora, sangrenta,\nDa tua carne bacchica rebenta\nA vermelha explosão de um sangue vivo.\n\nNesse labio mordente e convulsivo,\nRi, ri risadas de expressão violenta\nO Amor, tragico e triste, e passa, lenta,\nA morte, o espasmo gélido, aflictivo...\n\nLésbia nervosa, fascinante e doente,\nCruel e demoniaca serpente\nDas flammejantes attracções do goso.\n\nDos teus seios acídulos, amargos,\nFlúem capros arômas e os lethargos,\nOs ópios de um luar tuberculoso...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/L%C3%A9sbia_(Cruz_e_Sousa)",
+      "tags": [
+        "dor",
+        "transcendencia",
+        "portugues"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "username": "yeats",
+  "name": "W. B. Yeats",
+  "bio": "William Butler Yeats, poeta e dramaturgo irlandês de Dublin, líder do renascimento literário irlandês e Nobel de Literatura em 1923. De The Lake Isle of Innisfree a The Second Coming, uniu mito celta, simbolismo e política.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/William_Butler_Yeats_by_George_Charles_Beresford.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1865,
+  "morte": 1939,
+  "poemas": [
+    {
+      "titulo": "The Lake Isle of Innisfree",
+      "texto": "I will arise and go now, and go to Innisfree,\nAnd a small cabin build there, of clay and wattles made:\nNine bean-rows will I have there, a hive for the honey-bee,\nAnd live alone in the bee-loud glade.\n\nAnd I shall have some peace there, for peace comes dropping slow,\nDropping from the veils of the morning to where the cricket sings;\nThere midnight's all a glimmer, and noon a purple glow,\nAnd evening full of the linnet's wings.\n\nI will arise and go now, for always night and day\nI hear lake water lapping with low sounds by the shore;\nWhile I stand on the roadway, or on the pavements grey,\nI hear it in the deep heart's core.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Lake_Isle_of_Innisfree",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "When You Are Old",
+      "texto": "When you are old and grey and full of sleep,\nAnd nodding by the fire, take down this book,\nAnd slowly read, and dream of the soft look\nYour eyes had once, and of their shadows deep;\n\nHow many loved your moments of glad grace,\nAnd loved your beauty with love false or true,\nBut one man loved the pilgrim soul in you,\nAnd loved the sorrows of your changing face;\n\nAnd bending down beside the glowing bars,\nMurmur, a little sadly, how Love fled\nAnd paced upon the mountains overhead\nAnd hid his face amid a crowd of stars.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Countess_Kathleen_and_Various_Legends_and_Lyrics/When_You_Are_Old",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Second Coming",
+      "texto": "Turning and turning in the widening gyre\nThe falcon cannot hear the falconer;\nThings fall apart; the centre cannot hold;\nMere anarchy is loosed upon the world,\nThe blood-dimmed tide is loosed, and everywhere\nThe ceremony of innocence is drowned;\nThe best lack all conviction, while the worst\nAre full of passionate intensity.\n\nSurely some revelation is at hand;\nSurely the Second Coming is at hand.\nThe Second Coming! Hardly are those words out\nWhen a vast image out of Spiritus Mundi\nTroubles my sight: a waste of desert sand;\nA shape with lion body and the head of a man,\nA gaze blank and pitiless as the sun,\nIs moving its slow thighs, while all about it\nWind shadows of the indignant desert birds.\n The darkness drops again but now I know\nThat twenty centuries of stony sleep\nWere vexed to nightmare by a rocking cradle,\nAnd what rough beast, its hour come round at last,\nSlouches towards Bethlehem to be born?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Michael_Robartes_and_the_Dancer/The_Second_Coming",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Easter, 1916",
+      "texto": "I have met them at close of day\nComing with vivid faces\nFrom counter or desk among grey\nEighteenth-century houses.\nI have passed with a nod of the head\nOr polite meaningless words,\nOr have lingered awhile and said\nPolite meaningless words,\nAnd thought before I had done\nOf a mocking tale or a gibe\nTo please a companion\nAround the fire at the club,\nBeing certain that they and I\nBut lived where motley is worn:\nAll changed, changed utterly:\nA terrible beauty is born.\n\nThat woman’s days were spent\nIn ignorant good will,\nHer nights in argument\nUntil her voice grew shrill.\nWhat voice more sweet than hers\nWhen young and beautiful,\nShe rode to harriers?\nThis man had kept a school\nAnd rode our winged horse.\nThis other his helper and friend\n Was coming into his force;\nHe might have won fame in the end,\nSo sensitive his nature seemed,\nSo daring and sweet his thought.\nThis other man I had dreamed\nA drunken, vain-glorious lout.\nHe had done most bitter wrong\nTo some who are near my heart,\nYet I number him in the song;\nHe, too, has resigned his part\nIn the casual comedy;\nHe, too, has been changed in his turn,\nTransformed utterly:\nA terrible beauty is born.\n\nHearts with one purpose alone\nThrough summer and winter seem\nEnchanted to a stone\nTo trouble the living stream.\nThe horse that comes from the road,\nThe rider, the birds that range\nFrom cloud to tumbling cloud,\nMinute by minute change;\nA shadow of cloud on the stream\nChanges minute by minute;\nA horse-hoof slides on the brim,\nAnd a horse plashes within it\nWhere long-legged moor-hens dive,\nAnd hens to moor-cocks call.\n Minute by minute they live:\nThe stone’s in the midst of all.\n\nToo long a sacrifice\nCan make a stone of the heart.\nO when may it suffice?\nThat is heaven’s part, our part\nTo murmur name upon name,\nAs a mother names her child\nWhen sleep at last has come\nOn limbs that had run wild.\nWhat is it but nightfall?\nNo, no, not night but death;\nWas it needless death after all?\nFor England may keep faith\nFor all that is done and said.\nWe know their dream; enough\nTo know they dreamed and are dead.\nAnd what if excess of love\nBewildered them till they died?\nI write it out in a verse—\nMacDonagh and MacBride\nAnd Connolly and Pearse\nNow and in time to be,\nWherever green is worn,\nAre changed, changed utterly:\nA terrible beauty is born.\n\nSeptember 25th, 1916.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Michael_Robartes_and_the_Dancer/Easter,_1916",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Sailing to Byzantium",
+      "texto": "I\nThat is no country for old men. The young\nIn one another's arms, birds in the trees,\n—Those dying generations—at their song,\nThe salmon-falls, the mackerel-crowded seas,\nFish flesh or fowl, commend all summer long\nWhatever is begotten born and dies.\nCaught in that sensual music all neglect\nMonuments of unaging intellect.\nII\nAn aged man is but a paltry thing,\nA tattered coat upon a stick, unless\n Soul clap its hands and sing, and louder sing\nFor every tatter in its mortal dress,\nNor is there singing school but studying\nMonuments of its own magnificence;\nAnd therefore I have sailed the seas and come\nTo the holy city of Byzantium.\nIII\nO sages standing in God's holy fire\nAs in the gold mosaic of a wall,\nCome from the holy fire, perne in a gyre,\nAnd be the singing masters of my soul.\nConsume my heart away; sick with desire\nAnd fastened to a dying animal\nIt knows not what it is; and gather me\nInto the artifice of eternity.\n\nIV\nOnce out of nature I shall never take\nMy bodily form from any natural thing,\nBut such a form as Grecian goldsmiths make\nOf hammered gold and gold enamelling\nTo keep a drowsy emperor awake;\nOr set upon a golden bough to sing\nTo lords and ladies of Byzantium\nOf what is past, or passing, or to come.\n\n  1927",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Tower_(Yeats)/Sailing_to_Byzantium",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "He Wishes for the Cloths of Heaven",
+      "texto": "Had I the heavens' embroidered cloths,\nEnwrought with golden and silver light,\nThe blue and the dim and the dark cloths\nOf night and light and the half-light,\n\nI would spread the cloths under your feet:\nBut I, being poor, have only my dreams;\nI have spread my dreams under your feet;\nTread softly because you tread on my dreams.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/He_wishes_for_the_Cloths_of_Heaven",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Wild Swans at Coole",
+      "texto": "The trees are in their autumn beauty,\nThe woodland paths are dry,\nUnder the October twilight the water\nMirrors a still sky;\nUpon the brimming water among the stones\nAre nine and fifty swans.\n\nThe nineteenth Autumn has come upon me\nSince I first made my count;\nI saw, before I had well finished,\nAll suddenly mount\nAnd scatter wheeling in great broken rings\nUpon their clamorous wings.\n\nI have looked upon those brilliant creatures,\nAnd now my heart is sore.\nAll's changed since I, hearing at twilight,\nThe first time on this shore,\nThe bell-beat of their wings above my head,\nTrod with a lighter tread.\n\nUnwearied still, lover by lover,\nThey paddle in the cold,\nCompanionable streams or climb the air;\nTheir hearts have not grown old;\nPassion or conquest, wander where they will,\nAttend upon them still.\n\nBut now they drift on the still water\nMysterious, beautiful;\n\nAmong what rushes will they build,\nBy what lake's edge or pool\nDelight men's eyes, when I awake some day\nTo find they have flown away?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Wild_Swans_at_Coole_(Collection)/The_Wild_Swans_at_Coole",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "An Irish Airman Foresees his Death",
+      "texto": "I know that I shall meet my fate\nSomewhere among the clouds above;\nThose that I fight I do not hate\nThose that I guard I do not love;\nMy country is Kiltartan Cross,\nMy countrymen Kiltartan's poor,\nNo likely end could bring them loss\nOr leave them happier than before.\nNor law, nor duty bade me fight,\nNor public man, nor cheering crowds,\nA lonely impulse of delight\nDrove to this tumult in the clouds;\nI balanced all, brought all to mind,\nThe years to come seemed waste of breath,\nA waste of breath the years behind\nIn balance with this life, this death.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Wild_Swans_at_Coole_(Collection)/An_Irish_Airman_Foresees_his_Death",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Down by the Salley Gardens",
+      "texto": "Down by the salley gardens my love and I did meet;\nShe passed the salley gardens with little snow-white feet.\nShe bid me take love easy, as the leaves grow on the tree;\nBut I, being young and foolish, with her did not agree.\n\nIn a field by the river my love and I did stand,\nAnd on my leaning shoulder she laid her snow-white hand.\nShe bid me take life easy, as the grass grows on the weirs;\nBut I was young and foolish, and now am full of tears.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Wanderings_of_Oisin_and_Other_Poems/Down_by_the_Salley_Gardens",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Stolen Child",
+      "texto": "Where dips the rocky highland\nOf Sleuth Wood in the lake,\nThere lies a leafy island\nWhere flapping herons wake\nThe drowsy water-rats;\nThere we've hid our faery vats,\nFull of berries\nAnd of reddest stolen cherries.\nCome away, O human child!\nTo the waters and the wild\nWith a faery, hand in hand,\nFor the world's more full of weeping than you\ncan understand.\n\nWhere the wave of moonlight glosses\nThe dim grey sands with light,\nFar off by furthest Rosses\nWe foot it all the night,\nWeaving olden dances,\nMingling hands and mingling glances\nTill the moon has taken flight;\nTo and fro we leap\nAnd chase the frothy bubbles,\nWhile the world is full of troubles\nAnd is anxious in its sleep.\nCome away, O human child!\nTo the waters and the wild\nWith a faery, hand in hand,\nFor the world's more full of weeping than you\ncan understand.\n\nWhere the wandering water gushes\nFrom the hills above Glen-Car,\nIn pools among the rushes\nThat scarce could bathe a star,\nWe seek for slumbering trout\nAnd whispering in their ears\nGive them unquiet dreams;\nLeaning softly out\nFrom ferns that drop their tears\nOver the young streams.\nCome away, O human child!\nTo the waters and the wild\nWith a faery, hand in hand,\nFor the world's more full of weeping than you\ncan understand.\n\nAway with us he's going,\nThe solemn-eyed:\nHe'll hear no more the lowing\nOf the calves on the warm hillside\nOr the kettle on the hob\nSing peace into his breast,\nOr see the brown mice bob\nRound and round the oatmeal-chest.\nFor he comes, the human child,\nTo the waters and the wild\nWith a faery, hand in hand,\nFrom a world more full of weeping than he\ncan understand.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Wanderings_of_Oisin_and_Other_Poems/The_Stolen_Child",
+      "tags": [
+        "irlanda",
+        "tempo",
+        "ingles"
+      ]
+    }
+  ]
+}

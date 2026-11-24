@@ -1,0 +1,70 @@
+{
+  "username": "guerra_junqueiro",
+  "name": "Guerra Junqueiro",
+  "bio": "Abílio Manuel Guerra Junqueiro, poeta de Freixo de Espada à Cinta. Foi o poeta mais popular do Portugal de fim de século, com sátiras anticlericais e republicanas como A Velhice do Padre Eterno e Pátria, e com a lírica de Os Simples. Sua obra ajudou a preparar a República de 1910.",
+  "avatar_url": "",
+  "nascimento": 1850,
+  "morte": 1923,
+  "poemas": [
+    {
+      "titulo": "A moleirinha",
+      "texto": "Pela estrada plana, toc, toc, toc,\nGuia o jumentinho uma velhinha errante.\nComo vão ligeiros, ambos a reboque,\nAntes que anoiteça, toc, toc, toc,\nA velhinha atraz, o jumentito adiante!...\n\nToc, toc, a velha vae para o moinho,\nTem oitenta anos, bem bonito rol!...\nE comtudo alegre como um passarinho,\nToc, toc, e fresca como o branco linho,\nDe manhã nas relvas a córar ao sol.\n\nVae sem cabeçada, em liberdade franca,\nO gerico russo d'uma linda côr;\nNunca foi ferrado, nunca usou retranca,\nTange-o, toc, toc, a moleirinha branca\nCom o galho verde d'uma giesta em flor.\n\nVendo esta velhita, encarquilhada e benta,\nToc, toc, toc, que recordação!\nMinha avó ceguinha se me representa...\nTinha eu seis anos, tinha ella oitenta,\nQuem me fez o berço fez-lhe o seu caixão!...\n\nToc, toc, toc, lindo burriquito,\nPara as minhas filhas quem m'o dera a mim!\nNada mais gracioso, nada mais bonito!\nQuando a Virgem pura foi para o Egipto,\nCom certeza ia n'um burrico assim.\n\nToc, toc, é tarde, moleirinha santa!\nNascem as estrellas, vivas, em cardume...\nToc, toc, toc, e quando o galo canta,\nLogo a moleirinha, toc, se levanta,\nP'ra vestir os netos, p'ra acender o lume...\n\nToc, toc, toc, como se espaneja,\nLindo o jumentinho pela estrada chan!\nTão ingenuo e humilde, dá-me, salvo seja,\nDá-me até vontade de o levar á egreja,\nBaptisar-lhe a alma p'ra a fazer cristan!\n\nToc, toc, toc, e a moleirinha antiga,\nToda, toda branca, vae n'uma frescata...\nFoi enfarinhada, sorridente amiga,\nPela mó da azenha com farinha triga,\nPelos anjos loiros com luar de prata!...\n\nToc, toc, como o burriquito avança!\nQue prazer d'outrora para os olhos meus!\nMinha avó contou-me quando fui creança,\nQue era assim tal qual a jumentinha mansa\nQue adorou nas palhas o menino Deos...\n\nToc, toc, é noite... ouvem-se ao longe os sinos,\nMoleirinha branca, branca de luar!...\nToc, toc, e os astros abrem diamantinos,\nComo estremunhados cherubins divinos,\nOs olhitos meigos para a ver passar...\n\nToc, toc, e vendo sideral tesoiro,\nEntre os milhões d'astros o luar sem veo,\nO burrico pensa: Quanto milho loiro!\nQuem será que moe estas farinhas d'oiro\nCom a mó de jaspe que anda alem no ceo!...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_moleirinha",
+      "tags": [
+        "critica_social",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Eiras ao luar",
+      "texto": "       Alvor da lua nas eiras,\n       Nem linhos de fiandeiras,\n       Nem veos de noivas ou freiras,\n       Nem rendas d'ondas do mar!...\nSobre espigas d'ouro bailam as ceifeiras,\nNa aleluia argentea do clarão do luar!...\n\n       Bailae sob as lagrimosas\n       Estrellinhas misteriosas,\n       Scintilações, nebulosas,\n       Fremitos vagos d'empyreos!...\n\nDeos golpeia a aurora p'ra dar sangue ás rosas,\nDeos ordenha a lua p'ra dar leite aos lirios!...\n\n       Ai, medas de prata e oiro,\n       De lua branca e pão loiro,\n       Malhadas no malhadoiro,\n       A enfeitiçar e a fulgir!...\nOh, bailae á volta d'esse bom tesoiro,\nQue é a codea negra que ceaes a rir!...\n\n       Quem nas ladeiras e prados,\n       Com as lanças dos arados,\n       Abriu sulcos e valados\n       Na terra gelida e nua?\nOh, bailae á volta desses bois deitados,\nQue estão d'olhos tristes adorando a lua!...\n\n       Que bandos de passarinhos,\n       Vem lá de campos maninhos,\n       De fraguedos, de caminhos,\n       Jantar aqui, merendar!...\nOh, bailae em volta de milhões de ninhos!\nOh, bailae cantando para os acordar!...\n\n       Entre as palhas do centeio,\n       Quantas esmolas no meio,\n       Que deixam lirios no seio\n       E as mãos escorrendo luz!...\nOh, bailae em volta do celeiro cheio!\nOh, bailae á volta dos mendigos nus!...\n\nQuanta hostia consagrada,\n– Pão da ultima jornada! –\nDorme na meda encantada\nAo luar tão leve e tão lindo!...\n\nOh, bailae em volta d'essa mó doirada,\nQue bailaes á volta de Jesus dormindo!...\n\n       Alvor da lua nas eiras,\n       Nem linhos de fiandeiras,\n       Nem veos de noivas ou freiras,\n       Nem rendas d'ondas do mar!...\nOh, bailae ceifeiras, lindas feiticeiras,\nNa aleluia argentea do clarão do luar!...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Eiras_ao_luar",
+      "tags": [
+        "critica_social",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A caminho",
+      "texto": "UM LAVRADOR\n\n(de noventa anos, em mangas de camisa a lavrar uma terra)\n\nÓ Senhor tão novo, d'olhos côr de esp'rança,\nIdes de caminho para algum logar?\n\nO PEREGRINO\n\nVou dar volta ao mundo...\n\nO LAVRADOR\n\nSem arnez ou lança?!\n\nÓ Senhor tão novo, d'olhos côr de esp'rança,\nPenas e miserias é o que ireis achar!...\n\nUMA VELHINHA\n\n(mais adiante)\n\nÓ Senhor tão novo, d'olhos inocentes,\nIdes com cuidados para um tal andar!...\n\nO PEREGRINO\n\nVou a prender monstros, combater serpentes...\n\nA VELHINHA\n\nÓ Senhor tão novo, d'olhos inocentes,\nOs dragões ferozes vam-no espostejar!...\n\nUMA JOVEN CAMPONEZA\n\n(mais adiante)\n\nÓ Senhor tão novo, d'olhos encantados,\nIdes pela fresca para algum pomar?\n\nO PEREGRINO\n\nVou-me a ler Destinos, descobrir os Fados...\n\nA CAMPONEZA\n\nÓ Senhor tão novo, d'olhos encantados,\nFeiticeiros negros vam-no enfeitiçar!...\n\nUMA PASTORINHA\n\n(mais adiante)\n\nÓ Senhor tão novo, d'olhos tão brilhantes,\nVossos olhos disem que ides p'ra casar...\n\nO PEREGRINO\n\nVou fazer tesoiros, fabricar diamantes...\n\nA PASTORINHA\n\nO' Senhor tão novo, d'olhos tão brilhantes,\nHa ladrões nos bosques, vam-no assassinar!...\n\nUM MENDIGO\n\n(mais adiante)\n\nÓ Senhor tão novo, d'olhos côr de chama,\nVossos olhos ardem como a luz solar!...\n\nO PEREGRINO\n\nVou descobrir mundos, quero gloria e fama!...\n\nO MENDIGO\n\nÓ Senhor tão novo, d'olhos côr de chama,\nSobe o pó mais alto que os trovões do mar!...\n\nA ESTRELA D'ALVA\n\nÓ creança, d'olhos côr da flor dos linhos,\nPor infernos deixas tua paz, teu lar!...\n\nO PEREGRINO\n\n(desaparecendo ao longe)\n\nFlorirei as pedras pelos maus caminhos!\nLevo a luz dos astros e as canções dos ninhos\nA sorrir nos beijos e a tremer no olhar!...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_caminho",
+      "tags": [
+        "critica_social",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A velhice do Padre Eterno — III",
+      "texto": "No topo do calvario erguia-se uma cruz,\nE pregado sobre ella o corpo do Jesus,\nNoite sinistra e má. Nuvens esverdeadas\nCorriam pelo ar como grandes manadas\nDe bufalos. A lua ensanguentada e fria,\nTriste como um soluço immenso de Maria,\nLançava sobre a paz das coizas naturaes\nA merencoria luz feita de brancos ais.\nAs arvores que outr'ora em dias de calor\nAbrigaram Jesus, cheias de magua e dôr,\nSonhavam, na mudez herculea dos heroes.\nDeixaram de cantar todos os rouxinoes,\nUm silencio pesado amortalhava o mundo.\nUnicamente ao longe o velho mar profundo\nDescantava chorando os psalmos da agonia.\n\nJesus, quasi a expirar, cheio de dôr, sorria.\nOs abutres crueis pairavam lentamente\nA farejar-lhe o corpo; ás vezes de repente\nUma nuvem toldava a face do luar,\nE um clarão de gangrena, estranho, singular,\nLançava sob a cruz uns tons esverdeados.\nCrucitavam ao longe os corvos esfaimados;\nMas passado um instante a lua branca e pura\nIrrompia outra vez da grande nevoa escura,\nE inundavam-se então as chagas de Jesus\nNas pulverisações balsamicas da luz.\n\nNo momento em que havia a grande escuridão,\nChristo sentiu alguem aproximar-se, e então\nOlhou e viu surgir no horror das trevas mudas\nO cobarde perfil sacrilego de Judas.\nO traidor, contemplando o olhar do Nazareno,\nTão cheio de desdem, tão nobre, tão sereno,\nConvulso de terror fugiu... Mas nesse instante\nSurgiu-lhe frente a frente um vulto de gigante,\nQue bradou:\n\nÉ chegado emfim o teu castigo\n\nO traidor teve medo e balbuciou:\n\n— Amigo,\nQue pretendes de mim? dize, por quem esperas?\nQuem és tu?\n\n— O Remorso, um caçador de féras,\nDisse o gigante. Eu ando ha mais de seis mil annos\nA caçar pelo mundo as almas dos tiranos,\nDo traidor, do ladrão, do vil, do scelerado;\nE depois de as prender tenho-as encarcerado\nNa enormissima jaula atroz da expiação.\nE quando eu entro ali na immensa confusão\nDe tigres, de leões, d'abutres, de chacaes,\nDe rugidos febris e de gritos bestiaes,\nFica tudo a tremer, quieto de horror e espanto.\nCaim baixa a pupilla e vai deitar-se a um canto.\nE quando em summa algum dos monstros quer luctar\nAzorrago-o co'a luz febril do meu olhar,\nDando-lhe um pontapé, como n'um cão mendigo.\nJá sabes quem eu sou, Judas; anda comigo!\n\nComo um preso que quer comprar um carcereiro,\nJudas tirou do manto a bolça do dinheiro,\nDizendo-lhe:\n\n— Aqui tens, e deixa-me partir...\n\nO gigante fitou-o e começou a rir.\n\nHouve um grande silencio. O infame Iskariote,\nComo um negro que vê a ponta d'um chicote,\nTremia. Finalmente o vulto respondeu:\n\n«Judas, podes guardar esse dinheiro; é teu.\nO oiro da traição pertence-lhe ao traidor,\nComo o riso á innocencia e como o aroma á flôr.\nEsse oiro é para ti o eterno pesadello.\nOh! guarda-o, guarda-o bem, que eu quero derretel-o,\nE lançar-t'o depois caustico, vivo, ardente,\nLançar-t'o gota a gota, inexoravelmente\nEm cima da consciencia, a pudrida, a execravel!\nCom elle hei de fundir a algema inquebrantavel,\nA grilheta que a tua esqualida memoria\nTrará, arrastará pelas galés da Historia,\nDurante a eternidade illimitada e calma.\nEssa bolsa que ahi tens é o cancro da tua alma:\nJá se agarrou a ti, ligou-se ao criminoso,\nComo a lepra nojenta ao peito do leproso,\nComo o iman ao ferro e o verme á podridão.\nNão poderás jámais largal-a da tua mão!\nÉs traidor, assassino, hypocrita, perjuro;\nA tua alma lançada em cima d'um monturo\nFaria nodoa. És tudo o que ha de mais vil,\nDesde o ventre do sapo á baba do reptil.\nSahe da existencia! dize á sombra que te acoite.\nMonstro, procura a paz! verme, procura a noite!\nQue o sol não veja mais um unico momento\nO teu olhar obliquo e o teu perfil nojento.\nEsse crime, bandido, é um crime que profana,\nTodas as grandes leis da vida universal.\nEsconde-te na morte, assim como um chacal\nNo seu covil. Adeus, causas-me nojo e asco.\nDeixo dentro de ti, Judas, o teu carrasco!\nÉs livre; adeus. Já brilha o astro matutino,\nE eu, caçador feroz, cumprindo o meu destino,\nContinuarei caçando os javalis nos matos.»\n\nE dito isto partiu a procurar Pilatos.\n\nVinha rompendo ao longe a fresca madrugada.\nJudas, ficando só, meteu-se pela estrada,\nCaminhando ligeiro, impavido, terrivel,\nComo um homem que leva um fim imprescriptivel\nUma ideia qualquer, heroica e sobranceira;\nDe repente estacou. Havia uma figueira\nProjectando na estrada a larga sombra escura;\nJudas, desenrolando a corda da cintura,\nSubiu acima, atou-a a um ramo vigoroso,\nDando um laço á garganta. O seu olhar odioso\nTinha n'esse momento um brilho diamantino,\nRecto como um juiz, forte como um destino.\n\nN'isto echoou atravez do negro céo profundo\nA voz celestial de Jesus moribundo,\nQue lhe disse:\n\n— «Traidor, concedo-te o perdão.\nAlém de meu carrasco és inda o meu irmão.\nPregaste-me na cruz; é o mesmo, fica em paz.\nEu costumo esquecer o mal que alguem me faz.\nEu tenho até prazer, bem vês, no sacrificio.\nNão te cause remorso o meu atroz suplicio,\nEstes golpes crueis, estas horriveis dores.\nAs chagas para mim são outras tantas flôres!»\n\nJudas fitou ao longe os cerros do calvario,\nE erguendo-se viril, soberbo, extraordinario,\nExclamou:\n\n— «Não acceito a tua compaixão.\nA Justiça dos bons consiste no perdão.\nUn justo não perdôa. A justiça é implacavel.\nA minha acção é infame, hedionda, miseravel;\nPreguei-te nessa cruz, vendi-te aos Farizeus.\nPois bem, sendo eu um monstro e sendo tu um Deus,\nVais vêr como esse monstro, ó pobre Christo nu,\nÉ maior do que Deus, mais justo do que tu:\nÁ tua caridade humanitaria e doce,\nEu prefiro o dever terrivel!»\n\nE enforcou-se.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_velhice_do_Padre_Eterno/III",
+      "tags": [
+        "critica_social",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A velhice do Padre Eterno — IV",
+      "texto": "As creanças têm medo á noite, ás horas mortas\nDo papão que as espera, hediondo, atraz das portas,\nPara as levar no bolso ou no capuz d'um frade.\nNão te rias da infancia, ó velha humanidade,\nQue tu tambem tens medo ao barbaro papão,\nQue ruge pela boca enorme do trovão,\nQue abençôa os punhaes sangrentos dos tyranos,\nUm papão que não faz a barba ha seis mil annos,\nE que mora, segundo os bonzos têm escripto,\nLá em cima, de traz da porta do Infinito.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_velhice_do_Padre_Eterno/IV",
+      "tags": [
+        "critica_social",
+        "portugues"
+      ]
+    }
+  ]
+}

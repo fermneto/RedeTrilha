@@ -1,0 +1,75 @@
+{
+  "username": "tasso",
+  "name": "Torquato Tasso",
+  "bio": "Torquato Tasso, poeta de Sorrento, ligado à corte de Ferrara, onde foi internado por crises mentais. Autor da Gerusalemme liberata, epopeia da Primeira Cruzada, e do drama pastoral Aminta. Sua vida trágica inspirou Goethe e os românticos.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Torquato_Tasso%2C_aged_22%2C_by_Jacopo_da_Ponte%2C_called_Jacopo_Bassano_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1544,
+  "morte": 1595,
+  "poemas": [
+    {
+      "titulo": "Gerusalemme liberata — Canto I, estâncias 1–4",
+      "texto": "Canto l’arme pietose, e ’l Capitano\nChe ’l gran sepolcro liberò di Cristo.\nMolto egli oprò col senno e con la mano;\nMolto soffrì nel glorioso acquisto:\nE invan l’Inferno a lui s’oppose; e invano\ns’armò d’Asia e di Libia il popol misto:\nChè ’l Ciel gli diè favore, e sotto ai santi\nSegni ridusse i suoi compagni erranti.\n\nII.\n\n     O Musa, tu, che di caduchi allori\nNon circondi la fronte in Elicona,\nMa su nel Cielo infra i beati cori\nHai di stelle immortali aurea corona;\nTu spira al petto mio celesti ardori,\nTu rischiara il mio canto, e tu perdona\nS’intesso fregj al ver, s’adorno in parte\nD’altri diletti, che de’ tuoi le carte.\n\nIII.\n\n     Sai che là corre il mondo, ove più versi\nDi sue dolcezze il lusinghier Parnaso;\nE che ’l vero condito in molli versi,\nI più schivi allettando ha persuaso.\nCosì all’egro fanciul porgiamo aspersi\nDi soavi licor gli orli del vaso:\nSucchi amari, ingannato, intanto ei beve,\nE dall’inganno suo vita riceve.\n\nIV.\n\n     Tu magnanimo Alfonso, il qual ritogli\nAl furor di fortuna, e guidi in porto\nMe peregrino errante, e fra gli scoglj,\nE fra l’onde agitato, e quasi assorto;\nQueste mie carte in lieta fronte accogli,\nChe quasi in voto a te sacrate i’ porto.\nForse un dì fia, che la presaga penna\nOsi scriver di te quel ch’or n’accenna.",
+      "forma": "outro",
+      "obra": "Gerusalemme liberata",
+      "ano": 1581,
+      "fonte": "https://it.wikisource.org/wiki/Gerusalemme_liberata/Canto_primo",
+      "tags": [
+        "cruzada",
+        "epopeia",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Gerusalemme liberata — Canto XII, a morte de Clorinda (estância 66)",
+      "texto": "     Amico hai vinto; io ti perdon: perdona\nTu ancora, al corpo no che nulla pave,\nAll’alma si: deh per lei prega, e dona\nBattesmo a me, ch’ogni mia colpa lave.\nIn queste voci languide risuona\nUn non so che di flebile e soave\nCh’al cor gli scende, ed ogni sdegno ammorza,\nE gli occhj a lagrimar gli invoglia e sforza.",
+      "forma": "outro",
+      "obra": "Gerusalemme liberata",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Gerusalemme_liberata/Canto_dodicesimo",
+      "tags": [
+        "amor",
+        "morte",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Gerusalemme liberata — Canto XVI, o jardim de Armida (estâncias 14–15)",
+      "texto": "     Deh mira (egli cantò) spuntar la rosa\nDal verde suo modesta e verginella;\nChe mezzo aperta ancora, e mezzo ascosa,\nQuanto si mostra men, tanto è più bella.\nEcco poi nudo il sen già baldanzosa\nDispiega: ecco poi langue, e non par quella,\nQuella non par che desiata innanti\nFu da mille donzelle e mille amanti.\n\nXV.\n\n     Così trapassa al trapassar d’un giorno\nDella vita mortale il fiore, e ’l verde:\nNè perchè faccia indietro April ritorno,\nSi rinfiora ella mai, nè si rinverde.\nCogliam la rosa in sul mattino adorno\nDi questo dì, chè tosto il seren perde:\nCogliam d’Amor la rosa: amiamo or quando\nEsser si puote riamato amando.",
+      "forma": "outro",
+      "obra": "Gerusalemme liberata",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Gerusalemme_liberata/Canto_sedicesimo",
+      "tags": [
+        "amor",
+        "rosa",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Qual rugiada o qual pianto",
+      "texto": "QUAL rugiada o qual pianto,\n\nQuai lagrime eran quelle\n               Che sparger vidi dal notturno manto\n               E dal candido volto delle stelle?\n          E perchè seminò la bianca luna\n               Di cristalline stelle un puro nembo\n               A l’erba fresca in grembo?\n               Perchè nell’aria bruna\n               S’udian, quasi dolendo, intorno intorno\n               Gir l’aure insino al giorno?\n          Fûr segni forse della tua partita,\n               Vita della mia vita?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Qual_rugiada_o_qual_pianto_(Lucas)",
+      "tags": [
+        "cruzada",
+        "amor",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Fertil pianta che svelta è da radici",
+      "texto": "FERTIL pianta che svelta è da radici,\n\nPerchè l’aura le spiri e splenda il sole,\n               I tronchi rami rinnovar non suole\n               Nè produr frutti in sua stagion felici.\n          Tal di mia terra io tratto e, l’infelici\n               Fronde perdute, e non le fronde sole,\n               Quando e dove risorgo? Inutil mole\n               Sembro, sterpata con sinistri auspici.\n          D’aura eterna e di sol gli spirti e i rai\n               Almi e lucenti, e di sant’acque e pure\n               Aspettar debbo i benedetti umori?\n          Verdeggerò translato e darò mai\n               Frutti a’ digiuni? o pur ombre e ristori\n               A chi sia stanco per gravose cure?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Fertil_pianta_che_svelta_%C3%A8_da_radici",
+      "tags": [
+        "cruzada",
+        "amor",
+        "italiano"
+      ]
+    }
+  ]
+}

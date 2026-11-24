@@ -1,0 +1,140 @@
+{
+  "username": "du_fu",
+  "name": "Du Fu",
+  "bio": "Poeta da dinastia Tang, nascido em Henan, viveu a guerra civil de An Lushan e anos de pobreza e exílio. Chamado de Santo da Poesia, uniu perfeição formal e compaixão pelo sofrimento do povo, sendo considerado por muitos o maior poeta chinês.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Dufu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 712,
+  "morte": 770,
+  "poemas": [
+    {
+      "titulo": "春望",
+      "texto": "國破山河在，城春草木深。\n感時花濺淚，恨別鳥驚心。\n烽火連三月，家書抵萬金。\n白頭搔更短，渾欲不勝簪。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%9C%9B",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "登高",
+      "texto": "風急天高猿嘯哀，\n渚清沙白鳥飛回。\n無邊落木蕭蕭下，\n不盡長江滚滚來。\n萬里悲秋常作客，\n百年多病獨登臺。\n艱難苦恨繁霜鬢，\n潦倒新停濁酒杯。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E7%99%BB%E9%AB%98",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "茅屋為秋風所破歌",
+      "texto": "八月秋高風怒號，卷我屋上三重茅。\n茅飛度江灑江郊，高者挂罥長林梢，下者飄轉沈塘坳。\n南村羣童欺我老無力，忍能對面爲盜賊。\n公然抱茅入竹去，脣焦口燥呼不得，歸來倚杖自歎息。\n俄頃風定雲墨色，秋天漠漠向昏黑。\n布衾多年冷似鐵，嬌兒惡臥踏裏裂。\n牀頭屋漏無乾處，雨脚如麻未斷絕。\n自經喪亂少睡眠，長夜霑溼何由徹！\n安得廣廈千萬間，大庇天下寒士俱歡顏，風雨不動安如山！\n嗚呼！何時眼前突兀見此屋，吾廬獨破受凍死亦足！",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E8%8C%85%E5%B1%8B%E7%82%BA%E7%A7%8B%E9%A2%A8%E6%89%80%E7%A0%B4%E6%AD%8C",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "月夜",
+      "texto": "今夜鄜州月，閨中只獨看。\n遙憐小兒女，未解憶長安。\n香霧雲鬟濕，清輝玉臂寒。\n何時倚虛幌，雙照淚痕乾。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%9C%88%E5%A4%9C_(%E6%9D%9C%E7%94%AB)",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "春夜喜雨",
+      "texto": "好雨知時節，當春乃發生。\n隨風潛入夜，潤物細無聲。\n野徑雲俱黑，江船火獨明。\n曉看紅溼處，花重錦官城。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%98%A5%E5%A4%9C%E5%96%9C%E9%9B%A8",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "望嶽",
+      "texto": "岱宗夫如何，齊魯青未了。\n造化鍾神秀，陰陽割昏曉。\n盪胸生曾雲，決眥入歸鳥。\n會當凌絕頂，一覽衆山小。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%9C%9B%E5%B6%BD_(%E5%B2%B1%E5%AE%97%E5%A4%AB%E5%A6%82%E4%BD%95)",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "兵車行",
+      "texto": "車轔轔，馬蕭蕭， 行人弓箭各在腰。\n耶孃（爺娘）妻子走相送，塵埃不見咸陽橋。\n牽衣頓足攔道哭，哭聲直上干雲霄。\n道傍過者問行人，行人但云點行頻。\n或從十五北防河，便至四十西營田。\n去時里正與裹頭，歸來頭白還戍邊。\n邊庭流血成海水，武皇開邊意未已。\n君不聞漢家山東二百州，千村萬落生荊杞。\n縱有健婦把鋤犁，禾生隴畝無東西。\n況復秦兵耐苦戰，被驅不異犬與雞。\n長者雖有問，役夫敢申恨？\n且如今年冬，未休關西卒。\n縣官急索租，租稅從何出？\n信知生男惡，反是生女好。\n生女猶得嫁比鄰，生男埋沒隨百草。\n君不見青海頭，古來白骨無人收。\n新鬼煩冤舊鬼哭，天陰雨濕聲啾啾。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E5%85%B5%E8%BB%8A%E8%A1%8C",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "旅夜書懷",
+      "texto": "細草微風岸，危檣獨夜舟。\n星垂平野闊，月湧大江流。\n名豈文章著，官應老病休。\n飄飄何所似？天地一沙鷗。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%97%85%E5%A4%9C%E6%9B%B8%E6%87%B7",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "登岳陽樓",
+      "texto": "昔聞洞庭水，今上岳陽樓。\n吳楚東南坼，乾坤日夜浮。\n親朋無一字，老病有孤舟。\n戎馬關山北，憑軒涕泗流。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E7%99%BB%E5%B2%B3%E9%99%BD%E6%A8%93_(%E6%9D%9C%E7%94%AB)",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "石壕吏",
+      "texto": "暮投石壕村，有吏夜捉人。\n老翁逾墻走，老婦出門看。\n吏呼一何怒，婦啼一何苦。\n聽婦前致詞：三男鄴城戍，\n一男附書至，二男新戰死。\n存者且偷生，死者長已矣。\n室中更無人，惟有乳下孫。\n有孫母未去，出入無完裙。\n老嫗力雖衰，請從吏夜歸。\n急應河陽役，猶得備晨炊。\n夜久語聲絕，如聞泣幽咽。\n天明登前途，獨與老翁別。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E7%9F%B3%E5%A3%95%E5%90%8F",
+      "tags": [
+        "guerra",
+        "saudade",
+        "chines"
+      ]
+    }
+  ]
+}
