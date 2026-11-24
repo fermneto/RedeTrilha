@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/explorar", rotulo: "Explorar" },
   { href: "/escrever", rotulo: "Escrever" },
   { href: "/antologias", rotulo: "Antologias" },
+  { href: "/usuarios", rotulo: "Poetas" },
 ];
 
 export function Nav() {
