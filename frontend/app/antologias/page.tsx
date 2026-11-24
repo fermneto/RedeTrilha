@@ -1,6 +1,6 @@
 "use client";
 // "Minhas antologias": as coleções do usuário, privadas inclusive, e o
-// formulário inline de "Nova antologia".
+// formulário inline de "Nova antologia", que leva à antologia recém-criada.
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -8,13 +8,12 @@ import { useEffect, useRef, useState } from "react";
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
-import { caminhoDoLogin, criarAntologia, listarMinhasAntologias, temToken, type Antologia } from "@/lib/api";
+import { caminhoDoLogin, criarAntologia, listarMinhasAntologias, temToken } from "@/lib/api";
 
 export default function MinhasAntologiasPage() {
   const router = useRouter();
   const [pronto, setPronto] = useState(false);
   const [criando, setCriando] = useState(false);
-  const [novas, setNovas] = useState<Antologia[]>([]);
   const botaoNova = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -40,8 +39,7 @@ export default function MinhasAntologiasPage() {
             textoDoBotao="Criar antologia"
             aoEnviar={async (dados) => {
               const nova = await criarAntologia(dados);
-              setNovas((atuais) => [nova, ...atuais]);
-              fecharFormulario();
+              router.push(`/antologias/${nova.id}`);
             }}
             aoCancelar={fecharFormulario}
           />
@@ -63,7 +61,6 @@ export default function MinhasAntologiasPage() {
       {pronto && (
         <AntologiaLista
           buscar={listarMinhasAntologias}
-          novas={novas}
           vazio={
             !criando && (
               <div className="px-4 py-10 text-center">

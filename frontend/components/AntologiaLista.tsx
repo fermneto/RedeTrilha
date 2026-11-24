@@ -12,11 +12,9 @@ type Props = {
   buscar: (offset: number) => Promise<Page<Antologia>>;
   // O que mostrar quando não há nenhuma antologia.
   vazio: React.ReactNode;
-  // Antologias criadas agora há pouco, que entram no topo sem recarregar.
-  novas?: Antologia[];
 };
 
-export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
+export function AntologiaLista({ buscar, vazio }: Props) {
   const [antologias, setAntologias] = useState<Antologia[]>([]);
   const [total, setTotal] = useState<number | null>(null);
   const [carregando, setCarregando] = useState(false);
@@ -46,8 +44,6 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
     carregar(0);
   }, [carregar]);
 
-  const idsNovas = new Set(novas.map((a) => a.id));
-  const visiveis = [...novas, ...antologias.filter((a) => !idsNovas.has(a.id))];
   const faltam = total !== null && antologias.length < total;
 
   return (
@@ -65,9 +61,9 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
         </div>
       )}
 
-      {visiveis.length > 0 && (
+      {antologias.length > 0 && (
         <ul className="divide-y divide-borda border-b border-borda">
-          {visiveis.map((a) => (
+          {antologias.map((a) => (
             <li key={a.id}>
               <AntologiaItem antologia={a} />
             </li>
@@ -75,7 +71,7 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
         </ul>
       )}
 
-      {total === 0 && visiveis.length === 0 && vazio}
+      {total === 0 && antologias.length === 0 && vazio}
 
       {carregando && (
         <p role="status" className="py-8 text-center text-sm text-tinta-suave">
