@@ -17,7 +17,7 @@ from app.models.user import User
 from app.schemas.post import FORMAS
 from app.schemas.user import USERNAMES_RESERVADOS
 from scripts import importar_consagrados, seed
-from scripts.seed_conteudo import POEMAS, POETAS
+from scripts.seed_conteudo import CONTA_DEMO, POEMAS, POETAS
 
 
 def versos(texto: str) -> list[str]:
@@ -62,11 +62,25 @@ def test_main_roda_duas_vezes_sem_duplicar(client):
 
 
 def test_senha_verso123_entra(client, semeado):
-    for username in ("marina_letras", "thiago_hist", "ada"):
+    for username in (CONTA_DEMO, "thiago_hist", "iago_ifpb"):
         r = client.post("/auth/login", json={"username": username, "password": "verso123"})
         assert r.status_code == 200, username
     r = client.post("/auth/login", json={"username": "marina_letras", "password": "errada123"})
     assert r.status_code == 401
+
+
+def test_seed_so_tem_poetas_do_nicho(semeado):
+    usernames = set(semeado.scalars(select(User.username)))
+    assert usernames == {p.username for p in POETAS}
+    assert not usernames & {"ada", "linus", "grace"}
+
+
+def test_conta_de_demonstracao_tem_a_rede_toda(semeado):
+    demo = semeado.scalar(select(User).where(User.username == CONTA_DEMO))
+    assert contar(semeado, Post, Post.autor_id == demo.id, Post.repost_de_id.is_(None)) >= 3
+    assert contar(semeado, Follow, Follow.seguido_id == demo.id) >= 5
+    assert contar(semeado, Follow, Follow.seguidor_id == demo.id) >= 5
+    assert contar(semeado, Antologia, Antologia.dono_id == demo.id) >= 1
 
 
 def test_usernames_validos_e_fora_dos_reservados():
@@ -174,3 +188,22 @@ def test_iniciantes_seguem_e_citam_consagrados(semeado, tmp_path):
     poemas = select(Post.id).where(Post.autor_id == augusto.id)
     citacoes = contar(semeado, Post, Post.repost_de_id.in_(poemas), Post.texto != "")
     assert citacoes == 1
+
+
+def test_main_liga_os_iniciantes_aos_consagrados_reais(client):
+    """Com os JSONs de data/consagrados: follows, curtidas, repost e citação de clássico."""
+    seed.main()
+    with SessionLocal() as db:
+        consagrados = select(User.id).where(User.consagrado.is_(True))
+        assert contar(db, User, User.consagrado.is_(True)) > 0
+        for poeta in POETAS:
+            seguidor = select(User.id).where(User.username == poeta.username)
+            esperado = seed.CONSAGRADOS_DA_DEMO if poeta.username == CONTA_DEMO else 3
+            seguidos = contar(
+                db, Follow, Follow.seguidor_id.in_(seguidor), Follow.seguido_id.in_(consagrados)
+            )
+            assert seguidos == esperado, poeta.username
+        classicos = select(Post.id).where(Post.autor_id.in_(consagrados))
+        assert contar(db, Curtida, Curtida.post_id.in_(classicos)) >= len(POETAS)
+        assert contar(db, Post, Post.repost_de_id.in_(classicos), Post.texto == "") == 1
+        assert contar(db, Post, Post.repost_de_id.in_(classicos), Post.texto != "") == 1

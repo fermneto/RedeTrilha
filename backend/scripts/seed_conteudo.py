@@ -49,12 +49,9 @@ class Antologia(NamedTuple):
     poemas: tuple[str, ...]
 
 
-# Os três do template, mantidos (decisão em aberto no PR: manter ou substituir).
-USUARIOS_DO_TEMPLATE = (
-    Poeta("ada", "Ada Lovelace", "a primeira a programar"),
-    Poeta("linus", "Linus Torvalds", "just for fun"),
-    Poeta("grace", "Grace Hopper", "caçadora de bugs literais"),
-)
+# Conta de demonstração (README, "Como começar"): tem poemas, seguidores, uma
+# antologia, conversas no próprio poema e segue mais consagrados que os outros.
+CONTA_DEMO = "marina_letras"
 
 POETAS = (
     Poeta(

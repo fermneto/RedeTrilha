@@ -1,7 +1,6 @@
 """Seed do Verso: poetas iniciantes universitários fictícios, os poemas deles e os consagrados.
 
-`seed_fake(db)` cria os poetas de `seed_conteudo.py` (e os três usuários do
-template), publica os poemas e monta a rede em volta deles: follows, curtidas,
+`seed_fake(db)` cria os poetas de `seed_conteudo.py`, publica os poemas e monta a rede em volta deles: follows, curtidas,
 comentários em árvore (com dois removidos que têm respostas), reposts puros,
 citações e antologias. Rode com: make seed (ou make reset, do zero).
 
@@ -63,11 +62,11 @@ from scripts.seed_conteudo import (
     ANTOLOGIAS,
     CITACAO_DE_CONSAGRADO,
     CITACOES,
+    CONTA_DEMO,
     CONVERSAS,
     EM_ALTA,
     POEMAS,
     POETAS,
-    USUARIOS_DO_TEMPLATE,
     Conversa,
 )
 
@@ -79,6 +78,7 @@ JANELA = timedelta(days=14)
 FRACAO_RECENTE = 0.25
 REPOSTS_PUROS = 14
 CONSAGRADOS_SEGUIDOS = 3
+CONSAGRADOS_DA_DEMO = 8
 
 
 def seed_fake(db: Session, agora: datetime | None = None) -> bool:
@@ -87,8 +87,7 @@ def seed_fake(db: Session, agora: datetime | None = None) -> bool:
     Devolve se criou. Grava numa transação só (ver `_transacao_unica`) e, ao
     fim, liga os iniciantes aos consagrados, se já houver algum no banco.
     """
-    todos = USUARIOS_DO_TEMPLATE + POETAS
-    if db.scalar(select(User.id).where(User.username.in_([p.username for p in todos]))):
+    if db.scalar(select(User.id).where(User.username.in_([p.username for p in POETAS]))):
         return False
     agora = agora or datetime.now(UTC)
     with _transacao_unica(db) as sessao:
@@ -136,7 +135,7 @@ def _popular(db: Session, agora: datetime) -> None:
     datas: dict[int, datetime] = {}
     poemas = _publicar_poemas(db, rng, usuarios, datas, agora)
     _citar(db, rng, usuarios, poemas, datas, agora)
-    _seguir(db, rng, list(usuarios.values()), iniciantes, agora)
+    _seguir(db, rng, iniciantes, agora)
     reposts = _repostar(db, rng, iniciantes, poemas, datas, agora)
     _curtir(db, rng, list(usuarios.values()), poemas, reposts, datas, agora)
     _comentar(db, usuarios, poemas, datas, agora)
@@ -158,7 +157,8 @@ def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
         return
     rng = random.Random(SEMENTE + 1)
     for leitor in iniciantes:
-        for poeta in rng.sample(consagrados, min(CONSAGRADOS_SEGUIDOS, len(consagrados))):
+        quantos = CONSAGRADOS_DA_DEMO if leitor.username == CONTA_DEMO else CONSAGRADOS_SEGUIDOS
+        for poeta in rng.sample(consagrados, min(quantos, len(consagrados))):
             follows_service.seguir(db, leitor, poeta.username)
 
     classicos = list(
@@ -204,7 +204,7 @@ def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
 def _criar_usuarios(db: Session, rng: random.Random, agora: datetime) -> dict[str, User]:
     senha = gerar_hash(SENHA_SEED)
     usuarios = {}
-    for poeta in USUARIOS_DO_TEMPLATE + POETAS:
+    for poeta in POETAS:
         dados = UserCreate(username=poeta.username, name=poeta.name, bio=poeta.bio)
         user = User(
             **dados.model_dump(),
@@ -284,18 +284,11 @@ def _citar(
         datas[post.id] = momento
 
 
-def _seguir(
-    db: Session,
-    rng: random.Random,
-    todos: list[User],
-    iniciantes: list[User],
-    agora: datetime,
-) -> None:
-    """Denso entre os iniciantes (8 a 15 cada); os do template seguem alguns."""
-    for leitor in todos:
+def _seguir(db: Session, rng: random.Random, iniciantes: list[User], agora: datetime) -> None:
+    """Denso entre os iniciantes: cada um segue de 8 a 15 colegas."""
+    for leitor in iniciantes:
         outros = [u for u in iniciantes if u is not leitor]
-        quantos = rng.randint(8, 15) if leitor in iniciantes else rng.randint(3, 6)
-        for seguido in rng.sample(outros, quantos):
+        for seguido in rng.sample(outros, rng.randint(8, 15)):
             follows_service.seguir(db, leitor, seguido.username)
     for follow in db.scalars(select(Follow).order_by(Follow.id)):
         follow.created_at = agora - JANELA * rng.uniform(0.5, 1)
