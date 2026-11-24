@@ -8,9 +8,11 @@ import { useEffect, useRef, useState } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
+import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
+import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -55,6 +57,16 @@ export default function AntologiaPage() {
       });
   }, [id, router]);
 
+  // Desmarcar esta antologia no popover de um card aqui dentro tira o poema da
+  // lista na hora (o popover manda o id do original; repost puro conta como ele).
+  useEffect(
+    () =>
+      ouvirMudancas(({ antologiaId, postId, contem }) => {
+        if (antologiaId === id && !contem) setAntologia((a) => a && semOPoema(a, postId));
+      }),
+    [id],
+  );
+
   const cabecalho = <CabecalhoPagina titulo="Antologia" comoTitulo={false} />;
   if (naoExiste)
     return (
@@ -88,9 +100,7 @@ export default function AntologiaPage() {
 
   async function tirar(postId: number) {
     await marcarNaAntologia(antologia!.id, postId, false);
-    setAntologia((a) =>
-      a && { ...a, qtd: a.qtd - 1, poemas: a.poemas.filter((p) => p.id !== postId) },
-    );
+    setAntologia((a) => a && semOPoema(a, postId));
   }
 
   return (
@@ -144,6 +154,13 @@ export default function AntologiaPage() {
   );
 }
 
+// A antologia sem o poema `postId` (ele mesmo, ou um repost puro dele).
+function semOPoema(antologia: AntologiaDetalhe, postId: number): AntologiaDetalhe {
+  const fica = (p: Post) => p.id !== postId && !(p.texto === "" && p.repost_de?.id === postId);
+  const poemas = antologia.poemas.filter(fica);
+  return { ...antologia, poemas, qtd: antologia.qtd - (antologia.poemas.length - poemas.length) };
+}
+
 function Cabecalho({
   antologia,
   dono,
@@ -186,25 +203,16 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
   const confirmacao = useRef<HTMLSpanElement>(null);
   const botaoApagar = useRef<HTMLButtonElement>(null);
 
+  // O foco vai para o "não": Enter sem querer não apaga nada.
   useEffect(() => {
-    if (!confirmando) return;
-    // O foco vai para o "não": Enter sem querer não apaga nada.
-    confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-    function cliqueFora(e: PointerEvent) {
-      if (!confirmacao.current?.contains(e.target as Node)) setConfirmando(false);
-    }
-    function tecla(e: KeyboardEvent) {
-      if (e.key !== "Escape") return;
-      setConfirmando(false);
-      requestAnimationFrame(() => botaoApagar.current?.focus());
-    }
-    document.addEventListener("pointerdown", cliqueFora);
-    document.addEventListener("keydown", tecla);
-    return () => {
-      document.removeEventListener("pointerdown", cliqueFora);
-      document.removeEventListener("keydown", tecla);
-    };
+    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
   }, [confirmando]);
+
+  // Esc devolve o foco ao "apagar"; o clique fora deixa o foco onde o clique o pôs.
+  useFecharAoSair(confirmando, confirmacao, (e) => {
+    setConfirmando(false);
+    if (e.type === "keydown") requestAnimationFrame(() => botaoApagar.current?.focus());
+  });
 
   async function apagar() {
     setConfirmando(false);

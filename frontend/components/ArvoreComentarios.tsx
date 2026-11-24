@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { NomeAutor } from "@/components/NomeAutor";
+import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarComentario,
   buscarComentarios,
@@ -161,20 +162,12 @@ function ItemComentario({
   const [erro, setErro] = useState<string | null>(null);
 
   // Clique fora da confirmação ou Esc cancelam o "apagar?".
+  useFecharAoSair(confirmando, confirmacao, () => setConfirmando(false));
+
+  // Ao abrir a confirmação, o foco vai para o "não": Enter sem querer não apaga
+  // (como no apagar antologia).
   useEffect(() => {
-    if (!confirmando) return;
-    function cliqueFora(e: PointerEvent) {
-      if (!confirmacao.current?.contains(e.target as Node)) setConfirmando(false);
-    }
-    function tecla(e: KeyboardEvent) {
-      if (e.key === "Escape") setConfirmando(false);
-    }
-    document.addEventListener("pointerdown", cliqueFora);
-    document.addEventListener("keydown", tecla);
-    return () => {
-      document.removeEventListener("pointerdown", cliqueFora);
-      document.removeEventListener("keydown", tecla);
-    };
+    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
   }, [confirmando]);
 
   const faltam = total - respostas.length;

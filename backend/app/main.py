@@ -22,9 +22,11 @@ from app.routers import (
     reposts,
     saude,
     tags,
+    traducao,
     users,
 )
 from app.services.posts import reconstruir_indice
+from app.services.traducao import reconstruir_limite
 
 
 def _banco_vazio() -> bool:
@@ -48,6 +50,7 @@ async def lifespan(app: FastAPI):
     with SessionLocal() as db:
         usernames = list(db.scalars(select(User.username)))
         reconstruir_indice(db)
+        reconstruir_limite(db)
     contador_iniciais.reconstruir(usernames)
     yield
 
@@ -83,4 +86,5 @@ app.include_router(reposts.router)
 app.include_router(antologias.router)
 app.include_router(comentarios.router)
 app.include_router(poema_do_dia.router)
+app.include_router(traducao.router)
 app.include_router(saude.router)

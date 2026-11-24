@@ -21,6 +21,7 @@ services:
       # A URL da Vercel, sem barra no fim (várias: separadas por vírgula).
       - key: CORS_ORIGINS
         sync: false
-      # Chave só da demo, com limite de gasto baixo (docs/deploy.md).
+      # Tradução de poemas (API da Anthropic): chave só da demo, com limite de gasto
+      # baixo (docs/deploy.md). Sem ela, só a tradução fica fora (503).
       - key: ANTHROPIC_API_KEY
         sync: false

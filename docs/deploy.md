@@ -24,7 +24,7 @@ ambiente.
 | Render | `DATABASE_URL` | a connection string do **Session pooler** do Supabase (passo 1) |
 | Render | `SEED_ON_BOOT` | `true` (já vem do `render.yaml`). Popula o banco só se ele estiver **sem usuários** |
 | Render | `CORS_ORIGINS` | `https://<projeto>.vercel.app`, sem barra no fim. Mais de uma: separe por vírgula |
-| Render | `ANTHROPIC_API_KEY` | a chave **só da demo**, com limite de gasto baixo (passo 2) |
+| Render | `ANTHROPIC_API_KEY` | a chave **só da demo**, com limite de gasto baixo (passo 2). Sem ela, só a tradução fica fora (503) |
 | Render | `DEBUG` | **não existe. Nunca crie.** |
 | Vercel | `NEXT_PUBLIC_API_URL` | `https://verso-api-xxxx.onrender.com`, sem barra no fim |
 
@@ -105,6 +105,8 @@ usuário. Mesmo assim, a URL é aberta a qualquer um, então use uma chave isola
 
    Ainda não há URL da Vercel: ponha `http://localhost:3000` em `CORS_ORIGINS`
    por enquanto (o passo 5 troca).
+
+   A `ANTHROPIC_API_KEY` fica só no painel do Render, nunca num arquivo.
 
    O Render só pede esses valores **na criação do Blueprint**. Para mudar um
    deles depois, use **Environment** no painel do serviço.
