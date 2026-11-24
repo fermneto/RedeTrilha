@@ -47,12 +47,13 @@ Pedro (@CorreiaPedro208).
 
 - **Site:** a URL de produção da Vercel (o Neto preenche aqui depois do deploy).
 - **API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose (API com
-  vários workers do uvicorn + Caddy com HTTPS automático). O banco é o Postgres
-  do Supabase. `GET /saude` responde `{"ok":true}`.
+  vários workers do uvicorn + Caddy com HTTPS automático) e o Postgres na mesma
+  VM, com backup diário para o Object Storage da Oracle. `GET /saude` responde
+  `{"ok":true}`.
 - **Conta de demonstração:** `marina_letras` / `verso123`.
 
 Passo a passo do deploy em [docs/deploy-oracle.md](docs/deploy-oracle.md). O
-Render ([docs/deploy.md](docs/deploy.md)) fica como alternativa simples.
+Render com o Supabase ([docs/deploy.md](docs/deploy.md)) fica como alternativa simples.
 
 ## Como rodar localmente
 
@@ -108,9 +109,9 @@ backend/app/
   routers/   rotas finas, uma por arquivo, registradas em main.py
   core/      estruturas de dados em Python puro (índice de tags, árvore de
              comentários, janela deslizante da tradução)
-backend/scripts/   seed, importador de consagrados, preparar_banco, check_setup, bench
+backend/scripts/   seed, importador de consagrados, preparar_banco, check_setup, bench, carga
 backend/Dockerfile imagem da API (arm64 e amd64)
-deploy/oracle/     compose.yaml, Caddyfile e .env.example do deploy na Oracle
+deploy/oracle/     compose.yaml (API, Postgres, Caddy, backup), restaurar.sh e .env.example
 backend/data/consagrados/   um JSON por poeta consagrado
 frontend/
   app/         páginas (feed, explorar, escrever, acervo, antologias, perfil,
@@ -126,7 +127,7 @@ frontend/
 | [DECISIONS.md](DECISIONS.md) | Produto, decisões, features, escolha técnica e uso de IA |
 | [PLANO.md](PLANO.md) | Status final, contratos de dados e as tasks do time |
 | [CLAUDE.md](CLAUDE.md) | Fluxo de trabalho: Git, padrão de commits e convenções de código |
-| [docs/deploy-oracle.md](docs/deploy-oracle.md) | Deploy público principal (Oracle Cloud + Supabase + Vercel) |
+| [docs/deploy-oracle.md](docs/deploy-oracle.md) | Deploy público principal (VM da Oracle com API e Postgres + Vercel) |
 | [docs/deploy.md](docs/deploy.md) | Deploy alternativo (Supabase + Render + Vercel) |
 | [docs/consagrados.md](docs/consagrados.md) | Formato de importação dos consagrados |
 | [RUBRICA.md](RUBRICA.md) | Como o projeto é avaliado |

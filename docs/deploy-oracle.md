@@ -1,19 +1,31 @@
 # Deploy do Verso na Oracle Cloud (Always Free)
 
-Este é o caminho principal do deploy. O Render (`docs/deploy.md`) fica como
+Este é o caminho principal do deploy: a API **e o banco** numa VM da Oracle,
+o front na Vercel. O Render com o Supabase (`docs/deploy.md`) fica como
 alternativa simples, com a desvantagem de hibernar.
 
 | Peça | Onde | O quê |
 |---|---|---|
-| Banco | Supabase | Postgres, pelo **Session pooler** (porta 5432) |
-| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `seed` + `api` (uvicorn com vários workers) + `caddy` (HTTPS) |
+| Banco | a mesma VM da Oracle | Postgres 16 no Docker Compose (serviço `db`), sem porta pública, com backup diário para o Object Storage da Oracle |
+| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `db` + `seed` + `api` (uvicorn com vários workers) + `caddy` (HTTPS) + `backup` |
 | Front | Vercel | Next.js, com root directory `frontend` |
 
 Meta: 100 usuários simultâneos com p95 abaixo de 1 s. A VM não hiberna (ao
 contrário do Render free) e tem até 4 núcleos ARM e 24 GB de RAM sem custo.
 
+Por que o banco na mesma VM, e não no Supabase: cada request da API faz várias
+consultas, e cada consulta paga a ida e volta até o banco. Na mesma máquina,
+essa ida e volta é de 0,06 ms (mediana de um `select 1` da API, medida no
+compose). E o Session pooler do Supabase free aceita só 15 conexões no total
+(API, seed, backup e SQL Editor juntos). Na VM, o limite é o `max_connections`
+do próprio Postgres (60, no `compose.yaml`), com folga para o backup e para
+crescer junto com a VM. O Supabase
+continua possível: [Alternativa: banco gerenciado no
+Supabase](#alternativa-banco-gerenciado-no-supabase).
+
 Tudo o que está no repositório já vem pronto: `backend/Dockerfile`,
-`deploy/oracle/compose.yaml`, `deploy/oracle/Caddyfile` e
+`deploy/oracle/compose.yaml`, `deploy/oracle/Caddyfile`,
+`deploy/oracle/backup/`, `deploy/oracle/restaurar.sh` e
 `deploy/oracle/.env.example`. Você só cria as contas, segue os passos e cola as
 credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 
@@ -21,12 +33,12 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 > `DEBUG=true`, o header `X-User-Id` entra como qualquer usuário, sem senha.
 
 > **Segredos só no `.env` da VM.** O `deploy/oracle/.env` está no
-> `.gitignore`. Nunca cole a `DATABASE_URL`, a `ANTHROPIC_API_KEY` ou o
-> `SENTRY_DSN` em arquivo versionado, issue ou PR.
+> `.gitignore`. Nunca cole a `POSTGRES_PASSWORD`, as chaves do Object Storage,
+> a `ANTHROPIC_API_KEY` ou o `SENTRY_DSN` em arquivo versionado, issue ou PR.
 
 ## Sumário
 
-1. [Supabase e chave da Anthropic](#passo-1-supabase-e-chave-da-anthropic)
+1. [Chave da Anthropic e região](#passo-1-chave-da-anthropic-e-região)
 2. [Conta Always Free na Oracle](#passo-2-conta-always-free-na-oracle)
 3. [Criar a VM ARM](#passo-3-criar-a-vm-arm-ampere-a1)
 4. [Abrir as portas 80 e 443](#passo-4-abrir-as-portas-80-e-443)
@@ -36,32 +48,26 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 8. [Subir com `docker compose up -d`](#passo-8-subir)
 9. [Vercel e CORS](#passo-9-vercel-e-cors)
 10. [Monitoramento](#passo-10-monitoramento-gratuito)
-11. [Atualizar o deploy](#atualizar-o-deploy)
-12. [Workers e pool](#workers-e-pool)
-13. [Backups do Supabase](#backups-do-supabase)
-14. [A Oracle pode recolher VMs ociosas](#a-oracle-pode-recolher-vms-ociosas)
-15. [Testar tudo localmente](#testar-tudo-localmente-antes)
-16. [O que fazer se...](#o-que-fazer-se)
+11. [Backup no Object Storage](#passo-11-backup-no-object-storage)
+12. [Restaurar um backup](#restaurar-um-backup)
+13. [Disco da VM](#disco-da-vm)
+14. [Atualizar o deploy](#atualizar-o-deploy)
+15. [Workers e pool](#workers-e-pool)
+16. [A Oracle pode recolher VMs ociosas](#a-oracle-pode-recolher-vms-ociosas)
+17. [Migrar os dados do Supabase](#migrar-os-dados-do-supabase-opcional)
+18. [Alternativa: banco gerenciado no Supabase](#alternativa-banco-gerenciado-no-supabase)
+19. [Testar tudo localmente](#testar-tudo-localmente-antes)
+20. [O que fazer se...](#o-que-fazer-se)
 
-## Passo 1: Supabase e chave da Anthropic
+## Passo 1: chave da Anthropic e região
 
-Siga os passos 1 e 2 do [`docs/deploy.md`](deploy.md#passo-1-banco-no-supabase):
-eles valem igual aqui. Resumo do que você precisa ter em mãos:
-
-- A connection string do **Session pooler** (porta **5432**), com a senha no
-  lugar de `[YOUR-PASSWORD]`:
-  `postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres`
 - (Opcional) a chave `sk-ant-...` de um workspace só da demo, com limite de
-  gasto baixo. Sem ela, só a tradução fica fora (503).
-
-Anote a **região do projeto do Supabase** (aparece em Project Settings →
-General). A VM deve ficar perto dela: cada request da API faz várias consultas
-ao banco, e cada consulta paga a distância de ida e volta.
-
-| Supabase em | Região da Oracle mais perto |
-|---|---|
-| East US (North Virginia), `us-east-1` | US East (Ashburn) |
-| South America (São Paulo), `sa-east-1` | Brazil East (São Paulo) |
+  gasto baixo: passo 2 do [`docs/deploy.md`](deploy.md#passo-2-chave-da-anthropic-só-para-a-demo).
+  Sem ela, só a tradução fica fora (503).
+- A **região** da VM: como a API e o banco ficam juntos, o que pesa é a
+  distância até quem usa a rede. Para a banca e os colegas no Brasil, **Brazil
+  East (São Paulo)**. O front na Vercel é servido pela CDN e chama a API direto
+  do navegador.
 
 ## Passo 2: conta Always Free na Oracle
 
@@ -70,7 +76,7 @@ ao banco, e cada consulta paga a distância de ida e volta.
    verificar a identidade (faz uma pré-autorização pequena que é estornada). No
    plano Free Tier nada é cobrado: recursos pagos ficam bloqueados.
 3. **Home Region:** escolha com cuidado, porque **não dá para mudar depois** e
-   as VMs ARM gratuitas só podem ser criadas nela. Use a tabela do passo 1.
+   as VMs ARM gratuitas só podem ser criadas nela. Use a região do passo 1.
 4. Espere o e-mail "Your Oracle Cloud account is ready" (de minutos a algumas
    horas) e entre em [cloud.oracle.com](https://cloud.oracle.com).
 
@@ -95,7 +101,7 @@ ao banco, e cada consulta paga a distância de ida e volta.
    O selo **"Always Free-eligible"** deve aparecer ao lado do shape e da
    imagem. Se não aparecer, algo saiu do gratuito.
 
-   2 OCPU e 12 GB sobram para a meta de 100 usuários. Se quiser, use 4 e 24
+   2 OCPU e 12 GB sobram para a meta de 100 usuários, com a API e o Postgres juntos. Se quiser, use 4 e 24
    (o total grátis), mas aí não sobra nada para outra VM.
 3. **Create**. Em um ou dois minutos o estado fica **Running**. Anote o
    **Public IPv4 address** (ex.: `129.146.10.20`).
@@ -204,6 +210,7 @@ git clone https://github.com/fermneto/RedeTrilha.git
 cd RedeTrilha/deploy/oracle
 cp .env.example .env
 chmod 600 .env
+openssl rand -hex 24          # a senha do Postgres: copie a linha que sair
 nano .env
 ```
 
@@ -213,19 +220,28 @@ para salvar; Ctrl+X para sair):
 ```text
 DOMINIO=api.129-146-10-20.sslip.io                 <<< o domínio do passo 6, sem https://
 ACME_EMAIL=seu-email@exemplo.com                   <<< seu e-mail (avisos do Let's Encrypt)
-DATABASE_URL=postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres   <<< passo 1
+POSTGRES_PASSWORD=3f9c...                          <<< a saída do openssl rand -hex 24
 SEED_ON_BOOT=true                                  (deixe true: só popula um banco sem usuários)
 CORS_ORIGINS=http://localhost:3000                 <<< por enquanto; o passo 9 troca pela URL da Vercel
 ANTHROPIC_API_KEY=sk-ant-...                       <<< opcional, a chave da demo
 SENTRY_DSN=                                        <<< opcional, passo 10
+OCI_BUCKET=, OCI_S3_ENDPOINT=, OCI_REGIAO=,
+OCI_ACCESS_KEY=, OCI_SECRET_KEY=                   <<< passo 11 (vazios: só o backup local)
 ```
 
-Os outros valores (`WEB_CONCURRENCY`, `DB_POOL_*`) já vêm com padrões seguros;
-veja [Workers e pool](#workers-e-pool) antes de mexer.
+Não há `DATABASE_URL` para colar: o `compose.yaml` monta
+`postgresql://verso:<POSTGRES_PASSWORD>@db:5432/verso` para a `api` e o
+`seed`. O banco não tem porta pública: só os containers da rede interna do
+compose falam com ele.
+
+Os outros valores (`WEB_CONCURRENCY`, `DB_POOL_*`, `BACKUP_*`) já vêm com
+padrões medidos; veja [Workers e pool](#workers-e-pool) antes de mexer.
 
 Cuidados com o `.env`: sem aspas, sem espaço em volta do `=`, e nada de
-comentário na mesma linha do valor. Se a senha do banco tiver `@ : / # %`,
-gere outra só com letras e números no Supabase.
+comentário na mesma linha do valor. A `POSTGRES_PASSWORD` só com letras e
+números (ela entra na URL do banco): o `openssl rand -hex` já sai assim. Ela
+vale **no primeiro `up`**: depois disso o Postgres guarda a senha no volume, e
+trocar no `.env` não troca no banco (ver [O que fazer se...](#o-que-fazer-se)).
 
 ## Passo 8: subir
 
@@ -238,16 +254,18 @@ docker compose up -d --build
 O primeiro build leva alguns minutos (compila a imagem para ARM na própria
 VM). A ordem é automática:
 
-1. **`seed`** cria as tabelas e, com o banco vazio, roda o seed (poetas do
-   seed + consagrados). Pode levar alguns minutos no Supabase. Depois ele sai.
-2. **`api`** só sobe quando o `seed` termina bem, e só fica "healthy" quando
+1. **`db`** inicializa o Postgres no volume `pgdata` e só fica "healthy"
+   quando o `pg_isready` responde.
+2. **`seed`** cria as tabelas e, com o banco vazio, roda o seed (poetas do
+   seed + consagrados, uns 30 s). Depois ele sai.
+3. **`api`** só sobe quando o `seed` termina bem, e só fica "healthy" quando
    `/saude` responde.
-3. **`caddy`** só sobe quando a `api` está healthy, e então pede o certificado.
+4. **`caddy`** só sobe quando a `api` está healthy, e então pede o certificado.
 
 Acompanhe:
 
 ```bash
-docker compose ps -a            # seed: Exited (0); api: Up (healthy); caddy: Up
+docker compose ps -a            # db: Up (healthy); seed: Exited (0); api: Up (healthy); caddy e backup: Up
 docker compose logs -f seed     # "seed ok: ... usuarios ..." e "banco pronto"
 docker compose logs -f caddy    # "certificate obtained successfully"
 ```
@@ -274,7 +292,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "X-User-Id: 1" https://<DOMINIO>/fee
 ```
 
 Os containers têm `restart: unless-stopped`: voltam sozinhos se a VM
-reiniciar. Os logs giram em 5 arquivos de 10 MB por serviço.
+reiniciar, e os dados ficam no volume `pgdata`. Os logs giram em 5 arquivos de 10 MB por serviço.
 
 ## Passo 9: Vercel e CORS
 
@@ -324,10 +342,9 @@ trocando a URL do Render pela sua.
 
 3. Em **Alert Contacts**, o seu e-mail. Você recebe um aviso se a API cair.
 
-O `/saude` não consulta o banco. Para vigiar o Supabase também (ele pausa
-depois de 7 dias sem uso), crie um segundo monitor do tipo **Keyword** em
-`https://<DOMINIO>/usuarios?limit=1` procurando a palavra `total`: essa rota é
-pública e lê do banco.
+O `/saude` não consulta o banco. Para vigiar o banco também, crie um segundo
+monitor do tipo **Keyword** em `https://<DOMINIO>/usuarios?limit=1` procurando
+a palavra `total`: essa rota é pública e lê do banco.
 
 ### Sentry (opcional)
 
@@ -352,7 +369,116 @@ mensagem do erro:
 ```bash
 docker compose logs api | grep erro_interno
 docker compose logs --since 1h caddy      # acessos, em JSON
+docker compose logs backup                # "backup ok: ..." e "enviado para o Object Storage"
 ```
+
+## Passo 11: backup no Object Storage
+
+O serviço `backup` faz, todo dia às `BACKUP_HORA` (03:30, no fuso `TZ`), um
+`pg_dump` em formato custom (comprimido) no volume `backups`:
+
+```text
+/backups/diario/verso-AAAA-MM-DD.dump    os 7 mais novos (BACKUP_DIARIOS)
+/backups/semanal/verso-AAAA-Sss.dump     o de domingo, os 4 mais novos (BACKUP_SEMANAIS)
+```
+
+O dump do seed tem uns 6 MB. Isso já funciona sem configurar nada. Mas o
+volume mora no disco da VM: se a Oracle recolher a VM ou o disco se perder, os
+backups vão junto. Por isso o `backup` também copia cada dump para um bucket do
+**Object Storage** da Oracle (Always Free: 20 GB no total da conta), pela API
+compatível com S3 e com o `rclone`. O que fazer na conta, uma vez:
+
+1. **Bucket.** Menu ☰ → **Storage** → **Buckets** → **Create Bucket**:
+
+   ```text
+   Name:              verso-backups
+   Default Storage Tier: Standard
+   (o resto no padrão; o bucket nasce privado)
+   ```
+
+   Crie no compartimento raiz (o padrão da API S3). Nome do bucket:
+   `verso-backups`   **<<< ANOTE AQUI** (vai em `OCI_BUCKET`)
+2. **Namespace.** Menu do perfil (canto superior direito) → **Tenancy:
+   <nome>** → **Object storage namespace** (uma sequência como `axk1abcd2efg`).
+   O endpoint é:
+
+   ```text
+   https://<namespace>.compat.objectstorage.<regiao>.oci.customer-oci.com
+   ex.: https://axk1abcd2efg.compat.objectstorage.sa-saopaulo-1.oci.customer-oci.com
+   ```
+
+   A região é o identificador da Home Region (`sa-saopaulo-1`,
+   `us-ashburn-1`...), que aparece no topo do console.
+   **<<< COLE AQUI** em `OCI_S3_ENDPOINT` e `OCI_REGIAO`.
+3. **Customer Secret Key.** Menu do perfil → **User settings** (ou **My
+   profile**) → **Customer secret keys** → **Generate secret key** → nome
+   `verso-backup`. Copie o **Secret Key** na hora (ele aparece uma vez só); o
+   **Access Key** fica na lista. **<<< COLE AQUI** em `OCI_SECRET_KEY` e
+   `OCI_ACCESS_KEY`. Cada usuário pode ter até duas chaves; elas não expiram,
+   então apague esta depois da entrega se não for manter o deploy.
+4. Na VM: `docker compose up -d` (recria o `backup` com o `.env` novo) e um
+   backup na hora para conferir:
+
+   ```bash
+   docker compose exec backup backup.sh
+   # backup ok: /backups/diario/verso-2026-11-25.dump (6.1M)
+   # enviado para o Object Storage: oci:verso-backups/verso
+   ./restaurar.sh --listar          # o mesmo arquivo nos dois lados
+   ```
+
+O envio usa `rclone copy`, nunca `sync`: um volume local vazio (numa VM nova)
+não apaga nada no bucket. No bucket, a retenção é por idade: diários com mais
+de 8 dias e semanais com mais de 29 dias saem. Se o envio falhar (chave errada,
+rede), o log do `backup` diz `ERRO: o envio ... falhou` e o dump local fica.
+
+## Restaurar um backup
+
+O `restaurar.sh` (em `deploy/oracle`) roda os comandos do Postgres dentro do
+container `backup`, que já tem o `pg_restore`, o `rclone` e o volume.
+
+**Teste de restauração** (sem mexer no banco `verso` nem tirar a API do ar):
+restaura num banco temporário, compara as contagens com as de produção e apaga
+o temporário. Faça uma vez depois de configurar o passo 11 e antes da banca:
+
+```bash
+./restaurar.sh --listar
+./restaurar.sh diario/verso-2026-11-25.dump             # do volume local
+./restaurar.sh remoto:diario/verso-2026-11-25.dump      # baixando do Object Storage
+# no backup:   usuarios=184 poemas=11336
+# em produção: usuarios=184 poemas=11336
+# teste de restauração ok (o banco temporário foi apagado)
+```
+
+As contagens batem quando nada foi publicado depois do dump.
+
+**Restaurar de verdade** (substitui o banco `verso`):
+
+```bash
+./restaurar.sh --producao diario/verso-2026-11-25.dump
+# pede para digitar "restaurar"; para a api, apaga e recria o banco, restaura e sobe a api
+```
+
+O que foi publicado depois do dump se perde: faça antes um
+`docker compose exec backup backup.sh` se o banco atual ainda servir para algo.
+
+## Disco da VM
+
+O boot volume grátis tem uns 47 GB, e nele moram o sistema, as imagens do
+Docker, o banco (`pgdata`), os backups locais (`backups`) e os logs (no
+máximo 50 MB por serviço). O banco e os backups do seed somam menos de 100 MB.
+
+```bash
+df -h /                          # uso do disco da VM
+docker system df                 # imagens, containers e volumes
+docker system df -v | grep -E 'verso_(pgdata|backups)'
+docker compose exec db psql -U verso -c "select pg_size_pretty(pg_database_size('verso'))"
+```
+
+O `backup` escreve `AVISO: disco da VM com N% de uso` no log quando o disco
+passa de 80%. Para liberar: `docker image prune -f` e `docker builder prune -f`
+(imagens e cache de build antigos; não tocam nos volumes). Se faltar mesmo, o
+boot volume pode crescer até 200 GB sem custo (Instance → Boot volume →
+**Edit**, e depois `sudo growpart` na VM).
 
 ## Atualizar o deploy
 
@@ -367,7 +493,8 @@ docker image prune -f        # apaga as imagens antigas (libera disco)
 O `seed` roda de novo, vê que o banco já tem usuários e só põe o banco em dia
 (`banco pronto`): cria os índices novos em tabelas que já existiam e, se a
 tabela `post_tags` estiver vazia, popula o índice de tags a partir dos posts.
-Num banco já em dia, isso é instantâneo. Os dados ficam no Supabase. A API fica fora do ar por alguns
+Num banco já em dia, isso é instantâneo. O `db` não é recriado (a imagem não
+mudou) e os dados ficam no volume `pgdata`. A API fica fora do ar por alguns
 segundos enquanto os workers reiniciam.
 
 Consagrados novos (JSON novo em `backend/data/consagrados/`) não entram pelo
@@ -378,52 +505,59 @@ no índice na mesma transação, sem reiniciar a API:
 docker compose run --rm --entrypoint python seed scripts/importar_consagrados.py
 ```
 
+
+Nunca rode `docker compose down -v` na VM: o `-v` apaga os volumes, ou seja, o
+banco e os backups locais. Para parar tudo, `docker compose down` (sem `-v`).
+
 ## Workers e pool
 
 A `api` roda o uvicorn com `WEB_CONCURRENCY` workers (processos). Vazio, o
-padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4).
-
-O `.env.example` vem com `WEB_CONCURRENCY=2` e o pool `4 + 2` por worker, a
-configuração medida no PR #130 (130 req/s, 0 erro, p95 de 1,2 s). Vários
+padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4). Vários
 workers não dão problema: o índice de tags (tabela `post_tags`) e o limite de
 traduções (contado em `traducoes`) moram no banco, então todo worker vê o mesmo
 Em alta e o mesmo limite.
 
-Cada worker abre o próprio pool de conexões. No Session pooler, cada conexão
-da API ocupa uma conexão no Supabase, e o **Pool Size** do plano free é 15
-(Supabase → Database → Settings → Connection pooling). A conta que precisa
-fechar:
+Cada worker abre o próprio pool de conexões (`DB_POOL_*`, lidos pelo
+`backend/app/db.py`) e deixa no máximo `DB_POOL_SIZE + DB_MAX_OVERFLOW`
+requisições em voo (`app/limite_do_banco.py`). A conta que precisa fechar é
+contra o `max_connections` do `db` (60, no `compose.yaml`):
 
 ```text
-WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
-1 worker:  1 × (5 + 5) = 10
-2 workers: 2 × (4 + 2) = 12   (o padrão do .env.example)
-4 workers: 4 × (2 + 1) = 12
+WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ max_connections
+2 workers × (4 + 2) = 12   ← o padrão do .env.example (medido, abaixo)
+4 workers × (5 + 5) = 40   ← cabe sem mexer no max_connections
+folga: backup (1), restauração (2), psql de manutenção, 3 reservadas ao superusuário
 ```
 
-Passar disso dá `too many clients` / `max clients reached` sob carga (no teste
-local com 8 workers e o pool padrão, foi o que aconteceu). As variáveis
-`DB_POOL_*` são lidas pelo `backend/app/db.py`.
+O padrão do `.env.example` é **2 workers com pool 4 + 2**, o que deu o menor
+p95 sem erro. Medido com `backend/scripts/carga.py` (100 usuários logados, mix
+de 14 rotas de leitura, 30 s, pelo Caddy com HTTPS) contra o compose local com
+o seed completo (184 usuários, 11.336 poemas), com `db`, `api` e `caddy` presos
+a 2 núcleos, como a VM de 2 OCPU. Duas rodadas por linha; 0 erro em todas:
+
+| Workers × pool | Pausa média de 3 s | Sem pausa (100 requisições sempre em voo) |
+|---|---|---|
+| **2 × (4 + 2)** | 28 req/s, p50 18 a 20 ms, **p95 46 e 52 ms** | 109 a 112 req/s, p50 871 a 907 ms, **p95 1.133 e 1.163 ms** |
+| 2 × (5 + 5) | 27 a 28 req/s, p95 51 e 48 ms | 103 a 106 req/s, p95 1.250 e 1.313 ms |
+| 4 × (5 + 5) | 26 a 27 req/s, p95 49 e 50 ms | 102 req/s, p95 1.664 e 1.556 ms |
+
+Com a pausa (gente navegando), as três empatam bem abaixo da meta de 1 s. Sem
+pausa, a CPU é o limite: com 2 núcleos para a API, o Postgres e o Caddy, mais
+processos e mais requisições em voo só disputam os mesmos núcleos, e o p95
+sobe. Mais workers só valem com mais OCPUs.
+
+Com 4 núcleos (a VM de 4 OCPU e 24 GB, o total grátis da conta), sem pausa:
+2 × (4 + 2) deu 148 e 156 req/s, **p95 899 e 804 ms**, abaixo da meta mesmo
+sem pausa; 4 × (4 + 2) deu 166 e 137 req/s, p95 839 e 2.177 ms (instável).
+Também ali, 2 workers.
+
+Mudou o número de workers ou o pool e passou de 60? Suba o `max_connections`
+no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
+`too many clients already` sob carga.
 
 Compressão: o Caddy comprime as respostas (`encode zstd gzip`). Se a API
 também tiver o `GZipMiddleware`, os dois convivem: o Caddy vê que a resposta
 já veio com `Content-Encoding` e não comprime de novo.
-
-## Backups do Supabase
-
-- O plano free **não tem backup diário que você possa baixar** pelo painel.
-  Faça um dump manual antes da banca e depois de mudanças grandes:
-
-  ```bash
-  # na sua máquina ou na VM, com o cliente do Postgres 15+ (sudo apt-get install postgresql-client)
-  pg_dump "postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres" \
-    --no-owner --no-privileges -Fc -f verso-$(date +%F).dump
-  ```
-
-  Guarde o `.dump` fora do repositório (ele tem os hashes de senha).
-- Para restaurar num banco vazio:
-  `pg_restore --no-owner --no-privileges -d "<DATABASE_URL>" verso-AAAA-MM-DD.dump`.
-- Use a string do **Session pooler** (5432) também no `pg_dump`.
 
 ## A Oracle pode recolher VMs ociosas
 
@@ -444,20 +578,163 @@ Como evitar:
 - Sem upgrade, confira o e-mail da Oracle e o painel da instância de tempos em
   tempos, e religue se ela parar.
 
+**Se a VM sumir** (recolhida e apagada, conta encerrada, disco perdido), os
+dados voltam do Object Storage numa VM nova:
+
+1. Refaça os passos 3 a 7 (o IP muda: atualize o DuckDNS ou o sslip.io no
+   `DOMINIO`, e o `NEXT_PUBLIC_API_URL` na Vercel, com Redeploy). Use o mesmo
+   `.env`, com a mesma configuração do Object Storage.
+2. `docker compose up -d --build`. O `seed` popula o banco novo com o seed;
+   tudo bem, o próximo passo substitui o banco inteiro.
+3. Veja os backups no bucket e restaure o mais novo:
+
+   ```bash
+   ./restaurar.sh --listar
+   ./restaurar.sh remoto:diario/verso-AAAA-MM-DD.dump      # teste primeiro
+   ./restaurar.sh --producao remoto:diario/verso-AAAA-MM-DD.dump
+   ```
+
+Perde-se o que foi publicado depois do último backup (no máximo um dia).
+Faça isso no mesmo dia: o `backup` da VM nova envia o dump dela às 03:30, e o
+nome do arquivo é a data, então o dump do banco recém-semeado substituiria o
+backup bom do mesmo dia no bucket.
+
+## Migrar os dados do Supabase (opcional)
+
+Só se você já tinha a rede no ar com o Supabase e quer levar contas e poemas
+para o `db` da VM. A ideia: o `seed` cria as tabelas vazias e um `pg_dump`
+só dos dados do Supabase entra nelas.
+
+1. Na VM, com o `.env` do passo 7, mas com **`SEED_ON_BOOT=false`** (o banco
+   tem de ficar sem dados) e sem `DATABASE_URL`:
+
+   ```bash
+   docker compose up -d --build db seed      # tabelas e índices, sem seed
+   docker compose ps -a seed                 # Exited (0)
+   ```
+
+2. Veja a versão do Postgres do Supabase (Project Settings → Infrastructure,
+   ou `select version()` no SQL Editor) e use o cliente da **mesma versão
+   principal** ou mais novo (ex.: `postgres:17`). Dump só dos dados do schema
+   `public`, pela string do **Session pooler**:
+
+   ```bash
+   docker run --rm -v "$PWD:/saida" postgres:17 pg_dump \
+     "postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres" \
+     --schema=public --data-only --no-owner --no-privileges -Fc -f /saida/supabase.dump
+   ```
+
+3. Restaure no `db`, pela rede interna do compose (o mesmo cliente do passo 2):
+
+   ```bash
+   docker run --rm --network verso_interna -v "$PWD:/saida" postgres:17 sh -c '
+     pg_restore --data-only --disable-triggers --no-owner --no-privileges -f - /saida/supabase.dump |
+     grep -v "^SET transaction_timeout" |
+     psql -q -v ON_ERROR_STOP=1 -o /dev/null "postgresql://verso:<POSTGRES_PASSWORD>@db:5432/verso"'
+   rm supabase.dump                           # tem os hashes de senha
+   ```
+
+   O `pg_restore` gera o SQL e o `psql` aplica no Postgres 16 da VM. O `grep`
+   tira a única linha que um cliente 17 escreve e o 16 não conhece. O
+   `--disable-triggers` deixa entrar as tabelas em qualquer ordem, apesar das
+   chaves estrangeiras circulares (`posts`, `comentarios`), e o dump também
+   acerta as sequências dos ids. Testado com um dump do cliente 17 restaurado
+   no `db` 16: as contagens de usuários, poemas e `post_tags` e a sequência de
+   `posts` bateram com a origem.
+4. Confira e suba o resto:
+
+   ```bash
+   docker compose exec db psql -U verso -c "select count(*) from users" -c "select count(*) from posts"
+   docker compose up -d                      # api, caddy e backup
+   ```
+
+   Volte `SEED_ON_BOOT=true` no `.env` se quiser (ele só age num banco sem
+   usuários). Se o schema do Supabase for de uma versão antiga do Verso, rode
+   antes o deploy antigo uma vez contra ele, para o `preparar_banco()` pôr as
+   tabelas em dia.
+
+## Alternativa: banco gerenciado no Supabase
+
+O Supabase dá painel, SQL Editor e backups gerenciados, ao custo de mais
+latência por consulta (o banco fica fora da VM) e de um teto de conexões.
+
+1. Crie o projeto e pegue a connection string do **Session pooler** (porta
+   **5432**): passo 1 do [`docs/deploy.md`](deploy.md#passo-1-banco-no-supabase).
+   Crie o projeto na região mais perto da VM:
+
+   | Supabase em | Região da Oracle mais perto |
+   |---|---|
+   | East US (North Virginia), `us-east-1` | US East (Ashburn) |
+   | South America (São Paulo), `sa-east-1` | Brazil East (São Paulo) |
+
+2. No `.env`, além do passo 7:
+
+   ```text
+   DATABASE_URL=postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres   <<< COLE AQUI
+   POSTGRES_PASSWORD=qualquer-coisa          (não é usada, mas o compose.yaml exige)
+   WEB_CONCURRENCY=2
+   DB_POOL_SIZE=4
+   DB_MAX_OVERFLOW=2
+   ```
+
+3. Suba sem o `db` e sem o `backup`:
+
+   ```bash
+   docker compose -f compose.yaml -f compose.supabase.yaml up -d --build
+   ```
+
+   Use os mesmos `-f` em todo `docker compose` (ou
+   `export COMPOSE_FILE=compose.yaml:compose.supabase.yaml`).
+
+**Limite de conexões.** No Session pooler, cada conexão da API ocupa uma
+conexão no Supabase, e o **Pool Size** do plano free é 15 (Database → Settings
+→ Connection pooling). A conta que precisa fechar:
+
+```text
+WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
+2 workers: 2 × (4 + 2) = 12   (medido no PR #130: 130 req/s, 0 erro, p95 de 1,2 s sem pausa)
+4 workers: 4 × (2 + 1) = 12
+```
+
+Passar disso dá `too many clients` / `max clients reached` sob carga.
+
+**Backup no Supabase.** O plano free não tem backup diário que você possa
+baixar. Faça um dump manual antes da banca e depois de mudanças grandes, com o
+cliente da mesma versão do Postgres do projeto:
+
+```bash
+docker run --rm -v "$PWD:/saida" postgres:17 pg_dump \
+  "postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres" \
+  --no-owner --no-privileges -Fc -f /saida/verso-$(date +%F).dump
+```
+
+Guarde o `.dump` fora do repositório (ele tem os hashes de senha). Para
+restaurar num banco vazio: `pg_restore --no-owner --no-privileges -d
+"<DATABASE_URL>" verso-AAAA-MM-DD.dump`.
+
+**Pausa.** Um projeto free sem uso por 7 dias é pausado: a API dá 500 no login
+e no feed (o `/saude` continua 200). Abra o projeto e clique em **Restore
+project**, e depois `docker compose restart api`.
+
 ## Testar tudo localmente antes
 
-Com Docker na sua máquina, dá para subir a mesma pilha com um Postgres
-descartável no lugar do Supabase e o Caddy com certificado interno:
+Com Docker na sua máquina, dá para subir a mesma pilha (`db`, `seed`, `api`,
+`caddy` e `backup`), com o Caddy em portas altas e certificado interno e um
+Object Storage falso (`rclone serve s3`) no lugar do da Oracle:
 
 ```bash
 cd deploy/oracle
 cp .env.local.example .env
-docker compose -f compose.yaml -f compose.local.yaml up -d --build
+export COMPOSE_FILE=compose.yaml:compose.local.yaml
+docker compose up -d --build
 curl -k https://localhost:8443/saude
 curl -k https://localhost:8443/auth/login -H 'content-type: application/json' \
   -d '{"username":"marina_letras","password":"verso123"}'
-docker compose -f compose.yaml -f compose.local.yaml down -v   # derruba e apaga o banco de teste
-rm .env
+docker compose exec backup backup.sh                     # backup + envio ao S3 falso
+./restaurar.sh --listar
+./restaurar.sh remoto:diario/verso-$(date +%F).dump      # teste de restauração
+cd ../../backend && uv run python scripts/carga.py --url https://localhost:8443 --pausa 3
+cd ../deploy/oracle && docker compose down -v && rm .env   # derruba e apaga o banco e os backups de teste
 ```
 
 Para gerar a imagem ARM numa máquina x86 (opcional):
@@ -471,10 +748,12 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 
 | Sintoma | Causa provável e solução |
 |---|---|
-| `seed` sai com `Network is unreachable` | você colou a **Direct connection** do Supabase, que é só IPv6 (a VM e o Docker usam IPv4). Use o **Session pooler** |
-| `prepared statement "..." already exists` | você colou o **Transaction pooler** (porta 6543), que não mantém sessão e quebra os prepared statements do psycopg. Use o Session pooler (5432) |
-| `password authentication failed` | senha errada, ou o `[YOUR-PASSWORD]` ficou com colchetes |
-| `too many clients` / `max clients reached` | workers × pool passou do Pool Size do Supabase: veja [Workers e pool](#workers-e-pool) |
+| `docker compose up` diz `defina POSTGRES_PASSWORD no .env` | a linha está vazia: passo 7 |
+| `seed` ou `api`: `password authentication failed for user "verso"` | a `POSTGRES_PASSWORD` mudou depois do primeiro `up` (o Postgres guarda a do volume). Volte a antiga, ou troque no banco: `docker compose exec db psql -U verso -c "alter user verso password '<nova>'"` |
+| `db` reinicia sem parar | `docker compose logs db`; com o disco cheio, ver [Disco da VM](#disco-da-vm) |
+| `too many clients already` | workers × pool passou do `max_connections`: [Workers e pool](#workers-e-pool) |
+| `backup`: `ERRO: o envio para o Object Storage falhou` | endpoint, região ou chave erradas (passo 11), ou o bucket não existe. O dump local está no volume |
+| `backup`: `SignatureDoesNotMatch` / `InvalidAccessKeyId` | `OCI_ACCESS_KEY` e `OCI_SECRET_KEY` trocados, ou a região do endpoint diferente de `OCI_REGIAO` |
 | `api` não sobe e o `caddy` fica em `Created` | o `seed` falhou: `docker compose logs seed` |
 | `blocked by CORS policy` no console do navegador | `CORS_ORIGINS` sem o domínio **exato** da Vercel (`https://`, sem barra). Edite o `.env` e `docker compose up -d` |
 | O front chama `localhost:8000` | `NEXT_PUBLIC_API_URL` não estava no build da Vercel: defina e faça Redeploy |
@@ -482,7 +761,7 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | Caddy: `challenge failed` / `timeout during connect` | o Let's Encrypt não alcança a porta 80 da VM (passo 4) ou o domínio não aponta para o IP (`nslookup`) |
 | Caddy: `too many certificates` / `rateLimited` | limite do Let's Encrypt (comum em sslip.io, que é compartilhado). O Caddy tenta o ZeroSSL sozinho; se não der, use um subdomínio do DuckDNS. Não apague o volume `caddy_data` à toa: ele guarda o certificado |
 | Navegador avisa "certificado inválido" | o Caddy ainda está pedindo o certificado (veja `docker compose logs caddy`) ou o `DOMINIO` do `.env` não é o mesmo da URL |
-| 500 no login e no feed, mas `/saude` dá 200 | o projeto do Supabase foi pausado (7 dias sem uso): **Restore project** e depois `docker compose restart api` |
 | `Out of capacity` ao criar a VM | passo 3, lista de soluções |
 | `permission denied ... docker.sock` | faltou sair e entrar de novo depois do `usermod -aG docker ubuntu` |
-| Disco cheio | `docker image prune -f` e `docker builder prune -f` |
+| Disco cheio | [Disco da VM](#disco-da-vm) |
+| Com o Supabase: `Network is unreachable`, `prepared statement ... already exists`, 500 com `/saude` 200 | Direct connection (IPv6), Transaction pooler (6543) ou projeto pausado: ver [Alternativa](#alternativa-banco-gerenciado-no-supabase) e o `docs/deploy.md` |
