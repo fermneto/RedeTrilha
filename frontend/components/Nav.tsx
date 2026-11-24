@@ -10,12 +10,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { IconeAcervo } from "@/components/icones/IconeAcervo";
 import { IconeAntologias } from "@/components/icones/IconeAntologias";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { IconeExplorar } from "@/components/icones/IconeExplorar";
 import { IconeInicio } from "@/components/icones/IconeInicio";
 import { IconePerfil } from "@/components/icones/IconePerfil";
-import { IconePoetas } from "@/components/icones/IconePoetas";
 import type { PropsIcone } from "@/components/icones/Icone";
 import { MenuConta } from "@/components/MenuConta";
 import { buscarEu, limparToken, temToken, type User } from "@/lib/api";
@@ -32,7 +32,7 @@ const ITENS: Item[] = [
   { href: "/explorar", rotulo: "Explorar", Icone: IconeExplorar },
   { href: "/escrever", rotulo: "Escrever", Icone: IconeEscrever },
   { href: "/antologias", rotulo: "Antologias", Icone: IconeAntologias, soLogado: true },
-  { href: "/usuarios", rotulo: "Poetas", Icone: IconePoetas },
+  { href: "/acervo", rotulo: "Acervo", Icone: IconeAcervo },
   { href: "/perfil", rotulo: "Perfil", Icone: IconePerfil, soLogado: true },
 ];
 

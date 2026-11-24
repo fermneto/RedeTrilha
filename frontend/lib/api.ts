@@ -614,3 +614,66 @@ export function marcarNaAntologia(antologiaId: number, postId: number, dentro: b
     ? apiPost<void>(`/antologias/${antologiaId}/poemas`, { post_id: postId })
     : apiDelete(`/antologias/${antologiaId}/poemas/${postId}`);
 }
+
+// ---- Acervo: espelha backend/app/schemas/acervo.py ----
+
+export const TIPOS_DO_ACERVO = ["todos", "consagrados", "iniciantes"] as const;
+export type TipoDoAcervo = (typeof TIPOS_DO_ACERVO)[number];
+
+export const ORDENS_DO_ACERVO = ["alfabetica", "seguidos", "poemas"] as const;
+export type OrdemDoAcervo = (typeof ORDENS_DO_ACERVO)[number];
+
+// O mesmo POR_PAGINA de backend/app/routers/acervo.py.
+export const POR_PAGINA_DO_ACERVO = 24;
+
+// Um cartão: o User mais as contagens do perfil e se eu sigo.
+export type PoetaDoAcervo = User & {
+  seguidores: number;
+  // Poemas e citações; reposts puros não contam.
+  poemas: number;
+  sigo: boolean;
+};
+
+// `lingua` e `epoca` só valem para consagrados; null = sem esse filtro.
+export type FiltrosDoAcervo = {
+  tipo: TipoDoAcervo;
+  q: string;
+  lingua: string | null;
+  epoca: string | null;
+  ordem: OrdemDoAcervo;
+};
+
+// As faixas de época vêm do backend (FAIXAS_DE_EPOCA em services/acervo.py), não
+// são repetidas aqui.
+export type EpocaDoAcervo = {
+  chave: string;
+  rotulo: string;
+  // Anos de morte, inclusive; null = sem início (a Antiguidade).
+  inicio: number | null;
+  fim: number;
+  poetas: number;
+};
+
+export type OpcoesDoAcervo = {
+  // Código ISO 639-1 e quantos consagrados escrevem nessa língua.
+  linguas: { codigo: string; poetas: number }[];
+  epocas: EpocaDoAcervo[];
+};
+
+// `pagina` começa em 1, como na URL da tela.
+export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<Page<PoetaDoAcervo>> {
+  const params = new URLSearchParams({
+    offset: String((pagina - 1) * POR_PAGINA_DO_ACERVO),
+    limit: String(POR_PAGINA_DO_ACERVO),
+    tipo: filtros.tipo,
+    ordem: filtros.ordem,
+  });
+  if (filtros.q.trim()) params.set("q", filtros.q.trim());
+  if (filtros.lingua) params.set("lingua", filtros.lingua);
+  if (filtros.epoca) params.set("epoca", filtros.epoca);
+  return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
+
+export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
+  return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
