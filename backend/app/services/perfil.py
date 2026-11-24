@@ -33,8 +33,9 @@ def editar(db: Session, usuario: User, dados: PerfilUpdate) -> PerfilOut:
 def poemas(
     db: Session, username: str, usuario: User, offset: int, limit: int, cursor: str | None
 ) -> FeedPage:
-    """Como no X: poemas, citações e reposts puros da pessoa, mais novo primeiro.
-    O repost puro aparece como o original com `repostado_por` = [a pessoa]."""
+    """Como no X: poemas, citações, reposts puros e rengas da pessoa, mais novo primeiro.
+    O repost puro aparece como o original com `repostado_por` = [a pessoa]; a renga,
+    na estrofe mais recente dela, como um repost."""
     pessoa = buscar_por_username(db, username)
     return pagina_dos_autores(db, [pessoa.id], usuario, offset, limit, cursor)
 
