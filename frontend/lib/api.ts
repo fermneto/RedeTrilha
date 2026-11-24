@@ -551,6 +551,19 @@ export function listarMinhasAntologias(offset = 0, limit = 100): Promise<Page<An
   return apiGet<Page<Antologia>>(`/antologias?offset=${offset}&limit=${limit}`);
 }
 
+// As minhas, cada uma dizendo se o poema está nela (repost puro conta como o original).
+export type AntologiaMarcada = Antologia & { contem: boolean };
+
+export function listarMinhasAntologiasMarcando(
+  postId: number,
+  offset = 0,
+  limit = 100,
+): Promise<Page<AntologiaMarcada>> {
+  return apiGet<Page<AntologiaMarcada>>(
+    `/antologias?post_id=${postId}&offset=${offset}&limit=${limit}`,
+  );
+}
+
 // As públicas de alguém (as minhas privadas também, se o perfil for o meu).
 export function listarAntologiasDe(
   username: string,

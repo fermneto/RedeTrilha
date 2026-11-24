@@ -31,7 +31,7 @@ const ITENS: Item[] = [
   { href: "/", rotulo: "Início", Icone: IconeInicio },
   { href: "/explorar", rotulo: "Explorar", Icone: IconeExplorar },
   { href: "/escrever", rotulo: "Escrever", Icone: IconeEscrever },
-  { href: "/antologias", rotulo: "Antologias", Icone: IconeAntologias },
+  { href: "/antologias", rotulo: "Antologias", Icone: IconeAntologias, soLogado: true },
   { href: "/usuarios", rotulo: "Poetas", Icone: IconePoetas },
   { href: "/perfil", rotulo: "Perfil", Icone: IconePerfil, soLogado: true },
 ];

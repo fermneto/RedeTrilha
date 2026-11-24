@@ -349,3 +349,77 @@ def test_apagar_antologia_leva_os_vinculos_e_mantem_os_poemas(client, ana):
             select(AntologiaPoema).where(AntologiaPoema.antologia_id == antologia_id)
         )
         assert vinculos.all() == []
+
+
+def test_minhas_antologias_marcando_um_poema(client, ana, bia):
+    poema = _poema(client, bia)
+    com = _antologia(client, ana, "Com o poema")
+    sem = _antologia(client, ana, "Sem o poema")
+    _antologia(client, bia, "Da Bia")
+    client.post(f"/antologias/{com}/poemas", json={"post_id": poema}, headers=ana)
+
+    r = client.get(f"/antologias?post_id={poema}", headers=ana)
+
+    assert r.status_code == 200
+    corpo = r.json()
+    assert set(corpo) == {"items", "total", "offset", "limit"}
+    assert corpo["total"] == 2
+    assert {i["id"]: i["contem"] for i in corpo["items"]} == {com: True, sem: False}
+    assert {i["id"]: i["qtd"] for i in corpo["items"]} == {com: 1, sem: 0}
+
+
+def test_sem_post_id_a_lista_continua_sem_contem(client, ana):
+    _antologia(client, ana)
+
+    item = client.get("/antologias", headers=ana).json()["items"][0]
+
+    assert "contem" not in item
+
+
+def test_marcando_repost_puro_conta_como_o_original(client, ana, bia):
+    from app.db import SessionLocal
+    from app.models.post import Post
+
+    original = _poema(client, bia)
+    assert client.post(f"/posts/{original}/repostar", headers=ana).status_code == 204
+    with SessionLocal() as db:
+        repost_id = db.scalar(select(Post.id).where(Post.repost_de_id == original))
+    antologia_id = _antologia(client, ana)
+    client.post(f"/antologias/{antologia_id}/poemas", json={"post_id": original}, headers=ana)
+
+    r = client.get(f"/antologias?post_id={repost_id}", headers=ana)
+
+    assert r.json()["items"][0]["contem"] is True
+
+
+def test_marcando_post_inexistente_da_404(client, ana):
+    _antologia(client, ana)
+    assert client.get("/antologias?post_id=999", headers=ana).status_code == 404
+
+
+def test_marcando_nao_faz_uma_query_por_antologia(client, ana, bia):
+    """Sem N+1: o número de queries não cresce com o número de antologias."""
+    from sqlalchemy import event
+
+    from app.db import engine
+
+    poema = _poema(client, bia)
+
+    def contar_queries() -> int:
+        queries = []
+
+        def ouvinte(*_):
+            queries.append(1)
+
+        event.listen(engine, "before_cursor_execute", ouvinte)
+        try:
+            assert client.get(f"/antologias?post_id={poema}", headers=ana).status_code == 200
+        finally:
+            event.remove(engine, "before_cursor_execute", ouvinte)
+        return len(queries)
+
+    _antologia(client, ana, "Uma")
+    com_uma = contar_queries()
+    for nome in ("Duas", "Três", "Quatro"):
+        _antologia(client, ana, nome)
+    assert contar_queries() == com_uma

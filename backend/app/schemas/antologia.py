@@ -66,3 +66,18 @@ class AntologiaPage(BaseModel):
     total: int
     offset: int
     limit: int
+
+
+class AntologiaMarcada(AntologiaOut):
+    """Uma das minhas antologias, dizendo se um poema (o `post_id` pedido) está nela."""
+
+    contem: bool
+
+
+class AntologiaMarcadaPage(BaseModel):
+    """GET /antologias?post_id=: a página de sempre, com `contem` em cada item."""
+
+    items: list[AntologiaMarcada]
+    total: int
+    offset: int
+    limit: int

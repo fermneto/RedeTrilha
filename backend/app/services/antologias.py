@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, exists, func, select
 from sqlalchemy.orm import Session
 
 from app.models.antologia import Antologia, AntologiaPoema
@@ -8,6 +8,7 @@ from app.models.user import User
 from app.schemas.antologia import (
     AntologiaCreate,
     AntologiaDetalhe,
+    AntologiaMarcada,
     AntologiaOut,
     AntologiaUpdate,
 )
@@ -48,6 +49,36 @@ def listar_minhas(
 ) -> tuple[list[AntologiaOut], int]:
     """Todas as antologias do usuário atual, privadas inclusive."""
     return _listar(db, usuario, offset, limit, so_publicas=False)
+
+
+def listar_minhas_marcando(
+    db: Session, usuario: User, post_id: int, offset: int, limit: int
+) -> tuple[list[AntologiaMarcada], int]:
+    """As minhas antologias, cada uma dizendo se o poema está nela (`contem`).
+
+    O `contem` vem na mesma query da página (EXISTS correlacionado), sem um
+    pedido por antologia. Repost puro conta como o original, como em curtir e
+    comentar; 404 se o post não existe.
+    """
+    original_id = posts_service.original_de(db, post_id).id
+    contem = (
+        exists()
+        .where(
+            AntologiaPoema.antologia_id == Antologia.id,
+            AntologiaPoema.post_id == original_id,
+        )
+        .label("contem")
+    )
+    filtros = _filtros(usuario, so_publicas=False)
+    total = db.scalar(select(func.count()).where(*filtros)) or 0
+    linhas = db.execute(
+        select(Antologia, contem).where(*filtros).order_by(*_ORDEM).offset(offset).limit(limit)
+    ).all()
+    qtds = _contar_poemas(db, [antologia.id for antologia, _ in linhas])
+    return [
+        AntologiaMarcada(**_para_saida(a, qtd=qtds.get(a.id, 0)).model_dump(), contem=c)
+        for a, c in linhas
+    ], total
 
 
 def listar_de(
@@ -127,22 +158,25 @@ def _buscar_do_dono(db: Session, usuario: User, antologia_id: int) -> Antologia:
     return antologia
 
 
+# A mais nova primeiro; o id desempata antologias criadas no mesmo instante.
+_ORDEM = (Antologia.created_at.desc(), Antologia.id.desc())
+
+
+def _filtros(dono: User, so_publicas: bool) -> list:
+    filtros = [Antologia.dono_id == dono.id]
+    if so_publicas:
+        filtros.append(Antologia.publica.is_(True))
+    return filtros
+
+
 def _listar(
     db: Session, dono: User, offset: int, limit: int, so_publicas: bool
 ) -> tuple[list[AntologiaOut], int]:
     """Antologias de um dono, a mais nova primeiro; `qtd` de todas numa query só."""
-    filtros = [Antologia.dono_id == dono.id]
-    if so_publicas:
-        filtros.append(Antologia.publica.is_(True))
+    filtros = _filtros(dono, so_publicas)
     total = db.scalar(select(func.count()).where(*filtros)) or 0
     antologias = list(
-        db.scalars(
-            select(Antologia)
-            .where(*filtros)
-            .order_by(Antologia.created_at.desc(), Antologia.id.desc())
-            .offset(offset)
-            .limit(limit)
-        )
+        db.scalars(select(Antologia).where(*filtros).order_by(*_ORDEM).offset(offset).limit(limit))
     )
     qtds = _contar_poemas(db, [antologia.id for antologia in antologias])
     return [_para_saida(a, qtd=qtds.get(a.id, 0)) for a in antologias], total
