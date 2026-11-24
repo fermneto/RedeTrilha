@@ -101,7 +101,7 @@ def pagina_dos_autores(
 def _ocorrencias(db: Session, autores: list[int]) -> list[Ocorrencia]:
     """Posts dos autores, mais novo primeiro. Repost puro de poema apagado fica fora."""
     original = aliased(Post)
-    repost_puro = (Post.repost_de_id.is_not(None)) & (Post.texto == "")
+    repost_puro = Post.repost_puro
     linhas = db.execute(
         select(Post.id, Post.autor_id, Post.repost_de_id, repost_puro, Post.created_at)
         .outerjoin(original, original.id == Post.repost_de_id)

@@ -49,7 +49,7 @@ def explorar(
         return posts_da_tag(db, usuario, tag, offset, limit)
 
     # Repost puro (texto vazio) só faz sentido no feed.
-    filtros = [~(Post.repost_de_id.is_not(None) & (Post.texto == ""))]
+    filtros = [~Post.repost_puro]
     if tag:
         filtros.append(Post.id.in_(indice_tags.posts_da_tag(tag)))
     if forma is not None:
