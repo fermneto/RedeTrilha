@@ -73,6 +73,32 @@ def test_forma_coerente_so_aceita_soneto_com_14_versos():
     assert forma_coerente(None, SONETO) is None
 
 
+@pytest.mark.parametrize(
+    "cabecalho", ["Sonnet LXXV", "Soneto XII", "Sonetto 3", "Sonnet 18", "XIV", "  Sonett IV.  "]
+)
+def test_cabecalho_de_numeracao_na_primeira_linha_nao_conta_como_verso(cabecalho):
+    assert forma_coerente("soneto", f"{cabecalho}\n\n{SONETO}") == "soneto"
+    assert forma_coerente("soneto", f"{cabecalho}\n{SONETO}\nverso 15") is None
+
+
+def test_quinze_versos_sem_cabecalho_continuam_sem_forma():
+    assert forma_coerente("soneto", "verso 0\n" + SONETO) is None
+    assert forma_coerente("soneto", "Dim\n" + SONETO) is None
+
+
+def test_sonetos_do_spenser_com_cabecalho_continuam_soneto():
+    spenser = Consagrado.model_validate_json(
+        (PASTA_CONSAGRADOS / "spenser.json").read_text(encoding="utf-8")
+    )
+    amoretti = [p for p in spenser.poemas if p.titulo.startswith("Amoretti")]
+    assert [p.texto.lstrip().split("\n")[0] for p in amoretti] == [
+        "Sonnet LXXV",
+        "Sonnet LXXIX",
+        "Sonnet LXVIII",
+    ]
+    assert [p.forma for p in amoretti] == ["soneto"] * 3
+
+
 def test_soneto_sem_14_versos_entra_sem_forma_e_com_o_texto_intacto():
     longo = SONETO + "\n\nmais um verso"
     dados = consagrado(poema={"forma": "soneto", "texto": longo})

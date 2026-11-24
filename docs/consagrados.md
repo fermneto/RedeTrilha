@@ -19,8 +19,9 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
 6. As `tags` de cada poema vão para a coluna `tags_extras` do `Post` e somam-se
    às `#hashtags` do texto e à forma no índice de tags.
    Um poema marcado como `soneto` só fica com essa forma se tiver 14 versos
-   não vazios; senão entra com `forma` nula (o texto não muda). A regra é
-   `forma_coerente`, em `app/schemas/consagrado.py`.
+   não vazios; senão entra com `forma` nula (o texto não muda). Uma primeira
+   linha que seja só cabeçalho de numeração ("Sonnet LXXV", "Soneto XII",
+   "XIV") não conta. A regra é `forma_coerente`, em `app/schemas/consagrado.py`.
    As tags que são nome de língua (`portugues`, `latim`, `persa`…, lista em
    `TAGS_DE_LINGUA` no importador) ficam fora de `tags_extras`; o JSON não muda.
    A forma `outro` não vira tag (as outras formas viram).

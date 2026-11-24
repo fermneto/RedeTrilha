@@ -14,17 +14,30 @@ from app.schemas.user import AvatarUrl, Bio, Nome, Username
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
 PADRAO_TAG = re.compile(r"^[a-z0-9_]+$")
 VERSOS_DO_SONETO = 14
+# Cabeçalho de numeração na 1ª linha ("Sonnet LXXV", "Soneto XII", "Sonetto 3", "XIV"):
+# romano bem formado (até MMMCMXCIX) ou arábico, opcionalmente depois de
+# Sonnet/Soneto/Sonetto/Sonett/Sonet, com ponto final opcional. Não é verso, então não
+# entra na contagem.
+CABECALHO_DE_SONETO = re.compile(
+    r"^\s*(?:(?:sonnet|soneto|sonetto|sonett|sonet)\s+)?"
+    r"(?:\d+|(?=[mdclxvi])m{0,3}(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3}))"
+    r"\.?\s*$",
+    re.IGNORECASE,
+)
 
 
 def forma_coerente(forma: str | None, texto: str) -> str | None:
     """Só é soneto com 14 versos não vazios; senão a forma vira None (o texto não muda).
 
-    O scraper marca como soneto canções, odes e poemas longos, e a forma alimenta
-    a tag #soneto no índice.
+    Uma primeira linha que seja só o cabeçalho de numeração (CABECALHO_DE_SONETO)
+    não conta como verso. O scraper marca como soneto canções, odes e poemas longos,
+    e a forma alimenta a tag #soneto no índice.
     """
     if forma == "soneto":
-        versos = sum(1 for linha in texto.split("\n") if linha.strip())
-        if versos != VERSOS_DO_SONETO:
+        versos = [linha for linha in texto.split("\n") if linha.strip()]
+        if versos and CABECALHO_DE_SONETO.match(versos[0]):
+            versos = versos[1:]
+        if len(versos) != VERSOS_DO_SONETO:
             return None
     return forma
 
