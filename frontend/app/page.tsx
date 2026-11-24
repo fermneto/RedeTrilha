@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { ChamadaEscrever } from "@/components/ChamadaEscrever";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { buscarFeed, caminhoDoLogin, temToken } from "@/lib/api";
 
@@ -22,13 +24,14 @@ export default function FeedPage() {
   }, [router]);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl">Feed</h1>
+    <div>
+      <CabecalhoPagina titulo="Início" />
+      <ChamadaEscrever />
       <ListaDePoemas
         buscar={buscarPagina}
         textoDoFim="fim do feed"
         vazio={
-          <p className="text-tinta-suave">
+          <p className="px-4 py-10 text-center text-tinta-suave">
             Seu feed está vazio. <Link href="/escrever" className="underline">Escreva um poema</Link> ou
             siga outros poetas.
           </p>
