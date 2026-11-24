@@ -2,14 +2,28 @@
 // Client component: as ações (curtir, repostar) têm estado otimista.
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
-import { anosDeVida, curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
+import { IconeTraduzir } from "@/components/icones/IconeTraduzir";
+import {
+  anosDeVida,
+  curtir,
+  ErroDaApi,
+  formatarData,
+  idiomaDoNavegador,
+  nomeDaForma,
+  nomeDoIdioma,
+  repostar,
+  traduzirPoema,
+  type Post,
+  type Traducao,
+  type User,
+} from "@/lib/api";
 
 // Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
 // para o inteiro. Linhas em branco entre estrofes contam.
@@ -63,6 +77,8 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
 
           {poema.texto && <Corpo poema={poema} inteiro={inteiro} />}
 
+          {poema.texto && <Traduzir key={`traduzir-${poema.id}`} poema={poema} />}
+
           {citacao && !aninhado && (
             <div className="mt-3">
               {poema.repost_de ? (
@@ -115,6 +131,80 @@ function Corpo({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
         </Link>
       )}
     </>
+  );
+}
+
+// "Traduzir", como no X: aparece quando a língua do poema é conhecida e diferente
+// da do navegador. A tradução vem do backend (IA, com cache por poema e língua) e
+// fica abaixo do original; "ver original" recolhe sem perder o que já veio.
+function Traduzir({ poema }: { poema: Post }) {
+  // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
+  // do servidor e o da hidratação baterem.
+  const [destino, setDestino] = useState<string | null>(null);
+  const [traducao, setTraducao] = useState<Traducao | null>(null);
+  const [aberta, setAberta] = useState(false);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+
+  useEffect(() => setDestino(idiomaDoNavegador()), []);
+
+  if (!poema.idioma || !destino || poema.idioma === destino) return null;
+
+  async function abrir() {
+    setErro(null);
+    if (traducao) {
+      setAberta(true);
+      return;
+    }
+    setCarregando(true);
+    try {
+      setTraducao(await traduzirPoema(poema.id, destino as string));
+      setAberta(true);
+    } catch (e) {
+      if (e instanceof ErroDaApi && e.status === 503) setErro("tradução indisponível agora");
+      else setErro(e instanceof Error ? e.message : "não deu para traduzir");
+    } finally {
+      setCarregando(false);
+    }
+  }
+
+  const link =
+    "inline-flex min-h-11 cursor-pointer items-center text-sm font-semibold text-destaque hover:underline";
+
+  if (aberta && traducao) {
+    return (
+      <section aria-label="tradução" className="mt-2 border-t border-borda pt-2">
+        <p className="flex flex-wrap items-center gap-x-2 text-[0.8125rem] text-tinta-suave">
+          <span>Traduzido do {nomeDoIdioma(poema.idioma)} por IA (Claude)</span>
+          <span aria-hidden="true">·</span>
+          <button type="button" onClick={() => setAberta(false)} className={link}>
+            ver original
+          </button>
+        </p>
+        {traducao.titulo && <p className="poema-titulo mt-1">{traducao.titulo}</p>}
+        <p lang={traducao.idioma_destino} className={`poema-corpo ${traducao.titulo ? "mt-2" : "mt-1"}`}>
+          {traducao.texto}
+        </p>
+      </section>
+    );
+  }
+
+  return (
+    <div className="mt-1">
+      <button
+        type="button"
+        onClick={abrir}
+        disabled={carregando}
+        aria-label={`traduzir do ${nomeDoIdioma(poema.idioma)}`}
+        className={`${link} -ml-3 gap-1 pr-2 disabled:cursor-wait disabled:opacity-60`}
+      >
+        <span className="flex h-11 w-11 items-center justify-center">
+          <IconeTraduzir className="h-5 w-5" />
+        </span>
+        {carregando ? "Traduzindo…" : "Traduzir"}
+      </button>
+      {erro && <p className="text-xs text-destaque">{erro}</p>}
+    </div>
   );
 }
 
