@@ -1,0 +1,114 @@
+{
+  "username": "shelley",
+  "name": "Percy Bysshe Shelley",
+  "bio": "Percy Bysshe Shelley, poeta romântico inglês de Sussex, radical e ateu. Autor de Ozymandias, Ode to the West Wind e Prometheus Unbound, de lirismo intenso e ideias revolucionárias. Morreu afogado na Itália, aos 29 anos.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Percy_Bysshe_Shelley_by_Alfred_Clint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1792,
+  "morte": 1822,
+  "poemas": [
+    {
+      "titulo": "Ozymandias",
+      "texto": "I MET a traveller from an antique land\nWho said: Two vast and trunkless legs of stone\nStand in the desart. Near them, on the sand,\nHalf sunk, a shattered visage lies, whose frown,\nAnd wrinkled lip, and sneer of cold command,\nTell that its sculptor well those passions read\nWhich yet survive, stamped on these lifeless things,\nThe hand that mocked them and the heart that fed:\nAnd on the pedestal these words appear:\n\"My name is Ozymandias, king of kings:\nLook on my works, ye Mighty, and despair!\"\nNothing beside remains. Round the decay\nOf that colossal wreck, boundless and bare\nThe lone and level sands stretch far away.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Hundred_Best_Poems_(lyrical)_in_the_English_language_-_second_series/Ozymandias",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Ode to the West Wind",
+      "texto": "O, wild West Wind, thou breath of Autumn's being,\nThou, from whose unseen presence the leaves dead\nAre driven, like ghosts from an enchanter fleeing,\n\nYellow, and black, and pale, and hectic red,\nPestilence-stricken multitudes: O, thou,\nWho chariotest to their dark wintry bed\n\nThe winged seeds, where they lie cold and low,\nEach like a corpse within its grave, until\nThine azure sister of the spring shall blow\n\nHer clarion o'er the dreaming earth, and fill\n(Driving sweet buds like flocks to feed in air)\nWith living hues and odours plain and hill:\n\nWild Spirit, which art moving every where;\nDestroyer and preserver; hear, O, hear!\n\nII.\n\nThou on whose stream, 'mid the steep sky's commotion,\nLoose clouds like earth's decaying leaves are shed,\nShook from the tangled boughs of Heaven and Ocean,\n\nAngels of rain and lightning: there are spread\nOn the blue surface of thine airy surge,\nLike the bright hair uplifted from the head\n\nOf some fierce Mænad, even from the dim verge\nOf the horizon to the zenith's height\nThe locks of the approaching storm. Thou dirge\n\nOf the dying year, to which this closing night\nWill be the dome of a vast sepulchre,\nVaulted with all thy congregated might\n\nOf vapours, from whose solid atmosphere\nBlack rain, and fire, and hail will burst: O, hear!\n\nIII.\n\nThou who didst waken from his summer dreams\nThe blue Mediterranean, where he lay,\nLulled by the coil of his crystalline streams,\n\nBeside a pumice isle in Baiæ's bay,\nAnd saw in sleep old palaces and towers\nQuivering within the wave's intenser day,\n\nAll overgrown with azure moss and flowers\nSo sweet, the sense faints picturing them! Thou\nFor whose path the Atlantic's level powers\n\nCleave themselves into chasms, while far below\nThe sea-blooms and the oozy woods which wear\nThe sapless foliage of the ocean, know\n\nThy voice, and suddenly grow grey with fear,\nAnd tremble and despoil themselves: O, hear!\n\nIV.\n\nIf I were a dead leaf thou mightest bear;\nIf I were a swift cloud to fly with thee;\nA wave to pant beneath thy power, and share\n\nThe impulse of thy strength, only less free\nThan thou, O, uncontroulable! If even\nI were as in my boyhood, and could be\n\nThe comrade of thy wanderings over heaven,\nAs then, when to outstrip thy skiey speed\nScarce seemed a vision; I would ne'er have striven\n\nAs thus with thee in prayer in my sore need.\nOh! lift me as a wave, a leaf, a cloud!\nI fall upon the thorns of life! I bleed!\n\nA heavy weight of hours has chained and bowed\nOne too like thee: tameless, and swift, and proud.\n\nV.\n\nMake me thy lyre, even as the forest is:\nWhat if my leaves are falling like its own!\nThe tumult of thy mighty harmonies\n\nWill take from both a deep, autumnal tone,\nSweet though in sadness. Be thou, spirit fierce,\nMy spirit! Be thou me, impetuous one!\n\nDrive my dead thoughts over the universe\nLike withered leaves to quicken a new birth!\nAnd, by the incantation of this verse,\n\nScatter, as from an unextinguished hearth\nAshes and sparks, my words among mankind!\nBe through my lips to unawakened earth\n\nThe trumpet of a prophecy! O, wind,\nIf Winter comes, can Spring be far behind?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Prometheus_Unbound%3B_a_lyrical_drama_in_four_acts_with_other_poems/Ode_to_the_West_Wind",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "To a Skylark",
+      "texto": "Hail to thee, blithe spirit!\nBird thou never wert,\nThat from heaven, or near it,\nPourest thy full heart\nIn profuse strains of unpremeditated art.\n\nHigher still and higher\nFrom the earth thou springest\nLike a cloud of fire;\nThe blue deep thou wingest,\nAnd singing still dost soar, and soaring ever singest.\n\nIn the golden lightning\nOf the sunken sun,\nO'er which clouds are brightning,\nThou dost float and run;\nLike an unbodied joy whose race is just begun.\n\nThe pale purple even\nMelts around thy flight;\nLike a star of heaven,\nIn the broad day-light\nThou art unseen, but yet I hear thy shrill delight,\n\nKeen as are the arrows\nOf that silver sphere,\nWhose intense lamp narrows\nIn the white dawn clear,\nUntil we hardly see, we feel that it is there.\n\nAll the earth and air\nWith thy voice is loud,\nAs, when night is bare,\nFrom one lonely cloud\nThe moon rains out her beams, and heaven is overflowed.\n\nWhat thou art we know not;\nWhat is most like thee?\nFrom rainbow clouds there flow not\nDrops so bright to see,\nAs from thy presence showers a rain of melody.\n\nLike a poet hidden\nIn the light of thought,\nSinging hymns unbidden,\nTill the world is wrought\nTo sympathy with hopes and fears it heeded not:\n\nLike a high-born maiden\nIn a palace tower,\nSoothing her love-laden\nSoul in secret hour\nWith music sweet as love, which overflows her bower:\n\nLike a glow-worm golden\nIn a dell of dew,\nScattering unbeholden\nIts aerial hue\nAmong the flowers and grass, which screen it from the view:\n\nLike a rose embowered\nIn its own green leaves,\nBy warm winds deflowered,\nTill the scent it gives\nMakes faint with too much sweet these heavy-winged thieves:\n\nSound of vernal showers\nOn the twinkling grass,\nRain-awakened flowers,\nAll that ever was\nJoyous, and clear, and fresh, thy music doth surpass:\n\nTeach us, sprite or bird,\nWhat sweet thoughts are thine:\nI have never heard,\nPraise of love or wine\nThat panted forth a flood of rapture so divine.\n\nChorus Hymenæal,\nOr triumphal chaunt,\nMatched with thine would be all\nBut an empty vaunt,\nA thing wherein we feel there is some hidden want.\n\nWhat objects are the fountains\nOf thy happy strain?\nWhat fields, or waves, or mountains?\nWhat shapes of sky or plain?\nWhat love of thine own kind? what ignorance of pain?\n\nWith thy clear keen joyance\nLangour cannot be:\nShadow of annoyance\nNever came near thee:\nThou lovest; but ne'er knew love's sad satiety.\n\nWaking or asleep,\nThou of death must deem\nThings more true and deep\nThan we mortals dream,\nOr how could thy notes flow in such a crystal stream?\n\nWe look before and after,\nAnd pine for what is not:\nOur sincerest laughter\nWith some pain is fraught;\nOur sweetest songs are those that tell of saddest thought.\n\nYet if we could scorn\nHate, and pride, and fear;\nIf we were things born\nNot to shed a tear,\nI know not how thy joy we ever should come near.\n\nBetter than all measures\nOf delightful sound,\nBetter than all treasures\nThat in books are found,\nThy skill to poet were, thou scorner of the ground!\n\nTeach me half the gladness\nThat thy brain must know,\nSuch harmonious madness\nFrom my lips would flow,\nThe world should listen then, as I am listening now.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Prometheus_Unbound%3B_a_lyrical_drama_in_four_acts_with_other_poems/To_a_Skylark",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Cloud",
+      "texto": "I bring fresh showers for the thirsting flowers,\nFrom the seas and the streams;\nI bear light shade for the leaves when laid\nIn their noon-day dreams.\nFrom my wings are shaken the dews that waken\nThe sweet birds every one,\nWhen rocked to rest on their mother’s breast,\nAs she dances about the sun.\nI wield the flail of the lashing hail,\nAnd whiten the green plains under,\nAnd then again I dissolve it in rain,\nAnd laugh as I pass in thunder.\n\nI sift the snow on the mountains below,\nAnd their great pines groan aghast;\nAnd all the night ’tis my pillow white,\nWhile I sleep in the arms of the blast.\nSublime on the towers of my skiey bowers,\nLightning my pilot sits,\nIn a cavern under is fettered the thunder,\nIt struggles and howls at fits;\nOver earth and ocean, with gentle motion,\nThis pilot is guiding me,\nLured by the love of the genii that move\nIn the depths of the purple sea;\nOver the rills, and the crags, and the hills,\nOver the lakes and the plains,\nWherever he dream, under mountain or stream,\nThe Spirit he loves remains;\nAnd I all the while bask in heaven’s blue smile,\nWhilst he is dissolving in rains.\n\nThe sanguine sunrise, with his meteor eyes,\nAnd his burning plumes outspread,\nLeaps on the back of my sailing rack,\nWhen the morning star shines dead.\n\nAs on the jag of a mountain crag,\nWhich an earthquake rocks and swins,\nAn eagle alit one moment may sit\nIn the light of its golden wings.\nAnd when sunset may breathe, from the lit sea beneath,\nIts ardours of rest and of love,\nAnd the crimson pall of eve may fall\nFrom the depth of heaven above,\nWith wings folded I rest, on mine airy nest,\nAs still as a brooding dove.\n\nThat orbed maiden with white fire laden,\nWhom mortals call the moon,\nGlides glimmering o'er my fleece-like floor,\nBy the midnight breezes strewn;\nAnd wherever the beat of her unseen feet,\nWhich only the angels hear,\nMay have broken the woof of my tent's thin roof,\nThe stars peep behind her and peer;\nAnd I laugh to see them whirl and flee,\nLike a swarm of golden bees,\n\nWhen I widen the rent in my wind-built tent,\nTill the calm rivers, lakes, and seas,\nLike strips of the sky fallen through me on high,\nAre each paved with the moon and these.\n\nI bind the sun's throne with a burning zone,\nAnd the moon's with a girdle of pearl;\nThe volcanos are dim, and the stars reel and swim,\nWhen the whirlwinds my banner unfurl.\nFrom cape to cape, with a bridge-like shape,\nOver a torrent sea,\nSunbeam-proof, I hang like a roof,\nThe mountains its columns be.\nThe triumphal arch through which I march\nWith hurricane, fire, and snow,\nWhen the powers of the air are chained to my chair,\nIs the million-coloured bow;\nThe sphere-fire above its soft colours wove,\nWhile the moist earth was laughing below.\n\nI am the daughter of earth and water,\nAnd the nursling of the sky;\nI pass through the pores of the ocean and shores;\nI change, but I cannot die.\n\nFor after the rain when with never a stain,\nThe pavilion of heaven is bare,\nAnd the winds and sunbeams with their convex gleams,\nBuild up the blue dome of air,\nI silently laugh at my own cenotaph,\nAnd out of the caverns of rain,\nLike a child from the womb, like a ghost from the tomb,\nI arise and unbuild it again.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Prometheus_Unbound%3B_a_lyrical_drama_in_four_acts_with_other_poems/The_Cloud",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Mutability",
+      "texto": "I\nThe flower that smiles to-day\nTo-morrow dies;\nAll that we wish to stay\nTempts and then flies.\nWhat is this world's delight? 5\nLightning that mocks the night,\nBrief even as bright.\n\nII\nVirtue, how frail it is!\nFriendship how rare!\nLove, how it sells poor bliss 10\nFor proud despair?\nBut we, though soon they fall,\nSurvive their joy, and all\nWhich ours we call.\n\nIIIWhilst skies are blue and bright, 15\nWhilst flowers are gay,\nWhilst eyes that change ere night\nMake glad the day;\nWhilst yet the calm hours creep,\nDream thou—and from thy sleep 20\nThen wake to weep.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poetical_Works_of_Percy_Bysshe_Shelley_(ed._Hutchinson,_1914)/Mutability_(2)",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Music, When Soft Voices Die",
+      "texto": "Music, when soft voices die,\nVibrates in the memory;\nOdours, when sweet violets sicken,\nLive within the sense they quicken.\n\nRose leaves, when the rose is dead,\nAre heap'd for the belovèd's bed;\nAnd so thy thoughts, when thou art gone,\nLove itself shall slumber on.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Oxford_Book_of_English_Verse_1250-1900/Music,_when_Soft_Voices_die",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "England in 1819",
+      "texto": "An old, mad, blind, despised, and dying king,—\nPrinces, the dregs of their dull race, who flow\nThrough public scorn,—mud from a muddy spring,—\nRulers who neither see, nor feel, nor know,\nBut leech-like to their fainting country cling, 5\nTill they drop, blind in blood, without a blow,—\nA people starved and stabbed in the unfilled field,—\nAn army, which liberticide and prey\nMakes as a two-edged sword to all who wield,—\nGolden and sanguine laws which tempt and slay; 10\nReligion Christless, Godless—a book sealed;\nA Senate,—Time's worst statute unrepealed,—\nAre graves, from which a glorious Phantom may\nBurst, to illumine our tempestuous day.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Complete_Poetical_Works_of_Percy_Bysshe_Shelley_(ed._Hutchinson,_1914)/Sonnet:_England_in_1819",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Hymn to Intellectual Beauty",
+      "texto": "The awful shadow of some unseen Power\n  Floats tho' unseen among us; visiting\n  This various world with as inconstant wing\nAs summer winds that creep from flower to flower;\nLike moonbeams that behind some piny mountain shower,\n    It visits with inconstant glance\n    Each human heart and countenance;\nLike hues and harmonies of evening,\n    Like clouds in starlight widely spread,\n    Like memory of music fled,\n    Like aught that for its grace may be\nDear, and yet dearer for its mystery.\n\nSpirit of Beauty, that dost consecrate\n  With thine own hues all thou dost shine upon\n  Of human thought or form, where art thou gone?\nWhy dost thou pass away and leave our state,\nThis dim vast vale of tears, vacant and desolate?\n    Ask why the sunlight not forever\n    Weaves rainbows o'er yon mountain river;\nWhy aught should fail and fade that once is shewn;\n    Why fear and dream and death and birth\n    Cast on the daylight of this earth\n    Such gloom, why man has such a scope\nFor love and hate, despondency and hope?\n\nNo voice from some sublimer world hath ever\n  To sage or poet these responses given:\n  Therefore the names of Demon, Ghost, and Heaven,\nRemain the records of their vain endeavour:\nFrail spells, whose uttered charm might not avail to sever,\n\n    From all we hear and all we see.\n    Doubt, chance, and mutability.\nThy light alone, like mist o'er mountains driven,\n    Or music by the night wind sent\n    Thro' strings of some still instrument,\n    Or moonlight on a midnight stream,\nGives grace and truth to life's unquiet dream.\n\nLove, Hope, and Self-esteem, like clouds, depart\n  And come, for some uncertain moments lent.\n  Man were immortal, and omnipotent,\nDidst thou, unknown and awful as thou art,\nKeep with thy glorious train firm state within his heart.\n    Thou messenger of sympathies\n    That wax and wane in lover's eyes;\nThou, that to human thought are nourishment,\n    Like darkness to a dying flame!\n    Depart not as thy shadow came:\n    Depart not, lest the grave should be,\nLike life and fear, a dark reality.\n\nWhile yet a boy I sought for ghosts, and sped\n  Thro' many a listening chamber, cave and ruin,\n  And starlight wood, with fearful steps pursuing\nHopes of high talk with the departed dead.\nI called on poisonous names with which our youth is fed:\n    I was not heard: I saw them not:\n    When musing deeply on the lot\nOf life, at that sweet time when winds are wooing\n    All vital things that wake to bring\n    News of birds and blossoming,\n    Sudden, thy shadow fell on me:\nI shrieked, and clasped my hands in extacy!\n\nI vowed that I would dedicate my powers\n  To thee and thine: have I not kept the vow?\n  With beating heart and streaming eyes, even now\nI call the phantoms of a thousand hours\nEach from his voiceless grave: they have in visioned bowers\n\n    Of studious zeal or loves delight\n    Outwatched with me the envious night :\nThey know that never joy illumed my brow,\n    Unlinked with hope that thou wouldst free\n    This world from its dark slavery,\n    That thou O awful Loveliness,\nWouldst give whate'er these words cannot express.\n\nThe day becomes more solemn and serene\n  When noon is past : there is a harmony\n  In autumn, and a lustre in its sky,\nWhich thro' the summer is not heard or seen,\nAs if it could not be, as if it had not been!\n    Thus let thy power, which like the truth\n    Of nature on my passive youth\nDescended, to my onward life supply\n    Its calm, to one who worships thee,\n    And every form containing thee,\n    Whom, Spirit fair, thy spells did bind\nTo fear himself, and love all human kind.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rosalind_and_Helen,_A_Modern_Eclogue_(1819)/Hymn_to_Intellectual_Beauty",
+      "tags": [
+        "liberdade",
+        "natureza",
+        "ingles"
+      ]
+    }
+  ]
+}

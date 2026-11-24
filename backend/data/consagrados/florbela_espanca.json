@@ -1,0 +1,127 @@
+{
+  "username": "florbela_espanca",
+  "name": "Florbela Espanca",
+  "bio": "Poetisa alentejana de Vila Viçosa. Seus sonetos, em livros como Livro de Mágoas e Charneca em Flor, dão voz ao desejo, à dor e à afirmação feminina com intensidade rara na época. Morreu aos 36 anos, em Matosinhos, e tornou-se uma das poetas mais lidas de Portugal e do Brasil.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Espanca_Florbela.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1894,
+  "morte": 1930,
+  "poemas": [
+    {
+      "titulo": "Fanatismo",
+      "texto": "Minh'alma, de sonhar-te, anda perdida.\nMeus olhos andam cegos de te ver.\nNão és sequer razão do meu viver\nPois que tu és já toda a minha vida!\n\nNão vejo nada assim enlouquecida...\nPasso no mundo, meu Amor, a ler\nNo misterioso livro do teu ser\nA mesma história tantas vezes lida!...\n\n\"Tudo no mundo é frágil, tudo passa...\nQuando me dizem isto, toda a graça\nDuma boca divina fala em mim!\n\nE, olhos postos em ti, digo de rastros:\n\"Ah! podem voar mundos, morrer astros,\nQue tu és como Deus: princípio e fim!...\"",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Fanatismo",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Ser poeta",
+      "texto": "Ser poeta é ser mais alto, é ser maior\nDo que os homens! Morder como quem beija!\nÉ ser mendigo e dar como quem seja\nRei do Reino de Aquem e de Alem Dôr!\n\nÉ ter de mil desejos o explendor\nE não saber sequer que se deseja!\nÉ ter cá dentro um astro que flameja,\nÉ ter garras e asas de condor!\n\nÉ ter fome, é ter sêde de Infinito!\nPor elmo, as manhãs de oiro e de setim...\nÉ condensar o mundo num só grito!\n\nE é amar-te, assim, perdidamente...\nÉ seres alma e sangue e vida em mim\nE dizê-lo cantando a toda a gente!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Charneca_em_Flor/Ser_poeta",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Amar!",
+      "texto": "Eu quero amar, amar perdidamente!\nAmar só por amar: Aqui... além...\nMais Este e Aquele, o Outro e toda a gente...\nAmar! Amar! E não amar ninguem!\n\nRecordar? Esquecer? Indiferente!...\nPrender ou desprender? É mal? É bem?\nQuem disser que se pode amar alguem\nDurante a vida inteira é porque mente!\n\nHá uma primavera em cada vida:\nÉ preciso canta-la assim florida,\nPois se Deus nos deu voz, foi p'ra cantar!\n\nE se um dia hei de ser pó, cinza e nada\nQue seja a minha noite uma alvorada,\nQue me saiba perder... p'ra me encontrar.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Charneca_em_Flor/Amar!",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Eu",
+      "texto": "Até agora eu não me conhecia,\nJulgava que era Eu e eu não era\nAquela que em meus versos descrevera\nTão clara como a fonte e como o dia.\n\nMas que eu não era Eu não o sabia\nE, mesmo que o soubesse, o não dissera...\nOlhos fitos em rútila quimera\nAndava atrás de mim... e não me via!\n\nAndava a procurar-me ― pobre louca! ―\nE achei o meu olhar no teu olhar,\nE a minha bôca sôbre a tua bôca!\n\nE esta ânsia de viver, que nada acalma,\nÉ a chama da tua alma a esbrazear\nAs apagadas cinzas da minha alma!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Charneca_em_Flor/Eu",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Vaidade",
+      "texto": "Sonho que sou a Poetisa eleita,\nAquela que diz tudo e tudo sabe,\nQue tem a inspiração pura e perfeita,\nQue reúne num verso a imensidade!\n\nSonho que um verso meu tem claridade\nPara encher todo o mundo! E que deleita\nMesmo aqueles que morrem de saudade!\nMesmo os de alma profunda e insatisfeita!\n\nSonho que sou Alguém cá neste mundo...\nAquela de saber vasto e profundo,\nAos pés de quem a Terra anda curvada!\n\nE quando mais no céu eu vou sonhando,\nE quando mais no alto ando voando,\nAcordo do meu sonho... E não sou nada!...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Vaidade",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Tortura",
+      "texto": "Tirar dentro do peito a Emoção,\nA lúcida Verdade, o Sentimento!\n— E ser, depois de vir do coração,\nUm punhado de cinza esparso ao vento!...\n\nSonhar um verso de alto pensamento,\nE puro como um ritmo de oração!\n— E ser, depois de vir do coração,\nO pó, o nada, o sonho dum momento!...\n\nSão assim ocos, rudes, os meus versos:\nRimas perdidas, vendavais dispersos,\nCom que eu iludo os outros, com que minto!\n\nQuem me dera encontrar o verso puro,\nO verso altivo e forte, estranho e duro,\nQue dissesse, a chorar, isto que sinto!!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Tortura",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Lágrimas ocultas",
+      "texto": "Se me ponho a cismar em outras eras\nEm que ri e cantei, em que era q’rida,\nParece-me que foi noutras esferas,\nParece-me que foi numa outra vida...\n\nE a minha triste boca dolorida,\nQue dantes tinha o rir das primaveras,\nEsbate as linhas graves e severas\nE cai num abandono de esquecida!\n\nE fico, pensativa, olhando o vago...\nToma a brandura plácida dum lago\nO meu rosto de monja de marfim...\n\nE as lágrimas que choro, branca e calma,\nNinguém as vê brotar dentro da alma!\nNinguém as vê cair dentro de mim!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/L%C3%A1grimas_Ocultas",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A minha dor",
+      "texto": "A você\n\nA minha Dor é um convento ideal\nCheio de claustros, sombras, arcarias,\nAonde a pedra em convulsões sombrias\nTem linhas dum requinte escultural.\n\nOs sinos têm dobres de agonias\nAo gemer, comovidos, o seu mal...\nE todos têm sons de funeral\nAo bater horas, no correr dos dias...\n\nA minha Dor é um convento. Há lírios\nDum roxo macerado de martírios,\nTão belos como nunca os viu alguém!\n\nNesse triste convento aonde eu moro,\nNoites e dias rezo e grito e choro,\nE ninguém ouve... ninguém vê... ninguém...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_Minha_Dor",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Se tu viesses ver-me",
+      "texto": "Se tu viesses ver-me hoje à tardinha,\nA essa hora dos mágicos cansaços,\nQuando a noite de manso se avisinha,\nE me prendesses toda nos teus braços...\n\nQuando me lembra: esse sabôr que tinha\nA tua bôca... o eco dos teus passos...\nO teu riso de fonte... os teus abraços...\nOs teus beijos... a tua mão na minha...\n\nSe tu viesses quando, linda e louca,\nTraça as linhas dulcissimas dum beijo\nE é de sêda vermelha e canta e ri\n\nE é como um cravo ao sol a minha bôca...\nQuando os olhos se me cerram de desejo...\nE os meus braços se estendem para ti...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Charneca_em_Flor/Se_tu_viesses_ver-me",
+      "tags": [
+        "amor",
+        "dor",
+        "portugues"
+      ]
+    }
+  ]
+}

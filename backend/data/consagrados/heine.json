@@ -1,0 +1,23 @@
+{
+  "username": "heine",
+  "name": "Heinrich Heine",
+  "bio": "Heinrich Heine, poeta judeu-alemão de Düsseldorf, exilado em Paris a partir de 1831. Seu Livro das Canções, de lirismo romântico com ironia, foi musicado por Schubert e Schumann. Escreveu também sátiras políticas como Alemanha, um conto de inverno.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Heinrich_Heine.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1797,
+  "morte": 1856,
+  "poemas": [
+    {
+      "titulo": "Die Lorelei",
+      "texto": "Ich weiß nicht, was soll das bedeuten,\nDaß ich so traurig bin.\nEin Märchen aus alten Zeiten,\nDas kommt mir nicht aus dem Sinn.\n\nDie Luft ist kühl und es dunkelt,\nUnd ruhig fließt der Rhein;\nDer Gipfel des Berges funkelt\nIm Abendsonnenschein.\n\nDie schönste Jungfrau sitzet\nDort oben wunderbar;\nIhr goldnes Geschmeide blitzet,\nSie kämmt ihr goldenes Haar.\n\nSie kämmt es mit goldnem Kamme,\nUnd singt ein Lied dabei,\nDas hat eine wundersame,\nGewaltige Melodei.\n\nDen Schiffer im kleinen Schiffe\nErgreift es mit wildem Weh;\nEr schaut nicht die Felsenriffe,\nEr schaut nur hinauf in die Höh’.\n\nIch glaube, die Wellen verschlingen\nAm Ende Schiffer und Kahn;\nUnd das hat mit ihrem Singen\nDie Lorelei gethan.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Lorelei",
+      "tags": [
+        "amor",
+        "melancolia",
+        "alemao"
+      ]
+    }
+  ]
+}

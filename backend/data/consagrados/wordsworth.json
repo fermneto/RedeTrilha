@@ -1,0 +1,88 @@
+{
+  "username": "wordsworth",
+  "name": "William Wordsworth",
+  "bio": "William Wordsworth, poeta inglês de Cockermouth, na região dos Lagos. Com Coleridge publicou as Lyrical Ballads (1798), manifesto do Romantismo inglês, defendendo a linguagem comum e a natureza. Autor de The Prelude e poemas como Daffodils.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Wordsworth_on_Helvellyn_by_Benjamin_Robert_Haydon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1770,
+  "morte": 1850,
+  "poemas": [
+    {
+      "titulo": "My Heart Leaps Up",
+      "texto": "MY heart leaps up when I behold\nA rainbow in the sky:\nSo was it when my life began;\nSo is it now I am a man;\nSo be it when I shall grow old,\nOr let me die!\nThe Child is father of the Man;\nAnd I could wish my days to be\nBound each to each by natural piety.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Hundred_Best_Poems_(lyrical)_in_the_English_language_-_second_series/My_heart_leaps_up_when_I_behold",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "She Dwelt among the Untrodden Ways",
+      "texto": "She dwelt among the untrodden ways\nBeside the springs of Dove,\nA Maid whom there were none to praise,\nAnd very few to love.\n\nA Violet by a mossy stone\nHalf-hidden from the eye!\n—Fair as a star, when only one\nIs shining in the sky.\n\nShe lived unknown, and few could know\nWhen Lucy ceased to be;\nBut she is in her Grave, and, oh,\nThe difference to me!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_(Wordsworth,_1815)/Volume_1/She_dwelt_among_the_untrodden_ways",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Ode: Intimations of Immortality from Recollections of Early Childhood",
+      "texto": "Paulò majora canamus.\n\nODE.\n\nThere was a time when meadow, grove, and stream,\nThe earth, and every common sight,\nTo me did seem\nApparelled in celestial light,\nThe glory and the freshness of a dream.\nIt is not now as it hath been of yore;—\nTurn wheresoe'er I may,\nBy night or day,\nThe things which I have seen I now can see no more.\n\nThe Rainbow comes and goes,\nAnd lovely is the Rose,\n The Moon doth with delight\nLook round her when the heavens are bare;\nWaters on a starry night\nAre beautiful and fair;\nThe sunshine is a glorious birth;\nBut yet I know, where'er I go,\nThat there hath pass'd away a glory from the earth.\n\nNow, while the Birds thus sing a joyous song,\nAnd while the young Lambs bound\nAs to the tabor's sound,\nTo me alone there came a thought of grief:\nA timely utterance gave that thought relief,\nAnd I again am strong:\nThe Cataracts blow their trumpets from the steep,\nNo more shall grief of mine the season wrong;\nI hear the Echoes through the mountains throng,\nThe Winds come to me from the fields of sleep,\n And all the earth is gay,\nLand and sea\nGive themselves up to jollity,\nAnd with the heart of May\nDoth every Beast keep holiday,\nThou Child of Joy,\nShout round me, let me hear thy shouts, thou happy\nShepherd Boy!\n\nYe blessed Creatures, I have heard the call\nYe to each other make; I see\nThe heavens laugh with you in your jubilee;\nMy heart is at your festival,\nMy head hath it's coronal,\nThe fullness of your bliss, I feel— I feel it all.\nOh evil day! if I were sullen\nWhile the Earth herself is adorning,\nThis sweet May-morning,\nAnd the Children are pulling,\n On every side,\nIn a thousand vallies far and wide,\nFresh flowers; while the sun shines warm,\nAnd the Babe leaps up on his Mother's arm:—\nI hear, I hear, with joy I hear!\n—But there's a Tree, of many one,\nA single Field which I have look'd upon,\nBoth of them speak of something that is gone:\nThe Pansy at my feet\nDoth the same tale repeat:\nWhither is fled the visionary gleam?\nWhere is it now, the glory and the dream?\n\nOur birth is but a sleep and a forgetting:\nThe Soul that rises with us, our life's Star,\nHath had elsewhere it's setting,\nAnd cometh from afar:\nNot in entire forgetfulness,\nAnd not in utter nakedness,\n But trailing clouds of glory do we come\nFrom God, who is our home:\nHeaven lies about us in our infancy!\nShades of the prison-house begin to close\nUpon the growing Boy,\nBut He beholds the light, and whence it flows,\nHe sees it in his joy;\nThe Youth, who daily farther from the East\nMust travel, still is Nature's Priest,\nAnd by the vision splendid\nIs on his way attended;\nAt length the Man perceives it die away,\nAnd fade into the light of common day.\n\nEarth fills her lap with pleasures of her own;\nYearnings she hath in her own natural kind,\nAnd, even with something of a Mother's mind,\nAnd no unworthy aim,\n The homely Nurse doth all she can\nTo make her Foster-child, her Inmate Man,\nForget the glories he hath known,\nAnd that imperial palace whence he came.\n\nBehold the Child among his new-born blisses,\nA four year's Darling of a pigmy size!\nSee, where mid work of his own hand he lies,\nFretted by sallies of his Mother's kisses,\nWith light upon him from his Father's eyes!\nSee, at his feet, some little plan or chart,\nSome fragment from his dream of human life,\nShap'd by himself with newly-learned art;\nA wedding or a festival,\nA mourning or a funeral;\nAnd this hath now his heart,\nAnd unto this he frames his song:\nThen will he fit his tongue\nTo dialogues of business, love, or strife;\n But it will not be long\nEre this be thrown aside,\nAnd with new joy and pride\nThe little Actor cons another part,\nFilling from time to time his \"humourous stage\"\nWith all the Persons, down to palsied Age,\nThat Life brings with her in her Equipage;\nAs if his whole vocation\nWere endless imitation.\n\nThou, whose exterior semblance doth belie\nThy Soul's immensity;\nThou best Philosopher, who yet dost keep\nThy heritage, thou Eye among the blind,\nThat, deaf and silent, read'st the eternal deep,\nHaunted for ever by the eternal mind,—\nMighty Prophet! Seer blest!\nOn whom those truths do rest,\nWhich we are toiling all our lives to find,\nThou, over whom thy Immortality\n Broods like the Day, a Master o'er a Slave,\nA Presence which is not to be put by;\nTo whom the grave\nIs but a lonely bed without the sense or sight\nOf day or the warm light,\nA place of thought where we in waiting lie;\nThou little Child, yet glorious in the might\nOf untam'd pleasures, on thy Being's height,\nWhy with such earnest pains dost thou provoke\nThe Years to bring the inevitable yoke,\nThus blindly with thy blessedness at strife?\nFull soon thy Soul shall have her earthly freight,\nAnd custom lie upon thee with a weight,\nHeavy as frost, and deep almost as life!\n\nO joy! that in our embers\nIs something that doth live,\nThat nature yet remembers\nWhat was so fugitive!\n The thought of our past years in me doth breed\nPerpetual benedictions: not indeed\nFor that which is most worthy to be blest;\nDelight and liberty, the simple creed\nOf Childhood, whether fluttering or at rest,\nWith new-born hope forever in his breast:—\nNot for these I raise\nThe song of thanks and praise;\nBut for those obstinate questionings\nOf sense and outward things,\nFallings from us, vanishings;\nBlank misgivings of a Creature\nMoving about in worlds not realiz'd,\nHigh instincts, before which our mortal Nature\nDid tremble like a guilty Thing surpriz'd:\nBut for those first affections,\nThose shadowy recollections,\nWhich, be they what they may,\nAre yet the fountain light of all our day,\nAre yet a master light of all our seeing;\n Uphold us, cherish us, and make\nOur noisy years seem moments in the being\nOf the eternal Silence: truths that wake,\nTo perish never;\nWhich neither listlessness, nor mad endeavour,\nNor Man nor Boy,\nNor all that is at enmity with joy,\nCan utterly abolish or destroy!\nHence, in a season of calm weather,\nThough inland far we be,\nOur Souls have sight of that immortal sea\nWhich brought us hither,\nCan in a moment travel thither,\nAnd see the Children sport upon the shore,\nAnd hear the mighty waters rolling evermore.\n\nThen, sing ye Birds, sing, sing a joyous song!\nAnd let the young Lambs bound\nAs to the tabor's sound!\nWe in thought will join your throng,\n Ye that pipe and ye that play,\nYe that through your hearts today\nFeel the gladness of the May!\nWhat though the radiance which was once so bright\nBe now for ever taken from my sight,\nThough nothing can bring back the hour\nOf splendour in the grass, of glory in the flower;\nWe will grieve not, rather find\nStrength in what remains behind,\nIn the primal sympathy\nWhich having been must ever be,\nIn the soothing thoughts that spring\nOut of human suffering,\nIn the faith that looks through death,\nIn years that bring the philosophic mind.\n\nAnd oh ye Fountains, Meadows, Hills, and Groves,\nForebode not any severing of our loves!\n Yet in my heart of hearts I feel your might;\nI only have relinquish'd one delight\nTo live beneath your more habitual sway.\nI love the Brooks which down their channels fret,\nEven more than when I tripp'd lightly as they;\nThe innocent brightness of a new-born Day\nIs lovely yet;\nThe Clouds that gather round the setting sun\nDo take a sober colouring from an eye\nThat hath kept watch o'er man's mortality;\nAnother race hath been, and other palms are won.\nThanks to the human heart by which we live,\nThanks to its tenderness, its joys, and fears,\nTo me the meanest flower that blows can give\nThoughts that do often lie too deep for tears.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems,_in_Two_Volumes_(Wordsworth,_1807)/Volume_2/Ode:_Intimations_of_Immortality_from_Recollections_of_Early_Childhood",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "A Slumber Did My Spirit Seal",
+      "texto": "A slumber did my spirit seal,\nI had no human fears:\nShe seem'd a thing that could not feel\nThe touch of earthly years.\n\nNo motion has she now, no force\nShe neither hears nor sees\nRoll'd round in earth's diurnal course\nWith rocks and stones and trees!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Lyrical_Ballads_(1800)/Volume_2/A_slumber_did_my_spirit_seal",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "We Are Seven",
+      "texto": "A simple child, dear brother Jim,\nThat lightly draws its breath,\nAnd feels its life in every limb,\nWhat should it know of death?\n\nI met a little cottage girl,\nShe was eight years old, she said;\nHer hair was thick with many a curl\nThat cluster'd round her head.\n\nShe had a rustic, woodland air,\nAnd she was wildly clad;\nHer eyes were fair, and very fair,\n—Her beauty made me glad.\n\n\"Sisters and brothers, little maid,\n\"How many may you be?\"\n\"How many? seven in all,\" she said,\nAnd wondering looked at me.\n\n\"And where are they, I pray you tell?\"\nShe answered, \"Seven are we,\n\"And two of us at Conway dwell,\n\"And two are gone to sea.\n\n\"Two of us in the church-yard lie,\n\"My sister and my brother,\n\"And in the church-yard cottage, I\n\"Dwell near them with my mother.\"\n\n\"You say that two at Conway dwell,\n\"And two are gone to sea,\n\"Yet you are seven; I pray you tell\n\"Sweet Maid, how this may be?\"\n\nThen did the little Maid reply,\n\"Seven boys and girls are we;\n\"Two of us in the church-yard lie,\n\"Beneath the church-yard tree.\"\n\n\"You run about, my little maid,\n\"Your limbs they are alive;\n\"If two are in the church-yard laid,\n\"Then ye are only five.\"\n\n\"Their graves are green, they may be seen,\"\nThe little Maid replied,\n\"Twelve steps or more from my mother's door,\n\"And they are side by side.\n\n\"My stockings there I often knit,\n\"My 'kerchief there I hem;\n\"And there upon the ground I sit—\n\"I sit and sing to them.\n\n\"And often after sunset, Sir,\n\"When it is light and fair,\n\"I take my little porringer,\n\"And eat my supper there.\n\n\"The first that died was little Jane;\n\"In bed she moaning lay,\n\"Till God released her of her pain,\n\"And then she went away.\n\n\"So in the church-yard she was laid,\n\"And all the summer dry,\n\"Together round her grave we played,\n\"My brother John and I.\n\n\"And when the ground was white with snow,\n\"And I could run and slide,\n\"My brother John was forced to go,\n\"And he lies by her side.\"\n\n\"How many are you then,\" said I,\n\"If they two are in Heaven?\"\nThe little Maiden did reply,\n\"O Master! we are seven.\"\n\n\"But they are dead; those two are dead!\n\"Their spirits are in heaven!\"\n'Twas throwing words away; for still\nThe little Maid would have her will,\nAnd said, \"Nay, we are seven!\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Lyrical_Ballads_(1798)/We_are_seven",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Surprised by Joy",
+      "texto": "Surprised by joy, impatient as the wind,\nI turned to share the transport, — oh, with whom?\nBut thee, deep buried in the silent tomb,\nThat spot which no vicissitude can find.\nLove, faithful love, recalled thee to my mind —\nBut how could I forget thee? Through what power,\nEven for the least division of an hour,\nHave I been so beguiled as to be blind\nTo my most grevious loss? That thought’s return\nWas the worst pang that sorrow ever bore,\nSave one, one only, when I stood forlorn,\nKnowing my heart’s best treasure was no more;\nThat neither present time nor years unborn\nCould to my sight that heavenly face restore.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Littell's_Living_Age/Volume_144/Issue_1865/Surprised_by_Joy,_Impatient_as_the_Wind",
+      "tags": [
+        "natureza",
+        "memoria",
+        "ingles"
+      ]
+    }
+  ]
+}

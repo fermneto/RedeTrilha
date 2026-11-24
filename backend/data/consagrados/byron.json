@@ -1,0 +1,36 @@
+{
+  "username": "byron",
+  "name": "Lord Byron",
+  "bio": "George Gordon, Lord Byron, poeta romântico inglês. Seus poemas Childe Harold e Don Juan e sua vida escandalosa criaram o herói byroniano, que influenciou o ultrarromantismo no Brasil. Morreu na Grécia, apoiando a independência grega.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Byron_1813_by_Phillips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1788,
+  "morte": 1824,
+  "poemas": [
+    {
+      "titulo": "She Walks in Beauty",
+      "texto": "She walks in Beauty, like the night\nOf cloudless climes and starry skies;\nAnd all that's best of dark and bright\nMeet in her aspect and her eyes:\nThus mellowed to that tender light\nWhich Heaven to gaudy day denies.\n\nII.\n\nOne shade the more, one ray the less,\nHad half impaired the nameless grace\n Which waves in every raven tress,\nOr softly lightens o'er her face;\nWhere thoughts serenely sweet express,\nHow pure, how dear their dwelling-place.\n\nIII.\n\nAnd on that cheek, and o'er that brow,\nSo soft, so calm, yet eloquent,\nThe smiles that win, the tints that glow,\nBut tell of days in goodness spent,\nA mind at peace with all below,\nA heart whose love is innocent!\n\nJune 12, 1814",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Works_of_Lord_Byron_(ed._Coleridge,_Prothero)/Poetry/Volume_3/Hebrew_Melodies/She_walks_in_Beauty",
+      "tags": [
+        "amor",
+        "liberdade",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Darkness",
+      "texto": "I had a dream, which was not all a dream.\nThe bright sun was extinguished, and the stars\nDid wander darkling in the eternal space,\nRayless, and pathless, and the icy Earth\nSwung blind and blackening in the moonless air;\nMorn came and went—and came, and brought no day,\nAnd men forgot their passions in the dread\nOf this their desolation; and all hearts\nWere chilled into a selfish prayer for light:\nAnd they did live by watchfires—and the thrones,\nThe palaces of crownéd kings—the huts,\nThe habitations of all things which dwell,\nWere burnt for beacons; cities were consumed,\nAnd men were gathered round their blazing homes\nTo look once more into each other's face;\nHappy were those who dwelt within the eye\nOf the volcanos, and their mountain-torch:\nA fearful hope was all the World contained;\nForests were set on fire—but hour by hour\nThey fell and faded—and the crackling trunks\nExtinguished with a crash—and all was black.\nThe brows of men by the despairing light\nWore an unearthly aspect, as by fits\nThe flashes fell upon them; some lay down\nAnd hid their eyes and wept; and some did rest\nTheir chins upon their clenchéd hands, and smiled;\nAnd others hurried to and fro, and fed\nTheir funeral piles with fuel, and looked up\nWith mad disquietude on the dull sky,\nThe pall of a past World; and then again\nWith curses cast them down upon the dust,\nAnd gnashed their teeth and howled: the wild birds shrieked,\nAnd, terrified, did flutter on the ground,\nAnd flap their useless wings; the wildest brutes\nCame tame and tremulous; and vipers crawled\nAnd twined themselves among the multitude,\nHissing, but stingless—they were slain for food:\nAnd War, which for a moment was no more,\nDid glut himself again:—a meal was bought\nWith blood, and each sate sullenly apart\nGorging himself in gloom: no Love was left;\nAll earth was but one thought—and that was Death,\nImmediate and inglorious; and the pang\nOf famine fed upon all entrails—men\nDied, and their bones were tombless as their flesh;\nThe meagre by the meagre were devoured,\nEven dogs assailed their masters, all save one,\nAnd he was faithful to a corse, and kept\nThe birds and beasts and famished men at bay,\nTill hunger clung them, or the dropping dead\nLured their lank jaws; himself sought out no food,\nBut with a piteous and perpetual moan,\nAnd a quick desolate cry, licking the hand\nWhich answered not with a caress—he died.\nThe crowd was famished by degrees; but two\nOf an enormous city did survive,\nAnd they were enemies: they met beside\nThe dying embers of an altar-place\nWhere had been heaped a mass of holy things\nFor an unholy usage; they raked up,\nAnd shivering scraped with their cold skeleton hands\nThe feeble ashes, and their feeble breath\nBlew for a little life, and made a flame\nWhich was a mockery; then they lifted up\nTheir eyes as it grew lighter, and beheld\nEach other's aspects—saw, and shrieked, and died—\nEven of their mutual hideousness they died,\nUnknowing who he was upon whose brow\nFamine had written Fiend. The World was void,\nThe populous and the powerful was a lump,\nSeasonless, herbless, treeless, manless, lifeless—\nA lump of death—a chaos of hard clay.\nThe rivers, lakes, and ocean all stood still,\nAnd nothing stirred within their silent depths;\nShips sailorless lay rotting on the sea,\nAnd their masts fell down piecemeal: as they dropped\nThey slept on the abyss without a surge—\nThe waves were dead; the tides were in their grave,\nThe Moon, their mistress, had expired before;\nThe winds were withered in the stagnant air,\nAnd the clouds perished; Darkness had no need\nOf aid from them—She was the Universe.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Darkness_(Byron,_1901)",
+      "tags": [
+        "amor",
+        "liberdade",
+        "ingles"
+      ]
+    }
+  ]
+}

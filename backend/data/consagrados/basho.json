@@ -1,0 +1,127 @@
+{
+  "username": "basho",
+  "name": "Matsuo Bashō",
+  "bio": "Matsuo Bashō, poeta japonês do período Edo, nascido em Iga. Elevou o haicai a arte maior, com sensibilidade zen para o instante e a natureza. Viajou a pé pelo Japão e escreveu diários como Oku no Hosomichi (O Caminho Estreito para o Norte). O haicai da rã no velho tanque é o mais célebre do Japão.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Basho_by_Buson.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1644,
+  "morte": 1694,
+  "poemas": [
+    {
+      "titulo": "[古池や蛙とびこむ水の音]",
+      "texto": "古池や蛙とびこむ水の音",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "natureza",
+        "silencio",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[夏草や兵どもが夢の跡]",
+      "texto": "夏草や兵どもが夢の跡",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "guerra",
+        "efemero",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[閑さや岩にしみ入るせみの聲]",
+      "texto": "閑さや岩にしみ入るせみの聲",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "silencio",
+        "natureza",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[五月雨を集めて早し最上川]",
+      "texto": "五月雨を集めて早し最上川",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "chuva",
+        "rio",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[荒海や佐渡に橫ふ天の川]",
+      "texto": "荒海や佐渡に橫ふ天の川",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "mar",
+        "estrelas",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[秋深き隣は何をする人ぞ]",
+      "texto": "秋深き隣は何をする人ぞ",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "outono",
+        "solidao",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[野ざらしを心に風の沁む身哉]",
+      "texto": "野ざらしを心に風の沁む身哉",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "viagem",
+        "morte",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[枯枝に烏のとまりけり秋の暮]",
+      "texto": "枯枝に烏のとまりけり秋の暮",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "outono",
+        "solidao",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[山路來て何やらゆかし菫草]",
+      "texto": "山路來て何やらゆかし菫草",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikisource.org/wiki/%E8%8A%AD%E8%95%89%E4%BF%B3%E5%8F%A5%E5%85%A8%E9%9B%86",
+      "tags": [
+        "natureza",
+        "flores",
+        "japones"
+      ]
+    }
+  ]
+}

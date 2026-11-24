@@ -1,0 +1,114 @@
+{
+  "username": "john_donne",
+  "name": "John Donne",
+  "bio": "John Donne, poeta e pregador londrino, deão da Catedral de São Paulo. Principal poeta metafísico inglês, escreveu poemas de amor engenhosos e os Holy Sonnets, como Death, be not proud. Sua obra foi redescoberta e celebrada por T. S. Eliot.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/John_Donne_BBC_News.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1572,
+  "morte": 1631,
+  "poemas": [
+    {
+      "titulo": "A Valediction: Forbidding Mourning",
+      "texto": "As virtuous men pass mildly away,\nAnd whisper to their souls to go,\nWhilst some of their sad friends do say,\n\"Now his breath goes,\" and some say, \"No.\"\n\nSo let us melt, and make no noise,\nNo tear-floods, nor sigh-tempests move;\n'Twere profanation of our joys\nTo tell the laity our love.\n\nMoving of th' earth brings harms and fears;\nMen reckon what it did, and meant; 10\nBut trepidation of the spheres.\nThough greater far, is innocent.\n\nDull sublunary lovers' love\n—Whose soul is sense—cannot admit\nOf absence, 'cause it doth remove\nThe thing which elemented it.\n\nBut we by a love so far refined,\nThat ourselves know not what it is,\nInter-assurèd of the mind,\nCare less eyes, lips and hands to miss. 20\n\nOur two souls therefore, which are one,\nThough I must go, endure not yet\nA breach, but an expansion,\nLike gold to airy thinness beat.\n\nIf they be two, they are two so\nAs stiff twin compasses are two;\nThy soul, the fix'd foot, makes no show\nTo move, but doth, if th' other do.\n\nAnd though it in the centre sit,\nYet, when the other far doth roam, 30\nIt leans, and hearkens after it,\nAnd grows erect, as that comes home.\n\nSuch wilt thou be to me, who must,\nLike th' other foot, obliquely run;\nThy firmness makes my circle just,\nAnd makes me end where I begun.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/A_Valediction_Forbidding_Mourning",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Sun Rising",
+      "texto": "BUSY old fool, unruly Sun,\nWhy dost thou thus,\nThrough windows, and through curtains, call on us?\nMust to thy motions lovers' seasons run?\nSaucy pedantic wretch, go chide\nLate school-boys and sour prentices,\nGo tell court-huntsmen that the king will ride,\nCall country ants to harvest offices;\nLove, all alike, no season knows nor clime,\nNor hours, days, months, which are the rags of time.\n\nThy beams so reverend, and strong\nWhy shouldst thou think?\nI could eclipse and cloud them with a wink,\nBut that I would not lose her sight so long.\nIf her eyes have not blinded thine,\nLook, and to-morrow late tell me,\nWhether both th' Indias of spice and mine\nBe where thou left'st them, or lie here with me.\nAsk for those kings whom thou saw'st yesterday,\nAnd thou shalt hear, \"All here in one bed lay.\"\n\nShe's all states, and all princes I;\nNothing else is;\nPrinces do but play us; compared to this,\nAll honour's mimic, all wealth alchemy.\nThou, Sun, art half as happy as we,\nIn that the world's contracted thus;\nThine age asks ease, and since thy duties be\nTo warm the world, that's done in warming us.\nShine here to us, and thou art everywhere;\nThis bed thy center is, these walls thy sphere.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/The_Sun_Rising",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Good-Morrow",
+      "texto": "I WONDER by my troth, what thou and I\nDid, till we loved? were we not wean'd till then?\nBut suck'd on country pleasures, childishly?\nOr snorted we in the Seven Sleepers' den?\n'Twas so; but this, all pleasures fancies be;\nIf ever any beauty I did see,\nWhich I desired, and got, 'twas but a dream of thee.\n\nAnd now good-morrow to our waking souls,\nWhich watch not one another out of fear;\nFor love all love of other sights controls,\nAnd makes one little room an everywhere.\nLet sea-discoverers to new worlds have gone;\nLet maps to other, worlds on worlds have shown;\nLet us possess one world; each hath one, and is one.\n\nMy face in thine eye, thine in mine appears,\nAnd true plain hearts do in the faces rest;\nWhere can we find two better hemispheres\nWithout sharp north, without declining west?\nWhatever dies, was not mix'd equally;\nIf our two loves be one, or thou and I\nLove so alike that none can slacken, none can die.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/The_Good-Morrow",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Song: Go and catch a falling star",
+      "texto": "GO and catch a falling star,\nGet with child a mandrake root,\nTell me where all past years are,\nOr who cleft the Devil's foot:\nTeach me to hear mermaids singing,\nOr to keep off envy's stinging,\nAnd find\nWhat wind\nServes to advance an honest mind.\n\nIf thou be'st born to strange sights,\nThings invisible to see,\nRide ten thousand days and nights\nTill Age snow white hairs on thee;\nThou, when thou return'st, wilt tell me\nAll strange wonders that befell thee,\nAnd swear\nNo where\nLives a woman true and fair.\n\nIf thou find'st one, let me know;\nSuch a pilgrimage were sweet.\nYet do not; I would not go,\nThough at next door we might meet.\nThough she were true when you met her,\nAnd last till you write your letter,\nYet she\nWill be\nFalse, ere I come, to two or three.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Oxford_Book_of_English_Verse_1250-1900/Song_(Donne)",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Canonization",
+      "texto": "FOR God's sake hold your tongue, and let me love;\nOr chide my palsy, or my gout;\nMy five gray hairs, or ruin'd fortune flout;\nWith wealth your state, your mind with arts improve;\nTake you a course, get you a place,\nObserve his Honour, or his Grace;\nOr the king's real, or his stamp'd face\nContemplate; what you will, approve,\nSo you will let me love.\n\nAlas! alas! who's injured by my love?\nWhat merchant's ships have my sighs drown'd?\nWho says my tears have overflow'd his ground?\nWhen did my colds a forward spring remove?\nWhen did the heats which my veins fill\nAdd one more to the plaguy bill?\nSoldiers find wars, and lawyers find out still\nLitigious men, which quarrels move,\nThough she and I do love.\n\nCall's what you will, we are made such by love;\nCall her one, me another fly,\nWe're tapers too, and at our own cost die,\nAnd we in us find th' eagle and the dove.\nThe phoenix riddle hath more wit\nBy us; we two being one, are it;\nSo, to one neutral thing both sexes fit.\nWe die and rise the same, and prove\nMysterious by this love.\n\nWe can die by it, if not live by love,\nAnd if unfit for tomb or hearse\nOur legend be, it will be fit for verse;\nAnd if no piece of chronicle we prove,\nWe'll build in sonnets pretty rooms;\nAs well a well-wrought urn becomes\nThe greatest ashes, as half-acre tombs,\nAnd by these hymns, all shall approve\nUs canonized for love;\n\nAnd thus invoke us, \"You, whom reverend love\nMade one another's hermitage;\nYou, to whom love was peace, that now is rage;\nWho did the whole world's soul contract, and drove\nInto the glasses of your eyes;\nSo made such mirrors, and such spies,\nThat they did all to you epitomize—\nCountries, towns, courts beg from above\nA pattern of your love.\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/The_Canonization",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "A Hymn to God the Father",
+      "texto": "Wilt thou forgive that sin where I begun,\nWhich is my sin, though it were done before?\nWilt thou forgive that sin through which I run,\nAnd do run still, though still I do deplore?\nWhen thou hast done, thou hast not done,\nFor I have more.\n\nWilt thou forgive that sin by which I have won\nOthers to sin? and made my sin their door?\nWilt thou forgive that sin which I did shun\nA year or two, but wallowed in a score?\nWhen thou hast done, thou hast not done,\nFor I have more.\n\nI have a sin of fear, that when I have spun\nMy last thread, I shall perish on the shore;\nSwear by thy self, that at my death thy Son\nShall shine as he shines now and heretofore;\nAnd, having done that, thou hast done,\nI fear no more.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Oxford_Book_of_English_Verse_1250-1900/A_Hymn_to_God_the_Father",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Relic",
+      "texto": "WHEN my grave is broke up again\nSome second guest to entertain,\n—For graves have learn'd that woman-head,\nTo be to more than one a bed—\nAnd he that digs it, spies\nA bracelet of bright hair about the bone,\nWill he not let us alone,\nAnd think that there a loving couple lies,\nWho thought that this device might be some way\nTo make their souls at the last busy day\nMeet at this grave, and make a little stay?\n\nIf this fall in a time, or land,\nWhere mass-devotion doth command,\nThen he that digs us up will bring\nUs to the bishop or the king,\nTo make us relics; then\nThou shalt be a Mary Magdalen, and I\nA something else thereby;\nAll women shall adore us, and some men.\nAnd, since at such time miracles are sought,\nI would have that age by this paper taught\nWhat miracles we harmless lovers wrought.\n\nFirst we loved well and faithfully,\nYet knew not what we loved, nor why;\nDifference of sex we never knew,\nNo more than guardian angels do;\nComing and going we\nPerchance might kiss, but not between those meals;\nOur hands ne'er touch'd the seals,\nWhich nature, injured by late law, sets free.\nThese miracles we did; but now alas!\nAll measure, and all language, I should pass,\nShould I tell what a miracle she was.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/The_Relic",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Anniversary",
+      "texto": "ALL kings, and all their favourites,\nAll glory of honours, beauties, wits,\nThe sun it self, which makes time, as they pass,\nIs elder by a year now than it was\nWhen thou and I first one another saw.\nAll other things to their destruction draw,\nOnly our love hath no decay;\nThis no to-morrow hath, nor yesterday;\nRunning it never runs from us away,\nBut truly keeps his first, last, everlasting day.\n\nTwo graves must hide thine and my corse;\nIf one might, death were no divorce.\nAlas! as well as other princes, we\n—Who prince enough in one another be—\nMust leave at last in death these eyes and ears,\nOft fed with true oaths, and with sweet salt tears;\nBut souls where nothing dwells but love\n—All other thoughts being inmates—then shall prove\nThis or a love increasèd there above,\nWhen bodies to their graves, souls from their graves remove.\n\nAnd then we shall be throughly blest;\nBut now no more than all the rest.\nHere upon earth we're kings, and none but we\nCan be such kings, nor of such subjects be.\nWho is so safe as we? where none can do\nTreason to us, except one of us two.\nTrue and false fears let us refrain,\nLet us love nobly, and live, and add again\nYears and years unto years, till we attain\nTo write threescore; this is the second of our reign.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_of_John_Donne/Volume_1/The_Anniversary",
+      "tags": [
+        "amor",
+        "morte",
+        "ingles"
+      ]
+    }
+  ]
+}

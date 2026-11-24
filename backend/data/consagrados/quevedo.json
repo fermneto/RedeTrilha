@@ -1,0 +1,75 @@
+{
+  "username": "quevedo",
+  "name": "Francisco de Quevedo",
+  "bio": "Francisco de Quevedo, poeta e prosador madrilenho do Século de Ouro. Mestre do conceptismo, escreveu sátiras ferozes, poesia moral sobre a morte e o tempo e sonetos de amor como Amor constante más allá de la muerte.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Quevedo_%28copia_de_Vel%C3%A1zquez%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1584,
+  "morte": 1645,
+  "poemas": [
+    {
+      "titulo": "Amor constante más allá de la muerte",
+      "texto": "Cerrar podrá mis ojos la postrera\nsombra que me llevare el blanco día,\ny podrá desatar esta alma mía\nhora a su afán ansioso lisonjera;\n\nmas no, de esotra parte, en la ribera,\ndejará la memoria, en donde ardía:\nnadar sabe mi llama la agua fría,\ny perder el respeto a ley severa.\n\nAlma a quien todo un dios prisión ha sido,\nvenas que humor a tanto fuego han dado,\nmédulas que han gloriosamente ardido,\n\nsu cuerpo dejará, no su cuidado;\nserán ceniza, mas tendrá sentido;\npolvo serán, mas polvo enamorado.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Amor_constante_m%C3%A1s_all%C3%A1_de_la_muerte",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Poderoso caballero es don Dinero",
+      "texto": "Madre, yo al oro me humillo,\nÉl es mi amante y mi amado,\nPues de puro enamorado\nDe continuo anda amarillo.\nQue pues doblón o sencillo\nHace todo cuanto quiero,\nPoderoso Caballero\nEs don Dinero.\n\nNace en las Indias honrado,\nDonde el Mundo le acompaña;\nViene a morir en España,\nY es en Génova enterrado.\nY pues quien le trae al lado\nEs hermoso, aunque sea fiero,\nPoderoso Caballero\nEs don Dinero.\n\nEs galán, y es como un oro,\nTiene quebrado el color,\nPersona de gran valor,\nTan Cristiano como Moro.\nPues que da y quita el decoro\nY quebranta cualquier fuero,\nPoderoso Caballero\nEs don Dinero.\n\nSon sus padres principales,\nY es de nobles descendiente,\nPorque en las venas de Oriente\nTodas las sangres son Reales.\nY pues es quien hace iguales\nAl duque y al ganadero,\nPoderoso Caballero\nEs don Dinero.\n\nMas ¿a quién no maravilla\nVer en su gloria, sin tasa,\nQue es lo menos de su casa\nDoña Blanca de Castilla?\nPero pues da al bajo silla\nY al cobarde hace guerrero,\nPoderoso Caballero\nEs don Dinero.\n\nSus escudos de Armas nobles\nSon siempre tan principales,\nQue sin sus Escudos Reales\nNo hay Escudos de armas dobles.\nY pues a los mismos robles\nDa codicia su minero,\nPoderoso Caballero\nEs don Dinero.\n\nPor importar en los tratos\nY dar tan buenos consejos,\nEn las Casas de los viejos\nGatos le guardan de gatos.\nY pues él rompe recatos\nY ablanda al juez más severo,\nPoderoso Caballero\nEs don Dinero.\n\nY es tanta su majestad\n(Aunque son sus duelos hartos),\nQue con haberle hecho cuartos,\nNo pierde su autoridad.\nPero pues da calidad\nAl noble y al pordiosero,\nPoderoso Caballero\nEs don Dinero.\n\nNunca vi Damas ingratas\nA su gusto y afición,\nQue a las caras de un doblón\nHacen sus caras baratas.\nY pues las hace bravatas\nDesde una bolsa de cuero,\nPoderoso Caballero\nEs don Dinero.\n\nMás valen en cualquier tierra,\n(Mirad si es harto sagaz)\nSus escudos en la paz\nQue rodelas en la guerra.\nY pues al pobre le entierra\nY hace propio al forastero,\nPoderoso Caballero\nEs don Dinero.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Poderoso_caballero_es_Don_Dinero_(Letrilla_sat%C3%ADrica)",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Miré los muros de la patria mía",
+      "texto": "Miré los muros de la patria mía,\nsi un tiempo fuertes, ya desmoronados,\nde la carrera de la edad cansados,\npor quien caduca ya su valentía.\n\nSalime al campo, ví que el sol bebía\nlos arroyos del hielo desatados,\ny del monte quejosos los ganados,\nque con sombras hurtó su luz al día.\n\nEntré en mi casa, ví que amancillada\nde anciana habitación era despojos;\nmi báculo más corvo y menos fuerte.\n\nVencida de la edad sentí mi espada,\ny no hallé cosa en que poner los ojos\nque no fuese recuerdo de la muerte.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Mir%C3%A9_los_muros_de_la_patria_m%C3%ADa",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "A una nariz",
+      "texto": " Érase un hombre a una nariz pegado,\nérase una nariz superlativa,\nérase una alquitara medio viva,\nérase un peje espada mal barbado;\n\n  Era un reloj de sol mal encarado,\nérase un elefante boca arriba,\nérase una nariz sayón y escriba,\nun Ovidio Nasón mal narigado.\n\n  Érase un naricísimo infinito,\nfrisón archinariz, caratulera,\nsabañón garrafal, morado y frito;\n\n  Érase el espolón de una galera,\nérase una pirámide de Egipto,\nlas doce tribus de narices era.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/A_una_nariz",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Represéntase la brevedad de lo que se vive",
+      "texto": "\"¡Ah de la vida..!\" ¿Nadie me responde?\n¡Aquí de los antaños que he vivido!\nLa Fortuna mis tiempos ha mordido,\nlas Horas mi locura las esconde.\n\n¡Que sin poder saber cómo ni adónde\nla salud y la edad se hayan huido!\nFalta la vida, asiste lo vivido,\ny no hay calamidad que no me ronde.\n\nAyer se fue, mañana no ha llegado;\nhoy se está yendo sin parar un punto:\nsoy un fue, y un será, y un es cansado.\n\nEn el hoy y mañana y ayer, junto\npañales y mortaja, y he quedado\npresentes sucesiones de difunto.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Repres%C3%A9ntase_la_brevedad_de_lo_que_se_vive",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    }
+  ]
+}

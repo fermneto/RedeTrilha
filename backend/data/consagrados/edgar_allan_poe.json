@@ -1,0 +1,101 @@
+{
+  "username": "edgar_allan_poe",
+  "name": "Edgar Allan Poe",
+  "bio": "Edgar Allan Poe, poeta e contista de Boston, criado em Richmond. Mestre do terror e do conto policial, escreveu poemas musicais e sombrios como The Raven e Annabel Lee. Traduzido por Baudelaire e Mallarmé, influenciou o Simbolismo.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Edgar_Allan_Poe%2C_circa_1849%2C_restored%2C_squared_off.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1809,
+  "morte": 1849,
+  "poemas": [
+    {
+      "titulo": "The Raven",
+      "texto": "ONCE upon a midnight dreary, while I pondered, weak and weary,\nOver many a quaint and curious volume of forgotten lore,\nWhile I nodded, nearly napping, suddenly there came a tapping,\nAs of some one gently rapping, rapping at my chamber door.\n\"'Tis some visiter,\" I muttered, \"tapping at my chamber door—\nOnly this, and nothing more.\"\n\nAh, distinctly I remember it was in the bleak December,\nAnd each separate dying ember wrought its ghost upon the floor.\nEagerly I wished the morrow;—vainly I had sought to borrow\nFrom my books surcease of sorrow—sorrow for the lost Lenore—\nFor the rare and radiant maiden whom the angels name Lenore—\nNameless here for evermore.\n\nAnd the silken sad uncertain rustling of each purple curtain\nThrilled me—filled me with fantastic terrors never felt before;\nSo that now, to still the beating of my heart, I stood repeating\n\"'Tis some visiter entreating entrance at my chamber door—\nSome late visiter entreating entrance at my chamber door;—\nThis it is, and nothing more.\"\n\nPresently my soul grew stronger; hesitating then no longer,\n\"Sir,\" said I, \"or Madam, truly your forgiveness I implore;\nBut the fact is I was napping, and so gently you came rapping,\nAnd so faintly you came tapping, tapping at my chamber door,\nThat I scarce was sure I heard you\"—here I opened wide the door;——\nDarkness there, and nothing more.\n\nDeep into that darkness peering, long I stood there wondering, fearing,\nDoubting, dreaming dreams no mortal ever dared to dream before;\nBut the silence was unbroken, and the darkness gave no token,\nAnd the only word there spoken was the whispered word, \"Lenore!\"\nThis I whispered, and an echo murmured back the word, \"Lenore!\"\nMerely this, and nothing more.\n\nBack into the chamber turning, all my soul within me burning,\nSoon I heard again a tapping somewhat louder than before.\n\"Surely,\" said I, \"surely that is something at my window lattice;\nLet me see, then, what thereat is, and this mystery explore—\nLet my heart be still a moment and this mystery explore;—\n'Tis the wind and nothing more!\"\n\nOpen here I flung the shutter, when, with many a flirt and flutter,\nIn there stepped a stately raven of the saintly days of yore;\nNot the least obeisance made he; not an instant stopped or stayed he;\nBut, with mien of lord or lady, perched above my chamber door—\nPerched upon a bust of Pallas just above my chamber door—\nPerched, and sat, and nothing more.\n\nThen this ebony bird beguiling my sad fancy into smiling,\nBy the grave and stern decorum of the countenance it wore,\n\"Though thy crest be shorn and shaven, thou,\" I said, \"art sure no craven,\nGhastly grim and ancient raven wandering from the Nightly shore—\nTell me what thy lordly name is on the Night's Plutonian shore!\"\nQuoth the raven, \"Nevermore.\"\n\nMuch I marvelled this ungainly fowl to hear discourse so plainly,\nThough its answer little meaning—little relevancy bore;\nFor we cannot help agreeing that no living human being\nEver yet was blessed with seeing bird above his chamber door—\nBird or beast upon the sculptured bust above his chamber door,\nWith such name as \"Nevermore.\"\n\nBut the raven, sitting lonely on the placid bust, spoke only\nThat one word, as if his soul in that one word he did outpour.\nNothing farther then he uttered—not a feather then he fluttered—\nTill I scarcely more than muttered \"Other friends have flown before—\nOn the morrow he will leave me, as my hopes have flown before.\"\nThen the bird said \"Nevermore.\"\n\nStartled at the stillness broken by reply so aptly spoken,\n\"Doubtless,\" said I, \"what it utters is its only stock and store\nCaught from some unhappy master whom unmerciful Disaster\nFollowed fast and followed faster till his songs one burden bore—\nTill the dirges of his Hope that melancholy burden bore\nOf 'Never—nevermore.'\"\n\nBut the raven still beguiling all my sad soul into smiling,\nStraight I wheeled a cushioned seat in front of bird, and bust and door;\nThen, upon the velvet sinking, I betook myself to linking\nFancy unto fancy, thinking what this ominous bird of yore—\nWhat this grim, ungainly, ghastly, gaunt, and ominous bird of yore\nMeant in croaking \"Nevermore.\"\n\nThis I sat engaged in guessing, but no syllable expressing\nTo the fowl whose fiery eyes now burned into my bosom's core;\nThis and more I sat divining, with my head at ease reclining\nOn the cushion's velvet lining that the lamplight gloated o'er,\nBut whose velvet violet lining with the lamplight gloating o'er,\nShe shall press, ah, nevermore!\n\nThen, methought, the air grew denser, perfumed from an unseen censer\nSwung by angels whose faint foot-falls tinkled on the tufted floor.\n\"Wretch,\" I cried, \"thy God hath lent thee—by these angels he hath sent thee\nRespite—respite and nepenthe from thy memories of Lenore!\nQuaff, oh quaff this kind nepenthe and forget this lost Lenore!\"\nQuoth the raven, \"Nevermore.\"\n\n\"Prophet!\" said I, \"thing of evil!—prophet still, if bird or devil!—\nWhether Tempter sent, or whether tempest tossed thee here ashore,\nDesolate yet all undaunted, on this desert land enchanted—\nOn this home by Horror haunted—tell me truly, I implore—\nIs there—is there balm in Gilead?—tell me—tell me, I implore!\"\nQuoth the raven, \"Nevermore.\"\n\n\"Prophet!\" said I, \"thing of evil—prophet still, if bird or devil!\nBy that Heaven that bends above us—by that God we both adore—\nTell this soul with sorrow laden if, within the distant Aidenn,\nIt shall clasp a sainted maiden whom the angels name Lenore—\nClasp a rare and radiant maiden whom the angels name Lenore.\"\nQuoth the raven, \"Nevermore.\"\n\n\"Be that word our sign of parting, bird or fiend!\" I shrieked, upstarting—\n\"Get thee back into the tempest and the Night's Plutonian shore!\nLeave no black plume as a token of that lie thy soul hath spoken!\nLeave my loneliness unbroken!—quit the bust above my door!\nTake thy beak from out my heart, and take thy form from off my door!\"\nQuoth the raven, \"Nevermore.\"\n\nAnd the raven, never flitting, still is sitting, still is sitting\nOn the pallid bust of Pallas just above my chamber door;\nAnd his eyes have all the seeming of a demon's that is dreaming,\nAnd the lamp-light o'er him streaming throws his shadow on the floor;\nAnd my soul from out that shadow that lies floating on the floor\nShall be lifted—nevermore!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Raven_and_Other_Poems/The_Raven",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Alone",
+      "texto": "From childhood's hour I have not been\nAs others were — I have not seen\nAs others saw — I could not bring\nMy passions from a common spring —\nFrom the same source I have not taken\nMy sorrow — I could not awaken\nMy heart to joy at the same tone —\nAnd all I lov'd — I lov'd alone —\nThen — in my childhood — in the dawn\nOf a most stormy life — was drawn\nFrom ev'ry depth of good and ill\nThe mystery which binds me still —\nFrom the torrent, or the fountain —\nFrom the red cliff of the mountain —\nFrom the sun that 'round me roll'd\nIn its autumn tint of gold —\nFrom the lightning in the sky\nAs it pass'd me flying by —\nFrom the thunder, and the storm —\nAnd the cloud that took the form\n(When the rest of Heaven was blue)\nOf a demon in my view —",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Alone_(Poe)",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "To Helen",
+      "texto": "Helen, thy beauty is to me\n    Like those Nicean barks of yore,\nThat gently, o'er a perfumed sea,\n    The weary, wayworn wanderer bore\n    To his own native shore.\n\nOn desperate seas long wont to roam,\n    Thy hyacinth hair, thy classic face,\nThy Naiad airs have brought me home\n    to the glory that was Greece\nAnd the grandeur that was Rome.\n\nLo! in yon brilliant window-niche\n    How statue-like I see thee stand,\n    The agate lamp within thy hand!\nAh, Psyche, from the regions which\n    Are Holy Land!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/To_Helen_(Poe,_1831)",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Eldorado",
+      "texto": "Gaily bedight,\nA gallant knight,\nIn sunshine and in shadow,\nHad journeyed long,\nSinging a song,\nIn search of Eldorado.\n\nBut he grew old—\nThis knight so bold—\nAnd o'er his heart a shadow\nFell as he found\nNo spot of ground\nThat looked like Eldorado.\n\nAnd, as his strength\nFailed him at length,\nHe met a pilgrim shadow—\n\"Shadow,\" said he,\n\"Where can it be—\nThis land of Eldorado?\"\n\n\"Over the Mountains\nOf the Moon,\nDown the Valley of the Shadow,\nRide, boldly ride,\"\nThe shade replied,—\n\"If you seek for Eldorado!\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Works_of_the_Late_Edgar_Allan_Poe_(1859)/Volume_2/Eldorado",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Bells",
+      "texto": "Hear the sledges with the bells—\nSilver bells!\nWhat a world of merriment their melody foretells!\nHow they tinkle, tinkle, tinkle,\nIn the icy air of night!\nWhile the stars that oversprinkle\nAll the heavens, seem to twinkle\nWith a crystalline delight;\nKeeping time, time, time,\nIn a sort of Runic rhyme,\nTo the tintinabulation that so musically wells\nFrom the bells, bells, bells, bells,\nBells, bells, bells—\nFrom the jingling and the tinkling of the bells.\n\nII.\n\nHear the mellow wedding bells,\nGolden bells!\nWhat a world of happiness their harmony foretells?\nThrough the balmy air of night\nHow they ring out their delight!\nFrom the molten-golden notes,\nAnd all in tune,\nWhat a liquid ditty floats\nTo the turtle-dove that listens, while she gloats\nOn the moon!\nOh, from out the sounding cells,\nWhat a gush of euphony voluminously wells!\nHow it swells!\nHow it dwells\n On the Future! how it tells\nOf the rapture that impels\nTo the swinging and the ringing\nOf the bells, bells, bells,\nOf the bells, bells, bells, bells,\nBells, bells, bells—\nTo the rhyming and the chiming of the bells!\n\nIII.\n\nHear the loud alarum bells—\nBrazen bells!\nWhat a tale of terror, now, their turbulency tells!\nIn the startled ear of night\nHow they scream out their affright!\nToo much horrified to speak,\nThey can only shriek, shriek,\nOut of tune,\nIn a clamorous appealing to the mercy of the fire,\nIn a mad expostulation with the deaf and frantic fire,\nLeaping higher, higher, higher,\nWith a desperate desire,\nAnd a resolute endeavor\nNow—now to sit or never,\nBy the side of the pale-faced moon.\nOh, the bells, bells, bells!\nWhat a tale their terror tells\nOf Despair!\nHow they clang, and clash, and roar!\nWhat a horror they outpour\nOn the bosom of the palpitating air!\nYet the ear it fully knows,\nBy the twanging,\nAnd the clanging,\nHow the danger ebbs and flows;\nYet the ear distinctly tells,\nIn the jangling,\nAnd the wrangling,\nHow the danger sinks and swells,\nBy the sinking or the swelling in the anger of the bells—\n Of the bells—\nOf the bells, bells, bells, bells,\nBells, bells, bells—\nIn the clamor and the clangor of the bells!\n\nIV.\n\nHear the tolling of the bells—\nIron bells!\nWhat a world of solemn thought their monody compels!\nIn the silence of the night,\nHow we shiver with affright\nAt the melancholy menace of their tone!\nFor every sound that floats\nFrom the rust within their throats\nIs a groan.\nAnd the people—ah, the people—\nThey that dwell up in the steeple,\nAll alone,\nAnd who tolling, tolling, tolling,\nIn that muffled monotone,\nFeel a glory in so rolling\nOn the human heart a stone—\nThey are neither man nor woman—\nThey are neither brute nor human—\nThey are Ghouls:\nAnd their king it is who tolls;\nAnd he rolls, rolls, rolls,\nRolls\nA pæan from the bells!\nAnd his merry bosom swells\nWith the pæan of the bells!\nAnd he dances, and he yells;\nKeeping time, time, time,\nIn a sort of Runic rhyme,\nTo the pæan of the bells—\nOf the bells:\nKeeping time, time, time,\nIn a sort of Runic rhyme,\nTo the throbbing of the bells—\n Of the bells, bells, bells—\nTo the sobbing of the bells;\nKeeping time, time, time,\nAs he knells, knells, knells,\nIn a happy Runic rhyme,\nTo the rolling of the bells—\nOf the bells, bells, bells—\nTo the tolling of the bells,\nOf the bells, bells, bells, bells—\nBells, bells, bells—\n\nTo the moaning and the groaning of the bells.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Works_of_the_Late_Edgar_Allan_Poe_(1859)/Volume_2/The_Bells",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The City in the Sea",
+      "texto": "Lo! Death has reared himself a throne\nIn a strange city lying alone\nFar down within the dim West,\nWhere the good and the bad and the worst and the best\nHave gone to their eternal rest.\nThere shrines and palaces and towers\n(Time-eaten towers that tremble not!)\nResemble nothing that is ours.\nAround, by lifting winds forgot,\nResignedly beneath the sky\nThe melancholy waters lie.\n\nNo rays from the holy heaven come down\nOn the long night-time of that town;\nBut light from out the lurid sea\nStreams up the turrets silently—\nGleams up the pinnacles far and free—\nUp domes—up spires—up kingly halls—\nUp fanes—up Babylon-like walls—\nUp shadowy long-forgotten bowers\nOf sculptured ivy and stone flowers—\nUp many and many a marvellous shrine\nWhose wreathéd friezes intertwine\nThe viol, the violet, and the vine.\n Resignedly beneath the sky\nThe melancholy waters lie.\nSo blend the turrets and shadows there\nThat all seem pendulous in air,\nWhile from a proud tower in the town\nDeath looks gigantically down.\n\nThere open fanes and gaping graves\nYawn level with the luminous waves;\nBut not the riches there that lie\nIn each idol's diamond eye—\nNot the gaily-jewelled dead\nTempt the waters from their bed;\nFor no ripples curl, alas!\nAlong that wilderness of glass—\nNo swellings tell that winds may be\nUpon some far-off happier sea—\nNo heavings hint that winds have been\nOn seas less hideously serene.\n\nBut lo, a stir is in the air!\nThe wave—there is a movement there!\nAs if the towers had thrust aside,\nIn slightly sinking, the dull tide—\nAs if their tops had feebly given\nA void within the filmy Heaven.\nThe waves have now a redder glow—\nThe hours are breathing faint and low—\nAnd when, amid no earthly moans,\nDown, down that town shall settle hence,\nHell, rising from a thousand thrones\nShall do it reverence.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Works_of_the_Late_Edgar_Allan_Poe_(1859)/Volume_2/The_City_in_the_Sea",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Sonnet—To Science",
+      "texto": "Science! true daughter of Old Time thou art!\n    Who alterest all things with thy peering eyes.\nWhy preyest thou thus upon the poet's heart,\n    Vulture, whose wings are dull realities?\nHow should he love thee? or how deem thee wise,\n     Who wouldst not leave him in his wandering\nTo seek for treasure in the jewelled skies,\n    Albeit he soared with an undaunted wing?\nHast thou not dragged Diana from her car?\n    And driven the Hamadryad from the wood\nTo seek a shelter in some happier star?\n    Hast thou not torn the Naiad from her flood,\nThe Elfin from the green grass, and from me\nThe summer dream beneath the tamarind tree?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Sonnet_%E2%80%94_To_Science",
+      "tags": [
+        "morte",
+        "amor",
+        "ingles"
+      ]
+    }
+  ]
+}
