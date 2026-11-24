@@ -29,8 +29,14 @@ class Post(Base):
     repost_de_id: Mapped[int | None] = mapped_column(
         ForeignKey("posts.id"), default=None, index=True
     )
+    # Citação cujo original foi apagado: o `repost_de_id` vira None e isto fica True.
+    repost_removido: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
     updated_at: Mapped[datetime] = mapped_column(default=_agora, onupdate=_agora)
 
     autor: Mapped[User] = relationship(lazy="joined")
     repost_de: Mapped["Post | None"] = relationship(remote_side=[id])
+
+    @property
+    def repost_puro(self) -> bool:
+        return self.repost_de_id is not None and self.texto == ""
