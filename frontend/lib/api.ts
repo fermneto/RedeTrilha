@@ -63,6 +63,7 @@ const ROTULOS_DOS_CAMPOS: Record<string, string> = {
   avatar_url: "avatar",
   texto: "texto",
   titulo: "título",
+  descricao: "descrição",
 };
 
 // "senha: campo obrigatório", com o último elemento do `loc` (o campo do corpo).
@@ -475,4 +476,71 @@ export function nomeDoIdioma(codigo: string): string {
   } catch {
     return codigo;
   }
+}
+
+// ---- Antologias (P5): espelham backend/app/schemas/antologia.py ----
+
+// Mesmos limites de AntologiaCreate.
+export const ANTOLOGIA_NOME_MAX = 100;
+export const ANTOLOGIA_DESCRICAO_MAX = 1000;
+
+export type Antologia = {
+  id: number;
+  dono_id: number;
+  dono: User;
+  nome: string;
+  descricao: string | null;
+  // Privada só existe para o dono: para os outros, o backend devolve 404.
+  publica: boolean;
+  created_at: string;
+  // Quantos poemas a antologia tem.
+  qtd: number;
+};
+
+// Os poemas vêm na ordem em que foram adicionados.
+export type AntologiaDetalhe = Antologia & { poemas: Post[] };
+
+export type NovaAntologia = { nome: string; descricao?: string | null; publica?: boolean };
+
+// PATCH parcial: só os campos enviados mudam; descricao null apaga a descrição.
+export type EdicaoDaAntologia = Partial<Pick<Antologia, "nome" | "descricao" | "publica">>;
+
+// Todas as minhas, privadas inclusive, a mais nova primeiro.
+export function listarMinhasAntologias(offset = 0, limit = 100): Promise<Page<Antologia>> {
+  return apiGet<Page<Antologia>>(`/antologias?offset=${offset}&limit=${limit}`);
+}
+
+// As públicas de alguém (as minhas privadas também, se o perfil for o meu).
+export function listarAntologiasDe(
+  username: string,
+  offset = 0,
+  limit = 100,
+): Promise<Page<Antologia>> {
+  return apiGet<Page<Antologia>>(
+    `/usuarios/${encodeURIComponent(username)}/antologias?offset=${offset}&limit=${limit}`,
+  );
+}
+
+// 404 quando não existe ou é privada de outra pessoa.
+export function buscarAntologia(id: number): Promise<AntologiaDetalhe> {
+  return apiGet<AntologiaDetalhe>(`/antologias/${id}`);
+}
+
+export function criarAntologia(dados: NovaAntologia): Promise<Antologia> {
+  return apiPost<Antologia>("/antologias", dados);
+}
+
+export function editarAntologia(id: number, dados: EdicaoDaAntologia): Promise<Antologia> {
+  return apiPatch<Antologia>(`/antologias/${id}`, dados);
+}
+
+export function apagarAntologia(id: number): Promise<void> {
+  return apiDelete(`/antologias/${id}`);
+}
+
+// Idempotente nos dois sentidos: adicionar de novo não duplica, tirar o que não está não falha.
+export function marcarNaAntologia(antologiaId: number, postId: number, dentro: boolean): Promise<void> {
+  return dentro
+    ? apiPost<void>(`/antologias/${antologiaId}/poemas`, { post_id: postId })
+    : apiDelete(`/antologias/${antologiaId}/poemas/${postId}`);
 }
