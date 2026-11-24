@@ -1,0 +1,92 @@
+"use client";
+// Lista de poemas com rolagem infinita, como no X: a próxima página pede o
+// `proximo_cursor` quando o fim da lista entra na tela. Usada pelo feed e pelo perfil.
+
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { PoemaCard } from "@/components/PoemaCard";
+import { temToken, type FeedPage, type Post } from "@/lib/api";
+
+type Props = {
+  // Busca uma página a partir do cursor (null = primeira). Para trocar de lista,
+  // remonte o componente com outra `key` em vez de trocar a função.
+  buscar: (cursor: string | null) => Promise<FeedPage>;
+  // O que mostrar quando a lista termina sem nenhum poema.
+  vazio: React.ReactNode;
+  // Aviso no fim da lista (ex.: "fim do feed").
+  textoDoFim: string;
+};
+
+export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
+  const [poemas, setPoemas] = useState<Post[]>([]);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [fim, setFim] = useState(false);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+  // Ref e não estado: evita dois pedidos da mesma página antes do re-render.
+  const pedindo = useRef(false);
+  const sentinela = useRef<HTMLDivElement>(null);
+
+  const carregarMais = useCallback(async () => {
+    if (pedindo.current || fim) return;
+    pedindo.current = true;
+    setCarregando(true);
+    try {
+      const pagina = await buscar(cursor);
+      setPoemas((atuais) => {
+        const vistos = new Set(atuais.map((p) => p.id));
+        return [...atuais, ...pagina.items.filter((p) => !vistos.has(p.id))];
+      });
+      setCursor(pagina.proximo_cursor);
+      setFim(pagina.proximo_cursor === null);
+      setErro(null);
+    } catch (e) {
+      setErro(e instanceof Error ? e.message : "não deu para carregar os poemas");
+    } finally {
+      pedindo.current = false;
+      setCarregando(false);
+    }
+  }, [buscar, cursor, fim]);
+
+  // O observer é recriado a cada página (cursor novo); com erro, para de pedir.
+  useEffect(() => {
+    const alvo = sentinela.current;
+    if (!alvo || fim || erro || !temToken()) return;
+    const observer = new IntersectionObserver(
+      (entradas) => {
+        if (entradas[0]?.isIntersecting) carregarMais();
+      },
+      { rootMargin: "400px" },
+    );
+    observer.observe(alvo);
+    return () => observer.disconnect();
+  }, [carregarMais, fim, erro]);
+
+  return (
+    <div>
+      <ul className="divide-y divide-borda border-b border-borda">
+        {poemas.map((p) => (
+          <li key={p.id}>
+            <PoemaCard post={p} />
+          </li>
+        ))}
+      </ul>
+
+      {erro && (
+        <div className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
+          <p>{erro}</p>
+          <button type="button" onClick={() => setErro(null)} className="mt-1 cursor-pointer underline">
+            tentar de novo
+          </button>
+        </div>
+      )}
+
+      {fim && poemas.length === 0 && vazio}
+
+      {fim && poemas.length > 0 && <p className="py-8 text-center text-sm text-tinta-suave">{textoDoFim}</p>}
+
+      <div ref={sentinela} aria-hidden />
+      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
+    </div>
+  );
+}

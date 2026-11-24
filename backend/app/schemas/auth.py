@@ -1,12 +1,14 @@
 from pydantic import BaseModel, Field, field_validator
 
+from app.schemas.user import Username
+
 # O bcrypt ignora o que passa de 72 bytes: duas senhas iguais até ali
 # virariam a mesma senha. Recusamos em vez de truncar calado.
 LIMITE_SENHA = 72
 
 
 class RegistroIn(BaseModel):
-    username: str = Field(min_length=3, max_length=30, pattern=r"^[a-z0-9_]+$")
+    username: Username
     name: str = Field(min_length=1, max_length=80)
     password: str = Field(min_length=8, max_length=LIMITE_SENHA)
 

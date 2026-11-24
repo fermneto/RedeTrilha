@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { IconeBuscar } from "@/components/icones/IconeBuscar";
 import {
+  anosDeVida,
   buscarEu,
   buscarPoemaDoDia,
   buscarTrending,
@@ -105,6 +106,7 @@ function PoemaDoDia() {
   const versos = poema.texto.split("\n");
   const corte = linhasDaPrevia(versos);
   const autor = poema.autor;
+  const vida = anosDeVida(autor);
   return (
     <Bloco titulo="Poema do dia">
       <div className="px-4 pb-4">
@@ -116,12 +118,7 @@ function PoemaDoDia() {
           <Link href={`/u/${autor.username}`} className="font-semibold text-tinta hover:underline">
             {autor.name}
           </Link>
-          {autor.morte !== null && (
-            <span>
-              {" "}
-              ({autor.nascimento !== null ? `${autor.nascimento}–${autor.morte}` : `m. ${autor.morte}`})
-            </span>
-          )}
+          {vida && <span className="tabular-nums"> ({vida})</span>}
         </p>
         <Link
           href={`/poema/${poema.id}`}
