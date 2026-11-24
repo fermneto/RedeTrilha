@@ -41,11 +41,10 @@ def poemas(
 
 def _contar_poemas(db: Session, user_id: int) -> int:
     """Poemas autorais: tudo o que a pessoa escreveu, menos os reposts puros."""
-    repost_puro = Post.repost_de_id.is_not(None) & (Post.texto == "")
     return db.scalar(
         select(func.count())
         .select_from(Post)
-        .where(Post.autor_id == user_id, ~repost_puro)
+        .where(Post.autor_id == user_id, ~Post.repost_puro)
     ) or 0
 
 
