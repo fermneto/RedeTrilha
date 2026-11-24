@@ -53,7 +53,7 @@ export default function UsuariosPage() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Usuários</h1>
 
-      <form onSubmit={criar} className="flex flex-wrap items-end gap-2 rounded-lg border bg-white p-3">
+      <form onSubmit={criar} className="flex flex-wrap items-end gap-2 rounded-lg border border-borda bg-papel-alto p-3">
         <label className="flex flex-col text-sm">
           username
           <input
@@ -62,7 +62,7 @@ export default function UsuariosPage() {
             pattern="[a-z0-9_]{3,30}"
             title="3–30 caracteres: letras minúsculas, números e _"
             required
-            className="rounded border px-2 py-1"
+            className="rounded border border-borda bg-papel px-2 py-1 text-tinta"
           />
         </label>
         <label className="flex flex-col text-sm">
@@ -72,19 +72,19 @@ export default function UsuariosPage() {
             onChange={(e) => setName(e.target.value)}
             required
             maxLength={80}
-            className="rounded border px-2 py-1"
+            className="rounded border border-borda bg-papel px-2 py-1 text-tinta"
           />
         </label>
         <button
           type="submit"
           disabled={salvando}
-          className="rounded bg-zinc-900 px-3 py-1.5 text-sm text-white disabled:opacity-50"
+          className="cursor-pointer rounded bg-tinta px-3 py-1.5 text-sm text-papel disabled:opacity-50"
         >
           {salvando ? "criando..." : "criar usuário"}
         </button>
       </form>
 
-      {erro && <p className="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700">{erro}</p>}
+      {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
 
       {pagina && (
         <>
@@ -95,7 +95,7 @@ export default function UsuariosPage() {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-tinta-suave">
             mostrando {pagina.items.length} de {pagina.total}
           </p>
         </>
