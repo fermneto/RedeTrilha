@@ -12,6 +12,7 @@ import {
   buscarComentarios,
   buscarRespostas,
   comentar,
+  ErroDaApi,
   formatarData,
   type Comentario,
   type User,
@@ -199,8 +200,18 @@ function ItemComentario({
     try {
       await apagarComentario(comentario.id);
       // Com respostas, o backend deixa o marcador; sem, o comentário sai do banco.
-      if (total > 0) setRemovido(true);
-      else aoSumir(comentario.id);
+      // O total da tela pode estar velho (alguém respondeu depois de carregar),
+      // então pergunta ao backend: 404 nas respostas = sumiu; 200 = marcador.
+      try {
+        const pagina = await buscarRespostas(comentario.id, null);
+        setRemovido(true);
+        setRespostas((atuais) => semRepetir(atuais, pagina.items));
+        setTotal(pagina.total);
+        setCursor(pagina.proximo_cursor);
+      } catch (e) {
+        if (!(e instanceof ErroDaApi && e.status === 404)) throw e;
+        aoSumir(comentario.id);
+      }
       aoMudar();
     } catch (e) {
       setErro(e instanceof Error ? e.message : "não deu para apagar");
@@ -231,7 +242,14 @@ function ItemComentario({
         {novo && <p className="mb-1 text-xs text-destaque">seu comentário</p>}
         {nivel > NIVEL_MAXIMO_DE_RECUO && autorDoPai !== undefined && (
           <p className="mb-1 text-xs text-tinta-suave">
-            ↳ respondendo a {autorDoPai ? `@${autorDoPai.username}` : "um comentário removido"}
+            ↳ respondendo a{" "}
+            {autorDoPai ? (
+              <Link href={`/u/${autorDoPai.username}`} className="hover:underline">
+                @{autorDoPai.username}
+              </Link>
+            ) : (
+              "um comentário removido"
+            )}
           </p>
         )}
         {removido || !autor ? (
