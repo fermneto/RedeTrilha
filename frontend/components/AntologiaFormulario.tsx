@@ -31,6 +31,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
   const campoNome = useRef<HTMLInputElement>(null);
   const idSwitch = useId();
   const idErroNome = useId();
+  const idContador = useId();
 
   // O formulário abre por um botão: o foco vai direto para o nome.
   useEffect(() => {
@@ -70,7 +71,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
       noValidate
       className="space-y-4 rounded-2xl border border-borda bg-papel-alto p-4"
     >
-      <label className="block text-sm">
+      <label className="block text-sm font-semibold">
         Nome
         <input
           ref={campoNome}
@@ -81,25 +82,27 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
           placeholder="Poemas de chuva"
           aria-invalid={erroDoNome !== null}
           aria-describedby={erroDoNome ? idErroNome : undefined}
-          className={`${campo} mt-1`}
+          className={`${campo} mt-1 font-normal`}
         />
         {erroDoNome && (
-          <span id={idErroNome} className="mt-1 block text-xs text-destaque">
+          <span id={idErroNome} role="alert" className="mt-1 block text-xs font-normal text-destaque">
             {erroDoNome}
           </span>
         )}
       </label>
 
-      <label className="block text-sm">
-        Descrição (opcional)
+      <label className="block text-sm font-semibold">
+        Descrição <span className="font-normal text-tinta-suave">(opcional)</span>
         <textarea
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
           maxLength={ANTOLOGIA_DESCRICAO_MAX}
           rows={3}
-          className={`${campo} mt-1 resize-y`}
+          placeholder="Para ler na marquise, esperando a chuva passar."
+          aria-describedby={idContador}
+          className={`${campo} mt-1 resize-y font-normal`}
         />
-        <span className="mt-1 block text-xs text-tinta-suave">
+        <span id={idContador} className="mt-1 block text-right text-xs font-normal text-tinta-suave tabular-nums">
           {descricao.length}/{ANTOLOGIA_DESCRICAO_MAX}
         </span>
       </label>
@@ -107,7 +110,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
       <div className="flex items-center justify-between gap-4">
         <div className="text-sm">
           {/* Rótulo fixo: o leitor de tela anuncia "Pública, ligado/desligado". */}
-          <label htmlFor={idSwitch} className="cursor-pointer">
+          <label htmlFor={idSwitch} className="cursor-pointer font-semibold">
             Pública
           </label>
           <p className="text-xs text-tinta-suave" aria-live="polite">
@@ -117,9 +120,13 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
         <SwitchPublica id={idSwitch} publica={publica} aoMudar={setPublica} />
       </div>
 
-      {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && (
+        <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+          {erro}
+        </p>
+      )}
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <button
           type="submit"
           disabled={enviando}

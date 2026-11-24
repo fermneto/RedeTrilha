@@ -356,26 +356,44 @@ export function caminhoDoLogin(): string {
   return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
 }
 
-// "/boas-vindas?voltar=<página atual>": as preferências pelo menu da conta, que
-// voltam para onde a pessoa estava. Vindo do próprio onboarding, volta ao perfil.
-export function caminhoDasPreferencias(atual: string, username: string): string {
-  const noOnboarding = /^\/(boas-vindas|sugestoes)(?=[/?#]|$)/.test(atual);
-  const voltar = noOnboarding ? `/u/${username}` : atual;
-  return `/boas-vindas?voltar=${encodeURIComponent(voltar)}`;
+// A grade de quem seguir como último passo do onboarding, em tela cheia.
+export const QUEM_SEGUIR_NO_ONBOARDING = "/boas-vindas/quem-seguir";
+
+// As preferências fora do onboarding: a mesma página de /boas-vindas, mas dentro do
+// layout do site (com a navegação e a coluna Descobrir).
+export const PREFERENCIAS = "/preferencias";
+
+// As telas do onboarding ocupam a tela toda, sem a navegação nem a coluna
+// Descobrir: o Layout confere com isto. As /preferencias ficam com o layout do site.
+export function ehTelaDeBoasVindas(caminho: string): boolean {
+  return caminho === "/boas-vindas" || caminho.startsWith("/boas-vindas/");
 }
 
-// Só o passo dos gostos (escolas e formas), pelo link da tela de sugestões: ao
-// salvar volta para a grade, que recalcula as sugestões.
-export const CAMINHO_DOS_GOSTOS = "/boas-vindas?voltar=%2Fsugestoes&so=gostos";
+// "/preferencias?voltar=<página atual>": as preferências pelo menu da conta, que
+// voltam para onde a pessoa estava. Vindo do próprio onboarding, volta ao perfil.
+export function caminhoDasPreferencias(atual: string, username: string): string {
+  const noOnboarding = /^\/(boas-vindas|sugestoes|preferencias)(?=[/?#]|$)/.test(atual);
+  const voltar = noOnboarding ? `/u/${username}` : atual;
+  return `${PREFERENCIAS}?voltar=${encodeURIComponent(voltar)}`;
+}
 
-// O documento foi carregado já em /boas-vindas (link direto ou recarga)? Então não
-// há página do Verso antes no histórico, e o "cancelar" das preferências vai ao
-// perfil em vez de usar o voltar do navegador. Recebe a URL do carregamento
+// Só o passo dos gostos (escolas e formas), pelo link da grade de quem seguir: ao
+// salvar volta para a grade, que recalcula as sugestões. Da grade do onboarding
+// continua em tela cheia; da /sugestoes, dentro do layout do site.
+export function caminhoDosGostos(grade: string): string {
+  const base = ehTelaDeBoasVindas(grade) ? "/boas-vindas" : PREFERENCIAS;
+  return `${base}?voltar=${encodeURIComponent(grade)}&so=gostos`;
+}
+
+// O documento foi carregado já nas preferências (link direto ou recarga)? Então não
+// há página do Verso antes no histórico, e o "cancelar" vai ao perfil em vez de usar
+// o voltar do navegador. Recebe a URL do carregamento
 // (performance.getEntriesByType("navigation")[0].name).
 export function abertaDireto(urlDoCarregamento: string | undefined): boolean {
   if (!urlDoCarregamento) return true;
   try {
-    return new URL(urlDoCarregamento).pathname === "/boas-vindas";
+    const { pathname } = new URL(urlDoCarregamento);
+    return pathname === "/boas-vindas" || pathname === PREFERENCIAS;
   } catch {
     return true;
   }
@@ -388,6 +406,12 @@ export function passosDasPreferencias(so: string | null): PassoDasPreferencias[]
   return so === "gostos" ? ["gostos"] : ["gostos", "regiao"];
 }
 
+// Em que passo abrir: o de ?passo= (o "voltar" da grade de quem seguir abre na
+// região), ou o primeiro.
+export function passoInicial(passos: PassoDasPreferencias[], passo: string | null): number {
+  return Math.max(0, passos.indexOf(passo as PassoDasPreferencias));
+}
+
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
@@ -395,9 +419,11 @@ export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage>
 }
 
 // Aba "Para você": a rede inteira (seguidos ou não), cronológica pela atividade.
+// `lingua` (a do navegador) escolhe o consagrado de cada janela de 3 h.
 export function buscarParaVoce(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
+  comLinguaDoNavegador(params);
   return apiGet<FeedPage>(`/feed/para-voce?${params}`);
 }
 
@@ -629,8 +655,7 @@ export type Sugestao = PoetaDoAcervo & { escolas: string[] };
 // Ordem pela nota do backend (core/pontuacao_sugestoes.py); `lingua` é a do navegador.
 export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
   const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
-  const lingua = idiomaDoNavegador();
-  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
+  comLinguaDoNavegador(params);
   return apiGet<Page<Sugestao>>(`/sugestoes?${params}`);
 }
 
@@ -676,9 +701,14 @@ export function alternarNaLista(lista: string[], codigo: string): string[] {
   return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
 }
 
-export function seguir(username: string, seguindo: boolean): Promise<void> {
+// Evento de window disparado depois de seguir ou deixar de seguir alguém: o feed
+// Seguindo, que fica montado na home, recarrega a lista quando o recebe.
+export const EVENTO_SEGUIR_MUDOU = "verso:seguir-mudou";
+
+export async function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
-  return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+  await (seguindo ? apiPost<void>(caminho) : apiDelete(caminho));
+  window.dispatchEvent(new Event(EVENTO_SEGUIR_MUDOU));
 }
 
 // ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
@@ -702,6 +732,13 @@ export function traduzirPoema(id: number, para: string): Promise<Traducao> {
 export function idiomaDoNavegador(): string | null {
   if (typeof navigator === "undefined" || !navigator.language) return null;
   return navigator.language.split("-")[0].toLowerCase();
+}
+
+// `?lingua=` com a língua do navegador, se for um código ISO 639-1; sem ela, o
+// backend usa a língua dos poemas da própria pessoa.
+function comLinguaDoNavegador(params: URLSearchParams): void {
+  const lingua = idiomaDoNavegador();
+  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
 }
 
 // Nome da língua em português ("en" → "inglês"); o próprio código se o navegador não souber.

@@ -4,8 +4,9 @@ Python puro: a API passa só ids, strings e datas.
 
 Índice invertido em memória: tag -> {post_id: criado_em}, mais o inverso
 post_id -> (tags, criado_em) para remover e reindexar sem varrer as tags.
-O service de posts chama `indexar` ao criar ou editar e `remover` ao apagar;
-o lifespan chama `reconstruir` com todos os posts do banco.
+O service de posts chama `indexar` ao publicar e `remover` ao apagar (o poema
+publicado não se edita); o lifespan chama `reconstruir` com todos os posts do
+banco.
 """
 
 import heapq
@@ -65,9 +66,10 @@ class IndiceTags:
             self.indexar(post_id, tags, criado_em)
 
     def indexar(self, post_id: int, tags: set[str], criado_em: datetime) -> None:
-        """Chamado ao criar ou editar um poema. O(t).
+        """Chamado ao publicar um poema e no `reconstruir`. O(t).
 
-        Editar reindexa: as tags antigas saem antes de as novas entrarem.
+        Indexar de novo o mesmo id reindexa: as tags antigas saem antes de as
+        novas entrarem.
         """
         self.remover(post_id)
         normalizadas = frozenset(n for n in (normalizar(t) for t in tags) if n)
