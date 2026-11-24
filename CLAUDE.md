@@ -1,9 +1,11 @@
 # CLAUDE.md — Verso (rede social de poemas)
 
-Rede social de nicho para **poetas iniciantes universitários**: publicar poemas
-sem limite de caracteres, comentar, curtir, repostar/citar e ler os
-**consagrados** (poetas em domínio público, contas sem login). Base: template do
-Mini-projeto 3 da Trilha UFPB. **Entrega: sexta, 27/11/2026.**
+Rede social de nicho para **quem lê e escreve poesia** e quer publicar o poema
+inteiro e conversar sobre ele: publicar poemas sem limite de caracteres,
+comentar, curtir, repostar/citar e ler os **consagrados** (poetas em domínio
+público, contas sem login). Os usuários são poetas (ou leitores), nunca
+"iniciantes"; o público está descrito na seção Produto do `DECISIONS.md`.
+Base: template do Mini-projeto 3 da Trilha UFPB. **Entrega: sexta, 27/11/2026.**
 
 Leia antes de qualquer tarefa: [`PLANO.md`](PLANO.md) (status final, donos,
 contratos de dados e rotas reais; as tasks do plano estão todas concluídas,

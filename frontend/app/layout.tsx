@@ -23,7 +23,7 @@ const sans = Schibsted_Grotesk({
 
 export const metadata: Metadata = {
   title: "Verso",
-  description: "Rede social de poemas para poetas iniciantes universitários",
+  description: "Rede social de poemas para quem lê e escreve poesia: o poema inteiro, a conversa sobre ele e os clássicos no mesmo feed",
 };
 
 export default function RootLayout({

@@ -1,8 +1,9 @@
 # Verso: a rede social de poemas
 
-O Verso é uma rede social para **poetas iniciantes universitários**,
-principalmente da UFPB, que escrevem no caderno ou no bloco de notas e não têm
-onde publicar o poema inteiro. No X, o limite de caracteres parte um soneto em
+O Verso é uma rede social para **quem lê e escreve poesia** e quer publicar o
+poema inteiro e conversar sobre ele: a estudante que escreve no caderno, a
+professora aposentada que faz sonetos à mão, o motorista que escreve cordel no
+ponto final, o aluno do ensino médio que guarda poemas no celular. No X, o limite de caracteres parte um soneto em
 fio; no Instagram, o poema vira imagem e não dá para citar um verso; os feeds
 ranqueados enterram texto longo. No Verso, o post é o poema (título, corpo sem
 limite com as quebras e os recuos preservados, e uma forma), o feed é
@@ -30,7 +31,7 @@ Pedro (@CorreiaPedro208).
 - **Curtidas** idempotentes.
 - **Perfil** com seguidores, seguindo, poemas, seguir/deixar de seguir e edição
   de nome, bio e URL da foto.
-- **Acervo:** todos os poetas, consagrados e iniciantes, com busca e filtros por
+- **Acervo:** todos os poetas, consagrados e contemporâneos, com busca e filtros por
   tipo, língua e época, e ordenação.
 - **Explorar:** chips de forma e busca por tag (`#Solidão` acha `#solidao`).
   Ao lado, na coluna Descobrir (no topo do Explorar em telas estreitas):
@@ -51,8 +52,8 @@ cd backend && uv sync && cd ..
 cd frontend && npm install && cp .env.local.example .env.local && cd ..
 ```
 
-Crie o banco local com o seed (24 poetas iniciantes com poemas e conversas,
-mais os consagrados):
+Crie o banco local com o seed (29 poetas fictícios de vários lugares e idades,
+com poemas, conversas e rengas, mais os consagrados):
 
 ```bash
 make check   # confere o ambiente
