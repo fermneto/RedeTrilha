@@ -6,8 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.schemas.post import FORMAS
 
-# Provisório (o Neto decide): teto da análise, para a rota sem login não virar
-# abuso. O poema continua sem limite; só a oficina para de marcar acima disto.
+# Teto da análise, para a rota sem login não virar abuso. O poema continua sem limite; só a oficina para de marcar acima disto.
 # Espelhado em OFICINA_MAX_CARACTERES no frontend/lib/api.ts.
 MAX_CARACTERES = 10_000
 

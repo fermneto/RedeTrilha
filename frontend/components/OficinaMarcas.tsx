@@ -16,12 +16,10 @@ import {
 export type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
 type Opcao = keyof OpcoesDaOficina;
 
-// Provisório (o Neto decide): os dois toggles começam desligados, porque nem
-// todo poeta usa metro e rima. A escolha fica no navegador.
-const PADRAO: OpcoesDaOficina = { silabas: false, rimas: false };
+// Para quem nunca mexeu, os dois toggles vêm ligados; quem desliga fica
+// desligado (a escolha fica no navegador).
+const PADRAO: OpcoesDaOficina = { silabas: true, rimas: true };
 const CHAVES: Record<Opcao, string> = { silabas: "oficina.silabas", rimas: "oficina.rimas" };
-// Provisório: o aviso aparece com a forma escolhida, mesmo com os toggles desligados.
-const FORMAS_COM_AVISO = ["soneto", "haicai"];
 // Espera depois da última tecla antes de pedir a análise.
 const ESPERA_MS = 400;
 
@@ -49,7 +47,8 @@ export function useOficina(texto: string, forma: string): Oficina {
   const [opcoes, setOpcoes] = useState<OpcoesDaOficina>(PADRAO);
   const [analise, setAnalise] = useState<AnaliseDoRascunho | null>(null);
   const longoDemais = texto.length > OFICINA_MAX_CARACTERES;
-  const ativa = opcoes.silabas || opcoes.rimas || FORMAS_COM_AVISO.includes(forma);
+  // Com os dois toggles desligados não há análise, nem o aviso de forma.
+  const ativa = opcoes.silabas || opcoes.rimas;
 
   // Lido só no navegador, depois de montar: no servidor não há localStorage.
   useEffect(() => setOpcoes(lerOpcoes()), []);
@@ -213,7 +212,7 @@ export function OficinaPainel({ oficina }: { oficina: Oficina }) {
       {longoDemais && (opcoes.silabas || opcoes.rimas) && (
         <p>Texto longo demais para a oficina marcar (até {OFICINA_MAX_CARACTERES} caracteres).</p>
       )}
-      {analise?.aviso && <p role="status">{analise.aviso}</p>}
+      {(opcoes.silabas || opcoes.rimas) && analise?.aviso && <p role="status">{analise.aviso}</p>}
     </div>
   );
 }
