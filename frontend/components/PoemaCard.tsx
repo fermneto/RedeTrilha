@@ -162,6 +162,7 @@ function Traduzir({ poema }: { poema: Post }) {
       setAberta(true);
     } catch (e) {
       if (e instanceof ErroDaApi && e.status === 503) setErro("tradução indisponível agora");
+      else if (e instanceof ErroDaApi && e.status === 429) setErro("limite de traduções atingido, tente mais tarde");
       else setErro(e instanceof Error ? e.message : "não deu para traduzir");
     } finally {
       setCarregando(false);
@@ -175,7 +176,7 @@ function Traduzir({ poema }: { poema: Post }) {
     return (
       <section aria-label="tradução" className="mt-2 border-t border-borda pt-2">
         <p className="flex flex-wrap items-center gap-x-2 text-[0.8125rem] text-tinta-suave">
-          <span>Traduzido do {nomeDoIdioma(poema.idioma)} por IA (Claude)</span>
+          <span>Traduzido do {nomeDoIdioma(poema.idioma)} por IA</span>
           <span aria-hidden="true">·</span>
           <button type="button" onClick={() => setAberta(false)} className={link}>
             ver original
