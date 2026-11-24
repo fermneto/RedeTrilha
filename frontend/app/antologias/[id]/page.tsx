@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
@@ -191,15 +191,50 @@ function primeiroVerso(texto: string): string {
   return texto.split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
 }
 
+// Antologia com mais poemas que isto é "longa": o índice abre recolhido, para os
+// poemas não ficarem lá embaixo; com até tantos, ele abre aberto e nem recolhe.
+const POEMAS_NO_INDICE_ABERTO = 8;
+
 // O índice da antologia, na ordem em que os poemas entraram: cada linha leva
 // ao poema mais abaixo na página.
 function Indice({ poemas }: { poemas: Post[] }) {
+  const longa = poemas.length > POEMAS_NO_INDICE_ABERTO;
+  const [aberto, setAberto] = useState(!longa);
+  const idLista = useId();
+
   return (
     <nav aria-labelledby="indice-da-antologia" className="border-b border-borda px-4 pt-5 pb-4">
-      <h2 id="indice-da-antologia" className="text-sm font-bold">
-        Índice
-      </h2>
-      <ol className="mt-2">
+      {longa ? (
+        <h2 id="indice-da-antologia" className="text-sm font-bold">
+          <button
+            type="button"
+            aria-expanded={aberto}
+            aria-controls={idLista}
+            onClick={() => setAberto((a) => !a)}
+            className="-mx-2 -my-3 flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-2 realce"
+          >
+            Índice
+            <span className="font-normal text-tinta-suave tabular-nums">{poemas.length} poemas</span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`h-4 w-4 text-tinta-suave transition-transform duration-150 ${aberto ? "rotate-180" : ""}`}
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </h2>
+      ) : (
+        <h2 id="indice-da-antologia" className="text-sm font-bold">
+          Índice
+        </h2>
+      )}
+      <ol id={idLista} hidden={longa && !aberto} className="mt-2">
         {poemas.map((p, i) => {
           const poema = poemaVisivel(p);
           return (
