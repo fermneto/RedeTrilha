@@ -15,12 +15,13 @@ import {
   buscarRascunho,
   criarRascunho,
   editarRascunho,
-  publicarRascunho,
   FORMAS,
   IDIOMAS_DO_COMPOSITOR,
+  mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
   publicarPoema,
+  publicarRascunho,
   type Post,
 } from "@/lib/api";
 
@@ -73,7 +74,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
     if (citado === null) return;
     buscarPoema(citado)
       .then(setOriginal)
-      .catch((e) => setErro(e instanceof Error ? e.message : "não achei o poema citado"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não achei o poema citado")));
   }, [citado]);
 
   useEffect(() => {
@@ -88,7 +89,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
         setCitadoRemovido(r.repost_removido);
         if (r.repost_de_id !== null || r.repost_removido) aoAbrirCitacao?.();
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não achei o rascunho"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não achei o rascunho")));
   }, [rascunhoId]);
 
   function dadosDoRascunho() {
@@ -116,7 +117,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       setRascunho(salvoAgora.id);
       setSalvo(true);
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para salvar o rascunho");
+      setErro(mensagemDeFalha(err, "não deu para salvar o rascunho"));
     } finally {
       setEnviando(false);
     }
@@ -163,7 +164,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       });
       router.push(`/poema/${novo.id}`);
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para publicar");
+      setErro(mensagemDeFalha(err, "não deu para publicar"));
       setEnviando(false);
     }
   }

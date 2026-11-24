@@ -14,6 +14,7 @@ import {
   criarAntologia,
   listarMinhasAntologiasMarcando,
   marcarNaAntologia,
+  mensagemDeFalha,
   type AntologiaMarcada,
 } from "@/lib/api";
 
@@ -130,7 +131,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     let vivo = true;
     listarMinhasAntologiasMarcando(postId)
       .then((pagina) => vivo && setLinhas(pagina.items))
-      .catch((e) => vivo && setErro(e instanceof Error ? e.message : "não deu para carregar as antologias"));
+      .catch((e) => vivo && setErro(mensagemDeFalha(e, "não deu para carregar as antologias")));
     return () => {
       vivo = false;
     };
@@ -179,7 +180,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
       avisarMudanca({ antologiaId: linha.id, postId, contem: novo });
     } catch (e) {
       trocar(!novo);
-      setErro(e instanceof Error ? e.message : "não deu para mudar a antologia");
+      setErro(mensagemDeFalha(e, "não deu para mudar a antologia"));
     }
   }
 
@@ -202,7 +203,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
       setCriando(false);
       focar("input[type=checkbox]");
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para criar a antologia");
+      setErro(mensagemDeFalha(err, "não deu para criar a antologia"));
     } finally {
       setEnviando(false);
     }

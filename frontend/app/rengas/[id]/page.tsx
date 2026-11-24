@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { NomeAutor } from "@/components/NomeAutor";
@@ -21,6 +21,7 @@ import {
   ErroDaApi,
   formatarData,
   lerUsernames,
+  mensagemDeFalha,
   temToken,
   type RengaDetalhe,
   type User,
@@ -57,7 +58,7 @@ export default function RengaPage() {
       })
       .catch((e) => {
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
-        else setErro(e instanceof Error ? e.message : "não deu para carregar a renga");
+        else setErro(mensagemDeFalha(e, "não deu para carregar a renga"));
       });
   }, [id, router]);
 
@@ -94,63 +95,68 @@ export default function RengaPage() {
   return (
     <div>
       {cabecalho}
-      <article className="border-b border-borda px-4 pt-5 pb-6">
-        <header className="space-y-2">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <h1 className="poema-titulo break-words">{renga.titulo}</h1>
-            <SeloDaRenga fechada={renga.fechada} />
-          </div>
-          <p className="flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
+      <article className="border-b border-borda px-4 pt-6 pb-6">
+        <header>
+          <h1 className="poema-titulo break-words">{renga.titulo}</h1>
+          <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
             <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
             <ListaDeAutores autores={renga.autores} />
           </p>
-          <p className="flex flex-wrap items-center gap-x-1.5 text-xs text-tinta-suave">
+          <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
+            <SeloDaRenga fechada={renga.fechada} />{" "}
             <span className="tabular-nums">
               {renga.qtd_estrofes} de {renga.limite} estrofes
             </span>
-            <span aria-hidden="true">·</span>
-            <span>{renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}</span>
-            <span aria-hidden="true">·</span>
-            <span>começada em {formatarData(renga.created_at)}</span>
-            {renga.fechada_em && (
-              <>
-                <span aria-hidden="true">·</span>
-                <span>fechada em {formatarData(renga.fechada_em)}</span>
-              </>
-            )}
+            , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}
           </p>
           {renga.modo === "convidados" && renga.convidados.length > 0 && (
-            <p className="flex flex-wrap items-center gap-x-1.5 text-xs text-tinta-suave">
+            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[0.8125rem] text-tinta-suave">
               <span>convidados:</span>
               <ListaDeAutores autores={renga.convidados} />
             </p>
           )}
         </header>
 
-        <ol className="mt-6 space-y-6">
+        {/* As estrofes leem como um poema só; o autor de cada uma fica logo abaixo dela,
+            discreto, e o respiro maior separa uma mão da outra. */}
+        <ol aria-label="estrofes" className="mt-7 space-y-8">
           {renga.estrofes.map((e) => (
             <li key={e.id}>
               <p className="poema-corpo">{e.texto}</p>
-              <p className="mt-1 text-xs text-tinta-suave">
-                — <NomeAutor usuario={e.autor} className="font-semibold" />
+              <p className="mt-2 text-[0.8125rem] text-tinta-suave">
+                <span aria-hidden="true">— </span>
+                <span className="sr-only">estrofe de </span>
+                <NomeAutor usuario={e.autor} className="font-semibold" />
               </p>
             </li>
           ))}
         </ol>
+
+        <p className="mt-8 text-xs text-tinta-suave">
+          começada em {formatarData(renga.created_at)}
+          {renga.fechada_em && <> · fechada em {formatarData(renga.fechada_em)}</>}
+        </p>
       </article>
 
       {!renga.fechada && (
-        <section aria-label="próxima estrofe" className="border-b border-borda px-4 py-5">
+        <section aria-labelledby="titulo-proxima-estrofe" className="border-b border-borda px-4 py-5">
+          <h2 id="titulo-proxima-estrofe" className="text-sm font-semibold tracking-normal">
+            Próxima estrofe
+            <span className="font-normal text-tinta-suave tabular-nums">
+              {" "}
+              · {renga.qtd_estrofes + 1}ª de {renga.limite}
+            </span>
+          </h2>
           {renga.posso_escrever ? (
-            <ProximaEstrofe rengaId={renga.id} aoAcrescentar={setRenga} />
+            <ProximaEstrofe renga={renga} aoAcrescentar={setRenga} />
           ) : (
-            <p className="text-sm text-tinta-suave">{renga.motivo}</p>
+            <p className="mt-2 text-sm text-tinta-suave">{renga.motivo}</p>
           )}
         </section>
       )}
 
       {souCriador && !renga.fechada && (
-        <section aria-label="ações de quem criou" className="space-y-4 border-b border-borda px-4 py-5">
+        <section aria-label="ações de quem criou" className="space-y-5 border-b border-borda px-4 py-5">
           {renga.modo === "convidados" && <Convidar rengaId={renga.id} aoConvidar={setRenga} />}
           <Encerrar rengaId={renga.id} aoEncerrar={setRenga} />
         </section>
@@ -173,12 +179,17 @@ function ListaDeAutores({ autores }: { autores: User[] }) {
 }
 
 function ProximaEstrofe({
-  rengaId,
+  renga,
   aoAcrescentar,
 }: {
-  rengaId: number;
+  renga: RengaDetalhe;
   aoAcrescentar: (renga: RengaDetalhe) => void;
 }) {
+  const rengaId = renga.id;
+  const anterior = renga.estrofes[renga.estrofes.length - 1];
+  const ultima = renga.qtd_estrofes + 1 >= renga.limite;
+  const idAjuda = useId();
+  const idErro = useId();
   const [texto, setTexto] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
@@ -196,7 +207,7 @@ function ProximaEstrofe({
       aoAcrescentar(await acrescentarEstrofe(rengaId, texto));
       setTexto("");
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para acrescentar a estrofe");
+      setErro(mensagemDeFalha(err, "não deu para acrescentar a estrofe"));
       // 409: outra pessoa escreveu antes ou a renga fechou; recarrega para mostrar.
       if (err instanceof ErroDaApi && err.status === 409) {
         buscarRenga(rengaId).then(aoAcrescentar).catch(() => undefined);
@@ -207,17 +218,25 @@ function ProximaEstrofe({
   }
 
   return (
-    <form onSubmit={enviar} noValidate className="space-y-3">
-      <label className="block text-sm">
-        Próxima estrofe
-        <textarea
-          value={texto}
-          onChange={(e) => setTexto(e.target.value)}
-          rows={5}
-          className={`${campo} poema-corpo mt-1 resize-y`}
-        />
-      </label>
-      {erro && <p className="text-sm text-destaque">{erro}</p>}
+    <form onSubmit={enviar} noValidate className="mt-2 space-y-3">
+      <p id={idAjuda} className="text-sm text-tinta-suave">
+        {anterior ? <>É a sua vez: responda à estrofe de {anterior.autor.name}.</> : "É a sua vez."}
+        {ultima && " É a última: com ela, a renga fecha."}
+      </p>
+      <textarea
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+        rows={5}
+        aria-labelledby="titulo-proxima-estrofe"
+        aria-describedby={erro ? `${idAjuda} ${idErro}` : idAjuda}
+        aria-invalid={Boolean(erro)}
+        className={`${campo} poema-corpo resize-y`}
+      />
+      {erro && (
+        <p id={idErro} role="alert" className="text-sm text-destaque">
+          {erro}
+        </p>
+      )}
       <button type="submit" disabled={enviando} className={botaoPrincipal}>
         {enviando ? "enviando..." : "Acrescentar estrofe"}
       </button>
@@ -232,6 +251,8 @@ function Convidar({
   rengaId: number;
   aoConvidar: (renga: RengaDetalhe) => void;
 }) {
+  const idCampo = useId();
+  const idErro = useId();
   const [texto, setTexto] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
@@ -246,7 +267,7 @@ function Convidar({
       aoConvidar(await convidarParaRenga(rengaId, usernames));
       setTexto("");
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para convidar");
+      setErro(mensagemDeFalha(err, "não deu para convidar"));
     } finally {
       setEnviando(false);
     }
@@ -254,19 +275,27 @@ function Convidar({
 
   return (
     <form onSubmit={enviar} noValidate className="space-y-2">
-      <label className="block text-sm">
+      <label htmlFor={idCampo} className="block text-sm">
         Convidar mais gente
+      </label>
+      <div className="flex flex-wrap gap-2">
         <input
+          id={idCampo}
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
           placeholder="@username, @outro"
-          className={`${campo} mt-1`}
+          aria-describedby={erro ? idErro : undefined}
+          className={`${campo} min-h-11 min-w-0 flex-1 basis-40`}
         />
-      </label>
-      {erro && <p className="text-sm text-destaque">{erro}</p>}
-      <button type="submit" disabled={enviando} className={botaoSecundario}>
-        {enviando ? "convidando..." : "Convidar"}
-      </button>
+        <button type="submit" disabled={enviando} className={botaoSecundario}>
+          {enviando ? "convidando..." : "Convidar"}
+        </button>
+      </div>
+      {erro && (
+        <p id={idErro} role="alert" className="text-sm text-destaque">
+          {erro}
+        </p>
+      )}
     </form>
   );
 }
@@ -289,7 +318,7 @@ function Encerrar({
     try {
       aoEncerrar(await encerrarRenga(rengaId));
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para encerrar a renga");
+      setErro(mensagemDeFalha(err, "não deu para encerrar a renga"));
       setEnviando(false);
     }
   }
