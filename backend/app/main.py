@@ -27,13 +27,19 @@ from app.routers import (
 from app.services.posts import reconstruir_indice
 
 
+def _banco_vazio() -> bool:
+    with SessionLocal() as db:
+        return db.scalar(select(User.id).limit(1)) is None
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(engine)
-    # No Render o SQLite zera a cada restart: o seed (idempotente) repovoa o
-    # banco ANTES do rebuild, para o índice de tags já nascer com os dados.
+    # Deploy: o seed só roda num banco SEM usuários (o primeiro boot no Postgres
+    # do Supabase); nos reinícios seguintes os dados criados na URL pública ficam.
+    # Roda ANTES do rebuild, para o índice de tags já nascer com os dados.
     # Import aqui dentro: fora do deploy, o script nem é carregado.
-    if os.environ.get("SEED_ON_BOOT") == "true":
+    if os.environ.get("SEED_ON_BOOT") == "true" and _banco_vazio():
         from scripts.seed import main as rodar_seed
 
         rodar_seed()
