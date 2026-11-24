@@ -26,9 +26,14 @@ import {
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
 
-type Props = { citarId: number | null; rascunhoId?: number | null };
+type Props = {
+  citarId: number | null;
+  rascunhoId?: number | null;
+  // Chamado quando o rascunho aberto é de citação (a página troca o título).
+  aoAbrirCitacao?: () => void;
+};
 
-export function Compositor({ citarId, rascunhoId = null }: Props) {
+export function Compositor({ citarId, rascunhoId = null, aoAbrirCitacao }: Props) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState("");
@@ -77,6 +82,7 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
         setIdioma(r.idioma ?? OUTRA);
         setCitado(r.repost_de_id);
         setCitadoRemovido(r.repost_removido);
+        if (r.repost_de_id !== null || r.repost_removido) aoAbrirCitacao?.();
       })
       .catch((e) => setErro(e instanceof Error ? e.message : "não achei o rascunho"));
   }, [rascunhoId]);
