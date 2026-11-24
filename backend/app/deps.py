@@ -31,7 +31,13 @@ def get_current_user(
 
     # bypass de DESENVOLVIMENTO: só sem Authorization e só com DEBUG=true.
     # Em produção não existe DEBUG: o header é ignorado e a rota protegida dá 401.
-    if os.environ.get("DEBUG") == "true" and x_user_id is not None and x_user_id.isdigit():
+    # isascii(): isdigit() sozinho aceita dígitos Unicode como "²", e o int() daria 500.
+    if (
+        os.environ.get("DEBUG") == "true"
+        and x_user_id is not None
+        and x_user_id.isascii()
+        and x_user_id.isdigit()
+    ):
         user = db.get(User, int(x_user_id))
         if user:
             return user
