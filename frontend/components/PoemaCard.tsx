@@ -2,7 +2,7 @@
 // Client component: as ações (curtir, repostar) têm estado otimista.
 
 import Link from "next/link";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
@@ -326,14 +326,21 @@ function Detalhes({ poema }: { poema: Post }) {
 }
 
 // Curtir e repostar mudam a tela antes da resposta e voltam atrás se o backend falhar.
+// Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
+// pedidos simultâneos podem ser processados fora de ordem e deixar a tela
+// diferente do servidor.
 function Acoes({ poema }: { poema: Post }) {
   const [curti, setCurti] = useState(poema.curti);
   const [curtidas, setCurtidas] = useState(poema.curtidas);
   const [repostei, setRepostei] = useState(poema.repostei);
   const [reposts, setReposts] = useState(poema.reposts);
   const [erro, setErro] = useState<string | null>(null);
+  const curtindo = useRef(false);
+  const repostando = useRef(false);
 
   async function alternarCurtida() {
+    if (curtindo.current) return;
+    curtindo.current = true;
     const novo = !curti;
     setCurti(novo);
     setCurtidas((n) => n + (novo ? 1 : -1));
@@ -344,10 +351,14 @@ function Acoes({ poema }: { poema: Post }) {
       setCurti(!novo);
       setCurtidas((n) => n + (novo ? -1 : 1));
       setErro(mensagemDeFalha(e, "não deu para curtir"));
+    } finally {
+      curtindo.current = false;
     }
   }
 
   async function alternarRepost() {
+    if (repostando.current) return;
+    repostando.current = true;
     const novo = !repostei;
     setRepostei(novo);
     setReposts((n) => n + (novo ? 1 : -1));
@@ -358,6 +369,8 @@ function Acoes({ poema }: { poema: Post }) {
       setRepostei(!novo);
       setReposts((n) => n + (novo ? -1 : 1));
       setErro(mensagemDeFalha(e, "não deu para repostar"));
+    } finally {
+      repostando.current = false;
     }
   }
 
