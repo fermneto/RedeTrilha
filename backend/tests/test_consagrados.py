@@ -101,6 +101,22 @@ def test_arquivo_invalido_traz_o_nome_no_erro(tmp_path):
         ler_consagrados(tmp_path)
 
 
+def test_username_reservado_e_recusado():
+    with pytest.raises(ValidationError, match="reservado"):
+        Consagrado.model_validate(consagrado(username="explorar"))
+
+
+def test_username_reservado_aborta_a_importacao_sem_gravar_nada(client, tmp_path, monkeypatch):
+    from scripts import importar_consagrados
+
+    escrever(tmp_path, "a_valido.json", consagrado(username="a_valido"))
+    escrever(tmp_path, "feed.json", consagrado(username="feed"))
+    monkeypatch.setattr(importar_consagrados, "PASTA_CONSAGRADOS", tmp_path)
+    with pytest.raises(SystemExit, match=r"feed\.json.*reservado"):
+        importar_consagrados.main()
+    assert _usuario("a_valido") is None
+
+
 def test_json_malformado_traz_o_nome_no_erro(tmp_path):
     (tmp_path / "quebrado.json").write_text("{ nao e json", encoding="utf-8")
     with pytest.raises(ArquivoConsagradoInvalido, match=r"quebrado\.json"):

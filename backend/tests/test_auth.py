@@ -175,6 +175,45 @@ def test_username_que_so_contem_um_reservado_passa(client):
     assert r.status_code == 201
 
 
+MSG_USERNAME = "o username precisa ter de 3 a 30 caracteres: letras minúsculas, números ou _"
+MSG_NOME = "o nome é obrigatório e tem até 80 caracteres"
+
+
+@pytest.mark.parametrize(
+    ("campos", "mensagem"),
+    [
+        ({"username": "an"}, MSG_USERNAME),
+        ({"username": "a" * 31}, MSG_USERNAME),
+        ({"username": "Ana"}, MSG_USERNAME),
+        ({"username": "ana-lima"}, MSG_USERNAME),
+        ({"name": ""}, MSG_NOME),
+        ({"name": "   "}, MSG_NOME),
+        ({"name": "x" * 81}, MSG_NOME),
+        ({"password": "curta"}, "a senha precisa ter pelo menos 8 caracteres"),
+    ],
+)
+def test_registro_explica_o_erro_em_portugues(client, campos, mensagem):
+    corpo = {"username": "ana", "name": "Ana", "password": SENHA, **campos}
+    r = client.post("/auth/registro", json=corpo)
+    assert r.status_code == 422
+    assert r.json()["detail"][0]["msg"] == f"Value error, {mensagem}"
+
+
+@pytest.mark.parametrize(
+    ("campos", "mensagem"),
+    [
+        ({"username": "a b"}, MSG_USERNAME),
+        ({"name": "x" * 81}, MSG_NOME),
+        ({"bio": "x" * 1001}, "a bio tem até 1000 caracteres"),
+        ({"avatar_url": "https://exemplo.com/" + "a" * 300}, "a avatar_url tem até 300 caracteres"),
+    ],
+)
+def test_post_usuarios_explica_o_erro_em_portugues(client, campos, mensagem):
+    r = client.post("/usuarios", json={"username": "ana", "name": "Ana", **campos})
+    assert r.status_code == 422
+    assert r.json()["detail"][0]["msg"] == f"Value error, {mensagem}"
+
+
 def test_lista_de_reservados_tem_os_nomes_decididos():
     from app.schemas.user import USERNAMES_RESERVADOS
 
