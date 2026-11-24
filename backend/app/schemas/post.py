@@ -60,6 +60,7 @@ class PostOut(BaseModel):
     obra: str | None
     ano: int | None
     fonte: str | None
+    idioma: str | None
     repost_de_id: int | None
     created_at: datetime
     updated_at: datetime

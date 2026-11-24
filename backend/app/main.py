@@ -20,6 +20,7 @@ from app.routers import (
     posts,
     reposts,
     tags,
+    traducao,
     users,
 )
 from app.services.posts import reconstruir_indice
@@ -61,3 +62,4 @@ app.include_router(reposts.router)
 app.include_router(antologias.router)
 app.include_router(comentarios.router)
 app.include_router(poema_do_dia.router)
+app.include_router(traducao.router)

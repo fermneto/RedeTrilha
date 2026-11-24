@@ -21,13 +21,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from app.db import Base, SessionLocal, engine
 from app.models.post import Post
+from app.models.traducao import Traducao
 from app.models.user import User
-from app.schemas.consagrado import Consagrado, PoemaConsagrado
+from app.schemas.consagrado import Consagrado, PoemaConsagrado, idioma_da_fonte
 
 PASTA_CONSAGRADOS = Path(__file__).resolve().parents[1] / "data" / "consagrados"
 JANELA_DO_FEED = timedelta(days=30)
@@ -145,10 +146,14 @@ def _gravar_poema(
         resumo.poemas_criados += 1
     else:
         resumo.poemas_atualizados += 1
+        if post.texto != poema.texto:
+            # A tradução em cache seria do texto antigo.
+            db.execute(delete(Traducao).where(Traducao.post_id == post.id))
     post.texto = poema.texto
     post.forma = poema.forma
     post.ano = poema.ano
     post.fonte = poema.fonte
+    post.idioma = idioma_da_fonte(poema.fonte)
     post.tags_extras = list(poema.tags)
     db.flush()
 

@@ -9,6 +9,7 @@ from app.models.antologia import AntologiaPoema
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.post import Post
+from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut, PostUpdate
 from app.schemas.user import UserOut
@@ -97,6 +98,7 @@ def para_saida(
         obra=post.obra,
         ano=post.ano,
         fonte=post.fonte,
+        idioma=post.idioma,
         repost_de_id=post.repost_de_id,
         created_at=post.created_at,
         updated_at=post.updated_at,
@@ -158,8 +160,12 @@ def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
     post = _buscar_do_autor(db, usuario, post_id)
     if post.repost_puro:
         raise HTTPException(status_code=422, detail="repost puro não se edita; desfaça o repost")
-    for campo, valor in dados.model_dump(exclude_unset=True).items():
+    campos = dados.model_dump(exclude_unset=True)
+    for campo, valor in campos.items():
         setattr(post, campo, valor)
+    if campos.keys() & {"titulo", "texto"}:
+        # A tradução em cache seria do texto antigo.
+        db.execute(delete(Traducao).where(Traducao.post_id == post_id))
     db.commit()
     db.refresh(post)
     _indexar(post)
@@ -174,6 +180,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
     db.execute(delete(Curtida).where(Curtida.post_id.in_([post_id, *puros])))
     db.execute(delete(Comentario).where(Comentario.post_id.in_([post_id, *puros])))
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
+    db.execute(delete(Traducao).where(Traducao.post_id.in_([post_id, *puros])))
     db.execute(delete(Post).where(Post.id.in_(puros)))
     db.execute(
         update(Post)

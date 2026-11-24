@@ -210,6 +210,14 @@ def test_importar_cria_consagrado_sem_login_e_poema_com_texto_identico(
     assert client.get(f"/posts/{post.id}", headers=leitora).json()["texto"] == TEXTO
 
 
+def test_importar_grava_o_idioma_da_fonte(client, tmp_path):
+    fonte = "https://la.wikisource.org/wiki/Carmen"
+    escrever(tmp_path, "poeta_teste.json", consagrado(poema={"fonte": fonte}))
+    _importar_pasta(tmp_path)
+    [post] = _posts_de("poeta_teste")
+    assert post.idioma == "la"
+
+
 def test_reimportar_nao_duplica_atualiza_e_mantem_a_data(client, tmp_path):
     escrever(tmp_path, "poeta_teste.json", consagrado())
     _importar_pasta(tmp_path)

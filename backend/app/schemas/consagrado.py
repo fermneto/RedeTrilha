@@ -5,6 +5,7 @@ poemas é guardado exatamente como veio: quebras de linha e recuos são sagrados
 """
 
 import re
+from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -13,6 +14,22 @@ from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
 PADRAO_TAG = re.compile(r"^[a-z0-9_]+$")
+# Subdomínio de língua dos projetos Wikimedia (pt.wikisource.org, ja.wikiquote.org).
+PADRAO_IDIOMA = re.compile(r"^[a-z]{2}$")
+
+
+def idioma_da_fonte(fonte: str | None) -> str | None:
+    """Código ISO 639-1 do poema a partir do subdomínio da fonte; None se não houver.
+
+    "https://pt.wikisource.org/wiki/..." → "pt"; "https://www.gutenberg.org/..." → None.
+    """
+    if not fonte:
+        return None
+    host = (urlsplit(fonte).hostname or "").lower()
+    partes = host.split(".")
+    if len(partes) < 3 or not PADRAO_IDIOMA.match(partes[0]):
+        return None
+    return partes[0]
 
 
 class PoemaConsagrado(BaseModel):
