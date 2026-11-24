@@ -281,11 +281,29 @@ a página e só então vai ao banco buscar a fatia.
   quando um poema entra na janela de 24 h e subtrai quando ele sai deixaria a
   consulta em O(m log k), sem o termo n·t.
 
-**Medição.** O benchmark do índice invertido contra a varredura
-(`backend/scripts/bench_*.py`) está sendo adicionado num PR de limpeza. Hoje o
-`make bench` só avisa que não há script.
+**Medição.** O `make bench` roda `backend/scripts/bench_indice_tags.py`: a
+mesma massa sintética (posts com 1 a 4 tags de um vocabulário de 67, espalhados
+por 14 dias, semente fixa) vai para o índice e para uma lista simples, e o
+`timeit` mede as duas consultas contra uma varredura linear da lista (mediana
+de 7 rodadas; antes, o script confere que os dois lados devolvem o mesmo
+resultado):
 
-_(resultado do make bench)_
+```
+   posts | consulta     | resultado |  índice (ms) | varredura (ms) |   ganho
+-----------------------------------------------------------------------------
+    1000 | posts_da_tag |    25 ids |        0.004 |          0.018 |    4.8x
+    1000 | trending     |     top 5 |        0.045 |          0.044 |    1.0x
+   10000 | posts_da_tag |   343 ids |        0.067 |          0.228 |    3.4x
+   10000 | trending     |     top 5 |        0.372 |          0.389 |    1.0x
+  100000 | posts_da_tag |  3722 ids |        1.165 |          4.624 |    4.0x
+  100000 | trending     |     top 5 |        4.627 |          4.169 |    0.9x
+```
+
+Os números confirmam a tabela de Big O. Em `posts_da_tag`, o índice vai direto
+aos p poemas da tag e fica de 3 a 5 vezes mais rápido que olhar os n posts. O
+`trending` empata com a varredura (0,9x a 1,0x), porque hoje ele também percorre
+todos os posts. É por isso que a contagem incremental por janela está na lista
+acima: é ela que tiraria o termo n·t.
 
 ### Também em `core/`, mais curtas
 
