@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { PoemaCard } from "@/components/PoemaCard";
@@ -97,6 +98,10 @@ export default function PoemaPage() {
             />
           )}
         />
+        {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar" do card. */}
+        {euId === poema.autor_id && !repostPuro(poema) && (
+          <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
+        )}
       </div>
       <div className="px-4 py-6">
         <ArvoreComentarios
@@ -114,7 +119,11 @@ export default function PoemaPage() {
   );
 }
 
+function repostPuro(poema: Post): boolean {
+  return poema.repost_de !== null && poema.texto === "";
+}
+
 // O texto que recebe os comentários: num repost puro, o do original (como no backend).
 function textoComentado(poema: Post): string {
-  return poema.repost_de && poema.texto === "" ? poema.repost_de.texto : poema.texto;
+  return repostPuro(poema) && poema.repost_de ? poema.repost_de.texto : poema.texto;
 }
