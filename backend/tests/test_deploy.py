@@ -48,6 +48,56 @@ def test_seed_on_boot_e_idempotente(monkeypatch):
         assert c.get("/usuarios").json()["total"] == total
 
 
+def test_dados_criados_depois_do_seed_sobrevivem_ao_reinicio(monkeypatch):
+    from app.db import Base, engine
+
+    Base.metadata.drop_all(engine)
+    with _bootar_com_seed(monkeypatch) as c:
+        c.post(
+            "/auth/registro",
+            json={"username": "visitante", "name": "Visitante", "password": "senha-forte-123"},
+        )
+        total = c.get("/usuarios").json()["total"]
+    with _bootar_com_seed(monkeypatch) as c:
+        assert c.get("/usuarios").json()["total"] == total
+        r = c.post("/auth/login", json={"username": "visitante", "password": "senha-forte-123"})
+        assert r.status_code == 200
+
+
+def test_seed_on_boot_nao_roda_se_o_banco_ja_tem_usuarios(monkeypatch):
+    from app.db import Base, engine
+
+    from app.main import app
+
+    Base.metadata.drop_all(engine)
+    monkeypatch.delenv("SEED_ON_BOOT", raising=False)
+    with TestClient(app) as c:
+        c.post("/usuarios", json={"username": "unica", "name": "Única"})
+    with _bootar_com_seed(monkeypatch) as c:
+        # Banco com gente: nem o seed nem a importação dos consagrados rodam.
+        assert c.get("/usuarios").json()["total"] == 1
+
+
+def test_database_url_postgres_ganha_o_driver_psycopg():
+    from app.db import normalizar_url
+
+    esperado = "postgresql+psycopg://u:s@h:5432/postgres"
+    assert normalizar_url("postgres://u:s@h:5432/postgres") == esperado
+    assert normalizar_url("postgresql://u:s@h:5432/postgres") == esperado
+    assert normalizar_url(esperado) == esperado
+    assert normalizar_url("sqlite:///./app.db") == "sqlite:///./app.db"
+
+
+def test_engine_postgres_usa_pre_ping_e_sem_check_same_thread():
+    from app.db import criar_engine
+
+    # create_engine não conecta: dá para conferir a configuração sem um Postgres.
+    pg = criar_engine("postgres://u:s@localhost:5432/postgres")
+    assert pg.dialect.name == "postgresql"
+    assert pg.dialect.driver == "psycopg"
+    assert pg.pool._pre_ping
+
+
 def test_cors_origins_padrao_e_localhost(monkeypatch):
     from app.main import origens_permitidas
 

@@ -12,8 +12,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 # banco descartável POR SESSÃO de teste, antes de qualquer import de app.*
+# Com TEST_POSTGRES_URL (um Postgres DESCARTÁVEL: os testes apagam as tabelas),
+# a suíte inteira roda nele e o tests/test_postgres.py deixa de ser pulado.
 _tmp_db = Path(tempfile.mkdtemp(prefix="trilha-test-")) / "test.db"
-os.environ["DATABASE_URL"] = f"sqlite:///{_tmp_db}"
+os.environ["DATABASE_URL"] = os.environ.get("TEST_POSTGRES_URL") or f"sqlite:///{_tmp_db}"
 
 import pytest  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402

@@ -10,6 +10,7 @@ dependencies = [
     "pydantic>=2.7",
     "bcrypt==4.2.1",
     "faker>=25.0",
+    "psycopg[binary]>=3.2",
     "anthropic>=2.13.0",
 ]
 
