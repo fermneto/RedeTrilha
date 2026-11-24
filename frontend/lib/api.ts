@@ -246,7 +246,8 @@ export type Post = {
 };
 
 // Com cursor, o total vem null (como na timeline do X).
-export type FeedPage = Omit<Page<Post>, "total"> & {
+// O feed e o perfil misturam poemas e rengas (ItemDoFeed, na seção das Rengas).
+export type FeedPage = Omit<Page<ItemDoFeed>, "total"> & {
   total: number | null;
   proximo_cursor: string | null;
 };
@@ -678,6 +679,120 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
+
+// ---- Rengas (poema colaborativo): espelham backend/app/schemas/renga.py ----
+
+// Os mesmos limites de RengaCreate (LIMITE_PADRAO, LIMITE_MIN, LIMITE_MAX).
+export const RENGA_LIMITE_PADRAO = 12;
+export const RENGA_LIMITE_MIN = 3;
+export const RENGA_LIMITE_MAX = 40;
+export const RENGA_TITULO_MAX = 200;
+
+export type ModoDaRenga = "aberta" | "convidados";
+export type SituacaoDaRenga = "aberta" | "fechada";
+
+export type Renga = {
+  id: number;
+  titulo: string;
+  modo: ModoDaRenga;
+  limite: number;
+  criador: User;
+  fechada: boolean;
+  fechada_em: string | null;
+  created_at: string;
+  qtd_estrofes: number;
+  // Cada autor uma vez, na ordem da primeira estrofe dele.
+  autores: User[];
+};
+
+export type Estrofe = {
+  id: number;
+  posicao: number;
+  texto: string;
+  autor: User;
+  created_at: string;
+};
+
+export type RengaDetalhe = Renga & {
+  estrofes: Estrofe[];
+  convidados: User[];
+  posso_escrever: boolean;
+  // Por que o usuário atual não pode escrever a próxima estrofe (null quando pode).
+  motivo: string | null;
+};
+
+export type NovaRenga = {
+  titulo: string;
+  primeira_estrofe: string;
+  modo: ModoDaRenga;
+  limite: number;
+  // Usernames; só no modo "convidados".
+  convidados: string[];
+};
+
+// A mais nova primeiro; sem `situacao`, abertas e fechadas juntas.
+export function listarRengas(
+  situacao: SituacaoDaRenga | null,
+  offset = 0,
+  limit = 20,
+): Promise<Page<Renga>> {
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  if (situacao) params.set("situacao", situacao);
+  return apiGet<Page<Renga>>(`/rengas?${params}`);
+}
+
+export function buscarRenga(id: number): Promise<RengaDetalhe> {
+  return apiGet<RengaDetalhe>(`/rengas/${id}`);
+}
+
+export function criarRenga(dados: NovaRenga): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>("/rengas", dados);
+}
+
+// 403 para quem não foi convidado; 409 para renga fechada ou "não é a sua vez".
+export function acrescentarEstrofe(id: number, texto: string): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/estrofes`, { texto });
+}
+
+export function encerrarRenga(id: number): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/encerrar`);
+}
+
+export function convidarParaRenga(id: number, usernames: string[]): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/convites`, { usernames });
+}
+
+// Renga no feed e no perfil (RengaNoFeed em backend/app/schemas/feed.py), como um
+// repost no X: o rótulo é "fulano abriu uma renga" (o criador, sempre), "fulano
+// escreveu uma estrofe" ou "fulano encerrou a renga".
+export type RengaNoFeed = {
+  tipo: "renga";
+  renga: RengaDetalhe;
+  atividade: "abriu" | "escreveu" | "encerrou";
+  // Os seguidos (ou você) do rótulo, quem fez por último primeiro.
+  por: User[];
+};
+
+// No feed e no perfil o poema vem com tipo "poema"; no Explorar, sem o campo.
+export type ItemDoFeed = (Post & { tipo?: "poema" }) | RengaNoFeed;
+
+export function ehRenga(item: ItemDoFeed): item is RengaNoFeed {
+  return item.tipo === "renga";
+}
+
+// Chave única entre os dois tipos (um poema e uma renga podem ter o mesmo id).
+export function chaveDoItem(item: ItemDoFeed): string {
+  return ehRenga(item) ? `renga-${item.renga.id}` : `poema-${item.id}`;
+}
+
+// "@ana, bia  @caio" → ["ana", "bia", "caio"]: separa por vírgula ou espaço, tira o "@" e repetidos.
+export function lerUsernames(texto: string): string[] {
+  const nomes = texto
+    .split(/[\s,]+/)
+    .map((n) => n.replace(/^@/, "").toLowerCase())
+    .filter(Boolean);
+  return [...new Set(nomes)];
 }
 
 // ---- Oficina do compositor: espelha backend/app/schemas/oficina.py ----

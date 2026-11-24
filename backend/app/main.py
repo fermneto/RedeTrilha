@@ -21,6 +21,7 @@ from app.routers import (
     poema_do_dia,
     posts,
     rascunhos,
+    rengas,
     reposts,
     saude,
     tags,
@@ -89,5 +90,6 @@ app.include_router(poema_do_dia.router)
 app.include_router(traducao.router)
 app.include_router(saude.router)
 app.include_router(acervo.router)
+app.include_router(rengas.router)
 app.include_router(oficina.router)
 app.include_router(rascunhos.router)

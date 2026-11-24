@@ -1,12 +1,14 @@
 "use client";
 // Lista de poemas com rolagem infinita, como no X: a próxima página pede o
 // `proximo_cursor` quando o fim da lista entra na tela. Usada pelo feed, pelo perfil
-// e pelo Explorar (que pagina por offset: ver buscarExplorar em lib/api.ts).
+// e pelo Explorar (que pagina por offset: ver buscarExplorar em lib/api.ts). No feed
+// e no perfil, as rengas vêm misturadas aos poemas.
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
-import { temToken, type FeedPage, type Post } from "@/lib/api";
+import { RengaCard } from "@/components/RengaCard";
+import { chaveDoItem, ehRenga, temToken, type FeedPage, type ItemDoFeed } from "@/lib/api";
 
 type Props = {
   // Busca uma página a partir do cursor (null = primeira). Para trocar de lista,
@@ -19,7 +21,7 @@ type Props = {
 };
 
 export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
-  const [poemas, setPoemas] = useState<Post[]>([]);
+  const [poemas, setPoemas] = useState<ItemDoFeed[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
   const [fim, setFim] = useState(false);
   const [carregando, setCarregando] = useState(false);
@@ -35,8 +37,8 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
     try {
       const pagina = await buscar(cursor);
       setPoemas((atuais) => {
-        const vistos = new Set(atuais.map((p) => p.id));
-        return [...atuais, ...pagina.items.filter((p) => !vistos.has(p.id))];
+        const vistos = new Set(atuais.map(chaveDoItem));
+        return [...atuais, ...pagina.items.filter((p) => !vistos.has(chaveDoItem(p)))];
       });
       setCursor(pagina.proximo_cursor);
       setFim(pagina.proximo_cursor === null);
@@ -67,8 +69,8 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
     <div>
       <ul className="divide-y divide-borda border-b border-borda">
         {poemas.map((p) => (
-          <li key={p.id}>
-            <PoemaCard post={p} />
+          <li key={chaveDoItem(p)}>
+            {ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}
           </li>
         ))}
       </ul>

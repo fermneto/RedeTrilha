@@ -2,7 +2,7 @@
 
 `seed_fake(db)` cria os poetas de `seed_conteudo.py`, publica os poemas e monta a rede em volta deles: follows, curtidas,
 comentários em árvore (com dois removidos que têm respostas), reposts puros,
-citações e antologias. Rode com: make seed (ou make reset, do zero).
+citações, antologias e rengas. Rode com: make seed (ou make reset, do zero).
 
 Interações pelos services. Poemas, curtidas, reposts, comentários, follows e
 antologias passam pelas mesmas funções que a API usa, então valem as mesmas
@@ -44,16 +44,19 @@ from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.follow import Follow
 from app.models.post import Post
+from app.models.renga import Renga
 from app.models.user import User
 from app.schemas.antologia import AntologiaCreate
 from app.schemas.comentario import ComentarioCreate
 from app.schemas.post import PostCreate
+from app.schemas.renga import RengaCreate
 from app.schemas.user import UserCreate
 from app.services import antologias as antologias_service
 from app.services import comentarios as comentarios_service
 from app.services import curtidas as curtidas_service
 from app.services import follows as follows_service
 from app.services import posts as posts_service
+from app.services import rengas as rengas_service
 from app.services import reposts as reposts_service
 from app.services.auth import gerar_hash
 from scripts import importar_consagrados
@@ -66,6 +69,7 @@ from scripts.seed_conteudo import (
     EM_ALTA,
     POEMAS,
     POETAS,
+    RENGAS,
     Conversa,
 )
 
@@ -139,6 +143,7 @@ def _popular(db: Session, agora: datetime) -> None:
     _curtir(db, rng, list(usuarios.values()), poemas, reposts, datas, agora)
     _comentar(db, usuarios, poemas, datas, agora)
     _montar_antologias(db, usuarios, poemas)
+    _escrever_rengas(db, usuarios)
 
 
 def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
@@ -420,6 +425,25 @@ def _montar_antologias(
             antologias_service.adicionar_poema(db, dono, criada.id, poemas[chave].id)
 
 
+def _escrever_rengas(db: Session, usuarios: dict[str, User]) -> None:
+    """Pelo service, estrofe a estrofe: valem a regra da vez e o fechamento pelo limite."""
+    for renga in RENGAS:
+        (criador, primeira), *seguintes = renga.estrofes
+        criada = rengas_service.criar(
+            db,
+            usuarios[criador],
+            RengaCreate(
+                titulo=renga.titulo,
+                primeira_estrofe=primeira,
+                modo=renga.modo,
+                limite=renga.limite,
+                convidados=list(renga.convidados),
+            ),
+        )
+        for autor, texto in seguintes:
+            rengas_service.acrescentar(db, usuarios[autor], criada.id, texto)
+
+
 def contagens(db: Session) -> dict[str, int]:
     """Quantas linhas há em cada tabela da rede (o `main` imprime ao fim)."""
     modelos = {
@@ -429,6 +453,7 @@ def contagens(db: Session) -> dict[str, int]:
         "curtidas": Curtida,
         "comentarios": Comentario,
         "antologias": Antologia,
+        "rengas": Renga,
     }
     return {
         nome: db.scalar(select(func.count()).select_from(modelo)) or 0
