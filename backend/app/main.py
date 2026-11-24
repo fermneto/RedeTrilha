@@ -20,6 +20,7 @@ from app.routers import (
     oficina,
     poema_do_dia,
     posts,
+    rascunhos,
     reposts,
     saude,
     tags,
@@ -89,3 +90,4 @@ app.include_router(traducao.router)
 app.include_router(saude.router)
 app.include_router(acervo.router)
 app.include_router(oficina.router)
+app.include_router(rascunhos.router)

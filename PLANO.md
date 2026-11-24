@@ -137,8 +137,11 @@ Um repost puro por (autor, original), garantido por um índice único parcial
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
 - `PostCreate`: `titulo`, `texto` (não pode ficar em branco), `forma`, `idioma`
-  e `repost_de_id` (com texto, é citação). `PostUpdate`: os mesmos campos menos
-  `repost_de_id`, só os enviados mudam. Só o autor edita ou apaga (403).
+  e `repost_de_id` (com texto, é citação). Só o autor apaga (403).
+- **Poema publicado é imutável** (decisão do Neto, #73): não há `PATCH /posts/{id}`
+  (405). Para corrigir, o autor apaga e publica de novo, perdendo curtidas e
+  comentários. O que se edita é o rascunho (abaixo). O importador de
+  consagrados continua atualizando os posts direto no banco.
 - `PostOut`: os campos da tabela (menos `tags_extras`) + `autor: UserOut`,
   `curtidas`, `comentarios`, `reposts`, `curti`, `repostei`,
   `repost_de: PostOut | None` (um nível), `repost_removido`, `tags: list[str]`
@@ -198,6 +201,26 @@ Tabela `follows`: `seguidor_id` (FK users), `seguido_id` (FK users),
 - **O marcador fica para sempre** (decisão do Neto, #38 e #67): mesmo que as
   respostas sejam apagadas depois, ele não sai do banco, e apagar de novo não
   faz nada (devolve `"removido"` com o total atual).
+
+### Crítica ancorada no verso (dono: Neto, #71)
+
+Tabela `ancoras_comentario`: `comentario_id` (PK e FK `comentarios.id`),
+`verso_inicio` e `verso_fim`. Os versos são as linhas de `texto.split("\n")`
+do poema, base 1, **com as linhas em branco contadas**. O trecho não é gravado:
+poema publicado não se edita, então ele sai do texto do poema.
+
+- `ComentarioCreate` ganhou `ancora: {"verso_inicio", "verso_fim"} | null`
+  (opcional). Só no 1º nível: com `parent_id` → 422. Início depois do fim, fora
+  do poema ou trecho só de linhas em branco → 422. Num repost puro, vale o texto
+  do original.
+- `ComentarioOut` ganhou `ancora: {"verso_inicio", "verso_fim", "trecho"} | null`
+  (opcional; `null` nos comentários sem âncora e nas respostas). O marcador
+  "comentário removido" continua com a âncora.
+- `GET /posts/{id}/comentarios?verso=N` 🔒 → só as raízes cuja âncora cobre o
+  verso N, na mesma paginação por cursor.
+- `GET /posts/{id}/comentarios/versos` 🔒 → `{"items": [{"verso", "comentarios"}]}`:
+  quantos comentários cobrem cada verso (uma crítica de 5–8 conta nos quatro).
+- Apagar o comentário (sem respostas) ou o poema apaga a âncora junto.
 
 ### Curtidas e reposts (dono: Henrique)
 
@@ -269,6 +292,28 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   (14 versos) e haicai (3 versos de 5-7-5 sílabas poéticas).
 - Algoritmo em `core/metrica.py`. Só o compositor usa: o `Post` não muda.
 
+### Rascunhos (dono: Neto, #73)
+
+Tabela nova `rascunhos`: `autor_id`, `titulo`, `texto`, `forma`, `idioma`,
+`repost_de_id` (FK `posts.id` \| None: rascunho de citação), `repost_removido`,
+`created_at` e `updated_at`. Fica fora de `posts`, então rascunho não entra em
+feed, perfil, Explorar, tags, índice, Em alta, antologias nem nas contagens.
+
+- Só o autor vê: de outra pessoa, toda rota dá 404 (não revela que existe).
+- `GET /rascunhos` 🔒 → página de `RascunhoOut`, o editado por último primeiro,
+  sem limite de quantidade.
+- `POST /rascunhos` 🔒 → 201, com as regras do `PostCreate` (texto em branco →
+  422). Com `repost_de_id`, é rascunho de citação (repost puro aponta para o
+  original; inexistente → 404).
+- `GET`/`PATCH`/`DELETE /rascunhos/{id}` 🔒. O `PATCH` é parcial (`titulo`,
+  `texto`, `forma`, `idioma`); o poema citado não muda.
+- `POST /rascunhos/{id}/publicar` 🔒 → 201 `PostOut`: cria o poema (ou a
+  citação) pelo mesmo `posts.criar`, com data de agora e tags indexadas, e
+  apaga o rascunho na mesma transação.
+- Original apagado com a citação ainda em rascunho: como na citação publicada,
+  o rascunho fica com `repost_de_id: null` e `repost_removido: true`, e
+  publicado mostra "poema removido pelo autor".
+
 ### Auth e saúde
 
 - `POST /auth/registro` → 201 `UserOut`; `POST /auth/login` → `{"token"}`
@@ -290,8 +335,8 @@ indice_tags.trending(desde: datetime, k: int = 5) -> list[tuple[str, int]]
 extrair_tags(texto: str, forma: str | None) -> set[str]  # #amor, mais a forma
 ```
 
-O `services/posts.py` chama `indexar` ao criar ou editar e `remover` ao
-apagar; o lifespan reconstrói o índice a partir do banco.
+O `services/posts.py` chama `indexar` ao criar (também ao publicar um
+rascunho) e `remover` ao apagar; o lifespan reconstrói o índice a partir do banco.
 
 ### Componentes do front
 

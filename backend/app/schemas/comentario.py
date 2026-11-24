@@ -6,9 +6,27 @@ from pydantic import BaseModel, field_validator
 from app.schemas.user import UserOut
 
 
+class AncoraCreate(BaseModel):
+    """Os versos criticados, base 1, contando as linhas de `texto.split("\\n")`
+    do poema (linhas em branco incluídas). O service valida o intervalo."""
+
+    verso_inicio: int
+    verso_fim: int
+
+
+class AncoraOut(BaseModel):
+    """Os versos criticados e o `trecho` deles, tirado do texto do poema."""
+
+    verso_inicio: int
+    verso_fim: int
+    trecho: str
+
+
 class ComentarioCreate(BaseModel):
     texto: str
     parent_id: int | None = None
+    # Só no 1º nível: as respostas herdam o trecho do comentário pai.
+    ancora: AncoraCreate | None = None
 
     @field_validator("texto")
     @classmethod
@@ -36,6 +54,7 @@ class ComentarioOut(BaseModel):
     removido: bool = False
     total_respostas: int = 0
     respostas: list["ComentarioOut"] = []
+    ancora: AncoraOut | None = None
 
 
 class ComentarioPage(BaseModel):
@@ -48,6 +67,17 @@ class ComentarioPage(BaseModel):
     total: int
     limit: int
     proximo_cursor: str | None = None
+
+
+class VersoComentado(BaseModel):
+    verso: int
+    comentarios: int
+
+
+class VersosComentadosOut(BaseModel):
+    """Os versos do poema com críticas ancoradas, em ordem de verso."""
+
+    items: list[VersoComentado]
 
 
 class ComentarioApagadoOut(BaseModel):
