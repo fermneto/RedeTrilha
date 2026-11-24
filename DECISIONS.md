@@ -230,7 +230,9 @@ PRs, na seção "Decisões do Neto".
     numeração.
   - O comentário mostra o trecho acima do texto, com a referência ("versos
     5–8"). Cada verso comentado ganha uma marca com quantas críticas o cobrem,
-    e clicar nela filtra a conversa por aquele verso.
+    e clicar nela filtra a conversa por aquele verso. Com o filtro de um verso
+    ativo, a lista mostra só as críticas daquele verso, inclusive as que você
+    acabou de publicar; para ver todas, "ver todos os comentários".
   - Só o 1º nível da árvore é ancorado; as respostas herdam o trecho do pai.
   - "Citar estes versos" abre a citação (decisão 4) com os versos preenchidos
     e uma linha em branco para o leitor escrever.
