@@ -69,6 +69,8 @@ class PostOut(BaseModel):
     repostei: bool = False
     repost_de: "PostOut | None" = None
     tags: list[str] = []
+    # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
+    repostado_por: list[UserOut] = []
 
 
 class PostPage(BaseModel):

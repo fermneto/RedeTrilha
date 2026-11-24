@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field
 class UserCreate(BaseModel):
     username: str = Field(min_length=3, max_length=30, pattern=r"^[a-z0-9_]+$")
     name: str = Field(min_length=1, max_length=80)
-    bio: str = Field(default="", max_length=280)
+    bio: str = Field(default="", max_length=1000)
     avatar_url: str = Field(default="", max_length=300)
 
 
@@ -18,6 +18,9 @@ class UserOut(BaseModel):
     name: str
     bio: str
     avatar_url: str
+    consagrado: bool
+    nascimento: int | None
+    morte: int | None
     created_at: datetime
 
 

@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import ForeignKey, String, Text
+from sqlalchemy import JSON, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -24,6 +24,8 @@ class Post(Base):
     obra: Mapped[str | None] = mapped_column(String(200), default=None)
     ano: Mapped[int | None] = mapped_column(default=None)
     fonte: Mapped[str | None] = mapped_column(String(500), default=None)
+    # Tags que vêm de fora do texto (os JSONs dos consagrados); somam-se às #hashtags.
+    tags_extras: Mapped[list[str]] = mapped_column(JSON, default=list)
     repost_de_id: Mapped[int | None] = mapped_column(
         ForeignKey("posts.id"), default=None, index=True
     )

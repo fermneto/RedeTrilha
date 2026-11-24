@@ -121,3 +121,134 @@ def test_nascimento_e_opcional():
     dados = consagrado()
     del dados["nascimento"]
     assert Consagrado.model_validate(dados).nascimento is None
+
+
+def test_poema_repetido_no_mesmo_json_e_recusado():
+    poema = consagrado()["poemas"][0]
+    with pytest.raises(ValidationError, match="poema repetido"):
+        Consagrado.model_validate(consagrado(poemas=[poema, dict(poema, texto="outro")]))
+
+
+# --- gravação no banco ---
+
+TEXTO = "\n  Vês! Ninguém assistiu ao formidável\n    Enterro\n\nnova estrofe  \n"
+
+
+def _importar_pasta(pasta: Path, agora: datetime = AGORA):
+    from app.db import SessionLocal
+    from scripts.importar_consagrados import importar
+
+    with SessionLocal() as db:
+        return importar(db, ler_consagrados(pasta), agora)
+
+
+def _usuario(username: str):
+    from sqlalchemy import select
+
+    from app.db import SessionLocal
+    from app.models.user import User
+
+    with SessionLocal() as db:
+        return db.scalar(select(User).where(User.username == username))
+
+
+def _posts_de(username: str):
+    from sqlalchemy import select
+
+    from app.db import SessionLocal
+    from app.models.post import Post
+    from app.models.user import User
+
+    with SessionLocal() as db:
+        consulta = select(Post).join(Post.autor).where(User.username == username)
+        return list(db.scalars(consulta.order_by(Post.id)))
+
+
+def test_importar_cria_consagrado_sem_login_e_poema_com_texto_identico(
+    client, logar, tmp_path
+):
+    escrever(tmp_path, "poeta_teste.json", consagrado(poema={"texto": TEXTO, "obra": "Eu"}))
+    resumo = _importar_pasta(tmp_path)
+    assert (resumo.poetas_criados, resumo.poemas_criados) == (1, 1)
+
+    poeta = _usuario("poeta_teste")
+    assert (poeta.consagrado, poeta.password_hash) == (True, None)
+    assert (poeta.nascimento, poeta.morte) == (1884, 1914)
+    r = client.post("/auth/login", json={"username": "poeta_teste", "password": "qualquer"})
+    assert r.status_code == 401
+
+    [post] = _posts_de("poeta_teste")
+    assert post.texto == TEXTO
+    assert (post.forma, post.obra, post.tags_extras) == ("soneto", "Eu", ["morte"])
+    leitora = logar("leitora")
+    assert client.get(f"/posts/{post.id}", headers=leitora).json()["texto"] == TEXTO
+
+
+def test_reimportar_nao_duplica_atualiza_e_mantem_a_data(client, tmp_path):
+    escrever(tmp_path, "poeta_teste.json", consagrado())
+    _importar_pasta(tmp_path)
+    [antes] = _posts_de("poeta_teste")
+
+    escrever(
+        tmp_path,
+        "poeta_teste.json",
+        consagrado(bio="bio nova", poema={"texto": "verso novo\n", "tags": ["mar"]}),
+    )
+    resumo = _importar_pasta(tmp_path, AGORA + timedelta(days=3))
+    assert (resumo.poetas_criados, resumo.poetas_atualizados) == (0, 1)
+    assert (resumo.poemas_criados, resumo.poemas_atualizados) == (0, 1)
+
+    [depois] = _posts_de("poeta_teste")
+    assert depois.id == antes.id
+    assert (depois.texto, depois.tags_extras) == ("verso novo\n", ["mar"])
+    assert depois.created_at == antes.created_at
+    assert _usuario("poeta_teste").bio == "bio nova"
+
+
+def test_tags_extras_entram_no_indice_ao_reconstruir(client, logar, tmp_path):
+    from app.db import SessionLocal
+    from app.services.posts import reconstruir_indice
+
+    escrever(tmp_path, "poeta_teste.json", consagrado(poema={"tags": ["desilusao"]}))
+    _importar_pasta(tmp_path)
+    with SessionLocal() as db:
+        reconstruir_indice(db)
+
+    [post] = _posts_de("poeta_teste")
+    pagina = client.get("/tags/desilusao/posts", headers=logar("leitora")).json()
+    assert [p["id"] for p in pagina["items"]] == [post.id]
+    assert pagina["items"][0]["tags"] == ["desilusao", "soneto"]
+
+
+def test_morte_depois_de_1955_nao_grava_nada(client, tmp_path, monkeypatch):
+    from scripts import importar_consagrados
+
+    escrever(tmp_path, "a_valido.json", consagrado(username="a_valido"))
+    escrever(tmp_path, "vivo_demais.json", consagrado(username="vivo_demais", morte=1987))
+    monkeypatch.setattr(importar_consagrados, "PASTA_CONSAGRADOS", tmp_path)
+    with pytest.raises(SystemExit, match="domínio público"):
+        importar_consagrados.main()
+    assert _usuario("a_valido") is None
+    assert _usuario("vivo_demais") is None
+
+
+def test_username_de_conta_comum_aborta_tudo(client, tmp_path):
+    from scripts.importar_consagrados import UsernameDeUsuarioComum
+
+    client.post("/usuarios", json={"username": "b_comum", "name": "Comum"})
+    escrever(tmp_path, "a_poeta.json", consagrado(username="a_poeta"))
+    escrever(tmp_path, "b_comum.json", consagrado(username="b_comum"))
+    with pytest.raises(UsernameDeUsuarioComum):
+        _importar_pasta(tmp_path)
+    assert _usuario("a_poeta") is None
+    assert _usuario("b_comum").consagrado is False
+
+
+def test_pasta_so_com_exemplo_importa_zero(client, tmp_path, monkeypatch, capsys):
+    from scripts import importar_consagrados
+
+    escrever(tmp_path, "_exemplo.json", consagrado())
+    monkeypatch.setattr(importar_consagrados, "PASTA_CONSAGRADOS", tmp_path)
+    importar_consagrados.main()
+    assert "0 poetas criados" in capsys.readouterr().out
+    assert _usuario("poeta_teste") is None
