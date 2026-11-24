@@ -14,8 +14,12 @@ router = APIRouter(tags=["tags"])
 
 
 @router.get("/tags/trending", response_model=Trending)
-def trending(_: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    return service.trending(db)
+def trending(
+    limit: Annotated[int, Query(ge=1, le=10)] = 5,
+    _: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return service.trending(db, limit)
 
 
 @router.get("/tags/busca", response_model=BuscaDeTags)

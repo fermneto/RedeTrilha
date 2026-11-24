@@ -48,6 +48,7 @@ class IndiceTags:
     - posts_da_tag: O(p log p), p = posts da tag (ordena na leitura)
     - trending: O(n·t + m log k), n = posts indexados, m = tags distintas na janela
     - mais_recente: O(p), p = posts da tag
+    - representantes: O(Σp) das tags pedidas
     - buscar: O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo
     - reconstruir do zero: O(n·t), por isso só acontece no startup
     """
@@ -113,15 +114,32 @@ class IndiceTags:
                 contagem.update(tags)
         return heapq.nsmallest(k, contagem.items(), key=lambda par: (-par[1], par[0]))
 
-    def mais_recente(self, tag: str) -> int | None:
-        """Id do poema mais novo com a tag (empate: maior id), ou None. O(p).
+    def mais_recente(self, tag: str, evitar: frozenset[int] = frozenset()) -> int | None:
+        """Id do poema mais novo com a tag fora de `evitar` (empate: maior id). O(p).
 
-        Um max linear, sem ordenar: o "Em alta" só quer o primeiro.
+        Se todos estão em `evitar`, o mais novo mesmo; tag sem poemas dá None.
+        Um max linear, sem ordenar: o "Em alta" só quer um.
         """
         posts = self._por_tag.get(normalizar(tag))
         if not posts:
             return None
-        return max(posts.items(), key=lambda par: (par[1], par[0]))[0]
+        livres = [par for par in posts.items() if par[0] not in evitar] or list(posts.items())
+        return max(livres, key=lambda par: (par[1], par[0]))[0]
+
+    def representantes(self, tags: list[str]) -> dict[str, int | None]:
+        """Um poema por tag, na ordem dada, sem repetir o de uma tag de cima. O(Σp).
+
+        Cada tag fica com o poema mais novo dela que ainda não apareceu; se todos
+        já apareceram, com o mais novo mesmo.
+        """
+        usados: set[int] = set()
+        escolhidos: dict[str, int | None] = {}
+        for tag in tags:
+            post_id = self.mais_recente(tag, frozenset(usados))
+            escolhidos[tag] = post_id
+            if post_id is not None:
+                usados.add(post_id)
+        return escolhidos
 
     def buscar(self, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
         """Até k tags que começam por `prefixo`, com quantos poemas cada uma tem.

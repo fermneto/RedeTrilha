@@ -119,7 +119,22 @@ def test_mais_recente_pega_o_poema_mais_novo_da_tag():
     indice.indexar(5, {"mar"}, dias_atras(3))
     indice.indexar(3, {"mar"}, dias_atras(1))
     assert indice.mais_recente("Mar") == 3
+    assert indice.mais_recente("mar", frozenset({3})) == 1
+    assert indice.mais_recente("mar", frozenset({1, 3, 5})) == 3
     assert indice.mais_recente("inexistente") is None
+
+
+def test_representantes_um_poema_diferente_por_tag():
+    indice = IndiceTags()
+    indice.indexar(1, {"mar", "sal"}, dias_atras(3))
+    indice.indexar(2, {"mar", "chuva"}, dias_atras(2))
+    indice.indexar(3, {"mar", "sal", "chuva"}, dias_atras(1))
+    indice.indexar(4, {"lua"}, dias_atras(1))
+    assert indice.representantes(["mar", "chuva", "sal", "lua", "nada"]) == {
+        "mar": 3, "chuva": 2, "sal": 1, "lua": 4, "nada": None,
+    }
+    # sem poema livre, repete o mais novo
+    assert indice.representantes(["lua", "lua"]) == {"lua": 4}
 
 
 def test_buscar_por_prefixo_mais_usada_primeiro():

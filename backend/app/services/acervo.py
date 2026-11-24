@@ -76,6 +76,8 @@ class Filtros:
     lingua: str | None = None
     epoca: ChaveEpoca | None = None
     ordem: Ordem = "alfabetica"
+    # Busca do Explorar: quem o usuário segue vem antes, na ordem escolhida.
+    sigo_primeiro: bool = False
 
 
 def listar(
@@ -83,6 +85,10 @@ def listar(
 ) -> AcervoPage:
     linhas = _filtrar_por_nome(db.execute(_consulta(filtros)).all(), filtros.q)
     linhas.sort(key=_chave_de_ordem(filtros.ordem))
+    if filtros.sigo_primeiro:
+        sigo_todos = seguidos_entre(db, usuario.id, [linha.id for linha in linhas])
+        # sort estável: dentro de cada grupo fica a ordem de cima.
+        linhas.sort(key=lambda linha: linha.id not in sigo_todos)
     pagina = linhas[offset : offset + limit]
 
     ids = [linha.id for linha in pagina]

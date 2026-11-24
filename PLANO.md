@@ -327,13 +327,16 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 - `GET /tags/{tag}/posts` 🔒 → página, mais novo primeiro. A tag é normalizada
   (casefold e sem acento: `#Solidão` = `#solidao`).
-- `GET /tags/trending` 🔒 → `{"items": [{"tag", "contagem", "trecho"}]}`: top 5
-  das últimas 24 h (contagem de poemas, sem curtidas). `trecho` (opcional,
-  pode ser `null`) é o primeiro verso com texto do poema mais novo com a tag,
-  sem `strip()`.
+- `GET /tags/trending?limit=` 🔒 → `{"items": [{"tag", "contagem", "trecho"}]}`:
+  top `limit` (1 a 10, padrão 5) das últimas 24 h (contagem de poemas, sem
+  curtidas). `trecho` (opcional, pode ser `null`) é o primeiro verso com texto
+  que não seja só `#tags`, sem `strip()`, de um poema diferente por tag: o mais
+  novo da tag que ainda não apareceu numa tag acima (se todos já apareceram, o
+  mais novo mesmo).
 - `GET /tags/busca?q=` 🔒 → `{"items": [{"tag", "poemas"}]}`: até 5 tags que
   começam pelo termo normalizado (`#Saú` acha `saudade`), mais poemas primeiro;
-  termo vazio → lista vazia. A busca de poetas do Explorar usa `GET /acervo?q=`.
+  termo vazio → lista vazia. A busca de poetas do Explorar usa
+  `GET /acervo?q=&sigo_primeiro=true`.
 - `GET /explorar?tag=&forma=` 🔒 → página de poemas de todos, sem reposts
   puros; `tag` e `forma` juntos fazem interseção; forma fora de `FORMAS` → 422.
 - `GET /poemas/do-dia` 🔒 → `PostOut`: um poema de consagrado, o mesmo para
@@ -345,7 +348,8 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `do_verso`), `q`
   (nome ou @username, sem diferença de acento), `lingua` (ISO 639-1), `epoca`
   (`antiguidade`, `idade_media`, `xvi` … `xx`, pelo ano de morte), `ordem`
-  (`alfabetica` \| `seguidos` \| `poemas`), `offset` e `limit` (padrão 24) →
+  (`alfabetica` \| `seguidos` \| `poemas`), `sigo_primeiro` (opcional: quem eu
+  sigo vem antes, na ordem escolhida), `offset` e `limit` (padrão 24) →
   `AcervoPage` de `PoetaDoAcervo` (`UserOut` + `seguidores`, `poemas`, `sigo`).
 - `GET /acervo/filtros` 🔒 → `{"linguas": [{"codigo", "poetas"}],
   "epocas": [{"chave", "rotulo", "inicio", "fim", "poetas"}]}`.
@@ -413,7 +417,8 @@ indice_tags.indexar(post_id: int, tags: set[str], criado_em: datetime) -> None
 indice_tags.remover(post_id: int) -> None
 indice_tags.posts_da_tag(tag: str) -> list[int]       # mais novo primeiro
 indice_tags.trending(desde: datetime, k: int = 5) -> list[tuple[str, int]]
-indice_tags.mais_recente(tag: str) -> int | None       # id do poema mais novo
+indice_tags.mais_recente(tag: str, evitar: frozenset[int] = frozenset()) -> int | None
+indice_tags.representantes(tags: list[str]) -> dict[str, int | None]  # um poema por tag
 indice_tags.buscar(prefixo: str, k: int = 5) -> list[tuple[str, int]]  # (tag, poemas)
 extrair_tags(texto: str, forma: str | None) -> set[str]  # #amor, mais a forma
 ```
