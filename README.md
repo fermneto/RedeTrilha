@@ -54,6 +54,28 @@ Se algum comando falhar, vejam o [guia 00](docs/guias/00-setup.md).
 
 Deploy público (Render + Vercel): [docs/deploy.md](docs/deploy.md).
 
+## Tradução
+
+O botão "Traduzir" do card traduz o poema para a língua do navegador com o
+Claude Haiku 5.5 (API da Anthropic), via `POST /posts/{id}/traduzir`. Cada
+tradução fica gravada na tabela `traducoes`: o mesmo poema na mesma língua só
+chama a API uma vez. Cada usuário pode pedir até 30 traduções novas por hora
+(as que vêm do cache não contam); passou disso, a rota responde 429.
+
+A chave fica **só** na variável de ambiente `ANTHROPIC_API_KEY`. Nunca a
+escrevam num arquivo do repositório. Sem a chave, o resto do site funciona e a
+rota responde 503 ("tradução indisponível no momento").
+
+- **Local:** exportem a chave no terminal do backend antes de subir a API:
+  ```bash
+  export ANTHROPIC_API_KEY=...   # a chave do console da Anthropic
+  make dev-back
+  ```
+- **Deploy (Render):** em Environment, adicionem `ANTHROPIC_API_KEY` com a
+  chave. O front (Vercel) não precisa dela.
+
+Os testes nunca chamam a API: o cliente é trocado por um falso.
+
 ## Primeiros passos do time
 
 1. Leiam o slice de exemplo (`/usuarios`, do model à página). Toda feature

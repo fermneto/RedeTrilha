@@ -62,6 +62,7 @@ O `bio` sobe de 280 para 1000 caracteres (consagrados têm bio maior).
 | `obra` | `str \| None` | livro de origem (consagrados) |
 | `ano` | `int \| None` | ano de publicação original (consagrados) |
 | `fonte` | `str \| None` | URL da fonte (consagrados) |
+| `idioma` | `str \| None` (ISO 639-1) | `"pt"` nos poemas dos usuários; nos consagrados, o subdomínio da `fonte` |
 | `repost_de_id` | FK `posts.id` \| None | repost: `texto` vazio = repost puro; com texto = citação |
 | `created_at` / `updated_at` | datetime UTC | |
 
