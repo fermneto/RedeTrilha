@@ -1,0 +1,14 @@
+# Fora da imagem: ambiente local, bancos, segredos e testes.
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*
+tests/
+Dockerfile
+.dockerignore

@@ -1,0 +1,71 @@
+# Backend do Verso na VM da Oracle Cloud (Always Free, ARM). Passo a passo: docs/deploy-oracle.md
+#   cd deploy/oracle && cp .env.example .env   # e preencha o .env (NUNCA vai para o git)
+#   docker compose up -d --build
+#
+# seed  -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
+# api   -> só sobe depois que o seed terminar bem; vários workers, sem porta pública.
+# caddy -> único serviço exposto (80/443): HTTPS automático e proxy para a api.
+
+name: verso
+
+x-logs: &logs
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
+services:
+  seed:
+    build: ../../backend
+    image: verso-api:local
+    env_file: .env
+    entrypoint: ["python", "scripts/preparar_banco.py"]
+    restart: "no"
+    logging: *logs
+    networks: [interna]
+
+  api:
+    image: verso-api:local
+    env_file: .env
+    environment:
+      # O seed é do serviço acima: nunca nos workers (rodariam juntos).
+      SEED_ON_BOOT: "false"
+      # Só o Caddy, nesta rede, pode dizer o IP e o https do visitante.
+      FORWARDED_ALLOW_IPS: "172.30.0.0/24"
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    expose: ["8000"]
+    logging: *logs
+    networks: [interna]
+
+  caddy:
+    image: caddy:2.10-alpine
+    env_file: .env
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      - "${HTTPS_PORT:-443}:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    logging: *logs
+    networks: [interna]
+
+networks:
+  interna:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+
+volumes:
+  # Os certificados do Let's Encrypt: apagar este volume força pedir de novo
+  # (e o Let's Encrypt tem limite semanal).
+  caddy_data:
+  caddy_config:
