@@ -35,7 +35,9 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 - **Como a rede resolve:**
   - O post é o poema: título opcional, corpo sem limite, com as quebras, as
     estrofes e os recuos preservados, e uma forma (soneto, haicai, cordel...).
-  - O feed é cronológico, e a descoberta é por forma e por tema.
+  - O feed é cronológico, em duas abas: "Para você", com a rede inteira, e
+    "Seguindo". A descoberta é por forma, por tema e por afinidade (escola
+    literária, forma e região).
   - Os gestos de quem lê poesia são de primeira classe: citar um verso,
     repostar e conversar numa árvore de comentários, como numa oficina.
   - A crítica aponta o verso: o leitor seleciona os versos 5 a 8 e comenta
@@ -102,6 +104,16 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     persa, Bashō em japonês. Os textos não foram editados: saíram só os poemas
     com defeito do scraper, e a única limpeza foi remover caracteres invisíveis
     e o TAB do início dos versos (#49).
+  - **Escola e país.** Cada consagrado tem de 1 a 3 escolas literárias, de um
+    vocabulário de 15 (antiguidade clássica, medieval e trovadorismo,
+    renascimento e classicismo, barroco, arcadismo e neoclassicismo,
+    romantismo, realismo, parnasianismo, simbolismo, modernismo hispânico,
+    pré-modernismo, modernismo e vanguardas, poesia popular e cordel, clássica
+    oriental, clássica árabe e persa), e o país de nascimento (ISO 3166-1, ou
+    vazio quando é desconhecido ou disputado, como o de Homero). É o que liga
+    o poeta às sugestões por afinidade (decisão 11). O campo `obra` foi limpo:
+    guarda só o livro de verdade ("Les Fleurs du mal", não "Les Fleurs du mal
+    (1861)") e fica vazio quando a fonte só dava o nome do autor (#89).
   - **Tradução sob demanda por IA.** O botão "Traduzir" aparece quando a língua
     do poema é diferente da do navegador. Ele usa o Claude Haiku 5.5 e preserva
     o número de versos, de estrofes e os recuos. Cada tradução fica em cache
@@ -119,15 +131,31 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
   - **A tradução ilimitada.** A URL pública é aberta, e cada tradução nova
     custa uma chamada paga. O cache e o limite por usuário seguram o custo.
 
-### 3. Feed cronológico; descoberta por formas e temas
+### 3. Feed cronológico em duas abas; descoberta por formas e temas
 
 - **Contexto:** feeds ranqueados por engajamento premiam o que é curto e
   chamativo. Quem escreve poemas e tem poucos seguidores nunca chegaria ao
-  topo.
-- **Opções:** um feed ranqueado por curtidas, um feed cronológico, ou
-  cronológico mais um jeito de descobrir poemas fora da bolha.
+  topo. E um feed só de quem você segue começa vazio para quem acabou de
+  chegar: o poeta abre a rede e não tem nada para ler.
+- **Opções:** um feed ranqueado por curtidas; um feed cronológico só dos
+  seguidos; ou cronológico em duas abas, como no X, uma com a rede inteira e
+  outra com quem você segue.
 - **Escolha:**
-  - **O feed é cronológico**, com os poemas de quem você segue e os seus.
+  - **Duas abas, como no X.** A home abre sempre no **"Para você"**, e o
+    **"Seguindo"** é o feed cronológico de sempre, com os poemas de quem você
+    segue e os seus.
+  - **"Para você": a rede inteira, inclusive quem você não segue.** Entram os
+    poemas recentes dos poetas da rede; as rengas que ainda não fecharam; os
+    poemas dos consagrados, só um a cada 3 horas, para os milhares de poemas
+    do acervo não afogarem os poetas da rede; os poemas que receberam
+    comentário ou crítica nos versos, que sobem com "fulano comentou" ou
+    "fulano criticou os versos"; e os reposts puros, com "repostado por".
+    Cada poema aparece uma vez, com o rótulo da atividade mais recente.
+  - **A ordem continua cronológica, pela atividade.** O poema sobe porque
+    alguém acabou de escrever, comentar ou repostar, e não porque tem mais
+    curtidas. Um soneto de quem tem dois seguidores entra no topo do mesmo
+    jeito que o de quem tem duzentos, e a conversa sobre um poema antigo o
+    traz de volta para ser lido.
   - **Reposts como no X.** Cada poema aparece uma vez, na posição do repost
     mais recente, com "repostado por" listando todos os seguidos que
     repostaram. A paginação é por cursor, então poemas novos não deslocam a
@@ -136,13 +164,17 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     clicáveis. O **Explorar** filtra por tag e por chips de forma (inclusive
     "outras formas"). A tag é normalizada, então `#Solidão` acha `#solidao`.
   - **"Em alta"** mostra as tags com mais poemas nas últimas 24 horas, ou seja,
-    sobre o que a rede está escrevendo, e não quem tem mais curtidas.
+    sobre o que a rede está escrevendo, e não quem tem mais curtidas. Conta
+    todos os poemas, inclusive os dos consagrados: o limite de um a cada 3
+    horas vale só para o "Para você".
   - **Poema do dia:** um poema de consagrado, o mesmo para todos no mesmo dia
     (o hash da data escolhe o poema).
 - **O que cortamos e por quê:** qualquer ranking por engajamento ("mais
-  curtidos da semana"). Quem abre a rede quer ler o que as pessoas que segue
-  escreveram hoje, e quem procura algo novo procura "um haicai sobre chuva", não o post
-  mais curtido.
+  curtidos da semana"), também no "Para você". Quem abre a rede quer ler o
+  que se escreveu hoje, e quem procura algo novo procura "um haicai sobre
+  chuva", não o post mais curtido. Ordenar por curtidas traria de volta o
+  problema que o Verso quer resolver: o poema longo e o poeta com poucos
+  seguidores no fim da fila.
 
 ### 4. Citar um verso e conversar sobre o poema
 
@@ -324,6 +356,45 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
   não dá para mudar o modo nem o limite depois de criar, nem convidar alguém
   depois de abrir.
 
+### 11. Boas-vindas e sugestões por afinidade
+
+- **Contexto:** quem acabou de criar a conta não segue ninguém, e não sabe
+  quem seguir numa rede com 155 consagrados e os poetas que escrevem hoje.
+  Quem gosta de parnasianos e de sonetos chega mais rápido a quem lê se a
+  rede souber disso.
+- **Opções:** nenhuma ajuda depois do cadastro; uma lista fixa de perfis
+  populares; recomendação pelo que a pessoa lê e curte; ou perguntar o que ela
+  gosta e sugerir por afinidade.
+- **Escolha:**
+  - **Boas-vindas em passos, todos com "pular".** Depois do cadastro: "Que
+    poesia você gosta?", com as 15 escolas literárias (decisão 2) e as
+    formas; "De onde você é?", com o país e, no Brasil, o estado (dá para
+    escolher "prefiro não dizer"); e a grade "Quem seguir". "Continuar" salva
+    o passo, e "pular" segue sem salvar.
+  - **A grade é a do Acervo, só com o perfil:** avatar, nome com selo, @, bio
+    curta, poemas, seguidores, escolas e o botão seguir, sem trecho de poema.
+  - **As preferências ficam salvas** e se reajustam a qualquer momento pelo
+    item "Preferências" do menu da conta.
+  - **A ordem das sugestões é uma nota com pesos fixos:** seguidores, em
+    escala log (peso 1,0); escolas e formas em comum (2,0 cada); a mesma
+    língua (1,5); o mesmo país (1,0); e o mesmo estado (mais 1,0). Com o log,
+    a fama pesa sem dominar: 1.000 seguidores valem uns 4,5 pontos a mais que
+    10, e uma escola em comum vale 2. A língua é a do navegador ou, sem ela, a
+    dos poemas da pessoa.
+  - **Ficam fora** a própria pessoa, quem ela já segue e as contas sem poema.
+  - **No "Para você", um bloco "Quem seguir"** com 3 perfis aparece a cada 10
+    itens, com "ver mais". Ele não é um item do feed e não mexe na paginação.
+- **O que cortamos e por quê:**
+  - **A recomendação pelo histórico de leitura e de curtidas.** Seria um
+    ranking por engajamento (decisão 3) com outro nome, e pediria guardar o
+    que cada pessoa lê. A afinidade vem do que a própria pessoa diz que
+    gosta, e ela muda isso quando quiser.
+  - **A tela de sugestões obrigatória.** Quem chega para ler um poema não
+    precisa passar por um formulário: cada passo tem "pular", e o "Para você"
+    já abre cheio sem seguir ninguém.
+  - **A intercalação fixa de poetas da rede e consagrados** (um de cada), que
+    veio antes da nota (#87) e saiu quando a nota entrou (#91).
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo (16/11 a 27/11), com o código a partir de 23/11.
@@ -356,6 +427,8 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Cadastro e login (telas) | Pedro | O fluxo do vídeo começa aqui, com erros em português no campo certo. |
 | Posts/poemas (núcleo) | Henrique | Título, corpo sem limite e forma: o poema como unidade, não como tweet. |
 | Feed (núcleo) | Henrique | Cronológico e com reposts como no X: você vê o que quem você segue escreveu hoje. |
+| Feed Para você | Neto | A rede inteira em ordem cronológica, para o feed não começar vazio para quem acabou de chegar. |
+| Boas-vindas e sugestões por afinidade | Neto | Quem chega diz que poesia gosta e de onde é, e recebe poetas para seguir por escola, forma e região. |
 | Curtidas (núcleo) | Henrique | Um retorno mínimo para quem publica, sem virar ranking. |
 | Comentários em árvore | Henrique | A crítica de poema vira conversa, não uma lista solta. |
 | Repost + citação | Henrique | Citar um verso é o gesto central de quem lê poesia. |
@@ -482,6 +555,26 @@ acima: é ela que tiraria o termo n·t.
   num dict. Tudo é O(L) no tamanho do texto. A rota `POST /oficina/analise` não
   usa o banco e aceita até 10.000 caracteres; o poema em si continua sem
   limite.
+- **Mistura do "Para você" (`core/mistura.py`).** Recebe as atividades da
+  rede (poemas, reposts puros, estrofes de rengas abertas, comentários),
+  carregadas só com ids e datas. `rarear_consagrados` guarda o poema mais
+  recente de cada janela de 3 horas num dict janela → poema, em O(n). A
+  janela é fixa no relógio, então a escolha não depende da página pedida.
+  `misturar` ordena da atividade mais recente para a mais antiga, O(n log n),
+  e deixa um item por poema ou renga, com quem está no rótulo, em O(n).
+  Memória O(n). **O cursor fica estável com tipos misturados:** poema,
+  estrofe e comentário vêm de tabelas diferentes e podem ter o mesmo id e a
+  mesma data, então a posição é (data, chave), com chave 3·id + 2 para post,
+  3·id + 1 para estrofe e 3·id para comentário, única entre as três e
+  crescente com o id. Não é singleton: é montada por request, como a árvore
+  de comentários.
+- **Nota das sugestões (`core/pontuacao_sugestoes.py`).** Uma função pura,
+  `nota(conta, quem_ve)`, com os pesos em constantes no topo do arquivo, e
+  `ordenar`, que desempata pelo poema mais recente e depois pelo id, para a
+  ordem ser estável. Com c contas candidatas: a nota é O(e + f) por conta (e
+  e f = escolas e formas, com interseção de conjuntos), e ordenar é
+  O(c log c). Memória O(c). Os testes trocam uma constante e conferem que a
+  ordem se inverte.
 
 ## Uso de IA
 
@@ -495,7 +588,7 @@ acima: é ela que tiraria o termo n·t.
   tradução), os contratos de dados do `PLANO.md`, o visual e os cortes. A IA
   propunha opções e listava as lacunas, e o Neto escolhia. As escolhas estão
   registradas nos PRs, nas seções "Decisões do Neto" (por exemplo #31, #37,
-  #38, #43, #49, #51, #54, #56 e #75 a #78), e as perguntas que ficaram para ele, em
+  #38, #43, #49, #51, #54, #56, #75 a #78, #87, #89 e #91), e as perguntas que ficaram para ele, em
   "Decisões em aberto".
 - **Código: gerado com apoio de IA, sob direção humana.** Boa parte do código
   foi escrita por subagents do Claude Code a partir das tasks e dos contratos
@@ -509,6 +602,11 @@ acima: é ela que tiraria o termo n·t.
   As decisões 7 a 10 (crítica ancorada, oficina, rascunhos e rengas, #75 a
   #78) também foram implementadas por subagents a pedido do Neto. Cada
   lacuna que eles encontraram voltou para ele decidir antes do merge.
+  O mesmo vale para o feed "Para você" (#87), as boas-vindas e as sugestões
+  por afinidade (#91) e a escola e o país dos consagrados, com a limpeza do
+  campo `obra` (#89). As lacunas (o equilíbrio dos consagrados, os reposts
+  no "Para você", os pesos da nota, o vocabulário de escolas, os casos
+  duvidosos de classificação) foram listadas nos PRs e decididas pelo Neto.
 - **Revisão: humana.** O Neto revisou cada PR e decidiu cada merge, com o
   apoio de um agente de revisão (Claude Code) que rodava os testes e conferia
   os contratos. Os comentários de revisão estão nos PRs, publicados pela conta
