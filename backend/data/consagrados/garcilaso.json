@@ -1,0 +1,75 @@
+{
+  "username": "garcilaso",
+  "name": "Garcilaso de la Vega",
+  "bio": "Garcilaso de la Vega, poeta e soldado de Toledo, morto em combate na Provença. Introduziu na poesia espanhola o soneto e o verso italiano de onze sílabas. Suas églogas e sonetos abrem o Século de Ouro espanhol.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Retrato_de_hombre_con_la_cruz_de_caballero_de_Alc%C3%A1ntara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1503,
+  "morte": 1536,
+  "poemas": [
+    {
+      "titulo": "En tanto que de rosa y azucena",
+      "texto": "  En tanto que de rosa y azucena\nse muestra la color en vuestro gesto,\ny que vuestro mirar ardiente, honesto,\nenciende el corazón y lo refrena,\n  y en tanto que el cabello, que en la vena\ndel oro se escogió, con vuelo presto,\npor el hermoso cuello blanco, enhiesto,\nel viento mueve, esparce y desordena;\n  coged de vuestra alegre primavera\nel dulce fruto, antes que el tiempo airado\ncubra de nieve la hermosa cumbre.\n  Marchitará la rosa el viento helado,\ntodo lo mudará la edad ligera,\npor no hacer mudanza en su costumbre.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/En_tanto_que_de_rosa_y_azucena",
+      "tags": [
+        "amor",
+        "natureza",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Escrito está en mi alma vuestro gesto",
+      "texto": "  Escrito está en mi alma vuestro gesto,\ny cuanto yo escrebir de vos deseo;\nvos sola lo escrebistes, yo lo leo\ntan solo, que aun de vos me guardo en esto.\n  En esto estoy y estaré siempre puesto;\nque aunque no cabe en mí cuanto en vos veo,\nde tanto bien lo que no entiendo creo,\ntomando ya la fe por presupuesto.\n  Yo no nací sino para quereros;\nmi alma os ha cortado a su medida;\npor hábito del alma misma os quiero.\n  Cuanto tengo confieso yo deberos;\npor vos naci, por vos tengo la vida,\npor vos he de morir, y por vos muero.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Escrito_est%C3%A1_en_mi_alma_vuestro_gesto",
+      "tags": [
+        "amor",
+        "natureza",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "¡Oh dulces prendas por mi mal halladas",
+      "texto": "  ¡Oh dulces prendas, por mi mal halladas,\ndulces y alegres cuando Dios quería!\nJuntas estáis en la memoria mía,\ny con ella en mi muerte conjuradas.\n  ¿Quién me dijera, cuando en las pasadas\nhoras en tanto bien por vos me vía,\nque me habíades de ser en algún día\ncon tan grave dolor representadas?\n  Pues en un hora junto me llevastes\ntodo el bien que por términos me distes,\nllevadme junto el mal que me dejastes.\n  Si no, sospecharé que me pusistes\nen tantos bienes, porque deseastes\nverme morir entre memorias tristes.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Oh_dulces_prendas,_por_m%C3%AD_mal_halladas",
+      "tags": [
+        "amor",
+        "natureza",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Cuando me paro a contemplar mi estado",
+      "texto": "  Cuando me paro a contemplar mi estado\ny a ver los pasos por do me ha traído,\nhallo, según por do anduve perdido,\nque a mayor mal pudiera haber llegado.\n  Mas cuando del camino estó olvidado,\na tanto mal no sé por do he venido;\nsé que me acabo, y más he yo sentido\nver acabar comigo mi cuidado.\n  Yo acabaré, que me entregué sin arte\na quien sabrá perderme y acabarme,\nsi ella quisiere, y aun sabrá querello;\n  que pues mi voluntad puede matarme,\nla suya, que no es tanto de mi parte,\npudiendo, ¿qué hará sino hacello?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Cuando_me_paro_a_contemplar_mi_estado_(Garcilaso_de_la_Vega)",
+      "tags": [
+        "amor",
+        "natureza",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "A Dafne ya los brazos le crecían",
+      "texto": "  A Dafne ya los brazos le crecían,\ny en luengos ramos vueltos se mostraban;\nen verdes hojas vi que se tornaban\nlos cabellos que al oro escurecían;\n  de ásperas corteza se cubrían\nlos tiernos miembros, que aún bullendo estaban;\n\nlos blancos pies en tierra se hincaban\ny en torcidas raíces se volvían.\n  Aquel que fué la causa de tal daño,\na fuerza de llorar crecer hacía\neste árbol que con lágrimas regaba.\n  ¡Oh, miserable estado! ¡oh, mal tamaño!\n¡Que con lloralla crezca cada día\nla causa y la razón por que lloraba!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/A_Dafne_ya_los_brazos_le_crec%C3%ADan",
+      "tags": [
+        "amor",
+        "natureza",
+        "espanhol"
+      ]
+    }
+  ]
+}

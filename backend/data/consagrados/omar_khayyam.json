@@ -1,0 +1,140 @@
+{
+  "username": "omar_khayyam",
+  "name": "Omar Khayyam",
+  "bio": "Matemático, astrônomo e poeta persa de Nishapur. Reformou o calendário e escreveu sobre álgebra. Atribuem-se a ele os Rubaiyat, quadras sobre a brevidade da vida, o vinho e a dúvida, que ficaram mundialmente famosas após a versão inglesa de FitzGerald (1859).",
+  "avatar_url": "",
+  "nascimento": 1048,
+  "morte": 1131,
+  "poemas": [
+    {
+      "titulo": "[این کوزه چو من عاشق زاری بودست]",
+      "texto": "این کوزه چو من عاشق زاری بودست\nدر بند سر و زلف نگاری بودست\nاین دسته که بر گردن او می‌بینی\nدستی است که بر گردن یاری بودست",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[آمد سحری نـدا ز میخانهٔ ما:]",
+      "texto": "آمد سحری نـدا ز میخانهٔ ما:\nکای رند خراباتی دیوانهٔ ما!\nبرخیز که پر کنیم پیمانه ز می\nزان پیش که پر کنند پیمانهٔ ما",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[برخیز و بیا بتا برای دل ما]",
+      "texto": "برخیز و بیا بتا برای دل ما\nحل کن بجمال خویشتن مشکل ما\nیک کوزهٔ می بیار تا نوش کنیم\nزان پیش که کوزها کنند از گل ما",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[تا بتوانی رنجه مگردان کس را]",
+      "texto": "تا بتوانی رنجه مگردان کس را\nبر آتش خشم خویش منشان کس را\nگر راحت جاودان طمع میداری\nمیرنج همیشه و مرنجان کس را",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[چون در گذرم بباده شوئید مرا]",
+      "texto": "چون در گذرم بباده شوئید مرا\nتلقین ز شراب ناب گوئید مرا\nخواهید بروز حشر یابید مرا\nاز خاک در میکده جوئید مرا",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[چون عهده نمیشود کسی فردا را]",
+      "texto": "چون عهده نمیشود کسی فردا را\nحالی خوش دار این دل پرسودا را\nمی نوش بماهتاب ای ماه که ماه\nبسیار بتابد و نیابد ما را",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[زین دهر که بود مدّتی منزل ما]",
+      "texto": "زین دهر که بود مدّتی منزل ما\nنامد بجز از بلا و غم حاصل ما\nافسوس که حل نگشت یک مشکل ما\nرفتیم و هزار حسرت اندر دل ما",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[عاشق همه ساله مست و شیدا بادا]",
+      "texto": "عاشق همه ساله مست و شیدا بادا\nدیوانه و شوریده و رسوا بادا\nدر هشیاری غصهٔ هرچیز خوریم\nچون مست شدیم هرچه بادا بادا",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[عاقل بچه امّید در این کهنه سرا]",
+      "texto": "عاقل بچه امّید در این کهنه سرا\nبر دولت او نهد دل از بهر خدا\nهرگاه که خواهد که نشیند از پا\nگیرد اجلش دست که بالا بنما",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    },
+    {
+      "titulo": "[قرآن که مهین کلام خوانند او را]",
+      "texto": "قرآن که مهین کلام خوانند او را\nگه گاه نه بر دوام خوانند او را\nبر گرد پیاله آیتی روشن هست\nکاندر همه جا مدام خوانند او را",
+      "forma": "quadra",
+      "obra": "Rubaiyat",
+      "ano": null,
+      "fonte": "https://fa.wikisource.org/wiki/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%D8%AE%DB%8C%D8%A7%D9%85_(%D8%AA%D8%B5%D8%AD%DB%8C%D8%AD_%D8%B1%D9%85%D8%B6%D8%A7%D9%86%DB%8C)/%D8%B1%D8%A8%D8%A7%D8%B9%DB%8C%D8%A7%D8%AA_%DB%B1_%E2%80%94_%DB%B1%DB%B0%DB%B0",
+      "tags": [
+        "vinho",
+        "efemero",
+        "persa"
+      ]
+    }
+  ]
+}

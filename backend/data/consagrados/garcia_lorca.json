@@ -1,0 +1,140 @@
+{
+  "username": "garcia_lorca",
+  "name": "Federico García Lorca",
+  "bio": "Federico García Lorca, poeta e dramaturgo andaluz de Fuente Vaqueros, Granada, da Geração de 27. Autor do Romancero gitano, do Poeta em Nova York e de peças como Bodas de Sangue. Foi fuzilado pelos franquistas no início da Guerra Civil.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Federico_Garc%C3%ADa_Lorca._Huerta_de_San_Vicente%2C_Granada.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1898,
+  "morte": 1936,
+  "poemas": [
+    {
+      "titulo": "Romance sonámbulo",
+      "texto": "  VERDE que te quiero verde.\nVerde viento. Verdes ramas.\nEl barco sobre la mar\ny el caballo en la montaña.\nCon la sombra en la cintura,\nella sueña en su baranda,\nverde carne, pelo verde,\ncon los ojos de fría plata.\nVerde que te quiero verde.\nBajo la luna gitana,\n\nlas cosas la están mirando\ny ella no puede mirarlas.\n\n                *\n\n  Verde que te quiero verde.\nGrandes estrellas de escarcha\nvienen con el pez de sombra\nque abre el camino del alba.\nLa higuera frota su viento\ncon la lija de sus ramas,\ny el monte, gato garduño,\neriza sus pitas agrias.\nPero ¿quién vendrá? ¿Y por dónde?...\nElla sigue en su baranda,\nverde carne, pelo verde,\n\nsoñando en la mar amarga.\n  —Compadre, quiero cambiar\nmi caballo por su casa,\nmi montura por su espejo,\nmi cuchillo por su manta.\nCompadre, vengo sangrando,\ndesde los puertos de Cabra.\n  —Si yo pudiera, mocito,\neste trato se cerraba.\nPero yo ya no soy yo,\nni mi casa es ya mi casa.\n  —Compadre, quiero morir\ndecentemente en mi cama.\nDe acero, si puede ser,\ncon las sábanas de holanda.\n¿No ves la herida que tengo\ndesde el pecho a la garganta?\n\n  —Trescientas rosas morenas\nlleva tu pechera blanca.\nTu sangre rezuma y huele\nalrededor de tu faja.\nPero yo ya no soy yo,\nni mi casa es ya mi casa.\n  —Dejadme subir al menos\nhasta las altas barandas;\n—¡Dejadme subir! dejadme\nhasta las verdes barandas,\nBarandales de la luna\npor donde retumba el agua.\n\n                *\n\n  Ya suben los dos compadres\nhacia las altas barandas.\n\nDejando un rastro de sangre.\nDejando un rastro de lágrimas.\nTemblaban los tejados\nfarolillos de hojalata.\nMil panderos de cristal\nherían la madrugada.\n\n                *\n\n  Verde que te quiero verde,\nverde viento, verdes ramas.\nLos dos compadres subieron.\nEl largo viento, dejaba\nen la boca un raro gusto\nde hiel, de menta y de albahaca.\n¡Compadre! ¿Dónde está, dime,\ndónde está tu niña amarga?\n\n¡Cuántas veces te esperó!\n¡Cuántas veces te esperara\ncara fresca, negro pelo,\nen esta verde baranda!\n\n                *\n\n  Sobre el rostro del aljibe\nse mecía la gitana.\nVerde carne, pelo verde,\ncon ojos de fría plata.\nUn carámbano de luna\nla sostiene sobre el agua.\nLa noche se puso íntima\ncomo una pequeña plaza.\nGuardias civiles borrachos\nen la puerta golpeaban.\n\nVerde que te quiero verde.\nVerde viento. Verdes ramas.\nEl barco sobre la mar.\nY el caballo en la montaña.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Romance_son%C3%A1mbulo",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Romance de la luna, luna",
+      "texto": "  LA luna vino a la fragua\ncon su polisón de nardos.\nEl niño la mira, mira.\nEl niño la está mirando.\nEn el aire conmovido\nmueve la luna sus brazos\ny enseña, lúbrica y pura,\nsus senos de duro estaño.\nHuye luna, luna, luna.\nSi vinieran los gitanos,\n\nharían con tu corazón\ncollares y anillos blancos.\nNiño, déjame que baile.\nCuando vengan los gitanos,\nte encontrarán sobre el yunque\ncon los ojillos cerrados.\nHuye luna, luna, luna,\nque ya siento sus caballos.\nNiño, déjame, no pises\nmi blancor almidonado.\n\n  El jinete se acercaba\ntocando el tambor del llano.\nDentro de la fragua el niño\ntiene los ojos cerrados.\n\n  Por el olivar venían,\nbronce y sueño, los gitanos.\nLas cabezas levantadas\ny los ojos entornados.\n\n  Cómo canta la zumaya,\n¡ay, cómo canta en el árbol!\nPor el cielo va la luna\ncon un niño de la mano.\n\n  Dentro de la fragua lloran,\ndando gritos, los gitanos.\nEl aire la vela, vela.\nEl aire la está velando.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Romance_de_la_luna,_luna",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Canción de jinete",
+      "texto": "Córdoba.\nLejana y sola.\n\nJaca negra, luna grande,\ny aceitunas en mi alforja.\nAunque sepa los caminos\nyo nunca llegaré a Córdoba.\n\nPor el llano, por el viento,\njaca negra, luna roja.\nLa muerte me está mirando\ndesde las torres de Córdoba.\n\n¡Ay qué camino tan largo!\n¡Ay mi jaca valerosa!\n¡Ay que la muerte me espera,\nantes de llegar a Córdoba!\n\nCórdoba.\nLejana y sola.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_del_jinete",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "La casada infiel",
+      "texto": "  Y que yo me la llevé al río\ncreyendo que era mozuela,\npero tenía marido.\nFué la noche de Santiago\ny casi por compromiso.\nSe apagaron los faroles\ny se encendieron los grillos.\nEn las últimas esquinas\ntoqué sus pechos dormidos,\ny se me abrieron de pronto\n\ncomo ramos de jacintos.\nEl almidón de su enagua\nme sonaba en el oído\ncomo una pieza de seda\nrasgada por diez cuchillos.\nSin luz de plata en sus copas\nlos árboles han crecido\ny un horizonte de perros\nladra muy lejos el río.\n\n                *\n\n  Pasadas las zarzamoras,\nlos juncos y los espinos,\nbajo su mata de pelo\nhice un hoyo sobre el limo.\nYo me quité la corbata.\n\nElla se quitó el vestido.\nYo el cinturón con revólver.\nElla sus cuatro corpiños.\nNi dardos ni caracolas\ntienen el cutis tan fino,\nni los cristales con luna\nrelumbran con ese brillo.\nSus muslos se me escapaban\ncomo peces sorprendidos,\nla mitad llenos de lumbre,\nla mitad llenos de frío.\nAquella noche corrí\nel mejor de los caminos,\nmontado en potra de nácar\nsin bridas y sin estribos.\nNo quiero decir, por hombre,\nlas cosas que ella me dijo.\nLa luz del entendimiento\n\nme hace ser muy comedido.\nSucia de besos y arena\nyo me la llevé al río.\nCon el aire se batían\nlas espadas de los lirios.\n\n  Me porté como quien soy.\nComo un gitano legítimo.\nLa regalé un costurero\ngrande, de raso pajizo,\ny no quise enamorarme\nporque teniendo marido\nme dijo que era mozuela\ncuando la llevaba al río.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_casada_infiel",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Llanto por Ignacio Sánchez Mejías",
+      "texto": "1. La cogida y la muerte\n\nA las cinco de la tarde\nEran las cinco en punto de la tarde.\nUn niño trajo la blanca sábana\na las cinco de la tarde.\nUna espuerta de cal ya prevenida\na las cinco de la tarde.\nLo demás era muerte y sólo muerte\na las cinco de la tarde.\n\nEl viento se llevó los algodones\na las cinco de la tarde.\nY el óxido sembró cristal y níquel\na las cinco de la tarde\nYa luchan la paloma y el leopardo\na las cinco de la tarde.\nY un muslo con un asta desolada\na las cinco de la tarde.\nComenzaron los sones de bordón\na las cinco de la tarde.\nLas campanas de arsénico y el humo\na las cinco de la tarde.\nEn las esquinas grupos de silencio\na las cinco de la tarde.\n¡Y el toro solo corazón arriba!\na las cinco de la tarde.\nCuando el sudor de nieve fue llegando\na las cinco de la tarde,\ncuando la plaza se cubrió de yodo\na las cinco de la tarde,\nla muerte puso huevos en la herida\na las cinco de la tarde.\nA las cinco de la tarde.\nA las cinco en punto de la tarde.\n\nUn ataúd con ruedas es la cama\na las cinco de la tarde.\nHuesos y flautas suenan en su oído\na las cinco de la tarde.\nEl toro ya mugía por su frente\na las cinco de la tarde.\nEl cuarto se irisaba de agonía\na las cinco de la tarde.\nA lo lejos ya viene la gangrena\na las cinco de la tarde.\nTrompa de lirio por las verdes ingles\na las cinco de la tarde.\nLas heridas quemaban como soles\na las cinco de la tarde,\ny el gentío rompía las ventanas\na las cinco de la tarde.\nA las cinco de la tarde.\n¡Ay, qué terribles cinco de la tarde!\n¡Eran las cinco en todos los relojes!\n¡Eran las cinco en sombra de la tarde!\n\n2. La sangre derramada\n\n¡Que no quiero verla!\n\nDile a la luna que venga,\nque no quiero ver la sangre\nde Ignacio sobre la arena.\n\n¡Que no quiero verla!\n\nLa luna de par en par.\nCaballo de nubes quietas,\ny la plaza gris del sueño\ncon sauces en las barreras.\n\n¡Que no quiero verla!\n\nQue mi recuerdo se quema.\n¡Avisad a los jazmines\ncon su blancura pequeña!\n\n¡Que no quiero verla!\n\nLa vaca del viejo mundo\npasaba su triste lengua\nsobre un hocico de sangres\nderramadas en la arena,\ny los toros de Guisando,\ncasi muerte y casi piedra,\nmugieron como dos siglos\nhartos de pisar la tierra.\nNo.\n¡Que no quiero verla!\n\nPor las gradas sube Ignacio\ncon toda su muerte a cuestas.\nBuscaba el amanecer,\ny el amanecer no era.\nBusca su perfil seguro,\ny el sueño lo desorienta.\nBuscaba su hermoso cuerpo\ny encontró su sangre abierta.\n¡No me digáis que la vea!\nNo quiero sentir el chorro\ncada vez con menos fuerza;\nese chorro que ilumina\nlos tendidos y se vuelca\nsobre la pana y el cuero\nde muchedumbre sedienta.\n¡Quién me grita que me asome!\n¡No me digáis que la vea!\n\nNo se cerraron sus ojos\ncuando vio los cuernos cerca,\npero las madres terribles\nlevantaron la cabeza.\nY a través de las ganaderías,\nhubo un aire de voces secretas\nque gritaban a toros celestes,\nmayorales de pálida niebla.\nNo hubo príncipe en Sevilla\nque comparársele pueda,\nni espada como su espada\nni corazón tan de veras.\nComo un río de leones\nsu maravillosa fuerza,\ny como un torso de mármol\nsu dibujada prudencia.\nAire de Roma andaluza\nle doraba la cabeza\ndonde su risa era un nardo\nde sal y de inteligencia.\n¡Qué gran torero en la plaza!\n¡Qué buen serrano en la sierra!\n¡Qué blando con las espigas!\n¡Qué duro con las espuelas!\n¡Qué tierno con el rocío!\n¡Qué deslumbrante en la feria!\n¡Qué tremendo con las últimas\nbanderillas de tiniebla!\nPero ya duerme sin fin.\nYa los musgos y la hierba\nabren con dedos seguros\nla flor de su calavera\nY su sangre ya viene cantando:\ncantando por marismas y praderas,\nresbalando por cuernos ateridos,\nvacilando sin alma por la niebla,\ntropezando con miles de pezuñas\ncomo una larga, oscura, triste lengua\npara formar un charco de agonía\njunto al Guadalquivir de las estrellas.\n\n¡Oh blanco muro de España!\n¡Oh negro toro de pena!\n¡Oh sangre dura de Ignacio!\n¡Oh ruiseñor de sus venas!\n\nNo.\n¡Que no quiero verla!\nQue no hay cáliz que la contenga,\nque no hay golondrinas que se la beban,\nno hay escarcha de luz que la enfríe,\nno hay canto ni diluvio de azucenas,\nno hay cristal que la cubra de plata.\nNo.\n¡¡Yo no quiero verla!!\n\n3. Cuerpo presente\n\nLa piedra es una frente donde los sueños gimen\nsin tener agua curva ni cipreses helados.\nLa piedra es una espalda para llevar al tiempo\ncon árboles de lágrimas y cintas y planetas.\n\nYo he visto lluvias grises correr hacia las olas,\nlevantando sus tiernos brazos acribillados,\npara no ser cazadas por la piedra tendida\nque desata sus miembros sin empapar la sangre.\n\nPorque la piedra coge simientes y nublados,\nesqueletos de alondras y lobos de penumbra;\npero no da sonidos, ni cristales, ni fuego,\nsino plazas y plazas y otras plazas sin muros.\n\nYa está sobre la piedra Ignacio el bien nacido.\nYa se acabó; ¿qué pasa? Contemplad su figura:\nla muerte le ha cubierto de pálidos azufres\ny le ha puesto cabeza de oscuro minotauro.\n\nYa se acabó. La lluvia penetra por su boca.\nEl aire como loco deja su pecho hundido,\ny el Amor, empapado con lágrimas de nieve,\nse calienta en la cumbre de las ganaderías.\n\n¿Qué dicen? Un silencio con hedores reposa.\nEstamos con un cuerpo presente que se esfuma,\ncon una forma clara que tuvo ruiseñores\ny la vemos llenarse de agujeros sin fondo.\n\n¿Quién arruga el sudario? ¡No es verdad lo que dice!\nAquí no canta nadie, ni llora en el rincón,\nni pica las espuelas, ni espanta la serpiente:\naquí no quiero más que los ojos redondos\npara ver ese cuerpo sin posible descanso.\n\nYo quiero ver aquí los hombres de voz dura.\nLos que doman caballos y dominan los ríos:\nlos hombres que les suena el esqueleto y cantan\ncon una boca llena de sol y pedernales.\n\nAquí quiero yo verlos. Delante de la piedra.\nDelante de este cuerpo con las riendas quebradas.\nYo quiero que me enseñen dónde está la salida\npara este capitán atado por la muerte.\n\nYo quiero que me enseñen un llanto como un río\nque tenga dulces nieblas y profundas orillas,\npara llevar el cuerpo de Ignacio y que se pierda\nsin escuchar el doble resuello de los toros.\n\nQue se pierda en la plaza redonda de la luna\nque finge cuando niña doliente res inmóvil;\nque se pierda en la noche sin canto de los peces\ny en la maleza blanca del humo congelado.\n\nNo quiero que le tapen la cara con pañuelos\npara que se acostumbre con la muerte que lleva.\nVete, Ignacio: No sientas el caliente bramido.\nDuerme, vuela, reposa: ¡También se muere el mar!\n\n4. Alma ausente\n\nNo te conoce el toro ni la higuera,\nni caballos ni hormigas de tu casa.\nNo te conoce el niño ni la tarde\nporque te has muerto para siempre.\n\nNo te conoce el lomo de la piedra,\nni el rasgo negro donde te destrozas.\nNo te conoce tu recuerdo mudo\nporque te has muerto para siempre.\n\nEl otoño vendrá con caracolas,\nuva de niebla y montes agrupados,\npero nadie querrá mirar tus ojos\nporque te has muerto para siempre.\n\nPorque, te has muerto para siempre\ncomo todos los muertos de la Tierra,\ncomo todos los muertos que se olvidan\nen un montón de perros apagados.\n\nNo te conoce nadie. No. Pero yo te canto.\nYo canto para luego tu perfil y tu gracia.\nLa madurez insigne de tu conocimiento.\nTu apetencia de muerte y el gusto de su boca.\nLa tristeza que tuvo tu valiente alegría.\n\nTardará mucho tiempo en nacer, si es que nace,\nun andaluz tan claro, tan rico de aventura.\nYo canto su elegancia con palabras que gimen\ny recuerdo una brisa triste por los olivos.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Llanto_por_Ignacio_S%C3%A1nchez_Mej%C3%ADas",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Romance de la pena negra",
+      "texto": "  LAS piquetas de los gallos\ncavan buscando la aurora,\ncuando por el monte oscuro\nbaja Soledad Montoya.\nCobre amarillo, su carne\nhuele a caballo y a sombra.\nYunques ahumados sus pechos,\ngimen canciones redondas.\n—Soledad: ¿por quién preguntas\nsin compaña y a estas horas?\n\n—Pregunte por quien pregunte,\ndime: ¿a ti qué se te importa?\nVengo a buscar lo que busco,\nmi alegría y mi persona.\n—Soledad de mis pesares,\ncaballo que se desboca,\nal fin encuentra la mar\ny se lo tragan las olas.\n—No me recuerdes el mar\nque la pena negra, brota\nen las tierras de aceituna\nbajo el rumor de las hojas.\n—¡Soledad, qué penas tienes!\n¡Qué pena tan lastimosa!\nLloras zumo de limón\nagrio de espera y de boca.\n—¡Qué pena tan grande! Corro\n\nmi casa como una loca,\nmis dos trenzas por el suelo\nde la cocina a la alcoba.\n¡Qué pena! Me estoy poniendo\nde azabache, carne y ropa.\n¡Ay, mis camisas de hilo!\n¡Ay, mis muslos de amapola!\n—Soledad: lava tu cuerpo\ncon agua de las alondras,\ny deja tu corazón\nen paz, Soledad Montoya.\n\n                *\n\n  Por abajo canta el río:\nvolante de cielo y hojas.\n\nCon flores de calabaza\nla nueva luz se corona.\n¡Oh, pena de los gitanos!\nPena limpia y siempre sola.\n¡Oh, pena de cauce oculto\ny madrugada remota!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Romance_de_la_pena_negra",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Gacela de la terrible presencia",
+      "texto": "Yo quiero que el agua se quede sin cauce.\nYo quiero que el viento se quede sin valles.\n\nQuiero que la noche se quede sin ojos\ny mi corazón sin la flor del oro;\n\nque los bueyes hablen con las grandes hojas\ny que la lombriz se muera de sombra;\n\nque brillen los dientes de la calavera\ny los amarillos inunden la seda.\n\nPuedo ver el duelo de la noche herida\nluchando enroscada con el mediodía.\n\nResisto un ocaso de verde veneno\ny los arcos rotos donde sufre el tiempo.\n\nPero no me enseñes tu limpio desnudo\ncomo un negro cactus abierto en los juncos.\n\nDéjame en un ansia de oscuros planetas,\npero no me enseñes tu cintura fresca.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Gacela_de_la_terrible_presencia",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Prendimiento de Antoñito el Camborio",
+      "texto": "  ANTONIO Torres Heredia,\nhijo y nieto de Camborios,\ncon una vara de mimbre\nva a Sevilla a ver los toros.\nMoreno de verde luna\nanda despacio y garboso.\nSus empavonados bucles\nle brillan entre los ojos.\nA la mitad del camino\ncortó limones redondos,\n\ny los fué tirando al agua\nhasta que la puso de oro.\nY a la mitad del camino,\nbajo las ramas de un olmo,\nguardia civil caminera\nlo llevó codo con codo.\n\n                *\n\n  El día se va despacio,\nla tarde colgada a un hombro,\ndando una larga torera\nsobre el mar y los arroyos.\nLas aceitunas aguardan\nla noche de Capricornio,\ny una corta brisa, ecuestre,\nsalta los montes de plomo.\n\nAntonio Torres Heredia,\nhijo y nieto de Camborios,\nviene sin vara de mimbre\nentre los cinco tricornios.\n\n  —Antonio, ¿quién eres tú?\nSi te llamaras Camborio,\nhubieras hecho una fuente\nde sangre con cinco chorros.\nNi tú eres hijo de nadie,\nni legitimo Camborio.\n¡Se acabaron los gitanos\nque iban por el monto solos!\nestán los viejos cuchillos\ntiritando bajo el polvo.\n\n  A las nueve de la noche\nlo llevan al calabozo,\nmientras los guardias civiles\nbeben limonada todos.\nYa las nueve de la noche\nle cierran el calabozo,\nmientras el cielo reluce\ncomo la grupa de un potro.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Prendimiento_de_Anto%C3%B1ito_el_Camborio_en_el_camino_a_Sevilla",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Baladilla de los tres ríos",
+      "texto": "        A Salvador Quintero\n\nEl río Guadalquivir\nva entre naranjos y olivos.\nLos dos ríos de Granada\nbajan de la nieve al trigo.\n\n¡Ay, amor\nque se fue y no vino!\n\nEl río Guadalquivir\ntiene las barbas granates.\nLos dos ríos de Granada,\nuno llanto y otro sangre.\n\n¡Ay, amor\nque se fue por el aire!\n\nPara los barcos de vela\nSevilla tiene un camino;\npor el agua de Granada\nsólo reman los suspiros.\n\n¡Ay, amor\nque se fue y no vino!\n\nGuadalquivir, alta torre\ny viento en los naranjales.\nDauro y Genil, torrecillas\nmuertas sobre los estanques.\n\n¡Ay, amor\nque se fue por el aire!\n\n¡Quién dirá que el agua lleva\nun fuego fatuo de gritos!\n\n¡Ay, amor\nque se fue y no vino!\n\nLleva azahar, lleva olivas,\nAndalucía, a tus mares.\n\n¡Ay, amor\nque se fue por el aire!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Baladilla_de_los_tres_r%C3%ADos",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Despedida",
+      "texto": "   Si muero,\ndejad el balcón abierto.\n\n   El niño come naranjas.\n(Desde mi balcón lo veo.)\n\n   El segador siega el trigo.\n(Desde mi balcón lo siento.)\n\n   ¡Si muero,\ndejad el balcón abierto!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Despedida_(Lorca)",
+      "tags": [
+        "morte",
+        "andaluzia",
+        "espanhol"
+      ]
+    }
+  ]
+}

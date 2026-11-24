@@ -1,0 +1,140 @@
+{
+  "username": "dante",
+  "name": "Dante Alighieri",
+  "bio": "Dante Alighieri, poeta florentino, exilado de Florença por razões políticas em 1302. Autor da Vita Nuova e da Divina Comédia, viagem pelo Inferno, Purgatório e Paraíso guiada por Virgílio e Beatriz. Sua obra fundou a língua literária italiana e é um dos pilares da literatura universal.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_de_Dante.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1265,
+  "morte": 1321,
+  "poemas": [
+    {
+      "titulo": "Inferno — Canto I, versos 1–12 (Nel mezzo del cammin)",
+      "texto": "Nel mezzo del cammin di nostra vita\nmi ritrovai per una selva oscura,\nché la diritta via era smarrita.\n\nAhi quanto a dir qual era è cosa dura\nesta selva selvaggia e aspra e forte\nche nel pensier rinova la paura!\n\nTant’è amara che poco è più morte;\nma per trattar del ben ch’i’ vi trovai,\ndirò de l’altre cose ch’i’ v’ ho scorte.\n\nIo non so ben ridir com’i’ v’intrai,\ntant’era pien di sonno a quel punto\nche la verace via abbandonai.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_I",
+      "tags": [
+        "jornada",
+        "pecado",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Inferno — Canto III, a porta do Inferno (vv. 1–9)",
+      "texto": "’Per me si va ne la città dolente,\nper me si va ne l'etterno dolore,\nper me si va tra la perduta gente.\n\nGiustizia mosse il mio alto fattore;\nfecemi la divina podestate,\nla somma sapïenza e ’l primo amore.\n\nDinanzi a me non fuor cose create\nse non etterne, e io etterno duro.\nLasciate ogne speranza, voi ch’intrate’.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_III",
+      "tags": [
+        "inferno",
+        "esperanca",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Inferno — Canto V, Paolo e Francesca (vv. 100–108)",
+      "texto": "Amor, ch'al cor gentil ratto s'apprende,\nprese costui de la bella persona\nche mi fu tolta; e 'l modo ancor m'offende.\n\nAmor, ch’a nullo amato amar perdona,\nmi prese del costui piacer sì forte,\nche, come vedi, ancor non m’abbandona.\n\nAmor condusse noi ad una morte.\nCaina attende chi a vita ci spense\".\nQueste parole da lor ci fuor porte.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_V",
+      "tags": [
+        "amor",
+        "morte",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Inferno — Canto XXVI, o discurso de Ulisses (vv. 112–120)",
+      "texto": "\"O frati,\" dissi, \"che per cento milia\nperigli siete giunti a l’occidente,\na questa tanto picciola vigilia\n\nd’i nostri sensi ch’è del rimanente\nnon vogliate negar l’esperïenza,\ndi retro al sol, del mondo sanza gente.\n\nConsiderate la vostra semenza:\nfatti non foste a viver come bruti,\nma per seguir virtute e canoscenza\".",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_XXVI",
+      "tags": [
+        "conhecimento",
+        "viagem",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Paradiso — Canto XXXIII, oração à Virgem (vv. 1–21)",
+      "texto": "«Vergine Madre, figlia del tuo figlio,\numile e alta più che creatura,\ntermine fisso d'etterno consiglio,\n\ntu se’ colei che l’umana natura\nnobilitasti sì, che ’l suo fattore\nnon disdegnò di farsi sua fattura.\n\nNel ventre tuo si raccese l’amore,\nper lo cui caldo ne l’etterna pace\ncosì è germinato questo fiore.\n\nQui se’ a noi meridïana face\ndi caritate, e giuso, intra ’ mortali,\nse’ di speranza fontana vivace.\n\nDonna, se’ tanto grande e tanto vali,\nche qual vuol grazia e a te non ricorre,\nsua disïanza vuol volar sanz’ ali.\n\nLa tua benignità non pur soccorre\na chi domanda, ma molte fïate\nliberamente al dimandar precorre.\n\nIn te misericordia, in te pietate,\nin te magnificenza, in te s’aduna\nquantunque in creatura è di bontate.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Paradiso/Canto_XXXIII",
+      "tags": [
+        "fe",
+        "oracao",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Purgatorio — Canto I, versos 1–12",
+      "texto": "Per correr miglior acque alza le vele\nomai la navicella del mio ingegno,\nche lascia dietro a sé mar sì crudele;\n\ne canterò di quel secondo regno\ndove l’umano spirito si purga\ne di salire al ciel diventa degno.\n\nMa qui la morta poesì resurga,\no sante Muse, poi che vostro sono;\ne qui Calïopè alquanto surga,\n\nseguitando il mio canto con quel suono\ndi cui le Piche misere sentiro\nlo colpo tal, che disperar perdono.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Purgatorio/Canto_I",
+      "tags": [
+        "esperanca",
+        "poesia",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Donne ch'avete intelletto d'amore",
+      "texto": "Donne ch’avete intelletto d’amore,\ni’ vo’ con voi de la mia donna dire,\nnon perch’io creda sua laude finire,\nma ragionar per isfogar la mente.\nIo dico che pensando il suo valore,\nAmor sì dolce mi si fa sentire,\nche s’io allora non perdessi ardire,\nfarei parlando innamorar la gente.\nE io non vo’ parlar sì altamente,\nch’io divenisse per temenza vile;\nma tratterò del suo stato gentile\na respetto di lei leggeramente,\ndonne e donzelle amorose, con vui,\nché non è cosa da parlarne altrui.\n\nAngelo clama in divino intelletto\ne dice: \"Sire, nel mondo si vede\nmaraviglia ne l’atto che procede\nd’un’anima che ’nfin qua su risplende\".\nLo cielo, che non have altro difetto\nche d’aver lei, al suo segnor la chiede,\ne ciascun santo ne grida merzede.\nSola Pietà nostra parte difende,\nche parla Dio, che di madonna intende:\n\"Diletti miei, or sofferite in pace\nche vostra spene sia quanto me piace\nlà ’v’è alcun che perder lei s’attende,\ne che dirà ne lo inferno: O mal nati,\nio vidi la speranza de’ beati\".\n\nMadonna è disiata in sommo cielo:\nor voi di sua virtù farvi savere.\nDico, qual vuol gentil donna parere\nvada con lei, che quando va per via,\ngitta nei cor villani Amore un gelo,\nper che onne lor pensero agghiaccia e pere;\ne qual soffrisse di starla a vedere\ndiverria nobil cosa, o si morria.\nE quando trova alcun che degno sia\ndi veder lei, quei prova sua vertute,\nché li avvien, ciò che li dona, in salute,\ne sì l’umilia, ch’ogni offesa oblia.\nAncor l’ha Dio per maggior grazia dato\nche non pò mal finir chi l’ha parlato.\n\nDice di lei Amor: \"Cosa mortale\ncome esser pò sì adorna e sì pura?\"\nPoi la reguarda, e fra se stesso giura\nche Dio ne ’ntenda di far cosa nova.\nColor di perle ha quasi, in forma quale\nconvene a donna aver, non for misura:\nella è quanto de ben pò far natura;\nper essemplo di lei bieltà si prova.\nDe li occhi suoi, come ch’ella li mova,\nescono spirti d’amore inflammati,\nche feron li occhi a qual che allor la guati,\ne passan sì che ’l cor ciascun retrova:\nvoi le vedete Amor pinto nel viso,\nlà ’ve non pote alcun mirarla fiso.\n\nCanzone, io so che tu girai parlando\na donne assai, quand’io t’avrò avanzata.\nOr t’ammonisco, perch’io t’ho allevata\nper figliuola d’Amor giovane e piana,\nche là ’ve giugni tu diche pregando:\n\"Insegnatemi gir, ch’io son mandata\na quella di cui laude so’ adornata\".\nE se non vuoli andar sì come vana,\nnon restare ove sia gente villana:\ningegnati, se puoi, d’esser palese\nsolo con donne o con omo cortese,\nche ti merrano là per via tostana.\nTu troverai Amor con esso lei;\nraccomandami a lui come tu dei.",
+      "forma": "outro",
+      "obra": "Vita Nuova",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Dante)/XIV_-_Donne_ch'avete_intelletto_d'amore",
+      "tags": [
+        "amor",
+        "beatriz",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Inferno — Canto XXXIII, o conde Ugolino (vv. 1–9)",
+      "texto": "La bocca sollevò dal fiero pasto\nquel peccator, forbendola a' capelli\ndel capo ch'elli avea di retro guasto.\n\nPoi cominciò: \"Tu vuo’ ch’io rinovelli\ndisperato dolor che ’l cor mi preme\ngià pur pensando, pria ch’io ne favelli.\n\nMa se le mie parole esser dien seme\nche frutti infamia al traditor ch’i’ rodo,\nparlare e lagrimar vedrai insieme.",
+      "forma": "outro",
+      "obra": "Divina Commedia",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_XXXIII",
+      "tags": [
+        "morte",
+        "traicao",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Tanto gentile e tanto onesta pare",
+      "texto": "Tanto gentile e tanto onesta pare\nla donna mia quand’ella altrui saluta,\nch’ogne lingua deven tremando muta,\ne li occhi no l’ardiscon di guardare.\n\nElla si va, sentendosi laudare,\nbenignamente d’umiltà vestuta;\ne par che sia una cosa venuta\nda cielo in terra a miracol mostrare.\n\nMostrasi sì piacente a chi la mira,\nche dà per li occhi una dolcezza al core,\nche ’ntender no la può chi no la prova:\n\ne par che de la sua labbia si mova\nun spirito soave pien d’amore,\nche va dicendo a l’anima: sospira",
+      "forma": "soneto",
+      "obra": "Vita Nuova",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Dante)/XXII_-_Tanto_gentile_e_tanto_onesta_pare",
+      "tags": [
+        "amor",
+        "beatriz",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "Guido, i' vorrei che tu e Lapo ed io",
+      "texto": "Guido, i’ vorrei che tu e Lapo ed io\nfossimo presi per incantamento\ne messi in un vasel, ch’ad ogni vento\nper mare andasse al voler vostro e mio;\n\nsì che fortuna od altro tempo rio\nnon ci potesse dare impedimento,\nanzi, vivendo sempre in un talento,\ndi stare insieme crescesse ’l disio.\n\nE monna Vanna e monna Lagia poi\ncon quella ch’è sul numer de le trenta\ncon noi ponesse il buono incantatore:\n\ne quivi ragionar sempre d’amore,\ne ciascuna di lor fosse contenta,\nsì come i’ credo che saremmo noi.",
+      "forma": "soneto",
+      "obra": "Rime",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Dante)/LII_-_Guido,_i'_vorrei_che_tu_e_Lapo_ed_io",
+      "tags": [
+        "amizade",
+        "sonho",
+        "italiano"
+      ]
+    }
+  ]
+}

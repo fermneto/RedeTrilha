@@ -1,0 +1,140 @@
+{
+  "username": "becquer",
+  "name": "Gustavo Adolfo Bécquer",
+  "bio": "Gustavo Adolfo Bécquer, poeta e prosador sevilhano. Suas Rimas, breves e musicais, sobre o amor e o mistério, e suas Lendas marcam o fim do Romantismo espanhol e abrem caminho para a poesia moderna em espanhol. Morreu aos 34 anos.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Portrait_of_Gustavo_Adolfo_B%C3%A9cquer%2C_by_his_brother_Valeriano_%281862%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1836,
+  "morte": 1870,
+  "poemas": [
+    {
+      "titulo": "Rima XXI",
+      "texto": "  ¿Qué es poesía? dices mientras clavas\nEn mi pupila tu pupila azul;\n¿Qué es poesía? ¿Y tú me lo proguntas?\n    Poesía... eres tú.",
+      "forma": "quadra",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_XXI",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima LIII",
+      "texto": "Volverán las oscuras golondrinas\nEn tu balcón sus nidos á colgar,\nY, otra vez, con el ala á sus cristales\n    Jugando llamarán.\n\nPero aquellas que el vuelo refrenaban\nTu hermosura y mi dicha á contemplar,\nAquellas que aprendieron nuestros nombres...\n    Esas... ¡no volverán!\n\nVolverán las tupidas madreselvas\nDe tu jardín las tapias á escalar,\nY otra vez á la tarde, aun más hermosas,\n    Sus flores se abrirán;\n\nPero aquéllas, cuajadas de rocío,\nCuyas gotas mirábamos temblar\nY caer, como lágrimas del día...\n    Esas... ¡no volverán!\n\nVolverán del amor en tus oídos\nLas palabras ardientes á sonar;\nTu corazón de su profundo sueño\n    Tal vez despertará;\n\nPero mudo y absorto y de rodillas,\nComo se adora á Dios ante su altar,\nComo yo te he querido... desengáñate,\n    Así no te querrán!",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_LIII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima XXIII",
+      "texto": "  Por una mirada, un mundo;\nPor una sonrisa, un cielo;\nPor un beso... ¡yo no sé\nQué te diera por un beso!",
+      "forma": "quadra",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_XXIII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima IV",
+      "texto": "No digais que agotado su tesoro,\nDe asuntos falta, enmudeció la lira:\nPodrá no haber poetas; pero siempre\n        Habrá poesía.\n\nMientras las ondas de la luz al beso\n        Palpiten encendidas;\nMientras el sol las desgarradas nubes\n        De fuego y oro vista;\n\nMientras el aire en su regazo lleve\n        Perfumes y armonías;\n Mientras haya en el mundo primavera,\n        ¡Habrá poesía!\n\nMientras la ciencia á descubrir no alcance\n        Las fuentes de la vida,\nY en el mar ó en el cielo haya un abismo\n        Que al cálculo resista;\n\nMientras la humanidad siempre avanzando\n        No sepa á do camina;\nMientras haya un misterio para el hombre,\n        ¡Habrá poesía!\n\nMientras sintamos que se alegra el alma,\n        Sin que los labios rían;\nMientras se llore sin que el llanto acuda\n        A nublar la pupila;\n\nMientras el corazón y la cabeza\n        Batallando prosigan;\nMientras haya esperanzas y recuerdos,\n        ¡Habrá poesía!\n\nMientras haya unos ojos que reflejen\n        Los ojos que los miran;\nMientras responda el labio suspirando\n        Al labio que suspira;\n\nMientras sentirse puedan en un beso\n        Dos almas confundidas;\nMientras exista una mujer hermosa,\n        ¡Habrá poesía!",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_IV",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima LII",
+      "texto": "Olas gigantes que os rompéis bramando\nEn las playas desiertas y remotas,\nEnvuelto entre la sábana de espumas,\n    Llevadme con vosotras!\n\nRáfagas de huracán, que arrebatáis\nDel alto bosque las marchitas hojas,\nArrastrado en el ciego torbellino,\n    Llevadme con vosotras!\n\nNubes de tempestad, que rompe el rayo\nY en fuego ornáis las desprendidas orlas,\nArrebatado entre la niebla oscura,\n    Llevadme con vosotras!\n\nLlevadme, por piedad, adonde el vértigo\nCon la razón me arranque la memoria...\n¡Por piedad!... ¡Tengo miedo de quedarme\n    Con mi dolor á solas!",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_LII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima XXXVIII",
+      "texto": "Los suspiros son aire, y van al aire.\nLas lágrimas son agua, y van al mar.\nDíme, mujer: cuando el amor se olvida,\n    ¿Sabes tú adónde va?",
+      "forma": "quadra",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_XXXVIII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima VII",
+      "texto": "  Del salón en el ángulo oscuro,\nDe su dueño tal vez olvidada,\nSilenciosa y cubierta de polvo\n        Veíase el arpa.\n\n  ¡Cuánta nota dormía en sus cuerdas,\nComo el pájaro duerme en las ramas,\nEsperando la mano de nieve\n        Que sabe arrancarla!\n\n  ¡Ay! pensé; ¡cuántas veces el genio\nAsí duerme en el fondo del alma,\nY una voz, como Lázaro, espera\nQue le diga: «¡Levántate y anda!»",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_VII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima XI",
+      "texto": "  Yo soy ardiente, yo soy morena,\nYo soy el símbolo de la pasión;\nDe ansia de goces mi alma está llena.\n— ¿A mí me buscas? — No es á tí; no.\n\n  —Mi frente es pálida; mis trenzas de oro:\nPuedo brindarte dichas sin fin;\nYo de ternura guardo un tesoro.\n—¿A mí me llamas?—No; no es á tí.\n\n  —Yo soy un sueño, un imposible,\nVano fantasma de niebla y luz;\nSoy incorpórea, soy intangible;\nNo puedo amarte.—¡Oh, ven; ven tú!",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_XI",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima LXXIII",
+      "texto": "  Cerraron sus ojos\nQue aún tenía abiertos;\nTaparon su cara\nCon un blanco lienzo;\nY unos sollozando,\nOtros en silencio,\nDe la triste alcoba\nTodos se salieron.\n\n  La luz, que en un vaso\nArdía en el suelo,\nAl muro arrojaba\nLa sombra del lecho;\nY entre aquella sombra\nVeíase á intérvalos,\nDibujarse rígida\nLa forma del cuerpo.\n\n  Despertaba el día,\nY á su albor primero\nCon sus mil ruidos\nDespertaba el pueblo.\nAnte aquel contraste\n De vida y misterios,\nDe luz y tinieblas,\nMedité un momento:\n«¡Dios mío, qué solos\nse quedan los muertos!!»\n\n  De la casa en hombros\nLleváronla al templo,\nY en una capilla\nDejaron el féretro.\nAllí rodearon\nSus pálidos restos\nDe amarillas velas\nY de paños negros.\n\n  Al dar de las ánimas\nEl toque postrero,\nAcabó una vieja\nSus últimos rezos;\nCruzó la ancha nave,\nLas puertas gimieron,\nY el santo recinto\nQuedóse desierto.\n\n  De un reloj se oía\nCompasado el péndulo,\nY de algunos cirios\nEl chisporroteo.\n Tan medroso y triste,\nTan oscuro y yerto\nTodo se encontraba...\nQue pensé un momento:\n«¡Dios mío, qué solos\nse quedan los muertos!!»\n\n  De la alta campana\nLa lengua de hierro,\nLe dió, volteando,\nSu adiós lastimero.\nEl luto en las ropas,\nAmigos y deudos\nCruzaron en fila,\nFormando el cortejo.\n\n  Del último asilo,\nOscuro y estrecho,\nAbrió la piqueta\nEl nicho á un extremo.\nAllí la acostaron,\nTapiarónle luego,\nY con un saludo\nDespidióse el duelo.\n\n  La piqueta al hombro,\nEl sepulturero\nCantando entre dientes\n Se perdió á lo lejos.\nLa noche se entraba,\nReinaba el silencio;\nPerdido en las sombras,\nMedité un momento:\n«¡Dios mío, qué solos\nse quedan los muertos!!»\n\n  En las largas noches\nDel helado invierno,\nCuando las maderas\nCrujir hace el viento\nY azota los vidrios\nEl fuerte aguacero,\nDe la pobre niña\nA solas me acuerdo.\n\n  Allí cae la lluvia\nCon un són eterno;\nAllí la combate\nEl soplo del cierzo.\nDel húmedo muro\nTendida en el hueco,\nAcaso de frío\nSe hielan sus huesos!...\n. . . . . . . . . . .\n\n  ¿Vuelve el polvo al polvo?\n ¿Vuela el alma al cielo?\n¿Todo es vil materia,\nPodredumbre y cieno?\n¡No sé; pero hay algo\nQue explicar no puedo\nQue al par nos infunde\nRepugnancia y duelo,\nAl dejar tan tristes,\nTan solos los muertos!",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_LXXIII",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Rima XXX",
+      "texto": "  Asomaba á sus ojos una lágrima\ny á mi labio una frase de perdón;\nHabló el orgullo y se enjugó su llanto,\nY la frase en mis labios espiró.\n\n  Yo voy por un camino, ella por otro;\nPero al pensar en nuestro mutuo amor,\nYo digo aún: ¿por qué callé aquel día?\nY ella dirá: ¿por qué no lloré yo?",
+      "forma": "outro",
+      "obra": "Rimas",
+      "ano": 1871,
+      "fonte": "https://es.wikisource.org/wiki/Rimas_(B%C3%A9cquer,_1885)/Rima_XXX",
+      "tags": [
+        "amor",
+        "poesia",
+        "espanhol"
+      ]
+    }
+  ]
+}

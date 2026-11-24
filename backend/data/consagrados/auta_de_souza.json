@@ -1,0 +1,140 @@
+{
+  "username": "auta_de_souza",
+  "name": "Auta de Souza",
+  "bio": "Poetisa potiguar de Macaíba, órfã cedo e doente de tuberculose, morta aos 24 anos. Seu único livro, Horto (1900), prefaciado por Olavo Bilac, reúne uma poesia religiosa e melancólica ligada ao Simbolismo. É a principal voz feminina da poesia brasileira do fim do século XIX.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Auta_de_souza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1876,
+  "morte": 1901,
+  "poemas": [
+    {
+      "titulo": "Desalento",
+      "texto": "Quando o meu pensamento se transporta\n     A’s praias de alem mar,\nSinto no peito uma tristeza immensa\n     Que manda-me chorar.\n\nE’ que vejo morrerem, uma a uma,\n     Santas aspirações,\nE voarem com os passaros saudosos\n     As minhas illusões...\n\nNunca julguei que a terra fosse um tumulo\n     De sonhos juvenis,\nSorrindo acreditei que aqui, no mundo,\n     Podia ser feliz...\n\nEnganei-me: — a tristeza, que me opprime\n     O coração sem luz...\nComo do Sol o derradeiro raio\n     Nos braços de uma Cruz...\n\nA tremula saudade que entristece\n     E faz desfallecer;\nEssa agonia lenta que me inspira\n     Desejos de morrer... —\n\nTudo me diz que a vida é o desengano,\n     A morte da Illusão,\nE o mundo um grande manto de tristezas\n     Que enluta o coração.",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Desalento",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Agonia do coração",
+      "texto": "A Maria Carolina de Vasconcellos\n\n«Estrellas fulgem da noite em meio\nLembrando cirios loiros a arder...\nE eu tenho a treva dentro do seio...\nAstros! velai-vos, que eu vou morrer!\n\nAo longe cantam. São almas puras\nCantando á hora do adormecer...\nE o echo triste sobe ás alturas...\nMoças! não cantem que eu vou morrer!\n\nAs mães embalam o berço amigo\nDoce esperança de seu viver...\nE eu vou sosinha para o jazigo...\nChorai creanças, que vou morrer!\n\nPassaros tremem no ninho santo\nPedindo a graça do alvorecer...\nEmquanto eu parto desfeita em pranto...\nAves! suspirem que eu vou morrer!\n\nDe lá do campo cheio de rosas\nVem um perfume de entontecer...\nMeu Deus! que maguas tão dolorosas...\nFlores! fechai-vos, que eu vou morrer!»",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Agonia_do_cora%C3%A7%C3%A3o",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Meu pai",
+      "texto": "Desce, meu Pai, a noite baixou mansa.\nNem uma nuvem se vê mais no céu:\nAninharam-se aqui no peito meu,\nOnde, chorando, a negra dor descansa.\n\nQuando morreste eu era bem criança,\nBalbuciava, sim, o nome teu,\nMas d’este rosto santo que morreu\nJá não conservo a mínima lembrança.\n\nA noite é clara; e eu, aqui sentada,\nTenho medo da lua embalsamada,\nCorta-me o frio a alma comovida.\n\nSe lá no Céu teu coração padece,\nVem comigo rezar a mesma prece:\nTua bênção, meu pai, me dará vida!",
+      "forma": "soneto",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Meu_pae_(2)",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Meu sonho",
+      "texto": "A Yayá e a Maria Leonor Medeiros.\n\nEu tenho um sonho que no Céo mora\nFeito de luz e feito de amor,\nUm sonho roseo como uma aurora,\nUm sonho lindo como uma flor.\n\nE eu vivo sempre, sempre sonhando,\nO mesmo sonho de noite e dia,\nO mesmo sonho suave e brando\nDe minha vida toda a alegria.\n\nQuando soluço, quando minh’alma,\nCheia de angustia, fica a chorar,\nO sonho amado me traz a calma\nE então minh’alma põe-se a rezar.\n\nQuando, nas noites frias de inverno,\nEu tenho medo da tempestade,\nElle, o meu sonho, consolo eterno,\nTransforma as sombras em claridade.\n\nQuando no seio, choroso e louco,\nPalpita, incerto, meu coração...\nO sonho doce vem, pouco a pouco,\nTrazer-me a graça de uma illusão.\n\nE eu canto e rio na luz dispersa\nDeste diluvio de phantasias...\nMinh’alma vôa no Azul immersa\nBuscando a patria das harmonias.\n\nImagem doce, visão sagrada,\nChimera excelsa dos meus amores,\nPerola branca, delicia amada\nBalsamo puro das minhas dôres;\n\nElle, o meu sonho, pharol que encanta,\nGuia-me á patria da salvação\nSorriso ingênuo, reliquia santa,\nDo relicario do coração!",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Meu_sonho",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Caminho do sertão",
+      "texto": "A meu irmão João Cancio\n\nTão longe a casa! Nem siquer alcanço\nVel-a atravez da matta. Nos caminhos\nA sombra desce; e sem achar descanço\nVamos nós dois, meu pobre irmão, sosinhos!\n\nE’ noite já. Como em feliz remanso\nDormem as aves nos pequenos ninhos...\nVamos mais devagar... de manso e manso,\nPara não assustar os passarinhos.\n\nBrilham estrellas. Todo o céo parece\nRezar de joelhos a chorosa prece\nQue a Noite ensina ao desespero e á dôr...\n\nAo longe, a Lua vem dourando a treva...\nThuribulo immenso para Deus eleva\nO incenso agreste da jurema em flôr.",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Caminho_do_sert%C3%A3o",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Nunca mais!",
+      "texto": ".... Il n’est plus dans mon cœur\nUne fibre que n’ait résonné sa Douleur.\nLamartine — Harmonies.\n\nQue é feito de meu sonho, um sonho puro\nFeito de rosa e feito de alabastro,\nChimera que brilhava, como um astro,\nPela noite sem fim do meu futuro?\n\nQue é feito deste sonho, o cofre aberto\nQue recebia as gottas de meu pranto,\nBagas de orvalho, folhas de amarantho,\nPerdidas na soidão de meu deserto?\n\nElle passou como uma nuvem passa,\nRoçando o azul em flor do firmamento...\nElle partiu, e apenas o tormento,\nSobre minh’alma triste, inda esvoaça.\n\nMeu casto sonho! Lá se foi cantando\nTalvez em busca de uma patria nova.\nDeixou-me o coração como uma cova,\nE, dentro delle, o meu amor chorando.\n\nNunca mais voltará... Pois que lhe importa\nEsta morada lugubre e sombria?\nNão pode agazalhar uma alegria\n     Minh’alma, pobre morta!",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Nunca_mais",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Adeus",
+      "texto": "“Espera, eu voltarei.” Ele dizia\n(Quanto era triste o seu olhar tão doce!)\nChorosa e terna a fala lhe tremia\nComo se a corda de algum’harpa fosse.\n\nE ela, a pálida noiva estremecida,\nFitou no amado os grandes olhos seus,\nE murmurou, baixinho e comovida,\nQuase a chorar e muito a medo: Adeus!",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Adeus!",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Saudade",
+      "texto": "A ella, a Eugenia, a doce creatura que me chama irmã.\n\nAh! se soubesses quanto soffro e quanto\nLonge de ti meu coração padece!\nAh! se soubesses como dóe o pranto\nQue eternamente de meus olhos desce!\n\nAh! se soubesses!... Não perguntarias\nDe onde é que vem esta sombria magua\nQue traz-me o peito cheio de agonias\nE os tristes olhos arrasados d’agua!\n\nQuerem que a lyra de meus versos cante\nMais esperança e menos amargura,\nQue falle em noites de luar errante\nE não invoque a pobre noite escura.\n\nMas... como posso eu levar sonhando\nA vida inteira n’um anceio infindo,\nSe choro mesmo quando estou cantando,\nSe choro mesmo quando estou sorrindo!\n\nOuve, ó formosa e doce e immaculada,\nVisão gentil de eterna phantasia:\nMinh’alma é uma saudade desfolhada\nDe mãe querida sobre a cova fria.\n\nAh! minha Mãe! Pois tu não sabes, santa,\nQue Ella partiu e me deixou no berço?\nDesde esse dia a minha lyra canta\nToda a saudade que lhe inspira o verso!\n\nDepois que Ella se foi a Magua veio\nEncher-me o coração de luto e abrolhos.\nEu soffro tanto longe de seu seio,\nEu soffro tanto longe de seus olhos!\n\nO’ minha Eugenia! Estrella abençoada\nQue illuminas o horror deste deserto...\nDe teu affecto a chamma consagrada\nLança á minh’alma como um pallio aberto.\n\nQuando beijares teus filhinhos pensa\nO que seria d’elles sem teus beijos;\nE então comprehenderás a dor immensa,\nA amargura cruel destes harpejos!\n\nJunta as mãosinhas dos pequenos lirios,\nDas creancinhas que tu’alma adora,\nE ensina-os a rezar sobre os martyrios\nE a saudade infinita de quem chora.",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Saudade",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Ao pé do túmulo",
+      "texto": "Eis o descanso eterno, o doce abrigo\nDas almas tristes e despedaçadas;\nEis o repouso, enfim; e o sono amigo\nJá vem cerrar-me as pálpebras cansadas.\n\nAmarguras da terra! eu me desligo\nPara sempre de vós... Almas amadas\nQue soluças por mim, eu vos bendigo,\nÓ almas de minh’alma abençoadas.\n\nQuando eu d’aqui me for, anjos da guarda,\nQuando vier a morte que não tarda\nRoubar-me a vida para nunca mais...\n\nEm pranto escrevam sobre a minha lousa:\n\"Longe da mágoa, enfim, no céu repousa\nQuem sofreu muito e quem amou demais\".",
+      "forma": "soneto",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Ao_p%C3%A9_do_tumulo",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Dolores",
+      "texto": "Já vão caminho do cemiterio\nMeus louros sonhos em visões negras\nE vão-se todos no Azul sidéreo\nComo uma nuvem de toutinegras.\n\nA noite de hontem levei chorando\nTodo o passado de meus amores;\nE o dia ainda me achou rezando\nNo immenso terço de minhas dôres.\n\nVejo na vida longo deserto\nSem doce oasis de salvação.\nDentro em minh’alma, douda, chorosa,\nDe pobre moça tuberculosa,\nCheio de medo, tremulo, incerto\nBate com força meu coração.\n\nE assim morrendo, coitada, aos poucos,\nConvulsa e fria, louca de espanto,\nSolto suspiros, soluços roucos,\nOlhando as cruzes do Campo Santo;\n\nPorque me lembro que muito breve\nLeva-me a elle tanta dor physica.\nE dentro em pouco, branco de neve,\nVerão o esquife da pobre tysica.",
+      "forma": "outro",
+      "obra": "Horto",
+      "ano": 1900,
+      "fonte": "https://pt.wikisource.org/wiki/Horto_(1910)/Dolores",
+      "tags": [
+        "fe",
+        "saudade",
+        "portugues"
+      ]
+    }
+  ]
+}

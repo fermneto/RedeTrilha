@@ -1,0 +1,88 @@
+{
+  "username": "hesiodo",
+  "name": "Hesíodo",
+  "bio": "Poeta grego da Beócia, contemporâneo ou pouco posterior a Homero, ativo por volta de 700 a.C. (datas aproximadas). Autor da Teogonia, que organiza a genealogia dos deuses, e de Os Trabalhos e os Dias, poema sobre a justiça e o trabalho no campo. É a fonte principal da mitologia grega.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Pseudo-Seneca_BM_GR1962.8-24.1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": -750,
+  "morte": -650,
+  "poemas": [
+    {
+      "titulo": "Teogonia — versos 1–10 (invocação às Musas)",
+      "texto": "  Μουσάων Ἑλικωνιάδων ἀρχώμεθ᾽ ἀείδειν,\nαἵ θ᾽ Ἑλικῶνος ἔχουσιν ὄρος μέγα τε ζάθεόν τε\nκαί τε περὶ κρήνην ἰοειδέα πόσσ᾽ ἁπαλοῖσιν\nὀρχεῦνται καὶ βωμὸν ἐρισθενέος Κρονίωνος.\n\nκαί τε λοεσσάμεναι τέρενα χρόα Περμησσοῖο\nἢ Ἵππου κρήνης ἢ Ὀλμειοῦ ζαθέοιο\nἀκροτάτῳ Ἑλικῶνι χοροὺς ἐνεποιήσαντο\nκαλούς, ἱμερόεντας· ἐπερρώσαντο δὲ ποσσίν.\nἔνθεν ἀπορνύμεναι, κεκαλυμμέναι ἠέρι πολλῇ,\nἐννύχιαι στεῖχον περικαλλέα ὄσσαν ἱεῖσαι,",
+      "forma": "outro",
+      "obra": "Teogonia",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%98%CE%B5%CE%BF%CE%B3%CE%BF%CE%BD%CE%AF%CE%B1",
+      "tags": [
+        "mitologia",
+        "musas",
+        "grego"
+      ]
+    },
+    {
+      "titulo": "Teogonia — o Caos primordial (vv. 116 ss.)",
+      "texto": "  Ἦ τοι μὲν πρώτιστα Χάος γένετ᾽, αὐτὰρ ἔπειτα\nΓαῖ᾽ εὐρύστερνος, πάντων ἕδος ἀσφαλὲς αἰεὶ\n[ἀθανάτων, οἳ ἔχουσι κάρη νιφόεντος Ὀλύμπου,\nΤάρταρά τ᾽ ἠερόεντα μυχῷ χθονὸς εὐρυοδείης,]\nἠδ᾽ Ἔρος, ὃς κάλλιστος ἐν ἀθανάτοισι θεοῖσι,\nλυσιμελής, πάντων δὲ θεῶν πάντων τ᾽ ἀνθρώπων\nδάμναται ἐν στήθεσσι νόον καὶ ἐπίφρονα βουλήν.",
+      "forma": "outro",
+      "obra": "Teogonia",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%98%CE%B5%CE%BF%CE%B3%CE%BF%CE%BD%CE%AF%CE%B1",
+      "tags": [
+        "mitologia",
+        "origem",
+        "grego"
+      ]
+    },
+    {
+      "titulo": "Os Trabalhos e os Dias — versos 1–10",
+      "texto": "  Μοῦσαι Πιερίηθεν, ἀοιδῇσιν κλείουσαι\nδεῦτε, Δί᾽ ἐννέπετε, σφέτερον πατέρ᾽ ὑμνείουσαι·\nὅν τε διὰ βροτοὶ ἄνδρες ὁμῶς ἄφατοί τε φατοί τε,\nῥητοί τ᾽ ἄῤῥητοί τε Διὸς μεγάλοιο ἕκητι.\nῥέα μὲν γὰρ βριάει, ῥέα δὲ βριάοντα χαλέπτει,\nῥεῖα δ᾽ ἀρίζηλον μινύθει καὶ ἄδηλον ἀέξει,\nῥεῖα δέ τ᾽ ἰθύνει σκολιὸν καὶ ἀγήνορα κάρφει\nΖεὺς ὑψιβρεμέτης, ὃς ὑπέρτατα δώματα ναίει.\n\nκλῦθι ἰδὼν ἀίων τε, δίκῃ δ᾽ ἴθυνε θέμιστας\nτύνη· ἐγὼ δέ κε, Πέρση, ἐτήτυμα μυθησαίμην.",
+      "forma": "outro",
+      "obra": "Os Trabalhos e os Dias",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%88%CF%81%CE%B3%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%B7%CE%BC%CE%AD%CF%81%CE%B1%CE%B9",
+      "tags": [
+        "justica",
+        "trabalho",
+        "grego"
+      ]
+    },
+    {
+      "titulo": "Os Trabalhos e os Dias — a raça de ouro",
+      "texto": "  Χρύσεον μὲν πρώτιστα γένος μερόπων ἀνθρώπων\nἀθάνατοι ποίησαν Ὀλύμπια δώματ᾽ ἔχοντες.\nοἱ μὲν ἐπὶ Κρόνου ἦσαν, ὅτ᾽ οὐρανῷ ἐμβασίλευεν·\nὥστε θεοὶ δ᾽ ἔζωον ἀκηδέα θυμὸν ἔχοντες,\nνόσφιν ἄτερ τε πόνων καὶ ὀιζύος· οὐδέ τι δειλὸν\nγῆρας ἐπῆν, αἰεὶ δὲ πόδας καὶ χεῖρας ὁμοῖοι\nτέρποντ᾽ ἐν θαλίῃσι κακῶν ἔκτοσθεν ἁπάντων·\nθνῇσκον δ᾽ ὥσθ᾽ ὕπνῳ δεδμημένοι· ἐσθλὰ δὲ πάντα",
+      "forma": "outro",
+      "obra": "Os Trabalhos e os Dias",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%88%CF%81%CE%B3%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%B7%CE%BC%CE%AD%CF%81%CE%B1%CE%B9",
+      "tags": [
+        "mitologia",
+        "idade_de_ouro",
+        "grego"
+      ]
+    },
+    {
+      "titulo": "Os Trabalhos e os Dias — Pandora",
+      "texto": "Πανδώρην, ὅτι πάντες Ὀλύμπια δώματ᾽ ἔχοντες\nδῶρον ἐδώρησαν, πῆμ᾽ ἀνδράσιν ἀλφηστῇσιν.\n\n  αὐτὴρ ἐπεὶ δόλον αἰπὺν ἀμήχανον ἐξετέλεσσεν,\nεἰς Ἐπιμηθέα πέμπε πατὴρ κλυτὸν Ἀργειφόντην\nδῶρον ἄγοντα, θεῶν ταχὺν ἄγγελον· οὐδ᾽ Ἐπιμηθεὺς\nἐφράσαθ᾽, ὥς οἱ ἔειπε Προμηθεὺς μή ποτε δῶρον",
+      "forma": "outro",
+      "obra": "Os Trabalhos e os Dias",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%88%CF%81%CE%B3%CE%B1_%CE%BA%CE%B1%CE%B9_%CE%B7%CE%BC%CE%AD%CF%81%CE%B1%CE%B9",
+      "tags": [
+        "mitologia",
+        "mulher",
+        "grego"
+      ]
+    },
+    {
+      "titulo": "O Escudo de Héracles — versos 1–10",
+      "texto": "  Ἢ οἵη προλιποῦσα δόμους καὶ πατρίδα γαῖαν\nἤλυθεν ἐς Θήβας μετ᾽ ἀρήιον Ἀμφιτρύωνα\nἈλκμήνη, θυγάτηρ λαοσσόου Ἠλεκτρύωνος·\nἥ ῥα γυναικῶν φῦλον ἐκαίνυτο θηλυτεράων\nεἴδεΐ τε μεγέθει τε· νόον γε μὲν οὔ τις ἔριζε\nτάων ἃς θνηταὶ θνητοῖς τέκον εὐνηθεῖσαι.\nτῆς καὶ ἀπὸ κρῆθεν βλεφάρων τ᾽ ἄπο κυανεάων\nτοῖον ἄηθ᾽ οἷόν τε πολυχρύσου Ἀφροδίτης.\nἣ δὲ καὶ ὣς κατὰ θυμὸν ἑὸν τίεσκεν ἀκοίτην,\nὡς οὔ πώ τις ἔτισε γυναικῶν θηλυτεράων·",
+      "forma": "outro",
+      "obra": "O Escudo de Héracles",
+      "ano": null,
+      "fonte": "https://el.wikisource.org/wiki/%CE%91%CF%83%CF%80%CE%AF%CF%82",
+      "tags": [
+        "mitologia",
+        "heroi",
+        "grego"
+      ]
+    }
+  ]
+}
