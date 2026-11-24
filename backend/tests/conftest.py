@@ -28,6 +28,30 @@ MSG_AUTH = (
 SENHA_PADRAO = "senha-forte-123"
 
 
+class ClienteAnthropicProibido:
+    """Fica no lugar do cliente real: um teste que traduz sem o falso falha alto."""
+
+    @property
+    def messages(self):
+        raise AssertionError(
+            "teste tentou chamar a API real da Anthropic; use a fixture `falso` de test_traducao.py"
+        )
+
+
+@pytest.fixture(autouse=True)
+def sem_api_da_anthropic(monkeypatch):
+    """Nenhum teste chama a API real: sem chave no ambiente e cliente que falha se usado.
+
+    Os testes de tradução trocam `_cliente` pelo falso (ou por None, para o 503)
+    depois desta fixture, e o monkeypatch desfaz tudo no fim de cada teste.
+    """
+    from app.services import traducao
+
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
+    monkeypatch.setattr(traducao, "_cliente", ClienteAnthropicProibido())
+
+
 @pytest.fixture()
 def client():
     """Client com banco zerado por teste. O lifespan roda (cria tabelas + core/)."""
