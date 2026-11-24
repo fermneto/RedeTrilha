@@ -201,6 +201,16 @@ export function nomeDaForma(forma: string): string {
   return NOMES_DAS_FORMAS[forma as Forma] ?? forma.replace(/_/g, " ");
 }
 
+// A forma também vira tag (#soneto).
+function ehForma(tag: string): boolean {
+  return (FORMAS as readonly string[]).includes(tag);
+}
+
+// Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
+export function caminhoDaTag(tag: string): string {
+  return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;
+}
+
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
 // Sem o "Z", o navegador leria como horário local e a data poderia mudar de dia.
 export function formatarData(iso: string): string {

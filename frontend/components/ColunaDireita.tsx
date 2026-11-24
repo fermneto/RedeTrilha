@@ -14,6 +14,7 @@ import {
   buscarEu,
   buscarPoemaDoDia,
   buscarTrending,
+  caminhoDaTag,
   listarSeguindo,
   listarUsuarios,
   normalizarTag,
@@ -153,7 +154,7 @@ export function EmAlta() {
       <ul className="pb-2">
         {tags.map(({ tag, contagem }) => (
           <li key={tag}>
-            <Link href={`/explorar?tag=${encodeURIComponent(tag)}`} className="realce block px-4 py-2.5">
+            <Link href={caminhoDaTag(tag)} className="realce block px-4 py-2.5">
               <span className="block font-bold">#{tag}</span>
               <span className="block text-[0.8125rem] text-tinta-suave tabular-nums">
                 {contagem} {contagem === 1 ? "poema" : "poemas"} nas últimas 24 h

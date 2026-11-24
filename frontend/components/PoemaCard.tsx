@@ -11,7 +11,7 @@ import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
-import { curtir, FORMAS, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
+import { caminhoDaTag, curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
 
 // Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
 // para o inteiro. Linhas em branco entre estrofes contam.
@@ -163,11 +163,6 @@ function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; 
   );
 }
 
-// A forma também vira tag (#soneto); o link dela liga o chip da forma no Explorar.
-function ehForma(tag: string): boolean {
-  return (FORMAS as readonly string[]).includes(tag);
-}
-
 function Detalhes({ poema }: { poema: Post }) {
   const origem = [poema.obra, poema.ano].filter(Boolean).join(", ");
   if (!poema.forma && !origem && !poema.fonte && poema.tags.length === 0) return null;
@@ -189,9 +184,7 @@ function Detalhes({ poema }: { poema: Post }) {
           {poema.tags.map((tag) => (
             <li key={tag}>
               <Link
-                href={
-                  ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`
-                }
+                href={caminhoDaTag(tag)}
                 className="text-destaque hover:underline"
               >
                 #{tag}
