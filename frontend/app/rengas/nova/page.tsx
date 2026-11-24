@@ -11,6 +11,7 @@ import {
   criarRenga,
   ErroDaApi,
   lerUsernames,
+  mensagemDeFalha,
   RENGA_LIMITE_MAX,
   RENGA_LIMITE_MIN,
   RENGA_LIMITE_PADRAO,
@@ -67,7 +68,7 @@ export default function NovaRengaPage() {
       router.push(`/rengas/${renga.id}`);
     } catch (err) {
       if (err instanceof ErroDaApi && Object.keys(err.campos).length > 0) setCampos(err.campos);
-      else setErro(err instanceof Error ? err.message : "não deu para criar a renga");
+      else setErro(mensagemDeFalha(err, "não deu para criar a renga"));
       setEnviando(false);
     }
   }

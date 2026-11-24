@@ -8,6 +8,7 @@ import {
   ANTOLOGIA_DESCRICAO_MAX,
   ANTOLOGIA_NOME_MAX,
   ErroDaApi,
+  mensagemDeFalha,
   type Antologia,
   type NovaAntologia,
 } from "@/lib/api";
@@ -51,7 +52,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
       await aoEnviar({ nome, descricao: descricao.trim() ? descricao : null, publica });
     } catch (err) {
       if (err instanceof ErroDaApi && err.campos.nome) setErroDoNome(err.campos.nome);
-      else setErro(err instanceof Error ? err.message : "não deu para salvar a antologia");
+      else setErro(mensagemDeFalha(err, "não deu para salvar a antologia"));
       setEnviando(false);
     }
   }

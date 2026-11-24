@@ -15,6 +15,7 @@ import {
   caminhoDoLogin,
   formatarData,
   listarRengas,
+  mensagemDeFalha,
   temToken,
   type Page,
   type Renga,
@@ -80,7 +81,7 @@ function Rengas() {
         setResultado(p);
         setErro(null);
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar as rengas"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as rengas")));
   }, [situacao, pagina, router]);
 
   const totalDePaginas = resultado ? Math.ceil(resultado.total / POR_PAGINA) : 0;

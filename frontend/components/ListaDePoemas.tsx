@@ -8,7 +8,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
-import { chaveDoItem, ehRenga, temToken, type FeedPage, type ItemDoFeed } from "@/lib/api";
+import { chaveDoItem, ehRenga, mensagemDeFalha, temToken, type FeedPage, type ItemDoFeed } from "@/lib/api";
 
 type Props = {
   // Busca uma página a partir do cursor (null = primeira). Para trocar de lista,
@@ -47,7 +47,7 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
       setFim(pagina.proximo_cursor === null);
       setErro(null);
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para carregar os poemas");
+      setErro(mensagemDeFalha(e, "não deu para carregar os poemas"));
     } finally {
       pedindo.current = false;
       setCarregando(false);

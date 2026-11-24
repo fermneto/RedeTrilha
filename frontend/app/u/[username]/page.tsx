@@ -17,6 +17,7 @@ import {
   buscarPoemasDoPerfil,
   caminhoDoLogin,
   listarAntologiasDe,
+  mensagemDeFalha,
   temToken,
   type Perfil,
 } from "@/lib/api";
@@ -67,7 +68,7 @@ function PerfilDoPoeta() {
         setMeuId(eu.id);
         setErro(null);
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar o perfil"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar o perfil")));
   }, [username, router]);
 
   const buscarPoemas = useCallback(

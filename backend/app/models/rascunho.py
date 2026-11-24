@@ -1,13 +1,10 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datas import agora_utc
 from app.db import Base
-
-
-def _agora() -> datetime:
-    return datetime.now(timezone.utc)
 
 
 class Rascunho(Base):
@@ -33,5 +30,5 @@ class Rascunho(Base):
         ForeignKey("posts.id"), default=None, index=True
     )
     repost_removido: Mapped[bool] = mapped_column(default=False)
-    created_at: Mapped[datetime] = mapped_column(default=_agora)
-    updated_at: Mapped[datetime] = mapped_column(default=_agora, onupdate=_agora, index=True)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)
+    updated_at: Mapped[datetime] = mapped_column(default=agora_utc, onupdate=agora_utc, index=True)

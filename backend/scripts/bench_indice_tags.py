@@ -20,6 +20,7 @@ import sys
 import timeit
 from collections import Counter
 from datetime import UTC, datetime, timedelta
+from functools import partial
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -100,12 +101,12 @@ def main() -> None:
         }
         consultas = {
             "posts_da_tag": (
-                lambda: indice.posts_da_tag(TAG_CONSULTADA),
-                lambda: varredura_posts_da_tag(posts, TAG_CONSULTADA),
+                partial(indice.posts_da_tag, TAG_CONSULTADA),
+                partial(varredura_posts_da_tag, posts, TAG_CONSULTADA),
             ),
             "trending": (
-                lambda: indice.trending(desde),
-                lambda: varredura_trending(posts, desde),
+                partial(indice.trending, desde),
+                partial(varredura_trending, posts, desde),
             ),
         }
         for nome, (com_indice, com_varredura) in consultas.items():
