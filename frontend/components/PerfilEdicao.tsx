@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-import { editarPerfil, type Perfil } from "@/lib/api";
+import { editarPerfil, mensagemDeFalha, type Perfil } from "@/lib/api";
 
 type Props = {
   perfil: Perfil;
@@ -26,7 +26,7 @@ export function PerfilEdicao({ perfil, aoSalvar, aoCancelar }: Props) {
       // A bio vai como foi digitada: as quebras de linha ficam.
       aoSalvar(await editarPerfil({ name, bio, avatar_url: avatarUrl.trim() }));
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para salvar o perfil");
+      setErro(mensagemDeFalha(err, "não deu para salvar o perfil"));
       setSalvando(false);
     }
   }

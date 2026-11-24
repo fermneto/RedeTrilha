@@ -16,6 +16,7 @@ import {
   buscarEu,
   buscarOpcoesDoAcervo,
   caminhoDoLogin,
+  mensagemDeFalha,
   nomeDoIdioma,
   ORDENS_DO_ACERVO,
   POR_PAGINA_DO_ACERVO,
@@ -141,7 +142,7 @@ function Acervo() {
         setErro(null);
       })
       .catch((e) => {
-        if (vivo) setErro(e instanceof Error ? e.message : "não deu para carregar o acervo");
+        if (vivo) setErro(mensagemDeFalha(e, "não deu para carregar o acervo"));
       })
       .finally(() => {
         if (vivo) setCarregando(false);

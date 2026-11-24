@@ -18,6 +18,7 @@ import {
   ErroDaApi,
   formatarData,
   idiomaDoNavegador,
+  mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
   repostar,
@@ -175,7 +176,7 @@ function Traduzir({ poema }: { poema: Post }) {
     } catch (e) {
       if (e instanceof ErroDaApi && e.status === 503) setErro("tradução indisponível agora");
       else if (e instanceof ErroDaApi && e.status === 429) setErro("limite de traduções atingido, tente mais tarde");
-      else setErro(e instanceof Error ? e.message : "não deu para traduzir");
+      else setErro(mensagemDeFalha(e, "não deu para traduzir"));
     } finally {
       setCarregando(false);
     }
@@ -342,7 +343,7 @@ function Acoes({ poema }: { poema: Post }) {
     } catch (e) {
       setCurti(!novo);
       setCurtidas((n) => n + (novo ? -1 : 1));
-      setErro(e instanceof Error ? e.message : "não deu para curtir");
+      setErro(mensagemDeFalha(e, "não deu para curtir"));
     }
   }
 
@@ -356,7 +357,7 @@ function Acoes({ poema }: { poema: Post }) {
     } catch (e) {
       setRepostei(!novo);
       setReposts((n) => n + (novo ? -1 : 1));
-      setErro(e instanceof Error ? e.message : "não deu para repostar");
+      setErro(mensagemDeFalha(e, "não deu para repostar"));
     }
   }
 

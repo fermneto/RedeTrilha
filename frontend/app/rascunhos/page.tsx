@@ -12,6 +12,7 @@ import {
   caminhoDoLogin,
   formatarData,
   listarRascunhos,
+  mensagemDeFalha,
   nomeDaForma,
   temToken,
   type Rascunho,
@@ -32,7 +33,7 @@ export default function RascunhosPage() {
     }
     listarRascunhos()
       .then((pagina) => setRascunhos(pagina.items))
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar os rascunhos"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar os rascunhos")));
   }, [router]);
 
   async function apagar(rascunho: Rascunho) {
@@ -42,7 +43,7 @@ export default function RascunhosPage() {
       await apagarRascunho(rascunho.id);
       setRascunhos((atuais) => (atuais ?? []).filter((r) => r.id !== rascunho.id));
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar o rascunho");
+      setErro(mensagemDeFalha(e, "não deu para apagar o rascunho"));
     }
   }
 
