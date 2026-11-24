@@ -25,6 +25,13 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
   - O feed é cronológico, e a descoberta é por forma e por tema.
   - Os gestos de quem lê poesia são de primeira classe: citar um verso,
     repostar e conversar numa árvore de comentários, como numa oficina.
+  - A crítica aponta o verso: o leitor seleciona os versos 5 a 8 e comenta
+    só aquele trecho, como na margem de uma oficina.
+  - Quem escreve tem uma oficina no compositor (sílabas poéticas e esquema
+    de rimas, desligáveis) e rascunhos privados. O poema só vai a público
+    quando está pronto, e publicado não muda mais.
+  - A renga, o poema colaborativo, faz a turma escrever junto, estrofe por
+    estrofe.
   - 95 poetas consagrados em domínio público (725 poemas, no original, em 15
     línguas) estão no mesmo feed, como contas que se seguem. A tradução por IA
     sai com um clique.
@@ -181,6 +188,126 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
   ações.
 
+### 7. A crítica ancorada no verso
+
+- **Contexto:** numa oficina de poesia, a crítica raramente é sobre o poema
+  todo. É "o verso 6 quebra o ritmo" ou "a imagem dos versos 9 a 11 é a mais
+  forte". Num comentário comum, o leitor precisa copiar o verso para dizer de
+  qual está falando.
+- **Opções:** comentários só sobre o poema inteiro; citar o verso à mão no
+  texto do comentário; ou ancorar o comentário num trecho do poema.
+- **Escolha:**
+  - O leitor **seleciona os versos com o mouse**, como seleciona texto comum,
+    e aparece a barra "comentar estes versos / citar estes versos". A seleção
+    vira os versos inteiros que ela toca, e um clique fora a desfaz. Os números dos versos ficam sempre
+    visíveis, em cinza claro, e são botões: é o caminho de quem usa só o
+    teclado.
+  - O comentário mostra o trecho em Literata, acima do texto, com a referência
+    ("versos 5–8"). Cada verso comentado ganha uma marca com quantas críticas o
+    cobrem, e clicar nela filtra a conversa por aquele verso.
+  - A numeração conta as linhas em branco entre estrofes, como a posição da
+    linha no texto.
+  - Só o 1º nível da árvore é ancorado. As respostas herdam o trecho do
+    comentário pai.
+  - "Citar estes versos" abre a citação que já existia com os versos
+    preenchidos, e uma linha em branco para o leitor escrever.
+  - Um comentário ancorado removido com respostas continua mostrando o trecho,
+    como o resto da conversa.
+- **O que cortamos e por quê:** guardar uma cópia do trecho em cada
+  comentário. Como o poema publicado não muda (decisão 9), o trecho sai do
+  próprio poema e nunca fica desatualizado.
+
+### 8. A oficina no compositor: sílabas e rimas, desligáveis
+
+- **Contexto:** o iniciante que tenta um soneto não sabe se o verso tem 10
+  sílabas poéticas nem qual é o esquema de rimas. Mas muitos escrevem em verso
+  livre, e marcar sílabas em todo poema seria tratar a métrica como regra.
+- **Opções:** nenhuma ajuda; um validador que bloqueia o poema fora da forma;
+  ou marcas ao lado dos versos que o poeta liga e desliga.
+- **Escolha:**
+  - Ao lado de cada verso, no compositor, aparecem as **sílabas poéticas**
+    (contadas até a última tônica, com sinalefa, ditongos e hiatos) e a
+    **letra da rima**. Abaixo aparece o esquema da estrofe, por exemplo
+    `ABBA ABBA CDC DCD` em "Amor é fogo que arde sem se ver".
+  - **Dois toggles independentes**, um para sílabas e outro para rimas.
+    Começam ligados, e o estado fica salvo no navegador. Quem não usa metro
+    nem rima desliga os dois, e a oficina some.
+  - **Só no compositor**, inclusive no da citação. O leitor nunca vê as
+    marcas, e o poema publicado não guarda nada da análise.
+  - **Rima:** é consoante quando as terminações são iguais a partir da vogal
+    tônica. É toante (mesmas vogais) só para o verso que não tem par
+    consoante, em itálico. O verso sem rima ganha uma letra própria.
+  - **Aviso de forma, sem bloquear:** soneto com outro número de versos que
+    não 14, e haicai fora de 5-7-5 sílabas poéticas. O aviso só aparece com
+    pelo menos um toggle ligado.
+  - A contagem é uma heurística e erra alguns versos clássicos. Os testes
+    registram dois desses casos como falha esperada (Camões em "ain-da",
+    Augusto dos Anjos em "in-fluên-cia").
+- **O que cortamos e por quê:** a oficina na leitura, porque o leitor lê o
+  poema e não a métrica dele. Também não há bloqueio de forma: um soneto de 13
+  versos é decisão do poeta.
+
+### 9. Rascunhos privados e o poema publicado imutável
+
+- **Contexto:** o iniciante reescreve o poema muitas vezes antes de mostrar a
+  alguém. E a crítica ancorada (decisão 7) e as citações apontam para versos
+  exatos: se o poema mudasse depois, a crítica do verso 6 passaria a falar de
+  outro verso.
+- **Opções:** editar o poema publicado com um histórico de versões; marcar
+  "editado"; ou separar o rascunho do poema publicado.
+- **Escolha:**
+  - **Rascunhos privados.** Só o autor vê, edita e apaga. Para qualquer outra
+    pessoa, um rascunho dá 404, e ele nunca aparece no feed, no perfil, nas
+    tags ou no Explorar. "Rascunhos" é um item da navegação. Não há limite de
+    rascunhos, e a lista mostra primeiro o editado por último.
+  - **Publicar um rascunho** cria o poema com a data de agora e **sem marca de
+    editado**, por mais que o rascunho tenha mudado antes.
+  - **Também há rascunho de citação**, que ao publicar vira citação.
+  - **O poema publicado não se edita.** O `PATCH /posts` foi removido (responde
+    405), e o teste do núcleo `test_posts_crud` passou a conferir isso. Para
+    corrigir um poema publicado, o autor apaga e publica de novo.
+- **O que cortamos e por quê:**
+  - **O histórico de versões e a marca "editado"**, que perderam o sentido
+    sem edição.
+  - **A edição do publicado**, mesmo custando as curtidas e os comentários de
+    quem apaga para corrigir. A conversa sobre um verso só vale se o verso
+    continua lá.
+
+### 10. A renga: o poema escrito pela turma
+
+- **Contexto:** a renga japonesa é um poema escrito em cadeia, cada poeta
+  respondendo à estrofe anterior. É o exercício de oficina que mais faz um
+  iniciante escrever, e ele escreve para alguém, não para a gaveta.
+- **Opções:** só comentários; um "poema colaborativo" sem regra; ou uma renga
+  com regras simples.
+- **Escolha:**
+  - Quem cria abre com a **1ª estrofe**, um título e as configurações: o
+    **modo** (aberta a qualquer pessoa logada ou só para convidados) e o
+    **limite de estrofes** (12 por padrão, de 3 a 40, contando a 1ª).
+    Consagrados não podem ser convidados, porque não têm login.
+  - **Ninguém escreve duas estrofes seguidas.** A renga fecha ao atingir o
+    limite ou quando o criador encerra. Fechada, vira um poema com todos os
+    autores, cada estrofe com o seu.
+  - Qualquer pessoa logada lê qualquer renga, inclusive as de convidados. Só
+    quem pode escrever vê o campo da próxima estrofe, e quem não pode vê o
+    motivo.
+  - **No feed, como um repost no X.** A renga aparece para quem segue o
+    criador ou alguém que escreveu uma estrofe. Ela aparece uma vez só, na
+    posição da atividade mais recente de um seguido, com o rótulo "fulano
+    abriu uma renga", "fulano escreveu uma estrofe" ou "fulano encerrou a
+    renga" (este só para quem segue o criador). O criador aparece sempre como
+    quem abriu. Fechada, continua no
+    feed, como poema completo. O card mostra as 4 primeiras estrofes.
+  - **No perfil**, a renga aparece como um post de cada participante e soma 1
+    no contador de poemas dele.
+  - Duas pessoas escrevendo ao mesmo tempo não estouram o limite nem quebram a
+    regra de vez: o service trava a renga no banco, e quem perde a corrida
+    recebe "outra pessoa acrescentou uma estrofe agora".
+- **O que cortamos e por quê:** a ordem fixa de turnos entre convidados,
+  porque esperar a vez de uma pessoa que sumiu trava a renga inteira. Também
+  não dá para mudar o modo nem o limite depois de criar, nem convidar alguém
+  depois de abrir.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para o poeta iniciante, em 12 dias de prazo (16/11 a 27/11), com o código a partir de 23/11.
@@ -225,6 +352,10 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Consagrados (importador e dados) | Neto | 95 poetas de domínio público, no original, convivem com os iniciantes. |
 | Formas/temas, Em alta e Explorar | Neto | Descobrir sonetos, haicais e temas, e ver sobre o que a turma escreve. |
 | Tradução por IA | Neto | Lê-se Li Bai e Baudelaire no original, com a tradução a um clique. |
+| Crítica ancorada no verso | Neto | A crítica de oficina aponta o verso, como na margem do caderno. |
+| Oficina: sílabas e rimas no compositor | Neto | O iniciante vê o metro e as rimas enquanto escreve, e desliga se não usa. |
+| Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
+| Rengas | Neto | A turma escreve um poema junto, estrofe por estrofe. |
 | Deploy (Render + Vercel + Supabase) | Neto | A banca usa a rede na URL pública, e os dados não somem. |
 
 ## Uma escolha técnica
@@ -327,6 +458,15 @@ acima: é ela que tiraria o termo n·t.
   startup, a janela é reconstruída da tabela `traducoes`, para o limite não
   zerar a cada restart.
 
+- **Métrica e rima (`core/metrica.py`).** São funções puras, sem estado, por
+  isso sem singleton. `silabas_poeticas` divide o verso em núcleos vocálicos e
+  aplica sinalefa na fronteira das palavras e sinérese depois da tônica.
+  `terminacao_rimica` normaliza a terminação pelo som (ç, ss e c antes de e/i
+  viram "s"), e `esquema_de_rimas` agrupa os versos da estrofe por terminação
+  num dict. Tudo é O(L) no tamanho do texto. A rota `POST /oficina/analise` não
+  usa o banco e aceita até 10.000 caracteres; o poema em si continua sem
+  limite.
+
 ## Uso de IA
 
 - **Ferramenta:** Claude Code (Claude), da Anthropic, no desenvolvimento.
@@ -339,7 +479,7 @@ acima: é ela que tiraria o termo n·t.
   tradução), os contratos de dados do `PLANO.md`, o visual e os cortes. A IA
   propunha opções e listava as lacunas, e o Neto escolhia. As escolhas estão
   registradas nos PRs, nas seções "Decisões do Neto" (por exemplo #31, #37,
-  #38, #43, #49, #51, #54 e #56), e as perguntas que ficaram para ele, em
+  #38, #43, #49, #51, #54, #56 e #75 a #78), e as perguntas que ficaram para ele, em
   "Decisões em aberto".
 - **Código: gerado com apoio de IA, sob direção humana.** Boa parte do código
   foi escrita por subagents do Claude Code a partir das tasks e dos contratos
@@ -350,6 +490,9 @@ acima: é ela que tiraria o termo n·t.
   #44, #53 e #56). Por isso, a maior parte dos commits está na conta do Neto.
   O Henrique e o Pedro validam essas partes nas issues #57 a #62. O model
   `Post` e o CRUD de `/posts` (#24) foram feitos pelo Henrique.
+  As decisões 7 a 10 (crítica ancorada, oficina, rascunhos e rengas, #75 a
+  #78) também foram implementadas por subagents a pedido do Neto. Cada
+  lacuna que eles encontraram voltou para ele decidir antes do merge.
 - **Revisão: humana.** O Neto revisou cada PR e decidiu cada merge, com o
   apoio de um agente de revisão (Claude Code) que rodava os testes e conferia
   os contratos. Os comentários de revisão estão nos PRs, publicados pela conta
