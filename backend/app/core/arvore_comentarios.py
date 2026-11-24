@@ -3,32 +3,35 @@
 Python puro: a API passa tuplas (id, parent_id, created_at, payload) e recebe
 nós aninhados. O `payload` é opaco aqui (o service guarda o model nele).
 
-Diferente de `contadores.py` e `indice_tags.py`, esta estrutura NÃO é um
-singleton de módulo reconstruído no startup. A árvore é de um poema só e é
-montada a cada `GET /posts/{id}/comentarios` a partir dos comentários daquele
-poema. Motivos:
+A árvore é montada sobre o subconjunto carregado, como no X: uma página de
+respostas diretas (ao poema ou a um comentário) e, abaixo de cada uma, a
+prévia das primeiras respostas, nível a nível. `montar` não busca nem corta
+nada: aninha o que recebeu, a partir de `raiz` (None = respostas ao poema).
 
-- A leitura sempre devolve a árvore inteira do poema, então o texto e o autor
-  de cada comentário vêm do banco de qualquer jeito; guardar a árvore em
-  memória não pouparia essa ida ao banco.
+Diferente de `contadores.py` e `indice_tags.py`, esta estrutura NÃO é um
+singleton de módulo reconstruído no startup. Ela é montada a cada request a
+partir do que aquela página carregou. Motivos:
+
+- A resposta precisa do texto e do autor de cada comentário, que vêm do banco
+  de qualquer jeito; uma árvore em memória não pouparia a ida ao banco.
 - Um singleton com as árvores de todos os poemas custaria O(total de
   comentários da rede) no startup e uma atualização a cada write, só para
-  economizar a montagem, que já é linear no tamanho da resposta.
+  economizar a montagem, que é linear no tamanho da página.
 - Montada por request, a árvore não tem estado para dessincronizar do banco
   (restart, `--reload`, vários workers).
 
 O `core/README.md` aceita montar por request desde que o Big O esteja
-declarado. Com n = comentários do poema:
+declarado. Com k = comentários carregados (página + prévias), não n = todos
+os do poema:
 
-- agrupar por pai: O(n), um dict parent_id -> filhos, cada comentário
-  visitado uma vez;
-- montar recursivamente: O(n), cada nó é criado uma vez;
-- ordenar: O(n log n) no pior caso. O service já entrega os comentários em
-  ordem (ORDER BY created_at, id) e o Timsort faz isso em O(n) com a entrada
-  ordenada. A ordenação fica aqui para a ordem cronológica não depender de
-  quem chama.
+- agrupar por pai: O(k), um dict parent_id -> filhos, cada item visitado uma
+  vez;
+- montar recursivamente: O(k), cada nó é criado uma vez;
+- ordenar: O(k log k) no pior caso. O service entrega cada nível já em ordem
+  (ORDER BY created_at, id) e o Timsort aproveita esses trechos ordenados. A
+  ordenação fica aqui para a ordem cronológica não depender de quem chama.
 
-Memória O(n). A recursão desce tanto quanto a conversa mais longa.
+Memória O(k). A recursão desce tanto quanto a prévia carregada.
 """
 
 from dataclasses import dataclass, field
@@ -47,16 +50,16 @@ class No:
     respostas: list["No"] = field(default_factory=list)
 
 
-def montar(itens: list[Item]) -> list[No]:
-    """Raízes (parent_id None) com as respostas aninhadas, tudo em ordem cronológica.
+def montar(itens: list[Item], raiz: int | None = None) -> list[No]:
+    """Filhos de `raiz` com as respostas aninhadas, tudo em ordem cronológica.
 
     Empate de horário desempata pelo id (ordem de criação). Um item cujo pai
-    não está na lista não aparece: a API só aceita pai do mesmo poema.
+    não está na lista (nem é a `raiz`) não aparece.
     """
     filhos: dict[int | None, list[Item]] = {}
     for item in sorted(itens, key=lambda item: (item[2], item[0])):
         filhos.setdefault(item[1], []).append(item)
-    return _montar_filhos(None, filhos)
+    return _montar_filhos(raiz, filhos)
 
 
 def _montar_filhos(parent_id: int | None, filhos: dict[int | None, list[Item]]) -> list[No]:

@@ -19,8 +19,10 @@ class Comentario(Base):
     parent_id: Mapped[int | None] = mapped_column(
         ForeignKey("comentarios.id"), default=None, index=True
     )
+    # Apagado com respostas: fica como marcador, de texto vazio, para a conversa não sumir.
+    removido: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(timezone.utc)
+        default=lambda: datetime.now(timezone.utc), index=True
     )
 
     autor: Mapped[User] = relationship(lazy="joined")
