@@ -1,0 +1,140 @@
+{
+  "username": "verlaine",
+  "name": "Paul Verlaine",
+  "bio": "Paul Verlaine, poeta francês de Metz, figura do Simbolismo. Seus Poemas Saturninos e Romances sem Palavras buscam a música antes de tudo. Viveu uma relação turbulenta com Rimbaud e criou a expressão poetas malditos.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Paul_Verlaine.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1844,
+  "morte": 1896,
+  "poemas": [
+    {
+      "titulo": "Il pleure dans mon cœur",
+      "texto": "Il pleure dans mon cœur\nComme il pleut sur la ville,\nQuelle est cette langueur\nQui pénètre mon cœur ?\n\nÔ bruit doux de la pluie\nPar terre et sur les toits !\nPour un cœur qui s’ennuie\nÔ le chant de la pluie !\n\nIl pleure sans raison\nDans ce cœur qui s’écœure.\nQuoi ! nulle trahison ?\nCe deuil est sans raison.\n\nC’est bien la pire peine\nDe ne savoir pourquoi,\nSans amour et sans haine,\nMon cœur a tant de peine !",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Romances_sans_paroles_(1891)/Il_pleure_dans_mon_c%C5%93ur",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Mon rêve familier",
+      "texto": "Je fais souvent ce rêve étrange et pénétrant\nD’une femme inconnue, et que j’aime, et qui m’aime,\nEt qui n’est, chaque fois, ni tout à fait la même,\nNi tout à fait une autre, et m’aime, et me comprend.\n\nCar elle me comprend, et mon cœur, transparent\nPour elle seule, hélas ! cesse d’être un problème\nPour elle seule, et les moiteurs de mon front blême,\nElle seule les sait rafraîchir, en pleurant.\n\nEst-elle brune, blonde ou rousse ? — Je l’ignore.\nSon nom ? Je me souviens qu’il est doux et sonore\nComme ceux des aimés que la Vie exila.\n\nSon regard est pareil au regard des statues,\nEt, pour sa voix lointaine et calme, et grave, elle à\nL’inflexion des voix chères qui se sont tues.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Parnasse_contemporain/1866/Mon_r%C3%AAve_familier",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Art poétique",
+      "texto": "De la musique avant toute chose,\nEt pour cela préfère l’Impair\nPlus vague et plus soluble dans l’air,\nSans rien en lui qui pèse ou qui pose.\n\nIl faut aussi que tu n’ailles point\nChoisir tes mots sans quelque méprise :\nRien de plus cher que la chanson grise\nOù l’Indécis au Précis se joint.\n\nC’est des beaux yeux derrière des voiles,\nC’est le grand jour tremblant de midi,\nC’est, par un ciel d’automne attiédi,\nLe bleu fouillis des claires étoiles !\n\nCar nous voulons la Nuance encor,\nPas la Couleur, rien que la nuance !\nOh ! la nuance seule fiance\nLe rêve au rêve et la flûte au cor !\n\nFuis du plus loin la Pointe assassine,\nL’Esprit cruel et le Rire impur,\nQui font pleurer les yeux de l’Azur,\nEt tout cet ail de basse cuisine !\n\nPrends l’éloquence et tords-lui son cou !\nTu feras bien, en train d’énergie,\nDe rendre un peu la Rime assagie.\nSi l’on n’y veille, elle ira jusqu’où ?\n\nÔ qui dira les torts de la Rime ?\nQuel enfant sourd ou quel nègre fou\nNous a forgé ce bijou d’un sou\nQui sonne creux et faux sous la lime ?\n\nDe la musique encore et toujours !\nQue ton vers soit la chose envolée\nQu’on sent qui fuit d’une âme en allée\nVers d’autres cieux à d’autres amours.\n\nQue ton vers soit la bonne aventure\nÉparse au vent crispé du matin\nQui va fleurant la menthe et le thym…\nEt tout le reste est littérature.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Jadis_et_nagu%C3%A8re_(1884)/Art_po%C3%A9tique",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Clair de lune",
+      "texto": "Votre âme est un paysage choisi\nQue vont charmants masques et bergamasques\nJouant du luth et dansant et quasi\nTristes sous leurs déguisements fantasques.\n\nTout en chantant sur le mode mineur\nL’amour vainqueur et la vie opportune,\nIls n’ont pas l’air de croire à leur bonheur\nEt leur chanson se mêle au clair de lune,\n\nAu calme clair de lune triste et beau,\nQui fait rêver les oiseaux dans les arbres\nEt sangloter d’extase les jets d’eau,\nLes grands jets d’eau sveltes parmi les marbres.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_(1891)/Clair_de_lune",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Le ciel est, par-dessus le toit",
+      "texto": "Le ciel est, par-dessus le toit,\nSi bleu, si calme !\nUn arbre, par-dessus le toit\nBerce sa palme.\n\nLa cloche dans le ciel qu’on voit\nDoucement tinte.\nUn oiseau sur l’arbre qu’on voit\nChante sa plainte.\n\nMon Dieu, mon Dieu, la vie est là,\nSimple et tranquille.\nCette paisible rumeur-là\nVient de la ville.\n\n— Qu’as-tu fait, ô toi que voilà\nPleurant sans cesse,\nDis, qu’as-tu fait, toi que voilà.\nDe ta jeunesse ?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Sagesse_(1893)/Le_ciel_est_par-dessus_le_toit",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Green",
+      "texto": "Voici des fruits, des fleurs, des feuilles et des branches.\nEt puis voici mon cœur, qui ne bat que pour vous.\nNe le déchirez pas avec vos deux mains blanches\nEt qu’à vos yeux si beaux l’humble présent soit doux.\n\nJ’arrive tout couvert encore de rosée\nQue le vent du matin vient glacer à mon front.\nSouffrez que ma fatigue, à vos pieds reposée,\nRêve des chers instants qui la délasseront.\n\nSur votre jeune sein laissez rouler ma tête\nToute sonore encore de vos derniers baisers ;\nLaissez-la s’apaiser de la bonne tempête,\nEt que je dorme un peu puisque vous reposez.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Romances_sans_paroles_(1891)/Green",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Colloque sentimental",
+      "texto": "Dans le vieux parc solitaire et glacé\nDeux formes ont tout à l’heure passé.\n\nLeurs yeux sont morts et leurs lèvres sont molles,\nEt l’on entend à peine leurs paroles.\n\nDans le vieux parc solitaire et glacé\nDeux spectres ont évoqué le passé.\n\n— Te souvient-il de notre extase ancienne ?\n— Pourquoi voulez-vous donc qu’il m’en souvienne ?\n\n— Ton cœur bat-il toujours à mon seul nom ?\nToujours vois-tu mon âme en rêve ? — Non.\n\n— Ah ! les beaux jours de bonheur indicible\nOù nous joignions nos bouches ! — C’est possible.\n\nQu’il était bleu, le ciel, et grand l’espoir !\nL’espoir a fui, vaincu, vers le ciel noir.\n\nTels ils marchaient dans les avoines folles,\nEt la nuit seule entendit leurs paroles.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_(1891)/Colloque_sentimental",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Après trois ans",
+      "texto": "Ayant poussé la porte étroite qui chancelle,\nJe me suis promené dans le petit jardin\nQu’éclairait doucement le soleil du matin,\nPailletant chaque fleur d’une humide étincelle.\n\nRien n’a changé. J’ai tout revu : l’humble tonnelle\nDe vigne folle avec les chaises de rotin…\nLe jet d’eau fait toujours son murmure argentin\nEt le vieux tremble sa plainte sempiternelle.\n\nLes roses comme avant palpitent ; comme avant,\nLes grands lys orgueilleux se balancent au vent.\nChaque alouette qui va et vient m’est connue.\n\nMême j’ai retrouvé debout la Velléda\nDont le plâtre s’écaille au bout de l’avenue,\n— Grêle, parmi l’odeur fade du réséda.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A8mes_saturniens_(1866)/Apr%C3%A8s_trois_ans",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Langueur",
+      "texto": "Je suis l’Empire à la fin de la décadence,\nQui regarde passer les grands Barbares blancs\nEn composant des acrostiches indolents\nD’un style d’or où la langueur du soleil danse.\n\nL’âme seulette a mal au cœur d’un ennui dense,\nLà-bas on dit qu’il est de longs combats sanglants.\nÔ n’y pouvoir, étant si faible aux vœux si lents,\nÔ n’y vouloir fleurir un peu cette existence !\n\nÔ n’y vouloir, ô n’y pouvoir mourir un peu !\nAh ! tout est bu ! Bathylle, as-tu fini de rire ?\nAh ! tout est bu, tout est mangé ! Plus rien à dire !\n\nSeul un poème un peu niais qu’on jette au feu,\nSeul un esclave un peu coureur qui vous néglige,\nSeul un ennui d’on ne sait quoi qui vous afflige !",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Jadis_et_nagu%C3%A8re_(1884)/Langueur",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "La lune blanche",
+      "texto": "La lune blanche\nLuit dans les bois ;\nDe chaque branche\nPart une voix\nSous la ramée…\n\nÔ bien-aimée.\n\nL’étang reflète,\nProfond miroir,\nLa silhouette\nDu saule noir\nOù le vent pleure…\n\nRêvons, c’est l’heure.\n\nUn vaste et tendre\nApaisement\nSemble descendre\nDu firmament\nQue l’astre irise…\n\nC’est l’heure exquise.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/La_Bonne_Chanson_(1902)/%C2%AB_La_lune_blanche_%C2%BB",
+      "tags": [
+        "melancolia",
+        "musica",
+        "frances"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "username": "cesar_vallejo",
+  "name": "César Vallejo",
+  "bio": "César Vallejo, poeta peruano de Santiago de Chuco, de ascendência indígena. Com Los heraldos negros e Trilce, revolucionou a linguagem poética em espanhol. Viveu em Paris, apoiou a República Espanhola e morreu na pobreza.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Cesar_vallejo_1929.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1892,
+  "morte": 1938,
+  "poemas": [
+    {
+      "titulo": "Los heraldos negros",
+      "texto": "  Hay golpes en la vida, tan fuertes... Yo no sé!\nGolpes como del odio de Dios; como si ante ellos,\nla resaca de todo lo sufrido\nse empozara en el alma... Yo no sé!\n\n  Son pocos; pero son... Abren zanjas oscuras\nen el rostro mas fiero y en el lomo mas fuerte.\nSerán talvez los potros de bárbaros atilas;\no los heraldos negros que nos manda la Muerte.\n\n  Son las caidas hondas de los Cristos del alma,\nde alguna fe adorable que el Destino blasfema.\nEsos golpes sangrientos son las crepitaciones\nde algún pan que en la puerta del horno se nos quema.\n\n  Y el hombre... Pobre...pobre! Vuelve los ojos, como\ncuando por sobre el hombro nos llama una palmada;\nvuelve los ojos locos, y todo lo vivido\nse empoza, como charco de culpa, en la mirada.\n\n  Hay golpes en la vida, tan fuertes... Yo no sé!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Los_heraldos_negros",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Masa",
+      "texto": "Al fin de la batalla,\ny muerto el combatiente, vino hacia él un hombre\ny le dijo: \"¡No mueras, te amo tanto!\"\nPero el cadáver ¡ay! siguió muriendo.\n\nSe le acercaron dos repitiéronle:\n\"¡No nos dejes! ¡Valor! ¡Vuelve a la vida!\"\nPero el cadáver ¡ay! siguió muriendo.\n\nAcudieron a él veinte, cien, mil, quinientos mil,\nclamando \"¡Tanto amor y no poder nada contra la muerte!\"\nPero el cadáver ¡ay! siguió muriendo.\n\nLe rodearon millones de individuos,\ncon un ruego común: \"¡Quédate hermano!\"\nPero el cadáver ¡ay! siguió muriendo.\n\nEntonces, todos lo hombres de la tierra\nle rodearon; les vio el cadáver triste, emocionado;\nincorporóse lentamente,\nabrazo al primer hombre; echóse a andar...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Masa",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Piedra negra sobre una piedra blanca",
+      "texto": "Me moriré en París con aguacero,\nun día del cual tengo ya el recuerdo.\nMe moriré en París -y no me corro-\ntal vez un jueves, como es hoy de otoño.\n\nJueves será, porque hoy, jueves, que proso\nestos versos, los húmeros me he puesto\na la mala y, jamás como hoy, me he vuelto,\ncon todo mi camino, a verme solo.\n\nCésar Vallejo ha muerto, le pegaban\ntodos sin que él les haga nada;\nle daban duro con un palo y duro\n\ntambién con una soga; son testigos\nlos días jueves y los huesos húmeros,\nla soledad, la lluvia, los caminos…",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Piedra_negra_sobre_una_piedra_blanca",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Los dados eternos",
+      "texto": "       Para Manuel González Prada, esta emoción\n       bravía y selecta, una de las que, con más\n       entusiasmo, me ha aplaudido el gran\n       maestro.\n\nDios mío, estoy llorando el ser que vivo;\nme pesa haber tomádote tu pan;\npero este pobre barro pensativo\nno es costra fermentada en tu costado:\ntú no tienes Marías que se van!\n\nDios mío, si tú hubieras sido hombre,\nhoy supieras ser Dios;\npero tú, que estuviste siempre bien,\nno sientes nada de tu creación.\nY el hombre sí te sufre: el Dios es él!\n\nHoy que en mis ojos brujos hay candelas,\ncomo en un condenado,\nDios mío, prenderás todas tus velas,\ny jugaremos con el viejo dado...\nTal vez ¡oh jugador! al dar la suerte\ndel universo todo,\nsurgirán las ojeras de la Muerte,\ncomo dos ases fúnebres de lodo.\n\nDios mío, y esta noche sorda, oscura,\nya no podrás jugar, porque la Tierra\nes un dado roído y ya redondo\na fuerza de rodar a la aventura,\nque no puede parar sino en un hueco,\nen el hueco de inmensa sepultura.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Los_dados_eternos",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Ágape",
+      "texto": "  Hoy no ha venido nadie a preguntar;\nni me han pedido en esta tarde nada.\n\n  No he visto ni una flor de cementerio\nen tan alegre procesión de luces.\nPerdóname, Señor: qué poco he muerto!\n\n  En esta tarde todos, todos pasan\nsin preguntarme ni pedirme nada.\n\n  Y ño sé qué se olvidan y se queda\nmal en mis manos, como cosa ajena.\n\n  He salido a la puerta,\ny me da ganas de gritar a todos:\nSi echan de menos algo, aquí se queda!\n\n  Porque en todas las tardes de esta vida,\nyo no sé con qué puertas dan a un rostro,\ny algo ajeno se toma el alma mía\n\n  Hoy no ha venido nadie;\ny hoy he muerto qué poco en esta tarde!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/%C3%81gape",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Idilio muerto",
+      "texto": "  Qué estará haciendo esta hora mi andina y dulce Rita\nde junco y capulí;\nahora que me asfixia Bizancio, y que dormita\nla sangre, como flojo cognac, dentro de mí.\n\n  Dónde estarán sus manos que en actitud contrita\nplanchaban en las tardes blancuras por venir;\nahora, en esta lluvia que me quita\nlas ganas de vivir.\n\n  Qué será de su falda de franela; de sus\nafanes; de su andar;\nde su sabor a cañas de mayo del lugar.\n\n  Ha de estarse a la puerta mirando algún celaje,\ny al fin dirá temblando: «Qué frío hay... Jesús!»\ny llorará en las tejas un pájaro salvaje.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Idilio_muerto",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Heces",
+      "texto": "  Esta tarde llueve, como nunca; y no\ntengo ganas de vivir, corazón.\n\n  Esta tarde es dulce. Porqué no ha de ser?\nViste gracia y pena; viste de mujer.\n\n  Esta tarde en Lima llueve. Y yo recuerdo\nlas cavernas crueles de mi ingratitud;\nmi bloque de hielo sobre su amapola,\nmas fuerte que su \"No seas así!\"\n\n  Mis violentas flores negras; y la bárbara\ny enorme pedrada; y el trecho glacial.\nY pondrá el silencio de su dignidad\ncon óleos quemantes el punto final.\n\n  Por eso esta tarde, como nunca, voy\ncon este buho, con este corazón.\n\n  Y otras pasan; y viéndome tan triste,\ntoman un poquito de tí\nen la abrupta arruga de mi hondo dolor.\n\n  Esta tarde llueve, llueve mucho. ¡Y no\ntengo ganas de vivir, corazón!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Heces",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "El pan nuestro",
+      "texto": "  Se bebe el desayuno.... Húmeda tierral\nde cementerio huele a sangre amada.\nCiudad de invierno.... La mordaz cruzada.\nde una carreta que arrastrar parece\nuna emoción de ayuno encadenada!\n\n  Se quisiera tocar todas las puertas,\ny preguntar por no sé quién; y luego\nver a los pobres, y, llorando quedos,\ndar pedacitos de pan fresco a todos.\nY saquear a los ricos sus viñedos\ncon las dos manos santas\nque a un golpe de luz\nvolaron desclavadas de la Cruz!\n\nPestaña matinal, no os levanteis!\n¡El pan nuestro de cada día dánoslo,\nSeñor....!\n\nTodos mis huesos son ajenos;\nyo talvez los robé!\nYo vine a darme lo que acaso estuvo\nasignado para otro;\ny pienso que, si no hubiera nacido,\notro pobre tomara este café!\nYo soy un mal ladrón.... A dónde iré!\n\n  Y en esta hora fría, en que la tierra\ntrasciende a polvo humano y es tan triste,\nquisiera yo tocar todas las puertas,\ny suplicar a no sé quién, perdón,\ny hacerle pedacitos de pan fresco\naqui, en el horno de mi corazón....!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_pan_nuestro",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Considerando en frío",
+      "texto": "Considerando en frío, imparcialmente,\nque el hombre es triste, tose y, sin embargo,\nse complace en su pecho colorado;\nque lo único que hace es componerse\nde días;\nque es lóbrego mamífero y se peina...\n\nConsiderando\nque el hombre procede suavemente del trabajo\ny repercute jefe, suena subordinado;\nque el diagrama del tiempo\nes constante diorama en sus medallas\ny, a medio abrir, sus ojos estudiaron,\ndesde lejanos tiempos,\nsu fórmula famélica de masa...\n\nComprendiendo sin esfuerzo\nque el hombre se queda, a veces, pensando,\ncomo queriendo llorar,\ny, sujeto a tenderse como objeto,\nse hace buen carpintero, suda, mata\ny luego canta, almuerza, se abotona...\n\nConsiderando también\nque el hombre es en verdad un animal\ny, no obstante, al voltear, me da con su tristeza en la cabeza...\n\nExaminando, en fin,\nsus encontradas piezas, su retrete,\nsu desesperación, al terminar su día atroz, borrándolo...\n\nComprendiendo\nque él sabe que le quiero,\nque le odio con afecto y me es, en suma, indiferente...\n\nConsiderando sus documentos generales\ny mirando con lentes aquel certificado\nque prueba que nació muy pequeñito...\n\nle hago una seña,\nviene,\ny le doy un abrazo, emocionado,\n¡Qué más da! Emocionado... Emocionado...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Considerando_en_fr%C3%ADo",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "La cena miserable",
+      "texto": "  Hasta cuándo estaremos esperando lo que\nno se nos debe.... Y en qué recodo estiraremos\nnuestra pobre rodilla para siempre! Hasta cuándo\nla cruz que nos alienta no detendrá sus remos.\n\n  Hasta cuándo la Duda nos brindará blasones\npor haber padecido....\n                  Ya nos hemos sentado\nmucho a la mesa, con la amargura de un niño\nque a media noche, llora de hambre, desvelado....\n\n\n  Y cuándo nos veremos con los demás, al borde\nde una mañana eterna, desayunados todos.\nHasta cuándo este valle de lágrimas, a donde\nyo nunca dije que me trajeran.\n                        De codos\ntodo bañado en llanto, repito cabizbajo\ny vencido: hasta cuándo la cena durará.\n\n  Hay alguien que ha bebido mucho, y se burla,\ny acerca y aleja de nosotros, como negra cuchara\nde amarga esencia humana, la tumba....\n                    Y menos sabe\nese oscuro hasta cuándo la cena durará!,",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_cena_miserable",
+      "tags": [
+        "dor",
+        "existencia",
+        "espanhol"
+      ]
+    }
+  ]
+}

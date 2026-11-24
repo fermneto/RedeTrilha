@@ -1,0 +1,23 @@
+{
+  "username": "holderlin",
+  "name": "Friedrich Hölderlin",
+  "bio": "Friedrich Hölderlin, poeta alemão de Lauffen am Neckar, colega de Hegel e Schelling. Suas odes, elegias e hinos unem a Grécia antiga e o sagrado numa linguagem sem igual. Passou metade da vida recluso numa torre em Tübingen, e foi redescoberto no século XX.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/FK_Hiemer_-_Friedrich_H%C3%B6lderlin_%28Pastell_1792%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1770,
+  "morte": 1843,
+  "poemas": [
+    {
+      "titulo": "Lebenslauf",
+      "texto": "Hochauf strebte mein Geist, aber die Liebe zog\nBald ihn nieder; Das Leid beugt ihn gewaltiger;\n     So durchlauf’ ich des Lebens\n          Bogen und kehre, woher ich kam.",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Lebenslauf_(H%C3%B6lderlin)",
+      "tags": [
+        "natureza",
+        "sagrado",
+        "alemao"
+      ]
+    }
+  ]
+}
