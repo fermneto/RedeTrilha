@@ -111,7 +111,6 @@ def test_feed_cronologico_dos_seguidos(client, logar):
 # ---------- PERFIL ----------
 
 
-@pytest.mark.skip(reason="Remova ao implementar perfil: PATCH /usuarios/eu + GET /usuarios/{username} (núcleo)")
 def test_perfil_editavel(client, logar):
     ana = logar("ana", "Ana")
 
@@ -137,7 +136,6 @@ def test_perfil_editavel(client, logar):
 # ---------- FOLLOW ----------
 
 
-@pytest.mark.skip(reason="Remova ao implementar follow/unfollow com contadores (núcleo)")
 def test_follow_unfollow_com_contadores(client, logar):
     ana = logar("ana")
     logar("bia")
