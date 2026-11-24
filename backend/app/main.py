@@ -14,6 +14,7 @@ from app.routers import (
     curtidas,
     feed,
     follows,
+    poema_do_dia,
     posts,
     reposts,
     tags,
@@ -55,3 +56,4 @@ app.include_router(feed.router)
 app.include_router(reposts.router)
 app.include_router(antologias.router)
 app.include_router(comentarios.router)
+app.include_router(poema_do_dia.router)
