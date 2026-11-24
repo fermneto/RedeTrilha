@@ -1,6 +1,7 @@
 """Rotas /tags e /explorar sem depender da auth: get_current_user é trocado
 por um usuário escolhido pelo header X-Teste-Usuario (como em test_posts.py)."""
 
+import time
 from datetime import UTC, datetime, timedelta
 
 import pytest
@@ -100,6 +101,16 @@ def test_trending_pula_a_linha_so_de_tags(client, como, publicar):
 
     itens = client.get("/tags/trending", headers=como("ana")).json()["items"]
     assert {item["trecho"] for item in itens} == {"  a varanda, a rede,"}
+
+
+def test_trending_linha_de_tags_patologica_nao_trava(client, como, publicar):
+    # "#a#a#a... x" fazia a regex antiga recuar em tempo exponencial.
+    publicar("#a" * 40 + " x\n\n  o verso certo\n#fim")
+
+    inicio = time.perf_counter()
+    itens = client.get("/tags/trending", headers=como("ana")).json()["items"]
+    assert time.perf_counter() - inicio < 5
+    assert {item["trecho"] for item in itens} == {"#a" * 40 + " x"}
 
 
 def test_trending_um_poema_diferente_por_tag(client, como, publicar):
