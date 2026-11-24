@@ -47,7 +47,7 @@ Para rodar o projeto, abram dois terminais:
 
 ```bash
 make dev-back   # API em localhost:8000, Swagger em localhost:8000/docs
-make dev-front  # site em localhost:3000/usuarios
+make dev-front  # site em localhost:3000/acervo
 ```
 
 Se algum comando falhar, vejam o [guia 00](docs/guias/00-setup.md).
