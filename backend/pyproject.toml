@@ -12,6 +12,7 @@ dependencies = [
     "faker>=25.0",
     "psycopg[binary]>=3.2",
     "anthropic>=2.13.0",
+    "sentry-sdk[fastapi]>=2.0",
 ]
 
 [dependency-groups]
