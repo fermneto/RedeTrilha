@@ -91,20 +91,83 @@ Não foram importados.
 
 | nome / username | porquê |
 |---|---|
-| Eugénio de Castro | Wikidata Q1373516 dá 1944, mas o texto da Wikipédia em português não deixou o ano legível para cruzar. Também não há coleção transcrita no pt.wikisource. Não entrou. |
+| Eugénio de Castro | Decisão do Fernando: a morte de 1944 no Wikidata (Q1373516) chega. Não entrou porque não há texto numa fonte aceite. O pt.wikisource não tem poemas dele. Gutenberg respondeu 503, Domínio Público 403, Gallica 403, Cervantes Virtual 403 e a literatura brasileira da UFSC 403. A Brasiliana (USP) não tem ficha. Os livros apontados na Wikipédia estão no Internet Archive, que não é fonte aceite. |
 
 ## Notas de data
 
 Nenhuma divergência entre Wikidata e Wikipédia nos poetas que entraram.
 
+## Bloco: Línguas latinas e espanhol
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| `carducci` | Giosuè Carducci | 1907 | it | 131 | it.wikisource: Rime nuove |
+| `cavalcanti` | Guido Cavalcanti | 1300 | it | 69 | it.wikisource: Rime (Cavalcanti) |
+| `eminescu` | Mihai Eminescu | 1889 | ro | 403 | ro.wikisource: Mihai Eminescu |
+| `espronceda` | José de Espronceda | 1842 | es | 4 | es.wikisource: El estudiante de Salamanca |
+| `foscolo` | Ugo Foscolo | 1827 | it | 11 | it.wikisource: Sonetti (Foscolo) |
+| `heredia` | José-Maria de Heredia | 1905 | fr | 126 | fr.wikisource: Les Trophées |
+| `jose_marti` | José Martí | 1877 | es | 46 | es.wikisource: Versos sencillos |
+| `la_fontaine` | La Fontaine | 1695 | fr | 272 | fr.wikisource: Fables de La Fontaine (éd. 1874) |
+| `lamartine` | Alphonse de Lamartine | 1869 | fr | 92 | fr.wikisource: Méditations poétiques |
+| `lope_de_vega` | Lope de Vega | 1635 | es | 6 | es.wikisource: Rimas (Lope de Vega) |
+| `michelangelo` | Michelangelo | 1564 | it | 300 | it.wikisource: Rime (Michelangelo) |
+| `musset` | Alfred de Musset | 1857 | fr | 7 | fr.wikisource: Poésies (Musset) |
+| `nerval` | Gérard de Nerval | 1855 | fr | 8 | fr.wikisource: Les Chimères |
+| `pascoli` | Giovanni Pascoli | 1912 | it | 168 | it.wikisource: Myricae |
+| `valery` | Paul Valéry | 1945 | fr | 49 | fr.wikisource: Paul Valéry |
+| `verdaguer` | Jacint Verdaguer | 1902 | ca | 1 | ca.wikisource: L'Atlàntida |
+| `villon` | François Villon | 1464 | fr | 2 | fr.wikisource: Œuvres complètes de François Villon |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| `apollinaire` | fr.wikisource: Alcools | 51 | 10 | 40 | duplicata 10, excertos 1, sem_poema 1 |
+| `baudelaire` | fr.wikisource: Les Fleurs du mal (1861) | 128 | 10 | 157 | duplicata 6, excertos 1 |
+| `cesar_vallejo` | es.wikisource: Trilce | 77 | 10 | 77 | — |
+| `dante` | it.wikisource: Rime (Dante) | 118 | 10 | 115 | duplicata 3 |
+| `garcia_lorca` | es.wikisource: Romancero gitano | 19 | 5 | 25 | sem_poema 1 |
+| `leopardi` | it.wikisource: Canti (Leopardi - Donati) | 61 | 3 | 46 | duplicata 3, sem_poema 17 |
+| `mallarme` | fr.wikisource: Stéphane Mallarmé | 21 | 10 | 11 | sem_poema 10 |
+| `petrarca` | it.wikisource: Canzoniere (Rerum vulgarium fragmenta) | 366 | 10 | 355 | duplicata 10, sem_poema 1 |
+| `rimbaud` | fr.wikisource: Poésies (Rimbaud) | 51 | 10 | 50 | duplicata 8, sem_poema 5 |
+| `ronsard` | fr.wikisource: Sonnets pour Hélène | 18 | 7 | 17 | sem_poema 1 |
+| `rosalia_de_castro` | gl.wikisource: Cantares gallegos | 41 | 4 | 38 | sem_poema 3 |
+| `ruben_dario` | es.wikisource: Prosas profanas | 37 | 10 | 67 | duplicata 2, sem_poema 1 |
+| `victor_hugo` | fr.wikisource: Les Contemplations | 166 | 10 | 189 | duplicata 3, epico_seguinte 1, excertos 4, sem_poema 8 |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| quevedo | sem coleção transcrita no es.wikisource (Francisco de Quevedo) |
+| gongora | sem coleção transcrita no es.wikisource (Luis de Góngora y Argote) |
+| garcilaso | sem coleção transcrita no es.wikisource (Garcilaso de la Vega) |
+| jorge_manrique | sem coleção transcrita no es.wikisource (Jorge Manrique) |
+| san_juan_de_la_cruz | sem coleção transcrita no es.wikisource (San Juan de la Cruz) |
+| antonio_machado | sem coleção transcrita no es.wikisource (Antonio Machado) |
+| ariosto | sem coleção transcrita no it.wikisource (Ludovico Ariosto) |
+| tasso | sem coleção transcrita no it.wikisource (Torquato Tasso) |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 113 poetas, 4645 poemas.
+JSON na pasta (exceto ficheiros `_`): 130 poetas, 7527 poemas.
 
-`make reset` (importador, tudo ou nada):
+`make reset` depois do bloco das línguas latinas e do espanhol:
 
 ```
-consagrados: 113 poetas criados, 0 atualizados; 4645 poemas criados, 0 atualizados
+consagrados: 130 poetas criados, 0 atualizados; 7527 poemas criados, 0 atualizados
 ```
 
-Eram 95 poetas e 725 poemas. Neste bloco entraram 18 poetas novos e o verso transcrito das coleções dos que já estavam. Bocage e Cláudio Manuel foram gravados em duas passagens: a coluna «já havia» deles inclui a primeira.
+O bloco português tinha fechado em 113 poetas e 4645 poemas. Este bloco somou as coleções em es, fr, it, gl, ca e ro. Bocage e Cláudio Manuel, no bloco anterior, foram gravados em duas passagens: a coluna «já havia» deles inclui a primeira.

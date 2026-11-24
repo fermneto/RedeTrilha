@@ -59,6 +59,8 @@ def normalizar(texto: str) -> str:
     for linha in texto.split("\n"):
         if _LIXO_LINHA.match(linha.strip()):
             continue
+        # Número de página colado ao verso nas transcrições ("6Su del", "    4dalle").
+        linha = re.sub(r"^(\s*)\d{1,3}(?=[A-Za-zÀ-ÿ])", r"\1", linha)
         linhas.append(linha)
     texto = "\n".join(linhas)
     texto = re.sub(r"\n{3,}", "\n\n", texto)

@@ -43,10 +43,18 @@ RELATORIO = PASTA / "_relatorio_expansao.md"
 LIMITE_VERSO = 500
 _EPICO = re.compile(
     r"(?i)lus[ií]adas|uraguai|uraguay|caramuru|vila rica|"
-    r"confedera[cç][aã]o dos tamo|guesa|cartas chilenas"
+    r"confedera[cç][aã]o dos tamo|guesa|cartas chilenas|"
+    r"divina commedia|commedia|orlando furioso|gerusalemme liberata|"
+    r"chansons? de roland|os lusíadas|atlàntida|atlantida"
 )
-_ABERTURA = re.compile(r"(?i)^(?:canto\s+)?(?:i|1|primeiro)$")
+_ABERTURA = re.compile(
+    r"(?i)^(?:canto|chant|cant|càntic)?\s*(?:i|1|primeiro|primero|premier|primer|primo)$"
+)
 _EDICAO = re.compile(r"(?i)grafia original|ortografia atualizada")
+_REDIRECT = re.compile(
+    r"#\s*(?:REDIRECTION|REDIRECT|RINVIA|REDIRECCI[ÓO]N)\s*\[\[([^\]|#]+)",
+    re.IGNORECASE,
+)
 _TEMAS = (
     ("amor", ("amor", "amada", "amado", "beijo", "namoro", "paixao", "ciume")),
     ("morte", ("morte", "morto", "tumulo", "sepulcro", "cadaver")),
@@ -147,15 +155,17 @@ def _url(wiki: str, titulo: str) -> str:
     return f"https://{wiki}.wikisource.org/wiki/{caminho}"
 
 
-def _obra(categoria: str) -> str:
-    obra = f"pt.wikisource: {categoria}"
+def _obra(wiki: str, categoria: str) -> str:
+    obra = f"{wiki}.wikisource: {categoria}"
     return obra[:200]
 
 
-def _escolher_categoria(cliente: ClienteWiki, categorias: tuple[str, ...]) -> tuple[str, list[str]]:
+def _escolher_categoria(
+    cliente: ClienteWiki, wiki: str, categorias: tuple[str, ...]
+) -> tuple[str, list[str]]:
     melhor = ("", [])
     for categoria in categorias:
-        titulos = cliente.membros_da_categoria("pt", categoria)
+        titulos = cliente.membros_da_categoria(wiki, categoria)
         if len(titulos) > len(melhor[1]):
             melhor = (categoria, titulos)
     return melhor
@@ -194,13 +204,16 @@ def _processar(cliente: ClienteWiki, alvo: Alvo, limite: int | None) -> dict:
         "sitelinks": None,
         "estado": "ok",
         "motivo": "",
+        "wiki": alvo.wiki,
     }
     if novo:
         if not caminho.exists() and alvo.username in _usernames_ocupados():
             resumo["estado"] = "descartado"
             resumo["motivo"] = "username já usado por conta do seed ou reservado"
             return resumo
-        datas, motivo = confirmar(cliente, alvo.busca or alvo.name or alvo.username)
+        datas, motivo = confirmar(
+            cliente, alvo.busca or alvo.name or alvo.username, qid=alvo.qid
+        )
         if datas is None:
             resumo["estado"] = "descartado" if "1955" in motivo else "duvida"
             resumo["motivo"] = motivo
@@ -215,12 +228,17 @@ def _processar(cliente: ClienteWiki, alvo: Alvo, limite: int | None) -> dict:
         resumo["motivo"] = "JSON existente não encontrado"
         return resumo
 
-    categoria, titulos = _escolher_categoria(cliente, alvo.categorias)
+    if alvo.prefixo:
+        categoria = alvo.prefixo.rstrip("/")
+        titulos = cliente.paginas_com_prefixo(alvo.wiki, alvo.prefixo)
+    else:
+        categoria, titulos = _escolher_categoria(cliente, alvo.wiki, alvo.categorias)
     resumo["categoria"] = categoria
     resumo["paginas"] = len(titulos)
     if not titulos:
+        onde = ", ".join(alvo.categorias) or (alvo.prefixo or "")
         resumo["estado"] = "descartado"
-        resumo["motivo"] = "sem coleção transcrita no pt.wikisource (" + ", ".join(alvo.categorias) + ")"
+        resumo["motivo"] = f"sem coleção transcrita no {alvo.wiki}.wikisource ({onde})"
         return resumo
 
     if caminho.exists():
@@ -239,7 +257,7 @@ def _processar(cliente: ClienteWiki, alvo: Alvo, limite: int | None) -> dict:
     resumo["name"] = dados.get("name")
     resumo["morte"] = dados.get("morte")
     resumo["existentes"] = len(dados["poemas"])
-    obra = _obra(categoria)
+    obra = _obra(alvo.wiki, categoria)
     dedup = Dedup()
     chaves = set()
     for poema in dados["poemas"]:
@@ -257,13 +275,30 @@ def _processar(cliente: ClienteWiki, alvo: Alvo, limite: int | None) -> dict:
             continue
         vistos += 1
         try:
-            pagina = cliente.parse("pt", titulo_pagina)
+            pagina = cliente.parse(alvo.wiki, titulo_pagina)
         except ErroWiki as erro:
             resumo["pulados"]["erro_api"] += 1
             resumo.setdefault("erros", []).append(str(erro))
             continue
+        salto = _REDIRECT.match((pagina.get("wikitext") or "").lstrip())
+        if salto:
+            try:
+                pagina = cliente.parse(alvo.wiki, salto.group(1).strip())
+            except ErroWiki as erro:
+                resumo["pulados"]["erro_api"] += 1
+                resumo.setdefault("erros", []).append(str(erro))
+                continue
         titulo_final = pagina["title"] or titulo_pagina
         textos = extrair_textos(pagina["html"])
+        if not textos:
+            testo = re.search(r"\{\{Testo\|([^|}]+)", pagina.get("wikitext") or "")
+            if testo:
+                try:
+                    pagina = cliente.parse(alvo.wiki, testo.group(1).strip())
+                    titulo_final = pagina["title"] or titolo_final
+                    textos = extrair_textos(pagina["html"])
+                except ErroWiki:
+                    textos = []
         if not textos:
             resumo["pulados"]["sem_poema"] += 1
             continue
@@ -293,7 +328,7 @@ def _processar(cliente: ClienteWiki, alvo: Alvo, limite: int | None) -> dict:
                 titulo = f"{titulo_final} — {primeiro}"
             if excerto:
                 titulo = f"{titulo} (estrofes iniciais)"
-            fonte = _url("pt", titulo_final)
+            fonte = _url(alvo.wiki, titulo_final)
             if len(fonte) > 500 or len(titulo) > 240:
                 resumo["pulados"]["url_ou_titulo_longo"] += 1
                 continue
@@ -373,8 +408,8 @@ def _escrever_relatorio(resumos: list[dict], total_poetas: int, total_poemas: in
         linhas.append("| — | nenhum neste bloco |  |  |  |  |")
     for item in sorted(novos, key=lambda entrada: entrada["username"]):
         linhas.append(
-            f"| `{item['username']}` | {item['name']} | {item['morte']} | pt | "
-            f"{item['importados']} | Categoria:{item['categoria']} ({item['fontes_data']}) |"
+            f"| `{item['username']}` | {item['name']} | {item['morte']} | {item.get('wiki') or 'pt'} | "
+            f"{item['importados']} | {item.get('wiki') or 'pt'}.wikisource: {item['categoria']} ({item['fontes_data']}) |"
         )
     linhas += [
         "",
@@ -456,18 +491,99 @@ def _totais() -> tuple[int, int]:
     return poetas, poemas
 
 
+def _anexar_bloco(nome: str, resumos: list[dict], total_poetas: int, total_poemas: int) -> None:
+    """Acrescenta um bloco ao relatório sem apagar o que os blocos anteriores gravaram."""
+    novos = [item for item in resumos if item["novo"] and item["estado"] == "ok"]
+    aprofundados = [item for item in resumos if not item["novo"] and item["importados"]]
+    descartados = [item for item in resumos if item["estado"] == "descartado"]
+    duvidas = [item for item in resumos if item["estado"] == "duvida"]
+    linhas = [
+        f"## Bloco: {nome}",
+        "",
+        "Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.",
+        "",
+        "### Poetas acrescentados",
+        "",
+        "| username | nome | morte | idioma | poemas | fonte principal |",
+        "|---|---|---:|---|---:|---|",
+    ]
+    if not novos:
+        linhas.append("| — | nenhum |  |  |  |  |")
+    for item in sorted(novos, key=lambda entrada: entrada["username"]):
+        linhas.append(
+            f"| `{item['username']}` | {item['name']} | {item['morte']} | {item.get('wiki')} | "
+            f"{item['importados']} | {item.get('wiki')}.wikisource: {item['categoria']} |"
+        )
+    linhas += [
+        "",
+        "### Coleções aprofundadas",
+        "",
+        "| username | coleção | páginas | já havia | importados | pulados |",
+        "|---|---|---:|---:|---:|---|",
+    ]
+    if not aprofundados:
+        linhas.append("| — | — |  |  |  |  |")
+    for item in sorted(aprofundados, key=lambda entrada: entrada["username"]):
+        pulados = ", ".join(f"{chave} {valor}" for chave, valor in sorted(item["pulados"].items()))
+        linhas.append(
+            f"| `{item['username']}` | {item.get('wiki')}.wikisource: {item['categoria']} | "
+            f"{item['paginas']} | {item['existentes']} | {item['importados']} | {pulados or '—'} |"
+        )
+    linhas += ["", "### Descartados", "", "| nome | motivo |", "|---|---|"]
+    if not descartados:
+        linhas.append("| — | — |")
+    for item in descartados:
+        linhas.append(f"| {item.get('name') or item['username']} | {item['motivo']} |")
+    linhas += ["", "### Para decisão humana", "", "| nome | porquê |", "|---|---|"]
+    if not duvidas:
+        linhas.append("| — | — |")
+    for item in duvidas:
+        linhas.append(f"| {item.get('name') or item['username']} | {item['motivo']} |")
+    linhas.append("")
+    texto = RELATORIO.read_text(encoding="utf-8") if RELATORIO.exists() else ""
+    marca = f"## Bloco: {nome}"
+    if marca in texto:
+        antes, _, resto = texto.partition(marca)
+        proximo = resto.find("\n## ")
+        resto = resto[proximo + 1 :] if proximo != -1 else ""
+        texto = antes + resto
+    contagem = "\n## 4. Contagem\n"
+    bloco = "\n".join(linhas)
+    if contagem in texto:
+        texto = texto.replace(contagem, "\n" + bloco + contagem, 1)
+    else:
+        texto = texto.rstrip() + "\n\n" + bloco + "\n"
+    texto = re.sub(
+        r"JSON na pasta \(exceto ficheiros `_`\): \d+ poetas, \d+ poemas\.",
+        f"JSON na pasta (exceto ficheiros `_`): {total_poetas} poetas, {total_poemas} poemas.",
+        texto,
+        count=1,
+    )
+    RELATORIO.write_text(texto, encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--somente", nargs="*", default=None, help="usernames a processar")
     parser.add_argument("--limite", type=int, default=None, help="máximo de páginas lidas por autor")
     parser.add_argument("--so-novos", action="store_true")
     parser.add_argument("--so-existentes", action="store_true")
+    parser.add_argument(
+        "--bloco",
+        default="pt",
+        help="pt (catálogo português, reescreve o relatório) ou latinos",
+    )
     args = parser.parse_args()
+    if args.bloco == "latinos":
+        from scripts.scraping.catalogo_latinos import EXISTENTES as EXISTENTES_BLOCO
+        from scripts.scraping.catalogo_latinos import NOVOS as NOVOS_BLOCO
+    else:
+        EXISTENTES_BLOCO, NOVOS_BLOCO = EXISTENTES, NOVOS
     alvos = []
     if not args.so_novos:
-        alvos.extend(EXISTENTES)
+        alvos.extend(EXISTENTES_BLOCO)
     if not args.so_existentes:
-        alvos.extend(NOVOS)
+        alvos.extend(NOVOS_BLOCO)
     if args.somente:
         queridos = set(args.somente)
         alvos = [alvo for alvo in alvos if alvo.username in queridos]
@@ -484,7 +600,8 @@ def main() -> None:
             flush=True,
         )
     poetas, poemas = _totais()
-    saida = Path(__file__).resolve().parent / "resultado_pt.json"
+    nome_saida = "resultado_pt.json" if args.bloco == "pt" else f"resultado_{args.bloco}.json"
+    saida = Path(__file__).resolve().parent / nome_saida
     gravavel = []
     for resumo in resumos:
         copia = dict(resumo)
@@ -497,7 +614,13 @@ def main() -> None:
             por_nome[item["username"]] = item
         gravavel = list(por_nome.values())
     saida.write_text(json.dumps(gravavel, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    _escrever_relatorio(gravavel, poetas, poemas)
+    if args.bloco == "pt":
+        _escrever_relatorio(gravavel, poetas, poemas)
+    else:
+        titulos_bloco = {
+            "latinos": "Línguas latinas e espanhol",
+        }
+        _anexar_bloco(titulos_bloco.get(args.bloco, args.bloco), gravavel, poetas, poemas)
     print(f"poetas={poetas} poemas={poemas} relatorio={RELATORIO}", flush=True)
 
 

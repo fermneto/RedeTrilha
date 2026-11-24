@@ -19,6 +19,12 @@ class Alvo:
     busca: str | None = None
     bio: str | None = None
     cordel: bool = False
+    # Wikisource de origem. "pt" usa o namespace Categoria; os outros, Category.
+    wiki: str = "pt"
+    # Se preenchido, a coleção são as subpáginas deste prefixo (um livro), não a categoria.
+    prefixo: str | None = None
+    # QID do Wikidata quando a busca pelo nome acerta noutro homónimo.
+    qid: str | None = None
 
 
 # Categorias conferidas na API: é onde os poemas transcritos estão de facto.

@@ -125,7 +125,12 @@ class ClienteWiki:
         }
 
     def membros_da_categoria(self, wiki: str, categoria: str) -> list[str]:
-        """Títulos do domínio principal (ns 0) de uma categoria, página a página."""
+        """Títulos do domínio principal (ns 0) de uma categoria, página a página.
+
+        `Category:` é o nome canónico e vale em qualquer Wikisource. Em português
+        continua `Categoria:`, para reaproveitar o cache já gravado.
+        """
+        namespace = "Categoria" if wiki == "pt" else "Category"
         titulos: list[str] = []
         continuar: str | None = None
         guarda = 0
@@ -134,7 +139,7 @@ class ClienteWiki:
             params = {
                 "action": "query",
                 "list": "categorymembers",
-                "cmtitle": f"Categoria:{categoria}",
+                "cmtitle": f"{namespace}:{categoria}",
                 "cmlimit": "500",
                 "cmtype": "page",
             }
@@ -147,6 +152,32 @@ class ClienteWiki:
                 if membro.get("ns") == 0:
                     titulos.append(membro["title"])
             continuar = (dados.get("continue") or {}).get("cmcontinue")
+            if not continuar:
+                break
+        return titulos
+
+    def paginas_com_prefixo(self, wiki: str, prefixo: str) -> list[str]:
+        """Subpáginas de um livro (`Obra/`), no domínio principal."""
+        titulos: list[str] = []
+        continuar: str | None = None
+        guarda = 0
+        while guarda < 20:
+            guarda += 1
+            params = {
+                "action": "query",
+                "list": "allpages",
+                "apprefix": prefixo,
+                "apnamespace": "0",
+                "aplimit": "500",
+            }
+            if continuar:
+                params["apcontinue"] = continuar
+            dados = self.obter(f"{wiki}.wikisource.org", params)
+            if dados.get("error"):
+                return titulos
+            for pagina in dados.get("query", {}).get("allpages", []):
+                titulos.append(pagina["title"])
+            continuar = (dados.get("continue") or {}).get("apcontinue")
             if not continuar:
                 break
         return titulos

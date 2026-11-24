@@ -80,17 +80,18 @@ def _anos_do_lead(wikitexto: str) -> tuple[int | None, int | None]:
 def _ano_no_wikitexto(wikitexto: str, morte: bool) -> int | None:
     if not wikitexto:
         return None
-    nascimento, morte_lead = _anos_do_lead(wikitexto)
-    if morte and morte_lead is not None:
-        return morte_lead
-    if not morte and nascimento is not None:
-        return nascimento
     if morte:
         casamento = re.search(r"\{\{\s*[Mm]orte\s*\|([^{}]*)\}\}", wikitexto)
         if casamento:
             anos = re.findall(r"\b(?:1[0-9]{3}|20[0-9]{2})\b", casamento.group(1))
             if anos:
                 return int(anos[0])
+    nascimento, morte_lead = _anos_do_lead(wikitexto)
+    if morte and morte_lead is not None and morte_lead <= 1955:
+        return morte_lead
+    if not morte and nascimento is not None and nascimento <= 1955:
+        return nascimento
+    if morte:
         campo = re.search(
             r"\|\s*(?:morte|data_morte|data da morte)\s*=\s*([^\n|]+)", wikitexto, re.I
         )
@@ -146,30 +147,33 @@ def _avatar(cliente: ClienteWiki, ficheiro: str) -> str:
     return ""
 
 
-def confirmar(cliente: ClienteWiki, nome: str) -> tuple[DatasConfirmadas | None, str]:
+def confirmar(
+    cliente: ClienteWiki, nome: str, qid: str | None = None
+) -> tuple[DatasConfirmadas | None, str]:
     """Devolve (datas, "") ou (None, motivo). O motivo já serve o relatório."""
-    busca = cliente.obter(
-        "www.wikidata.org",
-        {
-            "action": "wbsearchentities",
-            "search": nome,
-            "language": "pt",
-            "uselang": "pt",
-            "limit": "8",
-        },
-    )
-    candidatos = busca.get("search") or []
-    poetas = [
-        item
-        for item in candidatos
-        if any(
-            palavra in (item.get("description") or "").lower()
-            for palavra in ("poet", "poeta", "escritor", "writer", "dramaturg")
+    if not qid:
+        busca = cliente.obter(
+            "www.wikidata.org",
+            {
+                "action": "wbsearchentities",
+                "search": nome,
+                "language": "pt",
+                "uselang": "pt",
+                "limit": "8",
+            },
         )
-    ]
-    if not poetas:
-        return None, "Wikidata sem ficha de poeta entre os homônimos"
-    qid = poetas[0]["id"]
+        candidatos = busca.get("search") or []
+        poetas = [
+            item
+            for item in candidatos
+            if any(
+                palavra in (item.get("description") or "").lower()
+                for palavra in ("poet", "poeta", "escritor", "writer", "dramaturg", "artist")
+            )
+        ]
+        if not poetas:
+            return None, "Wikidata sem ficha de poeta entre os homônimos"
+        qid = poetas[0]["id"]
     entidade = cliente.obter(
         "www.wikidata.org",
         {"action": "wbgetentities", "ids": qid, "props": "claims|sitelinks"},
