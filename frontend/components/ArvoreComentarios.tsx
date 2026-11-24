@@ -5,7 +5,7 @@
 // (recursão) e pode ser respondido em qualquer nível.
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   apagarComentario,
@@ -14,6 +14,7 @@ import {
   comentar,
   formatarData,
   type Comentario,
+  type User,
 } from "@/lib/api";
 
 type Props = {
@@ -113,6 +114,9 @@ type PropsLista = {
   comentarios: Comentario[];
   // Nível na árvore: 0 = comentário direto no poema.
   nivel: number;
+  // Autor do comentário pai (null se o pai foi removido; undefined na raiz).
+  // Depois do recuo máximo, a resposta mostra "↳ respondendo a @fulano".
+  autorDoPai?: User | null;
   // Comentários recém-publicados pelo usuário, com o destaque "seu comentário".
   destacados?: Set<number>;
   euId: number | null;
@@ -137,6 +141,7 @@ function ItemComentario({
   comentario,
   novo,
   nivel,
+  autorDoPai,
   euId,
   aoMudar,
   aoSumir,
@@ -149,8 +154,26 @@ function ItemComentario({
   const [respondendo, setRespondendo] = useState(false);
   // "apagar" pede confirmação ali mesmo: vira "apagar? sim / não".
   const [confirmando, setConfirmando] = useState(false);
+  const confirmacao = useRef<HTMLSpanElement>(null);
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+
+  // Clique fora da confirmação ou Esc cancelam o "apagar?".
+  useEffect(() => {
+    if (!confirmando) return;
+    function cliqueFora(e: PointerEvent) {
+      if (!confirmacao.current?.contains(e.target as Node)) setConfirmando(false);
+    }
+    function tecla(e: KeyboardEvent) {
+      if (e.key === "Escape") setConfirmando(false);
+    }
+    document.addEventListener("pointerdown", cliqueFora);
+    document.addEventListener("keydown", tecla);
+    return () => {
+      document.removeEventListener("pointerdown", cliqueFora);
+      document.removeEventListener("keydown", tecla);
+    };
+  }, [confirmando]);
 
   const faltam = total - respostas.length;
   const autor = removido ? null : comentario.autor;
@@ -206,6 +229,11 @@ function ItemComentario({
         }
       >
         {novo && <p className="mb-1 text-xs text-destaque">seu comentário</p>}
+        {nivel > NIVEL_MAXIMO_DE_RECUO && autorDoPai !== undefined && (
+          <p className="mb-1 text-xs text-tinta-suave">
+            ↳ respondendo a {autorDoPai ? `@${autorDoPai.username}` : "um comentário removido"}
+          </p>
+        )}
         {removido || !autor ? (
           <p className="text-sm text-tinta-suave italic">comentário removido</p>
         ) : (
@@ -224,7 +252,7 @@ function ItemComentario({
               </button>
               {euId === autor.id &&
                 (confirmando ? (
-                  <span className="text-xs text-tinta-suave">
+                  <span ref={confirmacao} className="text-xs text-tinta-suave">
                     apagar?{" "}
                     <button
                       type="button"
@@ -272,6 +300,7 @@ function ItemComentario({
           <ListaComentarios
             comentarios={respostas}
             nivel={nivel + 1}
+            autorDoPai={autor}
             euId={euId}
             aoMudar={aoMudar}
             aoSumir={removerResposta}
