@@ -4,10 +4,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from sqlalchemy import select
 
-from app.db import Base, SessionLocal, engine
+from app.db import POOL, Base, SessionLocal, engine
 from app.erros import erro_de_validacao
+from app.limite_do_banco import LimiteDeConexoes
 from app.models.user import User
 from app.routers import (
     acervo,
@@ -69,6 +71,11 @@ app = FastAPI(title="Rede Social da Trilha", lifespan=lifespan)
 # 422 em português em toda a API (ver app/erros.py).
 app.add_exception_handler(RequestValidationError, erro_de_validacao)
 
+# A ordem de fora para dentro é a inversa da de registro: CORS, gzip, fila do banco.
+# Fila: no máximo POOL.maximo requisições com conexão ao mesmo tempo (app/limite_do_banco.py).
+app.add_middleware(LimiteDeConexoes, maximo=POOL.maximo)
+# Poemas e feeds são JSON de texto: o gzip corta ~70% dos bytes. Abaixo de 1 KB não compensa.
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origens_permitidas(),
