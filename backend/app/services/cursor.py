@@ -3,9 +3,11 @@ item entregue, em base64. Usado pelo feed e pelos comentários."""
 
 import base64
 import binascii
-from datetime import datetime, timezone
+from datetime import datetime
 
 from fastapi import HTTPException
+
+from app.core.datas import para_utc
 
 
 def codificar_cursor(data: datetime, id_: int) -> str:
@@ -24,6 +26,4 @@ def ler_cursor(cursor: str) -> tuple[datetime, int]:
 
 def utc_sem_fuso(data: datetime) -> datetime:
     """O SQLite devolve datas sem fuso; o cursor compara tudo em UTC sem fuso."""
-    if data.tzinfo is None:
-        return data
-    return data.astimezone(timezone.utc).replace(tzinfo=None)
+    return para_utc(data).replace(tzinfo=None)
