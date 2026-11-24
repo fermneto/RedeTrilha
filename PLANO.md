@@ -73,8 +73,19 @@ junto. As citações (com texto) continuam, com `repost_de: null` e
 `repost_removido: true`, e a tela mostra "poema removido pelo autor", como no X.
 
 `PostOut`: os campos acima + `autor: UserOut`, `curtidas`, `comentarios`,
-`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`, `repost_removido: bool`
-(um nível) e `tags: list[str]`.
+`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`
+(um nível), `repost_removido: bool`, `tags: list[str]` e
+`repostado_por: list[UserOut]` (só no feed; vazio fora dele).
+
+### Feed (`GET /feed`), decisões do Neto
+
+- Reposts como no X: cada poema aparece uma vez, na ocorrência mais recente.
+  `repostado_por` lista todos os seguidos (e o próprio usuário) que repostaram,
+  do mais recente para o mais antigo. Citações não deduplicam com o original.
+- Paginação como na timeline do X: `limit` de 1 a 100 (padrão 20) e um `cursor`
+  opaco, com `proximo_cursor` na resposta (`FeedPage`, herda de `PostPage`).
+  Com cursor, `total` vem `null`. `offset` continua aceito (teste do núcleo).
+- O feed inclui os próprios poemas. Pode curtir o próprio poema.
 
 ### `Follow` (dono: Neto)
 
