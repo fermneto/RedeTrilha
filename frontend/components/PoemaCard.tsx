@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
 import { NomeAutor } from "@/components/NomeAutor";
 import { IconeCitar } from "@/components/icones/IconeCitar";
@@ -287,6 +288,7 @@ function Acoes({ poema }: { poema: Post }) {
           </span>
           <Contador n={poema.comentarios} />
         </Link>
+        <AntologiaSeletor postId={poema.id} classeBotao={botao} classeCirculo={circulo} classeIcone={icone} />
       </div>
       {erro && <p className="mt-2 text-xs text-destaque">{erro}</p>}
     </div>
