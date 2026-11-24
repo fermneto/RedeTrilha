@@ -1,14 +1,15 @@
 "use client";
 // "Rascunhos": a gaveta dos poemas guardados e ainda não publicados. Só o autor
 // os vê. Cada um mostra o começo do poema, quando foi mexido e, se for citação,
-// de quem; abre no compositor, publica ou apaga dali. "Escrever" fica sempre à
-// vista no cabeçalho, para começar um poema novo.
+// de quem; abre no compositor, publica ou apaga dali. No topo, a mesma chamada
+// do feed ("O que você está escrevendo?") começa um poema novo.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { ChamadaEscrever } from "@/components/ChamadaEscrever";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
@@ -70,18 +71,8 @@ export default function RascunhosPage() {
 
   return (
     <div>
-      <CabecalhoPagina
-        titulo="Rascunhos"
-        acao={
-          <Link
-            href="/escrever"
-            className="flex h-9 shrink-0 items-center gap-2 rounded-full bg-destaque px-4 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110"
-          >
-            <IconeEscrever className="h-[18px] w-[18px]" />
-            Escrever
-          </Link>
-        }
-      />
+      <CabecalhoPagina titulo="Rascunhos" />
+      <ChamadaEscrever />
       <p className="border-b border-borda px-4 py-3 text-sm text-tinta-suave">
         Poemas guardados e ainda não publicados. Só você vê.
       </p>
