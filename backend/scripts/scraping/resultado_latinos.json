@@ -5,16 +5,16 @@
     "novo": false,
     "categoria": "Rimas (Bécquer, 1885)",
     "paginas": 76,
-    "importados": 0,
+    "importados": 66,
     "existentes": 10,
     "pulados": {
-      "sem_poema": 76
+      "duplicata": 10
     },
     "morte": 1870,
     "fontes_data": "",
     "nota_data": "",
     "sitelinks": null,
-    "estado": "inalterado",
+    "estado": "ok",
     "motivo": "",
     "wiki": "es"
   },
@@ -64,16 +64,16 @@
     "novo": false,
     "categoria": "Fêtes galantes",
     "paginas": 20,
-    "importados": 0,
+    "importados": 19,
     "existentes": 10,
     "pulados": {
-      "sem_poema": 20
+      "duplicata": 1
     },
     "morte": 1896,
     "fontes_data": "",
     "nota_data": "",
     "sitelinks": null,
-    "estado": "inalterado",
+    "estado": "ok",
     "motivo": "",
     "wiki": "fr"
   },

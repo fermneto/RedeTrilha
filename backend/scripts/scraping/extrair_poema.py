@@ -40,7 +40,14 @@ def _termina_em_quebra(partes: list[str]) -> bool:
 
 
 def _classes(valor: str) -> set[str]:
-    return set(valor.split())
+    """Une `poem`, `poema` e `poème`: o Wikisource traduz o nome da classe."""
+    classes = set()
+    for classe in valor.split():
+        classe = classe.replace("poème", "poem").replace("poeme", "poem").replace("poema", "poem")
+        if classe.endswith("-estrofa"):
+            classe = classe[: -len("estrofa")] + "stanza"
+        classes.add(classe)
+    return classes
 
 
 def _salta(tag: str, classes: set[str]) -> bool:

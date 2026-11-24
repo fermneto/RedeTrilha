@@ -129,6 +129,7 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|---:|---:|---:|---|
 | `apollinaire` | fr.wikisource: Alcools | 51 | 10 | 40 | duplicata 10, excertos 1, sem_poema 1 |
 | `baudelaire` | fr.wikisource: Les Fleurs du mal (1861) | 128 | 10 | 157 | duplicata 6, excertos 1 |
+| `becquer` | es.wikisource: Rimas (Bécquer, 1885) | 76 | 10 | 66 | duplicata 10 |
 | `cesar_vallejo` | es.wikisource: Trilce | 77 | 10 | 77 | — |
 | `dante` | it.wikisource: Rime (Dante) | 118 | 10 | 115 | duplicata 3 |
 | `garcia_lorca` | es.wikisource: Romancero gitano | 19 | 5 | 25 | sem_poema 1 |
@@ -139,6 +140,7 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 | `ronsard` | fr.wikisource: Sonnets pour Hélène | 18 | 7 | 17 | sem_poema 1 |
 | `rosalia_de_castro` | gl.wikisource: Cantares gallegos | 41 | 4 | 38 | sem_poema 3 |
 | `ruben_dario` | es.wikisource: Prosas profanas | 37 | 10 | 67 | duplicata 2, sem_poema 1 |
+| `verlaine` | fr.wikisource: Fêtes galantes | 20 | 10 | 19 | duplicata 1 |
 | `victor_hugo` | fr.wikisource: Les Contemplations | 166 | 10 | 189 | duplicata 3, epico_seguinte 1, excertos 4, sem_poema 8 |
 
 ### Descartados
@@ -162,7 +164,7 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 130 poetas, 7527 poemas.
+JSON na pasta (exceto ficheiros `_`): 130 poetas, 7612 poemas.
 
 `make reset` depois do bloco das línguas latinas e do espanhol:
 
