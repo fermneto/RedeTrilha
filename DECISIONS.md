@@ -32,7 +32,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     quando está pronto, e publicado não muda mais.
   - A renga, o poema colaborativo, faz a turma escrever junto, estrofe por
     estrofe.
-  - 95 poetas consagrados em domínio público (725 poemas, no original, em 15
+  - 155 poetas consagrados em domínio público (11.236 poemas, no original, em 20
     línguas) estão no mesmo feed, como contas que se seguem. A tradução por IA
     sai com um clique.
 - **Como saberíamos que funcionou:** um iniciante cita um verso de um
@@ -84,7 +84,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     domínio público no Brasil em 2026 (70 anos após a morte). O importador
     recusa `morte > 1955`, e cada poema guarda a `fonte` (Wikisource ou
     Wikiquote).
-  - **No original, em todas as línguas.** São 95 poetas em 15 línguas: Bilac e
+  - **No original, em todas as línguas.** São 155 poetas em 20 línguas: Bilac e
     Florbela em português, Baudelaire em francês, Li Bai em chinês, Hafez em
     persa, Bashō em japonês. Os textos não foram editados: saíram só os poemas
     com defeito do scraper, e a única limpeza foi remover caracteres invisíveis
@@ -349,7 +349,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Antologias | Pedro | O leitor monta coleções ("Poemas de chuva"), como uma antologia de verdade. |
 | Follow (núcleo) | Neto | Seguir um consagrado traz os clássicos para o feed. |
 | Seed fake (núcleo) | Neto | A demo abre com 24 poetas universitários fictícios e 68 poemas em todas as formas. |
-| Consagrados (importador e dados) | Neto | 95 poetas de domínio público, no original, convivem com os iniciantes. |
+| Consagrados (importador e dados) | Neto | 155 poetas de domínio público, no original, convivem com os iniciantes. |
 | Formas/temas, Em alta e Explorar | Neto | Descobrir sonetos, haicais e temas, e ver sobre o que a turma escreve. |
 | Tradução por IA | Neto | Lê-se Li Bai e Baudelaire no original, com a tradução a um clique. |
 | Crítica ancorada no verso | Neto | A crítica de oficina aponta o verso, como na margem do caderno. |
@@ -508,10 +508,15 @@ acima: é ela que tiraria o termo n·t.
     Wikiquote). Foram validados e não foram alterados: saíram os poemas com
     defeito, e a única limpeza foi mecânica, nos caracteres invisíveis e no TAB
     do início dos versos (#45 e #49).
-  - A expansão do bloco em português (coleções inteiras no pt.wikisource, mais
-    poetas novos em domínio público) foi preparada com agente. Cada texto foi
-    copiado da página do poema; o que já existia não mudou de título nem de
-    obra. O relatório está em `backend/data/consagrados/_relatorio_expansao.md`.
-    A revisão e o merge continuam humanos.
+  - A expansão do acervo (#79), de 95 para 155 poetas e de 725 para 11.236
+    poemas, foi preparada pelo agente scraper do Neto, bloco por bloco (língua
+    portuguesa, latinas, inglês, germânicas, antiguidade, árabe e persa, Ásia,
+    Américas). De cada poeta entrou a coleção transcrita no Wikisource; das
+    epopeias, só a abertura. Os textos são os da página, e o que já existia não
+    mudou de título nem de obra. As traduções em inglês usadas no lugar do
+    original (a Ilíada de Pope e o Rubaiyat de FitzGerald) também são de
+    domínio público. O relatório está em
+    `backend/data/consagrados/_relatorio_expansao.md`. O scraper continua fora
+    do repositório.
 - **Henrique:** _(completar com a ferramenta e o uso próprio)_
 - **Pedro:** _(completar com a ferramenta e o uso próprio)_
