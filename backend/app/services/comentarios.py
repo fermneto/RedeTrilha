@@ -21,7 +21,7 @@ from app.models.user import User
 from app.schemas.comentario import ComentarioCreate, ComentarioOut, ComentarioPage
 from app.schemas.user import UserOut
 from app.services.cursor import codificar_cursor, ler_cursor
-from app.services.posts import buscar, original_de
+from app.services.posts import original_de
 
 PREVIA_RESPOSTAS = 3
 
@@ -50,7 +50,8 @@ def comentar(
 def respostas_do_poema(
     db: Session, post_id: int, limit: int, cursor: str | None
 ) -> ComentarioPage:
-    buscar(db, post_id)
+    """Num repost puro, a conversa do original, como no POST."""
+    post_id = original_de(db, post_id).id
     filtro = and_(Comentario.post_id == post_id, Comentario.parent_id.is_(None))
     return _pagina(db, filtro, None, limit, cursor)
 
@@ -173,6 +174,7 @@ def _para_saida(
 ) -> ComentarioOut:
     return ComentarioOut(
         id=comentario.id,
+        post_id=comentario.post_id,
         texto="" if comentario.removido else comentario.texto,
         autor=None if comentario.removido else UserOut.model_validate(comentario.autor),
         parent_id=comentario.parent_id,

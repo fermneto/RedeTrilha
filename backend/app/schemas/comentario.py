@@ -27,6 +27,7 @@ class ComentarioOut(BaseModel):
     """
 
     id: int
+    post_id: int
     texto: str
     autor: UserOut | None
     parent_id: int | None

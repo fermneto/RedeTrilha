@@ -105,7 +105,10 @@ def para_saida(
         curti=post.id in contagens.curtidos,
         reposts=contagens.reposts.get(post.id, 0),
         repostei=post.id in contagens.repostados,
-        comentarios=contagens.comentarios.get(post.id, 0),
+        # Repost puro mostra a conversa do original, para onde os comentários vão.
+        comentarios=contagens.comentarios.get(
+            post.repost_de_id if post.repost_puro else post.id, 0
+        ),
         repost_de=(
             para_saida(original, incluir_repost=False, contagens=contagens)
             if original

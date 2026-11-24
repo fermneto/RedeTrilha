@@ -65,7 +65,7 @@ def test_arvore_de_tres_niveis_em_ordem_cronologica(client, como):
         ("raiz 2", [("filho de raiz 2", [])]),
     ]
     neto = r.json()["items"][0]["respostas"][0]["respostas"][0]
-    assert neto["parent_id"] == filho1["id"]
+    assert (neto["parent_id"], neto["post_id"]) == (filho1["id"], post_id)
     assert neto["autor"]["username"] == "caio"
 
 
@@ -251,7 +251,12 @@ def test_comentar_um_repost_puro_comenta_o_original(client, como):
         "no repost",
         ["resposta"],
     )
+    assert raiz["post_id"] == original
     assert client.get(f"/posts/{original}", headers=como("ana")).json()["comentarios"] == 2
+    assert client.get(f"/posts/{repost}", headers=como("ana")).json()["comentarios"] == 2
+
+    pelo_repost = _pagina(client, como, f"/posts/{repost}/comentarios", 20)
+    assert ([c["id"] for c in pelo_repost["items"]], pelo_repost["total"]) == ([raiz["id"]], 1)
 
 
 def test_core_monta_em_ordem_mesmo_com_entrada_fora_de_ordem():
