@@ -187,6 +187,20 @@ def test_poema_novo_nao_desloca_a_rolagem_com_cursor(client, como):
     assert r.json()["proximo_cursor"] is None
 
 
+def test_total_vem_null_com_cursor_e_real_por_offset(client, como):
+    for i in range(3):
+        _postar(client, como, "bia", f"bia {i}")
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+
+    r = client.get("/feed?limit=1", headers=como("ana"))
+    assert r.json()["total"] == 3
+    r = client.get(
+        "/feed", params={"limit": 1, "cursor": r.json()["proximo_cursor"]}, headers=como("ana")
+    )
+    assert (r.json()["total"], r.json()["offset"]) == (None, 1)
+    assert _textos(r) == ["bia 1"]
+
+
 def test_cursor_tem_precedencia_sobre_offset(client, como):
     for i in range(3):
         _postar(client, como, "bia", f"bia {i}")

@@ -12,7 +12,9 @@ https://docs.x.com/x-api/fundamentals/pagination): até 100 itens por página,
 mais novos primeiro, e um token opaco (`proximo_cursor`) que aponta para depois
 do último item entregue. Com o cursor, poemas novos que chegam no topo não
 deslocam a rolagem infinita. `offset` e `total` continuam valendo (o teste do
-núcleo usa os dois); se vier `cursor`, ele tem precedência sobre o `offset`.
+núcleo usa os dois); se vier `cursor`, ele tem precedência sobre o `offset` e o
+`total` vem None (a API do X não tem total); o `offset` devolvido é a posição
+real do primeiro item na lista deduplicada.
 
 Custo: a deduplicação é feita em Python sobre a lista ordenada de ocorrências,
 que só traz ids e datas (sem o texto dos poemas). Tempo e memória O(n), com
@@ -74,7 +76,7 @@ def feed(
     tem_mais = offset + limit < len(itens)
     return FeedPage(
         items=_montar(db, pagina, usuario),
-        total=len(itens),
+        total=None if cursor is not None else len(itens),
         offset=offset,
         limit=limit,
         proximo_cursor=_cursor(pagina[-1].ocorrencia) if pagina and tem_mais else None,
