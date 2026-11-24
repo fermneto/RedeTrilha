@@ -37,19 +37,29 @@ type Props = {
 export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoComentar, aoFiltrar }: Props) {
   const versos = versosDoPoema(poema.texto);
   const lista = useRef<HTMLOListElement>(null);
+  // De onde veio a seleção de versos. "texto": da seleção do navegador, e some
+  // com ela (clique fora), como seleção de texto comum. "numero": dos botões de
+  // número (teclado), não depende da seleção do navegador. "fixa": o leitor
+  // clicou em "comentar estes versos"; o foco vai para o campo de comentário e a
+  // seleção fica até ele comentar, "limpar" ou selecionar outros versos.
+  const origem = useRef<"texto" | "numero" | "fixa">("texto");
 
-  // A seleção de texto do navegador vira a seleção de versos. Uma seleção que
-  // some (clique fora, no botão da barra) não desfaz a dos versos: só "limpar"
-  // ou uma seleção nova.
   useEffect(() => {
     function aoMudarSelecao() {
       const selecaoDeTexto = document.getSelection();
-      if (!selecaoDeTexto || selecaoDeTexto.isCollapsed || !lista.current) return;
-      const tocados = Array.from(lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"))
-        .filter((li) => selecaoDeTexto.containsNode(li, true))
-        .map((li) => Number(li.dataset.verso));
+      if (!selecaoDeTexto || !lista.current) return;
+      const tocados = selecaoDeTexto.isCollapsed
+        ? []
+        : Array.from(lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"))
+            .filter((li) => selecaoDeTexto.containsNode(li, true))
+            .map((li) => Number(li.dataset.verso));
       const nova = versosDaSelecao(poema.texto, tocados);
-      if (nova && (nova.inicio !== selecao?.inicio || nova.fim !== selecao?.fim)) aoSelecionar(nova);
+      if (nova) {
+        origem.current = "texto";
+        if (nova.inicio !== selecao?.inicio || nova.fim !== selecao?.fim) aoSelecionar(nova);
+      } else if (selecao && origem.current === "texto") {
+        aoSelecionar(null);
+      }
     }
     document.addEventListener("selectionchange", aoMudarSelecao);
     return () => document.removeEventListener("selectionchange", aoMudarSelecao);
@@ -80,7 +90,13 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
                 {!vazia && (
                   <button
                     type="button"
-                    onClick={() => aoSelecionar(selecionarVerso(selecao, n))}
+                    // Sem mexer na seleção do navegador ao apertar; o clique a descarta.
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => {
+                      origem.current = "numero";
+                      document.getSelection()?.removeAllRanges();
+                      aoSelecionar(selecionarVerso(selecao, n));
+                    }}
                     aria-pressed={selecionado(n)}
                     aria-label={`verso ${n}`}
                     className={`min-w-8 cursor-pointer rounded px-1 font-sans text-xs tabular-nums hover:text-destaque ${
@@ -109,19 +125,36 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
         })}
       </ol>
       {selecao && (
+        // O mousedown na barra não pode desfazer a seleção do navegador (e, com
+        // ela, a dos versos) antes do clique chegar ao botão.
         <div
           role="group"
           aria-label="versos selecionados"
+          onMouseDown={(e) => e.preventDefault()}
           className="mt-2 flex flex-wrap items-center gap-x-1 rounded-xl border border-borda bg-papel-alto px-2 py-1"
         >
           <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
-          <button type="button" onClick={aoComentar} className={acao}>
+          <button
+            type="button"
+            onClick={() => {
+              origem.current = "fixa";
+              aoComentar();
+            }}
+            className={acao}
+          >
             comentar estes versos
           </button>
           <Link href={caminhoDaCitacaoDeVersos(poema.id, trechoDosVersos(poema.texto, selecao))} className={acao}>
             citar estes versos
           </Link>
-          <button type="button" onClick={() => aoSelecionar(null)} className={`${acao} text-tinta-suave`}>
+          <button
+            type="button"
+            onClick={() => {
+              document.getSelection()?.removeAllRanges();
+              aoSelecionar(null);
+            }}
+            className={`${acao} text-tinta-suave`}
+          >
             limpar
           </button>
         </div>
