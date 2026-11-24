@@ -11,8 +11,13 @@ from app.models.curtida import Curtida
 from app.models.post import Post
 from app.models.traducao import Traducao
 from app.models.user import User
+from app.models.versao_poema import VersaoPoema
 from app.schemas.post import PostCreate, PostOut, PostUpdate
 from app.schemas.user import UserOut
+
+
+# O que uma versão anterior guarda; editar outro campo não cria versão.
+CAMPOS_DA_VERSAO = {"titulo", "texto", "forma"}
 
 
 @dataclass
@@ -24,11 +29,13 @@ class Contagens:
     reposts: dict[int, int] = field(default_factory=dict)
     repostados: set[int] = field(default_factory=set)
     comentarios: dict[int, int] = field(default_factory=dict)
+    editados: set[int] = field(default_factory=set)
 
 
 def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
-    """Cinco queries para a página toda: curtidas, reposts (puros e citações) e
-    comentários por post, quais o usuário curtiu e quais ele repostou (repost puro)."""
+    """Seis queries para a página toda: curtidas, reposts (puros e citações) e
+    comentários por post, quais o usuário curtiu, quais ele repostou (repost puro)
+    e quais foram editados (têm versão anterior)."""
     if not post_ids:
         return Contagens()
     curtidas = db.execute(
@@ -56,12 +63,16 @@ def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
         .where(Comentario.post_id.in_(post_ids))
         .group_by(Comentario.post_id)
     )
+    editados = db.scalars(
+        select(VersaoPoema.post_id).where(VersaoPoema.post_id.in_(post_ids)).distinct()
+    )
     return Contagens(
         curtidas=dict(curtidas.all()),
         curtidos=set(curtidos),
         reposts=dict(reposts.all()),
         repostados=set(repostados),
         comentarios=dict(comentarios.all()),
+        editados=set(editados),
     )
 
 
@@ -118,6 +129,7 @@ def para_saida(
         ),
         repost_removido=post.repost_removido,
         tags=sorted(tags_do_post(post)),
+        editado=post.id in contagens.editados,
     )
 
 
@@ -161,6 +173,7 @@ def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
     if post.repost_puro:
         raise HTTPException(status_code=422, detail="repost puro não se edita; desfaça o repost")
     campos = dados.model_dump(exclude_unset=True)
+    _guardar_versao(db, post, campos)
     for campo, valor in campos.items():
         setattr(post, campo, valor)
     if campos.keys() & {"titulo", "texto", "idioma"}:
@@ -181,6 +194,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
     db.execute(delete(Comentario).where(Comentario.post_id.in_([post_id, *puros])))
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
     db.execute(delete(Traducao).where(Traducao.post_id.in_([post_id, *puros])))
+    db.execute(delete(VersaoPoema).where(VersaoPoema.post_id == post_id))
     db.execute(delete(Post).where(Post.id.in_(puros)))
     db.execute(
         update(Post)
@@ -204,6 +218,16 @@ def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
     if post.autor_id != usuario.id:
         raise HTTPException(status_code=403, detail="só o autor pode alterar o poema")
     return post
+
+
+def _guardar_versao(db: Session, post: Post, campos: dict) -> None:
+    """Antes de uma edição que muda título, texto ou forma, guarda como o poema era.
+
+    Mudar só a língua não cria versão: o histórico é do que o leitor lê.
+    """
+    if all(getattr(post, campo) == campos[campo] for campo in CAMPOS_DA_VERSAO & campos.keys()):
+        return
+    db.add(VersaoPoema(post_id=post.id, titulo=post.titulo, texto=post.texto, forma=post.forma))
 
 
 def _indexar(post: Post) -> None:

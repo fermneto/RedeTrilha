@@ -83,6 +83,8 @@ class PostOut(BaseModel):
     tags: list[str] = []
     # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
     repostado_por: list[UserOut] = []
+    # Há versão anterior (o autor editou depois de publicar). O histórico é só do autor.
+    editado: bool = False
 
 
 class PostPage(Pagina[PostOut]):
