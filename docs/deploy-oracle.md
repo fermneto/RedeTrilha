@@ -396,7 +396,9 @@ fechar:
 
 ```text
 WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
+1 worker:  1 × (5 + 5) = 10
 2 workers: 2 × (4 + 2) = 12   (o padrão do .env.example)
+4 workers: 4 × (2 + 1) = 12
 ```
 
 Passar disso dá `too many clients` / `max clients reached` sob carga (no teste

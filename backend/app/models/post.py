@@ -9,6 +9,11 @@ from app.db import Base
 from app.models.user import User
 
 
+# O contrário de `Post.repost_puro`, como o SQLAlchemy o escreve: o índice parcial
+# só serve à consulta se o predicado for o mesmo.
+_AUTORAL = "NOT (repost_de_id IS NOT NULL AND texto = '')"
+
+
 class Post(Base):
     """Um poema. `texto` vazio só em repost puro; com `repost_de_id` e texto é citação."""
 
@@ -23,6 +28,28 @@ class Post(Base):
             unique=True,
             sqlite_where=text("texto = ''"),
             postgresql_where=text("texto = ''"),
+        ),
+        # Desempenho (docs/deploy.md, "Índices"). Os poemas autorais (tudo menos o
+        # repost puro) com as colunas que as agregações leem: as contagens de poemas
+        # por autor (perfil, Acervo, sugestões), a língua por autor, o total do
+        # Explorar e os consagrados do "Para você" viram Index Only Scan, sem ler
+        # o texto dos 11 mil poemas. O predicado é o de `~Post.repost_puro`.
+        Index(
+            "ix_posts_autorais",
+            "autor_id",
+            "created_at",
+            "id",
+            sqlite_where=text(_AUTORAL),
+            postgresql_where=text(_AUTORAL),
+            postgresql_include=["idioma", "forma"],
+        ),
+        # Poema do dia: conta e percorre por id só os originais (sem repost).
+        Index(
+            "ix_posts_originais",
+            "id",
+            sqlite_where=text("repost_de_id IS NULL"),
+            postgresql_where=text("repost_de_id IS NULL"),
+            postgresql_include=["autor_id"],
         ),
     )
 

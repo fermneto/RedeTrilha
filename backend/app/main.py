@@ -5,13 +5,14 @@ from contextlib import asynccontextmanager, contextmanager
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import select, text
+from fastapi.middleware.gzip import GZipMiddleware
+from sqlalchemy import inspect, select, text
 
-from app.db import Base, SessionLocal, engine
+from app.db import POOL, Base, SessionLocal, engine
 from app.erros import erro_de_validacao
-from app.observabilidade import erro_interno, iniciar_sentry
-from app.models.traducao import INDICE_DO_LIMITE
+from app.limite_do_banco import LimiteDeConexoes
 from app.models.user import User
+from app.observabilidade import erro_interno, iniciar_sentry
 from app.routers import (
     acervo,
     antologias,
@@ -35,10 +36,6 @@ from app.routers import (
 )
 from app.services import indice_tags
 
-
-# Índices novos em tabelas que já existiam antes deles (o create_all não os cria).
-INDICES_EM_TABELA_EXISTENTE = (INDICE_DO_LIMITE,)
-
 # Número arbitrário e fixo do advisory lock do preparo do banco (ver _trava_do_preparo).
 _CHAVE_DO_PREPARO = 7_302_019
 
@@ -49,8 +46,8 @@ def _banco_vazio() -> bool:
 
 
 def preparar_banco() -> None:
-    """Cria as tabelas, roda o seed (com SEED_ON_BOOT=true, num banco SEM usuários)
-    e põe em dia um banco de antes do índice de tags no banco.
+    """Cria as tabelas e os índices que faltam, roda o seed (com SEED_ON_BOOT=true, num
+    banco SEM usuários) e põe em dia um banco de antes do índice de tags no banco.
 
     Deploy: o seed só roda no primeiro boot no Postgres do Supabase; nos reinícios
     seguintes os dados criados na URL pública ficam. Com vários workers (Oracle,
@@ -60,21 +57,39 @@ def preparar_banco() -> None:
 
     Banco antigo: o `create_all` cria a tabela nova `post_tags` vazia, mas não
     cria índice novo em tabela que já existe. Por isso, ainda dentro da trava,
-    os índices de `INDICES_EM_TABELA_EXISTENTE` são criados se faltarem e o
-    índice de tags é populado a partir dos posts se estiver vazio. Num banco
+    `criar_indices_que_faltam` cria os índices dos models que faltarem (o do
+    limite de tradução e os de desempenho) e o índice de tags é populado a
+    partir dos posts se estiver vazio. Num banco
     novo ou já em dia, isso custa uma checagem por índice e duas consultas
     com LIMIT 1.
     """
     with _trava_do_preparo():
         Base.metadata.create_all(engine)
+        criar_indices_que_faltam()
         if os.environ.get("SEED_ON_BOOT") == "true" and _banco_vazio():
             from scripts.seed import main as rodar_seed
 
             rodar_seed()
-        for indice in INDICES_EM_TABELA_EXISTENTE:
-            indice.create(engine, checkfirst=True)
         with SessionLocal() as db:
             indice_tags.popular_se_vazio(db)
+
+
+def criar_indices_que_faltam() -> list[str]:
+    """Cria os índices dos models que faltam em tabelas que já existiam; devolve os nomes.
+
+    O `create_all` cria a tabela nova com os índices, mas não acrescenta índice em
+    tabela que já existe: o banco do deploy anterior ficaria sem os índices de
+    desempenho (docs/deploy.md, "Índices"). Índice não é coluna: criar não muda dado.
+    """
+    existentes = inspect(engine)
+    criados = []
+    for tabela in Base.metadata.sorted_tables:
+        nomes = {i["name"] for i in existentes.get_indexes(tabela.name)}
+        for indice in tabela.indexes:
+            if indice.name not in nomes:
+                indice.create(engine, checkfirst=True)
+                criados.append(indice.name)
+    return criados
 
 
 @contextmanager
@@ -118,6 +133,11 @@ app.add_exception_handler(RequestValidationError, erro_de_validacao)
 # 500: uma linha JSON no log por erro não tratado (ver app/observabilidade.py).
 app.add_exception_handler(Exception, erro_interno)
 
+# A ordem de fora para dentro é a inversa da de registro: CORS, gzip, fila do banco.
+# Fila: no máximo POOL.maximo requisições com conexão ao mesmo tempo (app/limite_do_banco.py).
+app.add_middleware(LimiteDeConexoes, maximo=POOL.maximo)
+# Poemas e feeds são JSON de texto: o gzip corta ~70% dos bytes. Abaixo de 1 KB não compensa.
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origens_permitidas(),

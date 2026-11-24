@@ -8,7 +8,7 @@ from app.db import Base
 
 
 # O limite de traduções por hora conta direto aqui (services/traducao.py). Num
-# banco de antes dele, o `preparar_banco` (main.py) cria o índice.
+# banco de antes dele, o `preparar_banco` (main.py, `criar_indices_que_faltam`) cria o índice.
 INDICE_DO_LIMITE = Index("ix_traducoes_pedida_por_id_created_at", "pedida_por_id", "created_at")
 
 

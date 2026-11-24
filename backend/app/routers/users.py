@@ -3,6 +3,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.cache_http import cache
 from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
@@ -14,7 +15,8 @@ from app.services import users as service
 router = APIRouter(prefix="/usuarios", tags=["usuarios"])
 
 
-@router.get("", response_model=UserPage)
+# Sem login e sem dado de quem pede: o único cache `public`.
+@router.get("", response_model=UserPage, dependencies=[cache(60, publico=True)])
 def listar_usuarios(
     offset: Offset = 0,
     limit: Limite = 20,

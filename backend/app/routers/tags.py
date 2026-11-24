@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
+from app.cache_http import cache
 from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
@@ -13,7 +14,8 @@ from app.services import tags as service
 router = APIRouter(tags=["tags"])
 
 
-@router.get("/tags/trending", response_model=Trending)
+# Em alta: a mesma lista para todos, recalculada a cada minuto basta.
+@router.get("/tags/trending", response_model=Trending, dependencies=[cache(60)])
 def trending(
     limit: Annotated[int, Query(ge=1, le=10)] = 5,
     _: User = Depends(get_current_user),
@@ -22,7 +24,7 @@ def trending(
     return service.trending(db, limit)
 
 
-@router.get("/tags/busca", response_model=BuscaDeTags)
+@router.get("/tags/busca", response_model=BuscaDeTags, dependencies=[cache(60)])
 def buscar_tags(
     q: Annotated[str, Query(max_length=80)] = "",
     _: User = Depends(get_current_user),

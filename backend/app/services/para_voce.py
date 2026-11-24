@@ -22,14 +22,16 @@ a mistura e o desempate ficam em `core/mistura.py`. A paginação é a do feed
 Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave) que
 tem precedência sobre o offset e devolve `total` None.
 
-Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + estrofes das rengas
-abertas + comentários, carregados só com ids e datas (sem o texto); depois a
+Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + um poema de
+consagrado por janela + estrofes das rengas abertas + comentários, carregados só
+com ids e datas (sem o texto). Os milhares de poemas de consagrados são cortados
+no banco, com `row_number()` por janela sobre o índice `ix_posts_autorais`; depois a
 mesma montagem O(limit) do feed Seguindo (`montar_pagina`, em `services/feed.py`).
 """
 
 from datetime import timedelta
 
-from sqlalchemy import select
+from sqlalchemy import Integer, case, cast, func, literal, select
 from sqlalchemy.orm import Session, aliased
 
 from app.core.mistura import Atividade, ItemMisturado, misturar, rarear_consagrados
@@ -61,10 +63,18 @@ def feed(
     cursor: str | None = None,
     lingua: str | None = None,
 ) -> FeedPage:
+    lingua = lingua_de_quem_ve(db, usuario, lingua)
+    segundos = int(JANELA_DO_CONSAGRADO.total_seconds())
     atividades = rarear_consagrados(
-        [*_poemas(db), *_reposts(db), *_estrofes_abertas(db), *_comentarios(db)],
-        int(JANELA_DO_CONSAGRADO.total_seconds()),
-        lingua_de_quem_ve(db, usuario, lingua),
+        [
+            *_poemas(db),
+            *_candidatos_dos_consagrados(db, segundos, lingua),
+            *_reposts(db),
+            *_estrofes_abertas(db),
+            *_comentarios(db),
+        ],
+        segundos,
+        lingua,
     )
     recorte = recortar(
         misturar(atividades), lambda item: item.atividade.posicao, offset, limit, cursor
@@ -78,25 +88,71 @@ def _linha(item: ItemMisturado) -> Linha:
 
 
 def _poemas(db: Session) -> list[Atividade]:
-    """Poemas e citações da rede (reposts puros ficam fora)."""
+    """Poemas e citações de quem não é consagrado (reposts puros ficam fora)."""
     linhas = db.execute(
-        select(Post.id, Post.autor_id, User.consagrado, Post.created_at, Post.idioma)
+        select(Post.id, Post.autor_id, Post.created_at, Post.idioma)
         .join(User, User.id == Post.autor_id)
-        .where(~Post.repost_puro)
+        .where(~Post.repost_puro, ~User.consagrado)
     )
     return [
         Atividade(
-            "poema",
-            "publicou",
-            post_id,
-            post_id,
-            autor_id,
-            utc_sem_fuso(criado),
-            consagrado,
-            idioma,
+            "poema", "publicou", post_id, post_id, autor_id, utc_sem_fuso(criado), False, idioma
         )
-        for post_id, autor_id, consagrado, criado, idioma in linhas
+        for post_id, autor_id, criado, idioma in linhas
     ]
+
+
+def _candidatos_dos_consagrados(
+    db: Session, segundos: int, lingua: str | None
+) -> list[Atividade]:
+    """Só o candidato de cada janela entre os poemas de consagrados, escolhido no banco.
+
+    Desempenho: são milhares de poemas, e carregar todos para o `rarear_consagrados`
+    descartar quase tudo custava uns 70 ms de CPU por requisição. A consulta faz a
+    mesma escolha (a língua de quem vê primeiro, depois o mais recente, por
+    `(created_at, id)`) com `row_number()` por janela, e o `rarear_consagrados`
+    continua valendo por cima: a regra é a do core, o banco só corta o volume.
+    """
+    preferido = case((Post.idioma == lingua, 1), else_=0) if lingua else literal(0)
+    posicao = func.row_number().over(
+        partition_by=_janela_sql(db, segundos),
+        order_by=(preferido.desc(), Post.created_at.desc(), Post.id.desc()),
+    )
+    ranking = (
+        select(
+            Post.id,
+            Post.autor_id,
+            Post.created_at,
+            Post.idioma,
+            posicao.label("posicao"),
+        )
+        .join(User, User.id == Post.autor_id)
+        .where(~Post.repost_puro, User.consagrado)
+        .subquery()
+    )
+    linhas = db.execute(
+        select(ranking.c.id, ranking.c.autor_id, ranking.c.created_at, ranking.c.idioma).where(
+            ranking.c.posicao == 1
+        )
+    )
+    return [
+        Atividade(
+            "poema", "publicou", post_id, post_id, autor_id, utc_sem_fuso(criado), True, idioma
+        )
+        for post_id, autor_id, criado, idioma in linhas
+    ]
+
+
+def _janela_sql(db: Session, segundos: int):
+    """O `janela_de` do core em SQL: segundos desde a época (UTC) divididos pela janela.
+
+    As datas ficam sem fuso, em UTC, nos dois bancos (`core/datas.py`).
+    """
+    if db.get_bind().dialect.name == "sqlite":
+        epoca = cast(func.strftime("%s", Post.created_at), Integer)
+    else:
+        epoca = cast(func.floor(func.extract("epoch", Post.created_at)), Integer)
+    return epoca // segundos
 
 
 def _reposts(db: Session) -> list[Atividade]:

@@ -69,12 +69,20 @@ def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
 
 
 def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
-    """PostOut de uma lista, com curtidas, reposts, `curti` e `repostei` do usuário atual."""
-    ids = {post.id for post in posts} | {
-        post.repost_de_id for post in posts if post.repost_de_id is not None
-    }
+    """PostOut de uma lista, com curtidas, reposts, `curti` e `repostei` do usuário atual.
+
+    Os originais dos reposts e citações que faltam vêm numa query só: no identity map,
+    o `post.repost_de` do `para_saida` não vai ao banco (era uma query por citação).
+    """
+    originais = {post.repost_de_id for post in posts if post.repost_de_id is not None}
+    faltando = [i for i in originais if db.identity_map.get(db.identity_key(Post, i)) is None]
+    # A lista segura as referências: o identity map é fraco e soltaria os posts antes do uso.
+    carregados = list(db.scalars(select(Post).where(Post.id.in_(faltando)))) if faltando else []
+    ids = {post.id for post in posts} | originais
     contagens = contar(db, list(ids), usuario)
-    return [para_saida(post, contagens=contagens) for post in posts]
+    saidas = [para_saida(post, contagens=contagens) for post in posts]
+    del carregados
+    return saidas
 
 
 def para_saida_de(db: Session, post: Post, usuario: User) -> PostOut:

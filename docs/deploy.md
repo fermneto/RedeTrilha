@@ -33,6 +33,7 @@ ambiente.
 | Render | `CORS_ORIGINS` | `https://<projeto>.vercel.app`, sem barra no fim. Mais de uma: separe por vírgula |
 | Render | `ANTHROPIC_API_KEY` | a chave **só da demo**, com limite de gasto baixo (passo 2). Sem ela, só a tradução fica fora (503) |
 | Render | `DEBUG` | **não existe. Nunca crie.** |
+| Render | `DB_POOL_SIZE`, `DB_MAX_OVERFLOW`, `DB_POOL_TIMEOUT`, `DB_POOL_RECYCLE` | opcionais; os padrões (5, 5, 10 s, 300 s) servem para 1 worker. Ver "Desempenho" |
 | Vercel | `NEXT_PUBLIC_API_URL` | `https://verso-api-xxxx.onrender.com`, sem barra no fim |
 
 ## Passo 1: banco no Supabase
@@ -190,6 +191,123 @@ pelo navegador (`lib/api.ts`).
 
 Os previews da Vercel (`verso-git-<branch>-....vercel.app`) têm outra URL e
 ficam fora do CORS. A banca usa só a URL de produção.
+
+## Desempenho: pool, fila, índices, cache e gzip
+
+Meta: 100 usuários simultâneos, p95 abaixo de 1 s e nenhum erro.
+
+### Pool de conexões
+
+Cada processo (worker) do uvicorn tem o seu pool do SQLAlchemy (`app/db.py`),
+configurado pelo ambiente:
+
+| Variável | Padrão | O quê |
+|---|---|---|
+| `DB_POOL_SIZE` | 5 | conexões que o worker mantém abertas |
+| `DB_MAX_OVERFLOW` | 5 | conexões extras nos picos, fechadas depois |
+| `DB_POOL_TIMEOUT` | 10 | segundos esperando conexão livre antes do erro |
+| `DB_POOL_RECYCLE` | 300 | segundos até trocar a conexão por uma nova (o pooler derruba as velhas) |
+
+O teto de um worker é `DB_POOL_SIZE + DB_MAX_OVERFLOW` (10 no padrão). O
+Session pooler do Supabase (porta 5432) dá **uma conexão do Postgres para cada
+conexão de cliente**, e o pool dele no plano free é de 15 conexões (confira em
+**Database → Settings → Connection pooling → Pool Size**). A conta é:
+
+```text
+workers × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ Pool Size do Supabase
+1 worker  × (5 + 5) = 10   + 5 de folga (SQL Editor, importador, seed) = 15   ← padrão do código, Render free
+2 workers × (4 + 2) = 12   + 3 de folga = 15                                   ← recomendado: WEB_CONCURRENCY=2 DB_POOL_SIZE=4 DB_MAX_OVERFLOW=2
+3 workers × (3 + 1) = 12   + 3 de folga = 15                                   ← DB_POOL_SIZE=3 DB_MAX_OVERFLOW=1
+```
+
+Recomendado (decisão do Neto): **2 workers com pool 4 + 2**, que já é o padrão
+do `deploy/oracle/.env.example`. Medido com 100 usuários simultâneos sem pausa
+entre cliques: 130 req/s, 0 erro e p95 de 1,2 s, contra 78 req/s e p95 de 1,6 s
+com 1 worker. Vários workers veem os mesmos dados: o índice de tags e o limite
+de tradução moram no banco (ver `docs/deploy-oracle.md`, "Workers e pool").
+
+Passou do limite, o pooler recusa a conexão nova e a API dá 500. Com mais
+workers (`--workers N` no `startCommand`, ou `WEB_CONCURRENCY`), baixe o pool
+na mesma conta. O Render free tem 0,1 CPU: lá, mais de 1 worker não ajuda.
+
+### Fila do banco
+
+As rotas são síncronas e rodam no threadpool (40 threads), e a sessão segura a
+conexão do começo ao fim da requisição. Com mais requisições em voo do que
+conexões, as threads ficavam presas esperando conexão, as conexões com
+requisições que esperavam thread, e tudo parava até o `pool_timeout` (500). Com
+100 usuários simultâneos no Postgres, sem a fila, quase toda requisição dava
+`QueuePool limit ... reached`. O `app/limite_do_banco.py` deixa no máximo
+`DB_POOL_SIZE + DB_MAX_OVERFLOW` requisições em voo por worker; as outras
+esperam no event loop, na ordem de chegada. O `/saude` fica fora da fila.
+
+### Índices
+
+Declarados nos models. O `create_all` só os cria junto com uma tabela nova, então
+o `preparar_banco()` (`app/main.py`, chamado no boot e pelo serviço `seed` da
+Oracle) cria também, dentro do mesmo lock, os índices dos models que faltam em
+tabelas que já existiam (`criar_indices_que_faltam`). O deploy não tem passo
+manual: o banco antigo ganha os índices no próximo boot.
+
+Alternativa manual, se preferir criar antes do deploy, no SQL Editor (ou com
+`psql "$DATABASE_URL"`):
+
+```sql
+CREATE INDEX IF NOT EXISTS ix_posts_autorais ON posts (autor_id, created_at, id)
+  INCLUDE (idioma, forma) WHERE NOT (repost_de_id IS NOT NULL AND texto = '');
+CREATE INDEX IF NOT EXISTS ix_posts_originais ON posts (id)
+  INCLUDE (autor_id) WHERE repost_de_id IS NULL;
+CREATE INDEX IF NOT EXISTS ix_comentarios_do_poema
+  ON comentarios (post_id, parent_id, created_at, id);
+VACUUM ANALYZE posts;
+VACUUM ANALYZE comentarios;
+```
+
+O `VACUUM` atualiza o mapa de visibilidade, sem o qual o Postgres não faz
+Index Only Scan. O boot não roda `VACUUM`; sem ele, o autovacuum do Supabase faz
+isso sozinho depois de algum tempo. Para conferir: `\di ix_*` no psql, ou
+`SELECT indexname FROM pg_indexes WHERE tablename IN ('posts', 'comentarios');`.
+
+- `ix_posts_autorais`: os poemas autorais (tudo menos o repost puro), com as
+  colunas que as agregações leem. Servem a ele a contagem de poemas por autor
+  (perfil, Acervo, sugestões), a língua de cada autor, o total do Explorar e os
+  consagrados do "Para você". O predicado tem de ser **exatamente** o que o
+  SQLAlchemy escreve para `~Post.repost_puro`, senão o Postgres não usa o
+  índice parcial.
+- `ix_posts_originais`: o poema do dia conta e percorre por id só os originais.
+- `ix_comentarios_do_poema`: a página de comentários de um poema sai do índice
+  já ordenada. Com os 52 comentários do seed, o Postgres ainda prefere ler a
+  tabela; o índice passa a valer quando ela crescer.
+
+### Cache HTTP
+
+`Cache-Control` só nas rotas iguais para todo mundo (`app/cache_http.py`):
+
+| Rota | Header |
+|---|---|
+| `GET /tags/trending` (Em alta) | `private, max-age=60` |
+| `GET /tags/busca` | `private, max-age=60` |
+| `GET /acervo/filtros` | `private, max-age=300` |
+| `GET /preferencias/opcoes` | `private, max-age=3600` |
+| `GET /usuarios` (sem login) | `public, max-age=60` |
+
+`private` porque essas rotas exigem login: um cache compartilhado entregaria a
+resposta sem conferir o token. Ficam **sem cache** as rotas com dado de quem
+pede: feed, "Para você", perfil (`sigo`), poema (`curti`, `repostei`), poema do
+dia (`curti`), Explorar, Acervo (`sigo`), sugestões, rengas (`posso_escrever`),
+comentários e antologias. O poema do dia fica sem cache (decisão do Neto): o
+poema é o mesmo o dia todo, mas a resposta traz `curti` e `repostei`.
+
+No front, o `request` do `lib/api.ts` usa o cache do navegador (`cache:
+"default"`) só nessas cinco rotas (`modoDeCache`); o resto continua `no-store`.
+Rota nova com `cache(...)` no backend entra também no `ROTAS_COM_CACHE` do front.
+
+### Gzip
+
+`GZipMiddleware` com `minimum_size=1000` no `main.py`: respostas de 1 KB ou
+mais saem comprimidas quando o cliente manda `Accept-Encoding: gzip` (o
+navegador sempre manda). Feeds e poemas são texto: uma página do feed cai de
+37 KB para 8,5 KB (23%).
 
 ## Limites do free tier
 

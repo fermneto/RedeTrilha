@@ -5,6 +5,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
+from app.cache_http import cache
 from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
@@ -36,6 +37,7 @@ def listar(
     return service.listar(db, user, filtros, offset, limit)
 
 
-@router.get("/filtros", response_model=FiltrosDoAcervo)
+# Línguas e épocas dos consagrados: só mudam quando o importador roda.
+@router.get("/filtros", response_model=FiltrosDoAcervo, dependencies=[cache(300)])
 def filtros(_: User = Depends(get_current_user), db: Session = Depends(get_db)):
     return service.opcoes_de_filtro(db)

@@ -41,7 +41,7 @@ ordenação que intercala os tipos, memória O(n), com n = posts, estrofes e
 encerramentos dos seguidos + os do usuário, porque o `total` exato e a posição
 de cada item dependem da lista inteira. Depois, uma query para os posts da
 página, uma para os usuários dos rótulos e duas para as curtidas, todas
-O(limit), mais o detalhe de cada renga da página.
+O(limit), mais três para as rengas da página.
 """
 
 from collections.abc import Callable
@@ -284,7 +284,7 @@ def montar_pagina(
     para_poema: Callable[[PostOut, list[UserOut], str], PoemaNoFeed],
 ) -> FeedPage:
     """Monta o FeedPage de um recorte: os posts da página numa query, os usuários dos
-    rótulos noutra, o detalhe de cada renga. `para_poema` recebe o poema, o rótulo e
+    rótulos noutra, as rengas em três. `para_poema` recebe o poema, o rótulo e
     a ação, e devolve o `PoemaNoFeed` do feed em questão. Público para o "Para você"."""
     pagina = [para_linha(item) for item in recorte.pagina]
     poemas = [linha for linha in pagina if linha.tipo == "poema"]
@@ -296,6 +296,9 @@ def montar_pagina(
         for user in db.scalars(select(User).where(User.id.in_(ids_do_rotulo)))
     }
     saidas = iter(para_saidas(db, [por_id[linha.alvo_id] for linha in poemas], usuario))
+    rengas = rengas_service.detalhar_varias(
+        db, usuario, [linha.alvo_id for linha in pagina if linha.tipo == "renga"]
+    )
 
     itens: list[PoemaNoFeed | RengaNoFeed] = []
     for linha in pagina:
@@ -305,7 +308,7 @@ def montar_pagina(
         else:
             itens.append(
                 RengaNoFeed(
-                    renga=rengas_service.detalhar(db, usuario, linha.alvo_id),
+                    renga=rengas[linha.alvo_id],
                     atividade=linha.acao,
                     por=rotulo,
                 )
