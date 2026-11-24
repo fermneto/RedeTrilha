@@ -33,6 +33,17 @@ function headers(): HeadersInit {
   return h;
 }
 
+// O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
+// de erros com `msg`. As mensagens dos validadores vêm com "Value error, " na frente.
+function mensagemDoErro(detail: unknown): string | null {
+  if (typeof detail === "string") return detail;
+  if (!Array.isArray(detail)) return null;
+  const msgs = detail
+    .map((e) => (typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null))
+    .filter((m): m is string => Boolean(m));
+  return msgs.length > 0 ? msgs.join("; ") : null;
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     method,
@@ -51,8 +62,7 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   if (!res.ok) {
     // 422 = corpo inválido; 409 = conflito (ex.: username repetido). Ver guia 04.
     const erro = await res.json().catch(() => null);
-    const detail = typeof erro?.detail === "string" ? erro.detail : null;
-    throw new Error(detail ?? `${method} ${path} → ${res.status}`);
+    throw new Error(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`);
   }
 
   // 204 No Content (seguir, curtir, apagar...) não tem corpo: não há JSON para ler.
