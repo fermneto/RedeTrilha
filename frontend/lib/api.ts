@@ -353,6 +353,12 @@ export function publicarPoema(dados: NovoPoema): Promise<Post> {
   return apiPost<Post>("/posts", dados);
 }
 
+// O poema publicado não se edita (decisão 9 do DECISIONS.md): para corrigir, o autor
+// apaga e publica de novo.
+export function apagarPoema(id: number): Promise<void> {
+  return apiDelete(`/posts/${id}`);
+}
+
 export function curtir(id: number, curtido: boolean): Promise<void> {
   return curtido ? apiPost<void>(`/posts/${id}/curtir`) : apiDelete(`/posts/${id}/curtir`);
 }
