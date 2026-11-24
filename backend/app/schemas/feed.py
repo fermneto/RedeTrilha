@@ -9,9 +9,17 @@ from app.schemas.user import UserOut
 
 
 class PoemaNoFeed(PostOut):
-    """Um poema no feed: o PostOut de sempre, com `tipo` para distinguir da renga."""
+    """Um poema no feed: o PostOut de sempre, com `tipo` para distinguir da renga.
+
+    Só no "Para você", como o "repostado por" do X: `subiu_por` diz se o poema
+    subiu por um comentário ("comentario") ou por uma crítica ancorada nos versos
+    ("critica"), e `comentado_por` lista quem comentou ou criticou, quem fez por
+    último primeiro. No feed Seguindo e no perfil, ficam None e vazio.
+    """
 
     tipo: Literal["poema"] = "poema"
+    subiu_por: Literal["comentario", "critica"] | None = None
+    comentado_por: list[UserOut] = []
 
 
 class RengaNoFeed(BaseModel):

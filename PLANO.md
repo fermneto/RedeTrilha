@@ -190,6 +190,27 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   post, 3·id + 1 para estrofe e 3·id (id da renga) para encerramento; o cursor
   continua opaco.
 
+### Feed "Para você" e sugestões (dono: Neto)
+
+- `GET /feed/para-voce` 🔒 → `FeedPage`, com a mesma paginação (cursor, ou
+  offset com `total`) e os mesmos itens tipados do `GET /feed`, mas da rede
+  inteira (seguidos ou não, inclusive os próprios): poemas e citações (reposts
+  puros ficam fora), rengas que não fecharam (na estrofe mais recente, com o
+  rótulo `"abriu"`/`"escreveu"`), poemas de consagrados rareados (o mais recente
+  de cada janela de 3 h, provisório) e poemas que receberam comentário, que
+  sobem na data do comentário mais recente. Cronológico pela atividade, sem
+  ranking por engajamento; a mistura fica em `core/mistura.py`.
+- `PoemaNoFeed` ganhou dois campos opcionais, só preenchidos no "Para você":
+  `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
+  nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último
+  primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
+- Desempate do cursor do "Para você": 3·id + 2 para poema, 3·id + 1 para
+  estrofe e 3·id para comentário.
+- `GET /sugestoes` 🔒 → página de `SugestaoOut` (`UserOut` + `poemas` + `trecho`,
+  os 2 primeiros versos do último poema, ou `null`): contas com poema, menos a
+  própria pessoa e quem ela segue; poetas da rede e consagrados intercalados,
+  cada grupo do poema mais recente para o mais antigo (provisório).
+
 ### Rengas (dono: Neto)
 
 Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
