@@ -20,6 +20,7 @@ import {
   comentar,
   criticarVersos,
   formatarData,
+  mensagemDeFalha,
   referenciaDosVersos,
   trechoDosVersos,
   type Ancora,
@@ -86,7 +87,7 @@ export function ArvoreComentarios({
         setCursor(pagina.proximo_cursor);
         setErro(null);
       } catch (e) {
-        setErro(e instanceof Error ? e.message : "não deu para carregar os comentários");
+        setErro(mensagemDeFalha(e, "não deu para carregar os comentários"));
       } finally {
         setCarregando(false);
       }
@@ -213,7 +214,7 @@ function ItemComentario({
       setCursor(pagina.proximo_cursor);
       setErro(null);
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para carregar as respostas");
+      setErro(mensagemDeFalha(e, "não deu para carregar as respostas"));
     } finally {
       setOcupado(false);
     }
@@ -234,7 +235,7 @@ function ItemComentario({
       }
       aoMudar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar");
+      setErro(mensagemDeFalha(e, "não deu para apagar"));
     } finally {
       setOcupado(false);
     }
@@ -383,7 +384,7 @@ function FormComentario({
       setTexto("");
       aoComentar(novo);
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para comentar");
+      setErro(mensagemDeFalha(err, "não deu para comentar"));
     } finally {
       setEnviando(false);
     }

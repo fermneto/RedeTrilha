@@ -21,6 +21,7 @@ import {
   editarAntologia,
   ErroDaApi,
   marcarNaAntologia,
+  mensagemDeFalha,
   temToken,
   type AntologiaDetalhe,
   type Post,
@@ -53,7 +54,7 @@ export default function AntologiaPage() {
       .catch((e) => {
         // Privada de outra pessoa também dá 404: a tela não revela que ela existe.
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
-        else setErro(e instanceof Error ? e.message : "não deu para carregar a antologia");
+        else setErro(mensagemDeFalha(e, "não deu para carregar a antologia"));
       });
   }, [id, router]);
 
@@ -206,7 +207,7 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
     try {
       await aoApagar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar a antologia");
+      setErro(mensagemDeFalha(e, "não deu para apagar a antologia"));
       setApagando(false);
     }
   }
@@ -243,7 +244,7 @@ function TirarDaAntologia({ poema, aoTirar }: { poema: Post; aoTirar: () => Prom
     try {
       await aoTirar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para tirar o poema");
+      setErro(mensagemDeFalha(e, "não deu para tirar o poema"));
       setTirando(false);
     }
   }

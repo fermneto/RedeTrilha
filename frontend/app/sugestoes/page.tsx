@@ -16,6 +16,7 @@ import {
   buscarSugestoes,
   CAMINHO_DOS_GOSTOS,
   caminhoDoLogin,
+  mensagemDeFalha,
   temToken,
   type Sugestao,
 } from "@/lib/api";
@@ -40,7 +41,7 @@ export default function SugestoesPage() {
       setContas((atuais) => (offset === 0 ? pagina.items : [...atuais, ...pagina.items]));
       setTotal(pagina.total);
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para carregar as sugestões");
+      setErro(mensagemDeFalha(e, "não deu para carregar as sugestões"));
     } finally {
       setCarregando(false);
     }

@@ -6,7 +6,7 @@
 import { useState } from "react";
 
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
-import { apagarPoema } from "@/lib/api";
+import { apagarPoema, mensagemDeFalha } from "@/lib/api";
 
 type Props = {
   postId: number;
@@ -25,7 +25,7 @@ export function ApagarPoema({ postId, aoApagar }: Props) {
       await apagarPoema(postId);
       aoApagar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar o poema");
+      setErro(mensagemDeFalha(e, "não deu para apagar o poema"));
       setApagando(false);
     }
   }

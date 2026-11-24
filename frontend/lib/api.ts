@@ -47,6 +47,12 @@ export class ErroDaApi extends Error {
   }
 }
 
+// O que a tela mostra quando uma chamada falha: a mensagem do erro (no ErroDaApi,
+// o `detail` do backend) ou, se não veio um Error, o texto `padrao`.
+export function mensagemDeFalha(e: unknown, padrao: string): string {
+  return e instanceof Error ? e.message : padrao;
+}
+
 type ErroDoPydantic = { msg?: unknown; loc?: unknown };
 
 // O `msg` já vem em português (backend/app/erros.py).

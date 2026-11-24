@@ -21,9 +21,10 @@ import {
   buscarPreferencias,
   caminhoDoLogin,
   destinoSeguro,
-  passosDasPreferencias,
+  mensagemDeFalha,
   nomeDaForma,
   nomeDoPais,
+  passosDasPreferencias,
   salvarPreferencias,
   temToken,
   type OpcoesDePreferencias,
@@ -73,7 +74,7 @@ function BoasVindas() {
         setOpcoes(o);
         setPrefs(p);
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar as opções"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as opções")));
   }, [router]);
 
   function avancar() {
@@ -104,7 +105,7 @@ function BoasVindas() {
       setPrefs(await salvarPreferencias(prefs));
       avancar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para salvar");
+      setErro(mensagemDeFalha(e, "não deu para salvar"));
     } finally {
       setSalvando(false);
     }
