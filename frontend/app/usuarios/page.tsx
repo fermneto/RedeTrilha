@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { UserCard } from "@/components/UserCard";
-import { apiGet, apiPost, type Page, type User } from "@/lib/api";
+import { apiPost, listarUsuarios, type Page, type User } from "@/lib/api";
 
 export default function UsuariosPage() {
   const [pagina, setPagina] = useState<Page<User> | null>(null);
@@ -22,7 +22,7 @@ export default function UsuariosPage() {
 
   const carregar = useCallback(async () => {
     try {
-      setPagina(await apiGet<Page<User>>("/usuarios?offset=0&limit=20"));
+      setPagina(await listarUsuarios(0, 20));
       setErro(null);
     } catch {
       setErro(
