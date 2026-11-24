@@ -1,0 +1,21 @@
+# SÓ PARA TESTE LOCAL (não use na VM): um Postgres descartável no lugar do Supabase
+# e o Caddy em portas altas com certificado interno.
+#   cp .env.local.example .env
+#   docker compose -f compose.yaml -f compose.local.yaml up -d --build
+#   curl -k https://localhost:8443/saude
+#   docker compose -f compose.yaml -f compose.local.yaml down -v
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: teste-local
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      retries: 30
+    networks: [interna]
+
+  seed:
+    depends_on:
+      db:
+        condition: service_healthy

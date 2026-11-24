@@ -1,5 +1,12 @@
 # Deploy do Verso (Supabase + Render + Vercel)
 
+> **O caminho principal agora é a Oracle Cloud Always Free:
+> [`docs/deploy-oracle.md`](deploy-oracle.md).** A VM não hiberna e roda a API
+> com vários workers atrás do Caddy (HTTPS automático). Este guia, com o
+> Render, fica como **alternativa simples**: menos passos, mas o serviço dorme
+> depois de 15 minutos sem tráfego. Os passos do Supabase (1), da chave da
+> Anthropic (2) e da Vercel (4) valem para os dois caminhos.
+
 Três peças, todas no plano free:
 
 | Peça | Onde | O quê |
