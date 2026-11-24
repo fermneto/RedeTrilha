@@ -42,10 +42,10 @@ from app.services import rengas as rengas_service
 from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
 from app.services.posts import para_saidas
 
-# PROVISÓRIO (o Neto decide o equilíbrio): dos poemas de consagrados, entra só o
-# mais recente de cada janela de 3 horas, uns 8 por dia, para os milhares de
-# poemas do acervo não afogarem os poetas da rede. Comentário em poema de
-# consagrado sobe o poema do mesmo jeito, fora dessa conta.
+# Dos poemas de consagrados, entra só o mais recente de cada janela de 3 horas,
+# uns 8 por dia, para os milhares de poemas do acervo não afogarem os poetas da
+# rede. Comentário em poema de consagrado sobe o poema do mesmo jeito, fora
+# dessa conta.
 JANELA_DO_CONSAGRADO = timedelta(hours=3)
 
 
