@@ -143,7 +143,8 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
   `curtidas`, `comentarios`, `reposts`, `curti`, `repostei`,
   `repost_de: PostOut | None` (um nível), `repost_removido`, `tags: list[str]`
   (`#hashtags` + forma + `tags_extras`, normalizadas) e
-  `repostado_por: list[UserOut]` (só no feed; vazio fora dele).
+  `repostado_por: list[UserOut]` (só no feed; vazio fora dele) e
+  `editado: bool` (padrão `false`; ver "Rascunhos e versões").
 - **Apagar um poema com reposts:** os reposts puros são apagados junto; as
   citações continuam, com `repost_de: null` e `repost_removido: true`, e a tela
   mostra "poema removido pelo autor", como no X.
@@ -258,6 +259,26 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - 30 traduções novas por usuário por hora (`core/janela_deslizante.py`); as do
   cache não contam. Passou → 429. Já está na língua → 422. Sem
   `ANTHROPIC_API_KEY` → 503.
+
+### Rascunhos e versões (dono: Neto, #73)
+
+Tabelas novas, sem coluna nova em `posts`: `rascunhos` (`autor_id`, `titulo`,
+`texto`, `forma`, `idioma`, `created_at`, `updated_at`) e `versoes_poema`
+(`post_id`, `titulo`, `texto`, `forma`, `criada_em` = quando a versão foi
+substituída).
+
+- Rascunho é só do autor: de outra pessoa, toda rota dá 404. Não entra em
+  feed, perfil, Explorar, tags, índice, Em alta nem antologias.
+- `GET /rascunhos` 🔒 → página de `RascunhoOut`, o editado por último primeiro;
+  `POST /rascunhos` 🔒 → 201 (mesmas regras do `PostCreate`, sem
+  `repost_de_id`); `GET`/`PATCH`/`DELETE /rascunhos/{id}` 🔒.
+- `POST /rascunhos/{id}/publicar` 🔒 → 201 `PostOut`: cria o poema pelo mesmo
+  `posts.criar` (data = agora, tags indexadas, sem versões) e apaga o rascunho.
+- `PATCH /posts/{id}` que muda `titulo`, `texto` ou `forma` guarda a versão
+  anterior; o `PostOut` passa a vir com `editado: true`. Apagar o poema apaga
+  as versões.
+- `GET /posts/{id}/versoes` 🔒 → página de `VersaoOut`, a mais recente
+  primeiro; quem não é o autor recebe 404.
 
 ### Auth e saúde
 
