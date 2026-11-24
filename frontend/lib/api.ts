@@ -558,10 +558,53 @@ export function buscarPoemaDoDia(): Promise<Post> {
 }
 
 // Espelha Trending (backend/app/schemas/tags.py): as 5 tags com mais poemas nas últimas 24 h.
-export type TagContagem = { tag: string; contagem: number };
+// `trecho` é o primeiro verso do poema mais novo com a tag, com o recuo de quem
+// escreveu; null quando não há verso com texto (e ausente num backend antigo).
+export type TagContagem = { tag: string; contagem: number; trecho?: string | null };
 
-export function buscarTrending(): Promise<{ items: TagContagem[] }> {
-  return apiGet<{ items: TagContagem[] }>("/tags/trending");
+// `limit` de 1 a 10 (padrão 5, o da coluna direita; o Explorar pede 10).
+export function buscarTrending(limit = 5): Promise<{ items: TagContagem[] }> {
+  return apiGet<{ items: TagContagem[] }>(`/tags/trending?limit=${limit}`);
+}
+
+// Espelha BuscaDeTags: GET /tags/busca?q= devolve até 5 tags que começam pelo
+// termo (normalizado no backend), com quantos poemas cada uma tem.
+export type TagEncontrada = { tag: string; poemas: number };
+
+export function buscarTags(q: string): Promise<{ items: TagEncontrada[] }> {
+  return apiGet<{ items: TagEncontrada[] }>(`/tags/busca?${new URLSearchParams({ q })}`);
+}
+
+// Poetas da busca do Explorar: a mesma busca do Acervo (GET /acervo?q=, nome ou
+// @username, sem acento), como na tela Quem seguir, só com menos resultados e
+// quem eu sigo primeiro (sigo_primeiro), depois em ordem alfabética.
+export const POETAS_NA_BUSCA = 5;
+
+export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
+  const params = new URLSearchParams({ q, offset: "0", limit: String(POETAS_NA_BUSCA), sigo_primeiro: "true" });
+  return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
+
+// "ver todos no Acervo": a tela do Acervo já abre com a busca pelo ?q=.
+export function caminhoDoAcervoComBusca(q: string): string {
+  return `/acervo?${new URLSearchParams({ q: q.trim() })}`;
+}
+
+// O que o campo do Explorar procura: a tag (normalizada, sem o "#") e o nome ou
+// @username do poeta. "#saudade" procura só tags; "@ana", só poetas.
+export function termosDaBusca(texto: string): { tag: string; poeta: string } {
+  const limpo = texto.trim();
+  if (limpo.startsWith("#")) return { tag: normalizarTag(limpo), poeta: "" };
+  if (limpo.startsWith("@")) return { tag: "", poeta: limpo.slice(1).trim() };
+  return { tag: normalizarTag(limpo), poeta: limpo };
+}
+
+// Seta para cima e para baixo na lista de resultados: dá a volta nas pontas, e
+// -1 (nenhuma opção ativa) vai para a primeira ou para a última.
+export function opcaoVizinha(atual: number, total: number, passo: 1 | -1): number {
+  if (total === 0) return -1;
+  if (atual < 0) return passo === 1 ? 0 : total - 1;
+  return (atual + passo + total) % total;
 }
 
 export type FiltrosDoExplorar = { tag: string | null; forma: string | null };

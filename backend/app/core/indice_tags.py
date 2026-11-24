@@ -18,6 +18,7 @@ from datetime import datetime
 from app.core.datas import para_utc
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
+_FORA_DA_TAG = re.compile(r"[^a-z0-9_]")
 # "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
 FORMA_SEM_TAG = "outro"
 
@@ -26,6 +27,11 @@ def normalizar(texto: str) -> str:
     """casefold e sem acento: '#Solidão' e '#solidao' viram a mesma tag."""
     sem_acento = unicodedata.normalize("NFKD", texto.casefold())
     return "".join(c for c in sem_acento if not unicodedata.combining(c))
+
+
+def termo_de_tag(texto: str) -> str:
+    """O que a pessoa digitou na busca, como tag: '#Saudade!' vira 'saudade'."""
+    return _FORA_DA_TAG.sub("", normalizar(texto))
 
 
 def extrair_tags(texto: str, forma: str | None) -> set[str]:
@@ -42,6 +48,9 @@ class IndiceTags:
     - indexar/remover: O(t), t = tags do post (lookups em hash)
     - posts_da_tag: O(p log p), p = posts da tag (ordena na leitura)
     - trending: O(n·t + m log k), n = posts indexados, m = tags distintas na janela
+    - mais_recente: O(p), p = posts da tag
+    - representantes: O(Σp) das tags pedidas
+    - buscar: O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo
     - reconstruir do zero: O(n·t), por isso só acontece no startup
     """
 
@@ -106,6 +115,47 @@ class IndiceTags:
             if criado_em >= inicio:
                 contagem.update(tags)
         return heapq.nsmallest(k, contagem.items(), key=lambda par: (-par[1], par[0]))
+
+    def mais_recente(self, tag: str, evitar: frozenset[int] = frozenset()) -> int | None:
+        """Id do poema mais novo com a tag fora de `evitar` (empate: maior id). O(p).
+
+        Se todos estão em `evitar`, o mais novo mesmo; tag sem poemas dá None.
+        Um max linear, sem ordenar: o "Em alta" só quer um.
+        """
+        posts = self._por_tag.get(normalizar(tag))
+        if not posts:
+            return None
+        livres = [par for par in posts.items() if par[0] not in evitar] or list(posts.items())
+        return max(livres, key=lambda par: (par[1], par[0]))[0]
+
+    def representantes(self, tags: list[str]) -> dict[str, int | None]:
+        """Um poema por tag, na ordem dada, sem repetir o de uma tag de cima. O(Σp).
+
+        Cada tag fica com o poema mais novo dela que ainda não apareceu; se todos
+        já apareceram, com o mais novo mesmo.
+        """
+        usados: set[int] = set()
+        escolhidos: dict[str, int | None] = {}
+        for tag in tags:
+            post_id = self.mais_recente(tag, frozenset(usados))
+            escolhidos[tag] = post_id
+            if post_id is not None:
+                usados.add(post_id)
+        return escolhidos
+
+    def buscar(self, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
+        """Até k tags que começam por `prefixo`, com quantos poemas cada uma tem.
+
+        O(T + T' log k). Mais poemas primeiro, empate alfabético; prefixo vazio
+        (ou só com caracteres fora de uma tag) não acha nada.
+        """
+        termo = termo_de_tag(prefixo)
+        if not termo:
+            return []
+        achadas = (
+            (tag, len(posts)) for tag, posts in self._por_tag.items() if tag.startswith(termo)
+        )
+        return heapq.nsmallest(k, achadas, key=lambda par: (-par[1], par[0]))
 
 
 indice_tags = IndiceTags()

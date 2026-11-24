@@ -482,6 +482,8 @@ distintas na janela):
 | `indexar` / `remover` | O(t), lookups em hash | publicar e apagar poema |
 | `posts_da_tag` | O(p log p), ordena na leitura (mais novo primeiro, empate pelo maior id) | `/tags/{tag}/posts`, Explorar |
 | `trending` | O(n·t + m log k), heap de tamanho k via `heapq.nsmallest` | `/tags/trending` (janela de 24 h) |
+| `mais_recente` / `representantes` | O(p) por tag, um `max` sem ordenar | o verso de cada tag no "Em alta", um poema diferente por tag |
+| `buscar` | O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo | `/tags/busca` (busca do Explorar) |
 | `reconstruir` | O(n·t) | só no startup (lifespan) |
 
 O índice vive na memória do processo e é reconstruído do banco no startup. O

@@ -72,10 +72,10 @@ def test_trending_conta_so_as_ultimas_24h(client, como, publicar):
     assert r.status_code == 200
     assert r.json() == {
         "items": [
-            {"tag": "amor", "contagem": 2},
-            {"tag": "chuva", "contagem": 1},
-            {"tag": "haicai", "contagem": 1},
-            {"tag": "mar", "contagem": 1},
+            {"tag": "amor", "contagem": 2, "trecho": None},
+            {"tag": "chuva", "contagem": 1, "trecho": None},
+            {"tag": "haicai", "contagem": 1, "trecho": None},
+            {"tag": "mar", "contagem": 1, "trecho": None},
         ]
     }
 
@@ -85,6 +85,81 @@ def test_trending_devolve_no_maximo_5(client, como, publicar):
         publicar(f"#{tag}")
     r = client.get("/tags/trending", headers=como("ana"))
     assert [item["tag"] for item in r.json()["items"]] == ["a", "b", "c", "d", "e"]
+
+
+def test_trending_traz_o_primeiro_verso_do_poema_mais_novo(client, como, publicar):
+    publicar("um poema antigo\n#saudade")
+    publicar("\n   \n    a casa vazia,   \no quintal #saudade", autor="bia")
+
+    item = client.get("/tags/trending", headers=como("ana")).json()["items"][0]
+    assert item == {"tag": "saudade", "contagem": 2, "trecho": "    a casa vazia,   "}
+
+
+def test_trending_pula_a_linha_so_de_tags(client, como, publicar):
+    publicar("#saudade #mar\n\n  a varanda, a rede,\n#fim")
+
+    itens = client.get("/tags/trending", headers=como("ana")).json()["items"]
+    assert {item["trecho"] for item in itens} == {"  a varanda, a rede,"}
+
+
+def test_trending_um_poema_diferente_por_tag(client, como, publicar):
+    publicar("o mar antigo\n#mar #sal")
+    publicar("a chuva fina\n#chuva #mar")
+    publicar("o sal da lágrima\n#sal #mar #chuva")
+
+    itens = client.get("/tags/trending", headers=como("ana")).json()["items"]
+    trechos = {item["tag"]: item["trecho"] for item in itens}
+    # mar (3) fica com o mais novo; chuva (2) e sal (2) com o mais novo ainda livre.
+    assert [item["tag"] for item in itens] == ["mar", "chuva", "sal"]
+    assert trechos == {"mar": "o sal da lágrima", "chuva": "a chuva fina", "sal": "o mar antigo"}
+
+
+def test_trending_repete_o_poema_quando_a_tag_nao_tem_outro(client, como, publicar):
+    publicar("um verso só\n#lua #noite")
+
+    trechos = [item["trecho"] for item in client.get("/tags/trending", headers=como("ana")).json()["items"]]
+    assert trechos == ["um verso só", "um verso só"]
+
+
+def test_trending_limit_ate_10(client, como, publicar):
+    for i in range(12):
+        publicar(f"verso\n#t{i:02d}")
+    r = client.get("/tags/trending?limit=10", headers=como("ana"))
+    assert [item["tag"] for item in r.json()["items"]] == [f"t{i:02d}" for i in range(10)]
+    assert len(client.get("/tags/trending", headers=como("ana")).json()["items"]) == 5
+    assert client.get("/tags/trending?limit=11", headers=como("ana")).status_code == 422
+
+
+def test_trending_sem_o_poema_no_banco_vem_sem_trecho(client, como):
+    from app.core.indice_tags import indice_tags
+
+    indice_tags.indexar(999, {"fantasma"}, datetime.now(UTC))
+
+    item = client.get("/tags/trending", headers=como("ana")).json()["items"][0]
+    assert item == {"tag": "fantasma", "contagem": 1, "trecho": None}
+
+
+def test_busca_de_tags_por_prefixo_normalizado(client, como, publicar):
+    publicar("#Saudade #sal")
+    publicar("#saudade", autor="bia")
+    publicar("#mar")
+
+    r = client.get("/tags/busca?q=%23SAÚ", headers=como("ana"))
+    assert r.status_code == 200
+    assert r.json() == {"items": [{"tag": "saudade", "poemas": 2}]}
+
+    r = client.get("/tags/busca?q=sa", headers=como("ana"))
+    assert [item["tag"] for item in r.json()["items"]] == ["saudade", "sal"]
+
+    assert client.get("/tags/busca?q=", headers=como("ana")).json() == {"items": []}
+    assert client.get("/tags/busca", headers=como("ana")).json() == {"items": []}
+
+
+def test_busca_de_tags_mostra_no_maximo_5(client, como, publicar):
+    for tag in ("aa", "ab", "ac", "ad", "ae", "af"):
+        publicar(f"#{tag}")
+    r = client.get("/tags/busca?q=a", headers=como("ana"))
+    assert [item["tag"] for item in r.json()["items"]] == ["aa", "ab", "ac", "ad", "ae"]
 
 
 def test_explorar_filtros(client, como, publicar):

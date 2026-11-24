@@ -24,12 +24,15 @@ def listar(
     lingua: Annotated[str | None, Query(pattern=r"^[a-z]{2}$")] = None,
     epoca: ChaveEpoca | None = None,
     ordem: Ordem = "alfabetica",
+    sigo_primeiro: bool = False,
     offset: Offset = 0,
     limit: Limite = POR_PAGINA,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    filtros = service.Filtros(tipo=tipo, q=q, lingua=lingua, epoca=epoca, ordem=ordem)
+    filtros = service.Filtros(
+        tipo=tipo, q=q, lingua=lingua, epoca=epoca, ordem=ordem, sigo_primeiro=sigo_primeiro
+    )
     return service.listar(db, user, filtros, offset, limit)
 
 
