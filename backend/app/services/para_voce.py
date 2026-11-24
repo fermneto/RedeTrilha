@@ -7,7 +7,8 @@ Mistura, de todos os poetas (seguidos ou não, inclusive a própria pessoa):
   "repostado por" (todos que repostaram, por último primeiro), uma vez só;
 - rengas abertas, na estrofe mais recente ("fulano abriu uma renga" /
   "fulano escreveu uma estrofe", como no feed Seguindo);
-- poemas de consagrados, rareados (ver `JANELA_DO_CONSAGRADO`);
+- poemas de consagrados, rareados, com os em português na frente (ver
+  `JANELA_DO_CONSAGRADO`);
 - poemas que receberam comentário ou crítica: o poema sobe com o comentário
   mais recente e o rótulo "fulano comentou" ("subiu_por" e "comentado_por").
 
@@ -42,10 +43,11 @@ from app.schemas.user import UserOut
 from app.services.cursor import utc_sem_fuso
 from app.services.feed import Linha, montar_pagina, recortar
 
-# PROVISÓRIO (o Neto decide o equilíbrio): dos poemas de consagrados, entra só o
-# mais recente de cada janela de 3 horas, uns 8 por dia, para os milhares de
-# poemas do acervo não afogarem os poetas da rede. Comentário em poema de
-# consagrado sobe o poema do mesmo jeito, fora dessa conta.
+# PROVISÓRIO (o Neto decide o equilíbrio): dos poemas de consagrados, entra só um
+# de cada janela de 3 horas, uns 8 por dia, para os milhares de poemas do acervo
+# não afogarem os poetas da rede: o mais recente em português, se a janela tiver
+# algum, senão o mais recente. Comentário em poema de consagrado sobe o poema do
+# mesmo jeito, fora dessa conta.
 JANELA_DO_CONSAGRADO = timedelta(hours=3)
 
 
@@ -70,13 +72,22 @@ def _linha(item: ItemMisturado) -> Linha:
 def _poemas(db: Session) -> list[Atividade]:
     """Poemas e citações da rede (reposts puros ficam fora)."""
     linhas = db.execute(
-        select(Post.id, Post.autor_id, User.consagrado, Post.created_at)
+        select(Post.id, Post.autor_id, User.consagrado, Post.created_at, Post.idioma)
         .join(User, User.id == Post.autor_id)
         .where(~Post.repost_puro)
     )
     return [
-        Atividade("poema", "publicou", post_id, post_id, autor_id, utc_sem_fuso(criado), consagrado)
-        for post_id, autor_id, consagrado, criado in linhas
+        Atividade(
+            "poema",
+            "publicou",
+            post_id,
+            post_id,
+            autor_id,
+            utc_sem_fuso(criado),
+            consagrado,
+            idioma == "pt",
+        )
+        for post_id, autor_id, consagrado, criado, idioma in linhas
     ]
 
 

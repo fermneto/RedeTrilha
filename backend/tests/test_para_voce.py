@@ -36,9 +36,11 @@ def _consagrado(username: str = "bilac") -> int:
         return user.id
 
 
-def _poema_de_consagrado(autor_id: int, texto: str, data: datetime) -> int:
+def _poema_de_consagrado(
+    autor_id: int, texto: str, data: datetime, idioma: str | None = None
+) -> int:
     with SessionLocal() as db:
-        post = Post(autor_id=autor_id, texto=texto, created_at=data)
+        post = Post(autor_id=autor_id, texto=texto, created_at=data, idioma=idioma)
         db.add(post)
         db.commit()
         return post.id
@@ -211,6 +213,36 @@ def test_consagrados_nao_afogam_a_rede(client, como):
     # Comentário sobe o poema de consagrado que tinha ficado de fora.
     _comentar(client, como, "caio", mesma_janela[0], BASE + timedelta(hours=5))
     assert _resumo(_para_voce(client, como))[0] == ("poema", "soneto 0", "comentario", ["caio"])
+
+
+def test_consagrado_em_portugues_tem_preferencia_na_janela(client, como):
+    bilac = _consagrado()
+    # Na mesma janela, o poema em português fica mesmo sendo o mais antigo.
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=50), "en")
+    _poema_de_consagrado(bilac, "soneto velho", BASE + timedelta(minutes=10), "pt")
+    _poema_de_consagrado(bilac, "soneto novo", BASE + timedelta(minutes=30), "pt")
+    _poema_de_consagrado(bilac, "sem idioma", BASE + timedelta(minutes=40))
+    assert [i["texto"] for i in _para_voce(client, como)["items"]] == ["soneto novo"]
+
+
+def test_janela_sem_portugues_fica_com_o_mais_recente(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "poème", BASE + timedelta(minutes=10), "fr")
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=50), "en")
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(hours=4), "pt")
+    assert [i["texto"] for i in _para_voce(client, como)["items"]] == ["soneto", "sonnet"]
+
+
+def test_cursor_estavel_com_preferencia_por_portugues(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=50), "en")
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(minutes=10), "pt")
+    _poema(client, como, "bia", "da bia", BASE + timedelta(hours=4))
+    primeira = client.get("/feed/para-voce?limit=1", headers=como("ana")).json()
+    segunda = client.get(
+        f"/feed/para-voce?limit=1&cursor={primeira['proximo_cursor']}", headers=como("ana")
+    ).json()
+    assert [i["texto"] for i in primeira["items"] + segunda["items"]] == ["da bia", "soneto"]
 
 
 def test_feed_seguindo_nao_traz_rotulo_de_comentario(client, como):
