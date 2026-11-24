@@ -5,24 +5,32 @@ SQLAlchemy, sem FastAPI, sem import de banco. Só dicts, sets, listas, deques,
 heaps e a lógica deles. A banca olha isso no critério de organização do código: a lógica das
 estruturas fica aqui, e o endpoint a usa de verdade.
 
-## O padrão
+## O padrão: o estado no banco, a lógica aqui
 
-`indice_tags.py` é o exemplo mais completo (o service de posts o atualiza a cada
-write e o lifespan o reconstrói). Cada estrutura segue cinco regras:
+A API roda com vários workers e instâncias. Por isso **nada daqui guarda estado
+entre requests**: um singleton em memória seria um por processo, cada um com os
+seus números. O que precisa durar mora no banco; o core recebe o que o service
+leu do banco e devolve o resultado.
 
-1. É uma classe ou módulo puro, testável sem servidor.
-2. Existe uma instância global (singleton de módulo) que a API usa.
-3. No startup (lifespan, em `main.py`), o singleton é reconstruído a partir do
-   banco. A memória zera a cada restart, o banco não.
-4. Todo write relevante da API atualiza o singleton em O(1), sem reconstruir
-   tudo em O(n).
-5. O endpoint importa e usa o singleton (`from app.core...`).
+`indice_tags.py` é o exemplo mais completo. O índice invertido tag → poemas é a
+tabela `post_tags` (models/post_tag.py), gravada pelo `services/indice_tags.py`
+na mesma transação que publica ou apaga o poema. O core decide que tags o poema
+tem (`extrair_tags`, `normalizar`), escolhe o top-k das contagens com um heap
+(`top_k`) e o poema de cada tag no "Em alta" (`representantes`).
+
+Cada estrutura segue quatro regras:
+
+1. É uma função ou classe pura, testável sem servidor e sem banco.
+2. Não há instância global com estado: o service chama o core por request.
+3. O que precisa sobreviver a um restart, ou valer igual em dois processos,
+   fica numa tabela, com o índice que a consulta precisa.
+4. O endpoint usa o core através do service (router → service → core).
 
 ## Avisos
 
-- `uvicorn --reload` reinicia o processo a cada save. O singleton zera e é
-  reconstruído no startup. Se os números sumirem, é isso (guia 04).
-- Em produção, isso seria um índice ou uma consulta no banco. Aqui a estrutura
-  fica em memória porque o objetivo é vocês a implementarem e medirem.
-- Reconstruir a estrutura a cada request só é aceitável se o Big O declarado no
-  `DECISIONS.md` disser isso. Nesse caso a operação é O(n), não O(1).
+- O Big O que vale é o da operação inteira: a consulta ao banco (com índice,
+  O(log n + resultado)) mais o trabalho do core sobre o que ela trouxe. Os
+  dois estão anotados nas docstrings e no `DECISIONS.md`.
+- Montar a estrutura a cada request (como `arvore_comentarios.py` e
+  `mistura.py`) é o normal aqui: só com o que a página carregou, nunca com a
+  rede inteira.

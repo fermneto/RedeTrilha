@@ -370,7 +370,7 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   `modelo`, `em_cache`).
 - Cache na tabela `traducoes`, único por (`post_id`, `idioma_destino`): o mesmo
   pedido não chama a API de novo. Repost puro traduz o original.
-- 30 traduções novas por usuário por hora (`core/janela_deslizante.py`); as do
+- 30 traduções novas por usuário por hora, contadas na tabela `traducoes`; as do
   cache não contam. Passou → 429. Já está na língua → 422. Sem
   `ANTHROPIC_API_KEY` → 503.
 
@@ -417,21 +417,23 @@ feed, perfil, Explorar, tags, índice, Em alta, antologias nem nas contagens.
 
 ### Gancho do índice de tags (Neto ↔ Henrique)
 
-`backend/app/core/indice_tags.py` expõe o singleton `indice_tags`:
+O índice mora na tabela `post_tags (post_id, tag, criado_em)`, e
+`backend/app/services/indice_tags.py` o lê e escreve (a lógica pura fica em
+`core/indice_tags.py`: `extrair_tags`, `normalizar`, `top_k`, `representantes`):
 
 ```python
-indice_tags.indexar(post_id: int, tags: set[str], criado_em: datetime) -> None
-indice_tags.remover(post_id: int) -> None
-indice_tags.posts_da_tag(tag: str) -> list[int]       # mais novo primeiro
-indice_tags.trending(desde: datetime, k: int = 5) -> list[tuple[str, int]]
-indice_tags.mais_recente(tag: str, evitar: frozenset[int] = frozenset()) -> int | None
-indice_tags.representantes(tags: list[str]) -> dict[str, int | None]  # um poema por tag
-indice_tags.buscar(prefixo: str, k: int = 5) -> list[tuple[str, int]]  # (tag, poemas)
-extrair_tags(texto: str, forma: str | None) -> set[str]  # #amor, mais a forma
+indice_tags.indexar(db, post: Post) -> None            # sem commit: na transação de quem publica
+indice_tags.remover(db, post_ids: list[int]) -> None   # idem, ao apagar
+indice_tags.posts_da_tag(db, tag, offset, limit) -> tuple[list[int], int]  # (página, total)
+indice_tags.trending(db, desde: datetime, k: int = 5) -> list[tuple[str, int]]
+indice_tags.representantes(db, tags: list[str]) -> dict[str, int | None]  # um poema por tag
+indice_tags.buscar(db, prefixo: str, k: int = 5) -> list[tuple[str, int]]  # (tag, poemas)
+indice_tags.popular(db) -> int                         # refaz tudo a partir de posts
 ```
 
 O `services/posts.py` chama `indexar` ao criar (também ao publicar um
-rascunho) e `remover` ao apagar; o lifespan reconstrói o índice a partir do banco.
+rascunho) e `remover` ao apagar, antes do mesmo commit; o importador de
+consagrados e o seed também. Nada é reconstruído no startup.
 
 ### Componentes do front
 
@@ -534,6 +536,7 @@ Caminho crítico: **P0 → P1 → H1 → H2/H5 → H6 → N4 → N5.**
   da hibernação do Render leva cerca de 1 minuto.
 - **Direitos autorais.** Só autores mortos até 1955; o importador recusa
   `morte > 1955`.
-- **Estruturas em memória** (`indice_tags` e o limite de tradução em
-  `janela_deslizante`) zeram no `--reload` e são reconstruídas no lifespan
-  (`core/README.md`). A `arvore_comentarios` é montada a cada request.
+- **Sem estado em memória.** O índice de tags (tabela `post_tags`) e o limite
+  de tradução (contado em `traducoes`) moram no banco, para a API rodar com
+  vários workers e instâncias (`core/README.md`). A `arvore_comentarios` é
+  montada a cada request.

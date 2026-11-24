@@ -203,8 +203,8 @@ ficam fora do CORS. A banca usa só a URL de produção.
   banca: apague o que não quiser mostrar.
 - **Consagrados novos não entram sozinhos.** Como o seed não roda de novo, um
   JSON novo em `backend/data/consagrados/` não chega à produção pelo deploy.
-  Rode o importador apontando para o Supabase e reinicie o Render, para o
-  índice de tags ser reconstruído:
+  Rode o importador apontando para o Supabase (as tags entram no índice na
+  mesma transação; não precisa reiniciar o Render):
 
   ```bash
   cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
@@ -212,6 +212,25 @@ ficam fora do CORS. A banca usa só a URL de produção.
   ```
 
 - **Push na `main` = redeploy** do Render e da Vercel (os dados ficam).
+- **Banco criado antes do índice de tags no banco (uma vez só).** O boot faz
+  `create_all`, que cria a tabela nova `post_tags` vazia, mas não mexe em
+  tabelas que já existem. Num banco antigo, popule o índice de tags a partir
+  dos posts (idempotente: pode rodar de novo) e crie o índice que o limite de
+  tradução usa:
+
+  ```bash
+  cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
+    uv run python scripts/popular_post_tags.py
+  ```
+
+  ```sql
+  CREATE INDEX IF NOT EXISTS ix_traducoes_pedida_por_id_created_at
+    ON traducoes (pedida_por_id, created_at);
+  ```
+
+  Sem o populador, o "Em alta", as tags e a busca de tags ficam vazios para os
+  poemas antigos; sem o `CREATE INDEX`, o limite de tradução funciona, só que
+  varrendo as traduções da pessoa.
 
 ## Checklist de verificação (o que a banca faz)
 
