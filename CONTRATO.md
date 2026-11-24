@@ -1,5 +1,11 @@
 # Contrato da API
 
+> **No Verso:** este arquivo é a sugestão do template para as ideias do
+> catálogo. As rotas reais do Verso estão na seção "Contratos" do
+> [`PLANO.md`](PLANO.md) e no OpenAPI, em `localhost:8000/docs`. Onde o Verso
+> implementou uma ideia daqui com outro desenho (coleções viraram
+> `/antologias`, o Explorar também filtra por `forma`), vale o `PLANO.md`.
+
 Sugestão de rotas, campos e status para as ideias do [`CATALOGO.md`](CATALOGO.md).
 Não é obrigatório: sigam se ajudar, mudem se o produto de vocês pedir outra
 coisa. O núcleo é definido por `backend/tests/test_nucleo.py`.
@@ -223,14 +229,17 @@ Convenções:
 
 - `POST` 🔒 `/posts/{id}/comentarios`,
   body `{"texto": str, "parent_id": int | null}` → `201`.
-- `GET` 🔒 `/posts/{id}/comentarios` → `200`,
-  `{"items": [comentário com respostas recursivas]}`.
+- `GET` 🔒 `/posts/{id}/comentarios?limit=&cursor=` → `200`,
+  `{"items", "total", "limit", "proximo_cursor"}`: as raízes, cada uma com a
+  prévia das primeiras respostas (recursiva) e `total_respostas`; o resto vem
+  de `GET` 🔒 `/comentarios/{id}/respostas?limit=&cursor=`.
 - Parent inexistente ou de outro post → `404`.
 - `DELETE` 🔒 `/comentarios/{id}` (só o autor; outro → `403`) → `200`,
   `{"resultado": "apagado" | "removido", "total_respostas": int}`. Sem
   respostas, o comentário sai do banco (`"apagado"`); com respostas, vira o
   marcador "comentário removido" (`"removido"`) e `total_respostas` traz a
-  contagem atual.
+  contagem atual. O marcador fica para sempre: apagar de novo não faz nada e
+  devolve `"removido"`.
 - Raízes e filhos em ordem cronológica. Raiz sem parent mantém o teste do núcleo.
 
 ### Autocomplete com trie
