@@ -47,12 +47,13 @@ _EPICO = re.compile(
     r"divina commedia|commedia|orlando furioso|gerusalemme liberata|"
     r"chansons? de roland|os lusíadas|atlàntida|atlantida|"
     r"paradise lost|faerie queene|beowulf|don juan|"
-    r"hiawatha|kalevala|aeneid|eneida|ilíada|iliad|odisseia|odyssey|"
+    r"hiawatha|kalevala|aeneid|aeneis|eneida|metamorphoses|"
+    r"rerum natura|ilíada|iliad|odisseia|odyssey|"
     r"онегин|onegin|"
     r"shahnameh|mah[aā]bh[aā]rata|ramayana"
 )
 _ABERTURA = re.compile(
-    r"(?i)^(?:canto|chant|cant|càntic|book|livro|parte|part|chapter|kapitel|глава)?\s*(?:i|1|primeiro|primero|premier|primer|primo)$"
+    r"(?i)^(?:canto|chant|cant|càntic|book|livro|parte|part|chapter|kapitel|liber|глава)?\s*(?:i|1|primeiro|primero|premier|primer|primo)$"
 )
 _EDICAO = re.compile(r"(?i)grafia original|ortografia atualizada")
 _REDIRECT = re.compile(

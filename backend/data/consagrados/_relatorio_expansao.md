@@ -255,14 +255,49 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | Christian Morgenstern | Wikidata sem ficha de poeta entre os homônimos |
 
+## Bloco: Antiguidade e Mediterrâneo
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| — | nenhum |  |  |  |  |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| `catulo` | la.wikisource: Carmina (Catullus) | 117 | 8 | 71 | duplicata 3, sem_poema 43 |
+| `homero` | en.wikisource: The Iliad of Homer (Pope) | 27 | 7 | 1 | epico_seguinte 25, excertos 1, sem_poema 1 |
+| `horacio` | la.wikisource: Carmina (Horatius) | 103 | 10 | 93 | duplicata 10 |
+| `lucrecio` | la.wikisource: De rerum natura (Titus Lucretius Carus) | 6 | 6 | 1 | epico_seguinte 5, excertos 1 |
+| `ovidio` | la.wikisource: Metamorphoses (Ovidius) | 15 | 6 | 1 | epico_seguinte 14, excertos 1 |
+| `virgilio` | la.wikisource: Eclogae vel bucolica | 10 | 5 | 1 | sem_poema 9 |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| hesiodo | sem coleção transcrita no en.wikisource (Hesiod) |
+| safo | sem coleção transcrita no en.wikisource (Sappho) |
+| pindaro | sem coleção transcrita no en.wikisource (Pindar) |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 152 poetas, 10797 poemas.
+JSON na pasta (exceto ficheiros `_`): 152 poetas, 10965 poemas.
 
-`make reset` depois do bloco germânico, eslavo e nórdico:
+`make reset` depois do bloco da antiguidade:
 
 ```
-consagrados: 152 poetas criados, 0 atualizados; 10797 poemas criados, 0 atualizados
+consagrados: 152 poetas criados, 0 atualizados; 10965 poemas criados, 0 atualizados
 ```
 
-O bloco inglês tinha fechado em 143 poetas e 8867 poemas. Shelley e Emily Dickinson não têm coleção no en.wikisource. *Hiawatha* não rendeu verso extraível. Maiakovski, Novalis e Lermontov não têm coleção na língua de origem; os poemas antigos ficam.
+O bloco germânico tinha fechado em 152 poetas e 10797 poemas. Horácio ganhou as odes, Catulo os carmina, Homero a abertura da Ilíada na tradução de Pope (1744). Ovídio e Lucrécio ficam na abertura do livro I. Nove éclogas de Virgílio não estão em marcação de verso.
