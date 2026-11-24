@@ -9,7 +9,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { caminhoDaCitacaoDeVersos, referenciaDosVersos, selecionarVerso, trechoDosVersos, versosDaSelecao, versosDoPoema } =
+const { ancoraCobreOVerso, caminhoDaCitacaoDeVersos, referenciaDosVersos, selecionarVerso, trechoDosVersos, versosDaSelecao, versosDoPoema } =
   await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
 
 const POEMA = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nAs aves, que aqui gorjeiam,\n  Não gorjeiam como lá.";
@@ -53,4 +53,15 @@ test("citar estes versos abre o compositor de citação com o trecho", () => {
   assert.equal(url.pathname, "/escrever");
   assert.equal(url.searchParams.get("citar"), "7");
   assert.equal(url.searchParams.get("versos"), "um\n  dois");
+});
+
+test("o filtro do verso só deixa passar a crítica cuja âncora cobre o verso", () => {
+  const ancora = { verso_inicio: 2, verso_fim: 4, trecho: "" };
+  assert.equal(ancoraCobreOVerso(ancora, null), true);
+  assert.equal(ancoraCobreOVerso(null, null), true);
+  assert.equal(ancoraCobreOVerso(ancora, 2), true);
+  assert.equal(ancoraCobreOVerso(ancora, 4), true);
+  assert.equal(ancoraCobreOVerso(ancora, 7), false);
+  assert.equal(ancoraCobreOVerso(ancora, 1), false);
+  assert.equal(ancoraCobreOVerso(null, 7), false);
 });
