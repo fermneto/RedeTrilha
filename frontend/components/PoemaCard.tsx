@@ -224,14 +224,17 @@ function Acoes({ poema }: { poema: Post }) {
     }
   }
 
-  // Como no X: só ícone e número, e o número some quando é zero. O nome da
-  // ação vai no aria-label (com o número, que o aria-label esconderia) e no title.
+  // Como no X: só ícone (20 px) e número, e o número some quando é zero. O nome
+  // da ação vai no aria-label (com o número, que o aria-label esconderia) e no
+  // title. Cada botão tem área de toque de 44×44 px; o -mx-3 da linha alinha o
+  // primeiro ícone com o texto do card.
   const botao =
-    "inline-flex min-w-[2.5rem] cursor-pointer items-center gap-1.5 tabular-nums transition-colors hover:text-tinta";
+    "inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-1.5 px-3 tabular-nums transition-colors hover:text-tinta";
+  const icone = "h-5 w-5";
   const rotulo = (acao: string, n?: number) => (n ? `${acao} (${n})` : acao);
   return (
-    <div className="mt-5 border-t border-borda pt-3">
-      <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-tinta-suave">
+    <div className="mt-5 border-t border-borda pt-1">
+      <div className="-mx-3 flex flex-wrap gap-x-4 text-sm text-tinta-suave">
         <button
           type="button"
           onClick={alternarCurtida}
@@ -240,7 +243,7 @@ function Acoes({ poema }: { poema: Post }) {
           title="curtir"
           className={`${botao} ${curti ? "text-destaque" : ""}`}
         >
-          <IconeCurtir cheio={curti} />
+          <IconeCurtir cheio={curti} className={icone} />
           <Contador n={curtidas} />
         </button>
         <button
@@ -251,11 +254,11 @@ function Acoes({ poema }: { poema: Post }) {
           title="repostar"
           className={`${botao} ${repostei ? "text-destaque" : ""}`}
         >
-          <IconeRepostar />
+          <IconeRepostar className={icone} />
           <Contador n={reposts} />
         </button>
         <Link href={`/escrever?citar=${poema.id}`} aria-label="citar" title="citar" className={botao}>
-          <IconeCitar />
+          <IconeCitar className={icone} />
         </Link>
         <Link
           href={`/poema/${poema.id}#comentarios`}
@@ -263,7 +266,7 @@ function Acoes({ poema }: { poema: Post }) {
           title="comentar"
           className={botao}
         >
-          <IconeComentar />
+          <IconeComentar className={icone} />
           <Contador n={poema.comentarios} />
         </Link>
       </div>
