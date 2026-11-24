@@ -105,8 +105,9 @@ nos poemas dele.
 - `UserOut`: `id`, `username`, `name`, `bio`, `avatar_url`, `consagrado`,
   `nascimento`, `morte`, `created_at`.
 - `PerfilOut` (`GET /usuarios/{username}` e `PATCH /usuarios/eu`): o `UserOut`
-  mais `seguidores`, `seguindo`, `poemas` (poemas e citações; reposts puros
-  não contam) e `sigo`.
+  mais `seguidores`, `seguindo`, `poemas` (poemas e citações, mais 1 por renga
+  de que a pessoa participou, criando ou escrevendo estrofe; reposts puros não
+  contam; o Acervo usa a mesma conta) e `sigo`.
 - `PATCH /usuarios/eu` 🔒: `name`, `bio` e `avatar_url`, só os enviados; `null`
   explícito → 422.
 
@@ -158,8 +159,9 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
 - `PoemaNoFeed` (`tipo: "poema"`): o `PostOut` de sempre, com o campo `tipo`.
 - `RengaNoFeed` (`tipo: "renga"`): `renga: RengaDetalhe`, `atividade`
-  (`"abriu"` | `"escreveu"`) e `por: list[UserOut]`, o rótulo "fulano escreveu
-  uma estrofe" / "fulano abriu uma renga" (ver "Rengas" abaixo).
+  (`"abriu"` | `"escreveu"` | `"encerrou"`) e `por: list[UserOut]`, o rótulo
+  "fulano abriu uma renga" / "fulano escreveu uma estrofe" / "fulano encerrou
+  a renga" (ver abaixo).
 
 O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo`.
 
@@ -173,17 +175,23 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
 - Rengas como reposts: uma renga entra no feed de quem segue o criador ou
   alguém que escreveu estrofe (e no de quem participou), uma vez só, na
-  estrofe mais recente de um seguido. `por` lista os seguidos que escreveram
-  depois da 1ª estrofe, quem escreveu por último primeiro; se não há, é
-  `atividade: "abriu"` e `por` = [o criador]. Fechada, continua no feed. No
-  perfil, a renga aparece na estrofe mais recente da pessoa.
-- Desempate do cursor: a posição é (data, chave), com chave = 2·id + 1 para
-  post e 2·id para estrofe; o cursor continua opaco.
+  atividade mais recente de um seguido. As atividades são as estrofes e o
+  encerramento pelo criador (`encerrada_em`); fechar pelo limite não é
+  encerramento. O rótulo é o da atividade mais recente: estrofe do criador →
+  `"abriu"` (o criador aparece sempre como quem abriu), estrofe de outra
+  pessoa → `"escreveu"` com todos os seguidos que escreveram (menos o
+  criador), quem escreveu por último primeiro, e encerramento → `"encerrou"`.
+  Fechada, continua no feed. No perfil, a renga aparece na estrofe mais
+  recente da pessoa (o encerramento não conta).
+- Desempate do cursor: a posição é (data, chave), com chave = 3·id + 2 para
+  post, 3·id + 1 para estrofe e 3·id (id da renga) para encerramento; o cursor
+  continua opaco.
 
 ### Rengas (dono: Neto)
 
 Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
-`limite`, `fechada_em`, `created_at`), `estrofes_renga` (`renga_id`,
+`limite`, `fechada_em`, `encerrada_em` (só no encerramento pelo criador),
+`created_at`), `estrofes_renga` (`renga_id`,
 `autor_id`, `posicao`, `texto`, unique (`renga_id`, `posicao`)) e
 `convites_renga` (unique (`renga_id`, `user_id`)).
 
