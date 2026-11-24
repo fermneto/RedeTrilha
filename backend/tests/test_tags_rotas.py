@@ -4,26 +4,6 @@ por um usuário escolhido pelo header X-Teste-Usuario (como em test_posts.py).""
 from datetime import UTC, datetime, timedelta
 
 import pytest
-from fastapi import Header
-from sqlalchemy import select
-
-
-@pytest.fixture()
-def como(client):
-    from app.db import SessionLocal
-    from app.deps import get_current_user
-    from app.main import app
-    from app.models.user import User
-
-    def usuario_do_header(x_teste_usuario: str = Header()):
-        with SessionLocal() as db:
-            return db.scalar(select(User).where(User.username == x_teste_usuario))
-
-    app.dependency_overrides[get_current_user] = usuario_do_header
-    for nome in ("ana", "bia"):
-        client.post("/usuarios", json={"username": nome, "name": nome.title()})
-    yield lambda username: {"X-Teste-Usuario": username}
-    app.dependency_overrides.clear()
 
 
 @pytest.fixture()

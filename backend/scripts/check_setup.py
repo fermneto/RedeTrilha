@@ -70,11 +70,11 @@ def checa_backend() -> None:
         else:
             falha(f"GET /usuarios devolveu {r.status_code} — o esqueleto foi alterado? confira app/routers/users.py")
 
-        r = client.get("/usuarios/stats")
+        r = client.get("/saude")
         if r.status_code == 200:
-            ok("core/ conectado: GET /usuarios/stats → 200")
+            ok("health check: GET /saude → 200")
         else:
-            falha(f"GET /usuarios/stats devolveu {r.status_code}")
+            falha(f"GET /saude devolveu {r.status_code}")
 
 
 def main() -> None:

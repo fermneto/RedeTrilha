@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import get_current_user
+from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.antologia import (
     AntologiaCreate,
@@ -29,29 +29,26 @@ def criar_antologia(
 
 @router.get("/antologias", response_model=AntologiaMarcadaPage | AntologiaPage)
 def minhas_antologias(
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=20, ge=1, le=100),
+    offset: Offset = 0,
+    limit: Limite = 20,
     post_id: int | None = Query(default=None, description="marca `contem` em cada antologia"),
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
     if post_id is not None:
-        items, total = service.listar_minhas_marcando(db, user, post_id, offset, limit)
-        return AntologiaMarcadaPage(items=items, total=total, offset=offset, limit=limit)
-    items, total = service.listar_minhas(db, user, offset, limit)
-    return AntologiaPage(items=items, total=total, offset=offset, limit=limit)
+        return service.listar_minhas_marcando(db, user, post_id, offset, limit)
+    return service.listar_minhas(db, user, offset, limit)
 
 
 @router.get("/usuarios/{username}/antologias", response_model=AntologiaPage)
 def antologias_de(
     username: str,
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=20, ge=1, le=100),
+    offset: Offset = 0,
+    limit: Limite = 20,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    items, total = service.listar_de(db, user, username, offset, limit)
-    return AntologiaPage(items=items, total=total, offset=offset, limit=limit)
+    return service.listar_de(db, user, username, offset, limit)
 
 
 @router.get("/antologias/{antologia_id}", response_model=AntologiaDetalhe)

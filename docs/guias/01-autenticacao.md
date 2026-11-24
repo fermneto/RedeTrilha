@@ -187,8 +187,8 @@ sessão com `secrets.token_urlsafe(32)` e devolvam `{"token": ...}`.
 Senha errada e username inexistente devolvem o mesmo 401 genérico. Responder
 "usuário não existe" revela quais usuários existem para quem está chutando.
 
-Usuário sem senha também é 401. Quem foi criado pelo `POST /usuarios` do slice
-de exemplo, ou por um seed sem `password_hash`, tem o hash vazio, e
+Usuário sem senha também é 401. Um consagrado, ou um usuário criado por um
+seed sem `password_hash`, tem o hash vazio, e
 `bcrypt.checkpw` com hash vazio não devolve `False`: ele explode com
 `ValueError: Invalid salt` e o login vira `500`. Confiram o hash antes:
 

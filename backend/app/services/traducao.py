@@ -21,6 +21,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core.datas import para_utc
 from app.core.janela_deslizante import limite_traducoes
 from app.models.post import Post
 from app.models.traducao import Traducao
@@ -118,7 +119,7 @@ def reconstruir_limite(db: Session) -> None:
             Traducao.pedida_por_id.is_not(None)
         )
     )
-    eventos = [(usuario_id, _instante(criada)) for usuario_id, criada in linhas]
+    eventos = [(usuario_id, para_utc(criada).timestamp()) for usuario_id, criada in linhas]
     limite_traducoes.reconstruir([evento for evento in eventos if evento[1] > inicio])
 
 
@@ -203,11 +204,6 @@ def _chamar_modelo(post: Post, para: str) -> tuple[str | None, str]:
             linhas_original,
         )
     return titulo, texto
-
-
-def _instante(data: datetime) -> float:
-    """Segundos desde a época; o SQLite devolve a data UTC sem fuso."""
-    return (data if data.tzinfo else data.replace(tzinfo=UTC)).timestamp()
 
 
 def _saida(traducao: Traducao, post: Post, em_cache: bool) -> TraducaoOut:

@@ -85,7 +85,7 @@ make dev-front   # Next em :3000
   → página. Imite o slice `/usuarios`.
 - **Router fino**, regra de negócio no **service**, estruturas de dados em
   **`backend/app/core/`** em Python puro (sem SQLAlchemy/FastAPI), seguindo
-  `core/README.md` e `core/contadores.py`.
+  `core/README.md` e `core/indice_tags.py`.
 - Um arquivo por model e por router; registre o router com uma linha em `main.py`.
 - **Nomes em português** e consistentes entre model, schema, rota e tela
   (`poema`, `antologia`, `forma`, `consagrado`). Exceção: campos herdados do

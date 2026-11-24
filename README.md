@@ -97,7 +97,7 @@ implementem até passar. Eles ajudam o time, mas não valem nota.
 
 Quando fizer sentido, guardem a lógica de uma feature numa estrutura de dados
 em `backend/app/core/`, em Python puro, e façam o endpoint usá-la. Usem
-`core/contadores.py` como modelo. Isso conta no critério de organização do
+`core/indice_tags.py` como modelo. Isso conta no critério de organização do
 código, e a estrutura escolhida vale uma boa explicação no `DECISIONS.md`.
 
 ## Uso de IA

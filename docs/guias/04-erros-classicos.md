@@ -162,8 +162,8 @@ POST /auth/login → 500
 ValueError: Invalid salt
 ```
 
-Causa: o usuário não tem senha. Quem veio do `POST /usuarios` do slice de
-exemplo, ou de um seed sem `password_hash`, tem o hash vazio, e
+Causa: o usuário não tem senha. Um consagrado, ou um usuário de um seed sem
+`password_hash`, tem o hash vazio, e
 `bcrypt.checkpw` com hash vazio explode em vez de devolver `False`.
 
 Conserto: no login, tratem hash vazio como senha errada (`401`), e deem senha

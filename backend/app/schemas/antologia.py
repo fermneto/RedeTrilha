@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator
 
+from app.schemas.pagina import Pagina
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 
@@ -59,13 +60,8 @@ class AntologiaDetalhe(AntologiaOut):
     poemas: list[PostOut] = []
 
 
-class AntologiaPage(BaseModel):
-    """Página de antologias no padrão do projeto (ver UserPage)."""
-
-    items: list[AntologiaOut]
-    total: int
-    offset: int
-    limit: int
+class AntologiaPage(Pagina[AntologiaOut]):
+    """Página de antologias (ver schemas/pagina.py)."""
 
 
 class AntologiaMarcada(AntologiaOut):
@@ -74,10 +70,5 @@ class AntologiaMarcada(AntologiaOut):
     contem: bool
 
 
-class AntologiaMarcadaPage(BaseModel):
+class AntologiaMarcadaPage(Pagina[AntologiaMarcada]):
     """GET /antologias?post_id=: a página de sempre, com `contem` em cada item."""
-
-    items: list[AntologiaMarcada]
-    total: int
-    offset: int
-    limit: int

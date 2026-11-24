@@ -2,26 +2,6 @@
 escolhido pelo header X-Teste-Usuario."""
 
 import pytest
-from fastapi import Header
-from sqlalchemy import select
-
-
-@pytest.fixture()
-def como(client):
-    from app.db import SessionLocal
-    from app.deps import get_current_user
-    from app.main import app
-    from app.models.user import User
-
-    def usuario_do_header(x_teste_usuario: str = Header()):
-        with SessionLocal() as db:
-            return db.scalar(select(User).where(User.username == x_teste_usuario))
-
-    app.dependency_overrides[get_current_user] = usuario_do_header
-    for nome in ("ana", "bia", "caio"):
-        client.post("/usuarios", json={"username": nome, "name": nome.title()})
-    yield lambda username: {"X-Teste-Usuario": username}
-    app.dependency_overrides.clear()
 
 
 def _postar(client, como, autor: str, texto: str) -> int:
@@ -139,8 +119,8 @@ def test_repostado_por_fica_vazio_fora_do_feed(client, como):
     assert client.get(f"/posts/{original}", headers=como("ana")).json()["repostado_por"] == []
 
 
-def test_repostado_por_so_lista_seguidos_e_o_proprio_usuario(client, como):
-    client.post("/usuarios", json={"username": "duda", "name": "Duda"})
+def test_repostado_por_so_lista_seguidos_e_o_proprio_usuario(client, como, criar_usuario):
+    criar_usuario("duda")
     original = _postar(client, como, "caio", "do caio")
     _repostar("bia", original)
     _repostar("duda", original)

@@ -6,7 +6,6 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 
-from app.core.contadores import contador_iniciais
 from app.db import Base, SessionLocal, engine
 from app.erros import erro_de_validacao
 from app.models.user import User
@@ -48,10 +47,8 @@ async def lifespan(app: FastAPI):
     # Reconstrói as estruturas do core/ a partir do banco (memória zera a cada
     # restart — inclusive no --reload; ver core/README.md).
     with SessionLocal() as db:
-        usernames = list(db.scalars(select(User.username)))
         reconstruir_indice(db)
         reconstruir_limite(db)
-    contador_iniciais.reconstruir(usernames)
     yield
 
 

@@ -5,13 +5,18 @@ declara `user: User = Depends(get_current_user)` (guia 01).
 """
 
 import os
+from typing import Annotated
 
-from fastapi import Depends, Header, HTTPException
+from fastapi import Depends, Header, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.models.user import User
 from app.services.auth import token_do_header, usuario_do_token
+
+# Paginação das listagens, igual em todas as rotas: `offset: Offset = 0, limit: Limite = 20`.
+Offset = Annotated[int, Query(ge=0)]
+Limite = Annotated[int, Query(ge=1, le=100)]
 
 
 def get_current_user(

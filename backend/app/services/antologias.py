@@ -9,7 +9,9 @@ from app.schemas.antologia import (
     AntologiaCreate,
     AntologiaDetalhe,
     AntologiaMarcada,
+    AntologiaMarcadaPage,
     AntologiaOut,
+    AntologiaPage,
     AntologiaUpdate,
 )
 from app.schemas.user import UserOut
@@ -44,16 +46,14 @@ def apagar(db: Session, usuario: User, antologia_id: int) -> None:
     db.commit()
 
 
-def listar_minhas(
-    db: Session, usuario: User, offset: int, limit: int
-) -> tuple[list[AntologiaOut], int]:
+def listar_minhas(db: Session, usuario: User, offset: int, limit: int) -> AntologiaPage:
     """Todas as antologias do usuário atual, privadas inclusive."""
     return _listar(db, usuario, offset, limit, so_publicas=False)
 
 
 def listar_minhas_marcando(
     db: Session, usuario: User, post_id: int, offset: int, limit: int
-) -> tuple[list[AntologiaMarcada], int]:
+) -> AntologiaMarcadaPage:
     """As minhas antologias, cada uma dizendo se o poema está nela (`contem`).
 
     O `contem` vem na mesma query da página (EXISTS correlacionado), sem um
@@ -75,15 +75,16 @@ def listar_minhas_marcando(
         select(Antologia, contem).where(*filtros).order_by(*_ORDEM).offset(offset).limit(limit)
     ).all()
     qtds = _contar_poemas(db, [antologia.id for antologia, _ in linhas])
-    return [
+    items = [
         AntologiaMarcada(**_para_saida(a, qtd=qtds.get(a.id, 0)).model_dump(), contem=c)
         for a, c in linhas
-    ], total
+    ]
+    return AntologiaMarcadaPage(items=items, total=total, offset=offset, limit=limit)
 
 
 def listar_de(
     db: Session, usuario: User, username: str, offset: int, limit: int
-) -> tuple[list[AntologiaOut], int]:
+) -> AntologiaPage:
     """Antologias de alguém; as privadas só aparecem para o próprio dono."""
     dono = buscar_por_username(db, username)
     return _listar(db, dono, offset, limit, so_publicas=dono.id != usuario.id)
@@ -171,7 +172,7 @@ def _filtros(dono: User, so_publicas: bool) -> list:
 
 def _listar(
     db: Session, dono: User, offset: int, limit: int, so_publicas: bool
-) -> tuple[list[AntologiaOut], int]:
+) -> AntologiaPage:
     """Antologias de um dono, a mais nova primeiro; `qtd` de todas numa query só."""
     filtros = _filtros(dono, so_publicas)
     total = db.scalar(select(func.count()).where(*filtros)) or 0
@@ -179,7 +180,8 @@ def _listar(
         db.scalars(select(Antologia).where(*filtros).order_by(*_ORDEM).offset(offset).limit(limit))
     )
     qtds = _contar_poemas(db, [antologia.id for antologia in antologias])
-    return [_para_saida(a, qtd=qtds.get(a.id, 0)) for a in antologias], total
+    items = [_para_saida(a, qtd=qtds.get(a.id, 0)) for a in antologias]
+    return AntologiaPage(items=items, total=total, offset=offset, limit=limit)
 
 
 def _contar_poemas(db: Session, antologia_ids: list[int]) -> dict[int, int]:

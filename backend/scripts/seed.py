@@ -11,7 +11,7 @@ de tags, apagar um comentário com respostas deixa o marcador. Só os usuários
 são criados direto pelo model: `auth.registrar` faz um bcrypt por usuário
 (quase um segundo para todos) e não grava bio. O seed valida cada um com o
 `UserCreate` (padrão e usernames reservados), gera um hash só da senha com
-`gerar_hash` e avisa o `contador_iniciais`, como o registro faria.
+`gerar_hash`, como o registro faria.
 
 Datas. Os services gravam a hora atual; o seed reescreve o `created_at` com
 datas espalhadas pelos últimos 14 dias, parte nas últimas 24 h (para o
@@ -37,7 +37,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.core.contadores import contador_iniciais
 from app.core.indice_tags import indice_tags
 from app.db import Base, SessionLocal, engine
 from app.models.antologia import Antologia
@@ -214,8 +213,6 @@ def _criar_usuarios(db: Session, rng: random.Random, agora: datetime) -> dict[st
         db.add(user)
         usuarios[user.username] = user
     db.commit()
-    for username in usuarios:
-        contador_iniciais.incrementar(username)
     return usuarios
 
 

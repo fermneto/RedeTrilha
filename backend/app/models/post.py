@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import JSON, ForeignKey, Index, String, Text, text
+from sqlalchemy import JSON, ColumnElement, ForeignKey, Index, String, Text, and_, text
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -52,6 +53,12 @@ class Post(Base):
     autor: Mapped[User] = relationship(lazy="joined")
     repost_de: Mapped["Post | None"] = relationship(remote_side=[id])
 
-    @property
+    @hybrid_property
     def repost_puro(self) -> bool:
         return self.repost_de_id is not None and self.texto == ""
+
+    @repost_puro.inplace.expression
+    @classmethod
+    def _repost_puro_sql(cls) -> ColumnElement[bool]:
+        """A mesma regra nas queries: `Post.repost_puro` e `~Post.repost_puro`."""
+        return and_(cls.repost_de_id.is_not(None), cls.texto == "")

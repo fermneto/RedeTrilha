@@ -23,7 +23,7 @@ Exemplo deste guia (de propósito, fora do catálogo): cidades e rotas de ônibu
 
 ## A estrutura em Python puro
 
-No estilo do `core/contadores.py`, sem SQL e sem FastAPI, só dados simples:
+No estilo do `core/indice_tags.py`, sem SQL e sem FastAPI, só dados simples:
 
 ```python
 from collections import deque

@@ -12,7 +12,9 @@ import heapq
 import re
 import unicodedata
 from collections import Counter
-from datetime import UTC, datetime
+from datetime import datetime
+
+from app.core.datas import para_utc
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
 # "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
@@ -31,16 +33,6 @@ def extrair_tags(texto: str, forma: str | None) -> set[str]:
     if forma and forma != FORMA_SEM_TAG:
         tags.add(forma)
     return tags
-
-
-def _para_utc(momento: datetime) -> datetime:
-    """Datas sem fuso (o SQLite devolve naive) são tratadas como UTC.
-
-    Assim naive e aware comparam sem TypeError.
-    """
-    if momento.tzinfo is None:
-        return momento.replace(tzinfo=UTC)
-    return momento.astimezone(UTC)
 
 
 class IndiceTags:
@@ -70,7 +62,7 @@ class IndiceTags:
         """
         self.remover(post_id)
         normalizadas = frozenset(n for n in (normalizar(t) for t in tags) if n)
-        momento = _para_utc(criado_em)
+        momento = para_utc(criado_em)
         self._por_post[post_id] = (normalizadas, momento)
         for tag in normalizadas:
             self._por_tag.setdefault(tag, {})[post_id] = momento
@@ -106,7 +98,7 @@ class IndiceTags:
         Maior contagem primeiro, empate alfabético. O heap de tamanho k
         (nsmallest) evita ordenar as m tags inteiras.
         """
-        inicio = _para_utc(desde)
+        inicio = para_utc(desde)
         contagem: Counter[str] = Counter()
         for tags, criado_em in self._por_post.values():
             if criado_em >= inicio:

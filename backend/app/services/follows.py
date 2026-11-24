@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from app.models.follow import Follow
 from app.models.user import User
+from app.schemas.user import UserPage
 from app.services.users import buscar_por_username
 
 
@@ -51,21 +52,17 @@ def ids_seguidos(db: Session, user_id: int) -> list[int]:
     return list(db.scalars(select(Follow.seguido_id).where(Follow.seguidor_id == user_id)))
 
 
-def listar_seguidores(
-    db: Session, username: str, offset: int, limit: int
-) -> tuple[list[User], int]:
+def listar_seguidores(db: Session, username: str, offset: int, limit: int) -> UserPage:
     user = buscar_por_username(db, username)
     return _pagina(db, Follow.seguido_id == user.id, Follow.seguidor_id, offset, limit)
 
 
-def listar_seguindo(
-    db: Session, username: str, offset: int, limit: int
-) -> tuple[list[User], int]:
+def listar_seguindo(db: Session, username: str, offset: int, limit: int) -> UserPage:
     user = buscar_por_username(db, username)
     return _pagina(db, Follow.seguidor_id == user.id, Follow.seguido_id, offset, limit)
 
 
-def _pagina(db: Session, filtro, coluna_outro, offset: int, limit: int):
+def _pagina(db: Session, filtro, coluna_outro, offset: int, limit: int) -> UserPage:
     """Usuários do outro lado da relação, quem seguiu por último primeiro."""
     total = db.scalar(select(func.count()).select_from(Follow).where(filtro)) or 0
     users = list(
@@ -78,4 +75,4 @@ def _pagina(db: Session, filtro, coluna_outro, offset: int, limit: int):
             .limit(limit)
         )
     )
-    return users, total
+    return UserPage(items=users, total=total, offset=offset, limit=limit)

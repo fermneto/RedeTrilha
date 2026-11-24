@@ -28,6 +28,30 @@ MSG_AUTH = (
 SENHA_PADRAO = "senha-forte-123"
 
 
+class ClienteAnthropicProibido:
+    """Fica no lugar do cliente real: um teste que traduz sem o falso falha alto."""
+
+    @property
+    def messages(self):
+        raise AssertionError(
+            "teste tentou chamar a API real da Anthropic; use a fixture `falso` de test_traducao.py"
+        )
+
+
+@pytest.fixture(autouse=True)
+def sem_api_da_anthropic(monkeypatch):
+    """Nenhum teste chama a API real: sem chave no ambiente e cliente que falha se usado.
+
+    Os testes de tradução trocam `_cliente` pelo falso (ou por None, para o 503)
+    depois desta fixture, e o monkeypatch desfaz tudo no fim de cada teste.
+    """
+    from app.services import traducao
+
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
+    monkeypatch.setattr(traducao, "_cliente", ClienteAnthropicProibido())
+
+
 @pytest.fixture()
 def client():
     """Client com banco zerado por teste. O lifespan roda (cria tabelas + core/)."""
@@ -62,6 +86,53 @@ def logar(client):
         return {"Authorization": f"Bearer {r.json()['token']}"}
 
     return _logar
+
+
+@pytest.fixture()
+def criar_usuario():
+    """Fábrica: grava um usuário sem senha direto no banco e devolve o id.
+
+    Para testes que precisam de gente mas não do login (o /auth/registro faz um
+    bcrypt por conta). Rode depois do `client`, que cria as tabelas:
+        bia_id = criar_usuario("bia")
+    """
+    from app.db import SessionLocal
+    from app.models.user import User
+
+    def _criar(username: str, name: str | None = None) -> int:
+        with SessionLocal() as db:
+            user = User(username=username, name=name or username.title())
+            db.add(user)
+            db.commit()
+            return user.id
+
+    return _criar
+
+
+@pytest.fixture()
+def como(client, criar_usuario):
+    """Troca get_current_user pelo usuário do header X-Teste-Usuario (sem depender da auth).
+
+    Cria ana, bia e caio (contas sem senha). Uso:
+        client.post("/posts", json={...}, headers=como("ana"))
+    """
+    from fastapi import Header
+    from sqlalchemy import select
+
+    from app.db import SessionLocal
+    from app.deps import get_current_user
+    from app.main import app
+    from app.models.user import User
+
+    def usuario_do_header(x_teste_usuario: str = Header()):
+        with SessionLocal() as db:
+            return db.scalar(select(User).where(User.username == x_teste_usuario))
+
+    app.dependency_overrides[get_current_user] = usuario_do_header
+    for nome in ("ana", "bia", "caio"):
+        criar_usuario(nome)
+    yield lambda username: {"X-Teste-Usuario": username}
+    app.dependency_overrides.clear()
 
 
 @pytest.fixture()

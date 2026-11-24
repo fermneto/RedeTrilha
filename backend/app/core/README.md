@@ -7,7 +7,8 @@ estruturas fica aqui, e o endpoint a usa de verdade.
 
 ## O padrão
 
-`contadores.py` é o exemplo. Cada estrutura segue cinco regras:
+`indice_tags.py` é o exemplo mais completo (o service de posts o atualiza a cada
+write e o lifespan o reconstrói). Cada estrutura segue cinco regras:
 
 1. É uma classe ou módulo puro, testável sem servidor.
 2. Existe uma instância global (singleton de módulo) que a API usa.

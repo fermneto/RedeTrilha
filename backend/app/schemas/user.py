@@ -13,8 +13,10 @@ from pydantic import (
     field_validator,
 )
 
+from app.schemas.pagina import Pagina
+
 # Nomes que colidem com rotas do front (/perfil, /explorar...) ou da API
-# (/usuarios/eu, /usuarios/stats...). Lista única: o registro e o POST /usuarios usam.
+# (/usuarios/eu...). Lista única: o registro, o seed e o importador usam.
 USERNAMES_RESERVADOS = frozenset(
     {
         "eu", "stats", "admin", "verso", "perfil", "u", "login", "cadastro", "explorar",
@@ -76,6 +78,8 @@ AvatarUrl = Annotated[str, AfterValidator(_validar_avatar_url)]
 
 
 class UserCreate(BaseModel):
+    """Dados de um poeta do seed (scripts/seed.py), validados antes de ir ao banco."""
+
     username: Username
     name: Nome
     bio: Bio = ""
@@ -125,10 +129,5 @@ class PerfilUpdate(BaseModel):
         return valor
 
 
-class UserPage(BaseModel):
-    """Padrão de paginação do projeto: todo endpoint de listagem devolve isto."""
-
-    items: list[UserOut]
-    total: int
-    offset: int
-    limit: int
+class UserPage(Pagina[UserOut]):
+    """Página de usuários (ver schemas/pagina.py)."""

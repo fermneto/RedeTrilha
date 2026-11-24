@@ -32,7 +32,4 @@ def deslogar(
     authorization: str | None = Header(default=None),
     db: Session = Depends(get_db),
 ):
-    # Sem Authorization (bypass de DEBUG) não há sessão para apagar.
-    token = service.token_do_header(authorization) if authorization else None
-    if token:
-        service.deslogar(db, token)
+    service.deslogar(db, authorization)
