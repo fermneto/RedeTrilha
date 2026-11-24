@@ -138,6 +138,25 @@ def test_poemas_do_perfil_paginam_por_cursor(client, logar):
     assert client.get("/usuarios/ana/posts?cursor=lixo", headers=ana).status_code == 422
 
 
+@pytest.mark.parametrize(
+    ("corpo", "mensagem"),
+    [
+        ({"name": ""}, "o nome é obrigatório e tem até 80 caracteres"),
+        ({"name": "x" * 81}, "o nome é obrigatório e tem até 80 caracteres"),
+        ({"bio": "x" * 1001}, "a bio tem até 1000 caracteres"),
+        ({"avatar_url": "https://exemplo.com/" + "a" * 300}, "a avatar_url tem até 300 caracteres"),
+        ({"avatar_url": "exemplo.com/a.png"}, "avatar_url deve ser vazia ou uma URL http(s) válida"),
+        ({"name": None}, "o nome não pode ser null"),
+        ({"bio": None}, "a bio não pode ser null"),
+    ],
+)
+def test_editar_perfil_explica_o_erro_em_portugues(client, logar, corpo, mensagem):
+    ana = logar("ana")
+    r = client.patch("/usuarios/eu", json=corpo, headers=ana)
+    assert r.status_code == 422
+    assert r.json()["detail"][0]["msg"] == mensagem
+
+
 AVATARES_INVALIDOS = [
     "ftp://exemplo.com/a.png",
     "javascript:alert(1)",

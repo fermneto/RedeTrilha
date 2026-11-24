@@ -44,13 +44,13 @@ export class ErroDaApi extends Error {
   }
 }
 
-// O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
-// de erros com `msg`. As mensagens dos validadores vêm com "Value error, " na frente.
+// O `detail` do FastAPI: texto (HTTPException) ou, no 422, uma lista de erros
+// com `msg`, já em português (backend/app/erros.py).
 function mensagemDoErro(detail: unknown): string | null {
   if (typeof detail === "string") return detail;
   if (!Array.isArray(detail)) return null;
   const msgs = detail
-    .map((e) => (typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null))
+    .map((e) => (typeof e?.msg === "string" ? e.msg : null))
     .filter((m): m is string => Boolean(m));
   return msgs.length > 0 ? msgs.join("; ") : null;
 }

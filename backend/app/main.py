@@ -1,11 +1,13 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
 
 from app.core.contadores import contador_iniciais
 from app.db import Base, SessionLocal, engine
+from app.erros import erro_de_validacao
 from app.models.user import User
 from app.routers import (
     antologias,
@@ -35,6 +37,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Rede Social da Trilha", lifespan=lifespan)
+# 422 em português em toda a API (ver app/erros.py).
+app.add_exception_handler(RequestValidationError, erro_de_validacao)
 
 app.add_middleware(
     CORSMiddleware,
