@@ -82,6 +82,10 @@ def _ano_no_wikitexto(wikitexto: str, morte: bool) -> int | None:
         return None
     if morte:
         casamento = re.search(r"\{\{\s*[Mm]orte\s*\|([^{}]*)\}\}", wikitexto)
+        if not casamento:
+            casamento = re.search(
+                r"\{\{\s*death[_ ]date(?: and age)?\s*\|([^{}]*)\}\}", wikitexto, re.I
+            )
         if casamento:
             anos = re.findall(r"\b(?:1[0-9]{3}|20[0-9]{2})\b", casamento.group(1))
             if anos:

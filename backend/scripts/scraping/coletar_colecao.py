@@ -45,10 +45,14 @@ _EPICO = re.compile(
     r"(?i)lus[ií]adas|uraguai|uraguay|caramuru|vila rica|"
     r"confedera[cç][aã]o dos tamo|guesa|cartas chilenas|"
     r"divina commedia|commedia|orlando furioso|gerusalemme liberata|"
-    r"chansons? de roland|os lusíadas|atlàntida|atlantida"
+    r"chansons? de roland|os lusíadas|atlàntida|atlantida|"
+    r"paradise lost|faerie queene|beowulf|don juan|"
+    r"hiawatha|kalevala|aeneid|eneida|ilíada|iliad|odisseia|odyssey|"
+    r"онегин|onegin|"
+    r"shahnameh|mah[aā]bh[aā]rata|ramayana"
 )
 _ABERTURA = re.compile(
-    r"(?i)^(?:canto|chant|cant|càntic)?\s*(?:i|1|primeiro|primero|premier|primer|primo)$"
+    r"(?i)^(?:canto|chant|cant|càntic|book|livro|parte|part|chapter|kapitel|глава)?\s*(?:i|1|primeiro|primero|premier|primer|primo)$"
 )
 _EDICAO = re.compile(r"(?i)grafia original|ortografia atualizada")
 _REDIRECT = re.compile(
@@ -574,11 +578,13 @@ def main() -> None:
         help="pt (catálogo português, reescreve o relatório) ou latinos",
     )
     args = parser.parse_args()
-    if args.bloco == "latinos":
-        from scripts.scraping.catalogo_latinos import EXISTENTES as EXISTENTES_BLOCO
-        from scripts.scraping.catalogo_latinos import NOVOS as NOVOS_BLOCO
-    else:
+    if args.bloco == "pt":
         EXISTENTES_BLOCO, NOVOS_BLOCO = EXISTENTES, NOVOS
+    else:
+        import importlib
+
+        modulo = importlib.import_module(f"scripts.scraping.catalogo_{args.bloco}")
+        EXISTENTES_BLOCO, NOVOS_BLOCO = modulo.EXISTENTES, modulo.NOVOS
     alvos = []
     if not args.so_novos:
         alvos.extend(EXISTENTES_BLOCO)
@@ -619,6 +625,12 @@ def main() -> None:
     else:
         titulos_bloco = {
             "latinos": "Línguas latinas e espanhol",
+            "ingles": "Inglês",
+            "germanico": "Germânico, eslavo e nórdico",
+            "antiguidade": "Antiguidade e Mediterrâneo",
+            "oriente": "Árabe, persa, turco e índico",
+            "asia": "Ásia oriental",
+            "americas": "Américas não hispânicas",
         }
         _anexar_bloco(titulos_bloco.get(args.bloco, args.bloco), gravavel, poetas, poemas)
     print(f"poetas={poetas} poemas={poemas} relatorio={RELATORIO}", flush=True)

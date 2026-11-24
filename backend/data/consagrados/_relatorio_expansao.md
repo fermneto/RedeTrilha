@@ -162,14 +162,67 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | — | — |
 
+## Bloco: Inglês
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| `alexander_pope` | Alexander Pope | 1744 | en | 5 | en.wikisource: An Essay on Man |
+| `amy_lowell` | Amy Lowell | 1925 | en | 52 | en.wikisource: Sword Blades and Poppy Seed |
+| `banjo_paterson` | Banjo Paterson | 1943 | en | 16 | en.wikisource: The Man from Snowy River and Other Verses |
+| `claude_mckay` | Claude McKay | 1948 | en | 75 | en.wikisource: Harlem Shadows |
+| `countee_cullen` | Countee Cullen | 1946 | en | 74 | en.wikisource: Color (Cullen) |
+| `dryden` | John Dryden | 1700 | en | 4 | en.wikisource: Absalom and Achitophel |
+| `housman` | A. E. Housman | 1936 | en | 63 | en.wikisource: A Shropshire Lad |
+| `marlowe` | Christopher Marlowe | 1593 | en | 7 | en.wikisource: Hero and Leander (Marlowe) |
+| `paul_dunbar` | Paul Laurence Dunbar | 1906 | en | 38 | en.wikisource: Lyrics of Lowly Life |
+| `robert_browning` | Robert Browning | 1889 | en | 53 | en.wikisource: Men and Women (Browning) |
+| `thomas_hardy` | Thomas Hardy | 1928 | en | 64 | en.wikisource: Wessex Poems and Other Verses |
+| `thomas_moore` | Thomas Moore | 1852 | en | 27 | en.wikisource: Irish Melodies |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| `blake` | en.wikisource: Songs of Innocence and of Experience (1826) | 47 | 8 | 39 | duplicata 6, sem_poema 2 |
+| `byron` | en.wikisource: Don Juan (Byron) | 17 | 2 | 2 | epico_seguinte 15, excertos 1 |
+| `chaucer` | en.wikisource: The Canterbury Tales | 25 | 8 | 1 | excertos 1, sem_poema 24 |
+| `edgar_allan_poe` | en.wikisource: The Raven and Other Poems | 4 | 7 | 3 | duplicata 1 |
+| `john_donne` | en.wikisource: Poems of John Donne | 95 | 8 | 76 | duplicata 7, sem_poema 12 |
+| `keats` | en.wikisource: Keats; poems published in 1820 | 17 | 18 | 2 | duplicata 9, sem_poema 6 |
+| `milton` | en.wikisource: Poems of Mr. John Milton, Both English and Latin, Compos'd at several times | 24 | 4 | 21 | duplicata 2, excertos 1, sem_poema 1 |
+| `shakespeare` | en.wikisource: Shakespeare's Sonnets (1883) | 158 | 13 | 144 | duplicata 13, sem_poema 1 |
+| `spenser` | en.wikisource: The Faerie Queene | 19 | 5 | 2 | epico_seguinte 14, excertos 2, sem_poema 3 |
+| `tennyson` | en.wikisource: Poems, Chiefly Lyrical | 56 | 10 | 55 | duplicata 1 |
+| `wordsworth` | en.wikisource: Lyrical Ballads (1800) | 68 | 7 | 59 | duplicata 3, excertos 1, sem_poema 6 |
+| `yeats` | en.wikisource: Responsibilities | 56 | 65 | 5 | duplicata 49, sem_poema 2 |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| shelley | sem coleção transcrita no en.wikisource (Percy Bysshe Shelley) |
+| emily_dickinson | sem coleção transcrita no en.wikisource (Emily Dickinson) |
+| Edna St. Vincent Millay | coleção sem poema novo aproveitável |
+| Henry Wadsworth Longfellow | coleção sem poema novo aproveitável |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 130 poetas, 7612 poemas.
+JSON na pasta (exceto ficheiros `_`): 143 poetas, 8867 poemas.
 
-`make reset` depois do bloco das línguas latinas e do espanhol:
+`make reset` depois do bloco inglês:
 
 ```
-consagrados: 130 poetas criados, 0 atualizados; 7612 poemas criados, 0 atualizados
+consagrados: 143 poetas criados, 0 atualizados; 8867 poemas criados, 0 atualizados
 ```
 
-O bloco português tinha fechado em 113 poetas e 4645 poemas. Este bloco somou as coleções em es, fr, it, gl, ca e ro. Bocage e Cláudio Manuel, no bloco anterior, foram gravados em duas passagens: a coluna «já havia» deles inclui a primeira.
+O bloco latino tinha fechado em 130 poetas e 7612 poemas. Shelley e Emily Dickinson não têm coleção transcrita no en.wikisource; os poemas antigos ficam. *The Song of Hiawatha* não rendeu verso extraível.

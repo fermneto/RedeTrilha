@@ -143,7 +143,10 @@ class _Extrator(HTMLParser):
             "is_stanza": "ws-poem-stanza" in classes,
             "is_ws": "ws-poem" in classes
             and not (classes & {"ws-poem-line", "ws-poem-stanza", "ws-poem-indent", "ws-poem-break"}),
-            "is_poem_div": "poem" in classes and not any(classe.startswith("ws-poem") for classe in classes),
+            "is_poem_div": (
+                "poem" in classes and not any(classe.startswith("ws-poem") for classe in classes)
+            )
+            or "wst-block-center" in classes,
         }
         if not nodo["skip"] and self._em_poema() and tag == "span":
             margem = _MARGEM.search(atributos.get("style", ""))
@@ -202,6 +205,10 @@ class _Extrator(HTMLParser):
         if nodo["is_poem_div"]:
             self.poem_divs.append(texto)
             return
+        if nodo["tag"] == "p" and self.stack and self.stack[-1]["is_poem_div"] and texto.strip():
+            if not texto.endswith("\n"):
+                texto += "\n"
+            texto += "\n"
         if self.stack and texto:
             self.stack[-1]["parts"].append(texto)
 
