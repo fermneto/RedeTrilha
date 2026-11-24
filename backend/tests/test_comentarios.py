@@ -220,6 +220,20 @@ def test_apagar_com_respostas_deixa_marcador(client, como):
     assert _comentar(client, como, post_id, "oi", raiz["id"], "caio").status_code == 404
 
 
+def test_marcador_fica_para_sempre_mesmo_sem_respostas(client, como):
+    post_id = _poema(client, como)
+    raiz = _comentar(client, como, post_id, "segredo").json()
+    resposta = _comentar(client, como, post_id, "resposta", raiz["id"], "bia").json()
+    client.delete(f"/comentarios/{raiz['id']}", headers=como("ana"))
+    client.delete(f"/comentarios/{resposta['id']}", headers=como("bia"))
+
+    r = client.delete(f"/comentarios/{raiz['id']}", headers=como("ana"))
+    assert r.status_code == 200
+    assert r.json() == {"resultado": "removido", "total_respostas": 0}
+    item = _pagina(client, como, f"/posts/{post_id}/comentarios", 20)["items"][0]
+    assert (item["id"], item["removido"]) == (raiz["id"], True)
+
+
 def test_comentar_um_repost_puro_comenta_o_original(client, como):
     from app.db import SessionLocal
     from app.models.post import Post
