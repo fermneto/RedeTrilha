@@ -199,6 +199,26 @@ Tabela `follows`: `seguidor_id` (FK users), `seguido_id` (FK users),
   respostas sejam apagadas depois, ele não sai do banco, e apagar de novo não
   faz nada (devolve `"removido"` com o total atual).
 
+### Crítica ancorada no verso (dono: Neto, #71)
+
+Tabela `ancoras_comentario`: `comentario_id` (PK e FK `comentarios.id`),
+`verso_inicio` e `verso_fim`. Os versos são as linhas de `texto.split("\n")`
+do poema, base 1, **com as linhas em branco contadas**. O trecho não é gravado:
+poema publicado não se edita, então ele sai do texto do poema.
+
+- `ComentarioCreate` ganhou `ancora: {"verso_inicio", "verso_fim"} | null`
+  (opcional). Só no 1º nível: com `parent_id` → 422. Início depois do fim, fora
+  do poema ou trecho só de linhas em branco → 422. Num repost puro, vale o texto
+  do original.
+- `ComentarioOut` ganhou `ancora: {"verso_inicio", "verso_fim", "trecho"} | null`
+  (opcional; `null` nos comentários sem âncora e nas respostas). O marcador
+  "comentário removido" continua com a âncora.
+- `GET /posts/{id}/comentarios?verso=N` 🔒 → só as raízes cuja âncora cobre o
+  verso N, na mesma paginação por cursor.
+- `GET /posts/{id}/comentarios/versos` 🔒 → `{"items": [{"verso", "comentarios"}]}`:
+  quantos comentários cobrem cada verso (uma crítica de 5–8 conta nos quatro).
+- Apagar o comentário (sem respostas) ou o poema apaga a âncora junto.
+
 ### Curtidas e reposts (dono: Henrique)
 
 `POST`/`DELETE /posts/{id}/curtir` 🔒 e `POST`/`DELETE /posts/{id}/repostar` 🔒
