@@ -47,6 +47,29 @@ def contar_seguindo(db: Session, user_id: int) -> int:
     ) or 0
 
 
+def seguidores_por_usuario():
+    """Subquery (user_id, n) com os seguidores de cada um, para juntar numa listagem
+    sem uma contagem por linha (N+1). Quem não tem seguidor não aparece: use coalesce."""
+    return (
+        select(Follow.seguido_id.label("user_id"), func.count().label("n"))
+        .group_by(Follow.seguido_id)
+        .subquery()
+    )
+
+
+def seguidos_entre(db: Session, user_id: int, ids: list[int]) -> set[int]:
+    """Quais destes ids o usuário segue, numa consulta só (o `sigo` de uma página)."""
+    if not ids:
+        return set()
+    return set(
+        db.scalars(
+            select(Follow.seguido_id).where(
+                Follow.seguidor_id == user_id, Follow.seguido_id.in_(ids)
+            )
+        )
+    )
+
+
 def ids_seguidos(db: Session, user_id: int) -> list[int]:
     """Quem o usuário segue. Usado pelo feed."""
     return list(db.scalars(select(Follow.seguido_id).where(Follow.seguidor_id == user_id)))

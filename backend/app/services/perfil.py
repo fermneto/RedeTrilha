@@ -39,6 +39,17 @@ def poemas(
     return pagina_dos_autores(db, [pessoa.id], usuario, offset, limit, cursor)
 
 
+def poemas_por_autor():
+    """Subquery (user_id, n) com os poemas autorais de cada autor (a mesma regra do
+    `_contar_poemas`), para juntar numa listagem sem N+1. Use coalesce para quem tem 0."""
+    return (
+        select(Post.autor_id.label("user_id"), func.count().label("n"))
+        .where(~Post.repost_puro)
+        .group_by(Post.autor_id)
+        .subquery()
+    )
+
+
 def _contar_poemas(db: Session, user_id: int) -> int:
     """Poemas autorais: tudo o que a pessoa escreveu, menos os reposts puros."""
     return db.scalar(
