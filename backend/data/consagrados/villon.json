@@ -1,0 +1,28 @@
+{
+  "username": "villon",
+  "name": "François Villon",
+  "bio": "Poeta parisiense do fim da Idade Média. O Testament e a balada dos enforcados são a voz da rua, da morte e do arrependimento em francês.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Francois_Villon_1489.jpg",
+  "morte": 1464,
+  "poemas": [
+    {
+      "titulo": "Œuvres complètes de François Villon/Notes",
+      "texto": "Si prieray pour lui de bon cueur,\nPar l’ame du bon feu Cotard…\n\nC’est pure verité decellée :\nPour une joye cent doulours.",
+      "forma": "quadra",
+      "obra": "fr.wikisource: Œuvres complètes de François Villon",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/%C5%92uvres_compl%C3%A8tes_de_Fran%C3%A7ois_Villon/Notes",
+      "tags": []
+    },
+    {
+      "titulo": "Œuvres complètes de François Villon/Remarques Philologiques",
+      "texto": "Mais bien est fol et lunaticque\nQui de ce fait sermon si long ;\nPeu nuit à la chose publicque\nSe Brussiens disent Filon.\nIl ne m’en chault gueres si l’on\nChoisit de ces façons la pire,\nEt bien veuil qu’on dise selon\nQue dès pieça l’on souloit dire.",
+      "forma": "outro",
+      "obra": "fr.wikisource: Œuvres complètes de François Villon",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/%C5%92uvres_compl%C3%A8tes_de_Fran%C3%A7ois_Villon/Remarques_Philologiques",
+      "tags": []
+    }
+  ],
+  "nascimento": 1431
+}

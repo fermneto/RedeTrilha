@@ -7,7 +7,7 @@ fio; no Instagram, o poema vira imagem e não dá para citar um verso; os feeds
 ranqueados enterram texto longo. No Verso, o post é o poema (título, corpo sem
 limite com as quebras e os recuos preservados, e uma forma), o feed é
 cronológico, citar um verso e conversar em árvore são gestos de primeira classe,
-e 95 poetas consagrados em domínio público convivem no mesmo feed, no original,
+e 155 poetas consagrados em domínio público convivem no mesmo feed, no original,
 com tradução por IA a um clique. O porquê de cada escolha está no
 [DECISIONS.md](DECISIONS.md).
 

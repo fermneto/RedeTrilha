@@ -1,0 +1,462 @@
+{
+  "username": "trakl",
+  "name": "Georg Trakl",
+  "bio": "Poeta austríaco do expressionismo. Os poemas de outono, guerra e decadência, em imagens fechadas, marcam a lírica de 1914.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Zweig_Setzer_1927.jpg",
+  "morte": 1942,
+  "poemas": [
+    {
+      "titulo": "Abendlied (Trakl)",
+      "texto": "ABENDLIED\nAm Abend, wenn wir auf dunklen Pfaden gehn,\nErscheinen unsere bleichen Gestalten vor uns.\n\nWenn uns dürstet,\nTrinken wir die weißen Wasser des Teichs,\n\nDie Süße unserer traurigen Kindheit.\n\nErstorbene ruhen wir unterm Hollundergebüsch,\nSchaun den grauen Möven zu.\n\nFrühlingsgewölke steigen über die finstere Stadt,\nDie der Mönche edlere Zeiten schweigt.\n\nDa ich deine schmalen Hände nahm\nSchlugst du leise die runden Augen auf,\nDieses ist lange her.\n\nDoch wenn dunkler Wohllaut die Seele heimsucht,\nErscheinst du Weiße in des Freundes herbstlicher Landschaft.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abendlied_%28Trakl%29",
+      "tags": []
+    },
+    {
+      "titulo": "Abendmuse",
+      "texto": "ABENDMUSE\nAns Blumenfenster wieder kehrt des Kirchturms Schatten \nUnd Goldnes.  Die heiße Stirn verglüht in Ruh und Schweigen. \nEin Brunnen fällt im Dunkel von Kastanienzweigen –\nDa fühlst du: es ist gut! in schmerzlichem Ermatten.\n\nDer Markt ist leer von Sommerfrüchten und Gewinden. \nEinträchtig stimmt der Tore schwärzliches Gepränge. \nIn einem Garten tönen sanften Spieles Klänge, \nWo Freunde nach dem Mahle sich zusammenfinden.\n\nDes weißen Magiers Märchen lauscht die Seele gerne. \n\nRund saust das Korn, das Mäher nachmittags geschnitten. \nGeduldig schweigt das harte Leben in den Hütten; \nDer Kühe linden Schlaf bescheint die Stallaterne.\n\nVon Lüften trunken sinken balde ein die Lider \nUnd öffnen leise sich zu fremden Sternenzeichen. \n\nEndymion taucht aus dem Dunkel alter Eichen \nUnd beugt sich über trauervolle Wasser nieder.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abendmuse",
+      "tags": []
+    },
+    {
+      "titulo": "Allerseelen (Trakl)",
+      "texto": "ALLERSEELEN\nAn Karl Hauer\nDie Männlein, Weiblein, traurige Gesellen, \nSie streuen heute Blumen blau und rot \nAuf ihre Grüfte, die sich zag erhellen. \nSie tun wie arme Puppen vor dem Tod. \n\nO! wie sie hier voll Angst und Demut scheinen, \nWie Schatten hinter schwarzen Büschen stehn. \nIm Herbstwind klagt der Ungebornen Weinen, \nAuch sieht man Lichter in der Irre gehn. \n\nDas Seufzen Liebender haucht in Gezweigen \n\nUnd dort verwest die Mutter mit dem Kind. \nUnwirklich scheinet der Lebendigen Reigen \nUnd wunderlich zerstreut im Abendwind. \n\nIhr Leben ist so wirr, voll trüber Plagen. \nErbarm’ dich Gott der Frauen Höll’ und Qual, \n\nUnd dieser hoffnungslosen Todesklagen. \nEinsame wandeln still im Sternensaal.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Allerseelen_%28Trakl%29",
+      "tags": []
+    },
+    {
+      "titulo": "An den Knaben Elis",
+      "texto": "AN DEN KNABEN ELIS\nElis, wenn die Amsel im schwarzen Wald ruft, \nDieses ist dein Untergang. \nDeine Lippen trinken die Kühle des blauen Felsenquells.\n\nLaß, wenn deine Stirne leise blutet\n\nUralte Legenden\nUnd dunkle Deutung des Vogelflugs.\n\nDu aber gehst mit weichen Schritten in die Nacht, \nDie voll purpurner Trauben hängt\nUnd du regst die Arme schöner im Blau.\n\nEin Dornenbusch tönt,\nWo deine mondenen Augen sind.\nO, wie lange bist, Elis, du verstorben.\n\nDein Leib ist eine Hyazinthe,\nIn die ein Mönch die wächsernen Finger taucht.\n\nEine schwarze Höhle ist unser Schweigen,\n\nDaraus bisweilen ein sanftes Tier tritt \nUnd langsam die schweren Lider senkt. \nAuf deine Schläfen tropft schwarzer Tau,\n\nDas letzte Gold verfallener Sterne.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_den_Knaben_Elis",
+      "tags": []
+    },
+    {
+      "titulo": "Die Bauern",
+      "texto": "DIE BAUERN\nVorm Fenster tönendes Grün und Rot.\nIm schwarzverräucherten, niederen Saal\nSitzen die Knechte und Mägde beim Mahl;\nUnd sie schenken den Wein und sie brechen das Brot.\n\nIm tiefen Schweigen der Mittagszeit\nFällt bisweilen ein karges Wort.\nDie Äcker flimmern in einem fort\nUnd der Himmel bleiern und weit.\n\nFratzenhaft flackert im Herd die Glut\n\nUnd ein Schwarm von Fliegen summt.\nDie Mägde lauschen blöd und verstummt\nUnd ihre Schläfen hämmert das Blut.\n\nUnd manchmal treffen sich Blicke voll Gier,\nWenn tierischer Dunst die Stube durchweht.\n\nEintönig spricht ein Knecht das Gebet\nUnd ein Hahn kräht unter der Tür.\n\nUnd wieder ins Feld. Ein Grauen packt\nSie oft im tosenden Ährengebraus\nUnd klirrend schwingen ein und aus\n\nDie Sensen geisterhaft im Takt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Bauern",
+      "tags": []
+    },
+    {
+      "titulo": "Dämmerung",
+      "texto": "DÄMMERUNG\nIm Hof, verhext von milchigem Dämmerschein, \nDurch Herbstgebräuntes weiche Kranke gleiten. \nIhr wächsern-runder Blick sinnt goldner Zeiten, \nErfüllt von Träumerei und Ruh und Wein. \n\nIhr Siechentum schließt geisterhaft sich ein. \nDie Sterne weiße Traurigkeit verbreiten. \nIm Grau, erfüllt von Täuschung und Geläuten, \nSieh, wie die Schrecklichen sich wirr zerstreun. \n\nFormlose Spottgestalten huschen, kauern \n\nUnd flattern sie auf schwarz-gekreuzten Pfaden. \nO! trauervolle Schatten an den Mauern. \n\nDie andern fliehn durch dunkelnde Arkaden; \nUnd nächtens stürzen sie aus roten Schauern \nDes Sternenwinds, gleich rasenden Mänaden.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/D%C3%A4mmerung",
+      "tags": []
+    },
+    {
+      "titulo": "De profundis",
+      "texto": "DE PROFUNDIS\nEs ist ein Stoppelfeld, in das ein schwarzer Regen fällt. \nEs ist ein brauner Baum, der einsam dasteht. \nEs ist ein Zischelwind, der leere Hütten umkreist \nWie traurig dieser Abend. \n\nAm Weiler vorbei \nSammelt die sanfte Waise noch spärliche Ähren ein. \nIhre Augen weiden rund und goldig in der Dämmerung \nUnd ihr Schoß harrt des himmlischen Bräutigams.\n\nBei der Heimkehr \n\nFanden die Hirten den süßen Leib \nVerwest im Dornenbusch. \n\nEin Schatten bin ich ferne finsteren Dörfern. \nGottes Schweigen \nTrank ich aus dem Brunnen des Hains. \n\nAuf meine Stirne tritt kaltes Metall\nSpinnen suchen mein Herz. \nEs ist ein Licht, das in meinem Mund erlöscht. \n\nNachts fand ich mich auf einer Heide, \nStarrend von Unrat und Staub der Sterne. \n\nIm Haselgebüsch \nKlangen wieder kristallne Engel.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/De_profundis",
+      "tags": []
+    },
+    {
+      "titulo": "Drei Blicke in einen Opal",
+      "texto": "DREI BLICKE IN EINEN OPAL\nAn Erhard Buschbeck\n1.Blick in Opal: ein Dorf umkränzt von dürrem Wein,\nDer Stille grauer Wolken, gelber Felsenhügel\nUnd abendlicher Quellen Kühle: Zwillingsspiegel\nUmrahmt von Schatten und von schleimigem Gestein.\n\nDes Herbstes Weg und Kreuze gehn in Abend ein,\nSingende Pilger und die blutbefleckten Linnen.\nDes Einsamen Gestalt kehrt also sich nach innen\nUnd geht, ein bleicher Engel, durch den leeren Hain.\n\nAus Schwarzem bläst der Föhn. Mit Satyrn im Verein\n\nSind schlanke Weiblein; Mönche der Wollust bleiche Priester,\nIhr Wahnsinn schmückt mit Lilien sich schön und düster\nUnd hebt die Hände auf zu Gottes goldenem Schrein.\n\n2.Der ihn befeuchtet, rosig hängt ein Tropfen Tau\nIm Rosmarin: hinfließt ein Hauch von Grabgerüchen,\n\nSpitälern, wirr erfüllt von Fieberschrein und Flüchen.\nGebein steigt aus dem Erbbegräbnis morsch und grau.\n\nIn blauem Schleim und Schleiern tanzt des Greisen Frau,\nDas schmutzstarrende Haar erfüllt von schwarzen Tränen,\nDie Knaben träumen wirr in dürren Weidensträhnen\n\nUnd ihre Stirnen sind von Aussatz kahl und rauh.\n\nDurchs Bogenfenster sinkt ein Abend lind und lau.\nEin Heiliger tritt aus seinen schwarzen Wundenmalen.\nDie Purpurschnecken kriechen aus zerbrochenen Schalen\nUnd speien Blut in Dorngewinde starr und grau.\n\n3.Die Blinden streuen in eiternde Wunden Weiherauch.\nRotgoldene Gewänder; Fackeln; Psalmensingen;\nUnd Mädchen, die wie Gift den Leib des Herrn umschlingen.\nGestalten schreiten wächsernstarr durch Glut und Rauch.\n\nAussätziger mitternächtigen Tanz führt an ein Gauch\n\nDürrknöchern. Garten wunderlicher Abenteuer;\nVerzerrtes; Blumenfratzen, Lachen; Ungeheuer\nUnd rollendes Gestirn im schwarzen Dornenstrauch.\n\nO Armut, Bettelsuppe, Brot und süßer Lauch;\nDes Lebens Träumerei in Hütten vor den Wäldern.\n\nGrau härtet sich der Himmel über gelben Feldern\nUnd eine Abendglocke singt nach altem Brauch.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Drei_Blicke_in_einen_Opal",
+      "tags": []
+    },
+    {
+      "titulo": "Frauensegen",
+      "texto": "FRAUENSEGEN\nSchreitest unter deinen Frau’n\nUnd du lächelst oft beklommen:\nSind so bange Tage kommen.\nWeiß verblüht der Mohn am Zaun.\n\nWie dein Leib so schön geschwellt\nGolden reift der Wein am Hügel.\nFerne glänzt des Weihers Spiegel\nUnd die Sense klirrt im Feld.\n\nIn den Büschen rollt der Tau,\n\nRot die Blätter niederfließen.\nSeine liebe Frau zu grüßen\nNaht ein Mohr dir braun und rauh.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Frauensegen",
+      "tags": []
+    },
+    {
+      "titulo": "Geistliches Lied",
+      "texto": "GEISTLICHES LIED\nZeichen, seltne Stickerein\nMalt ein flatternd Blumenbeet.\nGottes blauer Odem weht\nIn den Gartensaal herein,\n\nHeiter ein.\nRagt ein Kreuz im wilden Wein.\n\nHör’ im Dorf sich viele freun,\nGärtner an der Mauer mäht,\nLeise eine Orgel geht,\n\nMischet Klang und goldenen Schein,\nKlang und Schein.\nLiebe segnet Brot und Wein.\n\nMädchen kommen auch herein\nUnd der Hahn zum letzten kräht.\n\nSacht ein morsches Gitter geht\nUnd in Rosen Kranz und Reihn,\nRosenreihn\nRuht Maria weiß und fein.\n\nBettler dort am alten Stein\n\nScheint verstorben im Gebet,\nSanft ein Hirt vom Hügel geht\nUnd ein Engel singt im Hain,\nNah im Hain\nKinder in den Schlaf hinein.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Geistliches_Lied",
+      "tags": []
+    },
+    {
+      "titulo": "Der Gewitterabend",
+      "texto": "DER GEWITTERABEND\nO die roten Abendstunden! \nFlimmernd schwankt am offenen Fenster \nWeinlaub wirr ins Blau gewunden, \nDrinnen nisten Angstgespenster.\n\nStaub tanzt im Gestank der Gossen. \nKlirrend stößt der Wind in Scheiben. \nEinen Zug von wilden Rossen \nBlitze grelle Wolken treiben.\n\nLaut zerspringt der Weiherspiegel. \n\nMöven schrein am Fensterrahmen. \nFeuerreiter sprengt vom Hügel \nUnd zerschellt im Tann zu Flammen.\n\nKranke kreischen im Spitale. \nBläulich schwirrt der Nacht Gefieder. \n\nGlitzernd braust mit einem Male \nRegen auf die Dächer nieder.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Gewitterabend",
+      "tags": []
+    },
+    {
+      "titulo": "Grodek",
+      "texto": "[14]  Grodek\n\nAm Abend tönen die herbstlichen Wälder\nVon tötlichen Waffen, die goldnen Ebenen\nUnd blauen Seen, darüber die Sonne\nDüster hinrollt; umfängt die Nacht\n\nSterbende Krieger, die wilde Klage\nIhrer zerbrochenen Münder.\nDoch stille sammelt im Weidengrund\nRotes Gewölk, darin ein zürnender Gott wohnt,\nDas vergossne Blut sich, mondne Kühle;\n\nAlle Straßen münden in schwarze Verwesung.\nUnter goldnem Gezweig der Nacht und Sternen\nEs schwankt der Schwester Schatten durch den schweigenden Hain,\nZu grüßen die Geister der Helden, die blutenden Häupter;\nUnd leise tönen im Rohr die dunkeln Flöten des Herbstes.\n\nO stolzere Trauer! ihr ehernen Altäre,\nDie heiße Flamme des Geistes nährt heute ein gewaltiger Schmerz,\nDie ungebornen Enkel.\n\n (September 1914)",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Grodek",
+      "tags": []
+    },
+    {
+      "titulo": "Heiterer Frühling",
+      "texto": "HEITERER FRÜHLING\n1.Am Bach, der durch das gelbe Brachfeld fließt, \nZieht noch das dürre Rohr vom vorigen Jahr. \nDurchs Graue gleiten Klänge wunderbar, \nVorüberweht ein Hauch von warmem Mist. \n\nAn Weiden baumeln Kätzchen sacht im Wind, \nSein traurig Lied singt träumend ein Soldat. \nEin Wiesenstreifen saust verweht und matt, \nEin Kind steht in Konturen weich und lind. \n\nDie Birken dort, der schwarze Dornenstrauch, \n\nAuch fliehn im Rauch Gestalten aufgelöst. \nHell Grünes blüht und anderes verwest \nUnd Kröten schliefen durch den jungen Lauch. \n\n2.Dich lieb ich treu du derbe Wäscherin. \nNoch trägt die Flut des Himmels goldene Last. \n\nEin Fischlein blitzt vorüber und verblaßt; \nEin wächsern Antlitz fließt durch Erlen hin. \n\nIn Gärten sinken Glocken lang und leis\nEin kleiner Vogel trällert wie verrückt. \nDas sanfte Korn schwillt leise und verzückt \n\nUnd Bienen sammeln noch mit ernstem Fleiß. \n\nKomm Liebe nun zum müden Arbeitsmann! \nIn seine Hütte fällt ein lauer Strahl. \nDer Wald strömt durch den Abend herb und fahl \nUnd Knospen knistern heiter dann und wann. \n\n3.Wie scheint doch alles Werdende so krank! \nEin Fieberhauch um einen Weiler kreist; \nDoch aus Gezweigen winkt ein sanfter Geist \nUnd öffnet das Gemüte weit und bang. \n\nEin blühender Erguß verrinnt sehr sacht \n\nUnd Ungebornes pflegt der eignen Ruh. \nDie Liebenden blühn ihren Sternen zu \nUnd süßer fließt ihr Odem durch die Nacht. \n\nSo schmerzlich gut und wahrhaft ist, was lebt; \nUnd leise rührt dich an ein alter Stein: \n\nWahrlich! Ich werde immer bei euch sein. \nO Mund! der durch die Silberweide bebt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Heiterer_Fr%C3%BChling",
+      "tags": []
+    },
+    {
+      "titulo": "Helian",
+      "texto": "HELIAN\nIn den einsamen Stunden des Geistes\nIst es schön, in der Sonne zu gehn\nAn den gelben Mauern des Sommers hin.\nLeise klingen die Schritte im Gras; doch immer schläft\n\nDer Sohn des Pan im grauen Marmor.\n\nAbends auf der Terrasse betranken wir uns mit braunem Wein.\nRötlich glüht der Pfirsich im Laub;\nSanfte Sonate, frohes Lachen.\n\nSchön ist die Stille der Nacht.\n\nAuf dunklem Plan\nBegegnen wir uns mit Hirten und weißen Sternen.\n\nWenn es Herbst geworden ist\nZeigt sich nüchterne Klarheit im Hain.\nBesänftigte wandeln wir an roten Mauern hin\n\nUnd die runden Augen folgen dem Flug der Vögel.\nAm Abend sinkt das weiße Wasser in Graburnen.\n\nIn kahlen Gezweigen feiert der Himmel.\nIn reinen Händen trägt der Landmann Brot und Wein\nUnd friedlich reifen die Früchte in sonniger Kammer.\n\nO wie ernst ist das Antlitz der teueren Toten.\nDoch die Seele erfreut gerechtes Anschaun.\n\n[62]  Gewaltig ist das Schweigen des verwüsteten Gartens\nDa der junge Novize die Stirne mit braunem Laub bekränzt,\nSein Odem eisiges Gold trinkt.\n\nDie Hände rühren das Alter bläulicher Wasser\nOder in kalter Nacht die weißen Wangen der Schwestern.\n\nLeise und harmonisch ist ein Gang an freundlichen Zimmern hin,\nWo Einsamkeit ist und das Rauschen des Ahorns,\nWo vielleicht noch die Drossel singt.\n\nSchön ist der Mensch und erscheinend im Dunkel,\nWenn er staunend Arme und Beine bewegt,\nUnd in purpurnen Höhlen stille die Augen rollen.\n\nZur Vesper verliert sich der Fremdling in schwarzer Novemberzerstörung,\nUnter morschem Geäst, an Mauern voll Aussatz hin,\n\nWo vordem der heilige Bruder gegangen,\nVersunken in das sanfte Saitenspiel seines Wahnsinns,\n\nO wie einsam endet der Abendwind.\nErsterbend neigt sich das Haupt im Dunkel des Ölbaums.\n\n[63]  Erschütternd ist der Untergang des Geschlechts.\n\nIn dieser Stunde füllen sich die Augen des Schauenden\nMit dem Gold seiner Sterne.\n\nAm Abend versinkt ein Glockenspiel, das nicht mehr tönt,\nVerfallen die schwarzen Mauern am Platz,\nRuft der tote Soldat zum Gebet.\n\nEin bleicher Engel\nTritt der Sohn ins leere Haus seiner Väter.\n\nDie Schwestern sind ferne zu weißen Greisen gegangen\nNachts fand sie der Schläfer unter den Säulen im Hausflur,\nZurückgekehrt von traurigen Pilgerschaften.\n\nO wie starrt von Kot und Würmern ihr Haar,\nDa er darein mit silbernen Füßen steht,\nUnd jene verstorben aus kahlen Zimmern treten.\n\nO ihr Psalmen in feurigen Mitternachtsregen,\nDa die Knechte mit Nesseln die sanften Augen schlugen,\n\nDie kindlichen Früchte des Hollunders\nSich staunend neigen über ein leeres Grab.\n\nLeise rollen vergilbte Monde\nÜber die Fieberlinnen des Jünglings,\nEh dem Schweigen des Winters folgt.\n\n[64]  Ein erhabenes Schicksal sinnt den Kidron hinab,\nWo die Zeder, ein weiches Geschöpf,\nSich unter den blauen Brauen des Vaters entfaltet,\nÜber die Weide nachts ein Schäfer seine Herde führt.\nOder es sind Schreie im Schlaf,\n\nWenn ein eherner Engel im Hain den Menschen antritt,\nDas Fleisch des Heiligen auf glühendem Rost hinschmilzt.\n\nUm die Lehmhütten rankt purpurner Wein,\nTönende Bündel vergilbten Korns,\nDas Summen der Bienen, der Flug des Kranichs.\n\nAm Abend begegnen sich Auferstandene auf Felsenpfaden.\n\nIn schwarzen Wassern spiegeln sich Aussätzige;\nOder sie öffnen die kotbefleckten Gewänder\nWeinend dem balsamischen Wind, der vom rosigen Hügel weht.\n\nSchlanke Mägde tasten durch die Gassen der Nacht,\n\nOb sie den liebenden Hirten fänden.\nSonnabends tönt in den Hütten sanfter Gesang.\n\nLasset das Lied auch des Knaben gedenken,\nSeines Wahnsinns, und weißer Brauen und seines Hingangs\nDes Verwesten, der bläulich die Augen aufschlägt.\n\nO wie traurig ist dieses Wiedersehn.\n\n[65]  Die Stufen des Wahnsinns in schwarzen Zimmern,\nDie Schatten der Alten unter der offenen Tür,\nDa Helians Seele sich im rosigen Spiegel beschaut\nUnd Schnee und Aussatz von seiner Stirne sinken\n\nAn den Wänden sind die Sterne erloschen\nUnd die weißen Gestalten des Lichts.\n\nDem Teppich entsteigt Gebein der Gräber,\nDas Schweigen verfallener Kreuze am Hügel,\nDes Weihrauchs Süße im purpurnen Nachtwind.\n\nO ihr zerbrochenen Augen in schwarzen Mündern,\nDa der Enkel in sanfter Umnachtung \nEinsam dem dunkleren Ende nachsinnt,\nDer stille Gott die blauen Lider über ihn senkt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Helian",
+      "tags": []
+    },
+    {
+      "titulo": "Ein Herbstabend",
+      "texto": "EIN HERBSTABEND\nAn Karl Röck\nDas braune Dorf. Ein Dunkles zeigt im Schreiten\nSich oft an Mauern, die im Herbste stehn,\nGestalten: Mann wie Weib, Verstorbene gehn\nIn kühlen Stuben jener Bett bereiten.\n\nHier spielen Knaben. Schwere Schatten breiten\nSich über braune Jauche. Mägde gehn\nDurch feuchte Bläue und bisweilen sehn\nAus Augen sie, erfüllt von Nachtgeläuten.\n\nFür Einsames ist eine Schenke da;\n\nDas säumt geduldig unter dunklen Bogen,\nVon goldenem Tabaksgewölk umzogen.\n\nDoch immer ist das Eigne schwarz und nah.\nDer Trunkne sinnt im Schatten alter Bogen\nDen wilden Vögeln nach, die ferngezogen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Ein_Herbstabend",
+      "tags": []
+    },
+    {
+      "titulo": "Im Dorf",
+      "texto": "IM DORF\n1.Aus braunen Mauern tritt ein Dorf, ein Feld.\nEin Hirt verwest auf einem alten Stein.\nDer Saum des Walds schließt blaue Tiere ein,\nDas sanfte Laub, das in die Stille fällt.\n\nDer Bauern braune Stirnen. Lange tönt\nDie Abendglocke; schön ist frommer Brauch,\nDes Heilands schwarzes Haupt im Dornenstrauch,\nDie kühle Stube, die der Tod versöhnt.\n\nWie bleich die Mütter sind. Die Bläue sinkt\n\nAuf Glas und Truh, die stolz ihr Sinn bewahrt;\nAuch neigt ein weißes Haupt sich hochbejahrt\nAufs Enkelkind, das Milch und Sterne trinkt.\n\n2.Der Arme, der im Geiste einsam starb,\nSteigt wächsern über einen alten Pfad.\n\nDie Apfelbäume sinken kahl und stad\nIns Farbige ihrer Frucht, die schwarz verdarb.\n\nNoch immer wölbt das Dach aus dürrem Stroh\nSich übern Schlaf der Kühe. Die blinde Magd\nErscheint im Hof; ein blaues Wasser klagt;\n\nEin Pferdeschädel starrt vom morschen Tor.\n\nDer Idiot spricht dunklen Sinns ein Wort\nDer Liebe, das im schwarzen Busch verhallt,\nWo jene steht in schmaler Traumgestalt.\nDer Abend tönt in feuchter Bläue fort.\n\n3.Ans Fenster schlagen Äste föhnentlaubt.\nIm Schoß der Bäurin wächst ein wildes Weh.\nDurch ihre Arme rieselt schwarzer Schnee;\nGoldäugige Eulen flattern um ihr Haupt.\n\nDie Mauern starren kahl und grauverdreckt\n\nIns kühle Dunkel. Im Fieberbette friert\nDer schwangere Leib, den frech der Mond bestiert.\nVor ihrer Kammer ist ein Hund verreckt.\n\nDrei Männer treten finster durch das Tor\nMit Sensen, die im Feld zerbrochen sind.\n\nDurchs Fenster klirrt der rote Abendwind;\nEin schwarzer Engel tritt daraus hervor.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Im_Dorf",
+      "tags": []
+    },
+    {
+      "titulo": "Im Herbst (Trakl)",
+      "texto": "IM HERBST\nDie Sonnenblumen leuchten am Zaun,\nStill sitzen Kranke im Sonnenschein.\nIm Acker mühn sich singend die Frau’n,\nDie Klosterglocken läuten darein.\n\nDie Vögel sagen dir ferne Mär’,\nDie Klosterglocken läuten darein.\nVom Hof tönt sanft die Geige her.\nHeut keltern sie den braunen Wein.\n\nDa zeigt der Mensch sich froh und lind.\n\nHeut keltern sie den braunen Wein.\nWeit offen die Totenkammern sind\nUnd schön bemalt vom Sonnenschein.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Im_Herbst_%28Trakl%29",
+      "tags": [
+        "natureza"
+      ]
+    },
+    {
+      "titulo": "Im roten Laubwerk voll Guitarren ...",
+      "texto": "IM ROTEN LAUBWERK VOLL GUITARREN …\nIm roten Laubwerk voll Guitarren\nDer Mädchen gelbe Haare wehen\nAm Zaun, wo Sonnenblumen stehen.\nDurch Wolken fährt ein goldner Karren.\n\nIn brauner Schatten Ruh verstummen\nDie Alten, die sich blöd umschlingen.\nDie Waisen süß zur Vesper singen.\nIn gelben Dünsten Fliegen summen.\n\nAm Bache waschen noch die Frauen.\n\nDie aufgehängten Linnen wallen.\nDie Kleine, die mir lang gefallen,\nKommt wieder durch das Abendgrauen.\n\nVom lauen Himmel Spatzen stürzen\nIn grüne Löcher voll Verwesung.\n\nDem Hungrigen täuscht vor Genesung\nEin Duft von Brot und herben Würzen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Im_roten_Laubwerk_voll_Guitarren_...",
+      "tags": []
+    },
+    {
+      "titulo": "Im Winter",
+      "texto": "IM WINTER\nDer Acker leuchtet weiß und kalt. \nDer Himmel ist einsam und ungeheuer. \nDohlen kreisen über dem Weiher \nUnd Jäger steigen nieder vom Wald. \n\nEin Schweigen in schwarzen Wipfeln wohnt.\nEin Feuerschein huscht aus den Hütten.\nBisweilen schellt sehr fern ein Schlitten \nUnd langsam steigt der graue Mond. \n\nEin Wild verblutet sanft am Rain \n\nUnd Raben plätschern in blutigen Gossen.\nDas Rohr bebt gelb und aufgeschossen. \nFrost, Rauch, ein Schritt im leeren Hain.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Im_Winter",
+      "tags": []
+    },
+    {
+      "titulo": "In den Nachmittag geflüstert",
+      "texto": "IN DEN NACHMITTAG GEFLÜSTERT\nSonne, herbstlich dünn und zag, \nUnd das Obst fällt von den Bäumen\nStille wohnt in blauen Räumen.\nEinen langen Nachmittag. \n\nSterbeklänge von Metall; \nUnd ein weißes Tier bricht nieder. \nBrauner Mädchen rauhe Lieder \nSind verweht im Blätterfall. \n\nStirne Gottes Farben träumt, \n\nSpürt des Wahnsinns sanfte Flügel. \nSchatten drehen sich am Hügel \nVon Verwesung schwarz umsäumt. \n\nDämmerung voll Ruh und Wein; \nTraurige Guitarren rinnen. \n\nUnd zur milden Lampe drinnen \nKehrst du wie im Traume ein.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_den_Nachmittag_gefl%C3%BCstert",
+      "tags": []
+    },
+    {
+      "titulo": "In der Heimat",
+      "texto": "IN DER HEIMAT\nResedenduft durchs kranke Fenster irrt;\nEin alter Platz, Kastanien schwarz und wüst.\nDas Dach durchbricht ein goldener Strahl und fließt\nAuf die Geschwister traumhaft und verwirrt.\n\nIm Spülicht treibt Verfallnes, leise girrt\nDer Föhn im braunen Gärtchen; sehr still genießt\nIhr Gold die Sonnenblume und zerfließt.\nDurch blaue Luft der Ruf der Wache klirrt.\n\nResedenduft. Die Mauern dämmern kahl.\n\nDer Schwester Schlaf ist schwer. Der Nachtwind wühlt\nIn ihrem Haar, das mondner Glanz umspült.\n\nDer Katze Schatten gleitet blau und schmal\nVom morschen Dach, das nahes Unheil säumt,\nDie Kerzenflamme, die sich purpurn bäumt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_der_Heimat",
+      "tags": []
+    },
+    {
+      "titulo": "In ein altes Stammbuch",
+      "texto": "IN EIN ALTES STAMMBUCH\nImmer wieder kehrst du Melancholie, \nO Sanftmut der einsamen Seele. \nZu Ende glüht ein goldener Tag. \n\nDemutsvoll beugt sich dem Schmerz der Geduldige \n\nTönend von Wohllaut und weichem Wahnsinn. \nSiehe! es dämmert schon. \n\nWieder kehrt die Nacht und klagt ein Sterbliches \nUnd es leidet ein anderes mit. \n\nSchaudernd unter herbstlichen Sternen \n\nNeigt sich jährlich tiefer das Haupt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_ein_altes_Stammbuch",
+      "tags": []
+    },
+    {
+      "titulo": "In einem verlassenen Zimmer",
+      "texto": "IN EINEM VERLASSENEN ZIMMER\nFenster, bunte Blumenbeeten, \nEine Orgel spielt herein. \nSchatten tanzen an Tapeten, \nWunderlich ein toller Reihn.\n\nLichterloh die Büsche wehen\nUnd ein Schwarm von Mücken schwingt\nFern im Acker Sensen mähen\nUnd ein altes Wasser singt.\n\nWessen Atem kommt mich kosen? \n\nSchwalben irre Zeichen ziehn. \nLeise fließt im Grenzenlosen \nDort das goldne Waldland hin.\n\nFlammen flackern in den Beeten. \nWirr verzückt der tolle Reihn \n\nAn den gelblichen Tapeten. \nJemand schaut zur Tür herein.\n\nWeihrauch duftet süß und Birne \nUnd es dämmern Glas und Truh. \nLangsam beugt die heiße Stirne \n\nSich den weißen Sternen zu.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_einem_verlassenen_Zimmer",
+      "tags": []
+    },
+    {
+      "titulo": "Die junge Magd",
+      "texto": "DIE JUNGE MAGD\nLudwig von Ficker zugeeignet\n1.Oft am Brunnen, wenn es dämmert, \nSieht man sie verzaubert stehen \nWasser schöpfen, wenn es dämmert. \nEimer auf und niedergehen. \n\nIn den Buchen Dohlen flattern \nUnd sie gleichet einem Schatten. \nIhre gelben Haare flattern \nUnd im Hofe schrein die Ratten. \n\nUnd umschmeichelt von Verfalle \n\nSenkt sie die entzundenen Lider. \nDürres Gras neigt im Verfalle \nSich zu ihren Füßen nieder. \n\n2.Stille schafft sie in der Kammer \nUnd der Hof liegt längst verödet. \n\nIm Hollunder vor der Kammer \nKläglich eine Amsel flötet. \n\nSilbern schaut ihr Bild im Spiegel \nFremd sie an im Zwielichtscheine \nUnd verdämmert fahl im Spiegel \n\nUnd ihr graut vor seiner Reine. \n\nTraumhaft singt ein Knecht im Dunkel \nUnd sie starrt von Schmerz geschüttelt. \nRöte träufelt durch das Dunkel. \nJäh am Tor der Südwind rüttelt. \n\n3.Nächtens übern kahlen Anger \nGaukelt sie in Fieberträumen. \nMürrisch greint der Wind im Anger \nUnd der Mond lauscht aus den Bäumen. \n\nBalde rings die Sterne bleichen \n\nUnd ermattet von Beschwerde \nWächsern ihre Wangen bleichen. \nFäulnis wittert aus der Erde. \n\nTraurig rauscht das Rohr im Tümpel \nUnd sie friert in sich gekauert. \n\nFern ein Hahn kräht. Übern Tümpel \nHart und grau der Morgen schauert. \n\n4.In der Schmiede dröhnt der Hammer \nUnd sie huscht am Tor vorüber. \nGlührot schwingt der Knecht den Hammer \n\nUnd sie schaut wie tot hinüber. \n\nWie im Traum trifft sie ein Lachen; \nUnd sie taumelt in die Schmiede,\nScheu geduckt vor seinem Lachen, \nWie der Hammer hart und rüde. \n\nHell versprühn im Raum die Funken \nUnd mit hilfloser Geberde \nHascht sie nach den wilden Funken \nUnd sie stürzt betäubt zur Erde. \n\n5.Schmächtig hingestreckt im Bette \nWacht sie auf voll süßem Bangen \nUnd sie sieht ihr schmutzig Bette \nGanz von goldnem Licht verhangen, \n\nDie Reseden dort am Fenster \nUnd den bläulich hellen Himmel. \n\nManchmal trägt der Wind ans Fenster \nEiner Glocke zag Gebimmel. \n\nSchatten gleiten übers Kissen, \nLangsam schlägt die Mittagsstunde \nUnd sie atmet schwer im Kissen \n\nUnd ihr Mund gleicht einer Wunde. \n\n6.Abends schweben blutige Linnen, \nWolken über stummen Wäldern, \nDie gehüllt in schwarze Linnen.\nSpatzen lärmen auf den Feldern. \n\nUnd sie liegt ganz weiß im Dunkel. \nUnterm Dach verhaucht ein Girren. \nWie ein Aas in Busch und Dunkel \nFliegen ihren Mund umschwirren. \n\nTraumhaft klingt im braunen Weiler \n\nNach ein Klang von Tanz und Geigen, \nSchwebt ihr Antlitz durch den Weiler, \nWeht ihr Haar in kahlen Zweigen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_junge_Magd",
+      "tags": []
+    },
+    {
+      "titulo": "Kleines Konzert",
+      "texto": "KLEINES KONZERT\nEin Rot, das traumhaft dich erschüttert –\nDurch deine Hände scheint die Sonne. \nDu fühlst dein Herz verrückt vor Wonne \nSich still zu einer Tat bereiten. \n\nIn Mittag strömen gelbe Felder. \nKaum hörst du noch der Grillen Singen, \nDer Mäher hartes Sensenschwingen. \nEinfältig schweigen goldene Wälder. \n\nIm grünen Tümpel glüht Verwesung. \n\nDie Fische stehen still. Gottes Odem \nWeckt sacht ein Saitenspiel im Brodem. \nAussätzigen winkt die Flut Genesung. \n\nGeist Dädals schwebt in blauen Schatten, \nEin Duft von Milch in Haselzweigen. \n\nMan hört noch lang den Lehrer geigen, \nIm leeren Hof den Schrei der Ratten. \n\nIm Krug an scheußlichen Tapeten \nBlühn kühlere Violenfarben. \nIm Hader dunkle Stimmen starben, \n\nNarziß im Endakkord von Flöten.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Kleines_Konzert",
+      "tags": []
+    },
+    {
+      "titulo": "Melancholie (Trakl)",
+      "texto": "MELANCHOLIE\nBläuliche Schatten. O ihr dunklen Augen, \nDie lang mich anschaun im Vorübergleiten. \nGuitarrenklänge sanft den Herbst begleiten \nIm Garten, aufgelöst in braunen Laugen. \n\nDes Todes ernste Düsternis bereiten \nNymphische Hände, an roten Brüsten saugen \nVerfallne Lippen und in schwarzen Laugen \nDes Sonnenjünglings feuchte Locken gleiten.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Melancholie_%28Trakl%29",
+      "tags": []
+    },
+    {
+      "titulo": "Melancholie des Abends",
+      "texto": "MELANCHOLIE DES ABENDS\n– Der Wald, der sich verstorben breitet –\nUnd Schatten sind um ihn, wie Hecken.\nDas Wild kommt zitternd aus Verstecken,\nIndes ein Bach ganz leise gleitet\n\nUnd Farnen folgt und alten Steinen\nUnd silbern glänzt aus Laubgewinden.\nMan hört ihn bald in schwarzen Schlünden –\nVielleicht, daß auch schon Sterne scheinen.\n\nDer dunkle Plan scheint ohne Massen,\n\nVerstreute Dörfer, Sumpf und Weiher,\nUnd etwas täuscht dir vor ein Feuer.\nEin kalter Glanz huscht über Straßen.\n\nAm Himmel ahnet man Bewegung,\nEin Heer von wilden Vögeln wandern\n\nNach jenen Ländern, schönen, andern.\nEs steigt und sinkt des Rohres Regung.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Melancholie_des_Abends",
+      "tags": []
+    },
+    {
+      "titulo": "Menschheit",
+      "texto": "MENSCHHEIT\nMenschheit vor Feuerschlünden aufgestellt, \nEin Trommelwirbel, dunkler Krieger Stirnen, \nSchritte durch Blutnebel; schwarzes Eisen schellt, \nVerzweiflung, Nacht in traurigen Gehirnen: \n\nHier Evas Schatten, Jagd und rotes Geld. \nGewölk, das Licht durchbricht, das Abendmahl. \nEs wohnt in Brot und Wein ein sanftes Schweigen \nUnd jene sind versammelt zwölf an Zahl. \nNachts schrein im Schlaf sie unter Ölbaumzweigen; \n\nSankt Thomas taucht die Hand ins Wundenmal.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Menschheit",
+      "tags": []
+    },
+    {
+      "titulo": "Menschliches Elend",
+      "texto": "MENSCHLICHES ELEND\nDie Uhr, die vor der Sonne fünfe schlägt –\nEinsame Menschen packt ein dunkles Grausen,\nIm Abendgarten kahle Bäume sausen.\nDes Toten Antlitz sich am Fenster regt.\n\nVielleicht, daß diese Stunde stille steht.\nVor trüben Augen blaue Bilder gaukeln\nIm Takt der Schiffe, die am Flusse schaukeln.\nAm Kai ein Schwesternzug vorüberweht.\n\nIm Hasel spielen Mädchen blaß und blind,\n\nWie Liebende, die sich im Schlaf umschlingen.\nVielleicht, daß um ein Aas dort Fliegen singen,\nVielleicht auch weint im Mutterschoß ein Kind.\n\nAus Händen sinken Astern blau und rot,\nDes Jünglings Mund entgleitet fremd und weise;\n\nUnd Lider flattern angstverwirrt und leise;\nDurch Fieberschwärze weht ein Duft von Brot.\n\nEs scheint, man hört auch gräßliches Geschrei;\nGebeine durch verfallne Mauern schimmern.\nEin böses Herz lacht laut in schönen Zimmern;\n\nAn einem Träumer läuft ein Hund vorbei.\n\nEin leerer Sarg im Dunkel sich verliert.\nDem Mörder will ein Raum sich bleich erhellen,\nIndes Laternen nachts im Sturm zerschellen.\nDes Edlen weiße Schläfe Lorbeer ziert.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Menschliches_Elend",
+      "tags": []
+    },
+    {
+      "titulo": "Musik im Mirabell",
+      "texto": "MUSIK IM MIRABELL\nEin Brunnen singt. Die Wolken stehn\nIm klaren Blau, die weißen, zarten.\nBedächtig stille Menschen gehn\nAm Abend durch den alten Garten.\n\nDer Ahnen Marmor ist ergraut.\nEin Vogelzug streift in die Weiten.\nEin Faun mit toten Augen schaut\nNach Schatten, die ins Dunkel gleiten.\n\nDas Laub fällt rot vom alten Baum\n\nUnd kreist herein durchs offne Fenster.\nEin Feuerschein glüht auf im Raum\nUnd malet trübe Angstgespenster.\n\nEin weißer Fremdling tritt ins Haus.\nEin Hund stürzt durch verfallene Gänge.\n\nDie Magd löscht eine Lampe aus,\nDas Ohr hört nachts Sonatenklänge.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Musik_im_Mirabell",
+      "tags": []
+    },
+    {
+      "titulo": "Nachtlied",
+      "texto": "NACHTLIED\nDes Unbewegten Odem. Ein Tiergesicht\nErstarrt vor Bläue, ihrer Heiligkeit.\nGewaltig ist das Schweigen im Stein;\n\nDie Maske eines nächtlichen Vogels. Sanfter Dreiklang\n\nVerklingt in einem. Elai! dein Antlitz\nBeugt sich sprachlos über bläuliche Wasser.\n\nO! ihr stillen Spiegel der Wahrheit.\nAn des Einsamen elfenbeinerner Schläfe\nErscheint der Abglanz gefallener Engel.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Nachtlied",
+      "tags": []
+    },
+    {
+      "titulo": "Psalm",
+      "texto": "PSALM\nKarl Kraus zugeeignet\nEs ist ein Licht, das der Wind ausgelöscht hat.\nEs ist ein Heidekrug, den am Nachmittag ein Betrunkener verläßt.\nEs ist ein Weinberg, verbrannt und schwarz mit Löchern voll Spinnen.\nEs ist ein Raum, den sie mit Milch getüncht haben.\n\nDer Wahnsinnige ist gestorben. Es ist eine Insel der Südsee,\nDen Sonnengott zu empfangen. Man rührt die Trommeln.\nDie Männer führen kriegerische Tänze auf.\nDie Frauen wiegen die Hüften in Schlinggewächsen und Feuerblumen,\nWenn das Meer singt. O unser verlorenes Paradies.\n\n* * *Die Nymphen haben die goldenen Wälder verlassen.\nMan begräbt den Fremden. Dann hebt ein Flimmerregen an.\nDer Sohn des Pan erscheint in Gestalt eines Erdarbeiters,\nDer den Mittag am glühenden Asphalt verschläft.\nEs sind kleine Mädchen in einem Hof in Kleidchen voll herzzerreißender Armut!\n\nEs sind Zimmer, erfüllt von Akkorden und Sonaten.\nEs sind Schatten, die sich vor einem erblindeten Spiegel umarmen.\nAn den Fenstern des Spitals wärmen sich Genesende.\nEin weißer Dampfer am Kanal trägt blutige Seuchen herauf.\n\n* * *Die fremde Schwester erscheint wieder in jemands bösen Träumen.\nRuhend im Haselgebüsch spielt sie mit seinen Sternen.\nDer Student, vielleicht ein Doppelgänger, schaut ihr lange vom Fenster nach.\n[48]  Hinter ihm steht sein toter Bruder, oder er geht die alte Wendeltreppe herab.\nIm Dunkel brauner Kastanien verblaßt die Gestalt des jungen Novizen.\nDer Garten ist im Abend. Im Kreuzgang flattern die Fledermäuse umher.\n\nDie Kinder des Hausmeisters hören zu spielen auf und suchen das Gold des Himmels.\nEndakkorde eines Quartetts. Die kleine Blinde läuft zitternd durch die Allee,\nUnd später tastet ihr Schatten an kalten Mauern hin, umgeben von Märchen und heiligen Legenden.\n\n* * *Es ist ein leeres Boot, das am Abend den schwarzen Kanal heruntertreibt.\nIn der Düsternis des alten Asyls verfallen menschliche Ruinen.\n\nDie toten Waisen liegen an der Gartenmauer.\nAus grauen Zimmern treten Engel mit kotgefleckten Flügeln.\nWürmer tropfen von ihren vergilbten Lidern.\nDer Platz vor der Kirche ist finster und schweigsam, wie in den Tagen der Kindheit.\nAuf silbernen Sohlen gleiten frühere Leben vorbei\n\nUnd die Schatten der Verdammten steigen zu den seufzenden Wassern nieder.\nIn seinem Grab spielt der weiße Magier mit seinen Schlangen.\n\n* * *Schweigsam über der Schädelstätte öffnen sich Gottes goldene Augen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Psalm",
+      "tags": []
+    },
+    {
+      "titulo": "Die Raben",
+      "texto": "DIE RABEN\nÜber den schwarzen Winkel hasten\nAm Mittag die Raben mit hartem Schrei.\nIhr Schatten streift an der Hirschkuh vorbei\nUnd manchmal sieht man sie mürrisch rasten.\n\nO wie sie die braune Stille stören,\nIn der ein Acker sich verzückt,\nWie ein Weib, das schwere Ahnung berückt,\nUnd manchmal kann man sie keifen hören\n\nUm ein Aas, das sie irgendwo wittern,\n\nUnd plötzlich richten nach Nord sie den Flug\nUnd schwinden wie ein Leichenzug\nIn Lüften, die von Wollust zittern.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Raben",
+      "tags": []
+    },
+    {
+      "titulo": "Die Ratten",
+      "texto": "DIE RATTEN\nIn Hof scheint weiß der herbstliche Mond.\nVom Dachrand fallen phantastische Schatten. \nEin Schweigen in leeren Fenstern wohnt; \nDa tauchen leise herauf die Ratten\n\n Und huschen pfeifend hier und dort \nUnd ein gräulicher Dunsthauch wittert \nIhnen nach aus dem Abort, \nDen geisterhaft der Mondschein durchzittert\n\nUnd sie keifen vor Gier wie toll \n\n Und erfüllen Haus und Scheunen, \nDie von Korn und Früchten voll. \nEisige Winde im Dunkel greinen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Ratten",
+      "tags": []
+    },
+    {
+      "titulo": "Romanze zur Nacht",
+      "texto": "ROMANZE ZUR NACHT\nEinsamer unterm Sternenzelt\nGeht durch die stille Mitternacht.\nDer Knab aus Träumen wirr erwacht,\nSein Antlitz grau im Mond verfällt.\n\nDie Närrin weint mit offnem Haar\nAm Fenster, das vergittert starrt.\nIm Teich vorbei auf süßer Fahrt\nZiehn Liebende sehr wunderbar.\n\nDer Mörder lächelt bleich im Wein,\n\nDie Kranken Todesgrausen packt.\nDie Nonne betet wund und nackt\nVor des Heilands Kreuzespein.\n\nDie Mutter leis’ im Schlafe singt.\nSehr friedlich schaut zur Nacht das Kind\n\nMit Augen, die ganz wahrhaft sind.\nIm Hurenhaus Gelächter klingt.\n\nBeim Talglicht drunt’ im Kellerloch\nDer Tote malt mit weißer Hand\nEin grinsend Schweigen an die Wand.\n\nDer Schläfer flüstert immer noch.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Romanze_zur_Nacht",
+      "tags": []
+    },
+    {
+      "titulo": "Rondel",
+      "texto": "RONDEL\nVerflossen ist das Gold der Tage,\nDes Abends braun und blaue Farben:\nDes Hirten sanfte Flöten starben\nDes Abends blau und braune Farben\n\nVerflossen ist das Gold der Tage.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Rondel",
+      "tags": []
+    },
+    {
+      "titulo": "Rosenkranzlieder",
+      "texto": "ROSENKRANZLIEDER\nAN DIE SCHWESTERWo du gehst wird Herbst und Abend,\nBlaues Wild, das unter Bäumen tönt,\nEinsamer Weiher am Abend.\n\nLeise der Flug der Vögel tönt,\n\nDie Schwermut über deinen Augenbogen.\nDein schmales Lächeln tönt.\n\nGott hat deine Lider verbogen.\nSterne suchen nachts, Karfreitagskind,\nDeinen Stirnenbogen.\n\nNÄHE DES TODESO der Abend, der in die finsteren Dörfer der Kindheit geht.\nDer Weiher unter den Weiden\nFüllt sich mit den verpesteten Seufzern der Schwermut.\n\nO der Wald, der leise die braunen Augen senkt,\nDa aus des Einsamen knöchernen Händen\n\nDer Purpur seiner verzückten Tage hinsinkt.\n\nO die Nähe des Todes. Laß uns beten.\nIn dieser Nacht lösen auf lauen Kissen\nVergilbt von Weihrauch sich der Liebenden schmächtige Glieder.\n\nAMENVerwestes gleitend durch die morsche Stube;\nSchatten an gelben Tapeten; in dunklen Spiegeln wölbt\nSich unserer Hände elfenbeinerne Traurigkeit.\n\nBraune Perlen rinnen durch die erstorbenen Finger.\nIn der Stille\nTun sich eines Engels blaue Mohnaugen auf.\n\nBlau ist auch der Abend;\nDie Stunde unseres Absterbens, Azraels Schatten,\nDer ein braunes Gärtchen verdunkelt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Rosenkranzlieder",
+      "tags": []
+    },
+    {
+      "titulo": "Die schöne Stadt",
+      "texto": "DIE SCHÖNE STADT\nAlte Plätze sonnig schweigen.\nTief in Blau und Gold versponnen\nTraumhaft hasten sanfte Nonnen\nUnter schwüler Buchen Schweigen.\n\nAus den braun erhellten Kirchen \nSchaun des Todes reine Bilder, \nGroßer Fürsten schöne Schilder. \nKronen schimmern in den Kirchen.\n\nRösser tauchen aus dem Brunnen. \n\nBlütenkrallen drohn aus Bäumen. \nKnaben spielen wirr von Träumen \nAbends leise dort am Brunnen.\n\nMädchen stehen an den Toren, \nSchauen scheu ins farbige Leben. \n\nIhre feuchten Lippen beben \nUnd sie warten an den Toren.\n\nZitternd flattern Glockenklänge, \nMarschtakt hallt und Wacherufen. \nFremde lauschen auf den Stufen. \n\nHoch im Blau sind Orgelklänge.\n\nHelle Instrumente singen.\nDurch der Gärten Blätterrahmen\nSchwirrt das Lachen schöner Damen.\nLeise junge Mütter singen.\n\nHeimlich haucht an blumigen Fenstern\nDuft von Weihrauch, Teer und Flieder.\nSilbern flimmern müde Lider\nDurch die Blumen an den Fenstern.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_sch%C3%B6ne_Stadt",
+      "tags": []
+    },
+    {
+      "titulo": "Seele des Lebens",
+      "texto": "SEELE DES LEBENS\nVerfall, der weich das Laub umdüstert, \nEs wohnt im Wald sein weites Schweigen. \nBald scheint ein Dorf sich geisterhaft zu neigen. \nDer Schwester Mund in schwarzen Zweigen flüstert. \n\nDer Einsame wird bald entgleiten, \nVielleicht ein Hirt auf dunklen Pfaden.\nEin Tier tritt leise aus den Baumarkaden, \nIndes die Lider sich vor Gottheit weiten. \n\nDer blaue Fluß rinnt schön hinunter, \n\nGewölke sich am Abend zeigen; \nDie Seele auch in engelhaftem Schweigen. \nVergängliche Gebilde gehen unter.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Seele_des_Lebens",
+      "tags": []
+    },
+    {
+      "titulo": "Der Spaziergang",
+      "texto": "DER SPAZIERGANG\n1.Musik summt im Gehölz am Nachmittag. \nIm Korn sich ernste Vogelscheuchen drehn. \nHollunderbüsche sacht am Weg verwehn; \nEin Haus zerflimmert wunderlich und vag. \n\nIn Goldnem schwebt ein Duft von Thymian, \nAuf einem Stein steht eine heitere Zahl. \nAuf einer Wiese spielen Kinder Ball, \nDann hebt ein Baum vor dir zu kreisen an. \n\nDu träumst: die Schwester kämmt ihr blondes Haar, \n\nAuch schreibt ein ferner Freund dir einen Brief. \nEin Schober flieht durchs Grau vergilbt und schief \nUnd manchmal schwebst du leicht und wunderbar. \n\n2.Die Zeit verrinnt. O süßer Helios! \nO Bild im Krötentümpel süß und klar; \n\nIm Sand versinkt ein Eden wunderbar. \nGoldammern wiegt ein Busch in seinem Schoß. \n\nEin Bruder stirbt dir in verwunschnem Land \nUnd stählern schaun dich deine Augen an. \nIn Goldnem dort ein Duft von Thymian. \n\nEin Knabe legt am Weiler einen Brand. \n\nDie Liebenden in Faltern neu erglühn \nUnd schaukeln heiter hin um Stein und Zahl. \nAufflattern Krähen um ein ekles Mahl \nUnd deine Stirne tost durchs sanfte Grün. \n\n[37]  Im Dornenstrauch verendet weich ein Wild. \nNachgleitet dir ein heller Kindertag, \nDer graue Wind, der flatterhaft und vag \nVerfallne Düfte durch die Dämmerung spült. \n\n3.Ein altes Wiegenlied macht dich sehr bang. \nAm Wegrand fromm ein Weib ihr Kindlein stillt. \nTraumwandelnd hörst du wie ihr Bronnen quillt. \nAus Apfelzweigen fällt ein Weiheklang. \n\nUnd Brot und Wein sind süß von harten Mühn. \nNach Früchten tastet silbern deine Hand. \n\nDie tote Rahel geht durchs Ackerland. \nMit friedlicher Geberde winkt das Grün. \n\nGesegnet auch blüht armer Mägde Schoß, \nDie träumend dort am alten Brunnen stehn. \nEinsame froh auf stillen Pfaden gehn \n\nMit Gottes Kreaturen sündelos.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Spaziergang",
+      "tags": []
+    },
+    {
+      "titulo": "Traum des Bösen",
+      "texto": "TRAUM DES BÖSEN\nVerhallend eines Gongs braungoldne Klänge –\nEin Liebender erwacht in schwarzen Zimmern\nDie Wang’ an Flammen, die im Fenster flimmern.\nAm Strome blitzen Segel, Masten, Stränge.\n\nEin Mönch, ein schwangres Weib dort im Gedränge.\nGuitarren klimpern, rote Kittel schimmern.\nKastanien schwül in goldnem Glanz verkümmern;\nSchwarz ragt der Kirchen trauriges Gepränge.\n\nAus bleichen Masken schaut der Geist des Bösen.\n\nEin Platz verdämmert grauenvoll und düster;\nAm Abend regt auf Inseln sich Geflüster.\n\nDes Vogelfluges wirre Zeichen lesen\nAussätzige, die zur Nacht vielleicht verwesen.\nIm Park erblicken zitternd sich Geschwister.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Traum_des_B%C3%B6sen",
+      "tags": []
+    },
+    {
+      "titulo": "Trompeten",
+      "texto": "TROMPETEN\nUnter verschnittenen Weiden, wo braune Kinder spielen \nUnd Blätter treiben, tönen Trompeten. Ein Kirchhofsschauer. \nFahnen von Scharlach stürzen durch des Ahorns Trauer, \nReiter entlang an Roggenfeldern, leeren Mühlen. \n\nOder Hirten singen nachts und Hirsche treten \nIn den Kreis ihrer Feuer, des Hains uralte Trauer, \nTanzende heben sich von einer schwarzen Mauer; \nFahnen von Scharlach, Lachen, Wahnsinn, Trompeten.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Trompeten",
+      "tags": []
+    },
+    {
+      "titulo": "Trübsinn",
+      "texto": "TRÜBSINN\nWeltunglück geistert durch den Nachmittag. \nBaraken fliehn durch Gärtchen braun und wüst. \nLichtschnuppen gaukeln um verbrannten Mist, \nZwei Schläfer schwanken heimwärts, grau und vag. \n\nAuf der verdorrten Wiese läuft ein Kind \nUnd spielt mit seinen Augen schwarz und glatt. \nDas Gold tropft von den Büschen trüb und matt. \nEin alter Mann dreht traurig sich im Wind. \n\nAm Abend wieder über meinem Haupt \n\nSaturn lenkt stumm ein elendes Geschick. \nEin Baum, ein Hund tritt hinter sich zurück \nUnd schwarz schwankt Gottes Himmel und entlaubt.\n\nEin Fischlein gleitet schnell hinab den Bach; \nUnd leise rührt des toten Freundes Hand \n\nUnd glättet liebend Stirne und Gewand. \nEin Licht ruft Schatten in den Zimmern wach.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Tr%C3%BCbsinn",
+      "tags": []
+    },
+    {
+      "titulo": "Verfall",
+      "texto": "VERFALL\nAm Abend, wenn die Glocken Frieden läuten,\nFolg ich der Vögel wundervollen Flügen,\nDie lang geschart, gleich frommen Pilgerzügen,\nEntschwinden in den herbstlich klaren Weiten.\n\nHinwandelnd durch den dämmervollen Garten\nTräum ich nach ihren helleren Geschicken\nUnd fühl der Stunden Weiser kaum mehr rücken.\nSo folg ich über Wolken ihren Fahrten.\n\nDa macht ein Hauch mich von Verfall erzittern.\n\nDie Amsel klagt in den entlaubten Zweigen.\nEs schwankt der rote Wein an rostigen Gittern,\n\nIndes wie blasser Kinder Todesreigen\nUm dunkle Brunnenränder, die verwittern,\nIm Wind sich fröstelnd blaue Astern neigen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Verfall",
+      "tags": []
+    },
+    {
+      "titulo": "Verklärter Herbst",
+      "texto": "VERKLÄRTER HERBST\nGewaltig endet so das Jahr\nMit goldnem Wein und Frucht der Gärten.\nRund schweigen Wälder wunderbar\nUnd sind des Einsamen Gefährten. \n\nDa sagt der Landmann: Es ist gut.\nIhr Abendglocken lang und leise\nGebt noch zum Ende frohen Mut.\nEin Vogelzug grüßt auf der Reise. \n\nEs ist der Liebe milde Zeit.\n\nIm Kahn den blauen Fluß hinunter\nWie schön sich Bild an Bildchen reiht –\nDas geht in Ruh und Schweigen unter.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Verkl%C3%A4rter_Herbst",
+      "tags": []
+    },
+    {
+      "titulo": "Verwandlung (Trakl)",
+      "texto": "VERWANDLUNG\nEntlang an Gärten, herbstlich, rotversengt: \nHier zeigt im Stillen sich ein tüchtig Leben. \nDes Menschen Hände tragen braune Reben, \nIndes der sanfte Schmerz im Blick sich senkt. \n\nAm Abend: Schritte gehn durch schwarzes Land \nErscheinender in roter Buchen Schweigen. \nEin blaues Tier will sich vorm Tod verneigen \nUnd grauenvoll verfällt ein leer Gewand. \n\nGeruhiges vor einer Schenke spielt, \n\nEin Antlitz ist berauscht ins Gras gesunken. \nHollunderfrüchte, Flöten weich und trunken, \nResedenduft, der Weibliches umspült.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Verwandlung_%28Trakl%29",
+      "tags": []
+    },
+    {
+      "titulo": "Vorstadt im Föhn",
+      "texto": "VORSTADT IM FÖHN\nAm Abend liegt die Stätte öd und braun, \nDie Luft von gräulichem Gestank durchzogen. \nDas Donnern eines Zugs vom Brückenbogen –\nUnd Spatzen flattern über Busch und Zaun. \n\nGeduckte Hütten, Pfade wirr verstreut, \nIn Gärten Durcheinander und Bewegung, \nBisweilen schwillt Geheul aus dumpfer Regung, \nIn einer Kinderschar fliegt rot ein Kleid. \n\nAm Kehricht pfeift verliebt ein Rattenchor. \n\nIn Körben tragen Frauen Eingeweide, \nEin ekelhafter Zug voll Schmutz und Räude, \nKommen sie aus der Dämmerung hervor. \n\nUnd ein Kanal speit plötzlich feistes Blut \nVom Schlachthaus in den stillen Fluß hinunter. \n\nDie Föhne färben karge Stauden bunter \nUnd langsam kriecht die Röte durch die Flut. \n\nEin Flüstern, das in trübem Schlaf ertrinkt. \nGebilde gaukeln auf aus Wassergräben, \nVielleicht Erinnerung an ein früheres Leben, \n\nDie mit den warmen Winden steigt und sinkt. \n\nAus Wolken tauchen schimmernde Alleen, \nErfüllt von schönen Wägen, kühnen Reitern. \nDann sieht man auch ein Schiff auf Klippen scheitern \nUnd manchmal rosenfarbene Moscheen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Vorstadt_im_F%C3%B6hn",
+      "tags": []
+    },
+    {
+      "titulo": "Winkel am Wald",
+      "texto": "WINKEL AM WALD\nAn Karl Minnich\nBraune Kastanien. Leise gleiten die alten Leute\nIn stilleren Abend; weich verwelken schöne Blätter. \nAm Friedhof scherzt die Amsel mit dem toten Vetter, \nAngelen gibt der blonde Lehrer das Geleite. \n\nDes Todes reine Bilder schaun von Kirchenfenstern; \nDoch wirkt ein blutiger Grund sehr trauervoll und düster. \nDas Tor blieb heut verschlossen. Den Schlüssel hat der Küster. \nIm Garten spricht die Schwester freundlich mit Gespenstern. \n\nIn alten Kellern reift der Wein ins Goldne, Klare. \n\nSüß duften Äpfel. Freude glänzt nicht allzu ferne. \nDen langen Abend hören Kinder Märchen gerne; \nAuch zeigt sich sanftem Wahnsinn oft das Goldne, Wahre. \n\nDas Blau fließt voll Reseden; in Zimmern Kerzenhelle. \nBescheidenen ist ihre Stätte wohl bereitet. \n\nDen Saum des Walds hinab ein einsam Schicksal gleitet; \nDie Nacht erscheint, der Ruhe Engel, auf der Schwelle.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Winkel_am_Wald",
+      "tags": []
+    },
+    {
+      "titulo": "Winterdämmerung",
+      "texto": "WINTERDÄMMERUNG\nAn Max von Esterle\nSchwarze Himmel von Metall.\nKreuz in roten Stürmen wehen\nAbends hungertolle Krähen\nÜber Parken gram und fahl.\n\nIm Gewölk erfriert ein Strahl;\nUnd vor Satans Flüchen drehen\nJene sich im Kreis und gehen\nNieder siebenfach an Zahl.\n\nIn Verfaultem süß und schal\n\nLautlos ihre Schnäbel mähen.\nHäuser dräu’n aus stummen Nähen;\nHelle im Theatersaal.\n\nKirchen, Brücken und Spital\nGrauenvoll im Zwielicht stehen.\n\nBlutbefleckte Linnen blähen\nSegel sich auf dem Kanal",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Winterd%C3%A4mmerung",
+      "tags": []
+    },
+    {
+      "titulo": "Zu Abend mein Herz",
+      "texto": "ZU ABEND MEIN HERZ\nAm Abend hört man den Schrei der Fledermäuse.\nZwei Rappen springen auf der Wiese.\nDer rote Ahorn rauscht.\nDem Wanderer erscheint die kleine Schenke am Weg.\n\nHerrlich schmecken junger Wein und Nüsse.\nHerrlich: betrunken zu taumeln in dämmernden Wald.\nDurch schwarzes Geäst tönen schmerzliche Glocken.\nAuf das Gesicht tropft Tau.",
+      "forma": "outro",
+      "obra": "de.wikisource: Georg Trakl",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Zu_Abend_mein_Herz",
+      "tags": []
+    }
+  ],
+  "nascimento": 1881
+}
