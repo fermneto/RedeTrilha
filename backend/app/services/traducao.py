@@ -12,21 +12,19 @@ sem escapes, com as quebras de linha e os recuos como o modelo os escreveu.
 
 import logging
 import os
-import time
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 import anthropic
 from fastapi import HTTPException
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from app.core.datas import para_utc
-from app.core.janela_deslizante import limite_traducoes
 from app.models.post import Post
 from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.traducao import TraducaoOut
+from app.services.cursor import utc_sem_fuso
 from app.services.posts import original_de
 
 logger = logging.getLogger(__name__)
@@ -38,6 +36,9 @@ ROTULO_TITULO = "TÍTULO:"
 INDISPONIVEL = "tradução indisponível no momento"
 FALHOU = "não foi possível traduzir este poema; tente de novo mais tarde"
 LIMITE_ATINGIDO = "limite de traduções atingido, tente mais tarde"
+# Traduções novas por usuário numa janela deslizante (as do cache não contam).
+LIMITE_POR_JANELA = 30
+JANELA_DO_LIMITE = timedelta(hours=1)
 
 PROMPT_SISTEMA = f"""Você é tradutor literário de poesia. Traduza o poema que o usuário enviar \
 para a língua de destino indicada, com fidelidade ao sentido, ao tom, ao registro e às imagens \
@@ -84,7 +85,7 @@ def traduzir(db: Session, usuario: User, post_id: int, para: str) -> TraducaoOut
     if traducao is not None:
         return _saida(traducao, post, em_cache=True)
 
-    if not limite_traducoes.permitido(usuario.id, time.time()):
+    if traducoes_recentes(db, usuario.id) >= LIMITE_POR_JANELA:
         raise HTTPException(status_code=429, detail=LIMITE_ATINGIDO)
 
     titulo, texto = _chamar_modelo(post, para)
@@ -103,24 +104,21 @@ def traduzir(db: Session, usuario: User, post_id: int, para: str) -> TraducaoOut
         # Um pedido simultâneo gravou a mesma tradução primeiro: fica a dele.
         db.rollback()
         traducao = _do_cache(db, post.id, para)
-    # A chamada à API aconteceu (e custou) mesmo se outro pedido gravou primeiro.
-    limite_traducoes.registrar(usuario.id, time.time())
     return _saida(traducao, post, em_cache=False)
 
 
-def reconstruir_limite(db: Session) -> None:
-    """Chamado no startup: o limite por usuário vive em memória (core/janela_deslizante.py).
+def traducoes_recentes(db: Session, usuario_id: int) -> int:
+    """Traduções novas que a pessoa pediu na última hora, contadas na tabela `traducoes`.
 
-    Traduções apagadas junto com o poema somem da conta só depois de um restart.
+    Sem estado no processo: todo worker conta as mesmas linhas. O índice
+    (pedida_por_id, created_at) deixa a contagem em O(log n + c), c <= 30.
     """
-    inicio = datetime.now(UTC).timestamp() - limite_traducoes.janela_segundos
-    linhas = db.execute(
-        select(Traducao.pedida_por_id, Traducao.created_at).where(
-            Traducao.pedida_por_id.is_not(None)
-        )
-    )
-    eventos = [(usuario_id, para_utc(criada).timestamp()) for usuario_id, criada in linhas]
-    limite_traducoes.reconstruir([evento for evento in eventos if evento[1] > inicio])
+    inicio = utc_sem_fuso(datetime.now(UTC) - JANELA_DO_LIMITE)
+    return db.scalar(
+        select(func.count())
+        .select_from(Traducao)
+        .where(Traducao.pedida_por_id == usuario_id, Traducao.created_at > inicio)
+    ) or 0
 
 
 def montar_pedido(post: Post, para: str) -> str:

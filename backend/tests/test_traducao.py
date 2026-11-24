@@ -218,21 +218,6 @@ def test_idioma_fora_da_iso_639_1_da_422_em_portugues(client, logar, idioma):
     assert "ISO 639-1" in r.json()["detail"][0]["msg"]
 
 
-def test_janela_deslizante_libera_quando_o_evento_sai_da_janela():
-    from app.core.janela_deslizante import JanelaDeslizante
-
-    janela = JanelaDeslizante(limite=2, janela_segundos=60)
-    janela.registrar(1, 0)
-    janela.registrar(1, 30)
-    assert not janela.permitido(1, 59)
-    assert janela.permitido(2, 59)
-    assert janela.permitido(1, 60)
-
-    janela.reconstruir([(1, 100), (1, 90)])
-    assert not janela.permitido(1, 120)
-    assert janela.permitido(1, 151)
-
-
 def _linguas_menos_ingles(n: int) -> list[str]:
     from app.schemas.idioma import IDIOMAS
 

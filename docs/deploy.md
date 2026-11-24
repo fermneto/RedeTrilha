@@ -210,8 +210,8 @@ ficam fora do CORS. A banca usa só a URL de produção.
   banca: apague o que não quiser mostrar.
 - **Consagrados novos não entram sozinhos.** Como o seed não roda de novo, um
   JSON novo em `backend/data/consagrados/` não chega à produção pelo deploy.
-  Rode o importador apontando para o Supabase e reinicie o Render, para o
-  índice de tags ser reconstruído:
+  Rode o importador apontando para o Supabase (as tags entram no índice na
+  mesma transação; não precisa reiniciar o Render):
 
   ```bash
   cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
@@ -219,6 +219,22 @@ ficam fora do CORS. A banca usa só a URL de produção.
   ```
 
 - **Push na `main` = redeploy** do Render e da Vercel (os dados ficam).
+- **Banco criado antes do índice de tags no banco.** Não tem passo manual: o
+  preparo do banco (`preparar_banco()` em `main.py`, no boot e no serviço
+  `seed` da Oracle) cria a tabela `post_tags`, cria o índice
+  `ix_traducoes_pedida_por_id_created_at` se faltar e, com `post_tags` vazia,
+  popula o índice de tags a partir dos posts, tudo sob o mesmo *advisory lock*.
+  Alternativa manual (idempotente, pode rodar de novo):
+
+  ```bash
+  cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
+    uv run python scripts/popular_post_tags.py
+  ```
+
+  ```sql
+  CREATE INDEX IF NOT EXISTS ix_traducoes_pedida_por_id_created_at
+    ON traducoes (pedida_por_id, created_at);
+  ```
 
 ## Checklist de verificação (o que a banca faz)
 

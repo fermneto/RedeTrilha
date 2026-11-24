@@ -10,6 +10,7 @@ from sqlalchemy import select, text
 from app.db import Base, SessionLocal, engine
 from app.erros import erro_de_validacao
 from app.observabilidade import erro_interno, iniciar_sentry
+from app.models.traducao import INDICE_DO_LIMITE
 from app.models.user import User
 from app.routers import (
     acervo,
@@ -32,9 +33,11 @@ from app.routers import (
     traducao,
     users,
 )
-from app.services.posts import reconstruir_indice
-from app.services.traducao import reconstruir_limite
+from app.services import indice_tags
 
+
+# Índices novos em tabelas que já existiam antes deles (o create_all não os cria).
+INDICES_EM_TABELA_EXISTENTE = (INDICE_DO_LIMITE,)
 
 # Número arbitrário e fixo do advisory lock do preparo do banco (ver _trava_do_preparo).
 _CHAVE_DO_PREPARO = 7_302_019
@@ -46,13 +49,21 @@ def _banco_vazio() -> bool:
 
 
 def preparar_banco() -> None:
-    """Cria as tabelas e, com SEED_ON_BOOT=true, roda o seed num banco SEM usuários.
+    """Cria as tabelas, roda o seed (com SEED_ON_BOOT=true, num banco SEM usuários)
+    e põe em dia um banco de antes do índice de tags no banco.
 
     Deploy: o seed só roda no primeiro boot no Postgres do Supabase; nos reinícios
     seguintes os dados criados na URL pública ficam. Com vários workers (Oracle,
     docs/deploy-oracle.md), quem chama isto é o serviço `seed` do compose, uma vez,
     antes da API: cada worker rodando o seed ao mesmo tempo duplicaria os dados.
     Import aqui dentro: fora do deploy, o script nem é carregado.
+
+    Banco antigo: o `create_all` cria a tabela nova `post_tags` vazia, mas não
+    cria índice novo em tabela que já existe. Por isso, ainda dentro da trava,
+    os índices de `INDICES_EM_TABELA_EXISTENTE` são criados se faltarem e o
+    índice de tags é populado a partir dos posts se estiver vazio. Num banco
+    novo ou já em dia, isso custa uma checagem por índice e duas consultas
+    com LIMIT 1.
     """
     with _trava_do_preparo():
         Base.metadata.create_all(engine)
@@ -60,6 +71,10 @@ def preparar_banco() -> None:
             from scripts.seed import main as rodar_seed
 
             rodar_seed()
+        for indice in INDICES_EM_TABELA_EXISTENTE:
+            indice.create(engine, checkfirst=True)
+        with SessionLocal() as db:
+            indice_tags.popular_se_vazio(db)
 
 
 @contextmanager
@@ -82,13 +97,9 @@ def _trava_do_preparo() -> Iterator[None]:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Roda ANTES do rebuild, para o índice de tags já nascer com os dados.
+    # Nada a reconstruir: o índice de tags e o limite de tradução moram no banco
+    # (core/README.md), então o boot é rápido e vale para vários workers.
     preparar_banco()
-    # Reconstrói as estruturas do core/ a partir do banco (memória zera a cada
-    # restart — inclusive no --reload; ver core/README.md).
-    with SessionLocal() as db:
-        reconstruir_indice(db)
-        reconstruir_limite(db)
     yield
 
 

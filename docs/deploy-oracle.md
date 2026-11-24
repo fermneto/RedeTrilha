@@ -364,17 +364,18 @@ cd deploy/oracle && docker compose up -d --build
 docker image prune -f        # apaga as imagens antigas (libera disco)
 ```
 
-O `seed` roda de novo, vê que o banco já tem usuários e só sai (`banco
-pronto`). Os dados ficam no Supabase. A API fica fora do ar por alguns
+O `seed` roda de novo, vê que o banco já tem usuários e só põe o banco em dia
+(`banco pronto`): cria os índices novos em tabelas que já existiam e, se a
+tabela `post_tags` estiver vazia, popula o índice de tags a partir dos posts.
+Num banco já em dia, isso é instantâneo. Os dados ficam no Supabase. A API fica fora do ar por alguns
 segundos enquanto os workers reiniciam.
 
 Consagrados novos (JSON novo em `backend/data/consagrados/`) não entram pelo
-seed, porque o banco não está vazio. Rode o importador uma vez e reinicie a API
-(o índice de tags é reconstruído no startup):
+seed, porque o banco não está vazio. Rode o importador uma vez; as tags entram
+no índice na mesma transação, sem reiniciar a API:
 
 ```bash
 docker compose run --rm --entrypoint python seed scripts/importar_consagrados.py
-docker compose restart api
 ```
 
 ## Workers e pool
@@ -382,12 +383,11 @@ docker compose restart api
 A `api` roda o uvicorn com `WEB_CONCURRENCY` workers (processos). Vazio, o
 padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4).
 
-**Hoje o `.env.example` vem com `WEB_CONCURRENCY=1`, de propósito.** O índice
-de tags e o limite de traduções vivem na memória do processo (`app/core/`):
-com vários workers, cada um tem a sua cópia, e um poema novo com `#tag` só
-aparece na busca e no Em alta do worker que o recebeu. Quando o PR que tira
-esse estado da memória (backend sem estado) estiver na `main`, deixe
-`WEB_CONCURRENCY=` vazio e ajuste o pool.
+O `.env.example` vem com `WEB_CONCURRENCY=2` e o pool `4 + 2` por worker, a
+configuração medida no PR #130 (130 req/s, 0 erro, p95 de 1,2 s). Vários
+workers não dão problema: o índice de tags (tabela `post_tags`) e o limite de
+traduções (contado em `traducoes`) moram no banco, então todo worker vê o mesmo
+Em alta e o mesmo limite.
 
 Cada worker abre o próprio pool de conexões. No Session pooler, cada conexão
 da API ocupa uma conexão no Supabase, e o **Pool Size** do plano free é 15
@@ -396,8 +396,7 @@ fechar:
 
 ```text
 WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
-1 worker:  1 × (5 + 5) = 10
-4 workers: 4 × (2 + 1) = 12
+2 workers: 2 × (4 + 2) = 12   (o padrão do .env.example)
 ```
 
 Passar disso dá `too many clients` / `max clients reached` sob carga (no teste
@@ -482,7 +481,6 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | Caddy: `too many certificates` / `rateLimited` | limite do Let's Encrypt (comum em sslip.io, que é compartilhado). O Caddy tenta o ZeroSSL sozinho; se não der, use um subdomínio do DuckDNS. Não apague o volume `caddy_data` à toa: ele guarda o certificado |
 | Navegador avisa "certificado inválido" | o Caddy ainda está pedindo o certificado (veja `docker compose logs caddy`) ou o `DOMINIO` do `.env` não é o mesmo da URL |
 | 500 no login e no feed, mas `/saude` dá 200 | o projeto do Supabase foi pausado (7 dias sem uso): **Restore project** e depois `docker compose restart api` |
-| Tag nova não aparece na busca às vezes | `WEB_CONCURRENCY` maior que 1 antes do backend sem estado: volte para 1 |
 | `Out of capacity` ao criar a VM | passo 3, lista de soluções |
 | `permission denied ... docker.sock` | faltou sair e entrar de novo depois do `usermod -aG docker ubuntu` |
 | Disco cheio | `docker image prune -f` e `docker builder prune -f` |

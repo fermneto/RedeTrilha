@@ -454,80 +454,91 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 
 ## Uma escolha técnica
 
-### Índice invertido de tags em `core/indice_tags.py`
+### Índice invertido de tags: da memória para o banco
 
-A descoberta por forma e tema (decisão 3) depende de responder rápido a duas
-perguntas: "quais poemas têm `#saudade`?" e "sobre o que a rede está
-escrevendo?". Varrer todos os poemas e procurar a tag no texto a cada request
-custaria O(n·L), com L o tamanho do poema, e poemas não têm limite. Por isso o
-`IndiceTags` guarda duas estruturas em memória:
+A descoberta por forma e tema (decisão 3) depende de responder rápido a três
+perguntas: "quais poemas têm `#saudade`?", "sobre o que a rede está escrevendo
+nas últimas 24 h?" e "que tags começam por `sa`?". Procurar a tag no texto de
+todos os poemas a cada request custaria O(n·L), com L o tamanho do poema, e
+poemas não têm limite. A resposta é um **índice invertido**: tag → poemas.
 
-- `_por_tag: dict[str, dict[int, datetime]]`: tag → {post_id: criado_em}. É o
-  índice invertido: a partir da tag, chega direto aos poemas.
-- `_por_post: dict[int, tuple[frozenset[str], datetime]]`: post_id → (tags,
-  criado_em). É o inverso: **apagar** um poema visita só as tags dele, sem
-  varrer todas as tags da rede, e `indexar` chama `remover` antes, então
-  indexar o mesmo id de novo não deixa tag velha para trás. Com o inverso, as
-  duas operações são O(t).
+**Primeira versão: em memória.** O `IndiceTags` guardava `dict tag →
+{post_id: criado_em}` e o inverso `post_id → tags` num singleton do processo,
+reconstruído do banco no startup em O(n·t). Funcionava, mas com estado no
+processo: com dois workers (ou duas instâncias), cada um teria o seu índice, e
+o poema publicado num não apareceria no "Em alta" do outro. O limite de 30
+traduções por hora tinha o mesmo problema (uma janela deslizante por processo
+deixaria pedir 30 em cada um). Para aguentar 100 pessoas ao mesmo tempo com
+vários workers, a API precisava ficar **sem estado em memória**.
 
-**Normalização.** As tags passam por `normalizar`: `casefold` e remoção de
-acentos (NFKD sem os caracteres combinantes). Assim `#Solidão`, `#solidão` e
-`#solidao` são a mesma tag. O front usa a mesma regra no `normalizarTag`. A
-forma do poema entra como tag, e as tags dos consagrados (`tags_extras`)
-também.
+**Agora: no banco.** O índice é a tabela `post_tags (post_id, tag, criado_em)`
+(`models/post_tag.py`), gravada por `services/indice_tags.py` **na mesma
+transação** que publica ou apaga o poema (e no importador de consagrados e no
+seed). Chave primária `(post_id, tag)`, índices em `(tag, criado_em, post_id)`
+e em `(criado_em)`. O `core/indice_tags.py` ficou com o que é lógica, em Python
+puro: `normalizar` e `extrair_tags` (casefold e sem acento: `#Solidão` e
+`#solidao` são a mesma tag; a forma e as `tags_extras` dos consagrados também
+entram), `top_k` (heap de tamanho k sobre as contagens) e `representantes` (um
+poema diferente por tag no "Em alta"). O limite de tradução conta as linhas da
+própria pessoa em `traducoes` na última hora, pelo índice
+`(pedida_por_id, created_at)`. O boot não reconstrói nada (o lifespan com o
+seed caiu de 774 ms para 5 ms).
 
-**Big O** (t = tags do post, p = posts da tag, n = posts indexados, m = tags
-distintas na janela):
+**Big O** (R = linhas de `post_tags`, t = tags do poema, p = poemas da tag,
+w = linhas na janela de 24 h, m = tags distintas na janela, k ≤ 10):
 
 | Operação | Custo | Quando roda |
 |---|---|---|
-| `indexar` / `remover` | O(t), lookups em hash | publicar e apagar poema |
-| `posts_da_tag` | O(p log p), ordena na leitura (mais novo primeiro, empate pelo maior id) | `/tags/{tag}/posts`, Explorar |
-| `trending` | O(n·t + m log k), heap de tamanho k via `heapq.nsmallest` | `/tags/trending` (janela de 24 h) |
-| `mais_recente` / `representantes` | O(p) por tag, um `max` sem ordenar | o verso de cada tag no "Em alta", um poema diferente por tag |
-| `buscar` | O(T + T' log k), T = tags distintas, T' = as que começam pelo prefixo | `/tags/busca` (busca do Explorar) |
-| `reconstruir` | O(n·t) | só no startup (lifespan) |
+| `indexar` / `remover` | O(t log R), inserir e apagar nas B-trees | publicar e apagar poema |
+| `posts_da_tag` | O(log R + offset + limit) a página, O(log R + p) o total | `/tags/{tag}/posts`, Explorar |
+| filtro tag + forma | JOIN `posts` × `post_tags` pela tag | `/explorar?tag=&forma=` |
+| `trending` | O(log R + w) no banco + O(m log k) no heap | `/tags/trending` |
+| `representantes` | só os k mais novos de cada tag (ROW_NUMBER): O(k²) linhas, O(k²) no core | o verso de cada tag no "Em alta" |
+| `buscar` | O(R) no pior caso (o `LIKE 'sa%'` nem sempre usa índice) + O(T' log k) | `/tags/busca` |
+| limite de tradução | O(log n + 30) | cada tradução nova |
+| `popular` | O(n·t), uma vez | banco antigo (`scripts/popular_post_tags.py`) |
 
-O índice vive na memória do processo e é reconstruído do banco no startup. O
-service (`services/tags.py`) recebe do índice só os ids na ordem certa, recorta
-a página e só então vai ao banco buscar a fatia.
+O `representantes` só precisa dos k mais novos de cada tag: a i-ésima tag do
+"Em alta" encontra no máximo i poemas já usados pelas de cima, então o mais
+novo livre dela está entre os i + 1 mais novos.
+
+**Medição.** O `make bench` roda `backend/scripts/bench_indice_tags.py`: a
+mesma massa sintética (posts com 1 a 4 tags de um vocabulário de 67,
+espalhados por 14 dias, semente fixa) vai para dois SQLite locais com a tabela
+`post_tags`, um com os índices e outro sem (varredura linear das R linhas). Os
+dois rodam as mesmas funções de `services/indice_tags.py` que a API usa; o
+script confere que devolvem o mesmo resultado e mede a mediana de 7 rodadas:
+
+```
+   posts |  linhas | consulta     |  índice (ms) | varredura (ms) |   ganho
+---------------------------------------------------------------------------
+    1000 |    2537 | posts_da_tag |        0.226 |          0.366 |    1.6x
+    1000 |    2537 | trending     |        0.194 |          0.294 |    1.5x
+    1000 |    2537 | busca        |        0.192 |          0.253 |    1.3x
+   10000 |   25051 | posts_da_tag |        0.243 |          1.608 |    6.6x
+   10000 |   25051 | trending     |        0.274 |          1.550 |    5.7x
+   10000 |   25051 | busca        |        0.943 |          1.670 |    1.8x
+  100000 |  250573 | posts_da_tag |        0.365 |         17.321 |   47.5x
+  100000 |  250573 | trending     |        0.992 |         16.328 |   16.5x
+  100000 |  250573 | busca        |       10.141 |         17.029 |    1.7x
+```
+
+Os números seguem a tabela de Big O. Com índice, `posts_da_tag` quase não
+cresce com a rede (0,2 ms → 0,4 ms de 1k para 100k posts), enquanto a varredura
+cresce junto com R: o ganho vai de 1,6x a 47x. O `trending` lê só a janela de
+24 h e ganha 16x em 100k (na versão em memória ele empatava com a varredura,
+porque percorria todos os posts). A `busca` por prefixo quase não ganha (1,3x a
+1,8x): o `LIKE` conta as linhas das tags que casam, e é o próximo passo se a
+rede crescer.
 
 **Se a rede crescesse 100 vezes:**
 
-- `posts_da_tag` deixaria de ordenar na leitura. Cada tag guardaria a lista já
-  ordenada por data (inserção ordenada na escrita), e uma página custaria
-  O(limit), não O(p log p).
-- O índice iria para o banco, numa tabela `post_tags (tag, post_id,
-  criado_em)` com índice em `(tag, criado_em)`. Isso dispensa a reconstrução
-  no startup, funciona com vários workers e transforma o filtro tag + forma do
-  Explorar num JOIN, no lugar de um `IN` com todos os ids da tag.
-- O trending deixaria de varrer todos os posts. Uma contagem por tag que soma
-  quando um poema entra na janela de 24 h e subtrai quando ele sai deixaria a
-  consulta em O(m log k), sem o termo n·t.
-
-**Medição.** O `make bench` roda `backend/scripts/bench_indice_tags.py`: a
-mesma massa sintética (posts com 1 a 4 tags de um vocabulário de 67, espalhados
-por 14 dias, semente fixa) vai para o índice e para uma lista simples, e o
-`timeit` mede as duas consultas contra uma varredura linear da lista (mediana
-de 7 rodadas; antes, o script confere que os dois lados devolvem o mesmo
-resultado):
-
-```
-   posts | consulta     | resultado |  índice (ms) | varredura (ms) |   ganho
------------------------------------------------------------------------------
-    1000 | posts_da_tag |    25 ids |        0.004 |          0.018 |    4.8x
-    1000 | trending     |     top 5 |        0.045 |          0.044 |    1.0x
-   10000 | posts_da_tag |   343 ids |        0.067 |          0.228 |    3.4x
-   10000 | trending     |     top 5 |        0.372 |          0.389 |    1.0x
-  100000 | posts_da_tag |  3722 ids |        1.165 |          4.624 |    4.0x
-  100000 | trending     |     top 5 |        4.627 |          4.169 |    0.9x
-```
-
-Os números confirmam a tabela de Big O. Em `posts_da_tag`, o índice vai direto
-aos p poemas da tag e fica de 3 a 5 vezes mais rápido que olhar os n posts. O
-`trending` empata com a varredura (0,9x a 1,0x), porque hoje ele também percorre
-todos os posts. É por isso que a contagem incremental por janela está na lista
-acima: é ela que tiraria o termo n·t.
+- A busca por prefixo ganharia uma tabela `tags (tag, poemas)` com o contador
+  mantido na escrita: o prefixo viraria um intervalo no índice da tag, O(log T
+  + k), sem contar linhas.
+- O trending guardaria contagens por hora (`tag, hora, n`), somando as 24
+  horas da janela: O(24·m) em vez de O(w).
+- O `total` de `posts_da_tag` (O(p)) viraria esse mesmo contador por tag.
 
 ### Também em `core/`, mais curtas
 
@@ -537,19 +548,17 @@ acima: é ela que tiraria o termo n·t.
   prévias, e não todos os comentários do poema. Agrupar por pai (um dict
   `parent_id → filhos`) e montar recursivamente são O(k). A ordenação é
   O(k log k) no pior caso, e o Timsort aproveita os trechos que já vêm
-  ordenados do banco. **Não é um singleton**, ao contrário do índice de tags:
-  o texto e o autor de cada comentário vêm do banco de qualquer jeito, então
-  uma árvore em memória não pouparia a ida ao banco. Um singleton custaria
-  O(total de comentários da rede) no startup e uma atualização a cada write,
-  e poderia sair de sincronia com o banco.
-- **Janela deslizante do limite de tradução (`core/janela_deslizante.py`).**
-  Um `dict usuário → deque` com os instantes das traduções novas da última
-  hora. Ao consultar, os instantes velhos saem pela esquerda. `permitido` e
-  `registrar` são O(1) amortizados (cada instante entra e sai uma vez), e a
-  memória é de até 30 instantes por usuário ativo. Uma janela fixa ("30 por
-  hora cheia") deixaria pedir 60 em dois minutos, na virada da hora. No
-  startup, a janela é reconstruída da tabela `traducoes`, para o limite não
-  zerar a cada restart.
+  ordenados do banco. **Não é um singleton:** o texto e o autor de cada
+  comentário vêm do banco de qualquer jeito, então uma árvore em memória não
+  pouparia a ida ao banco, custaria O(total de comentários da rede) no
+  startup e seria uma por worker.
+- **Limite de tradução numa janela deslizante.** 30 traduções novas por
+  pessoa nos últimos 60 minutos, contadas direto em `traducoes` com o índice
+  `(pedida_por_id, created_at)`: O(log n + 30), igual em todo worker. Uma
+  janela fixa ("30 por hora cheia") deixaria pedir 60 em dois minutos, na
+  virada da hora. Antes era um `dict usuário → deque` em memória
+  (`core/janela_deslizante.py`), reconstruído no startup; saiu pelo mesmo
+  motivo do índice de tags.
 - **Métrica e rima (`core/metrica.py`).** São funções puras, sem estado, por
   isso sem singleton. `silabas_poeticas` divide o verso em núcleos vocálicos e
   aplica sinalefa na fronteira das palavras e sinérese depois da tônica.

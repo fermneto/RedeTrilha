@@ -60,14 +60,25 @@ def test_post_apagado_some_da_tag(client, como, publicar):
 
 
 def test_trending_conta_so_as_ultimas_24h(client, como, publicar):
-    from app.core.indice_tags import indice_tags
+    from sqlalchemy import update
+
+    from app.db import SessionLocal
+    from app.models.post import Post
+    from app.models.post_tag import PostTag
 
     publicar("#amor #mar")
     publicar("#amor")
     publicar("#chuva", forma="haicai")
+    velhas = [publicar("#velha") for _ in range(5)]
     antigo = datetime.now(UTC) - timedelta(hours=25)
-    for post_id in range(1000, 1005):
-        indice_tags.indexar(post_id, {"velha"}, antigo)
+    with SessionLocal() as db:
+        db.execute(update(Post).where(Post.id.in_(velhas)).values(created_at=antigo))
+        db.execute(
+            update(PostTag)
+            .where(PostTag.post_id.in_(velhas))
+            .values(criado_em=antigo.replace(tzinfo=None))
+        )
+        db.commit()
 
     r = client.get("/tags/trending", headers=como("ana"))
     assert r.status_code == 200
@@ -141,10 +152,12 @@ def test_trending_limit_ate_10(client, como, publicar):
     assert client.get("/tags/trending?limit=11", headers=como("ana")).status_code == 422
 
 
-def test_trending_sem_o_poema_no_banco_vem_sem_trecho(client, como):
-    from app.core.indice_tags import indice_tags
+def test_trending_sem_o_poema_no_banco_vem_sem_trecho(client, como, publicar, monkeypatch):
+    from app.services import tags
 
-    indice_tags.indexar(999, {"fantasma"}, datetime.now(UTC))
+    publicar("um verso\n#fantasma")
+    # Outro worker apagou o poema entre a contagem e a busca do texto.
+    monkeypatch.setattr(tags, "textos_dos_posts", lambda db, ids: {})
 
     item = client.get("/tags/trending", headers=como("ana")).json()["items"][0]
     assert item == {"tag": "fantasma", "contagem": 1, "trecho": None}

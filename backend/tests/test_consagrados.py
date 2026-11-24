@@ -299,14 +299,10 @@ def test_tags_de_lingua_ficam_fora_das_tags_extras(client, tmp_path):
     assert no_json["poemas"][0]["tags"] == tags
 
 
-def test_tags_extras_entram_no_indice_ao_reconstruir(client, logar, tmp_path):
-    from app.db import SessionLocal
-    from app.services.posts import reconstruir_indice
-
+def test_tags_extras_entram_no_indice_ao_importar(client, logar, tmp_path):
     escrever(tmp_path, "poeta_teste.json", consagrado(poema={"tags": ["desilusao"]}))
     _importar_pasta(tmp_path)
-    with SessionLocal() as db:
-        reconstruir_indice(db)
+    _importar_pasta(tmp_path)
 
     [post] = _posts_de("poeta_teste")
     pagina = client.get("/tags/desilusao/posts", headers=logar("leitora")).json()
