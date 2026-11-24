@@ -9,7 +9,7 @@ import re
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.schemas.post import _validar_forma, _validar_texto
-from app.schemas.user import AvatarUrl
+from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
 PADRAO_TAG = re.compile(r"^[a-z0-9_]+$")
@@ -41,9 +41,9 @@ class PoemaConsagrado(BaseModel):
 class Consagrado(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    username: str = Field(pattern=r"^[a-z0-9_]{3,30}$")
-    name: str = Field(min_length=1, max_length=80)
-    bio: str = Field(default="", max_length=1000)
+    username: Username
+    name: Nome
+    bio: Bio = ""
     avatar_url: AvatarUrl = ""
     nascimento: int | None = None
     morte: int

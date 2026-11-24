@@ -49,10 +49,9 @@ export class ErroDaApi extends Error {
 
 type ErroDoPydantic = { msg?: unknown; loc?: unknown };
 
-// Sem a tradução do backend (PR #42), as mensagens dos validadores vêm com
-// "Value error, " na frente.
+// O `msg` já vem em português (backend/app/erros.py).
 function textoDoErro(e: ErroDoPydantic): string | null {
-  return typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null;
+  return typeof e?.msg === "string" ? e.msg : null;
 }
 
 // Nome amigável do campo na mensagem geral; campo desconhecido fica como veio.
@@ -76,8 +75,8 @@ function textoComCampo(e: ErroDoPydantic): string | null {
   return `${ROTULOS_DOS_CAMPOS[campo] ?? campo}: ${texto}`;
 }
 
-// O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
-// de erros com `msg` e `loc`.
+// O `detail` do FastAPI: texto (HTTPException) ou, no 422, uma lista de erros
+// com `msg` e `loc`.
 function mensagemDoErro(detail: unknown): string | null {
   if (typeof detail === "string") return detail;
   if (!Array.isArray(detail)) return null;
