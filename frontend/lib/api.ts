@@ -208,3 +208,51 @@ export async function buscarComentarios(postId: number): Promise<Comentario[]> {
 export function comentar(postId: number, texto: string, parentId: number | null): Promise<Comentario> {
   return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
 }
+
+// ---- Perfil (P4): espelha PerfilOut e PerfilUpdate de backend/app/schemas/user.py ----
+
+export type Perfil = User & {
+  seguidores: number;
+  seguindo: number;
+  // Poemas e citações; reposts puros não contam.
+  poemas: number;
+  // Se o usuário atual segue a pessoa.
+  sigo: boolean;
+};
+
+// Anos de vida de um consagrado: "1861–1898", "m. 1898" ou null (sem a morte, ou não consagrado).
+export function anosDeVida(user: User): string | null {
+  if (!user.consagrado || user.morte === null) return null;
+  return user.nascimento !== null ? `${user.nascimento}–${user.morte}` : `m. ${user.morte}`;
+}
+
+// Só os campos enviados mudam.
+export type EdicaoDoPerfil = Partial<Pick<User, "name" | "bio" | "avatar_url">>;
+
+export function buscarEu(): Promise<User> {
+  return apiGet<User>("/auth/eu");
+}
+
+export function buscarPerfil(username: string): Promise<Perfil> {
+  return apiGet<Perfil>(`/usuarios/${encodeURIComponent(username)}`);
+}
+
+export function editarPerfil(dados: EdicaoDoPerfil): Promise<Perfil> {
+  return apiPatch<Perfil>("/usuarios/eu", dados);
+}
+
+// Poemas, citações e reposts puros da pessoa, como no X; pagina como o feed.
+export function buscarPoemasDoPerfil(
+  username: string,
+  cursor: string | null,
+  limit = 20,
+): Promise<FeedPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<FeedPage>(`/usuarios/${encodeURIComponent(username)}/posts?${params}`);
+}
+
+export function seguir(username: string, seguindo: boolean): Promise<void> {
+  const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
+  return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+}
