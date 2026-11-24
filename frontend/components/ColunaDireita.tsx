@@ -8,9 +8,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { NomeAutor } from "@/components/NomeAutor";
 import { IconeBuscar } from "@/components/icones/IconeBuscar";
 import {
-  anosDeVida,
   buscarEu,
   buscarPoemaDoDia,
   buscarTrending,
@@ -57,7 +57,7 @@ export function ColunaDireita() {
 
 function Bloco({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
-    <section className="overflow-hidden rounded-2xl border border-borda bg-painel">
+    <section className="rounded-2xl border border-borda bg-painel">
       <h2 className="px-4 pt-3 pb-1 text-xl">{titulo}</h2>
       {children}
     </section>
@@ -106,7 +106,6 @@ function PoemaDoDia() {
   const versos = poema.texto.split("\n");
   const corte = linhasDaPrevia(versos);
   const autor = poema.autor;
-  const vida = anosDeVida(autor);
   return (
     <Bloco titulo="Poema do dia">
       <div className="px-4 pb-4">
@@ -115,10 +114,7 @@ function PoemaDoDia() {
           {corte === null ? poema.texto : versos.slice(0, corte).join("\n")}
         </p>
         <p className="mt-3 text-sm text-tinta-suave">
-          <Link href={`/u/${autor.username}`} className="font-semibold text-tinta hover:underline">
-            {autor.name}
-          </Link>
-          {vida && <span className="tabular-nums"> ({vida})</span>}
+          <NomeAutor usuario={autor} className="font-semibold text-tinta" />
         </p>
         <Link
           href={`/poema/${poema.id}`}
@@ -231,9 +227,9 @@ function LinhaPoeta({ poeta }: { poeta: User }) {
     <div className="flex items-center gap-3 px-4 py-2.5">
       <Avatar usuario={poeta} />
       <div className="min-w-0 flex-1">
-        <Link href={`/u/${poeta.username}`} className="block truncate font-bold hover:underline">
-          {poeta.name}
-        </Link>
+        <span className="flex">
+          <NomeAutor usuario={poeta} />
+        </span>
         <p className="truncate text-sm text-tinta-suave">
           {erro ? "não deu, tente de novo" : `@${poeta.username}`}
         </p>
@@ -244,7 +240,7 @@ function LinhaPoeta({ poeta }: { poeta: User }) {
         disabled={ocupado}
         aria-pressed={sigo}
         aria-label={`Seguir ${poeta.name}`}
-        className={`min-h-9 shrink-0 cursor-pointer rounded-full px-4 text-sm font-bold transition-colors duration-150 disabled:cursor-wait disabled:opacity-60 ${
+        className={`min-h-11 shrink-0 cursor-pointer rounded-full px-4 text-sm font-bold transition-colors duration-150 disabled:cursor-wait disabled:opacity-60 ${
           sigo
             ? "border border-borda text-tinta hover:border-destaque hover:text-destaque"
             : "bg-tinta text-papel hover:bg-tinta/85"

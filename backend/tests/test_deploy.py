@@ -28,11 +28,12 @@ def test_seed_on_boot_popula_o_banco_e_o_indice_de_tags(monkeypatch):
 
     Base.metadata.drop_all(engine)
     with _bootar_com_seed(monkeypatch) as c:
-        r = c.post("/auth/login", json={"username": "ada", "password": SENHA_SEED})
+        r = c.post("/auth/login", json={"username": "marina_letras", "password": SENHA_SEED})
         assert r.status_code == 200
         headers = {"Authorization": f"Bearer {r.json()['token']}"}
 
         assert c.get("/usuarios/augusto_dos_anjos", headers=headers).status_code == 200
+        assert c.get("/feed", headers=headers).json()["total"] > 0
         # O seed roda antes do rebuild: o índice de tags já nasce com os consagrados.
         assert c.get("/tags/trending", headers=headers).json()["items"]
 

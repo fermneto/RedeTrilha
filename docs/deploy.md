@@ -45,8 +45,8 @@ pôr a URL da Vercel no CORS.
    minutos. No log, o boot mostra:
 
    ```text
-   seed ok: 3 usuários criados
    consagrados: 59 poetas criados, 0 atualizados; 483 poemas criados, 0 atualizados
+   seed ok: 83 usuarios, 573 poemas, 346 follows, 385 curtidas, 46 comentarios, 4 antologias
    Application startup complete.
    ```
 
@@ -118,7 +118,7 @@ Na URL da Vercel, numa janela anônima:
 
 - [ ] `https://verso-api-xxxx.onrender.com/saude` responde `{"ok":true}` (acorda o backend)
 - [ ] **Cadastro:** criar uma conta nova (`/cadastro`)
-- [ ] **Login:** sair e entrar com ela (`/login`); entrar também com `ada` / `verso123`
+- [ ] **Login:** sair e entrar com ela (`/login`); entrar também com a conta de demonstração `marina_letras` / `verso123`
 - [ ] **Post:** publicar um poema com quebras de linha e uma `#tag` (`/escrever`); as quebras aparecem iguais
 - [ ] **Follow:** seguir um consagrado (por exemplo `/u/augusto_dos_anjos`) e outro usuário
 - [ ] **Feed:** a home mostra os poemas de quem você segue
