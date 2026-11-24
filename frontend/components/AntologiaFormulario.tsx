@@ -140,7 +140,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
 }
 
 // Switch acessível: role="switch" com aria-checked; "ligado" = pública.
-function SwitchPublica({
+export function SwitchPublica({
   id,
   publica,
   aoMudar,

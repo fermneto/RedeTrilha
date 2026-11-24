@@ -5,17 +5,35 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { SwitchPublica } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { IconeAdicionarAntologia } from "@/components/icones/IconeAdicionarAntologia";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   ANTOLOGIA_NOME_MAX,
-  buscarAntologia,
   criarAntologia,
-  listarMinhasAntologias,
+  listarMinhasAntologiasMarcando,
   marcarNaAntologia,
-  type Antologia,
+  type AntologiaMarcada,
 } from "@/lib/api";
+
+// Avisa a página aberta que um poema entrou ou saiu de uma antologia pelo
+// popover (o detalhe da antologia tira o poema da lista na hora). Evento de
+// window para não passar callbacks por dentro do PoemaCard.
+const EVENTO = "verso:antologia-mudou";
+
+export type MudancaNaAntologia = { antologiaId: number; postId: number; contem: boolean };
+
+function avisarMudanca(mudanca: MudancaNaAntologia) {
+  window.dispatchEvent(new CustomEvent<MudancaNaAntologia>(EVENTO, { detail: mudanca }));
+}
+
+// Assina as mudanças; devolve a função que cancela a assinatura (para o useEffect).
+export function ouvirMudancas(aoMudar: (mudanca: MudancaNaAntologia) => void): () => void {
+  const ouvinte = (e: Event) => aoMudar((e as CustomEvent<MudancaNaAntologia>).detail);
+  window.addEventListener(EVENTO, ouvinte);
+  return () => window.removeEventListener(EVENTO, ouvinte);
+}
 
 type Props = {
   postId: number;
@@ -73,31 +91,25 @@ export function AntologiaSeletor({ postId, classeBotao, classeCirculo, classeIco
 }
 
 // Cada antologia com a marca de "o poema está nela".
-type Linha = Antologia & { contem: boolean };
+type Linha = AntologiaMarcada;
 
 function Popover({ id, postId }: { id: string; postId: number }) {
   const [linhas, setLinhas] = useState<Linha[] | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [criando, setCriando] = useState(false);
   const [nome, setNome] = useState("");
+  const [publica, setPublica] = useState(true);
   const [enviando, setEnviando] = useState(false);
   const painel = useRef<HTMLDivElement>(null);
   const campoNome = useRef<HTMLInputElement>(null);
   const idTitulo = useId();
+  const idSwitch = useId();
 
-  // O backend não diz em quais antologias o poema está: lê o detalhe de cada uma.
+  // Uma requisição por abertura: o backend já diz em quais o poema está.
   useEffect(() => {
     let vivo = true;
-    listarMinhasAntologias()
-      .then((pagina) =>
-        Promise.all(
-          pagina.items.map(async (a) => {
-            const detalhe = await buscarAntologia(a.id);
-            return { ...a, contem: detalhe.poemas.some((p) => p.id === postId) };
-          }),
-        ),
-      )
-      .then((todas) => vivo && setLinhas(todas))
+    listarMinhasAntologiasMarcando(postId)
+      .then((pagina) => vivo && setLinhas(pagina.items))
       .catch((e) => vivo && setErro(e instanceof Error ? e.message : "não deu para carregar as antologias"));
     return () => {
       vivo = false;
@@ -127,6 +139,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
   function fecharCriacao() {
     setCriando(false);
     setNome("");
+    setPublica(true);
     focar("[data-nova]");
   }
 
@@ -143,13 +156,14 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     setErro(null);
     try {
       await marcarNaAntologia(linha.id, postId, novo);
+      avisarMudanca({ antologiaId: linha.id, postId, contem: novo });
     } catch (e) {
       trocar(!novo);
       setErro(e instanceof Error ? e.message : "não deu para mudar a antologia");
     }
   }
 
-  // Cria a antologia (pública, como no backend) e já põe o poema nela.
+  // Cria a antologia (pública por padrão) e já põe o poema nela.
   async function criar(e: React.FormEvent) {
     e.preventDefault();
     if (!nome.trim()) {
@@ -160,10 +174,11 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     setEnviando(true);
     setErro(null);
     try {
-      const nova = await criarAntologia({ nome });
+      const nova = await criarAntologia({ nome, publica });
       await marcarNaAntologia(nova.id, postId, true);
       setLinhas((atuais) => [{ ...nova, qtd: 1, contem: true }, ...(atuais ?? [])]);
       setNome("");
+      setPublica(true);
       setCriando(false);
       focar("input[type=checkbox]");
     } catch (err) {
@@ -231,6 +246,18 @@ function Popover({ id, postId }: { id: string; postId: number }) {
                 className="mt-1 w-full rounded-xl border border-borda bg-papel px-3 py-2 text-sm text-tinta focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
               />
             </label>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs">
+                {/* Rótulo fixo: o leitor de tela anuncia "Pública, ligado/desligado". */}
+                <label htmlFor={idSwitch} className="cursor-pointer">
+                  Pública
+                </label>
+                <span className="block text-tinta-suave" aria-live="polite">
+                  {publica ? "aparece no seu perfil" : "privada: só você vê"}
+                </span>
+              </span>
+              <SwitchPublica id={idSwitch} publica={publica} aoMudar={setPublica} />
+            </div>
             <div className="flex gap-2">
               <button
                 type="submit"
