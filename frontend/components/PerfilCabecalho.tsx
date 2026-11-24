@@ -4,6 +4,8 @@
 
 import { useState } from "react";
 
+import { Avatar } from "@/components/Avatar";
+import { SeloConsagrado } from "@/components/SeloConsagrado";
 import { anosDeVida, seguir, type Perfil } from "@/lib/api";
 
 type Props = {
@@ -38,18 +40,17 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
   return (
     <header className="space-y-4">
       <div className="flex items-start gap-4">
-        <Avatar perfil={perfil} />
+        <Avatar usuario={perfil} tamanho="g" />
         <div className="min-w-0 flex-1">
-          <h1 className="text-3xl break-words">{perfil.name}</h1>
-          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm">
-            <span className="text-tinta-suave">@{perfil.username}</span>
-            {perfil.consagrado && (
-              <span className="rounded-full border border-destaque px-2 text-xs text-destaque">
-                Consagrado
-              </span>
-            )}
-            {vida && <span className="text-xs text-tinta-suave">({vida})</span>}
-          </div>
+          <h1 className="text-3xl break-words">
+            {perfil.name} <SeloConsagrado usuario={perfil} className="h-[0.8em] w-[0.8em]" />
+          </h1>
+          <p className="text-sm text-tinta-suave">@{perfil.username}</p>
+          {perfil.consagrado && (
+            <p className="mt-1 text-sm text-tinta-suave tabular-nums">
+              {["Poeta consagrado", vida, "obra em domínio público"].filter(Boolean).join(" · ")}
+            </p>
+          )}
         </div>
         {proprio ? (
           <button
@@ -87,30 +88,6 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
       {erro && <p className="text-sm text-destaque">{erro}</p>}
     </header>
   );
-}
-
-function Avatar({ perfil }: { perfil: Perfil }) {
-  if (perfil.avatar_url) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={perfil.avatar_url} alt="" className="h-20 w-20 shrink-0 rounded-full object-cover" />;
-  }
-  return (
-    <div
-      aria-hidden
-      className="font-serifada flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-borda text-2xl text-tinta"
-    >
-      {iniciais(perfil.name)}
-    </div>
-  );
-}
-
-// "Cruz e Sousa" → "CS": a primeira letra do primeiro e do último nome.
-function iniciais(nome: string): string {
-  const partes = nome.trim().split(/\s+/).filter(Boolean);
-  if (partes.length === 0) return "?";
-  const primeira = partes[0][0];
-  const ultima = partes.length > 1 ? partes[partes.length - 1][0] : "";
-  return (primeira + ultima).toUpperCase();
 }
 
 function Contador({ n, singular, plural }: { n: number; singular: string; plural: string }) {

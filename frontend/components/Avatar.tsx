@@ -12,6 +12,7 @@ function iniciais(nome: string): string {
 const TAMANHOS = {
   p: "h-8 w-8 text-xs",
   m: "h-10 w-10 text-sm",
+  g: "h-20 w-20 text-2xl",
 } as const;
 
 // Decorativo: o nome do usuário sempre aparece ao lado, então o avatar não tem alt.

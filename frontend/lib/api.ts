@@ -35,24 +35,66 @@ function headers(): HeadersInit {
 
 // Erro de resposta não-ok: a mensagem é o `detail` do backend, e o status fica
 // disponível para quem precisa distinguir (ex.: 404 = não existe mais).
+// No 422, `campos` guarda a mensagem de cada campo do corpo (ex.: { username: "..." }),
+// para o formulário mostrar o erro ao lado do campo certo.
 export class ErroDaApi extends Error {
   constructor(
     message: string,
     readonly status: number,
+    readonly campos: Record<string, string> = {},
   ) {
     super(message);
   }
 }
 
+type ErroDoPydantic = { msg?: unknown; loc?: unknown };
+
+// O `msg` já vem em português (backend/app/erros.py).
+function textoDoErro(e: ErroDoPydantic): string | null {
+  return typeof e?.msg === "string" ? e.msg : null;
+}
+
+// Nome amigável do campo na mensagem geral; campo desconhecido fica como veio.
+const ROTULOS_DOS_CAMPOS: Record<string, string> = {
+  username: "username",
+  name: "nome",
+  password: "senha",
+  bio: "bio",
+  avatar_url: "avatar",
+  texto: "texto",
+  titulo: "título",
+};
+
+// "senha: campo obrigatório", com o último elemento do `loc` (o campo do corpo).
+function textoComCampo(e: ErroDoPydantic): string | null {
+  const texto = textoDoErro(e);
+  if (!texto) return null;
+  const loc = Array.isArray(e?.loc) ? e.loc : [];
+  const campo = loc.length > 1 ? loc[loc.length - 1] : null;
+  if (typeof campo !== "string") return texto;
+  return `${ROTULOS_DOS_CAMPOS[campo] ?? campo}: ${texto}`;
+}
+
 // O `detail` do FastAPI: texto (HTTPException) ou, no 422, uma lista de erros
-// com `msg`, já em português (backend/app/erros.py).
+// com `msg` e `loc`.
 function mensagemDoErro(detail: unknown): string | null {
   if (typeof detail === "string") return detail;
   if (!Array.isArray(detail)) return null;
-  const msgs = detail
-    .map((e) => (typeof e?.msg === "string" ? e.msg : null))
-    .filter((m): m is string => Boolean(m));
+  const msgs = (detail as ErroDoPydantic[]).map(textoComCampo).filter((m): m is string => Boolean(m));
   return msgs.length > 0 ? msgs.join("; ") : null;
+}
+
+// loc do pydantic: ["body", "username"]. Fica a primeira mensagem de cada campo.
+function camposDoErro(detail: unknown): Record<string, string> {
+  const campos: Record<string, string> = {};
+  if (!Array.isArray(detail)) return campos;
+  for (const e of detail as ErroDoPydantic[]) {
+    const loc = Array.isArray(e?.loc) ? e.loc : [];
+    const campo = loc[0] === "body" && typeof loc[1] === "string" ? loc[1] : null;
+    const texto = textoDoErro(e);
+    if (campo && texto && !(campo in campos)) campos[campo] = texto;
+  }
+  return campos;
 }
 
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
@@ -67,13 +109,20 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   // servidor do deploy reiniciou). Joga o token fora e volta para o login.
   if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem(CHAVE_TOKEN)) {
     esquecerToken();
-    if (window.location.pathname !== "/login") window.location.href = "/login";
+    // Login e cadastro conferem o token salvo e tratam o 401 na própria tela.
+    if (!["/login", "/cadastro"].includes(window.location.pathname)) {
+      window.location.href = caminhoDoLogin();
+    }
   }
 
   if (!res.ok) {
     // 422 = corpo inválido; 409 = conflito (ex.: username repetido). Ver guia 04.
     const erro = await res.json().catch(() => null);
-    throw new ErroDaApi(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`, res.status);
+    throw new ErroDaApi(
+      mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`,
+      res.status,
+      camposDoErro(erro?.detail),
+    );
   }
 
   // 204 No Content (seguir, curtir, apagar...) não tem corpo: não há JSON para ler.
@@ -214,6 +263,51 @@ export function temToken(): boolean {
   return typeof window !== "undefined" && Boolean(localStorage.getItem(CHAVE_TOKEN));
 }
 
+// ---- Login e cadastro (P3): espelham backend/app/schemas/auth.py ----
+
+// Mesmas regras do Username e do RegistroIn no backend.
+export const USERNAME_MIN = 3;
+export const USERNAME_MAX = 30;
+export const USERNAME_FORMATO = /^[a-z0-9_]+$/;
+export const SENHA_MIN = 8;
+export const SENHA_MAX = 72;
+
+export type NovoCadastro = { username: string; name: string; password: string };
+
+export function entrar(username: string, password: string): Promise<{ token: string }> {
+  return apiPost<{ token: string }>("/auth/login", { username, password });
+}
+
+export function cadastrar(dados: NovoCadastro): Promise<User> {
+  return apiPost<User>("/auth/registro", dados);
+}
+
+// Caracteres de controle (TAB, quebra de linha...): o navegador os apaga da URL,
+// e "/\t/site.com" viraria "//site.com".
+const CONTROLE = /[\u0000-\u001F\u007F]/;
+
+// Para onde ir depois do login. Só caminhos do próprio Verso ("/feed", "/poema/3"):
+// em vez de adivinhar os truques ("//site.com", "/\site.com"), resolve a URL como
+// o navegador faria e confere a origem (open redirect).
+export function destinoSeguro(proximo: unknown): string {
+  if (typeof window === "undefined") return "/";
+  if (typeof proximo !== "string" || !proximo.startsWith("/") || CONTROLE.test(proximo)) return "/";
+  try {
+    const url = new URL(proximo, window.location.origin);
+    if (url.origin !== window.location.origin) return "/";
+    return url.pathname + url.search + url.hash;
+  } catch {
+    return "/";
+  }
+}
+
+// "/login?proximo=<página atual>", para voltar a ela depois de entrar.
+export function caminhoDoLogin(): string {
+  if (typeof window === "undefined") return "/login";
+  const atual = window.location.pathname + window.location.search;
+  return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
+}
+
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
@@ -319,13 +413,15 @@ export function buscarTrending(): Promise<{ items: TagContagem[] }> {
   return apiGet<{ items: TagContagem[] }>("/tags/trending");
 }
 
-// Mesma regra de core/indice_tags.normalizar (casefold e sem acento: "#Solidão" → "solidao"),
-// e fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
+// Equivale a core/indice_tags.normalizar: casefold e sem acento ("#Solidão" → "solidao").
+// O JS não tem casefold; toLowerCase mais "ß" → "ss" cobre a diferença que importa
+// aqui. Depois fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
 export function normalizarTag(termo: string): string {
   return termo
+    .toLowerCase()
+    .replace(/ß/g, "ss")
     .normalize("NFKD")
     .replace(/\p{M}/gu, "")
-    .toLowerCase()
     .replace(/[^a-z0-9_]/g, "");
 }
 
