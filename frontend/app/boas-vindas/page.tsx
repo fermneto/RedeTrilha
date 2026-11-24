@@ -1,19 +1,28 @@
 "use client";
 // Onboarding depois do cadastro, em passos, todos opcionais: (1) que poesia você
 // gosta (escolas e formas), (2) de onde você é (país e, no Brasil, estado), e
-// depois a grade de quem seguir (/boas-vindas/quem-seguir). Tudo em tela cheia
-// (components/TelaDeBoasVindas.tsx), sem a navegação do site. "continuar" salva as preferências
-// (PUT /preferencias) e segue; "pular" segue sem salvar o passo. Também serve para
-// ajustar as preferências depois, com ?voltar=<página>: por "Preferências" no menu
-// da conta (os dois passos) ou pelo link na tela de sugestões (só os gostos, com
-// ?so=gostos). Nesse modo nada é salvo até o "salvar" do último passo ("continuar"
+// depois a grade de quem seguir (/boas-vindas/quem-seguir). O onboarding é em
+// tela cheia (components/TelaDeBoasVindas.tsx), sem a navegação do site.
+// "continuar" salva as preferências (PUT /preferencias) e segue; "pular" segue sem
+// salvar o passo; "voltar" volta ao passo anterior sem perder o que foi marcado
+// (?passo=regiao abre direto na região, pelo "voltar" da grade). Também serve para
+// ajustar as preferências depois, com ?voltar=<página>: em /preferencias (a mesma
+// página, dentro do layout do site), por "Preferências" no menu da conta (os dois
+// passos) ou pelo link da /sugestoes (só os gostos, com ?so=gostos); e em
+// /boas-vindas?so=gostos, em tela cheia, pelo link da grade do onboarding. Nesse modo nada é salvo até o "salvar" do último passo ("continuar"
 // só avança), "pular" vira "cancelar" (descarta tudo e usa o voltar do navegador,
 // ou vai ao perfil se a página foi aberta direto) e o fim volta para ?voltar=.
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-import { AberturaDoPasso, BOTAO_PRIMARIO, BOTAO_SECUNDARIO, TelaDeBoasVindas } from "@/components/TelaDeBoasVindas";
+import {
+  AberturaDoPasso,
+  BOTAO_PRIMARIO,
+  BOTAO_SECUNDARIO,
+  PassosNoSite,
+  TelaDeBoasVindas,
+} from "@/components/TelaDeBoasVindas";
 import {
   abertaDireto,
   alternarNaLista,
@@ -22,6 +31,8 @@ import {
   buscarPreferencias,
   caminhoDoLogin,
   destinoSeguro,
+  ehTelaDeBoasVindas,
+  passoInicial,
   passosDasPreferencias,
   nomeDaForma,
   nomeDoPais,
@@ -51,13 +62,15 @@ export default function BoasVindasPage() {
 function BoasVindas() {
   const router = useRouter();
   const params = useSearchParams();
+  // /boas-vindas em tela cheia; /preferencias dentro do layout do site.
+  const telaCheia = ehTelaDeBoasVindas(usePathname());
   const voltar = params.get("voltar");
   const passos = passosDasPreferencias(params.get("so"));
   // Ajuste depois do cadastro: sem o passo de quem seguir, e o fim volta à página de antes.
   const ajuste = voltar !== null;
   const destino = ajuste ? destinoSeguro(voltar) : QUEM_SEGUIR_NO_ONBOARDING;
   const totalDePassos = ajuste ? passos.length : passos.length + 1;
-  const [indice, setIndice] = useState(0);
+  const [indice, setIndice] = useState(() => passoInicial(passos, params.get("passo")));
   const passo = passos[indice];
   const [opcoes, setOpcoes] = useState<OpcoesDePreferencias | null>(null);
   const [prefs, setPrefs] = useState<Preferencias>({ escolas: [], formas: [], pais: null, uf: null });
@@ -131,23 +144,34 @@ function BoasVindas() {
 
   const textoDoBotao = salvando ? "salvando..." : ajuste && ultimo ? "salvar" : "continuar";
 
+  const Moldura = telaCheia ? TelaDeBoasVindas : PassosNoSite;
+
   return (
-    <TelaDeBoasVindas
+    <Moldura
       passo={indice + 1}
       total={totalDePassos}
       acoes={
         <>
-          <button type="button" onClick={ajuste ? cancelar : avancar} className={`${BOTAO_SECUNDARIO} -ml-4`}>
-            {ajuste ? "cancelar" : "pular"}
-          </button>
-          <button type="button" onClick={continuar} disabled={!opcoes || salvando} className={BOTAO_PRIMARIO}>
-            {textoDoBotao}
-          </button>
+          {indice > 0 ? (
+            <button type="button" onClick={() => setIndice(indice - 1)} className={`${BOTAO_SECUNDARIO} -ml-4`}>
+              voltar
+            </button>
+          ) : (
+            <span />
+          )}
+          <div className="flex items-center gap-1 sm:gap-3">
+            <button type="button" onClick={ajuste ? cancelar : avancar} className={BOTAO_SECUNDARIO}>
+              {ajuste ? "cancelar" : "pular"}
+            </button>
+            <button type="button" onClick={continuar} disabled={!opcoes || salvando} className={BOTAO_PRIMARIO}>
+              {textoDoBotao}
+            </button>
+          </div>
         </>
       }
     >
       <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
-      <AberturaDoPasso titulo={TITULOS[passo]} refTitulo={refTitulo}>
+      <AberturaDoPasso titulo={TITULOS[passo]} refTitulo={refTitulo} compacta={!telaCheia}>
         {abertura(passo, ajuste, nome)}
       </AberturaDoPasso>
 
@@ -177,7 +201,7 @@ function BoasVindas() {
           {erro}
         </p>
       )}
-    </TelaDeBoasVindas>
+    </Moldura>
   );
 }
 

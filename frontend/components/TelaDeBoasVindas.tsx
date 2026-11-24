@@ -1,8 +1,12 @@
-// A tela cheia do onboarding e das preferências, sem a navegação do site: no topo
-// só a marca e o passo, embaixo uma barra fixa com as ações. O filete do topo é a
-// barra de progresso: vai se preenchendo de tinta a cada passo.
+// A tela cheia do onboarding, sem a navegação do site: no topo só a marca e o
+// passo, embaixo uma barra fixa com as ações (acima dos botões Seguir dos cartões,
+// que são z-10). O filete do topo é a barra de progresso: vai se preenchendo de
+// tinta a cada passo. As preferências pelo menu usam os mesmos passos dentro do
+// layout do site, com a PassosNoSite.
 
 import Link from "next/link";
+
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 
 type Props = {
   // Passo atual (1, 2, 3...) e total; sem total (ou com 1), não há progresso.
@@ -10,7 +14,7 @@ type Props = {
   total?: number;
   // "estreita" para as perguntas, "larga" para a grade de perfis.
   largura?: "estreita" | "larga";
-  // As ações da barra de baixo (pular/cancelar à esquerda, continuar à direita).
+  // As ações da barra de baixo (voltar à esquerda; pular/cancelar e continuar à direita).
   acoes: React.ReactNode;
   children: React.ReactNode;
 };
@@ -56,7 +60,27 @@ export function TelaDeBoasVindas({ passo = 1, total = 1, largura = "estreita", a
   );
 }
 
-// Os dois botões da barra, iguais em todos os passos. O secundário é só texto: quem
+// Os mesmos passos dentro do layout do site (as /preferencias): o cabeçalho da
+// coluna, o passo em texto e as ações no fim, sem barra fixa (no celular, a
+// barra de navegação do site já ocupa o rodapé).
+export function PassosNoSite({ passo = 1, total = 1, acoes, children }: Omit<Props, "largura">) {
+  return (
+    <div>
+      <CabecalhoPagina titulo="Preferências" comoTitulo={false} />
+      <div className="p-4">
+        {total > 1 && (
+          <p className="mb-3 text-sm text-tinta-suave tabular-nums">
+            passo {passo} de {total}
+          </p>
+        )}
+        {children}
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-borda pt-4">{acoes}</div>
+      </div>
+    </div>
+  );
+}
+
+// Os botões da barra, iguais em todos os passos. O secundário é só texto: quem
 // chama acerta a margem (-ml-4 ou -mr-4) para o texto alinhar com a coluna.
 export const BOTAO_SECUNDARIO =
   "inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-bold text-tinta-suave transition-colors duration-150 hover:text-destaque";
@@ -69,14 +93,18 @@ export function AberturaDoPasso({
   titulo,
   children,
   refTitulo,
+  compacta = false,
 }: {
   titulo: string;
   children?: React.ReactNode;
   refTitulo?: React.Ref<HTMLHeadingElement>;
+  // Na coluna de 600 px do site o título é menor que na tela cheia.
+  compacta?: boolean;
 }) {
+  const tamanho = compacta ? "text-2xl" : "text-[1.75rem] sm:text-[2.25rem]";
   return (
-    <div className="mb-10 space-y-3">
-      <h1 ref={refTitulo} tabIndex={-1} className="text-[1.75rem] leading-tight outline-none sm:text-[2.25rem]">
+    <div className={compacta ? "mb-8 space-y-2" : "mb-10 space-y-3"}>
+      <h1 ref={refTitulo} tabIndex={-1} className={`${tamanho} leading-tight outline-none`}>
         {titulo}
       </h1>
       {children && <p className="max-w-[56ch] text-tinta-suave">{children}</p>}
