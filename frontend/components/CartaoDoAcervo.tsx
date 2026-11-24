@@ -1,5 +1,5 @@
 "use client";
-// Cartão de um poeta no Acervo. O cartão inteiro leva ao perfil: o link do nome se
+// Cartão de um poeta no Acervo (e nas sugestões de quem seguir). O cartão inteiro leva ao perfil: o link do nome se
 // estica sobre ele (after:absolute), e o botão Seguir fica por cima (relative z-10),
 // sem um link dentro do outro.
 
@@ -13,9 +13,12 @@ type Props = {
   poeta: PoetaDoAcervo;
   // O próprio perfil não tem o botão Seguir.
   proprio: boolean;
+  // Nas sugestões: os rótulos das escolas da conta e o aviso de cada seguir/deixar.
+  escolas?: string[];
+  aoSeguir?: (sigo: boolean) => void;
 };
 
-export function CartaoDoAcervo({ poeta: inicial, proprio }: Props) {
+export function CartaoDoAcervo({ poeta: inicial, proprio, escolas = [], aoSeguir }: Props) {
   const [poeta, setPoeta] = useState(inicial);
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState(false);
@@ -31,6 +34,7 @@ export function CartaoDoAcervo({ poeta: inicial, proprio }: Props) {
     setEnviando(true);
     try {
       await seguir(poeta.username, novo);
+      aoSeguir?.(novo);
     } catch {
       setPoeta(antes);
       setErro(true);
@@ -57,6 +61,16 @@ export function CartaoDoAcervo({ poeta: inicial, proprio }: Props) {
       {poeta.consagrado
         ? vida && <p className="text-sm text-tinta-suave tabular-nums">{vida}</p>
         : poeta.bio && <p className="line-clamp-2 text-sm break-words">{poeta.bio}</p>}
+
+      {escolas.length > 0 && (
+        <ul aria-label="escolas" className="flex flex-wrap gap-1.5">
+          {escolas.map((escola) => (
+            <li key={escola} className="rounded-full border border-borda px-2 py-0.5 text-xs text-tinta-suave">
+              {escola}
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div className="mt-auto flex items-center justify-between gap-3">
         <p className="text-sm text-tinta-suave">

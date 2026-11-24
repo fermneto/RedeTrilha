@@ -4,7 +4,7 @@
 // e pelo Explorar (que pagina por offset: ver buscarExplorar em lib/api.ts). No feed
 // e no perfil, as rengas vêm misturadas aos poemas.
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
@@ -18,9 +18,12 @@ type Props = {
   vazio: React.ReactNode;
   // Aviso no fim da lista (ex.: "fim do feed").
   textoDoFim: string;
+  // Um bloco que não é item do feed, depois de cada `cada` itens (o "Quem seguir"
+  // do Para você). Recebe o número do bloco (0, 1, 2...).
+  intercalar?: { cada: number; bloco: (indice: number) => React.ReactNode };
 };
 
-export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
+export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) {
   const [poemas, setPoemas] = useState<ItemDoFeed[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
   const [fim, setFim] = useState(false);
@@ -68,10 +71,13 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
   return (
     <div>
       <ul className="divide-y divide-borda border-b border-borda">
-        {poemas.map((p) => (
-          <li key={chaveDoItem(p)}>
-            {ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}
-          </li>
+        {poemas.map((p, i) => (
+          <Fragment key={chaveDoItem(p)}>
+            <li>{ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}</li>
+            {intercalar && (i + 1) % intercalar.cada === 0 && (
+              <li>{intercalar.bloco((i + 1) / intercalar.cada - 1)}</li>
+            )}
+          </Fragment>
         ))}
       </ul>
 

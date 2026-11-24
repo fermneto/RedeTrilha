@@ -143,6 +143,10 @@ export function apiPatch<T>(path: string, body: unknown): Promise<T> {
   return request<T>("PATCH", path, body);
 }
 
+export function apiPut<T>(path: string, body: unknown): Promise<T> {
+  return request<T>("PUT", path, body);
+}
+
 export function apiDelete<T = void>(path: string): Promise<T> {
   return request<T>("DELETE", path);
 }
@@ -534,12 +538,58 @@ export function listarSeguindo(username: string, limit = 100): Promise<Page<User
   );
 }
 
-// Espelha SugestaoOut (backend/app/schemas/sugestao.py): uma conta para seguir,
-// com quantos poemas tem e o começo do poema mais recente (null se só fez rengas).
-export type Sugestao = User & { poemas: number; trecho: string | null };
+// Espelha SugestaoOut (backend/app/schemas/sugestao.py): o cartão do Acervo mais
+// as escolas da conta (códigos de ESCOLAS; os rótulos vêm de buscarOpcoesDePreferencias).
+export type Sugestao = PoetaDoAcervo & { escolas: string[] };
 
+// Ordem pela nota do backend (core/pontuacao_sugestoes.py); `lingua` é a do navegador.
 export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
-  return apiGet<Page<Sugestao>>(`/sugestoes?offset=${offset}&limit=${limit}`);
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  const lingua = idiomaDoNavegador();
+  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
+  return apiGet<Page<Sugestao>>(`/sugestoes?${params}`);
+}
+
+// ---- Preferências do onboarding: espelham backend/app/schemas/preferencia.py ----
+
+export type Preferencias = {
+  escolas: string[];
+  formas: string[];
+  // ISO 3166-1 alfa-2; a UF só com "BR".
+  pais: string | null;
+  uf: string | null;
+};
+
+export type Opcao = { codigo: string; rotulo: string };
+
+// O vocabulário vem do backend: escolas com rótulo, formas, códigos de país e UFs.
+export type OpcoesDePreferencias = { escolas: Opcao[]; formas: string[]; paises: string[]; ufs: Opcao[] };
+
+export function buscarPreferencias(): Promise<Preferencias> {
+  return apiGet<Preferencias>("/preferencias");
+}
+
+// PUT: troca tudo; o que não vier volta ao vazio.
+export function salvarPreferencias(dados: Preferencias): Promise<Preferencias> {
+  return apiPut<Preferencias>("/preferencias", dados);
+}
+
+export function buscarOpcoesDePreferencias(): Promise<OpcoesDePreferencias> {
+  return apiGet<OpcoesDePreferencias>("/preferencias/opcoes");
+}
+
+// Nome do país em português ("PT" → "Portugal"); o próprio código se o navegador não souber.
+export function nomeDoPais(codigo: string): string {
+  try {
+    return new Intl.DisplayNames(["pt-BR"], { type: "region" }).of(codigo) ?? codigo;
+  } catch {
+    return codigo;
+  }
+}
+
+// Alterna um código numa multisseleção (chips das escolas e das formas).
+export function alternarNaLista(lista: string[], codigo: string): string[] {
+  return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
 }
 
 export function seguir(username: string, seguindo: boolean): Promise<void> {
