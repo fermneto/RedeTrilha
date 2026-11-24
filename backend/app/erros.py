@@ -38,6 +38,7 @@ MENSAGENS = {
     "greater_than_equal": "precisa ser maior ou igual a {ge}",
     "less_than": "precisa ser menor que {lt}",
     "less_than_equal": "precisa ser menor ou igual a {le}",
+    "literal_error": "valor fora das opções permitidas",
 }
 
 PREFIXO_VALUE_ERROR = "Value error, "

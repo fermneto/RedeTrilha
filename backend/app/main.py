@@ -10,6 +10,7 @@ from app.db import Base, SessionLocal, engine
 from app.erros import erro_de_validacao
 from app.models.user import User
 from app.routers import (
+    acervo,
     antologias,
     auth,
     comentarios,
@@ -85,3 +86,4 @@ app.include_router(comentarios.router)
 app.include_router(poema_do_dia.router)
 app.include_router(traducao.router)
 app.include_router(saude.router)
+app.include_router(acervo.router)
