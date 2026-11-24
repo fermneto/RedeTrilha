@@ -1,5 +1,5 @@
 "use client";
-// Menu da conta logada: o avatar abre um popover com "Sair de @username" (e, na
+// Menu da conta logada: o avatar abre um popover com "Rascunhos" e "Sair de @username" (e, na
 // barra inferior do celular, também "Perfil", que ali não tem item próprio).
 // Fecha com Esc (o foco volta ao avatar), com clique fora ou quando o Tab sai dele.
 // Ao abrir, o foco vai para o primeiro item; o menu vem depois do botão no DOM.
@@ -89,6 +89,9 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
             Perfil
           </Link>
         )}
+        <Link href="/rascunhos" onClick={() => setAberto(false)} className={ITEM_DO_MENU}>
+          Rascunhos
+        </Link>
         <button type="button" onClick={aoSair} className={ITEM_DO_MENU}>
           Sair de @{eu.username}
         </button>

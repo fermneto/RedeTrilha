@@ -1,13 +1,19 @@
 "use client";
 // Compositor de poema: título opcional, corpo e forma. Com `citarId`, vira
-// citação (POST /posts com repost_de_id) e mostra o original embaixo.
+// citação (POST /posts com repost_de_id) e mostra o original embaixo. Com
+// `rascunhoId`, abre o rascunho; "salvar rascunho" guarda sem publicar.
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
 import {
   buscarPoema,
+  buscarRascunho,
+  criarRascunho,
+  editarRascunho,
+  publicarRascunho,
   FORMAS,
   IDIOMAS_DO_COMPOSITOR,
   nomeDaForma,
@@ -19,7 +25,9 @@ import {
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
 
-export function Compositor({ citarId }: { citarId: number | null }) {
+type Props = { citarId: number | null; rascunhoId?: number | null };
+
+export function Compositor({ citarId, rascunhoId = null }: Props) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState("");
@@ -28,6 +36,9 @@ export function Compositor({ citarId }: { citarId: number | null }) {
   const [original, setOriginal] = useState<Post | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  // O rascunho aberto ou o criado no primeiro "salvar rascunho" (null: nenhum).
+  const [rascunho, setRascunho] = useState<number | null>(rascunhoId);
+  const [salvo, setSalvo] = useState(false);
   const corpo = useRef<HTMLTextAreaElement>(null);
   // Depois de Esc, o próximo Tab sai do campo (para quem navega só pelo teclado).
   const liberarTab = useRef(false);
@@ -49,6 +60,47 @@ export function Compositor({ citarId }: { citarId: number | null }) {
       .then(setOriginal)
       .catch((e) => setErro(e instanceof Error ? e.message : "não achei o poema citado"));
   }, [citarId]);
+
+  useEffect(() => {
+    if (rascunhoId === null) return;
+    buscarRascunho(rascunhoId)
+      .then((r) => {
+        setTitulo(r.titulo ?? "");
+        setTexto(r.texto);
+        setForma(r.forma ?? "");
+        setIdioma(r.idioma ?? OUTRA);
+      })
+      .catch((e) => setErro(e instanceof Error ? e.message : "não achei o rascunho"));
+  }, [rascunhoId]);
+
+  function dadosDoRascunho() {
+    return {
+      titulo: titulo.trim() ? titulo : null,
+      texto,
+      forma: forma || null,
+      idioma: idioma === OUTRA ? null : idioma,
+    };
+  }
+
+  // Guarda sem publicar; o rascunho fica só para o autor (página Rascunhos).
+  async function salvarRascunho() {
+    if (!texto.trim()) {
+      setErro("o poema não pode ficar vazio");
+      return;
+    }
+    setEnviando(true);
+    setErro(null);
+    try {
+      const salvoAgora =
+        rascunho === null ? await criarRascunho(dadosDoRascunho()) : await editarRascunho(rascunho, dadosDoRascunho());
+      setRascunho(salvoAgora.id);
+      setSalvo(true);
+    } catch (err) {
+      setErro(err instanceof Error ? err.message : "não deu para salvar o rascunho");
+    } finally {
+      setEnviando(false);
+    }
+  }
 
   // Tab no corpo insere um recuo em vez de pular para o próximo campo.
   function aoTeclar(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -76,6 +128,12 @@ export function Compositor({ citarId }: { citarId: number | null }) {
     setEnviando(true);
     setErro(null);
     try {
+      if (rascunho !== null) {
+        await editarRascunho(rascunho, dadosDoRascunho());
+        const publicado = await publicarRascunho(rascunho);
+        router.push(`/poema/${publicado.id}`);
+        return;
+      }
       const novo = await publicarPoema({
         titulo: titulo.trim() ? titulo : null,
         texto,
@@ -109,7 +167,10 @@ export function Compositor({ citarId }: { citarId: number | null }) {
         <textarea
           ref={corpo}
           value={texto}
-          onChange={(e) => setTexto(e.target.value)}
+          onChange={(e) => {
+            setTexto(e.target.value);
+            setSalvo(false);
+          }}
           onKeyDown={aoTeclar}
           required
           rows={12}
@@ -163,6 +224,21 @@ export function Compositor({ citarId }: { citarId: number | null }) {
       >
         {enviando ? "publicando..." : citarId === null ? "publicar" : "publicar citação"}
       </button>
+      {citarId === null && (
+        <button
+          type="button"
+          onClick={salvarRascunho}
+          disabled={enviando}
+          className="ml-3 min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold transition-colors duration-150 hover:border-destaque disabled:cursor-wait disabled:opacity-50"
+        >
+          salvar rascunho
+        </button>
+      )}
+      {salvo && (
+        <p role="status" className="text-sm text-tinta-suave">
+          rascunho salvo. Só você vê; ele fica em <Link href="/rascunhos" className="underline">Rascunhos</Link>.
+        </p>
+      )}
     </form>
   );
 }

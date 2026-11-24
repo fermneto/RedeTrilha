@@ -64,7 +64,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
           </Link>
         )}
         <div className="min-w-0 flex-1">
-          <Autor autor={poema.autor} criadoEm={poema.created_at} comAvatar={aninhado} />
+          <Autor autor={poema.autor} criadoEm={poema.created_at} comAvatar={aninhado} editado={poema.editado} />
 
           {poema.titulo &&
             (linkarTitulo ? (
@@ -239,7 +239,18 @@ function NomeLink({ usuario }: { usuario: User }) {
 
 // Consagrado: selo depois do nome; os anos de vida ficam no tooltip do selo e no
 // perfil, e não há data (a do poema é a da importação, não a da obra).
-function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; comAvatar: boolean }) {
+// "editado": o autor mudou o poema depois de publicar (o histórico é só dele).
+function Autor({
+  autor,
+  criadoEm,
+  comAvatar,
+  editado = false,
+}: {
+  autor: User;
+  criadoEm: string;
+  comAvatar: boolean;
+  editado?: boolean;
+}) {
   return (
     <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.9375rem] leading-5">
       {comAvatar && <Avatar usuario={autor} tamanho="p" />}
@@ -250,6 +261,7 @@ function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; 
           · {formatarData(criadoEm)}
         </time>
       )}
+      {editado && <span className="text-tinta-suave">· editado</span>}
     </div>
   );
 }
