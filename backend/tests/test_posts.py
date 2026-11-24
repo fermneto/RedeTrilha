@@ -50,28 +50,37 @@ def test_criacao_invalida_da_422(client, como, corpo):
     assert client.post("/posts", json=corpo, headers=como("ana")).status_code == 422
 
 
-def test_indice_de_tags_acompanha_o_poema(client, como):
-    from app.core.indice_tags import indice_tags
+def _posts_da_tag(tag: str) -> list[int]:
+    from app.db import SessionLocal
+    from app.services import indice_tags
 
+    with SessionLocal() as db:
+        return indice_tags.posts_da_tag(db, tag, 0, 100)[0]
+
+
+def test_indice_de_tags_acompanha_o_poema(client, como):
     r = client.post(
         "/posts", json={"texto": "sobre a #Solidão", "forma": "soneto"}, headers=como("ana")
     )
     post_id = r.json()["id"]
     assert r.json()["tags"] == ["solidao", "soneto"]
-    assert indice_tags.posts_da_tag("solidao") == [post_id]
+    assert _posts_da_tag("solidao") == [post_id]
 
     client.delete(f"/posts/{post_id}", headers=como("ana"))
-    assert indice_tags.posts_da_tag("solidao") == []
-    assert indice_tags.posts_da_tag("soneto") == []
+    assert _posts_da_tag("solidao") == []
+    assert _posts_da_tag("soneto") == []
 
 
-def test_indice_e_reconstruido_no_startup(client, como):
-    from app.core.indice_tags import indice_tags
+def test_indice_e_refeito_pelo_populador(client, como):
+    from sqlalchemy import delete
+
     from app.db import SessionLocal
-    from app.services.posts import reconstruir_indice
+    from app.models.post_tag import PostTag
+    from app.services import indice_tags
 
     r = client.post("/posts", json={"texto": "#lua"}, headers=como("ana"))
-    indice_tags.reconstruir([])
     with SessionLocal() as db:
-        reconstruir_indice(db)
-    assert indice_tags.posts_da_tag("lua") == [r.json()["id"]]
+        db.execute(delete(PostTag))
+        db.commit()
+        indice_tags.popular(db)
+    assert _posts_da_tag("lua") == [r.json()["id"]]

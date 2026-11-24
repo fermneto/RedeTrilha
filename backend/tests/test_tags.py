@@ -1,12 +1,54 @@
 from datetime import UTC, datetime, timedelta, timezone
 
-from app.core.indice_tags import IndiceTags, extrair_tags
+import pytest
+
+from app.core.indice_tags import extrair_tags, mais_recente, representantes, top_k
 
 AGORA = datetime(2026, 11, 25, 12, 0, tzinfo=UTC)
 
 
 def dias_atras(n: int) -> datetime:
     return AGORA - timedelta(days=n)
+
+
+@pytest.fixture()
+def indice(client, criar_usuario):
+    """O índice persistido (services/indice_tags.py) numa sessão do banco de teste.
+
+    `indice.indexar(id, tags, criado_em)` grava (ou regrava) um poema com essas
+    tags e o indexa, como o `posts.criar` faz.
+    """
+    from app.db import SessionLocal
+    from app.models.post import Post
+    from app.services import indice_tags
+
+    autor_id = criar_usuario("ana")
+    with SessionLocal() as db:
+
+        class Indice:
+            def indexar(self, post_id: int, tags: set[str], criado_em: datetime) -> None:
+                post = db.get(Post, post_id) or Post(id=post_id, autor_id=autor_id)
+                post.tags_extras, post.created_at = sorted(tags), criado_em
+                db.add(post)
+                db.flush()
+                indice_tags.indexar(db, post)
+
+            def remover(self, post_id: int) -> None:
+                indice_tags.remover(db, [post_id])
+
+            def posts_da_tag(self, tag: str) -> list[int]:
+                return indice_tags.posts_da_tag(db, tag, 0, 100)[0]
+
+            def trending(self, desde: datetime, k: int = 5) -> list[tuple[str, int]]:
+                return indice_tags.trending(db, desde, k)
+
+            def representantes(self, tags: list[str]) -> dict[str, int | None]:
+                return indice_tags.representantes(db, tags)
+
+            def buscar(self, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
+                return indice_tags.buscar(db, prefixo, k)
+
+        yield Indice()
 
 
 def test_extrai_hashtags_casefold_sem_acento_e_sem_duplicar():
@@ -24,8 +66,24 @@ def test_forma_outro_nao_vira_tag_mas_a_hashtag_outro_sim():
     assert extrair_tags("#mar", "soneto") == {"mar", "soneto"}
 
 
-def test_posts_da_tag_mais_novo_primeiro_e_empate_pelo_maior_id():
-    indice = IndiceTags()
+def test_top_k_maior_contagem_e_empate_alfabetico():
+    contagens = [("noite", 1), ("mar", 3), ("chuva", 1), ("amor", 2), ("zumbido", 1)]
+    assert top_k(contagens, 3) == [("mar", 3), ("amor", 2), ("chuva", 1)]
+    assert top_k([], 5) == []
+
+
+def test_mais_recente_e_representantes_puros():
+    mar = [(1, dias_atras(1)), (5, dias_atras(3)), (3, dias_atras(1))]
+    assert mais_recente(mar) == 3
+    assert mais_recente(mar, frozenset({3})) == 1
+    assert mais_recente(mar, frozenset({1, 3, 5})) == 3
+    assert mais_recente([]) is None
+    assert representantes({"mar": mar, "sal": [(3, dias_atras(1))]}, ["mar", "sal", "nada"]) == {
+        "mar": 3, "sal": 3, "nada": None,
+    }
+
+
+def test_posts_da_tag_mais_novo_primeiro_e_empate_pelo_maior_id(indice):
     indice.indexar(1, {"amor"}, dias_atras(3))
     indice.indexar(2, {"amor", "mar"}, dias_atras(1))
     indice.indexar(3, {"amor"}, dias_atras(2))
@@ -35,8 +93,7 @@ def test_posts_da_tag_mais_novo_primeiro_e_empate_pelo_maior_id():
     assert indice.posts_da_tag("inexistente") == []
 
 
-def test_editar_reindexa_e_a_tag_antiga_some():
-    indice = IndiceTags()
+def test_editar_reindexa_e_a_tag_antiga_some(indice):
     indice.indexar(1, {"saudade", "soneto"}, dias_atras(1))
     indice.indexar(1, {"soneto", "mar"}, dias_atras(1))
     assert indice.posts_da_tag("saudade") == []
@@ -45,8 +102,7 @@ def test_editar_reindexa_e_a_tag_antiga_some():
     assert ("saudade", 1) not in indice.trending(dias_atras(7))
 
 
-def test_remover_tira_o_post_de_todas_as_tags_e_ignora_inexistente():
-    indice = IndiceTags()
+def test_remover_tira_o_post_de_todas_as_tags_e_ignora_inexistente(indice):
     indice.indexar(1, {"amor", "mar"}, dias_atras(2))
     indice.indexar(2, {"amor"}, dias_atras(1))
     indice.remover(1)
@@ -56,8 +112,7 @@ def test_remover_tira_o_post_de_todas_as_tags_e_ignora_inexistente():
     assert indice.trending(dias_atras(7)) == [("amor", 1)]
 
 
-def test_busca_ignora_acento_e_maiuscula():
-    indice = IndiceTags()
+def test_busca_ignora_acento_e_maiuscula(indice):
     indice.indexar(1, {"Solidão"}, dias_atras(1))
     indice.indexar(2, extrair_tags("noite #solidão", "Haicai"), dias_atras(0))
     assert indice.posts_da_tag("solidao") == [2, 1]
@@ -65,8 +120,7 @@ def test_busca_ignora_acento_e_maiuscula():
     assert indice.posts_da_tag("haicai") == [2]
 
 
-def test_trending_respeita_a_janela_de_tempo():
-    indice = IndiceTags()
+def test_trending_respeita_a_janela_de_tempo(indice):
     indice.indexar(1, {"velha"}, dias_atras(30))
     indice.indexar(2, {"velha"}, dias_atras(20))
     indice.indexar(3, {"nova"}, dias_atras(2))
@@ -74,8 +128,7 @@ def test_trending_respeita_a_janela_de_tempo():
     assert indice.trending(dias_atras(7)) == [("limite", 1), ("nova", 1)]
 
 
-def test_trending_top_k_maior_contagem_e_empate_alfabetico():
-    indice = IndiceTags()
+def test_trending_top_k_maior_contagem_e_empate_alfabetico(indice):
     indice.indexar(1, {"mar", "amor", "noite"}, dias_atras(1))
     indice.indexar(2, {"mar", "amor"}, dias_atras(1))
     indice.indexar(3, {"mar", "chuva"}, dias_atras(1))
@@ -88,8 +141,7 @@ def test_trending_top_k_maior_contagem_e_empate_alfabetico():
     assert len(indice.trending(dias_atras(7))) == 5
 
 
-def test_datas_naive_e_aware_comparam_como_utc():
-    indice = IndiceTags()
+def test_datas_naive_e_aware_comparam_como_utc(indice):
     naive = datetime(2026, 11, 25, 10, 0)
     recife = timezone(timedelta(hours=-3))
     indice.indexar(1, {"mar"}, naive)
@@ -99,33 +151,7 @@ def test_datas_naive_e_aware_comparam_como_utc():
     assert indice.trending(datetime(2026, 11, 25, 7, 0, tzinfo=recife)) == [("mar", 2)]
 
 
-def test_reconstruir_zera_e_indexa_todos():
-    indice = IndiceTags()
-    indice.indexar(99, {"fantasma"}, dias_atras(1))
-    indice.reconstruir(
-        [
-            (1, {"amor"}, dias_atras(2)),
-            (2, {"amor", "mar"}, dias_atras(1)),
-        ]
-    )
-    assert indice.posts_da_tag("fantasma") == []
-    assert indice.posts_da_tag("amor") == [2, 1]
-    assert indice.trending(dias_atras(7)) == [("amor", 2), ("mar", 1)]
-
-
-def test_mais_recente_pega_o_poema_mais_novo_da_tag():
-    indice = IndiceTags()
-    indice.indexar(1, {"mar"}, dias_atras(1))
-    indice.indexar(5, {"mar"}, dias_atras(3))
-    indice.indexar(3, {"mar"}, dias_atras(1))
-    assert indice.mais_recente("Mar") == 3
-    assert indice.mais_recente("mar", frozenset({3})) == 1
-    assert indice.mais_recente("mar", frozenset({1, 3, 5})) == 3
-    assert indice.mais_recente("inexistente") is None
-
-
-def test_representantes_um_poema_diferente_por_tag():
-    indice = IndiceTags()
+def test_representantes_um_poema_diferente_por_tag(indice):
     indice.indexar(1, {"mar", "sal"}, dias_atras(3))
     indice.indexar(2, {"mar", "chuva"}, dias_atras(2))
     indice.indexar(3, {"mar", "sal", "chuva"}, dias_atras(1))
@@ -137,8 +163,13 @@ def test_representantes_um_poema_diferente_por_tag():
     assert indice.representantes(["lua", "lua"]) == {"lua": 4}
 
 
-def test_buscar_por_prefixo_mais_usada_primeiro():
-    indice = IndiceTags()
+def test_representantes_acha_o_livre_mesmo_com_muitos_poemas_por_tag(indice):
+    for post_id in range(1, 9):
+        indice.indexar(post_id, {"mar", "sal", "lua"}, dias_atras(post_id))
+    assert indice.representantes(["mar", "sal", "lua"]) == {"mar": 1, "sal": 2, "lua": 3}
+
+
+def test_buscar_por_prefixo_mais_usada_primeiro(indice):
     indice.indexar(1, {"saudade", "sal"}, dias_atras(1))
     indice.indexar(2, {"saudade"}, dias_atras(200))
     indice.indexar(3, {"sabia", "mar"}, dias_atras(1))
@@ -148,8 +179,13 @@ def test_buscar_por_prefixo_mais_usada_primeiro():
     assert indice.buscar("dade") == []
 
 
-def test_buscar_vazio_ou_so_simbolos_nao_acha_nada():
-    indice = IndiceTags()
+def test_buscar_trata_o_sublinhado_como_letra(indice):
+    indice.indexar(1, {"verso_livre"}, dias_atras(1))
+    indice.indexar(2, {"versoxlivre"}, dias_atras(1))
+    assert indice.buscar("verso_") == [("verso_livre", 1)]
+
+
+def test_buscar_vazio_ou_so_simbolos_nao_acha_nada(indice):
     indice.indexar(1, {"mar"}, dias_atras(1))
     assert indice.buscar("") == []
     assert indice.buscar("#") == []

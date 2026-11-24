@@ -8,9 +8,9 @@ respostas diretas (ao poema ou a um comentário) e, abaixo de cada uma, a
 prévia das primeiras respostas, nível a nível. `montar` não busca nem corta
 nada: aninha o que recebeu, a partir de `raiz` (None = respostas ao poema).
 
-Diferente de `indice_tags.py` e `janela_deslizante.py`, esta estrutura NÃO é um
-singleton de módulo reconstruído no startup. Ela é montada a cada request a
-partir do que aquela página carregou. Motivos:
+Esta estrutura NÃO é um singleton de módulo: nada do core/ guarda estado entre
+requests (core/README.md). Ela é montada a cada request a partir do que aquela
+página carregou. Motivos:
 
 - A resposta precisa do texto e do autor de cada comentário, que vêm do banco
   de qualquer jeito; uma árvore em memória não pouparia a ida ao banco.
@@ -20,9 +20,8 @@ partir do que aquela página carregou. Motivos:
 - Montada por request, a árvore não tem estado para dessincronizar do banco
   (restart, `--reload`, vários workers).
 
-O `core/README.md` aceita montar por request desde que o Big O esteja
-declarado. Com k = comentários carregados (página + prévias), não n = todos
-os do poema:
+Montar por request é o padrão do `core/README.md`, com o Big O declarado.
+Com k = comentários carregados (página + prévias), não n = todos os do poema:
 
 - agrupar por pai: O(k), um dict parent_id -> filhos, cada item visitado uma
   vez;

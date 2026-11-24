@@ -25,9 +25,8 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    As tags que são nome de língua (`portugues`, `latim`, `persa`…, lista em
    `TAGS_DE_LINGUA` no importador) ficam fora de `tags_extras`; o JSON não muda.
    A forma `outro` não vira tag (as outras formas viram).
-7. O índice de tags vive em memória e é reconstruído no startup da API. Se o
-   importador rodar com o servidor de pé, as tags novas só aparecem no
-   `/tags/...` depois de reiniciar o servidor.
+7. As tags de cada poema entram no índice (`post_tags`) na mesma transação da
+   importação. Com o servidor de pé, aparecem no `/tags/...` na hora.
 8. Reimportar atualiza o perfil e os poemas, mas não muda o `created_at` (a
    data do poema no feed) nem apaga poemas que saíram do JSON.
 

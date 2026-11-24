@@ -5,8 +5,8 @@ coisa: um arquivo inválido, como `morte > 1955`, aborta a importação inteira.
 Depois grava numa transação só, de forma idempotente: o user é achado pelo
 `username` e o poema por (autor, titulo, obra).
 
-O índice de tags vive em memória e é reconstruído no startup da API. Se o
-importador rodar com o servidor de pé, as tags novas só aparecem no restart.
+As tags de cada poema vão para o índice (`post_tags`) na mesma transação,
+reindexadas a cada importação: com a API de pé, aparecem na hora, sem restart.
 
 Rode com: make seed (ou cd backend && uv run python scripts/importar_consagrados.py)
 """
@@ -30,6 +30,7 @@ from app.models.post import Post
 from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.consagrado import Consagrado, PoemaConsagrado, idioma_da_fonte
+from app.services import indice_tags
 
 PASTA_CONSAGRADOS = Path(__file__).resolve().parents[1] / "data" / "consagrados"
 JANELA_DO_FEED = timedelta(days=30)
@@ -169,6 +170,7 @@ def _gravar_poema(
     post.idioma = idioma_da_fonte(poema.fonte)
     post.tags_extras = [tag for tag in poema.tags if tag not in TAGS_DE_LINGUA]
     db.flush()
+    indice_tags.indexar(db, post)
 
 
 def main() -> None:

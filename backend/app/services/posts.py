@@ -4,7 +4,6 @@ from fastapi import HTTPException
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import extrair_tags, indice_tags, normalizar
 from app.models.ancora_comentario import AncoraComentario
 from app.models.antologia import AntologiaPoema
 from app.models.comentario import Comentario
@@ -15,6 +14,8 @@ from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
 from app.schemas.user import UserOut
+from app.services import indice_tags
+from app.services.indice_tags import tags_do_post
 
 
 @dataclass
@@ -131,12 +132,6 @@ def para_saida(
     )
 
 
-def tags_do_post(post: Post) -> set[str]:
-    """Tags do poema no índice e no PostOut: #hashtags, forma e as `tags_extras`."""
-    extras = {normalizar(tag) for tag in post.tags_extras or ()}
-    return extrair_tags(post.texto, post.forma) | extras
-
-
 def buscar(db: Session, post_id: int) -> Post:
     post = db.get(Post, post_id)
     if post is None:
@@ -165,9 +160,11 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     if dados.repost_de_id is not None:
         post.repost_de_id = original_de(db, dados.repost_de_id).id
     db.add(post)
+    db.flush()
+    # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
+    indice_tags.indexar(db, post)
     db.commit()
     db.refresh(post)
-    _indexar(post)
     return post
 
 
@@ -187,6 +184,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
     db.execute(delete(Comentario).where(Comentario.post_id.in_([post_id, *puros])))
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
     db.execute(delete(Traducao).where(Traducao.post_id.in_([post_id, *puros])))
+    indice_tags.remover(db, [post_id, *puros])
     db.execute(delete(Post).where(Post.id.in_(puros)))
     db.execute(
         update(Post)
@@ -201,14 +199,6 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
     )
     db.delete(post)
     db.commit()
-    for apagado in (post_id, *puros):
-        indice_tags.remover(apagado)
-
-
-def reconstruir_indice(db: Session) -> None:
-    """Chamado no startup: o índice de tags vive em memória."""
-    posts = db.scalars(select(Post))
-    indice_tags.reconstruir([(post.id, tags_do_post(post), post.created_at) for post in posts])
 
 
 def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
@@ -216,7 +206,3 @@ def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
     if post.autor_id != usuario.id:
         raise HTTPException(status_code=403, detail="só o autor pode apagar o poema")
     return post
-
-
-def _indexar(post: Post) -> None:
-    indice_tags.indexar(post.id, tags_do_post(post), post.created_at)

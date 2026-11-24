@@ -223,8 +223,8 @@ workers × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ Pool Size do Supabase
 Recomendado (decisão do Neto): **2 workers com pool 4 + 2**, que já é o padrão
 do `deploy/oracle/.env.example`. Medido com 100 usuários simultâneos sem pausa
 entre cliques: 130 req/s, 0 erro e p95 de 1,2 s, contra 78 req/s e p95 de 1,6 s
-com 1 worker. Vários workers exigem o backend sem estado na `main` (ver
-`docs/deploy-oracle.md`, "Workers e pool").
+com 1 worker. Vários workers veem os mesmos dados: o índice de tags e o limite
+de tradução moram no banco (ver `docs/deploy-oracle.md`, "Workers e pool").
 
 Passou do limite, o pooler recusa a conexão nova e a API dá 500. Com mais
 workers (`--workers N` no `startCommand`, ou `WEB_CONCURRENCY`), baixe o pool
@@ -328,8 +328,8 @@ navegador sempre manda). Feeds e poemas são texto: uma página do feed cai de
   banca: apague o que não quiser mostrar.
 - **Consagrados novos não entram sozinhos.** Como o seed não roda de novo, um
   JSON novo em `backend/data/consagrados/` não chega à produção pelo deploy.
-  Rode o importador apontando para o Supabase e reinicie o Render, para o
-  índice de tags ser reconstruído:
+  Rode o importador apontando para o Supabase (as tags entram no índice na
+  mesma transação; não precisa reiniciar o Render):
 
   ```bash
   cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
@@ -337,6 +337,22 @@ navegador sempre manda). Feeds e poemas são texto: uma página do feed cai de
   ```
 
 - **Push na `main` = redeploy** do Render e da Vercel (os dados ficam).
+- **Banco criado antes do índice de tags no banco.** Não tem passo manual: o
+  preparo do banco (`preparar_banco()` em `main.py`, no boot e no serviço
+  `seed` da Oracle) cria a tabela `post_tags`, cria o índice
+  `ix_traducoes_pedida_por_id_created_at` se faltar e, com `post_tags` vazia,
+  popula o índice de tags a partir dos posts, tudo sob o mesmo *advisory lock*.
+  Alternativa manual (idempotente, pode rodar de novo):
+
+  ```bash
+  cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
+    uv run python scripts/popular_post_tags.py
+  ```
+
+  ```sql
+  CREATE INDEX IF NOT EXISTS ix_traducoes_pedida_por_id_created_at
+    ON traducoes (pedida_por_id, created_at);
+  ```
 
 ## Checklist de verificação (o que a banca faz)
 

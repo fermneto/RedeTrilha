@@ -1,31 +1,40 @@
-"""Bench do índice de tags (core/indice_tags.py) contra uma varredura linear.
+"""Bench do índice de tags persistido (tabela `post_tags`) contra a varredura linear.
 
-Rode com: make bench. Python puro, sem banco: a mesma massa sintética (posts com
-tags sorteadas de um vocabulário fixo, semente fixa) alimenta o índice invertido
-e uma lista simples de (post_id, tags, criado_em), e o timeit mede as duas
-consultas da API:
+Rode com: make bench. Num SQLite local descartável (arquivo temporário), a mesma
+massa sintética (posts com tags sorteadas de um vocabulário fixo, semente fixa)
+vai para dois bancos com a tabela `post_tags` do models/post_tag.py:
 
-- posts_da_tag: o índice vai direto ao dict da tag e ordena só os p posts dela;
-  a varredura olha os n posts e ordena os que casam.
-- trending (janela de 24 h): os dois percorrem os posts e contam as tags; o
-  índice pega o top 5 num heap de tamanho k, a varredura ordena todas as tags.
+- índice: a tabela como em produção, com os índices (tag, criado_em, post_id)
+  e (criado_em);
+- varredura: a mesma tabela sem esses índices, então cada consulta lê as R
+  linhas inteiras.
 
-Cada tempo é a mediana de REPETICOES rodadas (cada rodada repete a consulta
-algumas vezes e divide). O ganho é varredura / índice.
+Os dois lados rodam as MESMAS funções do services/indice_tags.py que a API usa
+(antes, o script confere que devolvem o mesmo resultado), e o timeit mede:
+
+- posts_da_tag: a primeira página (20 ids) e o total de uma tag;
+- trending: as contagens das últimas 24 h e o top 5 no heap do core;
+- busca: tags que começam por um prefixo (LIKE), que não usa índice no SQLite.
+
+Cada tempo é a mediana de REPETICOES rodadas. O ganho é varredura / índice.
 """
 
 import random
 import statistics
 import sys
+import tempfile
 import timeit
-from collections import Counter
 from datetime import UTC, datetime, timedelta
 from functools import partial
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.core.indice_tags import IndiceTags, normalizar
+from sqlalchemy import create_engine, insert, text
+from sqlalchemy.orm import Session
+
+from app.models.post_tag import PostTag
+from app.services import indice_tags
 
 SEMENTE = 2026
 TAMANHOS = (1_000, 10_000, 100_000)
@@ -35,35 +44,40 @@ VOCABULARIO = [f"tema{i:02d}" for i in range(60)] + [
 TAGS_POR_POST = (1, 4)
 DIAS_DE_HISTORIA = 14
 TAG_CONSULTADA = "tema07"
+PREFIXO_BUSCADO = "tema1"
+PAGINA = 20
 REPETICOES = 7
+INDICES = ("ix_post_tags_tag_criado_em", "ix_post_tags_criado_em")
 
-Post = tuple[int, frozenset[str], datetime]
 
-
-def massa(n: int, agora: datetime) -> list[Post]:
+def massa(n: int, agora: datetime) -> list[dict]:
     rng = random.Random(SEMENTE)
-    return [
-        (
-            post_id,
-            frozenset(rng.sample(VOCABULARIO, rng.randint(*TAGS_POR_POST))),
-            agora - timedelta(seconds=rng.uniform(0, DIAS_DE_HISTORIA * 86_400)),
-        )
-        for post_id in range(1, n + 1)
-    ]
+    linhas = []
+    for post_id in range(1, n + 1):
+        criado_em = agora - timedelta(seconds=rng.uniform(0, DIAS_DE_HISTORIA * 86_400))
+        for tag in rng.sample(VOCABULARIO, rng.randint(*TAGS_POR_POST)):
+            linhas.append({"post_id": post_id, "tag": tag, "criado_em": criado_em.replace(tzinfo=None)})
+    return linhas
 
 
-def varredura_posts_da_tag(posts: list[Post], tag: str) -> list[int]:
-    alvo = normalizar(tag)
-    achados = [(criado_em, post_id) for post_id, tags, criado_em in posts if alvo in tags]
-    return [post_id for _, post_id in sorted(achados, reverse=True)]
+def banco(pasta: Path, nome: str, linhas: list[dict], com_indice: bool) -> Session:
+    engine = create_engine(f"sqlite:///{pasta / nome}.db")
+    PostTag.__table__.create(engine)
+    with engine.begin() as conexao:
+        if not com_indice:
+            for indice in INDICES:
+                conexao.execute(text(f"DROP INDEX {indice}"))
+        conexao.execute(insert(PostTag), linhas)
+        conexao.execute(text("ANALYZE"))
+    return Session(engine)
 
 
-def varredura_trending(posts: list[Post], desde: datetime, k: int = 5) -> list[tuple[str, int]]:
-    contagem: Counter[str] = Counter()
-    for _, tags, criado_em in posts:
-        if criado_em >= desde:
-            contagem.update(tags)
-    return sorted(contagem.items(), key=lambda par: (-par[1], par[0]))[:k]
+def consultas(db: Session, desde: datetime) -> dict:
+    return {
+        "posts_da_tag": partial(indice_tags.posts_da_tag, db, TAG_CONSULTADA, 0, PAGINA),
+        "trending": partial(indice_tags.trending, db, desde),
+        "busca": partial(indice_tags.buscar, db, PREFIXO_BUSCADO),
+    }
 
 
 def mediana_ms(funcao) -> float:
@@ -75,47 +89,31 @@ def mediana_ms(funcao) -> float:
 def main() -> None:
     agora = datetime(2026, 11, 24, 12, tzinfo=UTC)
     desde = agora - timedelta(hours=24)
-    print("bench_indice_tags: índice invertido (core/indice_tags.py) x varredura linear")
+    print("bench_indice_tags: post_tags com índice x varredura linear (SQLite local)")
     print(
         f"massa: {len(VOCABULARIO)} tags no vocabulário, {TAGS_POR_POST[0]} a "
         f"{TAGS_POR_POST[1]} por post, {DIAS_DE_HISTORIA} dias, semente {SEMENTE}; "
         f"mediana de {REPETICOES} rodadas\n"
     )
     cabecalho = (
-        f"{'posts':>8} | {'consulta':<12} | {'resultado':>9} | {'índice (ms)':>12} | "
+        f"{'posts':>8} | {'linhas':>7} | {'consulta':<12} | {'índice (ms)':>12} | "
         f"{'varredura (ms)':>14} | {'ganho':>7}"
     )
     print(cabecalho)
     print("-" * len(cabecalho))
-    for n in TAMANHOS:
-        posts = massa(n, agora)
-        indice = IndiceTags()
-        indice.reconstruir([(post_id, set(tags), criado_em) for post_id, tags, criado_em in posts])
-
-        assert indice.posts_da_tag(TAG_CONSULTADA) == varredura_posts_da_tag(posts, TAG_CONSULTADA)
-        assert indice.trending(desde) == varredura_trending(posts, desde)
-
-        resultados = {
-            "posts_da_tag": f"{len(indice.posts_da_tag(TAG_CONSULTADA))} ids",
-            "trending": "top 5",
-        }
-        consultas = {
-            "posts_da_tag": (
-                partial(indice.posts_da_tag, TAG_CONSULTADA),
-                partial(varredura_posts_da_tag, posts, TAG_CONSULTADA),
-            ),
-            "trending": (
-                partial(indice.trending, desde),
-                partial(varredura_trending, posts, desde),
-            ),
-        }
-        for nome, (com_indice, com_varredura) in consultas.items():
-            t_indice = mediana_ms(com_indice)
-            t_varredura = mediana_ms(com_varredura)
-            print(
-                f"{n:>8} | {nome:<12} | {resultados[nome]:>9} | {t_indice:>12.3f} | "
-                f"{t_varredura:>14.3f} | {t_varredura / t_indice:>6.1f}x"
-            )
+    with tempfile.TemporaryDirectory(prefix="bench-tags-") as pasta:
+        for n in TAMANHOS:
+            linhas = massa(n, agora)
+            com_indice = consultas(banco(Path(pasta), f"indice{n}", linhas, True), desde)
+            varredura = consultas(banco(Path(pasta), f"varredura{n}", linhas, False), desde)
+            for nome in com_indice:
+                assert com_indice[nome]() == varredura[nome](), nome
+                t_indice = mediana_ms(com_indice[nome])
+                t_varredura = mediana_ms(varredura[nome])
+                print(
+                    f"{n:>8} | {len(linhas):>7} | {nome:<12} | {t_indice:>12.3f} | "
+                    f"{t_varredura:>14.3f} | {t_varredura / t_indice:>6.1f}x"
+                )
 
 
 if __name__ == "__main__":

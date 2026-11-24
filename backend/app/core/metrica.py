@@ -1,8 +1,7 @@
 """Oficina do compositor: sílabas poéticas e esquema de rimas de versos em português.
 
-Python puro e sem estado: diferente do `indice_tags.py`, não há singleton nem
-reconstrução no startup, porque nada é guardado. Cada chamada é O(n) no tamanho
-do texto.
+Python puro e sem estado, como todo o core/: nada é guardado entre chamadas.
+Cada chamada é O(n) no tamanho do texto.
 
 ## Sílabas poéticas
 

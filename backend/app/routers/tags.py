@@ -28,8 +28,9 @@ def trending(
 def buscar_tags(
     q: Annotated[str, Query(max_length=80)] = "",
     _: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
 ):
-    return service.buscar_tags(q)
+    return service.buscar_tags(db, q)
 
 
 @router.get("/tags/{tag}/posts", response_model=PostPage)
