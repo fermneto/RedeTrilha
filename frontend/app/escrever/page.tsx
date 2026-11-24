@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { Compositor } from "@/components/Compositor";
-import { caminhoDoLogin, temToken } from "@/lib/api";
+import { caminhoDoLogin, temToken, textoDaCitacaoDeVersos } from "@/lib/api";
 
 // useSearchParams precisa de Suspense no build estático do Next.
 export default function EscreverPage() {
@@ -20,6 +20,8 @@ function Escrever() {
   const router = useRouter();
   const params = useSearchParams();
   const citarId = idDoParametro(params.get("citar"));
+  // "citar estes versos", na página do poema: os versos vêm no parâmetro `versos`.
+  const versos = citarId === null ? null : params.get("versos");
   // /escrever?rascunho=3 abre o rascunho no compositor (vindo da página Rascunhos).
   const rascunhoId = citarId === null ? idDoParametro(params.get("rascunho")) : null;
   // Rascunho de citação: o compositor avisa ao carregar, e o título vira "Citar poema".
@@ -36,6 +38,7 @@ function Escrever() {
         <Compositor
           key={citarId ?? (rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")}
           citarId={citarId}
+          textoInicial={versos ? textoDaCitacaoDeVersos(versos) : undefined}
           rascunhoId={rascunhoId}
           aoAbrirCitacao={() => setRascunhoDeCitacao(true)}
         />
