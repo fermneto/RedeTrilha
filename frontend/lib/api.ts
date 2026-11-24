@@ -355,9 +355,20 @@ export function caminhoDasPreferencias(atual: string, username: string): string 
   return `/boas-vindas?voltar=${encodeURIComponent(voltar)}`;
 }
 
-// Só o passo dos gostos (escolas e formas), pelo link da tela de sugestões: ao
-// salvar volta para a grade, que recalcula as sugestões.
-export const CAMINHO_DOS_GOSTOS = "/boas-vindas?voltar=%2Fsugestoes&so=gostos";
+// Só o passo dos gostos (escolas e formas), pelo link da grade de quem seguir: ao
+// salvar volta para a grade (a do onboarding ou a /sugestoes), que recalcula as sugestões.
+export function caminhoDosGostos(grade: string): string {
+  return `/boas-vindas?voltar=${encodeURIComponent(grade)}&so=gostos`;
+}
+
+// A grade de quem seguir como último passo do onboarding, em tela cheia.
+export const QUEM_SEGUIR_NO_ONBOARDING = "/boas-vindas/quem-seguir";
+
+// As telas do onboarding (e das preferências, que usam as mesmas) ocupam a tela
+// toda, sem a navegação nem a coluna Descobrir: o Layout confere com isto.
+export function ehTelaDeBoasVindas(caminho: string): boolean {
+  return caminho === "/boas-vindas" || caminho.startsWith("/boas-vindas/");
+}
 
 // O documento foi carregado já em /boas-vindas (link direto ou recarga)? Então não
 // há página do Verso antes no histórico, e o "cancelar" das preferências vai ao

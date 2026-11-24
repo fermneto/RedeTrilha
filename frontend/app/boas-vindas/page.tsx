@@ -1,7 +1,8 @@
 "use client";
 // Onboarding depois do cadastro, em passos, todos opcionais: (1) que poesia você
 // gosta (escolas e formas), (2) de onde você é (país e, no Brasil, estado), e
-// depois a grade de quem seguir (/sugestoes). "continuar" salva as preferências
+// depois a grade de quem seguir (/boas-vindas/quem-seguir). Tudo em tela cheia
+// (components/TelaDeBoasVindas.tsx), sem a navegação do site. "continuar" salva as preferências
 // (PUT /preferencias) e segue; "pular" segue sem salvar o passo. Também serve para
 // ajustar as preferências depois, com ?voltar=<página>: por "Preferências" no menu
 // da conta (os dois passos) ou pelo link na tela de sugestões (só os gostos, com
@@ -10,9 +11,9 @@
 // ou vai ao perfil se a página foi aberta direto) e o fim volta para ?voltar=.
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 
-import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { AberturaDoPasso, BOTAO_PRIMARIO, BOTAO_SECUNDARIO, TelaDeBoasVindas } from "@/components/TelaDeBoasVindas";
 import {
   abertaDireto,
   alternarNaLista,
@@ -24,6 +25,7 @@ import {
   passosDasPreferencias,
   nomeDaForma,
   nomeDoPais,
+  QUEM_SEGUIR_NO_ONBOARDING,
   salvarPreferencias,
   temToken,
   type OpcoesDePreferencias,
@@ -53,7 +55,7 @@ function BoasVindas() {
   const passos = passosDasPreferencias(params.get("so"));
   // Ajuste depois do cadastro: sem o passo de quem seguir, e o fim volta à página de antes.
   const ajuste = voltar !== null;
-  const destino = ajuste ? destinoSeguro(voltar) : "/sugestoes";
+  const destino = ajuste ? destinoSeguro(voltar) : QUEM_SEGUIR_NO_ONBOARDING;
   const totalDePassos = ajuste ? passos.length : passos.length + 1;
   const [indice, setIndice] = useState(0);
   const passo = passos[indice];
@@ -62,6 +64,9 @@ function BoasVindas() {
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const ultimo = indice === passos.length - 1;
+  const [nome, setNome] = useState<string | null>(null);
+  const refTitulo = useRef<HTMLHeadingElement>(null);
+  const primeiraVez = useRef(true);
 
   useEffect(() => {
     if (!temToken()) {
@@ -74,7 +79,21 @@ function BoasVindas() {
         setPrefs(p);
       })
       .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar as opções"));
+    // Só para a saudação do primeiro passo; sem o nome, ela fica sem ele.
+    buscarEu()
+      .then((eu) => setNome(eu.name))
+      .catch(() => setNome(null));
   }, [router]);
+
+  // O passo muda na mesma página: leva o foco à nova pergunta (não no primeiro).
+  useEffect(() => {
+    if (primeiraVez.current) {
+      primeiraVez.current = false;
+      return;
+    }
+    refTitulo.current?.focus();
+    window.scrollTo({ top: 0 });
+  }, [indice]);
 
   function avancar() {
     if (!ultimo) setIndice(indice + 1);
@@ -110,59 +129,65 @@ function BoasVindas() {
     }
   }
 
+  const textoDoBotao = salvando ? "salvando..." : ajuste && ultimo ? "salvar" : "continuar";
+
   return (
-    <div>
-      <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
-      <CabecalhoPagina titulo={ajuste ? "Preferências" : "Boas-vindas"} />
-      <div className="space-y-5 p-4">
-        <p className="text-sm text-tinta-suave tabular-nums">
-          {totalDePassos > 1 && `passo ${indice + 1} de ${totalDePassos} · `}tudo é opcional
-        </p>
-        <h2 className="text-xl font-bold">{TITULOS[passo]}</h2>
-
-        {!opcoes && !erro && <p className="text-sm text-tinta-suave">carregando...</p>}
-
-        {opcoes && passo === "gostos" && (
-          <>
-            <Chips
-              titulo="Escolas e períodos"
-              opcoes={opcoes.escolas}
-              marcadas={prefs.escolas}
-              aoAlternar={(c) => setPrefs({ ...prefs, escolas: alternarNaLista(prefs.escolas, c) })}
-            />
-            <Chips
-              titulo="Formas"
-              opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
-              marcadas={prefs.formas}
-              aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
-            />
-          </>
-        )}
-
-        {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
-
-        {erro && <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-
-        <div className="flex flex-wrap items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={ajuste ? cancelar : avancar}
-            className="min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold hover:border-destaque hover:text-destaque"
-          >
+    <TelaDeBoasVindas
+      passo={indice + 1}
+      total={totalDePassos}
+      acoes={
+        <>
+          <button type="button" onClick={ajuste ? cancelar : avancar} className={`${BOTAO_SECUNDARIO} -ml-4`}>
             {ajuste ? "cancelar" : "pular"}
           </button>
-          <button
-            type="button"
-            onClick={continuar}
-            disabled={!opcoes || salvando}
-            className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
-          >
-            {salvando ? "salvando..." : ajuste && ultimo ? "salvar" : "continuar"}
+          <button type="button" onClick={continuar} disabled={!opcoes || salvando} className={BOTAO_PRIMARIO}>
+            {textoDoBotao}
           </button>
+        </>
+      }
+    >
+      <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
+      <AberturaDoPasso titulo={TITULOS[passo]} refTitulo={refTitulo}>
+        {abertura(passo, ajuste, nome)}
+      </AberturaDoPasso>
+
+      {!opcoes && !erro && <p className="text-sm text-tinta-suave">carregando...</p>}
+
+      {opcoes && passo === "gostos" && (
+        <div className="space-y-10">
+          <Chips
+            titulo="Escolas e períodos"
+            opcoes={opcoes.escolas}
+            marcadas={prefs.escolas}
+            aoAlternar={(c) => setPrefs({ ...prefs, escolas: alternarNaLista(prefs.escolas, c) })}
+          />
+          <Chips
+            titulo="Formas"
+            opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
+            marcadas={prefs.formas}
+            aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
+          />
         </div>
-      </div>
-    </div>
+      )}
+
+      {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
+
+      {erro && (
+        <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">
+          {erro}
+        </p>
+      )}
+    </TelaDeBoasVindas>
   );
+}
+
+// O texto sob a pergunta: no cadastro, a saudação (no primeiro passo) e o porquê;
+// nas preferências, o aviso de que nada muda até salvar.
+function abertura(passo: PassoDasPreferencias, ajuste: boolean, nome: string | null): string {
+  if (ajuste) return "Nada muda até você salvar. As sugestões de quem seguir se reajustam ao que você marcar.";
+  if (passo === "regiao") return "O país e, no Brasil, o estado aproximam você de quem escreve perto. Tudo é opcional.";
+  const saudacao = nome ? `Boas-vindas ao Verso, ${nome}.` : "Boas-vindas ao Verso.";
+  return `${saudacao} Marque as escolas e as formas que você lê com gosto: as sugestões de quem seguir partem daqui. Tudo é opcional.`;
 }
 
 function Chips({
@@ -178,7 +203,14 @@ function Chips({
 }) {
   return (
     <fieldset>
-      <legend className="mb-2 text-sm font-semibold">{titulo}</legend>
+      <legend className="mb-3 flex w-full items-baseline gap-1.5 border-b border-borda pb-2 text-sm font-semibold">
+        {titulo}
+        {marcadas.length > 0 && (
+          <span className="font-normal text-tinta-suave tabular-nums">
+            · {marcadas.length} {marcadas.length === 1 ? "marcada" : "marcadas"}
+          </span>
+        )}
+      </legend>
       <ul className="flex flex-wrap gap-2">
         {opcoes.map(({ codigo, rotulo }) => {
           const marcada = marcadas.includes(codigo);
@@ -222,7 +254,7 @@ function Regiao({
     "mt-1 min-h-11 w-full rounded-xl border border-borda bg-papel-alto px-3 font-normal text-tinta focus:border-destaque focus:outline-none";
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <label className="block text-sm font-semibold">
         país
         <select
