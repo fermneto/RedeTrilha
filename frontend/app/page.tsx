@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { ChamadaEscrever } from "@/components/ChamadaEscrever";
 import { PoemaCard } from "@/components/PoemaCard";
 import { buscarFeed, temToken, type Post } from "@/lib/api";
 
@@ -62,10 +64,11 @@ export default function FeedPage() {
   }, [carregarMais, fim, erro]);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl">Feed</h1>
+    <div>
+      <CabecalhoPagina titulo="Início" />
+      <ChamadaEscrever />
 
-      <ul className="space-y-6">
+      <ul className="divide-y divide-borda border-b border-borda">
         {poemas.map((p) => (
           <li key={p.id}>
             <PoemaCard post={p} />
@@ -74,7 +77,7 @@ export default function FeedPage() {
       </ul>
 
       {erro && (
-        <div className="rounded border border-destaque p-3 text-sm text-destaque">
+        <div className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
           <p>{erro}</p>
           <button type="button" onClick={() => setErro(null)} className="mt-1 cursor-pointer underline">
             tentar de novo
@@ -83,16 +86,16 @@ export default function FeedPage() {
       )}
 
       {fim && poemas.length === 0 && (
-        <p className="text-tinta-suave">
+        <p className="px-4 py-10 text-center text-tinta-suave">
           Seu feed está vazio. <Link href="/escrever" className="underline">Escreva um poema</Link> ou
           siga outros poetas.
         </p>
       )}
 
-      {fim && poemas.length > 0 && <p className="text-center text-sm text-tinta-suave">fim do feed</p>}
+      {fim && poemas.length > 0 && <p className="py-8 text-center text-sm text-tinta-suave">fim do feed</p>}
 
       <div ref={sentinela} aria-hidden />
-      {carregando && <p className="text-center text-sm text-tinta-suave">carregando...</p>}
+      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
     </div>
   );
 }

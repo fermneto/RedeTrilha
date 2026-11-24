@@ -241,3 +241,43 @@ export function apagarComentario(id: number): Promise<void> {
 export function buscarEu(): Promise<User> {
   return apiGet<User>("/auth/eu");
 }
+
+// ---- Coluna direita do layout: poema do dia, tags em alta e quem seguir ----
+
+// GET /poemas/do-dia: um poema de consagrado, o mesmo para todos no mesmo dia (UTC).
+// 404 quando ainda não há consagrados no banco.
+export function buscarPoemaDoDia(): Promise<Post> {
+  return apiGet<Post>("/poemas/do-dia");
+}
+
+// Espelha Trending (backend/app/schemas/tags.py): as 5 tags com mais poemas nas últimas 24 h.
+export type TagContagem = { tag: string; contagem: number };
+
+export function buscarTrending(): Promise<{ items: TagContagem[] }> {
+  return apiGet<{ items: TagContagem[] }>("/tags/trending");
+}
+
+// Mesma regra de core/indice_tags.normalizar (casefold e sem acento: "#Solidão" → "solidao"),
+// e fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
+export function normalizarTag(termo: string): string {
+  return termo
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9_]/g, "");
+}
+
+export function listarUsuarios(offset = 0, limit = 100): Promise<Page<User>> {
+  return apiGet<Page<User>>(`/usuarios?offset=${offset}&limit=${limit}`);
+}
+
+export function listarSeguindo(username: string, limit = 100): Promise<Page<User>> {
+  return apiGet<Page<User>>(
+    `/usuarios/${encodeURIComponent(username)}/seguindo?offset=0&limit=${limit}`,
+  );
+}
+
+export function seguir(username: string, seguindo: boolean): Promise<void> {
+  const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
+  return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+}

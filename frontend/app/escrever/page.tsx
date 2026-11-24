@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { Compositor } from "@/components/Compositor";
 import { temToken } from "@/lib/api";
 
@@ -25,9 +26,11 @@ function Escrever() {
   }, [router]);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl">{citarId === null ? "Escrever" : "Citar poema"}</h1>
-      <Compositor key={citarId ?? "novo"} citarId={citarId} />
+    <div>
+      <CabecalhoPagina titulo={citarId === null ? "Escrever" : "Citar poema"} />
+      <div className="px-4 py-5">
+        <Compositor key={citarId ?? "novo"} citarId={citarId} />
+      </div>
     </div>
   );
 }
