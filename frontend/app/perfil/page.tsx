@@ -5,7 +5,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { buscarEu, temToken } from "@/lib/api";
+import { buscarEu, caminhoDoLogin, temToken } from "@/lib/api";
 
 export default function MeuPerfilPage() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function MeuPerfilPage() {
 
   useEffect(() => {
     if (!temToken()) {
-      router.replace("/login");
+      router.replace(caminhoDoLogin());
       return;
     }
     buscarEu()
