@@ -156,14 +156,27 @@ export type FeedPage = Omit<Page<Post>, "total"> & {
   proximo_cursor: string | null;
 };
 
+// Espelha ComentarioOut (backend/app/schemas/comentario.py). `respostas` é só a
+// prévia (até 3); `total_respostas` conta todas as respostas diretas.
+// Removido: texto vazio e autor null.
 export type Comentario = {
   id: number;
   post_id: number;
-  parent_id: number | null;
   texto: string;
-  autor: User;
+  autor: User | null;
+  parent_id: number | null;
   created_at: string;
+  removido: boolean;
+  total_respostas: number;
   respostas: Comentario[];
+};
+
+// Espelha ComentarioPage: respostas diretas em ordem cronológica, por cursor.
+export type ComentarioPage = {
+  items: Comentario[];
+  total: number;
+  limit: number;
+  proximo_cursor: string | null;
 };
 
 export type NovoPoema = {
@@ -200,13 +213,33 @@ export function repostar(id: number, repostado: boolean): Promise<void> {
   return repostado ? apiPost<void>(`/posts/${id}/repostar`) : apiDelete(`/posts/${id}/repostar`);
 }
 
-export async function buscarComentarios(postId: number): Promise<Comentario[]> {
-  const pagina = await apiGet<{ items: Comentario[] }>(`/posts/${postId}/comentarios`);
-  return pagina.items;
+function paginaDeComentarios(caminho: string, cursor: string | null, limit: number) {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<ComentarioPage>(`${caminho}?${params}`);
+}
+
+// Comentários na raiz do poema, cada um com a prévia das respostas.
+export function buscarComentarios(postId: number, cursor: string | null, limit = 20) {
+  return paginaDeComentarios(`/posts/${postId}/comentarios`, cursor, limit);
+}
+
+// Respostas diretas de um comentário ("ver mais respostas").
+export function buscarRespostas(comentarioId: number, cursor: string | null, limit = 20) {
+  return paginaDeComentarios(`/comentarios/${comentarioId}/respostas`, cursor, limit);
 }
 
 export function comentar(postId: number, texto: string, parentId: number | null): Promise<Comentario> {
   return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
+}
+
+export function apagarComentario(id: number): Promise<void> {
+  return apiDelete(`/comentarios/${id}`);
+}
+
+// Usuário da sessão (o botão "apagar" só aparece para o autor do comentário).
+export function buscarEu(): Promise<User> {
+  return apiGet<User>("/auth/eu");
 }
 
 // ---- Perfil (P4): espelha PerfilOut e PerfilUpdate de backend/app/schemas/user.py ----
@@ -228,10 +261,6 @@ export function anosDeVida(user: User): string | null {
 
 // Só os campos enviados mudam.
 export type EdicaoDoPerfil = Partial<Pick<User, "name" | "bio" | "avatar_url">>;
-
-export function buscarEu(): Promise<User> {
-  return apiGet<User>("/auth/eu");
-}
 
 export function buscarPerfil(username: string): Promise<Perfil> {
   return apiGet<Perfil>(`/usuarios/${encodeURIComponent(username)}`);
