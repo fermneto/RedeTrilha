@@ -677,3 +677,53 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
 }
+
+// ---- Rascunhos: espelham backend/app/schemas/rascunho.py ----
+
+// Rascunho é privado: só o autor lê; de outra pessoa, o backend responde 404.
+// Só o rascunho se edita: o poema publicado é imutável.
+export type Rascunho = {
+  id: number;
+  autor_id: number;
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  idioma: string | null;
+  // Rascunho de citação: o poema citado. Null com repost_removido = o original foi apagado.
+  repost_de_id: number | null;
+  repost_removido: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+// Os campos de um poema novo; com repost_de_id, rascunho de citação.
+export type NovoRascunho = NovoPoema;
+
+// Só os enviados mudam; o poema citado não muda.
+export type EdicaoDoRascunho = Partial<Omit<NovoPoema, "repost_de_id">>;
+
+// O editado por último primeiro.
+export function listarRascunhos(offset = 0, limit = 100): Promise<Page<Rascunho>> {
+  return apiGet<Page<Rascunho>>(`/rascunhos?offset=${offset}&limit=${limit}`);
+}
+
+export function buscarRascunho(id: number): Promise<Rascunho> {
+  return apiGet<Rascunho>(`/rascunhos/${id}`);
+}
+
+export function criarRascunho(dados: NovoRascunho): Promise<Rascunho> {
+  return apiPost<Rascunho>("/rascunhos", dados);
+}
+
+export function editarRascunho(id: number, dados: EdicaoDoRascunho): Promise<Rascunho> {
+  return apiPatch<Rascunho>(`/rascunhos/${id}`, dados);
+}
+
+export function apagarRascunho(id: number): Promise<void> {
+  return apiDelete(`/rascunhos/${id}`);
+}
+
+// Vira poema (ou citação) publicado agora, e o rascunho deixa de existir.
+export function publicarRascunho(id: number): Promise<Post> {
+  return apiPost<Post>(`/rascunhos/${id}/publicar`);
+}
