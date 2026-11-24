@@ -65,7 +65,22 @@ class Item(NamedTuple):
 def feed(
     db: Session, usuario: User, offset: int, limit: int, cursor: str | None = None
 ) -> FeedPage:
-    itens = _deduplicar(_ocorrencias(db, [*ids_seguidos(db, usuario.id), usuario.id]))
+    return pagina_dos_autores(
+        db, [*ids_seguidos(db, usuario.id), usuario.id], usuario, offset, limit, cursor
+    )
+
+
+def pagina_dos_autores(
+    db: Session,
+    autores: list[int],
+    usuario: User,
+    offset: int,
+    limit: int,
+    cursor: str | None = None,
+) -> FeedPage:
+    """Poemas, citações e reposts puros dos `autores`, deduplicados e paginados como o
+    feed. Público para o perfil (`GET /usuarios/{username}/posts`), que passa um autor só."""
+    itens = _deduplicar(_ocorrencias(db, autores))
     if cursor is not None:
         depois = _ler_cursor(cursor)
         offset = next(
