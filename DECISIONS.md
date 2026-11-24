@@ -185,8 +185,12 @@ opcional e não foi rodado; se rodarmos até a entrega, colamos a saída aqui.
   de dados compartilhados e a divisão de tasks entre os três), revisar PRs e
   implementar partes das tasks de Dados do Neto: o índice de tags
   (`core/indice_tags.py`), o follow, as rotas de tags e do Explorar e a
-  leitura dos JSONs dos consagrados. Esses PRs foram revisados e mergeados por
-  um agente avaliador (Claude Code) que roda `make test` e confere os contratos
-  do `PLANO.md`. O Neto acompanhou cada rodada, mas eles não tiveram aprovação
-  formal de outro membro do time no GitHub.
+  leitura dos JSONs dos consagrados.
+- **Revisão dos PRs com IA:** os PRs #21 a #27 (os de Dados do Neto, o #24 do
+  Henrique e o #26 deste arquivo) foram revisados e mergeados por um agente
+  avaliador (Claude Code), que roda `make test` e confere os contratos do
+  `PLANO.md`. O Neto disparava cada rodada de revisão. A aprovação que aparece
+  no #24 foi registrada pelo agente usando a conta do Neto, não por uma leitura
+  humana. A partir do #28, o time combinou um modelo híbrido: o agente revisa e
+  comenta, e o Neto aprova como decidir.
 - **Henrique e Pedro:** _(completar com a ferramenta e o uso de cada um)_
