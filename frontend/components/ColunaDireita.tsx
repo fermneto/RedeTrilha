@@ -1,7 +1,9 @@
 "use client";
 // Coluna direita (telas largas): busca por tag, poema do dia, tags em alta e
-// consagrados para seguir; abaixo de 1100 px, os três últimos vão para o topo do
-// Explorar (DescobrirNoTopo). As três rotas são protegidas: sem login, só a busca.
+// consagrados para seguir. No Explorar, a busca e o "Em alta" já estão no corpo
+// da tela (como no X), então a coluna fica só com os outros dois; abaixo de
+// 1100 px, esses dois vão para o Explorar (DescobrirNoTopo). As três rotas são
+// protegidas: sem login, só a busca.
 // Cada bloco some quando não tem o que mostrar (ou quando a rota falha).
 
 import Link from "next/link";
@@ -9,21 +11,19 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
 import { IconeBuscar } from "@/components/icones/IconeBuscar";
 import {
   buscarEu,
   buscarPoemaDoDia,
-  buscarTrending,
-  caminhoDaTag,
   listarSeguindo,
   listarUsuarios,
   normalizarTag,
   seguir,
   temToken,
   type Post,
-  type TagContagem,
   type User,
 } from "@/lib/api";
 
@@ -34,6 +34,7 @@ const CONSAGRADOS_NO_BLOCO = 3;
 export function ColunaDireita() {
   const caminho = usePathname();
   const [logado, setLogado] = useState(false);
+  const noExplorar = caminho === "/explorar";
 
   useEffect(() => {
     setLogado(temToken());
@@ -45,11 +46,11 @@ export function ColunaDireita() {
       className="hidden w-[350px] shrink-0 pl-7 min-[1100px]:block"
     >
       <div className="sticky top-0 max-h-dvh space-y-4 overflow-y-auto pb-6 [scrollbar-width:thin]">
-        <Busca />
+        {noExplorar ? <div aria-hidden="true" className="h-2" /> : <Busca />}
         {logado && (
           <>
             <PoemaDoDia />
-            <EmAlta />
+            {!noExplorar && <EmAlta />}
             <ConsagradosParaSeguir />
           </>
         )}
@@ -58,14 +59,13 @@ export function ColunaDireita() {
   );
 }
 
-// Topo do Explorar abaixo de 1100 px, onde esta coluna some. A busca por tag fica
-// de fora: o Explorar já tem o próprio campo de tag. Para os poemas não descerem
-// demais, os blocos vêm recolhíveis; só o "Em alta" (que já ficava ali) abre aberto.
+// Explorar abaixo de 1100 px, onde esta coluna some. A busca e o "Em alta" ficam
+// de fora: o Explorar já tem os dele. Para os poemas não descerem demais, os
+// blocos vêm recolhíveis e fechados.
 export function DescobrirNoTopo() {
   return (
     <>
       <PoemaDoDia recolhivel="fechado" />
-      <EmAlta recolhivel="aberto" />
       <ConsagradosParaSeguir recolhivel="fechado" />
     </>
   );
@@ -186,30 +186,14 @@ function linhasDaPrevia(versos: string[]): number | null {
   return VERSOS_DO_DIA;
 }
 
-function EmAlta({ recolhivel }: { recolhivel?: Recolhivel }) {
-  const [tags, setTags] = useState<TagContagem[]>([]);
-
-  useEffect(() => {
-    buscarTrending()
-      .then((r) => setTags(r.items))
-      .catch(() => setTags([]));
-  }, []);
-
-  if (tags.length === 0) return null;
+function EmAlta() {
+  const tags = useEmAlta();
+  if (!tags || tags.length === 0) return null;
   return (
-    <Bloco titulo="Em alta" recolhivel={recolhivel}>
-      <ul className="pb-2">
-        {tags.map(({ tag, contagem }) => (
-          <li key={tag}>
-            <Link href={caminhoDaTag(tag)} className="realce block px-4 py-2.5">
-              <span className="block font-bold">#{tag}</span>
-              <span className="block text-[0.8125rem] text-tinta-suave tabular-nums">
-                {contagem} {contagem === 1 ? "poema" : "poemas"} nas últimas 24 h
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <Bloco titulo="Em alta">
+      <div className="pb-2">
+        <ListaEmAlta tags={tags} />
+      </div>
     </Bloco>
   );
 }
