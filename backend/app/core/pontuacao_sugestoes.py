@@ -21,7 +21,7 @@ from datetime import datetime
 
 from app.core.datas import para_utc
 
-# PROVISÓRIO (o Neto ajusta): os pesos de cada parte da nota.
+# Os pesos de cada parte da nota.
 PESO_SEGUIDORES = 1.0
 PESO_GOSTO = 2.0
 PESO_LINGUA = 1.5

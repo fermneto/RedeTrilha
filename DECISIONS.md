@@ -151,6 +151,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     do acervo não afogarem os poetas da rede; os poemas que receberam
     comentário ou crítica nos versos, que sobem com "fulano comentou" ou
     "fulano criticou os versos"; e os reposts puros, com "repostado por".
+    Entram também os seus poemas, rengas e atividades.
     Cada poema aparece uma vez, com o rótulo da atividade mais recente.
   - **A ordem continua cronológica, pela atividade.** O poema sobe porque
     alguém acabou de escrever, comentar ou repostar, e não porque tem mais

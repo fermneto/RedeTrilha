@@ -43,7 +43,7 @@ from app.schemas.user import UserOut
 from app.services.cursor import utc_sem_fuso
 from app.services.feed import Linha, montar_pagina, recortar
 
-# PROVISÓRIO (o Neto decide o equilíbrio): dos poemas de consagrados, entra só um
+# Dos poemas de consagrados, entra só um
 # de cada janela de 3 horas, uns 8 por dia, para os milhares de poemas do acervo
 # não afogarem os poetas da rede: o mais recente em português, se a janela tiver
 # algum, senão o mais recente. Comentário em poema de consagrado sobe o poema do

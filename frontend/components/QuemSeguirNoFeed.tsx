@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { LinhaPoeta } from "@/components/ColunaDireita";
 import { buscarSugestoes, type Sugestao } from "@/lib/api";
 
-// PROVISÓRIO: quantos perfis em cada bloco.
+// Perfis em cada bloco "Quem seguir" do feed.
 export const PERFIS_NO_BLOCO = 3;
 
 export function QuemSeguirNoFeed({ indice }: { indice: number }) {
