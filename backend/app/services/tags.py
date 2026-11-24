@@ -22,7 +22,7 @@ from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
 # Linha só de #tags ("#saudade #mar"): não serve de trecho.
-_SO_TAGS = re.compile(r"\s*(#\S+\s*)+")
+_SO_TAGS = re.compile(r"\s*#\S+(?:\s+#\S+)*\s*")
 # Quantas tags a busca do Explorar mostra (o resto dos poetas e tags fica para digitar mais).
 TAGS_NA_BUSCA = 5
 _MAIS_NOVO_PRIMEIRO = (Post.created_at.desc(), Post.id.desc())
