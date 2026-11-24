@@ -71,12 +71,19 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
   );
 }
 
-// "ana escreveu uma estrofe", "ana e bia escreveram estrofes", "bia abriu uma renga".
+const VERBOS: Record<RengaNoFeed["atividade"], [string, string]> = {
+  abriu: ["abriu uma renga", "abriram uma renga"],
+  escreveu: ["escreveu uma estrofe", "escreveram estrofes"],
+  encerrou: ["encerrou a renga", "encerraram a renga"],
+};
+
+// "ana escreveu uma estrofe", "ana e bia escreveram estrofes", "bia abriu uma renga",
+// "bia encerrou a renga".
 function Rotulo({ atividade, por }: { atividade: RengaNoFeed["atividade"]; por: User[] }) {
   const [a, b] = por;
   const resto = por.length - 2;
-  const verbo =
-    atividade === "abriu" ? "abriu uma renga" : por.length > 1 ? "escreveram estrofes" : "escreveu uma estrofe";
+  const [singular, plural] = VERBOS[atividade];
+  const verbo = por.length > 1 ? plural : singular;
   return (
     <p className="mb-1 flex items-center gap-2 text-[0.8125rem] font-semibold text-tinta-suave">
       <IconeRenga className="h-4 w-4 shrink-0" />

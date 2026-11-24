@@ -762,12 +762,13 @@ export function convidarParaRenga(id: number, usernames: string[]): Promise<Reng
 }
 
 // Renga no feed e no perfil (RengaNoFeed em backend/app/schemas/feed.py), como um
-// repost no X: o rótulo é "fulano escreveu uma estrofe" ou "fulano abriu uma renga".
+// repost no X: o rótulo é "fulano abriu uma renga" (o criador, sempre), "fulano
+// escreveu uma estrofe" ou "fulano encerrou a renga".
 export type RengaNoFeed = {
   tipo: "renga";
   renga: RengaDetalhe;
-  atividade: "abriu" | "escreveu";
-  // Os seguidos (ou você) do rótulo, quem escreveu por último primeiro.
+  atividade: "abriu" | "escreveu" | "encerrou";
+  // Os seguidos (ou você) do rótulo, quem fez por último primeiro.
   por: User[];
 };
 
