@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
+import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
@@ -56,6 +57,16 @@ export default function AntologiaPage() {
       });
   }, [id, router]);
 
+  // Desmarcar esta antologia no popover de um card aqui dentro tira o poema da
+  // lista na hora (o popover manda o id do original; repost puro conta como ele).
+  useEffect(
+    () =>
+      ouvirMudancas(({ antologiaId, postId, contem }) => {
+        if (antologiaId === id && !contem) setAntologia((a) => a && semOPoema(a, postId));
+      }),
+    [id],
+  );
+
   const cabecalho = <CabecalhoPagina titulo="Antologia" comoTitulo={false} />;
   if (naoExiste)
     return (
@@ -89,9 +100,7 @@ export default function AntologiaPage() {
 
   async function tirar(postId: number) {
     await marcarNaAntologia(antologia!.id, postId, false);
-    setAntologia((a) =>
-      a && { ...a, qtd: a.qtd - 1, poemas: a.poemas.filter((p) => p.id !== postId) },
-    );
+    setAntologia((a) => a && semOPoema(a, postId));
   }
 
   return (
@@ -143,6 +152,13 @@ export default function AntologiaPage() {
       )}
     </div>
   );
+}
+
+// A antologia sem o poema `postId` (ele mesmo, ou um repost puro dele).
+function semOPoema(antologia: AntologiaDetalhe, postId: number): AntologiaDetalhe {
+  const fica = (p: Post) => p.id !== postId && !(p.texto === "" && p.repost_de?.id === postId);
+  const poemas = antologia.poemas.filter(fica);
+  return { ...antologia, poemas, qtd: antologia.qtd - (antologia.poemas.length - poemas.length) };
 }
 
 function Cabecalho({
