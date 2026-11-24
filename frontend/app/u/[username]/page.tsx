@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
-import { buscarEu, buscarPerfil, buscarPoemasDoPerfil, temToken, type Perfil } from "@/lib/api";
+import { buscarEu, buscarPerfil, buscarPoemasDoPerfil, caminhoDoLogin, temToken, type Perfil } from "@/lib/api";
 
 export default function PerfilPage() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function PerfilPage() {
 
   useEffect(() => {
     if (!temToken()) {
-      router.replace("/login");
+      router.replace(caminhoDoLogin());
       return;
     }
     setPerfil(null);

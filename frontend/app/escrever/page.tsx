@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
 import { Compositor } from "@/components/Compositor";
-import { temToken } from "@/lib/api";
+import { caminhoDoLogin, temToken } from "@/lib/api";
 
 // useSearchParams precisa de Suspense no build estático do Next.
 export default function EscreverPage() {
@@ -21,7 +21,7 @@ function Escrever() {
   const citarId = Number.isInteger(citar) && citar > 0 ? citar : null;
 
   useEffect(() => {
-    if (!temToken()) router.replace("/login");
+    if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
 
   return (
