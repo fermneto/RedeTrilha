@@ -41,6 +41,8 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
   "avatar_url": "https://...",        // opcional, "" se não houver
   "nascimento": 1884,                 // opcional (ano incerto → omita); perfil mostra só "† 1914"
   "morte": 1914,                      // obrigatório; > 1955 é recusado (domínio público)
+  "escolas": ["simbolismo", "pre_modernismo"],  // opcional; códigos de ESCOLAS (abaixo)
+  "pais": "BR",                       // opcional; ISO 3166-1 alfa-2 do país onde nasceu, nas fronteiras de hoje; null se não há como dizer
   "poemas": [
     {
       "titulo": "Versos Íntimos",     // opcional (null para poemas sem título)
@@ -54,6 +56,37 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
   ]
 }
 ```
+
+## Escolas e país
+
+`escolas` e `pais` são opcionais e servem às sugestões de quem seguir (escolas
+em comum com o que a pessoa marcou no onboarding, mesmo país). O importador os
+grava na tabela `atributos_consagrado` (uma linha por consagrado, atualizada a
+cada reimportação; campo ausente grava `[]` / `null`). Valor fora da lista
+aborta a importação, como qualquer arquivo inválido.
+
+Códigos de `escolas` (`backend/app/schemas/escola.py`):
+
+| Código | Rótulo |
+|---|---|
+| `antiguidade_classica` | antiguidade clássica |
+| `medieval_trovadorismo` | medieval e trovadorismo |
+| `renascimento_classicismo` | renascimento e classicismo |
+| `barroco` | barroco |
+| `arcadismo_neoclassicismo` | arcadismo e neoclassicismo |
+| `romantismo` | romantismo |
+| `realismo` | realismo |
+| `parnasianismo` | parnasianismo |
+| `simbolismo` | simbolismo |
+| `modernismo_hispanico` | modernismo hispânico |
+| `pre_modernismo` | pré-modernismo |
+| `modernismo_vanguardas` | modernismo e vanguardas |
+| `popular_cordel` | poesia popular e cordel |
+| `classica_oriental` | clássica oriental |
+| `classica_arabe_persa` | clássica árabe e persa |
+
+`pais` usa os códigos de `backend/app/schemas/regiao.py` (ISO 3166-1 alfa-2,
+em maiúsculas: `BR`, `PT`, `FR`).
 
 ## Datas no feed
 

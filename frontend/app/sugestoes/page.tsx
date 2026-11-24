@@ -1,30 +1,37 @@
 "use client";
-// Sugestões de quem seguir: a tela logo depois do cadastro (e o link no Descobrir e
-// no Seguindo vazio). Cada card tem avatar, nome com selo, bio curta, o começo do
-// último poema e o botão seguir; "pular" (ou "continuar", depois de seguir alguém)
+// Quem seguir: o último passo do onboarding (depois de /boas-vindas) e a tela do
+// "ver mais" no Descobrir, no Seguindo vazio e no bloco do "Para você". Grade de
+// cartões do Acervo (avatar, nome com selo, bio curta, poemas e seguidores, escolas),
+// na ordem da nota do backend; "pular" (ou "continuar", depois de seguir alguém)
 // leva ao Início, que abre no "Para você".
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { Avatar } from "@/components/Avatar";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
-import { NomeAutor } from "@/components/NomeAutor";
-import { buscarSugestoes, caminhoDoLogin, seguir, temToken, type Sugestao } from "@/lib/api";
+import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
+import {
+  buscarOpcoesDePreferencias,
+  buscarSugestoes,
+  caminhoDoLogin,
+  temToken,
+  type Sugestao,
+} from "@/lib/api";
 
-// PROVISÓRIO: quantas contas a tela mostra (o backend pagina; "ver mais" pede outras).
+// PROVISÓRIO: quantos cartões por vez (a grade de 2 colunas fecha sem sobra).
 const POR_PAGINA = 12;
 
 export default function SugestoesPage() {
   const router = useRouter();
   const [contas, setContas] = useState<Sugestao[]>([]);
   const [total, setTotal] = useState(0);
+  const [rotulos, setRotulos] = useState<Record<string, string>>({});
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
   const [seguidas, setSeguidas] = useState(0);
 
-  async function carregar(offset: number) {
+  const carregar = useCallback(async (offset: number) => {
     setCarregando(true);
     setErro(null);
     try {
@@ -36,7 +43,7 @@ export default function SugestoesPage() {
     } finally {
       setCarregando(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     if (!temToken()) {
@@ -44,15 +51,21 @@ export default function SugestoesPage() {
       return;
     }
     carregar(0);
-  }, [router]);
+    buscarOpcoesDePreferencias()
+      .then((o) => setRotulos(Object.fromEntries(o.escolas.map((e) => [e.codigo, e.rotulo]))))
+      .catch(() => setRotulos({}));
+  }, [router, carregar]);
 
   return (
     <div>
       <title>Quem seguir · Verso</title>
       <CabecalhoPagina titulo="Quem seguir" />
-      <div className="flex items-center justify-between gap-3 border-b border-borda px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-borda px-4 py-3">
         <p className="text-sm text-tinta-suave">
-          Siga poetas para ver os poemas deles na aba Seguindo.
+          Siga poetas para ver os poemas deles na aba Seguindo.{" "}
+          <Link href="/boas-vindas" className="underline">
+            Ajustar o que você gosta
+          </Link>
         </p>
         <Link
           href="/"
@@ -62,10 +75,15 @@ export default function SugestoesPage() {
         </Link>
       </div>
 
-      <ul className="divide-y divide-borda border-b border-borda">
+      <ul className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-2">
         {contas.map((conta) => (
           <li key={conta.id}>
-            <Card conta={conta} aoSeguir={(novo) => setSeguidas((n) => n + (novo ? 1 : -1))} />
+            <CartaoDoAcervo
+              poeta={conta}
+              proprio={false}
+              escolas={conta.escolas.map((e) => rotulos[e] ?? e)}
+              aoSeguir={(novo) => setSeguidas((n) => n + (novo ? 1 : -1))}
+            />
           </li>
         ))}
       </ul>
@@ -94,67 +112,5 @@ export default function SugestoesPage() {
         </button>
       )}
     </div>
-  );
-}
-
-function Card({ conta, aoSeguir }: { conta: Sugestao; aoSeguir: (seguindo: boolean) => void }) {
-  const [sigo, setSigo] = useState(false);
-  const [ocupado, setOcupado] = useState(false);
-  const [erro, setErro] = useState(false);
-
-  async function alternar() {
-    const novo = !sigo;
-    setOcupado(true);
-    setErro(false);
-    try {
-      await seguir(conta.username, novo);
-      setSigo(novo);
-      aoSeguir(novo);
-    } catch {
-      setErro(true);
-    } finally {
-      setOcupado(false);
-    }
-  }
-
-  return (
-    <article className="flex gap-3 px-4 py-3">
-      <Link href={`/u/${conta.username}`} tabIndex={-1} aria-hidden="true" className="shrink-0">
-        <Avatar usuario={conta} />
-      </Link>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <span className="flex">
-              <NomeAutor usuario={conta} />
-            </span>
-            <p className="truncate text-sm text-tinta-suave">
-              @{conta.username} · {conta.poemas} {conta.poemas === 1 ? "poema" : "poemas"}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={alternar}
-            disabled={ocupado}
-            aria-pressed={sigo}
-            aria-label={`${sigo ? "Deixar de seguir" : "Seguir"} ${conta.name}`}
-            className={`min-h-11 shrink-0 cursor-pointer rounded-full px-4 text-sm font-bold transition-colors duration-150 disabled:cursor-wait disabled:opacity-60 ${
-              sigo
-                ? "border border-borda text-tinta hover:border-destaque hover:text-destaque"
-                : "bg-tinta text-papel hover:bg-tinta/85"
-            }`}
-          >
-            {sigo ? "Seguindo" : "Seguir"}
-          </button>
-        </div>
-        {erro && <p className="text-xs text-destaque">não deu, tente de novo</p>}
-        {conta.bio && <p className="mt-1 line-clamp-2 text-sm">{conta.bio}</p>}
-        {conta.trecho && (
-          <p className="poema-corpo mt-2 border-l-2 border-borda pl-3 text-[0.9375rem] leading-[1.7] text-tinta-suave">
-            {conta.trecho}
-          </p>
-        )}
-      </div>
-    </article>
   );
 }

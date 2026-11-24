@@ -3,14 +3,16 @@
 Mistura, de todos os poetas (seguidos ou não, inclusive a própria pessoa):
 
 - poemas publicados (e citações) de quem não é consagrado;
+- reposts puros, como no X: o poema sobe na data do repost mais recente, com
+  "repostado por" (todos que repostaram, por último primeiro), uma vez só;
 - rengas abertas, na estrofe mais recente ("fulano abriu uma renga" /
   "fulano escreveu uma estrofe", como no feed Seguindo);
 - poemas de consagrados, rareados (ver `JANELA_DO_CONSAGRADO`);
 - poemas que receberam comentário ou crítica: o poema sobe com o comentário
   mais recente e o rótulo "fulano comentou" ("subiu_por" e "comentado_por").
 
-Reposts puros ficam de fora: o "Para você" mostra o poema, e quem repostou só
-importa a quem segue (o feed Seguindo). Rascunhos não estão em `posts`, então
+O rótulo é o da atividade mais recente: um poema que subiu por comentário mostra
+quem comentou, e não quem repostou. Rascunhos não estão em `posts`, então
 nunca entram.
 
 A ordem é cronológica pela atividade, sem ranking por engajamento (decisão 3);
@@ -18,7 +20,7 @@ a mistura e o desempate ficam em `core/mistura.py`. A paginação é a do feed
 Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave) que
 tem precedência sobre o offset e devolve `total` None.
 
-Custo: O(n log n) com n = poemas não repostados da rede + estrofes das rengas
+Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + estrofes das rengas
 abertas + comentários, carregados só com ids e datas (sem o texto); depois as
 mesmas queries O(limit) do feed Seguindo para montar a página.
 """
@@ -26,7 +28,7 @@ mesmas queries O(limit) do feed Seguindo para montar a página.
 from datetime import timedelta
 
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, aliased
 
 from app.core.mistura import Atividade, ItemMisturado, misturar, rarear_consagrados
 from app.models.ancora_comentario import AncoraComentario
@@ -51,7 +53,7 @@ def feed(
     db: Session, usuario: User, offset: int, limit: int, cursor: str | None = None
 ) -> FeedPage:
     atividades = rarear_consagrados(
-        [*_poemas(db), *_estrofes_abertas(db), *_comentarios(db)],
+        [*_poemas(db), *_reposts(db), *_estrofes_abertas(db), *_comentarios(db)],
         int(JANELA_DO_CONSAGRADO.total_seconds()),
     )
     itens = misturar(atividades)
@@ -83,6 +85,20 @@ def _poemas(db: Session) -> list[Atividade]:
     return [
         Atividade("poema", "publicou", post_id, post_id, autor_id, utc_sem_fuso(criado), consagrado)
         for post_id, autor_id, consagrado, criado in linhas
+    ]
+
+
+def _reposts(db: Session) -> list[Atividade]:
+    """Reposts puros cujo original ainda existe; o alvo é o original."""
+    original = aliased(Post)
+    linhas = db.execute(
+        select(Post.id, Post.autor_id, Post.repost_de_id, Post.created_at)
+        .join(original, original.id == Post.repost_de_id)
+        .where(Post.repost_puro)
+    )
+    return [
+        Atividade("poema", "repostou", post_id, original_id, autor_id, utc_sem_fuso(criado))
+        for post_id, autor_id, original_id, criado in linhas
     ]
 
 
@@ -138,6 +154,10 @@ def _comentarios(db: Session) -> list[Atividade]:
     ]
 
 
+# A ação do comentário que subiu o poema → o `subiu_por` da resposta.
+_SUBIU_POR = {"comentou": "comentario", "criticou": "critica"}
+
+
 def _montar(
     db: Session, pagina: list[ItemMisturado], usuario: User
 ) -> list[PoemaNoFeed | RengaNoFeed]:
@@ -158,9 +178,12 @@ def _montar(
         if item.atividade.tipo == "poema":
             itens.append(
                 PoemaNoFeed(
-                    **next(saidas).model_dump(),
-                    subiu_por={"comentou": "comentario", "criticou": "critica"}.get(acao),
-                    comentado_por=rotulo,
+                    **{
+                        **next(saidas).model_dump(),
+                        "repostado_por": rotulo if acao == "repostou" else [],
+                    },
+                    subiu_por=_SUBIU_POR.get(acao),
+                    comentado_por=rotulo if acao in _SUBIU_POR else [],
                 )
             )
         else:

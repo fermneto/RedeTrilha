@@ -25,6 +25,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from app.db import Base, SessionLocal, engine
+from app.models.atributos_consagrado import AtributosConsagrado
 from app.models.post import Post
 from app.models.traducao import Traducao
 from app.models.user import User
@@ -130,6 +131,10 @@ def _gravar_poeta(db: Session, consagrado: Consagrado, resumo: ResumoImportacao)
     autor.consagrado = True
     autor.password_hash = None
     db.flush()
+    atributos = db.get(AtributosConsagrado, autor.id) or AtributosConsagrado(user_id=autor.id)
+    atributos.escolas = consagrado.escolas
+    atributos.pais = consagrado.pais
+    db.add(atributos)
     return autor
 
 

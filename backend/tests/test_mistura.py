@@ -1,8 +1,8 @@
-"""core/mistura.py sem servidor: rarear consagrados, misturar e intercalar."""
+"""core/mistura.py sem servidor: rarear consagrados e misturar."""
 
 from datetime import UTC, datetime, timedelta
 
-from app.core.mistura import Atividade, intercalar, misturar, rarear_consagrados
+from app.core.mistura import Atividade, misturar, rarear_consagrados
 
 BASE = datetime(2026, 11, 20, tzinfo=UTC)
 TRES_HORAS = 3 * 3600
@@ -54,6 +54,22 @@ def test_mesma_data_desempata_pela_chave():
     ]
 
 
-def test_intercalar():
-    assert intercalar([1, 2, 3], ["a"]) == [1, "a", 2, 3]
-    assert intercalar([], ["a", "b"]) == ["a", "b"]
+
+def test_repost_sobe_o_poema_com_todos_que_repostaram():
+    itens = misturar(
+        [
+            _poema(1, 0),
+            Atividade("poema", "repostou", 5, 1, 7, BASE + timedelta(minutes=3)),
+            Atividade("poema", "repostou", 6, 1, 8, BASE + timedelta(minutes=4)),
+        ]
+    )
+    assert [(i.atividade.acao, i.por) for i in itens] == [("repostou", [8, 7])]
+
+
+def test_repost_de_consagrado_nao_e_rareado():
+    atividades = [
+        _poema(1, 0, True),
+        _poema(2, 10, True),
+        Atividade("poema", "repostou", 3, 1, 7, BASE + timedelta(minutes=20)),
+    ]
+    assert [a.origem_id for a in rarear_consagrados(atividades, TRES_HORAS)] == [2, 3]
