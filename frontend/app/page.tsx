@@ -14,7 +14,7 @@ import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ChamadaEscrever } from "@/components/ChamadaEscrever";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { QuemSeguirNoFeed } from "@/components/QuemSeguirNoFeed";
-import { buscarFeed, buscarParaVoce, caminhoDoLogin, temToken } from "@/lib/api";
+import { buscarFeed, buscarParaVoce, caminhoDoLogin, EVENTO_SEGUIR_MUDOU, temToken } from "@/lib/api";
 
 const POR_PAGINA = 20;
 // PROVISÓRIO: o bloco "Quem seguir" entra no "Para você" depois de cada tantos itens.
@@ -38,10 +38,19 @@ function buscarDaRede(cursor: string | null) {
 export default function FeedPage() {
   const router = useRouter();
   const [aba, setAba] = useState<Aba>("para-voce");
+  // Muda a cada follow/unfollow: remonta o Seguindo, que senão ficaria com a lista
+  // de antes de a pessoa seguir ou deixar de seguir alguém.
+  const [versaoDoSeguindo, setVersaoDoSeguindo] = useState(0);
 
   useEffect(() => {
     if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
+
+  useEffect(() => {
+    const aoMudar = () => setVersaoDoSeguindo((v) => v + 1);
+    window.addEventListener(EVENTO_SEGUIR_MUDOU, aoMudar);
+    return () => window.removeEventListener(EVENTO_SEGUIR_MUDOU, aoMudar);
+  }, []);
 
   return (
     <div>
@@ -62,6 +71,7 @@ export default function FeedPage() {
             />
           ) : (
             <ListaDePoemas
+              key={versaoDoSeguindo}
               buscar={buscarSeguindo}
               textoDoFim="fim do feed"
               vazio={
