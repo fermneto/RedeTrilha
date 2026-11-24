@@ -249,6 +249,12 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
           </li>
         ))}
       </ul>
+      <Link
+        href="/sugestoes"
+        className="realce flex min-h-11 items-center rounded-b-2xl px-4 text-sm font-semibold text-destaque"
+      >
+        ver mais poetas para seguir
+      </Link>
     </Bloco>
   );
 }

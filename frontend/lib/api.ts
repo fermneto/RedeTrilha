@@ -243,6 +243,10 @@ export type Post = {
   tags: string[];
   // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
   repostado_por: User[];
+  // Só no "Para você": o poema subiu por um comentário ou por uma crítica nos
+  // versos, e quem comentou, por último primeiro (PoemaNoFeed em schemas/feed.py).
+  subiu_por?: "comentario" | "critica" | null;
+  comentado_por?: User[];
 };
 
 // Com cursor, o total vem null (como na timeline do X).
@@ -343,6 +347,29 @@ export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage>
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
   return apiGet<FeedPage>(`/feed?${params}`);
+}
+
+// Aba "Para você": a rede inteira (seguidos ou não), cronológica pela atividade.
+export function buscarParaVoce(cursor: string | null, limit = 20): Promise<FeedPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<FeedPage>(`/feed/para-voce?${params}`);
+}
+
+// O rótulo do poema que subiu por comentário: o card mostra os 2 primeiros nomes,
+// "e mais N" (`resto`) e o verbo: "ana comentou", "ana e bia comentaram", "ana, bia e
+// mais 2 criticaram os versos". null = sem rótulo.
+export function rotuloDoComentario(
+  post: Pick<Post, "subiu_por" | "comentado_por">,
+): { resto: number; verbo: string } | null {
+  const por = post.comentado_por ?? [];
+  if (!post.subiu_por || por.length === 0) return null;
+  const plural = por.length > 1;
+  const verbo =
+    post.subiu_por === "critica"
+      ? plural ? "criticaram os versos" : "criticou os versos"
+      : plural ? "comentaram" : "comentou";
+  return { resto: Math.max(0, por.length - 2), verbo };
 }
 
 export function buscarPoema(id: number): Promise<Post> {
@@ -505,6 +532,14 @@ export function listarSeguindo(username: string, limit = 100): Promise<Page<User
   return apiGet<Page<User>>(
     `/usuarios/${encodeURIComponent(username)}/seguindo?offset=0&limit=${limit}`,
   );
+}
+
+// Espelha SugestaoOut (backend/app/schemas/sugestao.py): uma conta para seguir,
+// com quantos poemas tem e o começo do poema mais recente (null se só fez rengas).
+export type Sugestao = User & { poemas: number; trecho: string | null };
+
+export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
+  return apiGet<Page<Sugestao>>(`/sugestoes?offset=${offset}&limit=${limit}`);
 }
 
 export function seguir(username: string, seguindo: boolean): Promise<void> {

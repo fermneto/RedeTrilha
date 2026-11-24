@@ -21,6 +21,7 @@ import {
   nomeDaForma,
   nomeDoIdioma,
   repostar,
+  rotuloDoComentario,
   traduzirPoema,
   type Post,
   type Traducao,
@@ -58,6 +59,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
       className={aninhado ? "rounded-2xl border border-borda p-3" : "px-4 pt-3 pb-1"}
     >
       {!aninhado && reposters.length > 0 && <RepostadoPor usuarios={reposters} />}
+      {!aninhado && <ComentadoPor post={post} />}
 
       <div className="flex gap-3">
         {!aninhado && (
@@ -226,6 +228,27 @@ function RepostadoPor({ usuarios }: { usuarios: User[] }) {
         {b && (resto > 0 ? ", " : " e ")}
         {b && <NomeLink usuario={b} />}
         {resto > 0 && ` e mais ${resto}`}
+      </span>
+    </p>
+  );
+}
+
+// Só no "Para você": o poema subiu por um comentário ou crítica, como o "repostado
+// por" do X ("ana comentou", "ana e bia criticaram os versos").
+function ComentadoPor({ post }: { post: Post }) {
+  const rotulo = rotuloDoComentario(post);
+  if (!rotulo) return null;
+  const [a, b] = post.comentado_por ?? [];
+  return (
+    <p className="mb-1 flex items-center gap-3 text-[0.8125rem] font-semibold text-tinta-suave">
+      <span className="flex w-10 shrink-0 justify-end">
+        <IconeComentar className="h-4 w-4" />
+      </span>
+      <span className="min-w-0">
+        <NomeLink usuario={a} />
+        {b && (rotulo.resto > 0 ? ", " : " e ")}
+        {b && <NomeLink usuario={b} />}
+        {rotulo.resto > 0 && ` e mais ${rotulo.resto}`} {rotulo.verbo}
       </span>
     </p>
   );
