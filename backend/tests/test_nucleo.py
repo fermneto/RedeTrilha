@@ -85,7 +85,6 @@ def test_posts_crud(client, logar):
 # ---------- FEED ----------
 
 
-@pytest.mark.skip(reason="Remova ao implementar GET /feed cronológico paginado (núcleo)")
 def test_feed_cronologico_dos_seguidos(client, logar):
     ana = logar("ana")
     bia = logar("bia")
@@ -159,7 +158,6 @@ def test_follow_unfollow_com_contadores(client, logar):
 # ---------- CURTIDAS ----------
 
 
-@pytest.mark.skip(reason="Remova ao implementar curtir/descurtir idempotente (núcleo)")
 def test_curtidas_idempotentes(client, logar):
     ana = logar("ana")
     bia = logar("bia")
