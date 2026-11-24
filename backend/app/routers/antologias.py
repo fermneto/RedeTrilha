@@ -10,6 +10,7 @@ from app.schemas.antologia import (
     AntologiaOut,
     AntologiaPage,
     AntologiaPoemaCreate,
+    AntologiaUpdate,
 )
 from app.services import antologias as service
 
@@ -32,7 +33,7 @@ def minhas_antologias(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    items, total = service.listar_do_usuario(db, user, offset, limit)
+    items, total = service.listar_minhas(db, user, offset, limit)
     return AntologiaPage(items=items, total=total, offset=offset, limit=limit)
 
 
@@ -41,10 +42,10 @@ def antologias_de(
     username: str,
     offset: int = Query(default=0, ge=0),
     limit: int = Query(default=20, ge=1, le=100),
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    items, total = service.listar_de(db, username, offset, limit)
+    items, total = service.listar_de(db, user, username, offset, limit)
     return AntologiaPage(items=items, total=total, offset=offset, limit=limit)
 
 
@@ -55,6 +56,25 @@ def ler_antologia(
     db: Session = Depends(get_db),
 ):
     return service.detalhar(db, user, antologia_id)
+
+
+@router.patch("/antologias/{antologia_id}", response_model=AntologiaOut)
+def editar_antologia(
+    antologia_id: int,
+    dados: AntologiaUpdate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return service.editar(db, user, antologia_id, dados)
+
+
+@router.delete("/antologias/{antologia_id}", status_code=204)
+def apagar_antologia(
+    antologia_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    service.apagar(db, user, antologia_id)
 
 
 @router.post("/antologias/{antologia_id}/poemas", status_code=204)

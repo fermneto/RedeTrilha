@@ -6,16 +6,36 @@ from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 
 
+def _validar_nome(nome: str | None) -> str:
+    """Recusa nome em branco (ou null no PATCH) sem alterar o que veio."""
+    if nome is None or not nome.strip():
+        raise ValueError("a antologia precisa de um nome")
+    return nome
+
+
+def _validar_publica(publica: bool | None) -> bool:
+    if publica is None:
+        raise ValueError("publica deve ser true ou false")
+    return publica
+
+
 class AntologiaCreate(BaseModel):
     nome: str = Field(max_length=100)
     descricao: str | None = Field(default=None, max_length=1000)
+    publica: bool = True
 
-    @field_validator("nome")
-    @classmethod
-    def _nome_nao_vazio(cls, nome: str) -> str:
-        if not nome.strip():
-            raise ValueError("a antologia precisa de um nome")
-        return nome
+    _nome = field_validator("nome")(_validar_nome)
+
+
+class AntologiaUpdate(BaseModel):
+    """PATCH parcial: só os campos enviados mudam; `descricao` aceita null."""
+
+    nome: str | None = Field(default=None, max_length=100)
+    descricao: str | None = Field(default=None, max_length=1000)
+    publica: bool | None = None
+
+    _nome = field_validator("nome")(_validar_nome)
+    _publica = field_validator("publica")(_validar_publica)
 
 
 class AntologiaPoemaCreate(BaseModel):
@@ -28,6 +48,7 @@ class AntologiaOut(BaseModel):
     dono: UserOut
     nome: str
     descricao: str | None
+    publica: bool
     created_at: datetime
     qtd: int = 0
 

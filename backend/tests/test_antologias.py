@@ -226,3 +226,126 @@ def test_apagar_poema_tira_das_antologias(client, ana, bia):
     with SessionLocal() as db:
         restantes = db.scalars(select(AntologiaPoema).where(AntologiaPoema.post_id == post_id))
         assert restantes.all() == []
+
+
+def _privada(client, dono: dict, nome: str = "Diário") -> int:
+    r = client.post("/antologias", json={"nome": nome, "publica": False}, headers=dono)
+    assert (r.status_code, r.json()["publica"]) == (201, False)
+    return r.json()["id"]
+
+
+def test_antologia_nasce_publica(client, ana):
+    r = client.post("/antologias", json={"nome": "Chuva"}, headers=ana)
+    assert r.json()["publica"] is True
+
+
+def test_privada_aparece_so_para_o_dono(client, ana, bia):
+    _antologia(client, ana, "Pública")
+    _privada(client, ana, "Privada")
+
+    minhas = client.get("/antologias", headers=ana).json()
+    assert {i["nome"] for i in minhas["items"]} == {"Pública", "Privada"}
+    vistas_pelo_dono = client.get("/usuarios/ana/antologias", headers=ana).json()
+    assert vistas_pelo_dono["total"] == 2
+
+    vistas_por_outro = client.get("/usuarios/ana/antologias", headers=bia).json()
+    assert [i["nome"] for i in vistas_por_outro["items"]] == ["Pública"]
+    assert vistas_por_outro["total"] == 1
+
+
+def test_privada_de_outro_da_404_em_tudo(client, ana, bia):
+    antologia_id = _privada(client, ana)
+    post_id = _poema(client, ana)
+    client.post(f"/antologias/{antologia_id}/poemas", json={"post_id": post_id}, headers=ana)
+
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).status_code == 200
+    assert client.get(f"/antologias/{antologia_id}", headers=bia).status_code == 404
+    r = client.post(
+        f"/antologias/{antologia_id}/poemas", json={"post_id": post_id}, headers=bia
+    )
+    assert r.status_code == 404
+    r = client.delete(f"/antologias/{antologia_id}/poemas/{post_id}", headers=bia)
+    assert r.status_code == 404
+    r = client.patch(f"/antologias/{antologia_id}", json={"nome": "x"}, headers=bia)
+    assert r.status_code == 404
+    assert client.delete(f"/antologias/{antologia_id}", headers=bia).status_code == 404
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).json()["qtd"] == 1
+
+
+def test_patch_parcial_renomeia_e_mantem_o_resto(client, ana):
+    r = client.post("/antologias", json={"nome": "Chuva", "descricao": "cinza"}, headers=ana)
+    antologia_id = r.json()["id"]
+    client.post(
+        f"/antologias/{antologia_id}/poemas",
+        json={"post_id": _poema(client, ana)},
+        headers=ana,
+    )
+
+    r = client.patch(f"/antologias/{antologia_id}", json={"nome": "Garoa"}, headers=ana)
+
+    assert r.status_code == 200
+    corpo = r.json()
+    assert (corpo["nome"], corpo["descricao"], corpo["publica"], corpo["qtd"]) == (
+        "Garoa",
+        "cinza",
+        True,
+        1,
+    )
+    r = client.patch(f"/antologias/{antologia_id}", json={"descricao": None}, headers=ana)
+    assert r.json()["descricao"] is None
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).json()["nome"] == "Garoa"
+
+
+def test_patch_torna_privada_e_publica_de_novo(client, ana, bia):
+    antologia_id = _antologia(client, ana)
+
+    r = client.patch(f"/antologias/{antologia_id}", json={"publica": False}, headers=ana)
+    assert (r.status_code, r.json()["publica"]) == (200, False)
+    assert client.get(f"/antologias/{antologia_id}", headers=bia).status_code == 404
+
+    client.patch(f"/antologias/{antologia_id}", json={"publica": True}, headers=ana)
+    assert client.get(f"/antologias/{antologia_id}", headers=bia).status_code == 200
+
+
+@pytest.mark.parametrize(
+    "corpo", [{"nome": "  "}, {"nome": None}, {"publica": None}, {"nome": "x" * 101}]
+)
+def test_patch_invalido_da_422(client, ana, corpo):
+    antologia_id = _antologia(client, ana)
+    r = client.patch(f"/antologias/{antologia_id}", json=corpo, headers=ana)
+    assert r.status_code == 422
+
+
+def test_patch_e_delete_de_outro_em_publica_da_403(client, ana, bia):
+    antologia_id = _antologia(client, ana)
+
+    r = client.patch(f"/antologias/{antologia_id}", json={"nome": "minha"}, headers=bia)
+    assert r.status_code == 403
+    assert client.delete(f"/antologias/{antologia_id}", headers=bia).status_code == 403
+    r = client.get(f"/antologias/{antologia_id}", headers=ana)
+    assert r.json()["nome"] == "Poemas de chuva"
+
+
+def test_patch_e_delete_de_inexistente_da_404(client, ana):
+    assert client.patch("/antologias/999", json={"nome": "x"}, headers=ana).status_code == 404
+    assert client.delete("/antologias/999", headers=ana).status_code == 404
+
+
+def test_apagar_antologia_leva_os_vinculos_e_mantem_os_poemas(client, ana):
+    from app.db import SessionLocal
+    from app.models.antologia import AntologiaPoema
+
+    antologia_id = _antologia(client, ana)
+    post_id = _poema(client, ana)
+    client.post(f"/antologias/{antologia_id}/poemas", json={"post_id": post_id}, headers=ana)
+
+    assert client.delete(f"/antologias/{antologia_id}", headers=ana).status_code == 204
+
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).status_code == 404
+    assert client.get("/antologias", headers=ana).json()["total"] == 0
+    assert client.get(f"/posts/{post_id}", headers=ana).status_code == 200
+    with SessionLocal() as db:
+        vinculos = db.scalars(
+            select(AntologiaPoema).where(AntologiaPoema.antologia_id == antologia_id)
+        )
+        assert vinculos.all() == []

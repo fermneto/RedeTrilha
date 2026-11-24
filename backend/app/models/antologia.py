@@ -20,6 +20,8 @@ class Antologia(Base):
     dono_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
     nome: Mapped[str] = mapped_column(String(100))
     descricao: Mapped[str | None] = mapped_column(Text, default=None)
+    # Privada só existe para o dono: para os outros, dá 404 (não revela que existe).
+    publica: Mapped[bool] = mapped_column(default=True)
     created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
 
     dono: Mapped[User] = relationship(lazy="joined")
