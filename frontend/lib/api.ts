@@ -143,6 +143,10 @@ export function apiPatch<T>(path: string, body: unknown): Promise<T> {
   return request<T>("PATCH", path, body);
 }
 
+export function apiPut<T>(path: string, body: unknown): Promise<T> {
+  return request<T>("PUT", path, body);
+}
+
 export function apiDelete<T = void>(path: string): Promise<T> {
   return request<T>("DELETE", path);
 }
@@ -243,6 +247,10 @@ export type Post = {
   tags: string[];
   // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
   repostado_por: User[];
+  // Só no "Para você": o poema subiu por um comentário ou por uma crítica nos
+  // versos, e quem comentou, por último primeiro (PoemaNoFeed em schemas/feed.py).
+  subiu_por?: "comentario" | "critica" | null;
+  comentado_por?: User[];
 };
 
 // Com cursor, o total vem null (como na timeline do X).
@@ -343,6 +351,29 @@ export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage>
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
   return apiGet<FeedPage>(`/feed?${params}`);
+}
+
+// Aba "Para você": a rede inteira (seguidos ou não), cronológica pela atividade.
+export function buscarParaVoce(cursor: string | null, limit = 20): Promise<FeedPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<FeedPage>(`/feed/para-voce?${params}`);
+}
+
+// O rótulo do poema que subiu por comentário: o card mostra os 2 primeiros nomes,
+// "e mais N" (`resto`) e o verbo: "ana comentou", "ana e bia comentaram", "ana, bia e
+// mais 2 criticaram os versos". null = sem rótulo.
+export function rotuloDoComentario(
+  post: Pick<Post, "subiu_por" | "comentado_por">,
+): { resto: number; verbo: string } | null {
+  const por = post.comentado_por ?? [];
+  if (!post.subiu_por || por.length === 0) return null;
+  const plural = por.length > 1;
+  const verbo =
+    post.subiu_por === "critica"
+      ? plural ? "criticaram os versos" : "criticou os versos"
+      : plural ? "comentaram" : "comentou";
+  return { resto: Math.max(0, por.length - 2), verbo };
 }
 
 export function buscarPoema(id: number): Promise<Post> {
@@ -507,6 +538,60 @@ export function listarSeguindo(username: string, limit = 100): Promise<Page<User
   );
 }
 
+// Espelha SugestaoOut (backend/app/schemas/sugestao.py): o cartão do Acervo mais
+// as escolas da conta (códigos de ESCOLAS; os rótulos vêm de buscarOpcoesDePreferencias).
+export type Sugestao = PoetaDoAcervo & { escolas: string[] };
+
+// Ordem pela nota do backend (core/pontuacao_sugestoes.py); `lingua` é a do navegador.
+export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  const lingua = idiomaDoNavegador();
+  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
+  return apiGet<Page<Sugestao>>(`/sugestoes?${params}`);
+}
+
+// ---- Preferências do onboarding: espelham backend/app/schemas/preferencia.py ----
+
+export type Preferencias = {
+  escolas: string[];
+  formas: string[];
+  // ISO 3166-1 alfa-2; a UF só com "BR".
+  pais: string | null;
+  uf: string | null;
+};
+
+export type Opcao = { codigo: string; rotulo: string };
+
+// O vocabulário vem do backend: escolas com rótulo, formas, códigos de país e UFs.
+export type OpcoesDePreferencias = { escolas: Opcao[]; formas: string[]; paises: string[]; ufs: Opcao[] };
+
+export function buscarPreferencias(): Promise<Preferencias> {
+  return apiGet<Preferencias>("/preferencias");
+}
+
+// PUT: troca tudo; o que não vier volta ao vazio.
+export function salvarPreferencias(dados: Preferencias): Promise<Preferencias> {
+  return apiPut<Preferencias>("/preferencias", dados);
+}
+
+export function buscarOpcoesDePreferencias(): Promise<OpcoesDePreferencias> {
+  return apiGet<OpcoesDePreferencias>("/preferencias/opcoes");
+}
+
+// Nome do país em português ("PT" → "Portugal"); o próprio código se o navegador não souber.
+export function nomeDoPais(codigo: string): string {
+  try {
+    return new Intl.DisplayNames(["pt-BR"], { type: "region" }).of(codigo) ?? codigo;
+  } catch {
+    return codigo;
+  }
+}
+
+// Alterna um código numa multisseleção (chips das escolas e das formas).
+export function alternarNaLista(lista: string[], codigo: string): string[] {
+  return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
+}
+
 export function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
   return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
@@ -626,7 +711,7 @@ export function marcarNaAntologia(antologiaId: number, postId: number, dentro: b
 
 // ---- Acervo: espelha backend/app/schemas/acervo.py ----
 
-export const TIPOS_DO_ACERVO = ["todos", "consagrados", "iniciantes"] as const;
+export const TIPOS_DO_ACERVO = ["todos", "consagrados", "do_verso"] as const;
 export type TipoDoAcervo = (typeof TIPOS_DO_ACERVO)[number];
 
 export const ORDENS_DO_ACERVO = ["alfabetica", "seguidos", "poemas"] as const;

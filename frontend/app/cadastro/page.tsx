@@ -1,6 +1,7 @@
 "use client";
 // Cadastro: cria a conta (POST /auth/registro) e já entra com as mesmas
-// credenciais (POST /auth/login), para a pessoa cair direto no feed.
+// credenciais (POST /auth/login) e leva ao onboarding (/boas-vindas: gostos, região
+// e quem seguir); quem pula tudo cai no Início, na aba "Para você".
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -121,7 +122,7 @@ export default function CadastroPage() {
     try {
       const { token } = await entrar(username, senha);
       salvarToken(token);
-      router.replace("/");
+      router.replace("/boas-vindas");
     } catch {
       setEnviando(false);
       setErroGeral(

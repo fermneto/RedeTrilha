@@ -44,17 +44,17 @@ As validações do Henrique e do Pedro ficam nas issues #57 a #62.
 
 ## Produto (rascunho para o `DECISIONS.md`)
 
-- **Público:** poetas iniciantes universitários (UFPB e outras) que escrevem e
-  não têm onde publicar.
+- **Público:** pessoas que leem e escrevem poesia e querem publicar o poema
+  inteiro e conversar sobre ele (a versão final está no `DECISIONS.md`).
 - **Problema:** no X o limite de caracteres quebra o poema; no Instagram o poema
   vira imagem e não dá para citar um verso; os feeds algorítmicos enterram texto
-  longo. Além disso, o iniciante lê pouco os clássicos.
+  longo. Além disso, quase ninguém lê os clássicos ao lado do que escreve.
 - **Como a rede resolve:** um poema é um post de verdade (título, corpo sem
   limite com as quebras de linha preservadas, forma), com conversa em árvore,
   repost/citação de versos e os **consagrados** (Augusto dos Anjos, Bilac,
   Pessoa...) convivendo no mesmo feed.
-- **Sinal de sucesso:** o iniciante cita um verso de um consagrado ou de um
-  colega e recebe respostas na árvore de comentários.
+- **Sinal de sucesso:** alguém cita um verso de um consagrado ou de outro
+  poeta da rede e recebe respostas na árvore de comentários.
 
 ## Divisão
 
@@ -190,6 +190,41 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   post, 3·id + 1 para estrofe e 3·id (id da renga) para encerramento; o cursor
   continua opaco.
 
+### Feed "Para você", onboarding e sugestões (dono: Neto)
+
+- `GET /feed/para-voce` 🔒 → `FeedPage`, com a mesma paginação (cursor, ou
+  offset com `total`) e os mesmos itens tipados do `GET /feed`, mas da rede
+  inteira (seguidos ou não, inclusive os próprios): poemas e citações; reposts
+  puros, como no X (o poema aparece uma vez, na data do repost mais recente, com
+  `repostado_por`); rengas que não fecharam (na estrofe mais recente, com o
+  rótulo `"abriu"`/`"escreveu"`); poemas de consagrados rareados (o mais recente
+  de cada janela de 3 h); e poemas que receberam comentário, que sobem na data
+  do comentário mais recente. Cronológico pela atividade, sem ranking por
+  engajamento; a mistura fica em `core/mistura.py`. O rótulo é o da atividade
+  mais recente (repost → `repostado_por`; comentário → `comentado_por`).
+- `PoemaNoFeed` ganhou dois campos opcionais, só preenchidos no "Para você":
+  `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
+  nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último
+  primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
+- Desempate do cursor do "Para você": 3·id + 2 para post (poema ou repost
+  puro), 3·id + 1 para estrofe e 3·id para comentário.
+- O bloco "Quem seguir" no meio do "Para você" é só do front (a cada 10 itens,
+  3 perfis de `GET /sugestoes`): não é item do `FeedPage` e não mexe no cursor.
+- Tabela `preferencias` (`user_id` PK, `escolas` JSON, `formas` JSON, `pais`,
+  `uf`): `GET /preferencias` 🔒 e `PUT /preferencias` 🔒 (troca tudo; 422 para
+  escola, forma, país ou UF fora das listas, ou UF sem `pais: "BR"`);
+  `GET /preferencias/opcoes` 🔒 devolve o vocabulário (escolas com rótulo,
+  formas, países e UFs). `ESCOLAS` (15 códigos) fica em `schemas/escola.py`;
+  países (ISO 3166-1 alfa-2) e UFs em `schemas/regiao.py`.
+- Tabela `atributos_consagrado` (`user_id` PK, `escolas` JSON, `pais`): o
+  importador grava os campos opcionais `escolas` e `pais` do JSON do consagrado
+  (`docs/consagrados.md`).
+- `GET /sugestoes?lingua=pt` 🔒 → página de `SugestaoOut` (o `PoetaDoAcervo` +
+  `escolas`): contas com poema, menos a própria pessoa e quem ela segue, na
+  ordem da nota de `core/pontuacao_sugestoes.py` (seguidores em log, escolas e
+  formas em comum, mesma língua, mesmo país e mesmo estado, com pesos em
+  constantes). `lingua` é a do navegador; sem ela, vale a dos poemas da pessoa.
+
 ### Rengas (dono: Neto)
 
 Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
@@ -302,7 +337,7 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 ### Acervo (dono: Neto)
 
-- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `iniciantes`), `q`
+- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `do_verso`), `q`
   (nome ou @username, sem diferença de acento), `lingua` (ISO 639-1), `epoca`
   (`antiguidade`, `idade_media`, `xvi` … `xx`, pelo ano de morte), `ordem`
   (`alfabetica` \| `seguidos` \| `poemas`), `offset` e `limit` (padrão 24) →
@@ -431,7 +466,7 @@ Os IDs são usados nas issues e nos PRs (`[H1] posts CRUD`).
 | N1 | Follow: model `Follow` (`follows`), `POST/DELETE /usuarios/{username}/follow` idempotentes, listas e a função de contagem usada pelo perfil | P0 | H2, P4 | concluída |
 | N2 | **Consagrados**: scraping (fora do repositório) → JSON no formato de `docs/consagrados.md` → `scripts/importar_consagrados.py` idempotente (cria o user sem senha e os poemas) | P1 (campos do User), H1 | N4, N5 | concluída |
 | N3 | **Formas/temas**: índice invertido real em `core/indice_tags.py`, `GET /tags/{tag}/posts`, `GET /tags/trending`, `GET /explorar?tag=&forma=`; tela Explorar com chips de forma e tags clicáveis | H1, H6 (card) | — | concluída |
-| N4 | Seed fake do nicho: mais de 20 poetas iniciantes fictícios (cursos da UFPB na bio), mais de 50 poemas originais, follows (inclusive a consagrados), curtidas, comentários em árvore, reposts e citações; `seed_fake(db)` e `make seed` também importa os consagrados | todos os models (H1, H3, H4, H5, N1, P5) | N5 | concluída |
+| N4 | Seed fake do nicho: mais de 20 poetas fictícios de vários lugares e idades (alguns universitários), mais de 50 poemas originais, follows (inclusive a consagrados), curtidas, comentários em árvore, reposts e citações; `seed_fake(db)` e `make seed` também importa os consagrados | todos os models (H1, H3, H4, H5, N1, P5) | N5 | concluída |
 | N5 | Deploy: Render (backend, `SEED_ON_BOOT=true`, **sem DEBUG**) + Vercel (front) + Supabase (Postgres), CORS com a URL pública | N4 | bônus +10 | pendente, com o Neto (#19) |
 | N6 | Consolidar o `DECISIONS.md` (produto, decisões, escolha técnica e, opcional, `make bench` do índice invertido contra varredura) | — | entrega | concluída |
 

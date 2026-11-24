@@ -19,11 +19,13 @@ from app.routers import (
     follows,
     oficina,
     poema_do_dia,
+    preferencias,
     posts,
     rascunhos,
     rengas,
     reposts,
     saude,
+    sugestoes,
     tags,
     traducao,
     users,
@@ -93,3 +95,5 @@ app.include_router(acervo.router)
 app.include_router(rengas.router)
 app.include_router(oficina.router)
 app.include_router(rascunhos.router)
+app.include_router(sugestoes.router)
+app.include_router(preferencias.router)

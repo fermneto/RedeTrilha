@@ -24,7 +24,7 @@ def _consagrado_com_poemas(username: str, textos: list[str]) -> list[int]:
 
 
 def test_sem_poemas_de_consagrados_da_404(client, como):
-    client.post("/posts", json={"texto": "verso de iniciante"}, headers=como("ana"))
+    client.post("/posts", json={"texto": "verso de quem escreve hoje"}, headers=como("ana"))
     r = client.get("/poemas/do-dia", headers=como("ana"))
     assert r.status_code == 404
 

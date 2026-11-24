@@ -249,11 +249,18 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
           </li>
         ))}
       </ul>
+      <Link
+        href="/sugestoes"
+        className="realce flex min-h-11 items-center rounded-b-2xl px-4 text-sm font-semibold text-destaque"
+      >
+        ver mais poetas para seguir
+      </Link>
     </Bloco>
   );
 }
 
-function LinhaPoeta({ poeta }: { poeta: User }) {
+// Também no bloco "Quem seguir" do feed Para você (QuemSeguirNoFeed).
+export function LinhaPoeta({ poeta }: { poeta: User }) {
   const [sigo, setSigo] = useState(false);
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState(false);

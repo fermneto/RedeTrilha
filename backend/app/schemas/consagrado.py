@@ -9,8 +9,10 @@ from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.schemas.escola import validar_escolas
 from app.schemas.idioma import IDIOMAS
 from app.schemas.post import _validar_forma, _validar_texto
+from app.schemas.regiao import validar_pais
 from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
@@ -96,7 +98,14 @@ class Consagrado(BaseModel):
     avatar_url: AvatarUrl = ""
     nascimento: int | None = None
     morte: int
+    # Opcionais: códigos de ESCOLAS (schemas/escola.py) e o país onde nasceu, nas
+    # fronteiras de hoje (ISO 3166-1 alfa-2; null quando não há como dizer).
+    escolas: list[str] = []
+    pais: str | None = None
     poemas: list[PoemaConsagrado] = Field(min_length=1)
+
+    _escolas = field_validator("escolas")(validar_escolas)
+    _pais = field_validator("pais")(validar_pais)
 
     @field_validator("morte")
     @classmethod

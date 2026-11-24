@@ -1,4 +1,4 @@
-"""Seed do Verso: poetas iniciantes universitários fictícios, os poemas deles e os consagrados.
+"""Seed do Verso: poetas fictícios de vários lugares e idades, os poemas deles e os consagrados.
 
 `seed_fake(db)` cria os poetas de `seed_conteudo.py`, publica os poemas e monta a rede em volta deles: follows, curtidas,
 comentários em árvore (com dois removidos que têm respostas), reposts puros,
@@ -88,7 +88,7 @@ def seed_fake(db: Session, agora: datetime | None = None) -> bool:
     """Popula a rede. Idempotente: se algum usuário do seed já existe, não faz nada.
 
     Devolve se criou. Grava numa transação só (ver `_transacao_unica`) e, ao
-    fim, liga os iniciantes aos consagrados, se já houver algum no banco.
+    fim, liga os poetas do seed aos consagrados, se já houver algum no banco.
     """
     if db.scalar(select(User.id).where(User.username.in_([p.username for p in POETAS]))):
         return False
@@ -100,7 +100,7 @@ def seed_fake(db: Session, agora: datetime | None = None) -> bool:
 
 
 def interagir_com_consagrados(db: Session, agora: datetime | None = None) -> None:
-    """Liga os iniciantes aos consagrados, se houver: follows, curtidas, um repost e uma citação.
+    """Liga os poetas do seed aos consagrados, se houver: follows, curtidas, um repost e uma citação.
 
     Roda depois da importação (no `main`) e no fim do `seed_fake`. Idempotente:
     seguir, curtir e repostar já são; a citação só é feita uma vez.
@@ -134,12 +134,12 @@ def _transacao_unica(db: Session) -> Iterator[Session]:
 def _popular(db: Session, agora: datetime) -> None:
     rng = random.Random(SEMENTE)
     usuarios = _criar_usuarios(db, rng, agora)
-    iniciantes = [usuarios[p.username] for p in POETAS]
+    poetas = [usuarios[p.username] for p in POETAS]
     datas: dict[int, datetime] = {}
     poemas = _publicar_poemas(db, rng, usuarios, datas, agora)
     _citar(db, rng, usuarios, poemas, datas, agora)
-    _seguir(db, rng, iniciantes, agora)
-    reposts = _repostar(db, rng, iniciantes, poemas, datas, agora)
+    _seguir(db, rng, poetas, agora)
+    reposts = _repostar(db, rng, poetas, poemas, datas, agora)
     _curtir(db, rng, list(usuarios.values()), poemas, reposts, datas, agora)
     _comentar(db, usuarios, poemas, datas, agora)
     _montar_antologias(db, usuarios, poemas)
@@ -150,17 +150,17 @@ def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
     consagrados = list(
         db.scalars(select(User).where(User.consagrado.is_(True)).order_by(User.id))
     )
-    iniciantes = list(
+    poetas = list(
         db.scalars(
             select(User)
             .where(User.username.in_([p.username for p in POETAS]))
             .order_by(User.id)
         )
     )
-    if not consagrados or not iniciantes:
+    if not consagrados or not poetas:
         return
     rng = random.Random(SEMENTE + 1)
-    for leitor in iniciantes:
+    for leitor in poetas:
         quantos = CONSAGRADOS_DA_DEMO if leitor.username == CONTA_DEMO else CONSAGRADOS_SEGUIDOS
         for poeta in rng.sample(consagrados, min(quantos, len(consagrados))):
             follows_service.seguir(db, leitor, poeta.username)
@@ -177,10 +177,10 @@ def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
     )
     if not classicos:
         return
-    for leitor in iniciantes:
+    for leitor in poetas:
         for poema in rng.sample(classicos, min(2, len(classicos))):
             curtidas_service.curtir(db, leitor, poema.id)
-    por_username = {u.username: u for u in iniciantes}
+    por_username = {u.username: u for u in poetas}
     reposts_service.repostar(db, por_username["thiago_hist"], classicos[0].id)
 
     citante = por_username[CITACAO_DE_CONSAGRADO.autor]
@@ -286,10 +286,10 @@ def _citar(
         datas[post.id] = momento
 
 
-def _seguir(db: Session, rng: random.Random, iniciantes: list[User], agora: datetime) -> None:
-    """Denso entre os iniciantes: cada um segue de 8 a 15 colegas."""
-    for leitor in iniciantes:
-        outros = [u for u in iniciantes if u is not leitor]
+def _seguir(db: Session, rng: random.Random, poetas: list[User], agora: datetime) -> None:
+    """Denso entre os poetas do seed: cada um segue de 8 a 15 colegas."""
+    for leitor in poetas:
+        outros = [u for u in poetas if u is not leitor]
         for seguido in rng.sample(outros, rng.randint(8, 15)):
             follows_service.seguir(db, leitor, seguido.username)
     for follow in db.scalars(select(Follow).order_by(Follow.id)):
@@ -300,7 +300,7 @@ def _seguir(db: Session, rng: random.Random, iniciantes: list[User], agora: date
 def _repostar(
     db: Session,
     rng: random.Random,
-    iniciantes: list[User],
+    poetas: list[User],
     poemas: dict[str, Post],
     datas: dict[int, datetime],
     agora: datetime,
@@ -308,7 +308,7 @@ def _repostar(
     originais = [p for p in poemas.values() if p.repost_de_id is None]
     reposts = []
     while len(reposts) < REPOSTS_PUROS:
-        leitor, original = rng.choice(iniciantes), rng.choice(originais)
+        leitor, original = rng.choice(poetas), rng.choice(originais)
         if leitor.id == original.autor_id or any(
             r.autor_id == leitor.id and r.repost_de_id == original.id for r in reposts
         ):
