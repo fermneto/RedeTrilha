@@ -28,7 +28,7 @@ def test_seed_on_boot_popula_o_banco_e_o_indice_de_tags(monkeypatch):
 
     Base.metadata.drop_all(engine)
     with _bootar_com_seed(monkeypatch) as c:
-        r = c.post("/auth/login", json={"username": "ada", "password": SENHA_SEED})
+        r = c.post("/auth/login", json={"username": "marina_letras", "password": SENHA_SEED})
         assert r.status_code == 200
         headers = {"Authorization": f"Bearer {r.json()['token']}"}
 

@@ -187,4 +187,8 @@ opcional e não foi rodado; se rodarmos até a entrega, colamos a saída aqui.
   (`core/indice_tags.py`), o follow, as rotas de tags e do Explorar e a
   leitura dos JSONs dos consagrados. Todo código gerado passou por revisão
   humana no PR antes do merge.
+- **Poemas do seed escritos com IA (Claude).** Os 24 poetas iniciantes, os 68
+  poemas, as citações e as conversas de oficina do seed fake
+  (`backend/scripts/seed_conteudo.py`) são fictícios e foram escritos pelo
+  Claude, sem copiar autor real nem imitar poeta vivo, e revisados no PR.
 - **Henrique e Pedro:** _(completar com a ferramenta e o uso de cada um)_

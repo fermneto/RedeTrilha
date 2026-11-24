@@ -118,7 +118,7 @@ Na URL da Vercel, numa janela anônima:
 
 - [ ] `https://verso-api-xxxx.onrender.com/saude` responde `{"ok":true}` (acorda o backend)
 - [ ] **Cadastro:** criar uma conta nova (`/cadastro`)
-- [ ] **Login:** sair e entrar com ela (`/login`); entrar também com `ada` / `verso123`
+- [ ] **Login:** sair e entrar com ela (`/login`); entrar também com a conta de demonstração `marina_letras` / `verso123`
 - [ ] **Post:** publicar um poema com quebras de linha e uma `#tag` (`/escrever`); as quebras aparecem iguais
 - [ ] **Follow:** seguir um consagrado (por exemplo `/u/augusto_dos_anjos`) e outro usuário
 - [ ] **Feed:** a home mostra os poemas de quem você segue

@@ -411,13 +411,15 @@ export function buscarTrending(): Promise<{ items: TagContagem[] }> {
   return apiGet<{ items: TagContagem[] }>("/tags/trending");
 }
 
-// Mesma regra de core/indice_tags.normalizar (casefold e sem acento: "#Solidão" → "solidao"),
-// e fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
+// Equivale a core/indice_tags.normalizar: casefold e sem acento ("#Solidão" → "solidao").
+// O JS não tem casefold; toLowerCase mais "ß" → "ss" cobre a diferença que importa
+// aqui. Depois fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
 export function normalizarTag(termo: string): string {
   return termo
+    .toLowerCase()
+    .replace(/ß/g, "ss")
     .normalize("NFKD")
     .replace(/\p{M}/gu, "")
-    .toLowerCase()
     .replace(/[^a-z0-9_]/g, "");
 }
 

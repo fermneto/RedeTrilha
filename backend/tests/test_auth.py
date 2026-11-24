@@ -147,7 +147,7 @@ def test_usuarios_do_seed_logam_com_a_senha_padrao(client):
 
     seed.main()
     r = client.post(
-        "/auth/login", json={"username": "ada", "password": seed.SENHA_SEED}
+        "/auth/login", json={"username": seed.CONTA_DEMO, "password": seed.SENHA_SEED}
     )
     assert r.status_code == 200
     assert seed.SENHA_SEED == "verso123"
