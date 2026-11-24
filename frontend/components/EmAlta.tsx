@@ -1,6 +1,6 @@
 "use client";
 // "Em alta" como os trends do X: a posição, a #tag, quantos poemas a usaram nas
-// últimas 24 h e o primeiro verso do poema mais novo com ela. A ordem é a do
+// últimas 24 h e o primeiro verso de um poema dela (um poema diferente por tag). A ordem é a do
 // backend (mais poemas na janela), sem curtidas. Usado no Explorar e na coluna direita.
 
 import Link from "next/link";
@@ -9,18 +9,19 @@ import { useEffect, useState } from "react";
 import { buscarTrending, caminhoDaTag, type TagContagem } from "@/lib/api";
 
 // null enquanto carrega; [] quando não há tags (ou a rota falhou).
-export function useEmAlta(): TagContagem[] | null {
+// `quantas`: 10 no Explorar, 5 na coluna direita.
+export function useEmAlta(quantas = 5): TagContagem[] | null {
   const [tags, setTags] = useState<TagContagem[] | null>(null);
 
   useEffect(() => {
     let vivo = true;
-    buscarTrending()
+    buscarTrending(quantas)
       .then((r) => vivo && setTags(r.items))
       .catch(() => vivo && setTags([]));
     return () => {
       vivo = false;
     };
-  }, []);
+  }, [quantas]);
 
   return tags;
 }

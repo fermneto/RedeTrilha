@@ -1,26 +1,25 @@
 "use client";
-// Coluna direita (telas largas): busca por tag, poema do dia, tags em alta e
-// consagrados para seguir. No Explorar, a busca e o "Em alta" já estão no corpo
-// da tela (como no X), então a coluna fica só com os outros dois; abaixo de
-// 1100 px, esses dois vão para o Explorar (DescobrirNoTopo). As três rotas são
-// protegidas: sem login, só a busca.
+// Coluna direita (telas largas): a busca (tags e poetas, a mesma do Explorar),
+// poema do dia, tags em alta e consagrados para seguir. No Explorar, a busca e o
+// "Em alta" já estão no corpo da tela (como no X), então a coluna fica só com os
+// outros dois; abaixo de 1100 px, esses dois vão para o Explorar (DescobrirNoTopo).
+// Todas as rotas, a da busca inclusive, são protegidas: sem login, a coluna fica vazia.
 // Cada bloco some quando não tem o que mostrar (ou quando a rota falha).
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
-import { IconeBuscar } from "@/components/icones/IconeBuscar";
 import {
   buscarEu,
   buscarPoemaDoDia,
   listarSeguindo,
   listarUsuarios,
-  normalizarTag,
   seguir,
   temToken,
   type Post,
@@ -46,9 +45,9 @@ export function ColunaDireita() {
       className="hidden w-[350px] shrink-0 pl-7 min-[1100px]:block"
     >
       <div className="sticky top-0 max-h-dvh space-y-4 overflow-y-auto pb-6 [scrollbar-width:thin]">
-        {noExplorar ? <div aria-hidden="true" className="h-2" /> : <Busca />}
         {logado && (
           <>
+            {noExplorar ? <div aria-hidden="true" className="h-2" /> : <BuscaDoExplorar variante="coluna" />}
             <PoemaDoDia />
             {!noExplorar && <EmAlta />}
             <ConsagradosParaSeguir />
@@ -110,35 +109,6 @@ function IconeSeta({ className }: { className?: string }) {
     <Icone className={className}>
       <path d="M6 9l6 6 6-6" />
     </Icone>
-  );
-}
-
-// Leva a /explorar?tag=<termo normalizado>, como o índice de tags do backend grava.
-function Busca() {
-  const router = useRouter();
-  const [termo, setTermo] = useState("");
-
-  function buscar(e: React.FormEvent) {
-    e.preventDefault();
-    const tag = normalizarTag(termo);
-    if (!tag) return;
-    router.push(`/explorar?tag=${encodeURIComponent(tag)}`);
-  }
-
-  return (
-    <form role="search" onSubmit={buscar} className="pt-2">
-      <label className="group flex h-11 items-center gap-3 rounded-full border border-borda bg-painel px-4 text-tinta-suave focus-within:border-destaque focus-within:bg-papel focus-within:text-destaque">
-        <IconeBuscar className="h-5 w-5 shrink-0" />
-        <span className="sr-only">Buscar poemas por tag</span>
-        <input
-          type="search"
-          value={termo}
-          onChange={(e) => setTermo(e.target.value)}
-          placeholder="Buscar tag"
-          className="w-full bg-transparent text-[0.9375rem] text-tinta outline-none"
-        />
-      </label>
-    </form>
   );
 }
 

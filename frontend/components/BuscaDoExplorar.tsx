@@ -1,9 +1,11 @@
 "use client";
-// Busca do topo do Explorar, como a do X: um campo só que acha tags (GET /tags/busca)
-// e poetas por nome ou @username (GET /acervo?q=, a mesma busca da tela Quem seguir).
+// Busca do topo do Explorar e da coluna direita, como a do X: um campo só que acha
+// tags (GET /tags/busca) e poetas por nome ou @username (GET /acervo?q=, a mesma
+// busca da tela Quem seguir, com quem eu sigo primeiro), mais "ver todos no Acervo".
 // Os resultados vêm agrupados numa lista (combobox do WAI-ARIA): setas sobem e
 // descem, Enter escolhe, Esc fecha. Enter sem opção ativa filtra pela tag digitada,
 // como o campo de tag de antes; "@fulano" + Enter abre o primeiro poeta achado.
+// Fora do Explorar (variante "coluna"), escolher uma tag leva ao Explorar filtrado.
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
@@ -15,6 +17,7 @@ import { IconeFechar } from "@/components/icones/IconeFechar";
 import {
   buscarPoetas,
   buscarTags,
+  caminhoDoAcervoComBusca,
   opcaoVizinha,
   termosDaBusca,
   type PoetaDoAcervo,
@@ -24,20 +27,31 @@ import {
 // Espera da digitação antes de buscar (as duas rotas de uma vez).
 const ESPERA_DA_BUSCA_MS = 250;
 
-type Opcao = { tipo: "tag"; tag: TagEncontrada } | { tipo: "poeta"; poeta: PoetaDoAcervo };
+type Opcao =
+  | { tipo: "tag"; tag: TagEncontrada }
+  | { tipo: "poeta"; poeta: PoetaDoAcervo }
+  | { tipo: "acervo"; q: string };
 
 type Resultados = { tags: TagEncontrada[]; poetas: PoetaDoAcervo[] };
 
 const VAZIO: Resultados = { tags: [], poetas: [] };
 
 export function BuscaDoExplorar({
-  tagAtual,
+  tagAtual = "",
   aoEscolherTag,
+  variante = "topo",
 }: {
-  tagAtual: string;
-  aoEscolherTag: (tag: string) => void;
+  tagAtual?: string;
+  // Sem ela, a tag escolhida abre /explorar?tag= (e apagar não muda de tela).
+  aoEscolherTag?: (tag: string) => void;
+  variante?: "topo" | "coluna";
 }) {
   const router = useRouter();
+  const naColuna = variante === "coluna";
+  const irParaTag = (tag: string) => {
+    if (aoEscolherTag) aoEscolherTag(tag);
+    else if (tag) router.push(`/explorar?tag=${encodeURIComponent(tag)}`);
+  };
   const idCampo = useId();
   const idLista = useId();
   const [termo, setTermo] = useState(tagAtual ? `#${tagAtual}` : "");
@@ -77,10 +91,13 @@ export function BuscaDoExplorar({
     return () => clearTimeout(espera);
   }, [limpo]);
 
+  const termoDoPoeta = termosDaBusca(respondido).poeta;
   const opcoes: Opcao[] = [
     ...resultados.tags.map((tag) => ({ tipo: "tag" as const, tag })),
     ...resultados.poetas.map((poeta) => ({ tipo: "poeta" as const, poeta })),
+    ...(resultados.poetas.length > 0 ? [{ tipo: "acervo" as const, q: termoDoPoeta }] : []),
   ];
+  const indiceDoAcervo = resultados.tags.length + resultados.poetas.length;
   const mostrando = aberta && limpo !== "" && respondido === limpo;
   const idDaOpcao = (i: number) => `${idLista}-${i}`;
 
@@ -89,9 +106,11 @@ export function BuscaDoExplorar({
     setAtiva(-1);
     if (opcao.tipo === "tag") {
       setTermo(`#${opcao.tag.tag}`);
-      aoEscolherTag(opcao.tag.tag);
-    } else {
+      irParaTag(opcao.tag.tag);
+    } else if (opcao.tipo === "poeta") {
       router.push(`/u/${opcao.poeta.username}`);
+    } else {
+      router.push(caminhoDoAcervoComBusca(opcao.q));
     }
   }
 
@@ -104,7 +123,7 @@ export function BuscaDoExplorar({
       return;
     }
     setAberta(false);
-    aoEscolherTag(tag);
+    irParaTag(tag);
   }
 
   function teclar(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -122,7 +141,7 @@ export function BuscaDoExplorar({
   function apagar() {
     setTermo("");
     setAtiva(-1);
-    if (tagAtual) aoEscolherTag("");
+    if (tagAtual) irParaTag("");
     document.getElementById(idCampo)?.focus();
   }
 
@@ -135,7 +154,7 @@ export function BuscaDoExplorar({
           .join(" e ");
 
   return (
-    <form role="search" aria-label="Buscar no Verso" onSubmit={enviar} className="relative px-4 py-2">
+    <form role="search" aria-label="Buscar no Verso" onSubmit={enviar} className={`relative ${naColuna ? "pt-2" : "px-4 py-2"}`}>
       <label htmlFor={idCampo} className="sr-only">
         Buscar tag ou poeta (nome ou @username)
       </label>
@@ -189,7 +208,7 @@ export function BuscaDoExplorar({
         hidden={!mostrando}
         // Clicar numa opção não tira o foco do campo (senão o blur fecharia a lista antes).
         onMouseDown={(e) => e.preventDefault()}
-        className="absolute inset-x-4 top-full z-20 max-h-[min(70dvh,32rem)] overflow-y-auto rounded-xl border border-borda bg-papel-alto py-1 [scrollbar-width:thin]"
+        className={`absolute top-full z-20 ${naColuna ? "inset-x-0 mt-1" : "inset-x-4"} max-h-[min(70dvh,32rem)] overflow-y-auto rounded-xl border border-borda bg-papel-alto py-1 [scrollbar-width:thin]`}
       >
         {opcoes.length === 0 ? (
           <p className="px-4 py-3 text-sm text-tinta-suave">Nenhuma tag ou poeta com “{limpo}”.</p>
@@ -223,6 +242,13 @@ export function BuscaDoExplorar({
                   </OpcaoDaLista>
                 );
               })}
+              <OpcaoDaLista
+                id={idDaOpcao(indiceDoAcervo)}
+                ativa={ativa === indiceDoAcervo}
+                aoEscolher={() => escolher({ tipo: "acervo", q: termoDoPoeta })}
+              >
+                <span className="text-sm font-semibold text-destaque">ver todos no Acervo</span>
+              </OpcaoDaLista>
             </Grupo>
           </>
         )}

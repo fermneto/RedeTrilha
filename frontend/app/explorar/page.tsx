@@ -142,9 +142,12 @@ function Explorar() {
   );
 }
 
+// Quantas tags o "Em alta" mostra aqui (a coluna direita mostra 5).
+const TAGS_EM_ALTA = 10;
+
 // "Em alta" no corpo da tela; some quando não há tags nas últimas 24 h.
 function EmAltaDoExplorar() {
-  const tags = useEmAlta();
+  const tags = useEmAlta(TAGS_EM_ALTA);
   if (!tags || tags.length === 0) return null;
   return (
     <section aria-labelledby="em-alta" className="border-b border-borda pt-3 pb-1">

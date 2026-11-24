@@ -527,8 +527,9 @@ export function buscarPoemaDoDia(): Promise<Post> {
 // escreveu; null quando não há verso com texto (e ausente num backend antigo).
 export type TagContagem = { tag: string; contagem: number; trecho?: string | null };
 
-export function buscarTrending(): Promise<{ items: TagContagem[] }> {
-  return apiGet<{ items: TagContagem[] }>("/tags/trending");
+// `limit` de 1 a 10 (padrão 5, o da coluna direita; o Explorar pede 10).
+export function buscarTrending(limit = 5): Promise<{ items: TagContagem[] }> {
+  return apiGet<{ items: TagContagem[] }>(`/tags/trending?limit=${limit}`);
 }
 
 // Espelha BuscaDeTags: GET /tags/busca?q= devolve até 5 tags que começam pelo
@@ -540,12 +541,18 @@ export function buscarTags(q: string): Promise<{ items: TagEncontrada[] }> {
 }
 
 // Poetas da busca do Explorar: a mesma busca do Acervo (GET /acervo?q=, nome ou
-// @username, sem acento), como na tela Quem seguir, só com menos resultados.
+// @username, sem acento), como na tela Quem seguir, só com menos resultados e
+// quem eu sigo primeiro (sigo_primeiro), depois em ordem alfabética.
 export const POETAS_NA_BUSCA = 5;
 
 export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
-  const params = new URLSearchParams({ q, offset: "0", limit: String(POETAS_NA_BUSCA) });
+  const params = new URLSearchParams({ q, offset: "0", limit: String(POETAS_NA_BUSCA), sigo_primeiro: "true" });
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
+
+// "ver todos no Acervo": a tela do Acervo já abre com a busca pelo ?q=.
+export function caminhoDoAcervoComBusca(q: string): string {
+  return `/acervo?${new URLSearchParams({ q: q.trim() })}`;
 }
 
 // O que o campo do Explorar procura: a tag (normalizada, sem o "#") e o nome ou

@@ -1,4 +1,4 @@
-// Testa termosDaBusca() e opcaoVizinha() de lib/api.ts (a busca do topo do
+// Testa termosDaBusca(), opcaoVizinha() e caminhoDoAcervoComBusca() de lib/api.ts (a busca do topo do
 // Explorar), transpilando o arquivo como em anosDeVida.test.mjs. Rode com `npm test`.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -9,7 +9,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { opcaoVizinha, termosDaBusca } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+const { caminhoDoAcervoComBusca, opcaoVizinha, termosDaBusca } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
 
 test("texto solto procura tag (normalizada) e poeta", () => {
   assert.deepEqual(termosDaBusca("  Saudade "), { tag: "saudade", poeta: "Saudade" });
@@ -28,4 +28,9 @@ test("as setas dão a volta e começam pela ponta certa", () => {
   assert.equal(opcaoVizinha(2, 3, 1), 0);
   assert.equal(opcaoVizinha(0, 3, -1), 2);
   assert.equal(opcaoVizinha(0, 0, 1), -1);
+});
+
+test("ver todos no Acervo abre o Acervo com a busca", () => {
+  assert.equal(caminhoDoAcervoComBusca(" Cecília "), "/acervo?q=Cec%C3%ADlia");
+  assert.equal(caminhoDoAcervoComBusca("ana_"), "/acervo?q=ana_");
 });
