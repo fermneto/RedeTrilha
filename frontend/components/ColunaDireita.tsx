@@ -137,7 +137,8 @@ function linhasDaPrevia(versos: string[]): number | null {
   return VERSOS_DO_DIA;
 }
 
-function EmAlta() {
+// Também no topo do Explorar, nas telas em que esta coluna some.
+export function EmAlta() {
   const [tags, setTags] = useState<TagContagem[]>([]);
 
   useEffect(() => {

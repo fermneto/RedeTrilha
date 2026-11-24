@@ -411,6 +411,25 @@ export function buscarTrending(): Promise<{ items: TagContagem[] }> {
   return apiGet<{ items: TagContagem[] }>("/tags/trending");
 }
 
+export type FiltrosDoExplorar = { tag: string | null; forma: string | null };
+
+// GET /explorar: poemas de todos, mais novo primeiro; tag e forma juntas fazem
+// interseção. A rota pagina por offset e a ListaDePoemas por cursor, então o
+// cursor aqui é o próximo offset em texto, e vira null quando chega ao total.
+export async function buscarExplorar(
+  { tag, forma }: FiltrosDoExplorar,
+  cursor: string | null,
+  limit = 20,
+): Promise<FeedPage> {
+  const offset = cursor === null ? 0 : Number(cursor);
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  if (tag) params.set("tag", tag);
+  if (forma) params.set("forma", forma);
+  const pagina = await apiGet<Page<Post>>(`/explorar?${params}`);
+  const proximo = offset + pagina.limit;
+  return { ...pagina, proximo_cursor: proximo < pagina.total ? String(proximo) : null };
+}
+
 // Equivale a core/indice_tags.normalizar: casefold e sem acento ("#Solidão" → "solidao").
 // O JS não tem casefold; toLowerCase mais "ß" → "ss" cobre a diferença que importa
 // aqui. Depois fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
