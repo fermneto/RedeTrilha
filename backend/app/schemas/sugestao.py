@@ -1,13 +1,13 @@
+from app.schemas.acervo import PoetaDoAcervo
 from app.schemas.pagina import Pagina
-from app.schemas.user import UserOut
 
 
-class SugestaoOut(UserOut):
-    """Uma conta para seguir: o UserOut, quantos poemas a pessoa tem (a conta do
-    perfil) e o começo do poema mais recente dela (None se só escreveu em rengas)."""
+class SugestaoOut(PoetaDoAcervo):
+    """Um cartão de quem seguir: o mesmo do Acervo (contagens e `sigo`, sempre
+    False aqui) mais as escolas da conta (as do JSON do consagrado, ou as que o
+    poeta comum marcou nas preferências)."""
 
-    poemas: int
-    trecho: str | None
+    escolas: list[str]
 
 
 class SugestaoPage(Pagina[SugestaoOut]):

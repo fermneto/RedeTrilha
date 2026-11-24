@@ -102,7 +102,7 @@ def listar(
 
 def opcoes_de_filtro(db: Session) -> FiltrosDoAcervo:
     """As línguas que algum consagrado tem e todas as faixas de época, com contagem."""
-    lingua = _lingua_por_autor()
+    lingua = lingua_por_autor()
     linguas = db.execute(
         select(lingua.c.idioma, func.count())
         .join(User, User.id == lingua.c.user_id)
@@ -152,7 +152,7 @@ def _consulta(filtros: Filtros):
         consulta = consulta.where(~User.consagrado)
     # Língua e época só existem para consagrados: com elas, poeta da rede não entra.
     if filtros.lingua:
-        lingua = _lingua_por_autor()
+        lingua = lingua_por_autor()
         consulta = consulta.join(lingua, lingua.c.user_id == User.id).where(
             User.consagrado, lingua.c.idioma == filtros.lingua
         )
@@ -164,7 +164,7 @@ def _consulta(filtros: Filtros):
     return consulta
 
 
-def _lingua_por_autor():
+def lingua_por_autor():
     """Subquery (user_id, idioma): a língua mais frequente nos poemas autorais de cada
     autor. Empate fica com o código menor em ordem alfabética, para a resposta ser estável."""
     contagem = (
