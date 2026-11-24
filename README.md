@@ -39,6 +39,8 @@ make seed       # cria 3 usuários de exemplo
 make test       # deve mostrar "4 passed, 10 skipped"
 ```
 
+Usuários do seed entram com a senha `verso123`.
+
 Para rodar o projeto, abram dois terminais:
 
 ```bash

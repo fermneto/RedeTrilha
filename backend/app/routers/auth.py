@@ -1,0 +1,38 @@
+from fastapi import APIRouter, Depends, Header
+from sqlalchemy.orm import Session
+
+from app.db import get_db
+from app.deps import get_current_user
+from app.models.user import User
+from app.schemas.auth import LoginIn, RegistroIn, TokenOut
+from app.schemas.user import UserOut
+from app.services import auth as service
+
+router = APIRouter(prefix="/auth", tags=["auth"])
+
+
+@router.post("/registro", response_model=UserOut, status_code=201)
+def registrar(dados: RegistroIn, db: Session = Depends(get_db)):
+    return service.registrar(db, dados)
+
+
+@router.post("/login", response_model=TokenOut)
+def logar(dados: LoginIn, db: Session = Depends(get_db)):
+    return TokenOut(token=service.logar(db, dados))
+
+
+@router.get("/eu", response_model=UserOut)
+def eu(user: User = Depends(get_current_user)):
+    return user
+
+
+@router.post("/logout", status_code=204)
+def deslogar(
+    _: User = Depends(get_current_user),
+    authorization: str | None = Header(default=None),
+    db: Session = Depends(get_db),
+):
+    # Sem Authorization (bypass de DEBUG) não há sessão para apagar.
+    token = service.token_do_header(authorization) if authorization else None
+    if token:
+        service.deslogar(db, token)

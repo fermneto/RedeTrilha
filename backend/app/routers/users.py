@@ -33,5 +33,6 @@ def stats_por_inicial():
 
 @router.post("", response_model=UserOut, status_code=201)
 def criar_usuario(dados: UserCreate, db: Session = Depends(get_db)):
-    # ponytail: criação sem senha — o guia de auth evolui isto para o registro real
+    # slice de exemplo: cria sem senha (password_hash=None, não loga).
+    # Conta com login nasce em POST /auth/registro.
     return service.criar(db, dados)
