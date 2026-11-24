@@ -13,11 +13,31 @@ from sqlalchemy import select
 
 from app.db import Base, SessionLocal, engine
 from app.models.user import User
+from app.services.auth import gerar_hash
+
+# Todo usuário de exemplo entra com esta senha (README, "Como começar").
+# Consagrados não passam por aqui: ficam com password_hash=None, sem login.
+SENHA_SEED = "verso123"
 
 USUARIOS = [
-    User(username="ada", name="Ada Lovelace", bio="a primeira a programar"),
-    User(username="linus", name="Linus Torvalds", bio="just for fun"),
-    User(username="grace", name="Grace Hopper", bio="caçadora de bugs literais"),
+    User(
+        username="ada",
+        name="Ada Lovelace",
+        bio="a primeira a programar",
+        password_hash=gerar_hash(SENHA_SEED),
+    ),
+    User(
+        username="linus",
+        name="Linus Torvalds",
+        bio="just for fun",
+        password_hash=gerar_hash(SENHA_SEED),
+    ),
+    User(
+        username="grace",
+        name="Grace Hopper",
+        bio="caçadora de bugs literais",
+        password_hash=gerar_hash(SENHA_SEED),
+    ),
 ]
 
 
