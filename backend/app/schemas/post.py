@@ -33,6 +33,8 @@ class PostCreate(BaseModel):
     titulo: str | None = Field(default=None, max_length=200)
     texto: str
     forma: str | None = None
+    # Com texto, é citação do poema `repost_de_id` (repost puro é POST /posts/{id}/repostar).
+    repost_de_id: int | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)
@@ -68,6 +70,8 @@ class PostOut(BaseModel):
     curti: bool = False
     repostei: bool = False
     repost_de: "PostOut | None" = None
+    # Citação de um poema que o autor apagou: `repost_de` vem None.
+    repost_removido: bool = False
     tags: list[str] = []
     # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
     repostado_por: list[UserOut] = []

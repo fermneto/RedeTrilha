@@ -15,6 +15,7 @@ from app.routers import (
     feed,
     follows,
     posts,
+    reposts,
     tags,
     users,
 )
@@ -51,5 +52,6 @@ app.include_router(tags.router)
 app.include_router(auth.router)
 app.include_router(curtidas.router)
 app.include_router(feed.router)
+app.include_router(reposts.router)
 app.include_router(antologias.router)
 app.include_router(comentarios.router)
