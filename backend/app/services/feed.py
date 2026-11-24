@@ -44,8 +44,10 @@ página, uma para os usuários dos rótulos e duas para as curtidas, todas
 O(limit), mais o detalhe de cada renga da página.
 """
 
+from collections.abc import Callable
+from dataclasses import dataclass
 from datetime import datetime
-from typing import Literal, NamedTuple
+from typing import Generic, Literal, NamedTuple, TypeVar
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session, aliased
@@ -54,6 +56,7 @@ from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
+from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 from app.services import rengas as rengas_service
 from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
@@ -61,6 +64,8 @@ from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
 Acao = Literal["poema", "repost", "abriu", "escreveu", "encerrou"]
+Posicao = tuple[datetime, int]
+T = TypeVar("T")
 
 # Desempate entre os três tipos de origem com a mesma data (ver o docstring).
 _DESEMPATE: dict[str, int] = {
@@ -88,7 +93,7 @@ class Ocorrencia(NamedTuple):
     created_at: datetime
 
     @property
-    def posicao(self) -> tuple[datetime, int]:
+    def posicao(self) -> Posicao:
         return (utc_sem_fuso(self.created_at), 3 * self.origem_id + _DESEMPATE[self.acao])
 
 
@@ -100,6 +105,29 @@ class Item(NamedTuple):
 
     ocorrencia: Ocorrencia
     por: list[int]
+
+
+@dataclass
+class Recorte(Generic[T]):
+    """Um pedaço da lista de itens: a página e o que a paginação devolve."""
+
+    pagina: list[T]
+    offset: int
+    total: int | None
+    tem_mais: bool
+
+
+class Linha(NamedTuple):
+    """O que `montar_pagina` precisa de um item do feed, seja de que feed for.
+
+    `por` são os ids do rótulo (quem repostou, comentou, escreveu estrofe).
+    """
+
+    tipo: Literal["poema", "renga"]
+    alvo_id: int
+    acao: str
+    por: list[int]
+    posicao: Posicao
 
 
 def feed(
@@ -126,24 +154,21 @@ def pagina_dos_autores(
     if com_encerramentos:
         ocorrencias += _ocorrencias_de_encerramentos(db, autores)
     ocorrencias.sort(key=lambda o: o.posicao, reverse=True)
-    itens = _deduplicar(ocorrencias)
-    if cursor is not None:
-        depois = ler_cursor(cursor)
-        offset = next(
-            (i for i, item in enumerate(itens) if item.ocorrencia.posicao < depois),
-            len(itens),
-        )
-    pagina = itens[offset : offset + limit]
-    tem_mais = offset + limit < len(itens)
-    return FeedPage(
-        items=_montar(db, pagina, usuario),
-        total=None if cursor is not None else len(itens),
-        offset=offset,
-        limit=limit,
-        proximo_cursor=(
-            codificar_cursor(*pagina[-1].ocorrencia.posicao) if pagina and tem_mais else None
-        ),
+    recorte = recortar(
+        _deduplicar(ocorrencias), lambda item: item.ocorrencia.posicao, offset, limit, cursor
     )
+    return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
+
+
+def _linha(item: Item) -> Linha:
+    ocorrencia = item.ocorrencia
+    return Linha(
+        ocorrencia.tipo, ocorrencia.alvo_id, ocorrencia.acao, item.por, ocorrencia.posicao
+    )
+
+
+def _poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
+    return PoemaNoFeed(**{**saida.model_dump(), "repostado_por": rotulo})
 
 
 def _ocorrencias_de_posts(db: Session, autores: list[int]) -> list[Ocorrencia]:
@@ -229,29 +254,68 @@ def _deduplicar(ocorrencias: list[Ocorrencia]) -> list[Item]:
     return itens
 
 
-def _montar(db: Session, pagina: list[Item], usuario: User) -> list[PoemaNoFeed | RengaNoFeed]:
-    poemas = [item for item in pagina if item.ocorrencia.tipo == "poema"]
-    ids = {item.ocorrencia.alvo_id for item in poemas}
+def recortar(
+    itens: list[T],
+    posicao: Callable[[T], Posicao],
+    offset: int,
+    limit: int,
+    cursor: str | None,
+) -> Recorte[T]:
+    """A página de `limit` itens (do mais novo para o mais antigo) a partir do `offset`,
+    ou de depois do `cursor`, que tem precedência (o `total` vira None e o `offset`
+    é a posição real do primeiro item). Público para o feed "Para você". O(n)."""
+    if cursor is not None:
+        depois = ler_cursor(cursor)
+        offset = next((i for i, item in enumerate(itens) if posicao(item) < depois), len(itens))
+    return Recorte(
+        pagina=itens[offset : offset + limit],
+        offset=offset,
+        total=None if cursor is not None else len(itens),
+        tem_mais=offset + limit < len(itens),
+    )
+
+
+def montar_pagina(
+    db: Session,
+    usuario: User,
+    recorte: Recorte[T],
+    limit: int,
+    para_linha: Callable[[T], Linha],
+    para_poema: Callable[[PostOut, list[UserOut], str], PoemaNoFeed],
+) -> FeedPage:
+    """Monta o FeedPage de um recorte: os posts da página numa query, os usuários dos
+    rótulos noutra, o detalhe de cada renga. `para_poema` recebe o poema, o rótulo e
+    a ação, e devolve o `PoemaNoFeed` do feed em questão. Público para o "Para você"."""
+    pagina = [para_linha(item) for item in recorte.pagina]
+    poemas = [linha for linha in pagina if linha.tipo == "poema"]
+    ids = {linha.alvo_id for linha in poemas}
     por_id = {post.id: post for post in db.scalars(select(Post).where(Post.id.in_(ids)))}
-    ids_do_rotulo = {autor_id for item in pagina for autor_id in item.por}
+    ids_do_rotulo = {autor_id for linha in pagina for autor_id in linha.por}
     usuarios = {
         user.id: UserOut.model_validate(user)
         for user in db.scalars(select(User).where(User.id.in_(ids_do_rotulo)))
     }
-    saidas = iter(para_saidas(db, [por_id[item.ocorrencia.alvo_id] for item in poemas], usuario))
+    saidas = iter(para_saidas(db, [por_id[linha.alvo_id] for linha in poemas], usuario))
 
     itens: list[PoemaNoFeed | RengaNoFeed] = []
-    for item in pagina:
-        rotulo = [usuarios[autor_id] for autor_id in item.por]
-        if item.ocorrencia.tipo == "poema":
-            saida = next(saidas)
-            itens.append(PoemaNoFeed(**{**saida.model_dump(), "repostado_por": rotulo}))
+    for linha in pagina:
+        rotulo = [usuarios[autor_id] for autor_id in linha.por]
+        if linha.tipo == "poema":
+            itens.append(para_poema(next(saidas), rotulo, linha.acao))
         else:
             itens.append(
                 RengaNoFeed(
-                    renga=rengas_service.detalhar(db, usuario, item.ocorrencia.alvo_id),
-                    atividade=item.ocorrencia.acao,
+                    renga=rengas_service.detalhar(db, usuario, linha.alvo_id),
+                    atividade=linha.acao,
                     por=rotulo,
                 )
             )
-    return itens
+    return FeedPage(
+        items=itens,
+        total=recorte.total,
+        offset=recorte.offset,
+        limit=limit,
+        proximo_cursor=(
+            codificar_cursor(*pagina[-1].posicao) if pagina and recorte.tem_mais else None
+        ),
+    )

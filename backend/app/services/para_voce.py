@@ -21,8 +21,8 @@ Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave) que
 tem precedência sobre o offset e devolve `total` None.
 
 Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + estrofes das rengas
-abertas + comentários, carregados só com ids e datas (sem o texto); depois as
-mesmas queries O(limit) do feed Seguindo para montar a página.
+abertas + comentários, carregados só com ids e datas (sem o texto); depois a
+mesma montagem O(limit) do feed Seguindo (`montar_pagina`, em `services/feed.py`).
 """
 
 from datetime import timedelta
@@ -36,11 +36,11 @@ from app.models.comentario import Comentario
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.user import User
-from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
+from app.schemas.feed import FeedPage, PoemaNoFeed
+from app.schemas.post import PostOut
 from app.schemas.user import UserOut
-from app.services import rengas as rengas_service
-from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
-from app.services.posts import para_saidas
+from app.services.cursor import utc_sem_fuso
+from app.services.feed import Linha, montar_pagina, recortar
 
 # PROVISÓRIO (o Neto decide o equilíbrio): dos poemas de consagrados, entra só o
 # mais recente de cada janela de 3 horas, uns 8 por dia, para os milhares de
@@ -56,23 +56,15 @@ def feed(
         [*_poemas(db), *_reposts(db), *_estrofes_abertas(db), *_comentarios(db)],
         int(JANELA_DO_CONSAGRADO.total_seconds()),
     )
-    itens = misturar(atividades)
-    if cursor is not None:
-        depois = ler_cursor(cursor)
-        offset = next(
-            (i for i, item in enumerate(itens) if item.atividade.posicao < depois), len(itens)
-        )
-    pagina = itens[offset : offset + limit]
-    tem_mais = offset + limit < len(itens)
-    return FeedPage(
-        items=_montar(db, pagina, usuario),
-        total=None if cursor is not None else len(itens),
-        offset=offset,
-        limit=limit,
-        proximo_cursor=(
-            codificar_cursor(*pagina[-1].atividade.posicao) if pagina and tem_mais else None
-        ),
+    recorte = recortar(
+        misturar(atividades), lambda item: item.atividade.posicao, offset, limit, cursor
     )
+    return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
+
+
+def _linha(item: ItemMisturado) -> Linha:
+    atividade = item.atividade
+    return Linha(atividade.tipo, atividade.alvo_id, atividade.acao, item.por, atividade.posicao)
 
 
 def _poemas(db: Session) -> list[Atividade]:
@@ -158,40 +150,9 @@ def _comentarios(db: Session) -> list[Atividade]:
 _SUBIU_POR = {"comentou": "comentario", "criticou": "critica"}
 
 
-def _montar(
-    db: Session, pagina: list[ItemMisturado], usuario: User
-) -> list[PoemaNoFeed | RengaNoFeed]:
-    poemas = [item for item in pagina if item.atividade.tipo == "poema"]
-    ids = {item.atividade.alvo_id for item in poemas}
-    por_id = {post.id: post for post in db.scalars(select(Post).where(Post.id.in_(ids)))}
-    ids_do_rotulo = {autor_id for item in pagina for autor_id in item.por}
-    usuarios = {
-        user.id: UserOut.model_validate(user)
-        for user in db.scalars(select(User).where(User.id.in_(ids_do_rotulo)))
-    }
-    saidas = iter(para_saidas(db, [por_id[item.atividade.alvo_id] for item in poemas], usuario))
-
-    itens: list[PoemaNoFeed | RengaNoFeed] = []
-    for item in pagina:
-        rotulo = [usuarios[autor_id] for autor_id in item.por]
-        acao = item.atividade.acao
-        if item.atividade.tipo == "poema":
-            itens.append(
-                PoemaNoFeed(
-                    **{
-                        **next(saidas).model_dump(),
-                        "repostado_por": rotulo if acao == "repostou" else [],
-                    },
-                    subiu_por=_SUBIU_POR.get(acao),
-                    comentado_por=rotulo if acao in _SUBIU_POR else [],
-                )
-            )
-        else:
-            itens.append(
-                RengaNoFeed(
-                    renga=rengas_service.detalhar(db, usuario, item.atividade.alvo_id),
-                    atividade=acao,
-                    por=rotulo,
-                )
-            )
-    return itens
+def _poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
+    return PoemaNoFeed(
+        **{**saida.model_dump(), "repostado_por": rotulo if acao == "repostou" else []},
+        subiu_por=_SUBIU_POR.get(acao),
+        comentado_por=rotulo if acao in _SUBIU_POR else [],
+    )
