@@ -1,8 +1,9 @@
-from datetime import UTC, datetime
+from datetime import datetime
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datas import agora_utc
 from app.db import Base
 
 
@@ -19,6 +20,4 @@ class User(Base):
     consagrado: Mapped[bool] = mapped_column(default=False)
     nascimento: Mapped[int | None] = mapped_column(default=None)
     morte: Mapped[int | None] = mapped_column(default=None)
-    created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(UTC)
-    )
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)

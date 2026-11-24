@@ -1,14 +1,11 @@
-from datetime import UTC, datetime
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datas import agora_utc
 from app.db import Base
 from app.models.user import User
-
-
-def _agora() -> datetime:
-    return datetime.now(UTC)
 
 
 class Antologia(Base):
@@ -22,7 +19,7 @@ class Antologia(Base):
     descricao: Mapped[str | None] = mapped_column(Text, default=None)
     # Privada só existe para o dono: para os outros, dá 404 (não revela que existe).
     publica: Mapped[bool] = mapped_column(default=True)
-    created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc, index=True)
 
     dono: Mapped[User] = relationship(lazy="joined")
 
@@ -40,4 +37,4 @@ class AntologiaPoema(Base):
     antologia_id: Mapped[int] = mapped_column(ForeignKey("antologias.id"), index=True)
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"), index=True)
     posicao: Mapped[int]
-    created_at: Mapped[datetime] = mapped_column(default=_agora)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)

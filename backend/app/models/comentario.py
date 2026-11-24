@@ -1,8 +1,9 @@
-from datetime import UTC, datetime
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datas import agora_utc
 from app.db import Base
 from app.models.user import User
 
@@ -21,8 +22,6 @@ class Comentario(Base):
     )
     # Apagado com respostas: fica como marcador, de texto vazio, para a conversa não sumir.
     removido: Mapped[bool] = mapped_column(default=False)
-    created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(UTC), index=True
-    )
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc, index=True)
 
     autor: Mapped[User] = relationship(lazy="joined")

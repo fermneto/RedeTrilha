@@ -1,8 +1,9 @@
-from datetime import UTC, datetime
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datas import agora_utc
 from app.db import Base
 
 
@@ -15,6 +16,4 @@ class Follow(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     seguidor_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
     seguido_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
-    created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(UTC)
-    )
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)

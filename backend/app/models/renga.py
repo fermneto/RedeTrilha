@@ -4,17 +4,14 @@ Três tabelas novas, sem coluna a mais nas antigas (o `create_all` do Postgres
 de produção não acrescenta coluna em tabela que já existe).
 """
 
-from datetime import UTC, datetime
+from datetime import datetime
 
 from sqlalchemy import ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datas import agora_utc
 from app.db import Base
 from app.models.user import User
-
-
-def _agora() -> datetime:
-    return datetime.now(UTC)
 
 
 class Renga(Base):
@@ -33,7 +30,7 @@ class Renga(Base):
     # Só quando o criador encerra (fechar pelo limite não preenche): é atividade
     # dele no feed ("fulano encerrou a renga").
     encerrada_em: Mapped[datetime | None] = mapped_column(default=None)
-    created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc, index=True)
 
     criador: Mapped[User] = relationship(lazy="joined")
 
@@ -54,7 +51,7 @@ class EstrofeRenga(Base):
     posicao: Mapped[int]
     # Sem limite e gravado como veio: as quebras e os recuos são do poema.
     texto: Mapped[str] = mapped_column(Text)
-    created_at: Mapped[datetime] = mapped_column(default=_agora)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)
 
     autor: Mapped[User] = relationship(lazy="joined")
 
@@ -68,6 +65,6 @@ class ConviteRenga(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     renga_id: Mapped[int] = mapped_column(ForeignKey("rengas.id"), index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
-    created_at: Mapped[datetime] = mapped_column(default=_agora)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)
 
     usuario: Mapped[User] = relationship(lazy="joined")
