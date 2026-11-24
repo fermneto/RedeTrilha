@@ -3,7 +3,7 @@
 // minhas antologias (marcar/desmarcar põe e tira o poema) e "+ nova antologia".
 // Fecha com Esc (o foco volta ao botão), clique fora ou quando o foco sai dele.
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 import { SwitchPublica } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
@@ -93,6 +93,14 @@ export function AntologiaSeletor({ postId, classeBotao, classeCirculo, classeIco
 // Cada antologia com a marca de "o poema está nela".
 type Linha = AntologiaMarcada;
 
+// Onde a tela acaba para o popover: no celular, a barra de navegação fixa
+// cobre o fim da tela, então o limite é o topo dela.
+function fimDaTela(): number {
+  const barra = document.querySelector<HTMLElement>('nav[aria-label="Principal"]');
+  const topo = barra && getComputedStyle(barra).position === "fixed" ? barra.getBoundingClientRect().top : 0;
+  return topo > 0 ? topo : window.innerHeight;
+}
+
 function Popover({ id, postId }: { id: string; postId: number }) {
   const [linhas, setLinhas] = useState<Linha[] | null>(null);
   const [erro, setErro] = useState<string | null>(null);
@@ -104,6 +112,18 @@ function Popover({ id, postId }: { id: string; postId: number }) {
   const campoNome = useRef<HTMLInputElement>(null);
   const idTitulo = useId();
   const idSwitch = useId();
+  // Abre para cima quando não cabe embaixo do botão (e em cima há mais espaço).
+  const [paraCima, setParaCima] = useState(false);
+
+  // Mede de novo quando o popover muda de altura (carregou, abriu a criação, erro).
+  useLayoutEffect(() => {
+    const ancora = painel.current?.parentElement?.getBoundingClientRect();
+    const altura = painel.current?.offsetHeight ?? 0;
+    if (!ancora) return;
+    const abaixo = fimDaTela() - ancora.bottom;
+    const acima = ancora.top;
+    setParaCima(altura + 8 > abaixo && acima > abaixo);
+  }, [linhas, criando, erro]);
 
   // Uma requisição por abertura: o backend já diz em quais o poema está.
   useEffect(() => {
@@ -195,7 +215,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
       role="dialog"
       aria-labelledby={idTitulo}
       tabIndex={-1}
-      className="absolute top-full right-0 z-20 mt-1 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-borda bg-papel-alto p-2 text-sm text-tinta shadow-lg focus:outline-none"
+      className={`absolute right-0 z-20 ${paraCima ? "bottom-full mb-1" : "top-full mt-1"} w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-borda bg-papel-alto p-2 text-sm text-tinta shadow-lg focus:outline-none`}
     >
       <p id={idTitulo} className="px-2 pt-1 pb-2 font-bold">
         Adicionar à antologia
