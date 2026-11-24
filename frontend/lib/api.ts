@@ -378,8 +378,15 @@ export function comentar(postId: number, texto: string, parentId: number | null)
   return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
 }
 
-export function apagarComentario(id: number): Promise<void> {
-  return apiDelete(`/comentarios/${id}`);
+// Espelha ComentarioApagadoOut: "apagado" saiu do banco (não tinha respostas);
+// "removido" virou o marcador. `total_respostas` é a contagem atual do backend.
+export type ComentarioApagado = {
+  resultado: "apagado" | "removido";
+  total_respostas: number;
+};
+
+export function apagarComentario(id: number): Promise<ComentarioApagado> {
+  return apiDelete<ComentarioApagado>(`/comentarios/${id}`);
 }
 
 // Usuário da sessão (o botão "apagar" só aparece para o autor do comentário).

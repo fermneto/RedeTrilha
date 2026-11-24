@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, field_validator
 
@@ -47,3 +48,15 @@ class ComentarioPage(BaseModel):
     total: int
     limit: int
     proximo_cursor: str | None = None
+
+
+class ComentarioApagadoOut(BaseModel):
+    """O que o DELETE fez, para o front não precisar perguntar de novo.
+
+    `resultado` é "apagado" (sem respostas, saiu do banco) ou "removido" (tinha
+    respostas e virou o marcador "comentário removido"). `total_respostas` é a
+    contagem atual das respostas diretas (0 quando apagado).
+    """
+
+    resultado: Literal["apagado", "removido"]
+    total_respostas: int

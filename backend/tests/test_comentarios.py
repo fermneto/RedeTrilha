@@ -194,7 +194,9 @@ def test_apagar_sem_respostas_tira_do_banco(client, como):
     url = f"/comentarios/{comentario['id']}"
     assert client.delete(url, headers=como("bia")).status_code == 403
     assert client.delete("/comentarios/999", headers=como("ana")).status_code == 404
-    assert client.delete(url, headers=como("ana")).status_code == 204
+    r = client.delete(url, headers=como("ana"))
+    assert r.status_code == 200
+    assert r.json() == {"resultado": "apagado", "total_respostas": 0}
 
     with SessionLocal() as db:
         assert db.get(Comentario, comentario["id"]) is None
@@ -205,12 +207,15 @@ def test_apagar_com_respostas_deixa_marcador(client, como):
     post_id = _poema(client, como)
     raiz = _comentar(client, como, post_id, "segredo").json()
     _comentar(client, como, post_id, "resposta", raiz["id"], "bia")
+    _comentar(client, como, post_id, "outra", raiz["id"], "caio")
 
-    assert client.delete(f"/comentarios/{raiz['id']}", headers=como("ana")).status_code == 204
+    r = client.delete(f"/comentarios/{raiz['id']}", headers=como("ana"))
+    assert r.status_code == 200
+    assert r.json() == {"resultado": "removido", "total_respostas": 2}
 
     item = _pagina(client, como, f"/posts/{post_id}/comentarios", 20)["items"][0]
     assert (item["texto"], item["autor"], item["removido"]) == ("", None, True)
-    assert [c["texto"] for c in item["respostas"]] == ["resposta"]
+    assert [c["texto"] for c in item["respostas"]] == ["resposta", "outra"]
     assert item["respostas"][0]["removido"] is False
     assert _comentar(client, como, post_id, "oi", raiz["id"], "caio").status_code == 404
 

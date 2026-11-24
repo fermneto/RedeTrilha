@@ -14,7 +14,6 @@ import {
   buscarComentarios,
   buscarRespostas,
   comentar,
-  ErroDaApi,
   formatarData,
   type Comentario,
   type User,
@@ -192,19 +191,15 @@ function ItemComentario({
     setConfirmando(false);
     setOcupado(true);
     try {
-      await apagarComentario(comentario.id);
       // Com respostas, o backend deixa o marcador; sem, o comentário sai do banco.
-      // O total da tela pode estar velho (alguém respondeu depois de carregar),
-      // então pergunta ao backend: 404 nas respostas = sumiu; 200 = marcador.
-      try {
-        const pagina = await buscarRespostas(comentario.id, null);
-        setRemovido(true);
-        setRespostas((atuais) => semRepetir(atuais, pagina.items));
-        setTotal(pagina.total);
-        setCursor(pagina.proximo_cursor);
-      } catch (e) {
-        if (!(e instanceof ErroDaApi && e.status === 404)) throw e;
+      // A resposta diz qual dos dois e traz o total atual, que pode ser maior que
+      // o da tela (alguém respondeu depois): aí aparece o "ver mais respostas".
+      const { resultado, total_respostas } = await apagarComentario(comentario.id);
+      if (resultado === "apagado") {
         aoSumir(comentario.id);
+      } else {
+        setRemovido(true);
+        setTotal(total_respostas);
       }
       aoMudar();
     } catch (e) {
