@@ -280,13 +280,23 @@ export function cadastrar(dados: NovoCadastro): Promise<User> {
   return apiPost<User>("/auth/registro", dados);
 }
 
-// Para onde ir depois do login. Só caminhos internos ("/feed", "/poema/3"):
-// "//site.com" e "/\site.com" levariam para fora do Verso (open redirect).
-export function destinoSeguro(proximo: string | null): string {
-  if (!proximo || !proximo.startsWith("/") || proximo.startsWith("//") || proximo.startsWith("/\\")) {
+// Caracteres de controle (TAB, quebra de linha...): o navegador os apaga da URL,
+// e "/\t/site.com" viraria "//site.com".
+const CONTROLE = /[\u0000-\u001F\u007F]/;
+
+// Para onde ir depois do login. Só caminhos do próprio Verso ("/feed", "/poema/3"):
+// em vez de adivinhar os truques ("//site.com", "/\site.com"), resolve a URL como
+// o navegador faria e confere a origem (open redirect).
+export function destinoSeguro(proximo: unknown): string {
+  if (typeof window === "undefined") return "/";
+  if (typeof proximo !== "string" || !proximo.startsWith("/") || CONTROLE.test(proximo)) return "/";
+  try {
+    const url = new URL(proximo, window.location.origin);
+    if (url.origin !== window.location.origin) return "/";
+    return url.pathname + url.search + url.hash;
+  } catch {
     return "/";
   }
-  return proximo;
 }
 
 // "/login?proximo=<página atual>", para voltar a ela depois de entrar.
