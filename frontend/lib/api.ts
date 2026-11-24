@@ -386,9 +386,11 @@ export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage>
 }
 
 // Aba "Para você": a rede inteira (seguidos ou não), cronológica pela atividade.
+// `lingua` (a do navegador) escolhe o consagrado de cada janela de 3 h.
 export function buscarParaVoce(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
+  comLinguaDoNavegador(params);
   return apiGet<FeedPage>(`/feed/para-voce?${params}`);
 }
 
@@ -577,8 +579,7 @@ export type Sugestao = PoetaDoAcervo & { escolas: string[] };
 // Ordem pela nota do backend (core/pontuacao_sugestoes.py); `lingua` é a do navegador.
 export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
   const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
-  const lingua = idiomaDoNavegador();
-  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
+  comLinguaDoNavegador(params);
   return apiGet<Page<Sugestao>>(`/sugestoes?${params}`);
 }
 
@@ -655,6 +656,13 @@ export function traduzirPoema(id: number, para: string): Promise<Traducao> {
 export function idiomaDoNavegador(): string | null {
   if (typeof navigator === "undefined" || !navigator.language) return null;
   return navigator.language.split("-")[0].toLowerCase();
+}
+
+// `?lingua=` com a língua do navegador, se for um código ISO 639-1; sem ela, o
+// backend usa a língua dos poemas da própria pessoa.
+function comLinguaDoNavegador(params: URLSearchParams): void {
+  const lingua = idiomaDoNavegador();
+  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
 }
 
 // Nome da língua em português ("en" → "inglês"); o próprio código se o navegador não souber.

@@ -7,8 +7,9 @@ Mistura, de todos os poetas (seguidos ou não, inclusive a própria pessoa):
   "repostado por" (todos que repostaram, por último primeiro), uma vez só;
 - rengas abertas, na estrofe mais recente ("fulano abriu uma renga" /
   "fulano escreveu uma estrofe", como no feed Seguindo);
-- poemas de consagrados, rareados, com os em português na frente (ver
-  `JANELA_DO_CONSAGRADO`);
+- poemas de consagrados, rareados, com os da língua de quem vê na frente (ver
+  `JANELA_DO_CONSAGRADO`): a do navegador (`lingua`) ou, sem ela, a mais
+  frequente nos poemas da própria pessoa, como nas sugestões;
 - poemas que receberam comentário ou crítica: o poema sobe com o comentário
   mais recente e o rótulo "fulano comentou" ("subiu_por" e "comentado_por").
 
@@ -40,23 +41,30 @@ from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
+from app.services.acervo import lingua_de_quem_ve
 from app.services.cursor import utc_sem_fuso
 from app.services.feed import Linha, montar_pagina, recortar
 
-# Dos poemas de consagrados, entra só um
-# de cada janela de 3 horas, uns 8 por dia, para os milhares de poemas do acervo
-# não afogarem os poetas da rede: o mais recente em português, se a janela tiver
-# algum, senão o mais recente. Comentário em poema de consagrado sobe o poema do
-# mesmo jeito, fora dessa conta.
+# Dos poemas de consagrados, entra só um de cada janela de 3 horas, uns 8 por
+# dia, para os milhares de poemas do acervo não afogarem os poetas da rede: o
+# mais recente na língua de quem vê, se a janela tiver algum, senão o mais
+# recente. Comentário em poema de consagrado sobe o poema do mesmo jeito, fora
+# dessa conta.
 JANELA_DO_CONSAGRADO = timedelta(hours=3)
 
 
 def feed(
-    db: Session, usuario: User, offset: int, limit: int, cursor: str | None = None
+    db: Session,
+    usuario: User,
+    offset: int,
+    limit: int,
+    cursor: str | None = None,
+    lingua: str | None = None,
 ) -> FeedPage:
     atividades = rarear_consagrados(
         [*_poemas(db), *_reposts(db), *_estrofes_abertas(db), *_comentarios(db)],
         int(JANELA_DO_CONSAGRADO.total_seconds()),
+        lingua_de_quem_ve(db, usuario, lingua),
     )
     recorte = recortar(
         misturar(atividades), lambda item: item.atividade.posicao, offset, limit, cursor
@@ -85,7 +93,7 @@ def _poemas(db: Session) -> list[Atividade]:
             autor_id,
             utc_sem_fuso(criado),
             consagrado,
-            idioma == "pt",
+            idioma,
         )
         for post_id, autor_id, consagrado, criado, idioma in linhas
     ]

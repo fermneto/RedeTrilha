@@ -185,6 +185,15 @@ def lingua_por_autor():
     )
 
 
+def lingua_de_quem_ve(db: Session, usuario: User, lingua: str | None) -> str | None:
+    """A língua de quem vê: a do navegador (`lingua`) ou, sem ela, a mais frequente nos
+    poemas da própria pessoa (None se ela não tem poema com idioma)."""
+    if lingua is not None:
+        return lingua
+    propria = lingua_por_autor()
+    return db.scalar(select(propria.c.idioma).where(propria.c.user_id == usuario.id))
+
+
 def _epoca_sql():
     """A chave da faixa do ano de morte, em SQL; None sem morte ou fora das faixas."""
     return case(
