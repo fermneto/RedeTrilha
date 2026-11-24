@@ -347,6 +347,14 @@ export function caminhoDoLogin(): string {
   return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
 }
 
+// "/boas-vindas?voltar=<página atual>": as preferências pelo menu da conta, que
+// voltam para onde a pessoa estava. Vindo do próprio onboarding, volta ao perfil.
+export function caminhoDasPreferencias(atual: string, username: string): string {
+  const noOnboarding = /^\/(boas-vindas|sugestoes)(?=[/?#]|$)/.test(atual);
+  const voltar = noOnboarding ? `/u/${username}` : atual;
+  return `/boas-vindas?voltar=${encodeURIComponent(voltar)}`;
+}
+
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
