@@ -226,6 +226,11 @@ Convenções:
 - `GET` 🔒 `/posts/{id}/comentarios` → `200`,
   `{"items": [comentário com respostas recursivas]}`.
 - Parent inexistente ou de outro post → `404`.
+- `DELETE` 🔒 `/comentarios/{id}` (só o autor; outro → `403`) → `200`,
+  `{"resultado": "apagado" | "removido", "total_respostas": int}`. Sem
+  respostas, o comentário sai do banco (`"apagado"`); com respostas, vira o
+  marcador "comentário removido" (`"removido"`) e `total_respostas` traz a
+  contagem atual.
 - Raízes e filhos em ordem cronológica. Raiz sem parent mantém o teste do núcleo.
 
 ### Autocomplete com trie

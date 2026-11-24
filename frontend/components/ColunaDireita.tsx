@@ -1,6 +1,7 @@
 "use client";
 // Coluna direita (telas largas): busca por tag, poema do dia, tags em alta e
-// consagrados para seguir. As três rotas são protegidas: sem login, só a busca.
+// consagrados para seguir; abaixo de 1100 px, os três últimos vão para o topo do
+// Explorar (DescobrirNoTopo). As três rotas são protegidas: sem login, só a busca.
 // Cada bloco some quando não tem o que mostrar (ou quando a rota falha).
 
 import Link from "next/link";
@@ -9,6 +10,7 @@ import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { NomeAutor } from "@/components/NomeAutor";
+import { Icone } from "@/components/icones/Icone";
 import { IconeBuscar } from "@/components/icones/IconeBuscar";
 import {
   buscarEu,
@@ -56,12 +58,58 @@ export function ColunaDireita() {
   );
 }
 
-function Bloco({ titulo, children }: { titulo: string; children: React.ReactNode }) {
+// Topo do Explorar abaixo de 1100 px, onde esta coluna some. A busca por tag fica
+// de fora: o Explorar já tem o próprio campo de tag. Para os poemas não descerem
+// demais, os blocos vêm recolhíveis; só o "Em alta" (que já ficava ali) abre aberto.
+export function DescobrirNoTopo() {
   return (
-    <section className="rounded-2xl border border-borda bg-painel">
-      <h2 className="px-4 pt-3 pb-1 text-xl">{titulo}</h2>
+    <>
+      <PoemaDoDia recolhivel="fechado" />
+      <EmAlta recolhivel="aberto" />
+      <ConsagradosParaSeguir recolhivel="fechado" />
+    </>
+  );
+}
+
+// Recolhível: um <details> nativo (teclado e leitor de tela de graça), com o
+// título no <summary>; "aberto" ou "fechado" diz como ele começa.
+type Recolhivel = "aberto" | "fechado";
+
+function Bloco({
+  titulo,
+  recolhivel,
+  children,
+}: {
+  titulo: string;
+  recolhivel?: Recolhivel;
+  children: React.ReactNode;
+}) {
+  const caixa = "rounded-2xl border border-borda bg-painel";
+  if (!recolhivel) {
+    return (
+      <section className={caixa}>
+        <h2 className="px-4 pt-3 pb-1 text-xl">{titulo}</h2>
+        {children}
+      </section>
+    );
+  }
+  return (
+    <details open={recolhivel === "aberto"} className={`group ${caixa}`}>
+      <summary className="realce flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2 [&::-webkit-details-marker]:hidden">
+        <h2 className="text-lg">{titulo}</h2>
+        <IconeSeta className="h-5 w-5 shrink-0 text-tinta-suave transition-transform duration-150 group-open:rotate-180" />
+      </summary>
       {children}
-    </section>
+    </details>
+  );
+}
+
+// Seta para baixo; vira para cima quando o bloco está aberto.
+function IconeSeta({ className }: { className?: string }) {
+  return (
+    <Icone className={className}>
+      <path d="M6 9l6 6 6-6" />
+    </Icone>
   );
 }
 
@@ -94,7 +142,7 @@ function Busca() {
   );
 }
 
-function PoemaDoDia() {
+function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
   const [poema, setPoema] = useState<Post | null>(null);
 
   useEffect(() => {
@@ -108,7 +156,7 @@ function PoemaDoDia() {
   const corte = linhasDaPrevia(versos);
   const autor = poema.autor;
   return (
-    <Bloco titulo="Poema do dia">
+    <Bloco titulo="Poema do dia" recolhivel={recolhivel}>
       <div className="px-4 pb-4">
         {poema.titulo && <p className="poema-titulo mt-1 text-[1.0625rem]">{poema.titulo}</p>}
         <p className="poema-corpo mt-2 text-[0.9375rem] leading-[1.7]">
@@ -138,8 +186,7 @@ function linhasDaPrevia(versos: string[]): number | null {
   return VERSOS_DO_DIA;
 }
 
-// Também no topo do Explorar, nas telas em que esta coluna some.
-export function EmAlta() {
+function EmAlta({ recolhivel }: { recolhivel?: Recolhivel }) {
   const [tags, setTags] = useState<TagContagem[]>([]);
 
   useEffect(() => {
@@ -150,7 +197,7 @@ export function EmAlta() {
 
   if (tags.length === 0) return null;
   return (
-    <Bloco titulo="Em alta">
+    <Bloco titulo="Em alta" recolhivel={recolhivel}>
       <ul className="pb-2">
         {tags.map(({ tag, contagem }) => (
           <li key={tag}>
@@ -169,7 +216,7 @@ export function EmAlta() {
 
 // Consagrados que o usuário ainda não segue. /usuarios não filtra por consagrado,
 // então o filtro é feito aqui sobre a primeira página (até 100 contas).
-function ConsagradosParaSeguir() {
+function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
   const [poetas, setPoetas] = useState<User[]>([]);
 
   useEffect(() => {
@@ -194,7 +241,7 @@ function ConsagradosParaSeguir() {
 
   if (poetas.length === 0) return null;
   return (
-    <Bloco titulo="Consagrados para seguir">
+    <Bloco titulo="Consagrados para seguir" recolhivel={recolhivel}>
       <ul className="pb-2">
         {poetas.map((poeta) => (
           <li key={poeta.id}>

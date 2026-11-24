@@ -3,21 +3,21 @@
 // existe no navegador.
 //
 // Duas formas da mesma navegação: a barra lateral (sm em diante; só ícones até
-// xl, ícone e rótulo a partir de xl) e a barra inferior do celular.
+// xl, ícone e rótulo a partir de xl) e a barra inferior do celular. As duas
+// terminam no menu da conta (MenuConta), que tem o "Sair".
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Avatar } from "@/components/Avatar";
 import { IconeAcervo } from "@/components/icones/IconeAcervo";
 import { IconeAntologias } from "@/components/icones/IconeAntologias";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { IconeExplorar } from "@/components/icones/IconeExplorar";
 import { IconeInicio } from "@/components/icones/IconeInicio";
-import { IconeMais } from "@/components/icones/IconeMais";
 import { IconePerfil } from "@/components/icones/IconePerfil";
 import type { PropsIcone } from "@/components/icones/Icone";
+import { MenuConta } from "@/components/MenuConta";
 import { buscarEu, limparToken, temToken, type User } from "@/lib/api";
 
 type Item = {
@@ -68,6 +68,8 @@ export function Nav() {
 
   const ativo = (href: string) => (href === "/" ? caminho === "/" : caminho.startsWith(href));
   const itens = ITENS.filter((item) => logado || !item.soLogado);
+  // No celular, o último item é o avatar (menu com Perfil e Sair) ou o "Entrar".
+  const itensDoCelular = itens.filter((item) => item.href !== "/perfil");
 
   return (
     <>
@@ -119,7 +121,7 @@ export function Nav() {
         </div>
 
         {logado ? (
-          eu && <CartaoUsuario eu={eu} aoSair={sair} />
+          eu && <MenuConta eu={eu} aoSair={sair} variante="lateral" />
         ) : (
           <Link
             href="/login"
@@ -135,7 +137,7 @@ export function Nav() {
         className="fixed inset-x-0 bottom-0 z-20 border-t border-borda bg-papel pb-[env(safe-area-inset-bottom)] sm:hidden"
       >
         <ul className="flex justify-around">
-          {itens.map(({ href, rotulo, Icone }) => {
+          {itensDoCelular.map(({ href, rotulo, Icone }) => {
             const atual = ativo(href);
             return (
               <li key={href}>
@@ -152,72 +154,24 @@ export function Nav() {
               </li>
             );
           })}
-          {!logado && (
-            <li>
+          <li>
+            {logado ? (
+              eu && (
+                <MenuConta
+                  eu={eu}
+                  aoSair={sair}
+                  variante="inferior"
+                  ativo={ativo("/perfil") || caminho === `/u/${eu.username}`}
+                />
+              )
+            ) : (
               <Link href="/login" className="flex h-13 items-center px-2 text-sm font-semibold">
                 Entrar
               </Link>
-            </li>
-          )}
+            )}
+          </li>
         </ul>
       </nav>
     </>
-  );
-}
-
-// Rodapé da barra: quem está logado e o menu com "Sair". Fecha com Esc ou clique fora.
-// O menu vem depois do botão no DOM (Tab entra nele) e aparece por cima, com bottom-full.
-function CartaoUsuario({ eu, aoSair }: { eu: User; aoSair: () => void }) {
-  const [aberto, setAberto] = useState(false);
-  const caixa = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!aberto) return;
-    function fora(e: MouseEvent) {
-      if (!caixa.current?.contains(e.target as Node)) setAberto(false);
-    }
-    function esc(e: KeyboardEvent) {
-      if (e.key === "Escape") setAberto(false);
-    }
-    document.addEventListener("mousedown", fora);
-    document.addEventListener("keydown", esc);
-    return () => {
-      document.removeEventListener("mousedown", fora);
-      document.removeEventListener("keydown", esc);
-    };
-  }, [aberto]);
-
-  return (
-    <div ref={caixa} className="relative mb-2 w-full">
-      <button
-        type="button"
-        onClick={() => setAberto((a) => !a)}
-        aria-expanded={aberto}
-        aria-controls="menu-conta"
-        aria-label={`Conta de ${eu.name} (@${eu.username})`}
-        className="realce flex w-full cursor-pointer items-center justify-center gap-3 rounded-full p-3 text-left xl:justify-start"
-      >
-        <Avatar usuario={eu} />
-        <span className="hidden min-w-0 flex-1 xl:block">
-          <span className="block truncate text-[0.9375rem] font-bold">{eu.name}</span>
-          <span className="block truncate text-[0.9375rem] text-tinta-suave">@{eu.username}</span>
-        </span>
-        <IconeMais className="hidden h-5 w-5 shrink-0 xl:block" />
-      </button>
-      {aberto && (
-        <div
-          id="menu-conta"
-          className="absolute bottom-full left-0 z-30 mb-2 w-64 rounded-2xl border border-borda bg-papel-alto py-2 shadow-[0_4px_24px_-6px_rgb(0_0_0/0.2)]"
-        >
-          <button
-            type="button"
-            onClick={aoSair}
-            className="realce w-full cursor-pointer px-4 py-3 text-left text-[0.9375rem] font-semibold focus-visible:outline-offset-[-2px]"
-          >
-            Sair de @{eu.username}
-          </button>
-        </div>
-      )}
-    </div>
   );
 }

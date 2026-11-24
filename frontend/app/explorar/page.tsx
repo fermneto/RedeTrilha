@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useId, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
-import { EmAlta } from "@/components/ColunaDireita";
+import { DescobrirNoTopo } from "@/components/ColunaDireita";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { buscarExplorar, caminhoDoLogin, FORMAS, nomeDaForma, normalizarTag, temToken } from "@/lib/api";
 
@@ -37,7 +37,7 @@ function Explorar() {
   const idDaTag = useId();
   const idDasFormas = useId();
   const [termo, setTermo] = useState(tag);
-  // Como na coluna direita: o "Em alta" é rota protegida, então só com login.
+  // Como na coluna direita: os blocos do topo usam rotas protegidas, então só com login.
   const [logado, setLogado] = useState(false);
 
   useEffect(() => {
@@ -95,8 +95,9 @@ function Explorar() {
     <div>
       <CabecalhoPagina titulo="Explorar" />
 
-      <div className="px-4 pt-4 empty:hidden min-[1100px]:hidden">
-        {logado && <EmAlta />}
+      {/* O que a coluna direita mostra, quando ela some (abaixo de 1100 px). */}
+      <div className="space-y-3 px-4 pt-4 empty:hidden min-[1100px]:hidden">
+        {logado && <DescobrirNoTopo />}
       </div>
 
       <div className="space-y-4 border-b border-borda px-4 py-4">

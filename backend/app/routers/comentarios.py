@@ -4,7 +4,12 @@ from sqlalchemy.orm import Session
 from app.db import get_db
 from app.deps import Limite, get_current_user
 from app.models.user import User
-from app.schemas.comentario import ComentarioCreate, ComentarioOut, ComentarioPage
+from app.schemas.comentario import (
+    ComentarioApagadoOut,
+    ComentarioCreate,
+    ComentarioOut,
+    ComentarioPage,
+)
 from app.services import comentarios as service
 
 router = APIRouter(tags=["comentarios"])
@@ -42,10 +47,10 @@ def listar_respostas(
     return service.respostas_do_comentario(db, comentario_id, limit, cursor)
 
 
-@router.delete("/comentarios/{comentario_id}", status_code=204)
+@router.delete("/comentarios/{comentario_id}", response_model=ComentarioApagadoOut)
 def apagar_comentario(
     comentario_id: int,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    service.apagar(db, user, comentario_id)
+    return service.apagar(db, user, comentario_id)

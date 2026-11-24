@@ -3,7 +3,7 @@
 // citação (POST /posts com repost_de_id) e mostra o original embaixo.
 
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { PoemaCard } from "@/components/PoemaCard";
 import {
@@ -31,6 +31,17 @@ export function Compositor({ citarId }: { citarId: number | null }) {
   const corpo = useRef<HTMLTextAreaElement>(null);
   // Depois de Esc, o próximo Tab sai do campo (para quem navega só pelo teclado).
   const liberarTab = useRef(false);
+  // Onde o cursor fica depois do recuo inserido pelo Tab (null: nada pendente).
+  const cursorDoRecuo = useRef<number | null>(null);
+
+  // Ao trocar o value, o navegador joga o cursor para o fim do texto. Acerta a
+  // posição no mesmo commit, antes de pintar e antes da próxima tecla: num
+  // requestAnimationFrame, o que se digitava logo depois do Tab ia para o fim.
+  useLayoutEffect(() => {
+    if (cursorDoRecuo.current === null) return;
+    corpo.current?.setSelectionRange(cursorDoRecuo.current, cursorDoRecuo.current);
+    cursorDoRecuo.current = null;
+  }, [texto]);
 
   useEffect(() => {
     if (citarId === null) return;
@@ -51,11 +62,9 @@ export function Compositor({ citarId }: { citarId: number | null }) {
     }
     e.preventDefault();
     const campo = e.currentTarget;
-    const { selectionStart: inicio, selectionEnd: fim } = campo;
-    setTexto(texto.slice(0, inicio) + "\t" + texto.slice(fim));
-    requestAnimationFrame(() => {
-      corpo.current?.setSelectionRange(inicio + 1, inicio + 1);
-    });
+    const { value, selectionStart: inicio, selectionEnd: fim } = campo;
+    cursorDoRecuo.current = inicio + 1;
+    setTexto(value.slice(0, inicio) + "\t" + value.slice(fim));
   }
 
   async function publicar(e: React.FormEvent) {

@@ -378,8 +378,15 @@ export function comentar(postId: number, texto: string, parentId: number | null)
   return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
 }
 
-export function apagarComentario(id: number): Promise<void> {
-  return apiDelete(`/comentarios/${id}`);
+// Espelha ComentarioApagadoOut: "apagado" saiu do banco (não tinha respostas);
+// "removido" virou o marcador. `total_respostas` é a contagem atual do backend.
+export type ComentarioApagado = {
+  resultado: "apagado" | "removido";
+  total_respostas: number;
+};
+
+export function apagarComentario(id: number): Promise<ComentarioApagado> {
+  return apiDelete<ComentarioApagado>(`/comentarios/${id}`);
 }
 
 // Usuário da sessão (o botão "apagar" só aparece para o autor do comentário).
@@ -398,10 +405,19 @@ export type Perfil = User & {
   sigo: boolean;
 };
 
-// Anos de vida de um consagrado: "1861–1898", "m. 1898" ou null (sem a morte, ou não consagrado).
+// Anos de vida de um consagrado: "1861–1898", "m. 1898" ou null (sem a morte, ou
+// não consagrado). Ano negativo é antes de Cristo: "800–700 a.C." quando os dois
+// são, "70 a.C.–19" quando só o nascimento é, "m. 55 a.C." só com a morte.
 export function anosDeVida(user: User): string | null {
-  if (!user.consagrado || user.morte === null) return null;
-  return user.nascimento !== null ? `${user.nascimento}–${user.morte}` : `m. ${user.morte}`;
+  const { nascimento, morte } = user;
+  if (!user.consagrado || morte === null) return null;
+  if (nascimento === null) return `m. ${ano(morte)}`;
+  if (nascimento < 0 && morte < 0) return `${-nascimento}–${-morte} a.C.`;
+  return `${ano(nascimento)}–${ano(morte)}`;
+}
+
+function ano(valor: number): string {
+  return valor < 0 ? `${-valor} a.C.` : String(valor);
 }
 
 // Só os campos enviados mudam.

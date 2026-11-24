@@ -18,7 +18,12 @@ from sqlalchemy.sql import ColumnElement
 from app.core import arvore_comentarios
 from app.models.comentario import Comentario
 from app.models.user import User
-from app.schemas.comentario import ComentarioCreate, ComentarioOut, ComentarioPage
+from app.schemas.comentario import (
+    ComentarioApagadoOut,
+    ComentarioCreate,
+    ComentarioOut,
+    ComentarioPage,
+)
 from app.schemas.user import UserOut
 from app.services.cursor import codificar_cursor, ler_cursor
 from app.services.posts import original_de
@@ -63,23 +68,27 @@ def respostas_do_comentario(
     return _pagina(db, Comentario.parent_id == comentario_id, comentario_id, limit, cursor)
 
 
-def apagar(db: Session, usuario: User, comentario_id: int) -> None:
+def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoOut:
     """Só o autor. Com respostas, vira marcador (texto vazio, `removido`).
 
-    Sem respostas, sai do banco.
+    Sem respostas, sai do banco. Devolve qual dos dois aconteceu e o total de
+    respostas, que pode ser maior que o da tela (alguém respondeu depois).
     """
     comentario = _buscar(db, comentario_id)
     if comentario.autor_id != usuario.id:
         raise HTTPException(status_code=403, detail="só o autor pode apagar o comentário")
-    tem_respostas = db.scalar(
-        select(Comentario.id).where(Comentario.parent_id == comentario_id).limit(1)
+    total = db.scalar(
+        select(func.count()).select_from(Comentario).where(Comentario.parent_id == comentario_id)
     )
-    if tem_respostas is None:
+    if total == 0:
         db.execute(delete(Comentario).where(Comentario.id == comentario_id))
+        resultado = "apagado"
     else:
         comentario.texto = ""
         comentario.removido = True
+        resultado = "removido"
     db.commit()
+    return ComentarioApagadoOut(resultado=resultado, total_respostas=total)
 
 
 def _buscar(db: Session, comentario_id: int) -> Comentario:
