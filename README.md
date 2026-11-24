@@ -35,11 +35,13 @@ Depois validem o ambiente:
 
 ```bash
 make check      # tudo precisa ficar verde
-make seed       # cria 3 usuários de exemplo
+make seed       # cria 3 usuários de exemplo e importa os consagrados
 make test       # deve mostrar "4 passed, 10 skipped"
 ```
 
 Usuários do seed entram com a senha `verso123`.
+
+Mudou algum model? Rode `make reset` (não há migração; o banco local é recriado).
 
 Para rodar o projeto, abram dois terminais:
 

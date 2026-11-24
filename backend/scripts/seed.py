@@ -1,4 +1,4 @@
-"""Seed mínimo: 3 usuários para o slice de exemplo renderizar.
+"""Seed mínimo: 3 usuários para o slice de exemplo renderizar, mais os consagrados.
 
 A versão de verdade (com faker, posts, follows, likes...) é FEATURE DO NÚCLEO —
 é do time. Rode com: make seed
@@ -14,6 +14,7 @@ from sqlalchemy import select
 from app.db import Base, SessionLocal, engine
 from app.models.user import User
 from app.services.auth import gerar_hash
+from scripts import importar_consagrados
 
 # Todo usuário de exemplo entra com esta senha (README, "Como começar").
 # Consagrados não passam por aqui: ficam com password_hash=None, sem login.
@@ -45,11 +46,13 @@ def main() -> None:
     Base.metadata.create_all(engine)
     with SessionLocal() as db:
         if db.scalar(select(User).limit(1)):
-            print("banco já tem dados — nada a fazer")
-            return
-        db.add_all(USUARIOS)
-        db.commit()
-        print(f"seed ok: {len(USUARIOS)} usuários criados")
+            print("banco já tem dados — seed fake pulado")
+        else:
+            db.add_all(USUARIOS)
+            db.commit()
+            print(f"seed ok: {len(USUARIOS)} usuários criados")
+    # A importação é idempotente: roda sempre, sem duplicar.
+    importar_consagrados.main()
 
 
 if __name__ == "__main__":

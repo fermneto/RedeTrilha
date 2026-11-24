@@ -1,6 +1,6 @@
 # Comandos do dia a dia. Rode da raiz do repo.
 
-.PHONY: check dev-back dev-front seed test bench
+.PHONY: check dev-back dev-front seed reset test bench
 
 check:
 	cd backend && uv run python scripts/check_setup.py
@@ -13,6 +13,11 @@ dev-front:
 
 seed:
 	cd backend && uv run python scripts/seed.py
+
+# Não há migração: mudou um model, o banco local é recriado do zero.
+reset:
+	rm -f backend/app.db
+	$(MAKE) seed
 
 test:
 	cd backend && uv run pytest -v
