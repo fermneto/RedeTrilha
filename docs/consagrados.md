@@ -6,7 +6,7 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
 
 ## Fluxo
 
-1. O scraping (em `backend/scripts/scraping/`, fora do app) gera **um JSON por
+1. O scraping (feito fora do repositório) gera **um JSON por
    poeta** em `backend/data/consagrados/<username>.json`.
 2. `uv run python scripts/importar_consagrados.py` lê todos os `*.json` da
    pasta, exceto os que começam com `_`.

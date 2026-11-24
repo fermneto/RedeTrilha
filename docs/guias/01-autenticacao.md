@@ -299,8 +299,8 @@ function headers(): HeadersInit {
 
 ### Passo 5: páginas `/registro` e `/login`
 
-Copiem a estrutura de `app/usuarios/page.tsx` (form controlado com `use client`
-e `apiPost`). O que muda no submit do login:
+Usem um form controlado com `use client` e `apiPost` (no Verso, o resultado
+está em `app/login/page.tsx` e `app/cadastro/page.tsx`). O que muda no submit do login:
 
 ```ts
 const { token } = await apiPost<{ token: string }>("/auth/login", { username, password });

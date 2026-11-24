@@ -1,27 +1,37 @@
 ---
 name: neto-dados
-description: Use para as tasks do Neto (área de Dados) no projeto Verso — follow/seguidores, importador de poetas consagrados (scraping → JSON → banco), índice de formas/temas (hashtags, trending, Explorar), seed fake do nicho e deploy (Render + Vercel). Tasks N0–N6 do PLANO.md.
+description: Use para as tasks do Neto (área de Dados) no projeto Verso — follow/seguidores, importador de poetas consagrados (scraping → JSON → banco), índice de formas/temas (hashtags, trending, Explorar), Explorar, Acervo, poema do dia, tradução por IA, seed fake do nicho e deploy (Supabase + Render + Vercel). Tasks N0–N6 do PLANO.md.
 ---
 
 Você implementa as tasks do **Neto** (área de Dados) na rede social de poemas
 Verso. Leia `CLAUDE.md` e `PLANO.md` antes de começar; os contratos de lá
 valem como lei.
 
+## Estado (entrega final)
+
+As tasks N0–N4 e N6 estão concluídas. Depois do plano vieram a tradução por IA
+(#51), o Acervo de poetas, no lugar da tela Poetas (#65), e o poema do dia.
+Falta o **N5**, o deploy público (issue #19), que o Neto faz seguindo
+`docs/deploy.md`; o repositório já está pronto (#50, #55). Os contratos atuais
+estão na seção "Contratos" do `PLANO.md`; a lista abaixo é o plano original.
+
 ## Suas tasks (PLANO.md)
 
 - **N0**: stub de `backend/app/core/indice_tags.py` com as assinaturas do contrato. Faça primeiro: o H1 depende dele.
 - **N1**: Follow: `models/follow.py` (tabela `follows`), `services/follows.py`, `routers/follows.py`; `POST/DELETE /usuarios/{username}/follow` idempotentes; função de contagem `contar_seguidores` / `contar_seguindo` que o perfil (Pedro) importa.
-- **N2**: Consagrados: `backend/scripts/scraping/` + `backend/scripts/importar_consagrados.py`, seguindo `docs/consagrados.md`. Idempotente; recusa `morte > 1955`; cria o user com `password_hash=None` e `consagrado=True`.
+- **N2**: Consagrados: o scraper ficou fora do repositório; os JSONs ficam em `backend/data/consagrados/` e `backend/scripts/importar_consagrados.py` os importa, seguindo `docs/consagrados.md`. Idempotente; recusa `morte > 1955`; cria o user com `password_hash=None` e `consagrado=True`.
 - **N3**: Formas/temas: índice invertido real em `core/indice_tags.py` (dict tag → lista de post_ids ordenada por data), rotas `/tags/{tag}/posts`, `/tags/trending`, `/explorar?tag=&forma=` e a página `frontend/app/explorar/`.
 - **N4**: `seed_fake(db)` em `backend/scripts/seed.py`, com a cara do nicho (poetas iniciantes universitários, poemas originais com quebras de linha e formas variadas, follows a consagrados, curtidas, comentários em árvore, reposts e citações). Precisa passar `test_seed_fake_popula_a_rede`.
-- **N5**: deploy seguindo `docs/guias/08-deploy.md`. `SEED_ON_BOOT` roda o seed e a importação. **Nunca** `DEBUG=true` em produção.
+- **N5**: deploy seguindo `docs/deploy.md` (Supabase + Render + Vercel). `SEED_ON_BOOT` roda o seed e a importação num banco sem usuários. **Nunca** `DEBUG=true` em produção.
 - **N6**: consolidar o `DECISIONS.md`.
 
 ## Arquivos que você pode editar
 
-`backend/app/core/indice_tags.py`, `backend/app/{models,schemas,services,routers}/{follow*,tags*,explorar*}.py`,
-`backend/scripts/**`, `backend/data/**`, `backend/tests/test_{follow,tags,consagrados,seed}*.py`,
-`frontend/app/explorar/**`, `frontend/components/{Tag,FormaChip}*.tsx`,
+`backend/app/core/{indice_tags,janela_deslizante}.py`,
+`backend/app/{models,schemas,services,routers}/{follow*,tags*,acervo,traducao,poema_do_dia,saude,consagrado}.py`,
+`backend/scripts/**`, `backend/data/**`,
+`backend/tests/test_{follows,tags,tags_rotas,consagrados,seed,acervo,traducao,poema_do_dia,deploy,postgres}.py`,
+`frontend/app/{explorar,acervo}/**`, `frontend/components/{ColunaDireita,CartaoDoAcervo,Paginacao}.tsx`,
 a sua seção no fim de `frontend/lib/api.ts`, uma linha de `include_router` e o
 rebuild no lifespan em `backend/app/main.py`, `DECISIONS.md` e os arquivos de deploy.
 

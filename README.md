@@ -1,108 +1,124 @@
-# Mini-projeto 3: rede social de nicho
+# Verso: a rede social de poemas
 
-Cada time constrói uma rede social para uma comunidade que escolhe (música,
-corrida, leitura, jogos da atlética...). A turma tem 7 times: 4 de 4 pessoas e
-3 de 3. A stack é FastAPI + SQLAlchemy + SQLite no backend e Next.js +
-TypeScript + Tailwind no frontend. Todos partem do mesmo ponto: um exemplo que
-já funciona, só de usuários (do banco até a tela), e a lista de testes do
-núcleo, que cada time implementa. Depois do núcleo, o catálogo traz ideias de
-features, e cada time escolhe as que fazem sentido para o seu nicho. O projeto
-é um exercício para treinar o senso de produto, então cada rede acaba
-diferente da outra.
+O Verso é uma rede social para **poetas iniciantes universitários**,
+principalmente da UFPB, que escrevem no caderno ou no bloco de notas e não têm
+onde publicar o poema inteiro. No X, o limite de caracteres parte um soneto em
+fio; no Instagram, o poema vira imagem e não dá para citar um verso; os feeds
+ranqueados enterram texto longo. No Verso, o post é o poema (título, corpo sem
+limite com as quebras e os recuos preservados, e uma forma), o feed é
+cronológico, citar um verso e conversar em árvore são gestos de primeira classe,
+e 95 poetas consagrados em domínio público convivem no mesmo feed, no original,
+com tradução por IA a um clique. O porquê de cada escolha está no
+[DECISIONS.md](DECISIONS.md).
 
-Este é o treino final antes do hackathon de novembro.
+Mini-projeto 3 da Trilha UFPB. Time: Neto (@fermneto), Henrique (@hguimaa) e
+Pedro (@CorreiaPedro208).
 
-## O que ler
+## Funcionalidades
 
-| Documento | Para quê |
-|---|---|
-| [RUBRICA.md](RUBRICA.md) | Como vamos avaliar. Leiam hoje. |
-| [CATALOGO.md](CATALOGO.md) | Ideias de features para escolher. |
-| [CONTRATO.md](CONTRATO.md) | Sugestão de rotas, campos e status para as ideias do catálogo. |
-| [DECISIONS.md](DECISIONS.md) | O que o time preenche: produto, decisões, features, uso de IA. |
-| [docs/guias/](docs/guias/) | Setup, autenticação, git em equipe, deploy e outros. |
+- **Login e cadastro** com sessão por token; os consagrados são contas sem login.
+- **Poemas sem limite de caracteres**, com título opcional e as quebras de linha
+  e os recuos preservados (o Tab do compositor insere recuo).
+- **Formas:** soneto, haicai, trova, quadra, cordel, verso livre, prosa poética
+  ou outro. A forma vira tag (`#soneto`).
+- **Feed cronológico com reposts como no X:** cada poema aparece uma vez, na
+  posição do repost mais recente, com "repostado por"; paginação por cursor.
+- **Repost e citação:** repostar puro ou citar com um texto seu. Se o original
+  for apagado, a citação mostra "poema removido pelo autor".
+- **Comentários em árvore**, com respostas paginadas e o marcador "comentário
+  removido" quando um comentário com respostas é apagado.
+- **Curtidas** idempotentes.
+- **Perfil** com seguidores, seguindo, poemas, seguir/deixar de seguir e edição
+  de nome, bio e URL da foto.
+- **Acervo:** todos os poetas, consagrados e iniciantes, com busca e filtros por
+  tipo, língua e época, e ordenação.
+- **Explorar:** chips de forma e busca por tag (`#Solidão` acha `#solidao`).
+  Ao lado, na coluna Descobrir (no topo do Explorar em telas estreitas):
+  **Em alta** (tags das últimas 24 h), **Poema do dia** (um consagrado, o mesmo
+  para todos no dia) e consagrados para seguir.
+- **Antologias:** coleções curadas de poemas, públicas ou privadas.
+- **Consagrados de domínio público** (mortos até 1955), com selo próprio, anos
+  de vida e a fonte de cada poema.
+- **Tradução por IA** (Claude Haiku 5.5) para a língua do navegador, com cache
+  por (poema, língua) e limite de 30 traduções novas por hora por usuário.
 
-## Como começar
+## Como rodar localmente
 
-Instalem as dependências uma vez:
+Instale as dependências uma vez:
 
 ```bash
 cd backend && uv sync && cd ..
 cd frontend && npm install && cp .env.local.example .env.local && cd ..
 ```
 
-Depois validem o ambiente:
+Crie o banco local com o seed (24 poetas iniciantes com poemas e conversas,
+mais os consagrados):
 
 ```bash
-make check      # tudo precisa ficar verde
-make seed       # cria 24 poetas iniciantes com poemas e conversas e importa os consagrados
-make test       # deve mostrar "4 passed, 10 skipped"
+make check   # confere o ambiente
+make reset   # apaga backend/app.db e roda o seed
 ```
 
-Conta de demonstração: `marina_letras` / `verso123` (todos os usuários do seed usam essa senha).
+Não há migração: mudou um model, rode `make reset` de novo.
 
-Mudou algum model? Rode `make reset` (não há migração; o banco local é recriado).
-
-Para rodar o projeto, abram dois terminais:
+Suba a API e o site em dois terminais:
 
 ```bash
-make dev-back   # API em localhost:8000, Swagger em localhost:8000/docs
-make dev-front  # site em localhost:3000/acervo
+make dev-back    # API em localhost:8000, Swagger em localhost:8000/docs
+make dev-front   # site em localhost:3000
 ```
 
-Se algum comando falhar, vejam o [guia 00](docs/guias/00-setup.md).
+**Conta de demonstração:** `marina_letras` / `verso123` (todos os usuários do
+seed usam essa senha).
 
-Deploy público (Render + Vercel): [docs/deploy.md](docs/deploy.md).
+**Tradução:** exporte `ANTHROPIC_API_KEY` no terminal do backend antes do
+`make dev-back`. A chave nunca vai para um arquivo do repositório. Sem ela, o
+resto do site funciona e só a tradução responde 503. Os testes nunca chamam a
+API.
 
-## Tradução
+**Testes e benchmark:**
 
-O botão "Traduzir" do card traduz o poema para a língua do navegador com o
-Claude Haiku 5.5 (API da Anthropic), via `POST /posts/{id}/traduzir`. Cada
-tradução fica gravada na tabela `traducoes`: o mesmo poema na mesma língua só
-chama a API uma vez. Cada usuário pode pedir até 30 traduções novas por hora
-(as que vêm do cache não contam); passou disso, a rota responde 429.
+```bash
+make test                # pytest do backend
+make bench               # índice invertido de tags contra varredura
+cd frontend && npm test  # testes do front (node --test)
+```
 
-A chave fica **só** na variável de ambiente `ANTHROPIC_API_KEY`. Nunca a
-escrevam num arquivo do repositório. Sem a chave, o resto do site funciona e a
-rota responde 503 ("tradução indisponível no momento").
+Se algum comando falhar, veja o [guia 00](docs/guias/00-setup.md).
 
-- **Local:** exportem a chave no terminal do backend antes de subir a API:
-  ```bash
-  export ANTHROPIC_API_KEY=...   # a chave do console da Anthropic
-  make dev-back
-  ```
-- **Deploy (Render):** em Environment, adicionem `ANTHROPIC_API_KEY` com a
-  chave. O front (Vercel) não precisa dela.
+## Estrutura do repositório
 
-Os testes nunca chamam a API: o cliente é trocado por um falso.
+```
+backend/app/
+  models/    tabelas do SQLAlchemy (User, Post, Comentario, Antologia, Traducao...)
+  schemas/   entrada e saída da API (pydantic)
+  services/  regras de negócio
+  routers/   rotas finas, uma por arquivo, registradas em main.py
+  core/      estruturas de dados em Python puro (índice de tags, árvore de
+             comentários, janela deslizante da tradução)
+backend/scripts/   seed, importador de consagrados, check_setup, bench
+backend/data/consagrados/   um JSON por poeta consagrado
+frontend/
+  app/         páginas (feed, explorar, escrever, acervo, antologias, perfil,
+               u/[username], poema/[id], login, cadastro)
+  components/  PoemaCard, Compositor, ArvoreComentarios, Nav, ColunaDireita...
+  lib/api.ts   tipos e chamadas à API
+```
 
-## Primeiros passos do time
+## Documentação
 
-1. Leiam o slice de exemplo (`/usuarios`, do model à página). Toda feature
-   nova segue o mesmo caminho.
-2. Escolham o nicho e comecem a seção Produto e a tabela de donos no
-   [DECISIONS.md](DECISIONS.md). Não precisa ficar pronto agora: o arquivo muda
-   junto com o projeto.
-3. Abram uma issue por feature (há um template). O PR que entrega a feature
-   fecha a issue com `Closes #N`.
-4. Façam o núcleo antes do menu. Divisão de trabalho sugerida: [guia 07](docs/guias/07-organizacao-do-time.md).
+| Documento | Para quê |
+|---|---|
+| [DECISIONS.md](DECISIONS.md) | Produto, decisões, features, escolha técnica e uso de IA |
+| [PLANO.md](PLANO.md) | Status final, contratos de dados e as tasks do time |
+| [CLAUDE.md](CLAUDE.md) | Fluxo de trabalho: Git, padrão de commits e convenções de código |
+| [docs/deploy.md](docs/deploy.md) | Deploy público (Supabase + Render + Vercel) |
+| [docs/consagrados.md](docs/consagrados.md) | Formato de importação dos consagrados |
+| [RUBRICA.md](RUBRICA.md) | Como o projeto é avaliado |
+| [CONTRATO.md](CONTRATO.md) e [CATALOGO.md](CATALOGO.md) | Sugestões do template para as features |
+| [docs/guias/](docs/guias/) | Guias do curso (setup, autenticação, git em equipe, deploy...) |
 
-## Os testes do núcleo
-
-Os testes de `backend/tests/test_nucleo.py` são um roteiro. Um teste `skipped`
-é uma tarefa que ainda falta: removam o `@skip`, vejam o teste falhar e
-implementem até passar. Eles ajudam o time, mas não valem nota.
-
-## Estruturas de dados
-
-Quando fizer sentido, guardem a lógica de uma feature numa estrutura de dados
-em `backend/app/core/`, em Python puro, e façam o endpoint usá-la. Usem
-`core/indice_tags.py` como modelo. Isso conta no critério de organização do
-código, e a estrutura escolhida vale uma boa explicação no `DECISIONS.md`.
-
-## Uso de IA
-
-IA é permitida. Registrem no `DECISIONS.md` onde e como vocês a usaram.
+As rotas reais estão no Swagger, em `localhost:8000/docs`.
 
 ## Prazos
 
@@ -110,11 +126,3 @@ IA é permitida. Registrem no `DECISIONS.md` onde e como vocês a usaram.
 |---|---|
 | Início | segunda, 16/11/2026 |
 | Entrega final | sexta, 27/11/2026 |
-
-## Guias
-
-Os guias ficam em `docs/guias/`: 00 setup, 01 autenticação (comecem por aqui),
-02 git em equipe, 03 boas práticas, 04 erros clássicos, 05 JWT (opcional),
-06 upload, 07 organização do time, 08 deploy, 09 escrever um teste seu (opcional), 10 do zero ao
-esqueleto. Para ideias com estrutura de dados, vejam `docs/estruturas/` (grafos,
-árvores, heaps e tries).
