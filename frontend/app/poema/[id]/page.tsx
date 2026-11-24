@@ -48,7 +48,7 @@ export default function PoemaPage() {
 
   return (
     <div className="space-y-10">
-      <PoemaCard post={poema} linkarTitulo={false} />
+      <PoemaCard post={poema} linkarTitulo={false} inteiro />
       <ArvoreComentarios postId={poema.id} comentarios={comentarios} aoComentar={carregar} />
       {erroComentarios && <p className="text-sm text-destaque">{erroComentarios}</p>}
     </div>

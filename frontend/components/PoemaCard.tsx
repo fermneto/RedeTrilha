@@ -4,7 +4,15 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { IconeCitar } from "@/components/icones/IconeCitar";
+import { IconeComentar } from "@/components/icones/IconeComentar";
+import { IconeCurtir } from "@/components/icones/IconeCurtir";
+import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
+
+// No feed, poema com mais versos que isto aparece cortado, com link para o inteiro.
+// Linhas em branco entre estrofes contam como verso.
+const VERSOS_NO_FEED = 20;
 
 type Props = {
   post: Post;
@@ -12,9 +20,11 @@ type Props = {
   aninhado?: boolean;
   // Na página do próprio poema o título não precisa ser link.
   linkarTitulo?: boolean;
+  // Na página do poema ele aparece sempre inteiro; no resto, até VERSOS_NO_FEED.
+  inteiro?: boolean;
 };
 
-export function PoemaCard({ post, aninhado = false, linkarTitulo = true }: Props) {
+export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false }: Props) {
   // Repost puro (texto vazio) fora do feed: mostra o original com o aviso de quem repostou.
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
@@ -44,7 +54,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true }: Props
           <h1 className="poema-titulo mt-4">{poema.titulo}</h1>
         ))}
 
-      {poema.texto && <p className="poema-corpo mt-4">{poema.texto}</p>}
+      {poema.texto && <Corpo poema={poema} inteiro={inteiro} />}
 
       {citacao && !aninhado && (
         <div className="mt-4">
@@ -65,12 +75,31 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true }: Props
   );
 }
 
+// Corta só a exibição: o texto do poema não muda, e o link leva à versão inteira.
+function Corpo({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
+  const versos = poema.texto.split("\n");
+  const cortar = !inteiro && versos.length > VERSOS_NO_FEED;
+  return (
+    <>
+      <p className="poema-corpo mt-4">
+        {cortar ? versos.slice(0, VERSOS_NO_FEED).join("\n") : poema.texto}
+      </p>
+      {cortar && (
+        <Link href={`/poema/${poema.id}`} className="mt-2 inline-block text-sm text-destaque hover:underline">
+          ler poema inteiro
+        </Link>
+      )}
+    </>
+  );
+}
+
 function RepostadoPor({ usuarios }: { usuarios: User[] }) {
   const [a, b] = usuarios;
   const resto = usuarios.length - 2;
   return (
-    <p className="mb-3 text-xs text-tinta-suave">
-      ↻ repostado por <NomeLink usuario={a} />
+    <p className="mb-3 flex flex-wrap items-center gap-x-1 text-xs text-tinta-suave">
+      <IconeRepostar className="h-3.5 w-3.5" />
+      repostado por <NomeLink usuario={a} />
       {b && (resto > 0 ? ", " : " e ")}
       {b && <NomeLink usuario={b} />}
       {resto > 0 && ` e mais ${resto}`}
@@ -181,7 +210,7 @@ function Acoes({ poema }: { poema: Post }) {
     }
   }
 
-  const botao = "cursor-pointer transition-colors hover:text-tinta";
+  const botao = "inline-flex cursor-pointer items-center gap-1.5 transition-colors hover:text-tinta";
   return (
     <div className="mt-5 border-t border-borda pt-3">
       <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-tinta-suave">
@@ -191,7 +220,7 @@ function Acoes({ poema }: { poema: Post }) {
           aria-pressed={curti}
           className={`${botao} ${curti ? "text-destaque" : ""}`}
         >
-          {curti ? "♥" : "♡"} curtir · {curtidas}
+          <IconeCurtir cheio={curti} /> curtir · {curtidas}
         </button>
         <button
           type="button"
@@ -199,13 +228,13 @@ function Acoes({ poema }: { poema: Post }) {
           aria-pressed={repostei}
           className={`${botao} ${repostei ? "text-destaque" : ""}`}
         >
-          ↻ repostar · {reposts}
+          <IconeRepostar /> repostar · {reposts}
         </button>
         <Link href={`/escrever?citar=${poema.id}`} className={botao}>
-          ❝ citar
+          <IconeCitar /> citar
         </Link>
         <Link href={`/poema/${poema.id}#comentarios`} className={botao}>
-          comentar · {poema.comentarios}
+          <IconeComentar /> comentar · {poema.comentarios}
         </Link>
       </div>
       {erro && <p className="mt-2 text-xs text-destaque">{erro}</p>}
