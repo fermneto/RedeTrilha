@@ -3,8 +3,8 @@
 // poemas, citações e reposts da pessoa, com rolagem infinita como o feed, e
 // numa segunda aba as antologias públicas dela.
 
-import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
@@ -28,14 +28,31 @@ const ABAS = [
 
 type Aba = (typeof ABAS)[number]["valor"];
 
+// useSearchParams precisa de Suspense no build do Next.
 export default function PerfilPage() {
+  return (
+    <Suspense>
+      <PerfilDoPoeta />
+    </Suspense>
+  );
+}
+
+function PerfilDoPoeta() {
   const router = useRouter();
   const username = decodeURIComponent(useParams<{ username: string }>().username);
+  // A aba fica na URL (?aba=antologias): o link direto abre nela. Sem o
+  // parâmetro (ou com um valor desconhecido), "Poemas".
+  const aba: Aba = useSearchParams().get("aba") === "antologias" ? "antologias" : "poemas";
   const [perfil, setPerfil] = useState<Perfil | null>(null);
   const [meuId, setMeuId] = useState<number | null>(null);
   const [editando, setEditando] = useState(false);
-  const [aba, setAba] = useState<Aba>("poemas");
   const [erro, setErro] = useState<string | null>(null);
+
+  // replace, e não push: trocar de aba não enche o histórico do "voltar".
+  function trocarAba(nova: Aba) {
+    const caminho = `/u/${encodeURIComponent(username)}`;
+    router.replace(nova === "poemas" ? caminho : `${caminho}?aba=${nova}`, { scroll: false });
+  }
 
   useEffect(() => {
     if (!temToken()) {
@@ -44,7 +61,6 @@ export default function PerfilPage() {
     }
     setPerfil(null);
     setEditando(false);
-    setAba("poemas");
     Promise.all([buscarPerfil(username), buscarEu()])
       .then(([p, eu]) => {
         setPerfil(p);
@@ -103,7 +119,7 @@ export default function PerfilPage() {
         )}
       </div>
 
-      <Abas key={username} atual={aba} aoMudar={setAba}>
+      <Abas key={username} atual={aba} aoMudar={trocarAba}>
         {(valor) =>
           valor === "poemas" ? (
             <ListaDePoemas
