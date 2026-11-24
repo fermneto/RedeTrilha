@@ -23,12 +23,9 @@ cada poema dependem da lista inteira. Depois, uma query para os posts da
 página, uma para quem repostou e duas para as curtidas, todas O(limit).
 """
 
-import base64
-import binascii
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import NamedTuple
 
-from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session, aliased
 
@@ -37,6 +34,7 @@ from app.models.user import User
 from app.schemas.feed import FeedPage
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
+from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
 from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
@@ -52,7 +50,7 @@ class Ocorrencia(NamedTuple):
 
     @property
     def posicao(self) -> tuple[datetime, int]:
-        return (_utc(self.created_at), self.post_id)
+        return (utc_sem_fuso(self.created_at), self.post_id)
 
 
 class Item(NamedTuple):
@@ -67,7 +65,7 @@ def feed(
 ) -> FeedPage:
     itens = _deduplicar(_ocorrencias(db, [*ids_seguidos(db, usuario.id), usuario.id]))
     if cursor is not None:
-        depois = _ler_cursor(cursor)
+        depois = ler_cursor(cursor)
         offset = next(
             (i for i, item in enumerate(itens) if item.ocorrencia.posicao < depois),
             len(itens),
@@ -79,7 +77,9 @@ def feed(
         total=None if cursor is not None else len(itens),
         offset=offset,
         limit=limit,
-        proximo_cursor=_cursor(pagina[-1].ocorrencia) if pagina and tem_mais else None,
+        proximo_cursor=(
+            codificar_cursor(*pagina[-1].ocorrencia.posicao) if pagina and tem_mais else None
+        ),
     )
 
 
@@ -124,25 +124,3 @@ def _montar(db: Session, pagina: list[Item], usuario: User) -> list[PostOut]:
         )
         for saida, item in zip(saidas, pagina)
     ]
-
-
-def _cursor(ocorrencia: Ocorrencia) -> str:
-    """Token opaco com a posição (data, id) do último item entregue."""
-    data, post_id = ocorrencia.posicao
-    bruto = f"{data.isoformat()}|{post_id}"
-    return base64.urlsafe_b64encode(bruto.encode()).decode()
-
-
-def _ler_cursor(cursor: str) -> tuple[datetime, int]:
-    try:
-        data, post_id = base64.urlsafe_b64decode(cursor.encode()).decode().split("|")
-        return (_utc(datetime.fromisoformat(data)), int(post_id))
-    except (binascii.Error, UnicodeDecodeError, ValueError):
-        raise HTTPException(status_code=422, detail="cursor inválido") from None
-
-
-def _utc(data: datetime) -> datetime:
-    """O SQLite devolve datas sem fuso; o cursor compara tudo em UTC sem fuso."""
-    if data.tzinfo is None:
-        return data
-    return data.astimezone(timezone.utc).replace(tzinfo=None)
