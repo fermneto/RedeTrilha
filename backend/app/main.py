@@ -25,7 +25,6 @@ from app.routers import (
     tags,
     traducao,
     users,
-    versoes_poema,
 )
 from app.services.posts import reconstruir_indice
 from app.services.traducao import reconstruir_limite
@@ -90,4 +89,3 @@ app.include_router(traducao.router)
 app.include_router(saude.router)
 app.include_router(acervo.router)
 app.include_router(rascunhos.router)
-app.include_router(versoes_poema.router)

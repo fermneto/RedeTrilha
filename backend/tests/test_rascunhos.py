@@ -1,4 +1,4 @@
-"""Rascunhos (privados até publicar) e versões de poemas publicados (só o autor vê)."""
+"""Rascunhos: privados até publicar, e só eles se editam (o poema publicado é imutável)."""
 
 import pytest
 
@@ -72,7 +72,7 @@ def test_rascunho_fica_fora_do_feed_perfil_tags_e_explorar(client, como, rascunh
     assert indice_tags.posts_da_tag("segredo") == []
 
 
-def test_publicar_cria_poema_sem_editado_e_apaga_o_rascunho(client, como, rascunho):
+def test_publicar_cria_o_poema_e_apaga_o_rascunho(client, como, rascunho):
     rascunho_id = rascunho(titulo="Esboço")
     client.patch(f"/rascunhos/{rascunho_id}", json={"titulo": "Final"}, headers=como("ana"))
     client.patch(f"/rascunhos/{rascunho_id}", json={"forma": "haicai"}, headers=como("ana"))
@@ -81,12 +81,10 @@ def test_publicar_cria_poema_sem_editado_e_apaga_o_rascunho(client, como, rascun
     assert r.status_code == 201
     poema = r.json()
     assert (poema["titulo"], poema["texto"], poema["forma"]) == ("Final", POEMA, "haicai")
-    assert poema["editado"] is False
     assert poema["tags"] == ["haicai", "segredo"]
 
     assert client.get(f"/rascunhos/{rascunho_id}", headers=como("ana")).status_code == 404
     assert client.get("/rascunhos", headers=como("ana")).json()["total"] == 0
-    assert client.get(f"/posts/{poema['id']}/versoes", headers=como("ana")).json()["total"] == 0
 
     r = client.get("/tags/segredo/posts", headers=como("bia"))
     assert [item["id"] for item in r.json()["items"]] == [poema["id"]]
@@ -101,58 +99,63 @@ def test_publicar_usa_a_data_da_publicacao(client, como, rascunho):
     assert poema["created_at"] > criado
 
 
-def test_editar_poema_publicado_guarda_versao_so_para_o_autor(client, como):
-    corpo = {"titulo": "Um", "texto": POEMA, "forma": "soneto"}
-    r = client.post("/posts", json=corpo, headers=como("ana"))
-    post_id = r.json()["id"]
-    assert r.json()["editado"] is False
-
-    client.patch(f"/posts/{post_id}", json={"texto": "segundo\n  texto"}, headers=como("ana"))
-    r = client.patch(f"/posts/{post_id}", json={"titulo": "Dois"}, headers=como("ana"))
-    assert r.json()["editado"] is True
-    assert client.get(f"/posts/{post_id}", headers=como("bia")).json()["editado"] is True
-
-    r = client.get(f"/posts/{post_id}/versoes", headers=como("ana"))
-    assert r.status_code == 200
-    assert r.json()["total"] == 2
-    recente, antiga = r.json()["items"]
-    assert (antiga["titulo"], antiga["texto"], antiga["forma"]) == ("Um", POEMA, "soneto")
-    assert (recente["titulo"], recente["texto"]) == ("Um", "segundo\n  texto")
-
-    assert client.get(f"/posts/{post_id}/versoes", headers=como("bia")).status_code == 404
-    assert client.get("/posts/9999/versoes", headers=como("ana")).status_code == 404
+def _poema(client, como, autor: str = "bia", texto: str = "o original") -> int:
+    return client.post("/posts", json={"texto": texto}, headers=como(autor)).json()["id"]
 
 
-def test_edicao_sem_mudanca_no_que_se_le_nao_cria_versao(client, como):
-    r = client.post("/posts", json={"titulo": "Um", "texto": "verso"}, headers=como("ana"))
-    post_id = r.json()["id"]
-    client.patch(f"/posts/{post_id}", json={"texto": "verso", "titulo": "Um"}, headers=como("ana"))
-    r = client.patch(f"/posts/{post_id}", json={"idioma": "en"}, headers=como("ana"))
-    assert r.json()["editado"] is False
-    assert client.get(f"/posts/{post_id}/versoes", headers=como("ana")).json()["total"] == 0
+def test_rascunho_de_citacao_vira_citacao_ao_publicar(client, como, rascunho):
+    original = _poema(client, como)
+    rascunho_id = rascunho(texto="meu comentário", repost_de_id=original)
+    r = client.get(f"/rascunhos/{rascunho_id}", headers=como("ana"))
+    assert (r.json()["repost_de_id"], r.json()["repost_removido"]) == (original, False)
+
+    # Em rascunho, a citação não conta como repost do original.
+    assert client.get(f"/posts/{original}", headers=como("bia")).json()["reposts"] == 0
+
+    citacao = client.post(f"/rascunhos/{rascunho_id}/publicar", headers=como("ana")).json()
+    assert (citacao["texto"], citacao["repost_de_id"]) == ("meu comentário", original)
+    assert citacao["repost_de"]["id"] == original
+    assert client.get(f"/posts/{original}", headers=como("bia")).json()["reposts"] == 1
 
 
-def test_editado_aparece_no_feed_e_no_original_da_citacao(client, como):
-    post_id = client.post("/posts", json={"texto": "original"}, headers=como("ana")).json()["id"]
-    client.patch(f"/posts/{post_id}", json={"texto": "original revisto"}, headers=como("ana"))
-    client.post("/posts", json={"texto": "cito", "repost_de_id": post_id}, headers=como("bia"))
-    client.post("/usuarios/ana/follow", headers=como("bia"))
-
-    itens = client.get("/feed", headers=como("bia")).json()["items"]
-    citacao, original = itens
-    assert citacao["editado"] is False
-    assert citacao["repost_de"]["editado"] is True
-    assert original["editado"] is True
-
-
-def test_apagar_poema_apaga_as_versoes(client, como):
+def test_rascunho_que_cita_um_repost_puro_cita_o_original(client, como, rascunho):
     from sqlalchemy import select
 
     from app.db import SessionLocal
-    from app.models.versao_poema import VersaoPoema
+    from app.models.post import Post
 
-    post_id = client.post("/posts", json={"texto": "um"}, headers=como("ana")).json()["id"]
-    client.patch(f"/posts/{post_id}", json={"texto": "dois"}, headers=como("ana"))
-    assert client.delete(f"/posts/{post_id}", headers=como("ana")).status_code == 204
+    original = _poema(client, como)
+    client.post(f"/posts/{original}/repostar", headers=como("caio"))
     with SessionLocal() as db:
-        assert db.scalars(select(VersaoPoema).where(VersaoPoema.post_id == post_id)).all() == []
+        puro = db.scalar(select(Post.id).where(Post.repost_de_id == original))
+
+    rascunho_id = rascunho(texto="cito", repost_de_id=puro)
+    r = client.get(f"/rascunhos/{rascunho_id}", headers=como("ana"))
+    assert r.json()["repost_de_id"] == original
+
+
+def test_rascunho_que_cita_poema_inexistente_da_404(client, como):
+    r = client.post("/rascunhos", json={"texto": "cito", "repost_de_id": 9999}, headers=como("ana"))
+    assert r.status_code == 404
+
+
+def test_patch_do_rascunho_nao_troca_o_poema_citado(client, como, rascunho):
+    original, outro = _poema(client, como), _poema(client, como, texto="outro")
+    rascunho_id = rascunho(texto="cito", repost_de_id=original)
+    corpo = {"texto": "cito melhor", "repost_de_id": outro}
+    r = client.patch(f"/rascunhos/{rascunho_id}", json=corpo, headers=como("ana"))
+    assert (r.json()["texto"], r.json()["repost_de_id"]) == ("cito melhor", original)
+
+
+def test_original_apagado_antes_de_publicar_a_citacao(client, como, rascunho):
+    original = _poema(client, como)
+    rascunho_id = rascunho(texto="cito", repost_de_id=original)
+    assert client.delete(f"/posts/{original}", headers=como("bia")).status_code == 204
+
+    r = client.get(f"/rascunhos/{rascunho_id}", headers=como("ana"))
+    assert (r.json()["repost_de_id"], r.json()["repost_removido"]) == (None, True)
+
+    r = client.post(f"/rascunhos/{rascunho_id}/publicar", headers=como("ana"))
+    assert r.status_code == 201
+    citacao = r.json()
+    assert (citacao["repost_de"], citacao["repost_removido"]) == (None, True)

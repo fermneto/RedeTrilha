@@ -1,9 +1,9 @@
 """Rascunhos: poemas guardados que só o autor vê, até serem publicados.
 
-Rascunho de outra pessoa dá 404, como se não existisse. Publicar usa o mesmo
-`posts.criar` do POST /posts (que indexa as tags) e apaga o rascunho na mesma
-transação: o poema nasce com a data da publicação e sem versões, por mais que
-o rascunho tenha sido editado.
+Rascunho de outra pessoa dá 404, como se não existisse. Só o rascunho se
+edita: o poema publicado é imutável. Publicar usa o mesmo `posts.criar` do
+POST /posts (que indexa as tags) e apaga o rascunho na mesma transação; o poema
+nasce com a data da publicação. Rascunho com `repost_de_id` vira citação.
 """
 
 from fastapi import HTTPException
@@ -33,6 +33,9 @@ def listar(db: Session, autor: User, offset: int, limit: int) -> RascunhoPage:
 
 def criar(db: Session, autor: User, dados: RascunhoCreate) -> Rascunho:
     rascunho = Rascunho(autor_id=autor.id, **dados.model_dump())
+    if dados.repost_de_id is not None:
+        # Como no POST /posts: citar um repost puro cita o original; 404 se não existe.
+        rascunho.repost_de_id = posts_service.original_de(db, dados.repost_de_id).id
     db.add(rascunho)
     db.commit()
     db.refresh(rascunho)
@@ -69,6 +72,8 @@ def publicar(db: Session, autor: User, rascunho_id: int) -> Post:
         texto=rascunho.texto,
         forma=rascunho.forma,
         idioma=rascunho.idioma,
+        repost_de_id=rascunho.repost_de_id,
     )
+    repost_removido = rascunho.repost_removido
     db.delete(rascunho)
-    return posts_service.criar(db, autor, dados)
+    return posts_service.criar(db, autor, dados, repost_removido=repost_removido)

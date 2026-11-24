@@ -45,19 +45,6 @@ class PostCreate(BaseModel):
     _idioma = field_validator("idioma")(validar_idioma)
 
 
-class PostUpdate(BaseModel):
-    """PATCH parcial: só os campos enviados mudam; `titulo`, `forma` e `idioma` aceitam null."""
-
-    titulo: str | None = Field(default=None, max_length=200)
-    texto: str | None = None
-    forma: str | None = None
-    idioma: str | None = None
-
-    _texto = field_validator("texto")(_validar_texto)
-    _forma = field_validator("forma")(_validar_forma)
-    _idioma = field_validator("idioma")(validar_idioma)
-
-
 class PostOut(BaseModel):
     id: int
     autor_id: int
@@ -83,8 +70,6 @@ class PostOut(BaseModel):
     tags: list[str] = []
     # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
     repostado_por: list[UserOut] = []
-    # Há versão anterior (o autor editou depois de publicar). O histórico é só do autor.
-    editado: bool = False
 
 
 class PostPage(Pagina[PostOut]):

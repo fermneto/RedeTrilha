@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -59,15 +58,6 @@ export default function PoemaPage() {
       {cabecalho}
       <div className="border-b border-borda">
         <PoemaCard post={poema} linkarTitulo={false} inteiro />
-        {/* Só o autor vê o histórico (o backend dá 404 para os outros). */}
-        {poema.editado && euId === poema.autor_id && (
-          <Link
-            href={`/poema/${poema.id}/versoes`}
-            className="mx-4 mb-2 inline-flex min-h-11 items-center text-sm font-semibold text-destaque hover:underline"
-          >
-            versões
-          </Link>
-        )}
       </div>
       <div className="px-4 py-6">
         <ArvoreComentarios postId={poema.id} euId={euId} aoMudar={carregarPoema} />

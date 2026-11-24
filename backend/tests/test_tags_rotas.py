@@ -47,12 +47,10 @@ def test_tag_pagina_mais_novo_primeiro(client, como, publicar):
     assert r.json() == {"items": [], "total": 0, "offset": 0, "limit": 20}
 
 
-def test_edicao_que_tira_a_tag_e_post_apagado_somem(client, como, publicar):
-    editado = publicar("#lua cheia")
+def test_post_apagado_some_da_tag(client, como, publicar):
     apagado = publicar("#lua nova")
     fica = publicar("#lua minguante")
 
-    client.patch(f"/posts/{editado}", json={"texto": "sol"}, headers=como("ana"))
     client.delete(f"/posts/{apagado}", headers=como("ana"))
 
     r = client.get("/tags/lua/posts", headers=como("ana"))
