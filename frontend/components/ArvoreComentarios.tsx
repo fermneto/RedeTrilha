@@ -164,6 +164,12 @@ function ItemComentario({
   // Clique fora da confirmação ou Esc cancelam o "apagar?".
   useFecharAoSair(confirmando, confirmacao, () => setConfirmando(false));
 
+  // Ao abrir a confirmação, o foco vai para o "não": Enter sem querer não apaga
+  // (como no apagar antologia).
+  useEffect(() => {
+    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
+  }, [confirmando]);
+
   const faltam = total - respostas.length;
   const autor = removido ? null : comentario.autor;
 
