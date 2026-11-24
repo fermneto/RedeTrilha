@@ -3,9 +3,10 @@
 // gosta (escolas e formas), (2) de onde você é (país e, no Brasil, estado), e
 // depois a grade de quem seguir (/sugestoes). "continuar" salva as preferências
 // (PUT /preferencias) e segue; "pular" segue sem salvar o passo. Também serve para
-// ajustar as preferências depois: pelo link na tela de sugestões (o fluxo inteiro)
-// ou por "Preferências" no menu da conta (/boas-vindas?voltar=<página>), que mostra
-// só os dois passos e, no fim, volta para a página de onde a pessoa veio.
+// ajustar as preferências depois, com ?voltar=<página>: por "Preferências" no menu
+// da conta (os dois passos) ou pelo link na tela de sugestões (só os gostos, com
+// ?so=gostos). Nesse modo "pular" vira "cancelar" (volta sem salvar o passo) e o
+// fim volta para a página de onde a pessoa veio.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -17,16 +18,21 @@ import {
   buscarPreferencias,
   caminhoDoLogin,
   destinoSeguro,
+  passosDasPreferencias,
   nomeDaForma,
   nomeDoPais,
   salvarPreferencias,
   temToken,
   type OpcoesDePreferencias,
+  type PassoDasPreferencias,
   type Preferencias,
 } from "@/lib/api";
 
 const BRASIL = "BR";
-const PASSOS = ["Que poesia você gosta?", "De onde você é?"] as const;
+const TITULOS: Record<PassoDasPreferencias, string> = {
+  gostos: "Que poesia você gosta?",
+  regiao: "De onde você é?",
+};
 
 // useSearchParams precisa de Suspense no build estático do Next.
 export default function BoasVindasPage() {
@@ -39,17 +45,20 @@ export default function BoasVindasPage() {
 
 function BoasVindas() {
   const router = useRouter();
-  const voltar = useSearchParams().get("voltar");
-  // Pelo menu da conta: sem o passo de quem seguir, e o fim volta à página de antes.
+  const params = useSearchParams();
+  const voltar = params.get("voltar");
+  const passos = passosDasPreferencias(params.get("so"));
+  // Ajuste depois do cadastro: sem o passo de quem seguir, e o fim volta à página de antes.
   const ajuste = voltar !== null;
   const destino = ajuste ? destinoSeguro(voltar) : "/sugestoes";
-  const totalDePassos = ajuste ? PASSOS.length : PASSOS.length + 1;
-  const [passo, setPasso] = useState(0);
+  const totalDePassos = ajuste ? passos.length : passos.length + 1;
+  const [indice, setIndice] = useState(0);
+  const passo = passos[indice];
   const [opcoes, setOpcoes] = useState<OpcoesDePreferencias | null>(null);
   const [prefs, setPrefs] = useState<Preferencias>({ escolas: [], formas: [], pais: null, uf: null });
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-  const ultimo = passo === PASSOS.length - 1;
+  const ultimo = indice === passos.length - 1;
 
   useEffect(() => {
     if (!temToken()) {
@@ -65,7 +74,7 @@ function BoasVindas() {
   }, [router]);
 
   function avancar() {
-    if (!ultimo) setPasso(passo + 1);
+    if (!ultimo) setIndice(indice + 1);
     else router.push(destino);
   }
 
@@ -88,13 +97,13 @@ function BoasVindas() {
       <CabecalhoPagina titulo={ajuste ? "Preferências" : "Boas-vindas"} />
       <div className="space-y-5 p-4">
         <p className="text-sm text-tinta-suave tabular-nums">
-          passo {passo + 1} de {totalDePassos} · tudo é opcional
+          {totalDePassos > 1 && `passo ${indice + 1} de ${totalDePassos} · `}tudo é opcional
         </p>
-        <h2 className="text-xl font-bold">{PASSOS[passo]}</h2>
+        <h2 className="text-xl font-bold">{TITULOS[passo]}</h2>
 
         {!opcoes && !erro && <p className="text-sm text-tinta-suave">carregando...</p>}
 
-        {opcoes && passo === 0 && (
+        {opcoes && passo === "gostos" && (
           <>
             <Chips
               titulo="Escolas e períodos"
@@ -111,17 +120,17 @@ function BoasVindas() {
           </>
         )}
 
-        {opcoes && passo === 1 && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
+        {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
 
         {erro && <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
 
         <div className="flex flex-wrap items-center justify-end gap-3">
           <button
             type="button"
-            onClick={avancar}
+            onClick={ajuste ? () => router.push(destino) : avancar}
             className="min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold hover:border-destaque hover:text-destaque"
           >
-            pular
+            {ajuste ? "cancelar" : "pular"}
           </button>
           <button
             type="button"

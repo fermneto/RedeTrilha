@@ -355,6 +355,17 @@ export function caminhoDasPreferencias(atual: string, username: string): string 
   return `/boas-vindas?voltar=${encodeURIComponent(voltar)}`;
 }
 
+// Só o passo dos gostos (escolas e formas), pelo link da tela de sugestões: ao
+// salvar volta para a grade, que recalcula as sugestões.
+export const CAMINHO_DOS_GOSTOS = "/boas-vindas?voltar=%2Fsugestoes&so=gostos";
+
+export type PassoDasPreferencias = "gostos" | "regiao";
+
+// Os passos de /boas-vindas: os dois, ou só os gostos com ?so=gostos.
+export function passosDasPreferencias(so: string | null): PassoDasPreferencias[] {
+  return so === "gostos" ? ["gostos"] : ["gostos", "regiao"];
+}
+
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
