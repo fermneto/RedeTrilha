@@ -359,6 +359,19 @@ export function caminhoDasPreferencias(atual: string, username: string): string 
 // salvar volta para a grade, que recalcula as sugestões.
 export const CAMINHO_DOS_GOSTOS = "/boas-vindas?voltar=%2Fsugestoes&so=gostos";
 
+// O documento foi carregado já em /boas-vindas (link direto ou recarga)? Então não
+// há página do Verso antes no histórico, e o "cancelar" das preferências vai ao
+// perfil em vez de usar o voltar do navegador. Recebe a URL do carregamento
+// (performance.getEntriesByType("navigation")[0].name).
+export function abertaDireto(urlDoCarregamento: string | undefined): boolean {
+  if (!urlDoCarregamento) return true;
+  try {
+    return new URL(urlDoCarregamento).pathname === "/boas-vindas";
+  } catch {
+    return true;
+  }
+}
+
 export type PassoDasPreferencias = "gostos" | "regiao";
 
 // Os passos de /boas-vindas: os dois, ou só os gostos com ?so=gostos.

@@ -9,7 +9,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { alternarNaLista, CAMINHO_DOS_GOSTOS, caminhoDasPreferencias, nomeDoPais, passosDasPreferencias } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+const { abertaDireto, alternarNaLista, CAMINHO_DOS_GOSTOS, caminhoDasPreferencias, nomeDoPais, passosDasPreferencias } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
 
 test("alternar marca e desmarca sem repetir", () => {
   assert.deepEqual(alternarNaLista([], "barroco"), ["barroco"]);
@@ -42,4 +42,12 @@ test("o link dos gostos abre só esse passo e volta para as sugestões", () => {
   assert.equal(url.pathname, "/boas-vindas");
   assert.equal(url.searchParams.get("voltar"), "/sugestoes");
   assert.deepEqual(passosDasPreferencias(url.searchParams.get("so")), ["gostos"]);
+});
+
+test("cancelar: aberta direto em /boas-vindas não tem página do Verso antes", () => {
+  assert.equal(abertaDireto("http://x/boas-vindas?voltar=%2F"), true);
+  assert.equal(abertaDireto(undefined), true);
+  assert.equal(abertaDireto("lixo"), true);
+  assert.equal(abertaDireto("http://x/sugestoes"), false);
+  assert.equal(abertaDireto("http://x/"), false);
 });

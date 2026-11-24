@@ -5,15 +5,18 @@
 // (PUT /preferencias) e segue; "pular" segue sem salvar o passo. Também serve para
 // ajustar as preferências depois, com ?voltar=<página>: por "Preferências" no menu
 // da conta (os dois passos) ou pelo link na tela de sugestões (só os gostos, com
-// ?so=gostos). Nesse modo "pular" vira "cancelar" (volta sem salvar o passo) e o
-// fim volta para a página de onde a pessoa veio.
+// ?so=gostos). Nesse modo nada é salvo até o "salvar" do último passo ("continuar"
+// só avança), "pular" vira "cancelar" (descarta tudo e usa o voltar do navegador,
+// ou vai ao perfil se a página foi aberta direto) e o fim volta para ?voltar=.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import {
+  abertaDireto,
   alternarNaLista,
+  buscarEu,
   buscarOpcoesDePreferencias,
   buscarPreferencias,
   caminhoDoLogin,
@@ -78,7 +81,23 @@ function BoasVindas() {
     else router.push(destino);
   }
 
+  function cancelar() {
+    const [carregamento] = performance.getEntriesByType("navigation");
+    if (!abertaDireto(carregamento?.name)) {
+      router.back();
+      return;
+    }
+    buscarEu()
+      .then((eu) => router.push(`/u/${encodeURIComponent(eu.username)}`))
+      .catch(() => router.push("/"));
+  }
+
   async function continuar() {
+    // No ajuste, os passos do meio só guardam o estado na tela; o último salva tudo.
+    if (ajuste && !ultimo) {
+      avancar();
+      return;
+    }
     setSalvando(true);
     setErro(null);
     try {
@@ -127,7 +146,7 @@ function BoasVindas() {
         <div className="flex flex-wrap items-center justify-end gap-3">
           <button
             type="button"
-            onClick={ajuste ? () => router.push(destino) : avancar}
+            onClick={ajuste ? cancelar : avancar}
             className="min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold hover:border-destaque hover:text-destaque"
           >
             {ajuste ? "cancelar" : "pular"}
