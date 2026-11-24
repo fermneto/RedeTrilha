@@ -118,3 +118,37 @@ def test_populador_e_idempotente(client, como):
         assert indice_tags.popular(db) == 4
         assert indice_tags.popular(db) == 4
     assert linhas() == gravadas
+
+
+def test_preparar_banco_poe_em_dia_um_banco_antigo(client, como):
+    """Banco de antes deste PR: sem `post_tags` e sem o índice do limite de tradução."""
+    from sqlalchemy import func, inspect, select, text
+
+    from app.db import SessionLocal, engine
+    from app.main import preparar_banco
+    from app.models.post_tag import PostTag
+
+    client.post("/posts", json={"texto": "a maré de ontem\n#mar #sal"}, headers=como("ana"))
+    client.post("/posts", json={"texto": "a chuva fina\n#mar"}, headers=como("bia"))
+    with engine.begin() as conexao:
+        conexao.execute(text("DROP TABLE post_tags"))
+        conexao.execute(text("DROP INDEX ix_traducoes_pedida_por_id_created_at"))
+
+    def indices_de_traducoes() -> set[str]:
+        return {indice["name"] for indice in inspect(engine).get_indexes("traducoes")}
+
+    def linhas() -> int:
+        with SessionLocal() as db:
+            return db.scalar(select(func.count()).select_from(PostTag))
+
+    preparar_banco()
+    assert "ix_traducoes_pedida_por_id_created_at" in indices_de_traducoes()
+    assert linhas() == 3
+    preparar_banco()
+    assert linhas() == 3
+
+    itens = client.get("/tags/trending", headers=como("ana")).json()["items"]
+    assert itens == [
+        {"tag": "mar", "contagem": 2, "trecho": "a chuva fina"},
+        {"tag": "sal", "contagem": 1, "trecho": "a maré de ontem"},
+    ]

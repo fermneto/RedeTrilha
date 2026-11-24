@@ -7,15 +7,18 @@ from app.core.datas import agora_utc
 from app.db import Base
 
 
+# O limite de traduções por hora conta direto aqui (services/traducao.py). Num
+# banco de antes dele, o `preparar_banco` (main.py) cria o índice.
+INDICE_DO_LIMITE = Index("ix_traducoes_pedida_por_id_created_at", "pedida_por_id", "created_at")
+
+
 class Traducao(Base):
     """Cache da tradução de um poema para uma língua: uma chamada à API por (poema, língua)."""
 
     __tablename__ = "traducoes"
     __table_args__ = (
         UniqueConstraint("post_id", "idioma_destino"),
-        # O limite de traduções por hora conta direto aqui (services/traducao.py).
-        # Banco já existente: CREATE INDEX manual (docs/deploy.md).
-        Index("ix_traducoes_pedida_por_id_created_at", "pedida_por_id", "created_at"),
+        INDICE_DO_LIMITE,
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)

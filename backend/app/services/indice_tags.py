@@ -75,6 +75,18 @@ def popular(db: Session) -> int:
     return total
 
 
+def popular_se_vazio(db: Session) -> int:
+    """Popula `post_tags` só se ela está vazia e há posts (um banco antigo). Devolve as linhas.
+
+    Chamado pelo `preparar_banco` a cada boot: num banco em dia, uma consulta.
+    """
+    if db.scalar(select(PostTag.post_id).limit(1)) is not None:
+        return 0
+    if db.scalar(select(Post.id).limit(1)) is None:
+        return 0
+    return popular(db)
+
+
 def posts_da_tag(db: Session, tag: str, offset: int, limit: int) -> tuple[list[int], int]:
     """(ids da página, total) dos poemas da tag, mais novo primeiro; empate: maior id.
 

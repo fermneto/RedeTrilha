@@ -1,8 +1,9 @@
 """Popula o índice de tags (`post_tags`) a partir de todos os posts do banco.
 
-Para um banco de antes da tabela `post_tags` (ela é criada vazia no boot pelo
-`create_all`) ou para refazer o índice do zero. Idempotente: apaga e regrava
-tudo numa transação, então rodar duas vezes dá o mesmo resultado.
+O `preparar_banco()` (main.py) já faz isso sozinho quando `post_tags` está
+vazia. Este script é a alternativa manual, e serve para refazer o índice do zero.
+Idempotente: apaga e regrava tudo numa transação, então rodar duas vezes dá o
+mesmo resultado.
 
 Rode com: cd backend && uv run python scripts/popular_post_tags.py
 (no deploy, com DATABASE_URL apontando para o banco; ver docs/deploy.md)

@@ -1,5 +1,12 @@
 # Deploy do Verso (Supabase + Render + Vercel)
 
+> **O caminho principal agora é a Oracle Cloud Always Free:
+> [`docs/deploy-oracle.md`](deploy-oracle.md).** A VM não hiberna e roda a API
+> com vários workers atrás do Caddy (HTTPS automático). Este guia, com o
+> Render, fica como **alternativa simples**: menos passos, mas o serviço dorme
+> depois de 15 minutos sem tráfego. Os passos do Supabase (1), da chave da
+> Anthropic (2) e da Vercel (4) valem para os dois caminhos.
+
 Três peças, todas no plano free:
 
 | Peça | Onde | O quê |
@@ -212,11 +219,12 @@ ficam fora do CORS. A banca usa só a URL de produção.
   ```
 
 - **Push na `main` = redeploy** do Render e da Vercel (os dados ficam).
-- **Banco criado antes do índice de tags no banco (uma vez só).** O boot faz
-  `create_all`, que cria a tabela nova `post_tags` vazia, mas não mexe em
-  tabelas que já existem. Num banco antigo, popule o índice de tags a partir
-  dos posts (idempotente: pode rodar de novo) e crie o índice que o limite de
-  tradução usa:
+- **Banco criado antes do índice de tags no banco.** Não tem passo manual: o
+  preparo do banco (`preparar_banco()` em `main.py`, no boot e no serviço
+  `seed` da Oracle) cria a tabela `post_tags`, cria o índice
+  `ix_traducoes_pedida_por_id_created_at` se faltar e, com `post_tags` vazia,
+  popula o índice de tags a partir dos posts, tudo sob o mesmo *advisory lock*.
+  Alternativa manual (idempotente, pode rodar de novo):
 
   ```bash
   cd backend && DATABASE_URL='postgresql://...pooler.supabase.com:5432/postgres' \
@@ -227,10 +235,6 @@ ficam fora do CORS. A banca usa só a URL de produção.
   CREATE INDEX IF NOT EXISTS ix_traducoes_pedida_por_id_created_at
     ON traducoes (pedida_por_id, created_at);
   ```
-
-  Sem o populador, o "Em alta", as tags e a busca de tags ficam vazios para os
-  poemas antigos; sem o `CREATE INDEX`, o limite de tradução funciona, só que
-  varrendo as traduções da pessoa.
 
 ## Checklist de verificação (o que a banca faz)
 
