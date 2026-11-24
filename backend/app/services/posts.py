@@ -5,6 +5,7 @@ from sqlalchemy import delete, func, select, update
 from sqlalchemy.orm import Session
 
 from app.core.indice_tags import extrair_tags, indice_tags, normalizar
+from app.models.antologia import AntologiaPoema
 from app.models.curtida import Curtida
 from app.models.post import Post
 from app.models.user import User
@@ -159,6 +160,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         db.scalars(select(Post.id).where(Post.repost_de_id == post_id, Post.texto == ""))
     )
     db.execute(delete(Curtida).where(Curtida.post_id.in_([post_id, *puros])))
+    db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
     db.execute(delete(Post).where(Post.id.in_(puros)))
     db.execute(
         update(Post)
