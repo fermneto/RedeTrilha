@@ -136,3 +136,14 @@ def test_explorar_filtros(client, como, publicar):
 
 def test_explorar_forma_invalida_da_422(client, como):
     assert client.get("/explorar?forma=epopeia", headers=como("ana")).status_code == 422
+
+
+def test_tag_e_explorar_trazem_curtidas_reais(client, como, publicar):
+    poema = publicar("#chuva na janela", forma="haicai")
+    client.post(f"/posts/{poema}/curtir", headers=como("bia"))
+
+    for rota in ("/tags/chuva/posts", "/explorar", "/explorar?forma=haicai"):
+        item = client.get(rota, headers=como("bia")).json()["items"][0]
+        assert (item["curtidas"], item["curti"]) == (1, True), rota
+        item = client.get(rota, headers=como("ana")).json()["items"][0]
+        assert (item["curtidas"], item["curti"]) == (1, False), rota
