@@ -44,7 +44,7 @@ class Consagrado(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     bio: str = Field(default="", max_length=1000)
     avatar_url: str = Field(default="", max_length=300)
-    nascimento: int
+    nascimento: int | None = None
     morte: int
     poemas: list[PoemaConsagrado] = Field(min_length=1)
 
@@ -60,7 +60,7 @@ class Consagrado(BaseModel):
 
     @model_validator(mode="after")
     def _nasceu_antes_de_morrer(self) -> "Consagrado":
-        if self.nascimento >= self.morte:
+        if self.nascimento is not None and self.nascimento >= self.morte:
             raise ValueError(
                 f"nascimento ({self.nascimento}) deve ser anterior à morte ({self.morte})"
             )
