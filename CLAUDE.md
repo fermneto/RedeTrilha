@@ -5,8 +5,10 @@ sem limite de caracteres, comentar, curtir, repostar/citar e ler os
 **consagrados** (poetas em domínio público, contas sem login). Base: template do
 Mini-projeto 3 da Trilha UFPB. **Entrega: sexta, 27/11/2026.**
 
-Leia antes de qualquer tarefa: [`PLANO.md`](PLANO.md) (tasks, donos,
-dependências e contratos de dados). Avaliação: [`RUBRICA.md`](RUBRICA.md).
+Leia antes de qualquer tarefa: [`PLANO.md`](PLANO.md) (status final, donos,
+contratos de dados e rotas reais; as tasks do plano estão todas concluídas,
+menos o deploy, N5, que ficou com o Neto). Decisões de produto:
+[`DECISIONS.md`](DECISIONS.md). Avaliação: [`RUBRICA.md`](RUBRICA.md).
 
 ## Regras de Git (obrigatórias)
 
@@ -74,7 +76,10 @@ Baseado em Conventional Commits, em português.
 ```bash
 make check       # ambiente ok
 make seed        # popula o banco (seed fake + consagrados)
+make reset       # apaga backend/app.db e roda o seed (mudou um model? rode isto)
 make test        # pytest do backend
+make bench       # benchmark do índice de tags (scripts/bench_*.py)
+cd frontend && npm test    # testes do front (node --test tests/*.test.mjs)
 DEBUG=true make dev-back   # API em :8000 (bypass X-User-Id só com DEBUG)
 make dev-front   # Next em :3000
 ```
@@ -82,7 +87,9 @@ make dev-front   # Next em :3000
 ## Convenções de código (critério "Código" da rubrica)
 
 - **Fluxo de uma feature:** model → schema → service → router → `lib/api.ts`
-  → página. Imite o slice `/usuarios`.
+  → página. Imite uma feature pronta, como o Acervo (`schemas/acervo.py` →
+  `services/acervo.py` → `routers/acervo.py` → `lib/api.ts` →
+  `app/acervo/page.tsx`).
 - **Router fino**, regra de negócio no **service**, estruturas de dados em
   **`backend/app/core/`** em Python puro (sem SQLAlchemy/FastAPI), seguindo
   `core/README.md` e `core/indice_tags.py`.
@@ -91,7 +98,9 @@ make dev-front   # Next em :3000
   (`poema`, `antologia`, `forma`, `consagrado`). Exceção: campos herdados do
   template e fixados pelos testes (`username`, `name`, `bio`, `avatar_url`,
   `created_at`, `texto`).
-- Listagens devolvem página: `{"items", "total", "offset", "limit"}`.
+- Listagens devolvem página: `{"items", "total", "offset", "limit"}`
+  (`schemas/pagina.py`). O feed, os posts do perfil e os comentários também
+  paginam por cursor, com `proximo_cursor`.
 - **Poemas não têm limite de caracteres** e as quebras de linha são sagradas:
   no backend, nunca faça `strip()` linha a linha; no front, renderize com
   `whitespace-pre-wrap` e fonte serifada.
@@ -106,7 +115,8 @@ make dev-front   # Next em :3000
 Em `.claude/agents/` há um subagent por dono, com escopo, arquivos permitidos e
 dependências:
 
-- `neto-dados`: follow, consagrados (importador), tags/formas, seed e deploy.
+- `neto-dados`: follow, consagrados (importador), tags/formas, Explorar, Acervo,
+  poema do dia, tradução, seed e deploy.
 - `henrique-backend`: posts/poemas, feed, curtidas, comentários em árvore e repost/citação.
 - `pedro-frontend`: auth, layout/navegação, perfil e antologias.
 

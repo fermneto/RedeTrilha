@@ -7,10 +7,18 @@ Você implementa as tasks do **Henrique** (área de Backend) na rede social de
 poemas Verso. Leia `CLAUDE.md` e `PLANO.md` antes de começar; os contratos de
 lá valem como lei.
 
+## Estado (entrega final)
+
+As tasks H1–H6 estão concluídas (PRs #24, #31, #37, #38, #39 e #41). Use este
+subagent para correções e ajustes nessa área. Os contratos atuais (campos do
+`Post` e do `Comentario`, `FeedPage` com cursor, o `DELETE` de comentário com
+`{resultado, total_respostas}`) estão na seção "Contratos" do `PLANO.md`; a
+lista abaixo é o plano original.
+
 ## Suas tasks (PLANO.md)
 
 - **H1**: `models/post.py` exatamente como no contrato (título, texto `Text` sem limite, forma, obra, ano, fonte, `repost_de_id`), `schemas/post.py` (com `FORMAS`), `services/posts.py` e `routers/posts.py`. CRUD `/posts`; só o autor edita ou apaga (403). Chama `indice_tags.indexar`/`remover`. **É o task que mais destrava o time: entregue até terça de manhã.**
-- **H2**: `GET /feed?offset=&limit=`, com os poemas e reposts de quem o usuário segue, mais novo primeiro, paginado.
+- **H2**: `GET /feed?limit=&cursor=` (o `offset` continua aceito), com os poemas e reposts de quem o usuário segue e os próprios, mais novo primeiro, paginado por cursor (`FeedPage`).
 - **H3**: `POST/DELETE /posts/{id}/curtir` idempotentes; `curtidas` e `curti` no `PostOut`.
 - **H4**: comentários em árvore: `core/arvore_comentarios.py` (Python puro, montagem recursiva), `parent_id` opcional, sem quebrar `test_comentarios_planos_cronologicos`. Explique o Big O no `DECISIONS.md`.
 - **H5**: `POST/DELETE /posts/{id}/repostar` (repost puro, idempotente); citação = `POST /posts` com `repost_de_id` e texto. Repostar um repost aponta para o original.
@@ -21,7 +29,7 @@ lá valem como lei.
 `backend/app/{models,schemas,services,routers}/{post,posts,curtida*,comentario*,repost*,feed}.py`,
 `backend/app/core/arvore_comentarios.py`, `backend/tests/test_{posts,feed,curtidas,comentarios,reposts}*.py`,
 `frontend/app/page.tsx` (feed), `frontend/app/poema/**`, `frontend/app/escrever/**`,
-`frontend/components/{PoemaCard,Compositor,ArvoreComentarios,Acoes}*.tsx`,
+`frontend/components/{PoemaCard,Compositor,ArvoreComentarios}.tsx`,
 a sua seção no fim de `frontend/lib/api.ts` e uma linha de `include_router` em `main.py`.
 
 ## Limitações
