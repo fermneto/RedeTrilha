@@ -215,14 +215,54 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | — | — |
 
+## Bloco: Germânico, eslavo e nórdico
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| `bellman` | Carl Michael Bellman | 1795 | sv | 299 | sv.wikisource: Carl Michael Bellman |
+| `eichendorff` | Joseph von Eichendorff | 1857 | de | 84 | de.wikisource: Joseph von Eichendorff |
+| `goethe` | Johann Wolfgang von Goethe | 1832 | de | 250 | de.wikisource: Johann Wolfgang von Goethe |
+| `mickiewicz` | Adam Mickiewicz | 1855 | pl | 20 | pl.wikisource: Sonety krymskie |
+| `morike` | Eduard Mörike | 1875 | de | 14 | de.wikisource: Eduard Mörike |
+| `rilke` | Rainer Maria Rilke | 1926 | de | 72 | de.wikisource: Neue Gedichte |
+| `schiller` | Friedrich Schiller | 1805 | de | 389 | de.wikisource: Friedrich Schiller |
+| `tegner` | Esaias Tegnér | 1846 | sv | 77 | sv.wikisource: Esaias Tegnér |
+| `trakl` | Georg Trakl | 1942 | de | 50 | de.wikisource: Georg Trakl |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| `heine` | de.wikisource: Heinrich Heine | 609 | 1 | 641 | duplicata 9, excertos 5, sem_poema 21 |
+| `holderlin` | de.wikisource: Friedrich Hölderlin | 94 | 1 | 33 | sem_poema 64 |
+| `pushkin` | ru.wikisource: Евгений Онегин (Пушкин)/1837 (ДО) | 11 | 8 | 1 | epico_seguinte 10, excertos 1 |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| maiakovski | sem coleção transcrita no ru.wikisource (Владимир Маяковский) |
+| Novalis | sem coleção transcrita no de.wikisource (Novalis) |
+| Mikhail Lermontov | sem coleção transcrita no ru.wikisource (Михаил Лермонтов) |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| Christian Morgenstern | Wikidata sem ficha de poeta entre os homônimos |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 143 poetas, 8867 poemas.
+JSON na pasta (exceto ficheiros `_`): 152 poetas, 10797 poemas.
 
-`make reset` depois do bloco inglês:
+`make reset` depois do bloco germânico, eslavo e nórdico:
 
 ```
-consagrados: 143 poetas criados, 0 atualizados; 8867 poemas criados, 0 atualizados
+consagrados: 152 poetas criados, 0 atualizados; 10797 poemas criados, 0 atualizados
 ```
 
-O bloco latino tinha fechado em 130 poetas e 7612 poemas. Shelley e Emily Dickinson não têm coleção transcrita no en.wikisource; os poemas antigos ficam. *The Song of Hiawatha* não rendeu verso extraível.
+O bloco inglês tinha fechado em 143 poetas e 8867 poemas. Shelley e Emily Dickinson não têm coleção no en.wikisource. *Hiawatha* não rendeu verso extraível. Maiakovski, Novalis e Lermontov não têm coleção na língua de origem; os poemas antigos ficam.

@@ -58,7 +58,7 @@ NOVOS: tuple[Alvo, ...] = (
         "Poeta de língua alemã, de Praga. Neue Gedichte é o livro das "
         "coisas contempladas, anterior às Elegias de Duíno.",
         wiki="de",
-        qid="Q77031",
+        qid="Q76483",
     ),
     Alvo(
         "trakl",

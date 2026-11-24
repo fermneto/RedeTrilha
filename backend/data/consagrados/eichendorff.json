@@ -1,0 +1,766 @@
+{
+  "username": "eichendorff",
+  "name": "Joseph von Eichendorff",
+  "bio": "Poeta alemão do romantismo. As canções de noite, viagem e floresta foram musicadas e ficaram na memória popular alemã.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Eichendorff.jpg",
+  "morte": 1857,
+  "poemas": [
+    {
+      "titulo": "Abendlandschaft",
+      "texto": " Abendlandschaft.\n\n„Ach, daß auch wir schliefen!\nDie blühenden Tiefen,\nDie Ströme, die Auen,\nSo heimlich aufschauen,\n\nAls ob sie all’ riefen:\n„Dein Liebchen ist todt!“\nUnter Rosen roth,\nAch, daß wir auch schliefen!“\n\n„Hast doch keine Schwingen,\n\nDurch Wolken zu dringen!\nMußt immerfort schauen\nDie Ströme, die Auen –\nDie werden Dir singen\nVon ihr Tag und Nacht,\n\nMit Wahnsinnes-Macht\nDie Seele umschlingen.“\n\nSo singt, wie Syrenen,\nVon hellblauen, schönen \nVergangenen Zeiten\n\nDer Abend von weiten,\nVersinkt dann in Tönen, \nErst Busen dann Mund,\nIm blühenden Grund –\nO schweige, Syrene!\n\nO wecke nicht wieder!\nDenn zaub’rische Lieder\nGebunden hier träumen\nAuf Feldern und Bäumen,\nUnd ziehen mich nieder,\n\nSo müde vor Weh,\nZu tiefstillem See –\nO weck nicht die Lieder!\n\nDu kanntest die Wellen\nDes Sees, sie schwellen\n\nIn magischen Ringen.\nEin wehmüthig Singen,\nTief unter den Quellen,\nIm Schlummer dort hält\nVerzaubert die Welt. \n\nWohl kennst Du die Wellen! –\n\nKühl wird’s auf den Gängen,\nVon alten Gesängen\nMöcht’s Herz mir zerspringen.\nSo will ich denn singen!\n\nSchmerz fliegt ja auf Klängen\nZu himmlischer Lust,\nUnd still wird die Brust\nAuf kühlgrünen Gängen.\n\nLaß fahren die Träume!\n\nDer Mond scheint durch Bäume,\nDie Wälder nur rauschen,\nDie Thäler still lauschen,\n\nWie einsam die Räume!\nAch, Niemand ist mein!\n\nHerz, wie so allein!\nLaß fahren die Träume!\n\nDer Herr wird Dich führen,\nTief kann ich ja spüren\nDer Sterne still Walten.\n\nDer Erde Gestalten\nKaum hörbar sich rühren;\nDurch Nacht und durch Graus\nGen Morgen nach Haus –\nJa, Gott wird mich führen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abendlandschaft",
+      "tags": []
+    },
+    {
+      "titulo": "Abendlandschaft (Eichendorff)",
+      "texto": "Der Hirt bläst seine Weise,\nVon fern ein Schuß noch fällt,\nDie Wälder rauschen leise\nUnd Ströme tief im Feld.\n\nNur hinter jenem Hügel\nNoch spielt der Abendschein –\nO hätt’ ich, hätt’ ich Flügel,\nZu fliegen da hinein!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abendlandschaft_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Abschied (Eichendorff)",
+      "texto": "[383]       Abschied.\nIm Walde bei Lubowitz.\n\nO Thäler weit, o Höhen,\nO schöner, grüner Wald,\nDu meiner Lust und Wehen\nAndächt’ger Aufenthalt!\n\n Da draußen, stets betrogen,\nSaust die geschäft’ge Welt,\nSchlag’ noch einmal die Bogen\nUm mich, du grünes Zelt!\n\nWenn es beginnt zu tagen,\n\n Die Erde dampft und blinkt,\nDie Vögel lustig schlagen,\nDaß dir dein Herz erklingt:\nDa mag vergehn, verwehen\nDas trübe Erdenleid,\n\n Da sollst du auferstehen\nIn junger Herrlichkeit!\n\nDa steht im Wald geschrieben,\nEin stilles, ernstes Wort\n[384]  Von rechtem Thun und Lieben,\n\n Und was des Menschen Hort.\nIch habe treu gelesen\nDie Worte, schlicht und wahr,\nUnd durch mein ganzes Wesen\nWard’s unaussprechlich klar.\n\n Bald werd’ ich dich verlassen\nFremd in der Fremde geh’n,\nAuf buntbewegten Gassen\nDes Lebens Schauspiel seh’n;\nUnd mitten in dem Leben\n\n Wird deines Ernst’s Gewalt\nMich Einsamen erheben,\nSo wird mein Herz nicht alt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abschied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Abschied und Wiedersehn",
+      "texto": "     Abschied und Wiedersehn.\n\n I.\nIn süßen Spielen unter nun gegangen\nSind Liebchens Augen, und sie athmet linde,\nStilllauschend sitz’ ich bei dem holden Kinde,\nDie Locken streichelnd ihr von Stirn und Wangen.\n\nAch! Lust und Mond und Sterne sind vergangen,\nAm Fenster mahnen schon die Morgenwinde:\nDaß ich vom Nacken leis die Arme winde,\nDie noch im Schlummer lieblich mich umfangen.\n\nO öffne nicht der Augen süße Strahle!\n\nNur Einen Kuß noch – und zum Letztenmale\nGeh’ ich von Dir durchs stille Schloß hernieder.\n\nStreng greift der eis’ge Morgen an die Glieder,\nWie ist die Welt so klar und kalt und helle –\nTiefschauernd tret’ ich von der lieben Schwelle.\n\n II.\n\nEin zart Geheimniß webt in stillen Räumen,\nDie Erde löst die diamantnen Schleifen,\nUnd nach des Himmels süßen Strahlen greifen\nDie Blumen, die der Mutter Kleid besäumen.\n\nDa rauscht’s lebendig draußen in den Bäumen,\n\nAus Osten langen purpurrothe Streifen,\nHoch Lerchenlieder durch das Zwielicht schweifen –\nDu hebst das blüh’nde Köpfchen hold aus Träumen.\n\nWas sind’s für Klänge, die an’s Fenster flogen?\nSo altbekannt verlocken diese Lieder,\n\nEin Sänger steht im schwanken Dämmerschein.\n\nWach auf! Dein Liebster ist fernher gezogen,\nUnd Frühling ist’s auf Thal und Bergen wieder,\nWach auf, wach auf, nun bist Du ewig mein!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Abschied_und_Wiedersehn",
+      "tags": []
+    },
+    {
+      "titulo": "An die Dichter (Eichendorff) —  An die Dichter.",
+      "texto": " An die Dichter.\n\nWo treues Wollen, redlich Streben\nUnd rechten Sinn der Rechte spürt,\nDas muß die Seele ihm erheben,\nDas hat mich jedesmal gerührt.\n\nDas Reich des Glaubens ist geendet,\nZerstört die alte Herrlichkeit,\nDie Schönheit weinend abgewendet,\nSo gnadenlos ist unsre Zeit.\n\nO Einfalt gut in frommen Herzen\n\nDu züchtig schöne Gottesbraut!\nDich schlugen sie mit frechen Scherzen,\nWeil Dir vor ihrer Klugheit graut.\n\nWo find’st Du nun ein Haus, vertrieben,\nWo man Dir Deine Wunder läßt,\n\nDas treue Thun, das schöne Lieben,\nDes Lebens fromm vergnüglich Fest?\n\nWo findest Du den alten Garten,\nDein Spielzeug, wunderbares Kind,\nDer Sterne heil’ge Redensarten,\n\nDas Morgenroth, den frischen Wind?",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_die_Dichter_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "An die Dichter (Eichendorff) — Wie hat die Sonne schön geschienen!",
+      "texto": "Wie hat die Sonne schön geschienen!\nNun ist so alt und schwach die Zeit;\nWie steh’st so jung Du unter ihnen,\nWie wird mein Herz mir stark und weit!\n\nDer Dichter kann nicht mit verarmen;\nWenn Alles um ihn her zerfällt,\nHebt ihn ein göttliches Erbarmen –\nDer Dichter ist das Herz der Welt.\n\nDen blöden Willen aller Wesen,\n\nIm Irdischen des Herren Spur,\nSoll er durch Liebeskraft erlösen,\nDer schöne Liebling der Natur.\n\nD’rum hat ihm Gott das Wort gegeben,\nDas kühn das Dunkelste benennt,\n\nDen frommen Ernst im reichen Leben,\nDie Freudigkeit, die Keiner kennt.\n\nDa soll er singen frei auf Erden,\nIn Lust und Noth auf Gott vertrau’n,\nDaß aller Herzen freier werden,\n\nErathmend in die Klänge schau’n.\n\nDer Ehre sei er recht zum Horte,\nDer Schande leucht’ er ins Gesicht!\nViel Wunderkraft ist in dem Worte,\nDas hell aus reinem Herzen bricht.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_die_Dichter_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "An die Dichter (Eichendorff) — Vor Eitelkeit soll er vor Allen",
+      "texto": "Vor Eitelkeit soll er vor Allen\nStreng hüten sein unschuld’ges Herz,\nIm Falschen nimmer sich gefallen,\nUm eitel Witz und blanken Scherz.\n\nO laß’t unedle Mühe fahren,\n\nO klingelt, gleißt und schielet nicht\nMit Licht-und Gnad’, so ihr erfahren,\nZur Sünde macht ihr das Gedicht!\n\nDen lieben Gott laß’ in Dir walten,\nAus frischer Brust nur treulich sing’!\n\nWas wahr in Dir, wird sich gestalten.\nDas andre ist erbärmlich Ding. –\n\nDen Morgen seh’ ich ferne scheinen.\nDie Strome zieh’n im grünen Grund,\nMir ist so wohl! – die’s ehrlich meinen,\n\nDie grüß’ ich All’ aus Herzensgrund!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_die_Dichter_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "An die Entfernte (Eichendorff)",
+      "texto": " An die Entfernte.\n\nDenk ich, Du Stille, an Dein ruhig Walten,\nAn jenes letzten Abends rothe Kühle,\nWo ich die theu’re Hand noch durfte halten:\nSteh’ ich oft sinnend stille im Gewühle,\n\nUnd, wie den Schweitzer heim’sche Alphornslieder\nAuf fremden Bergen, fern den Freunden allen,\nOft unverhofft befallen,\nKommt tiefe Sehnsucht plötzlich auf mich nieder.\n\nIch hab’ es oft in Deiner Brust gelesen:\n\nNie hast Du recht mich in mir selbst gefunden,\nFremd blieb, zu keck und treibend Dir mein Wesen,\nUnd so bin ich im Strome Dir verschwunden.\nO nenn’ drum nicht die schöne Jugendwilde,\nDie mit dem Leben und mit seinen Schmerzen\n\nMag unbekümmert scherzen,\nWeil sie die Brust reich fühlt und ernst und milde!\n\nGetrennt ist längst schon uns’res Lebens Reise,\nEs trieb mein Herz durch licht’ und dunkle Stunden.\nDem festern Blick erweitern sich die Kreise,\n\nIn Duft ist jenes erste Reich verschwunden –\nDoch, wie die Pfade einsam sich verwildern,\nWas ich seitdem, von Lust und Leid bezwungen,\nGeliebt, geirrt, gesungen:\nIch knie’ vor Dir in all’ den tausend Bildern.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_die_Entfernte_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "An die Freunde",
+      "texto": " An die Freunde.\n\nDer Jugend Glanz, der Sehnsucht irre Weisen,\nDie tausend Ströme durch das duft’ge Land,\nEs zieht uns All’ zu seinen Zauberkreisen. –\nWem Gottesdienst in tiefster Brust entbrannt,\n\nDer sieht mit Wehmuth ein unendlich Reisen\nZu ferner Heimath, die er fromm erkannt;\nUnd was sich spielend wob als ird’sche Blume,\nWölbt still den Kelch zum ernsten Heiligthume.\n\nSo schauet denn das buntbewegte Leben\n\nRingsum von meines Gartens heitrer Zinn’,\nDaß hoch die Bilder, die noch dämmernd schweben –\nWo Morgenglanz geblendet meinen Sinn –\nAn Eurem Blick erwachsen und sich heben.\nVerwüstend rauscht die Zeit darüber hin;\n\nIn Euren treuen Herzen neu geboren\nSind sie im wilden Strome unverloren.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_die_Freunde",
+      "tags": []
+    },
+    {
+      "titulo": "An eine junge Tänzerin",
+      "texto": "     An eine junge Tänzerin.\n\nCastagnetten lustig schwingen\nSeh’ ich Dich, Du zierlich Kind!\nMit der Locken schwarzen Ringen\nSpielt der sommerlaue Wind.\n\nKünstlich regst Du schöne Glieder,\nGlühendwild\nZärtlichmild\nTauchest in Musik Du nieder,\nUnd die Woge hebt Dich wieder.\n\nWarum sind so blaß die Wangen,\nDunkelfeucht der Augen Glanz,\nUnd ein heimliches Verlangen\nSchimmert glühend durch den Tanz?\nSchalkhaft lockend schaust Du nieder,\n\nLiebesnacht\nSüß erwacht,\nWollüstig erklingen Lieder –\nSchlag nicht so die Augen nieder!\n\nWecke nicht die Zauberlieder\n\nIn der dunklen Tiefe Schoos,\nSelbst verzaubert sinkst Du nieder,\nUnd sie lassen Dich nicht los.\nTödtlich schlingt sich um die Glieder\nSündlich Glüh’n,\n\nUnd verblühn\nMüssen Schönheit, Tanz und Lieder,\nAch, ich kenne Dich nicht wieder!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_eine_junge_T%C3%A4nzerin",
+      "tags": []
+    },
+    {
+      "titulo": "An meinen Bruder",
+      "texto": " An meinen Bruder.\n Zum Abschiede im Jahr 1813.\n\nSteig’ aufwärts, Morgenstunde!\nZerreiß’ die Nacht, daß ich in meinem Wehe\nDen Himmel wiedersehe,\nWo ew’ger Frieden in dem blauen Grunde!\n\nWill Licht die Welt erneuen:\nMag auch der Schmerz in Thränen sich befreien.\n\nMein lieber Herzensbruder!\nStill war der Morgen – Ein Schiff trug uns beide.\nWie war die Welt voll Freude!\n\nDu faßtest ritterlich das schwanke Ruder,\nUns beide treulich lenkend,\nAuf froher Fahrt nur Einen Stern bedenkend.\n\nMich irrte manches Schöne,\nViel reizte mich und viel mußt’ ich vermissen.\n\nVon Lust und, Schmerz zerrissen,\nWas so mein Herz hinausgeströmt in Töne:\nEs waren Wiederspiele\nVon Deines Busens ewigem Gefühle.\n\nDa ward die Welt so trübe,\n\nRings stiegen Wetter von der Berge Spitzen,\nDer Himmel borst in Blitzen,\nDaß neugestärkt sich Deutschland d’raus erhübe. –\nNun ist das Schiff zerschlagen,\nWie soll ich ohne Dich die Fluth ertragen! –\n\nAuf einem Fels geboren,\nVertheilen kühlerrauschend sich zwei Quellen,\nDie eigne Bahn zu schwellen.\nDoch wie sie fern einander auch verloren:\nEs treffen ächte Brüder\n\nIm ew’gen Meere doch zusammen wieder.\n\nSo wolle Gott Du flehen,\nDaß er mit meinem Blut und Leben schalte,\nDie Seele nur erhalte,\nAuf daß wir freudig einst uns wiedersehen,\n\nWenn nimmermehr hienieden:\nSo dort, wo Heimath, Licht und ew’ger Frieden!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_meinen_Bruder",
+      "tags": []
+    },
+    {
+      "titulo": "An W. (Eichendorff)",
+      "texto": "[recto] \n16.\nAn W.\nZum Abschiede. Im Jahre 1813.\n\nSteig’ aufwärts, Morgenstunde!\nZerreiß’ die Nacht, daß ich in meinem Wehe\nDen Himmel wiedersehe,\nWo ew’ger Friede in dem blauen Grunde!\n\nWill Licht die Welt erneuen:\nMag auch der Schmerz in Thränen sich erfreuen.\n\nMein lieber Hertzensbruder!\nStill war der Morgen – Ein Schiff trug uns beide,\nWie war die Welt voll Freude!\n\nDu faßtest ernst und fromm das schwanke Ruder,\nUns beide treulich lenkend,\nAuf froher Farth nur Einen Stern bedenkend.\n\nMich irrte manches Schöne,\nViel reizte mich und viel mußt’ ich vermißen.\n\nVon Lust und Schmertz zerrißen,\nWas so mein Hertz hinausgeströmt in Töne:\nEs waren Widerspiele\nVon Deines Busens ewigem Gefühle.\n\n[verso] Da ward die Welt so trübe,\nUnd Wetter stiegen auf die Bergesspitzen,\nDer Himmel borst in Blitzen,\nDaß neugestärkt sich Deutschland draus erhübe. –\nNun ist das Schiff zerschlagen,\nWie soll ich ohne Dich die Fluth ertragen! –\n\nAus Einem Fels geboren,\nVertheilen kühlerauschend sich zwei Quellen,\nDie eigne Bahn zu schwellen.\nDoch wie sie fern einander auch verloren:\nEs treffen ächte Brüder\n\nIm ew’gen Meere doch zusammen wieder.\n\nSo wolle Gott Du flehen,\nDaß Er mit meinem Blut und Leben schalte,\nDie Seele nur erhalte,\nAuf daß wir freudig einst uns wiedersehen,\n\nWenn nimmermehr hinieden:\nSo dort, wo Heimat, Licht und ew’ger Frieden.\n\nJoseph Freih. v. Eichendorff.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/An_W._%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Angedenken",
+      "texto": " Angedenken.\n\nWenn Zwei geschieden sind von Herz und Munde,\nDa zieh’n Gedanken über Berg’ und Schlüfte,\nWie Tauben säuselnd durch die blauen Lüfte,\nUnd tragen hin und wieder süsse Kunde.\n\nIch schweif’ umsonst, so weit der Erde Runde,\nUnd stieg’ ich hoch auch über alle Klüfte:\nDein Haus ist höher noch als diese Lüfte,\nDa reicht kein Laut hin, noch zurück zum Grunde.\n\nJa, seit Du todt – mit seinen blüh’nden Borden\n\nWich ringsumher das Leben mir zurücke,\nEin weites Meer, wo keine Bahn zu finden.\n\nDoch ist Dein Bild zum Sterne mir geworden,\nDer nach der Heimath weist mit stillem Blicke,\nDaß fromm der Schiffer streite mit den Winden.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Angedenken",
+      "tags": []
+    },
+    {
+      "titulo": "Antwort",
+      "texto": "[373]Antwort\nAn H. Gf. v. Loeben\n\nDemütig kniet ich vor der Jungfrau Bilde, \nErflehend nur ein einzig Liebes-Zeichen, \nDas nicht in Angst und Pein möcht von mir weichen. \nSie gab mir — Mut und Andacht milde. \n\nNun drängt ein Schmerz mich süß und sanft und wilde, \nDaß ich mir ihrer Wunder Himmelreichen, \nDie weiter als mein irdsches Leben reichen, \nWie ich sie himmlisch schau, die Schöne bilde. \n\nMir fehlen Töne noch und Himmels-Frieden; \n\nDir ward Erfüllung frühe schon beschieden, \nDein Himmel ist, wo zauberte dein Beten. \n\n[374]Hast du den höchsten Wunsch mir nun genommen, \nWerd ich demutsvoll wieder vor dich treten; \nEins sein mit dir, kann nur allein mir frommen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Antwort",
+      "tags": []
+    },
+    {
+      "titulo": "Der armen Schönheit Lebenslauf",
+      "texto": "Der armen Schönheit Lebenslauf.\n\nDie arme Schönheit irrt auf Erden, \nSo lieblich Wetter draußen ist, \nMöcht’ gern recht viel gesehen werden, \nWeil jeder sie so freundlich grüßt. \n\nUnd wer die arme Schönheit schauet,\nSich wie auf großes Glück besinnt,\nDie Seele fühlt sich recht erbauet, \nWie wenn der Frühling neu beginnt. \n\nDa sieht sie viele schöne Knaben, \n\nDie reiten unten durch den Wind, \nMöcht’ manchen gern im Arme haben, \nHüt’ Dich, hüt’ Dich, Du armes Kind! \n\nDa zieh’n manch’ redliche Gesellen, \nDie sagen: Hast nicht Geld noch Haus, \n\nWir fürchten Deine Augen helle,\nWir haben nichts zum Hochzeitsschmauß. \n\nVon andern thut sie sich wegdrehen, \nWeil keiner ihr so wohl gefällt,\nDie müssen traurig weitergehen,\n\nUnd zögen gern an’s End’ der Welt. \n\nDa sagt sie: Was hilft mir mein Sehen, \nIch wünscht’, ich wäre lieber blind, \nDa alle furchtsam von mir gehen, \nWeil gar so schön mein’ Augen sind. –\n\nNun sitzt sie hoch auf lichtem Schlosse, \nIn schöne Kleider putzt sie sich, \nDie Fenster glüh’n, sie winkt vom Schlosse, \nDie Sonne sinkt, das blendet Dich. \n\nDie Augen, die so furchtsam waren, \n\nDie haben jetzt so freien Lauf, \nFort ist das Kränzlein aus den Haaren, \nUnd hohe Federn steh’n darauf. \n\nDas Kränzlein ist herausgerissen, \nGanz ohne Scheu sie mich anlacht; \n\nGeh’ Du vorbei: sie wird Dich grüßen, \nWinkt Dir zu einer schönen Nacht. – \n\nDa sieht sie die Gesellen wieder,\nDie fahren unten auf dem Fluß, \nEs singen laut die lust’gen Brüder, \n\nSo furchtbar schallt des Einen Gruß: \n\n„Was bist Du für’ne schöne Leiche! \nSo wüste ist mir meine Brust, \nWie bist Du nun so arm, Du Reiche, \nIch hab’ an Dir nicht weiter Lust!“ \n\nDer Wilde hat ihr so gefallen,\nLaut schrie sie auf bei seinem Gruß, \nVom Schloß möcht sie herunter fallen. \nUnd unten ruh’n im kühlen Fluß. –\n\nSie blieb nicht länger mehr da oben, \n\nWeil alles anders worden war, \nVor Schmerz ist ihr das Herz erhoben,\nDa ward’s so kalt, doch himmlischklar. \n\nDa legt sie ab die goldnen Spangen, \nDen falschen Putz und Ziererei, \n\nAus dem verstockten Herzen drangen \nDie alten Thränen wieder frei. \n\nKein Stern wollt nicht die Nacht erhellen, \nDa mußte die Verliebte geh’n, \nWie rauscht der Fluß! die Hunde bellen, \n\nDie Fenster fern erleuchtet steh’n. \n\nNun bist Du frei von Deinen Sünden, \nDie Lieb’ zog triumphirend ein,\nDu wirst noch hohe Gnade finden, \nDie Seele geht im Hafen ein. – \n\nDer Liebste war ein Jäger worden,\nDer Morgen schien so rosenroth, \nDa blies er lustig auf dem Horne, \nBlies immerfort in seiner Noth.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_armen_Sch%C3%B6nheit_Lebenslauf",
+      "tags": []
+    },
+    {
+      "titulo": "Auch ein Gedicht (Eichendorff)",
+      "texto": " Auch ein Gedicht?\n(In einem geselligen Kreise bei Gelegenheit einer verlorenen Wette.)\n\nZwischen Acten, dunkeln Wänden \nBannt mich Freiheitbegehrenden \nNun des Lebens strenge Pflicht, \nUnd aus Schränken, Actenschichten \n\nLachen mir die beleidigten \nMusen in das Amtsgesicht. \n\nAls an Lenz und Morgenröthe \nNoch das Herz sich erlabete, \nO du stilles, heitres Glück! \n\nWie ich auch nun heiß mich sehne, \nAch, aus dieser Sandebene\nFührt kein Weg dahin zurück. \nAls der letzte Balkentreter \nSteh’ ich armer Enterbeter \n\nIn des Staates Symphonie, \nAch, in diesem Schwall von Tönen\nWo fänd’ ich da des eigenen \nHerzens süße Melodie? \n\nEin Gedicht soll ich Euch spenden: \n\nNun, so geht mit dem Leidenden \nNicht zu strenge ins Gericht! \nNehmt den Willen für Gewährung, \nKühnen Reim für Begeisterung, \nDiesen Unsinn als Gedicht!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Auch_ein_Gedicht_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Auf dem Schwedenberge",
+      "texto": "     Auf dem Schwedenberge.\n\nDa hoben bunt und bunter\nSich Zelte in die Luft,\nUnd Fähnlein wehten munter\nHerunter von der Kluft.\n\nUnd um die leichten Tische,\nAn jenem Bächlein klar,\nSaß in der kühlen Frische\nDer lust’gen Reiter Schaar.\n\nEilt’ durch die rüstgen Zecher\n\nDie Marketenderinn,\nReicht’ flüchtig ihre Becher,\nNimmt flücht’ge Küsse hin.\n\nDa war ein Toben, Lachen,\nWeit in den Wald hinein.\n\nDie Trommel ging, es brachen\nDie lust’gen Pfeifen drein.\n\nDurch die verworr’nen Klänge\nStürmt’ fort manch’ wilde Brust,\nDa schallten noch Gesänge\n\nVon Freiheit und von Lust.\n\nFort ist das bunte Toben,\nVerklungen Sang und Klang,\nUnd stille ist’s hier oben\nViel hundert Jahre lang.\n\nDu Wald, so dunkelschaurig,\nWaldhorn, Du Jägerlust!\nWie luftig und wie traurig\nRührst Du mir an die Brust!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Auf_dem_Schwedenberge",
+      "tags": []
+    },
+    {
+      "titulo": "Aus dem Leben eines Taugenichts",
+      "texto": "Wem Gott will rechte Gunst erweisen, \nDen schickt er in die weite Welt, \nDem will er seine Wunder weisen \nIn Feld und Wald und Strom und Feld.\n \nDie Trägen, die zu Hause liegen, \nErquicket nicht das Morgenroth, \nSie wissen nur vom Kinderwiegen \nVon Sorgen, Last und Noth um Brodt. \n\nDie Bächlein von den Bergen springen, \nDie Lerchen schwirren hoch vor Lust, \nWas sollt’ ich nicht mit ihnen singen \nAus voller Kehl’ und frischer Brust?\n\nDen lieben Gott laß ich nur walten; \nDer Bächlein, Lerchen, Wald und Feld \nUnd Erd’ und Himmel will erhalten, \nHat auch mein’ Sach’ auf’s Best’ bestellt!\n\nWohin ich geh’ und schaue, \nIn Feld und Wald und Thal \nVom Berg’ in’s Himmelsblaue, \nViel schöne gnäd’ge Fraue, \nGrüß’ ich Dich tausendmal.\n\nWohin ich geh’ und schaue, \nIn Feld und Wald und Thal \nVom Berg hinab in die Aue: \nViel schöne, hohe Fraue, \nGrüß ich Dich tausendmal. \n\nIn meinem Garten find’ ich \nViel Blumen, schön und fein, \nViel Kränze wohl d’raus wind’ ich \nUnd tausend Gedanken bind’ ich \nUnd Grüße mit darein. \n\nIhr darf ich keinen reichen, \nSie ist zu hoch und schön, \nDie müssen alle verbleichen, \nDie Liebe nur ohne Gleichen \nBleibt ewig im Herzen stehn. \n\nIch schein’ wohl froher Dinge \nUnd schaffe auf und ab, \nUnd, ob das Herz zerspringe, \nIch grabe fort und singe \nUnd grab’ mir bald mein Grab.\n\nDen lieben Gott laß ich nur walten; \nDer Bächlein, Lerchen, Wald und Feld \nUnd Erd’ und Himmel thut erhalten, \nHat auch mein Sach’ auf’s Best’ bestellt!\n\nFliegt der erste Morgenstrahl \nDurch das stille Nebelthal, \nRauscht erwachend Wald und Hügel: \nWer da fliegen kann, nimmt Flügel!\n\n \nUnd sein Hütlein in die Luft \nWirft der Mensch vor Lust und ruft: \nHat Gesang doch auch noch Schwingen, \nNun so will ich fröhlich singen'\n\nSchweigt der Menschen laute Lust: \nRauscht die Erde wie in Träumen \nWunderbar mit allen Bäumen, \nWas dem Herzen kaum bewußt. \nAlte Zeiten, linde Trauer, \nUnd es schweifen leise Schauer \nWetterleuchtend durch die Brust.\n\nWenn der Hoppevogel schreit, \nIst der Tag nicht mehr weit. \nWenn die Sonne sich aufthut, \nSchmeckt der Schlaf noch so gut! –\n\nWer in die Fremde will wandern, \nDer muß mit der Liebsten gehn. \nEs jubeln und lassen die Andern \nDen Fremden alleine stehn.\n \nWas wisset Ihr, dunkele Wipfeln \nVon der alten schönen Zeit? \nAch, die Heimath hinter den Gipfeln, \nWie liegt sie von hier so weit.\n \nAm liebsten betracht ich die Sterne, \nDie schienen, wenn ich ging zu ihr, \nDie Nachtigall hör’ ich so gerne, \nSie sang vor der Liebsten Thür.\n\nDer Morgen, das ist meine Freude! \nDa steig ich in stiller Stund’ \nAuf den höchsten Berg in die Weite, \nGrüß Dich Deutschland aus Herzensgrund!\n\nWenn ich ein Vöglein wär’, \nIch wüßt’ wohl, wovon ich sänge, \nUnd auch zwei Flüglein hätt’, \nIch wüßt’ wohl, wohin ich mich schwänge!\n\n \nDie treuen Berg’ steh’n auf der Wacht: \n„Wer streicht bei stiller Morgenzeit \nDa aus der Fremde durch die Haid’?“ – \nIch aber mir die Berg’ betracht’ \nUnd lach’ in mich vor großer Lust, \nUnd rufe recht aus frischer Brust \nParol und Feldgeschrei sogleich: \nVivat Oestreich!\n \nDa kennt mich erst die ganze Rund, \nNun grüßen Bach und Vöglein zart \nUnd Wälder rings nach Landesart, \nDie Donau blitzt aus tiefem Grund, \nDer Stephansthurm auch ganz von fern \nGuckt übern Berg und säh’ mich gern, \nUnd ist er’s nicht, so kommt er doch gleich, \nVivat Oestreich!\n\nNach Süden nun sich lenken \nDie Vöglein allzumal. \nViel’ Wandrer lustig schwenken \nDie Hüt’ im Morgenstrahl. \nDas sind die Herrn Studenten, \nZum Thor hinaus es geht, \nAuf ihren Instrumenten \nSie blasen zum Valet: \nAde in die Läng’ und Breite \nO Prag, wir ziehn in die Weite: \nEt habeat bonam pacem,\nQui sedet post fornacem!\n\nNachts wir durch’s Städtlein schweifen, \nDie Fenster schimmern weit, \nAm Fenster dreh’n und schleifen \nViel schön geputzte Leut. \nWir blasen vor den Thüren \nUnd haben Durst genung, \nDas kommt vom Musiziren, \nHerr Wirth, einen frischen Trunk! \nUnd siehe über ein Kleines \nMit einer Kanne Weines \nVenit ex sua domo -\nBeatus ille homo!\n\nNun weht schon durch die Wälder \nDer kalte Boreas, \nWir streichen durch die Felder, \nVon Schnee und Regen naß. \nDer Mantel fliegt im Winde, \nZerrissen sind die Schuh, \nDa blasen wir geschwinde \nUnd singen noch dazu: \nBeatus ille homo\nQui sedet in sua domo\nEt sedet post fornacem\nEt habet bonam pacem!\n\nSchweigt der Menschen laute Lust: \nRauscht die Erde wie in Träumen \nWunderbar mit allen Bäumen, \nWas dem Herzen kaum bewußt, \nAlte Zeiten, linde Trauer, \nUnd es schweifen leise Schauer \nWetterleuchtend durch die Brust.\n\nWir bringen Dir den Jungfernkranz \nMit veilchenblauer Seide, \nWir führen Dich zu Lust und Tanz, \nZu neuer Hochzeitsfreude. \nSchöner, grüner Jungfernkranz, \nVeilchenblaue Seide.\n\nDarum bin Ich Dir gewogen, \nDarum wird Dein Haupt geschmückt, \nWeil der Strich von Deinem Bogen \nOefters hat mein Herz entzückt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Aus_dem_Leben_eines_Taugenichts",
+      "tags": []
+    },
+    {
+      "titulo": "Bei einer Linde",
+      "texto": " Bei einer Linde.\n\nSeh’ ich Dich wieder, Du geliebter Baum,\nIn dessen junge Triebe\nIch einst in jenes Frühlings schönstem Traum\nDen Namen schnitt von meiner ersten liebe?\n\nWie anders ist seitdem der Aeste Bug,\nVerwachsen und verschwunden\nIm härt’ren Stamm der vielgeliebte Zug,\nWie ihre Liebe und die schönen Stunden!\n\nAuch ich seitdem wuchs stille fort, wie Du,\n\nUnd nichts an mir wollt’ weilen, \nDoch meine Wunde wuchs – und wuchs nicht zu,\nUnd wird wohl niemals mehr hienieden heilen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Bei_einer_Linde",
+      "tags": []
+    },
+    {
+      "titulo": "Die Brautfahrt (Eichendorff)",
+      "texto": " Die Brautfahrt.\n\nDurch des Meeresschlosses Hallen\nAuf bespültem Felsenhang,\nWeht der Hörner festlich Schallen;\nFroher Hochzeitgäste Drang,\n\nBei der Kerzen Zauberglanze,\nwogt im buntverschlungnen Tanze.\n\nAber an des Fensters Bogen,\nFerne von der lauten Pracht,\nSchaut der Bräut’gam in die Wogen\n\nDraußen in der finstern Nacht,\nUnd die trunknen Blicke schreiten\nFurchtlos durch die öden Weiten.\n\n„Lieblich,“ sprach der wilde Ritter\nZu der zarten, schönen Braut,\n\n„Lieblich girrt die sanfte Zitter –\nSturm ist meiner Seele Laut,\nUnd der Wogen dumpfes Brausen\nHebt das Herz in kühnem Grausen.\n\nIch kann hier nicht müßig lauern,\n\nTreiben auf dem flachen Sand,\nDieser Kreis von Felsenmauern\nHält mein Leben nicht umspannt;\nSchön’re Länder blühen ferne.\nDas verkünden mir die Sterne.\n\nDu mußt glauben, Du mußt wagen,\nUnd, den Argonauten gleich,\nWird die Woge fromm Dich tragen\nIn das wunderbare Reich;\nMuthig streitend mit den Winden,\n\nMuß ich meine Heimath finden!\n\nSiehst Du, heißer Sehnsucht Flügel,\nWeiße Seegel dort gespannt?\nHorst Du tief die feuchten Hügel\nSchlagen an die Felsenwand?\n\nDas ist Sang zum Hochzeitsreigen –\nWillst Du mit mir niedersteigen?\n\nKannst Du rechte Liebe fassen,\nNun so frage, zaudre nicht!\nSchloß und Garten mußt Du lassen\n\nUnd der Aeltern Angesicht –\nAuf der Fluth mit mir alleine,\nDa erst, Liebchen, bist Du meine!\"\n\nSchweigend sieht ihn an die milde\nBraut mit schauerlicher Lust,\n\nSinkt dem kühnen Ritterbilde\nTrunken an die stolze Brust.\n„Dir hab ich mein Loos ergeben\nSchalte nun mit meinem Leben.“\n\nUnd er trägt die süße Beute\n\nJubelnd aus dem Schloß aufs Schiff,\nDrunten harren seine Leute,\nStoßen froh vom Felsenriff;\nUnd die Hörner leis verhallen,\nEinsam rings die Wogen schallen.\n\nWie die Sterne matter blinken\nIn die morgenrothe Fluth,\nSieht sie fern die Berge sinken,\nFlammend steigt die hehre Gluth,\nUeber’m Spiegel trunkner Wellen\n\nRauschender die Seegel schwellen.\n\nMonde steigen und sich neigen,\nLieblich weht schon fremde Luft,\nDa seh’n sie ein Eiland steigen\nFeenhaft aus blauem Duft,\n\nWie ein farb’ger Blumenstreifen –\nMeerwärts fremde Vögel schweifen.\n\nAlle faßt ein freud’ges Beben –\nAber dunkler rauscht das Meer,\nSchwarze Wetter schwer sich heben,\n\nStille wird es ringsumher,\nUnd nur freudiger und treuer\nSteht der Ritter an dem Steuer.\n\nUnd nun flattern wilde Blitze,\nSturm ras’t um den Felsenriff,\n\nUnd von grimmer Wogen Spitze\nStürzt geborsten sich das Schiff.\nSchwankend auf des Mastes Splitter,\nSchlingt die Braut sich um den Ritter.\n\nUnd die Müde in den Armen,\n\nSpringt er abwärts, sinkt und ringt,\nHält den Leib, den blühendwarmen.\nBis er alle Wogen zwingt,\nUnd am Blumenstrand gerettet,\nAuf das Gras sein Liebstes bettet.\n\n„Wache auf, wach’ auf, Du Schöne!\nLiebesheimath rings um lacht,\nZaubrisch ringen Duft und Töne,\nWunderbarer Blumen Pracht\nFunkelt rings im Morgengolde –\n\nSchau um Dich! wach auf, Du Holde!\"\n\nAber frei von Lust und Kummer\nRuht die liebliche Gestalt\nLächelnd noch im längsten Schlummer,\nUnd das Herz ist still und kalt,\n\nStill der Himmel, still im Meere,\nSchimmernd rings des Thaues Zähre.\n\nUnd er sinkt zu ihr vor Schmerzen,\nEinsam in dem fremden Thal,\nThränen aus dem wilden Herzen\n\nBrechen da zum erstenmal,\nUnd vor diesem Todesbilde\nWird die ganze Seele milde.\n\nVon der langen Täuschung trennt er\nSchauernd sich – der Stolz erweicht.\n\nAndre Heimath nun erkennt er.\nDie kein Seegel hier erreicht.\nUnd an ächten Schmerzen ranken\nHimmelwärts sich die Gedanken.\n\nSchweigend scharrt er ein die Stille,\n\nPflanzt ein Kreuz hoch auf ihr Grab,\nWirft von sich die seidne Hülle,\nLeget Schwert und Mantel ab.\nKleidet sich in rauhe Felle,\nHaut in Fels sich die Kapelle.\n\nUeber’m Rauschen dunkler Wogen\nIn der wilden Einsamkeit,\nHausend auf dem Felsenbogen,\nRingt er fromm mit seinem Leid,\nHat, da manches Jahr entschwunden,\n\nHeimath, Braut und Ruh’ gefunden. –\n\nViele Schiffe drunten gehen \nAn dem schönen Inselland, \nSehen hoch das Kreuz noch stehen, \nWarnend von der Felsenwand; \n\nUnd des strengen Büßers Kunde \nGehet fromm von Mund zu Munde.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Brautfahrt_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Die deutsche Jungfrau",
+      "texto": " Die deutsche Jungfrau.\n\nEs stand ein Fräulein auf dem Schloß,\nErschlagen war im Streit ihr Roß,\nSchnob wie ein See die finstre Nacht,\nWollt’ überschrei’n die wilde Schlacht.\n\nIm Thal die Brüder lagen todt,\nEs brannt’ die Burg so blutigroth,\nIn Lohen stand sie auf der Wand,\nHielt hoch die Fahne in der Hand.\n\nDa kam ein röm’scher Rittersmann,\n\nDer ritt keck an die Burg hinan.\nEs blitzt sein Helm gar mannigfach,\nDer schöne Ritter also sprach:\n\n„Jungfrau, komm in die Arme mein!\nSollst Deines Siegers Herrin seyn.\n\nWill bau’n Dir einen Pallast schön.\nIn prächt’gen Kleidern sollst Du gehn.\n\nEs thun Dein’ Augen mir Gewalt,\nKann nicht mehr fort aus diesem Wald,\nAus wilder Flammen Spiel und Graus\n\nTrag’ ich mir meine Braut nach Haus!\"\n\nDer Ritter ließ sein weißes Roß,\nStieg durch den Brand hinauf ins Schloß,\nViel’ Knecht’ ihm waren da zur Hand,\nZu holen das Fräulein von der Wand.\n\nDas Fräulein stieß die Knecht’ hinab.\nDen Liebsten auch ins heiße Grab,\nSie selbst dann in die Flamme sprangt\nUeber ihnen die Burg zusammen sank.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_deutsche_Jungfrau",
+      "tags": []
+    },
+    {
+      "titulo": "Die ernsthafte Fastnacht 1814",
+      "texto": "     Die ernsthafte Fastnacht 1814.\nAls Wittenberg in der Nacht mit Sturm genommen wurde.\n\nWohl vor Wittenberg auf den Schanzen\nSind der edlen Werber viel,\nWollen da zur Fastnacht tanzen\nEin gar seltsam Ritterspiel.\n\nUnd die Stadt vom Felsen droben\nSpiegelt sich im Sonnenschein,\nWie ein Jungfräulein erhoben –\nJeder will ihr Bräut’gam sein.\n\n„Jäger! laßt die Hörner klingen\n\nDurch den Morgen kalt und blank!\nWohl, sie läßt sich noch bezwingen\nHört sie alten deutschen Klang.“\n\n Drauf sie einen Reiter schnelle\nSenden, der so fröhlich schaut,\n\nDer bläßt seinen Gruß so helle,\nWirbt da um die stolze Braut.\n\n„Sieh’, wir werben lang’ verstohlen\nSchon um Dich in Noth und Tod,\nKomm! sonst wollen wir Dich hohlen,\n\nWann der Mond scheint blutigroth!“\n\nBleich schon fallen Abendlichter –\nUnd der Reiter bläßt nur zu,\nNacht schon webt sich dicht und dichter –\nDoch das Thor bleibt immer zu.\n\nNun so spielt denn, Musikanten,\nBlaßt zum Tanz aus frischer Brust!\nHerz und Sinne mir entbrannten,\nO Du schöne, wilde Lust!\n\nWer hat je so’n Saal gesehen?\n\nStrom und Wälder spielen auf,\nSterne auf und nieder gehen,\nStecken hoch die Lampen auf.\n\nJa der Herr leucht’t selbst zum Tanze,\nFrisch denn, Kameraden mein!\n\nFunkelnd schön im Mondesglanze\nStrenges Lieb, mußt unser sein! –\n\nUnd es kam der Morgen heiter,\nMancher Tänzer lag da tod,\nUnd Victoria bließ der Reiter\n\nVon dem Wall ins Morgenroth.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_ernsthafte_Fastnacht_1814",
+      "tags": []
+    },
+    {
+      "titulo": "Erwartung (Eichendorff)",
+      "texto": " Erwartung.\n\nO schöne bunte Vögel\nWie singt ihr gar so hell!\nO Wolken, luft’ge Seegel,\nWohin so schnell, so schnell?\n\nIhr alle, ach, gemeinsam \nFlieg’t zu der Liebsten hin,\nSag’t Ihr, wie ich hier einsam\nUnd voller Sorgen bin.\n\nIm Walde steh’ und laur’ ich, \n\nVerhallt ist jeder Laut,\nDie Wipfel nur weh’n schaurig,\nO komm, Du süße Braut!\n\nSchon sinkt die dunkelfeuchte\nNacht rings auf Wald und Feld,\n\nDes Mondes hohe Leuchte\nTritt in die stille Welt.\n\nWie schauert nun im Grunde\nDer tiefsten Seele mich!\nWie öde ist die Runde\n\nUnd einsam ohne Dich!\n\nWas rauscht? – Sie naht von ferne! –\nNun, Wald, rausch’ von den Höh’n,\nNun laß’ Mond, Nacht und Sterne\nNur auf und untergehn!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Erwartung_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Das Flügelroß",
+      "texto": " Das Flügelroß.\n\nIch hab’ nicht viel hienieden,\nIch hab’ nicht Geld noch Gut;\nWas vielen nicht beschieden,\nIst mein: – der frische Muth.\n\nWas Andre mag ergötzen,\nDas kümmert wenig mich,\nSie leben in den Schätzen,\nIn Freuden lebe ich.\n\nIch hab’ ein Roß mit Flügeln,\n\nGetreu in Lust und Noth, \nDas wiehernd spannt die Flügel\nBei jedem Morgenroth.\n\nMein Liebchen! wie so öde\nWird’s oft in Stadt und Schloß,\n\nFrisch auf und sey nicht blöde,\nBesteig’ mit mir mein Roß!\n\nWir seegeln durch die Räume,\nIch zeig’ Dir Meer und Land,\nWie wunderbare Träume\n\nTief unten ausgespannt.\n\nHellblinkend zu den Füßen\nUnzähl’ger Ströme Lauf –\nEs steigt ein Frühlingsgrüßen\nVerhallend zu uns auf.\n\nUnd bunt und immer wilder\nIn Liebe, Haß und Lust\nVerwirren sich die Bilder –\nWas schwindelt Dir die Brust?\n\nSo fröhlich tief im Herzen,\n\nZieh’ ich all’ himmelwärts,\nEs kommen selbst die Schmerzen\nMelodisch an das Herz.\n\nDer Sänger zwingt mit Klängen\nWas störrig, dumpf und wild,\n\nEs spiegelt in Gesängen\nDie Welt sich göttlich mild.\n\nUnd unten nun verbrauset\nDes breiten Lebens Strom,\nDer Adler einsam hauset\n\nIm stillen Himmelsdom. –\n\nUnd seh’n wir dann den Abend\nVerhallen und verblühn,\nIm Meere, kühlelabend,\nDie heil’gen Sterne glühn:\n\nSo lenken wir hernieder\nZu Waldes grünem Haus,\nUnd ruh’n vom Schwung der Lieder\nAuf blüh’ndem Moose aus.\n\nO Sterndurchwebtes Düstern,\n\nO heimlichstiller Grund!\nO süßes Liebesflüstern\nSo innig Mund an Mund!\n\nDie Nachtigallen locken,\nMein Liebchen athmet lind,\n\nMit Schleier zart und Locken\nSpielt buhlerisch der Wind.\n\nUnd schlaf’ denn bis zum Morgen\nSo sanft gelehnt an mich!\nSüß sind der Liebe Sorgen,\n\nDein Liebster wacht für Dich.\n\nIch halt’ die blüh’nden Glieder,\nVor süßen Schauern bang,\nIch laß’ Dich ja nicht wieder\nMein ganzes Leben lang! –\n\nAurora will sich heben,\nDu schlägst die Augen auf,\nO wonniges Erbeben,\nO schöner Lebenslauf! –",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Das_Fl%C3%BCgelro%C3%9F",
+      "tags": []
+    },
+    {
+      "titulo": "Frische Fahrt",
+      "texto": " Frische Fahrt.\n\nLaue Luft kommt blau geflossen,\nFrühling, Frühling soll es seyn!\nWaldwärts Hörnerklang geschossen,\nMuth’ger Augen lichter Schein;\n\nUnd das Wirren bunt und bunter\nWird ein magisch wilder Fluß,\nIn die schöne Welt hinunter\nLockt dich dieses Stromes Gruß.\n\nUnd ich mag mich nicht bewahren!\n\nWeit von Euch treibt mich der Wind,\nAuf dem Strome will ich fahren,\nVon dem Glanze selig blind!\nTausend Stimmen lockend schlagen,\nHoch Aurora flammend weht,\n\nFahre zu! ich mag nicht fragen. \nWo die Fahrt zu Ende geht!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Frische_Fahrt",
+      "tags": []
+    },
+    {
+      "titulo": "Die Fröhliche",
+      "texto": " Die Fröhliche.\n\nZwischen Bergen, liebe Mutter,\nWeit den Wald entlang,\nReiten da drei junge Jäger\nAuf drei Rößlein blank,\n\n lieb Mutter,\nAuf drei Rößlein blank.\n\nIhr könnt fröhlich seyn, lieb’ Mutter\nWird es draußen still:\nKommt der Vater heim vom Walde,\n\nKüßt Euch wie er will,\n lieb Mutter,\nKüßt Euch wie er will.\n\nUnd ich werfe mich im Bettchen\nNachts ohn’ Unterlaß,\n\nKehr’ mich links und kehr’ mich rechts hin,\nNirgends hab’ ich was,\n lieb’ Mutter,\nNirgends hab’ ich was.\n\nBin ich eine Frau erst einmal,\n\nIn der Nacht dann still\nWend’ ich mich nach allen Seiten,\nKüß’, so viel ich will,\n lieb Mutter,\nKüß’, so viel ich will.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Fr%C3%B6hliche",
+      "tags": []
+    },
+    {
+      "titulo": "Frühlingsfahrt",
+      "texto": " Frühlingsfahrt.\n\nEs zogen zwei rüst’ge Gesellen\nZum ersten Mal von Haus,\nSo jubelnd recht in die hellen\nKlingenden, singenden Wellen\n\nDes vollen Frühlings hinaus.\n\nDie strebten nach hohen Dingen,\nDie wollten, trotz Lust und Schmerz,\nWas Rechts in der Welt vollbringen,\nUnd wem sie vorüber gingen\n\nDem lachten Sinnen und Herz. –\n\nDer Erste, der fand ein Liebchen,\nDie Schwieger kauft’ Hof und Haus;\nDer wiegte gar bald ein Bübchen,\nUnd sah aus heimlichem Stübchen\n\nBehaglich in’s Feld hinaus.\n\nDem Zweiten sangen und logen\nDie tausend Stimmen im Grund,\nVerlockend’ Syrenen, und zogen\nIhn in der buhlenden Wogen\n\nFarbig klingenden Schlund.\n\nUnd wie er auftaucht’ vom Schlunde,\nDa war er müde und alt,\nSein Schifflein das lag im Grunde,\nSo still war’s rings in die Runde\n\nUnd über die Wasser weht’s kalt.\n\nEs singen und klingen die Wellen\nDes Frühlings wohl über mir;\nUnd seh’ ich so kecke Gesellen,\nDie Thränen im Auge mir schwellen –\n\nAch Gott, führ’ uns liebreich zu Dir!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Fr%C3%BChlingsfahrt",
+      "tags": []
+    },
+    {
+      "titulo": "Der Gefangene (Eichendorff)",
+      "texto": "     Der Gefangene.\n\nIn goldner Morgenstunde, \nWeil alles freudig stand, \nDa ritt im heitern Grunde \nEin Ritter über Land. \n\nRings sangen auf das Beste \nDie Vöglein mannichfalt, \nEs schüttelte die Aeste \nVor Lust der grüne Wald. \n\nDen Nacken, stolz gebogen, \n\nKlopft er dem Rößelein – \nSo ist er hingezogen \nTief in den Wald hinein. \n\nSein Roß hat er getrieben, \nIhn trieb der frische Muth: \n\n„Ist alles fern geblieben, \nSo ist mir wohl und gut!“\n\nMit Freuden mußt’ er sehen \nIm Wald’ ein’ grüne Au, \nWo Brünnlein kühle gehen, \n\nVon Blumen roth und blau. \n\nVom Roß ist er gesprungen, \nLegt sich zum kühlen Bach, \nDie Wellen lieblich klungen, \nDas ganze Herz zog nach. \n\nSo grüne war der Rasen, \nEs rauschte Bach und Baum, \nSein Roß thät stille grasen \nUnd alles wie ein Traum. \n\nDie Wolken sah er gehen, \n\nDie schifften immer zu, \nEr konnt’ nicht widerstehen, – \nDie Augen sanken ihm zu. \n\nNun hört’ er Stimmen rinnen, \nAls wie der Liebsten Gruß, \n\nEr konnt’ sich nicht besinnen – \nBis ihn erweckt ein Kuß. \n\nWie prächtig glänzt die Aue! \nWie Gold der Quell nun floß, \nUnd einer süßen Fraue \n\nLag er im weichen Schooß.\n\n„Herr Ritter! wollt Ihr wohnen \nBei mir im grünen Haus: \nAus allen Blumenkronen \nWind’ ich Euch einen Strauß! \n\nDer Wald ringsum wird wachen, \nWie wir beisammen seyn, \nDer Kukuk schelmisch lachen, \nUnd alles fröhlich seyn.“ \n\nEs bog ihr Angesichte \n\nAuf ihn den süßen Leib, \nSchaut mit den Augen lichte\nDas wunderschöne Weib. \n\nSie nahm sein’n Helm herunter, \nLöst’ Krause ihm und Bund, \n\nSpielt’ mit den Locken munter, \nKüßt ihm den rothen Mund. \n\nUnd spielt’ viel’ süße Spiele \nWohl in geheimer Lust, \nEs flog so kühl und schwüle \n\nIhm um die offne Brust. \n\nUm ihn nun thät sie schlagen \nDie Arme weich und bloß, \nEr konnte nichts mehr sagen, \nSie ließ ihn nicht mehr los.\n\nUnd diese Au zur Stunde \nWard ein krystallnes Schloß, \nDer Bach ein Strom, gewunden \nRingsum, gewaltig floß. \n\nAuf diesem Strome gingen \n\nViel’ Schiffe wohl vorbei, \nEs konnt’ ihn keines bringen \nAus böser Zauberei.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Gefangene_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Geistesgruß (Eichendorff)",
+      "texto": " Geistesgruß.\n\n IV.\nNächtlich dehnen sich die Stunden,\nUnschuld schläft in stiller Bucht,\nFern ab ist die Welt verschwunden.\nDie das Herz in Träumen sucht.\n\nUnd der Geist tritt auf die Zinne,\nUnd noch stiller wird’s umher,\nSchauet mit dem starren Sinne\nIn das wesenlose Meer.\n\nWer ihn sah bei Wetterblicken\n\nSteh’n in seiner Rüstung blank:\nDen mag nimmermehr erquicken\nReichen Lebens frischer Drang. –\n\nFröhlich an den öden Mauern\nSchweift der Morgensonne Blick,\n\nDa versinkt das Bild mit Schauern\nEinsam in sich selbst zurück.\n\n V.\nVergangen ist der lichte Tag,\nVon ferne kommt der Glocken Schlag;\nSo reis’t die Zeit die ganze Nacht,\n\nNimmt manchen mit, der’s nicht gedacht.\n\nWo ist nun hin die bunte Lust,\nDes Freundes Trost und treue Brust,\nDes Weibes süßer Augenschein?\nWill keiner mit mir munter seyn?\n\nDa’s nun so stille auf der Welt,\nZieh’n Wolken einsam übers Feld,\nUnd Feld und Baum besprechen sich, –\nO Menschenkind! was schauert Dich?\n\nWie weit die falsche Welt auch sey,\n\nBleibt mir doch Einer nur getreu.\nDer mit mir weint, der mit mit wacht,\nWenn ich nur recht an Ihn gedacht.\n\nFrisch auf denn, liebe Nachtigall,\nDu Wasserfall mit Hellem Schall!\n\nGott loben wollen wir vereint,\nBis daß der lichte Morgen scheint!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Geistesgru%C3%9F_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Glückliche Fahrt (Eichendorff)",
+      "texto": " Glückliche Fahrt.\n\nWünsche sich mit Wünschen schlagen,\nUnd die Gier wird nie gestillt.\nWer ist in dem wüsten Jagen\nDa der Jäger, wer das Wild?\n\nSeelig, wer es fromm mag wagen,\nDurch das Treiben dumpf und wild\nIn der festen Brust zu tragen\nHeilger Schönheit hohes Bild!\n\nSieh, da brechen tausend Quellen\n\nDurch die felsenharte Welt,\nUnd zum Strome wird ihr Schwellen,\nDer melodisch steigt und fällt.\nRingsum sich die Fernen hellen,\nGottes Hauch die Seegel schwellt –\n\nRettend spülen Dich die Wellen\nIn des Herzens stille Welt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Gl%C3%BCckliche_Fahrt_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Die Heimat (Eichendorff)",
+      "texto": "[317]  Die Heimat.\n\nAn meinen Bruder.\n\nDenkst du des Schlosses noch auf stiller Höh?\nDas Horn lockt nächtlich dort, als ob’s dich riefe,\nAm Abgrund grast das Reh,\nEs rauscht der Wald verwirrend aus der Tiefe –\n\n O stille, wecke nicht, es war als schliefe\nDa drunten ein unnennbar Weh.\n\nKennst du den Garten? – Wenn sich Lenz erneut,\nGeht dort ein Mädchen auf den kühlen Gängen\nStill durch die Einsamkeit,\n\n Und weckt den leisen Strom von Zauberklängen,\nAls ob die Blumen und die Bäume sängen\nRings von der alten schönen Zeit.\n\n[318]  Ihr Wipfel und ihr Bronnen rauscht nur zu!\nWohin du auch in wilder Lust magst dringen,\n\n Du findest nirgends Ruh,\nErreichen wird dich das geheime Singen, –\nAch, dieses Bannes zauberischen Ringen\nEntflieh’n wir nimmer, ich und du!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Heimat_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Die Hochzeitsnacht (Eichendorff)",
+      "texto": "Die Hochzeitsnacht.\n\nNachts durch die stille Runde \nRauschte des Rheines Lauf, \nEin Schifflein zog im Grunde, \nEin Ritter stand darauf.\n\nDie Blicke irre schweifen \nVon seines Schiffes Rand, \nEin blutigrother Streifen \nSich um das Haupt ihm wand. \n\nDer sprach: „Da oben stehet \n\nEin Schlößlein über’m Rhein, \nDie an dem Fenster stehet:\nDas ist die Liebste mein. \n\nSie hat mir Treu’ versprochen,\nBis ich gekommen sey, \n\nSie hat die Treu gebrochen, \nUnd alles ist vorbei.“\n\nViel Hochzeitleute drehen \nSich oben laut und bunt, \nSie bleibet einsam stehen, \n\nUnd lauschet in den Grund. \n\nUnd wie sie tanzen munter,\nUnd Schiff und Schiffer schwand, \nStieg sie vom Schloß herunter, \nBis sie im Garten stand. \n\nDie Spielleut’ musizirten, \nSie sann gar mancherlei, \nDie Töne sie so rührten, \nAls müßt’ das Herz entzwei.\n\nDa trat ihr Bräut’gam süße\n\nZu ihr aus stiller Nacht, \nSo freundlich er sie grüßte,\nDaß ihr daß Herze lacht. \n\nEr sprach: „Was willst Du weinen, \nWeil alle fröhlich sei’n? \n\nDie Stern’ so helle scheinen, \nSo lustig geht der Rhein.“ \n\nDas Kränzlein in den Haaren \nSteht Dir so wunderfein, \nWir wollen etwas fahren \n\nHinunter auf dem Rhein. \n\nZum Kahn folgt’ sie behende, \nSetzt sich ganz vorne hin, \nEr setzt’ sich an das Ende \nUnd ließ das Schifflein zieh’n. \n\nSie sprach: „Die Töne kommen \nVerworren durch den Wind, \nDie Fenster sind verglommen, \nWir fahren so geschwind. \n\nWas sind das für so lange \n\nGebürge weit und breit? \nMir wird auf einmal bange \nIn dieser Einsamkeit!\n\nUnd fremde Leute stehen \nAuf mancher Felsenwand, \n\nUnd stehen still und sehen \nSo schwindlich über’n Rand.“ – \n\nDer Bräut’gam schien so traurig \nUnd sprach kein einzig Wort, \nSchaut in die Wellen schaurig \n\nUnd rudert immerfort. \n\nSie sprach: „Schon seh’ ich Streifen \nSo roth im Morgen steh’n, \nUnd Stimmen hör’ ich schweifen, \nVom Ufer Hähne kräh’n. \n\nDu siehst so still und wilde, \nSo bleich wird Dein Gesicht, \nMir graut vor Deinem Bilde – \nDu bist mein Bräut’gam nicht!“ – \n\nDa stand er auf – das Sausen \n\nHielt an in Fluth und Wald – \nEs rührt mit Lust und Grausen \nDas Herz ihr die Gestalt. \n\nUnd wie mit steinern’n Armen \nHob er sie auf voll Lust, \n\nDrückt ihren schönen, warmen \nLeib an die eis’ge Brust. –\n\nLicht wurden Wald und Höhen,\nDer Morgen schien blutroth,\nDas Schifflein sah man gehen,\n\nDie schöne Braut d’rin todt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Hochzeitsnacht_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Im Walde bei L.",
+      "texto": " Im Walde bei L.\n\nO Thäler weit, o Höhen,\nO schöner grüner Wald,\nDu Meiner Lust und Wehen\nAndächt’ger Aufenthalt!\n\nDa draußen, stets betrogen,\nSaußt die geschäft’ge Welt,\nSchlag’ noch einmal die Bogen\nUm mich, Du grünes Zelt!\n\nWenn es beginnt zu tagen,\n\nDie Erde dampft und blinkt,\nDie Vögel lustig schlagen,\nDaß Dir Dein Herz erklingt:\n\nDa mag vergehn, verwehen\nDas trübe Erdenleid,\n\nDa sollst Du auferstehen\nIn junger Herrlichkeit!\n\nDa steht im Wald geschrieben\nEin stilles, ernstes Wort\nVon rechtem Thun und Lieben,\n\nUnd was des Menschen Hort.\nIch habe treu gelesen\nDie Worte schlicht und wahr,\nUnd durch mein ganzes Wesen\nWard’s unaussprechlich klar.\n\nBald werd’ ich Dich verlassen,\nFremd in der Fremde geh’n,\nAuf buntbewegten Gassen \nDes Lebens Schauspiel sehn;\nUnd mitten in dem Leben \n\nWird Deines Ernst’s Gewalt\nMich Einsamen erheben,\nSo wird mein Herz nicht alt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Im_Walde_bei_L.",
+      "tags": []
+    },
+    {
+      "titulo": "In Danzig",
+      "texto": "[432]       In Danzig.\n                    1842.\n\nDunkle Giebel, hohe Fenster,\nThürme tief aus Nebeln sehn,\nBleiche Statuen wie Gespenster\nLautlos an den Thüren stehn.\n\n Träumerisch der Mond drauf scheinet,\nDem die Stadt gar wohl gefällt,\nAls läg’ zauberhaft versteinet\nDrunten eine Märchenwelt.\n\nRingsher durch das tiefe Lauschen,\n\n Ueber alle Häuser weit,\nNur des Meeres fernes Rauschen –\nWunderbare Einsamkeit!\n\nUnd der Thürmer wie vor Jahren\nSinget ein uraltes Lied:\n\n Wolle Gott den Schiffer wahren,\nDer bei Nacht vorüberzieht!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_Danzig",
+      "tags": []
+    },
+    {
+      "titulo": "In die Höh’! —  In die Höh’!",
+      "texto": " In die Höh’!\n (Tafellied.)\n\nViel Essen macht viel breiter\nUnd hilft zum Himmel nicht,\nEs kracht die Himmelsleiter,\nKommt so ein schwerer Wicht.\n\nDas Trinken ist gescheidter,\nDas schmeckt schon nach Idee,\nDa braucht man keine Leiter,\nDas geht gleich in die Höh’.\n\n Chor.\nDa braucht man keine Leiter,\n\nDas geht gleich in die Höh’.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_die_H%C3%B6h%E2%80%99%21",
+      "tags": []
+    },
+    {
+      "titulo": "In die Höh’! — Viel Reden ist manierlich:",
+      "texto": "Viel Reden ist manierlich:\n„Wohlauf? – Ein wenig flau. –\nDas Wetter ist spazierlich –\nWas macht die liebe Frau? –\n\nIch danke“ – und so weiter\nUnd breiter als ein See –\nDas singen ist gescheidter,\nDas geht gleich in die Höh’.\n\n Chor.\n\nDas Singen ist gescheidter,\nDas geht gleich in die Höh’.\n\nDie Fisch’ und Musikanten\nDie trinken beide frisch, \nDie Wein, die andern Wasser –\n\nDrum hat der dumme Fisch\nStatt Flügel Flederwische\nUnd liegt elend im See –\nDoch wir sind keine Fische,\nDas geht gleich in die Höh’.\n\n Chor.\n\nDoch wir sind keine Fische,\nDas geht gleich in die Höh’.\n\nJa, Trinken frisch und Singen\nDas bricht durch alles Weh,\nDas sind zwei gute Schwingen,\n\nGemeine Welt, ade!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_die_H%C3%B6h%E2%80%99%21",
+      "tags": []
+    },
+    {
+      "titulo": "In die Höh’! — Du Erd’ mit deinem Plunder,",
+      "texto": "Du Erd’ mit deinem Plunder,\nIhr Fische sammt der See,\n’S geht alles, alles unter,\nWir aber in die Höh’!\n\n Chor. \n\n’S geht alles, alles unter,\nWir aber in die Höh’!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/In_die_H%C3%B6h%E2%80%99%21",
+      "tags": []
+    },
+    {
+      "titulo": "Allgemeines Deutsches Kommersbuch:226",
+      "texto": "     9. Rinaldini, eingeschlossen, haut sich, mutig kämpfend, durch und\nerreicht, im finstern Walde eine alte Felsenburg.\n\n     10. Zwischen hohen, düstern Mauern lächelt ihm der Liebe Glück;\nes erheitert seine Seele Dianorens Zauberblick.\n\n     11. Rinaldini, lieber Räuber, raubst den Weibern Herz und Ruh;\nach, wie schrecklich in dem Kampfe, wie verliebt im Schloß bist du!\n\n     1. In ei=nem küh=len Grun=de da geht ein Mühlen=\nrad; mein’ Lieb=ste ist ver=schwunden, die\ndort ge=woh=net hat, mein’ Lieb=ste ist ver=\nschwun=den, die dort ge=woh=net hat.\n\n     2. Sie hat mir Treu versprochen, gab mir ein’n Ring dabei; |: sie\nhat die Treu gebrochen, mein Ringlein sprang entzwei. :|\n\n     3. Ich möcht als Spielmann reisen weit in die Welt hinaus und\nsingen meine Weisen und gehn von Haus zu Haus.\n\n     4. Ich möcht als Reiter fliegen wohl in die blutge Schlacht, um\nstille Feuer liegen im Feld bei dunkler Nacht.\n\n     5. Hör ich das Mühlrad gehen, ich weiß nicht, was ich will, ich\nmöcht am liebsten sterben, da wär’s auf einmal still.\n\n     1. Jetz gang i ans Brünne=le, trink a=ber net, jetz\ngang i ans Brün=ne=le, trink a=ber net; do\nsuch i mein herz=tau=si=ge Schatz, findn a=ber net,\ndo such i mein herz=tau=si=ge Schatz, findn a=ber net.\n\n     2. |: Do laß i meine Äugelein um und um gehn, :|: da sieh=n=i\nmein herztausige Schatz bei=me=n=andre stehn. :|\n\n     3. Und bei=me=n=andre stehe sehn, ach das thut weh! Jetz bhüt\ndi Gott, herztausiger Schatz, di bsieh=n=i nimme meh!\n\n     4. Jetz kauf i mer Tinten und Fed’r und Papier und schreib\nmeim herztausige Schatz einen Abschiedsbrief.\n\n     5. Jetz leg i mi nieder aufs Heu und aufs Stroh; do falle drei\nRöselein mir in den Schoß.\n\n     6. Und diese drei Röselein sind roserot: Jetz weis i net, lebt\nmein Schatz, oder ist er tot.\n\n     1. Kein Feu=er, kei=ne Koh=le kann bren=nen so",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Allgemeines_Deutsches_Kommersbuch%3A226",
+      "tags": []
+    },
+    {
+      "titulo": "Der Isegrimm",
+      "texto": " Der Isegrimm.\n\n     Actenstöße Nachts verschlingen, \nSchwatzen nach der Welt Gebrauch,\nUnd das große Tretrad schwingen \nWie ein Ochs, das kann ich auch. \n\n     Aber glauben, daß der Plunder \nEben nicht der Plunder wär’, \nSondern ein hochwichtig Wunder, \nDas gelang mir nimmermehr. \n\n     Aber Andre überwitzen, \n\nDaß ich mit dem Federkiel \n[328]  Könnt’ den morschen Weltbau stützen, \nSchien mir immer Narrenspiel. \n\n     Und so, weil ich in dem Drehen \nDasteh’ oft wie ein Pasquill, \n\nLäßt die Welt mich eben stehen – \nMag sie’s halten, wie sie will!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Isegrimm",
+      "tags": []
+    },
+    {
+      "titulo": "Das kalte Liebchen",
+      "texto": " Das kalte Liebchen.\n\n III.\nEr. Laß mich ein, mein süßes Schätzchen!\nSie. Finster ist mein Kämmerlein.\nEr. Ach, ich finde doch mein Plätzchen.\nSie. Und mein Bett ist eng und klein.\n\nEr. Fern komm’ ich vom weichen Pfühle.\nSie. Ach, mein Lager ist von Stein!\nEr. Draußen ist die Nacht so kühle.\nSie. Hier wird’s noch viel kühler seyn.\n\nEr. Sieh! die Sterne schon erblassen.\n\nSie. Schwerer Schlummer fällt mich an. –\nEr. Nun, so will ich schnell Dich fassen!\nSie. Rühr’ mich nicht so glühend an.\n\nEr. Fieberschauer mich durchbeben.\nSie. Wahnsinn bringt der Todten Kuß. –\n\nEr. Weh! es bricht mein junges Leben!\nSie. Mit ins Grab hinunter muß.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Das_kalte_Liebchen",
+      "tags": []
+    },
+    {
+      "titulo": "Der Kranke (Eichendorff)",
+      "texto": "     Der Kranke.\n\nVögelein munter\nSingen so schön,\nLaß’t mich hinunter\nSpazieren gehn!\n\n„Nacht ist’s ja draußen;\nS’war nur der Sturm,\nDen Du hörst sausen\nDroben vom Thurm.“\n\nLiebchen im Garten\n\nSeh’ ich dort steh’n,\nLang mußt’ sie warten,\nO laß’t mich gehn!\n\n„Still nur! der blasse\nTod ist’s, der sacht\n\nDort durch die Gasse\nSchleicht in der Nacht.“\n\nWie mir ergraute,\nBleiches Gesicht!\nGeb’t mir die Laute,\n\nMir wird so licht!\n\n„Was willst Du singen\nIn tiefster Noth?\nLenz, Lust vergingen,\nLiebchen ist todt!“ –\n\nLaß’t mich, Gespenster!\nLied, riegl’ auf die Gruft!\nOeffnet die Fenster,\nLuft, frische freie Luft!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Kranke_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Leid und Lust",
+      "texto": " Leid und Lust.\n\nEuch Wolken beneid’ ich\nIn blauer Luft,\nWie schwing’t Ihr Euch freudig\nUeber Berg und Kluft!\n\nMein Liebchen wohl seht Ihr\nIm Garten gehn,\nAm Springbrunnen steht sie\nSo morgenschön.\n\nUnd wäscht an der Quelle\n\nIhr goldenes Haar,\nDie Aeugelein helle,\nUnd blickt so klar.\n\nUnd Busen und Wangen\nDürft’ Ihr da sehn. –\n\nIch brenn’ vor Verlangen,\nUnd muß hier stehn!\n\nEuch Wolken bedau’r ich\nBei stiller Nacht;\nDie Erde bebt schaurig,\n\nDer Mond erwacht:\n\nDa führt mich ein Bübchen\nMit Flügelein fein,\nDurch’s Dunkel zum Liebchen,\nSie läßt mich ein.\n\nWohl schau’t Ihr die Sterne\nWeit, ohne Zahl,\nDoch bleiben sie ferne\nEuch allzumal.\n\nMir leuchten zwei Sterne\n\nMit süßem Strahl\nDie küß’ ich so gerne\nViel tausendmal.\n\nEuch grüßt mit Gefunkel\nDer Wasserfall,\n\nUnd tief aus dem Dunkel\nDie Nachtigall.\n\nDoch süßer es grüßet\nAls Wellentanz,\nWenn Liebchen hold flüstert:\n\n„Dein bin ich ganz.“\n\nSo seegelt denn traurig\nIn öder Pracht!\nEuch, Wolken, bedau’r ich\nBei süßer Nacht.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Leid_und_Lust",
+      "tags": []
+    },
+    {
+      "titulo": "Die Lerche (Eichendorff)",
+      "texto": " Die Lerche.\n\nIch kann hier nicht singen,\nAus dieser Mauern dunklen Ringen\nMuß ich mich schwingen\nVor Lust und tiefem Weh.\n\nO Freude, in klarer Höh\nZu sinken und sich zu heben,\nIn Gesang\nUeber die grüne Erde dahin zu schweben,\nWie unten die licht’ und dunkeln Streifen\n\nWechselnd im Fluge vorüberschweifen,\nAus der Tiefe ein Wirren und Rauschen und Hämmern,\nDie Erde aufschimmernd im Frühlingsdämmern,\nWie ist die Welt so voller Klang!\nHerz, was bist Du bang?\n\nMußt aufwärts dringen!\nDie Sonne tritt hervor,\nWie glänzen mir Brust und Schwingen,\nWie still und weit ist’s droben am Himmelsthor.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Lerche_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Lied (Eichendorff)",
+      "texto": "[40]Lied\n\nIn einem kühlen Grunde,\nDa geht ein Mühlenrad,\nMeine Liebste ist verschwunden,\nDie dort gewohnet hat. \n\n Sie hat mir Treu versprochen,\nGab mir ein’n Ring dabei,\nSie hat die Treu gebrochen,\nMein Ringlein sprang entzwei. \n\nIch möcht’ als Spielmann reisen\n\nWeit in die Welt hinaus,\nUnd singen meine Weisen,\nUnd gehn von Haus zu Haus. \n\nIch möcht’ als Reiter fliegen\nWohl in die blut’ge Schlacht,\n\n Um stille Feuer liegen\nIm Feld bei dunkler Nacht. \n\nHör’ ich das Mühlrad gehen,\nIch weiß nicht, was ich will,\nIch möcht’ am liebsten sterben,\n\n Da wär’s auf einmal still.\n Florens.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Lied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Liedchen (Eichendorff)",
+      "texto": " Liedchen.\n\nWie jauchzt meine Seele\nUnd singet in sich!\nKaum daß ich’s verhehle\nSo glücklich bin ich.\n\nRings Menschen sich drehen\nUnd sprechen gescheut,\nIch kann nichts verstehen,\nSo fröhlich zerstreut. –\n\nZu eng wird das Zimmer,\n\nWie glänzet das Feld,\nDie Thäler voll Schimmer,\nWeit herrlich die Welt!\n\nGepreßt bricht die Freude\nDurch Riegel und Schloß,\n\nFort über die Haide!\nAch, hätt’ ich ein Roß! –\n\nUnd frag’ ich und sinn’ ich,\nWie so mir geschehn?: –\nMein Liebchen herzinnig,\n\nDas soll ich heut sehn!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Liedchen_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Der Liedsprecher —      Der Liedsprecher.",
+      "texto": "     Der Liedsprecher.\n\nUnd wo ein tüchtig Leben\nUnd wo ein Ehrenhaus,\nDa geht der Sänger eben\nGern gastlich ein und aus.\n\nDer freudige Geselle\nGrüßt Pfaff und Rittersmann.\nUnd frische Morgenhelle\nWeht all’ im Liede an.\n\nUnd kühn im Rossesbügel\n\nDer Ritter waldwärts zieht,\nUnd das Gebet nimmt Flügel\nUnd überfliegt das Lied.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Liedsprecher",
+      "tags": []
+    },
+    {
+      "titulo": "Der Liedsprecher — Denn ob’s mit Schwert, mit Liedern",
+      "texto": "Denn ob’s mit Schwert, mit Liedern\nSich Bahn zum Himmel schafft;\n\nS’ ist eine Schaar von Brüdern\nUnd eine Liebeskraft.\n\nWo die vereint, da ranken\nSich willig Stein und Erz,\nDa pfeilern die Gedanken\n\nSich freudig himmelwärts.\n\nDie haben diese Bogen\nKühn über’n wilden Strom\nEmpörter Zeit gezogen\nZum wunderbaren Dom.\n\nDie Burgen sahn wir fallen,\nDie Adler zogen aus,\nWehklagend durch die Hallen\nGehn Winde ein und aus.\n\nDoch droben auf der Zinne\n\nSteht noch der Heldengeist,\nDer – was die Zeit beginne –\nStill nach dem Kreuze weis’t\n\nEs wechseln viel’ Geschlechter\nUnd sinken in die Nacht –\n\nSteh’ fest, Du treuer Wächter,\nUnd nimm Dein Land in Acht!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Liedsprecher",
+      "tags": []
+    },
+    {
+      "titulo": "Der Liedsprecher — Schon hat zum Kreuzeslichte",
+      "texto": "Schon hat zum Kreuzeslichte\nDein Volk sich ernst gewandt,\nIm Sturm der Weltgerichte\n\nTief schauernd Dich erkannt.\n\nNun hebt sich wieder fröhlich\nDein Haus im Morgenschein,\nDie Jungfrau minneseelig\nSchaut weit ins Land hinein.\n\nGesänge hör’ ich schallen,\nDurch’s Grün geschmückte Gäst’\nWallfahrten nach den Hallen –\nWem gilt das froh« Fest?\n\nDer Königssohn, Ihr Preußen,\n\nWeilt auf dem Ritterschloß,\nDas ist nach Adlers Weisen,\nDaß er der Höh’ genoß.\n\nDas ist des Königs Walten,\nWas herrlich, groß und recht,\n\nIm Wechsel zu erhalten\nDem kommenden Geschlecht.\n\nEr hob die Heldenmale\nZu neuer Herrlichkeit,\nDamit das Volk im Thale\n\nGedenk’ der großen Zeit.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Liedsprecher",
+      "tags": []
+    },
+    {
+      "titulo": "Der Liedsprecher — Das ewig Alt und Neue,",
+      "texto": "Das ewig Alt und Neue,\nDas mit den Zeiten ringt,\nDas, Fürst, ist’s, was das treue\nHerz Deines Volks durchdringt.\n\nWo das noch ehrlich waltet,\nDa ist zu Gottes Ruhm\nDie Kreuzesfahn’ entfaltet,\nUnd rechtes Ritterthum.\n\nO, reicht dem Liedersprecher,\n\nBevor er scheiden muß,\nDen hochgefüllten Becher\nZu seinem besten Gruß!\n\nDoch einzeln nicht verhallen\nDarf, was ich jetzt gedacht.\n\nWas Jeder meint, von Allen,\nSey’s freudig auch gebracht!\n\nAll’ ritterliche Geister\nUmringen fest den Thron,\nUnd auf zum höchsten Meister\n\nDringt treuer Liebe Ton:\n\nDem ritterlichen König\nHeil, und dem Königssohn!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Liedsprecher",
+      "tags": []
+    },
+    {
+      "titulo": "Das Marmorbild",
+      "texto": "Jeder nennet froh die Seine, \nIch nur stehe hier alleine, \nDenn was früge wohl die Eine:\nWen der Fremdling eben meine? \nUnd so muß ich, wie im Strome dort die Welle, \nUngehört verrauschen an des Frühlings Schwelle.\n\nWas klingt mir so heiter \nDurch Busen und Sinn? \nZu Wolken und weiter \nWo trägt es mich hin?\n\nWie auf Bergen hoch bin ich \nSo einsam gestellt \nUnd grüße herzinnig, \nWas schön auf der Welt. \n\nJa, Bachus, Dich seh’ ich,\nWie göttlich bist Du!\nDein Glühen versteh’ ich, \nDie träumende Ruh. \n\nO rosenbekränztes \nJünglingsbild, \nDein Auge, wie glänzt es, \nDie Flammen so mild! \n\nIst’s Liebe, ist’s Andacht, \nWas so Dich beglückt? \nRings Frühling Dich anlacht, \nDu sinnest entzückt, – \n\nFrau Venus, Du Frohe, \nSo klingend und weich,\nIn Morgenroths Lohe \nErblick’ ich Dein Reich\n\nAuf sonnigen Hügeln \nWie ein Zauberring. – \nZart’ Bübchen mit Flügeln \nBedienen Dich flink, \n\nDurchsäuseln die Räume \nUnd laden, was fein, \nAls goldene Träume \nZur Königin ein. \n\nUnd Ritter und Frauen \nIm grünen Revier \nDurchschwärmen die Auen \nWie Blumen zur Zier. \n\nUnd jeglicher hegt sich \nSein Liebchen im Arm,\nSo wirrt und bewegt sich \nDer selige Schwarm. –\n\nDie Klänge verrinnen, \nEs bleichet das Grün, \nDie Frauen stehn sinnend, \nDie Ritter schaun kühn. \n\nUnd himmlisches Sehnen \nGeht sinnend durch’s Blau, \nDa schimmert von Thränen \nRings Garten und Au. – \n\nUnd mitten im Feste \nErblick’ ich, wie mild! \nDen Stillsten der Gäste. –\nWoher, einsam Bild?\n\nMit blühendem Mohne, \nDer träumerisch glänzt, \nUnd Lilienkrone \nErscheint er bekränzt. \n\nSein Mund schwillt zum Küssen \nSo lieblich und bleich, \nAls brächt’ er ein Grüßen \nAus himmlischem Reich. \n\nEine Fackel wohl trägt er, \nDie wunderbar prangt. \n„Wo ist Einer,“ frägt er, \n„Dem heimwärts verlangt?“ \n\nUnd manchmal da drehet \nDie Fackel er um – \nTiefschauernd vergehet \nDie Welt und wird stumm. \n\nUnd was hier versunken \nAls Blumen zum Spiel, \nSiehst oben Du funkeln \nAls Sterne nun kühl. – \n\nO Jüngling vom Himmel, \nWie bist Du so schön! \nIch laß das Gewimmel, \nMit Dir will ich gehn! \n\nWas will ich noch hoffen? \nHinauf, ach hinauf! \nDer Himmel ist offen, \nNimm, Vater, mich auf!\n\nWie kühl schweift sich’s bei nächt’ger Stunde, \nDie Zitter treulich in der Hand!\nVom Hügel grüß ich in die Runde \nDen Himmel und das stille Land.\n\nWie ist da alles so verwandelt,\nWo ich so fröhlich war, im Thal. \nIm Wald wie still! der Mond nur wandelt\nNun durch den hohen Buchensaal. \n\nDer Winzer Jauchzen ist verklungen \nUnd all der bunte Lebenslauf, \nDie Ströme nur, im Thal geschlungen, \nSie blicken manchmal silbern auf. \n\nUnd Nachtigallen wie aus Träumen\nErwachen oft mit süßem Schall, \nErinnernd rührt sich in den Bäumen, \nEin heimlich Flüstern überall. – \n\nDie Freude kann nicht gleich verklingen,\nUnd von des Tages Glanz und Lust\nIst so auch mir ein heimlich Singen \nGeblieben in der tiefsten Brust. \n\nUnd fröhlich greif ich in die Saiten, \nO Mädchen jenseits über’m Fluß, \nDu lauschest wohl und hörst’s von weiten \nUnd kennst den Sänger an dem Gruß!\n\nWas weckst du, Frühling, mich von neuem wieder? \nDaß all’ die alten Wünsche auferstehen, \nGeht über’s Land ein wunderbares Wehen; \nDas schauert mir so lieblich durch die Glieder. \n\nDie schöne Mutter grüßen tausend Lieder, \nDie, wieder jung, im Brautkranz süß zu sehen; \nDer Wald will sprechen, rauschend Ströme gehen,\nNajaden tauchen singend auf und nieder.\n\nDie Rose seh’ ich gehn aus grüner Klause \nUnd, wie so buhlerisch die Lüfte fächeln, \nErröthend in die laue Fluth sich dehnen. \n\nSo mich auch ruft ihr aus dem stillen Hause – \nUnd schmerzlich nun muß ich im Frühling lächeln, \nVersinkend zwischen Duft und Klang vor Sehnen.\n\nUeber die beglänzten Gipfel\nFernher kommt es wie ein Grüßen, \nFlüsternd neigen sich die Wipfel\nAls ob sie sich wollten küssen.\n\nIst er doch so schön und milde! \nStimmen gehen durch die Nacht, \nSingen heimlich von dem Bilde -\nAch, ich bin so froh verwacht!\n\nPlaudert nicht so laut, ihr Quellen! \nWissen darf es nicht der Morgen! \nIn der Mondnacht linde Wellen, \nSenk’ ich stille Glück und Sorgen. –\n\nStill in Luft\nEs gebahrt,\nAus dem Duft \nHebt’s sich zart, \nLiebchen ruft, \nLiebchen schweift \nDurch die Luft; \nSternwärts greift, \nSeufzt und ruft, \nHerz wird bang, \nMatt wird Duft, \nZeit wird lang. – \nMondscheinduft\nLuft in Luft \nBleibt Liebe und Liebste, wie sie gewesen!\n\nVergangen ist die finstre Nacht, \nDes Bösen Trug und Zaubermacht, \nZur Arbeit weckt der lichte Tag;\nFrisch auf, wer Gott noch loben mag!\n\nVon kühnen Wunderbildern \nEin großer Trümmerhauf, \nIn reizendem Verwildern \nEin blüh’nder Garten drauf. \n\nVersunknes Reich zu Füßen, \nVom Himmel fern und nah, \nAus andrem Reich ein Grüßen – \nDas ist Italia! \n\nWenn Frühlingslüfte wehen \nHold über’m grünen Plan, \nEin leises Auferstehen\nHebt in den Thälern an. \n\nDa will sich’s unten rühren, \nIm stillen Göttergrab, \nDer Mensch kanns schauernd spüren \nTief in die Brust hinab. \n\nVerwirrend in den Bäumen \nGehn Stimmen hin und her, \nEin sehnsuchtsvolles Träumen \nWeht über’s blaue Meer. \n\nUnd unter’m duft’gen Schleier, \nSo oft der Lenz erwacht, \nWebt in geheimer Feier, \nDie alte Zaubermacht.\n\nFrau Venus hört das Locken, \nDer Vögel heitern Chor, \nUnd richtet froh erschrocken \nAus Blumen sich empor. \n\nSie sucht die alten Stellen, \nDas lust’ge Säulenhaus, \nSchaut lächelnd in die Wellen \nDer Frühlingslust hinaus. \n\nDoch öd’ sind nun die Stellen, \nStumm liegt ihr Säulenhaus, \nGras wächst da auf den Schwellen, \nDer Wind zieht ein und aus. \n\nWo sind nun die Gespielen? \nDiana schläft im Wald, \nNeptunus ruht im kühlen \nMeerschloß, das einsam hallt. \n\nZuweilen nur Sirenen \nNoch tauchen aus dem Grund, \nUnd thun in irren Tönen \nDie tiefe Wehmuth kund. – \n\nSie selbst muß sinnend stehen \nSo bleich im Frühlingsschein, \nDie Augen untergehen, \nDer schöne Leib wird Stein. – \n\nDenn über Land und Wogen \nErscheint, so still und mild, \nHoch auf dem Regenbogen \nEin andres Frauenbild.\n\nEin Kindlein in den Armen \nDie Wunderbare hält, \nUnd himmlisches Erbarmen \nDurchdringt die ganze Welt. \n\nDa in den lichten Räumen \nErwacht das Menschenkind, \nUnd schüttelt böses Träumen \nVon seinem Haupt geschwind. \n\nUnd, wie die Lerche singend, \nAus schwülen Zaubers Kluft \nErhebt die Seele ringend \nSich in die Morgenluft.\n\nHier bin ich. Herr! Gegrüßt das Licht, \nDas durch die stille Schwüle \nDer müden Brust gewaltig bricht, \nMit seiner strengen Kühle. \n\nNun bin ich frei! Ich taumle noch \nUnd kann mich noch nicht fassen, – \nO Vater, du erkennst mich doch, \nUnd wirst nicht von mir lassen!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Das_Marmorbild",
+      "tags": []
+    },
+    {
+      "titulo": "Mondnacht",
+      "texto": "[604]  Mondnacht.\n\nEs war, als hätt’ der Himmel\nDie Erde still geküßt,\nDaß sie im Blütenschimmer\nVon ihm nun träumen müßt’.\n\n Die Luft ging durch die Felder,\nDie Aehren wogten sacht,\nEs rauschten leis die Wälder,\nSo sternklar war die Nacht.\n\nUnd meine Seele spannte\n\n Weit ihre Flügel aus,\nFlog durch die stillen Lande,\nAls flöge sie nach Haus.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Mondnacht",
+      "tags": []
+    },
+    {
+      "titulo": "Morgengebet (Eichendorff)",
+      "texto": "[571]  Morgengebet.\n\nO wunderbares, tiefes Schweigen,\nWie einsam ist’s noch auf der Welt!\nDie Wälder nur sich leise neigen,\nAls ging’ der Herr durchs stille Feld.\n\n Ich fühl’ mich recht wie neu geschaffen,\nWo ist die Sorge nun und Noth?\nWas mich noch gestern wollt’ erschlaffen,\nIch schäm’ mich deß im Morgenroth.\n\n[572]  Die Welt mit ihrem Gram und Glücke\n\n Will ich, ein Pilger, frohbereit\nBetreten nur wie eine Brücke\nZu dir, Herr, übern Strom der Zeit.\n\nUnd buhlt mein Lied, auf Weltgunst lauernd,\nUm schnöden Sold der Eitelkeit:\n\n Zerschlag’ mein Saitenspiel, und schauernd\nSchweig’ ich vor dir in Ewigkeit.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Morgengebet_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Morgengruß (Eichendorff)",
+      "texto": " Morgengruß.\n\nStand ein Mädchen an dem Fenster\nDa es draußen Morgen war,\nKämmte sich die langen Haare,\nWusch sich ihre Aeuglein klar.\n\nSangen Vöglein aller Arten,\nSonnenschein spielt vor dem Haus,\nDraußen über’m schönen Garten\nFlogen Wolken weit hinaus.\n\nUnd sie dehnt’ sich in den Morgen\n\nAls ob sie noch schläfrig sey,\nAch, sie war so voller Sorgen,\nFlocht ihr Haar und sang dabei:\n\nWie ein Vöglein hell und reine,\nZiehet draußen muntre Lieb’,\n\nLockt hinaus zum Sonnenscheine,\nAch wer da zu Hause blieb’!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Morgengru%C3%9F_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Morgenlied (Eichendorff)",
+      "texto": " Morgenlied.\n\nEin Stern still nach dem andern fällt\nTief in des Himmels Kluft,\nSchon zucken Strahlen durch die Welt,\nIch wittre Morgenluft.\n\nIn Qualmen steigt und sinkt das Thal;\nVerödet noch vom Fest,\nLiegt still der weite Freudensaal,\nUnd todt noch alle Gäst’.\n\nDa hebt die Sonne aus dem Meer\n\nErathmend ihren Lauf:\nZur Erde geht, was feucht und schwer,\nWas klar, zu ihr hinauf.\n\nHebt grüner Wälder Trieb und Macht\nNeurauschend in die Luft,\n\nZieht hinten Städte, eitel Pracht,\nBlau’ Berge durch den Duft.\n\nSpannt aus die grünen Tepp’che weich,\nVon Strömen hell durchrankt.\nUnd schallend glänzt das frische Reich,\n\nSo weit das Auge langt.\n\nDer Mensch nun aus der tiefen Welt\nDer Träume tritt heraus,\nFreut sich, daß alles noch so hält,\nDaß noch das Spiel nicht aus.\n\nUnd nun geht’s an ein Fleißigseyn! \nUmsumsend Berg und Thal,\nAgiret lustig Groß und Klein\nDen Plunder allzumal.\n\nDie Sonne steiget einsam auf,\n\nErnst über Lust und Weh\nLenkt sie den ungestörten Lauf,\nZu stiller Glorie. –\n\nUnd wie er dehnt die Flügel aus,\nUnd wie er auch sich stellt:\n\nDer Mensch kann nimmermehr hinaus\nAus dieser Narrenwelt.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Morgenlied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Nachhall (Eichendorff)",
+      "texto": " Nachhall.\n\nLaß’, mein Herz, das bange Trauern\nUm vergang’nes Erdenglück,\nAch, von diesen Felsenmauern\nSchweifet nur umsonst der Blick!\n\nSind denn alle fortgegangen:\nJugend, Sang und Frühlingslust?\nLassen, scheidend, nur Verlangen\nEinsam mir in meiner Brust?\n\nVöglein hoch in Lüften reisen,\n\nSchiffe fahren auf der See,\nIhre Seegel, ihre Weisen\nMehren nur des Herzens Weh.\n\nIst vorbei das bunte Ziehen,\nLustig über Berg und Kluft,\n\nWenn die Bilder wechselnd fliehen,\nWaldhorn immer weiter ruft?\n\nSoll die Lieb’ auf sonn’gen Matten\nNicht mehr bau’n ihr prächtig Zelt,\nUebergolden Wald und Schatten,\n\nUnd die weite, schöne Welt? –\n\nLaß’ das Bangen, laß das Trauern,\nHelle wieder nur den Blick!\nFern von dieser Felsen Mauern,\nBlüht Dir noch gar manches Glück!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Nachhall_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Nachtbilder (Eichendorff)",
+      "texto": " Nachtbilder.\n\n I.\nIch wandre durch die stille Nacht,\nDa schleicht der Mond so heimlich sacht\nOft aus der dunklen Wolkenhülle,\nUnd hin und her im Thal\n\nErwacht die Nachtigall,\nDann wieder alles grau und stille.\n\nO wunderbarer Nachtgesang:\nVon fern im Land der Ströme Gang,\nLeis Schauern in den dunklen Bäumen –\n\nWirr’st die Gedanken mir.\nMein irres Singen hier\nIst wie ein Rufen nur aus Träumen.\n\n II.\nEr reitet Nachts auf einem braunen Roß,\nEr reitet vorüber an manchem Schloß:\n\nSchlaf’ droben, mein Kind, bis der Tag erscheint,\nDie finstre Nacht ist des Menschen Feind!\n\nEr reitet vorüber an einem Teich,\nDa stehet ein schönes Mädchen bleich\nUnd singt, ihr Hemdlein flattert im Wind,\n\nVorüber, vorüber, mir graut vor dem Kind!\n\nEr reitet vorüber an einem Fluß,\nDa ruft ihm der Wassermann seinen Gruß,\nTaucht wieder unter dann mit Gesaus,\nUnd stille wird’s über dem kühlen Haus.\n\nWenn Tag und Nacht in verworrenem Streit,\nSchon Hähne krähen in Dörfern weit,\nDa schauert sein Roß und wühlet hinab,\nScharret ihm schnaubend sein eigenes Grab.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Nachtbilder_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Allgemeines Deutsches Kommersbuch:43",
+      "texto": "     3. Nun ade, herzlieber Vater! Mutter, nimm den Abschiedskuß!\nFür das Vaterland zu streiten, mahnt es mich nächst Gott zum Zweiten,\ndaß ich von euch scheiden muß.\n \n     4. Auch ist noch ein Klang erklungen mächtig mir durch Herz und\nSinn: Recht und Freiheit heißt das Dritte, und es treibt aus eurer\nMitte mich in Tod und Schlachten hin.\n\n     5. O wie lieblich die Trommeln schallen und Trompeten blasen\ndrein! Fahnen wehen frisch im Winde, Ross’ und Männer sind ge=\nschwinde, und es muß geschieden sein.\n\n     6. O du Deutschland, ich muß marschieren, o du Deutschland, du\nmachst mir Mut! Meinen Säbel will ich schwingen, meine Kugel, die \nsoll klingen, gelten soll’s des Feindes Blut!\n\n     1. O Heimat am Rhein, alemannisches Land, o Strombraut, ge=\nliebte, dich faßt meine Hand! Hier hoch auf dem Blauen, auf Schwarz=\nwaldhöh, hier grüß ich die Heimat, so weit ich nur seh.\n\n     2. Vogesen, darüber der Goldduft wallt, ihr Berge von herrlicher\nHochgestalt, ihr fesselt den Blick, dann schweifet er hin, nach Süd, wo\ndie Alpen, die ewigen, glühn.\n\n     3. Und waffn ich den Blick und schau ich hinaus, ich schaue die\nHeimat, die weite, nicht aus, die sonnigen Gauen, voll Reiz und voll\nWein, die lachenden Lande, durchströmet vom Rhein.\n\n     4. Ihr Fluren, ihr Thäler, ihr Waldungen grün, ihr Burgen,\nihr Städte mit Münstern kühn, ihr Völklein, Glück und Gefahren ver=\ntraut, behüt euch der Himmel, der über euch blaut!\n\n     5. Wohl trennen mag Schicksal ein Volk und ein Land, doch einigt\ndie Herzen ein ewiges Band und macht uns zu Brüdern und schließet\nuns ein in ein Paradies, unsre Heimat am Rhein!\n\n     1. O könnt ich mich niederlegen weit in den tiefsten Wald, zu\nHäupten der guten Degen, der noch von den Vätern alt.\n \n     2. Und dürft von allem nichts spüren in dieser dummen Zeit, was\nsie da unten hantieren, von Gott verlassen, verstreut.\n\n     3. Von fürstlichen Thaten und Werken, von alter Ehre und Pracht,\nund was die Seele mag stärken, verträumen die lange Nacht.\n\n     4. Denn eine Zeit wird kommen, da macht der Herr ein End,\nda wird den Falschen genommen ihr unechtes Regiment.\n\n     5. Denn wie die Erze vom Hammer, so wird das lockre Geschlecht\ngehaun sein von Not und Jammer zu festem Eisen recht.\n\n     6. Da wird Aurora tagen hoch über den Wald hinauf, da giebt’s\nwas zu singen und schlagen, da wacht, ihr Getreuen, auf!\n\n     1. Preis dir, Hermann, Volkserretter, der wie Gottes Donner=\nwetter in die Feinde Deutschlands schlug; der die Knechtschaft und die\nSchande samt der Zwingherrn frecher Bande aus dem deutschen Lande jug!\n \n     2. Preis dir, starker Gotteskrieger! Preis dir, frommer, edler \nSieger, unsres Volkes reinster Held! Deutschlands Freiheit, Deutsch=\nlands Einheit, alter Sitte Kraft und Reinheit riefen dich ins blutge Feld.\n\n     3. Was dir teurer als das Leben, hast du freudig hingegeben für\ndein Volk und Vaterland: Weib und Kindlein lag in Ketten, doch das\nVaterland zu retten, gabst du auf dein liebstes Pfand.\n\n     4. Keiner hat wie du gestritten, keiner hat wie du gelitten, Her=\nmann, unsres Volkes Zier! Immer soll dein Geist uns leiten, wie \nim Leiden, so im Streiten: wachst du auf, wir folgen dir!\n\n     1. Prei=send mit viel schö=nen Re=den ih=rer \nLän=der Wert und Zahl, - ih=rer Län=der Wert und \nZahl, sa=ßen vie=le deut=sche Fürs=ten, sa=ßen \nvie=le deut=sche Für=sten einst zu Worms im Kai=ser=",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Allgemeines_Deutsches_Kommersbuch%3A43",
+      "tags": []
+    },
+    {
+      "titulo": "Reise-Lied",
+      "texto": " Reise-Lied.\n\nDurch Feld und Buchenhallen,\nBald singend, bald fröhlich still,\nRecht lustig sey vor allen\nWer’s Reisen wählen will!\n\nWenn’s kaum in Osten glühte,\nDie Welt noch still und weit:\nDa weht recht durch’s Gemüthe\nDie schöne Blüthenzeit!\n\nDie Lerch’ als Morgenbote\n\nSich in die Lüfte schwingt,\nEine frische Reisenote\nDurch Wald und Herz erklingt.\n\nO Lust, vom Berg zu schauen,\nWeit über Wald und Strom,\n\nHoch über sich den blauen\nTiefklaren Himmelsdom!\n\nVom Berge Vöglein fliegen\nUnd Wolken so geschwind,\nGedanken überfliegen\n\nDie Vögel und den Wind.\n\nDie Wolken zieh’n hernieder,\nDas Vöglein senkt sich gleich,\nGedanken gehn und Lieder\nFort bis in’s Himmelreich.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Reise-Lied",
+      "tags": []
+    },
+    {
+      "titulo": "Sehnsucht (Eichendorff II)",
+      "texto": "[268]  Sehnsucht.\n\nEs schienen so golden die Sterne,\nAm Fenster ich einsam stand\nUnd hörte aus weiter Ferne\nEin Posthorn im stillen Land.\n\n Das Herz mir im Leib entbrennte,\nDa hab’ ich mir heimlich gedacht:\nAch, wer da mitreisen könnte\nIn der prächtigen Sommernacht!\n\nZwei junge Gesellen gingen\n\n Vorüber am Bergeshang,\nIch hörte im Wandern sie singen\nDie stille Gegend entlang:\n[269]  Von schwindelnden Felsenschlüften,\nWo die Wälder rauschen so sacht,\n\nVon Quellen, die von den Klüften\nSich stürzen in die Waldesnacht.\n\nSie sangen von Marmorbildern,\nVon Gärten, die über’m Gestein\nIn dämmernden Lauben verwildern,\n\n Palästen im Mondenschein,\nWo die Mädchen am Fenster lauschen,\nWann der Lauten Klang erwacht,\nUnd die Brunnen verschlafen rauschen\nIn der prächtigen Sommernacht. –",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Sehnsucht_%28Eichendorff_II%29",
+      "tags": []
+    },
+    {
+      "titulo": "Soldatenlied (Eichendorff) —  Soldatenlied.",
+      "texto": " Soldatenlied.\n\nWas zieht da für schreckliches Sausen,\nWie Pfeifen durch Sturmes Wehn?\nDas wendet das Herz recht vor Grausen,\nAls sollte die Welt vergehn.\n\n     Das Fußvolk kommt da geschritten,\n     Die Trommeln wirbeln voran.\n     Die Fahne in ihrer Mitten\n     Weht über den grünen Plan,\n     Sie prangt in schneeweißem Kleide\n\n     Als wie eine milde Braut,\n     Die giebt dem hohe Freude,\n     Wen Gott ihr angetraut.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Soldatenlied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Soldatenlied (Eichendorff) —      Sie haben sie recht umschlossen,",
+      "texto": "     Sie haben sie recht umschlossen,\n     Dicht Mann an Mann gerückt,\n\n     So ziehen die Kriegsgenossen\n     Streng, schweigend und ungeschmückt,\n     Wie Gottes dunkeler Wille,\n     Wie ein Gewitter schwer,\n     Da wird es ringsum so stille,\n\n     Der Tod nur blitzt hin und her.\n\nWie seltsame Klänge schwingen\nSich dort von der Waldeshöh’!\nJa, Hörner sind es, die singen\nWie rasend vor Lust und Weh.\n\n     Die jungen Jäger sich zeigen\n     Dort drüben im grünen Wald\n     Bald schimmernd zwischen den Zweigen,\n     Bald lauernd im Hinterhalt.\n     Wohl sinkt da in ewiges Schweigen\n\n     Manch’ schlanke Rittergestalt,\n     Die anderen über ihn steigen,\n     Hurrah! in dem schönen Wald,\n     „Es funkelt das Blau durch die Bäume –\n     Ach, Vater, ich komme bald!“\n\nTrompeten nur hör’ ich werben\nSo hell durch die Frühlingsluft,\nZur Hochzeit oder zum Sterben\nSo übermächtig es ruft.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Soldatenlied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Soldatenlied (Eichendorff) — Das sind meine lieben Reiter,",
+      "texto": "Das sind meine lieben Reiter,\n\nDie rufen hinaus zur Schlacht,\nDas sind meine lustigen Reiter,\nNun, Liebchen, gute Nacht!\nWie wird es da vorne so heiter,\nWie sprühet der Morgenwind,\n\nIn den Sieg, in den Tod und weiter,\nBis daß wir im Himmel sind!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Soldatenlied_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Ständchen (Eichendorff)",
+      "texto": " Ständchen.\n\nSchlafe, Liebchen, weil’s auf Erden \nNun so still und seltsam wird!\nOben gehn die goldnen Heerden,\nFür uns alle wacht der Hirt.\n\nIn der Ferne ziehn Gewitter;\nEinsam auf dem Schifflein schwank,\nGreiff’ ich draußen in die Zitter,\nWeil mir gar so schwül und bang.\n\nSchlingend sich an Bäum’ und Zweigen\n\nIn Dein stilles Kämmerlein,\nWie auf goldnen Leitern, steigen\nDiese Töne aus und ein.\n\nUnd ein wunderschöner Knabe\nSchifft hoch über Thal und Kluft,\n\nRührt mit seinem goldnen Stabe\nSäuselnd in der lauen Luft.\n\nUnd in wunderbaren Weisen\nSingt er ein uraltes Lied,\nDas in linden Zauberkreisen\n\nHinter seinem Schifflein zieht.\n\nAch, den süßen Klang verführet\nWeit der buhlerische Wind,\nUnd durch Schloß und Wand ihn spüret\nTräumend jedes schöne Kind.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/St%C3%A4ndchen_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Die Stille (Eichendorff)",
+      "texto": " Die Stille.\n\nEs weiß und räth es doch Keiner,\nWie mir so wohl ist, so wohl!\nAch, wüßt’ es nur Einer, nur Einer,\nKein Mensch es sonst wissen soll!\n\nSo still ist’s nicht draußen im Schnee,\nSo stumm und verschwiegen sind\nDie Sterne nicht in der Höhe,\nAls meine Gedanken sind.\n\nIch wünscht’, es wäre schon Morgen,\n\nDa fliegen zwei Lerchen auf,\nDie überfliegen einander,\nMein Herze folgt ihrem Lauf.\n\nIch wünscht’, ich wäre ein Vöglein\nUnd zöge über das Meer,\n\nWohl über das Meer und weiter,\nBis daß ich im Himmel wär’!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_Stille_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Der Tiroler Nachtwache",
+      "texto": " Der Tiroler Nachtwache.\n\nIn stiller Bucht, bei finst’rer Nacht,\nSchläft tief die Welt im Grunde,\nDie Berge rings steh’n auf der Wacht,\n\nDer Himmel macht die Runde,\nGeht um und um\nUms Land herum,\nMit seinen goldnen Schaaren\nDie Frommen zu bewahren.\n\nKommt nur heran mit Eurer List,\nMit Leitern, Strick und Banden!\nDer Herr doch noch viel stärker ist,\nMacht Euren Witz zu Schanden.\n\nWie war’t Ihr klug! –\n\nNun schwindelt Trug\nHinab vom Felsenrande –\nWie seid Ihr dumm! o Schande!\n\nGleichwie die Stämme in dem Wald,\nWoll’n wir zusammen halten,\n\nEin’ feste Burg, Trutz der Gewalt,\nVerbleiben treu die alten.\nSteig’, Sonne, schön!\nWirf von den Höh’n\nNacht und die mit ihr kamen,\n\nHinab in Gottes Namen!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_Tiroler_Nachtwache",
+      "tags": []
+    },
+    {
+      "titulo": "Treue (Eichendorff)",
+      "texto": " Treue.\n\nFrisch auf, mein Herz! wie heiß auch das Gedränge,\nBewahr’ ich doch mir kühl und frei die Brust!\nSchickt Wald und Flur doch noch die alten Klänge,\nErschütternd mich mit wunderbarer Lust.\n\nUnd ob die Woge feindlich mit mir ränge:\nSo frömmer nur sing’ ich aus treuer Brust;\nDa bleicht das Wetter, Himmelblau scheint helle,\nDas Meer wird still und zum Delphin die Welle.\n\n„Was wollt’ Ihr doch mit Euer’m Lieder-Spaße!\n\nDes Würd’gern beut die große Zeit so viel!“\nSo schallt’s hoffärtig nun auf jeder Gasse,\nUnd jeder steckt sich dreist sein glänzend Ziel.\nDie Lieder, die ich stammelnd hören lasse,\nEw’ger Gefühle schwaches Wiederspiel, –\n\nSie sind es wahrlich auch nicht, was ich meine,\nDenn ewig unerreichbar ist das Eine.\n\nDoch lieben oft, der Sehnsucht Gluth zu mildern,\nGefang’ne wohl, das ferne Vaterland\nAn ihres Kerkers Mauern abzuschildern.\n\nEin Himmelsstrahl fällt schweifend auf die Wand,\nDa rührt’s lebendig sich in allen Bildern. –\nDem Auge scheint’s ein lieblich bunter Tand –\nDoch wer der lichten Heimath recht zu eigen,\nDem wird der Bilder ernster Geist sich zeigen:\n\nSo wachse denn und treibe fröhlich Blüthe,\nDu kräftig grüner deutscher Sangesbaum!\nRausch’ nur erfrischend fort mir in’s Gemüthe\nAus Deiner Wipfel klarem Himmelsraum!\nDu aber, wunderbare, ew’ge Güte,\n\nDie mir den Himmel wies im schönen Traum,\nErhalt’ auf Erden rüstig mir die Seele,\nDaß ich, wo’s immer ehrlich gilt, nicht fehle!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Treue_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Der verirrte Jäger (Eichendorff)",
+      "texto": " Der verirrte Jäger. \n\n„Ich hab geseh’n ein Hirschlein schlank \nIm Waldesgrunde steh’n, \nNun ist mir draußen weh’ und bang, \nMuß ewig nach ihm geh’n. \n\nFrischauf, ihr Waldgesellen mein! \nIns Horn, ins Horn frisch auf! \nDas lockt so hell, das lockt so fein, \nAurora thut sich auf!“ \n\nDas Hirschlein führt den Jägersmann \n\nIn grüner Waldesnacht, \nThalunter schwindelnd und bergan, \nZu niegeseh’ner Pracht.\n\n„Wie rauscht schon abendlich der Wald, \nDie Brust mir schaurig schwellt! \n\nDie Freunde fern, der Wind so kalt, \nSo tief und weit die Welt!“ \n\nEs lockt so tief, es lockt so fein \nDurch’s dunkelgrüne Haus, \nDer Jäger irrt und irrt allein, \n\nFind’t nimmermehr heraus. –",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_verirrte_J%C3%A4ger_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Der verliebte Reisende (Eichendorff)",
+      "texto": "Der verliebte Reisende\n\n1\n\nDa fahr ich still im Wagen,\nDu bist so weit von mir,\nWohin er mich mag tragen,\nIch bleibe doch bei dir.\n\nDa fliegen Wälder, Klüfte\nUnd schöne Täler tief,\nUnd Lerchen hoch in Lüften,\nAls ob dein' Stimme rief.\n\nDie Sonne lustig scheinet\n\nWeit über das Revier,\nIch bin so froh verweinet\nUnd singe still in mir.\n\nVom Berge geht's hinunter,\nDas Posthorn schallt im Grund,\n\nMein' Seel wird mir so munter,\nGrüß dich aus Herzensgrund.\n\n2\n\nIch geh durch die dunklen Gassen\nUnd wandre von Haus zu Haus,\nIch kann mich noch immer nicht fassen,\n\nSieht alles so trübe aus.\n\nDa gehen viel Männer und Frauen,\nDie alle so lustig sehn,\nDie fahren und lachen und bauen,\nDaß mir die Sinne vergehn.\n\nOft wenn ich bläuliche Streifen\nSeh über die Dächer fliehn,\nSonnenschein draußen schweifen,\nWolken am Himmel ziehn:\n\nDa treten mitten im Scherze\n\nDie Tränen ins Auge mir,\nDenn die mich so lieben von Herzen\nSind alle so weit von hier.\n\n3\n\nLied, mit Tränen halb geschrieben,\nDorthin über Berg und Kluft,\n\n[61]  Wo die Liebste mein geblieben,\nSchwing dich durch die blaue Luft!\n\nIst sie rot und lustig, sage:\nIch sei krank von Herzensgrund;\n\nWeint sie nachts, sinnt still bei Tage,\nJa, dann sag: ich sei gesund!\n\nIst vorbei ihr treues Lieben,\nNun, so end auch Lust und Not,\nUnd zu allen, die mich lieben,\n\nFlieg und sage: ich sei tot!\n\n4\n\nAch Liebchen, dich ließ ich zurücke,\nMein liebes, herziges Kind,\nDa lauern viel Menschen voll Tücke,\nDie sind dir so feindlich gesinnt.\n\nDie möchten so gerne zerstören\nAuf Erden das schöne Fest,\nAch, könnte das Lieben aufhören,\nSo mögen sie nehmen den Rest.\n\nUnd alle die grünen Orte,\n\nWo wir gegangen im Wald,\nDie sind nun wohl anders geworden,\nDa ist's nun so still und kalt.\n\nDa sind nun am kalten Himmel\nViel tausend Sterne gestellt,\n\nEs scheint ihr goldnes Gewimmel\nWeit übers beschneite Feld.\n\nMein' Seele ist so beklommen,\nDie Gassen sind leer und tot,\nDa hab ich die Laute genommen\n\nUnd singe in meiner Not.\n\nAch, wär ich im stillen Hafen!\nKalte Winde am Fenster gehn,\n[62]  Schlaf ruhig, mein Liebchen, schlafe,\nTreu' Liebe wird ewig bestehn!\n\n5\n\nGrün war die Weide,\nDer Himmel blau,\nWir saßen beide\nAuf glänzender Au.\n\nSind's Nachtigallen\n\nWieder, was ruft,\nLerchen, die schallen\nAus warmer Luft?\n\nIch hör die Lieder,\nFern, ohne dich,\n\nLenz ist's wohl wieder,\nDoch nicht für mich.\n\n6\n\nWolken, wälderwärts gegangen,\nWolken, fliegend übers Haus,\nKönnt ich an euch fest mich hangen,\n\nMit euch fliegen weit hinaus!\n\nTag'lang durch die Wälder schweif ich,\nVoll Gedanken sitz ich still,\nIn die Saiten flüchtig greif ich,\nWieder dann auf einmal still.\n\nSchöne, rührende Geschichten\nFallen ein mir, wo ich steh,\nLustig muß ich schreiben, dichten,\nIst mir selber gleich so weh.\n\nManches Lied, das ich geschrieben\n\nWohl vor manchem langen Lahr,\nDa die Welt vom treuen Lieben\nSchön mir überglänzet war;\n\n[63]  Find ich's wieder jetzt voll Bangen:\nWer ich wunderbar gerührt,\n\nDenn so lang ist das vergangen,\nWas mich zu dem Lied verführt.\n\nDiese Wolken ziehen weiter,\nAlle Vögel sind erweckt,\nUnd die Gegend glänzet heiter,\n\nWeit und fröhlich aufgedeckt.\n\nRegen flüchtig abwärts gehen,\nScheint die Sonne zwischendrein,\nUnd dein Haus, dein Garten stehen\nÜberm Wald im stillen Schein.\n\nDoch du harrst nicht mehr mit Schmerzen,\nWo so lang dein Liebster sei –\nUnd mich tötet noch im Herzen\nDieser Schmerzen Zauberei.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_verliebte_Reisende_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Von den Engeln und Störchen",
+      "texto": "Von den Engeln und Störchen.\n\nIm Frühling auf grünem Hügel\nDa saßen viel Engelein,\nDie putzten sich ihre Flügel\nUnd spielten im Sonnenschein.\n\nDa kamen Störche gezogen,\nUnd jeder sich eines nahm,\nUnd ist damit fortgeflogen,\nBis daß er zu Menschen kam.\n\nUnd wo er anklopft’ bescheiden\n\nDer kluge Adebar,\nDa war das Haus voller Freuden –\nSo geht es noch alle Jahr.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Von_den_Engeln_und_St%C3%B6rchen",
+      "tags": []
+    },
+    {
+      "titulo": "Waldgespräch",
+      "texto": "[285]Es ist schon spät, es wird schon kalt,\nWas reit’st Du einsam durch den Wald?\nDer Wald ist lang, Du bist allein,\nDu schöne Braut! ich führ’ Dich heim!\n\n„Groß ist der Männer Trug und List,\nVor Schmerz mein Herz gebrochen ist,\nWohl irrt das Waldhorn her und hin,\nO flieh’! Du weißt nicht, wer ich bin.“\n\n[286]So reich geschmückt ist Roß und Weib,\nSo wunderschön der junge Leib,\nJetzt kenn’ ich Dich – Gott steh’ mir bey!\nDu bist die Hexe Lorelay.\n\n„Du kennst mich wohl – von hohem Stein,\nSchaut still mein Schloß tief in den Rhein.\n\nEs ist schon spät, es wird schon kalt,\nKommst nimmermehr aus diesem Wald!“",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Waldgespr%C3%A4ch",
+      "tags": []
+    },
+    {
+      "titulo": "Warnung (Eichendorff)",
+      "texto": " Warnung.\n\nWann der kalte Schnee zergangen,\nStehst Du draußen in der Thür,\nKommt ein Knabe schön gegangen,\nStellt sich freundlich da zu Dir,\n\nLobet Deine frischen Wangen,\nDunkle Locken, Augen licht,\nWann der kalte Schnee zergangen\nGlaub dem falschen Herzen nicht!\n\nWann die lauen Lüfte wehen,\n\nScheint die Sonne lieblich warm:\nWirst Du wohl spazieren gehen,\nUnd er führet Dich am Arm,\nThränen Dir im Auge stehen,\nDenn so schön klingt, was er spricht,\n\nWann die lauen Winde wehen,\nGlaub’ dem falschen Herzen nicht!\n\nWann die Lerchen wieder schwirren,\nTrittst Du draußen vor das Haus,\nDoch er mag nicht mit Dir irren,\n\nZog weit in das Land hinaus;\n\nDie Gedanken sich verwirren,\nWie Du siehst den Morgen roth, –\nWann die Lerchen wieder schwirren,\nArmes Kind, ach, wärst Du todt!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Warnung_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Wehmuth",
+      "texto": " Wehmuth.\n\nIch kann wohl manchmal singen,\nAls ob ich fröhlich sey,\nDoch heimlich Thränen dringen,\nDa wird das Herz mir frei.\n\nSo lassen Nachtigallen,\nSpielt draußen Frühlingsluft,\nDer Sehnsucht Lied erschallen\nAus ihres Käfigts Gruft.\n\nDa lauschen alle Herzen,\n\nUnd alles ist erfreut,\nDoch keiner fühlt die Schmerzen,\nIm Lied das tiefe Leid.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Wehmuth",
+      "tags": []
+    },
+    {
+      "titulo": "Weihnachten (Eichendorff)",
+      "texto": "[603]  Weihnachten.\n\nMarkt und Straßen stehn verlassen,\nStill erleuchtet jedes Haus,\nSinnend geh’ ich durch die Gassen,\nAlles sieht so festlich aus.\n\nAn den Fenstern haben Frauen\nBuntes Spielzeug fromm geschmückt,\nTausend Kindlein stehn und schauen,\nSind so wunderstill beglückt.\n\nUnd ich wandre aus den Mauern\n\nBis hinaus in’s freie Feld,\nHehres Glänzen, heil’ges Schauern!\nWie so weit und still die Welt!\n\nSterne hoch die Kreise schlingen,\nAus des Schneees Einsamkeit\n\nSteigt’s wie wunderbares Singen –\nO du gnadenreiche Zeit!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Weihnachten_%28Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Die weinende Braut —  Die weinende Braut.",
+      "texto": " Die weinende Braut.\n\nDu warst so herrlich anzuschauen,\nSo kühn und wild und doch so lieb,\nDir mußt’ ich Leib und Seel’ vertrauen,\nIch mocht’ nichts mehr, das meine blieb!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_weinende_Braut",
+      "tags": []
+    },
+    {
+      "titulo": "Die weinende Braut — Da hast Du, Falscher, mich verlassen",
+      "texto": "Da hast Du, Falscher, mich verlassen\nUnd Blumen, Lust und Frühlingsschein,\nDie ganze Welt sah ich erblassen,\nAch Gott, wie bin ich nun allein!\n\nWohl Jahrlang sah ich von den Höhen\n\nUnd grüßte Dich vieltausendmal,\nUnd unten sah ich Viele gehen,\nDoch Du erschienst nicht in dem Thal.\nUnd mancher Lenz mit bunten Scherzen\nKam und verflog im luft’gen Lauf,\n\nDoch ach! in dem betrognen Herzen\nGeht niemals mehr der Frühling auf.\n\nEin Kränzlein trag’ ich nun im Haare,\nIn reichen Kleidern schön geschmückt,\nFührt mich ein andrer zum Altare,\n\nDie Aeltern sind so hoch beglückt.\nUnd fröhlich kann ich mich wohl zeigen,\nDie Sonne hell wie damals scheint,\nUnd vor dem Jauchzen und dem Geigen\nHört Keiner, wie die Braut still weint.\n\nDie Frühlingslieder neu beginnen –\nDu kehrst nach manchem Jahr’ zurück,\nUnd stehest still, Dich zu besinnen,\nWie auf ein längstvergangnes Glück.\nDoch wüstverwachsen liegt der Garten,\n\nDas Haus steht lange still und leer,\nKein Lieb’ will Dein am Fenster warten,\nUnd Dich und mich kennt Niemand mehr.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_weinende_Braut",
+      "tags": []
+    },
+    {
+      "titulo": "Die weinende Braut — Doch eine Lerche siehst Du steigen",
+      "texto": "Doch eine Lerche siehst Du steigen\nVom Thal zum blauen Himmelsport,\n\nEin Bächlein rauschet da so eigen,\nAls weinte es in einem fort.\nDort haben sie mich hingetragen,\nBedeckten mir mit Stein den Mund –\nNun kann ich Dir nicht einmal sagen,\n\nWie ich Dich liebt’ aus Herzensgrund.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Die_weinende_Braut",
+      "tags": []
+    },
+    {
+      "titulo": "Winternacht (Joseph von Eichendorff)",
+      "texto": " Winternacht.\n\nVerschneit liegt rings die ganze Welt, \nIch hab’ nichts, was mich freuet, \nVerlassen steht der Baum im Feld, \nHat längst sein Laub verstreuet. \n\n[608]  Der Wind nur geht bei stiller Nacht \nUnd rüttelt an dem Baume, \nDa rührt er seinen Wipfel sacht \nUnd redet wie im Traume. \n\nEr träumt von künft'ger Frühlingszeit, \n\nVon Grün und Quellenrauschen, \nWo er im neuen Blütenkleid \nZu Gottes Lob wird rauschen.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Winternacht_%28Joseph_von_Eichendorff%29",
+      "tags": []
+    },
+    {
+      "titulo": "Der zauberische Spielmann",
+      "texto": "Der zauberische Spielmann. \n\nNächtlich in dem stillen Grunde, \nWenn das Abendroth versank, \nUm das Waldschloß in die Runde \nGing ein lieblicher Gesang. \n\nFremde waren diese Weisen, \nUnd der Sänger unbekannt, \nAber, wie in Zauberkreisen, \nHielt er jede Brust gebannt. \n\nHinter blüh’nden Mandelbäumen \n\nAuf dem Schloß das Fräulein lauscht – \nDrunten alle Blumen träumen, \nWollüstig der Garten rauscht.\n\nUnd die Wellen buhlend klingen, \nRingend in geheimer Lust\n\nKommt das wunderbare Singen \nAn die süß verträumte Brust. \n\n„Warum weckst Du das Verlangen, \nDas ich kaum zur Ruh gebracht? \nSiehst Du hoch die Lilien prangen? \n\nBöser Sänger, gute Nacht! \n\nSieh’, die Blumen steh’n voll Thränen, \nEinsam die Viole wacht, \nAls wollt’ sie sich schmachtend dehnen \nIn die warme Sommernacht. \n\nWohl von süßem rothen Munde \nKommt so holden Sanges Macht – \nBleibst Du ewig dort im Grunde, \nUnerkannt in stiller Nacht? \n\nAch, im Wind’ verfliegt mein Grüßen! \n\nEinmal, eh’ der Tag erwacht, \nMöcht’ ich Deinen Mund nur küssen, \nSterbend so in süßer Nacht! \n\nNachtigall, verliebte, klage \nNicht so schmeichelnd durch die Nacht! – \n\nAch! ich weiß nicht was ich sage, \nKrank bin ich und überwacht.“\n\nAlso sprach sie, und die Lieder \nLockten stärker aus dem Thal, \nRings durchs ganze Thal hallt’s wieder \n\nVon der Liebe Lust und Qual. \n\nUnd sie konnt’ nicht widerstehen, \nEnge ward ihr das Gemach, \nAus dem Schlosse mußt’ sie gehen \nDiesem Zauberstrome nach. \n\nEinsam steigt sie von den Stufen, \nAch! so schwüle weht der Wind! \nDraußen süß die Stimmen rufen \nImmerfort das schöne Kind. \n\nAlle Blumen trunken lauschen, \n\nVon den Klängen hold durchirrt, \nLieblicher die Brunnen rauschen, \nUnd sie eilet süß verwirrt. –\n\nWohl am Himmel auf und nieder \nTrieb der Hirt die goldne Schaar, \n\nDie Verliebte kehrt nicht wieder, \nLeer nun Schloß und Garten war. \n\nUnd der Sänger seit der Stunde \nNicht mehr weiter singen will, \nRings im heimlich kühlen Grunde \n\nWar’s vor Liebe seelig still.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zauberische_Spielmann",
+      "tags": []
+    },
+    {
+      "titulo": "Der zufriedene Musikant — Der zufriedene Musikant.",
+      "texto": "Der zufriedene Musikant.\n\n I.\n\nWandern lieb’ ich für mein Leben,\nLebe eben wie ich kann,\nWollt’ ich mir auch Mühe geben,\nPaßt’ es mir doch gar nicht an.\n\nSchöne alte Lieder weiß ich,\nIn der Kälte, ohne Schuh’\nDraußen in die Saiten reiß’ ich,\nWeiß nicht, wo ich Abend’s ruh’.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zufriedene_Musikant",
+      "tags": []
+    },
+    {
+      "titulo": "Der zufriedene Musikant — Manche Schöne macht wohl Augen,",
+      "texto": "Manche Schöne macht wohl Augen,\n\nMeinet, ich gefiel’ ihr sehr,\nWenn ich nur was wollte taugen,\nSo ein armer Lump nicht wär’. –\n\nMag Dir Gott ein’n Mann bescheeren,\nWohl mit Haus und Hof versehn!\n\nWenn wir zwei zusammen wären,\nMöcht’ mein Singen mir vergehn. \n\n II. \n\nNenn die Sonne lieblich schiene\nWie in Wälschland, lau und blau,\nGing’ ich mit der Mandoline\n\nDurch die überglänzte Au.\n\nIn der Nacht dann Liebchen lauschte\nAn dem Fenster süß verwacht,\nWünschte mir und ihr – uns Beiden\nHeimlich eine schöne Nacht.\n\nWenn die Sonne lieblich schiene\nWie in Wälschland, lau und blau,\nGing ich mit der Mandoline\nDurch die überglänzte Au.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zufriedene_Musikant",
+      "tags": []
+    },
+    {
+      "titulo": "Der zufriedene Musikant — Ist auch schmuck nicht mein Rößlein,",
+      "texto": " III.\n\nIst auch schmuck nicht mein Rößlein,\n\nSo ist’s doch recht klug,\nTrägt im Finstern zu ’nem Schlößlein\nMich rasch noch genug.\n\nIst das Schloß auch nicht prächtig:\nZum Garten aus der Thür\n\nTritt ein Mädchen doch allnächtig\nDort freundlich herfür.\n\nUnd ist auch die Kleine\nNicht die Schönst’ auf der Welt,\nSo giebt’s doch just Keine\n\nDie mir besser gefällt.\n\nUnd spricht sie vom Freien:\nSo schwing’ ich mich auf mein Roß –\nIch bleibe im Freien\nUnd sie auf dem Schloß.\n\n IV.\n\nMürrisch sitzen sie und maulen\nAuf den Bänken stumm und breit,\nGähnend strecken sich die Faulen,\nUnd die Kecken suchen Streit.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zufriedene_Musikant",
+      "tags": []
+    },
+    {
+      "titulo": "Der zufriedene Musikant — Da komm’ ich durch’s Dorf geschritten,",
+      "texto": "Da komm’ ich durch’s Dorf geschritten,\n\nFernher durch den Abend kühl,\nStell’ mich in des Kreises Mitten,\nGrüß’ und zieh’ mein Geigenspiel.\n\nUnd wie ich den Bogen schwenke,\nZiehn die Klänge in der Rund’\n\nAllen recht durch die Gelenke\nBis zum tiefsten Herzensgrund.\n\nUnd nun geht’s ans Gläserklingen,\nAn ein Walzen um und um,\nJe mehr ich streich’, jemehr sie springen\n\nKeiner frägt erst lang: warum? –\n\nJeder will dem Geiger reichen\nNun sein Scherflein auf die Hand – \nDa vergeht ihm gleich sein Streichen,\nUnd fort ist der Musikant.\n\nUnd sie seh’n ihn fröhlich steigen\nNach den Waldeshöh’n hinaus,\nHören ihn von fern noch geigen,\nUnd gehn All’ vergnügt nach Haus.\n\nDoch in Waldes grünen Hallen\n\nRast’ ich dann noch manche Stund’,\nNur die fernen Nachtigallen\nSchlagen tief aus nächt’gem Grund.",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zufriedene_Musikant",
+      "tags": []
+    },
+    {
+      "titulo": "Der zufriedene Musikant — Und es rauscht die Nacht so leise",
+      "texto": "Und es rauscht die Nacht so leise\nDurch die Waldeseinsamkeit,\n\nUnd ich sinn’ auf neue Weise,\nDie der Menschen Herz erfreut.",
+      "forma": "quadra",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Der_zufriedene_Musikant",
+      "tags": []
+    },
+    {
+      "titulo": "Zwielicht",
+      "texto": "[237]  Zwielicht.\n\nDämmrung will die Flügel spreiten,\nSchaurig rühren sich die Bäume,\nWolken zieh’n wie schwere Träume –\nWas will dieses Grau’n bedeuten?\n\n Hast ein Reh du, lieb vor andern,\nLaß es nicht alleine grasen,\nJäger zieh’n im Wald’ und blasen,\nStimmen hin und wieder wandern.\n\n[238]  Hast du einen Freund hienieden,\n\n Trau ihm nicht zu dieser Stunde,\nFreundlich wohl mit Aug’ und Munde,\nSinnt er Krieg im tück’schen Frieden.\n\nWas heut müde gehet unter,\nHebt sich morgen neugeboren,\n\n Manches bleibt in Nacht verloren –\nHüte dich, bleib’ wach und munter!",
+      "forma": "outro",
+      "obra": "de.wikisource: Joseph von Eichendorff",
+      "ano": null,
+      "fonte": "https://de.wikisource.org/wiki/Zwielicht",
+      "tags": []
+    }
+  ],
+  "nascimento": 1788
+}
