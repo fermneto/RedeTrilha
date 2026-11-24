@@ -264,6 +264,8 @@ export type Comentario = {
   removido: boolean;
   total_respostas: number;
   respostas: Comentario[];
+  // Crítica ancorada em versos (só no 1º nível); ver a seção no fim do arquivo.
+  ancora: Ancora | null;
 };
 
 // Espelha ComentarioPage: respostas diretas em ordem cronológica, por cursor.
@@ -676,4 +678,74 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
+
+// ---- Crítica ancorada no verso (#71): espelha AncoraOut e VersosComentadosOut
+// de backend/app/schemas/comentario.py ----
+// Os versos são as linhas de texto.split("\n"), contadas a partir de 1, com as
+// linhas em branco entre estrofes incluídas (igual ao backend).
+
+export type Ancora = {
+  verso_inicio: number;
+  verso_fim: number;
+  // O trecho como estava ao comentar.
+  trecho: string;
+  // false: o poema foi editado e esses versos mudaram (trecho de uma versão anterior).
+  atual: boolean;
+};
+
+export type SelecaoDeVersos = { inicio: number; fim: number };
+
+export type VersoComentado = { verso: number; comentarios: number };
+
+export function versosDoPoema(texto: string): string[] {
+  return texto.split("\n");
+}
+
+export function trechoDosVersos(texto: string, { inicio, fim }: SelecaoDeVersos): string {
+  return versosDoPoema(texto).slice(inicio - 1, fim).join("\n");
+}
+
+// "verso 5" ou "versos 5–8".
+export function referenciaDosVersos({ inicio, fim }: SelecaoDeVersos): string {
+  return inicio === fim ? `verso ${inicio}` : `versos ${inicio}–${fim}`;
+}
+
+// Clique no número de um verso: sem seleção, seleciona aquele verso; com um verso
+// só, clicar nele desfaz e clicar em outro estende até ele; com um intervalo,
+// recomeça no verso clicado.
+export function selecionarVerso(atual: SelecaoDeVersos | null, verso: number): SelecaoDeVersos | null {
+  if (atual === null || atual.inicio !== atual.fim) return { inicio: verso, fim: verso };
+  if (atual.inicio === verso) return null;
+  return { inicio: Math.min(atual.inicio, verso), fim: Math.max(atual.inicio, verso) };
+}
+
+// PROVISÓRIO (o Neto decide): a citação começa com os versos e uma linha em
+// branco para o comentário do leitor.
+export function textoDaCitacaoDeVersos(trecho: string): string {
+  return `${trecho}\n\n`;
+}
+
+// O compositor de citação existente, com os versos já no texto.
+export function caminhoDaCitacaoDeVersos(postId: number, trecho: string): string {
+  return `/escrever?${new URLSearchParams({ citar: String(postId), versos: trecho })}`;
+}
+
+export function criticarVersos(postId: number, texto: string, selecao: SelecaoDeVersos): Promise<Comentario> {
+  return apiPost<Comentario>(`/posts/${postId}/comentarios`, {
+    texto,
+    parent_id: null,
+    ancora: { verso_inicio: selecao.inicio, verso_fim: selecao.fim },
+  });
+}
+
+// As críticas cuja âncora atual cobre o verso, paginadas como as raízes.
+export function buscarComentariosDoVerso(postId: number, verso: number, cursor: string | null, limit = 20) {
+  const params = new URLSearchParams({ limit: String(limit), verso: String(verso) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<ComentarioPage>(`/posts/${postId}/comentarios?${params}`);
+}
+
+export function buscarVersosComentados(postId: number): Promise<{ items: VersoComentado[] }> {
+  return apiGet<{ items: VersoComentado[] }>(`/posts/${postId}/comentarios/versos`);
 }

@@ -2,7 +2,7 @@
 // Client component: as ações (curtir, repostar) têm estado otimista.
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
@@ -40,9 +40,11 @@ type Props = {
   // Na página do poema ele (e o original que ele cita) aparece sempre inteiro;
   // no resto, cortado por linhasVisiveis.
   inteiro?: boolean;
+  // Troca o corpo do poema (na página dele, os versos que se selecionam, #71).
+  corpo?: (poema: Post) => ReactNode;
 };
 
-export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false }: Props) {
+export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false, corpo }: Props) {
   // Repost puro (texto vazio) fora do feed: mostra o original com o aviso de quem repostou.
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
@@ -77,7 +79,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
               <h1 className="poema-titulo mt-2">{poema.titulo}</h1>
             ))}
 
-          {poema.texto && <Corpo poema={poema} inteiro={inteiro} />}
+          {poema.texto && (corpo ? corpo(poema) : <Corpo poema={poema} inteiro={inteiro} />)}
 
           {poema.texto && <Traduzir key={`traduzir-${poema.id}`} poema={poema} />}
 

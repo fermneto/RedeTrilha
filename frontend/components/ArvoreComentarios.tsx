@@ -3,6 +3,9 @@
 // cada uma com a prévia de até 3 respostas, recursivamente; o resto de cada nó
 // vem em "ver mais respostas". Cada comentário renderiza as próprias respostas
 // (recursão) e pode ser respondido em qualquer nível.
+// Crítica ancorada (#71): com versos selecionados no poema, o comentário de 1º
+// nível vai sobre eles e mostra o trecho citado; com `verso`, só aparecem as
+// críticas daquele verso.
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -12,12 +15,21 @@ import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarComentario,
   buscarComentarios,
+  buscarComentariosDoVerso,
   buscarRespostas,
   comentar,
+  criticarVersos,
   formatarData,
+  referenciaDosVersos,
+  trechoDosVersos,
+  type Ancora,
   type Comentario,
+  type SelecaoDeVersos,
   type User,
 } from "@/lib/api";
+
+// Id do campo de comentário no poema: "comentar estes versos" leva o foco até ele.
+export const ID_DO_CAMPO_DE_COMENTARIO = "comentar-poema";
 
 type Props = {
   postId: number;
@@ -25,6 +37,13 @@ type Props = {
   euId: number | null;
   // Chamado depois de comentar ou apagar, para a página atualizar o contador do poema.
   aoMudar: () => void;
+  // Texto do poema e versos selecionados nele: o próximo comentário vai sobre eles.
+  textoDoPoema: string;
+  selecao: SelecaoDeVersos | null;
+  aoLimparSelecao: () => void;
+  // Filtro da marca no verso: null mostra todos os comentários.
+  verso: number | null;
+  aoLimparFiltro: () => void;
 };
 
 // Junta listas sem repetir comentário (a primeira página de respostas repete a prévia).
@@ -37,7 +56,16 @@ function semRepetir(atuais: Comentario[], novos: Comentario[]): Comentario[] {
 // continuam com a linha da árvore à esquerda.
 const NIVEL_MAXIMO_DE_RECUO = 4;
 
-export function ArvoreComentarios({ postId, euId, aoMudar }: Props) {
+export function ArvoreComentarios({
+  postId,
+  euId,
+  aoMudar,
+  textoDoPoema,
+  selecao,
+  aoLimparSelecao,
+  verso,
+  aoLimparFiltro,
+}: Props) {
   const [raizes, setRaizes] = useState<Comentario[]>([]);
   // Comentários que o usuário acabou de publicar: no topo, mais novo primeiro,
   // com destaque. Ao recarregar a página, voltam à ordem cronológica.
@@ -50,7 +78,10 @@ export function ArvoreComentarios({ postId, euId, aoMudar }: Props) {
     async (depois: string | null) => {
       setCarregando(true);
       try {
-        const pagina = await buscarComentarios(postId, depois);
+        const pagina =
+          verso === null
+            ? await buscarComentarios(postId, depois)
+            : await buscarComentariosDoVerso(postId, verso, depois);
         setRaizes((atuais) => (depois === null ? pagina.items : semRepetir(atuais, pagina.items)));
         setCursor(pagina.proximo_cursor);
         setErro(null);
@@ -60,7 +91,7 @@ export function ArvoreComentarios({ postId, euId, aoMudar }: Props) {
         setCarregando(false);
       }
     },
-    [postId],
+    [postId, verso],
   );
 
   useEffect(() => {
@@ -77,11 +108,24 @@ export function ArvoreComentarios({ postId, euId, aoMudar }: Props) {
       <FormComentario
         postId={postId}
         parentId={null}
+        selecao={selecao}
+        trecho={selecao && trechoDosVersos(textoDoPoema, selecao)}
+        aoLimparSelecao={aoLimparSelecao}
         aoComentar={(novo) => {
           setMeusNovos((atuais) => [novo, ...atuais]);
+          aoLimparSelecao();
           aoMudar();
         }}
       />
+      {verso !== null && (
+        <p className="flex flex-wrap items-center gap-x-2 text-sm text-tinta-suave">
+          <span>Comentários sobre o verso {verso}</span>
+          <span aria-hidden="true">·</span>
+          <button type="button" onClick={aoLimparFiltro} className="cursor-pointer underline hover:text-tinta">
+            ver todos os comentários
+          </button>
+        </p>
+      )}
       {erro && <p className="text-sm text-destaque">{erro}</p>}
       {visiveis.length === 0 && !carregando && !erro ? (
         <p className="text-sm text-tinta-suave">Ainda não há comentários.</p>
@@ -229,6 +273,7 @@ function ItemComentario({
         }
       >
         {novo && <p className="mb-1 text-xs text-destaque">seu comentário</p>}
+        {comentario.ancora && <TrechoCitado ancora={comentario.ancora} />}
         {nivel > NIVEL_MAXIMO_DE_RECUO && autorDoPai !== undefined && (
           <p className="mb-1 text-xs text-tinta-suave">
             ↳ respondendo a{" "}
@@ -321,14 +366,35 @@ function ItemComentario({
   );
 }
 
+// O trecho que a crítica comenta, acima do texto dela, com as quebras do poema.
+// Se o poema foi editado e esses versos mudaram, o aviso substitui a referência.
+function TrechoCitado({ ancora }: { ancora: Ancora }) {
+  const referencia = referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim });
+  return (
+    <figure className="mb-2 border-l-2 border-destaque/50 pl-3">
+      <figcaption className="text-xs text-tinta-suave">
+        {ancora.atual ? referencia : `${referencia} · trecho de uma versão anterior`}
+      </figcaption>
+      <blockquote className="poema-corpo mt-0.5 text-[0.9375rem]">{ancora.trecho}</blockquote>
+    </figure>
+  );
+}
+
 function FormComentario({
   postId,
   parentId,
   aoComentar,
+  selecao = null,
+  trecho = null,
+  aoLimparSelecao,
 }: {
   postId: number;
   parentId: number | null;
   aoComentar: (novo: Comentario) => void;
+  // Só no comentário de 1º nível: os versos selecionados no poema e o texto deles.
+  selecao?: SelecaoDeVersos | null;
+  trecho?: string | null;
+  aoLimparSelecao?: () => void;
 }) {
   const [texto, setTexto] = useState("");
   const [enviando, setEnviando] = useState(false);
@@ -340,7 +406,9 @@ function FormComentario({
     setEnviando(true);
     setErro(null);
     try {
-      const novo = await comentar(postId, texto, parentId);
+      const novo = selecao
+        ? await criticarVersos(postId, texto, selecao)
+        : await comentar(postId, texto, parentId);
       setTexto("");
       aoComentar(novo);
     } catch (err) {
@@ -352,12 +420,31 @@ function FormComentario({
 
   return (
     <form onSubmit={enviar} className="space-y-2">
+      {selecao && trecho !== null && (
+        <div className="rounded-md border border-borda bg-papel-alto p-3">
+          <TrechoCitado ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho, atual: true }} />
+          <button
+            type="button"
+            onClick={aoLimparSelecao}
+            className="cursor-pointer text-xs text-tinta-suave underline hover:text-tinta"
+          >
+            comentar o poema todo
+          </button>
+        </div>
+      )}
       <textarea
+        id={parentId === null ? ID_DO_CAMPO_DE_COMENTARIO : undefined}
         value={texto}
         onChange={(e) => setTexto(e.target.value)}
         required
         rows={parentId === null ? 3 : 2}
-        placeholder={parentId === null ? "Comente o poema" : "Sua resposta"}
+        placeholder={
+          parentId !== null
+            ? "Sua resposta"
+            : selecao
+              ? `Comente ${selecao.inicio === selecao.fim ? "o" : "os"} ${referenciaDosVersos(selecao)}`
+              : "Comente o poema"
+        }
         className="w-full rounded border border-borda bg-papel px-3 py-2 text-sm text-tinta"
       />
       {erro && <p className="text-xs text-destaque">{erro}</p>}
