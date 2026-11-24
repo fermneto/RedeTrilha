@@ -21,24 +21,9 @@ from scripts import importar_consagrados
 SENHA_SEED = "verso123"
 
 USUARIOS = [
-    User(
-        username="ada",
-        name="Ada Lovelace",
-        bio="a primeira a programar",
-        password_hash=gerar_hash(SENHA_SEED),
-    ),
-    User(
-        username="linus",
-        name="Linus Torvalds",
-        bio="just for fun",
-        password_hash=gerar_hash(SENHA_SEED),
-    ),
-    User(
-        username="grace",
-        name="Grace Hopper",
-        bio="caçadora de bugs literais",
-        password_hash=gerar_hash(SENHA_SEED),
-    ),
+    ("ada", "Ada Lovelace", "a primeira a programar"),
+    ("linus", "Linus Torvalds", "just for fun"),
+    ("grace", "Grace Hopper", "caçadora de bugs literais"),
 ]
 
 
@@ -48,7 +33,17 @@ def main() -> None:
         if db.scalar(select(User).limit(1)):
             print("banco já tem dados — seed fake pulado")
         else:
-            db.add_all(USUARIOS)
+            # Users novos a cada chamada: o SEED_ON_BOOT pode rodar o seed mais
+            # de uma vez no mesmo processo, e um User já gravado não é reinserido.
+            db.add_all(
+                User(
+                    username=username,
+                    name=name,
+                    bio=bio,
+                    password_hash=gerar_hash(SENHA_SEED),
+                )
+                for username, name, bio in USUARIOS
+            )
             db.commit()
             print(f"seed ok: {len(USUARIOS)} usuários criados")
     # A importação é idempotente: roda sempre, sem duplicar.

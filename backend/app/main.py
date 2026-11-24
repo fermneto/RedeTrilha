@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -19,6 +20,7 @@ from app.routers import (
     poema_do_dia,
     posts,
     reposts,
+    saude,
     tags,
     users,
 )
@@ -28,6 +30,13 @@ from app.services.posts import reconstruir_indice
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(engine)
+    # No Render o SQLite zera a cada restart: o seed (idempotente) repovoa o
+    # banco ANTES do rebuild, para o índice de tags já nascer com os dados.
+    # Import aqui dentro: fora do deploy, o script nem é carregado.
+    if os.environ.get("SEED_ON_BOOT") == "true":
+        from scripts.seed import main as rodar_seed
+
+        rodar_seed()
     # Reconstrói as estruturas do core/ a partir do banco (memória zera a cada
     # restart — inclusive no --reload; ver core/README.md).
     with SessionLocal() as db:
@@ -37,13 +46,20 @@ async def lifespan(app: FastAPI):
     yield
 
 
+def origens_permitidas() -> list[str]:
+    """Origens do CORS, de CORS_ORIGINS separadas por vírgula (no deploy, a URL da Vercel)."""
+    valor = os.environ.get("CORS_ORIGINS", "http://localhost:3000")
+    # rstrip("/"): o navegador manda a Origin sem a barra que vem ao copiar a URL.
+    return [origem.strip().rstrip("/") for origem in valor.split(",") if origem.strip()]
+
+
 app = FastAPI(title="Rede Social da Trilha", lifespan=lifespan)
 # 422 em português em toda a API (ver app/erros.py).
 app.add_exception_handler(RequestValidationError, erro_de_validacao)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=origens_permitidas(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -61,3 +77,4 @@ app.include_router(reposts.router)
 app.include_router(antologias.router)
 app.include_router(comentarios.router)
 app.include_router(poema_do_dia.router)
+app.include_router(saude.router)
