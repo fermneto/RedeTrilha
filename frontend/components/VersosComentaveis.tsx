@@ -37,9 +37,12 @@ type Props = {
 export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoComentar, aoFiltrar }: Props) {
   const versos = versosDoPoema(poema.texto);
   const lista = useRef<HTMLOListElement>(null);
+  // O poema e a barra: um clique aqui dentro não desfaz a seleção feita pelos números.
+  const corpo = useRef<HTMLDivElement>(null);
   // De onde veio a seleção de versos. "texto": da seleção do navegador, e some
   // com ela (clique fora), como seleção de texto comum. "numero": dos botões de
-  // número (teclado), não depende da seleção do navegador. "fixa": o leitor
+  // número (teclado): some com clique fora do poema e da barra. Esc desfaz as
+  // duas. "fixa": o leitor
   // clicou em "comentar estes versos"; o foco vai para o campo de comentário e a
   // seleção fica até ele comentar, "limpar" ou selecionar outros versos.
   const origem = useRef<"texto" | "numero" | "fixa">("texto");
@@ -65,12 +68,30 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
     return () => document.removeEventListener("selectionchange", aoMudarSelecao);
   }, [poema.texto, selecao, aoSelecionar]);
 
+  useEffect(() => {
+    if (!selecao) return;
+    function aoClicar(e: MouseEvent) {
+      if (origem.current === "numero" && !corpo.current?.contains(e.target as Node)) aoSelecionar(null);
+    }
+    function aoTeclar(e: KeyboardEvent) {
+      if (e.key !== "Escape" || origem.current === "fixa") return;
+      document.getSelection()?.removeAllRanges();
+      aoSelecionar(null);
+    }
+    document.addEventListener("mousedown", aoClicar);
+    document.addEventListener("keydown", aoTeclar);
+    return () => {
+      document.removeEventListener("mousedown", aoClicar);
+      document.removeEventListener("keydown", aoTeclar);
+    };
+  }, [selecao, aoSelecionar]);
+
   const selecionado = (n: number) => selecao !== null && selecao.inicio <= n && n <= selecao.fim;
   const acao =
     "inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm font-semibold text-destaque hover:bg-destaque/10";
 
   return (
-    <div className={poema.titulo ? "mt-2" : "mt-1"}>
+    <div ref={corpo} className={poema.titulo ? "mt-2" : "mt-1"}>
       <p className="sr-only">
         Para comentar ou citar versos, selecione o texto deles, ou ative o número do primeiro verso e
         depois o do último.
