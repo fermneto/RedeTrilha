@@ -23,10 +23,10 @@ def posts_da_tag(
     tag: str,
     offset: int = Query(default=0, ge=0),
     limit: int = Query(default=20, ge=1, le=100),
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.posts_da_tag(db, tag, offset, limit)
+    return service.posts_da_tag(db, user, tag, offset, limit)
 
 
 @router.get("/explorar", response_model=PostPage)
@@ -35,7 +35,7 @@ def explorar(
     forma: str | None = None,
     offset: int = Query(default=0, ge=0),
     limit: int = Query(default=20, ge=1, le=100),
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.explorar(db, tag, forma, offset, limit)
+    return service.explorar(db, user, tag, forma, offset, limit)
