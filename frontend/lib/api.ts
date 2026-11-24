@@ -1,11 +1,22 @@
 // Fetch tipado, único ponto de contato com o backend.
-// Já preparado para receber o token da auth (guia 01, Parte 2).
+// Envia o token da auth em Authorization: Bearer (guia 01, Parte 2).
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
+const CHAVE_TOKEN = "token";
+
+export function salvarToken(token: string): void {
+  localStorage.setItem(CHAVE_TOKEN, token);
+}
+
+export function limparToken(): void {
+  localStorage.removeItem(CHAVE_TOKEN);
+}
+
 function headers(): HeadersInit {
   const h: Record<string, string> = { "Content-Type": "application/json" };
-  // Parte 2 do guia 01: leia o token salvo no login e envie em Authorization.
+  const token = typeof window !== "undefined" ? localStorage.getItem(CHAVE_TOKEN) : null;
+  if (token) h["Authorization"] = `Bearer ${token}`;
   return h;
 }
 
@@ -19,8 +30,8 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 
   // 401 com token salvo = token que não vale mais (ex.: o banco foi apagado ou o
   // servidor do deploy reiniciou). Joga o token fora e volta para o login.
-  if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem("token")) {
-    localStorage.removeItem("token");
+  if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem(CHAVE_TOKEN)) {
+    limparToken();
     if (window.location.pathname !== "/login") window.location.href = "/login";
   }
 
@@ -60,6 +71,9 @@ export type User = {
   name: string;
   bio: string;
   avatar_url: string;
+  consagrado: boolean;
+  nascimento: number | null;
+  morte: number | null;
   created_at: string;
 };
 
