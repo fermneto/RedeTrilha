@@ -2,7 +2,6 @@ from fastapi import HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.core.contadores import contador_iniciais
 from app.models.user import User
 from app.schemas.user import UserCreate
 
@@ -33,6 +32,4 @@ def criar(db: Session, dados: UserCreate) -> User:
     db.add(user)
     db.commit()
     db.refresh(user)
-
-    contador_iniciais.incrementar(user.username)
     return user

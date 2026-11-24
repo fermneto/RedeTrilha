@@ -43,7 +43,6 @@ def test_perfil_inexistente_da_404_e_exige_login(client, logar):
 
 def test_rotas_fixas_nao_sao_capturadas_pelo_username(client, logar):
     ana = logar("ana")
-    assert "usuarios_por_inicial" in client.get("/usuarios/stats").json()
     assert client.patch("/usuarios/eu", json={"name": "Ana"}, headers=ana).status_code == 200
 
 

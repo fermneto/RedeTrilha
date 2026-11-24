@@ -77,7 +77,7 @@ check_setup — validando o ambiente
   ✓ uv instalado
   ✓ node v22.x.x
   ✓ backend responde: GET /usuarios → 200
-  ✓ core/ conectado: GET /usuarios/stats → 200
+  ✓ health check: GET /saude → 200
 
 tudo verde — próximos passos: make seed, make dev-back, make dev-front
 ```

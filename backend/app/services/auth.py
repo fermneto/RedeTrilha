@@ -5,7 +5,6 @@ from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session as DbSession
 
-from app.core.contadores import contador_iniciais
 from app.models.session import Session
 from app.models.user import User
 from app.schemas.auth import LoginIn, RegistroIn
@@ -27,8 +26,6 @@ def registrar(db: DbSession, dados: RegistroIn) -> User:
     db.add(user)
     db.commit()
     db.refresh(user)
-
-    contador_iniciais.incrementar(user.username)
     return user
 
 

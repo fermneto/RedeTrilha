@@ -14,7 +14,7 @@ from pydantic import (
 )
 
 # Nomes que colidem com rotas do front (/perfil, /explorar...) ou da API
-# (/usuarios/eu, /usuarios/stats...). Lista única: o registro e o POST /usuarios usam.
+# (/usuarios/eu...). Lista única: o registro e o POST /usuarios usam.
 USERNAMES_RESERVADOS = frozenset(
     {
         "eu", "stats", "admin", "verso", "perfil", "u", "login", "cadastro", "explorar",

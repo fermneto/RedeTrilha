@@ -8,7 +8,7 @@ respostas diretas (ao poema ou a um comentário) e, abaixo de cada uma, a
 prévia das primeiras respostas, nível a nível. `montar` não busca nem corta
 nada: aninha o que recebeu, a partir de `raiz` (None = respostas ao poema).
 
-Diferente de `contadores.py` e `indice_tags.py`, esta estrutura NÃO é um
+Diferente de `indice_tags.py` e `janela_deslizante.py`, esta estrutura NÃO é um
 singleton de módulo reconstruído no startup. Ela é montada a cada request a
 partir do que aquela página carregou. Motivos:
 
