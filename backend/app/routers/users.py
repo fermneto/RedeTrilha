@@ -4,11 +4,11 @@ Toda feature nova imita este caminho. 1 arquivo por router — registre o seu
 com uma linha em main.py.
 """
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import get_current_user
+from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.feed import FeedPage
 from app.schemas.user import PerfilOut, PerfilUpdate, UserCreate, UserOut, UserPage
@@ -20,12 +20,11 @@ router = APIRouter(prefix="/usuarios", tags=["usuarios"])
 
 @router.get("", response_model=UserPage)
 def listar_usuarios(
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=20, ge=1, le=100),
+    offset: Offset = 0,
+    limit: Limite = 20,
     db: Session = Depends(get_db),
 ):
-    users, total = service.listar(db, offset, limit)
-    return UserPage(items=users, total=total, offset=offset, limit=limit)
+    return service.listar(db, offset, limit)
 
 
 @router.post("", response_model=UserOut, status_code=201)
@@ -58,8 +57,8 @@ def ler_perfil(
 @router.get("/{username}/posts", response_model=FeedPage)
 def poemas_do_perfil(
     username: str,
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=20, ge=1, le=100),
+    offset: Offset = 0,
+    limit: Limite = 20,
     cursor: str | None = None,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),

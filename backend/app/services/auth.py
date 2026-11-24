@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session as DbSession
 from app.models.session import Session
 from app.models.user import User
 from app.schemas.auth import LoginIn, RegistroIn
+from app.services.users import garantir_username_livre
 
 
 def gerar_hash(senha: str) -> str:
@@ -16,10 +17,7 @@ def gerar_hash(senha: str) -> str:
 
 
 def registrar(db: DbSession, dados: RegistroIn) -> User:
-    ja_existe = db.scalar(select(User).where(User.username == dados.username))
-    if ja_existe:
-        raise HTTPException(status_code=409, detail="username já existe")
-
+    garantir_username_livre(db, dados.username)
     user = User(
         username=dados.username, name=dados.name, password_hash=gerar_hash(dados.password)
     )
@@ -47,7 +45,11 @@ def logar(db: DbSession, dados: LoginIn) -> str:
     return sessao.token
 
 
-def deslogar(db: DbSession, token: str) -> None:
+def deslogar(db: DbSession, authorization: str | None) -> None:
+    """Apaga a sessão do token. Sem Authorization (bypass de DEBUG) não há sessão para apagar."""
+    token = token_do_header(authorization) if authorization else None
+    if not token:
+        return
     sessao = db.get(Session, token)
     if sessao:
         db.delete(sessao)

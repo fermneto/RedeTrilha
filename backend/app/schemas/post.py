@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field, field_validator
 
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
+from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
 FORMAS = [
@@ -84,10 +85,5 @@ class PostOut(BaseModel):
     repostado_por: list[UserOut] = []
 
 
-class PostPage(BaseModel):
-    """Página de poemas no padrão do projeto (ver UserPage)."""
-
-    items: list[PostOut]
-    total: int
-    offset: int
-    limit: int
+class PostPage(Pagina[PostOut]):
+    """Página de poemas (ver schemas/pagina.py)."""

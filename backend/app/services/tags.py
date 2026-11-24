@@ -14,6 +14,7 @@ from app.core.indice_tags import indice_tags
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.post import FORMAS, PostPage
+from app.schemas.tags import TagContagem, Trending
 from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
@@ -28,8 +29,10 @@ def posts_da_tag(
     return _pagina(db, usuario, fatia, len(ids), offset, limit)
 
 
-def trending() -> list[tuple[str, int]]:
-    return indice_tags.trending(datetime.now(UTC) - JANELA_TRENDING)
+def trending() -> Trending:
+    """Top 5 tags dos poemas das últimas 24 h (ver IndiceTags.trending)."""
+    pares = indice_tags.trending(datetime.now(UTC) - JANELA_TRENDING)
+    return Trending(items=[TagContagem(tag=tag, contagem=n) for tag, n in pares])
 
 
 def explorar(

@@ -13,6 +13,8 @@ from pydantic import (
     field_validator,
 )
 
+from app.schemas.pagina import Pagina
+
 # Nomes que colidem com rotas do front (/perfil, /explorar...) ou da API
 # (/usuarios/eu...). Lista única: o registro e o POST /usuarios usam.
 USERNAMES_RESERVADOS = frozenset(
@@ -125,10 +127,5 @@ class PerfilUpdate(BaseModel):
         return valor
 
 
-class UserPage(BaseModel):
-    """Padrão de paginação do projeto: todo endpoint de listagem devolve isto."""
-
-    items: list[UserOut]
-    total: int
-    offset: int
-    limit: int
+class UserPage(Pagina[UserOut]):
+    """Página de usuários (ver schemas/pagina.py)."""
