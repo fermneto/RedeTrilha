@@ -219,6 +219,16 @@ def _textos(corpo: dict) -> list[str]:
     return [i["texto"] for i in corpo["items"]]
 
 
+def test_a_janela_do_banco_vira_no_mesmo_segundo_que_a_do_core(client, como):
+    # A escolha por janela é feita no SQL (desempenho): a borda tem de ser a do
+    # `janela_de`, um segundo antes e na hora cheia, inclusive com microssegundos.
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "fim da janela", BASE + timedelta(hours=3, microseconds=-1))
+    _poema_de_consagrado(bilac, "antes do fim", BASE + timedelta(hours=2, minutes=59))
+    _poema_de_consagrado(bilac, "começo da outra", BASE + timedelta(hours=3))
+    assert _textos(_para_voce(client, como)) == ["começo da outra", "fim da janela"]
+
+
 def test_consagrado_na_lingua_do_navegador_tem_preferencia_na_janela(client, como):
     bilac = _consagrado()
     # Na mesma janela, o poema na língua de quem vê fica mesmo sendo o mais antigo.
