@@ -65,3 +65,14 @@ class Consagrado(BaseModel):
                 f"nascimento ({self.nascimento}) deve ser anterior à morte ({self.morte})"
             )
         return self
+
+    @model_validator(mode="after")
+    def _poemas_sem_repeticao(self) -> "Consagrado":
+        """(titulo, obra) identifica o poema na importação: repetido, um sobrescreveria o outro."""
+        vistos: set[tuple[str | None, str | None]] = set()
+        for poema in self.poemas:
+            chave = (poema.titulo, poema.obra)
+            if chave in vistos:
+                raise ValueError(f"poema repetido: titulo={poema.titulo!r}, obra={poema.obra!r}")
+            vistos.add(chave)
+        return self
