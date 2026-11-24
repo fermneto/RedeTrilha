@@ -50,10 +50,13 @@ PRs, na seção "Decisões do Neto".
   - Quem escreve tem uma oficina no compositor, com sílabas poéticas e rimas
     (decisão 8), rascunhos privados (decisão 9) e a renga, o poema escrito a
     várias mãos (decisão 10).
+  - O Acervo reúne todos os poetas, com busca e filtros por língua e época
+    (decisão 12).
 - **Como saberíamos que funcionou:** alguém cita um verso de um consagrado ou
   de outro poeta da rede e recebe respostas de outra pessoa. Isso dá para
   contar no banco: citações (`repost_de_id` com texto) com comentários de outra
-  pessoa. Ainda não temos usuários reais, então não temos esse número.
+  pessoa. Ainda não temos usuários reais, então não temos esse número: ele
+  será medido no banco da URL pública antes da banca.
 
 ## Decisões de produto
 
@@ -103,8 +106,8 @@ PRs, na seção "Decisões do Neto".
     popular e cordel, clássica oriental e clássica árabe e persa), e o país de
     nascimento, vazio quando é desconhecido ou disputado, como o de Homero. É o
     que liga o poeta às sugestões por afinidade (decisão 11).
-  - **Acervo:** uma tela com os perfis de todos os poetas, consagrados e da
-    rede, com busca pelo nome e filtros por língua e época (#65).
+  - **Acervo:** os perfis de todos os poetas numa tela, com filtros
+    (decisão 12).
   - **Tradução sob demanda por IA.** O botão "Traduzir" aparece quando a língua
     do poema é diferente da do navegador. A tradução (Claude Haiku 5.5)
     preserva o número de versos, as estrofes e os recuos. A tela mostra
@@ -307,7 +310,9 @@ PRs, na seção "Decisões do Neto".
     corrida recebe "outra pessoa acrescentou uma estrofe agora".
 - **O que cortamos e por quê:** a ordem fixa de turnos entre convidados,
   porque esperar a vez de quem sumiu trava a renga inteira. Também não dá para
-  mudar o modo nem o limite, nem convidar alguém, depois de abrir.
+  mudar o modo nem o limite, nem convidar alguém, depois de abrir: as regras
+  são um contrato. Quem entra numa renga aceitou aquelas regras, e mudá-las no
+  meio muda o poema que os outros já ajudaram a escrever.
 
 ### 11. Boas-vindas e sugestões por afinidade
 
@@ -339,6 +344,30 @@ PRs, na seção "Decisões do Neto".
     por um formulário, e o "Para você" já abre cheio sem seguir ninguém.
   - **A intercalação fixa de poetas da rede e consagrados** (um de cada, #87),
     trocada pela nota (#91).
+
+### 12. O Acervo: todos os poetas numa tela, com filtros
+
+- **Contexto:** a tela Poetas do template era uma lista única de perfis. Com
+  os 155 consagrados, de 20 línguas e da antiguidade a 1955, e os poetas da
+  rede, achar quem ler pedia outra tela.
+- **Opções:** manter a lista única da tela Poetas, ou um acervo com busca,
+  filtros, ordem e páginas (#65).
+- **Escolha:**
+  - **Todos os perfis**, com o chip de tipo: "todos", "consagrados" ou
+    "poetas do Verso" (#88).
+  - **Busca pelo nome ou pelo @**, sem diferença de acento nem de maiúscula:
+    "CAMÕES" acha @camoes.
+  - **Filtros de língua e de época**, só para consagrados. A língua é a mais
+    frequente nos poemas do poeta. A época é a faixa do ano de morte:
+    Antiguidade, Idade Média e os séculos XVI a XX (este até 1955).
+  - **Três ordens:** alfabética (a padrão), mais seguidos e mais poemas.
+  - **Páginas numeradas**, de 24 poetas, com os filtros na URL: o link abre a
+    mesma vista, e o voltar do navegador volta de página.
+  - **O cartão é o perfil:** avatar, nome com selo, @, os anos de vida (no
+    consagrado) ou a bio (no poeta da rede), poemas, seguidores e o botão
+    seguir. O cartão inteiro leva ao perfil.
+- **O que cortamos e por quê:** a tela não filtra por escola literária, por forma nem
+  por país, e o cartão não mostra trecho de poema.
 
 ### O que ficou de fora e por quê
 
@@ -379,7 +408,8 @@ sobre o produto:
 - **Bloqueio de forma e oficina na leitura** (decisão 8). O soneto de 13
   versos é decisão do poeta, e o leitor lê o poema, não a métrica.
 - **Turnos fixos na renga** (decisão 10). Esperar a vez de quem sumiu trava o
-  poema de todos.
+  poema de todos. E as regras da renga não mudam depois de aberta: quem entrou
+  aceitou aquelas regras.
 
 ## Features
 
