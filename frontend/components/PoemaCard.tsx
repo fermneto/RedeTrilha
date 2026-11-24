@@ -8,7 +8,7 @@ import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
-import { curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
+import { anosDeVida, curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
 
 // Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
 // para o inteiro. Linhas em branco entre estrofes contam.
@@ -130,12 +130,7 @@ function NomeLink({ usuario }: { usuario: User }) {
 }
 
 function Autor({ autor, criadoEm }: { autor: User; criadoEm: string }) {
-  const vida =
-    autor.consagrado && autor.morte !== null
-      ? autor.nascimento !== null
-        ? `${autor.nascimento}–${autor.morte}`
-        : `m. ${autor.morte}`
-      : null;
+  const vida = anosDeVida(autor);
   return (
     <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm">
       <Link href={`/u/${autor.username}`} className="font-medium hover:underline">

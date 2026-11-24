@@ -33,6 +33,28 @@ function headers(): HeadersInit {
   return h;
 }
 
+// Erro de resposta não-ok: a mensagem é o `detail` do backend, e o status fica
+// disponível para quem precisa distinguir (ex.: 404 = não existe mais).
+export class ErroDaApi extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message);
+  }
+}
+
+// O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
+// de erros com `msg`. As mensagens dos validadores vêm com "Value error, " na frente.
+function mensagemDoErro(detail: unknown): string | null {
+  if (typeof detail === "string") return detail;
+  if (!Array.isArray(detail)) return null;
+  const msgs = detail
+    .map((e) => (typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null))
+    .filter((m): m is string => Boolean(m));
+  return msgs.length > 0 ? msgs.join("; ") : null;
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     method,
@@ -51,8 +73,7 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   if (!res.ok) {
     // 422 = corpo inválido; 409 = conflito (ex.: username repetido). Ver guia 04.
     const erro = await res.json().catch(() => null);
-    const detail = typeof erro?.detail === "string" ? erro.detail : null;
-    throw new Error(detail ?? `${method} ${path} → ${res.status}`);
+    throw new ErroDaApi(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`, res.status);
   }
 
   // 204 No Content (seguir, curtir, apagar...) não tem corpo: não há JSON para ler.
@@ -240,4 +261,48 @@ export function apagarComentario(id: number): Promise<void> {
 // Usuário da sessão (o botão "apagar" só aparece para o autor do comentário).
 export function buscarEu(): Promise<User> {
   return apiGet<User>("/auth/eu");
+}
+
+// ---- Perfil (P4): espelha PerfilOut e PerfilUpdate de backend/app/schemas/user.py ----
+
+export type Perfil = User & {
+  seguidores: number;
+  seguindo: number;
+  // Poemas e citações; reposts puros não contam.
+  poemas: number;
+  // Se o usuário atual segue a pessoa.
+  sigo: boolean;
+};
+
+// Anos de vida de um consagrado: "1861–1898", "m. 1898" ou null (sem a morte, ou não consagrado).
+export function anosDeVida(user: User): string | null {
+  if (!user.consagrado || user.morte === null) return null;
+  return user.nascimento !== null ? `${user.nascimento}–${user.morte}` : `m. ${user.morte}`;
+}
+
+// Só os campos enviados mudam.
+export type EdicaoDoPerfil = Partial<Pick<User, "name" | "bio" | "avatar_url">>;
+
+export function buscarPerfil(username: string): Promise<Perfil> {
+  return apiGet<Perfil>(`/usuarios/${encodeURIComponent(username)}`);
+}
+
+export function editarPerfil(dados: EdicaoDoPerfil): Promise<Perfil> {
+  return apiPatch<Perfil>("/usuarios/eu", dados);
+}
+
+// Poemas, citações e reposts puros da pessoa, como no X; pagina como o feed.
+export function buscarPoemasDoPerfil(
+  username: string,
+  cursor: string | null,
+  limit = 20,
+): Promise<FeedPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<FeedPage>(`/usuarios/${encodeURIComponent(username)}/posts?${params}`);
+}
+
+export function seguir(username: string, seguindo: boolean): Promise<void> {
+  const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
+  return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
 }
