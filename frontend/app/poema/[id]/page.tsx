@@ -100,7 +100,7 @@ export default function PoemaPage() {
         />
         {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar" do card. */}
         {euId === poema.autor_id && !repostPuro(poema) && (
-          <ApagarPoema postId={poema.id} aoApagar={() => router.replace("/perfil")} />
+          <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
         )}
       </div>
       <div className="px-4 py-6">

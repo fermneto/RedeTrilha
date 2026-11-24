@@ -78,8 +78,8 @@ export function ApagarPoema({ postId, aoApagar }: Props) {
         </button>
       )}
       <p className="text-xs text-tinta-suave">
-        O poema publicado não se edita: para corrigir, apague e publique de novo. Curtidas e comentários
-        vão junto.
+        O poema publicado não se edita: para corrigir, apague e publique de novo. Curtidas, comentários,
+        reposts e o lugar nas antologias vão junto; as citações ficam sem o original.
       </p>
       {erro && <p className="mt-1 text-sm text-destaque">{erro}</p>}
     </div>
