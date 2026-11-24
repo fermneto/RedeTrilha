@@ -5,6 +5,7 @@ direto no banco, com poemas na língua do original, como faz o importador.
 """
 
 import typing
+from itertools import pairwise
 
 import pytest
 
@@ -196,5 +197,5 @@ def test_opcoes_de_filtro_com_contagem(client, acervo):
 def test_faixas_de_epoca_sao_contiguas():
     from app.services.acervo import FAIXAS_DE_EPOCA
 
-    for anterior, seguinte in zip(FAIXAS_DE_EPOCA, FAIXAS_DE_EPOCA[1:]):
+    for anterior, seguinte in pairwise(FAIXAS_DE_EPOCA):
         assert seguinte.inicio == anterior.fim + 1

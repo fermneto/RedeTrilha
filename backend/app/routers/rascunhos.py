@@ -5,7 +5,12 @@ from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.post import PostOut
-from app.schemas.rascunho import RascunhoCreate, RascunhoOut, RascunhoPage, RascunhoUpdate
+from app.schemas.rascunho import (
+    RascunhoCreate,
+    RascunhoOut,
+    RascunhoPage,
+    RascunhoUpdate,
+)
 from app.services import posts as posts_service
 from app.services import rascunhos as service
 

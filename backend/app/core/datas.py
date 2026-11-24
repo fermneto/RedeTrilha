@@ -1,4 +1,4 @@
-"""Datas em UTC, em Python puro: usado pelo índice de tags, pelo cursor e pela tradução."""
+"""Datas em UTC, em Python puro: usado pelos models, pelo índice de tags, pelo cursor e pela tradução."""
 
 from datetime import UTC, datetime
 
@@ -11,3 +11,8 @@ def para_utc(momento: datetime) -> datetime:
     if momento.tzinfo is None:
         return momento.replace(tzinfo=UTC)
     return momento.astimezone(UTC)
+
+
+def agora_utc() -> datetime:
+    """O momento atual em UTC: o default das colunas de data dos models."""
+    return datetime.now(UTC)

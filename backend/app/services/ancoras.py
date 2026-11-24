@@ -16,7 +16,12 @@ from sqlalchemy.orm import Session
 from app.models.ancora_comentario import AncoraComentario
 from app.models.comentario import Comentario
 from app.models.post import Post
-from app.schemas.comentario import AncoraCreate, AncoraOut, VersoComentado, VersosComentadosOut
+from app.schemas.comentario import (
+    AncoraCreate,
+    AncoraOut,
+    VersoComentado,
+    VersosComentadosOut,
+)
 
 
 def trecho_de(texto: str, inicio: int, fim: int) -> str:

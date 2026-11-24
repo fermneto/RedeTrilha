@@ -66,7 +66,6 @@ def test_dados_criados_depois_do_seed_sobrevivem_ao_reinicio(monkeypatch):
 
 def test_seed_on_boot_nao_roda_se_o_banco_ja_tem_usuarios(monkeypatch, criar_usuario):
     from app.db import Base, engine
-
     from app.main import app
 
     Base.metadata.drop_all(engine)

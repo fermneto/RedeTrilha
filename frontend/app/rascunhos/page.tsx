@@ -18,6 +18,7 @@ import {
   buscarPoema,
   caminhoDoLogin,
   listarRascunhos,
+  mensagemDeFalha,
   nomeDaForma,
   previaDoRascunho,
   publicarRascunho,
@@ -47,7 +48,7 @@ export default function RascunhosPage() {
     }
     listarRascunhos()
       .then((pagina) => setRascunhos(pagina.items))
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar os rascunhos"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar os rascunhos")));
   }, [router]);
 
   // "citação de quem": busca cada poema citado uma vez só (apagar um rascunho

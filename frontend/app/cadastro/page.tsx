@@ -12,6 +12,7 @@ import {
   cadastrar,
   entrar,
   ErroDaApi,
+  mensagemDeFalha,
   salvarToken,
   SENHA_MAX,
   SENHA_MIN,
@@ -114,7 +115,7 @@ export default function CadastroPage() {
       } else if (err instanceof ErroDaApi && err.status === 422 && Object.keys(err.campos).length > 0) {
         mostrarErros(err.campos);
       } else {
-        setErroGeral(err instanceof Error ? err.message : "não deu para criar a conta");
+        setErroGeral(mensagemDeFalha(err, "não deu para criar a conta"));
       }
       return;
     }

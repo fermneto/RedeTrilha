@@ -4,15 +4,15 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
-import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -21,6 +21,7 @@ import {
   editarAntologia,
   ErroDaApi,
   marcarNaAntologia,
+  mensagemDeFalha,
   temToken,
   type AntologiaDetalhe,
   type Post,
@@ -53,7 +54,7 @@ export default function AntologiaPage() {
       .catch((e) => {
         // Privada de outra pessoa também dá 404: a tela não revela que ela existe.
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
-        else setErro(e instanceof Error ? e.message : "não deu para carregar a antologia");
+        else setErro(mensagemDeFalha(e, "não deu para carregar a antologia"));
       });
   }, [id, router]);
 
@@ -194,34 +195,19 @@ function Cabecalho({
   );
 }
 
-// "apagar" pede confirmação ali mesmo, como no apagar comentário: vira
-// "apagar? sim / não"; Esc ou clique fora cancelam.
+// "apagar" pede confirmação ali mesmo (ConfirmacaoInline): vira
+// "apagar a antologia? sim / não"; Esc ou clique fora cancelam.
 function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: () => Promise<void> }) {
-  const [confirmando, setConfirmando] = useState(false);
   const [apagando, setApagando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-  const confirmacao = useRef<HTMLSpanElement>(null);
-  const botaoApagar = useRef<HTMLButtonElement>(null);
-
-  // O foco vai para o "não": Enter sem querer não apaga nada.
-  useEffect(() => {
-    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-  }, [confirmando]);
-
-  // Esc devolve o foco ao "apagar"; o clique fora deixa o foco onde o clique o pôs.
-  useFecharAoSair(confirmando, confirmacao, (e) => {
-    setConfirmando(false);
-    if (e.type === "keydown") requestAnimationFrame(() => botaoApagar.current?.focus());
-  });
 
   async function apagar() {
-    setConfirmando(false);
     setApagando(true);
     setErro(null);
     try {
       await aoApagar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar a antologia");
+      setErro(mensagemDeFalha(e, "não deu para apagar a antologia"));
       setApagando(false);
     }
   }
@@ -233,39 +219,13 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
         <button type="button" onClick={aoEditar} disabled={apagando} className={acao}>
           editar
         </button>
-        {confirmando ? (
-          <span ref={confirmacao} className="text-sm text-tinta-suave">
-            apagar a antologia?{" "}
-            <button
-              type="button"
-              onClick={apagar}
-              className="min-h-11 cursor-pointer text-destaque hover:underline"
-            >
-              sim
-            </button>{" "}
-            /{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setConfirmando(false);
-                requestAnimationFrame(() => botaoApagar.current?.focus());
-              }}
-              className="min-h-11 cursor-pointer hover:text-tinta"
-            >
-              não
-            </button>
-          </span>
-        ) : (
-          <button
-            ref={botaoApagar}
-            type="button"
-            onClick={() => setConfirmando(true)}
-            disabled={apagando}
-            className={acao}
-          >
-            {apagando ? "apagando..." : "apagar"}
-          </button>
-        )}
+        <ConfirmacaoInline
+          pergunta="apagar a antologia?"
+          rotulo={apagando ? "apagando..." : "apagar"}
+          classeDoBotao={acao}
+          aoConfirmar={apagar}
+          desabilitado={apagando}
+        />
       </div>
       <p className="text-xs text-tinta-suave">Apagar a antologia não apaga os poemas.</p>
       {erro && <p className="mt-1 text-sm text-destaque">{erro}</p>}
@@ -284,7 +244,7 @@ function TirarDaAntologia({ poema, aoTirar }: { poema: Post; aoTirar: () => Prom
     try {
       await aoTirar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para tirar o poema");
+      setErro(mensagemDeFalha(e, "não deu para tirar o poema"));
       setTirando(false);
     }
   }
