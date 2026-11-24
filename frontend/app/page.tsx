@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ChamadaEscrever } from "@/components/ChamadaEscrever";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
-import { buscarFeed, temToken } from "@/lib/api";
+import { buscarFeed, caminhoDoLogin, temToken } from "@/lib/api";
 
 const POR_PAGINA = 20;
 
@@ -20,7 +20,7 @@ export default function FeedPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!temToken()) router.replace("/login");
+    if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
 
   return (

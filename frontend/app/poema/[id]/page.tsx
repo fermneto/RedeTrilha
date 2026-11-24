@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { PoemaCard } from "@/components/PoemaCard";
-import { buscarEu, buscarPoema, temToken, type Post } from "@/lib/api";
+import { buscarEu, buscarPoema, caminhoDoLogin, temToken, type Post } from "@/lib/api";
 
 export default function PoemaPage() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function PoemaPage() {
 
   useEffect(() => {
     if (!temToken()) {
-      router.replace("/login");
+      router.replace(caminhoDoLogin());
       return;
     }
     carregarPoema();
