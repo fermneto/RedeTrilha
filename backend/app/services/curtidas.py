@@ -1,4 +1,5 @@
 from sqlalchemy import delete, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.curtida import Curtida
@@ -7,14 +8,21 @@ from app.services.posts import original_de
 
 
 def curtir(db: Session, usuario: User, post_id: int) -> None:
-    """Idempotente: curtir o que já curtiu não faz nada. Repost puro curte o original."""
+    """Idempotente: curtir o que já curtiu não faz nada. Repost puro curte o original.
+
+    A constraint única (user_id, post_id) barra a corrida do clique duplo; a
+    chamada que perde cai no IntegrityError e vale como já curtido.
+    """
     post_id = original_de(db, post_id).id
     ja_curtiu = db.scalar(
         select(Curtida).where(Curtida.user_id == usuario.id, Curtida.post_id == post_id)
     )
     if ja_curtiu is None:
         db.add(Curtida(user_id=usuario.id, post_id=post_id))
-        db.commit()
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
 
 
 def descurtir(db: Session, usuario: User, post_id: int) -> None:
