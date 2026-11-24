@@ -208,11 +208,22 @@ PRs, na seção "Decisões do Neto".
     tag, Poema do dia, Em alta e consagrados para seguir.
   - **Duas fontes:** Schibsted Grotesk na interface e Literata só no corpo dos
     poemas. Os ícones são SVG próprios.
-  - **Postgres no Supabase** em vez do SQLite que zera (#55). O seed roda só
-    num banco vazio, então o que se publica na URL pública continua lá.
+  - **Postgres na mesma VM da API** em vez do SQLite que zera (#55). O seed
+    roda só num banco vazio, então o que se publica na URL pública continua lá.
+    O banco fica no Docker Compose da VM da Oracle, sem porta pública, com
+    `pg_dump` diário (7 diários e 4 semanais) copiado para o Object Storage da
+    Oracle. Na mesma máquina, a ida e volta até o banco é de 0,06 ms (mediana
+    de um `select 1` da API), e cada request faz várias consultas. O teto passa
+    a ser o `max_connections` do próprio Postgres (60), e não as 15 conexões do
+    Supabase free; sobra para o backup e para crescer com a VM. Medido nos 2
+    núcleos da VM, 100 usuários: 2 workers × (4 + 2) deram p95 de 46 a 52 ms
+    com pausa de 3 s e 1,1 s sem pausa, 0 erro; 4 workers empataram com pausa
+    e pioraram sem pausa (p95 1,6 s), porque os núcleos são os mesmos.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
-  ações.
+  ações. E o banco gerenciado: o Supabase dá painel e backup, mas paga a rede a
+  cada consulta e limita as conexões. Ele fica documentado como alternativa
+  (`docs/deploy-oracle.md`).
 
 ### 7. A crítica ancorada no verso
 
@@ -450,7 +461,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Oficina: sílabas e rimas no compositor | Neto | Quem escreve vê o metro e as rimas enquanto escreve, e desliga se não usa. |
 | Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
 | Rengas | Neto | Várias pessoas escrevem um poema junto, estrofe por estrofe. |
-| Deploy (Render + Vercel + Supabase) | Neto | A banca usa a rede na URL pública, e os dados não somem. |
+| Deploy (Vercel + VM da Oracle com API e Postgres) | Neto | A banca usa a rede na URL pública, e os dados não somem: backup diário no Object Storage. |
 
 ## Uma escolha técnica
 
@@ -483,6 +494,11 @@ poema diferente por tag no "Em alta"). O limite de tradução conta as linhas da
 própria pessoa em `traducoes` na última hora, pelo índice
 `(pedida_por_id, created_at)`. O boot não reconstrói nada (o lifespan com o
 seed caiu de 774 ms para 5 ms).
+
+**Com vários workers, medido** (`backend/scripts/carga.py`, 100 usuários, mix
+de 14 rotas, API, Postgres e Caddy nos 2 núcleos da VM, 2 workers × pool 4 +
+2): 28 req/s, p95 de 46 a 52 ms e 0 erro com pausa média de 3 s; 109 a 112
+req/s, p95 de 1,1 s e 0 erro sem pausa, com 100 requisições sempre em voo.
 
 **Big O** (R = linhas de `post_tags`, t = tags do poema, p = poemas da tag,
 w = linhas na janela de 24 h, m = tags distintas na janela, k ≤ 10):
