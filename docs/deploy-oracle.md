@@ -383,10 +383,11 @@ docker compose run --rm --entrypoint python seed scripts/importar_consagrados.py
 A `api` roda o uvicorn com `WEB_CONCURRENCY` workers (processos). Vazio, o
 padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4).
 
-O `.env.example` vem com `WEB_CONCURRENCY=` vazio (até 4 workers) e o pool
-`2 + 1` por worker. Vários workers não dão problema: o índice de tags (tabela
-`post_tags`) e o limite de traduções (contado em `traducoes`) moram no banco,
-então todo worker vê o mesmo Em alta e o mesmo limite.
+O `.env.example` vem com `WEB_CONCURRENCY=2` e o pool `4 + 2` por worker, a
+configuração medida no PR #130 (130 req/s, 0 erro, p95 de 1,2 s). Vários
+workers não dão problema: o índice de tags (tabela `post_tags`) e o limite de
+traduções (contado em `traducoes`) moram no banco, então todo worker vê o mesmo
+Em alta e o mesmo limite.
 
 Cada worker abre o próprio pool de conexões. No Session pooler, cada conexão
 da API ocupa uma conexão no Supabase, e o **Pool Size** do plano free é 15
@@ -395,8 +396,7 @@ fechar:
 
 ```text
 WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
-1 worker:  1 × (5 + 5) = 10
-4 workers: 4 × (2 + 1) = 12
+2 workers: 2 × (4 + 2) = 12   (o padrão do .env.example)
 ```
 
 Passar disso dá `too many clients` / `max clients reached` sob carga (no teste
