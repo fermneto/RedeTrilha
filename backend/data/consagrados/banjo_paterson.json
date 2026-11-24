@@ -4,6 +4,10 @@
   "bio": "Poeta australiano. The Man from Snowy River and Other Verses é o livro do bush, com a balada do cavaleiro e Waltzing Matilda no horizonte.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/John_Longstaff_-_Banjo_Paterson%2C_1935.jpg",
   "morte": 1943,
+  "escolas": [
+    "popular_cordel"
+  ],
+  "pais": "AU",
   "poemas": [
     {
       "titulo": "The Man from Snowy River and Other Verses/An Idyll of Dandaloo",

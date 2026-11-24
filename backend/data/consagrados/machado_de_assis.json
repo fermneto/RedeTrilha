@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Machado_de_Assis_aos_57_anos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1839,
   "morte": 1908,
+  "escolas": [
+    "romantismo",
+    "parnasianismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Círculo Vicioso",

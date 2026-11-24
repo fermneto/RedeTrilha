@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/216_2310-Fernando-Pessoa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1888,
   "morte": 1935,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Autopsicografia",

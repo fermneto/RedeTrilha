@@ -4,6 +4,10 @@
   "bio": "Poeta mineiro do Arcadismo e inconfidente, morto no degredo em Ambaca. Deixou sonetos e liras de circunstância — a lírica civil da Inconfidência ao lado de Cláudio Manuel e Gonzaga.",
   "avatar_url": "",
   "morte": 1792,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A Alléa",

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gon%C3%A7alves_Dias.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1823,
   "morte": 1864,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Canção do Exílio",

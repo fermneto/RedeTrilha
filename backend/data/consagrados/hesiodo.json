@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Pseudo-Seneca_BM_GR1962.8-24.1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": -750,
   "morte": -650,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "GR",
   "poemas": [
     {
       "titulo": "Teogonia — versos 1–10 (invocação às Musas)",

@@ -4,6 +4,10 @@
   "bio": "Poeta inglês da era vitoriana. Men and Women é o livro dos monólogos dramáticos, entre eles Fra Lippo Lippi e Andrea del Sarto.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Robert_Browning_-_Project_Gutenberg_eText_13103.jpg",
   "morte": 1889,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Men and Women (Browning)/Volume 1/A Light Woman",

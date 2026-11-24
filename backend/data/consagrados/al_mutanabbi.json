@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Al-Mutanabbi_by_Kahlil_Gibran.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 920,
   "morte": 965,
+  "escolas": [
+    "classica_arabe_persa"
+  ],
+  "pais": "IQ",
   "poemas": [
     {
       "titulo": "[عَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ]",

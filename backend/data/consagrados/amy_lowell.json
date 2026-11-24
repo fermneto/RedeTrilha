@@ -4,6 +4,10 @@
   "bio": "Poeta norte-americana do imagismo. Sword Blades and Poppy Seed é o livro em que o verso livre e o poema em prosa entram na sua obra.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Amy_Lowell_Time_magazine_cover_1925.jpg",
   "morte": 1925,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "US",
   "poemas": [
     {
       "titulo": "Sword Blades and Poppy Seed/A Blockhead",

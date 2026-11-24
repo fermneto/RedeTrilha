@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/FK_Hiemer_-_Friedrich_H%C3%B6lderlin_%28Pastell_1792%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1770,
   "morte": 1843,
+  "escolas": [
+    "romantismo",
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "DE",
   "poemas": [
     {
       "titulo": "Lebenslauf",

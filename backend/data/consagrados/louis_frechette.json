@@ -4,6 +4,10 @@
   "bio": "Poeta quebequense. La Légende d'un peuple é o poema da história do Canadá francês, em cantos.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Louis-Honore_Frechette.jpg",
   "morte": 1908,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "CA",
   "poemas": [
     {
       "titulo": "La Légende d’un peuple/Ante lucem",

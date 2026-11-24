@@ -4,6 +4,10 @@
   "bio": "Poeta português do lirismo simples de Campo de flores. À margem das escolas, o verso curto e sentimental ficou na memória popular e na leitura escolar do fim do século XIX.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Joao_de_Deus_Ramos.jpg",
   "morte": 1896,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Primaveras romanticas (1872)/Poesias diversas/Resposta (de João de Deus)",

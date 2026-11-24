@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Edmund_Spenser_oil_painting.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1552,
   "morte": 1599,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Amoretti — Sonnet 75 (One day I wrote her name upon the strand)",

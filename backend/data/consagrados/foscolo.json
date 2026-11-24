@@ -4,6 +4,11 @@
   "bio": "Poeta italiano entre o neoclassicismo e o romantismo. Os sonetos e Dei sepolcri ligam a pátria, o exílio e o culto dos mortos.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Ugo_Foscolo.jpg",
   "morte": 1827,
+  "escolas": [
+    "arcadismo_neoclassicismo",
+    "romantismo"
+  ],
+  "pais": "GR",
   "poemas": [
     {
       "titulo": "A Zacinto (1835)",

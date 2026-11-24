@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Mallarm%C3%A9_Nadar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1842,
   "morte": 1898,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "L’Azur",

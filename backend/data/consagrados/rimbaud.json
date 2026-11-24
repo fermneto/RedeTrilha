@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Rimbaud.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1854,
   "morte": 1891,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Le Bateau ivre",

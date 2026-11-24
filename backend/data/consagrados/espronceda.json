@@ -4,6 +4,10 @@
   "bio": "Poeta espanhol do romantismo liberal. El estudiante de Salamanca e as canções do pirata e do condenado são o verso rebelde do século XIX castelhano.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Jos%C3%A9_de_Espronceda_%28detalle%29.jpg",
   "morte": 1842,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "El estudiante de Salamanca/Parte cuarta (estrofes iniciais)",

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Espanca_Florbela.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1894,
   "morte": 1930,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Fanatismo",

@@ -4,6 +4,10 @@
   "bio": "Poeta norte-americana, nascida na África Ocidental e escravizada em Boston. Poems on Various Subjects, Religious and Moral (1773) é o primeiro livro de uma autora negra publicado na América inglesa.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Houghton_AC85.A%E2%84%93245.Zy773w_-_Wheatley%2C_frontispiece_-_cropped.jpg",
   "morte": 1784,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": null,
   "poemas": [
     {
       "titulo": "Memoir and Poems of Phillis Wheatley/A Farewell",

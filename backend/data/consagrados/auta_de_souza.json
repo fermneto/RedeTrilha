@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Auta_de_souza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1876,
   "morte": 1901,
+  "escolas": [
+    "simbolismo",
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Desalento",

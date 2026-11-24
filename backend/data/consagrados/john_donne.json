@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/John_Donne_BBC_News.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1572,
   "morte": 1631,
+  "escolas": [
+    "barroco"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "A Valediction: Forbidding Mourning",

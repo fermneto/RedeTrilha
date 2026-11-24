@@ -4,6 +4,10 @@
   "bio": "Poeta italiano do crepuscularismo nascente. Myricae é o livro dos ninhos, da infância e do verso curto que mudou a dicção italiana depois de Carducci.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Giovanni_Pascoli_01.jpg",
   "morte": 1912,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Myricae/Alberi e fiori/Canzone di nozze",

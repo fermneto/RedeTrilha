@@ -4,6 +4,10 @@
   "bio": "Poeta jamaicano do Harlem Renaissance. Harlem Shadows é o livro dos sonetos da cidade, da diáspora e da raiva contida na forma clássica.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Claude_McKay_James_L._Allen_Portrait_Edit.jpg",
   "morte": 1948,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "JM",
   "poemas": [
     {
       "titulo": "Harlem Shadows/A Memory of June",

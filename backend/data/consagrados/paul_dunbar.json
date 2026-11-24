@@ -4,6 +4,10 @@
   "bio": "Poeta norte-americano. Lyrics of Lowly Life reúne a lírica em inglês literário e os poemas em dialeto que o tornaram a voz negra do seu tempo.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Paul_Laurence_Dunbar_circa_1890.jpg",
   "morte": 1906,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "US",
   "poemas": [
     {
       "titulo": "Lyrics of Lowly Life/A Banjo Song",

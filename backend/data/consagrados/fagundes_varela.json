@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Lu%C3%ADs_Nicolau_Fagundes_Varela.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1841,
   "morte": 1875,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Cântico do Calvário",

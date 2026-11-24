@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 1850,
   "morte": 1923,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "A moleirinha",

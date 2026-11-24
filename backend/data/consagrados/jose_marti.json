@@ -4,6 +4,11 @@
   "bio": "Poeta e líder da independência de Cuba. Versos sencillos é o livro breve da poesia modernista hispânica e da canção popular que saiu desses versos.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Jose_de_Alencar.png",
   "morte": 1877,
+  "escolas": [
+    "simbolismo",
+    "romantismo"
+  ],
+  "pais": "CU",
   "poemas": [
     {
       "titulo": "Versos sencillos/I",

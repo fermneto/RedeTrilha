@@ -4,6 +4,10 @@
   "bio": "Poeta carioca do Arcadismo, Alcindo Palmireno na Arcádia Ultramarina. As Glaustas, em redondilhas, cantam o amor e a paisagem do Rio colonial. Participou da conjuração fluminense e ficou preso.",
   "avatar_url": "",
   "morte": 1814,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Apoteosis poetica — EGREGIA flor da Luſitana Gente,",

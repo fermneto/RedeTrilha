@@ -4,6 +4,11 @@
   "bio": "Poeta paulista do Parnasianismo. Mármores e a segunda série de versos fizeram dela a principal voz feminina da escola no Brasil, ao lado da tríade Bilac, Raimundo Correia e Alberto de Oliveira.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Fjulia.jpg",
   "morte": 1920,
+  "escolas": [
+    "parnasianismo",
+    "simbolismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Marmores (1895)/A caçada",

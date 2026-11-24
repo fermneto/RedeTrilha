@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": -43,
   "morte": 17,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Metamorfoses — Livro I, proêmio (vv. 1–4)",

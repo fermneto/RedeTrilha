@@ -4,6 +4,10 @@
   "bio": "Dramaturgo e poeta madrilenho do Século de Ouro. As Rimas, ao lado da comédia nova, fixam o soneto e o romance castelhanos do seu tempo.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/LopedeVega.jpg",
   "morte": 1635,
+  "escolas": [
+    "barroco"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "Rimas (Lope de Vega)",

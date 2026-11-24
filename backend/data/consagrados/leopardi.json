@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Giacomo_Leopardi_Morelli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1798,
   "morte": 1837,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "La quiete dopo la tempesta",

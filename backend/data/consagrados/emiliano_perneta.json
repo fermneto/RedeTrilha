@@ -4,6 +4,11 @@
   "bio": "Poeta paranaense na passagem do Parnaso para o simbolismo. Ilusão e outros livros, mais a vida literária em Curitiba, fizeram dele o nome da geração simbolista no Paraná.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Emiliano_Perneta.jpg",
   "morte": 1921,
+  "escolas": [
+    "simbolismo",
+    "parnasianismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "De um Fauno",

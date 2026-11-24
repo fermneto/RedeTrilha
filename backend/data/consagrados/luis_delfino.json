@@ -4,6 +4,11 @@
   "bio": "Poeta catarinense entre o romantismo tardio e o Parnaso. Médico no Rio, publicou pouco em vida; a obra vasta, sobretudo sonetos, saiu póstuma e entra no cânone pela perfeição formal.",
   "avatar_url": "",
   "morte": 1910,
+  "escolas": [
+    "parnasianismo",
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "A alma das cousas",

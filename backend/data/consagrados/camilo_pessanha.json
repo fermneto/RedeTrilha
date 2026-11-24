@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Camilo_Pessanha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1867,
   "morte": 1926,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Ao longe os barcos de flores",

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Portrait_of_Geoffrey_Chaucer_%284671380%29_%28cropped%29_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1343,
   "morte": 1400,
+  "escolas": [
+    "medieval_trovadorismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Truth (Balade de Bon Conseyl) — XIII",

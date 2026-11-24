@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Byron_1813_by_Phillips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1788,
   "morte": 1824,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "She Walks in Beauty",

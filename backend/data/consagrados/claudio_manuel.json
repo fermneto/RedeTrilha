@@ -4,6 +4,10 @@
   "bio": "Poeta mineiro do Arcadismo, nascido em Mariana, conhecido na Arcádia como Glauceste Satúrnio. As Obras poéticas (1768) fixam o soneto da terra do ouro, e Vila Rica é o poema da capitania. É a voz lírica da Inconfidência e um dos fundadores da poesia brasileira.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Claudio_manuel_da_costa.png",
   "morte": 1789,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "A cada instante, Amor, a cada instante",

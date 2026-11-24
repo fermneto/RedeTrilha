@@ -4,6 +4,11 @@
   "bio": "Poeta francês do simbolismo tardio. Charmes e O cemitério marinho levam o verso clássico ao limite da inteligência e da forma.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Paul_Val%C3%A9ry_-_photo_Henri_Manuel.jpg",
   "morte": 1945,
+  "escolas": [
+    "simbolismo",
+    "modernismo_vanguardas"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Baignée",

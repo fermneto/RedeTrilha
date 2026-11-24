@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Cesario_Verde.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1855,
   "morte": 1886,
+  "escolas": [
+    "parnasianismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Num Bairro Moderno",

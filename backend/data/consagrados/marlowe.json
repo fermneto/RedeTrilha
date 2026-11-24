@@ -4,6 +4,10 @@
   "bio": "Dramaturgo e poeta elisabetano. Hero and Leander é o poema erótico inacabado que ficou ao lado dos sonetos de Shakespeare.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Christopher_Marlowe.jpg",
   "morte": 1593,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Hero and Leander (Marlowe)/Fifth Sestyad (estrofes iniciais)",

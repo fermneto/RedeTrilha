@@ -4,6 +4,10 @@
   "bio": "Poeta baiano da segunda geração romântica. Monge beneditino por um tempo, escreveu Inspirações do claustro, livro da crise entre o convento, o corpo e a fé. Morreu muito jovem, em Salvador.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Junqueira_Freire.jpg",
   "morte": 1855,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Inspirações do Claustro/O Apostolo entre as gentes",

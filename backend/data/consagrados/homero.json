@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": -800,
   "morte": -700,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": null,
   "poemas": [
     {
       "titulo": "Ilíada — Canto I, versos 1–7 (proêmio)",

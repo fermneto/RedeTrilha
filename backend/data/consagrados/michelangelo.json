@@ -4,6 +4,10 @@
   "bio": "Escultor e poeta florentino do Renascimento. As Rime, muitas dirigidas a Vittoria Colonna, são a lírica íntima do artista da Capela Sistina.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg",
   "morte": 1564,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Rime (Michelangelo)/1. Molti anni fassi qual felice, in una",

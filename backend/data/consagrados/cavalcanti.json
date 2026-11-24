@@ -4,6 +4,10 @@
   "bio": "Poeta florentino do dolce stil novo, amigo de Dante. As rime de amor e a canção da alma ferida são o núcleo lírico anterior à Comédia.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Blois_-_tableau_Guido_Cavalcanti.jpg",
   "morte": 1300,
+  "escolas": [
+    "medieval_trovadorismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Rime (Cavalcanti)/Appendice",

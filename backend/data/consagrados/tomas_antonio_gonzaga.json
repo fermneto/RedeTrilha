@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Thomaz_Antonio_Gonzaga.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1744,
   "morte": 1810,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Marília de Dirceu — Parte I, Lira I",

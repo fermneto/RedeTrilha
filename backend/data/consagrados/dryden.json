@@ -4,6 +4,10 @@
   "bio": "Poeta inglês da Restauração. Absalom and Achitophel é a sátira política em dísticos que define o verso público do seu tempo.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/John_Dryden_portrait.jpg",
   "morte": 1700,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Absalom and Achitophel/Absalom and Achitophel, a Poem (estrofes iniciais)",

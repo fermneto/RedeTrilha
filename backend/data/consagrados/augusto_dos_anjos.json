@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Augusto_Anjos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1884,
   "morte": 1914,
+  "escolas": [
+    "pre_modernismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Versos Íntimos",

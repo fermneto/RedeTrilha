@@ -4,6 +4,10 @@
   "bio": "Poeta e músico sueco do século XVIII. As epístolas de Fredman cantam a taverna, a morte e Estocolmo, e fundam a canção sueca.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Carl_Michael_Bellman%2C_portrayed_by_Per_Krafft_1779.jpg",
   "morte": 1795,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "SE",
   "poemas": [
     {
       "titulo": "Ack, döden är en faslig björn",

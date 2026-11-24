@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Quintus_Horatius_Flaccus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": -65,
   "morte": -8,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Odes I, 11 (Carpe diem)",

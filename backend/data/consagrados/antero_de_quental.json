@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Antero_de_Quental_%28ca._1887%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1842,
   "morte": 1891,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Na mão de Deus",

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Dufu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 712,
   "morte": 770,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "CN",
   "poemas": [
     {
       "titulo": "春望",

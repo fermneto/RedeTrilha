@@ -4,6 +4,10 @@
   "bio": "Poeta parisiense do fim da Idade Média. O Testament e a balada dos enforcados são a voz da rua, da morte e do arrependimento em francês.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Francois_Villon_1489.jpg",
   "morte": 1464,
+  "escolas": [
+    "medieval_trovadorismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Œuvres complètes de François Villon/Notes",

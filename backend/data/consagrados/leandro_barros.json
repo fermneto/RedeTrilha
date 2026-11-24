@@ -4,6 +4,10 @@
   "bio": "Poeta paraibano, o maior cordelista clássico. Os folhetos — O boi misterioso, A intriga do cachorro com o gato, a Peleja com Zé Pretinho — fundam o cânone do cordel nordestino impresso.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Leandro_Gomes_de_Barros.jpg",
   "morte": 1918,
+  "escolas": [
+    "popular_cordel"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "A Batalha de Oliveiros com Ferrabraz — Eram doze cavalleiros",

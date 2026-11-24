@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 1048,
   "morte": 1131,
+  "escolas": [
+    "classica_arabe_persa"
+  ],
+  "pais": "IR",
   "poemas": [
     {
       "titulo": "[این کوزه چو من عاشق زاری بودست]",

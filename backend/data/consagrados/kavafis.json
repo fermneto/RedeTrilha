@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Konstantinos_Kavafis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1863,
   "morte": 1933,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "EG",
   "poemas": [
     {
       "titulo": "Ιθάκη",

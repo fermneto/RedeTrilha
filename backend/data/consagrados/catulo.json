@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": -84,
   "morte": -54,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Carmen 5 (Vivamus, mea Lesbia, atque amemus)",

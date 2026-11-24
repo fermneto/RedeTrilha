@@ -4,6 +4,10 @@
   "bio": "Poeta romeno do romantismo tardio, figura nacional da língua. Luceafărul e a lírica de amor e de noite organizam o cânone poético da Romênia.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Eminescu.jpg",
   "morte": 1889,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "RO",
   "poemas": [
     {
       "titulo": "A fost odat-un cântăreț",

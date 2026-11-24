@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Parco_della_Grotta_di_Posillipo5_%28crop%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": -70,
   "morte": -19,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Eneida — Livro I, versos 1–11 (Arma virumque cano)",

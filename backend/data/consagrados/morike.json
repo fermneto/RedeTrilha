@@ -4,6 +4,10 @@
   "bio": "Poeta suábio do romantismo tardio. A lírica amorosa e a balada, de dicção clara, ficam entre Goethe e o realismo.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Eduard_M%C3%B6rike.jpg",
   "morte": 1875,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "DE",
   "poemas": [
     {
       "titulo": "An einem Wintermorgen, vor Sonnenaufgang",

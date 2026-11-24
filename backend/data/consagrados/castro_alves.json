@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Alberto_Henschel_-_Castro_Alves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1847,
   "morte": 1871,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "O Navio Negreiro — Parte V",

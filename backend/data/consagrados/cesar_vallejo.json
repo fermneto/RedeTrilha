@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Cesar_vallejo_1929.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1892,
   "morte": 1938,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "PE",
   "poemas": [
     {
       "titulo": "Los heraldos negros",

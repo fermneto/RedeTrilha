@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Altichiero%2C_ritratto_di_Francesco_Petrarca.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1304,
   "morte": 1374,
+  "escolas": [
+    "renascimento_classicismo",
+    "medieval_trovadorismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Voi ch'ascoltate in rime sparse il suono",

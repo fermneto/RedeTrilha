@@ -4,6 +4,10 @@
   "bio": "Poeta catalão da Renaixença e padre. L'Atlàntida é a epopeia do renascimento da língua. Aqui entra a abertura, não o poema inteiro.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Jacint_Verdaguer_140x190.jpg",
   "morte": 1902,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "L'Atlàntida/Cant primer (estrofes iniciais)",

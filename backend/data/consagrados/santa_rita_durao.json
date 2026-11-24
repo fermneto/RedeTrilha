@@ -4,6 +4,10 @@
   "bio": "Frei e poeta mineiro do Arcadismo. Caramuru é a epopeia do achamento da Bahia e de Diogo Álvares Correia, par a par com O Uraguai no século XVIII brasileiro. Entra o excerto de abertura, não o poema inteiro.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Santa_Rita_Dur%C3%A3o_1981_Brazil_stamp.jpg",
   "morte": 1784,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Caramuru/I (estrofes iniciais)",

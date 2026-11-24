@@ -4,6 +4,10 @@
   "bio": "Poeta francês do classicismo. As Fábulas, em versos, reescrevem Esopo e Fedro e tornaram-se o livro de formação moral e literária da língua francesa.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Henri_Millot_-_Jean_de_La_Fontaine_-_A_II_792_-_Finnish_National_Gallery.jpg",
   "morte": 1695,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Fables de La Fontaine (éd. 1874)/Conseil tenu par les Rats",

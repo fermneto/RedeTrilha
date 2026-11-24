@@ -4,6 +4,10 @@
   "bio": "Poeta irlandês. Irish Melodies pôs a canção nacional em inglês, entre elas The Last Rose of Summer e The Minstrel Boy.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Thomas_Moore_from_NPG.jpg",
   "morte": 1852,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "IE",
   "poemas": [
     {
       "titulo": "Irish Melodies/'Tis believ'd that this harp, which I wake now",

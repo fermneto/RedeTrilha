@@ -4,6 +4,11 @@
   "bio": "Poeta alemão do classicismo de Weimar. A lírica, do período de Estrasburgo ao Divã ocidento-oriental, é o centro da poesia alemã moderna.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Goethe_%28Stieler_1828%29.jpg",
   "morte": 1832,
+  "escolas": [
+    "arcadismo_neoclassicismo",
+    "romantismo"
+  ],
+  "pais": "DE",
   "poemas": [
     {
       "titulo": "Der Abschied",

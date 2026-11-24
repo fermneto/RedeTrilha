@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Cruz_e_Sousa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1861,
   "morte": 1898,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Antífona",

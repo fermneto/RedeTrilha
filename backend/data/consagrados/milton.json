@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/John-milton.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1608,
   "morte": 1674,
+  "escolas": [
+    "renascimento_classicismo",
+    "barroco"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Lycidas",

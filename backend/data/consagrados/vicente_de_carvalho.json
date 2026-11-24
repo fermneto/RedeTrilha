@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 1866,
   "morte": 1924,
+  "escolas": [
+    "parnasianismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Velho tema — I",

@@ -4,6 +4,10 @@
   "bio": "Poeta alemão do romantismo. As canções de noite, viagem e floresta foram musicadas e ficaram na memória popular alemã.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Eichendorff.jpg",
   "morte": 1857,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "PL",
   "poemas": [
     {
       "titulo": "Abendlandschaft",

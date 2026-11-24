@@ -4,6 +4,10 @@
   "bio": "Poeta português do Arcadismo, exilado em Paris, que assinou Filinto Elísio. Defendeu o purismo da língua e deixou odes, epístolas e sátiras que o século XIX leu como mestre do verso solto.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Filinto_El%C3%ADsio.jpg",
   "morte": 1819,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Christo morreu ha mil e tantos annos",

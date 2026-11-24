@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": -518,
   "morte": -438,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "GR",
   "poemas": [
     {
       "titulo": "Olímpica I — a Hierão de Siracusa (início)",

@@ -4,6 +4,10 @@
   "bio": "Poeta fluminense do Arcadismo. O Uraguai, epopeia em versos brancos sobre a guerra contra as missões jesuíticas, é o poema narrativo mais célebre do século XVIII brasileiro. Aqui entra só a abertura do canto I, não a epopeia inteira.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Bas%C3%ADlio_da_Gama.jpg",
   "morte": 1795,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "O Uraguai/I (estrofes iniciais)",

@@ -4,6 +4,10 @@
   "bio": "Poeta português do Renascimento. As éclogas e as cantigas, com a novela Menina e moça, definem a lírica da saudade anterior a Camões. O verso curto e o cantar tradicional convivem com a medida nova.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/%27Bernardim_Ribeiro%27%2C_marble_sculpture_by_Ant%C3%B3nio_Alberto_Nunes%2C_1891%2C_Museu_de_%C3%89vora%2C_Portugal.JPG",
   "morte": 1552,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Ao longo de uma ribeira",

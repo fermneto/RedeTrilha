@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Rub%C3%A9n_Dar%C3%ADo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1867,
   "morte": 1916,
+  "escolas": [
+    "simbolismo",
+    "parnasianismo"
+  ],
+  "pais": "NI",
   "poemas": [
     {
       "titulo": "Canción de otoño en primavera",

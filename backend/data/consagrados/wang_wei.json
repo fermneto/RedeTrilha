@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Wang_Wei.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 699,
   "morte": 761,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "CN",
   "poemas": [
     {
       "titulo": "鹿柴",

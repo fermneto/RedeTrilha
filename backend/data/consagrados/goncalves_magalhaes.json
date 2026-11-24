@@ -4,6 +4,10 @@
   "bio": "Poeta carioca, introdutor do romantismo no Brasil. Suspiros poéticos e saudades (1836), escrito em Paris, é o livro que abre a escola, com a religiosidade e o indianismo depois desenvolvido por Gonçalves Dias.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Visconde_de_Araguaya.jpg",
   "morte": 1882,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Suspiros poéticos e saudades (1865)/Notas",

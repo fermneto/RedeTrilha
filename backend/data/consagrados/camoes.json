@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Cam%C3%B5es%2C_por_Fern%C3%A3o_Gomes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1524,
   "morte": 1580,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Os Lusíadas — Canto I, estâncias 1–3",

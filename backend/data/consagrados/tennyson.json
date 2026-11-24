@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Alfred%2C_Lord_Tennyson_by_Julia_Margaret_Cameron.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1809,
   "morte": 1892,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Ulysses",

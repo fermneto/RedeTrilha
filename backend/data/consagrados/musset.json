@@ -4,6 +4,10 @@
   "bio": "Poeta francês do romantismo. As Noites e as poesias de amor e de ironia são a voz juvenil da geração de 1830, ao lado do teatro de Lorenzaccio.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Alfred_de_musset.jpg",
   "morte": 1857,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Poésies (Musset)/Par un mauvais temps",
