@@ -6,13 +6,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ChamadaEscrever } from "@/components/ChamadaEscrever";
+import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
-import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarRascunho,
   buscarPoema,
@@ -199,8 +199,8 @@ const PERGUNTAS: Record<Acao, { pergunta: string; aviso: string }> = {
 };
 
 // "abrir no compositor", "publicar" e "apagar". Publicar e apagar pedem confirmação
-// ali mesmo, como o apagar poema: "sim / não", com o foco no "não"; Esc ou clique
-// fora cancelam.
+// ali mesmo (ConfirmacaoInline), como o apagar poema: "sim / não", com o foco no
+// "não"; Esc ou clique fora cancelam.
 function AcoesDoRascunho({
   rascunho,
   nome,
@@ -208,26 +208,10 @@ function AcoesDoRascunho({
   aoApagar,
   aoPublicar,
 }: Omit<PropsDoItem, "citado"> & { nome: string; caminho: string }) {
-  const [confirmando, setConfirmando] = useState<Acao | null>(null);
   const [fazendo, setFazendo] = useState<Acao | null>(null);
   const [erro, setErro] = useState<string | null>(null);
-  const confirmacao = useRef<HTMLDivElement>(null);
-  const botoes = useRef<Record<Acao, HTMLButtonElement | null>>({ publicar: null, apagar: null });
-
-  useEffect(() => {
-    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-  }, [confirmando]);
-
-  function cancelar(devolverFoco: boolean) {
-    const acao = confirmando;
-    setConfirmando(null);
-    if (devolverFoco && acao) requestAnimationFrame(() => botoes.current[acao]?.focus());
-  }
-
-  useFecharAoSair(confirmando !== null, confirmacao, (e) => cancelar(e.type === "keydown"));
 
   async function confirmar(acao: Acao) {
-    setConfirmando(null);
     setFazendo(acao);
     setErro(null);
     try {
@@ -238,30 +222,9 @@ function AcoesDoRascunho({
         aoApagar();
       }
     } catch (e) {
-      setErro(e instanceof Error ? e.message : `não deu para ${acao} o rascunho`);
+      setErro(mensagemDeFalha(e, `não deu para ${acao} o rascunho`));
       setFazendo(null);
     }
-  }
-
-  if (confirmando) {
-    const { pergunta, aviso } = PERGUNTAS[confirmando];
-    return (
-      <div ref={confirmacao} className="mt-1 text-sm text-tinta-suave">
-        {pergunta}{" "}
-        <button
-          type="button"
-          onClick={() => confirmar(confirmando)}
-          className="min-h-11 cursor-pointer font-semibold text-destaque hover:underline"
-        >
-          sim
-        </button>{" "}
-        /{" "}
-        <button type="button" onClick={() => cancelar(true)} className="min-h-11 cursor-pointer hover:text-tinta">
-          não
-        </button>
-        <p className="-mt-2 pb-2 text-xs">{aviso}</p>
-      </div>
-    );
   }
 
   const secundario =
@@ -276,28 +239,18 @@ function AcoesDoRascunho({
         >
           abrir no compositor
         </Link>
-        <button
-          ref={(b) => {
-            botoes.current.publicar = b;
-          }}
-          type="button"
-          onClick={() => setConfirmando("publicar")}
-          disabled={fazendo !== null}
-          className={secundario}
-        >
-          {fazendo === "publicar" ? "publicando..." : "publicar"}
-        </button>
-        <button
-          ref={(b) => {
-            botoes.current.apagar = b;
-          }}
-          type="button"
-          onClick={() => setConfirmando("apagar")}
-          disabled={fazendo !== null}
-          className={secundario}
-        >
-          {fazendo === "apagar" ? "apagando..." : "apagar"}
-        </button>
+        {(["publicar", "apagar"] as const).map((acao) => (
+          <ConfirmacaoInline
+            key={acao}
+            pergunta={PERGUNTAS[acao].pergunta}
+            rotulo={fazendo === acao ? (acao === "publicar" ? "publicando..." : "apagando...") : acao}
+            classeDoBotao={secundario}
+            aoConfirmar={() => confirmar(acao)}
+            desabilitado={fazendo !== null}
+          >
+            <p className="-mt-2 pb-2 text-xs">{PERGUNTAS[acao].aviso}</p>
+          </ConfirmacaoInline>
+        ))}
       </div>
       {erro && <p className="pb-2 text-sm text-destaque">{erro}</p>}
     </div>
