@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Lora } from "next/font/google";
+import { Literata, Schibsted_Grotesk } from "next/font/google";
 
 import { Layout } from "@/components/Layout";
 import "./globals.css";
 
-// Lora para os poemas (leitura longa); Inter para a interface.
-const serifada = Lora({
+// Literata para os poemas: serifada de leitura longa, com eixo de tamanho óptico
+// (opsz) e itálico de verdade. Schibsted Grotesk para a interface: grotesca de
+// redação de jornal, firme nos rótulos pequenos e menos vista que a Inter.
+const serifada = Literata({
   subsets: ["latin"],
   style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--fonte-serifada",
   display: "swap",
 });
 
-const sans = Inter({
+const sans = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--fonte-sans",
   display: "swap",
