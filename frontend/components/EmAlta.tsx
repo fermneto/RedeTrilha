@@ -26,7 +26,7 @@ export function useEmAlta(quantas = 5): TagContagem[] | null {
   return tags;
 }
 
-export function poemasNas24h(contagem: number): string {
+function poemasNas24h(contagem: number): string {
   return `${contagem} ${contagem === 1 ? "poema" : "poemas"} nas últimas 24 h`;
 }
 
