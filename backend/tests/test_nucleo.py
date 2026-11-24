@@ -71,9 +71,10 @@ def test_posts_crud(client, logar):
     assert r.status_code == 200
     assert r.json()["texto"] == "meu primeiro post"
 
+    # Poema publicado não se edita (#73): para corrigir, apaga e publica de novo.
     r = client.patch(f"/posts/{post_id}", json={"texto": "editado"}, headers=ana)
-    assert r.status_code == 200
-    assert r.json()["texto"] == "editado"
+    assert r.status_code == 405
+    assert client.get(f"/posts/{post_id}", headers=ana).json()["texto"] == "meu primeiro post"
 
     # só o autor mexe no próprio post
     assert client.delete(f"/posts/{post_id}", headers=bia).status_code == 403

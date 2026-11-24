@@ -246,7 +246,8 @@ export type Post = {
 };
 
 // Com cursor, o total vem null (como na timeline do X).
-export type FeedPage = Omit<Page<Post>, "total"> & {
+// O feed e o perfil misturam poemas e rengas (ItemDoFeed, na seção das Rengas).
+export type FeedPage = Omit<Page<ItemDoFeed>, "total"> & {
   total: number | null;
   proximo_cursor: string | null;
 };
@@ -264,6 +265,8 @@ export type Comentario = {
   removido: boolean;
   total_respostas: number;
   respostas: Comentario[];
+  // Crítica ancorada em versos (só no 1º nível); ver a seção no fim do arquivo.
+  ancora: Ancora | null;
 };
 
 // Espelha ComentarioPage: respostas diretas em ordem cronológica, por cursor.
@@ -676,4 +679,282 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
+
+// ---- Rengas (poema colaborativo): espelham backend/app/schemas/renga.py ----
+
+// Os mesmos limites de RengaCreate (LIMITE_PADRAO, LIMITE_MIN, LIMITE_MAX).
+export const RENGA_LIMITE_PADRAO = 12;
+export const RENGA_LIMITE_MIN = 3;
+export const RENGA_LIMITE_MAX = 40;
+export const RENGA_TITULO_MAX = 200;
+
+export type ModoDaRenga = "aberta" | "convidados";
+export type SituacaoDaRenga = "aberta" | "fechada";
+
+export type Renga = {
+  id: number;
+  titulo: string;
+  modo: ModoDaRenga;
+  limite: number;
+  criador: User;
+  fechada: boolean;
+  fechada_em: string | null;
+  created_at: string;
+  qtd_estrofes: number;
+  // Cada autor uma vez, na ordem da primeira estrofe dele.
+  autores: User[];
+};
+
+export type Estrofe = {
+  id: number;
+  posicao: number;
+  texto: string;
+  autor: User;
+  created_at: string;
+};
+
+export type RengaDetalhe = Renga & {
+  estrofes: Estrofe[];
+  convidados: User[];
+  posso_escrever: boolean;
+  // Por que o usuário atual não pode escrever a próxima estrofe (null quando pode).
+  motivo: string | null;
+};
+
+export type NovaRenga = {
+  titulo: string;
+  primeira_estrofe: string;
+  modo: ModoDaRenga;
+  limite: number;
+  // Usernames; só no modo "convidados".
+  convidados: string[];
+};
+
+// A mais nova primeiro; sem `situacao`, abertas e fechadas juntas.
+export function listarRengas(
+  situacao: SituacaoDaRenga | null,
+  offset = 0,
+  limit = 20,
+): Promise<Page<Renga>> {
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  if (situacao) params.set("situacao", situacao);
+  return apiGet<Page<Renga>>(`/rengas?${params}`);
+}
+
+export function buscarRenga(id: number): Promise<RengaDetalhe> {
+  return apiGet<RengaDetalhe>(`/rengas/${id}`);
+}
+
+export function criarRenga(dados: NovaRenga): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>("/rengas", dados);
+}
+
+// 403 para quem não foi convidado; 409 para renga fechada ou "não é a sua vez".
+export function acrescentarEstrofe(id: number, texto: string): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/estrofes`, { texto });
+}
+
+export function encerrarRenga(id: number): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/encerrar`);
+}
+
+export function convidarParaRenga(id: number, usernames: string[]): Promise<RengaDetalhe> {
+  return apiPost<RengaDetalhe>(`/rengas/${id}/convites`, { usernames });
+}
+
+// Renga no feed e no perfil (RengaNoFeed em backend/app/schemas/feed.py), como um
+// repost no X: o rótulo é "fulano abriu uma renga" (o criador, sempre), "fulano
+// escreveu uma estrofe" ou "fulano encerrou a renga".
+export type RengaNoFeed = {
+  tipo: "renga";
+  renga: RengaDetalhe;
+  atividade: "abriu" | "escreveu" | "encerrou";
+  // Os seguidos (ou você) do rótulo, quem fez por último primeiro.
+  por: User[];
+};
+
+// No feed e no perfil o poema vem com tipo "poema"; no Explorar, sem o campo.
+export type ItemDoFeed = (Post & { tipo?: "poema" }) | RengaNoFeed;
+
+export function ehRenga(item: ItemDoFeed): item is RengaNoFeed {
+  return item.tipo === "renga";
+}
+
+// Chave única entre os dois tipos (um poema e uma renga podem ter o mesmo id).
+export function chaveDoItem(item: ItemDoFeed): string {
+  return ehRenga(item) ? `renga-${item.renga.id}` : `poema-${item.id}`;
+}
+
+// "@ana, bia  @caio" → ["ana", "bia", "caio"]: separa por vírgula ou espaço, tira o "@" e repetidos.
+export function lerUsernames(texto: string): string[] {
+  const nomes = texto
+    .split(/[\s,]+/)
+    .map((n) => n.replace(/^@/, "").toLowerCase())
+    .filter(Boolean);
+  return [...new Set(nomes)];
+}
+
+// ---- Oficina do compositor: espelha backend/app/schemas/oficina.py ----
+
+// O mesmo MAX_CARACTERES do backend: acima disso a oficina não marca (o poema
+// continua sem limite).
+export const OFICINA_MAX_CARACTERES = 10_000;
+
+export type VersoAnalisado = {
+  // null em linha em branco ou sem palavras.
+  silabas: number | null;
+  rima: string | null;
+  tipo_rima: "consoante" | "toante" | null;
+};
+
+// `versos` tem um item por linha de texto.split("\n"), na ordem do textarea.
+export type AnaliseDoRascunho = {
+  versos: VersoAnalisado[];
+  esquema: string;
+  aviso: string | null;
+};
+
+// Sem login e sem banco: nada do que se manda aqui é gravado.
+export function analisarRascunho(texto: string, forma: string | null): Promise<AnaliseDoRascunho> {
+  return apiPost<AnaliseDoRascunho>("/oficina/analise", { texto, forma });
+}
+
+// Texto da marca ao lado do verso ("10 · A"); vazio se não há nada a mostrar.
+export function marcaDoVerso(
+  verso: VersoAnalisado | undefined,
+  opcoes: { silabas: boolean; rimas: boolean },
+): string {
+  if (!verso) return "";
+  const partes = [
+    opcoes.silabas && verso.silabas !== null ? String(verso.silabas) : null,
+    opcoes.rimas && verso.rima ? verso.rima : null,
+  ];
+  return partes.filter(Boolean).join(" · ");
+}
+
+// ---- Crítica ancorada no verso (#71): espelha AncoraOut e VersosComentadosOut
+// de backend/app/schemas/comentario.py ----
+// Os versos são as linhas de texto.split("\n"), contadas a partir de 1, com as
+// linhas em branco entre estrofes incluídas (igual ao backend).
+
+export type Ancora = {
+  verso_inicio: number;
+  verso_fim: number;
+  // As linhas verso_inicio a verso_fim do poema (poema publicado não se edita).
+  trecho: string;
+};
+
+export type SelecaoDeVersos = { inicio: number; fim: number };
+
+export type VersoComentado = { verso: number; comentarios: number };
+
+export function versosDoPoema(texto: string): string[] {
+  return texto.split("\n");
+}
+
+export function trechoDosVersos(texto: string, { inicio, fim }: SelecaoDeVersos): string {
+  return versosDoPoema(texto).slice(inicio - 1, fim).join("\n");
+}
+
+// "verso 5" ou "versos 5–8".
+export function referenciaDosVersos({ inicio, fim }: SelecaoDeVersos): string {
+  return inicio === fim ? `verso ${inicio}` : `versos ${inicio}–${fim}`;
+}
+
+// Seleção de texto com o mouse ou o toque: vira os versos inteiros, do primeiro
+// ao último que ela toca, sem as linhas em branco das pontas. null: nada a comentar.
+export function versosDaSelecao(texto: string, tocados: number[]): SelecaoDeVersos | null {
+  const versos = versosDoPoema(texto);
+  const comTexto = tocados.filter((n) => n >= 1 && n <= versos.length && versos[n - 1].trim() !== "");
+  if (comTexto.length === 0) return null;
+  return { inicio: Math.min(...comTexto), fim: Math.max(...comTexto) };
+}
+
+// Pelo teclado, o número de cada verso é um botão: sem seleção, seleciona aquele
+// verso; com um verso só, ativá-lo de novo desfaz e ativar outro estende até ele;
+// com um intervalo, recomeça no verso ativado.
+export function selecionarVerso(atual: SelecaoDeVersos | null, verso: number): SelecaoDeVersos | null {
+  if (atual === null || atual.inicio !== atual.fim) return { inicio: verso, fim: verso };
+  if (atual.inicio === verso) return null;
+  return { inicio: Math.min(atual.inicio, verso), fim: Math.max(atual.inicio, verso) };
+}
+
+// A citação começa com os versos e uma linha em branco para o comentário do leitor.
+export function textoDaCitacaoDeVersos(trecho: string): string {
+  return `${trecho}\n\n`;
+}
+
+// O compositor de citação existente, com os versos já no texto.
+export function caminhoDaCitacaoDeVersos(postId: number, trecho: string): string {
+  return `/escrever?${new URLSearchParams({ citar: String(postId), versos: trecho })}`;
+}
+
+export function criticarVersos(postId: number, texto: string, selecao: SelecaoDeVersos): Promise<Comentario> {
+  return apiPost<Comentario>(`/posts/${postId}/comentarios`, {
+    texto,
+    parent_id: null,
+    ancora: { verso_inicio: selecao.inicio, verso_fim: selecao.fim },
+  });
+}
+
+// As críticas cuja âncora cobre o verso, paginadas como as raízes.
+export function buscarComentariosDoVerso(postId: number, verso: number, cursor: string | null, limit = 20) {
+  const params = new URLSearchParams({ limit: String(limit), verso: String(verso) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<ComentarioPage>(`/posts/${postId}/comentarios?${params}`);
+}
+
+export function buscarVersosComentados(postId: number): Promise<{ items: VersoComentado[] }> {
+  return apiGet<{ items: VersoComentado[] }>(`/posts/${postId}/comentarios/versos`);
+}
+
+// ---- Rascunhos: espelham backend/app/schemas/rascunho.py ----
+
+// Rascunho é privado: só o autor lê; de outra pessoa, o backend responde 404.
+// Só o rascunho se edita: o poema publicado é imutável.
+export type Rascunho = {
+  id: number;
+  autor_id: number;
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  idioma: string | null;
+  // Rascunho de citação: o poema citado. Null com repost_removido = o original foi apagado.
+  repost_de_id: number | null;
+  repost_removido: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+// Os campos de um poema novo; com repost_de_id, rascunho de citação.
+export type NovoRascunho = NovoPoema;
+
+// Só os enviados mudam; o poema citado não muda.
+export type EdicaoDoRascunho = Partial<Omit<NovoPoema, "repost_de_id">>;
+
+// O editado por último primeiro.
+export function listarRascunhos(offset = 0, limit = 100): Promise<Page<Rascunho>> {
+  return apiGet<Page<Rascunho>>(`/rascunhos?offset=${offset}&limit=${limit}`);
+}
+
+export function buscarRascunho(id: number): Promise<Rascunho> {
+  return apiGet<Rascunho>(`/rascunhos/${id}`);
+}
+
+export function criarRascunho(dados: NovoRascunho): Promise<Rascunho> {
+  return apiPost<Rascunho>("/rascunhos", dados);
+}
+
+export function editarRascunho(id: number, dados: EdicaoDoRascunho): Promise<Rascunho> {
+  return apiPatch<Rascunho>(`/rascunhos/${id}`, dados);
+}
+
+export function apagarRascunho(id: number): Promise<void> {
+  return apiDelete(`/rascunhos/${id}`);
+}
+
+// Vira poema (ou citação) publicado agora, e o rascunho deixa de existir.
+export function publicarRascunho(id: number): Promise<Post> {
+  return apiPost<Post>(`/rascunhos/${id}/publicar`);
 }

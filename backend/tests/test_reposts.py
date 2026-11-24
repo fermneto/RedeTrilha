@@ -112,15 +112,6 @@ def test_citacao_sem_texto_da_422(client, como):
     assert r.status_code == 422
 
 
-def test_patch_em_repost_puro_da_422(client, como):
-    original = _poema(client, como)
-    client.post(f"/posts/{original}/repostar", headers=como("ana"))
-    [repost] = _reposts_puros("ana")
-
-    r = client.patch(f"/posts/{repost.id}", json={"texto": "virei citação?"}, headers=como("ana"))
-    assert r.status_code == 422
-
-
 def test_apagar_o_repost_puro_pelo_delete_do_post(client, como):
     original = _poema(client, como)
     client.post(f"/posts/{original}/repostar", headers=como("ana"))

@@ -105,8 +105,9 @@ nos poemas dele.
 - `UserOut`: `id`, `username`, `name`, `bio`, `avatar_url`, `consagrado`,
   `nascimento`, `morte`, `created_at`.
 - `PerfilOut` (`GET /usuarios/{username}` e `PATCH /usuarios/eu`): o `UserOut`
-  mais `seguidores`, `seguindo`, `poemas` (poemas e citações; reposts puros
-  não contam) e `sigo`.
+  mais `seguidores`, `seguindo`, `poemas` (poemas e citações, mais 1 por renga
+  de que a pessoa participou, criando ou escrevendo estrofe; reposts puros não
+  contam; o Acervo usa a mesma conta) e `sigo`.
 - `PATCH /usuarios/eu` 🔒: `name`, `bio` e `avatar_url`, só os enviados; `null`
   explícito → 422.
 
@@ -137,8 +138,11 @@ Um repost puro por (autor, original), garantido por um índice único parcial
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
 - `PostCreate`: `titulo`, `texto` (não pode ficar em branco), `forma`, `idioma`
-  e `repost_de_id` (com texto, é citação). `PostUpdate`: os mesmos campos menos
-  `repost_de_id`, só os enviados mudam. Só o autor edita ou apaga (403).
+  e `repost_de_id` (com texto, é citação). Só o autor apaga (403).
+- **Poema publicado é imutável** (decisão do Neto, #73): não há `PATCH /posts/{id}`
+  (405). Para corrigir, o autor apaga e publica de novo, perdendo curtidas e
+  comentários. O que se edita é o rascunho (abaixo). O importador de
+  consagrados continua atualizando os posts direto no banco.
 - `PostOut`: os campos da tabela (menos `tags_extras`) + `autor: UserOut`,
   `curtidas`, `comentarios`, `reposts`, `curti`, `repostei`,
   `repost_de: PostOut | None` (um nível), `repost_removido`, `tags: list[str]`
@@ -153,8 +157,16 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 ### Feed e posts do perfil (`FeedPage`)
 
 `GET /feed` 🔒 e `GET /usuarios/{username}/posts` 🔒 devolvem `FeedPage`
-(`schemas/feed.py`), que herda da `PostPage` e acrescenta
-`proximo_cursor: str | None`.
+(`schemas/feed.py`): uma `Pagina` de itens com `tipo`, mais
+`proximo_cursor: str | None`. Cada item é:
+
+- `PoemaNoFeed` (`tipo: "poema"`): o `PostOut` de sempre, com o campo `tipo`.
+- `RengaNoFeed` (`tipo: "renga"`): `renga: RengaDetalhe`, `atividade`
+  (`"abriu"` | `"escreveu"` | `"encerrou"`) e `por: list[UserOut]`, o rótulo
+  "fulano abriu uma renga" / "fulano escreveu uma estrofe" / "fulano encerrou
+  a renga" (ver abaixo).
+
+O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo`.
 
 - Reposts como no X: cada poema aparece uma vez, na ocorrência mais recente.
   `repostado_por` lista todos os seguidos (e o próprio usuário) que repostaram,
@@ -164,6 +176,38 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
   `total` vem `null`; sem cursor, `offset` e `total` valem (teste do núcleo).
   `proximo_cursor` é `null` no fim.
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
+- Rengas como reposts: uma renga entra no feed de quem segue o criador ou
+  alguém que escreveu estrofe (e no de quem participou), uma vez só, na
+  atividade mais recente de um seguido. As atividades são as estrofes e o
+  encerramento pelo criador (`encerrada_em`); fechar pelo limite não é
+  encerramento. O rótulo é o da atividade mais recente: estrofe do criador →
+  `"abriu"` (o criador aparece sempre como quem abriu), estrofe de outra
+  pessoa → `"escreveu"` com todos os seguidos que escreveram (menos o
+  criador), quem escreveu por último primeiro, e encerramento → `"encerrou"`.
+  Fechada, continua no feed. No perfil, a renga aparece na estrofe mais
+  recente da pessoa (o encerramento não conta).
+- Desempate do cursor: a posição é (data, chave), com chave = 3·id + 2 para
+  post, 3·id + 1 para estrofe e 3·id (id da renga) para encerramento; o cursor
+  continua opaco.
+
+### Rengas (dono: Neto)
+
+Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
+`limite`, `fechada_em`, `encerrada_em` (só no encerramento pelo criador),
+`created_at`), `estrofes_renga` (`renga_id`,
+`autor_id`, `posicao`, `texto`, unique (`renga_id`, `posicao`)) e
+`convites_renga` (unique (`renga_id`, `user_id`)).
+
+- `GET /rengas?situacao=aberta|fechada` 🔒 → `RengaPage`; `POST /rengas` 🔒
+  (`titulo`, `primeira_estrofe`, `modo`, `limite` de 3 a 40, padrão 12,
+  `convidados`) → 201 `RengaDetalhe`; `GET /rengas/{id}` 🔒.
+- `POST /rengas/{id}/estrofes` 🔒: 403 para não convidado, 409 para renga
+  fechada ou "não é a sua vez" (ninguém escreve duas seguidas).
+- `POST /rengas/{id}/encerrar` 🔒 só o criador (idempotente) e
+  `POST /rengas/{id}/convites` 🔒 só o criador, no modo convidados.
+- `RengaDetalhe`: `RengaOut` (`autores` em ordem, `qtd_estrofes`, `fechada`)
+  mais `estrofes`, `convidados`, `posso_escrever` e `motivo`.
+- Qualquer pessoa logada lê qualquer renga; só os convidados escrevem nas de convidados.
 
 ### `Follow` (dono: Neto)
 
@@ -198,6 +242,26 @@ Tabela `follows`: `seguidor_id` (FK users), `seguido_id` (FK users),
 - **O marcador fica para sempre** (decisão do Neto, #38 e #67): mesmo que as
   respostas sejam apagadas depois, ele não sai do banco, e apagar de novo não
   faz nada (devolve `"removido"` com o total atual).
+
+### Crítica ancorada no verso (dono: Neto, #71)
+
+Tabela `ancoras_comentario`: `comentario_id` (PK e FK `comentarios.id`),
+`verso_inicio` e `verso_fim`. Os versos são as linhas de `texto.split("\n")`
+do poema, base 1, **com as linhas em branco contadas**. O trecho não é gravado:
+poema publicado não se edita, então ele sai do texto do poema.
+
+- `ComentarioCreate` ganhou `ancora: {"verso_inicio", "verso_fim"} | null`
+  (opcional). Só no 1º nível: com `parent_id` → 422. Início depois do fim, fora
+  do poema ou trecho só de linhas em branco → 422. Num repost puro, vale o texto
+  do original.
+- `ComentarioOut` ganhou `ancora: {"verso_inicio", "verso_fim", "trecho"} | null`
+  (opcional; `null` nos comentários sem âncora e nas respostas). O marcador
+  "comentário removido" continua com a âncora.
+- `GET /posts/{id}/comentarios?verso=N` 🔒 → só as raízes cuja âncora cobre o
+  verso N, na mesma paginação por cursor.
+- `GET /posts/{id}/comentarios/versos` 🔒 → `{"items": [{"verso", "comentarios"}]}`:
+  quantos comentários cobrem cada verso (uma crítica de 5–8 conta nos quatro).
+- Apagar o comentário (sem respostas) ou o poema apaga a âncora junto.
 
 ### Curtidas e reposts (dono: Henrique)
 
@@ -259,6 +323,38 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   cache não contam. Passou → 429. Já está na língua → 422. Sem
   `ANTHROPIC_API_KEY` → 503.
 
+### Oficina do compositor (dono: Neto)
+
+- `POST /oficina/analise`, sem login e sem banco, body `{"texto", "forma"?}`
+  (`texto` até 10.000 caracteres; `forma` uma de `FORMAS`) →
+  `{"versos": [{"silabas", "rima", "tipo_rima"}], "esquema", "aviso"}`, um item
+  por linha de `texto.split("\n")`. `tipo_rima` é `consoante`, `toante` ou
+  `null`; `esquema` sai como `"ABBA ABBA CDC DCD"`; `aviso` só para soneto
+  (14 versos) e haicai (3 versos de 5-7-5 sílabas poéticas).
+- Algoritmo em `core/metrica.py`. Só o compositor usa: o `Post` não muda.
+
+### Rascunhos (dono: Neto, #73)
+
+Tabela nova `rascunhos`: `autor_id`, `titulo`, `texto`, `forma`, `idioma`,
+`repost_de_id` (FK `posts.id` \| None: rascunho de citação), `repost_removido`,
+`created_at` e `updated_at`. Fica fora de `posts`, então rascunho não entra em
+feed, perfil, Explorar, tags, índice, Em alta, antologias nem nas contagens.
+
+- Só o autor vê: de outra pessoa, toda rota dá 404 (não revela que existe).
+- `GET /rascunhos` 🔒 → página de `RascunhoOut`, o editado por último primeiro,
+  sem limite de quantidade.
+- `POST /rascunhos` 🔒 → 201, com as regras do `PostCreate` (texto em branco →
+  422). Com `repost_de_id`, é rascunho de citação (repost puro aponta para o
+  original; inexistente → 404).
+- `GET`/`PATCH`/`DELETE /rascunhos/{id}` 🔒. O `PATCH` é parcial (`titulo`,
+  `texto`, `forma`, `idioma`); o poema citado não muda.
+- `POST /rascunhos/{id}/publicar` 🔒 → 201 `PostOut`: cria o poema (ou a
+  citação) pelo mesmo `posts.criar`, com data de agora e tags indexadas, e
+  apaga o rascunho na mesma transação.
+- Original apagado com a citação ainda em rascunho: como na citação publicada,
+  o rascunho fica com `repost_de_id: null` e `repost_removido: true`, e
+  publicado mostra "poema removido pelo autor".
+
 ### Auth e saúde
 
 - `POST /auth/registro` → 201 `UserOut`; `POST /auth/login` → `{"token"}`
@@ -280,8 +376,8 @@ indice_tags.trending(desde: datetime, k: int = 5) -> list[tuple[str, int]]
 extrair_tags(texto: str, forma: str | None) -> set[str]  # #amor, mais a forma
 ```
 
-O `services/posts.py` chama `indexar` ao criar ou editar e `remover` ao
-apagar; o lifespan reconstrói o índice a partir do banco.
+O `services/posts.py` chama `indexar` ao criar (também ao publicar um
+rascunho) e `remover` ao apagar; o lifespan reconstrói o índice a partir do banco.
 
 ### Componentes do front
 

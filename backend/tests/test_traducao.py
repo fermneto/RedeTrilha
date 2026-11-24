@@ -191,15 +191,10 @@ def test_linhas_diferentes_aceita_com_aviso(client, logar, falso, caplog):
     assert "tem 1 linhas; o original tem 4" in caplog.text
 
 
-def test_apagar_e_editar_o_poema_apagam_as_traducoes(client, logar, falso):
+def test_apagar_o_poema_apaga_as_traducoes(client, logar, falso):
     ana = logar("ana")
     meu = client.post("/posts", json={"texto": "verso\n\noutro"}, headers=ana).json()["id"]
     falso.resposta.content[1].text = "line\n\nother"
-
-    client.post(f"/posts/{meu}/traduzir", json={"para": "en"}, headers=ana)
-    assert _traducoes() == 1
-    client.patch(f"/posts/{meu}", json={"texto": "verso novo"}, headers=ana)
-    assert _traducoes() == 0
 
     client.post(f"/posts/{meu}/traduzir", json={"para": "en"}, headers=ana)
     assert _traducoes() == 1
@@ -214,9 +209,6 @@ def test_poema_novo_guarda_o_idioma_escolhido(client, logar):
     r = client.post("/posts", json={"texto": "???", "idioma": None}, headers=ana)
     assert (r.status_code, r.json()["idioma"]) == (201, None)
 
-    r = client.patch(f"/posts/{r.json()['id']}", json={"idioma": "de"}, headers=ana)
-    assert (r.status_code, r.json()["idioma"]) == (200, "de")
-
 
 @pytest.mark.parametrize("idioma", ["PT", "por", "xx", "português", ""])
 def test_idioma_fora_da_iso_639_1_da_422_em_portugues(client, logar, idioma):
@@ -224,14 +216,6 @@ def test_idioma_fora_da_iso_639_1_da_422_em_portugues(client, logar, idioma):
     r = client.post("/posts", json={"texto": "verso", "idioma": idioma}, headers=ana)
     assert r.status_code == 422
     assert "ISO 639-1" in r.json()["detail"][0]["msg"]
-
-
-def test_mudar_o_idioma_apaga_as_traducoes(client, logar, falso):
-    ana = logar("ana")
-    meu = client.post("/posts", json={"texto": "verso"}, headers=ana).json()["id"]
-    client.post(f"/posts/{meu}/traduzir", json={"para": "en"}, headers=ana)
-    client.patch(f"/posts/{meu}", json={"idioma": "es"}, headers=ana)
-    assert _traducoes() == 0
 
 
 def test_janela_deslizante_libera_quando_o_evento_sai_da_janela():

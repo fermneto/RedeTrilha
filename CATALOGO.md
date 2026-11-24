@@ -16,7 +16,7 @@ até o time implementar. Eles são um roteiro, não valem nota.
 | Feature | Esforço | Descrição |
 |---|---|---|
 | Cadastro e login com hash de senha | M | Registro, login e autenticação por token. |
-| Posts de texto (CRUD) | P | Criar, listar, editar e apagar posts. |
+| Posts de texto (CRUD) | P | Criar, listar, editar e apagar posts. No Verso, o poema publicado não se edita: só os rascunhos, que são privados (#73). |
 | Feed cronológico paginado | M | Posts mais novos primeiro, com offset e limit. |
 | Perfil de usuário (avatar, bio) | M | Perfil editável com posts do usuário. |
 | Seguir/seguidores | M | Follow, unfollow, listas e contadores. |

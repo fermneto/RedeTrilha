@@ -1910,3 +1910,138 @@ ANTOLOGIAS = (
         ("livre_stack", "prosa_carta", "livre_recreio", "livre_reabilitacao"),
     ),
 )
+
+
+class Renga(NamedTuple):
+    """Poema colaborativo: `estrofes` em ordem, (autor, texto); a primeira é do criador.
+
+    Com tantas estrofes quanto o `limite`, a renga fecha sozinha.
+    """
+
+    criador: str
+    titulo: str
+    modo: str
+    limite: int
+    convidados: tuple[str, ...]
+    estrofes: tuple[tuple[str, str], ...]
+
+
+# Uma aberta (a conta demo pode escrever a próxima), uma fechada pelo limite e
+# uma só de convidados (a demo é convidada).
+RENGAS = (
+    Renga(
+        "caio_eng",
+        "Renga do 1500",
+        "aberta",
+        12,
+        (),
+        (
+            (
+                "caio_eng",
+                """\
+O 1500 dobra a curva do Castelo Branco
+e eu, de pé, seguro a barra e o caderno:
+cada freada é uma vírgula
+que o motorista põe sem perguntar.""",
+            ),
+            (
+                "rafa_cc",
+                """\
+Do banco da frente, uma senhora
+    reza o terço em voz baixa,
+e o rosário balança no compasso
+dos buracos da Pedro II.""",
+            ),
+            (
+                "isabela_jor",
+                """\
+Meu fone acabou a bateria
+no meio da música —
+agora escuto o ônibus inteiro:
+    o troco, a catraca, alguém rindo no fundo.""",
+            ),
+            (
+                "iago_ifpb",
+                """\
+Desço na parada do IFPB
+com a estrofe ainda no bolso;
+quem pegar o próximo
+que continue a viagem.""",
+            ),
+        ),
+    ),
+    Renga(
+        "bia_med",
+        "Renga do RU",
+        "aberta",
+        4,
+        (),
+        (
+            (
+                "bia_med",
+                """\
+Fila do RU às onze e meia:
+o sol do campus derrete a paciência
+e o cardápio, colado na pilastra,
+promete feijão como quem promete chuva.""",
+            ),
+            (
+                "thiago_hist",
+                """\
+Na mesa comprida, quatro cursos
+dividem o mesmo guardanapo:
+    História explica a farofa,
+    Agronomia defende o milho.""",
+            ),
+            (
+                "yasmin_enf",
+                """\
+Alguém derruba a bandeja
+e o refeitório inteiro aplaude —
+é o único aplauso do semestre
+que ninguém precisou merecer.""",
+            ),
+            (
+                "lucas_agro",
+                """\
+Saio com a barriga cheia
+e o coração de três reais:
+o mais barato que já pesou
+tanto quanto um poema.""",
+            ),
+        ),
+    ),
+    Renga(
+        "nina_ufpe",
+        "Renga da oficina de quinta",
+        "convidados",
+        8,
+        ("marina_letras", "helena_musica", "clara_teatro"),
+        (
+            (
+                "nina_ufpe",
+                """\
+Quinta à noite, sala 204:
+a oficina começa sem o professor
+e o ar-condicionado,
+    como sempre, decide por nós.""",
+            ),
+            (
+                "helena_musica",
+                """\
+Trouxe o violão por engano
+e agora cada verso pede acorde:
+    lá menor para a saudade,
+    ré para quem chegou atrasado.""",
+            ),
+            (
+                "clara_teatro",
+                """\
+Leio a minha estrofe de pé,
+como quem entra em cena:
+o papel treme mais que a voz,
+e a plateia são seis cadeiras e um amigo.""",
+            ),
+        ),
+    ),
+)
