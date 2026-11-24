@@ -297,38 +297,40 @@ function headers(): HeadersInit {
 }
 ```
 
-### Passo 5: páginas `/registro` e `/login`
+### Passo 5: páginas `/cadastro` e `/login`
 
-Usem um form controlado com `use client` e `apiPost` (no Verso, o resultado
-está em `app/login/page.tsx` e `app/cadastro/page.tsx`). O que muda no submit do login:
+Usem um form controlado com `use client` (no Verso, o resultado está em
+`app/login/page.tsx` e `app/cadastro/page.tsx`). As chamadas ficam em
+`lib/api.ts`: `entrar()` faz o `POST /auth/login` e `salvarToken()` guarda o
+token. O que muda no submit do login:
 
 ```ts
-const { token } = await apiPost<{ token: string }>("/auth/login", { username, password });
-localStorage.setItem("token", token);
-router.push("/");   // useRouter() de "next/navigation"
+const { token } = await entrar(username, senha);
+salvarToken(token);
+router.replace(destino);   // useRouter() de "next/navigation"
 ```
 
-O registro chama `/auth/registro` e depois segue o mesmo fluxo do login, ou
-manda para `/login`. O logout é `localStorage.removeItem("token")` num botão da navbar.
+`destino` vem do `?proximo=` da URL, passado por `destinoSeguro()`, que só
+aceita caminhos do próprio Verso (evita open redirect); sem ele, vai para o
+feed. O cadastro chama `cadastrar()` (`POST /auth/registro`) e depois segue o
+mesmo fluxo do login. O logout apaga o token no menu da conta (avatar na barra
+lateral e, no celular, na barra inferior).
 
 ### Passo 6: guarda de rota
 
-Criem `lib/useExigeLogin.ts` e chamem o hook no topo de toda página privada:
+Não há hook separado: cada página privada confere o token no topo, com
+`temToken()` e `caminhoDoLogin()` de `lib/api.ts`:
 
 ```ts
-"use client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
-export function useExigeLogin() {
-  const router = useRouter();
-  useEffect(() => {
-    if (!localStorage.getItem("token")) router.push("/login");
-  }, [router]);
-}
+useEffect(() => {
+  if (!temToken()) router.replace(caminhoDoLogin());
+}, [router]);
 ```
 
-O hook só confere se existe um token, não se ele ainda vale. Token que deixou
+`caminhoDoLogin()` devolve `/login?proximo=<página atual>`, para a pessoa
+voltar à mesma página depois de entrar.
+
+A guarda só confere se existe um token, não se ele ainda vale. Token que deixou
 de valer (banco apagado, servidor do deploy reiniciado) é tratado no
 `lib/api.ts`: qualquer `401` com token salvo apaga o token e manda para
 `/login`. Não removam essa parte.
@@ -336,7 +338,7 @@ de valer (banco apagado, servidor do deploy reiniciado) é tratado no
 ### Verificação ponta a ponta
 
 1. `make dev-back` (sem DEBUG) e `make dev-front`.
-2. Na UI, registrem, loguem e abram o DevTools (F12), aba Network. Toda
+2. Na UI, cadastrem-se em `/cadastro`, loguem e abram o DevTools (F12), aba Network. Toda
    request tem `Authorization: Bearer ...`.
 3. `localStorage.getItem("token")` no console devolve o token.
 4. Apaguem o token no console e recarreguem: a página privada manda para `/login`.
