@@ -1,6 +1,7 @@
 "use client";
 // Lista de poemas com rolagem infinita, como no X: a próxima página pede o
-// `proximo_cursor` quando o fim da lista entra na tela. Usada pelo feed e pelo perfil.
+// `proximo_cursor` quando o fim da lista entra na tela. Usada pelo feed, pelo perfil
+// e pelo Explorar (que pagina por offset: ver buscarExplorar em lib/api.ts).
 
 import { useCallback, useEffect, useRef, useState } from "react";
 

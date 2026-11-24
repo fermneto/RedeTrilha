@@ -184,9 +184,31 @@ export const FORMAS = [
 
 export type Forma = (typeof FORMAS)[number];
 
-// Rótulo legível da forma: só troca o "_" por espaço (verso_livre → verso livre).
+// Rótulo legível de cada forma, com acento (o valor guardado não tem).
+const NOMES_DAS_FORMAS: Record<Forma, string> = {
+  soneto: "soneto",
+  haicai: "haicai",
+  trova: "trova",
+  quadra: "quadra",
+  cordel: "cordel",
+  verso_livre: "verso livre",
+  prosa_poetica: "prosa poética",
+  outro: "outro",
+};
+
+// Forma fora da lista (não deveria vir do backend) fica só com "_" virando espaço.
 export function nomeDaForma(forma: string): string {
-  return forma.replace(/_/g, " ");
+  return NOMES_DAS_FORMAS[forma as Forma] ?? forma.replace(/_/g, " ");
+}
+
+// A forma também vira tag (#soneto).
+function ehForma(tag: string): boolean {
+  return (FORMAS as readonly string[]).includes(tag);
+}
+
+// Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
+export function caminhoDaTag(tag: string): string {
+  return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;
 }
 
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
@@ -417,6 +439,25 @@ export type TagContagem = { tag: string; contagem: number };
 
 export function buscarTrending(): Promise<{ items: TagContagem[] }> {
   return apiGet<{ items: TagContagem[] }>("/tags/trending");
+}
+
+export type FiltrosDoExplorar = { tag: string | null; forma: string | null };
+
+// GET /explorar: poemas de todos, mais novo primeiro; tag e forma juntas fazem
+// interseção. A rota pagina por offset e a ListaDePoemas por cursor, então o
+// cursor aqui é o próximo offset em texto, e vira null quando chega ao total.
+export async function buscarExplorar(
+  { tag, forma }: FiltrosDoExplorar,
+  cursor: string | null,
+  limit = 20,
+): Promise<FeedPage> {
+  const offset = cursor === null ? 0 : Number(cursor);
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  if (tag) params.set("tag", tag);
+  if (forma) params.set("forma", forma);
+  const pagina = await apiGet<Page<Post>>(`/explorar?${params}`);
+  const proximo = offset + pagina.limit;
+  return { ...pagina, proximo_cursor: proximo < pagina.total ? String(proximo) : null };
 }
 
 // Equivale a core/indice_tags.normalizar: casefold e sem acento ("#Solidão" → "solidao").

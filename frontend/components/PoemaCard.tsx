@@ -13,6 +13,7 @@ import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { IconeTraduzir } from "@/components/icones/IconeTraduzir";
 import {
+  caminhoDaTag,
   curtir,
   ErroDaApi,
   formatarData,
@@ -274,7 +275,7 @@ function Detalhes({ poema }: { poema: Post }) {
           {poema.tags.map((tag) => (
             <li key={tag}>
               <Link
-                href={`/explorar?tag=${encodeURIComponent(tag)}`}
+                href={caminhoDaTag(tag)}
                 className="text-destaque hover:underline"
               >
                 #{tag}
