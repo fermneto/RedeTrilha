@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { NomeAutor } from "@/components/NomeAutor";
 import {
   apagarComentario,
   buscarComentarios,
@@ -257,9 +258,7 @@ function ItemComentario({
         ) : (
           <>
             <p className="text-xs text-tinta-suave">
-              <Link href={`/u/${autor.username}`} className="font-medium text-tinta hover:underline">
-                {autor.name}
-              </Link>{" "}
+              <NomeAutor usuario={autor} className="font-medium text-tinta" />{" "}
               @{autor.username} ·{" "}
               <time dateTime={comentario.created_at}>{formatarData(comentario.created_at)}</time>
             </p>

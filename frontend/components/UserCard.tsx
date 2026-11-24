@@ -1,3 +1,4 @@
+import { SeloConsagrado } from "@/components/SeloConsagrado";
 import type { User } from "@/lib/api";
 
 export function UserCard({ user }: { user: User }) {
@@ -12,7 +13,10 @@ export function UserCard({ user }: { user: User }) {
         )}
       </div>
       <div className="min-w-0">
-        <p className="truncate font-medium">{user.name}</p>
+        <p className="flex items-center gap-1 font-medium">
+          <span className="truncate">{user.name}</span>
+          <SeloConsagrado usuario={user} />
+        </p>
         <p className="truncate text-sm text-tinta-suave">
           @{user.username}
           {user.bio ? ` — ${user.bio}` : ""}

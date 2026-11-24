@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { NomeAutor } from "@/components/NomeAutor";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
-import { anosDeVida, curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
+import { curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
 
 // Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
 // para o inteiro. Linhas em branco entre estrofes contam.
@@ -144,21 +145,14 @@ function NomeLink({ usuario }: { usuario: User }) {
   );
 }
 
+// Consagrado: selo depois do nome; os anos de vida ficam no tooltip do selo e no
+// perfil, e não há data (a do poema é a da importação, não a da obra).
 function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; comAvatar: boolean }) {
-  const vida = anosDeVida(autor);
   return (
     <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[0.9375rem] leading-5">
       {comAvatar && <Avatar usuario={autor} tamanho="p" />}
-      <Link href={`/u/${autor.username}`} className="truncate font-bold hover:underline">
-        {autor.name}
-      </Link>
-      {autor.consagrado && (
-        <span className="rounded-full border border-destaque/60 px-1.5 text-[0.6875rem] leading-4 font-semibold tracking-wide text-destaque uppercase">
-          Consagrado
-        </span>
-      )}
+      <NomeAutor usuario={autor} />
       <span className="truncate text-tinta-suave">@{autor.username}</span>
-      {vida && <span className="text-tinta-suave tabular-nums">· {vida}</span>}
       {!autor.consagrado && (
         <time dateTime={criadoEm} className="text-tinta-suave tabular-nums">
           · {formatarData(criadoEm)}
