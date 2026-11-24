@@ -7,7 +7,18 @@ from sqlalchemy import select
 from app.core.contadores import contador_iniciais
 from app.db import Base, SessionLocal, engine
 from app.models.user import User
-from app.routers import antologias, auth, curtidas, feed, follows, posts, reposts, tags, users
+from app.routers import (
+    antologias,
+    auth,
+    comentarios,
+    curtidas,
+    feed,
+    follows,
+    posts,
+    reposts,
+    tags,
+    users,
+)
 from app.services.posts import reconstruir_indice
 
 
@@ -43,3 +54,4 @@ app.include_router(curtidas.router)
 app.include_router(feed.router)
 app.include_router(reposts.router)
 app.include_router(antologias.router)
+app.include_router(comentarios.router)

@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.core.indice_tags import extrair_tags, indice_tags, normalizar
 from app.models.antologia import AntologiaPoema
+from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.post import Post
 from app.models.user import User
@@ -21,11 +22,12 @@ class Contagens:
     curtidos: set[int] = field(default_factory=set)
     reposts: dict[int, int] = field(default_factory=dict)
     repostados: set[int] = field(default_factory=set)
+    comentarios: dict[int, int] = field(default_factory=dict)
 
 
 def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
-    """Quatro queries para a página toda: curtidas e reposts (puros e citações) por
-    post, quais o usuário curtiu e quais ele repostou (repost puro)."""
+    """Cinco queries para a página toda: curtidas, reposts (puros e citações) e
+    comentários por post, quais o usuário curtiu e quais ele repostou (repost puro)."""
     if not post_ids:
         return Contagens()
     curtidas = db.execute(
@@ -48,11 +50,17 @@ def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
             Post.repost_de_id.in_(post_ids), Post.autor_id == usuario.id, Post.texto == ""
         )
     )
+    comentarios = db.execute(
+        select(Comentario.post_id, func.count())
+        .where(Comentario.post_id.in_(post_ids))
+        .group_by(Comentario.post_id)
+    )
     return Contagens(
         curtidas=dict(curtidas.all()),
         curtidos=set(curtidos),
         reposts=dict(reposts.all()),
         repostados=set(repostados),
+        comentarios=dict(comentarios.all()),
     )
 
 
@@ -97,6 +105,10 @@ def para_saida(
         curti=post.id in contagens.curtidos,
         reposts=contagens.reposts.get(post.id, 0),
         repostei=post.id in contagens.repostados,
+        # Repost puro mostra a conversa do original, para onde os comentários vão.
+        comentarios=contagens.comentarios.get(
+            post.repost_de_id if post.repost_puro else post.id, 0
+        ),
         repost_de=(
             para_saida(original, incluir_repost=False, contagens=contagens)
             if original
@@ -160,6 +172,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         db.scalars(select(Post.id).where(Post.repost_de_id == post_id, Post.texto == ""))
     )
     db.execute(delete(Curtida).where(Curtida.post_id.in_([post_id, *puros])))
+    db.execute(delete(Comentario).where(Comentario.post_id.in_([post_id, *puros])))
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
     db.execute(delete(Post).where(Post.id.in_(puros)))
     db.execute(
