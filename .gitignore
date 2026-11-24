@@ -33,3 +33,6 @@ docs/review-painel-v2.md
 
 # claude code — config pessoal
 .claude/settings.local.json
+
+# typescript incremental build
+*.tsbuildinfo
