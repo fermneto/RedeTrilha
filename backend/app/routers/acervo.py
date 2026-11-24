@@ -1,4 +1,4 @@
-"""Acervo: a tela que navega todos os poetas, consagrados e contemporâneos."""
+"""Acervo: a tela que navega todos os poetas, consagrados e poetas do Verso."""
 
 from typing import Annotated
 

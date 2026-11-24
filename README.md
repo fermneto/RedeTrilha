@@ -31,7 +31,7 @@ Pedro (@CorreiaPedro208).
 - **Curtidas** idempotentes.
 - **Perfil** com seguidores, seguindo, poemas, seguir/deixar de seguir e edição
   de nome, bio e URL da foto.
-- **Acervo:** todos os poetas, consagrados e contemporâneos, com busca e filtros por
+- **Acervo:** todos os poetas, consagrados e poetas do Verso, com busca e filtros por
   tipo, língua e época, e ordenação.
 - **Explorar:** chips de forma e busca por tag (`#Solidão` acha `#solidao`).
   Ao lado, na coluna Descobrir (no topo do Explorar em telas estreitas):

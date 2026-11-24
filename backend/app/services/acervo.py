@@ -148,7 +148,7 @@ def _consulta(filtros: Filtros):
     )
     if filtros.tipo == "consagrados":
         consulta = consulta.where(User.consagrado)
-    elif filtros.tipo == "contemporaneos":
+    elif filtros.tipo == "do_verso":
         consulta = consulta.where(~User.consagrado)
     # Língua e época só existem para consagrados: com elas, poeta da rede não entra.
     if filtros.lingua:

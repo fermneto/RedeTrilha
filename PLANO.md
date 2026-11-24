@@ -302,7 +302,7 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 ### Acervo (dono: Neto)
 
-- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `contemporaneos`), `q`
+- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `do_verso`), `q`
   (nome ou @username, sem diferença de acento), `lingua` (ISO 639-1), `epoca`
   (`antiguidade`, `idade_media`, `xvi` … `xx`, pelo ano de morte), `ordem`
   (`alfabetica` \| `seguidos` \| `poemas`), `offset` e `limit` (padrão 24) →

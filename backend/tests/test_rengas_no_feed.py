@@ -171,7 +171,7 @@ def test_renga_conta_como_poema_no_perfil(client, como):
     # caio: 1 poema + 2 rengas; bia: 1 renga (duas estrofes contam uma vez); ana: nada.
     assert (poemas("caio"), poemas("bia"), poemas("ana")) == (3, 1, 0)
 
-    acervo = client.get("/acervo?tipo=contemporaneos&limit=100", headers=como("ana")).json()
+    acervo = client.get("/acervo?tipo=do_verso&limit=100", headers=como("ana")).json()
     no_acervo = {p["username"]: p["poemas"] for p in acervo["items"]}
     assert (no_acervo["caio"], no_acervo["bia"], no_acervo["ana"]) == (3, 1, 0)
 

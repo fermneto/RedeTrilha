@@ -1,5 +1,5 @@
 "use client";
-// Acervo: os perfis de todos os poetas, consagrados e contemporâneos, em páginas numeradas.
+// Acervo: os perfis de todos os poetas, consagrados e poetas do Verso, em páginas numeradas.
 // Tudo mora na URL (?tipo=&q=&lingua=&epoca=&ordem=&pagina=): o link abre a mesma
 // vista. Os filtros trocam com router.replace e voltam à página 1; a página troca
 // por link, para o voltar do navegador voltar de página.
@@ -37,7 +37,7 @@ const PADRAO: FiltrosDoAcervo = { tipo: "todos", q: "", lingua: null, epoca: nul
 const ROTULOS_DOS_TIPOS: Record<TipoDoAcervo, string> = {
   todos: "todos",
   consagrados: "consagrados",
-  contemporaneos: "contemporâneos",
+  do_verso: "poetas do Verso",
 };
 
 const ROTULOS_DAS_ORDENS: Record<OrdemDoAcervo, string> = {
@@ -97,9 +97,9 @@ function Acervo() {
   const params = useSearchParams();
   const tipo = lerTipo(params.get("tipo"));
   const q = params.get("q") ?? "";
-  // Língua e época são só de consagrados: com "contemporaneos", saem.
-  const lingua = tipo === "contemporaneos" ? null : params.get("lingua") || null;
-  const epoca = tipo === "contemporaneos" ? null : params.get("epoca") || null;
+  // Língua e época são só de consagrados: com "do_verso", saem.
+  const lingua = tipo === "do_verso" ? null : params.get("lingua") || null;
+  const epoca = tipo === "do_verso" ? null : params.get("epoca") || null;
   const ordem = lerOrdem(params.get("ordem"));
   const pagina = lerPagina(params.get("pagina"));
   const filtros: FiltrosDoAcervo = { tipo, q, lingua, epoca, ordem };
@@ -160,7 +160,7 @@ function Acervo() {
   const filtrar = useCallback(
     (mudanca: Partial<FiltrosDoAcervo>) => {
       const novos = { tipo, q, lingua, epoca, ordem, ...mudanca };
-      if (novos.tipo === "contemporaneos") {
+      if (novos.tipo === "do_verso") {
         novos.lingua = null;
         novos.epoca = null;
       }
@@ -248,7 +248,7 @@ function Acervo() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {tipo !== "contemporaneos" && (
+          {tipo !== "do_verso" && (
             <>
               <div className="min-w-0">
                 <label htmlFor={idLingua} className="block text-sm">

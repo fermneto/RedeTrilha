@@ -87,16 +87,16 @@ def test_item_traz_contagens_e_sigo(client, acervo):
     assert {"id", "name", "bio", "avatar_url", "created_at"} <= itens["ana"].keys()
 
 
-def test_tipo_separa_consagrados_de_contemporaneos(client, acervo):
-    assert _usernames(client, acervo, "tipo=contemporaneos") == ["ana", "bia", "caio"]
+def test_tipo_separa_consagrados_dos_poetas_do_verso(client, acervo):
+    assert _usernames(client, acervo, "tipo=do_verso") == ["ana", "bia", "caio"]
     assert _usernames(client, acervo, "tipo=consagrados") == [
         "alvares_de_azevedo", "baudelaire", "pessoa", "homero", "camoes",
     ]
 
 
-def test_conta_nova_entra_como_contemporanea(client, logar, acervo):
+def test_conta_nova_entra_nos_poetas_do_verso(client, logar, acervo):
     logar("dani", "Dani")
-    assert "dani" in _usernames(client, acervo, "tipo=contemporaneos")
+    assert "dani" in _usernames(client, acervo, "tipo=do_verso")
     assert "dani" not in _usernames(client, acervo, "tipo=consagrados")
 
 
@@ -116,7 +116,7 @@ def test_lingua_e_a_mais_frequente_e_so_de_consagrados(client, acervo):
     assert _usernames(client, acervo, "lingua=es") == []
     assert _usernames(client, acervo, "lingua=fr") == ["baudelaire"]
     # os poetas da rede escrevem em pt (o padrão), mas a língua é filtro de consagrado
-    assert _usernames(client, acervo, "tipo=contemporaneos&lingua=pt") == []
+    assert _usernames(client, acervo, "tipo=do_verso&lingua=pt") == []
 
 
 def test_epoca_pelo_ano_de_morte(client, acervo):
@@ -125,7 +125,7 @@ def test_epoca_pelo_ano_de_morte(client, acervo):
     assert _usernames(client, acervo, "epoca=xix") == ["alvares_de_azevedo", "baudelaire"]
     assert _usernames(client, acervo, "epoca=xx") == ["pessoa"]
     assert _usernames(client, acervo, "epoca=xvii") == []
-    assert _usernames(client, acervo, "tipo=contemporaneos&epoca=xix") == []
+    assert _usernames(client, acervo, "tipo=do_verso&epoca=xix") == []
 
 
 def test_filtros_combinados(client, acervo):
@@ -161,7 +161,7 @@ def test_paginas_e_total(client, acervo):
     assert (fora["items"], fora["total"]) == ([], 8)
 
     # o total é o dos filtros, não o da tabela
-    assert client.get("/acervo?tipo=contemporaneos&limit=1", headers=acervo("ana")).json()["total"] == 3
+    assert client.get("/acervo?tipo=do_verso&limit=1", headers=acervo("ana")).json()["total"] == 3
     # padrão da tela: 24 por página
     assert client.get("/acervo", headers=acervo("ana")).json()["limit"] == 24
 
