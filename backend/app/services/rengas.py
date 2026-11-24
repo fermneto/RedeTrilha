@@ -128,13 +128,17 @@ def acrescentar(db: Session, usuario: User, renga_id: int, texto: str) -> RengaD
 
 
 def encerrar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
-    """Só o criador. Idempotente: encerrar uma renga já fechada não muda nada."""
+    """Só o criador. Idempotente: encerrar uma renga já fechada não muda nada.
+
+    `encerrada_em` marca o encerramento pelo criador, que sobe a renga no feed;
+    a renga fechada pelo limite não o tem.
+    """
     renga = _buscar(db, renga_id, travar=True)
     if renga.criador_id != usuario.id:
         db.rollback()
         raise HTTPException(status_code=403, detail="só quem criou a renga pode encerrá-la")
     if renga.fechada_em is None:
-        renga.fechada_em = datetime.now(UTC)
+        renga.fechada_em = renga.encerrada_em = datetime.now(UTC)
     db.commit()
     return detalhar(db, usuario, renga.id)
 

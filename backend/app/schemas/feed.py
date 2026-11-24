@@ -17,15 +17,18 @@ class PoemaNoFeed(PostOut):
 class RengaNoFeed(BaseModel):
     """Uma renga no feed, como um repost no X: sobe com a atividade mais recente.
 
-    `atividade` e `por` montam o rótulo: "fulano escreveu uma estrofe" (os
-    seguidos, ou a própria pessoa, que escreveram estrofes depois da 1ª, quem
-    escreveu por último primeiro) ou, se ainda não há, "fulano abriu uma renga"
-    (`por` = [o criador]).
+    `atividade` é a da ocorrência mais recente, e com `por` monta o rótulo:
+    - "abriu": "fulano abriu uma renga" (`por` = [o criador]; qualquer estrofe
+      do criador conta como abertura);
+    - "escreveu": "fulano escreveu uma estrofe" (`por` = os seguidos, ou a
+      própria pessoa, que escreveram estrofes, menos o criador, quem escreveu
+      por último primeiro);
+    - "encerrou": "fulano encerrou a renga" (`por` = [o criador]).
     """
 
     tipo: Literal["renga"] = "renga"
     renga: RengaDetalhe
-    atividade: Literal["abriu", "escreveu"]
+    atividade: Literal["abriu", "escreveu", "encerrou"]
     por: list[UserOut]
 
 

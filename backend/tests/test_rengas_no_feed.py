@@ -74,16 +74,106 @@ def test_renga_sobe_com_a_estrofe_do_seguido(client, como):
     ]
 
 
-def test_renga_aparece_uma_vez_com_todos_os_seguidos(client, como):
+def test_renga_aparece_uma_vez_com_todos_os_seguidos(client, como, criar_usuario):
+    criar_usuario("davi")
+    for seguido in ("bia", "caio", "davi"):
+        _seguir(client, como, "ana", seguido)
+    renga_id = _renga(client, como, "bia")
+    _estrofe(client, como, "caio", renga_id)
+    _estrofe(client, como, "davi", renga_id)
+
+    corpo = client.get("/feed", headers=como("ana")).json()
+    assert _resumo(corpo) == [("renga", renga_id, "escreveu", ["davi", "caio"])]
+    assert corpo["total"] == 1
+
+
+def test_criador_aparece_sempre_como_quem_abriu(client, como):
     _seguir(client, como, "ana", "bia")
     _seguir(client, como, "ana", "caio")
     renga_id = _renga(client, como, "bia")
     _estrofe(client, como, "caio", renga_id)
     _estrofe(client, como, "bia", renga_id)
+    assert _resumo(client.get("/feed", headers=como("ana")).json()) == [
+        ("renga", renga_id, "abriu", ["bia"])
+    ]
 
-    corpo = client.get("/feed", headers=como("ana")).json()
-    assert _resumo(corpo) == [("renga", renga_id, "escreveu", ["bia", "caio"])]
-    assert corpo["total"] == 1
+    # Quando outra pessoa escreve depois, o criador fica fora do "escreveu".
+    _estrofe(client, como, "caio", renga_id)
+    assert _resumo(client.get("/feed", headers=como("ana")).json()) == [
+        ("renga", renga_id, "escreveu", ["caio"])
+    ]
+
+
+def test_encerrar_sobe_a_renga_com_o_rotulo_encerrou(client, como):
+    _seguir(client, como, "ana", "bia")
+    _seguir(client, como, "ana", "caio")
+    renga_id = _renga(client, como, "bia")
+    _estrofe(client, como, "caio", renga_id)
+    _poema(client, como, "caio", "poema do caio")
+    assert _resumo(client.get("/feed", headers=como("ana")).json())[0] == (
+        "poema",
+        "poema do caio",
+    )
+
+    client.post(f"/rengas/{renga_id}/encerrar", headers=como("bia"))
+
+    esperado = [("renga", renga_id, "encerrou", ["bia"]), ("poema", "poema do caio")]
+    assert _resumo(client.get("/feed", headers=como("ana")).json()) == esperado
+    # No feed da própria criadora também.
+    assert _resumo(client.get("/feed", headers=como("bia")).json())[0] == esperado[0]
+
+
+def test_encerramento_so_conta_para_quem_segue_a_criadora(client, como):
+    _seguir(client, como, "ana", "caio")
+    renga_id = _renga(client, como, "bia")
+    _estrofe(client, como, "caio", renga_id)
+    _poema(client, como, "caio", "poema do caio")
+    client.post(f"/rengas/{renga_id}/encerrar", headers=como("bia"))
+
+    assert _resumo(client.get("/feed", headers=como("ana")).json()) == [
+        ("poema", "poema do caio"),
+        ("renga", renga_id, "escreveu", ["caio"]),
+    ]
+
+
+def test_fechar_pelo_limite_nao_e_encerramento(client, como):
+    _seguir(client, como, "ana", "bia")
+    renga_id = _renga(client, como, "bia", limite=3)
+    _estrofe(client, como, "caio", renga_id)
+    _estrofe(client, como, "bia", renga_id)
+
+    item = client.get("/feed", headers=como("ana")).json()["items"][0]
+    assert (item["atividade"], item["renga"]["fechada"]) == ("abriu", True)
+
+
+def test_perfil_ignora_o_encerramento(client, como):
+    renga_id = _renga(client, como, "bia")
+    _estrofe(client, como, "caio", renga_id)
+    _poema(client, como, "bia", "poema da bia")
+    client.post(f"/rengas/{renga_id}/encerrar", headers=como("bia"))
+
+    assert _resumo(client.get("/usuarios/bia/posts", headers=como("ana")).json()) == [
+        ("poema", "poema da bia"),
+        ("renga", renga_id, "abriu", ["bia"]),
+    ]
+
+
+def test_renga_conta_como_poema_no_perfil(client, como):
+    _poema(client, como, "caio", "poema do caio")
+    renga_id = _renga(client, como, "bia")
+    _estrofe(client, como, "caio", renga_id)
+    _estrofe(client, como, "bia", renga_id)
+    _renga(client, como, "caio", titulo="Renga do caio")
+
+    def poemas(username: str) -> int:
+        return client.get(f"/usuarios/{username}", headers=como("ana")).json()["poemas"]
+
+    # caio: 1 poema + 2 rengas; bia: 1 renga (duas estrofes contam uma vez); ana: nada.
+    assert (poemas("caio"), poemas("bia"), poemas("ana")) == (3, 1, 0)
+
+    acervo = client.get("/acervo?tipo=iniciantes&limit=100", headers=como("ana")).json()
+    no_acervo = {p["username"]: p["poemas"] for p in acervo["items"]}
+    assert (no_acervo["caio"], no_acervo["bia"], no_acervo["ana"]) == (3, 1, 0)
 
 
 def test_renga_fechada_continua_no_feed(client, como):
@@ -131,7 +221,7 @@ def test_perfil_mostra_a_renga_na_data_da_pessoa(client, como):
         ("renga", renga_id, "escreveu", ["caio"]),
     ]
     assert _resumo(client.get("/usuarios/bia/posts", headers=como("ana")).json()) == [
-        ("renga", renga_id, "escreveu", ["bia"]),
+        ("renga", renga_id, "abriu", ["bia"]),
     ]
 
 

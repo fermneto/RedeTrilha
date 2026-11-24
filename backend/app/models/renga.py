@@ -30,6 +30,9 @@ class Renga(Base):
     limite: Mapped[int]
     # Preenchida ao atingir o limite ou quando o criador encerra.
     fechada_em: Mapped[datetime | None] = mapped_column(default=None, index=True)
+    # Só quando o criador encerra (fechar pelo limite não preenche): é atividade
+    # dele no feed ("fulano encerrou a renga").
+    encerrada_em: Mapped[datetime | None] = mapped_column(default=None)
     created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
 
     criador: Mapped[User] = relationship(lazy="joined")
