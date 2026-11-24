@@ -626,7 +626,7 @@ export function marcarNaAntologia(antologiaId: number, postId: number, dentro: b
 
 // ---- Acervo: espelha backend/app/schemas/acervo.py ----
 
-export const TIPOS_DO_ACERVO = ["todos", "consagrados", "iniciantes"] as const;
+export const TIPOS_DO_ACERVO = ["todos", "consagrados", "contemporaneos"] as const;
 export type TipoDoAcervo = (typeof TIPOS_DO_ACERVO)[number];
 
 export const ORDENS_DO_ACERVO = ["alfabetica", "seguidos", "poemas"] as const;

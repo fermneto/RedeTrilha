@@ -148,9 +148,9 @@ def _consulta(filtros: Filtros):
     )
     if filtros.tipo == "consagrados":
         consulta = consulta.where(User.consagrado)
-    elif filtros.tipo == "iniciantes":
+    elif filtros.tipo == "contemporaneos":
         consulta = consulta.where(~User.consagrado)
-    # Língua e época só existem para consagrados: com elas, iniciante não entra.
+    # Língua e época só existem para consagrados: com elas, poeta da rede não entra.
     if filtros.lingua:
         lingua = _lingua_por_autor()
         consulta = consulta.join(lingua, lingua.c.user_id == User.id).where(
