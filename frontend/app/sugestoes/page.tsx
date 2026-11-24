@@ -27,7 +27,7 @@ import {
   type PoetaDoAcervo,
 } from "@/lib/api";
 
-// PROVISÓRIO: quantos cartões por vez (a grade de 2 colunas fecha sem sobra).
+// Cartões por carga: a grade de 2 colunas fecha sem sobra.
 const POR_PAGINA = 12;
 // Espera da digitação antes de buscar, como no Acervo.
 const ESPERA_DA_BUSCA_MS = 400;
