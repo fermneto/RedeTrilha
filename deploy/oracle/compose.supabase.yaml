@@ -1,0 +1,16 @@
+# ALTERNATIVA: banco gerenciado no Supabase em vez do Postgres da VM
+# (docs/deploy-oracle.md, "Alternativa: banco gerenciado no Supabase").
+# Com DATABASE_URL (Session pooler) no .env:
+#   docker compose -f compose.yaml -f compose.supabase.yaml up -d --build
+# Os serviços db e backup não sobem; o backup do Supabase é o pg_dump manual do guia.
+services:
+  db:
+    profiles: [nunca]
+  backup:
+    profiles: [nunca]
+  seed:
+    depends_on: !reset {}
+  api:
+    depends_on: !override
+      seed:
+        condition: service_completed_successfully

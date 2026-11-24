@@ -68,3 +68,42 @@ def test_erro_nao_tratado_vira_500_e_uma_linha_json_no_log(caplog):
         "tipo": "ValueError",
         "mensagem": "deu ruim",
     }
+
+
+def _deploy(nome: str) -> str:
+    from pathlib import Path
+
+    return (Path(__file__).resolve().parents[2] / "deploy" / "oracle" / nome).read_text()
+
+
+def _blocos_dos_servicos(compose: str) -> dict[str, str]:
+    """O texto de cada serviço do compose.yaml (dois espaços de recuo), sem um parser de YAML."""
+    import re
+
+    servicos = compose.split("\nservices:\n", 1)[1].split("\nnetworks:\n", 1)[0]
+    partes = re.split(r"^  ([a-z0-9-]+):\n", servicos, flags=re.M)
+    return dict(zip(partes[1::2], partes[2::2]))
+
+
+def test_compose_db_sem_porta_publica_e_api_espera_o_banco():
+    blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
+    assert "ports:" not in blocos["db"]
+    assert "pg_isready" in blocos["db"]
+    for servico in ("seed", "api", "backup"):
+        assert "db:\n        condition: service_healthy" in blocos[servico]
+
+
+def test_max_connections_cabe_os_workers_do_env_example():
+    """WEB_CONCURRENCY_MAX x (pool + overflow) + folga <= max_connections do db."""
+    import re
+
+    env = dict(
+        linha.split("=", 1)
+        for linha in _deploy(".env.example").splitlines()
+        if linha and not linha.startswith("#")
+    )
+    maximo = int(re.search(r"max_connections=(\d+)", _deploy("compose.yaml")).group(1))
+    por_worker = int(env["DB_POOL_SIZE"]) + int(env["DB_MAX_OVERFLOW"])
+    folga = 3 + 5  # reservadas ao superusuário + backup, restauração e psql
+    assert int(env["WEB_CONCURRENCY_MAX"]) * por_worker + folga <= maximo
+    assert int(env["WEB_CONCURRENCY"]) <= int(env["WEB_CONCURRENCY_MAX"])

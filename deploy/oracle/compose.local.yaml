@@ -1,21 +1,19 @@
-# SÓ PARA TESTE LOCAL (não use na VM): um Postgres descartável no lugar do Supabase
-# e o Caddy em portas altas com certificado interno.
+# SÓ PARA TESTE LOCAL (não use na VM): o Caddy em portas altas com certificado
+# interno (o .env.local.example) e um "Object Storage" falso (rclone serve s3) para
+# testar o envio do backup sem conta na Oracle.
 #   cp .env.local.example .env
-#   docker compose -f compose.yaml -f compose.local.yaml up -d --build
+#   export COMPOSE_FILE=compose.yaml:compose.local.yaml
+#   docker compose up -d --build
 #   curl -k https://localhost:8443/saude
-#   docker compose -f compose.yaml -f compose.local.yaml down -v
+#   docker compose exec backup backup.sh && ./restaurar.sh --listar
+#   docker compose down -v && rm .env      # derruba e apaga o banco e os backups de teste
 services:
-  db:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_PASSWORD: teste-local
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
-      interval: 2s
-      retries: 30
+  s3-falso:
+    image: rclone/rclone:1.68.2
+    entrypoint: ["sh", "-c", "mkdir -p /dados/verso-backups && exec rclone serve s3 /dados --addr :9000 --auth-key teste-acesso,teste-segredo"]
     networks: [interna]
 
-  seed:
+  backup:
     depends_on:
-      db:
-        condition: service_healthy
+      s3-falso:
+        condition: service_started

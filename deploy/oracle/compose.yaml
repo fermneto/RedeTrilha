@@ -2,9 +2,13 @@
 #   cd deploy/oracle && cp .env.example .env   # e preencha o .env (NUNCA vai para o git)
 #   docker compose up -d --build
 #
-# seed  -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
-# api   -> só sobe depois que o seed terminar bem; vários workers, sem porta pública.
-# caddy -> único serviço exposto (80/443): HTTPS automático e proxy para a api.
+# db     -> Postgres 16 na mesma VM, sem porta pública: só a rede interna o alcança.
+# seed   -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
+# api    -> só sobe depois que o seed terminar bem; vários workers, sem porta pública.
+# caddy  -> único serviço exposto (80/443): HTTPS automático e proxy para a api.
+# backup -> pg_dump diário com retenção, e cópia no Object Storage se configurado.
+#
+# Banco gerenciado no Supabase em vez do db: compose.supabase.yaml (docs/deploy-oracle.md).
 
 name: verso
 
@@ -14,12 +18,66 @@ x-logs: &logs
     max-size: "10m"
     max-file: "5"
 
+x-banco: &banco
+  # O db da VM por padrão; DATABASE_URL no .env troca (Supabase, compose.supabase.yaml).
+  DATABASE_URL: ${DATABASE_URL:-postgresql://verso:${POSTGRES_PASSWORD}@db:5432/verso}
+
 services:
+  db:
+    # Imagem oficial, multi-arquitetura (arm64 no Ampere A1).
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: verso
+      POSTGRES_DB: verso
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env (openssl rand -hex 24)}
+    # Dimensionado para a VM do guia (2 OCPU, 12 GB), dividida com a API e o Caddy.
+    command:
+      - postgres
+      # Cache do próprio Postgres. O banco tem dezenas de MB: 1 GB guarda tudo
+      # e deixa a RAM para a API e para o cache de disco do Linux.
+      - -c
+      - shared_buffers=1GB
+      # Só uma estimativa para o planejador: o que o Linux deve ter em cache (metade da RAM).
+      - -c
+      - effective_cache_size=6GB
+      # Memória por ordenação/hash de cada consulta; 60 conexões x poucos sorts cabem com folga.
+      - -c
+      - work_mem=8MB
+      # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
+      - -c
+      - maintenance_work_mem=256MB
+      # O padrão usa 2 workers x (pool 4 + overflow 2) = 12. 60 deixa ir até 4 x (5 + 5) = 40
+      # sem mexer aqui, + backup, restauração, psql e 3 reservadas ao superusuário.
+      - -c
+      - max_connections=60
+      # O disco da VM é um block volume em SSD: ler fora de ordem custa quase o mesmo.
+      - -c
+      - random_page_cost=1.1
+    # O Postgres usa /dev/shm nas consultas paralelas; o padrão do Docker (64 MB) é curto.
+    shm_size: 256mb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U verso -d verso"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    stop_grace_period: 60s
+    restart: unless-stopped
+    logging: *logs
+    networks: [interna]
+
   seed:
     build: ../../backend
     image: verso-api:local
     env_file: .env
+    environment:
+      <<: *banco
     entrypoint: ["python", "scripts/preparar_banco.py"]
+    depends_on:
+      db:
+        condition: service_healthy
     restart: "no"
     logging: *logs
     networks: [interna]
@@ -28,11 +86,14 @@ services:
     image: verso-api:local
     env_file: .env
     environment:
+      <<: *banco
       # O seed é do serviço acima: nunca nos workers (rodariam juntos).
       SEED_ON_BOOT: "false"
       # Só o Caddy, nesta rede, pode dizer o IP e o https do visitante.
       FORWARDED_ALLOW_IPS: "172.30.0.0/24"
     depends_on:
+      db:
+        condition: service_healthy
       seed:
         condition: service_completed_successfully
     restart: unless-stopped
@@ -58,6 +119,38 @@ services:
     logging: *logs
     networks: [interna]
 
+  backup:
+    build: ./backup
+    image: verso-backup:local
+    environment:
+      PGHOST: db
+      PGUSER: verso
+      PGDATABASE: verso
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      TZ: ${TZ:-America/Sao_Paulo}
+      BACKUP_HORA: ${BACKUP_HORA:-03:30}
+      BACKUP_DIARIOS: ${BACKUP_DIARIOS:-7}
+      BACKUP_SEMANAIS: ${BACKUP_SEMANAIS:-4}
+      # Object Storage da Oracle pela API compatível com S3. Vazio = só o backup local.
+      OCI_BUCKET: ${OCI_BUCKET:-}
+      RCLONE_CONFIG_OCI_TYPE: s3
+      RCLONE_CONFIG_OCI_PROVIDER: Other
+      RCLONE_CONFIG_OCI_ENDPOINT: ${OCI_S3_ENDPOINT:-}
+      RCLONE_CONFIG_OCI_REGION: ${OCI_REGIAO:-}
+      RCLONE_CONFIG_OCI_ACCESS_KEY_ID: ${OCI_ACCESS_KEY:-}
+      RCLONE_CONFIG_OCI_SECRET_ACCESS_KEY: ${OCI_SECRET_KEY:-}
+      RCLONE_CONFIG_OCI_FORCE_PATH_STYLE: "true"
+      # O bucket já existe (criado no console): não tentar criá-lo.
+      RCLONE_CONFIG_OCI_NO_CHECK_BUCKET: "true"
+    volumes:
+      - backups:/backups
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    logging: *logs
+    networks: [interna]
+
 networks:
   interna:
     ipam:
@@ -65,6 +158,10 @@ networks:
         - subnet: 172.30.0.0/24
 
 volumes:
+  # Os dados do Postgres. "docker compose down -v" APAGA este volume (e o banco).
+  pgdata:
+  # Os dumps do serviço backup (diario/ e semanal/).
+  backups:
   # Os certificados do Let's Encrypt: apagar este volume força pedir de novo
   # (e o Let's Encrypt tem limite semanal).
   caddy_data:

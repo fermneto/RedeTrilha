@@ -6,7 +6,8 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 # SQLite local, zero setup. O arquivo app.db NUNCA vai para o git (.gitignore).
 # Os testes apontam DATABASE_URL para um banco descartável (ver tests/conftest.py).
-# No deploy, DATABASE_URL é o Postgres do Supabase (docs/deploy.md).
+# No deploy, DATABASE_URL é o Postgres da VM da Oracle (docs/deploy-oracle.md) ou,
+# na alternativa, o do Supabase (docs/deploy.md).
 
 
 def normalizar_url(url: str) -> str:
@@ -26,7 +27,8 @@ class ConfigDoPool:
     """O pool de conexões de UM processo (worker) do uvicorn, lido do ambiente.
 
     O teto do processo é `pool_size + max_overflow`. Com vários workers, a soma
-    dos tetos tem de caber no pool do Supabase (docs/deploy.md, "Pool de conexões").
+    dos tetos tem de caber no max_connections do Postgres da VM ou no pool do
+    Supabase (docs/deploy-oracle.md, "Workers e pool").
     """
 
     pool_size: int = 5
@@ -57,7 +59,7 @@ def criar_engine(url: str, pool: ConfigDoPool | None = None):
         # O SQLite recusa, por padrão, a conexão usada em outra thread (a do FastAPI).
         return create_engine(url, connect_args={"check_same_thread": False})
     pool = pool or ConfigDoPool.do_ambiente()
-    # pool_pre_ping: o pooler do Supabase derruba conexões ociosas (o Render hiberna).
+    # pool_pre_ping: conexão derrubada (pooler do Supabase, Render que hiberna, db reiniciado).
     return create_engine(
         url,
         pool_pre_ping=True,

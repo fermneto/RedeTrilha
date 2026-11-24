@@ -49,7 +49,7 @@ def preparar_banco() -> None:
     """Cria as tabelas e os índices que faltam, roda o seed (com SEED_ON_BOOT=true, num
     banco SEM usuários) e põe em dia um banco de antes do índice de tags no banco.
 
-    Deploy: o seed só roda no primeiro boot no Postgres do Supabase; nos reinícios
+    Deploy: o seed só roda no primeiro boot, com o banco vazio; nos reinícios
     seguintes os dados criados na URL pública ficam. Com vários workers (Oracle,
     docs/deploy-oracle.md), quem chama isto é o serviço `seed` do compose, uma vez,
     antes da API: cada worker rodando o seed ao mesmo tempo duplicaria os dados.

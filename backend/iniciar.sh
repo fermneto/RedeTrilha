@@ -2,8 +2,8 @@
 # Sobe a API em produção (Dockerfile). Vários workers do uvicorn, atrás do Caddy.
 #
 # WEB_CONCURRENCY: número de workers. Vazio = 2 x núcleos + 1, limitado a
-# WEB_CONCURRENCY_MAX (padrão 4): cada worker abre o próprio pool de conexões e o
-# Session pooler do Supabase free aceita poucas (docs/deploy-oracle.md).
+# WEB_CONCURRENCY_MAX (padrão 4): cada worker abre o próprio pool de conexões, e a
+# soma tem de caber no max_connections do db (docs/deploy-oracle.md, "Workers e pool").
 # FORWARDED_ALLOW_IPS: de quem a API aceita X-Forwarded-For/Proto (a rede interna
 # do compose, onde só o Caddy fala com ela).
 set -eu
