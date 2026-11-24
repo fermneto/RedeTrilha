@@ -146,35 +146,37 @@ function Rengas() {
   );
 }
 
+// Cada linha: título (Literata), quem escreveu e, sempre na mesma posição à
+// esquerda, o selo aberta/fechada, para a lista se ler de cima a baixo.
 function CartaoDaRenga({ renga }: { renga: Renga }) {
   return (
     <article className="relative px-4 py-4 transition-colors duration-150 hover:bg-tinta/[0.03]">
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-        <h2 className="font-serifada text-xl break-words">
-          {/* O título é o link do cartão inteiro; os nomes por cima continuam clicáveis. */}
-          <Link href={`/rengas/${renga.id}`} className="after:absolute after:inset-0 hover:underline">
-            {renga.titulo}
-          </Link>
-        </h2>
-        <SeloDaRenga fechada={renga.fechada} />
-      </div>
+      <h2 className="font-serifada text-xl leading-snug font-semibold tracking-[-0.01em] break-words">
+        {/* O título é o link do cartão inteiro; os nomes por cima continuam clicáveis. */}
+        <Link href={`/rengas/${renga.id}`} className="after:absolute after:inset-0 hover:underline">
+          {renga.titulo}
+        </Link>
+      </h2>
       <p className="relative mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span className="tabular-nums">
-          {renga.qtd_estrofes} de {renga.limite} estrofes
-        </span>
-        <span aria-hidden="true">·</span>
-        <span>{renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}</span>
-        <span aria-hidden="true">·</span>
-        <span>{formatarData(renga.created_at)}</span>
-      </p>
-      <p className="relative mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>por</span>
+        <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
         {renga.autores.map((autor, i) => (
-          <span key={autor.id} className="inline-flex items-center">
+          <span key={autor.id} className="inline-flex min-w-0 items-center">
             <NomeAutor usuario={autor} className="font-semibold text-tinta" />
             {i < renga.autores.length - 1 && <span aria-hidden="true">,</span>}
           </span>
         ))}
+      </p>
+      <p className="mt-2 text-[0.8125rem] leading-relaxed text-tinta-suave">
+        <SeloDaRenga fechada={renga.fechada} />{" "}
+        <span className="tabular-nums">
+          {renga.fechada
+            ? `${renga.qtd_estrofes} ${renga.qtd_estrofes === 1 ? "estrofe" : "estrofes"}`
+            : `${renga.qtd_estrofes} de ${renga.limite} estrofes`}
+        </span>
+        , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"},{" "}
+        {renga.fechada && renga.fechada_em
+          ? `fechada em ${formatarData(renga.fechada_em)}`
+          : `começada em ${formatarData(renga.created_at)}`}
       </p>
     </article>
   );

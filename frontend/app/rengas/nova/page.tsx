@@ -37,7 +37,7 @@ export default function NovaRengaPage() {
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [campos, setCampos] = useState<Record<string, string>>({});
-  const idModo = useId();
+  const id = useId();
 
   useEffect(() => {
     if (!temToken()) router.replace(caminhoDoLogin());
@@ -75,90 +75,127 @@ export default function NovaRengaPage() {
   return (
     <div>
       <CabecalhoPagina titulo="Nova renga" />
-      <form onSubmit={enviar} noValidate className="space-y-5 px-4 py-5">
-        <label className="block text-sm">
-          Título
+      <form onSubmit={enviar} noValidate className="space-y-6 px-4 py-5">
+        <div>
+          <label htmlFor={`${id}-titulo`} className="block text-sm font-semibold">
+            Título
+          </label>
           <input
+            id={`${id}-titulo`}
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             maxLength={RENGA_TITULO_MAX}
             placeholder="Renga da chuva no CCHLA"
             aria-invalid={Boolean(campos.titulo)}
-            className={`${campo} mt-1`}
+            aria-describedby={campos.titulo ? `${id}-titulo-erro` : undefined}
+            className={`${campo} poema-titulo mt-1.5`}
           />
-          {campos.titulo && <span className="mt-1 block text-xs text-destaque">{campos.titulo}</span>}
-        </label>
+          {campos.titulo && (
+            <span id={`${id}-titulo-erro`} className="mt-1 block text-xs text-destaque">
+              {campos.titulo}
+            </span>
+          )}
+        </div>
 
-        <label className="block text-sm">
-          Primeira estrofe
+        <div>
+          <label htmlFor={`${id}-estrofe`} className="block text-sm font-semibold">
+            Primeira estrofe
+          </label>
+          <span id={`${id}-estrofe-ajuda`} className="mt-0.5 block text-xs text-tinta-suave">
+            Quebras de linha e recuos ficam como você escrever.
+          </span>
           <textarea
+            id={`${id}-estrofe`}
             value={estrofe}
             onChange={(e) => setEstrofe(e.target.value)}
             rows={6}
             aria-invalid={Boolean(campos.primeira_estrofe)}
-            className={`${campo} poema-corpo mt-1 resize-y`}
+            aria-describedby={
+              campos.primeira_estrofe ? `${id}-estrofe-ajuda ${id}-estrofe-erro` : `${id}-estrofe-ajuda`
+            }
+            className={`${campo} poema-corpo mt-1.5 resize-y`}
           />
           {campos.primeira_estrofe && (
-            <span className="mt-1 block text-xs text-destaque">{campos.primeira_estrofe}</span>
+            <span id={`${id}-estrofe-erro`} className="mt-1 block text-xs text-destaque">
+              {campos.primeira_estrofe}
+            </span>
           )}
-        </label>
+        </div>
 
-        <fieldset className="space-y-2 text-sm" aria-describedby={idModo}>
-          <legend>Quem escreve</legend>
-          {MODOS.map((m) => (
-            <label key={m.valor} className="flex min-h-11 cursor-pointer items-center gap-3">
-              <input
-                type="radio"
-                name="modo"
-                value={m.valor}
-                checked={modo === m.valor}
-                onChange={() => setModo(m.valor)}
-                className="h-4 w-4 accent-[var(--color-destaque)]"
-              />
-              <span>
-                <span className="font-semibold">{m.rotulo}</span>
-                <span className="text-tinta-suave"> — {m.explicacao}</span>
-              </span>
-            </label>
-          ))}
-          <p id={idModo} className="text-xs text-tinta-suave">
+        <fieldset className="text-sm" aria-describedby={`${id}-modo`}>
+          <legend className="font-semibold">Quem escreve</legend>
+          <div className="mt-1">
+            {MODOS.map((m) => (
+              <label key={m.valor} className="flex min-h-11 cursor-pointer items-start gap-3 py-1.5">
+                <input
+                  type="radio"
+                  name="modo"
+                  value={m.valor}
+                  checked={modo === m.valor}
+                  onChange={() => setModo(m.valor)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-destaque)]"
+                />
+                <span>
+                  <span className="block">{m.rotulo}</span>
+                  <span className="block text-tinta-suave">{m.explicacao}</span>
+                </span>
+              </label>
+            ))}
+          </div>
+          <p id={`${id}-modo`} className="mt-1 text-xs text-tinta-suave">
             Em qualquer modo, ninguém escreve duas estrofes seguidas.
           </p>
         </fieldset>
 
         {modo === "convidados" && (
-          <label className="block text-sm">
-            Convidados
+          <div>
+            <label htmlFor={`${id}-convidados`} className="block text-sm font-semibold">
+              Convidados
+            </label>
             <input
+              id={`${id}-convidados`}
               value={convidados}
               onChange={(e) => setConvidados(e.target.value)}
               placeholder="@marina_letras, @caio_eng"
-              className={`${campo} mt-1`}
+              aria-describedby={`${id}-convidados-ajuda`}
+              className={`${campo} mt-1.5`}
             />
-            <span className="mt-1 block text-xs text-tinta-suave">
+            <span id={`${id}-convidados-ajuda`} className="mt-1 block text-xs text-tinta-suave">
               Usernames separados por vírgula ou espaço. Consagrados não entram (não têm login).
             </span>
-          </label>
+          </div>
         )}
 
-        <label className="block text-sm">
-          Limite de estrofes
+        <div>
+          <label htmlFor={`${id}-limite`} className="block text-sm font-semibold">
+            Limite de estrofes
+          </label>
           <input
+            id={`${id}-limite`}
             type="number"
+            inputMode="numeric"
             min={RENGA_LIMITE_MIN}
             max={RENGA_LIMITE_MAX}
             value={limite}
             onChange={(e) => setLimite(Number(e.target.value))}
             aria-invalid={Boolean(campos.limite)}
-            className={`${campo} mt-1 max-w-32 tabular-nums`}
+            aria-describedby={`${id}-limite-ajuda`}
+            className={`${campo} mt-1.5 block max-w-28 tabular-nums`}
           />
-          <span className="mt-1 block text-xs text-tinta-suave">
+          <span
+            id={`${id}-limite-ajuda`}
+            className={`mt-1 block text-xs ${campos.limite ? "text-destaque" : "text-tinta-suave"}`}
+          >
             {campos.limite ??
               `De ${RENGA_LIMITE_MIN} a ${RENGA_LIMITE_MAX}, contando a sua. Ao chegar nele, a renga fecha.`}
           </span>
-        </label>
+        </div>
 
-        {erro && <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+        {erro && (
+          <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+            {erro}
+          </p>
+        )}
 
         <button
           type="submit"
