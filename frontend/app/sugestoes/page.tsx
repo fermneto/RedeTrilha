@@ -1,7 +1,8 @@
 "use client";
 // Quem seguir fora do onboarding: a tela do "ver mais" no Descobrir, no Seguindo
 // vazio e no bloco do "Para você", dentro do layout do site. O último passo do
-// onboarding é a mesma grade em tela cheia (/boas-vindas/quem-seguir). "pular" (ou
+// onboarding é a mesma grade em tela cheia (/boas-vindas/quem-seguir), com a mesma
+// busca por nome ou @username (components/GradeDeSugestoes.tsx). "pular" (ou
 // "continuar", depois de seguir alguém) leva ao Início, que abre no "Para você".
 
 import Link from "next/link";
