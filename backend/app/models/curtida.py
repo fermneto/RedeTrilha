@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
@@ -16,5 +16,5 @@ class Curtida(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"), index=True)
     created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(timezone.utc)
+        default=lambda: datetime.now(UTC)
     )

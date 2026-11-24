@@ -4,7 +4,7 @@ Três tabelas novas, sem coluna a mais nas antigas (o `create_all` do Postgres
 de produção não acrescenta coluna em tabela que já existe).
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -14,7 +14,7 @@ from app.models.user import User
 
 
 def _agora() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 class Renga(Base):

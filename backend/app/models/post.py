@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import JSON, ColumnElement, ForeignKey, Index, String, Text, and_, text
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -9,7 +9,7 @@ from app.models.user import User
 
 
 def _agora() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 class Post(Base):

@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -20,5 +20,5 @@ class User(Base):
     nascimento: Mapped[int | None] = mapped_column(default=None)
     morte: Mapped[int | None] = mapped_column(default=None)
     created_at: Mapped[datetime] = mapped_column(
-        default=lambda: datetime.now(timezone.utc)
+        default=lambda: datetime.now(UTC)
     )
