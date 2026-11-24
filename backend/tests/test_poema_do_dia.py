@@ -2,26 +2,7 @@
 
 from datetime import date
 
-import pytest
-from fastapi import Header
 from sqlalchemy import select
-
-
-@pytest.fixture()
-def como(client):
-    from app.db import SessionLocal
-    from app.deps import get_current_user
-    from app.main import app
-    from app.models.user import User
-
-    def usuario_do_header(x_teste_usuario: str = Header()):
-        with SessionLocal() as db:
-            return db.scalar(select(User).where(User.username == x_teste_usuario))
-
-    app.dependency_overrides[get_current_user] = usuario_do_header
-    client.post("/usuarios", json={"username": "ana", "name": "Ana"})
-    yield lambda username: {"X-Teste-Usuario": username}
-    app.dependency_overrides.clear()
 
 
 def _consagrado_com_poemas(username: str, textos: list[str]) -> list[int]:
