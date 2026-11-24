@@ -183,7 +183,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ### O que ficou de fora e por quê
 
-Cada corte foi pensado para o poeta iniciante, num prazo de 12 dias (16/11 a 27/11).
+Cada corte foi pensado para o poeta iniciante, em 12 dias de prazo (16/11 a 27/11), com o código a partir de 23/11.
 
 - **Mensagens diretas.** A crítica de um poema serve a quem a lê também. Numa
   DM, ela sai do lugar onde os outros iniciantes aprendem com ela. A conversa
@@ -335,8 +335,8 @@ _(resultado do make bench)_
 - **Revisão: humana.** O Neto revisou cada PR e decidiu cada merge, com o
   apoio de um agente de revisão (Claude Code) que rodava os testes e conferia
   os contratos. Os comentários de revisão estão nos PRs, publicados pela conta
-  do Neto. As reviews formais de outros colegas no GitHub se limitam ao #24. O
-  Henrique e o Pedro registram a validação deles nas issues #57 a #62 e na
+  do Neto. A única aprovação formal no GitHub é a do #24, registrada na conta
+  do Neto com apoio do agente de revisão. O Henrique e o Pedro registram a validação deles nas issues #57 a #62 e na
   revisão deste arquivo (#63).
 - **Conteúdo:**
   - Os poemas do seed foram escritos com IA (Claude): os 24 poetas iniciantes,
