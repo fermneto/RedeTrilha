@@ -10,9 +10,10 @@ from app.models.antologia import AntologiaPoema
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.post import Post
+from app.models.rascunho import Rascunho
 from app.models.traducao import Traducao
 from app.models.user import User
-from app.schemas.post import PostCreate, PostOut, PostUpdate
+from app.schemas.post import PostCreate, PostOut
 from app.schemas.user import UserOut
 
 
@@ -146,27 +147,16 @@ def original_de(db: Session, post_id: int) -> Post:
     return post.repost_de if post.repost_puro and post.repost_de else post
 
 
-def criar(db: Session, autor: User, dados: PostCreate) -> Post:
-    post = Post(autor_id=autor.id, **dados.model_dump())
+def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = False) -> Post:
+    """Publica o poema. O poema publicado não se edita: para corrigir, apaga e publica de novo.
+
+    `repost_removido` só vem do rascunho de uma citação cujo original foi apagado
+    antes da publicação (services/rascunhos.py).
+    """
+    post = Post(autor_id=autor.id, repost_removido=repost_removido, **dados.model_dump())
     if dados.repost_de_id is not None:
         post.repost_de_id = original_de(db, dados.repost_de_id).id
     db.add(post)
-    db.commit()
-    db.refresh(post)
-    _indexar(post)
-    return post
-
-
-def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
-    post = _buscar_do_autor(db, usuario, post_id)
-    if post.repost_puro:
-        raise HTTPException(status_code=422, detail="repost puro não se edita; desfaça o repost")
-    campos = dados.model_dump(exclude_unset=True)
-    for campo, valor in campos.items():
-        setattr(post, campo, valor)
-    if campos.keys() & {"titulo", "texto", "idioma"}:
-        # A tradução em cache seria do texto antigo (ou feita a partir da língua errada).
-        db.execute(delete(Traducao).where(Traducao.post_id == post_id))
     db.commit()
     db.refresh(post)
     _indexar(post)
@@ -195,6 +185,12 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         .where(Post.repost_de_id == post_id)
         .values(repost_de_id=None, repost_removido=True)
     )
+    # Citação ainda em rascunho segue a publicada: fica sem o original, marcada.
+    db.execute(
+        update(Rascunho)
+        .where(Rascunho.repost_de_id == post_id)
+        .values(repost_de_id=None, repost_removido=True)
+    )
     db.delete(post)
     db.commit()
     for apagado in (post_id, *puros):
@@ -210,7 +206,7 @@ def reconstruir_indice(db: Session) -> None:
 def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
     post = buscar(db, post_id)
     if post.autor_id != usuario.id:
-        raise HTTPException(status_code=403, detail="só o autor pode alterar o poema")
+        raise HTTPException(status_code=403, detail="só o autor pode apagar o poema")
     return post
 
 

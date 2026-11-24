@@ -6,20 +6,18 @@ import pytest
 POEMA = "Primeiro verso\n\n  segundo verso recuado  \nterceiro verso\n"
 
 
-def test_crud_e_so_o_autor_altera(client, como):
+def test_crud_e_so_o_autor_apaga(client, como):
     r = client.post("/posts", json={"texto": "meu poema"}, headers=como("ana"))
     assert r.status_code == 201
     post_id = r.json()["id"]
     assert r.json()["autor"]["username"] == "ana"
 
-    r = client.patch(f"/posts/{post_id}", json={"texto": "invadido"}, headers=como("bia"))
-    assert r.status_code == 403
     assert client.delete(f"/posts/{post_id}", headers=como("bia")).status_code == 403
     assert client.get(f"/posts/{post_id}", headers=como("bia")).json()["texto"] == "meu poema"
 
+    # Poema publicado é imutável, nem o autor edita.
     r = client.patch(f"/posts/{post_id}", json={"texto": "editado"}, headers=como("ana"))
-    assert r.status_code == 200
-    assert r.json()["texto"] == "editado"
+    assert r.status_code == 405
 
     assert client.delete(f"/posts/{post_id}", headers=como("ana")).status_code == 204
     assert client.get(f"/posts/{post_id}", headers=como("ana")).status_code == 404
@@ -52,24 +50,6 @@ def test_criacao_invalida_da_422(client, como, corpo):
     assert client.post("/posts", json=corpo, headers=como("ana")).status_code == 422
 
 
-def test_patch_parcial_mantem_o_resto_e_limpa_com_null(client, como):
-    r = client.post(
-        "/posts",
-        json={"titulo": "Chuva", "texto": "cai", "forma": "haicai"},
-        headers=como("ana"),
-    )
-    post_id = r.json()["id"]
-
-    r = client.patch(f"/posts/{post_id}", json={"texto": "caiu"}, headers=como("ana"))
-    assert (r.json()["titulo"], r.json()["forma"]) == ("Chuva", "haicai")
-
-    r = client.patch(f"/posts/{post_id}", json={"titulo": None}, headers=como("ana"))
-    assert r.json()["titulo"] is None
-
-    r = client.patch(f"/posts/{post_id}", json={"texto": None}, headers=como("ana"))
-    assert r.status_code == 422
-
-
 def test_indice_de_tags_acompanha_o_poema(client, como):
     from app.core.indice_tags import indice_tags
 
@@ -80,12 +60,8 @@ def test_indice_de_tags_acompanha_o_poema(client, como):
     assert r.json()["tags"] == ["solidao", "soneto"]
     assert indice_tags.posts_da_tag("solidao") == [post_id]
 
-    client.patch(f"/posts/{post_id}", json={"texto": "sobre o #mar"}, headers=como("ana"))
-    assert indice_tags.posts_da_tag("solidao") == []
-    assert indice_tags.posts_da_tag("mar") == [post_id]
-
     client.delete(f"/posts/{post_id}", headers=como("ana"))
-    assert indice_tags.posts_da_tag("mar") == []
+    assert indice_tags.posts_da_tag("solidao") == []
     assert indice_tags.posts_da_tag("soneto") == []
 
 
