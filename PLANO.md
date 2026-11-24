@@ -73,7 +73,7 @@ junto. As citações (com texto) continuam, com `repost_de: null` e
 `repost_removido: true`, e a tela mostra "poema removido pelo autor", como no X.
 
 `PostOut`: os campos acima + `autor: UserOut`, `curtidas`, `comentarios`,
-`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`
+`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`, `repost_removido: bool`
 (um nível) e `tags: list[str]`.
 
 ### `Follow` (dono: Neto)

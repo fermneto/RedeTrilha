@@ -184,6 +184,7 @@ opcional e não foi rodado; se rodarmos até a entrega, colamos a saída aqui.
 - **Claude (Claude Code)** para planejar o projeto (o `PLANO.md`, os contratos
   de dados compartilhados e a divisão de tasks entre os três), revisar PRs e
   implementar partes das tasks de Dados do Neto: o índice de tags
-  (`core/indice_tags.py`), o follow e as rotas de tags e do Explorar. Todo
-  código gerado passou por revisão humana no PR antes do merge.
+  (`core/indice_tags.py`), o follow, as rotas de tags e do Explorar e a
+  leitura dos JSONs dos consagrados. Todo código gerado passou por revisão
+  humana no PR antes do merge.
 - **Henrique e Pedro:** _(completar com a ferramenta e o uso de cada um)_
