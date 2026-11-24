@@ -69,3 +69,12 @@ class PostOut(BaseModel):
     repostei: bool = False
     repost_de: "PostOut | None" = None
     tags: list[str] = []
+
+
+class PostPage(BaseModel):
+    """Página de poemas no padrão do projeto (ver UserPage)."""
+
+    items: list[PostOut]
+    total: int
+    offset: int
+    limit: int
