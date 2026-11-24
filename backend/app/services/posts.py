@@ -5,6 +5,7 @@ from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 from app.core.indice_tags import extrair_tags, indice_tags, normalizar
+from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.post import Post
 from app.models.user import User
@@ -18,10 +19,11 @@ class Contagens:
 
     curtidas: dict[int, int] = field(default_factory=dict)
     curtidos: set[int] = field(default_factory=set)
+    comentarios: dict[int, int] = field(default_factory=dict)
 
 
 def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
-    """Duas queries para a página toda: curtidas por post e quais o usuário curtiu."""
+    """Três queries para a página toda: curtidas, quais o usuário curtiu e comentários."""
     if not post_ids:
         return Contagens()
     curtidas = db.execute(
@@ -34,7 +36,16 @@ def contar(db: Session, post_ids: list[int], usuario: User) -> Contagens:
             Curtida.post_id.in_(post_ids), Curtida.user_id == usuario.id
         )
     )
-    return Contagens(curtidas=dict(curtidas.all()), curtidos=set(curtidos))
+    comentarios = db.execute(
+        select(Comentario.post_id, func.count())
+        .where(Comentario.post_id.in_(post_ids))
+        .group_by(Comentario.post_id)
+    )
+    return Contagens(
+        curtidas=dict(curtidas.all()),
+        curtidos=set(curtidos),
+        comentarios=dict(comentarios.all()),
+    )
 
 
 def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
@@ -76,6 +87,7 @@ def para_saida(
         autor=UserOut.model_validate(post.autor),
         curtidas=contagens.curtidas.get(post.id, 0),
         curti=post.id in contagens.curtidos,
+        comentarios=contagens.comentarios.get(post.id, 0),
         repost_de=(
             para_saida(original, incluir_repost=False, contagens=contagens)
             if original
@@ -120,6 +132,7 @@ def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
 def apagar(db: Session, usuario: User, post_id: int) -> None:
     post = _buscar_do_autor(db, usuario, post_id)
     db.execute(delete(Curtida).where(Curtida.post_id == post_id))
+    db.execute(delete(Comentario).where(Comentario.post_id == post_id))
     db.delete(post)
     db.commit()
     indice_tags.remover(post_id)
