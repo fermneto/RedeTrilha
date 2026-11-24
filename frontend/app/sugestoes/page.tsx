@@ -14,6 +14,7 @@ import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import {
   buscarOpcoesDePreferencias,
   buscarSugestoes,
+  CAMINHO_DOS_GOSTOS,
   caminhoDoLogin,
   temToken,
   type Sugestao,
@@ -63,7 +64,7 @@ export default function SugestoesPage() {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-borda px-4 py-3">
         <p className="text-sm text-tinta-suave">
           Siga poetas para ver os poemas deles na aba Seguindo.{" "}
-          <Link href="/boas-vindas" className="underline">
+          <Link href={CAMINHO_DOS_GOSTOS} className="underline">
             Ajustar o que você gosta
           </Link>
         </p>
