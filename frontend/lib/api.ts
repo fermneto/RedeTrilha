@@ -104,12 +104,28 @@ function camposDoErro(detail: unknown): Record<string, string> {
   return campos;
 }
 
+// GETs que o backend manda com Cache-Control (backend/app/cache_http.py): respostas
+// iguais para todo mundo, sem curti/sigo. Só nelas o navegador usa o próprio cache;
+// o resto continua "no-store", para um clique nunca mostrar o estado antigo.
+const ROTAS_COM_CACHE = new Set([
+  "/tags/trending",
+  "/tags/busca",
+  "/acervo/filtros",
+  "/preferencias/opcoes",
+  "/usuarios",
+]);
+
+export function modoDeCache(method: string, path: string): RequestCache {
+  const rota = path.split("?")[0];
+  return method === "GET" && ROTAS_COM_CACHE.has(rota) ? "default" : "no-store";
+}
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     method,
     headers: headers(),
     body: body === undefined ? undefined : JSON.stringify(body),
-    cache: "no-store",
+    cache: modoDeCache(method, path),
   });
 
   // 401 com token salvo = token que não vale mais (ex.: o banco foi apagado ou o
