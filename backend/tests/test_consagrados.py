@@ -115,3 +115,9 @@ def test_datas_deterministicas_ordenadas_e_nos_ultimos_30_dias():
     assert len(datas) == 10
     assert all(AGORA - timedelta(days=30) <= d <= AGORA for d in datas)
     assert all(d.tzinfo == UTC for d in datas)
+
+
+def test_nascimento_e_opcional():
+    dados = consagrado()
+    del dados["nascimento"]
+    assert Consagrado.model_validate(dados).nascimento is None

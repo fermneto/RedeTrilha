@@ -68,8 +68,12 @@ O `bio` sobe de 280 para 1000 caracteres (consagrados têm bio maior).
 `FORMAS = ["soneto", "haicai", "trova", "quadra", "cordel", "verso_livre", "prosa_poetica", "outro"]`
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
+**Apagar um poema com reposts:** os reposts puros (texto vazio) são apagados
+junto. As citações (com texto) continuam, com `repost_de: null` e
+`repost_removido: true`, e a tela mostra "poema removido pelo autor", como no X.
+
 `PostOut`: os campos acima + `autor: UserOut`, `curtidas`, `comentarios`,
-`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`
+`reposts`, `curti: bool`, `repostei: bool`, `repost_de: PostOut | None`, `repost_removido: bool`
 (um nível) e `tags: list[str]`.
 
 ### `Follow` (dono: Neto)
