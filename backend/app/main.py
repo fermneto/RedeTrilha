@@ -30,7 +30,6 @@ from app.routers import (
     traducao,
     users,
 )
-from app.services.traducao import reconstruir_limite
 
 
 def _banco_vazio() -> bool:
@@ -48,9 +47,8 @@ async def lifespan(app: FastAPI):
         from scripts.seed import main as rodar_seed
 
         rodar_seed()
-    # O índice de tags mora no banco; só o limite de tradução ainda é reconstruído.
-    with SessionLocal() as db:
-        reconstruir_limite(db)
+    # Nada a reconstruir: o índice de tags e o limite de tradução moram no banco
+    # (core/README.md), então o boot é rápido e vale para vários workers.
     yield
 
 
