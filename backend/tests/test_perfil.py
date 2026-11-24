@@ -154,7 +154,7 @@ def test_editar_perfil_explica_o_erro_em_portugues(client, logar, corpo, mensage
     ana = logar("ana")
     r = client.patch("/usuarios/eu", json=corpo, headers=ana)
     assert r.status_code == 422
-    assert r.json()["detail"][0]["msg"] == f"Value error, {mensagem}"
+    assert r.json()["detail"][0]["msg"] == mensagem
 
 
 AVATARES_INVALIDOS = [

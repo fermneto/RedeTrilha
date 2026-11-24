@@ -196,7 +196,7 @@ def test_registro_explica_o_erro_em_portugues(client, campos, mensagem):
     corpo = {"username": "ana", "name": "Ana", "password": SENHA, **campos}
     r = client.post("/auth/registro", json=corpo)
     assert r.status_code == 422
-    assert r.json()["detail"][0]["msg"] == f"Value error, {mensagem}"
+    assert r.json()["detail"][0]["msg"] == mensagem
 
 
 @pytest.mark.parametrize(
@@ -211,7 +211,7 @@ def test_registro_explica_o_erro_em_portugues(client, campos, mensagem):
 def test_post_usuarios_explica_o_erro_em_portugues(client, campos, mensagem):
     r = client.post("/usuarios", json={"username": "ana", "name": "Ana", **campos})
     assert r.status_code == 422
-    assert r.json()["detail"][0]["msg"] == f"Value error, {mensagem}"
+    assert r.json()["detail"][0]["msg"] == mensagem
 
 
 def test_lista_de_reservados_tem_os_nomes_decididos():
