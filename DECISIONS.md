@@ -89,8 +89,9 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 - **Escolha:**
   - **Contas normais, sem login.** Os consagrados podem ser seguidos,
     curtidos, comentados, repostados e citados, mas têm `password_hash = None`,
-    e o login deles dá 401. Seguir um consagrado é o jeito de trazer os
-    clássicos para o próprio feed.
+    e o login deles dá 401. Seguir um consagrado traz todos os poemas dele
+    para o "Seguindo"; no "Para você", os consagrados entram rareados
+    (decisão 3).
   - **Selo próprio.** Um lacre de cera com uma pena (SVG desenhado para o
     Verso), com tooltip "Poeta consagrado · domínio público" e os anos de vida.
     No perfil, aparece a linha "Poeta consagrado · 1884–1914 · obra em domínio
@@ -104,7 +105,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     persa, Bashō em japonês. Os textos não foram editados: saíram só os poemas
     com defeito do scraper, e a única limpeza foi remover caracteres invisíveis
     e o TAB do início dos versos (#49).
-  - **Escola e país.** Cada consagrado tem de 1 a 3 escolas literárias, de um
+  - **Escola e país.** Cada consagrado tem 1 ou 2 escolas literárias, de um
     vocabulário de 15 (antiguidade clássica, medieval e trovadorismo,
     renascimento e classicismo, barroco, arcadismo e neoclassicismo,
     romantismo, realismo, parnasianismo, simbolismo, modernismo hispânico,
@@ -156,9 +157,9 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     curtidas. Um soneto de quem tem dois seguidores entra no topo do mesmo
     jeito que o de quem tem duzentos, e a conversa sobre um poema antigo o
     traz de volta para ser lido.
-  - **Reposts como no X.** Cada poema aparece uma vez, na posição do repost
-    mais recente, com "repostado por" listando todos os seguidos que
-    repostaram. A paginação é por cursor, então poemas novos não deslocam a
+  - **Reposts como no X.** No "Seguindo", cada poema aparece uma vez, na
+    posição do repost mais recente, com "repostado por" listando todos os
+    seguidos que repostaram. A paginação é por cursor, então poemas novos não deslocam a
     rolagem.
   - **Descoberta por forma e tema.** As `#tags` do corpo e a forma viram tags
     clicáveis. O **Explorar** filtra por tag e por chips de forma (inclusive
