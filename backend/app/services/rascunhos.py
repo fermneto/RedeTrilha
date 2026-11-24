@@ -14,7 +14,12 @@ from app.models.post import Post
 from app.models.rascunho import Rascunho
 from app.models.user import User
 from app.schemas.post import PostCreate
-from app.schemas.rascunho import RascunhoCreate, RascunhoOut, RascunhoPage, RascunhoUpdate
+from app.schemas.rascunho import (
+    RascunhoCreate,
+    RascunhoOut,
+    RascunhoPage,
+    RascunhoUpdate,
+)
 from app.services import posts as posts_service
 
 # O editado por último primeiro; o id desempata.

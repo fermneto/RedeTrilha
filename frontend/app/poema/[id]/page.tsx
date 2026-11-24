@@ -13,6 +13,7 @@ import {
   buscarPoema,
   buscarVersosComentados,
   caminhoDoLogin,
+  mensagemDeFalha,
   temToken,
   type Post,
   type SelecaoDeVersos,
@@ -36,7 +37,7 @@ export default function PoemaPage() {
       setPoema(await buscarPoema(id));
       setErro(null);
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para carregar o poema");
+      setErro(mensagemDeFalha(e, "não deu para carregar o poema"));
       return;
     }
     // Sem as marcas, o poema continua legível: só não mostra os números.

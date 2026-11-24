@@ -6,9 +6,11 @@ pela atividade, sem ranking por engajamento (decisão 3). Três passos:
 
 1. `rarear_consagrados`: os consagrados têm milhares de poemas espalhados pelos
    últimos 30 dias e afogariam os poetas da rede. Dos poemas publicados por
-   consagrados, fica só o mais recente de cada janela de tempo (a janela é uma
-   constante do service). A janela é fixa no relógio (múltiplos da época), então
-   a escolha não depende de qual página se pede: o cursor continua estável.
+   consagrados, fica só um de cada janela de tempo (a janela é uma constante do
+   service): o mais recente na língua de quem vê, se a janela tiver algum, senão
+   o mais recente. A janela é fixa no relógio (múltiplos da época) e a língua vem
+   da requisição, então a escolha não depende de qual página se pede: o cursor
+   continua estável.
 2. `misturar`: ordena da atividade mais recente para a mais antiga e deixa um
    item por poema ou renga, na atividade mais recente, como um repost no X. O
    item guarda quem fez as atividades do mesmo tipo da que o subiu (quem
@@ -22,7 +24,7 @@ estrofe, 3·id para comentário) é única entre as três e crescente com o id d
 Montada por request, como `arvore_comentarios.py`: não é singleton. Com n =
 atividades carregadas:
 
-- rarear: O(n), um dict janela -> poema mais recente;
+- rarear: O(n), um dict janela -> poema escolhido;
 - misturar: O(n log n) pela ordenação, mais O(n) para deduplicar.
 
 Memória O(n).
@@ -73,6 +75,8 @@ class Atividade:
     autor_id: int
     data: datetime
     consagrado: bool = False
+    # Língua do poema (`Post.idioma`, ISO 639-1): só importa para rarear.
+    idioma: str | None = None
 
     @property
     def posicao(self) -> tuple[datetime, int]:
@@ -93,8 +97,12 @@ def janela_de(data: datetime, segundos: int) -> int:
     return int(para_utc(data).timestamp()) // segundos
 
 
-def rarear_consagrados(atividades: list[Atividade], segundos: int) -> list[Atividade]:
-    """Tira os poemas publicados por consagrados, menos o mais recente de cada janela.
+def rarear_consagrados(
+    atividades: list[Atividade], segundos: int, lingua: str | None = None
+) -> list[Atividade]:
+    """Tira os poemas publicados por consagrados, menos um de cada janela: o mais
+    recente na `lingua` de quem vê, se a janela tiver algum, senão o mais recente
+    (sem `lingua`, sempre o mais recente).
 
     As outras atividades (poemas de quem não é consagrado, estrofes, comentários,
     inclusive comentários em poemas de consagrados) passam todas. O(n).
@@ -104,7 +112,7 @@ def rarear_consagrados(atividades: list[Atividade], segundos: int) -> list[Ativi
         if atividade.consagrado and atividade.acao == "publicou":
             janela = janela_de(atividade.data, segundos)
             atual = escolhidos.get(janela)
-            if atual is None or atividade.posicao > atual.posicao:
+            if atual is None or _preferencia(atividade, lingua) > _preferencia(atual, lingua):
                 escolhidos[janela] = atividade
     mantidos = {a.posicao for a in escolhidos.values()}
     return [
@@ -112,6 +120,11 @@ def rarear_consagrados(atividades: list[Atividade], segundos: int) -> list[Ativi
         for a in atividades
         if not (a.consagrado and a.acao == "publicou") or a.posicao in mantidos
     ]
+
+
+def _preferencia(atividade: Atividade, lingua: str | None) -> tuple[bool, datetime, int]:
+    """Quem fica na janela: a língua de quem vê primeiro e, entre iguais, o mais recente."""
+    return (lingua is not None and atividade.idioma == lingua, *atividade.posicao)
 
 
 def misturar(atividades: list[Atividade]) -> list[ItemMisturado]:

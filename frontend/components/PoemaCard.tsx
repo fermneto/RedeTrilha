@@ -18,6 +18,7 @@ import {
   ErroDaApi,
   formatarData,
   idiomaDoNavegador,
+  mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
   repostar,
@@ -58,7 +59,13 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
     <article
       className={aninhado ? "rounded-2xl border border-borda p-3" : "px-4 pt-3 pb-1"}
     >
-      {!aninhado && reposters.length > 0 && <RepostadoPor usuarios={reposters} />}
+      {!aninhado && reposters.length > 0 && (
+        <RotuloDeAtividade
+          icone={<IconeRepostar className="h-4 w-4" />}
+          usuarios={reposters}
+          antes="repostado por "
+        />
+      )}
       {!aninhado && <ComentadoPor post={post} />}
 
       <div className="flex gap-3">
@@ -169,7 +176,7 @@ function Traduzir({ poema }: { poema: Post }) {
     } catch (e) {
       if (e instanceof ErroDaApi && e.status === 503) setErro("tradução indisponível agora");
       else if (e instanceof ErroDaApi && e.status === 429) setErro("limite de traduções atingido, tente mais tarde");
-      else setErro(e instanceof Error ? e.message : "não deu para traduzir");
+      else setErro(mensagemDeFalha(e, "não deu para traduzir"));
     } finally {
       setCarregando(false);
     }
@@ -215,19 +222,31 @@ function Traduzir({ poema }: { poema: Post }) {
   );
 }
 
-function RepostadoPor({ usuarios }: { usuarios: User[] }) {
+// A linha acima do poema, como no X: ícone numa coluna do tamanho do avatar e os
+// nomes ("ana", "ana e bia", "ana, bia e mais 2") entre o texto de antes e o de depois.
+function RotuloDeAtividade({
+  icone,
+  usuarios,
+  antes = "",
+  depois = "",
+}: {
+  icone: ReactNode;
+  usuarios: User[];
+  antes?: string;
+  depois?: string;
+}) {
   const [a, b] = usuarios;
   const resto = usuarios.length - 2;
   return (
     <p className="mb-1 flex items-center gap-3 text-[0.8125rem] font-semibold text-tinta-suave">
-      <span className="flex w-10 shrink-0 justify-end">
-        <IconeRepostar className="h-4 w-4" />
-      </span>
+      <span className="flex w-10 shrink-0 justify-end">{icone}</span>
       <span className="min-w-0">
-        repostado por <NomeLink usuario={a} />
+        {antes}
+        <NomeLink usuario={a} />
         {b && (resto > 0 ? ", " : " e ")}
         {b && <NomeLink usuario={b} />}
         {resto > 0 && ` e mais ${resto}`}
+        {depois}
       </span>
     </p>
   );
@@ -238,19 +257,12 @@ function RepostadoPor({ usuarios }: { usuarios: User[] }) {
 function ComentadoPor({ post }: { post: Post }) {
   const rotulo = rotuloDoComentario(post);
   if (!rotulo) return null;
-  const [a, b] = post.comentado_por ?? [];
   return (
-    <p className="mb-1 flex items-center gap-3 text-[0.8125rem] font-semibold text-tinta-suave">
-      <span className="flex w-10 shrink-0 justify-end">
-        <IconeComentar className="h-4 w-4" />
-      </span>
-      <span className="min-w-0">
-        <NomeLink usuario={a} />
-        {b && (rotulo.resto > 0 ? ", " : " e ")}
-        {b && <NomeLink usuario={b} />}
-        {rotulo.resto > 0 && ` e mais ${rotulo.resto}`} {rotulo.verbo}
-      </span>
-    </p>
+    <RotuloDeAtividade
+      icone={<IconeComentar className="h-4 w-4" />}
+      usuarios={post.comentado_por ?? []}
+      depois={` ${rotulo.verbo}`}
+    />
   );
 }
 
@@ -331,7 +343,7 @@ function Acoes({ poema }: { poema: Post }) {
     } catch (e) {
       setCurti(!novo);
       setCurtidas((n) => n + (novo ? -1 : 1));
-      setErro(e instanceof Error ? e.message : "não deu para curtir");
+      setErro(mensagemDeFalha(e, "não deu para curtir"));
     }
   }
 
@@ -345,7 +357,7 @@ function Acoes({ poema }: { poema: Post }) {
     } catch (e) {
       setRepostei(!novo);
       setReposts((n) => n + (novo ? -1 : 1));
-      setErro(e instanceof Error ? e.message : "não deu para repostar");
+      setErro(mensagemDeFalha(e, "não deu para repostar"));
     }
   }
 

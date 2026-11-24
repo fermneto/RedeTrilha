@@ -197,11 +197,18 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   inteira (seguidos ou não, inclusive os próprios): poemas e citações; reposts
   puros, como no X (o poema aparece uma vez, na data do repost mais recente, com
   `repostado_por`); rengas que não fecharam (na estrofe mais recente, com o
-  rótulo `"abriu"`/`"escreveu"`); poemas de consagrados rareados (o mais recente
-  de cada janela de 3 h); e poemas que receberam comentário, que sobem na data
-  do comentário mais recente. Cronológico pela atividade, sem ranking por
+  rótulo `"abriu"`/`"escreveu"`); poemas de consagrados rareados (um por
+  janela de 3 h: o mais recente na língua de quem vê, se a janela tiver algum,
+  senão o mais recente de qualquer língua); e poemas que receberam comentário,
+  que sobem na data do comentário mais recente. Cronológico pela atividade, sem ranking por
   engajamento; a mistura fica em `core/mistura.py`. O rótulo é o da atividade
   mais recente (repost → `repostado_por`; comentário → `comentado_por`).
+- `GET /feed/para-voce?lingua=en` (opcional, ISO 639-1, 422 fora do padrão):
+  a língua de quem vê, que o front manda com a do navegador. Sem ela, vale a
+  mais frequente nos poemas da própria pessoa (a mesma regra de
+  `GET /sugestoes`); sem nenhuma das duas, fica o mais recente de cada janela.
+  A escolha depende só da janela e da língua da requisição, então o cursor é
+  estável.
 - `PoemaNoFeed` ganhou dois campos opcionais, só preenchidos no "Para você":
   `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
   nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último

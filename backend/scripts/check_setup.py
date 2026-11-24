@@ -46,7 +46,9 @@ def checa_node() -> None:
     if not node:
         falha("node não encontrado — instale a versão do frontend/.nvmrc via https://nodejs.org")
         return
-    versao = subprocess.run([node, "--version"], capture_output=True, text=True).stdout.strip()
+    versao = subprocess.run(
+        [node, "--version"], capture_output=True, text=True, check=False
+    ).stdout.strip()
     major = int(versao.lstrip("v").split(".")[0])
     if major >= 20:
         ok(f"node {versao}")

@@ -36,9 +36,11 @@ def _consagrado(username: str = "bilac") -> int:
         return user.id
 
 
-def _poema_de_consagrado(autor_id: int, texto: str, data: datetime) -> int:
+def _poema_de_consagrado(
+    autor_id: int, texto: str, data: datetime, idioma: str | None = None
+) -> int:
     with SessionLocal() as db:
-        post = Post(autor_id=autor_id, texto=texto, created_at=data)
+        post = Post(autor_id=autor_id, texto=texto, created_at=data, idioma=idioma)
         db.add(post)
         db.commit()
         return post.id
@@ -211,6 +213,69 @@ def test_consagrados_nao_afogam_a_rede(client, como):
     # Comentário sobe o poema de consagrado que tinha ficado de fora.
     _comentar(client, como, "caio", mesma_janela[0], BASE + timedelta(hours=5))
     assert _resumo(_para_voce(client, como))[0] == ("poema", "soneto 0", "comentario", ["caio"])
+
+
+def _textos(corpo: dict) -> list[str]:
+    return [i["texto"] for i in corpo["items"]]
+
+
+def test_consagrado_na_lingua_do_navegador_tem_preferencia_na_janela(client, como):
+    bilac = _consagrado()
+    # Na mesma janela, o poema na língua de quem vê fica mesmo sendo o mais antigo.
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(minutes=50), "pt")
+    _poema_de_consagrado(bilac, "old sonnet", BASE + timedelta(minutes=10), "en")
+    _poema_de_consagrado(bilac, "new sonnet", BASE + timedelta(minutes=30), "en")
+    _poema_de_consagrado(bilac, "sem idioma", BASE + timedelta(minutes=40))
+    assert _textos(_para_voce(client, como, lingua="en")) == ["new sonnet"]
+    assert _textos(_para_voce(client, como, lingua="pt")) == ["soneto"]
+
+
+def test_janela_sem_a_lingua_de_quem_ve_fica_com_o_mais_recente(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "poème", BASE + timedelta(minutes=10), "fr")
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=50), "en")
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(hours=4), "pt")
+    assert _textos(_para_voce(client, como, lingua="pt")) == ["soneto", "sonnet"]
+
+
+def test_sem_lingua_vale_a_dos_poemas_da_pessoa(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(minutes=10), "pt")
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=50), "en")
+    for quem, idioma in (("caio", "en"), ("bia", "pt")):
+        r = client.post("/posts", json={"texto": "meu", "idioma": idioma}, headers=como(quem))
+        assert r.status_code == 201
+    do_bilac = {"soneto", "sonnet"}
+    assert [t for t in _textos(_para_voce(client, como, "caio")) if t in do_bilac] == ["sonnet"]
+    assert [t for t in _textos(_para_voce(client, como, "bia")) if t in do_bilac] == ["soneto"]
+
+
+def test_sem_lingua_nem_poemas_fica_o_mais_recente(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(minutes=50), "pt")
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=10), "en")
+    _poema_de_consagrado(bilac, "poème", BASE + timedelta(minutes=55), "fr")
+    assert _textos(_para_voce(client, como)) == ["poème"]
+
+
+def test_lingua_invalida_da_422(client, como):
+    r = client.get("/feed/para-voce?lingua=pt-BR", headers=como("ana"))
+    assert r.status_code == 422
+
+
+def test_cursor_estavel_com_preferencia_pela_lingua(client, como):
+    bilac = _consagrado()
+    _poema_de_consagrado(bilac, "soneto", BASE + timedelta(minutes=50), "pt")
+    _poema_de_consagrado(bilac, "sonnet", BASE + timedelta(minutes=10), "en")
+    _poema(client, como, "bia", "da bia", BASE + timedelta(hours=4))
+    _poema(client, como, "bia", "outro da bia", BASE + timedelta(hours=5))
+    pagina = _para_voce(client, como, limit=1, lingua="en")
+    textos = _textos(pagina)
+    while pagina["proximo_cursor"]:
+        pagina = _para_voce(client, como, limit=1, lingua="en", cursor=pagina["proximo_cursor"])
+        textos += _textos(pagina)
+    assert textos == ["outro da bia", "da bia", "sonnet"]
+    assert textos == _textos(_para_voce(client, como, lingua="en"))
 
 
 def test_feed_seguindo_nao_traz_rotulo_de_comentario(client, como):
