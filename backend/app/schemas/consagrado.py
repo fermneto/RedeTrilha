@@ -13,6 +13,20 @@ from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
 PADRAO_TAG = re.compile(r"^[a-z0-9_]+$")
+VERSOS_DO_SONETO = 14
+
+
+def forma_coerente(forma: str | None, texto: str) -> str | None:
+    """Só é soneto com 14 versos não vazios; senão a forma vira None (o texto não muda).
+
+    O scraper marca como soneto canções, odes e poemas longos, e a forma alimenta
+    a tag #soneto no índice.
+    """
+    if forma == "soneto":
+        versos = sum(1 for linha in texto.split("\n") if linha.strip())
+        if versos != VERSOS_DO_SONETO:
+            return None
+    return forma
 
 
 class PoemaConsagrado(BaseModel):
@@ -36,6 +50,11 @@ class PoemaConsagrado(BaseModel):
             if not PADRAO_TAG.match(tag):
                 raise ValueError(f"tag inválida {tag!r}: use só [a-z0-9_]")
         return tags
+
+    @model_validator(mode="after")
+    def _soneto_so_com_14_versos(self) -> "PoemaConsagrado":
+        self.forma = forma_coerente(self.forma, self.texto)
+        return self
 
 
 class Consagrado(BaseModel):

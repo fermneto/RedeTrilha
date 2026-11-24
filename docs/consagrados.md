@@ -18,6 +18,12 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    grava nada. Um `username` que já é de uma conta comum também aborta tudo.
 6. As `tags` de cada poema vão para a coluna `tags_extras` do `Post` e somam-se
    às `#hashtags` do texto e à forma no índice de tags.
+   Um poema marcado como `soneto` só fica com essa forma se tiver 14 versos
+   não vazios; senão entra com `forma` nula (o texto não muda). A regra é
+   `forma_coerente`, em `app/schemas/consagrado.py`.
+   As tags que são nome de língua (`portugues`, `latim`, `persa`…, lista em
+   `TAGS_DE_LINGUA` no importador) ficam fora de `tags_extras`; o JSON não muda.
+   A forma `outro` não vira tag (as outras formas viram).
 7. O índice de tags vive em memória e é reconstruído no startup da API. Se o
    importador rodar com o servidor de pé, as tags novas só aparecem no
    `/tags/...` depois de reiniciar o servidor.
@@ -38,7 +44,7 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
     {
       "titulo": "Versos Íntimos",     // opcional (null para poemas sem título)
       "texto": "linha 1\nlinha 2\n\nestrofe 2...",  // \n preservados; \n\n separa estrofes
-      "forma": "soneto",              // opcional; um de FORMAS (PLANO.md)
+      "forma": "soneto",              // opcional; um de FORMAS (PLANO.md); soneto exige 14 versos
       "obra": "Eu",                   // opcional
       "ano": 1912,                    // opcional
       "fonte": "https://pt.wikisource.org/wiki/...",  // obrigatório

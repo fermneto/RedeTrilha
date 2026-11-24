@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.consagrado import Consagrado
+from app.schemas.consagrado import Consagrado, forma_coerente
 from scripts.importar_consagrados import (
     PASTA_CONSAGRADOS,
     ArquivoConsagradoInvalido,
@@ -20,7 +20,7 @@ def consagrado(**campos) -> dict:
     poema = {
         "titulo": "Poema",
         "texto": "verso um\nverso dois",
-        "forma": "soneto",
+        "forma": "quadra",
         "fonte": "https://pt.wikisource.org/wiki/Poema",
         "tags": ["morte"],
     }
@@ -57,6 +57,29 @@ def test_morte_depois_de_1955_e_recusada():
 def test_nascimento_depois_da_morte_e_recusado():
     with pytest.raises(ValidationError, match="anterior à morte"):
         Consagrado.model_validate(consagrado(nascimento=1920, morte=1914))
+
+
+SONETO = "\n".join(f"verso {n}" for n in range(1, 9)) + "\n\n" + "\n".join(
+    f"verso {n}" for n in range(9, 15)
+)
+
+
+def test_forma_coerente_so_aceita_soneto_com_14_versos():
+    assert forma_coerente("soneto", SONETO) == "soneto"
+    assert forma_coerente("soneto", "\n" + SONETO + "\n\n") == "soneto"
+    assert forma_coerente("soneto", SONETO + "\nverso 15") is None
+    assert forma_coerente("soneto", "verso um\nverso dois") is None
+    assert forma_coerente("quadra", "verso um\nverso dois") == "quadra"
+    assert forma_coerente(None, SONETO) is None
+
+
+def test_soneto_sem_14_versos_entra_sem_forma_e_com_o_texto_intacto():
+    longo = SONETO + "\n\nmais um verso"
+    dados = consagrado(poema={"forma": "soneto", "texto": longo})
+    [poema] = Consagrado.model_validate(dados).poemas
+    assert (poema.forma, poema.texto) == (None, longo)
+    dados = consagrado(poema={"forma": "soneto", "texto": SONETO})
+    assert Consagrado.model_validate(dados).poemas[0].forma == "soneto"
 
 
 def test_forma_invalida_e_recusada():
@@ -205,7 +228,7 @@ def test_importar_cria_consagrado_sem_login_e_poema_com_texto_identico(
 
     [post] = _posts_de("poeta_teste")
     assert post.texto == TEXTO
-    assert (post.forma, post.obra, post.tags_extras) == ("soneto", "Eu", ["morte"])
+    assert (post.forma, post.obra, post.tags_extras) == ("quadra", "Eu", ["morte"])
     leitora = logar("leitora")
     assert client.get(f"/posts/{post.id}", headers=leitora).json()["texto"] == TEXTO
 
@@ -231,6 +254,17 @@ def test_reimportar_nao_duplica_atualiza_e_mantem_a_data(client, tmp_path):
     assert _usuario("poeta_teste").bio == "bio nova"
 
 
+def test_tags_de_lingua_ficam_fora_das_tags_extras(client, tmp_path):
+    tags = ["morte", "portugues", "saudade", "latim"]
+    escrever(tmp_path, "poeta_teste.json", consagrado(poema={"tags": tags}))
+    _importar_pasta(tmp_path)
+
+    [post] = _posts_de("poeta_teste")
+    assert post.tags_extras == ["morte", "saudade"]
+    no_json = json.loads((tmp_path / "poeta_teste.json").read_text(encoding="utf-8"))
+    assert no_json["poemas"][0]["tags"] == tags
+
+
 def test_tags_extras_entram_no_indice_ao_reconstruir(client, logar, tmp_path):
     from app.db import SessionLocal
     from app.services.posts import reconstruir_indice
@@ -243,7 +277,7 @@ def test_tags_extras_entram_no_indice_ao_reconstruir(client, logar, tmp_path):
     [post] = _posts_de("poeta_teste")
     pagina = client.get("/tags/desilusao/posts", headers=logar("leitora")).json()
     assert [p["id"] for p in pagina["items"]] == [post.id]
-    assert pagina["items"][0]["tags"] == ["desilusao", "soneto"]
+    assert pagina["items"][0]["tags"] == ["desilusao", "quadra"]
 
 
 def test_morte_depois_de_1955_nao_grava_nada(client, tmp_path, monkeypatch):
