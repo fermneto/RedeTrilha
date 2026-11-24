@@ -151,3 +151,34 @@ def test_usuarios_do_seed_logam_com_a_senha_padrao(client):
     )
     assert r.status_code == 200
     assert seed.SENHA_SEED == "verso123"
+
+
+@pytest.mark.parametrize("username", ["stats", "perfil", "feed", "explorar", "api", "usuarios"])
+def test_registro_recusa_username_reservado(client, username):
+    r = client.post(
+        "/auth/registro", json={"username": username, "name": "Alguém", "password": SENHA}
+    )
+    assert r.status_code == 422
+    assert "reservado" in r.json()["detail"][0]["msg"]
+
+
+def test_username_reservado_vale_tambem_no_post_usuarios(client):
+    r = client.post("/usuarios", json={"username": "login", "name": "Alguém"})
+    assert r.status_code == 422
+    assert "reservado" in r.json()["detail"][0]["msg"]
+
+
+def test_username_que_so_contem_um_reservado_passa(client):
+    r = client.post(
+        "/auth/registro", json={"username": "feed_da_ana", "name": "Ana", "password": SENHA}
+    )
+    assert r.status_code == 201
+
+
+def test_lista_de_reservados_tem_os_nomes_decididos():
+    from app.schemas.user import USERNAMES_RESERVADOS
+
+    assert USERNAMES_RESERVADOS == {
+        "eu", "stats", "admin", "verso", "perfil", "u", "login", "cadastro", "explorar",
+        "escrever", "antologias", "usuarios", "poema", "poemas", "tags", "feed", "auth", "api",
+    }

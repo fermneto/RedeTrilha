@@ -1,6 +1,9 @@
 """Perfil do poeta (P4): GET /usuarios/{username}, PATCH /usuarios/eu e
 GET /usuarios/{username}/posts, com a auth real (fixture `logar`)."""
 
+import pytest
+from pydantic import ValidationError
+
 
 def _poema(client, quem: dict, texto: str, **extra) -> int:
     r = client.post("/posts", json={"texto": texto, **extra}, headers=quem)
@@ -133,3 +136,49 @@ def test_poemas_do_perfil_paginam_por_cursor(client, logar):
 
     assert vistos == [f"poema {i}" for i in reversed(range(5))]
     assert client.get("/usuarios/ana/posts?cursor=lixo", headers=ana).status_code == 422
+
+
+AVATARES_INVALIDOS = [
+    "ftp://exemplo.com/a.png",
+    "javascript:alert(1)",
+    "exemplo.com/a.png",
+    "https://",
+    " ",
+]
+
+
+def test_avatar_url_aceita_vazio_ou_http_s_e_guarda_como_veio(client, logar):
+    ana = logar("ana")
+    for url in ("https://exemplo.com/a.png?tam=200", "http://exemplo.com/a.png", ""):
+        r = client.patch("/usuarios/eu", json={"avatar_url": url}, headers=ana)
+        assert r.status_code == 200, url
+        assert r.json()["avatar_url"] == url
+
+
+def test_avatar_url_invalida_da_422_no_patch(client, logar):
+    ana = logar("ana")
+    for url in AVATARES_INVALIDOS:
+        r = client.patch("/usuarios/eu", json={"avatar_url": url}, headers=ana)
+        assert r.status_code == 422, url
+        assert "http(s)" in r.json()["detail"][0]["msg"]
+
+
+def test_avatar_url_invalida_da_422_no_post_usuarios(client):
+    for url in AVATARES_INVALIDOS:
+        r = client.post("/usuarios", json={"username": "ana", "name": "Ana", "avatar_url": url})
+        assert r.status_code == 422, url
+    r = client.post(
+        "/usuarios",
+        json={"username": "ana", "name": "Ana", "avatar_url": "https://exemplo.com/a.png"},
+    )
+    assert r.status_code == 201
+
+
+def test_avatar_url_invalida_recusada_no_json_de_consagrado():
+    from app.schemas.consagrado import Consagrado
+
+    poema = {"texto": "um verso", "fonte": "https://pt.wikisource.org/wiki/Poema"}
+    dados = {"username": "poeta_teste", "name": "Poeta", "morte": 1914, "poemas": [poema]}
+    assert Consagrado.model_validate({**dados, "avatar_url": ""}).avatar_url == ""
+    with pytest.raises(ValidationError, match="http"):
+        Consagrado.model_validate({**dados, "avatar_url": "javascript:alert(1)"})
