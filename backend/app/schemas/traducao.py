@@ -1,11 +1,15 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, field_validator
+
+from app.schemas.idioma import validar_idioma
 
 
 class TraducaoPedido(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     # Código ISO 639-1 da língua de destino, em minúsculas ("pt", "en", "zh").
-    para: str = Field(pattern=r"^[a-z]{2}$")
+    para: str
+
+    _para = field_validator("para")(validar_idioma)
 
 
 class TraducaoOut(BaseModel):

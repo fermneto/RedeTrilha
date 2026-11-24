@@ -255,8 +255,13 @@ export type NovoPoema = {
   titulo: string | null;
   texto: string;
   forma: string | null;
+  // ISO 639-1; null = outra língua (desconhecida). Sem o campo, o backend usa "pt".
+  idioma?: string | null;
   repost_de_id?: number;
 };
+
+// Línguas do seletor do compositor, português primeiro (o padrão). "outra" manda null.
+export const IDIOMAS_DO_COMPOSITOR = ["pt", "es", "en", "fr", "it", "de", "la"] as const;
 
 // Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
 export function temToken(): boolean {

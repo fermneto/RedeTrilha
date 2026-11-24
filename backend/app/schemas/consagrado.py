@@ -9,13 +9,12 @@ from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.schemas.idioma import IDIOMAS
 from app.schemas.post import _validar_forma, _validar_texto
 from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
 ANO_LIMITE_DOMINIO_PUBLICO = 1955
 PADRAO_TAG = re.compile(r"^[a-z0-9_]+$")
-# Subdomínio de língua dos projetos Wikimedia (pt.wikisource.org, ja.wikiquote.org).
-PADRAO_IDIOMA = re.compile(r"^[a-z]{2}$")
 
 
 def idioma_da_fonte(fonte: str | None) -> str | None:
@@ -27,7 +26,8 @@ def idioma_da_fonte(fonte: str | None) -> str | None:
         return None
     host = (urlsplit(fonte).hostname or "").lower()
     partes = host.split(".")
-    if len(partes) < 3 or not PADRAO_IDIOMA.match(partes[0]):
+    # Subdomínio de língua dos projetos Wikimedia (pt.wikisource.org, ja.wikiquote.org).
+    if len(partes) < 3 or partes[0] not in IDIOMAS:
         return None
     return partes[0]
 

@@ -163,8 +163,8 @@ def editar(db: Session, usuario: User, post_id: int, dados: PostUpdate) -> Post:
     campos = dados.model_dump(exclude_unset=True)
     for campo, valor in campos.items():
         setattr(post, campo, valor)
-    if campos.keys() & {"titulo", "texto"}:
-        # A tradução em cache seria do texto antigo.
+    if campos.keys() & {"titulo", "texto", "idioma"}:
+        # A tradução em cache seria do texto antigo (ou feita a partir da língua errada).
         db.execute(delete(Traducao).where(Traducao.post_id == post_id))
     db.commit()
     db.refresh(post)

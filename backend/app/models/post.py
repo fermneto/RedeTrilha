@@ -7,11 +7,6 @@ from app.db import Base
 from app.models.user import User
 
 
-# Poemas dos usuários entram em português; os consagrados recebem o idioma da `fonte`
-# no importador (decisão em aberto: o compositor pode ganhar um seletor).
-IDIOMA_PADRAO = "pt"
-
-
 def _agora() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -41,8 +36,9 @@ class Post(Base):
     obra: Mapped[str | None] = mapped_column(String(200), default=None)
     ano: Mapped[int | None] = mapped_column(default=None)
     fonte: Mapped[str | None] = mapped_column(String(500), default=None)
-    # Código ISO 639-1 ("pt", "en", "zh"); None = língua desconhecida.
-    idioma: Mapped[str | None] = mapped_column(String(2), default=IDIOMA_PADRAO)
+    # Código ISO 639-1 ("pt", "en", "zh"); None = língua desconhecida. O padrão
+    # (IDIOMA_PADRAO) vem do PostCreate; o repost puro fica None e usa o do original.
+    idioma: Mapped[str | None] = mapped_column(String(2), default=None)
     # Tags que vêm de fora do texto (os JSONs dos consagrados); somam-se às #hashtags.
     tags_extras: Mapped[list[str]] = mapped_column(JSON, default=list)
     repost_de_id: Mapped[int | None] = mapped_column(
