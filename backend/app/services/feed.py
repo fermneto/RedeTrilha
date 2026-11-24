@@ -57,7 +57,7 @@ class Item(NamedTuple):
     """Um poema do feed: a ocorrência mais recente e quem o repostou."""
 
     ocorrencia: Ocorrencia
-    reposters: list[int]
+    repostado_por: list[int]
 
 
 def feed(
@@ -119,23 +119,23 @@ def _deduplicar(ocorrencias: list[Ocorrencia]) -> list[Item]:
     por_poema: dict[int, Item] = {}
     for ocorrencia in ocorrencias:
         item = por_poema.setdefault(ocorrencia.poema_id, Item(ocorrencia, []))
-        if ocorrencia.repost_puro and ocorrencia.autor_id not in item.reposters:
-            item.reposters.append(ocorrencia.autor_id)
+        if ocorrencia.repost_puro and ocorrencia.autor_id not in item.repostado_por:
+            item.repostado_por.append(ocorrencia.autor_id)
     return list(por_poema.values())
 
 
 def _montar(db: Session, pagina: list[Item], usuario: User) -> list[PostOut]:
     ids = {item.ocorrencia.poema_id for item in pagina}
     por_id = {post.id: post for post in db.scalars(select(Post).where(Post.id.in_(ids)))}
-    ids_reposters = {autor_id for item in pagina for autor_id in item.reposters}
-    reposters = {
+    ids_de_quem_repostou = {autor_id for item in pagina for autor_id in item.repostado_por}
+    quem_repostou = {
         user.id: UserOut.model_validate(user)
-        for user in db.scalars(select(User).where(User.id.in_(ids_reposters)))
+        for user in db.scalars(select(User).where(User.id.in_(ids_de_quem_repostou)))
     }
     saidas = para_saidas(db, [por_id[item.ocorrencia.poema_id] for item in pagina], usuario)
     return [
         saida.model_copy(
-            update={"repostado_por": [reposters[autor_id] for autor_id in item.reposters]}
+            update={"repostado_por": [quem_repostou[autor_id] for autor_id in item.repostado_por]}
         )
         for saida, item in zip(saidas, pagina)
     ]
