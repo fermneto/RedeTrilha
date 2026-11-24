@@ -45,6 +45,6 @@ lá valem como lei.
 
 1. `git checkout main && git pull && git checkout -b feat/<slug>` (ex.: `feat/auth`).
 2. Implemente; tire o `@skip` dos testes relevantes; `make test` verde.
-3. Commit em português **sem** trailer `Co-Authored-By`.
-4. `git push -u origin <branch>` e `gh pr create --repo fermneto/RedeTrilha --base main --reviewer fermneto` com `Closes #N`, **sem**
+3. Commit em português no padrão `tipo(escopo): descrição` do CLAUDE.md, **sem** trailer `Co-Authored-By`.
+4. `git push -u origin <branch>` e `gh pr create --title "tipo(escopo): descrição" --repo fermneto/RedeTrilha --base main --reviewer fermneto` com `Closes #N`, **sem**
    "Generated with Claude Code". O avaliador é o Neto (@fermneto).

@@ -15,6 +15,8 @@ from collections import Counter
 from datetime import UTC, datetime
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
+# "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
+FORMA_SEM_TAG = "outro"
 
 
 def normalizar(texto: str) -> str:
@@ -24,9 +26,9 @@ def normalizar(texto: str) -> str:
 
 
 def extrair_tags(texto: str, forma: str | None) -> set[str]:
-    """Tags do poema: as #hashtags do texto mais a forma (soneto, haicai...)."""
+    """Tags do poema: as #hashtags do texto mais a forma (soneto, haicai...), menos "outro"."""
     tags = set(_PADRAO_TAG.findall(normalizar(texto)))
-    if forma:
+    if forma and forma != FORMA_SEM_TAG:
         tags.add(forma)
     return tags
 

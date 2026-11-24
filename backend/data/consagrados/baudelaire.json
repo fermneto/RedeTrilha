@@ -1,0 +1,140 @@
+{
+  "username": "baudelaire",
+  "name": "Charles Baudelaire",
+  "bio": "Charles Baudelaire, poeta parisiense e crítico de arte. As Flores do Mal (1857), processadas por imoralidade, trouxeram para a poesia a cidade moderna, o tédio e o mal, com perfeição formal. Tradutor de Poe, é considerado o fundador da poesia moderna.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Baudelaire_crop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1821,
+  "morte": 1867,
+  "poemas": [
+    {
+      "titulo": "L’Albatros",
+      "texto": "Souvent, pour s’amuser, les hommes d’équipage\nPrennent des albatros, vastes oiseaux des mers,\nQui suivent, indolents compagnons de voyage,\nLe navire glissant sur les gouffres amers.\n\nÀ peine les ont-ils déposés sur les planches,\nQue ces rois de l’azur, maladroits et honteux,\nLaissent piteusement leurs grandes ailes blanches\nComme des avirons traîner à côté d’eux.\n\nCe voyageur ailé, comme il est gauche et veule !\nLui, naguère si beau, qu’il est comique et laid !\nL’un agace son bec avec un brûle-gueule,\nL’autre mime, en boitant, l’infirme qui volait !\n\nLe Poëte est semblable au prince des nuées\nQui hante la tempête et se rit de l’archer ;\nExilé sur le sol au milieu des huées,\nSes ailes de géant l’empêchent de marcher.",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(1861)/L%E2%80%99Albatros",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Correspondances",
+      "texto": "La Nature est un temple où de vivants piliers\nLaissent parfois sortir de confuses paroles ;\nL’homme y passe à travers des forêts de symboles\nQui l’observent avec des regards familiers.\n\nComme de longs échos qui de loin se confondent,\nDans une ténébreuse et profonde unité,\nVaste comme la nuit et comme la clarté,\nLes parfums, les couleurs et les sons se répondent.\n\nIl est des parfums frais comme des chairs d’enfants,\nDoux comme les hautbois, verts comme les prairies,\n— Et d’autres, corrompus, riches et triomphants,\n\nAyant l’expansion des choses infinies,\nComme l’ambre, le musc, le benjoin et l’encens,\nQui chantent les transports de l’esprit et des sens.",
+      "forma": "soneto",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/Correspondances",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Spleen",
+      "texto": "Quand le ciel bas et lourd pèse comme un couvercle\nSur l’esprit gémissant en proie aux longs ennuis,\nEt que de l’horizon embrassant tout le cercle\nIl nous fait un jour noir plus triste que les nuits ;\n\nQuand la terre est changée en un cachot humide,\nOù l’Espérance, comme une chauve-souris,\nS’en va battant les murs de son aile timide,\nEt se cognant la tête à des plafonds pourris ;\n\nQuand la pluie étalant ses immenses traînées\nD’une vaste prison imite les barreaux,\nEt qu’un peuple muet d’horribles araignées\nVient tendre ses filets au fond de nos cerveaux,\n\nDes cloches tout-à-coup sautent avec furie\nEt lancent vers le ciel un affreux hurlement,\nAinsi que des esprits errants et sans patrie\nQui se mettent à geindre opiniâtrément.\n\n— Et d’anciens corbillards, sans tambours ni musique,\nDéfilent lentement dans mon âme ; et, l’Espoir\nPleurant comme un vaincu, l’Angoisse despotique\nSur mon crâne incliné plante son drapeau noir.",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/Spleen_(%C2%AB_Quand_le_ciel_bas_et_lourd_p%C3%A8se_comme_un_couvercle_%C2%BB)",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Harmonie du soir",
+      "texto": "Voici venir les temps où vibrant sur sa tige\nChaque fleur s’évapore ainsi qu’un encensoir ;\nLes sons et les parfums tournent dans l’air du soir,\n— Valse mélancolique et langoureux vertige ! —\n\nChaque fleur s’évapore ainsi qu’un encensoir ;\nLe violon frémit comme un cœur qu’on afflige ;\n— Valse mélancolique et langoureux vertige ! —\nLe ciel est triste et beau comme un grand reposoir.\n\nLe violon frémit comme un cœur qu’on afflige,\nUn cœur tendre, qui hait le néant vaste et noir !\n— Le ciel est triste et beau comme un grand reposoir ;\nLe soleil s’est noyé dans son sang qui se fige.\n\nUn cœur tendre qui hait le néant vaste et noir\nDu passé lumineux recueille tout vestige ;\n— Le soleil s’est noyé dans son sang qui se fige ;\nTon souvenir en moi luit comme un ostensoir !",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/Harmonie_du_soir",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Au lecteur",
+      "texto": "La sottise, l’erreur, le péché, la lésine\nOccupent nos esprits et travaillent nos corps,\nEt nous alimentons nos aimables remords,\nComme les mendians nourrissent leur vermine.\n\nNos péchés sont têtus, nos repentirs sont lâches ;\nNous nous faisons payer grassement nos aveux,\nEt nous rentrons gaîment dans le chemin bourbeux,\nCroyant par de vils pleurs laver toutes nos taches.\n\nSur l’oreiller du mal c’est Satan Trismégiste\nQui berce longuement notre esprit enchanté,\nEt le riche métal de notre volonté\nEst tout vaporisé par ce savant chimiste.\n\nC’est le Diable qui tient les fils qui nous remuent ;\nAux objets répugnans nous trouvons des appas ;\nChaque jour vers l’Enfer nous descendons d’un pas,\nSans horreur, à travers des ténèbres qui puent.\n\n. . . . . . . . . . . . . . . . . . . .\n\nDans nos cerveaux malsains, comme un million d’helminthes,\nGrouille, chante et ripaille un peuple de démons,\nEt quand nous respirons, la mort dans nos poumons\nS’engouffre, comme un fleuve, avec de sourdes plaintes.\n\nSi le viol, le poison, le poignard, l’incendie\nN’ont pas encor brodé de leurs plaisans dessins\nLe canevas banal de nos piteux destins,\nC’est que notre âme, hélas ! n’est pas assez hardie.\n\nMais parmi les chacals, les panthères, les lyces,\nLes singes, les scorpions, les vautours, les serpens,\nLes monstres glapissans, hurlans, grognans, rampans\nDans la ménagerie infâme de nos vices,\n\nIl en est un plus laid, plus méchant, plus immonde.\nQuoiqu’il ne fasse ni grands gestes ni grands cris,\nIl ferait volontiers de la terre un débris,\nEt dans un bâillement avalerait le monde ;\n\nC’est l’Ennui ! — l’œil chargé d’un pleur involontaire,\nIl rêve d’échafauds en fumant son houka.\nTu le connais, lecteur, ce monstre délicat,\n— Hypocrite lecteur, — mon semblable, — mon frère !",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(Revue_des_Deux_Mondes)/Au_lecteur",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Le Chat",
+      "texto": "Je comprends que le chat ait frappé Baudelaire\nPar son être magique où s’incarne le sphinx ;\nPar le charme câlin de la lueur si claire\nQui s’échappe à longs jets de ses deux yeux de lynx,\nJe comprends que le chat ait frappé Baudelaire.\n\nFemme, serpent, colombe et singe par la grâce,\nIl ondule, se cambre et regimbe aux doigts lourds ;\nEt lorsque sa fourrure abrite une chair grasse,\nC’est la beauté plastique en robe de velours :\nFemme, serpent, colombe et singe par la grâce,\n\nVivant dans la pénombre et le silence austère\nOù ronfle son ennui comme un poêle enchanté,\nSa compagnie apporte à l’homme solitaire\nLe baume consolant de la mysticité\nVivant dans la pénombre et le silence austère.\n\nTour à tour triste et gai, somnolent et folâtre,\nC’est bien l’âme du gîte où je me tiens sous clé ;\nDe la table à l’armoire et du fauteuil à l’âtre,\nIl vague, sans salir l’objet qu’il a frôlé,\nTour à tour triste et gai, somnolent et folâtre.\n\nSur le bureau couvert de taches d’encre bleue\nOù livres et cahiers gisent ouverts ou clos,\nIl passe comme un souffle, effleurant de sa queue\nLa feuille où ma pensée allume ses falots,\nSur le bureau couvert de taches d’encre bleue.\n\nQuand il mouille sa patte avec sa langue rose\nPour lustrer son poitrail et son minois si doux,\nIl me cligne de l’œil en faisant une pause,\nEt je voudrais toujours l’avoir sur mes genoux\nQuand il mouille sa patte avec sa langue rose.\n\nAccroupi chaudement aux temps noirs de décembre\nDevant le feu qui flambe, ardent comme un enfer,\nPense-t-il aux souris dont il purge ma chambre\nAvec ses crocs de nacre et ses ongles de fer ?\nNon ! assis devant l’âtre aux temps noirs de décembre\n\nEntre les vieux chenets qui figurent deux nonnes\nÀ la face bizarre, aux tétons monstrueux,\nIl songe à l’angora, mignonne des mignonnes,\nQu’il voudrait bien avoir, le beau voluptueux,\nEntre les vieux chenets qui figurent deux nonnes.\n\nIl se dit que l’été, par les bons clairs de lune,\nIl possédait sa chatte aux membres si velus ;\nEt qu’aujourd’hui, pendant la saison froide et brune,\nIl doit pleurer l’amour qui ne renaîtra plus\nQue le prochain été, par les bons clairs de lune.\n\nSa luxure s’aiguise aux râles de l’alcôve,\nEt quand nous en sortons encor pleins de désir,\nIl nous jette un regard jaloux et presque fauve\nCar tandis que nos corps s’enivrent de plaisir,\nSa luxure s’aiguise aux râles de l’alcôve.\n\nQuand il bondit enfin sur la couche entr’ouverte,\nComme pour y cueillir un brin de volupté,\nLa passion reluit dans sa prunelle verte :\nIl est beau de mollesse et de lubricité\nQuand il bondit enfin sur la couche entr’ouverte.\n\nPour humer les parfums qu’y laisse mon amante,\nDans le creux où son corps a frémi dans mes bras,\nIl se roule en pelote, et sa tête charmante\nTourne de droite à gauche en flairant les deux draps,\nPour humer les parfums qu’y laisse mon amante.\n\nAlors il se pourlèche, il ronronne et miaule,\nEt quand il s’est grisé de la senteur d’amour,\nIl s’étire en bâillant avec un air si drôle,\nQue l’on dirait qu’il va se pâmer à son tour ;\nAlors il se pourlèche, il ronronne et miaule.\n\nSon passé ressuscite, il revoit ses gouttières\nOù, matou lovelace et toujours triomphant,\nIl s’amuse à courir pendant des nuits entières\nLes chattes qu’il enjôle avec ses cris d’enfant :\nSon passé ressuscite, il revoit ses gouttières.\n\nPanthère du foyer, tigre en miniature,\nTu me plais par ton vague et ton aménité,\nEt je suis ton ami, car nulle créature\nN’a compris mieux que toi ma sombre étrangeté,\nPanthère du foyer, tigre en miniature.",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_N%C3%A9vroses_(Rollinat)/Le_Chat",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Une charogne",
+      "texto": "Rappelez-vous l’objet que nous vîmes, mon âme,\n    Ce beau matin d’été si doux :\nAu détour d’un sentier une charogne infâme\n    Sur un lit semé de cailloux,\n\nLes jambes en l’air, comme une femme lubrique,\n    Brûlante et suant les poisons,\nOuvrait d’une façon nonchalante et cynique\n    Son ventre plein d’exhalaisons.\n\nLe soleil rayonnait sur cette pourriture,\nComme afin de la cuire à point,\nEt de rendre au centuple à la grande Nature\nTout ce qu’ensemble elle avait joint.\n\nEt le ciel regardait la carcasse superbe\nComme une fleur s’épanouir ;\n— La puanteur était si forte que sur l’herbe\nVous crûtes vous évanouir ; —\n\nLes mouches bourdonnaient sur ce ventre putride,\nD’où sortaient de noirs bataillons\nDe larves qui coulaient comme un épais liquide\nLe long de ces vivants haillons.\n\nTout cela descendait, montait comme une vague,\nOù s’élançait en pétillant ;\nOn eût dit que le corps, enflé d’un souffle vague,\nVivait en se multipliant.\n\nEt ce monde rendait une étrange musique\nComme l’eau courante et le vent,\nOu le grain qu’un vanneur d’un mouvement rythmique\nAgite et tourne dans son van.\n\nLes formes s’effaçaient et n’étaient plus qu’un rêve,\nUne ébauche lente à venir,\nSur la toile oubliée, et que l’artiste achève\nSeulement par le souvenir.\n\nDerrière les rochers une chienne inquiète\n    Nous regardait d’un œil fâché,\nÉpiant le moment de reprendre au squelette\n    Le morceau qu’elle avait lâché.\n\n— Et pourtant vous serez semblable à cette ordure,\n    À cette horrible infection,\nÉtoile de mes yeux, soleil de ma nature,\n    Vous, mon ange et ma passion !\n\nOui, telle vous serez, ô la reine des grâces,\n    Après les derniers sacrements,\nQuand vous irez sous l’herbe et les floraisons grasses\n    Moisir parmi les ossements.\n\nAlors, ô ma beauté, dites à la vermine\n    Qui vous mangera de baisers\nQue j’ai gardé la forme et l’essence divine\n    De mes amours décomposés !",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/Une_charogne",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Recueillement",
+      "texto": "Sois sage, ô ma Douleur, et tiens-toi plus tranquille.\nTu réclamais le Soir ; il descend ; le voici :\nUne atmosphère obscure enveloppe la ville,\nAux uns portant la paix, aux autres le souci.\n\nPendant que des mortels la multitude vile,\nSous le fouet du Plaisir, ce bourreau sans merci,\nVa cueillir des remords dans la fête servile,\nMa Douleur, donne-moi la main ; viens par ici,\n\nLoin d’eux. Vois se pencher les défuntes Années,\nSur les balcons du ciel, en robes surannées ;\nSurgir du fond des eaux le Regret souriant ;\n\nLe Soleil moribond s’endormir sous une arche,\nEt, comme un long linceul traînant à l’Orient,\nEntends, ma chère, entends la douce Nuit qui marche.",
+      "forma": "soneto",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Parnasse_contemporain/1866/Recueillement",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Élévation",
+      "texto": "Au-dessus des étangs, au-dessus des vallées,\nDes montagnes, des bois, des nuages, des mers,\nPar-delà le soleil, par-delà les éthers,\nPar-delà les confins des sphères étoilées,\n\nMon esprit, tu te meus avec agilité,\nEt, comme un bon nageur qui se pâme dans l’onde,\nTu sillonnes gaîment l’immensité profonde\nAvec une indicible et mâle volupté.\n\nEnvole-toi bien loin de ces miasmes morbides ;\nVa te purifier dans l’air supérieur,\nEt bois, comme une pure et divine liqueur,\nLe feu clair qui remplit les espaces limpides.\n\nDerrière les ennuis et les sombres chagrins\nQui chargent de leur poids l’existence brumeuse,\nHeureux celui qui peut d’une aile vigoureuse\nS’élancer vers les champs lumineux et sereins ;\n\nCelui dont les pensers, comme des alouettes,\nVers les cieux le matin prennent un libre essor,\n— Qui plane sur la vie, et comprend sans effort\nLe langage des fleurs et des choses muettes !",
+      "forma": "outro",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/%C3%89l%C3%A9vation",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Parfum exotique",
+      "texto": "Quand, les deux yeux fermés, en un soir chaud d’automne,\nJe respire l’odeur de ton sein chaleureux,\nJe vois se dérouler des rivages heureux\nQu’éblouissent les feux d’un soleil monotone :\n\nUne île paresseuse où la nature donne\nDes arbres singuliers et des fruits savoureux ;\nDes hommes dont le corps est mince et vigoureux,\nEt des femmes dont l’œil par sa franchise étonne.\n\nGuidé par ton odeur vers de charmants climats,\nJe vois un port rempli de voiles et de mâts\nEncor tout fatigués par la vague marine,\n\nPendant que le parfum des verts tamariniers,\nQui circule dans l’air et m’enfle la narine,\nSe mêle dans mon âme au chant des mariniers.",
+      "forma": "soneto",
+      "obra": "Les Fleurs du mal",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Fleurs_du_mal_(%C3%A9d._1857)/Parfum_exotique",
+      "tags": [
+        "spleen",
+        "beleza",
+        "frances"
+      ]
+    }
+  ]
+}

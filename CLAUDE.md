@@ -26,10 +26,36 @@ dependências e contratos de dados). Avaliação: [`RUBRICA.md`](RUBRICA.md).
    (@CorreiaPedro208).
    Sempre use `--repo fermneto/RedeTrilha --base main`: sem isso o PR vai para
    o repositório pai (TrilhaUFPB/miniproj3).
-4. Commits pequenos, em português, dizendo o porquê.
+4. Commits pequenos, em português, dizendo o porquê, no padrão abaixo.
 5. Antes de abrir o PR: `make test` verde e `git merge main` sem conflito.
    Conflito em `main.py`: mantenha as duas linhas (guia 02).
 6. Nunca commite `*.db`, `.env`, `.env.local` nem `.claude/settings.local.json`.
+
+## Padrão de nomes: branches, commits e PRs
+
+Baseado em Conventional Commits, em português.
+
+| Tipo | Quando usar |
+|---|---|
+| `feat` | funcionalidade nova (rota, tela, campo) |
+| `fix` | correção de bug |
+| `docs` | só documentação (README, PLANO, DECISIONS, docs/) |
+| `refactor` | muda o código sem mudar o comportamento |
+| `test` | só testes |
+| `style` | só visual/CSS, sem lógica |
+| `chore` | configuração, dependências, deploy, limpeza |
+
+- **Branch:** `<tipo>/<slug-curto>` (ex.: `feat/antologias-telas`, `fix/open-redirect`).
+- **Commit:** `<tipo>(<escopo>): <descrição no imperativo, minúscula, sem ponto>`
+  (ex.: `feat(feed): paginar por cursor como no X`). Escopos usados:
+  `auth`, `poemas`, `feed`, `curtidas`, `comentarios`, `reposts`, `follow`,
+  `perfil`, `tags`, `explorar`, `antologias`, `consagrados`, `traducao`,
+  `seed`, `visual`, `layout`, `deploy`, `decisions`, `planejamento`.
+  Corpo opcional explicando o porquê.
+- **Título do PR:** o mesmo formato do commit. O merge é **sempre squash**
+  (o repositório só aceita squash): o título do PR vira o único commit na
+  `main`, com `(#N)` no fim. Por isso o título precisa estar no padrão.
+- **Corpo do PR:** o que mudou, como testar e `Closes #N`.
 
 ## Atribuição: sem coautoria de IA
 

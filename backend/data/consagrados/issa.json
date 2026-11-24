@@ -1,0 +1,140 @@
+{
+  "username": "issa",
+  "name": "Kobayashi Issa",
+  "bio": "Kobayashi Issa, poeta japonês do período Edo, nascido em Kashiwabara, na província de Shinano. Terceiro grande mestre do haicai, escreveu sobre a vida simples, os pequenos animais e o luto pelos filhos, com humor e ternura. Deixou milhares de haicais e o diário Ora ga Haru.",
+  "avatar_url": "",
+  "nascimento": 1763,
+  "morte": 1828,
+  "poemas": [
+    {
+      "titulo": "[雪とけて村いっぱいの子供かな]",
+      "texto": "雪とけて村いっぱいの子供かな",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "primavera",
+        "infancia",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[名月を取てくれろとなく子かな]",
+      "texto": "名月を取てくれろとなく子かな",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "lua",
+        "infancia",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[やれ打つな蠅が手を摺り足をする]",
+      "texto": "やれ打つな蠅が手を摺り足をする",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "compaixao",
+        "natureza",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[雀の子そこのけそこのけ御馬が通る]",
+      "texto": "雀の子そこのけそこのけ御馬が通る",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "natureza",
+        "humor",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[我と来て遊べや親のない雀]",
+      "texto": "我と来て遊べや親のない雀",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "solidao",
+        "infancia",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[露の世は露の世ながらさりながら]",
+      "texto": "露の世は露の世ながらさりながら",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "luto",
+        "efemero",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[目出度さもちう位なりおらが春]",
+      "texto": "目出度さもちう位なりおらが春",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "ano_novo",
+        "humor",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[うつくしや障子の穴の天の川]",
+      "texto": "うつくしや障子の穴の天の川",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "estrelas",
+        "pobreza",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[亡き母や海見るたびに見るたびに]",
+      "texto": "亡き母や海見るたびに見るたびに",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "saudade",
+        "mar",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[涼風の曲がりくねつて来たりけり]",
+      "texto": "涼風の曲がりくねつて来たりけり",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E5%B0%8F%E6%9E%97%E4%B8%80%E8%8C%B6",
+      "tags": [
+        "verao",
+        "natureza",
+        "japones"
+      ]
+    }
+  ]
+}
