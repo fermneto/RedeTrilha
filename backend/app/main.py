@@ -17,6 +17,7 @@ from app.routers import (
     curtidas,
     feed,
     follows,
+    oficina,
     poema_do_dia,
     posts,
     reposts,
@@ -87,3 +88,4 @@ app.include_router(poema_do_dia.router)
 app.include_router(traducao.router)
 app.include_router(saude.router)
 app.include_router(acervo.router)
+app.include_router(oficina.router)
