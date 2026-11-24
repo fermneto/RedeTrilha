@@ -1,4 +1,4 @@
-"""Usuários: a lista da tela Poetas e o perfil. Conta nova nasce só em POST /auth/registro."""
+"""Usuários: a lista simples (GET /usuarios) e o perfil. O Acervo usa /acervo; conta nova nasce só em POST /auth/registro."""
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
