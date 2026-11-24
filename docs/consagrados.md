@@ -13,6 +13,16 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
 3. A importação é **idempotente**: o user é encontrado pelo `username` e o poema
    por (`autor`, `titulo`, `obra`). Rodar duas vezes não duplica nada.
 4. `make seed` e o `SEED_ON_BOOT` do deploy chamam a importação.
+5. Tudo ou nada: todos os JSONs são validados antes de gravar, e a gravação é
+   uma transação só. Um arquivo inválido (por exemplo, `morte > 1955`) não
+   grava nada. Um `username` que já é de uma conta comum também aborta tudo.
+6. As `tags` de cada poema vão para a coluna `tags_extras` do `Post` e somam-se
+   às `#hashtags` do texto e à forma no índice de tags.
+7. O índice de tags vive em memória e é reconstruído no startup da API. Se o
+   importador rodar com o servidor de pé, as tags novas só aparecem no
+   `/tags/...` depois de reiniciar o servidor.
+8. Reimportar atualiza o perfil e os poemas, mas não muda o `created_at` (a
+   data do poema no feed) nem apaga poemas que saíram do JSON.
 
 ## Schema
 

@@ -1,5 +1,7 @@
 """Auth além do núcleo: contas sem senha, bypass de DEBUG, logout, limite do bcrypt e seed."""
 
+import pytest
+
 SENHA = "senha-forte-123"
 
 
@@ -57,6 +59,21 @@ def test_bypass_x_user_id_so_com_debug(client, monkeypatch):
     r = client.get("/auth/eu", headers=headers)
     assert r.status_code == 200
     assert r.json()["username"] == "bia"
+
+
+def test_x_user_id_com_digito_unicode_da_401_e_nao_500(client, monkeypatch):
+    # "²" passa no str.isdigit(), mas o int() explode. O uvicorn entrega o byte
+    # 0xB2 como "²" (latin-1); o TestClient recodifica o header, então a
+    # dependência é chamada direto.
+    from fastapi import HTTPException
+
+    from app.db import SessionLocal
+    from app.deps import get_current_user
+
+    monkeypatch.setenv("DEBUG", "true")
+    with SessionLocal() as db, pytest.raises(HTTPException) as erro:
+        get_current_user(authorization=None, x_user_id="²", db=db)
+    assert erro.value.status_code == 401
 
 
 def test_x_user_id_invalido_sem_debug_da_401_e_nao_422(client, monkeypatch):
