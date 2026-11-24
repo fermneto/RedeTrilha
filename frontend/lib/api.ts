@@ -680,6 +680,44 @@ export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
 }
 
+// ---- Oficina do compositor: espelha backend/app/schemas/oficina.py ----
+
+// O mesmo MAX_CARACTERES do backend: acima disso a oficina não marca (o poema
+// continua sem limite).
+export const OFICINA_MAX_CARACTERES = 10_000;
+
+export type VersoAnalisado = {
+  // null em linha em branco ou sem palavras.
+  silabas: number | null;
+  rima: string | null;
+  tipo_rima: "consoante" | "toante" | null;
+};
+
+// `versos` tem um item por linha de texto.split("\n"), na ordem do textarea.
+export type AnaliseDoRascunho = {
+  versos: VersoAnalisado[];
+  esquema: string;
+  aviso: string | null;
+};
+
+// Sem login e sem banco: nada do que se manda aqui é gravado.
+export function analisarRascunho(texto: string, forma: string | null): Promise<AnaliseDoRascunho> {
+  return apiPost<AnaliseDoRascunho>("/oficina/analise", { texto, forma });
+}
+
+// Texto da marca ao lado do verso ("10 · A"); vazio se não há nada a mostrar.
+export function marcaDoVerso(
+  verso: VersoAnalisado | undefined,
+  opcoes: { silabas: boolean; rimas: boolean },
+): string {
+  if (!verso) return "";
+  const partes = [
+    opcoes.silabas && verso.silabas !== null ? String(verso.silabas) : null,
+    opcoes.rimas && verso.rima ? verso.rima : null,
+  ];
+  return partes.filter(Boolean).join(" · ");
+}
+
 // ---- Crítica ancorada no verso (#71): espelha AncoraOut e VersosComentadosOut
 // de backend/app/schemas/comentario.py ----
 // Os versos são as linhas de texto.split("\n"), contadas a partir de 1, com as

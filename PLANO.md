@@ -282,6 +282,16 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   cache não contam. Passou → 429. Já está na língua → 422. Sem
   `ANTHROPIC_API_KEY` → 503.
 
+### Oficina do compositor (dono: Neto)
+
+- `POST /oficina/analise`, sem login e sem banco, body `{"texto", "forma"?}`
+  (`texto` até 10.000 caracteres; `forma` uma de `FORMAS`) →
+  `{"versos": [{"silabas", "rima", "tipo_rima"}], "esquema", "aviso"}`, um item
+  por linha de `texto.split("\n")`. `tipo_rima` é `consoante`, `toante` ou
+  `null`; `esquema` sai como `"ABBA ABBA CDC DCD"`; `aviso` só para soneto
+  (14 versos) e haicai (3 versos de 5-7-5 sílabas poéticas).
+- Algoritmo em `core/metrica.py`. Só o compositor usa: o `Post` não muda.
+
 ### Rascunhos (dono: Neto, #73)
 
 Tabela nova `rascunhos`: `autor_id`, `titulo`, `texto`, `forma`, `idioma`,

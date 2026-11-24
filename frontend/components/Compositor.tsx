@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
+import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { PoemaCard } from "@/components/PoemaCard";
 import {
   buscarPoema,
@@ -57,6 +58,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
   const liberarTab = useRef(false);
   // Onde o cursor fica depois do recuo inserido pelo Tab (null: nada pendente).
   const cursorDoRecuo = useRef<number | null>(null);
+  const oficina = useOficina(texto, forma);
 
   // Ao trocar o value, o navegador joga o cursor para o fim do texto. Acerta a
   // posição no mesmo commit, antes de pintar e antes da próxima tecla: num
@@ -182,25 +184,30 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
 
       <label className="block text-sm">
         {citacao ? "seu comentário sobre o poema" : "poema"}
-        <textarea
-          ref={corpo}
-          value={texto}
-          onChange={(e) => {
-            setTexto(e.target.value);
-            setSalvo(false);
-          }}
-          onKeyDown={aoTeclar}
-          required
-          rows={12}
-          spellCheck
-          className={`${campo} poema-corpo mt-1 resize-y`}
-          style={{ tabSize: 4 }}
-        />
+        <div className="mt-1 flex gap-2">
+          <textarea
+            ref={corpo}
+            value={texto}
+            onChange={(e) => {
+              setTexto(e.target.value);
+              setSalvo(false);
+            }}
+            onKeyDown={aoTeclar}
+            required
+            rows={12}
+            spellCheck
+            className={`${campo} poema-corpo min-w-0 flex-1 resize-y`}
+            style={{ tabSize: 4 }}
+          />
+          <OficinaMarcas oficina={oficina} texto={texto} campo={corpo} />
+        </div>
         <span className="mt-1 block text-xs text-tinta-suave">
           Quebras de linha e recuos ficam como você escreveu. Tab insere um recuo; Esc e depois
           Tab sai do campo.
         </span>
       </label>
+
+      <OficinaPainel oficina={oficina} />
 
       <label className="block text-sm">
         forma (opcional)
