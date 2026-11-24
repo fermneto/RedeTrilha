@@ -11,14 +11,19 @@ from app.models.user import User
 from app.schemas.auth import LoginIn, RegistroIn
 
 
+def gerar_hash(senha: str) -> str:
+    # gensalt() embute um salt aleatório no hash: senhas iguais, hashes diferentes.
+    return bcrypt.hashpw(senha.encode(), bcrypt.gensalt()).decode()
+
+
 def registrar(db: DbSession, dados: RegistroIn) -> User:
     ja_existe = db.scalar(select(User).where(User.username == dados.username))
     if ja_existe:
         raise HTTPException(status_code=409, detail="username já existe")
 
-    # gensalt() embute um salt aleatório no hash: senhas iguais, hashes diferentes.
-    hash_ = bcrypt.hashpw(dados.password.encode(), bcrypt.gensalt()).decode()
-    user = User(username=dados.username, name=dados.name, password_hash=hash_)
+    user = User(
+        username=dados.username, name=dados.name, password_hash=gerar_hash(dados.password)
+    )
     db.add(user)
     db.commit()
     db.refresh(user)
@@ -43,6 +48,19 @@ def logar(db: DbSession, dados: LoginIn) -> str:
     db.add(sessao)
     db.commit()
     return sessao.token
+
+
+def deslogar(db: DbSession, token: str) -> None:
+    sessao = db.get(Session, token)
+    if sessao:
+        db.delete(sessao)
+        db.commit()
+
+
+def token_do_header(authorization: str) -> str | None:
+    if not authorization.startswith("Bearer "):
+        return None
+    return authorization.removeprefix("Bearer ") or None
 
 
 def usuario_do_token(db: DbSession, token: str) -> User | None:

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Header
 from sqlalchemy.orm import Session
 
 from app.db import get_db
@@ -24,3 +24,15 @@ def logar(dados: LoginIn, db: Session = Depends(get_db)):
 @router.get("/eu", response_model=UserOut)
 def eu(user: User = Depends(get_current_user)):
     return user
+
+
+@router.post("/logout", status_code=204)
+def deslogar(
+    _: User = Depends(get_current_user),
+    authorization: str | None = Header(default=None),
+    db: Session = Depends(get_db),
+):
+    # Sem Authorization (bypass de DEBUG) não há sessão para apagar.
+    token = service.token_do_header(authorization) if authorization else None
+    if token:
+        service.deslogar(db, token)
