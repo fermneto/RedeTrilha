@@ -12,8 +12,13 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(String(30), unique=True, index=True)
     name: Mapped[str] = mapped_column(String(80))
-    bio: Mapped[str] = mapped_column(String(280), default="")
+    bio: Mapped[str] = mapped_column(String(1000), default="")
     avatar_url: Mapped[str] = mapped_column(String(300), default="")
+    # None = conta sem login: consagrados e quem veio do POST /usuarios do slice.
+    password_hash: Mapped[str | None] = mapped_column(String(100), default=None)
+    consagrado: Mapped[bool] = mapped_column(default=False)
+    nascimento: Mapped[int | None] = mapped_column(default=None)
+    morte: Mapped[int | None] = mapped_column(default=None)
     created_at: Mapped[datetime] = mapped_column(
         default=lambda: datetime.now(timezone.utc)
     )
