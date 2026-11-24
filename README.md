@@ -35,11 +35,11 @@ Depois validem o ambiente:
 
 ```bash
 make check      # tudo precisa ficar verde
-make seed       # cria 3 usuários de exemplo e importa os consagrados
+make seed       # cria 24 poetas iniciantes com poemas e conversas e importa os consagrados
 make test       # deve mostrar "4 passed, 10 skipped"
 ```
 
-Usuários do seed entram com a senha `verso123`.
+Conta de demonstração: `marina_letras` / `verso123` (todos os usuários do seed usam essa senha).
 
 Mudou algum model? Rode `make reset` (não há migração; o banco local é recriado).
 
