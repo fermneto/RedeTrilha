@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import extrair_tags, indice_tags
+from app.core.indice_tags import extrair_tags, indice_tags, normalizar
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut, PostUpdate
@@ -26,8 +26,14 @@ def para_saida(post: Post, incluir_repost: bool = True) -> PostOut:
         updated_at=post.updated_at,
         autor=UserOut.model_validate(post.autor),
         repost_de=para_saida(original, incluir_repost=False) if original else None,
-        tags=sorted(extrair_tags(post.texto, post.forma)),
+        tags=sorted(tags_do_post(post)),
     )
+
+
+def tags_do_post(post: Post) -> set[str]:
+    """Tags do poema no índice e no PostOut: #hashtags, forma e as `tags_extras`."""
+    extras = {normalizar(tag) for tag in post.tags_extras or ()}
+    return extrair_tags(post.texto, post.forma) | extras
 
 
 def buscar(db: Session, post_id: int) -> Post:
@@ -65,13 +71,8 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
 
 def reconstruir_indice(db: Session) -> None:
     """Chamado no startup: o índice de tags vive em memória."""
-    linhas = db.execute(select(Post.id, Post.texto, Post.forma, Post.created_at))
-    indice_tags.reconstruir(
-        [
-            (post_id, extrair_tags(texto, forma), criado_em)
-            for post_id, texto, forma, criado_em in linhas
-        ]
-    )
+    posts = db.scalars(select(Post))
+    indice_tags.reconstruir([(post.id, tags_do_post(post), post.created_at) for post in posts])
 
 
 def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
@@ -82,4 +83,4 @@ def _buscar_do_autor(db: Session, usuario: User, post_id: int) -> Post:
 
 
 def _indexar(post: Post) -> None:
-    indice_tags.indexar(post.id, extrair_tags(post.texto, post.forma), post.created_at)
+    indice_tags.indexar(post.id, tags_do_post(post), post.created_at)
