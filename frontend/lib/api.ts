@@ -96,3 +96,115 @@ export type Page<T> = {
   offset: number;
   limit: number;
 };
+
+// ---- Poemas (H6): espelham backend/app/schemas/{post,feed}.py e os comentários ----
+
+// Mesma ordem de FORMAS em backend/app/schemas/post.py.
+export const FORMAS = [
+  "soneto",
+  "haicai",
+  "trova",
+  "quadra",
+  "cordel",
+  "verso_livre",
+  "prosa_poetica",
+  "outro",
+] as const;
+
+export type Forma = (typeof FORMAS)[number];
+
+// Rótulo legível da forma: só troca o "_" por espaço (verso_livre → verso livre).
+export function nomeDaForma(forma: string): string {
+  return forma.replace(/_/g, " ");
+}
+
+// O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
+// Sem o "Z", o navegador leria como horário local e a data poderia mudar de dia.
+export function formatarData(iso: string): string {
+  const comFuso = /(Z|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : `${iso}Z`;
+  return new Date(comFuso).toLocaleDateString("pt-BR");
+}
+
+export type Post = {
+  id: number;
+  autor_id: number;
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  obra: string | null;
+  ano: number | null;
+  fonte: string | null;
+  repost_de_id: number | null;
+  created_at: string;
+  updated_at: string;
+  autor: User;
+  curtidas: number;
+  comentarios: number;
+  reposts: number;
+  curti: boolean;
+  repostei: boolean;
+  repost_de: Post | null;
+  repost_removido: boolean;
+  tags: string[];
+  // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
+  repostado_por: User[];
+};
+
+// Com cursor, o total vem null (como na timeline do X).
+export type FeedPage = Omit<Page<Post>, "total"> & {
+  total: number | null;
+  proximo_cursor: string | null;
+};
+
+export type Comentario = {
+  id: number;
+  post_id: number;
+  parent_id: number | null;
+  texto: string;
+  autor: User;
+  created_at: string;
+  respostas: Comentario[];
+};
+
+export type NovoPoema = {
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  repost_de_id?: number;
+};
+
+// Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
+export function temToken(): boolean {
+  return typeof window !== "undefined" && Boolean(localStorage.getItem(CHAVE_TOKEN));
+}
+
+export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<FeedPage>(`/feed?${params}`);
+}
+
+export function buscarPoema(id: number): Promise<Post> {
+  return apiGet<Post>(`/posts/${id}`);
+}
+
+export function publicarPoema(dados: NovoPoema): Promise<Post> {
+  return apiPost<Post>("/posts", dados);
+}
+
+export function curtir(id: number, curtido: boolean): Promise<void> {
+  return curtido ? apiPost<void>(`/posts/${id}/curtir`) : apiDelete(`/posts/${id}/curtir`);
+}
+
+export function repostar(id: number, repostado: boolean): Promise<void> {
+  return repostado ? apiPost<void>(`/posts/${id}/repostar`) : apiDelete(`/posts/${id}/repostar`);
+}
+
+export async function buscarComentarios(postId: number): Promise<Comentario[]> {
+  const pagina = await apiGet<{ items: Comentario[] }>(`/posts/${postId}/comentarios`);
+  return pagina.items;
+}
+
+export function comentar(postId: number, texto: string, parentId: number | null): Promise<Comentario> {
+  return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
+}
