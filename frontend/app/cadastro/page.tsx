@@ -4,15 +4,17 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
+  buscarEu,
   cadastrar,
   entrar,
   ErroDaApi,
   salvarToken,
   SENHA_MAX,
   SENHA_MIN,
+  temToken,
   USERNAME_FORMATO,
   USERNAME_MAX,
   USERNAME_MIN,
@@ -52,11 +54,24 @@ export default function CadastroPage() {
   const [erros, setErros] = useState<Erros>({});
   const [erroGeral, setErroGeral] = useState<React.ReactNode>(null);
   const [enviando, setEnviando] = useState(false);
+  // Com token salvo, confere se ele ainda vale: quem já está logado vai para o feed.
+  const [conferindo, setConferindo] = useState(true);
   const refs = {
     name: useRef<HTMLInputElement>(null),
     username: useRef<HTMLInputElement>(null),
     password: useRef<HTMLInputElement>(null),
   };
+
+  useEffect(() => {
+    if (!temToken()) {
+      setConferindo(false);
+      return;
+    }
+    // Token inválido: o api.ts já o apaga no 401; aí o formulário aparece.
+    buscarEu()
+      .then(() => router.replace("/"))
+      .catch(() => setConferindo(false));
+  }, [router]);
 
   // Mostra os erros e leva o foco ao primeiro campo com problema.
   function mostrarErros(novos: Erros) {
@@ -107,6 +122,8 @@ export default function CadastroPage() {
       );
     }
   }
+
+  if (conferindo) return <p className="text-sm text-tinta-suave">carregando...</p>;
 
   const campo = "w-full rounded border border-borda bg-papel px-3 py-2 text-tinta";
   // aria-describedby junta a dica do campo (quando há) e o erro dele.

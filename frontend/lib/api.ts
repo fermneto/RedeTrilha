@@ -49,17 +49,39 @@ export class ErroDaApi extends Error {
 
 type ErroDoPydantic = { msg?: unknown; loc?: unknown };
 
-// As mensagens dos validadores vêm com "Value error, " na frente.
+// Sem a tradução do backend (PR #42), as mensagens dos validadores vêm com
+// "Value error, " na frente.
 function textoDoErro(e: ErroDoPydantic): string | null {
   return typeof e?.msg === "string" ? e.msg.replace(/^Value error, /, "") : null;
 }
 
+// Nome amigável do campo na mensagem geral; campo desconhecido fica como veio.
+const ROTULOS_DOS_CAMPOS: Record<string, string> = {
+  username: "username",
+  name: "nome",
+  password: "senha",
+  bio: "bio",
+  avatar_url: "avatar",
+  texto: "texto",
+  titulo: "título",
+};
+
+// "senha: campo obrigatório", com o último elemento do `loc` (o campo do corpo).
+function textoComCampo(e: ErroDoPydantic): string | null {
+  const texto = textoDoErro(e);
+  if (!texto) return null;
+  const loc = Array.isArray(e?.loc) ? e.loc : [];
+  const campo = loc.length > 1 ? loc[loc.length - 1] : null;
+  if (typeof campo !== "string") return texto;
+  return `${ROTULOS_DOS_CAMPOS[campo] ?? campo}: ${texto}`;
+}
+
 // O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
-// de erros com `msg`.
+// de erros com `msg` e `loc`.
 function mensagemDoErro(detail: unknown): string | null {
   if (typeof detail === "string") return detail;
   if (!Array.isArray(detail)) return null;
-  const msgs = detail.map(textoDoErro).filter((m): m is string => Boolean(m));
+  const msgs = (detail as ErroDoPydantic[]).map(textoComCampo).filter((m): m is string => Boolean(m));
   return msgs.length > 0 ? msgs.join("; ") : null;
 }
 
@@ -88,7 +110,10 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   // servidor do deploy reiniciou). Joga o token fora e volta para o login.
   if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem(CHAVE_TOKEN)) {
     esquecerToken();
-    if (window.location.pathname !== "/login") window.location.href = caminhoDoLogin();
+    // Login e cadastro conferem o token salvo e tratam o 401 na própria tela.
+    if (!["/login", "/cadastro"].includes(window.location.pathname)) {
+      window.location.href = caminhoDoLogin();
+    }
   }
 
   if (!res.ok) {
