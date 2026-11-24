@@ -1,7 +1,8 @@
 "use client";
 // Compositor de poema: título opcional, corpo e forma. Com `citarId`, vira
 // citação (POST /posts com repost_de_id) e mostra o original embaixo. Com
-// `rascunhoId`, abre o rascunho; "salvar rascunho" guarda sem publicar.
+// `rascunhoId`, abre o rascunho (de poema ou de citação); "salvar rascunho"
+// guarda sem publicar.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,6 +40,11 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
   // O rascunho aberto ou o criado no primeiro "salvar rascunho" (null: nenhum).
   const [rascunho, setRascunho] = useState<number | null>(rascunhoId);
   const [salvo, setSalvo] = useState(false);
+  // O poema citado: o da URL ou o do rascunho aberto. `citadoRemovido`: o
+  // original foi apagado enquanto a citação era rascunho.
+  const [citado, setCitado] = useState<number | null>(citarId);
+  const [citadoRemovido, setCitadoRemovido] = useState(false);
+  const citacao = citado !== null || citadoRemovido;
   const corpo = useRef<HTMLTextAreaElement>(null);
   // Depois de Esc, o próximo Tab sai do campo (para quem navega só pelo teclado).
   const liberarTab = useRef(false);
@@ -55,11 +61,11 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
   }, [texto]);
 
   useEffect(() => {
-    if (citarId === null) return;
-    buscarPoema(citarId)
+    if (citado === null) return;
+    buscarPoema(citado)
       .then(setOriginal)
       .catch((e) => setErro(e instanceof Error ? e.message : "não achei o poema citado"));
-  }, [citarId]);
+  }, [citado]);
 
   useEffect(() => {
     if (rascunhoId === null) return;
@@ -69,6 +75,8 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
         setTexto(r.texto);
         setForma(r.forma ?? "");
         setIdioma(r.idioma ?? OUTRA);
+        setCitado(r.repost_de_id);
+        setCitadoRemovido(r.repost_removido);
       })
       .catch((e) => setErro(e instanceof Error ? e.message : "não achei o rascunho"));
   }, [rascunhoId]);
@@ -92,7 +100,9 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
     setErro(null);
     try {
       const salvoAgora =
-        rascunho === null ? await criarRascunho(dadosDoRascunho()) : await editarRascunho(rascunho, dadosDoRascunho());
+        rascunho === null
+          ? await criarRascunho({ ...dadosDoRascunho(), ...(citado !== null && { repost_de_id: citado }) })
+          : await editarRascunho(rascunho, dadosDoRascunho());
       setRascunho(salvoAgora.id);
       setSalvo(true);
     } catch (err) {
@@ -139,7 +149,7 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
         texto,
         forma: forma || null,
         idioma: idioma === OUTRA ? null : idioma,
-        ...(citarId !== null && { repost_de_id: citarId }),
+        ...(citado !== null && { repost_de_id: citado }),
       });
       router.push(`/poema/${novo.id}`);
     } catch (err) {
@@ -163,7 +173,7 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
       </label>
 
       <label className="block text-sm">
-        {citarId === null ? "poema" : "seu comentário sobre o poema"}
+        {citacao ? "seu comentário sobre o poema" : "poema"}
         <textarea
           ref={corpo}
           value={texto}
@@ -214,6 +224,11 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
       </label>
 
       {original && <PoemaCard post={original} aninhado />}
+      {citadoRemovido && (
+        <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
+          poema removido pelo autor
+        </p>
+      )}
 
       {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
 
@@ -222,18 +237,16 @@ export function Compositor({ citarId, rascunhoId = null }: Props) {
         disabled={enviando}
         className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
       >
-        {enviando ? "publicando..." : citarId === null ? "publicar" : "publicar citação"}
+        {enviando ? "publicando..." : citacao ? "publicar citação" : "publicar"}
       </button>
-      {citarId === null && (
-        <button
-          type="button"
-          onClick={salvarRascunho}
-          disabled={enviando}
-          className="ml-3 min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold transition-colors duration-150 hover:border-destaque disabled:cursor-wait disabled:opacity-50"
-        >
-          salvar rascunho
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={salvarRascunho}
+        disabled={enviando}
+        className="ml-3 min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold transition-colors duration-150 hover:border-destaque disabled:cursor-wait disabled:opacity-50"
+      >
+        salvar rascunho
+      </button>
       {salvo && (
         <p role="status" className="text-sm text-tinta-suave">
           rascunho salvo. Só você vê; ele fica em <Link href="/rascunhos" className="underline">Rascunhos</Link>.

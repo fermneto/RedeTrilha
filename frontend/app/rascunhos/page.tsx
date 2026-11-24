@@ -73,6 +73,7 @@ export default function RascunhosPage() {
             <p className="mt-2 flex flex-wrap gap-x-3 text-[0.8125rem] text-tinta-suave">
               <span>salvo em {formatarData(rascunho.updated_at)}</span>
               {rascunho.forma && <span className="italic">{nomeDaForma(rascunho.forma)}</span>}
+              {(rascunho.repost_de_id !== null || rascunho.repost_removido) && <span>citação</span>}
             </p>
             <div className="mt-2 flex gap-3">
               <Link
