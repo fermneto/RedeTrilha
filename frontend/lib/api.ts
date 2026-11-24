@@ -243,6 +243,8 @@ export type Post = {
   tags: string[];
   // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
   repostado_por: User[];
+  // Editado depois de publicado (ver "Rascunhos e versões" no fim do arquivo).
+  editado?: boolean;
 };
 
 // Com cursor, o total vem null (como na timeline do X).
@@ -676,4 +678,62 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
+
+// ---- Rascunhos e versões: espelham backend/app/schemas/{rascunho,versao_poema}.py ----
+
+// Rascunho é privado: só o autor lê; de outra pessoa, o backend responde 404.
+export type Rascunho = {
+  id: number;
+  autor_id: number;
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  idioma: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+// Os mesmos campos de um poema novo, sem citação.
+export type DadosDoRascunho = Omit<NovoPoema, "repost_de_id">;
+
+// O editado por último primeiro.
+export function listarRascunhos(offset = 0, limit = 100): Promise<Page<Rascunho>> {
+  return apiGet<Page<Rascunho>>(`/rascunhos?offset=${offset}&limit=${limit}`);
+}
+
+export function buscarRascunho(id: number): Promise<Rascunho> {
+  return apiGet<Rascunho>(`/rascunhos/${id}`);
+}
+
+export function criarRascunho(dados: DadosDoRascunho): Promise<Rascunho> {
+  return apiPost<Rascunho>("/rascunhos", dados);
+}
+
+export function editarRascunho(id: number, dados: DadosDoRascunho): Promise<Rascunho> {
+  return apiPatch<Rascunho>(`/rascunhos/${id}`, dados);
+}
+
+export function apagarRascunho(id: number): Promise<void> {
+  return apiDelete(`/rascunhos/${id}`);
+}
+
+// Vira poema publicado agora (sem "editado") e o rascunho deixa de existir.
+export function publicarRascunho(id: number): Promise<Post> {
+  return apiPost<Post>(`/rascunhos/${id}/publicar`);
+}
+
+// Como o poema era antes de cada edição; `criada_em` é quando foi substituída.
+export type VersaoDoPoema = {
+  id: number;
+  post_id: number;
+  titulo: string | null;
+  texto: string;
+  forma: string | null;
+  criada_em: string;
+};
+
+// Só o autor: para outra pessoa, 404. A mais recente primeiro.
+export function listarVersoes(postId: number, offset = 0, limit = 100): Promise<Page<VersaoDoPoema>> {
+  return apiGet<Page<VersaoDoPoema>>(`/posts/${postId}/versoes?offset=${offset}&limit=${limit}`);
 }
