@@ -1,0 +1,125 @@
+{
+  "username": "fernando_pessoa",
+  "name": "Fernando Pessoa",
+  "bio": "Poeta lisboeta que passou a infância em Durban, na África do Sul. Figura central do Modernismo português e da revista Orpheu, criou heterônimos com biografias e estilos próprios, como Alberto Caeiro, Ricardo Reis e Álvaro de Campos. Em vida publicou só Mensagem (1934) em português; o espólio revelou o maior poeta moderno da língua.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/216_2310-Fernando-Pessoa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1888,
+  "morte": 1935,
+  "poemas": [
+    {
+      "titulo": "Autopsicografia",
+      "texto": "O poeta é um fingidor.\nFinge tão completamente\nQue chega a fingir que é dor\nA dor que deveras sente.\n\nE os que lêem o que escreve,\nNa dor lida sentem bem,\nNão as duas que ele teve,\nMas só a que eles não têm.\n\nE assim nas calhas de roda\nGira, a entreter a razão,\nEsse comboio de corda\nQue se chama coração.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1932,
+      "fonte": "https://pt.wikisource.org/wiki/Autopsicografia",
+      "tags": [
+        "poesia",
+        "fingimento",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Mar Português",
+      "texto": "O' mar salgado, quanto do teu sal\nSão lagrimas de Portugal!\nPor te cruzarmos, quantas mães choraram,\nQuantos filhos em vão resaram!\nQuantas noivas ficaram por casar\nPara que fosses nosso, ó mar!\n\nValeu a pena? Tudo vale a pena\nSe a alma não é pequena.\nQuem quer passar além do Bojador\nTem que passar além da dor.\nDeus ao mar o perigo e o abysmo deu,\nMas nelle é que espelhou o céu.",
+      "forma": "outro",
+      "obra": "Mensagem",
+      "ano": 1934,
+      "fonte": "https://pt.wikisource.org/wiki/Mar_Portuguez",
+      "tags": [
+        "mar",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O Mostrengo",
+      "texto": "O mostrengo que está no fim do mar\nNa noite de breu ergueu-se a voar;\nÀ roda da nau voou trez vezes,\nVoou trez vezes a chiar,\nE disse, «Quem é que ousou entrar\nNas minhas cavernas que não desvendo,\nMeus tectos negros do fim do mundo?»\nE o homem do leme disse, tremendo,\n«El-Rei D. João Segundo!»\n\n«De quem são as velas onde me roço?\nDe quem as quilhas que vejo e ouço?»\nDisse o mostrengo, e rodou trez vezes,\nTrez vezes rodou immundo e grosso,\n\n«Quem vem poder o que só eu posso,\nQue moro onde nunca ninguem me visse\nE escorro os medos do mar sem fundo?»\nE o homem do leme tremeu, e disse,\n«El-Rei D. João Segundo!»\n\nTrez vezes do leme as mãos ergueu\nTrez vezes ao leme as reprendeu,\nE disse no fim de temer trez vezes,\n«Aqui ao leme sou mais do que eu:\nSou um Povo que quer o mar que é teu;\nE mais que o mostrengo, que me a alma teme\nE roda nas trevas do fim do mundo,\nManda a vontade, que me ata ao leme,\nDe El-Rei D. João Segundo!»",
+      "forma": "outro",
+      "obra": "Mensagem",
+      "ano": 1934,
+      "fonte": "https://pt.wikisource.org/wiki/O_Mostrengo",
+      "tags": [
+        "mar",
+        "coragem",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Tabacaria (Álvaro de Campos)",
+      "texto": "Não sou nada.\nNunca serei nada.\nNão posso querer ser nada.\nÀ parte isso, tenho em mim todos os sonhos do mundo.\n\nJanelas do meu quarto,\nDo meu quarto de um dos milhões do mundo que ninguém sabe quem é\n(E se soubessem quem é, o que saberiam?),\nDais para o mistério de uma rua cruzada constantemente por gente,\nPara uma rua inacessível a todos os pensamentos,\nReal, impossivelmente real, certa, desconhecidamente certa,\nCom o mistério das coisas por baixo das pedras e dos seres,\nCom a morte a pôr humidade nas paredes e cabelos brancos nos homens,\nCom o Destino a conduzir a carroça de tudo pela estrada de nada.\n\nEstou hoje vencido, como se soubesse a verdade.\nEstou hoje lúcido, como se estivesse para morrer,\nE não tivesse mais irmandade com as coisas\nSenão uma despedida, tornando-se esta casa e este lado da rua\nA fileira de carruagens de um comboio, e uma partida apitada\nDe dentro da minha cabeça,\nE uma sacudidela dos meus nervos e um ranger de ossos na ida.\n\nEstou hoje perplexo como quem pensou e achou e esqueceu.\nEstou hoje dividido entre a lealdade que devo\nÀ Tabacaria do outro lado da rua, como coisa real por fora,\nE à sensação de que tudo é sonho, como coisa real por dentro.\n\nFalhei em tudo.\nComo não fiz propósito nenhum, talvez tudo fosse nada.\nA aprendizagem que me deram,\nDesci dela pela janela das traseiras da casa,\nFui até ao campo com grandes propósitos.\nMas lá encontrei só ervas e árvores,\nE quando havia gente era igual à outra.\nSaio da janela, sento-me numa cadeira. Em que hei-de pensar?\n\nQue sei eu do que serei, eu que não sei o que sou?\nSer o que penso? Mas penso ser tanta coisa!\nE há tantos que pensam ser a mesma coisa que não pode haver tantos!\nGénio? Neste momento\nCem mil cérebros se concebem em sonho génios como eu,\nE a história não marcará, quem sabe?, nem um,\nNem haverá senão estrume de tantas conquistas futuras.\nNão, não creio em mim.\nEm todos os manicómios há doidos malucos com tantas certezas!\nEu, que não tenho nenhuma certeza, sou mais certo ou menos certo?\nNão, nem em mim...\nEm quantas mansardas e não-mansardas do mundo\nNão estão nesta hora génios-para-si-mesmos sonhando?\nQuantas aspirações altas e nobres e lúcidas -\nSim, verdadeiramente altas e nobres e lúcidas -,\nE quem sabe se realizáveis,\nNunca verão a luz do sol real nem acharão ouvidos de gente?\nO mundo é para quem nasce para o conquistar\nE não para quem sonha que pode conquistá-lo, ainda que tenha razão.\nTenho sonhado mais que o que Napoleão fez.\nTenho apertado ao peito hipotético mais humanidades do que Cristo,\nTenho feito filosofias em segredo que nenhum Kant escreveu.\nMas sou, e talvez serei sempre, o da mansarda,\nAinda que não more nela;\nSerei sempre o que não nasceu para isso;\nSerei sempre só o que tinha qualidades;\nSerei sempre o que esperou que lhe abrissem a porta ao pé de uma parede sem porta\nE cantou a cantiga do Infinito numa capoeira,\nE ouviu a voz de Deus num poço tapado.\nCrer em mim? Não, nem em nada.\nDerrame-me a Natureza sobre a cabeça ardente\nO seu sol, a sua chuva, o vento que me acha o cabelo,\nE o resto que venha se vier, ou tiver que vir, ou não venha.\nEscravos cardíacos das estrelas,\nConquistámos todo o mundo antes de nos levantar da cama;\nMas acordámos e ele é opaco,\nLevantámo-nos e ele é alheio,\nSaímos de casa e ele é a terra inteira,\nMais o sistema solar e a Via Láctea e o Indefinido.\n\n(Come chocolates, pequena;\nCome chocolates!\nOlha que não há mais metafísica no mundo senão chocolates.\nOlha que as religiões todas não ensinam mais que a confeitaria.\nCome, pequena suja, come!\nPudesse eu comer chocolates com a mesma verdade com que comes!\nMas eu penso e, ao tirar o papel de prata, que é de folha de estanho,\nDeito tudo para o chão, como tenho deitado a vida.)\n\nMas ao menos fica da amargura do que nunca serei\nA caligrafia rápida destes versos,\nPórtico partido para o Impossível.\nMas ao menos consagro a mim mesmo um desprezo sem lágrimas,\nNobre ao menos no gesto largo com que atiro\nA roupa suja que sou, sem rol, pra o decurso das coisas,\nE fico em casa sem camisa.\n\n(Tu, que consolas, que não existes e por isso consolas,\nOu deusa grega, concebida como estátua que fosse viva,\nOu patrícia romana, impossivelmente nobre e nefasta,\nOu princesa de trovadores, gentilíssima e colorida,\nOu marquesa do século dezoito, decotada e longínqua,\nOu cocote célebre do tempo dos nossos pais,\nOu não sei quê moderno - não concebo bem o quê -,\nTudo isso, seja o que for, que sejas, se pode inspirar que inspire!\nMeu coração é um balde despejado.\nComo os que invocam espíritos invocam espíritos invoco\nA mim mesmo e não encontro nada.\nChego à janela e vejo a rua com uma nitidez absoluta.\nVejo as lojas, vejo os passeios, vejo os carros que passam,\nVejo os entes vivos vestidos que se cruzam,\nVejo os cães que também existem,\nE tudo isto me pesa como uma condenação ao degredo,\nE tudo isto é estrangeiro, como tudo.)\n\nVivi, estudei, amei, e até cri,\nE hoje não há mendigo que eu não inveje só por não ser eu.\nOlho a cada um os andrajos e as chagas e a mentira,\nE penso: talvez nunca vivesses nem estudasses nem amasses nem cresses\n(Porque é possível fazer a realidade de tudo isso sem fazer nada disso);\nTalvez tenhas existido apenas, como um lagarto a quem cortam o rabo\nE que é rabo para aquém do lagarto remexidamente.\n\nFiz de mim o que não soube,\nE o que podia fazer de mim não o fiz.\nO dominó que vesti era errado.\nConheceram-me logo por quem não era e não desmenti, e perdi-me.\nQuando quis tirar a máscara,\nEstava pegada à cara.\nQuando a tirei e me vi ao espelho,\nJá tinha envelhecido.\nEstava bêbado, já não sabia vestir o dominó que não tinha tirado.\nDeitei fora a máscara e dormi no vestiário\nComo um cão tolerado pela gerência\nPor ser inofensivo\nE vou escrever esta história para provar que sou sublime.\n\nEssência musical dos meus versos inúteis,\nQuem me dera encontrar-te como coisa que eu fizesse,\nE não ficasse sempre defronte da Tabacaria de defronte,\nCalcando aos pés a consciência de estar existindo,\nComo um tapete em que um bêbado tropeça\nOu um capacho que os ciganos roubaram e não valia nada.\n\nMas o dono da Tabacaria chegou à porta e ficou à porta.\nOlho-o com o desconforto da cabeça mal voltada\nE com o desconforto da alma mal-entendendo.\nEle morrerá e eu morrerei.\nEle deixará a tabuleta, e eu deixarei versos.\nA certa altura morrerá a tabuleta também, e os versos também.\nDepois de certa altura morrerá a rua onde esteve a tabuleta,\nE a língua em que foram escritos os versos.\nMorrerá depois o planeta girante em que tudo isto se deu.\nEm outros satélites de outros sistemas qualquer coisa como gente\nContinuará fazendo coisas como versos e vivendo por baixo de coisas como tabuletas,\nSempre uma coisa defronte da outra,\nSempre uma coisa tão inútil como a outra,\nSempre o impossível tão estúpido como o real,\nSempre o mistério do fundo tão certo como o sono de mistério da superfície,\nSempre isto ou sempre outra coisa ou nem uma coisa nem outra.\n\nMas um homem entrou na Tabacaria (para comprar tabaco?),\nE a realidade plausível cai de repente em cima de mim.\nSemiergo-me enérgico, convencido, humano,\nE vou tencionar escrever estes versos em que digo o contrário.\n\nAcendo um cigarro ao pensar em escrevê-los\nE saboreio no cigarro a libertação de todos os pensamentos.\nSigo o fumo como uma rota própria,\nE gozo, num momento sensitivo e competente,\nA libertação de todas as especulações\nE a consciência de que a metafísica é uma consequência de estar mal disposto.\n\nDepois deito-me para trás na cadeira\nE continuo fumando.\nEnquanto o Destino mo conceder, continuarei fumando.\n\n(Se eu casasse com a filha da minha lavadeira\nTalvez fosse feliz.)\nVisto isto, levanto-me da cadeira. Vou à janela.\n\nO homem saiu da Tabacaria (metendo troco na algibeira das calças?).\nAh, conheço-o: é o Esteves sem metafísica.\n(O dono da Tabacaria chegou à porta.)\nComo por um instinto divino o Esteves voltou-se e viu-me.\nAcenou-me adeus gritei-lhe Adeus ó Esteves!, e o universo\nReconstruiu-se-me sem ideal nem esperança, e o dono da Tabacaria sorriu.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": 1933,
+      "fonte": "https://pt.wikisource.org/wiki/Tabacaria",
+      "tags": [
+        "existencia",
+        "identidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Isto",
+      "texto": "Dizem que finjo ou minto\nTudo que escrevo. Não.\nEu simplesmente sinto\nCom a imaginação.\nNão uso o coração.\n\nTudo o que sonho ou passo,\nO que me falha ou finda,\nÉ como que um terraço\nSobre outra coisa ainda.\nEssa coisa é que é linda.\n\nPor isso escrevo em meio\nDo que não está de pé,\nLivre do meu enleio,\nSério do que não é.\nSentir? Sinta quem lê!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Isto",
+      "tags": [
+        "poesia",
+        "sentimento",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Ulisses",
+      "texto": "O mytho é o nada que é tudo.\nO mesmo sol que abre os céus\nÉ um mytho brilhante e mudo\nO corpo morto de Deus,\nVivo e desnudo.\n\nEste, que aqui aportou,\nFoi por não ser existindo.\nSem existir nos bastou.\nPor não ter vindo foi vindo\nE nos creou.\n\nAssim a lenda se escorre\nA entrar na realidade,\nE a fecundal-a decorre.\nEm baixo, a vida, metade\nDe nada, morre.",
+      "forma": "outro",
+      "obra": "Mensagem",
+      "ano": 1934,
+      "fonte": "https://pt.wikisource.org/wiki/Ulysses",
+      "tags": [
+        "mito",
+        "patria",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O Infante",
+      "texto": "Deus quer, o homem sonha, a obra nasce.\nDeus quiz que a terra fosse toda uma,\nQue o mar unisse, já não separasse.\nSagrou-te, e foste desvendando a espuma,\n\nE a orla branca foi de ilha em continente,\nClareou, correndo, até ao fim do mundo,\nE viu-se a terra inteira, de repente,\nSurgir, redonda, do azul profundo.\n\nQuem te sagrou creou-te portuguez.\nDo mar e nós em ti nos deu signal.\nCumpriu-se o Mar, e o Imperio se desfez.\nSenhor, falta cumprir-se Portugal!",
+      "forma": "outro",
+      "obra": "Mensagem",
+      "ano": 1934,
+      "fonte": "https://pt.wikisource.org/wiki/O_Infante",
+      "tags": [
+        "patria",
+        "mar",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Ela canta, pobre ceifeira",
+      "texto": "Ela canta, pobre ceifeira,\nJulgando-se feliz talvez;\nCanta, e ceifa, e a sua voz, cheia\nDe alegre e anónima viuvez,\n\nOndula como um canto de ave\nNo ar limpo como um limiar,\nE há curvas no enredo suave\nDo som que ela tem a cantar.\n\nOuvi-la alegra e entristece,\nNa sua voz há o campo e a lida,\nE canta como se tivesse\nMais razões p'ra cantar que a vida.\n\nAh, canta, canta sem razão!\nO que em mim sente 'stá pensando.\nDerrama o meu coração\nA tua incerteza voz ondeando!\n\nAh, poder ser tu, sendo eu!\nTer a tua alegre inconsciência\nE a consciência disso! Ó céu!\nÓ campo! Ó canção! A ciência\n\nPesa tanto e a vida é tão breve!\nEntrai por mim dentro! Tornai\nMinha alma a vossa sombra leve!\nDepois, levando-me, passai!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Ela_canta,_pobre_ceifeira",
+      "tags": [
+        "identidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Todas as cartas de amor são",
+      "texto": "Todas as cartas de amor são\nRidículas.\nNão seriam cartas de amor se não fossem\nRidículas.\n\nTambém escrevi em meu tempo cartas de amor,\nComo as outras,\nRidículas.\n\nAs cartas de amor, se há amor,\nTêm de ser\nRidículas.\n\nMas, afinal,\nSó as criaturas que nunca escreveram\nCartas de amor\nÉ que são\nRidículas.\n\nQuem me dera no tempo em que escrevia\nSem dar por isso\nCartas de amor\nRidículas.\n\nA verdade é que hoje\nAs minhas memórias\nDessas cartas de amor\nÉ que são\nRidículas.\n\n(Todas as palavras esdrúxulas,\nComo os sentimentos esdrúxulos,\nSão naturalmente\nRidículas.)",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Todas_as_Cartas_de_Amor_s%C3%A3o_Rid%C3%ADculas",
+      "tags": [
+        "identidade",
+        "portugues"
+      ]
+    }
+  ]
+}

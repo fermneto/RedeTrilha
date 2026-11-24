@@ -1,0 +1,88 @@
+{
+  "username": "keats",
+  "name": "John Keats",
+  "bio": "John Keats, poeta romântico londrino, formado em farmácia. Em poucos anos escreveu as grandes odes, como a Ode a um Rouxinol e a Ode a uma Urna Grega, de beleza sensorial única. Morreu de tuberculose em Roma, aos 25 anos.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/John_Keats_by_William_Hilton_circa_1822_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1795,
+  "morte": 1821,
+  "poemas": [
+    {
+      "titulo": "Ode to a Nightingale",
+      "texto": "My heart aches, and a drowsy numbness pains\n  My sense, as though of hemlock I had drunk,\nOr emptied some dull opiate to the drains\n  One minute past, and Lethe-wards had sunk:\n'Tis not through envy of thy happy lot,\n  But being too happy in thy happiness,—\n    That thou, light-winged Dryad of the trees,\n            In some melodious plot\n  Of beechen green, and shadows numberless,\nSingest of summer in full-throated ease.\n\nO for a draught of vintage, that hath been\n  Cool'd a long age in the deep-delved earth,\nTasting of Flora and the country-green,\n  Dance, and Provençal song, and sun-burnt mirth!\nO for a beaker full of the warm South,\n  Full of the true, the blushful Hippocrene,\n\n    With beaded bubbles winking at the brim,\n          And purple-stained mouth;\n  That I might drink, and leave the world unseen,\n    And with thee fade away into the forest dim:\n\nFade far away, dissolve, and quite forget\n  What thou among the leaves hast never known,\nThe weariness, the fever, and the fret\n  Here, where men sit and hear each other groan;\nWhere palsy shakes a few, sad, last gray hairs,\n  Where youth grows pale, and spectre-thin, and dies;\n    Where but to think is to be full of sorrow\n          And leaden-eyed despairs;\nWhere beauty cannot keep her lustrous eyes,\n    Or new Love pine at them beyond to-morrow.\n\nAway! away! for I will fly to thee,\n  Not charioted by Bacchus and his pards,\nBut on the viewless wings of Poesy,\n  Though the dull brain perplexes and retards:\nAlready with thee! tender is the night,\n  And haply the Queen-Moon is on her throne,\n    Cluster'd around by all her starry Fays;\n          But here there is no light,\n  Save what from heaven is with the breezes blown\n    Through verdurous glooms and winding mossy ways.\n\nI cannot see what flowers are at my feet,\n  Nor what soft incense hangs upon the boughs,\nBut, in embalmed darkness, guess each sweet\n  Wherewith the seasonable month endows\n\nThe grass, the thicket, and the fruit-tree wild;\n  White hawthorn, and the pastoral eglantine;\n    Fast-fading violets cover'd up in leaves;\n          And mid-May's eldest child,\n  The coming musk-rose, full of dewy wine,\n    The murmurous haunt of flies on summer eves.\n\nDarkling I listen; and for many a time\n  I have been half in love with easeful Death,\nCall'd him soft names in many a mused rhyme,\n    To take into the air my quiet breath;\nNow more than ever seems it rich to die,\n  To cease upon the midnight with no pain,\n    While thou art pouring forth thy soul abroad\n          In such an ecstasy!\n  Still wouldst thou sing, and I have ears in vain—\n    To thy high requiem become a sod.\n\nThou wast not born for death, immortal Bird!\n  No hungry generations tread thee down;\nThe voice I hear this passing night was heard\n  In ancient days by emperor and clown:\nPerhaps the self-same song that found a path\n  Through the sad heart of Ruth, when sick for home\n    She stood in tears amid the alien corn;\n          The same that oft-times hath\nCharm'd magic casements, opening on the foam\n    Of perilous seas, in faery lands forlorn.\n\nForlorn! the very word is like a bell\n  To toll me back from thee to my sole self!\nAdieu! the fancy cannot cheat so well\n  As she is famed to do, deceiving elf.\n\nAdieu! adieu! thy plaintive anthem fades\n  Past the near meadows, over the still stream,\n    Up the hill-side; and now 'tis buried deep\n          In the next valley-glades:\n  Was it a vision, or a waking dream?\n    Fled is that music:—do I wake or sleep?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_John_Keats/Ode_to_a_Nightingale",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Bright star, would I were stedfast as thou art",
+      "texto": "BRIGHT star, would I were stedfast as thou art-\nNot in lone splendour hung aloft the night\nAnd watching, with eternal lids apart,\nLike nature's patient, sleepless Eremite,\nThe moving waters at their priestlike task\nOf pure ablution round earth's human shores,\nOr gazing on the new soft-fallen mask\nOf snow upon the mountains and the moors\nNo yet still stedfast, still unchangeable,\nPillow'd upon my fair love's ripening breast,\nTo feel for ever its soft fall and swell,\nAwake for ever in a sweet unrest,\nStill, still to hear her tender-taken breath,\nAnd so live ever or else swoon to death.\n\nBuxton Forman's Text.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Hundred_Best_Poems_(lyrical)_in_the_English_language_-_second_series/Bright_star,_would_I_were_stedfast_as_thou_art",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "La Belle Dame sans Merci",
+      "texto": "O what can ail thee, knight-at-arms,\n  Alone and palely loitering?\nThe sedge has wither'd from the lake,\n  And no birds sing.\n\nII.\n\nO what can ail thee, knight-at-arms,\n  So haggard and so woe-begone?\nThe squirrel's granary is full,\n  And the harvest's done.\n\nIII.\n\nI see a lily on thy brow\n  With anguish moist and fever dew,\nAnd on thy cheeks a fading rose\n  Fast withereth too.\n\nIV.\n\nI met a lady in the meads,\n  Full beautiful—a faery's child,\nHer hair was long, her foot was light,\n  And her eyes were wild.\n\nI made a garland for her head,\n  And bracelets too, and fragrant zone;\nShe look'd at me as she did love,\n  And made sweet moan.\n\nVI.\n\nI set her on my pacing steed,\n  And nothing else saw all day long,\nFor sidelong would she bend, and sing\n  A faery's song.\n\nVII.\n\nShe found me roots of relish sweet,\n  And honey wild, and manna dew,\nAnd sure in language strange she said—\n  \"I love thee true.\"\n\nVIII.\n\nShe took me to her elfin grot,\n  And there she wept, and sigh'd full sore,\nAnd there I shut her wild wild eyes\n  With kisses four.\n\nIX.\n\nAnd there she lulled me asleep.\n  And there I dream'd—Ah! woe betide\nThe latest dream I ever dream'd\n  On the cold hill's side.\n\nX.\n\nI saw pale kings and princes too,\n  Pale warriors, death-pale were they all;\nThey cried—\"La Belle Dame sans Merci\n  Hath thee in thrall!\"\n\nXI.\n\nI saw their starved lips in the gloam,\n  With horrid warning gaped wide,\nAnd I awoke and found me here,\n  On the cold hill's side.\n\nXII.\n\nAnd is this is why I sojourn here,\n  Alone and palely loitering,\nThough the sedge is wither'd from the lake,\n  And no birds sing.\n\n1819.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_John_Keats/La_Belle_Dame_sans_Merci",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "On First Looking into Chapman's Homer",
+      "texto": "Much have I travell'd in the realms of gold,\n  And many goodly states and kingdoms seen;\n  Round many western islands have I been\nWhich bards in fealty to Apollo hold.\nOft of one wide expanse had I been told\n  That deep-brow'd Homer ruled as his demesne:\n  Yet did I never breathe its pure serene\nTill I heard Chapman speak out loud and bold:\n\nThen felt I like some watcher of the skies\n  When a new planet swims into his ken;\nOr like stout Cortez when with eagle eyes\n  He stared at the Pacific—and all his men\nLook'd at each other with a wild surmise—\n  Silent, upon a peak in Darien.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_John_Keats/On_first_Looking_into_Chapman's_Homer",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "When I have fears that I may cease to be",
+      "texto": "When I have fears that I may cease to be\nBefore my pen has glean'd my teeming brain,\nBefore high pilèd books, in charactry,\nHold like rich garners the full-ripen'd grain;\nWhen I behold, upon the night's starr'd face,\nHuge cloudy symbols of a high romance,\nAnd think that I may never live to trace\nTheir shadows, with the magic hand of chance;\nAnd when I feel, fair creature of an hour!\nThat I shall never look upon thee more,\nNever have relish in the faery power\nOf unreflecting love;—then on the shore\nOf the wide world I stand alone, and think\nTill Love and Fame to nothingness do sink.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_complete_poetical_works_and_letters_of_John_Keats/Sonnet:_'When_I_have_fears_that_I_may_cease_to_be'",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Ode to Psyche",
+      "texto": "O GODDESS! hear these tuneless numbers, wrung\nBy sweet enforcement and remembrance dear,\nAnd pardon that thy secrets should be sung\nEven into thine own soft-conched ear:\nSurely I dreamt to-day, or did I see\nThe winged Psyche with awaken'd eyes?\nI wander'd in a forest thoughtlessly,\nAnd, on the sudden, fainting with surprise,\nSaw two fair creatures, couched side by side\nIn deepest grass, beneath the whisp'ring roof\nOf leaves and trembled blossoms, where there ran\nA brooklet, scarce espied:\n\nMid hush'd, cool-rooted flowers, fragrant-eyed,\nBlue, silver-white, and budded Tyrian,\nThey lay calm-breathing, on the bedded grass;\nTheir arms embraced, and their pinions too;\nTheir lips touch'd not, but had not bade adieu,\nAs if disjoined by soft-handed slumber,\nAnd ready still past kisses to outnumber\nAt tender eye-dawn of aurorean love:\nThe winged boy I knew;\nBut who wast thou, O happy, happy dove?\nHis Psyche true!\n\nO latest born and loveliest vision far\nOf all Olympus' faded hierarchy!\nFairer than Phoebe's sapphire-region'd star,\nOr Vesper, amorous glow-worm of the sky;\nFairer than these, though temple thou hast none,\nNor altar heap'd with flowers;\nNor virgin-choir to make delicious moan\nUpon the midnight hours;\nNo voice, no lute, no pipe, no incense sweet\nFrom chain-swung censer teeming;\nNo shrine, no grove, no oracle, no heat\nOf pale-mouth'd prophet dreaming.\n\nO brightest! though too late for antique vows,\nToo, too late for the fond believing lyre,\nWhen holy were the haunted forest boughs,\nHoly the air, the water, and the fire;\nYet even in these days so far retir'd\nFrom happy pieties, thy lucent fans,\nFluttering among the faint Olympians,\nI see, and sing, by my own eyes inspir'd.\n\nSo let me be thy choir, and make a moan\nUpon the midnight hours;\nThy voice, thy lute, thy pipe, thy incense sweet\nFrom swinged censer teeming;\nThy shrine, thy grove, thy oracle, thy heat\nOf pale-mouth'd prophet dreaming.\n\nYes, I will be thy priest, and build a fane\nIn some untrodden region of my mind,\nWhere branched thoughts, new grown with pleasant pain,\nInstead of pines shall murmur in the wind:\nFar, far around shall those dark-cluster'd trees\nFledge the wild-ridged mountains steep by steep;\nAnd there by zephyrs, streams, and birds, and bees,\nThe moss-lain Dryads shall be lull'd to sleep;\nAnd in the midst of this wide quietness\nA rosy sanctuary will I dress\nWith the wreath d trellis of a working brain,\nWith buds, and bells, and stars without a name,\nWith all the gardener Fancy e'er could feign,\nWho breeding flowers, will never breed the same:\nAnd there shall be for thee all soft delight\nThat shadowy thought can win,\nA bright torch, and a casement ope at night,\nTo let the warm Love in!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Hundred_Best_Poems_(lyrical)_in_the_English_language_-_second_series/Ode_to_Psyche",
+      "tags": [
+        "beleza",
+        "morte",
+        "ingles"
+      ]
+    }
+  ]
+}

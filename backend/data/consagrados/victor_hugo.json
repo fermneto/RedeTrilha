@@ -1,0 +1,140 @@
+{
+  "username": "victor_hugo",
+  "name": "Victor Hugo",
+  "bio": "Victor Hugo, poeta, romancista e dramaturgo de Besançon, líder do Romantismo francês. Exilado por se opor a Napoleão III, escreveu Les Contemplations, Les Châtiments e La Légende des siècles, além de Os Miseráveis. Seu enterro reuniu milhões em Paris.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Victor_Hugo_by_%C3%89tienne_Carjat_1876_-_full.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1802,
+  "morte": 1885,
+  "poemas": [
+    {
+      "titulo": "Demain, dès l’aube…",
+      "texto": "Demain, dès l’aube, à l’heure où blanchit la campagne,\nJe partirai. Vois-tu, je sais que tu m’attends.\nJ’irai par la forêt, j’irai par la montagne.\nJe ne puis demeurer loin de toi plus longtemps.\n\nJe marcherai les yeux fixés sur mes pensées,\nSans rien voir au dehors, sans entendre aucun bruit,\nSeul, inconnu, le dos courbé, les mains croisées,\nTriste, et le jour pour moi sera comme la nuit.\n\nJe ne regarderai ni l’or du soir qui tombe,\nNi les voiles au loin descendant vers Harfleur,\nEt quand j’arriverai, je mettrai sur ta tombe\nUn bouquet de houx vert et de bruyère en fleur.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Contemplations/%C2%AB_Demain,_d%C3%A8s_l%E2%80%99aube,_%C3%A0_l%E2%80%99heure_o%C3%B9_blanchit_la_campagne_%C2%BB",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Booz endormi",
+      "texto": "Booz s’était couché de fatigue accablé ;\nIl avait tout le jour travaillé dans son aire ;\nPuis avait fait son lit à sa place ordinaire ;\nBooz dormait auprès des boisseaux pleins de blé.\n\nCe vieillard possédait des champs de blés et d’orge ;\nIl était, quoique riche, à la justice enclin ;\nIl n’avait pas de fange en l’eau de son moulin ;\nIl n’avait pas d’enfer dans le feu de sa forge.\n\nSa barbe était d’argent comme un ruisseau d’avril.\nSa gerbe n’était point avare ni haineuse ;\nQuand il voyait passer quelque pauvre glaneuse :\n« Laissez tomber exprès des épis », disait-il.\n\nCet homme marchait pur loin des sentiers obliques,\nVêtu de probité candide et de lin blanc ;\nEt, toujours du côté des pauvres ruisselant,\nSes sacs de grains semblaient des fontaines publiques.\n\nBooz était bon maître et fidèle parent ;\nIl était généreux, quoiqu’il fût économe ;\nLes femmes regardaient Booz plus qu’un jeune homme,\nCar le jeune homme est beau, mais le vieillard est grand.\n\nLe vieillard, qui revient vers la source première,\nEntre aux jours éternels et sort des jours changeants ;\nEt l’on voit de la flamme aux yeux des jeunes gens,\nMais dans l’œil du vieillard on voit de la lumière.\n\n*\n\nDonc, Booz dans la nuit dormait parmi les siens.\nPrès des meules, qu’on eût prises pour des décombres,\n\nLes moissonneurs couchés faisaient des groupes sombres ;\nEt ceci se passait dans des temps très-anciens.\n\nLes tribus d’Israël avaient pour chef un juge ;\nLa terre, où l’homme errait sous la tente, inquiet\nDes empreintes de pieds de géants qu’il voyait,\nÉtait encor mouillée et molle du déluge.\n\n*\n\nComme dormait Jacob, comme dormait Judith,\nBooz, les yeux fermés, gisait sous la feuillée ;\nOr, la porte du ciel s’étant entre-bâillée\nAu-dessus de sa tête, un songe en descendit.\n\nEt ce songe était tel, que Booz vit un chêne\nQui, sorti de son ventre, allait jusqu’au ciel bleu ;\nUne race y montait comme une longue chaîne ;\nUn roi chantait en bas, en haut mourait un Dieu.\n\nEt Booz murmurait avec la voix de l’âme :\n« Comment se pourrait-il que de moi ceci vînt ?\nLe chiffre de mes ans a passé quatre-vingt,\nEt je n’ai pas de fils, et je n’ai plus de femme.\n\n» Voilà longtemps que celle avec qui j’ai dormi,\nÔ Seigneur ! a quitté ma couche pour la vôtre ;\nEt nous sommes encor tout mêlés l’un à l’autre,\nElle à demi vivante et moi mort à demi.\n\n» Une race naîtrait de moi ! Comment le croire ?\nComment se pourrait-il que j’eusse des enfants ?\nQuand on est jeune, on a des matins triomphants ;\nLe jour sort de la nuit comme d’une victoire ;\n\n» Mais, vieux, on tremble ainsi qu’à l’hiver le bouleau ;\nJe suis veuf, je suis seul, et sur moi le soir tombe.\nEt je courbe, ô mon Dieu ! mon âme vers la tombe,\nComme un bœuf ayant soif penche son front vers l’eau. »\n\nAinsi parlait Booz dans le rêve et l’extase,\nTournant vers Dieu ses yeux par le sommeil noyés ;\nLe cèdre ne sent pas une rose à sa base,\nEt lui ne sentait pas une femme à ses pieds.\n\n*\n\nPendant qu’il sommeillait, Ruth, une moabite,\nS’était couchée aux pieds de Booz, le sein nu,\n\nEspérant on ne sait quel rayon inconnu,\nQuand viendrait du réveil la lumière subite.\n\nBooz ne savait point qu’une femme était là,\nEt Ruth ne savait point ce que Dieu voulait d’elle.\nUn frais parfum sortait des touffes d’asphodèle ;\nLes souffles de la nuit flottaient sur Galgala.\n\nL’ombre était nuptiale, auguste et solennelle ;\nLes anges y volaient sans doute obscurément.\nCar on voyait passer dans la nuit, par moment,\nQuelque chose de bleu qui paraissait une aile.\n\nLa respiration de Booz qui dormait,\nSe mêlait au bruit sourd des ruisseaux sur la mousse.\nOn était dans le mois où la nature est douce,\nLes collines ayant des lys sur leur sommet.\n\nRuth songeait et Booz dormait ; l’herbe était noire ;\nLes grelots des troupeaux palpitaient vaguement ;\nUne immense bonté tombait du firmament ;\nC’était l’heure tranquille où les lions vont boire.\n\nTout reposait dans Ur et dans Jérimadeth ;\nLes astres émaillaient le ciel profond et sombre ;\nLe croissant fin et clair parmi ces fleurs de l’ombre\nBrillait à l’occident, et Ruth se demandait,\n\nImmobile, ouvrant l’œil à moitié sous ses voiles,\nQuel dieu, quel moissonneur de l’éternel été,\nAvait, en s’en allant, négligemment jeté\nCette faucille d’or dans le champ des étoiles.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/La_L%C3%A9gende_des_si%C3%A8cles/Booz_endormi",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Oceano Nox",
+      "texto": "Oh ! combien de marins, combien de capitaines\nQui sont partis joyeux pour des courses lointaines,\nDans ce morne horizon se sont évanouis !\nCombien ont disparu, dure et triste fortune !\nDans une mer sans fond, par une nuit sans lune,\nSous l’aveugle océan à jamais enfouis !\n\nCombien de patrons morts avec leurs équipages !\nL’ouragan de leur vie a pris toutes les pages\nEt d’un souffle il a tout dispersé sur les flots !\nNul ne saura leur fin dans l’abîme plongée.\nChaque vague en passant d’un butin s’est chargée ;\nL’une a saisi l’esquif, l’autre les matelots !\n\nNul ne sait votre sort, pauvres têtes perdues !\nVous roulez à travers les sombres étendues,\nHeurtant de vos fronts morts des écueils inconnus.\nOh ! que de vieux parents, qui n’avaient plus qu’un rêve,\nSont morts en attendant tous les jours sur la grève\nCeux qui ne sont pas revenus !\n\nOn s’entretient de vous parfois dans les veillées.\nMaint joyeux cercle, assis sur des ancres rouillées,\nMêle encor quelque temps vos noms d’ombre couverts\nAux rires, aux refrains, aux récits d’aventures,\nAux baisers qu’on dérobe à vos belles futures,\nTandis que vous dormez dans les goëmons verts !\n\nOn demande : — Où sont-ils ? sont-ils rois dans quelque île ?\nNous ont-ils délaissés pour un bord plus fertile ? —\n\nPuis votre souvenir même est enseveli.\nLe corps se perd dans l’eau, le nom dans la mémoire.\nLe temps, qui sur toute ombre en verse une plus noire,\nSur le sombre océan jette le sombre oubli.\n\nBientôt des yeux de tous votre ombre est disparue.\nL’un n’a-t-il pas sa barque et l’autre sa charrue ?\nSeules, durant ces nuits où l’orage est vainqueur,\nVos veuves aux fronts blancs, lasses de vous attendre,\nParlent encor de vous en remuant la cendre\n        De leur foyer et de leur cœur !\n\nEt quand la tombe enfin a fermé leur paupière,\nRien ne sait plus vos noms, pas même une humble pierre\nDans l’étroit cimetière où l’écho nous répond,\nPas même un saule vert qui s’effeuille à l’automne,\nPas même la chanson naïve et monotone\nQue chante un mendiant à l’angle d’un vieux pont !\n\nOù sont-ils, les marins sombrés dans les nuits noires ?\nÔ flots, que vous savez de lugubres histoires !\nFlots profonds redoutés des mères à genoux !\nVous vous les racontez en montant les marées,\nEt c’est ce qui vous fait ces voix désespérées\nQue vous avez le soir quand vous venez vers nous !",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Rayons_et_les_Ombres/Oceano_nox",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Saison des semailles. Le soir",
+      "texto": "C’est le moment crépusculaire.\nJ’admire, assis sous un portail,\nCe reste de jour dont s’éclaire\nLa dernière heure du travail.\n\nDans les terres, de nuit baignées,\nJe contemple, ému, les haillons\nD’un vieillard qui jette à poignées\nLa moisson future aux sillons.\n\nSa haute silhouette noire\nDomine les profonds labours.\nOn sent à quel point il doit croire\nÀ la fuite utile des jours.\n\nIl marche dans la plaine immense,\nVa, vient, lance la graine au loin,\nRouvre sa main, et recommence,\nEt je médite, obscur témoin,\n\nPendant que, déployant ses voiles,\nL’ombre, où se mêle une rumeur,\nSemble élargir jusqu’aux étoiles\nLe geste auguste du semeur.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Saison_des_semailles._Le_soir",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Clair de lune",
+      "texto": "La lune était sereine et jouait sur les flots. —\nLa fenêtre enfin libre est ouverte à la brise,\nLa sultane regarde, et la mer qui se brise,\nLà-bas, d’un flot d’argent brode les noirs îlots.\n\nDe ses doigts en vibrant s’échappe la guitare.\nElle écoute… Un bruit sourd frappe les sourds échos.\nEst-ce un lourd vaisseau turc qui vient des eaux de Cos,\nBattant l’archipel grec de sa rame tartare ?\n\nSont-ce des cormorans qui plongent tour à tour,\nEt coupent l’eau, qui roule en perles sur leur aile ?\nEst-ce un djinn qui là-haut siffle d’une voix grêle,\nEt jette dans la mer les créneaux de la tour ?\n\nQui trouble ainsi les flots près du sérail des femmes ? —\nNi le noir cormoran, sur la vague bercé,\nNi les pierres du mur, ni le bruit cadencé\nDu lourd vaisseau, rampant sur l’onde avec des rames.\n\nCe sont des sacs pesants, d’où partent des sanglots.\nOn verrait, en sondant la mer qui les promène,\nSe mouvoir dans leurs flancs comme une forme humaine… —\nLa lune était sereine et jouait sur les flots.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Orientales/Clair_de_lune",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Elle avait pris ce pli dans son âge enfantin",
+      "texto": "Elle avait pris ce pli dans son âge enfantin\nDe venir dans ma chambre un peu chaque matin ;\nJe l’attendais ainsi qu’un rayon qu’on espère ;\nElle entrait et disait : Bonjour, mon petit père ;\nPrenait ma plume, ouvrait mes livres, s’asseyait\nSur mon lit, dérangeait mes papiers, et riait,\nPuis soudain s’en allait comme un oiseau qui passe.\nAlors, je reprenais, la tête un peu moins lasse,\nMon œuvre interrompue, et, tout en écrivant,\nParmi mes manuscrits je rencontrais souvent\nQuelque arabesque folle et qu’elle avait tracée,\nEt mainte page blanche entre ses mains froissée\nOù, je ne sais comment, venaient mes plus doux vers.\nElle aimait Dieu, les fleurs, les astres, les prés verts,\nEt c’était un esprit avant d’être une femme.\nSon regard reflétait la clarté de son âme.\nElle me consultait sur tout à tous moments.\nOh ! que de soirs d’hiver radieux et charmants\nPassés à raisonner langue, histoire et grammaire,\nMes quatre enfants groupés sur mes genoux, leur mère\nTout près, quelques amis causant au coin du feu !\nJ’appelais cette vie être content de peu !\nEt dire qu’elle est morte ! Hélas ! que Dieu m’assiste !\nJe n’étais jamais gai quand je la sentais triste ;\nJ’étais morne au milieu du bal le plus joyeux\nSi j’avais, en partant, vu quelque ombre en ses yeux.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Contemplations/%C2%AB_Elle_avait_pris_ce_pli_dans_son_%C3%A2ge_enfantin_%C2%BB",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Ultima verba",
+      "texto": "La conscience humaine est morte ; dans l’orgie,\nSur elle il s’accroupit ; ce cadavre lui plaît ;\nPar moments, gai, vainqueur, la prunelle rougie,\nIl se retourne et donne à la morte un soufflet.\n\nLa prostitution du juge est la ressource.\nLes prêtres font frémir l’honnête homme éperdu ;\nDans le champ du potier ils déterrent la bourse,\nSibour revend le Dieu que Judas a vendu.\n\nIls disent : — César règne, et le Dieu des armées\nL’a fait son élu. Peuple, obéis, tu le dois ! —\n\nPendant qu’ils vont chantant, tenant leurs mains fermées,\nOn voit le sequin d’or qui passe entre leurs doigts.\n\nOh ! tant qu’on le verra trôner, ce gueux, ce prince\nPar le pape béni, monarque malandrin,\nDans une main le sceptre et dans l’autre la pince,\nCharlemagne taillé par Satan dans Mandrin ;\n\nTant qu’il se vautrera, broyant dans ses mâchoires\nLe serment, la vertu, l’honneur religieux,\nIvre, affreux, vomissant sa honte sur nos gloires ;\nTant qu’on verra cela sous le soleil des cieux ;\n\nQuand même grandirait l’abjection publique\nÀ ce point d’adorer l’exécrable trompeur ;\nQuand même l’Angleterre et même l’Amérique\nDiraient à l’exilé : — Va-t’en ! nous avons peur !\n\nQuand même nous serions comme la feuille morte ;\nQuand, pour plaire à César, on nous renîrait tous ;\nQuand le proscrit devrait s’enfuir de porte en porte,\nAux hommes déchiré comme un haillon aux clous ;\n\nQuand le désert, où Dieu contre l’homme proteste,\nBannirait les bannis, chasserait les chassés ;\nQuand même, infâme aussi, lâche comme le reste,\nLe tombeau jetterait dehors les trépassés ;\n\nJe ne fléchirai pas ! Sans plainte dans la bouche,\nCalme, le deuil au cœur, dédaignant le troupeau,\n\nJe vous embrasserai dans mon exil farouche,\nPatrie, ô mon autel ! liberté, mon drapeau !\n\nMes nobles compagnons, je garde votre culte ;\nBannis, la république est là qui nous unit.\nJ’attacherai la gloire à tout ce qu’on insulte ;\nJe jetterai l’opprobre à tout ce qu’on bénit !\n\nJe serai, sous le sac de cendre qui me couvre,\nLa voix qui dit : malheur ! la bouche qui dit : non !\nTandis que tes valets te montreront ton Louvre,\nMoi, je te montrerai, césar, ton cabanon.\n\nDevant les trahisons et les têtes courbées,\nJe croiserai les bras, indigné, mais serein.\nSombre fidélité pour les choses tombées,\nSois ma force et ma joie et mon pilier d’airain !\n\nOui, tant qu’il sera là, qu’on cède ou qu’on persiste,\nÔ France ! France aimée et qu’on pleure toujours,\nJe ne reverrai pas ta terre douce et triste,\nTombeau de mes aïeux et nid de mes amours !\n\nJe ne reverrai pas ta rive qui nous tente,\nFrance ! hors le devoir, hélas ! j’oublîrai tout.\nParmi les éprouvés je planterai ma tente.\nJe resterai proscrit, voulant rester debout.\n\nJ’accepte l’âpre exil, n’eût-il ni fin ni terme,\nSans chercher à savoir et sans considérer\n\nSi quelqu’un a plié qu’on aurait cru plus ferme,\nEt si plusieurs s’en vont qui devraient demeurer.\n\nSi l’on n’est plus que mille, eh bien, j’en suis ! Si même\nIls ne sont plus que cent, je brave encor Sylla ;\nS’il en demeure dix, je serai le dixième ;\nEt s’il n’en reste qu’un, je serai celui-là !",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Ultima_verba_(Hugo)",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "La Conscience",
+      "texto": "Lorsque avec ses enfants vêtus de peaux de bêtes,\nÉchevelé, livide au milieu des tempêtes,\nCaïn se fut enfui de devant Jéhovah,\nComme le soir tombait, l’homme sombre arriva\nAu bas d’une montagne en une grande plaine ;\nSa femme fatiguée et ses fils hors d’haleine\nLui dirent : « Couchons-nous sur la terre, et dormons. »\nCaïn, ne dormant pas, songeait au pied des monts.\n\nAyant levé la tête, au fond des cieux funèbres,\nIl vit un œil, tout grand ouvert dans les ténèbres,\nEt qui le regardait dans l’ombre fixement.\n« Je suis trop près, » dit-il avec un tremblement.\nIl réveilla ses fils dormant, sa femme lasse,\nEt se remit à fuir sinistre dans l’espace.\nIl marcha trente jours, il marcha trente nuits.\nIl allait, muet, pâle et frémissant aux bruits,\nFurtif, sans regarder derrière lui, sans trêve,\nSans repos, sans sommeil ; il atteignit la grève\nDes mers dans le pays qui fut depuis Assur.\n« Arrêtons-nous, dit-il, car cet asile est sûr.\nRestons-y. Nous avons du monde atteint les bornes. »\nEt, comme il s’asseyait, il vit dans les cieux mornes\nL’œil à la même place au fond de l’horizon.\nAlors il tressaillit en proie au noir frisson.\n« Cachez-moi ! » cria-t-il ; et, le doigt sur la bouche,\nTous ses fils regardaient trembler l’aïeul farouche.\nCaïn dit à Jabel, père de ceux qui vont\nSous des tentes de poil dans le désert profond :\n« Étends de ce côté la toile de la tente. »\nEt l’on développa la muraille flottante ;\nEt, quand on l’eut fixée avec des poids de plomb,\n« Vous ne voyez plus rien ? » dit Tsilla, l’enfant blond,\nLa fille de ses fils, douce comme l’aurore ;\nEt Caïn répondit : « Je vois cet œil encore ! »\nJubal, père de ceux qui passent dans les bourgs\nSoufflant dans des clairons et frappant des tambours,\n\nCria : « Je saurai bien construire une barrière. »\nIl fit un mur de bronze et mit Caïn derrière.\nEt Caïn dit : « Cet œil me regarde toujours ! »\nHénoch dit : « Il faut faire une enceinte de tours\nSi terrible, que rien ne puisse approcher d’elle.\nBâtissons une ville avec sa citadelle,\nBâtissons une ville, et nous la fermerons. »\nAlors Tubalcaïn, père des forgerons,\nConstruisit une ville énorme et surhumaine.\nPendant qu’il travaillait, ses frères, dans la plaine,\nChassaient les fils d’Énos et les enfants de Seth ;\nEt l’on crevait les yeux à quiconque passait ;\nEt, le soir, on lançait des flèches aux étoiles.\nLe granit remplaça la tente aux murs de toiles,\nOn lia chaque bloc avec des nœuds de fer,\nEt la ville semblait une ville d’enfer ;\nL’ombre des tours faisait la nuit dans les campagnes ;\nIls donnèrent aux murs l’épaisseur des montagnes ;\nSur la porte on grava : « Défense à Dieu d’entrer. »\nQuand ils eurent fini de clore et de murer,\nOn mit l’aïeul au centre en une tour de pierre ;\nEt lui restait lugubre et hagard. « Ô mon père !\nL’œil a-t-il disparu ? » dit en tremblant Tsilla.\nEt Caïn répondit : « Non, il est toujours là. »\nAlors il dit : « Je veux habiter sous la terre\nComme dans son sépulcre un homme solitaire ;\nRien ne me verra plus, je ne verrai plus rien. »\nOn fit donc une fosse, et Caïn dit : « C’est bien ! »\n\nPuis il descendit seul sous cette voûte sombre ;\nQuand il se fut assis sur sa chaise dans l’ombre\nEt qu’on eut sur son front fermé le souterrain,\nL’œil était dans la tombe et regardait Caïn.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/La_L%C3%A9gende_des_si%C3%A8cles/La_Conscience",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Les Djinns",
+      "texto": "E come i gru van cantando lor lai\nFacendo in aer di se lunga riga,\nCosi vid’ io venir traendo guai\nOmbre portate dalla detta briga.\n\nEt comme les grues qui font dans l’air de longues files vont chantant leur plainte, ainsi je vis venir traînant des gémissements les ombres emportées par cette tempête.\n\nMurs, ville,\nEt port.\nAsile\nDe mort,\nMer grise\nOù brise\nLa brise,\nTout dort.\n\nDans la plaine\nNaît un bruit.\nC’est l’haleine\nDe la nuit.\nElle brame\nComme une âme\nQu’une flamme\nToujours suit !\n\nLa voix plus haute\nSemble un grelot.\n\nD’un nain qui saute\nC’est le galop.\nIl fuit, s’élance,\nPuis en cadence\nSur un pied danse\nAu bout d’un flot.\n\nLa rumeur approche.\nL’écho la redit.\nC’est comme la cloche\nD’un couvent maudit ;\nComme un bruit de foule,\nQui tonne et qui roule,\nEt tantôt s’écroule,\nEt tantôt grandit.\n\nDieu ! la voix sépulcrale\nDes Djinns !… Quel bruit ils font !\nFuyons sous la spirale\nDe l’escalier profond.\nDéjà s’éteint ma lampe,\nEt l’ombre de la rampe,\nQui le long du mur rampe,\nMonte jusqu’au plafond.\n\nC’est l’essaim des Djinns qui passe.\nEt tourbillonne en sifflant !\nLes ifs, que leur vol fracasse,\nCraquent comme un pin brûlant.\nLeur troupeau, lourd et rapide,\nVolant dans l’espace vide,\nSemble un nuage livide\nQui porte un éclair au flanc.\n\nIls sont tout près ! — Tenons fermée\nCette salle, où nous les narguons.\nQuel bruit dehors ! Hideuse armée\n\nDe vampires et de dragons !\nLa poutre du toit descellée\nPloie ainsi qu’une herbe mouillée,\nEt la vieille porte rouillée\nTremble, à déraciner ses gonds !\n\nCris de l’enfer ! voix qui hurle et qui pleure !\nL’horrible essaim, poussé par l’aquilon,\nSans doute, ô ciel ! s’abat sur ma demeure.\nLe mur fléchit sous le noir bataillon.\nLa maison crie et chancelle penchée,\nEt l’on dirait que, du sol arrachée,\nAinsi qu’il chasse une feuille séchée,\nLe vent la roule avec leur tourbillon !\n\nProphète ! si ta main me sauve\nDe ces impurs démons des soirs,\nJ’irai prosterner mon front chauve\nDevant tes sacrés encensoirs !\nFais que sur ces portes fidèles\nMeure leur souffle d’étincelles,\nEt qu’en vain l’ongle de leurs ailes\nGrince et crie à ces vitraux noirs !\n\nIls sont passés ! — Leur cohorte\nS’envole, et fuit, et leurs pieds\nCessent de battre ma porte\nDe leurs coups multipliés.\nL’air est plein d’un bruit de chaînes,\nEt dans les forêts prochaines\nFrissonnent tous les grands chênes,\nSous leur vol de feu pliés !\n\nDe leurs ailes lointaines\nLe battement décroît,\nSi confus dans les plaines,\nSi faible, que l’on croit\n\nOuïr la sauterelle\nCrier d’une voix grêle,\nOu pétiller la grêle\nSur le plomb d’un vieux toit.\n\nD’étranges syllabes\nNous viennent encor ;\nAinsi, des arabes\nQuand sonne le cor,\nUn chant sur la grève\nPar instants s’élève,\nEt l’enfant qui rêve\nFait des rêves d’or.\n\nLes Djinns funèbres,\nFils du trépas,\nDans les ténèbres\nPressent leurs pas ;\nLeur essaim gronde :\nAinsi, profonde,\nMurmure une onde\nQu’on ne voit pas.\n\nCe bruit vague\nQui s’endort,\nC’est la vague\nSur le bord ;\nC’est la plainte,\nPresque éteinte,\nD’une sainte\nPour un mort.\n\nOn doute\nLa nuit…\nJ’écoute : —\nTout fuit,\n\nTout passe ;\nL’espace\nEfface\nLe bruit.\n\n          28 août 1828.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Orientales/Les_Djinns",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Le Mendiant",
+      "texto": "Un pauvre homme passait dans le givre et le vent.\nJe cognai sur ma vitre ; il s’arrêta devant\nMa porte, que j’ouvris d’une façon civile.\nLes ânes revenaient du marché de la ville,\nPortant les paysans accroupis sur leurs bâts.\nC’était le vieux qui vit dans une niche au bas\nDe la montée, et rêve, attendant, solitaire,\nUn rayon du ciel triste, un liard de la terre,\nTendant les mains pour l’homme et les joignant pour Dieu.\nJe lui criai : — Venez vous réchauffer un peu.\nComment vous nommez-vous ? — Il me dit : — Je me nomme\nLe pauvre. — Je lui pris la main : — Entrez, brave homme. —\nEt je lui fis donner une jatte de lait.\nLe vieillard grelottait de froid ; il me parlait.\nEt je lui répondais, pensif et sans l’entendre.\n— Vos habits sont mouillés, dis-je, il faut les étendre\nDevant la cheminée. — Il s’approcha du feu.\nSon manteau, tout mangé des vers, et jadis bleu,\nÉtalé largement sur la chaude fournaise,\nPiqué de mille trous par la lueur de braise,\nCouvrait l’âtre, et semblait un ciel noir étoilé.\nEt, pendant qu’il séchait ce haillon désolé\nD’où ruisselait la pluie et l’eau des fondrières,\nJe songeais que cet homme était plein de prières,\nEt je regardais, sourd à ce que nous disions,\nSa bure où je voyais des constellations.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Contemplations/Le_Mendiant",
+      "tags": [
+        "luto",
+        "exilio",
+        "frances"
+      ]
+    }
+  ]
+}

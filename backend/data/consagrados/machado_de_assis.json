@@ -1,0 +1,120 @@
+{
+  "username": "machado_de_assis",
+  "name": "Machado de Assis",
+  "bio": "Escritor carioca do Morro do Livramento, neto de escravizados alforriados, fundador e primeiro presidente da Academia Brasileira de Letras. Maior ficcionista brasileiro, também foi poeta, de Crisálidas a Ocidentais, com poemas como Círculo Vicioso e o soneto A Carolina, escrito para a esposa morta.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Machado_de_Assis_aos_57_anos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1839,
+  "morte": 1908,
+  "poemas": [
+    {
+      "titulo": "Círculo Vicioso",
+      "texto": "Bailando no ar, gemia inquieto vaga-lume:\n— «Quem me dera que fosse aquella loura estrella,\nQue arde no eterno azul, como uma eterna vela!»\nMas a estrella, fitando a lua, com ciume:\n\n— «Pudesse eu copiar o transparente lume,\nQue, da grega columna á gothica janella,\nContemplou, suspirosa, a fronte amada e bella!»\nMas a lua, fitando o sol, com azedume:\n\n— «Misera! tivesse eu aquella enorme, aquella\nClaridade immortal, que toda a luz resume!»\nMas o sol, inclinando a rutila capella:\n\n— «Pesa-me esta brilhante aureola de nume...\nEnfara-me esta azul e desmedida umbella...\nPor que não nasci eu um simples vagalume?»",
+      "forma": "soneto",
+      "obra": "Ocidentais",
+      "ano": 1901,
+      "fonte": "https://pt.wikisource.org/wiki/Circulo_vicioso",
+      "tags": [
+        "insatisfacao",
+        "desejo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A Carolina",
+      "texto": "Querida, ao pé do leito derradeiro\nEm que descanças dessa longa vida,\nAqui venho e virei, pobre querida,\nTrazer-te o coração do companheiro.\n\nPulsa-lhe aquelle affecto verdadeiro\nQue, a despeito de toda a humana lida,\nFez a nossa existencia appetecida\nE n’um recanto poz um mundo inteiro.\n\nTrago-te flores, — restos arrancados\nDa terra que nos viu passar unidos\nE ora mortos nos deixa e separados.\n\nQue eu, se tenho nos olhos mal feridos\nPensamentos de vida formulados,\nSão pensamentos idos e vividos.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": 1906,
+      "fonte": "https://pt.wikisource.org/wiki/A_Carolina",
+      "tags": [
+        "luto",
+        "amor",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Mundo interior",
+      "texto": "Ouço que a natureza é uma lauda eterna\nDe pompa, de fulgor, de movimento e lida,\nUma escala de luz, uma escala de vida\n      De sol á infima luzerna.\n\nOuço que a natureza, — a natureza externa, —\nTem o olhar que namora, e o gesto que intimida\nFeiticeira que ceva uma hydra de Lerna\n      Entre as flôres da bella Armida.\n\nE comtudo, se fecho os olhos, e mergulho\nDentro em mim, vejo á luz de outro sol, outro abysmo\nEm que um mundo mais vasto, armado de outro orgulho,\n\nRóla a vida immortal e o eterno cataclismo,\nE, como o outro, guarda em seu ambito enorme,\nUm segredo que attrae, que desafia — e dorme.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Mundo_Interior",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Uma criatura",
+      "texto": "Sei de uma criatura antiga e formidável,\nQue a si mesma devora os membros e as entranhas\nCom a sofreguidão da fome insaciável.\n\nHabita juntamente os vales e as montanhas;\nE no mar, que se rasga, à maneira de abismo,\nEspreguiça-se toda em convulsões estranhas.\n\nTraz impresso na fronte o obscuro despotismo;\nCada olhar que despede, acerbo e mavioso,\nParece uma expansão de amor e de egoísmo.\n\nFriamente contempla o desespero e o gozo,\nGosta do colibri, como gosta do verme,\nE cinge ao coração o belo e o monstruoso.\n\nPara ela o chacal é, como a rola, inerme;\nE caminha na terra imperturbável, como\nPelo vasto areal um vasto paquiderme.\n\nNa árvore que rebenta o seu primeiro gomo\nVem a folha, que lento e lento se desdobra,\nDepois a flor, depois o suspirado pomo.\n\nPois essa criatura está em toda a obra:\nCresta o seio da flor e corrompe-lhe o fruto;\nE é nesse destruir que as suas forças dobra.\n\nAma de igual amor o poluto e o impoluto;\nComeça e recomeça uma perpétua lida,\nE sorrindo obedece ao divino estatuto.\nTu dirás que é a Morte; eu direi que é a Vida.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Uma_Criatura",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Suave mari magno",
+      "texto": "Lembra-me que, em certo dia,\nNa rua, ao sol de verão,\nEnvenenado morria\n         Um pobre cão.\n\nArfava, espumava e ria,\nDe um riso espurio e bufão,\nVentre e pernas sacudia\n         Na convulsão.\n\nNenhum, nenhum curioso\nPassava, sem se deter,\n         Silencioso,\n\nJunto ao cão que ia morrer,\nComo se lhe désse gozo\n         Ver padecer.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Suave_Mari_Magno",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Lindóia",
+      "texto": "Vem, vem das águas, mísera Moema,\nSenta-te aqui. As vozes lastimosas\nTroca pelas cantigas deleitosas,\nAo pé da doce e pálida Coema.\n\nVós, sombras de Iguaçu e de Iracema,\nTrazei nas mãos, trazei no colo as rosas\nQue o amor desabrochou e fez viçosas\nNas laudas de um poema e outro poema.\n\nChegai, folgai, cantai. É esta, é esta\nDe Lindóia, que a voz suave e forte\nDo vate celebrou, a alegre festa.\n\nAlém do amável, gracioso porte,\nVede o mimo, a ternura que lhe resta.\nTanto inda é bela no seu rosto a morte",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Lind%C3%B3ia",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "No alto",
+      "texto": "O poeta chegára ao alto da montanha,\nE quando ia a descer a vertente do oeste,\n         Viu uma cousa extranha,\n         Uma figura má.\n\nEntão, volvendo o olhar ao subtil, ao celeste,\nAo gracioso Ariel, que de baixo o acompanha,\n         N’um tom medroso e agreste\n         Pergunta o que será.\n\nComo se perde no ar um som festivo e doce,\n         Ou bem como se fosse\n         Um pensamento vão,\n\nAriel se desfez sem lhe dar mais resposta.\n         Para descer a encosta\n         O outro estendeu-lhe a mão.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/No_Alto",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A mosca azul",
+      "texto": "Era uma mosca azul, azas de ouro e granada,\n         Filha da China ou do Indostão,\nQue entre as folhas brotou de uma rosa encarnada,\n         Em certa noite de verão.\n\nE zumbia, e voava, e voava, e zumbia\n         Refulgindo ao clarão do sol\nE da lua, — melhor do que refulgiria\n         Um brilhante do Grão-Mogol.\n\nUm poleá que a viu, espantado e tristonho,\n         Um poleá lhe perguntou:\n«Mosca, esse refulgir, que mais parece um sonho,\n         Dize, quem foi que t’o ensinou?»\n\nEntão ella, voando, e revoando, disse:\n         — «Eu sou a vida, eu sou a flor\n\n«Das graças, o padrão da eterna meninice,\n         «E mais a gloria, e mais o amor.»\n\nE elle deixou-se estar a contemplal-a, mudo,\n         E tranquillo, como um faquir,\nComo alguem que ficou deslembrado de tudo,\n         Sem comparar, nem reflectir.\n\nEntre as azas do insecto, a voltear no espaço,\n         Uma cousa lhe pareceu\nQue surdia, com todo o resplendor de um paço\n         E viu um rosto, que era o seu.\n\nEra elle, era um rei, o rei de Cachemira,\n         Que tinha sobre o collo nú\nUm immenso collar de opala, e uma saphyra\n         Tirada do corpo de Vischnu.\n\nCem mulheres em flôr, cem nayras superfinas,\n         Aos pés delle, no liso chão,\nEspreguiçam sorrindo as suas graças finas,\n         E todo o amor que tem lhe dão.\n\nMudos, graves, de pé, cem ethiopes feios,\n         Com grandes leques de avestruz,\nRefrescam-lhes de manso os aromados seios,\n         Voluptuosamente nus.\n\nVinha a gloria depois; — quatorze reis vencidos,\n         E enfim as páreas triumphaes\n\nDe trezentas nações, e os parabens unidos\n         Das coroas occidentaes.\n\nMas o melhor de tudo é que no rosto aberto\n         Das mulheres e dos varões,\nComo em agua que deixa o fundo descoberto,\n         Via limpos os corações.\n\nEntão elle, estende a mão callosa e tosca,\n         Affeita a só carpintejar,\nCom um gesto pegou na fulgurante mosca,\n         Curioso de a examinar.\n\nQuiz vel-a, quis saber a causa do mysterio.\n         E, fechando-a na mão, sorriu\nDe contente, ao pensar que alli tinha um imperio,\n         E para casa se partiu.\n\nAlvoroçado chega, examina, e parece\n         Que se houve nessa occupação\nMiudamente, como um homem que quizesse\n         Dissecar a sua illusão.\n\nDissecou-a, a tal ponto, e com tal arte, que ella,\n         Rota, baça, nojenta, vil,\nSuccumbiu; e com isto esvaiu-se-lhe aquella\n         Visão fantastica e subtil.\n\nHoje, quando elle ahi vae, de aloé e cardamomo\n         Na cabeça, com ar taful,\nDizem que ensandeceu, e que não sabe como\n         Perdeu a sua mosca azul.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_Mosca_Azul",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Quando ela fala",
+      "texto": "She speaks\nO speake again, bright angel!\nShakesp.\n\nQuando ella falla, parece\nQue a voz da briza se cala;\nTalvez um anjo emmudece\n     Quando ella falla.\n\nMeu coração dolorido\nAs suas mágoas exhala,\n\nE volta ao gozo perdido\n    Quando ella falla.\n\nPudeste eu eternamente,\nAo lado d'ella, escutal-a,\nOuvir sua alma innocente\n    Quando ella falla.\n\nMinh'alma, já semi-morta.\nConseguíra ao céo alçal-a,\nPorque o céo abre uma porta\n    Quando ella falla.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Quando_ela_fala",
+      "tags": [
+        "existencia",
+        "portugues"
+      ]
+    }
+  ]
+}
