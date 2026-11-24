@@ -324,14 +324,44 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | — | — |
 
+## Bloco: Américas não hispânicas
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| `emile_nelligan` | Émile Nelligan | 1941 | fr | 118 | fr.wikisource: Émile Nelligan et son œuvre |
+| `louis_frechette` | Louis Fréchette | 1908 | fr | 90 | fr.wikisource: La Légende d’un peuple |
+| `phillis_wheatley` | Phillis Wheatley | 1784 | en | 62 | en.wikisource: Memoir and Poems of Phillis Wheatley |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| — | — |  |  |  |  |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| — | — |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 152 poetas, 10966 poemas.
+JSON na pasta (exceto ficheiros `_`): 155 poetas, 11236 poemas.
 
-`make reset` depois do bloco árabe, persa e índico:
+`make reset` depois das Américas não hispânicas:
 
 ```
-consagrados: 152 poetas criados, 0 atualizados; 10966 poemas criados, 0 atualizados
+consagrados: 155 poetas criados, 0 atualizados; 11236 poemas criados, 0 atualizados
 ```
 
-Omar Khayyam ganhou o Rubaiyat completo na 5ª edição de Edward FitzGerald (1883), numa página só. O Gitanjali em inglês não renderiza o verso do djvu. Hafez, Rumi, Saadi, Ferdowsi, Kalidasa, al-Mutanabbi e Imru' al-Qais continuam com os poemas originais já importados: não apareceu uma edição legível isolada.
+Phillis Wheatley, Émile Nelligan e Louis Fréchette entraram com um livro cada. O Rubaiyat de FitzGerald e a antiguidade latina já estavam contados no passo anterior.

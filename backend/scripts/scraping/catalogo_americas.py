@@ -37,5 +37,6 @@ NOVOS: tuple[Alvo, ...] = (
         "do Canadá francês, em cantos.",
         wiki="fr",
         prefixo="La Légende d’un peuple/",
+        qid="Q580971",
     ),
 )
