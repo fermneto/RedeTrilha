@@ -4,12 +4,17 @@
   "bio": "Poeta italiano entre o neoclassicismo e o romantismo. Os sonetos e Dei sepolcri ligam a pátria, o exílio e o culto dos mortos.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Ugo_Foscolo.jpg",
   "morte": 1827,
+  "escolas": [
+    "arcadismo_neoclassicismo",
+    "romantismo"
+  ],
+  "pais": "GR",
   "poemas": [
     {
       "titulo": "A Zacinto (1835)",
       "texto": "Nè più mai toccherò le sacre sponde\n    Ove il mio corpo fanciulletto giacque,\n    Zacinto mia, che te specchi nell’onde\n    Del greco mar, da cui vergine nacque\n\nVenere, e fea quelle isole feconde \n    Col suo primo sorriso, onde non tacque\n    Le tue limpide nubi e le tue fronde\n    L’inclito verso di Colui che l’acque\n\nCantò fatali, ed il diverso esiglio\n    Per cui bello di fama e di sventura \n    Baciò la sua petrosa Itaca Ulisse.\n\nTu non altro che il canto avrai del figlio,\n    O materna mia terra; a noi prescrisse\n    Il fato illacrimata sepoltura.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/A_Zacinto_%281835%29",
       "tags": [
@@ -20,7 +25,7 @@
       "titulo": "Alla Musa (Foscolo 1835)",
       "texto": "Pur tu copia versavi alma di canto\n    Su le mie labbra un tempo, Aonia Diva,\n    Quando de’ miei fiorenti anni fuggiva\n    La stagion prima, e dietro erale intanto\n\nQuesta, che meco per la via del pianto\n    Scende di Lete ver la muta riva:\n    Non udito or t’invoco; ohimè! soltanto\n    Una favilla del tuo spirto è viva.\n\nE tu fuggisti in compagnia dell’ore,\n    O Dea! tu pur mi lasci alle pensose \n    Membranze, e del futuro al timor cieco.\n\nPerò mi accorgo, e mel ridice amore,\n    Che mal ponno sfogar rade, operose\n    Rime il dolor che deve albergar meco.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Alla_Musa_%28Foscolo_1835%29",
       "tags": [
@@ -32,7 +37,7 @@
       "titulo": "Alla Sera (1835)",
       "texto": "Forse perchè della fatal quïete\n    Tu sei l’immago a me sì cara, vieni,\n    O Sera! E quando ti corteggian liete\n    Le nubi estive e i zeffiri sereni,\n\nE quando dal nevoso aere inquiete\n    Tenebre, e lunghe, all’universo meni,\n    Sempre scendi invocata, e le secrete\n    Vie del mio cor soavemente tieni.\n\nVagar mi fai co’ miei pensier su l’orme\n    Che vanno al nulla eterno; e intanto fugge\n    Questo reo tempo, e van con lui le torme\n\nDelle cure, onde meco egli si strugge;\n    E mentre io guardo la tua pace, dorme\n    Quello spirto guerrier ch’entro mi rugge.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Alla_Sera_%281835%29",
       "tags": [
@@ -43,7 +48,7 @@
       "titulo": "Che stai? già il secol l'orma ultima lascia (1835)",
       "texto": "Che stai? già il secol l’orma ultima lascia\n    Dove del tempo son le leggi rotte\n    Precipita, portando entro la notte\n    Quattro tuoi lustri, e obblio freddo li fascia.\n\nChe se vita è l’orror, l’ira, e l’ambascia, \n    Troppo hai del viver tuo l’ore prodotte;\n    Or meglio vivi, e con fatiche dotte\n    A chi diratti antico esempi lascia.\n\nFiglio infelice, e disperato amante,\n    E senza patria, a tutti aspro e a te stesso, \n    Giovine d’anni e rugoso in sembiante,\n\nChe stai? breve è la vita, e lunga è l’arte;\n    A chi altamente oprar non è concesso\n    Fama tentino almen libere carte.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Che_stai%3F_gi%C3%A0_il_secol_l%27orma_ultima_lascia_%281835%29",
       "tags": [
@@ -55,7 +60,7 @@
       "titulo": "E tu ne' carmi avrai perenne vita (1835)",
       "texto": " \nE tu ne’ carmi avrai perenne vita\n    Sponda che Arno saluta in suo cammino\n    Partendo la città che del latino\n    Nome accogliea finor l’ombra fuggita.\n\nGià dal tuo ponte all’onda impaurita \n    Il papale furore e il ghibellino\n    Mescean gran sangue, ove oggi al pellegrino\n    Del fero vate la magion si addita.\n\nPer me cara, felice, inclita riva\n    Ove sovente i piè leggiadri mosse \n    Colei che vera al portamento Diva\n\nIn me volgeva sue luci beate,\n    Mentr’io sentia dai crin d’oro commosse\n    Spirar ambrosia l’aure innamorate.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/E_tu_ne%27_carmi_avrai_perenne_vita_%281835%29",
       "tags": []
@@ -64,7 +69,7 @@
       "titulo": "In morte del fratello Giovanni (1835)",
       "texto": "Un dì, s’io non andrò sempre fuggendo\n     Di gente in gente; mi vedrai seduto\n     Su la tua pietra, o fratel mio, gemendo\n     Il fior de’ tuoi gentili anni caduto:\n\nLa madre or sol, suo dì tardo traendo,\n     Parla di me col tuo cenere muto:\n     Ma io deluse a voi le palme tendo;\n     E se da lunge i miei tetti saluto,\n\nSento gli avversi Numi, e le secrete\n     Cure che al viver tuo furon tempesta;\n     E prego anch’io nel tuo porto quiete:\n\nQuesto di tanta speme oggi mi resta!\n     Straniere genti, l’ossa mie rendete\n     Allora al petto della madre mesta.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/In_morte_del_fratello_Giovanni_%281835%29",
       "tags": [
@@ -75,7 +80,7 @@
       "titulo": "Meritamente, però ch'io potei (1835)",
       "texto": "Meritamente, però ch’io potei\n    Abbandonarti, or grido alle frementi\n    Onde che batton l’alpi, e i pianti miei\n    Sperdano sordi del Tirreno i venti.\n\nSperai, poichè mi han tratto uomini e Dei \n    In lungo esilio fra spergiure genti\n    Dal bel paese ove or meni sì rei,\n    Me sospirando, i tuoi giorni fiorenti.\n\nSperai che il tempo, e i duri casi, e queste\n    Rupi ch’io varco anelando, e le eterne \n    Ov’io qual fiera dormo atre foreste,\n\nSarien ristoro al mio cor sanguinente;\n    Ahi vota speme! Amor fra l’ombre inferne\n    Seguirammi immortale, onnipotente.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Meritamente%2C_per%C3%B2_ch%27io_potei_%281835%29",
       "tags": [
@@ -87,7 +92,7 @@
       "titulo": "Non son chi fui: perì di noi gran parte (1835)",
       "texto": "Non son chi fui: perì di noi gran parte:\n    Questo che avanza è sol languore e pianto;\n    E secco è il mirto, e son le foglie sparte\n    Del lauro, speme al giovenil mio canto;\n\nPerchè dal dì ch’empia licenza e Marte \n    Vestivan me del lor sanguineo manto,\n    Cieca è la mente e guasto il core, ed arte\n    L’umana strage arte è in me fatta, e vanto.\n\nChe se pur sorge di morir consiglio,\n    A mia fiera ragion chiudon le porte \n    Furor di gloria, e carità di figlio.\n\nTal di me schiavo, e d’altri, e della sorte,\n    Conosco il meglio ed al peggior mi appiglio,\n    E so invocare, e non darmi la morte.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Non_son_chi_fui%3A_per%C3%AC_di_noi_gran_parte_%281835%29",
       "tags": [
@@ -98,7 +103,7 @@
       "titulo": "Perchè taccia il rumor di mia catena (1835)",
       "texto": "Perchè taccia il rumor di mia catena\n    Di lagrime, di speme e di amor vivo,\n    E di silenzio; chè pietà mi affrena\n    Se con lei parlo, o di lei penso e scrivo.\n\nTu sol mi ascolti, o solitario rivo, \n    Ove ogni notte Amor seco mi mena,\n    Qui affido il pianto e i miei danni descrivo,\n    Qui tutta verso del dolor la piena;\n\nE narro come i grandi occhi ridenti\n    Arsero d’immortal raggio il mio core, \n    Come la rosea bocca e i rilucenti\n\nOdorati capelli, ed il candore\n    Delle divine membra, e i cari accenti\n    M’insegnarono alfin pianger d’amore.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Perch%C3%A8_taccia_il_rumor_di_mia_catena_%281835%29",
       "tags": [
@@ -109,7 +114,7 @@
       "titulo": "Solcata ho fronte (1835)",
       "texto": "Solcata ho fronte, occhi incavati intenti;\n    Crin fulvo, emunte guance, ardito aspetto;\n    Labbro tumido acceso, e tersi denti,\n    Capo chino, bel collo, e largo petto;\n\nGiuste membra, vestir semplice eletto; \n    Ratti i passi, i pensier, gli atti, gli accenti,\n    Sobrio, umano, leal, prodigo, schietto;\n    Avverso al mondo, avversi a me gli eventi.\n\nTalor di lingua, e spesso di man prode;\n    Mesto i più giorni e solo, ognor pensoso, \n    Pronto, iracondo, inquieto, tenace:\n\nDi vizi ricco e di virtù, do lode\n    Alla ragion, ma corro ove al cor piace:\n    Morte sol mi darà fama e riposo.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Solcata_ho_fronte_%281835%29",
       "tags": [
@@ -120,7 +125,7 @@
       "titulo": "Te nudrice alle Muse, ospite e Dea (1835)",
       "texto": "Te, nudrice alle muse, ospite e Dea,\n    Le barbariche genti che ti han doma\n    Nomavan tutte, e questo a noi pur fea\n    Lieve la varia, antiqua, infame soma.\n\nChè se i tuoi vizi, e gli anni, e sorte rea \n    Ti han morto il senno ed il valor di Roma,\n    In te viveva il gran dir che avvolgea\n    Regali allori alla servil tua chioma.\n\nOr ardi, Italia, al tuo Genio ancor queste\n    Reliquie estreme di cotanto impero; \n    Anzi il Toscano tuo parlar celeste\n\nOgnor più stempra nel sermon straniero;\n    Onde, più che di tua divisa veste,\n    Sia il vincitor di tua barbarie altero.",
       "forma": "soneto",
-      "obra": "it.wikisource: Sonetti (Foscolo)",
+      "obra": "Sonetti",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Te_nudrice_alle_Muse%2C_ospite_e_Dea_%281835%29",
       "tags": [

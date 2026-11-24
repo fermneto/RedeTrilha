@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Rub%C3%A9n_Dar%C3%ADo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1867,
   "morte": 1916,
+  "escolas": [
+    "modernismo_hispanico"
+  ],
+  "pais": "NI",
   "poemas": [
     {
       "titulo": "Canción de otoño en primavera",
@@ -140,7 +144,7 @@
       "titulo": "Alaba los ojos negros de Julia — Eva era rubia? No. Con negros ojos",
       "texto": "Eva era rubia? No. Con negros ojos\nVio la manzana del jardín: con labios\nRojos probó su miel; con labios rojos\nQue saben hoy más ciencia que los sabios.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Alaba_los_ojos_negros_de_Julia",
       "tags": []
@@ -149,7 +153,7 @@
       "titulo": "Alaba los ojos negros de Julia — Venus tuvo el azur en sus pupilas ",
       "texto": "Venus tuvo el azur en sus pupilas \nPero su hijo no. Negros y fieros \nEncienden a las tórtolas tranquilas \nLos dos ojos de Eros.\n\nLos ojos de las reinas fabulosas,\nDe las reinas magníficas y fuertes,\nTenían las pupilas tenebrosas\nQue daban los amores y las muertes.\n\nPentensilea, reina de amazonas,\nJudith, espada y fuerza de Betulia,\nCleopatra, encantadora de coronas,\nLa luz tuvieron de tus ojos, Julia.\n\nLa negra, que es más luz que la luz blanca\nDel sol, y las azules de los cielos.\nLuz que el más rojo resplandor arranca\nAl diamante terrible de los celos.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Alaba_los_ojos_negros_de_Julia",
       "tags": []
@@ -158,7 +162,7 @@
       "titulo": "Alaba los ojos negros de Julia — Luz negra, luz divina, luz que alegra ",
       "texto": "Luz negra, luz divina, luz que alegra \nLa luz meridional, luz de las niñas, \nDe las grandes ojeras, ¡oh, luz negra \nQue hace cantar a Pan bajo las viñas!",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Alaba_los_ojos_negros_de_Julia",
       "tags": []
@@ -167,7 +171,7 @@
       "titulo": "Año nuevo (Darío) — A las doce de la noche por las puertas de la gloria ",
       "texto": "A las doce de la noche por las puertas de la gloria \nY el fulgor de perla y oro de una luz extraterrestre, \nSale en hombros de cuatro ángeles, y en su silla gestatoria, \nSan Silvestre.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/A%C3%B1o_nuevo_%28Dar%C3%ADo%29",
       "tags": []
@@ -176,7 +180,7 @@
       "titulo": "Año nuevo (Darío) — Más hermoso que un rey mago, lleva puesta la tiara,",
       "texto": "Más hermoso que un rey mago, lleva puesta la tiara,\nDe que son bellos diamantes Sirio, Arturo y Orión;\nY el anillo de su diestra, hecho cual si fuese para \nSalomón. \n\nSus pies cubren los joyeles de la Osa adamantina, \nY su capa raras piedras de una ilustre Visapur; \nY colgada sobre el pecho resplandece la divina \nCruz del Sur. \n\nVa el pontífice hacia Oriente ¿va encontrar el áureo barco,\nDonde al brillo de la aurora viene en triunfo el rey Enero? \nYa la aljaba de Diciembre se fué toda por el arco\nDel Arquero. \n\nA la orilla del abismo misterioso de lo Eterno \nEl inmenso Sagitario no se cansa de flechar;\nLe sustenta el frío Polo, lo corona el blanco Invierno,\nY le cubre los ríñones el vellón azul del mar.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/A%C3%B1o_nuevo_%28Dar%C3%ADo%29",
       "tags": [
@@ -187,7 +191,7 @@
       "titulo": "Año nuevo (Darío) — Cada flecha que dispara, cada flecha es una hora; ",
       "texto": "Cada flecha que dispara, cada flecha es una hora; \nDoce aljabas, cada año, para él trae el rey Enero; \nEn la sombra se destaca la figura vencedora \nDel Arquero.\n\nAl redor de la figura del gigante se oye el vuelo \nMisterioso y fugitivo de las almas que se van, \nY el ruido con que pasa por la bóveda del cielo \nCon sus alas membranosas el murciélago Satán. \nSan Silvestre bajo el palio de un zodiaco de virtudes, \nDel celeste Vaticano se detiene en los umbrales \nMientras himnos y motetes canta un coro de laudes \nInmortales.\nReza el santo y pontifica; y al mirar que viene el barco \nDonde en triunfo llega Enero, \nAnte Dios bendice al mundo; y su brazo abarca el arco \ny el Arquero.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/A%C3%B1o_nuevo_%28Dar%C3%ADo%29",
       "tags": [
@@ -198,7 +202,7 @@
       "titulo": "Blasón",
       "texto": "El olímpico cisne de nieve \nCon el ágata rosa del pico\nLustra el ala eucarística y breve\nque abre al sol como un casto abanico.\n\nEn la forma de un brazo de lira\nY del asa de un ánfora griega\nEs su Cándido cuello, que inspira\nComo prora ideal que navega.\n\nEs el cisne, de estirpe sagrada,\nCuyo beso, por campos de seda,\nAscendió hasta la cima rosada\nDe las dulces colinas de Leda.\n\nBlanco rey de la fuente Castalia\nSu victoria ilumina el Danubio;\nVinci fué su barón en Italia;\nLohengrín es su príncipe rubio.\n\nSu blancura es hermana del lino,\nDel botón de los blancos rosales\ny del albo toisón diamantino\nDe los tiernos corderos pascuales.\n\nRimador de ideal florilegio\nEs de armiño su lírico manto,\ny es el mágico pájaro regio\nQue al morir rima el alma en un canto\n\nEl alado aristócrata muestra\nLises albos en campo de azur,\nY ha sentido en sus plumas la diestra\nDe la amable y gentil Pompadour.\n\nBoga y boga en el lago sonoro\nDonde el sueño a los tristes espera,\nDonde aguarda una góndola de oro\nA la novia de Luis de Baviera.\n\nDad, Condesa, a los cisnes cariño,\nDioses son de un país halagüeño,\nY hechos son de perfume, de armiño,\nDe luz alba, de seda y de sueño.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Blas%C3%B3n",
       "tags": [
@@ -209,7 +213,7 @@
       "titulo": "Bouquet",
       "texto": "Un poeta egregio del país de Francia, \nQue con versos áureos alabó el amor, \nFormó un ramo armónico, lleno de elegancia, \nEn su Sinfonía en Blanco Mayor.\n\nYo por ti formara, Blanca deliciosa,\nEl regalo lírico de un blanco bouquet,\nCon la blanca estrella, con la blanca rosa \nQue en los bellos parques del azul se vé.\n\nHoy que tú celebras tus bodas de nieve, \n(Tus bodas de virgen con el sueño son) \nTodas sus blancuras, Primavera, llueve \nSobre la blancura de tu corazón.\n\nCirios, cirios blancos, blancos, blancos lirios. \nCuellos de los cisnes, margarita en flor, \nGalas de la espuma, ceras de los cirios \nY estrellas celestes tienen tu color.\n\nYo al enviarte versos de mi vida arranco \nLa flor que te ofrezco, blanco serafín: \n¡Mira cómo mancha tu corpino blanco \nLa más roja rosa que hay en mi jardín!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Bouquet",
       "tags": [
@@ -221,7 +225,7 @@
       "titulo": "Canción de Carnaval — Le carnaval s'amuse!",
       "texto": "Le carnaval s'amuse!\nViens le chanter, ma Muse...\nBANVILLE.\nMusa, la máscara apresta, \nEnsaya un aire jovial \ny goza y ríe en la fiesta \nDel carnaval.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_de_Carnaval",
       "tags": []
@@ -230,7 +234,7 @@
       "titulo": "Canción de Carnaval — Ríe en la danza que gira, ",
       "texto": "Ríe en la danza que gira, \nMuestra la pierna rosada, \nY suene, como una lira, \nTu carcajada.\n\nPara volar más ligera \nPonte dos hojas de rosa, \nComo hace tu compañera \nLa mariposa.\n\nY que en tu boca risueña,\nQue se une al alegre coro,\nDeje la abeja posteña\nSu miel de oro.\n\nUnete a la mascarada,\nY mientras muequea un clown\nCon la faz pintarrajeada\nComo Frank Brown;",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_de_Carnaval",
       "tags": []
@@ -239,7 +243,7 @@
       "titulo": "Canción de Carnaval — Mientras Arlequín revela ",
       "texto": "Mientras Arlequín revela \nQue al prisma sus tintes roba \nY aparece Pulchinela \nCon su joroba,\n\nDi a Colombina la bella \nLo que de ella pienso yo, \nY descorcha una botella \nPara Pierrot.\n\nQue él te cuente cómo rima \nSus amores con la luna \nY te haga un poema en una \nPantomima.\n\nDa al aire la serenata, \nToca el áuro bandolín, \nLleva un látigo de plata \nPara el spleen.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_de_Carnaval",
       "tags": []
@@ -248,7 +252,7 @@
       "titulo": "Canción de Carnaval — Sé lírica y sé bizarra; ",
       "texto": "Sé lírica y sé bizarra; \nCon la cítara sé griega; \nO gaucha, con la guitarra \nDe santos Vega.\n\nMueve tu espléndido torso \nPor las calles pintorescas \nY juega y adorna el corso, \nCon rosas frescas.\n\nDe perlas riega un tesoro \nDe Andrade en el regio nido, \nY en la hopalanda de Guido, \nPolvo de oro.\n\nPenas y duelos olvida, \nCanta deleites y amores; \nBusca la flor de las flores \nPor Florida.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_de_Carnaval",
       "tags": [
@@ -259,7 +263,7 @@
       "titulo": "Canción de Carnaval — Con la armonía le encantas ",
       "texto": "Con la armonía le encantas \nDe las rimas de cristal, \nY deshojas a sus plantas, \nUn madrigal.\n\nPiruetea, baila, inspira \nVersos locos y joviales, \nCelebre la alegre lira \nLos carnavales.\n\nSus gritos y sus canciones. \nSus comparsas y sus trajes \nSus perlas, tintes y encajes \nY pompones.\n\nY lleve la rauda brisa, \nSonora, argentina, fresca, \nLa victoria de tu risa \nFunambulesca.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canci%C3%B3n_de_Carnaval",
       "tags": []
@@ -268,7 +272,7 @@
       "titulo": "Canto de la sangre — SANGRE de Abel. Clarín de las batallas. ",
       "texto": "SANGRE de Abel. Clarín de las batallas. \nLuchas fraternales; estruendos, horrores; \nFlotan las banderas, hieren las metrallas, \nY visten la púrpura los emperadores.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canto_de_la_sangre",
       "tags": []
@@ -277,7 +281,7 @@
       "titulo": "Canto de la sangre — Sangre del Cristo. El órgano sonoro. ",
       "texto": "Sangre del Cristo. El órgano sonoro. \nLa viña celeste da el celeste vino; \nY en el labio sacro del cáliz de oro \nLas almas se abrevan del vino divino.\n\nSangre de los martirios. El salterio. \nHogueras; leones, palmas vencedoras; \nLos heraldos rojos con que del misterio \nVienen precedidas las grandes auroras.\n\nSangre que vierte el cazador. El cuerno. \nFurias escarlatas y rojos destinos \nForjan en las fraguas del obscuro Infierno \nLas fatales armas de los asesinos.\n\n¡Oh sangre de las vírgenes! La lira. \nEncanto de abejas y de mariposas. \nLa estrella de Venus desde el cielo mira \nEl purpúreo triunfo de las reinas rosas.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canto_de_la_sangre",
       "tags": [
@@ -288,7 +292,7 @@
       "titulo": "Canto de la sangre — Sangre que la Ley vierte. ",
       "texto": "Sangre que la Ley vierte. \nTambor a la sordina. \nBrotan las adelfas que riega la Muerte \nY el rojo cometa que anuncia la ruina.\n\nSangre de los suicidas. Organillo. \nFanfarrias macabras, responsos corales. \nCon que de Saturno celébrase el brillo \nEn los manicomios y en los hospitales.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Canto_de_la_sangre",
       "tags": []
@@ -297,7 +301,7 @@
       "titulo": "Coloquio de los centauros",
       "texto": "EN la isla en que detiene su esquife el argonauta\nDel inmortal Ensueño, donde la eterna pauta \nDe las eternas liras se escucha—: Isla de oro \nEn que el tritón elige su caracol sonoro\n\nY la sirena blanca va a ver el sol— un día \nSe oye un tropel vibrante de fuerza y de armonía. \n\nSon los Centauros. Cubren la llanura. Les siente \nLa montaña. De lejos, forman són de torrente \nQue cae; su galope al aire que reposa \nDespierta, y estremece la hoja del laurel-rosa.\n\nSon los Centauros. Unos enormes, rudos; otros \nAlegres y saltantes como jóvenes potros; \nUnos con largas barbas como los padres-ríos. \nOtros imberbes, ágiles y de piafantes bríos, \nY de robustos músculos, brazos y lomos aptos \nPara portar las ninfas rosadas en los raptos.\n\nVan en galope rítmico. Junto a un fresco boscaje, \nFrente al gran Océano, se paran. El paisaje \nRecibe de la urnal matinal luz sagrada \nQue el vasto azul suaviza con límpida mirada, \nY oyen seres terrestres y habitantes marinos \nLa voz de los criados cuadrúpedos divinos.\n\nQUIRÓN\nCalladas las bocinas a los tritones gratas, \nCalladas las sirenas de labios escarlatas. \nLos carrillos de Eolo desinflados, digamos \nJunto al laurel ilustre de florecidos ramos \nLa gloria inmarcesible de las Musas hermosas \nY el triunfo del terrible misterio de las cosas. \nHe aquí que renacen los lauros milenarios; \nVuelven a dar su lumbre los viejos lampadarios; \nY anímase en mi cuerpo de Centauro inmortal \nLa sangre del celeste caballo paternal. \n\nRETO\nArquero luminoso, desde el zodiaco llegas; \nAun presas en las crines tiene avejas griegas; \nAun del dardo herakleo muestras la roja herida \nPor do salir no pudo la esencia de tu vida. \n¡Padre y Maestro excelso! Eres la fuente sana \nDe la verdad que busca la triste raza humana: \nAun Esculapio sigue la vena de tu ciencia; \nSiempre el veloz Aquiles sustenta su existencia\n\nCon el manjar salvaje que le ofreciste un día, \nY Herakles, descuidando su mesa, en la harmonía \nDe los astros, se eleva bajo el cielo nocturno... \n\nQUIRÓN\nLa ciencia es flor del tiempo: mi padre fué Saturno \n\nABANTES\nHimnos a la sagrada Naturaleza; al vientre \nDe la tierra y al germen que entre en las rocas y entre \nLas carnes de los árboles, y dentro humana forma \nEs un mismo secreto y es una misma norma, \nPotente y sutilísimo, universal resumen \nDe la suprema fuerza, de la virtud del Numen. \n\nQUIRÓN\n¡Himnos! Las cosas tienen un ser vital: las cosas \nTienen raros aspectos, miradas misteriosas;\n\nToda forma es un gesto, una cifra, un enigma; \nEn cada átomo existe un incógnito estigma; \nCada hoja de cada árbol canta un propio cantar \nY hay un alma en cada una de las gotas dal mar; \nEl vate, el sacerdote, suele oír el acento \nDesconocido; a veces enuncia el vago viento \nUn misterio; y revela una inicial la espuma \nO la flor; y se escuchan palabras de la bruma. \nY el hombre favorito del numen, en la linfa \nO la ráfaga encuentra mentor—; demonio o ninfa. \n\nPOLO\nEl biforme ixionida comprende de la altura, \nPor la materna gracia, la lumbre que fulgura, \nLa nube que se anima de luz y que decora \nEl pavimento en donde rige su carro Aurora, \nY la banda de Iris que tiene siete rayos \nCual la lira en sus brazos siete cuerdas; los mayos \nEn la fragante tierra llenos de ramos bellos, \nY el Polo coronado de cándidos cabellos. \nEl ixionida pasa veloz por la montaña \nRompiendo con el pecho de la maleza huraña\n\nLos erizados brazos, las cárceles hostiles;\nEscuchan sus orejas los ecos más sutiles: \nSus ojos atraviesan las intrincadas hojas \nMientras sus manos toman para sus bocas rojas \nLas frescas bayas altas que el sátiro codicia; \nJunto a la oculta fuente su mirada acaricia \nLas curvas de las ninfas del séquito de Diana; \nPues en su cuerpo corre también la esencia humana \nUnida a la corriente de la savia divina \nY a la salvaje sangre que hay en la bestia equina. \nTal el hijo robusto de Ixión y de la Nube.\n\nQUIRÓN \nSus cuatro patas, bajan; su testa erguida, sube\n\nORNEO\nYo comprendo el secreto de la bestia. Malignos \nSeres hay y benignos. Entre ellos se hacen signos \nDe bien y mal, de odio o de amor, o de pena \nO gozo: el cuervo es malo y la torcaz es buena.\n\nQUIRÓN\nNi es la torcaz benigna, ni es el cuervo protervo: \nSon formas del Enigma la paloma y el cuervo. \n\nASTILO\nEl Enigma es el soplo que hace cantar la lira. \n\nNESO\n¡El Enigma es el rostro fatal de Deyanira! \nMi espalda aun guarda el dulce perfume de la bella; \nAun mis pupilas llama su claridad de estrella. \n¡Oh, aroma de su sexo! ¡oh, rosas y alabastros! \n¡Oh, envidia de las flores y celos de los astros! \n\nQUIRÓN\nCuando del sacro abuelo la sangre luminosa \nCon la marina espuma formara nieve y rosa,\n\nHecha de rosa y nieve nació la Anadiomena. \nAl ciclo alzó los brazos la lírica sirena, \nLos curvos hipocampos sobre las verdes ondas\nLevaron los hocicos; y caderas redondas, \nTritónicas melenas y dorsos de delfines \nJunto a la Reina nueva se vieron. Los confines \nDel mar llenó el grandioso clamor; el universo \nSintió que un hombre harmónico sonoro como un verso \nLlenaba el hondo hueco de la altura; ese hombre \nHizo gemir la tierra de amor: fué para el hombre \nMás alto que el de Jove: y los númenes mismos \nLo oyeron asombrados; los lóbregos abismos \nTuvieron una gracia de luz ¡Venus impera! \nElla es entre las reinas celestes la primera, \nPues es quien tiene el fuerte poder de la Hermosura. \n¡Vaso de miel y mirra brotó de la amargura! \nElla es la más gallarda de las emperatrices; \nPrincesa de los gérmenes, reina de las matrices, \nSeñora de las savias y de las atracciones, \nSeñora de los besos y de los corazones.\n\nEUIRITO\n¡No olvidaré los ojos radiantes de Hipodamia!\n\nHIPEA\nYo sé de la hembra humana la original infamia. \nVenus anima artera sus máquinas fatales, \nTras los radiantes ojos ríen traidores males, \nDe su floral perfume se exhala sutil daño; \nSu cráneo obscuro alberga bestialidad y engaño. \nTiene las formas puras del ánfora, y la risa \nDel agua que la brisa riza y el sol irisa; \nMas la ponzoña ingénita su máscara pregona: \nMejores son el águila, la yegua y la leona. \nDe su húmeda impureza brota el calor que enerva \nLos mismos sacros dones de la imperial Minerva; \nY entre sus duros pechos, lirios del Aqueronte, \nHay un olor que llena la barca de Caronte.\n\nODITES\nComo una miel celeste hay en su lengua fina; \nSu piel de flor aun húmeda está de agua marina. \nYo he visto de Hipodamia la faz encantadora, \nLa cabellera espesa, la pierna vencedora. \nElla de la hembra humana fuera ejemplar augusto;\n\nAnte su rostro olímpico no habría rostro adusto; \nLas Gracias junto a ella quedarían confusas, \nY las ligeras Horas y las sublimes Musas \nPor ella detuvieron sus giros y su canto. \n\nHIPEA\nElla la causa fuera de inenarrable espanto: \nPor ella el ixionida dobló su cuello fuerte. \nLa hembra humana es hermana del Dolor y la Muerte. \n\nQUIRÓN\nPor suma ley un día llegará el himeneo \nQue el soñador aguarda: Cinis será Ceneo; \nClaro será el origen del femenino arcano: \nLa Esfinge tal secreto dirá a su soberano. \n\nCLITO \nNaturaleza tiende sus brazos y sus pechos \nA los humanos seres; la clave de los hechos\n\nConócela el vidente; Homero con su báculo, \nEn su gruta Deifobe, la lengua del Oráculo. \n\nCAUMANTES\nEl monstruo expresa un ansia del corazón del Orbe, \nen el Centauro el bruto la vida humana absorbe, \nEl sátiro es la selva sagrada y la lujuria, \nUne sexuales ímpetus a la harmoniosa furia. \nPan junta la soberbia de la montaña agreste \nAl ritmo de la inmensa mecánica celeste; \nLa boca melodiosa que atrae en Sirenusa \nEs de la fiera alada y es de la suave musa; \nCon la bicorne bestia Pasifae se ayunta, \nNaturaleza sabia formas diversas junta, \nY cuando tiende al hombre la gran Naturaleza, \nEl monstruo, siendo el símbolo, se viste de belleza. \n\nGRINEO \nYo amo lo inanimado que amó el divino Hesiodo.\n\nQUIRÓN\nGrineo, sobre el mundo tiene un ánima todo. \n\nGRINEO\nHe visto, entonces, raros ojos fijos en mí: \nLos vivos ojos rojos del alma del rubí; \nLos ojos luminosos del alma del topacio \nY los de la esmeralda que del azul espacio \nLa maravilla imitan; los ojos de las gemas \nDe brillos peregrinos y mágicos emblemas. \nAmo el granito duro que el arquitecto labra \nY el mármol en que duermen la línea y la palabra...\n\nQUIRÓN\nA Deucalión y a Pirra, varones y mujeres \nLas piedras aun intactas dijeron: «¿Qué nos quieres?»\n\nLICIDAS\nYo he visto los lemures flotar, en los nocturnos. \nInstantes, cuando escuchan los bosques taciturnos \nEl loco grito de Atis que su dolor revela \nO la maravillosa canción de Filomela. \nEl galope apresuro, si en el boscaje miro \nManes que pasan, y oigo su fúnebre suspiro. \nPues de la Muerte el hondo, desconocido Imperio, \nGuarda el pavor sagrado de su fatal misterio.\n\nARNEO\nLa Muerte es de la Vida la inseparable hermana.\n\nQUIRÓN\nLa Muerte es la victoria de la progenie humana. \n\nMEDÓN\n¡La Muerte! Yo la he visto. No es demacrada y mustia \nNi ase corva guadaña, ni tiene faz de angustia.\n\nEs semejante a Diana, casta y virgen como ella; \nEn su rostro hay la gracia de la núbil doncella \nY lleva una guirnalda de rosas siderales. \nEn su siniestra tiene verdes palmas triunfales, \nY en su diestra una copa con agua del olvido. \nA sus pies, como un perro, yace un amor dormido.\n\nAMICO\nLos mismos dioses buscan la dulce paz que vierte. \n\nQUIRÓN\nLa pena de los dioses es no alcanzar la Muerte. \n\nEURETO\nSi el hombre— Prometeo— pudo robar la vida, \nLa clave de la muerte serále concedida.\n\nQUIRÓN\nLa virgen de las vírgenes es inviolable y pura. \nNadie su casto cuerpo tendrá en la alcoba obscura, \nNi beberá en sus labios el grito de victoria, \nNi arrancará a su frente las rosas de su gloria.\n\nMas he aquí que Apolo se acerca al meridiano. \nSus truenos prolongados repite el Océano. \nBajo el dorado carro del reluciente Apolo \nVuelve a inflar sus carrillos y sus odres Eolo. \nA lo lejos, un templo de mármol se divisa \nEntre laureles-rosa que hace cantar la brisa. \nCon sus vibrantes notas de Céfiro desgarra \nLa veste transparente la helénica cigarra, \nY por el llano extenso van en tropel sonoro \nLos Centauros, y al paso, tiembla la Isla de Oro.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Coloquio_de_los_centauros",
       "tags": [
@@ -310,7 +314,7 @@
       "titulo": "Cosas del Cid",
       "texto": "CUENTA Barbey, en versos que valen bien su prosa \nUna hazaña del Cid, fresca como una rosa, \nPura como una perla. No se oyen en la hazaña\n\nResonar en el viento las trompetas de España, \nNi el azorado moro las tiendas abandona \nAl ver al sol el alma de acero de Tizona.\n\nBabieca descansando del huracán guerrero, \nTranquilo pace, mientras el bravo caballero \nSale a gozar del aire de la estación florida. \nRíe la primavera, y el vuelo de vida \nAbre lirios y sueños en el jardín del mundo. \nRodrigo de Vivar pasa, meditabundo. \nPor una senda en donde, bajo el sol glorioso, \nTendiéndole la mano, le detiene un leproso.\n\nFrente a frente, el soberbio príncipe del estrago\nY la victoria, joven, bello como Santiago, \nY el horror animado, la viviente carroña \nQue infecta los suburbios de hedor y de ponzoña.\n\nY al Cid tiende la mano el siniestro mendigo,\nY su escarcela busca y no encuentra Rodrigo. \n—¡Oh, Cid, una limosna!— dice el precito. \n—Hermano \nTe ofrezco la desnuda limosna de mi mano!—\n\nDice el Cid; y, quitando su férreo guante, extiende \nLa diestra al miserable, que llora y que comprende.\n\nTal es el sucedido que el Condestable escancia \nComo un vino precioso en su copa de Francia. \nYo agregaré este sorbo de licor castellano:\n\nCuando su guantelete hubo vuelto a la mano \nEl Cid, siguió su rumbo por la primaveral \nSenda. Un pájaro daba su nota de cristal \nEn un árbol. El cielo profundo desleía \nUn perfume de gracia en la gloria del día. \nLas ermitas lanzaban en el aire sonoro \nSu melodiosa lluvia de tórtolas de oro; \nEl alma de las flores iba por los caminos \nA unirse a la piadosa voz de los peregrinos, \nY el gran Rodrigo Díaz de Vivar, satisfecho, \nIba cual si llevase una estrella en el pecho. \nCuando de la campiña, aromada de esencia \nSutil, salió una niña vestida de inocencia, \nUna niña que fuera una mujer, de franca \nY angélica pupila, y muy dulce y muy blanca.\n\nUna niña que fuera un hada o que surgiera \nEncarnación de la divina primavera.\n\nY fué al Cid y le dijo: «Alma de amor y fuego, \nPor Jimena y por Dios un regalo te entrego, \nEsta rosa naciente y este fresco laurel.»\n\nY el Cid, sobre su yelmo las frescas hojas siente, \nEn su guante de hierro hay una flor naciente, \nY en lo íntimo del alma como un dulzor de miel.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Cosas_del_Cid",
       "tags": [
@@ -323,7 +327,7 @@
       "titulo": "Del campo — ¡Pradera, feliz día! Del regio Buenos Aires ",
       "texto": "¡Pradera, feliz día! Del regio Buenos Aires \nQuedaron allá lejos el fuego y el hervor; \nHoy en tu verde triunfo tendrán mis sueños vida, \nRespiraré tu aliento, me bañaré en tu sol.\n\nMuy buenos días, huerto. Saludo la frescura \nQue brota de las ramas de tu durazno en flor; \nFormada de rosales tu calle de Florida \nMira pasar la Gloria, la Banca y el Sport.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Del_campo",
       "tags": [
@@ -334,7 +338,7 @@
       "titulo": "Del campo — Un pájaro poeta, rumia en su buche versos;",
       "texto": "Un pájaro poeta, rumia en su buche versos;\nChismoso y petulante, charlando va un gorrión;\nLas plantas trepadoras conversan de política;\nLas rosas y los lirios, del arte y del amor.\n\nRigiendo su cuadriga de mágicas libélulas,\nDe sueños millonarios, pasa el travieso Puck;\nY, espléndida sportwoman, en su celeste carro,\nLa emperatriz Titania seguida de Oberón.\n\nDe noche, cuando muestra su medio anillo de oro,\nBajo el azul tranquilo, la amada de Pierrot,\nEs una fiesta pálida la que en el huerto reina,\nToca en la lira el aire su do-re-mi-fa-sol.\n\nCuriosas las violetas a su balcón se asoman.\nY una suspira: «¡lástima que falte el ruiseñor!»\nLos silfos acompasan la danza de las brisas\nEn un walpurgis vago de aroma y de visión.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Del_campo",
       "tags": [
@@ -345,7 +349,7 @@
       "titulo": "Del campo — De pronto se oye el eco del grito de la pampa; ",
       "texto": "De pronto se oye el eco del grito de la pampa; \nBrilla como una puesta del argentino sol; \nY un espectral jinete, como una sombra cruza,\nSobre su espalda un poncho; sobre su faz, dolor.\n\n—«¿Quién eres, solitario viajero de la noche?» \n—«Yo soy la Poesía que un tiempo aquí reinó: \n¡Yo soy el postrer gaucho que parte para siempre, \nDe nuestra vieja patria llevando el corazón!»",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Del_campo",
       "tags": [
@@ -357,7 +361,7 @@
       "titulo": "Dezires, layes y canciones",
       "texto": "Dezir.\n(A la manera de Johan de Duenyas.)\nREINA Venus, soberana \ncapitana \nde deseos y pasiones, \nen la tempestad humana \npor ti mama \nsangre de los corazones. \nUna copa me dió el sino \ny en ella bebí tu vino \ny me embriagué de dolor, \npues me hizo experimentar \nque en el vino del amor \nhay la amargura del mar.\n\nDí al olvido turbulento \nsentimiento, \ny hallé un sátiro ladino \nque dió a mi labio sediento \nnuevo aliento, \nnueva copa y nuevo vino. \nY al llegar la primavera, \nen mi roja sangre fiera \ntriple llama fué encendida: \nyo al flamante amor entrego \nla vendimia de mi vida \nbajo pámpanos de fuego.\n\nEn la fruta misteriosa, \námbar, rosa, \nsu deseo sacia el labio, \ny en viva rosa se posa, \nmariposa, \nbeso ardiente o beso sabio. \n¡Bien haya el sátiro griego \nque me ensenó el dulce juego! \nEn el reino de mi aurora \nno hay ayer, hoy ni mañana; \ndanzo las danzas de ahora \ncon la música pagana.\n\nFFINIDA\nBella a quien la suerte avara \nordenara \nmartirizarme a ternuras, \ndió una negra perla rara \nLuzbel para \ntu diadema de locuras.\n\nOtro Dezir.\nPonte el traje azul que más \nconviene a tu rubio encanto. \nLuego, Mía, te pondrás \notro, color de amaranto, \ny el que rima con tus ojos \ny aquel de reflejos rojos \nque a tu blancor sienta tanto.\n\nEn el obscuro cabello \npon las perlas que conquistas; \nen el columbino cuello \npon el collar de amatistas,\n\ny ajorcas en los tobillos \nde topacios amarillos \ny esmeraldas nunca vistas.\n\nUn camarín te decoro \ndonde sabrás la lección \nque dió a Angélica Medoro \ny a Belkiss dió Salomón; \narderá mi sangre loca, \ny en el vaso de tu boca \nte sorberé el corazón.\n\nLuz de sueño, flor de mito, \ntu admirable cuerpo canta \nla gracia de Hermafrodito \ncon lo aéreo de Atalanta; \ny de tu beldad ambigua \nla evocada musa antigua \nsu himno de carne levanta.\n\nDel ánfora en que está el viejo \nvino anacreóntico bebe; \nFebo arruga el entrecejo \ny Juno arrugarlo debe, \nmas la joven Venus ríe\n\ny Eros su filtro deslíe \nen los cálices de Hebe. \n\nLay. \n(A la manera de Johan de Torres.)\n¿Qué pude yo hacer \npara merecer \nla ofrenda de ardor \nde aquella mujer \na quien, como a Ester, \nmaceró el Amor?\n\nIntenso licor, \nperfume y color \nme hiciera sentir \nsu boca de flor; \ndíle el alma por \ntan dulce elixir.\n\nCanción.\n(A la manera de Valtierra.)\nAmor tu ventana enflora \ny tu amante esta mañana\n\npreludia por ti una diana \nen la lira de la Aurora.\n\nDesnuda sale la bella, \ny del cabello el tesoro \npone una nube de oro \nen la desnudez de estrella: \ny en la matutina hora \nde la clara fuente mana \nla salutación pagana \nde las náyades a Flora.\n\nEn el baño al beso incita \nsobre el cristal de la onda \nla sonrisa de Gioconda \nen el rostro de Afrodita; \ny el cuerpo que la luz dora, \nadolescente, se hermana \ncon las formas de Diana \nla celeste cazadora.\n\nY mientras la hermosa juega \ncon el sonoro diamante, \nmás encendido que amante\n\nel fogoso amante llega \na su divina señora.\n\nFFIN\nPan, de su flauta desgrana \nun canto que, en la mañana, \nperla a perla, ríe y llora.\n\nQue el amor no admite cuerdas reflexiones.\n(A la manera de Santa Fe.)\nSeñora, amor es violento, \ny cuando nos transfigura \nnos enciende el pensamiento \nla locura.\n\nNo pidas paz a mis brazos \nque a los tuyos tienen presos: \nson de guerra mis abrazos \ny son de incendio mis besos; \ny sería vano intento \nel tornar mi mente obscura \nsi me enciende el pensamiento \nla locura.\n\nClara está la mente mía \nde llamas de amor, señora, \ncomo la tienda del día \no el palacio de la aurora.\nY al perfume de tu ungüento \nte persigue mi ventura, \ny me enciende el pensamiento \nla locura.\n\nMi gozo tu paladar \nrico panal conceptúa, \ncomo en el santo Cantar: \nMel et lac sub lingua tua. \nLa delicia de tu aliento \nen tan fino vaso apura, \ny me enciende el pensamiento \nla locura.\n\nLoor.\n(A la manera del mismo.)\n¿A qué comparar la pura \narquitectura \nde tu cuerpo? ¿A una sutil \ntorre de oro y marfil?\n\n¿O de Abril \na la loggia florecida? \nLuz y vida \niluminan lo inferior, \ny el amor \ntiene su antorcha encendida.\n\nQuiera darme el garzón de Ida \nla henchida \ncopa, y Juno la oriental \npompa del pavón real, \nsu crital \nCastalia, y yo, apolonida, \nla dormida \ncuerda haré cantar por la \nluz que está \ndentro de tu cuerpo prendida.\n\nLa blanca pareja anida \nadormecida: \naves que bajo el corpino \nha colocado el dios niño, \nrosa, armiño, \nmi mano sabia os convida\n\na la vida. \nPor los boscosos senderos \nviene Eros \na causar la dulce herida.\n\nFFIN\nSeñora, suelta la brida \ny tendida \nla crin, mi corcel de fuego \nva; en él llego \na tu campaña florida.\n\nCopla Esparça,\n(A la manera del mismo.)\n¡La gata blanca! En el lecho \nmaya se encorva, se extiende. \nUn rojo rubí se enciende \nsobre los globos del pecho. \nLos desatados cabellos \nla divina espalda aroman. \nBajo la camisa asoman \ndos cisnes de negros cuellos\n\nTORNADA LIBRE\nPrincesa de mis locuras, \nque tus cabellos desatas, \ndi, ¿por qué las blancas gatas \ngustan de sedas obscuras?",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Dezires%2C_layes_y_canciones",
       "tags": [
@@ -370,7 +374,7 @@
       "titulo": "Dice Mía",
       "texto": "MI pobre alma pálida\nEra un crisálida.\nLuego mariposa\nDe color de rosa.\n\nUn céfiro inquieto \nDijo mi secreto... \n— ¿Has sabido tu secreto un día?\n\n¡Oh Mía! \nTu secreto es una \nMelodía en un rayo de luna...\n— ¿Una melodía?",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Dice_M%C3%ADa",
       "tags": [
@@ -381,7 +385,7 @@
       "titulo": "Divagación",
       "texto": "Vienes? me llega aquí, pues que suspiras, \nUn soplo de las mágicas fragancias \nQue hicieran los delirios de las liras \nEn las Grecias, las Romas y las Francias.\n\n¡Suspira así! Revuelen las abejas\nAl olor de la olímpica ambrosía,\nEn los perfumes que en el aire dejas;\nY el dios de piedra se despierte y ría.\n\nY el dios de piedra se despierte y cante\nLa gloria de los tirsos florecientes\nEn el gesto ritual de la bacante\nDe rojos labios y nevados dientes;\n\nEn el gesto ritual que en las hermosas\nNinfalias guía a la divina hoguera,\nHoguera que hace llamear las rosas\nEn las manchadas pieles de pantera.\n\nY pues amas reir, ríe, y la brisa\nLleve el son de los líricos cristales\nDe tu reir, y haga temblar la risa\nLa barba de los Términos joviales.\n\nMira hacia el lado del boscaje, mira\nBlanquear el muslo de marfil de Diana,\nY después de la Virgen, la Hetaira\nDiosa, su blanca, rosa y rubia hermana.\n\nPasa en busca de Adonis; sus aromas\nDeleitan a las rosas y los nardos;\nSíguela una pareja de palomas\nY hay tras ella una fuga de leopardos.\n\n¿Los amores exóticos acaso...? \nComo rosa de Oriente me fascinas: \nMe deleitan la seda, el oro, el raso.\nGautier adoraba a las princesas chinas.\n\n¿Te gusta amar en griego? Yo las fiestas\nGalantes busco, en donde se recuerde,\nAl suave son de rítmicas orquestas,\nLa tierra de la luz y el mirlo verde.\n\n(Los abates refieren aventuras\nA las rubias marquesas. Soñolientos\nFilósofos defienden las ternuras\nDel amor, con sutiles argumentos,\n\nMientras que surge de la verde grama,\nEn la mano el acanto de Corinto,\nUna ninfa a quien puso un epigrama\nBeaumarchais, sobre el mármol de su plinto.\n\nAmo más que la Grecia de los griegos\nLa Grecia de la Francia, porque en Francia,\nAl eco de las Risas y los Juegos,\nSu más dulce licor Venus escancia.\n\nDemuestran más encantos y perfidias\nCoronadas de flores y desnudas.\nLas diosas de Clodión que las de Fidias;\nUnas cantan francés, otras son mudas.\n\nVerlaine es más que Sócrates; y Arsenio \nHoussaye supera al viejo Anacreonte. \nEn París reinan el Amor y el Genio. \nHa perdido su imperio el dios bifronte.\n\nMonsieur Prudhomme y Homais no saben nada.\nHay Chipres, Pafos, Tempes y Amatuntes,\nDonde el amor de mi madrina, un hada,\nTus frescos labios a los míos juntes.)\n\nSones de bandolín. El rojo vino\nConduce un paje rojo. ¿Amas los sones\nDel bandolín, y un amor florentino?\nSerás la reina en los decamerones.\n\n(Un coro de poetas y pintores\nCuenta historias picantes. Con maligna\nSonrisa alegre aprueban los señores.\nClelia enrojece, una dueña se signa.\n\n¿O un amor alemán?— que no han sentido\nJamás los alemanes—: la celeste\nGretchen; claro de luna; el aria; el nido\nDel ruiseñor; y en una roca agreste,\n\nLa luz de nieve que del cielo llega\nY baña a una hermosura que suspira\nLa queja vaga que a la noche entrega\nLoreley en la lengua de la lira.\n\nY sobre el agua azul el caballero\nLohengrín; y su cisne, cual si fuese\nUn cincelado témpano viajero,\nCon su cuello enarcado en forma de S.\n\nY del divino Enrique Heine un canto,\nA la orilla del Rhin; y del divino\nWolfang la larga cabellera, el manto;\nY de la uva teutona el blanco vino.\n\nO amor lleno de sol, amor de España,\nAmor lleno de púrpuras y oros;\nAmor que da el clavel, la flor extraña\nRegada con la sangrre de los toros;\n\nFlor de gitanas, flor que amor recela\nAmor de sangre y luz, pasiones locas;\nFlor que trasciende a clavo y a canela,\nRoja cual las heridas y las bocas.\n\n¿Los amores exóticos acaso...?\nComo rosa de Oriente me fascinas:\nMe deleitan la seda, el oro, el raso.\nGautier adoraba a las princesas chinas.\n\n¡Oh, bello amor de mil genuflexiones;\nTorres de kaolín, pies imposibles,\n\nTazas de té, tortugas y dragones,\ny verdes arrozales apacibles!\n\nAmame en chino, en el sonoro chino \nDe Li-Tai-Pe. Yo igualaré a los sabios\nPoetas que interpretan el destino;\nMadrigalizaré junto a tus labios.\n\nDiré que eres más bella que la luna;\nQue el tesoro del cielo es menos rico\nQue el tesoro que vela la importuna\nCaricia de Marfil de tu abanico.\n\nAmame, japonesa, japonesa\nAntigua, que no sepa de naciones\nOccidentales; tal una princesa\nCon las pupilas llenas de visiones,\n\nQue aún ignorase en la sagrada Kioto,\nEn su labrado camarín de plata,\nOrnado al par de crisantemo y loto,\nLa civilización de Yamagata.\n\nO con amor hindú que alza sus llamas\nEn la visión suprema de los mitos,\nY hace temblar en misteriosas bramas\nLa iniciación de los sagrados ritos,\n\nEn tanto mueven tigres y panteras\nSus hierros, y en los fuertes elefantes\nSueñan con ideales bayaderas\nLos rajahs, constelados de brillantes.\n\nO negra, negra como la que canta\nEn su Jerusalem el rey hermoso.\nNegra que haga brotar bajo su planta\nLa rosa y la cicuta del reposo...\n\nAmor, en fin, que todo diga y cante,\nAmor que encante y deje sorprendida\nA la serpiente de ojos de diamante\nQue está enroscada al árbol de la vida.\n\nAmame así, fatal cosmopolita,\nUniversal, inmensa, única, sola\nY todas; misteriosa y erudita:\nAmame mar y nube, espuma y ola.\n\nSé mi reina de Saba, mi tesoro;\nDescansa en mis palacios solitarios.\nDuerme. Yo encenderé los incensarios.\nY junto a mi unicornio cuerno de oro,\nTendrán rosas y miel tus dromedarios.\n\nTigre Hotel, Diciembre 1894.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Divagaci%C3%B3n",
       "tags": [
@@ -393,7 +397,7 @@
       "titulo": "El cisne (Rubén Darío)",
       "texto": "FUÉ en una hora divina para el género humano. \nEl Cisne antes cantaba sólo para morir. \nCuando se oyó el acento del Cisne wagneriano \nFué en medio de una aurora, fué para revivir.\n\nSobre las tempestades del humano oceano \nSe oye el canto del Cisne; no se cesa de oir,\nDominando el martillo del viejo Thor germano \nO las trompas que cantan la espada de Argantir. \n\n¡Oh Cisne! ¡Oh sacro pájaro! Si antes la blanca Helena \nDel huevo azul de Leda brotó de gracia llena, \nSiendo de la Hermosura la princesa inmortal,\n\nBajo tus blancas alas la nueva Poesía, \nConcibe en una gloria de luz y de harmonía \nLa Helena eterna y pura que encarna el ideal.",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/El_cisne_%28Rub%C3%A9n_Dar%C3%ADo%29",
       "tags": []
@@ -402,7 +406,7 @@
       "titulo": "El Faisán",
       "texto": "DIJO sus secretos el faisán de oro:—\nEn el gabinete mi blanco tesoro, \nDe sus claras risas el divino coro\n\nLas bellas figuras de los gobelinos,\nLos cristales llenos de aromados vinos,\nLas rosas francesas en los vasos chinos.\n \n(Las rosas francesas, porque fué allá en Francia\nDonde en el retiro de la dulce estancia\nEsas frescas rosas dieron su fragancia.)\n\nLa cena esperaba. Quitadas las vendas,\nIban mil amores de flechas tremendas\nEn aquella noche de Carnestolendas.\n\nLa careta negra se quitó la niña,\nY tras el preludio de una alegre riña\nApuró mi boca vino de su viña\n\nVino de la viña de la boca loca,\nQue hace arder el beso, que el mordisco invoca.\n¡Oh los blancos dientes de la loca boca!\n\nEn su boca ardiente yo bebí los vinos, \nY pinzas rosadas, sus dedos divinos, \nMe dieron las fresas y los langostinos.\n\nYo la vestimenta de Pierrot tenía, \nY aunque me alegraba y aunque me reía, \nMoraba en mi alma la melancolía.\n\nLa carnavalesca noche luminosa \nDió a mi triste espíritu la mujer hermosa,\nSus ojos de fuego, sus labios de rosa.\n\nY en el gabinete del café galante \nElla se encontraba con su nuevo amante, \nPeregrino pálido de un país distante.\n\nLlegaban los ecos de vagos cantares; \nY se despedían de sus azahares \nMiles de purezas en los bulevares.\n\nY cuando el champaña me cantó su canto,\nPor una ventana vi que un negro manto\nDe nube, de Febo cubría el encanto.\n\nY dije a la amada de un día:— ¿No viste\nDe pronto ponerse la noche tan triste?\n¿Acaso la Reina de luz ya no existe?\n\nElla me miraba. Y el faisán cubierto de plumas de oro:\n— «¡Pierrot! ten por cierto\nQue tu fiel amada, que la Luna, ha muerto!»",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/El_Fais%C3%A1n",
       "tags": [
@@ -414,7 +418,7 @@
       "titulo": "El país del sol",
       "texto": "Junto al negro palacio del rey de la isla de Hierro—(¡oh, cruel, horrible destierro!)— ¿cómo es que tú, hermana harmoniosa, haces cantar al cielo gris, tu pajarera de ruiseñores, tu formidable caja musical? ¿No te entristece recordar la primavera en que oíste a un pájaro divino y tornasol\n\nen el país del sol?\n\nEn el jardín del rey de la isla de Oro—(¡oh, mi ensueño que adoro!)—fuera mejor que íú, harmoniosa hermana amaestrases tus aladas flautas, tus sonoras arpas; tú que naciste donde más lindos nacen el clavel de sangre y la rosa de arrebol,\n\nen él país del sol!\n\nO en el alcázar de la reina de la isla de Plata (Schubert, solloza la Serenata...) pudieras también, hermana armoniosa, hacer que las místicas aves de tu alma alabasen dulce, dulcemente, el claro de luna, los vírgenes lirios, la monia paloma y el cisne marques. La mejor plata se funde en un ardiente crisol,\n\nen el país del sol!\n\nVuelve, pues, a tu barca, que tienes lista la vela—(resuena, lira, Céfiro, vuela)—y parte, harmoniosa hermana, a donde un príncipe bello, a la orilla del mar, pide liras, y versos y rosas, y acaricia sus rizos de oro bajo un regio azul parasol,\n\nen el país del sol.\n\nNew Yoy, 1893.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/El_pa%C3%ADs_del_sol",
       "tags": [
@@ -426,7 +430,7 @@
       "titulo": "El poeta pregunta por Stella",
       "texto": "LIRIO divino, lirio de las Anunciaciones;\nLirio, florido príncipe,\nHermano perfumado de las estrellas castas,\nJoya de los abriles.\n\nA ti las blancas dianas de los parques ducales; \nLos cuellos de los cisnes, \nLas misticas estrofas de cánticos celestes \nY en el sagrado empíreo la mano de las vírgenes.\n\nLirio, boca de nieve donde sus dulces labios\nLa primavera imprime,\nEn tus venas no corre, la sangre de las rosas pecadoras.\nSino el ícor excelso de las flores insignes.\n\nLirio real y lírico\nQue naces con la albura de las hostias sublimes\nDe las cándidas perlas\nY del lino sin mácula de las sobrepellices,\n¿Has visto acaso el vuelo del alma de mi Stella,\nLa hermana de Ligeia, por quien mi canto a veces es tan triste?",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/El_poeta_pregunta_por_Stella",
       "tags": [
@@ -438,7 +442,7 @@
       "titulo": "El reino interior",
       "texto": "UNA selva suntuosa \nEn el azul celeste su rudo perfil calca. \nUn camino. La tierra es de color de rosa, \nCual la que pinta fra Doménico Cavalca \nEn sus Vidas de santos. Se ven extrañas flores\n\nDe la flora gloriosa de los cuentos azules, \nY entre las ramas encantadas, papemores \nCuyo canto extasiara de amor a los bulbules. \n(Papemor: ave rara, Bulbules: ruiseñores.)\n\nMi alma frágil se asoma a la ventana obscura \nDe la torre terrible en que ha treinta años sueña. \nLa gentil Primavera primavera le augura. \nLa vida le sonríe rosada y halagüeña. \nY ella exclama: «¡Oh fragante día! ¡Oh sublime dia! \nSe diría que el mundo está en flor; se diría \nQue el corazón sagrado de la tierra se mueve \nCon un ritmo de dicha; luz brota, gracia llueve. \n¡Yo soy la prisionera que sonríe y que canta!»\nY las manos liliales agita, como infanta \nReal en los balcones del palacio paterno.\n\n¿Qué són se escucha, són lejano, vago y tierno? \nPor el lado derecho del camino, adelanta \nEl paso leve una adorable teoría \nVirginal. Siete blancas doncellas, semejantes \nA siete blancas rosas de gracia y de harmonía \nQue el alba constelara de perlas y diamantes.\n\n¡Alabastros celestes habitados por astros: \nDios se refleja en esos dulces alabastros! \nSus vestes son tejidas del lino de la luna. \nVan descalzas. Se mira que posan el pie breve \nSobre el rosado suelo como una flor de nieve, \nY los cuellos se inclinan, imperiales, en una \nManera que lo excelso pregona de su origen. \nComo al compás de un verso su suave paso rigen. \nTal el divino Sandro dejara en sus figuras, \nEsos graciosos gestos en esas líneas puras. \nComo a un velado són de liras y laudes. \nDivinamente blancas y castas pasan esas \nSiete bellas princesas. Y esas bellas princesas \nSon las siete Virtudes.\n\nAl lado izquierdo del camino y paralela-\nMente, siete mancebos— oro, seda, escarlata, \nArmas ricas de Oriente— hermosos, parecidos \nA los satanes verlenianos de Ecbatana, \nVienen también. Sus labios sensuales y encendidos, \nDe efebos criminales, son cual rosas sangrientas; \nSus puñales de piedras preciosas revestidos \n—Ojos de víboras de luces fascinantes- \nAl cinto penden; arden las púrpuras violentas\n\nEn los jubones; ciñen las cabezas triunfantes \nOro y rosas; sus ojos, ya lánguidos, ya ardientes, \nSon dos carbunclos mágicos de fulgor sibilino, \nY en sus manos de ambiguos príncipes decadentes,\nRelucen como gemas las uñas de oro fino. \nBellamente infernales, \nLlenan el aire de hechiceros beneficios \nEsos siete mancebos. Y son los siete Vicios,\nLos siete poderosos pecados capitales.\n\nY los siete mancebos a las siete doncellas \nLanzan vivas miradas de amor. Las Tentaciones. \nDe sus liras melifluas arrancan vagos sones. \nLas princesas prosiguen, adorables visiones \nEn su blancura de palomas y de estrellas. \n\nUnos y otras se pierden por la vía de rosa, \nY el alma mía queda pensativa a su paso. \n— ¡Oh! ¿qué hay en ti, alma mía? \n«¡Oh! ¿qué hay en ti, mi pobre infanta misteriosa? \n¿Acaso piensas en la blanca teoría? \nAcaso \n¿Los brillantes mancebos te atraen, mariposa?»\n\nElla no me responde. \nPensativa se aleja de la obscura ventana, \n—Pensativa y risueña, \nDe la Bella-durmiente-del-Bosque tierna hermana— \nY se adormece en donde \nHace treinta años sueña.\n\nY en sueño dice: «¡Oh dulces delicias de los cielos! \n¡Oh tierra sonrosada que acarició mis ojos! \n—¡Princesas, envolvedme con vuestros blancos velos!\n—¡Príncipes, estrechadme con vuestros brazos rojos!»",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/El_reino_interior",
       "tags": [
@@ -451,7 +455,7 @@
       "titulo": "Elogio de la seguidilla — METRO mágico y rico que al alma expresas ",
       "texto": "METRO mágico y rico que al alma expresas \nLlameantes alegrías, penas arcanas, \nDesde en los suaves labios de las princesas \nHasta en las bocas rojas de las gitanas.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Elogio_de_la_seguidilla",
       "tags": [
@@ -462,7 +466,7 @@
       "titulo": "Elogio de la seguidilla — Las almas harmoniosas buscan tu encanto, ",
       "texto": "Las almas harmoniosas buscan tu encanto, \nSonora rosa métrica que ardes y brillas, \nY España ve en tu ritmo, siente en tu canto \nSus hembras, sus claveles, sus manzanillas.\n\nVibras al aire alegre como una cinta, \nEl músico te adula, te ama el poeta; \nRueda en ti sus fogosos paisajes pinta \nCon la audaz policromia de su paleta.\n\nEn ti el hábil orfebre cincela el marco \nEn que la idea-perla su oriente acusa, \nO en tu cordaje harmónico formas el arco \nCon que lanza sus flechas la airada musa.\n\nA él tu voz en baile crujen las faldas, \nLos piececitos hacen brotar las rosas \nE hilan hebras de amores las Esmeraldas \nEn ruecas invisibles y misteriosas.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Elogio_de_la_seguidilla",
       "tags": []
@@ -471,7 +475,7 @@
       "titulo": "Elogio de la seguidilla — La anudaluza hechicera, paloma arisca, ",
       "texto": "La anudaluza hechicera, paloma arisca, \nPor ti irradia, se agita, vibra y se quiebra, \nCon el lánguido gesto de la odalisca \nO las fascinaciones de la culebra.\n\nPequeña ánfora lírica de vino llena \nCompuesto por la dulce musa Alegría \nCon uvas andaluzas, sal macarena, \nFlor y canela frescas de Andalucía. \n\nSubes, creces y vistes de pompas fieras; \nRetumbas en el ruio de las metrallas, \nOndulas con el ala de las banderas, \nSuenas con los clarines de las batallas.\n\nTienes toda la lira: tienes las manos \nQue acompasan las danzas y las canciones; \nTus órganos, tus prosas, tus cantos llanos \nY tus llantos que parten los corazones.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Elogio_de_la_seguidilla",
       "tags": [
@@ -482,7 +486,7 @@
       "titulo": "Elogio de la seguidilla — Ramillete de dulces trinos verbales, ",
       "texto": "Ramillete de dulces trinos verbales, \nJavalina de Diana la Cazadora, \nRitmo que tiene el filo de cien puñales, \nQue muerde y acaricia, mata y enflora.\n\nLas Tirsis campesinas de ti están llenas \nY aman, radiosa abeja, tus bordoneos; \nAsí riegas tus chispas las nochebuenas \nComo adornas la lira de los Orfeos.\n\nQue bajo el sol dorado de Manzanilla \nQue esta alzulada concha del cielo baña, \nPolítona y triunfante, la seguidilla \nEs la flor del sonoro Pindo de España. \n\nMadrid, 1892.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Elogio_de_la_seguidilla",
       "tags": [
@@ -493,7 +497,7 @@
       "titulo": "Epitalamio bárbaro",
       "texto": "EL alba aun no aparece en su gloria de oro. \nCanta el mar con la música de sus ninfas en coro \nY el aliento del campo se va cuajando en bruma. \nTeje la náyade el encaje de su espuma \nY el bosque inicia el himno de sus flautas de pluma.\n\nEs el momento en que el salvaje caballero \nSe ve pasar. La tribu aulla y el ligero \nCaballo es un relámpago, veloz como una idea. \nA su paso, asustada, se para la marea; \nLa náyade interrumpe la labor que ejecuta \ny el director del bosque detiene la batuta.\n\n— «¿Que pasa?» desde el lecho pregunta Venus bella. \nY Apolo:\n—«Es Sagitario que ha robado una estrella.»",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Epitalamio_b%C3%A1rbaro",
       "tags": [
@@ -504,7 +508,7 @@
       "titulo": "Friso (Rubén Darío)",
       "texto": "CABE una fresca viña de corinto \nQue verde techo presta al simulacro \nDel Dios viril, que artífice de Atenas \nEn intacto pentélico labrara, \nUn día alegre, al deslumbrar el mundo \nLa harmonía del carro de la Aurora, \nY en tanto que arrullaban sus ternezas\n\nDos nevadas palomas venusinas \nSobre rosal purpúreo y pintoresco, \nComo Olímpica flor de gracia llena, \nVi el bello rostro de la rubia Eunice. \nNo más gallarda se encamina al templo \nCanéfora gentil, ni más riente \nLlega la musa a quien favor prodiga \nEl divino Sminteo, que mi amada \nAl tender hacia mí sus tersos brazos. \n\nEra la hora del supremo triunfo \nConcedido a mis lágrimas y ofrendas \nPor el poder de la celeste Cipris, \nY era el ritmo potente de mi sangre \nVerso de fuego que al propicio numen \nCantaba ardiente de la vida el himno. \nCuando mi boca en los bermejos labios \nDe mi princesa de cabellos de oro \nLicor bebía que afrentara al néctar, \nPor el sendero de fragantes mirtos \nQue guía al blanco pórtico del templo, \nSúbitas voces nuestras ansias turban.\n\nLírica procesión al viento esparce \nLos cánticos rituales de Dionisio, \nEl evohé de las triunfales fiestas, \nLa algazara que enciende con su risa \nLa impúber tropa de saltantes niños, \nY el vivo son de músicas sonoras \nQue anima el coro de bacantes ebrias. \nEn el concurso báquico el primero, \nRegando rosas y tejiendo danzas,\nGarrido infante, de Eros por hermoso \nEmulo y par, risueño aparecía. \nY de él en pos de las ménades ardientes, \nAl aire el busto en que su pompa erigen \nPomas ebúrneas; en la mano el sistro, \nY las curvas caderas mal veladas \nPor las flotantes, desceñidas ropas, \nAlzaban sus cabezas que en consorcio \nCircundaban la flor de Citerea \nY el pámpano fragante de las viñas. \nAun me parece que mis ojos tornan \nAl cuadro lleno de color y fuerza: \nDos robustos mancebos que los cabos \nDe cadenas metálicas empuñan, \nY cuyo porte y músculos de Ares \nDivinos dones son, pintada fiera\n\nQue felino pezón nutrió en Hircania, \nCon gesto heroico entre la turba rigen; \nY otros dos un leopaldo cuyo cuello \nGracias de Flora ciñen y perfuman \nY cuyos ojos en las anchas cuencas \nDe furia henchidos sanguinosos giran. \nPétalos y uvas el sendero alfombran, \nY desde el campo azul do el Sagitario \nDe coruscantes flechas resplandece, \nLas urnas de la luz la tierra bañan.\n\nPasó el tropel. En la cercana selva \nLúgubre resonaba el grito de Atis, \nTriste pavor de la inviolada ninfa. \nDeslizaba su paso misterioso \nEl apacible coro de las Horas. \nEco volvía la acordada queja \nDe la flauta de Pan. Joven gallardo, \nMás hermoso que Adonis y Narciso, \nCon el aire gentil de los efebos \nY la lira en las manos, al boscaje \nComo lleno de luz se dirigía. \nAmor pasó con su dorada antorcha.\n\nY no lejos del nido en que las aves, \nLas dos aves de Cipris, sus arrullos \nCual tiernas rimas a los aires dieran, \nFuí más feliz que el luminoso cisne \nQue vió de Lada la inmortal blancura, \nY Eunice pudo al templo de la diosa \nPurpúrea ofrenda y tórtolas amables \nLlevar el día en que mi regio triunfo \nVió el Dios viril en mármol cincelado \nCabe la fresca viña de Corinto.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Friso_%28Rub%C3%A9n_Dar%C3%ADo%29",
       "tags": [
@@ -516,7 +520,7 @@
       "titulo": "Garçonière — Como era el instante, dígalo la musa ",
       "texto": "Como era el instante, dígalo la musa \nQue las dichas trae, que las penas lleva: \nLa tristeza pasa, velada y confusa; \nLa alegría, rosas y azahares nieva.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Gar%C3%A7oni%C3%A8re",
       "tags": []
@@ -525,7 +529,7 @@
       "titulo": "Garçonière — Era en un amable nido de soltero, ",
       "texto": "Era en un amable nido de soltero, \nDe risas y versos, de placer sonoro;\nEra un inspirado cada caballero,\nDe sueños azules y vino de oro.\n\nUn rubio decía frases sentenciosas:\nNegando y amando las musas eternas\nUn bruno decía versos como rosas,\nDos sonantes rimas y palabras tiernas.\n\nLos tapices rojos, de doradas listas.\nCubrían panoplias de pinturas y armas,\nQue hablaban de bellas pasadas conquistas,\nAmantes coloquios y dulces alarmas.\n\nEl verso de fuego de D'Anunzio era\nComo un son divino que en las saturnales\nGuiara las manchadas pieles de pantera.\nA fiestas soberbias y amores triunfales.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Gar%C3%A7oni%C3%A8re",
       "tags": []
@@ -534,7 +538,7 @@
       "titulo": "Garçonière — E iban con manchadas pieles de pantera.",
       "texto": "E iban con manchadas pieles de pantera.\nCon tirsos de flores y copas paganas\nLas almas de aquellos jóvenes que viera\nVenus en su templo con palmas hermanas.\n\nVenus, la celeste reina que adivina\nEn las almas vivas alegrías francas\nY que les confía, por gracia divina,\nSus abejos de oro, sus palomas blancas.\n\nY aquellos amantes de la eterna Dea,\nA la dulce música de la regia rima,\nOyen el mensaje de la vasta Idea\nPor el compañero que recita y mima.\n\nY sobre sus frentes que acaricia el lauro,\nAbril pone amable su beso sonoro,\nY llevan gozosos, sátiro y centauro,\nLa alegría noble del vino de oro.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Gar%C3%A7oni%C3%A8re",
       "tags": [
@@ -545,7 +549,7 @@
       "titulo": "Heraldos",
       "texto": "HELENA!\nLa anuncia el blancor de un cisne.\n\n¡Makheda! \nLa anuncia un pavo real. \n\n¡Ifigenia, Eiectra, Catalina! \nAnúncialas un caballero con un hacha.\n\n¡Ruth, Lía, Enone! \nAnúncialas un paje con un lirio.\n\n¡Yolanda! \nAnuncíala una paloma. \n\n¡Clorinda, Carolina! \nAnuncíalas un paje con un ramo de viña.\n\n¡Sylvia! \nAnúnciala una corza blanca.\n\n¡Aurora, Isabel!\nAnúncialas de pronto\nUn resplandor que ciega mis ojos. \n\n¿Ella?\n(No la anuncian. No llega aún.)",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Heraldos",
       "tags": []
@@ -554,7 +558,7 @@
       "titulo": "Ite, missa est",
       "texto": "Yo adoro a una sonámbula con alma de Eloisa \nVirgen como la nieve y honda como la mar; \nSu espíritu es la hostia de mi amorosa misa \ny alzo al són de una dulce lira crepuscular.\n\nOjos de evocadora, gesto de profetisa, \nEn ella hay la sagrada frecuencia del altar;\nSu risa es la sonrisa suave de Monna Lisa. \nSus labios son los únicos labios para besar.\n\nY he de besarla un día con rojo beso ardiente; \nApoyada en mi brazo como convaleciente \nMe mirará asombrada con íntimo pavor;\n\nLa enamorada esfinge quedará estupefacta, \nApagaré la llama de la vestal intacta \n¡Y la faunesa antigua me rugirá de amor!",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Ite%2C_missa_est",
       "tags": [
@@ -567,7 +571,7 @@
       "titulo": "La Dea",
       "texto": "ALBERTO, en el propíleo del tiempo soberano \nDonde Renan rezaba, Verlaine cantado hubiera. \nPrimavera una rosa de amor tiene en la mano \nY cerca de la joven y dulce Primavera\n\nTérmino su sonrisa de piedra brinda en vano \nA la desnuda náyade y a la ninfa hechicera \nQue viene a la soberbia fiesta de la pradera \ny del boscaje, en busca del lírico Sylvano.\n\nSobre su altar de oro se levanta la Dea,— \nTal en su aspecto icónico la virgen bizantina— \nToda belleza humana ante su luz es fea;\n\nToda visión humana, a su luz es divina: \nY esa es la virtud sacra de la divina Idea \nCuya alma es una sombra que todo lo ilumina.",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/La_Dea",
       "tags": [
@@ -580,7 +584,7 @@
       "titulo": "La página blanca",
       "texto": "Mis ojos miraban en hora de ensueños\nla página blanca.\nY vino el desfile de ensueños y sombras. \nY fueron mujeres de rostros de estatua, \nMujeres de rostros de estatuas de mármol, \n¡Tan tristes, tan dulces, tan suaves, tan pálidas!\n\nY fueron visiones de extraños poemas, \nDe extraños poemas de besos y lágrimas, \n¡De historias que dejan en crueles instantes \nLas testas viriles cubiertas de canas!\n\n¡Qué cascos de nieve que pone la suerte! \n¡Qué arrugas precoces cincela en la cara! \n¡Y cómo se quiere que vayan ligeros \nLos tardos camellos de la caravana!\n\nLos tardos camellos—, \nComo las figuras en un panorama—, \nCual si fuese un desierto de hielo, \nAtraviesan la página blanca.\n\nEste lleva\nuna carga\nDe dolores y angustias antiguas, \nAngustias de pueblos, dolores de razas; \n¡Dolores y angustias que sufren los Cristos \nQue vienen al mundo de víctimas trágicas!\n\nOtro lleva \nen la espalda \nEl cofre de ensueños, de perlas y oro,\nQue conduce la Reina de Saba. \n\nOtro lleva \nuna caja \nEn que va, dolorosa difunta, \nComo un muerto lirio la pobre Esperanza. \n\nY camina sobre un dromedario \nla Pálida,\nLa vestida de ropas obscuras, \nLa Reina invencible, la bella inviolada:\nLa Muerte. \n\nY el hombre,\nA quien duras visiones asaltan,\nEl que encuentra en los astros del cielo\nProdigios que abruman y signos que espantan,\n\nMira al dromedario \nde la caravana \nComo al mensajero que la luz conduce,\n¡En el vago desierto que forma\nla página blanca!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/La_p%C3%A1gina_blanca",
       "tags": [
@@ -592,7 +596,7 @@
       "titulo": "Las Ánforas de Epicuro",
       "texto": "La espiga.MIRA el signo, sutil que los dedos del viento \nHacen al agitar el tallo que se inclina \nY se alza en una rítmica virtud de movimiento. \nCon el áureo pincel de la flor de la harina\n\nTrazan sobre la tela azul del firmamento \nEl misterio inmortal de la tierra divina \nY el alma de las cosas que da su sacramento \nEn una interminable frescura matutina. \n\nPues en la paz del campo la faz de Dios asoma. \nDe las floridas urnas místico incienso aroma \nEl vastor altar en donde triunfa la azul sonrisa;\n\nAún verde está y cubierto de flores el madero, \nBajo sus ramas llenas de amor pace el cordero \nY en la espiga de oro y luz duerme la misa. \n\nLa fuente.\nJoven, te ofrezco el don de esta copa de plata \nPara que un día puedas calmar la sed ardiente, \nLa sed que con fuego más que la muerte mata. \nMas debes abrevarte tan sólo en una fuente,\n\nOtro agua que la suya tendrá que serte ingrata, \nBusca su oculto origen en la gruta viviente \nDonde la interna música de su cristal desata,\nJunto al árdol que llora y la roca que siente.\n\nGuíete el misterioso eco de su murmullo, \nAsciende por los riscos ásperos del orgullo, \nBaja por la constancia y desciende al abismo\n\nCuya entrada sombría guardan siete panteras: \nSon los Siete Pecados las siete bestias fieras. \nLlena la copa y bebe: la fuente está en ti mismo.\n\nPalabras de la Satiresa.\nUn día oí una risa bajo la fronda espesa, \nVi brotar de lo verde dos manzanas lozanas; \nErectos senos eran las lozanas manzanas \nDel busto que bruñía de sol la Satiresa:\n\nEra una Satiresa de mis fiestas paganas, \nQue hace brotar clavel o rosa cuando besa;\n\nY furiosa y riente y que abrasa y que mesa, \nCon los labios manchados por las moras tempranas. \n\n«Tú que fuiste, me dijo, un antiguo argonauta, \nAlma que el sol sonrosa y que la mar zafira, \nSabe que está el secreto de todo ritmo y pauta\n\nEn unir carne y alma a la esfera que gira, \nY amando a Pan y Apolo en la lira y la flauta, \nSer en la flauta Pan, como Apolo en la lira.\n\nLa anciana.\nPues la anciana me dijo: mira esta rosa seca \nQue encantó el aparato de su estación un día: \nEl tiempo que los muros altísimos derrueca \nNo privará este libro de su sabiduría.\n\nEn esos secos pétalos hay más filosofía\nQue la que darte pueda tu sabia biblioteca; \nElla en mis labios pone la mágica armonía \nCon que en mi torno encarno los sueños de mi rueca.\n\n«Sois un hada», le dije: «Soy un hada, me dijo: \nY de la primavera celebro el regocijo \nDándoles vida y vuelo a estas hojas de rosa.»\n\nY transformóse en una princesa perfumada, \nY en el aire sutil, de los dedos del hada \nVólo la rosa seca como una mariposa.\n\nAma tu ritmo...\nAma tu ritmo y ritma tus acciones \nBajo su ley, así como tus versos; \nEres un universo de universos \nY tu alma una fuente de canciones.\n\nLa celeste unidad que presupones \nHará brotar en ti mundos diversos, \nY al resonar tus números dispersos \nPitagoriza en tus constelaciones.\n\nEscucha la retórica divina \nDel pájaro del aire y la nocturna \nIrradiación geométrica adivina;\n\nMata la indificencia taciturna \nY engarza perla y perla cristalina \nEn donde la verdad vuelca su urna.\n\nA los poetas risueños.\nAnacreonte, padre de la sana alegría; \nOvidio, sacerdote de la ciencia amorosa; \nQuevedo, en cuyo cáliz licor jovial rebosa; \nBanville, insigne orfeo de la sacra Harmonía,\n\nY con vosotros toda la grey hija del día, \nA quien habla el amante corazón de la rosa, \nAbejas que fabrican sobre la humana prosa \nEn sus Himetos mágicos mieles de poesía:\n\nPrefiero vuestra risa sonora, vuestra musa \nRisueña, vuestros versos perfumados de vino, \nA los versos de sombra y a la canción confusa\n\nQue opone el numen bárbaro al resplandor latino; \nY ante la fiera máscara de la fatal Medusa, \nMedrosa huye mi alondra de canto cristalino.\n\nLa hoja de oro.\nEn el verde laurel que decora la frente \nQue besaron los sueños y pulieron las horas, \nUna hoja suscita como la luz naciente \nEn que entreabren sus ojos de fuego las auroras;\n\nO las solares pompas, o los fastos de Oriente, \nPreseas bizantinas diademas de Theodoras, \nO la lejana Cólquida que el soñador presiente \nY adonde los jasones dirigirán las proras.\n\nHoja de oro rojo, mayor es tu valía, \nPues para tus colores imperiales evocas \nCon el triunfo de otoño y la sangre del día,\n\nEl marfil de las frentes, la brasa de las bocas, \nY la autumnal tristeza de las vírgenes locas \nPor la Lujuria, madre de la Melancolía.\n\nMarina.\nComo al fletar mi barca con destino a Citeres \nSaludara a las olas, contestaron las olas\n\nCon un saludo alegre de voces de mujeres. \nY los faros celestes prendían sus farolas, \nMientras temblaba el suave crepúsculo violeta. \n«Adiós -dije- países que me fuisteis esquivos; \nAdiós peñascos enemigos del poeta; \nAdiós costas en donde se secaron las viñas, \nY cayeron los términos en los vosques de olivos. \nParto para una tierra de rosas y de niñas, \nPara una isla melodiosa \nDonde más de una musa me ofrecerá una rosa.» \nMi barca era la misma que condujo a Gautier \nY que Verlaine un día para Chipre fletó, \nY provenía de \nEl divino astillero del divino Watteau. \nY era un celeste mar de ensueño, \nY la luna empezaba en su rueca de oro \nA hilar los mil hilos de su manto sedeño. \nSaludaba mi paso de las brisas el coro \nY a dos carrillos daba redondez a las velas. \nEn mi alma cantaban celestes filomelas \nCuando oí que en la playa sonaba como un grito. \nVolví la vista y vi que era una ilusión \nQue dejara olvidada mi antiguo corazón. \nEntonces, fijo del azur en lo infinito, \nPara olvidar del todo las amarguras viejas,\n\nComo Aquiles un día, me tapé las orejas. \nY les dije a las brisas: «Soplad, soplad más fuerte; \nSoplad hacia las costas de la isla de la Vida.» \nY en la playa quedaba desolada y perdida \nUna ilusión que aullaba como un perro a la Muerte.\n\nDafne.\n¡Dafne, divina Dafne! Buscar quiero la leve \nCaña que corresponda a tus labios esquivos; \nHaré de ella mi flauta e inventaré motivos \nQue extasiarán de amor a los cisnes de nieve. \n\nAl canto mío el tiempo parecerá más breve; \nComo Pan en el campo haré danzar los chivos; \nComo Orfeo tendré los leones cautivos, \nY moveré el imperio de Amor que todo mueve.\n\nY todo será, Dafne, por la virtud secreta \nQue en la fibra sutil de la caña coloca \nCon la pasión del dios el sueño del poeta;\n\nPorque si de la flauta la boca mía toca \nEl sonoro carrizo, su misterio interpreta \nY la armonía nace del beso de tu boca.\n\nLa gitanilla.\nA Carolus Durán.\nMaravillosamente danzaba. Los diamantes \nNegros de sus pupilas vertían su destello; \nEra bello su rostro, era un rostro tan bello \nComo el de las gitanas de don Miguel Cervantes.\n\nOrnábase con rojos claveles detonantes \nLa redondez obscura del casco del cabello, \nY la cabeza firme sobre el bronce del cuello \nTenía la patina de las horas errantes.\n\nLas guitarras decían en sus cuerdas sonoras \nLas vagas aventuras y las errantes horas, \nVolaban los fandangos, daba el clavel fragancia; \n\nLa gitana, embriagada de lujuria y cariño, \nSintió cómo caída dentro de su corpino \nEl bello luis de oro del artista de Francia.\n\nA maestre Gonzalo de Berceo.\nAmo tu delicioso alejandrino \nComo el de Hugo, espíritu de España; \nEste vale una copa de champaña \nComo aquél vale «un vaso do bon vino». \n\nMas a uno y otro pájaro divino \nLa primitiva cárcel es extraña; \nEl barrote maltrata, el grillo daña, \nQue vuelo y libertad son su destino,\n\nAsí procuro que en la luz resalte \nTu antiguo verso, cuyas alas doro \nY hago brillar con mi moderno esmalte;\n\nTiene la libertad con el decoro \nY vuelve, como al puño el gerifalte, \nTrayendo del azul rimas de oro.\n\nAlma mía.\nAlma mía, perdura en tu idea divina; \nTodo está bajo el signo de un destino supremo;\n\nSigue en tu rumbo, sigue hasta el ocaso extremo \nPor el camino que hacia la Esfinge te encamina. \n\nCorta la flor al paso, deja la dura espina; \nEn el río de oro lleva a compás el remo; \nSaluda el rudo arado del rudo Triptolemo, \nY sigue como un dios que sus sueños destina...\n\nY sigue como un dios que la dicha estimula, \nY mientras la retórica del pájaro te adula \nY los astros del cielo te acompañan, y los \n\nRamos de la Esperanza surgen primaverales, \nAtraviesa impertérrita por el bosque de males \nSin temer las serpientes; y sigue, como un dios...\n\nYo persigo una forma...\nYo persigo una forma que no encuentra mi estilo, \nBotón de pensamiento que busca ser la rosa; \nSe anuncia con un beso que en mis labios se posa \nAl abrazo imposible de la Venus de Milo.\n\nAdornan verdes palmas el blanco peristilo; \nLos asiros me han predicho la visión de la Diosa; \nY en mi alma reposa la luz como reposa \nEl ave de la luna sobre un lago tranquilo. \n\nY no hallo sino la palabra que huye,\nLa iniciación melódica que de la flauta fluye \nY la barca del sueño que en el espacio boga; \n\nY bajo la ventana de mi Bella-Durmiente, \nEl sollozo continuo del chorro de la fuente \nY el cuello del gran cisne blanco que me interroga.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Las_%C3%81nforas_de_Epicuro",
       "tags": [
@@ -606,7 +610,7 @@
       "titulo": "Mía",
       "texto": "Mía:  así te llamas. \n¿Qué más harmonía? \nMía: luz del día, \nMía: rosas, llamas.\n\n¡Qué aroma derramas \nEn el alma mía \nSi sé que me amas, \n¡Oh Mía! ¡oh Mía! \n\nTu sexo fundiste \nCon mi sexo fuerte, \nFundiendo dos bronces.\n\nYo triste, tu triste... \n¿No has de ser entonces \nMía hasta la muerte?",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/M%C3%ADa",
       "tags": [
@@ -617,7 +621,7 @@
       "titulo": "Palimpsesto",
       "texto": "ESCRITA en viejo dialecto eolio\nHallé esta página dentro un infolio\nY entre los libros de un monasterio\nDel venerable San Agustín,\nUn fraile acaso puso el escolio\nQue allí se encuentra; dómine serio\nDe flacas manos y buen latín.\nHay sus lagunas.\n\n...Cuando los toros \nDe las campañas, bajo los oros \nQue vierte el hijo de Hiperión, \nPasan mugiendo, y en las eternas \nRocas salvajes de las cavernas \nEsperezándose ruge el león;\n\nCuando en las vírgenes y verdes parras \nSus secas notas dan las cigarras, \nY en los panales de Himeto deja \nSu rubia carga la leve abeja \nQue en bocas rojas chupa la miel, \nJunto a los mirtos, bajo los lauros, \nEn grupo lírico van los centauros \nCon la harmonía de su tropel.\n\nUno las patas rítmicas mueve, \nOtro alza el cuello con gallardía \nComo en hermoso bajo-relieve \nQue a golpes mágicos Scopas haría; \nOtro alza al aire las manos blancas \nMientras le dora las fincas ancas\n\nCon baño cálido la luz del sol; \nY otro saltando piedras y troncos \nVa dando alegres sus gritos roncos \nComo el ruido de un caracol. \n\nSilencio. Señas hace ligero \nEl que en la tropa va delantero; \nPorque a un recodo de la campaña \nLlegan en donde Diana se baña. \nSe oye el ruido de claras linfas \nY a la algazara que hacen las ninfas. \nRisa de plata que el aire riega \nHasta sus ávidos oídos llega; \nGolpes en la onda, palabras locas, \nGritos joviales de frescas bocas, \nY los ladridos de la traílla \nQue diana tiene junto a la orilla \nDel fresco río, donde está ella \nBlanca y desnuda como una estrella.\n\nTanta blancura que al cisne injuria \nAbre los ojos de la lujuria:\n\nSobre las márgenes y rocas áridas \nVuela el enjambre de las cantáridas \nCon su bruñido verde metálico, \nSiempre propicias al culto fálico. \nAmplias caderas, pie fino y breve; \nLas dos colinas de rosa y nieve... \nCuadro soberbio de tentación! \n¡Ay del cuitado que a ver se atreve \nLo que fué espanto para Acteón! \nCabellos rubios, mejillas tiernas,\nMarmóreos cuellos, rosadas piernas, \nGracias ocultas del lindo coro, \nEn el herido cristal sonoro; \nSeno en que hiciérase sagrada copa; \nTal ve en silencio la ardiente tropa.\n\n¿Quién adelanta su firme busto? \n¿Qirón experto? ¿Folo robusto? \nEs el más joven y es el más bello; \nSu piel es blanca, crespo el cabello, \nLos cascos finos, y en la mirada \nBrilla del sátiro la llamarada. \nEn un instante, veloz y listo, \nA una tan bella como Kalisto,\n\nNinfa que a la alta diosa acompaña, \nSaca de la onda donde se baña: \nLa grupa vuelve, raudo galopa; \nTal iba el toro raptor de Europa \nCon el orgullo de su conquista.\n\n¿A dó va Diana? Viva la vista \nLa planta alada, la cabellera \nMojada y suelta; terrible, fiera, \nCorre del monte por la extensión; \nLadran sus perros enfurecidos; \nEntre sus dedos humedecidos \nLleva una flecha para el ladrón.\n\nYa a los centauros a ver alcanza \nLa cazadora; ya el dardo lanza, \nY un grito se oye de hondo dolor: \nLa casta divina de la venganza \nMató al raptor... \nLa tropa rápida se esparce huyendo, \nForman los cascos sonoro estruendo.\n\nLlegan las ninfas. Lloran. ¿Qué ven? \nEn la carrera la cazadora \nCon su saeta castigadora \nA la robada mató También.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Palimpsesto",
       "tags": [
@@ -628,7 +632,7 @@
       "titulo": "Para la misma",
       "texto": "Miré al sentarme a la mesa, \nBañado en la luz del día, \nEl retrato de María, \nLa cubana-japonesa.\n\nEl aire acaricia y besa, \nComo un amante lo haría, \nLa orgullosa bizarría, \nDe la cabellera espesa.\n\nDiera un tesoro el Mikado \nPor sentirse acariciado \nPor princesa tan gentil,\n\nDigna de que un gran pintor \nLa pinte junto a una flor \nEn un vaso de marfil.",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Para_la_misma",
       "tags": [
@@ -639,7 +643,7 @@
       "titulo": "Para una cubana",
       "texto": "Poesía dulce y mística,\nBusca a la blanca cubana\nQue se asomó a la ventana\nComo una visión artística.\n\nMisteriosa y cabalística, \nPuede dar celos a Diana, \nCon su faz de porcelana \nDe una blancura eucarística.\n\nLlena de un prestigio asiático, \nRoja, en el rostro enigmático, \nSu boca púrpura finge\n\nY al sonreírse vi en ella \nEl resplandor de una estrella \nQue fuese alma de una esfinge.",
       "forma": "soneto",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Para_una_cubana",
       "tags": [
@@ -650,7 +654,7 @@
       "titulo": "Pórtico — LIBRE la frente que el casco rehusa, ",
       "texto": "LIBRE la frente que el casco rehusa, \nCasi desnuda en la gloria del día, \nAlza su tirso de rosas la musa \nBajo el gran sol de la eterna Harmonía.\n\nEs Floreal, eres tú, Primavera, \nQuien la sandalia calzó a su pie breve; \nElla, de tristes nostalgias muriera \nEn el país de los cisnes de nieve.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -659,7 +663,7 @@
       "titulo": "Pórtico — Griega es su sangre, su abuelo era ciego;",
       "texto": "Griega es su sangre, su abuelo era ciego;\nSobre la cumbre del Pindo sonoro\nEl sagitario del carro de fuego\nPuso en su lira las cuerdas de oro.\n\nY bajo el pórtico blanco de Paros, \nY en los boscajes de frescos laureles, \nPíndaro dióle sus ritmos preclaros, \nDióle Anacreonte sus vinos y mieles. \n\nToda desnuda, en los claros diamantes \nQue en la Castalia recaman las linfas, \nViéronla tropas de faunos saltantes, \nCual la más fresca y gentil de las ninfas. \n\nY en la fragante, harmoniosa floresta,\nPuesto a los ecos su oído de musa,\nPan sorprendióla escuchando la orquesta \nQue él daba al viento con su cornamusa.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": [
@@ -670,7 +674,7 @@
       "titulo": "Pórtico — Ella resurge después en el Lacio, ",
       "texto": "Ella resurge después en el Lacio, \nSiendo del tedio su lengua exterminio; \nLleva a sus labios la copa de Horacio, \nBebe falerno en su ebúrneo triclinio.\n\nPájaro errante, ideal golondrina, \nVuela de Arabia a un confín solitario, \nY ve pasar en su torre argentina \nA un rey de Oriente sobre un dromedario;\n\nRey misterioso, magnífico y mago. \nDueño opulento de cien Estambules, \nY a quien un genio brindara en un lago \nGóndolas de oro en las aguas azules.\n\nEse es el rey más hermoso que el día, \nQue abre a la musa las puertas de Oriente; \nEse es el rey del país Fantasía, \nQue lleva un claro lucero en la frente.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -679,7 +683,7 @@
       "titulo": "Pórtico — Es en Oriente donde ella se inspira ",
       "texto": "Es en Oriente donde ella se inspira \nEn las moriscas exóticas zambras; \nDonde primero contempla y admira \nLas cinceladas divinas alhambras;\n\nLas muelles danzas en las alcatifas \nDonde la mora sus velos desata, \nLos pensativos y viejos kalifas \nDe ojos obscuros y barbas de plata.\n\nEs una bella y alegre mañana \nCuando su vuelo la musa confía \nA una errabunda y fugaz caravana \nQue hace del viento su brújula y guía.\n\nEra la errante familia bohemia, \nSabía en extraños conjuros y estigmas, \nQue une en su boca plegaria y blasfemia, \nNombres sonoros y raros enigmas;",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -688,7 +692,7 @@
       "titulo": "Pórtico — Que ama los largos y negros cabellos, ",
       "texto": "Que ama los largos y negros cabellos, \nDanzas lascivas y finos puñales, \nOjos llameantes de vivos destellos, \nFlores sangrientas de labios carnales.\n\nY con la gente morena y huraña \nQue a los caprichos del aire se entrega,\nHace su entrada triunfal en España \nFresca y riente la rítmica griega.\n\nMira las cumbres de Sierra Nevada, \nLas bocas rojas de Málaga, lindas, \nY en un pandero su mano rosada \nFresas recoge, claveles y guindas.\n\nCanta y resuena su verso de oro, \nVe de Sevilla las hembras de llama, \nSueña y habita en la Alhambra del moro; \nY en sus cabellos perfumes derrama.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": [
@@ -699,7 +703,7 @@
       "titulo": "Pórtico — Busca del pueblo las penas, la flores,",
       "texto": "Busca del pueblo las penas, la flores,\nMantos bordados de alhajas de seda,\nY la guitarra que sabe de amores,\nCálida y triste querida de Rueda;\n\n(Urna amorosa de voz femenina, \nCaja de música de duelo y placer: \nTiene el acento de un alma divina, \nTalle y caderas como una mujer.) \n\nVa del tablado flamenco a la orilla \nY ase en sus palmas los crótalos negros, \nMientras derrocha la audaz seguidilla \nBruscos acordes y raudos alegros.\n\nRitma los pasos, modula los sones, \nEbria risueña de un vino de luz, \nHace que brillen los ojos gachones,\nNegros diamantes del patio andaluz.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": [
@@ -711,7 +715,7 @@
       "titulo": "Pórtico — Campo y pleno aire refrescan sus alas; ",
       "texto": "Campo y pleno aire refrescan sus alas; \nAma los nidos, las cumbres, las cimas; \nVuelve del campo vestida de galas, \nCuelga a su cuello collares de rimas.\n\nEn su tesoro de reina de Saba, \nGuarda en secreto celestes emblemas; \nFlechas de fuego en su mágica aljaba. \nPerlas, rubíes, zafiros y gemas.\n\nTiene una corte pomposa de majas. \nSuya es la chula de rostro risueño, \nSuyas las juergas, las curvas navajas \nEbrias de sangre y licor malagueño.\n\nTiene por templo un alcázar marmóreo, \nGuárdalo esfinge de rostro egipciaco, \nY cual labrada en un bloque hiperbóreo,\nVenus enfrente de un triunfo de Baco.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -720,7 +724,7 @@
       "titulo": "Pórtico — Dentro presenta sus formas de nieve, ",
       "texto": "Dentro presenta sus formas de nieve, \nBrinda su amable sonrisa de piedra, \nMientras se enlaza en un bajo-relieve \nA una driada ceñida de hiedra.\n\nUn joven fauno robusto y violento, \nDulce terror de las ninfas incautas, \nAl son triunfante que lanzan al viento \nTímpanos, liras y sistros y flautas.\n\nOrnan los muros mosaicos y frescos. \nÁureos pedazos de un sol fragmentario. \nIris trenzados en mil arabescos, \nJoyas de un hábil cincel lapidario.\n\nY de la eterna Belleza en el ara, \nAnte su sacra y grandiosa escultura, \nHay una lámpara en albo carrara,\nDe una eucarística y casta blancura.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -729,7 +733,7 @@
       "titulo": "Pórtico — Fuera, el frondoso jardín del poeta ",
       "texto": "Fuera, el frondoso jardín del poeta \nRíe en su fresca y gentil hermosura; \nÁgata, perla, amatista, violeta, \nVerdor eclógico y tibia espesura. \n\nUna andaluza despliega su manto \nPara el poeta de música eximia; \nRústicos Títiros cantan su canto; \nBulle el hervor de la alegre vendimia. \n\nYa es un tropel de bacantes modernas \nEl que despierta las locas lujurias; \nYa húmeda y triste de lágrimas tiernas, \nDa su gemido la gaita de Asturias. \n\nFrancas fanfarrias de cobres sonoros, \nLabios quemantes de humanas sirenas, \nOcres y rojos de plazas de toros,\nFuegos y chispas de locas verbenas.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -738,7 +742,7 @@
       "titulo": "Pórtico — Joven homérida, un día su tierra ",
       "texto": "Joven homérida, un día su tierra \nVióle que alzaba soberbio estandarte, \nBuen capitán de la lírica guerra, \nRegio cruzado del reino del arte. \n\nVióle con yelmo de acero brillante, \nRica armadura sonora a su paso, \nFirme tizona, broncíneo olifante, \nListo y piafante su excelso pegaso. \n\nY de la brega tornar vióle un día \nDe su victoria en los bravos tropeles, \nBajo el gran sol de la eterna Harmonía, \nDueño de verdes y nobles laureles. \n\nFué aborrecido de Zoilo, el verdugo. \nFué por la gloria su estrella encendida. \nY esto pasó en el reinado de Hugo, \nEmperador de la barba florida.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/P%C3%B3rtico",
       "tags": []
@@ -747,7 +751,7 @@
       "titulo": "Responso — PADRE y maestro mágico, liróforo celeste",
       "texto": "PADRE y maestro mágico, liróforo celeste\nQue al instrumento olímpico y a la siringa agreste\nDiste tu acento encantador;\nPanida! Pan tú mismo, que coros condujiste\nHacia el propíleo sacro que amaba tu alma triste, \nAl son del sistro y del tambor!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Responso",
       "tags": [
@@ -758,7 +762,7 @@
       "titulo": "Responso — Que tu sepulcro cubra de flores Primavera, ",
       "texto": "Que tu sepulcro cubra de flores Primavera, \nQue se humedezca el áspero hocico de la fiera, \nDe amor si pasa por allí; \nQue el fúnebre recinto visite Pan bicorne; \nQue de sangrientas rosas el fresco Abril te adorne \nY de claveles de rubí.\n\nQue si posarse quiere sobre la tumba el cuervo, \nAhuyenten la negrura del pájaro protervo, \nEl dulce canto de cristal \nQue Filomena vierta sobre tus tristes huesos, \nO la harmonía dulce de risas y de besos, \nDe culto oculto y florestal. \n\nQue púberes canéforas te ofrenden el acanto, \nQue sobre tu sepulcro no se derrame el llanto, \nSino rocío, vino, miel: \nQue el pámpano allí brote, las flores de Citeres, \nY que se escuchen vagos suspiros de mujeres \nBajo un simbólico laurel!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Responso",
       "tags": [
@@ -771,7 +775,7 @@
       "titulo": "Responso — Que si un pastor su pífano bajo el frescor del haya, ",
       "texto": "Que si un pastor su pífano bajo el frescor del haya, \nEn amorosos días, como en Virgilio, ensaya, \nTu nombre ponga en la canción; \nY que la virgen náyade, cuando ese nombre escuche, \nCon ansias y temores entre las linfas luche,\nLlena de miedo y de pasión. \n\nDe noche, en la montaña, en la negra montaña \nDe las Visiones, pase gigante sombra extraña, \nSombra de un Sátiro espectral; \nQue ella al centauro adusto con su grandeza asuste; \nDe una extra-humana flauta la melodía ajuste\nA la harmonía sideral.\n\nY huya el tropel equino por la montaña vasta; \nTu rostro de ultratumba bañe la luna casta \nDe compasiva y blanca luz; \nY el Sátiro contemple sobre un lejano monte \nUna cruz que se eleve cubriendo el horizonte \nY un resplandor sobre la cruz!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Responso",
       "tags": [
@@ -783,7 +787,7 @@
       "titulo": "Sinfonía en gris mayor — EL mar como un vasto cristal azogado ",
       "texto": "EL mar como un vasto cristal azogado \nRefleja la lámina de un cielo de zinc;\nLejanas bandadas de pájaros marchan\nEl fondo bruñido de pálido gris.",
       "forma": "quadra",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sinfon%C3%ADa_en_gris_mayor",
       "tags": [
@@ -794,7 +798,7 @@
       "titulo": "Sinfonía en gris mayor — El sol como un vidrio redondo y opaco ",
       "texto": "El sol como un vidrio redondo y opaco \nCon paso de enfermo camina al cenit; \nEl viento marino descansa en la sombra \nTeniendo de almohada su negro clarín.\n\nLas ondas que mueven su vientre de plomo \nDebajo del muelle parecen gemir. \nSentado en un cable, fumando su pipa, \nEstá un marinero pensando en las playas \nDe un vago, lejano, brumoso país.\n\nEs viejo ese lobo. Tostaron su cara \nLos rayos de fuego del sol del Brasil; \nLos recios tifones del mar de la China \nLe han visto bebiendo su frasco de gin.\n\nLa espuma impregnada de yodo y salitre\nHa tiempo conoce su roja nariz,\nSus crespos cabellos, sus biceps de atleta,\nSu gorra de lona, su blusa de dril.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sinfon%C3%ADa_en_gris_mayor",
       "tags": [
@@ -807,7 +811,7 @@
       "titulo": "Sinfonía en gris mayor — En medio del humo que forma el tabaco ",
       "texto": "En medio del humo que forma el tabaco \nVe el viejo el lejano, brumoso país, \nA donde una tarde caliente y dorada \nTendidas las velas partió el bergantín...\n\nLa siesta del trópico. El lobo se adureme. \nYa todo lo envuelve la gama del gris. \nParece que un suave y enorme esfumino \nDel curvo horizonte borrara el confín.\n\nLa siesta del trópico. La vieja cigarra\nEnsaya su ronca guitarra senil, \nY el grillo preludia un solo monótono \nEn la única cuerda que está en su violín.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sinfon%C3%ADa_en_gris_mayor",
       "tags": []
@@ -816,7 +820,7 @@
       "titulo": "Sonatina — La princesa está triste... ¿qué tendrá la princesa? ",
       "texto": "La princesa está triste... ¿qué tendrá la princesa? \nLos suspiros se escapan de su boca de fresa, \nQue ha perdido la risa, que ha perdido el color. \nLa princesa está pálida en su silla de oro, \nEstá mudo el teclado de su clave sonoro; \nY en un vaso olvidada se desmaya una flor.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sonatina",
       "tags": [
@@ -827,7 +831,7 @@
       "titulo": "Sonatina — El jardín puebla el triunfo de los pavos reales. ",
       "texto": "El jardín puebla el triunfo de los pavos reales. \nParlanchína, la dueña dice cosas banales, \nY vestido de rojo piruetea el bufón. \nLa princesa no ríe, la princesa no siente;\nLa princesa persigue por el cielo de Oriente \nLa libélula vaga de una vaga ilusión.\n\n¿Piensa acaso en el príncipe de Golconda o de China, \nO en el que ha detenido su carroza argentina \nPara ver de sus ojos la dulzura de luz, \nO en el rey de las Islas de las rosas fragantes, \nO en el que es soberano de los claros diamantes, \nO en el dueño orgulloso de las perlas de Ormuz?\n\n¡Ay! la pobre princesa de la boca de rosa, \nQuiere ser golondrina, quiere ser mariposa. \nTener alas ligeras, bajo el cielo volar, \nIr al sol por la escala luminosa de un rayo, \nSaludar a los lirios con los versos de Mayo, \nO perderse en el viento sobre el trueno del mar.",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sonatina",
       "tags": [
@@ -838,7 +842,7 @@
       "titulo": "Sonatina — Ya no quiere el palacio, ni la rueca de plata, ",
       "texto": "Ya no quiere el palacio, ni la rueca de plata, \nNi el halcón encantado, ni el bufón escarlata. \nNi los cisnes unánimes en el lago de azur. \nY están tristes las flores por la flor de la corte; \nLos jazmines de Oriente, los nelumbos del Norte, \nDe Occidente las dalias y las rosas del Sur.\n\n¡Pobrecita princesa de los ojos azules! \nEstá presa en sus oros, está presa en sus tules, \nEn la jaula de mármol del palacio real; \nEl palacio soberbio que vigilan los guardas, \nQue custodian cien negros con sus cien alabardas, \nUn lebrel que no duerme y un dragón colosal.\n\n¡Oh, quién fuera hipsipila que dejó la crisálida! \n(La princesa está triste. La princesa está pálida) \n¡Oh, visión adorada de oro, rosa y marfil! \n¡Quién volara a la tierra donde un príncipe existe \n(La princesa está pálida. La princesa está triste)\nMás brillante que el alba, más hermoso que Abril!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sonatina",
       "tags": [
@@ -849,7 +853,7 @@
       "titulo": "Sonatina — Calla, calla, princesa, —dice el hada madrina—",
       "texto": "Calla, calla, princesa, —dice el hada madrina—\nEn caballo con alas, hacia acá se encamina,\nEn el cinto la espada y en la mano el azor, \nEl feliz caballero que te adora sin verte, \nY que llega de lejos, vencedor de la Muerte, \nA encenderte los labios con su beso de amor!",
       "forma": "outro",
-      "obra": "es.wikisource: Prosas profanas",
+      "obra": "Prosas profanas",
       "ano": null,
       "fonte": "https://es.wikisource.org/wiki/Sonatina",
       "tags": [

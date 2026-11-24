@@ -4,12 +4,16 @@
   "bio": "Poeta mineiro do Arcadismo e inconfidente, morto no degredo em Ambaca. Deixou sonetos e liras de circunstância — a lírica civil da Inconfidência ao lado de Cláudio Manuel e Gonzaga.",
   "avatar_url": "",
   "morte": 1792,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A Alléa",
       "texto": "Não cedas, coração; pois n’esta empreza\nO brio só domina; o cego mando\nDo ingrato amor seguir não deves, quando\nJá não pódes amar sem vil baixeza:\n\nRompa-se o forte laço, que é fraqueza\nCeder a amor, o brio deslustrando;\nVença-te o brio pelo amor cortando,\nQue é honra, que é valor, que é fortaleza;\n\nFoge de ver Alléa, mas se a vires,\nPorque não venhas outra vez a amal-a,\nApaga o fogo, assim que o presentires;\n\nE se inda assim o teu valor se abala,\nNão lh’o mostres o rosto; ah! não suspires!\nCalado geme, soffre, morre, estala!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_All%C3%A9a",
       "tags": [
@@ -20,7 +24,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Aos annos de uma illustre senhora",
       "texto": "Nem fizera a discordia o desatino\nQue urdio funesta liga a gente humana,\nNem soberba a republica romana\nPoria ao mundo inteiro um freio indino.\n\nO’ Asia, ó Grécia, ó Roma, o teu destino\nFôra feliz só com nascer Joanna;\nRespeitoso no peito a acção profana\nSuffocaria o barbaro Tarquino.\n\nElla das deosas três as graças goza,\nElla só os sublimes dons encerra\nDe rainha, de sabia e de formosa.\n\nAh! se Joanna então honrasse a terra!\nO’ esposa romana, ó grega esposa,\nNão fôra a formosura a mãi da guerra!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Aos_annos_de_uma_illustre_senhora",
       "tags": []
@@ -29,7 +33,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A D. Barbara Eliodora, sua esposa",
       "texto": "Barbara bella,\nDo Norte estrella,\nQue o meu destino\nSabes guiar,\nDe ti ausente\nTriste sómente\nAs horas passo\nA suspirar.\n\nPor entre as penhas\nDe incultas brenhas \nCansa-me a vista\nDe te buscar;\nPorém não vejo\nMais que o desejo,\nSem esperança\nDe te encontrar.\n\nEu bem queria\nA noite e o dia\nSempre comtigo\nPoder passar;\nMas orgulhosa\nSorte invejosa,\nD’esta fortuna\nMe quer privar.\n\nTu, entre os braços,\nTernos abraços\nDa filha amada\nPódes gozar;\nPriva-me a estrella\nDe ti e d’ella,\nBusca dous modos\nDe me matar!",
       "forma": "outro",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_D._Barbara_Eliodora%2C_sua_esposa",
       "tags": [
@@ -41,7 +45,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A estatua equestre",
       "texto": "A America sujeita, Asia vencida,\nAfrica escrava, Europa respeitosa;\nRestaurada mais rica e mais formosa\nA fundação de Ulysses destruida;\n\nSão a base em que vemos erigida\nA colossal estatua magestosa,\nQue d’el-rei á memoria gloriosa\nConsagrou Lusitania agradecida.\n\nMas como a gloria do monarcha justo\nÉ bem que áquelle heróe se communique,\nQue a fama canta, que eternisa o busto,\n\nPombal junto a José eterno fique,\nQual o famoso Agrippa junto a Augusto,\nComo Sully ao pé do grande Henrique.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_estatua_equestre",
       "tags": [
@@ -53,7 +57,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Estella e Nize",
       "texto": "Eu vi a linda Estella, e namorado\nFiz logo eterno voto de querêl-a;\nMas vi depois a Nize, e é tão bella,\nQue merece igualmente o meu cuidado.\n\nA qual escolherei, se n’este estado\nNão posso distinguir Nize d’Estella?\nSe Nize vir aqui, morro por ella;\nSe Estella agora vir, fico abrasado.\n\nMas, ah! que aquella me despreza amante,\nPois sabe que estou preso em outros braços,\nE esta não me quer por inconstante.\n\nVem, Cupido, soltar-me d’estes laços,\nOu faz de dous semblantes um semblante,\nOu divide o meu peito em dous pedaços!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Estella_e_Nize",
       "tags": []
@@ -62,7 +66,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Improvisado n’um outeiro",
       "texto": "Nas azas do valor em Acio vinha\nPor Antonio a victoria declarada,\nMas a sombra de Tullio não vingada\nPostos os deoses contra Antonio tinha.\n\nFez que fugisse a barbara rainha\nDe falsas esperanças enganada,\nE o criminoso heróe voltando a espada\nNo coração zeloso a embainha.\n\nO fatal estandarte a guerra enrole,\nCesse entre esposas e entre mais o susto,\nDescanse um pouco de Quirino a prole;\n\nQue Jove eterno, piedoso e justo,\nAntes que Roma a Roma se desole,\nNoméa vice-deos ao grande Augusto (7).",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Improvisado_n%E2%80%99um_outeiro",
       "tags": [
@@ -73,7 +77,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A lastima",
       "texto": "Eu não lastimo o proximo perigo,\nNem a escura prisão estreita e forte;\nLastimo os caros filhos e a consorte,\nA perda irreparavel de um amigo.\n\nA prisão não lastimo, outra vez digo,\nNem o ver imminente o duro córte;\nÉ ventura tambem achar a morte\nQuando a vida só serve de castigo.\n\nAh! quão depressa então acabar vira\nEste sonho, este enredo, esta chimera,\nQue passa por verdade e é mentira.\n\nSe filhos e consorte não tivera,\nE do amigo as virtudes possuíra,\nSó de vida um momento não quizera.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_lastima",
       "tags": [
@@ -84,7 +88,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A Luiz de Vasconcellos e Souza, vice-rei do Estado do Brasil",
       "texto": "De meio corpo nú sobre a bigorna\nOs ferros malhe o immortal Vulcano,\nQue hão de ir contar ao derradeiro anno\nO nome de um heróe que a patria adorna.\n\nSumptuoso passeio (3) em parte a orna;\nVistoso cáes (4) enfrêa o Oceano;\nE na praça um colosso (5) altivo e ufano\nAs frescas aguas pelo povo entorna.\n\nEstas, grande senhor, memorias vossas,\nQue ficão na cidade (6) eternisadas,\nTambem o ficão nas memorias nossas.\n\nE as linguas por Vulcano temperadas,\nHão de entranhar em duras pedras grossas\nDe vosso nome as lettras respeitadas.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_Luiz_de_Vasconcellos_e_Souza%2C_vice-rei_do_Estado_do_Brasil",
       "tags": [
@@ -96,7 +100,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A Maria Iphigenia",
       "texto": "Amada filha, é já chegado o dia,\nEm que a luz da razão, qual tocha acesa,\nVem conduzir a simples natureza,\nÉ hoje que o teu mundo principia.\n\nA mão, que te gerou, teus passos guia,\nDespreza offertas de uma vã belleza,\nE sacrifica as honras e a riqueza\nA’s santas leis do Filho de Maria.\n\nEstampa na tu’alma a caridade,\nQue amar a Deos, amar aos semelhantes,\nSão eternos preceitos da verdade;\n\nTudo o mais são idéas delirantes;\nProcura ser feliz na eternidade,\nQue o mundo são brevíssimos instantes.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_Maria_Iphigenia",
       "tags": [
@@ -109,7 +113,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Ao marquez de Lavradio",
       "texto": "Honradas sombras dos maiores nossos,\nQue estendestes a lusa monarchia,\nDo torrado Equador á zona fria,\nPor incultos sertões, por mares grossos;\n\nSahi a ver os successores vossos\nRevestidos de gala e de alegria,\nE nos prazeres do mais fausto dia\nDai vigor novo aos carcomidos ossos.\n\nLá vem o grande Affonso, a testa erguendo\nA ver Carvalho, em cujos fortes braços\nCrescem os netos, que lhe vão nascendo.\n\nE o suspirado Almeida rompe os laços\nDa fria morte, o neto invicto vendo\nSeguir tão perto de Carvalho os passos.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Ao_marquez_de_Lavradio",
       "tags": [
@@ -121,7 +125,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A mesma rainha",
       "texto": "Por mais que os alvos cornos curve a lua,\nRoubando as luzes ao autor do dia,\nPor mais que Thetis na morada fria\nOstente a pompa da belleza sua;\n\nPor mais que a linda Cytherea nua\nNos mostre o premio da gentil porfia;\nEntra no campo, tu, bella Maria,\nEntra no campo, que a victoria é tua.\n\nVerás a Cynthia protestar o engano,\nVerás Thetis sumir-se envergonhada\nPelas húmidas grutas do Oceano,\n\nVenus ceder-te o pomo namorada,\nE sem Trova sentir o ultimo damno,\nVerás de Juno a colera vingada.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_mesma_rainha",
       "tags": [
@@ -132,7 +136,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A mesma rainha, implorando-lhe a commutação da pena de morte",
       "texto": "A paz, a doce mãi das alegrias,\nO pranto, o luto, o dissabor desterra;\nFaz que s’esconda a criminosa guerra,\nE traz ao mundo os venturosos dias;\n\nDesce, cumprindo eternas prophecias,\nA nova geração dos céos á terra;\nO claustro virginal se desencerra,\nNasce o Filho de Deos, chega o Messias.\n\nBusca um presepio, cahe no pobre feno\nA mão omnipotente, a quem não custa\nCrear mil mundos ao primeiro aceno.\n\nBemdita sejas, lusitana augusta!\nCobre o mar, cobre a terra um céo sereno,\nGraças a ti, ó grande, ó sabia, ó justa!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_mesma_rainha%2C_implorando-lhe_a_commuta%C3%A7%C3%A3o_da_pena_de_morte",
       "tags": [
@@ -144,7 +148,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Ao mesmo marquez, servindo de prologo ao drama Enéas no Lacio",
       "texto": "Se armada a Macedonia ao Indo assoma,\nE Augusto a sorte entrega ao immenso lago;\nSe o grande Pedro errando incerto e vago\nBarbaros duros civilisa e doma;\n\nGrecia de Babylonia exemplos toma,\nAprende Augusto no inimigo estrago,\nEnsina a Pedro quem fundou Carthago \nE as leis de Athenas traz ao Lacio e Roma.\n\nTudo mostra o theatro, tudo encerra;\nN’elle a cega razão aviva os lumes\nNas artes, nas sciencias e na guerra.\n\nE a vós, alto senhor, que o rei e os numes\nDerão por fundador á nossa terra,\nCompete a nova escola de costumes.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Ao_mesmo_marquez%2C_servindo_de_prologo_ao_drama_En%C3%A9as_no_Lacio",
       "tags": []
@@ -153,7 +157,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A morte do mesmo marquez",
       "texto": "Quão mal se mede dos heróes a vida\nPela serie dos annos apressados!\nMuito vive o que emprega os seus cuidados\nEm ganhar nome e fama esclarecida.\n\nEm vão, dobrando os passos atrevida,\nChega a morte cruel, e os negros fados,\nQue vivem por a gloria ter gravados\nSeus dias sobre esphera mais luzida.\n\nJaz o illustre marquez!... As tristes dôres\nEspalhão com o respeito mais profundo\nNa fria urna estas piedosas flôres:\n\n«Breve a vida lhe foi; mas sem segundo\nO seu nome immortal entre os maiores\nSerá sempre saudoso á patria e ao mundo.»",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_morte_do_mesmo_marquez",
       "tags": [
@@ -166,7 +170,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A morte do rei D. José I",
       "texto": "Do claro Tejo á escura foz do Nilo,\nE do barbaro Araxe ao Tibre vago,\nA fama, o susto e o marcial estrago,\nRompa a fama os clarins em repetil-o.\n\nMas não podem achar seguro asylo\nFóra das margens do estigio lago\nOs assombros de Roma e de Carthago,\nAnnibal, Scipião, Fabio e Camillo.\n\nOs grandes ossos cobre a terra dura,\nE a morte desenrola o negro manto\nSobre o pio José na sepultura.\n\nInjusta morte, soffre o nosso pranto,\nQue ainda que és lei a toda a creatura,\nParece não devias poder tanto.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_morte_do_rei_D._Jos%C3%A9_I",
       "tags": [
@@ -177,7 +181,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A rainha D. Maria I, no dia de seus annos",
       "texto": "Expoem Thereza (1) acerbas mágoas cruas,\nE á briosa nação de furor tinta\nFaz arrancar da generosa cinta\nO reflexo de mil espadas nuas.\n\nArrasta e pisa as ottomanas luas,\nE por mais que Neptuno o não consinta,\nA heroina do norte (2) faz que sinta\nO peso o mar Egeo das quilhas suas.\n\nSeus nomes no aureo templo a fama ajunta;\nMas pintar seus estragos não se atreve,\nAo seu Danubio, ao mar Negro o pergunta:\n\nLusitania aos céos muito mais deve:\nQuea rege, como aos povos d’Amathunta,\nFreio de rosas posto em mãos de neve.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_rainha_D._Maria_I%2C_no_dia_de_seus_annos",
       "tags": [
@@ -188,7 +192,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Ao rei D. Diniz",
       "texto": "O pai da patria, imitador de Augusto,\nLiberal Alexandre..... ia adiente,\nQuando uma imagem se me pôz presente,\nA cuja vista me gelei de susto.\n\nMostrava no semblante pio e justo\nRaios brilhantes do empirio luzente,\nE em mim cravando a vista descontente\nAssim fallára com bastante custo:\n\n«Nem de Alexandre, nem de Augusto quero \nOs nomes; sou Diniz.» Me disse apenas\nCom gesto melancolico e severo.\n\nLevou-me ás praias do Mondego amenas,\nE, depondo o semblante grave e austero,\nRio-se e mostrou-me a portugueza Athenas.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Ao_rei_D._Diniz",
       "tags": [
@@ -200,7 +204,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/A saudade",
       "texto": "Não me afflige do potro a viva quina;\nDa ferrea maça o golpe não me offende;\nSobre as chammas a mão se não estende;\nNão soffro do agulhete a ponta fina.\n\nGrilhão pesado os passos não domina;\nCruel arroxo a testa me não fende;\nA’ força a perna ou braço se não rende;\nLonga cadêa o collo não me inclina.\n\nAgua e pomo faminto não procuro;\nGrossa pedra não cansa a humanidade;\nO passaro voraz eu não aturo.\n\nEstes males não sinto; é bem verdade;\nPorém sinto outro mal inda mais duro:\n— Sinto da esposa e filhos a saudade!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/A_saudade",
       "tags": [
@@ -211,7 +215,7 @@
       "titulo": "Obras poeticas de Ignacio José de Alvarenga Peixoto (1865)/Ao tenente-coronel Francisco de Paula Freire de Andrade",
       "texto": "Peitos que amor da patria predomina,\nVede o consorcio que a virtude traça;\nNão é de Chypre na festosa praça,\nQue o nobre Andrade a Isabel se inclina.\n\nAbençôa do alto a mão divina\nO nó sagrado, que apertou a graça;\nE a mesma innocencia, que os enlaça,\nFeliz prosperidade lhes destina.\n\nRisonhos amorinhos de Cythera,\nFugi d’este lugar aos cécos aceito,\nQue aqui nem Venus, nem Cupido impera.\n\nGênios celestiaes, cercai-lhe o leito:\nDo puro fogo da sublime esphera,\nDesção as chammas a inflammar-lhe o peito.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alvarenga Peixoto",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_poeticas_de_Ignacio_Jos%C3%A9_de_Alvarenga_Peixoto_%281865%29/Ao_tenente-coronel_Francisco_de_Paula_Freire_de_Andrade",
       "tags": [

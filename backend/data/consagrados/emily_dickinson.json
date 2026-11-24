@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Emily_Dickinson_daguerreotype_%28Restored%2C_cropped%2C_blown_up%2C_sepia%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1830,
   "morte": 1886,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "US",
   "poemas": [
     {
       "titulo": "[BECAUSE I could not stop for Death,]",

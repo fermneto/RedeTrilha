@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Lu%C3%ADs_Nicolau_Fagundes_Varela.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1841,
   "morte": 1875,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Cântico do Calvário",
@@ -114,7 +118,7 @@
       "titulo": "A D. Pedro II (Fagundes Varela)",
       "texto": "Tu és a estrella mais fulgente e bella\nQue o sólo aclara da Columbia terra,\nA urna santa que de um povo inteiro\nArcanos fundos no sacrario encerra!\n\nTu és nos ermos a columna ardente5\nQue os passos guia de uma tribu errante,\nE ao longo mostras atravez das névoas\nA plaga santa que sorrí distante!...\n\nTu és o genio bemfazejo e grato\nPoupando as vidas no calor das frágoas,10\nE, á voz das turbas, do rochedo em chammas\nDesprende um jôrro de bemdictas agoas!\n\nTu és o nauta que atravez dos mares\nO lenho immenso do porvir conduz,\nE ao porto chega socegado e calmo15\nDe um astro santo acompanhando a luz!\n\nOh! não consintas que teu povo siga\nLouco, sem rumo, deshonroso trilho!\nSi és grande, ingente, se dominas tudo,\nTambem das terras, do Brazil és filho!20\n\nAbre-lhe os olhos, o caminho ensina\nAonde a gloria em seu altar sorri,\nDize que vive, e viverá tranquillo\nDize que morra, morrerá por ti!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_D._Pedro_II_%28Fagundes_Varela%29",
       "tags": []
@@ -123,7 +127,7 @@
       "titulo": "A enchente — Era alta noite. Caudaloso e tredo",
       "texto": "Era alta noite. Caudaloso e tredo\nEntre barrancos espumava o rio,\nDensos negrumes pelo céu rolavam,\nRugia o vento no palmar sombrio.\nTriste, batido pelas águas torvas\nGirava o barco na caudal corrente,\nLutava o remador — e ao lado dele\nUma virgem dizia tristemente:\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!\n\nE são jovens, bem jovens! na cabana\nDormiam calmos sem pensar na sorte;\nA enchente veio, e no agitar infrene\nDe um sono meigo os conduziu à morte!\nA f'licidade é um sonho nebuloso,...\nA vida neste mundo é sempre assim,\nDo gozo em meio a veladora eterna\nNos arranca da mesa do festim!\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_enchente",
       "tags": [
@@ -136,7 +140,7 @@
       "titulo": "A enchente — — Rema, rema, barqueiro; olha — lá em baixo",
       "texto": "— Rema, rema, barqueiro; olha — lá em baixo\nÀ luz vermelha do fuzil que passa,\nNão ves o vulto de um rochedo escuro\nQue a correnteza estrepitando abraça?\n— Oh se o vejo, senhora; eu bem o vejo!\nDiz o barqueiro com sinistra voz;\nPedi à Virgem que os perigos vela\nQue tenha ao menos compaixão de nós!\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!\n\nEis dentre as vagas de caligem densa\nVem macilenta se mostrando a lua,\nComo à luz dela a natureza é morta,\nComo a planície é devastada e nua!\nPerto, tão perto se levanta a margem\nOnde fagueira a salvação sorri,\nE nós rolamos, e rolamos sempre\nE não podemos aportar ali !\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!\n\nDuro, insofrido o vendaval soergue\nDa onda a face em convulsão febril;\n— Barqueiro, alento! e chegando em terra,\nHei de cobrir-te de riquezas mil.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_enchente",
       "tags": [
@@ -149,7 +153,7 @@
       "titulo": "A enchente — Porém no dorso do dragão das águas",
       "texto": "Porém no dorso do dragão das águas\nLutava o barco — mas lutava em vão,\nE a pobre moça desvairada em prantos\nPedia à Virgem que lhe desse a mão!\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!\n\n— Ouve, barqueiro, que rugido é esse\nProfundo e surdo que lá em baixo soa?\nParece o ronco de um trovão medonho\nQue dos abismos pelo seio ecoa! —\nOh!. 'stou perdido ! ... abandonando os remos\nClama o infeliz a delirar de medo,\nOh é a morte que nos chama, horrível,\nNo fundo escuro de feral rochedo!\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!\n\nIa o batel. Ao sorvedouro imenso\nEra impossível se esquivar então,\nDentro sentado — o remador chorava,\nE a donzela dizia uma oração.\nJá diante deles entre véus de espuma\nTreda — a voragem com furor rugia,\nE uma coluna de ligeiro fumo\nDo centro escuro para o céu subia.\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_enchente",
       "tags": [
@@ -161,7 +165,7 @@
       "titulo": "A enchente — Súbito o barco volteou rangendo,",
       "texto": "Súbito o barco volteou rangendo,\nTremeu em ânsia — se estorceu, recuou, —\nDeu a virgem um grito — outro o barqueiro\nE o lenho na voragem se afundou!\nTudo findou-se. O vendaval sibila\nCorrendo infrene na planície nua,\nO rio espuma e nas revoltas ondas\nDescem dois corpos ao clarão da lua.\n\nComo ao rijo soprar das ventanias\nOs mortos bóiam sobre as águas frias!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_enchente",
       "tags": [
@@ -174,7 +178,7 @@
       "titulo": "A flor do maracujá",
       "texto": "Pelas rosas, pelos lírios,  \t \t\npelas abelhas, sinhá, \t\npelas notas mais chorosas \t\t\ndo canto do sabiá, \t\t\npelo cálice de angústias\nda flor do maracujá! \t\t\n\nPelo jasmim, pelo goivo, \t\t\npelo agreste manacá, \t\t\npelas gotas de sereno \t\t\nnas folhas do gravatá,\npela coroa de espinhos \t\t\nda flor do maracujá! \t\t\n\nPelas tranças de mãe-dágua \t\t\nque junto da fonte está, \t\t\npelos colibris que brincam \nnas alvas plumas do ubá, \t\t\npelos cravos desenhados \t\t\nda flor do maracujá! \t\t\n\nPelas azuis borboletas \t\t\nque descem do Panamá,\npelos tesouros ocultos \t\t\nnas minas do Sincorá, \t\t\npelas chagas roxeadas \t\t\nda flor do maracujá! \t\t\n\nPelo mar, pelo deserto,\npelas montanhas, sinhá! \t\t\nPelas florestas imensas, \t\t\nque falam de Jeová! \t\t\nPela lança ensangüentada \t\t\nda flor do maracujá! \t\n\nPor tudo o que o céu revela, \t\t\npor tudo o que a terra dá \t\t\neu te juro que minh'alma \t\t\nde tua alma escrava está!... \t\t\nGuarda contigo este emblema \nda flor do maracujá! \t\t\n\nNão se enojem teus ouvidos \t\t\nde tantas rimas em -á- \t\t\nmas ouve meus juramentos, \t\t\nmeus cantos, ouve, sinhá! \nTe peço pelos mistérios \t\t\nda flor do maracujá!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_flor_do_maracuj%C3%A1",
       "tags": [
@@ -187,7 +191,7 @@
       "titulo": "A mulher",
       "texto": "A mulher sem amor é como o inverno,\nComo a luz das antélias no deserto,\nComo o espinheiro de isoladas fragas,\nComo das ondas o caminho incerto.\n\nA mulher sem amor é — Mancenilha —\nDas Armas plagas sobre o chão crescida,\nBasta-lhe à sombra repousar um'hora,\nQue seu veneno nos corrompe a vida.\n\nDe eivado seio no profundo abismo,\nPaixões repousam num sudário eterno;\nNão há canto nem flor, — não há perfumes,\nA mulher sem amor como o inverno.\n\nSu'alma é um alaúde desmontado\nOnde embalde o cantor procura um hino;\n— Flor sem aromas, — sensitiva morta, —\n— Batel nas ondas a vagar sem tino.\n\nMas se um raio do sol tremendo deixa\nDo céu nublado a condensada treva,\nA mulher amorosa é mais que um anjo,\n— É um sopro de Deus que tudo eleva!\n\nComo o árabe ardente e sequioso\nQue a tenda deixa pela noite escura,\nE vai no seio de orvalhado lírio\nLamber a medo a divinal frescura:\n\nO poeta a venera no silencio,\nBebe o pranto celeste que ela chora,\nOuve-lhe os cantos, — lhe perfuma a vida,....\n— A mulher amorosa é como a aurora!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_mulher",
       "tags": [
@@ -201,7 +205,7 @@
       "titulo": "A.",
       "texto": "Pensava em ti nas horas de tristeza\nQuando estes versos pallidos compuz;\nCercavão-me planicies sem belleza,\nPesava-me na fronte um céo sem luz.\n\nErgue este ramo solto em teu caminho:\nSei que em teu seio asylo encontrará!...\nSó tu conheces o secreto espinho\nQue dentro d'alma me pungindo está!...",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A.",
       "tags": [
@@ -212,7 +216,7 @@
       "titulo": "Arquétipo",
       "texto": "Ele era belo; na espaçosa fronte\nO dedo do Senhor gravado havia\nO sigilo do gênio; em seu caminho\nO hino da manhã soava ainda,\nE os pássaros da selva gorjeando\nSaudavam-lhe a passagem neste mundo.\n\nSim, era uma criança, e no entanto\nFriez de morte lhe coava n'alma!\nO seu riso era triste como o inverno,\nE dos olhos cansados, nem um raio\nNem um clarão, nem pálido lampejo\nDa mocidade o fogo revelavam!\n\nEra-lhe a vida uma comédia insípida,\nEstúpida e sem graça, — ele a passava\nCom a fria indiferença do marujo\nQue fuma o seu cachimbo reclinado\nNa proa do navio olhando as vagas,\n— Vivia por viver.... porque vivia.\n\nEm nada acreditava; há muito tempo\nQue a idéia de Deus soprara d'alma\nComo das botas a poeira incômoda.\nO Evangelho era um livro de anedotas,\nBeethoven torturava-lhe os ouvidos,\nA Poesia provocava o sono.\n\nMuita donzela suspirou por ele,\nMuita beleza lhe dormiu nos braços,\nMas frio como o gênio da descrença,\nApós um'hora de gozar maldito,\nSaciado as deixou, como o conviva,\nA mesa do festim, — farto e cansado. —\n\nEra mais caprichoso, — mais bizarro\nDo que um filho de Álbion, mais volúvel\nQue um profundo político; uma tarde\nApós haver jantado, recordou-se\nQue ainda era solteiro; pelo Papa!\n— É preciso tentar, disse consigo.\n\nQuatro dias depois tinha casado.\nEscolhera uma noiva descuidoso,\nComo um brinco chinês — um livro in-fólio,\nAo altar conduziu-a, distraído,\nE as juras divinais do casamento\nRepetiu bocejando ao sacerdote.\n\nComo tudo na vida, o matrimônio\nBem cedo o aborreceu; após três meses\nDisse Adeus à mulher que pranteava,\nE acendendo um cigarro, a passos lentos\nDirigiu-se ao teatro onde assistiu\nUm drama de Feuillet, — quase dormindo. —\n\nPor fim de contas, uma noite bela,\nDepois de ter ceado entre dous padres,\nEm casa de morena Cidalisa,\nPegou numa pistola e entre as fumaças\nDe saboroso — Havana — à eternidade\nFoi ver si divertia-se um momento.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Arqu%C3%A9tipo",
       "tags": [
@@ -226,7 +230,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Aurora — Antes de erguer-se de seu leito de ouro,",
       "texto": "Antes de erguer-se de seu leito de ouro,\nO rei dos astros o Oriente inunda\n      De sublime clarão;\nAntes de as azas desprender no espaço,\nA tempestade agita-se e fustiga\n      O turbilhão dos euros.\n\nAs torrentes de idéas que se cruzam,\nO pensamento eterno que se move\n      No levante da vida,\nSão auras santas, arrebóes esplendidos,\nQue precedem á vinda triumphante\n      De um sol immorredouro.\n\nO murmurar profundo, enrouquecido,\nQue do seio dos povos se levanta,\n      Annuncia a tormenta;\nEssa tormenta salutar e grande\nQue o manto roçará, prenhe de fogo,\n      Na face das nações.\n\nPreparai-vos, ó turbas! Preparai-vos,\nRebatei vossos ferros e cadêas,\n      Algozes e tyrannos!\nA hora se approxima pouco a pouco,\nE o dedo do Senhor já volve a folha\n      Do livro do destino!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Aurora",
       "tags": []
@@ -235,7 +239,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Aurora — Grande ha-de ser o drama, a acção gigante,",
       "texto": "Grande ha-de ser o drama, a acção gigante,\nMagestosa a lição! Luzes e trevas\n      Luctarão sobre os orbes!\nO abysmo soltará seus tredos roncos,\nE o fremito dos mares agitados\n      Se unirá aos das turbas. \n\nOs reis convulsarão nos thronos frageis,\nBuscando embalde sustentar nas frontes\n      As huidas corôas...\nDebalde!... o vendaval na furia insana\nOs levará com ellas, envolvidos\n      N’um turbilhão de pó!\n\nVis, abatidos, o fidalgo e o rico\nSahirão de seus paços vacillantes\n      Nos podres alicerces...\nE errantes sobre a terra irão chorando,\nMendigar um farrapo ao vagabundo,\n      E um pedaço de pão!\n\nEstranho povo surgirá da sombra\nTerrível e feroz cobrindo os campos\n      De cruentos horrores!\nO palacio e a prisão irão por terra,\nE um segundo diluvio, então de sangue,\n      O mundo lavará!\n\nO sabio em seu retiro, estupefacto,\nVerá tombar a imagem da sciencia,\n      Fria estatua de argilla,\nE um pallido clarão dirá que é perto\nO astro divinal que ás turbas miseras\n      Conduz a redempção!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Aurora",
       "tags": [
@@ -246,7 +250,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Aurora — Como aos dias primeiros do universo,",
       "texto": "Como aos dias primeiros do universo,\nO globo se erguerá banhado em luzes,\n      Reflexos de Deus;\nE a raça humana sob um céo mais puro\nUm hymno insigne enviará, prostrada\n      Aos pés do Omnipotente!\n\nIrmãos todos serão; todos felizes;\nIguaes e bellos, sem senhor nem pêas,\n      Nem tyrannos e ferros!\nO amor os unirá n’um laço estreito,\nE o transito da vida uma romagem\n      Se tornará celeste!\n\nA hora se approxima pouco a pouco;\nO dedo do Senhor já volve a folha\n      Do livro do destino!...\nErgue-se a tela do theatro immenso,\nE o mysterio infinito se desvenda\n      Do drama do Calvario!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Aurora",
       "tags": [
@@ -258,7 +262,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Child-Harold",
       "texto": "SOBRE UMA PAGINA DE BYRON\n\nNão te rias assim, oh! não te rias,\nBasta de sonhos, de illusões fataes!\nMinh’alma é núa, e do porvir ás luzes\nMeus roxos labios sorrirão jamais!\n\nQue pezar me consome! ah! não procures\nErguer a lousa de um pesar profundo,\nNem apalpares a materia livida,\nE a lama impura que pernoita ao fundo!\n\nNão são as flôres da ambição pisadas,\nNão é a estrella de um porvir perdida...\nQue esta cabeça coroou de sombras\nE a tumba inclina ao despontar da vida!\n\nÉ este enojo perenal, continuo,\nQue em toda a parte me acompanha os passos,\nE ao dia incende-me as arterias quentes,\nMe aperta á noite nos mirrados braços!\n\nSão estas larvas de martyrio e dôres\n— Socias constantes do judeu maldito! —\nEm cuja testa, dos tufões crestada,\nLabéo de fogo scintillava escripto!\n\nQuem de si mesmo desterrar-se póde?\nQuem póde a idéa aniquilar que o mata?\nQuem póde altivo esmigalhar o espelho\nQue a torva imagem de Satan retrata?\n\nQuantos encontram ineffaveis gozos\nN’esses prazeres, para mim tormentos!\nQuantos nos mares onde a morte enxergo\nAbrem as velas do baixel aos ventos!\n\nO meu destino é vaguear e sempre!\nSempre fugindo a funeral lembrança...\nFerreo estylete que me rasga os musculos,\nVoz dos abysmos que me brada: — Avança!\n\nQue pezar me consome! ai! não mais tentes,\nEspera a lousa de um pezar profundo,\nSómente a morte encontrarás nas bordas,\nE o inferno inteiro a praguejar no fundo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Child-Harold",
       "tags": [
@@ -272,7 +276,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Deixa-me",
       "texto": "Quando cançado da vigilia insana\nDeclino a fronte n’um dormir profundo,\nPorque teu nome vem ferir-me o ouvido,\nLembrar-me o tempo que passei no mundo?\n\nPor que teu vulto se levanta airoso,\nTremente em ansias de volupia infinda?\nE as fórmas núas, e offegante o seio,\nNo meu retiro vens tentar-me ainda?\n\nPorque me fallas de venturas longas,\nPorque me apontas um porvir de amores?\nE o lume pedes á fogueira extincta,\nDôces perfumes a pollutas flôres?\n\nNão basta ainda essa existencia escura,\nPagina treda que a teus pés compuz?\nNem essas fundas, perennaes angustias,\nDias sem crenças e serões sem luz?\n\nNão basta o quadro de meus verdes annos\nManchado e roto, abandonado ao pó?\nNem este exilio, do rumor no centro,\nOnde pranteio desprezado e só?\n\nAh! não me lembres do passado as scenas,\nNem essa jura desprendida a esmo!\nGuardaste a tua? a quantos outros, dize,\nA quantos outros não fizeste o mesmo?\n\nA quantos outros, inda os labios quentes\nDe ardentes beijos que eu te déra então,\nNão apertaste no vazio seio\nEntre promessas de eternal paixão?\n\nOh! fui um doido que segui teus passos,\nQue dei-te em versos de belleza a palma;\nMas tudo foi-se, e esse passado negro\nPor que sem pena me despertas n’alma?\n\nDeixa-me agora repousar tranquilo,\nDeixa-me agora dormitar em paz,\nE com teus risos de infernal encanto\nEm meu retiro não me tentes mais!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Deixa-me",
       "tags": [
@@ -286,7 +290,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Elegia",
       "texto": "A noite era bella: dormente no espaço\nA lua soltava seus pallidos lumes;\nDas flôres fugindo, corria lasciva\nA briza embebida de moles perfumes.\n\nDo ermo os insectos zumbiam na relva,\nAs plantas tremiam de orvalho banhadas,\nE aos bandos voavam ligeiras phalenas\nNas folhas batendo co’as azas douradas.\n\nO turbido manto das nevoas errantes\nPairava indolente no topo da serra;\nE aos astros e ás nuvens perfumes, susurros,\nSuspiros e cantos partiam da terra.\n\nNós éramos jovens, ardentes e sós,\nAo lado um do outro no vasto salão;\nE as brizas e a noite nos vinham no ouvido\nCantar os mysterios de infinda paixão!\n\nNós eramos jovens, e a luz de seus olhos\nBrilhava incendida de eternos desejos,\nE a sombra indiscreta do niveo corpinho\nSulcavam-lhe os seios em brandos arquejos!\n\nNós éramos jovens, e as balsas floridas\nO espaço inundavam de quentes perfumes,\nE o vento chorava nas tilias do parque,\nE a lua soltava seus tepidos lumes!...\n\nAh! misero aquelle que as sendas do mundo\nTrilhou sem o aroma de pallida flôr,\nE á tumba declina, n’aurora dos sonhos,\nO labio inda virgem dos beijos de amor!\n\nNão são dos invernos as frias geadas,\nNem longas jornadas que os annos apontam\nO tempo descora nos risos e prantos,\nE os dias do homem por gozos se contam.\n\nAssim n’essa noite de mudas venturas,\nDe louros eternos minh’alma ennastrei;\nQue importa-me agora martyrios e dôres,\nSe outr’ora dos sonhos a taça esgotei?\n\nAh! lembra-me ainda! nem um candelabro\nLançava ao recinto seu brando clarão,\nApenas os raios da pallida lua\nTranspondo as janellas batiam no chão.\n\nVestida de branco, nas scismas perdida,\nSeu morbido rosto pousava em meu seio,\nE o aroma celeste das negras madeixas\nMinh’alma inundava de férvido anceio.\n\nNem uma palavra seus labios queridos\t\t\nNos dôces espasmos diziam-me então:\n\nQue valem palavras, quando ouve-se o peito\nE as vidas se fundem no ardor da paixão?\n\nOh! ceos! eram mundos... ai! mais do que mundos\nQue a mente invadiam de ethereo fulgor!\nPoemas divinos por Deus inspirados,\nE a furto contados em beijos de amor!\n\nNo fim do seu gyro, da noite a princeza\nDeixou-nos unidos em brando sonhar;\nCorreram as horas, — e a luz d’alvorada\nEm juras infindas nos veio encontrar!\n\nNão são dos invernos as frias geadas,\nNem longas jornadas que os annos apontam...\nO tempo descora nos risos e prantos,\nE os dias do homem por dôres se contam!\n\nLigeira... essa noite de infindas venturas\nSómente em minh’alma lembranças deixou...\nTrês mezes passaram, e o sino do templo\nÁ reza dos mortos os homens chamou!\n\nTrês mezes passaram e um livido corpo\nJazia dos cyrios á luz funeral,\nE, á sombra dos myrtos, o rude coveiro\nAbria cantando seu leito final!...\n\nNós eramos jovens, e a senda terrestre\nTrilhavamos juntos, de amor a sorrir,\nE as flôres e os ventos nos vinham no ouvido\nContar os arcanos de um longo porvir!\n\nNós eramos jovens, e as vidas e os seios,\nO affecto prendera n’um candido nó!\nFoi ella a primeira que o laço quebrando\nCahiu soluçando das campas no pó!\n\nNão são dos invernos as frias geadas,\nNem longas jornadas que os annos apontam,\nO tempo descora nos risos e prantos,\nE os dias do homem por dôres se contam!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Elegia",
       "tags": [
@@ -300,7 +304,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/O exilado — O exilado está só por toda a parte!",
       "texto": "O exilado está só por toda a parte!\n\nPassei tristonho dos salões no meio,\nAtravessei as turbulentas praças\nCurvado ao peso de uma sina escura;\nAs turbas contemplaram-me sorrindo,\nMas ninguem divisou a dôr sem termos\nQue as fibras de meu peito espedaçava.\nO exilado está só por toda a parte!\n\nQuando, á tardinha, dos floridos valles\nEu via o fumo se elevar tardio\nPor entre o colmo de tranquillo albergue,\nMurmurava a chorar: — Feliz aquelle\nQue á luz amiga do fogão domestico,\nRodeado dos seus, á noite, senta-se.\nO exilado está só por toda a parte!\n\nOnde vão estes flocos de neblina\nQue o euro arrasta nas geladas azas?\nOnde vão essas tribus forasteiras\nQue á tempestade se esquivar procuram?\nAh! que me importa?... tambem eu doudejo,\nE onde irei, Deus o sabe, Deus sómente.\nO exilado está só por toda a parte!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/O_exilado",
       "tags": [
@@ -312,7 +316,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/O exilado — D’esta campina as arvores são bellas,",
       "texto": "D’esta campina as arvores são bellas,\nSão bellas estas flôres que se vergam\nDas auras estivaes ao debil sôpro;\nMas nem a sombra que no chão se alonga,\nNem o perfume que o ambiente inunda\nSão d’essa gleba divinal que adoro.\nO exilado está só por toda a parte!\n\nMole e lascivo no tapiz da selva\nSerpeia o arroio, e o deslizar queixoso\nPeja de amor as solidões dormentes;\nMas nunca o rosto reflectiu-me um dia,\nNem foi seu burburinho enlanguescido\nQue embalou minha infancia descuidosa.\nO exilado está só por toda a parte!\n\n— Por que choraes? me perguntou o mundo;\nContai-nos vossa dôr, talvez possamos\nSanal-a ás gotas de elixir suave;\nMas, quando eu suspendi a lousa escura\nQue o tumulo cobria-me da vida,\nRiram-se pasmos sem sondar-lhe o fundo.\nO exilado está só por toda a parte!\n\nVi o ancião da prole rodeado\nSorrir-se calmo e bendizer a Deus,\nVi junto á porta da nativa choça\nAs crianças beijarem-se abraçadas;\nMas de filho ou de irmão o santo nome\nNinguem me deu, e eu fui passando triste.\nO exilado está só por toda a parte!\n\nQuando verei essas montanhas altas\nQue o sol dourava nas manhãs de agosto?",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/O_exilado",
       "tags": [
@@ -326,7 +330,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/O exilado — Quando, junto á lareira, as folhas lividas",
       "texto": "Quando, junto á lareira, as folhas lividas\nDeslembrarei de meu sombrio drama?\nDouda esperança! as estações succedem-se\nE sem um gozo vou descendo á campa.\nO exilado está só por toda a parte!\n\nBrandas aragens, que roçais fagueiras\nDas maravilhas nas cheirosas frontes,\nAves sem patria, que cortais os ares,\nIrmãs na sorte do infeliz romeiro,\nAh! levai um suspiro á patria amada,\nUltimo alento de cansado peito.\nO exilado está só por toda a parte!\n\nQuando nas folhas de lustrosos platanos\nNovos luares descansarem gratos,\nJá sobre a estrada de meus pés os traços\nO pegureiro não verá, que passa!\nMisero! ao leito de final descanço\nNinguem meu somno velará chorando.\nO exilado está só por toda a parte!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/O_exilado",
       "tags": [
@@ -338,7 +342,7 @@
       "titulo": "Fragmentos (Noturnas)",
       "texto": "Por ela me despi dos áureos sonhos\nQue a flor da mocidade abrilhantavam;\nPor ela reneguei meu Deus e crenças,\nPor ela abandonei meus pátrios lares,\nE nas fráguas do amor e da saudade\nVi minha vida desfazer-se em fumo!\n\nComo o perfume que transpira à noite\nDa margem da lagoa — a flor mimosa —\nVai deleitar o viajor que a névoa\nDesorienta da campina extensa,\nVinham amenizar — lembranças dela\nA sombria tristeza de minh'alma!\n\nDe plaga em plaga como o hebreu maldito\nRefugiei-me em vão, buscando d'alma\nExpulsar o pesar que me roía!\nMendiguei um alívio ao céu de Itália;\nAos cantos do barqueiro errei à noite\n— Nas ondas perfumadas de Sorrento; —\nAdormeci na encosta do Vesúvio,\nE visitei as lúcidas paragens\nOnde Laura e Petrarca suspiraram.\nMas era embalde!... nem o céu brilhante,\nNem o meigo sorriso, — o olhar de fogo\n\nDa bela Italiana, nem os cantos,\nNem os festins ruidosos de Veneza,\nSanar puderam de meu seio a mágoa,\nE a dor pungente que ia fundo n'alma!\n\nA loira Grécia dirigi meus passos,\nAdormeci à sombra dessas ruínas\nOnde envolto em seu manto de descrença\nLorde Byron vagou. Abri meu peito\nÀs vozes divinais de antigas eras,\nE no sopro das brisas que passavam\nOuvi o coro de — milhões de deuses —\nQue das balsas floridas levantavam-se\nÀ minha invocação; de Tempe ao vale\nFui aos ecos pedir — os doces cantos —\nQue ali ditosa repetira Safo\nNos braços de Faon; e no entanto\nEm vão minh'alma se engolfar buscava\nNo livro do passado, — em vão meus lábios\nMurmuravam canções de seus poetas!\nO pesar me seguia — mudo, — frio —\nHorrível como um plúmbeo pesadelo!\n\nDeixei a Grécia. Às regiões ardentes\nOnde nuvens de areia o ar percorrem\n— No sólio do zenite — o sol nublando,\nOnde lenta caminha a caravana\nAbrasada de sede e de cansaço,\n— Fugindo o tédio de uma vida eivada,\nComo — Harold ou René — lancei-me triste\nCercada a fronte de trevosas nuvens.\n\nDescansei sob as tendas do deserto,\nMatei a sede de meu peito em fogo\n— Nas águas lamacentas das cisternas,\nE após deixando os areais sem termos\n\nEmbrenhei-me nas selvas seculares\nLá onde à sombra de soberbos cedros\nDormia a solidão seu sono imenso!\n— Mas as canções dos árabes errantes, —\nOs urros do simoun, — o murmúrio\nDa folhagem da selva, — o mundo todo —\nDesse vasto poema do deserto —\nFalavam-me de dor e de amarguras,\nNegra saudade me acordavam n'alma!\n\nVaguei nos mares à tormenta exposto,\nVi diante de meus pés — o oceano e a morte, —\nE meu frágil baixel arrebatado\n— Ora no dorso de espumosas vagas —\nIr doudejando topetar nas nuvens,\n— Ora no abismo se afundar gemendo! —\nAbrindo as asas negras sobre os mares\nCorria o furacão rugindo em fúrias\nComo o anjo da morte! No infinito\n— A orquestra da tormenta — ribombava\nHorrível e sublime! O céu rugia,\nAs serpentes de fogo se enroscavam\nNo espaço abraseado, — as ardentias\nReferviam no abismo escancarado\nComo os lumes que em breve me esperavam\nNa tumba imensa de revoltas águas!\nE enquanto os mastros a estalar caíam\nAo roçar da tormenta, enquanto os nautas\nProstrados no convés — a Deus clamavam\nAnte a agonia — a tempestade — e a morte,\nPedindo às vagas, olvidando tudo,\nO nome dela eu murmurava em prantos.\n\nDos abismos à flor, como Manfredo,\nOs gênios invoquei — vertiginoso —\n\nP'ra que lançassem de minh'alma aos ermos\n— De mim mesmo, um profundo esquecimento.\nPedi a Deus — um existir de bruto, —\nMatéria impura sem pensar nem dores.\nMas nem um gozo iluminou-me a vida,\nNem uma fonte límpida e serena\nRebentou — pelo Sáara — de minh'alma!\n\nErrei nessas paragens encantadas\nOnde à sombra de um bosque de palmeiras\nRegatos correm de serenas águas:\nOuvi ave sonora se embalando,\nA morredoura luz de amenas tardes\nLançar gorjeios de saudade infinda;\ncéu de azul me iluminava a fronte\nCom torrentes de luz, as flores todas\nMe incensavam de aromas suavíssimos.\nMas — o riso da flor — o som das brisas —\nA criação pejada de perfumes\nContando aos astros em linguagem doce\nSuas legendas de amores e sorrisos,\nNão podiam sequer matar-me n'alma\nO negro viso de uma dor sem termos!\nDe deserto em deserto se acampando\nOs pastores da Arábia a vida passam;\nComo eles vagabundo, — eivado o seio,\nDe dor em dor com vagarosos passos\nAtravesso os desertos da existência!\n\nCansado de lutar sobre esta vida,\nSenti um dia esmorecer no crânio\nA centelha da crença e da esperança.\nPor altas noites, na mansão dos mortos\nQuando a terra dormia, mergulhado\nEm negro pesadelo, errei sombrio\n\nOs mistérios da campa interrogando.\nHaverá outra vida?... Após a morte\nIrei eu habitar um novo mundo\nOnde não sinta os desprazeres deste?\nEu filho da matéria e escravo dela\nSerei em breve reduzido a lodo,\nApós haver tragado em brônzea taça\nTanto fel e absinto?.. assim clamava\nColando sobre a terra dos sepulcros\nMinha fronte incendida pela febre.\nMas lá de longe, — lá do céu quem sabe,\nVinha urna voz ungida de saudades,\nA harmonia da fé lançar-me n'alma,\nE a flor das esperanças — moribunda —\nAlimentar com tímidas promessas!\nEra ela! ela sempre! à noite, — ao dia —\nNo sono — ou na vigília!... amiga sombra,\nIncessante visão da felicidade,\nPresente sempre a meus cansados olhos\nNa penosa jornada deste mundo!\n\nAnjo de meu amor! — filha de Deus!\nPorque me inflinges o cruel suplício\nDe ver-te sempre, — de abraçar-te nunca!\n\nLigeiras nebulosas que habitais\nSobre os mares de éter, — róseas nuvens, —\nFúlgida estrela que à manhã nascendo,\nDesperta o viandante nas estradas,\nAstros gigantes, — espantosos mundos\nQue girais no infinito!.... oh em vós todos\nEu parecia vê-la! — ora divina\nNum oceano de névoas flutuando,\n— Ora adejando na região das luzes, —\nOra no espaço que a razão apenas\nSó pode conceber!... em meu caminho\nEla se erguia sempre; nos meus sonhos\n\nEla passava pensativa, — meiga\nComo um gênio de Óssian; nos meus versos\nSeu doce nome ressoava sempre!\nDebalde procurei riscar da mente\nEssa imagem divina, — parecia\nQue o destino a ligava à minha vida!\n\nTodas as taças de um viver sem gozo\nTraguei descrido. De minh'alma as flores\nNo lodo mergulhei, e inda tão cedo\nMe perdi em profundos desvarios!\nFui no recinto em que circula o vício,\nAo clarão da candeia fumarenta,\nPender à negra mesa — empalecido —\nGastando as noites no fervor do jogo!\nTonto de vinho, — desvairado em febre, —\nElevei minha taça transbordando\nEntre blasfemias e obscenos cantos!\nE nos gritos da orgia, — e no delírio —\nUma voz sonorosa me acordava\nDo longo pesadelo de minh'alma,\n— E eu soluçava me lembrando dela!\n\nCoberto de tristeza e de saudades,\nQuebrei a ausencia, atravessei os mares,\nVim a vida buscar ante seus olhos.\nApós tão longo exílio, ardendo em gozo,\nO coração pulsando de alegria,\nAos lares dela dirigi meus passos.\nMas silencio!... um véu negro, impenetrável,\nCubra esse quadro que meus olhos viram;\nDurma na sombra de um olvido eterno\nEsse mistério fúnebre, banhado\nDe lágrimas de sangue! E tu, minh'alma,\n\nE tu, pobre infeliz, manchada — fria —\nAbafa no teu seio essas lembranças,\nNem um sonho sequer desse passado\nVenha turbar teu pesadelo imenso!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Fragmentos_%28Noturnas%29",
       "tags": [
@@ -352,7 +356,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Illusão",
       "texto": "Sinistro como um funebre segredo\nPassa o vento do Norte murmurando\n      Nos densos pinheiraes;\nA noite é fria e triste; solitario\nAtravesso a cavallo a selva escura\n      Entre sombras fataes.\n\nÁ medida que avanço, os pensamentos\nBorbulham-me no cerebro, ferventes,\n      Como as ondas do mar,\nE me arrastam comsigo, allucinado,\nÁ casa da formosa creatura\n      De meu doudo scismar.\n\nLatem os cães; as portas se franqueiam\nRangendo sobre os quicios; os criados\n      Acordam pressurosos;\nSubo ligeiro a longa escadaria,\nFazendo retinir minhas esporas\n      Sobre os degraus lustrosos.\n\nNo seu vasto salão illuminado,\nSuavemente repousando o seio\n      Entre sêdas e flôres,\nToda de branco, engrinaldada a fronte,\nEla me espera, a linda soberana\n      De meus santos amores.\n\nCorro a seus braços tremulo, incendido\nDe febre e de paixão... A noite é negra,\n      Ruge o vento no matto;\nOs pinheiros se inclinam, murmurando:\n— Onde vai este pobre cavalleiro\n      Com seu sonho insensato?...",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Illus%C3%A3o",
       "tags": [
@@ -365,7 +369,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/A’ Lucilia",
       "texto": "Si eu pudesse ao luar, Lucilia bella,\nQueimar-te a fronte de insensatos beijos,\nDobrar-te ao collo, minha flôr singela,\nAo fogo insano de eternaes desejos;\n\nAi! si eu pudesse de minh’alma aos elos\nPrender tu’alma enfebrecida e cálida,\nErguer na vida os festivaes castellos\nQue tantas noites planejaste, pallida;\n\nAi! si eu pudesse nos teus olhos turvos\nBeber a vida da volupia ao véo,\nBem como os juncos sobre as ondas curvos\nA chuva bebem que derrama o céo,\n\nTalvez que as magoas que meu peito ralam\nEm cinzas frias se perdessem logo,\nComo as violas que ao verão trescalam\nSomem-se aos raios de celeste fogo!\n\nOh! vem, Lucilia! é tão formosa a aurora\nQuando uma fada lhe baptiza o alvor,\nE a madre-silva, que ao frescor vapora\nOs ares peja de lascivo amor...\n\nSou moço ainda; de meu seio aos ermos\nPosso te louco arrebatar commigo...\nDe um mundo novo na soidão sem termos\nDeitar-te á sombra de amoroso abrigo!\n\nTenho um diluvio de illusões na fronte,\nUm mundo inteiro de esperanças n’alma,\nErgue-te ácima de azulado monte,\nTerás dos genios do infinito a palma!...",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/A%E2%80%99_Lucilia",
       "tags": [
@@ -379,7 +383,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Mauro, o escravo (estrofes iniciais)",
       "texto": "A Sentença\nI\nNa sala espaçosa, cercado de escravos\nNascidos nas selvas, robustos e bravos,\nMas presos agora de infindo terror;\nLotário pensava, Lotário o potente,\nLotário o opulento, soberbo e valente,\nDe um povo de humildes tirano e senhor.\nII\nNas rugas da fronte fatídica e rude\nNão tinham-lhe as rosas de longa virtude\nDo tempo os vestígios lavado em perfumes;\nNublava-lhe o rosto, mais negros fazia\nDos olhos ardentes os férvidos lumes.\nIII\nNo inverno da vida, dos tempos passados\nNinguém lhe sabia. Boatos ousa\n\ndos\nErguiam-se às vezes; mas ah! que diziam?\nLotário era grande; seus bosques passavam\nDas serras além; seus campos brotavam\nRiquezas imensas, que a tudo cobriam.\nIV\nDepois, é tão fácil na sombra noturna\nO inseto esmagar-se, de voz importuna,\nQue o ouvido nos enche de tédio e do nojo!\nUm gesto... uma espera... na estrada uma cruz...\nSó sabem-no as selvas, os fossos sem luz\nE as serpes que a plaga percorrem de rojo.\nV\nNa sala espaçosa Lotário pensava.\nRoberto seu filho de um lado esperava\nTremente, ansioso, que o pai lhe falasse.\nA turba de servos imóveis, silentes\nOs braços cruzados, as frontes pendentes,\nA voz aguardava que as ordens ditasse.\nVI\n- Conduzam-me o escravo! - Lotário bradou; -\nO bando de humildes a sala deixou\nÀs torvas palavras do torvo senhor.\nLotário sombrio voltou-se a seu filho,\nDe quem, dos olhares, corria, no brilho,\nA chama sinistra de um gênio traido\n\nr.\nVII\n- Sossega, Roberto; - lhe disse - é forçoso\nQue eu puna o africano feroz, revoltoso,\nQue ousou levantar-se da lama a teus pés.\nRoberto curvou-se. O pai se afastando\nSentou-se, e, os sobrolhos fatais carregando,\nEm cisma profunda perdeu-se outra vez.\nVIII\nMomentos passados, um surdo ruído\nErgueu-se da escada, por entre o tinido\nDe férreas cadeias batendo no chão,\nE os servos de volta, trazendo o culpado \nTristonho, olhos baixos, o dorso arqueado,\nNo centro pararam do antigo salão.\nIX\nSilêncio profundo! nem um movimento\nSe via no grupo, que trêmulo e atento\nA voz esperava que alçasse o senhor;\nLotário media severo o cativo,\nE as faces do filho tirânico e altivo\nCobriam-se aos poucos de vivo rubor.\nX\n- Escravo, aproxima-te. Ao mando potente,\nMoveu-se o inditoso brandindo a corrente,\nE erguendo a cabeça fitou seu juiz;\nQue traços distintos! que nobre composto",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Mauro%2C_o_escravo",
       "tags": [
@@ -393,7 +397,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Não te esqueças de mim!",
       "texto": "Não te esqueças de mim, quando erradia\nPerde-se a lua no sidéreo manto;\nQuando a brisa estival roçar-te a fronte,\nNão te esqueças de mim, que te amo tanto.\n\nNão te esqueças de mim, quando escutares\nGemer a rôla na floresta escura,\nE a saudosa viola do tropeiro\nDesfazer-se em gemido de tristura.\n\nQuando a flôr do sertão, aberta a medo,\nPejar os ermos de suave encanto,\nLembre-te os dias que passei comtigo,\nNão te esqueças de mim, que te amo tanto.\n\nNão te esqueças de mim, quando á tardinha\nSe cobrirem de nevoa as serranias,\nE na torre alvejante o sacro bronze\nDocemente soar nas freguezias!\n\nQuando de noite, nos serões de inverno,\nA voz soltares modulando um canto,\nLembre-te os versos que inspiraste ao bardo,\nNão te esqueças de mim, que te amo tanto.\n\nNão te esqueças de mim, quando meus olhos\nDo sudario no gelo se apagarem,\nQuando as roxas perpetuas do finado\nJunto á cruz de meu leito se embalarem.\n\nQuando os annos de dôr passado houverem,\nE o frio tempo consumir-te o pranto,\nGuarda ainda uma idéa a teu poeta,\nNão te esqueças de mim, que te amo tanto.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/N%C3%A3o_te_esque%C3%A7as_de_mim%21",
       "tags": [
@@ -406,7 +410,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Napoleão — Sobre uma ilha isolada,",
       "texto": "Sobre uma ilha isolada,\nPor negros mares banhada,\nVive uma sombra exilada,\nDe prantos lavando o chão;\nE esta sombra dolorida,\nNo frio manto envolvida,\nRepete com voz sumida:\n— Eu inda sou Napoleão.\n\nTremem convulsas as plagas\nBravias luctam as vagas,\nSolta o vento horriveis pragas\nNos sendaes da escuridão;\nMas nas torvas penedias\nEntre fundas agonias,\nElla diz às ventanias:\n— Eu inda sou Napoleão.\n\n— E serei! do céo da gloria,\nNem dos bronzes da memoria,\nNem das paginas da historia\nMeus feitos se apagarão;\nPasse a noite e as tempestades,\nVenham remotas idades,\nCáiam povos e cidades,\n— Sempre serei Napoleão.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Napole%C3%A3o",
       "tags": [
@@ -418,7 +422,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Napoleão — Da columna de Vendôme,",
       "texto": "Da columna de Vendôme,\nO bronze, o tempo consome,\nPorém não apaga o nome\nQue tem por bronze a amplidão.\nApezar de infausto dia,\nDa infamia que tripudia,\nDos bretões a cobardia,\n— Sempre serei Napoleão.\n\nNos vastos plainos do Egypto,\nSobre Titães de granito,\nEu tenho um poema escripto\nQue deslumbra a solidão.\nDas Isis rasguei os véos,\nEntre os altares fui deus,\nFiz povos escravos meus,\n— Ah! inda sou Napoleão.\n\nDesde onde o crescente brilha\nAté onde o Sena trilha,\nTive o mundo por partilha\nTive immensa adoração;\nE de um throno de fulgores\nFiz dos grandes — servidores,\nFiz dos pequenos — senhores,\n— E sempre fui Napoleão.\n\nQuando eu cortava os desertos,\nVinham-me os ventos incertos\nDe incenso e myrra cobertos\nLamber-me as plantas no chão;\nAs caravanas paravam,\nE os romeiros que passavam\nÁs solidões perguntavam:\n— E’ este o deus Napoleão?",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Napole%C3%A3o",
       "tags": [
@@ -431,7 +435,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Napoleão — E lá nas plagas fagueiras,",
       "texto": "E lá nas plagas fagueiras,\nOnde as brizas forasteiras,\nEntre selvas de palmeiras\nCorre o sagrado Jordão,\nO lago dizia ao prado,\nO prado ao monte elevado,\nO monte ao céo estrellado:\n— Vistes passar Napoleão?\n\nDizei, auras do Ocidente,\nDizei, tufão inda quente\nDo bafejo incandescente\nDo não vencido esquadrão,\nComo é elle? é bello, ousado?\nTem o rosto illuminado?\nTem o braço denodado?\n— Sempre é grande Napoleão?\n\nE as aguias no céo corriam,\nE os areais se volviam,\nE horrendas feras bramiam\nNo immenso da solidão;\nMas as vozes do deserto\nSe erguiam como um concerto\nE vinham saudar-me perto:\n— Tu és, senhor, Napoleão!\n\n— Se sou! que Marengo o conte,\nDe Austerlitz o horizonte,\nE aquella soberba ponte\nQue transpuz como o tufão!\nE a minha villa de Ajaccio,\nE o meu sublime palacio,\nE os pescadores do Lacio\nQue só dizem — Napoleão!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Napole%C3%A3o",
       "tags": [
@@ -442,7 +446,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Napoleão — Se o sou! que digam as plagas,",
       "texto": "Se o sou! que digam as plagas,\nOnde do sangue nas vagas,\nCoberta de enormes chagas\nDorme vil população;\nDigam da Asia as bandeiras,\nDigam longas cordilheiras,\nQue se abatiam, rasteiras,\nAo corcel de Napoleão!\n\nSe o sou! diga Santa Helena\nOnde a mais sublime scena\nFechou tranquilla e serena\nMinha historia de Titão,\nDigam as ondas bravias,\nDigam torvas penedias,\nOnde as rijas ventanias\nVêm murmurar: — Napoleão.\n\n— E serei! do céo, da gloria,\nNem dos bronzes da memoria\nNem das paginas da historia\nMeus feitos se apagarão!\nAssim na rocha isolada\nPelas espumas banhada,\nDisse a sombra desterrada,\nDe prantos lavando o chão.\n\nAs nevoas rolam nos céos,\nDa noite escura nos véos\nSoltam negros escarcéos\nRugidos de imprecação;\nMas das sombras a espessura\nA face da onda escura,\nO salgueiro que murmura\nTudo falla — Napoleão!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Napole%C3%A3o",
       "tags": [
@@ -454,7 +458,7 @@
       "titulo": "Névoas",
       "texto": "Nas horas tardias que a noite desmaia,\nQue rolam na praia mil vagas azuis,\nE a lua cercada de pálida chama\nNos mares derrama seu pranto de luz,\n\nEu vi entre os flocos de névoas imensas\nQue em grutas extensas se elevam no ar,\n— Um corpo de fada, — serena dormindo,\nTranqüila sorrindo num brando sonhar.\n\nNa forma de neve — puríssima e nua —\nUm raio da lua de manso batia,\nAssim reclinada no túrbido leito\nSeu pálido peito de amores tremia.\n\nOh! filha das névoas! das veigas viçosas,\nDas verdes, — cheirosas roseiras do céu,\nAcaso rolaste tão bela dormindo,\nE dormes sorrindo, das nuvens no véu?\n\nO orvalho das noites congela-te a fronte,\nAs orlas do monte se escondem nas brumas,\nE queda repousas num mar de neblina,\nQual pérola fina no leito de espumas!\n\nNas nuas espáduas, dos astros dormentes,\n— Tão frio — não sentes o pranto filtrar?\nE as asas\n\nde prata do gênio das noites,\nEm tíbios açoites a trança agitar?\n\nAi! vem que nas nuvens te mata o desejo\nDe um férvido beijo gozares em vão!...\nOs — astros sem alma — se cansam de olhar-te,\nNão podem amar-te, nem dizem paixão!\n\nE as auras passavam, — e as névoas tremiam, —\n— E os gênios corriam — no espaço a cantar,\nMas ela dormia tão pura e divina\nQual pálida ondina nas águas do mar!\n\nImagem formosa das nuvens da Ilíria,\n— Brilhante Valquíria — das brumas do norte,\nNão ouves ao menos do bardo os clamores,\nEnvolta em vapores, — mais fria que a morte!\n\nOh! vem! vem, minh'alma! teu rosto gelado,\nTeu seio molhado de orvalho brilhante,\nEu quero aquecê-los no peito incendido,\n— Contar-te ao ouvido paixão delirante!...\n\nAssim eu clamava tristonho e pendido,\nOuvindo o gemido da onda na praia,\nNa hora em que fogem as névoas sombrias,\n— Nas horas tardias que a noite desmaia. —\n\nE as brisas d'aurora ligeiras corriam,\nNo leito batiam da fada divina;\nSumiram-se as brumas do vento à bafagem\nE a pálida imagem desfez-se em — neblina!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/N%C3%A9voas",
       "tags": [
@@ -468,7 +472,7 @@
       "titulo": "O escravo (Fagundes Varela)",
       "texto": "  \t \t\nDorme! Bendito o arcanjo tenebroso \t\t\ncujo dedo imortal \t\t\ngravou-te sobre a testa bronzeada \t\t\no sigilo fatal!\nDorme! Se a terra devorou sedenta \t\t\nde teu rosto o suor, \t\t\nmãe compassiva agora te agasalha \t\t\ncom zelo e com amor. \t\t\n\nNinguém te disse o adeus da despedida,\nninguém por ti chorou! \t\t\nEmbora! A humanidade em teu sudário \t\t\nos olhos enxugou! \t\t\nA verdade luziu por um momento \t\t\nde teus irmãos à grei:\nSe vivo foste escravo, és morto... livre \t\t\npela suprema lei! \t\t\n\nTu suspiraste como o hebreu cativo \t\t\nsaudoso do Jordão, \t\t\npesado achaste o ferro da revolta, \nnão o quiseste, não! \t\t\nLançaste-o sobre a terra inconsciente \t\t\nde teu próprio poder! \t\t\nContra o direito, contra a natureza, \t\t\npreferiste morrer! \n\nDo augusto condenado as leis são santas, \t\t\nsão leis porém de amor: \t\t\nPor amor de ti mesmo e dos mais homens \t\t\npreciso era o valor... \t\t\nNão o tiveste! Os ferros e os açoites \nmataram-te a razão! \t\t\nDobrado cativeiro! A teus algozes \t\t\ndobrada punição! \t\t\n\nPor que nos teus momentos de suplício, \t\t\nde agonia e de dor,\nnão chamaste das terras africanas \t\t\no vento assolador? \t\t\nEle traria a força e a persistência \t\t\nà tu'alma sem fé, \t\t\nnos rugidos dos tigres de Benguela, \ndos leões de Guiné!... \t\t\n\nEle traria o fogo dos desertos, \t\t\no sol dos areais, \t\t\na voz de teus irmãos viril e forte, \t\t\no brado de teus pais! \nEle te sopraria às moles fibras \t\t\na raiva do suão \t\t\nquando agitando as crinas inflamadas \t\t\nfustiga a solidão! \t\t\n\nEntão ergueras resoluto a fronte,\ne, grande em teu valor, \t\t\nmostraras que em teu seio inda vibrava \t\t\na voz do Criador! \t\t\nMostraras que das sombras do martírio \t\t\ntambém rebenta a luz!\nOh! teus grilhões seriam tão sublimes, \t\t\ntão santos como a cruz! \t\t\n\nMas morreste sem lutas, sem protestos, \t\t\nsem um grito sequer! \t\t\nComo a ovelha no altar, como a criança \nno ventre da mulher! \t\t\nMorreste sem mostrar que tinhas nalma \t\t\numa chispa do céu! \t\t\nComo se um crime sobre ti pesasse! \t\t\nComo se foras réu! \t\n\nSem defesa, sem preces, sem lamentos, \t\t\nsem círios, sem caixão, \t\t\npassaste da senzala ao cemitério! \t\t\nDo lixo à podridão! \t\t\ntua essência imortal onde é que estava? \nOnde as leis do Senhor? \t\t\nDigam-no o tronco, o látego, as algemas \t\t\ne as ordens do feitor! \t\t\n\nDigam-no as ambições desenfreadas, \t\t\na cobiça fatal, \t\nque a eternidade arvoram nos limites \t\t\nde um círculo mortal! \t\t\nDigam-no o luxo, as pompas e grandezas, \t\t\nlacaios e brasões, \t\t\ntesouros sobre o sangue amontoados, \t\npaços sobre vulcões! \t\t\n\nDigam-no as almas vis das prostitutas, \t\t\no lodo e o cetim, \t\t\no demônio do jogo, a febre acesa \t\t\nem ondas de rubim!... \t\nE no entanto tinhas um destino, \t\t\numa vida, um porvir, \t\t\num quinhão de prazeres e venturas \t\t\nsobre a terra a fruir! \t\t\n\nEras o mesmo ser, a mesma essência\nque teu bárbaro algoz; \t\t\nforam seus dias de rosada seda, \t\t\nos teus de atro retroz!... \t\t\nPátria, família, idéias, esperanças, \t\t\ncrenças, religião, \ntudo matou-te, em flor no íntimo d'alma, \t\t\no dedo da opressão! \t\t\n\nTudo, tudo abateu sem dó, nem pena! \t\t\nTudo, tudo, meu Deus! \t\t\nE teu olhar à lama condenado \nesqueceu-se dos céus!... \t\t\nDorme! Bendito o arcanjo tenebroso \t\t\ncuja cifra imortal, \t\t\nselando-te o sepulcro, abriu-te os olhos \t\t\nà luz universal!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_escravo_%28Fagundes_Varela%29",
       "tags": [
@@ -482,7 +486,7 @@
       "titulo": "O foragido — Minha casa é deserta; na frente",
       "texto": "Minha casa é deserta; na frente\nBrotam plantas bravias do chão,\nNas paredes limosas — o cardo —\nErgue a fronte silente ao tufão.\n\nMinha casa é deserta. O que é feito\nDesses templos benditos d'outrora,\nQuando em torno cresciam roseiras,\nOnde as auras brincavam n'aurora?\n\nHoje a tribo das aves errantes\nDos telhados se acampa no vão,\nA lagarta percorre as muralhas,\nCanta o grilo pousado ao fogão.\n\nDas janelas no canto, as aranhas\nLeves tremem nos fios dourados,\nAs avencas pululam viçosas\nNa umidade dos muros gretados.\n\nTudo é tredo, meus Deus! o que é feito\nDessas eras de paz que lá vão,\nQuando junto do fogo eu ouvia\nAs legendas sem fim do serão?",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_foragido",
       "tags": [
@@ -493,7 +497,7 @@
       "titulo": "O foragido — No curral esbanjado, entre espinhos,",
       "texto": "No curral esbanjado, entre espinhos,\nJá não bala ansioso o cordeiro,\n— Nem desperta-se ao toque do sino —\n— Nem ao canto do galo ao poleiro. —\n\nJunto à cruz que se eleva na estrada\nSeco e triste se embala o chorão,\nNão há mais o esfumar das acácias,\nNem do crente a — sentida oração.\n\nNão há mais uma voz nestes ermos,\nUm gorjeio das aves no val,\nSó a fúria do vento retroa\nAlta noite agitando o ervaçal!\n\nRuge, oh vento gelado do norte,\nTorce as plantas que brotam do chão,\nNunca mais eu terei as venturas\nDesses tempos de paz que lá vão!\n\nNunca mais desses dias passados\nUma luz surgirá dentre as brumas!\nAs montanhas se embuçam nas trevas,\nAs torrentes se vendam de espumas !\n\nCorre pois vendaval das tormentas,\nHoje é tua esta morna soidão!\nNada tenho, que um céu lutulento\nE uma cama de espinhos no chão!\n\nRuge, voa, que importa! sacode\nEm lufadas as crinas da serra,\nAlma nua de crença e esperanças\nNada tenho a perder sobre a terra!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_foragido",
       "tags": [
@@ -506,7 +510,7 @@
       "titulo": "O foragido — Vem, meu pobre e fiel companheiro,",
       "texto": "Vem, meu pobre e fiel companheiro,\nVamos, vamos depressa, meu cão,\nQuero ao longo perder-me das selvas\nOnde passa rugindo o tufão!",
       "forma": "quadra",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_foragido",
       "tags": []
@@ -515,7 +519,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/As selvas",
       "texto": "Selvas do Novo Mundo, amplos zimborios,\nMares de sombra e ondas de verdura,\nPovo de Atlantes soberano e mudo\nEm cujos mantos o tufão murmura.\n\nSalve! minh’alma vos procura embalde,\nEmbalde triste vos estendo os braços...\nCercam-me o corpo rebatidos muros,\nPrendem-me as plantas enredados laços!...\n\nPatria da liberdade! antros profundos!\nVastos palacios! eternaes castellos!\nMandai-me os genios das sombrias grutas\nDe meus grilhões espedaçar os élos!...\n\nAh! que eu não possa me esquivar dos homens,\nMatar a febre que meu sêr consome,\nE entre alegrias me arrojar cantando\nNas seccas folhas do sertão sem nome!\n\nAh! que eu não possa desprender aos ermos\nO fogo ardente que meu craneo encerra,\nGastar os dias entre o espaço e Deus\nNas mattas virgens da columbia terra!\n\nEu não detesto nem maldigo a vida,\nNem do despeito me remorde a chaga,\nMas ah! sou pobre, pequenino e debil\nE sobre a estrada o viajor me esmaga!\n\nQue faço triste no rumor das praças?\nQue busco pasmo nos salões dourados?\nVerme do lôdo me desprezam todos,\nO pobre e os grandes de esplendor cercados!\n\nFere-me os olhos o clarão do mundo,\nRasgam-me o seio prematuras dôres,\nE, á mágoa insana que me enluta as noites,\nDeclino á campa na estação das flôres.\n\nE ha tanto encanto nas florestas virgens,\nTanta belleza do sertão na sombra,\nTanta harmonia no correr do rio,\nTanta delicia na campestre alfombra...\n\nQue inda podéra reviver de novo,\nE entre venturas flutuar minh’alma,\nFanada planta que mendiga apenas\nA noite, o orvalho, a viração e a calma!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/As_selvas",
       "tags": [
@@ -529,7 +533,7 @@
       "titulo": "Sobre um túmulo",
       "texto": "Torce-te aí na sepultura fria\nOnde passa rugindo o furacão,\nSeja-te o orvalho das manhãs negado,\nSoe em teu leito a voz da maldição!\nTeu castigo será gemer debalde\nBuscando o sono que o sudário deixa,\nOuvir nas trevas de uma noite horrenda\nDe errantes larvas a funérea queixa!\nPese-te a terra qual um fardo imenso,\nInfecta podridão cubra teus olhos,\nSeque o salgueiro que sombreia a lousa\nE em seu lugar estendam-se os abrolhos!\nRoam-te o Ódio, — a maldição, — o olvido,\nE quando as turbas levantar-se um dia,\n— Aparências de Deus, — para afundar-se\nNo seio d'Ele, ardentes de alegria,\nSurdo sejas aos ecos da trombeta\nEm teu leito de pedra enregelada;\nFindem-se os mundos, e a existência tua\nFria se apague na solidão do nada!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Sobre_um_t%C3%BAmulo",
       "tags": [
@@ -542,7 +546,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Soneto I",
       "texto": "Desponta a estrella d’alva, a noite morre.\nPulam no mato aligeros cantores,\nE dôce a brisa no arraial das flôres\nLanguidas queixas murmurando corre.\n\nVoluvel tribo a solidão percorre\nDas borboletas de brilhantes côres;\nSoluça o arroio; diz a rôla amores\nNas verdes balsas d’onde o orvalho escorre.\n\nTudo é luz e esplendor; tudo se esfuma\nÁs caricias d’aurora, ao céo risonho,\nAo floreo bafo que o sertão perfuma!\n\nPorém minh’alma triste e sem um sonho\nRepete olhando o prado, o rio, a espuma:\n— Oh! mundo encantador, tu és medonho!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Soneto_I",
       "tags": [
@@ -555,7 +559,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Soneto II",
       "texto": "Eu passava na vida errante e vago\nComo o nauta perdido em noite escura,\nMas tu te ergueste peregrina e pura\nComo o cysne inspirado em manso lago,\n\nBeijava a onda n’um soluço mago\nDas molles plumas a brilhante alvura,\nE a voz ungida de eternal doçura\nRoçava as nuvens em divino afago. \n\nVi-te; e nas chamas de fervor profundo\nA teus pés afoguei a mocidade\nEsquecido de mim, de Deus, do mundo!\n\nMas ai! cedo fugiste!... da soidade,\nHoje te imploro d’esse amor tão fundo\nUma idéa, uma queixa, uma saudade!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Soneto_II",
       "tags": [
@@ -569,7 +573,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/Tristeza",
       "texto": "Eu amo a noite com seu manto escuro\nDe tristes goivos coroada a fronte\nAmo a neblina que pairando ondeia\nSobre o fastigio de elevado monte.\n\nAmo nas plantas, que na tumba crescem,\nDe errante briza o funeral cicio:\nPorque minh’alma, como a sombra, é triste,\nPorque meu seio é de illusões vazio.\n\nAmo a deshoras sob um céo de chumbo,\nNo cemiterio de sombria serra,\nO fogo-fatuo que a tremer doudeja\nDas sepulturas na revolta terra.\n\nAmo ao silencio do hervaçal partido\nDe ave nocturna o funerario pio,\nPorque minh’alma, como a noite, é triste,\nPorque meu seio é de illusões vazio.\n\nAmo do templo, nas soberbas naves,\nDe tristes psalmos o troar profundo;\nAmo a torrente que na rocha espuma\nE vai do abysmo repousar no fundo.\n\nAmo a tormenta, o perpassar dos ventos,\nA voz da morte no fatal parcel,\nPorque minh’alma só traduz tristeza,\nPorque meu seio se abrevou de fel.\n\nAmo o corisco que deixando a nuvem\nO cedro parte da montanha, erguido,\nAmo do sino, que por morto sôa,\nO triste dobre n’amplidão perdido.\n\nAmo na vida de miseria e lôdo,\nDas desventuras o maldito sello,\nPorque minh’alma se manchou de escarneos,\nPorque meu seio se cobriu de gelo.\n\nAmo o furor do vendaval que ruge,\nDas azas negras sacudindo o estrago;\nAmo as metralhas, o bulcão de fumo,\nDe corvo as tribus em sangrento lago.\n\nAmo do nauta o doloroso grito\nEm fragil prancha sôbre mar de horrores,\nPorque meu seio se tornou de pedra,\nPorque minh’alma descorou de dôres.\n\nO céo de anil, a viração fagueira,\nO lago azul que os passarinhos beijam,\nA pobre choça do pastor no valle,\nChorosas flôres que ao sertão vicejam,\n\nA paz, o amor, a quietação e o riso\nA meus olhares não têm mais encanto,\nPorque minh’alma se despiu de crenças,\nE do sarcasmo se embuçou no manto.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/Tristeza",
       "tags": [
@@ -583,7 +587,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/O vagalume",
       "texto": "(CANTIGA)\n\nQuem és tu, pobre vivente,\nQue vagas triste e sósinho,\nQue tens os raios da estrella,\nE as azas do passarinho?\n\nA noite é negra;  raivosos\nOs ventos correm do sul;\nNão temes que elles te apaguem\nA tua lanterna azul?\n\nQuando tu passas, o lago\nDe estranhos fogos esplende,\nDobra-se a clicia amorosa,\nE a fronte mimosa pende.\n\nAs folhas brilham, lustrosas,\nComo espelhos de esmeralda;\nFulge o iris nas torrentes\nDa serrania na fralda.\n\nO grillo salta das sarças;\nPiam aves nos palmares;\nComeça o baile dos sylphos\nNo seio dos nenuphares.\n\nA tribo das mariposas,\nDas mariposas azues,\nSegue teus gyros no espaço,\nMimosa gotta de luz!\n\nSão elas flôres sem hastea;\nTu és estrella sem céo;\nProcuram ellas as chammas;\nTu amas da sombra o véo!\n\nQuem és tu, pobre vivente,\nQue vagueias tão sósinho,\nQue tens os raios da estrella,\nE as azas do passarinho?",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/O_vagalume",
       "tags": [
@@ -595,7 +599,7 @@
       "titulo": "Vida de flor",
       "texto": "Porque vergas-me a fronte sobre a terra?\n— Diz a flor da colina ao manso vento —\nSe apenas das manhãs o doce orvalho\nHei gozado um momento!\n\nTímida ainda, nas folhagens verdes\nAbro a corola à quietação das noites,\nErgo-me bela, me rebaixas triste\nCom teus feros açoites!\n\nOh! deixa-me crescer, lançar perfumes,\nVicejar das estrelas à magia,\nQue minha vida pálida se encerra\nNo espaço de um só dia!\n\nMas o vento agitava sem piedade\nA fronte virgem da cheirosa flor,\nQue pouco a pouco se tingia, triste,\nDe mórbido palor.\n\nNão vês, oh brisa? lacerada, — murcha\nTão cedo ainda vou pendendo ao chão,\nE em breve tempo esfolharei já morta\n— Sem chegar ao verão?\n\nOh tem pena de mim! deixa-me ao menos\nDesfrutar um momento de prazer,\nPois que é meu fado despontar n'aurora\nE ao crepúsc'lo morrer!...\n\nBrutal amante não lhe ouviu as queixas,\nNem às suas dores atenção prestou,\nE a flor mimosa retraindo as pétalas\nNa tige se inclinou.\n\nSurgiu n'aurora, não chegou à tarde,\nTeve um momento de existência só;\nA noite veio, — procurou por ela,\nMas a encontrou no pó.\n\nOuviste, oh virgem, a legenda triste\nDa flor do outeiro e seu funesto fim,\n— Irmã das flores, à mulher às vezes —\nTambém sucede assim.",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Vida_de_flor",
       "tags": [
@@ -608,7 +612,7 @@
       "titulo": "Obras completas de Fagundes Varela (1920)/Vozes da América/O vizir",
       "texto": "— Não derribes meus cedros! murmurava\nO genio da floresta apparecendo\nAdiante de um vizir, senão eu juro\nPunir-te rijamente! E no emtanto\nO vizir derribou a santa selva!\nAlguns annos depois foi condemnado\nAo cutelo do algoz. Quando encostava\nA cabeça febril no duro cepo,\nRecuou aterrado: — Eternos deuses!\nEste cepo é de cedro! E sobre a terra\nA cabeça rolou banhada em sangue!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Fagundes_Varela_%281920%29/Vozes_da_Am%C3%A9rica/O_vizir",
       "tags": [
@@ -619,7 +623,7 @@
       "titulo": "À estátua eqüestre",
       "texto": "Ergue-te ousado sobre o chão da praça,\nHomem de bronze, — imagem de monarca,\nSimulacro fatal!\nPisa inda as turbas humilhadas, como\nAs duras patas do corcel que montas\nO chão do pedestal.\n\nCansadas nunca de opressores ferros,\nLivres de um jugo,— de outro jugo escravas,\nAs massas enervadas\nDo pó resgatam seus tiranos mortos,\nE à luz do sol inundam de louvores,\nPor terra debruçadas!\n\nRaça de Ilotas, que fizestes pois\nDa férvida centelha que no seio\nVos pos a Divindade?\nPorque reledes o passado escuro,\nQuando deveras derribar os tronos\nCantando a liberdade?\n\nVota-se à treva o busto dos Andradas,\nSome-se a glória de ferventes mártires\nNa lama do ervaçal!\nMas fria a estátua pisa a turba, como\nAs duras patas do corcel de bronze\nO chão do pedestal!\n\nOh terra do Brasil; — diamante vívido\nDa coroa soberba de Colombo,\n— Bela estrela do sul, —\nPorque tão cedo declinais a fronte\nE a fímbria do vestido enegreceis\nNo limo do paul?\n\nPorque tão cedo enregelais o seio\nNessas frias geadas que predizem\nA morte das nações,\nE os pulsos presos, e a vontade escrava,\nDo mártir a memória e a voz dos bardos\nCobris de maldições?\n\nErguei-vos desse lívido marasmo,\nAfrontai o negrume das tormentas,\nO horror da tirania!\nSe agora em bronze eternizais — senhores, —\nGravai nos bronzes o brasão dos livres,\nSaudai um novo dia!\n\nEmbora o mundo me proclame louco,\nEmbora à fronte com furor me gravem\nEstigma infernal!\nNão posso calmo ver pisar-se as turbas,\nComo o corcel de levantada estátua\nO chão do pedestal!",
       "forma": "outro",
-      "obra": "pt.wikisource: Fagundes Varela",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/%C3%80_est%C3%A1tua_eq%C3%BCestre",
       "tags": [

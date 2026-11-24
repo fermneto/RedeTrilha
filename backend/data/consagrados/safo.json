@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Bust_Sappho_Musei_Capitolini_MC1164.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": -630,
   "morte": -570,
+  "escolas": [
+    "antiguidade_classica"
+  ],
+  "pais": "GR",
   "poemas": [
     {
       "titulo": "Hino a Afrodite (fr. 1)",

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Percy_Bysshe_Shelley_by_Alfred_Clint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1792,
   "morte": 1822,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Ozymandias",

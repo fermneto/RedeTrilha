@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Auta_de_souza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1876,
   "morte": 1901,
+  "escolas": [
+    "simbolismo",
+    "romantismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Desalento",
@@ -140,7 +145,7 @@
       "titulo": "Horto (1910)/Adeus, Gentil!",
       "texto": "ADEUS, GENTIL!\n\nA Olindina Medeiros.\n\nQue manhã feia e escura aquella em que partiste!\nRecordas te, Gentil? O Céo estava triste,\nSem um raio de sol, nevoento, sombrio,\nBem como um coração amargurado e frio...\n\nUm sorriso divino inundava-te o rosto\nDe innocencia e de luz... e eu sentia o Desgosto\nFerir-me o seio, emquanto, a beijar-te, chorando\nMeu labio estremecia um adeus murmurando.\n\nAh! dentro de minh’alma, assim como n′um mar,\nO batel da Saudade, a boiar, a boiar,\nParecia attrahir-me á ventura e á Alegria\nPara o abysmo cruel onde mora a Agonia.\n\nPequenino como és, não sabes comprehender\nA magua que allucina e que faz padecer\nAo pobre coração pela angustia ferido\nAo ver sumir-se longe um rosto estremecido.\n\nHostia loura e formosa, ó meu sonho dourado!\nAçucena do Céo, archanjo immaculado\nQue as azas virginaes desdobras sobre a terra...\nLonge de ti eu choro, assim como na serra,\nA doce jurity que soluça e padece,\nQuando o Sol vai morrendo e quando a Noite desce.\n\nAdeus, meu colibri! adeus, minha saudade!\nCreancinha que eu amo, ó flor de castidade!\nMimoso lirio puro, innocente e gracil,\nCamelia desbrochada ao sol do mez de Abril!\n\nAdeus! Adeus! Adeus!\n                     Sacode as azas puras,\nO’ lindo sonho branco! e lança ás amarguras\nDe minha vida triste o pó de oiro sagrado,\nQue ellas deixam cahir do sacrario estrellado\nQue tens na cabecinha esplendida e divina,\nO’ creança formosa, ó alma cristallina!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Adeus%2C_Gentil%21",
       "tags": [
@@ -154,7 +159,7 @@
       "titulo": "Horto (1910)/Adoração dos Reis Magos",
       "texto": "Jesus sorri. Que ternura,\nQue doce favo de luz\nVejo brilhar na candura\nDe seus dois olhos azuis!\n\nChegam os Magos. De joelho,\nCheios de unção e de amor,\nBeijam o pesinho vermelho\nDo pequenino Senhor.\n\nTrazem-lhe mesmo um tesouro\nLembrando glória e tormento:\nCaçoulas de incenso e ouro\nÉ a mirra do sofrimento.\n\nÓ Reis do Grande Oriente,\nPor que lembrastes, então,\nÁ mãe do louro inocente\nA dor sem fim da Paixão?\n\nNão vedes que a Virgem chora\nOlhando a mirra cruel?\nÉ que ela se lembra agora\nDa esponja embebida em fel.\n\nTalvez não vísseis o lindo\nBando gentil de pastores\nQue o rodearam sorrindo,\nMas só lhe trouxeram flores!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Adora%C3%A7%C3%A3o_dos_Reis_Magos",
       "tags": [
@@ -166,7 +171,7 @@
       "titulo": "Horto (1910)/Agonia do coração",
       "texto": "AGONIA DO CORAÇAO\n\nA Maria Carolina de Vasconcellos\n\n«Estrellas fulgem da noite em meio\nLembrando cirios loiros a arder...\nE eu tenho a treva dentro do seio...\nAstros! velai-vos, que eu vou morrer!\n\nAo longe cantam. São almas puras\nCantando á hora do adormecer...\nE o echo triste sobe ás alturas...\nMoças! não cantem que eu vou morrer!\n\nAs mães embalam o berço amigo\nDoce esperança de seu viver...\nE eu vou sosinha para o jazigo...\nChorai creanças, que vou morrer!\n\nPassaros tremem no ninho santo\nPedindo a graça do alvorecer...\nEmquanto eu parto desfeita em pranto...\nAves! suspirem que eu vou morrer!\n\nDe lá do campo cheio de rosas\nVem um perfume de entontecer...\nMeu Deus! que maguas tão dolorosas...\nFlores! fechai-vos, que eu vou morrer!»",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Agonia_do_cora%C3%A7%C3%A3o",
       "tags": [
@@ -179,7 +184,7 @@
       "titulo": "Horto (1910)/No album de Dolores",
       "texto": "NO ALBUM DE DOLORES\n\nEscuta-me bem, Dolores,\nNão queiras meu nome aqui:\nElle não é colibri\nPara viver entre flores.\n\nTu’alma, irmã de Jesus,\nComo consente ficar\nSobre a mesa de um altar\nUm pobre cirio sem luz?\n\nMeu triste nome choroso\nQuer uma outra habitação:\nGuarda-o no teu coração,\nLirio celeste e formoso!\n\nRasga esta folha, Dolores,\nNão deixes meu nome alli:\nElle não é colibri\nPara viver entre flores.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_album_de_Dolores",
       "tags": [
@@ -191,7 +196,7 @@
       "titulo": "Horto (1910)/No album de Eugenia",
       "texto": "NO ALBUM DE EUGENIA\n\nQuanta dor a boiar nos olhos das creanças,\nQuanta gotta a tremer no calice das flôres...\nE aqui neste jardim, plantado de esperanças,\nEu venho inda depor a lagrima das dôres.\n\nA lagrima é o meu nome escripto entre as formosas\nPaginas de teu livro, um berço de boninas!\nPois não bastava o orvalho a tremular nas rosas,\nNem o pranto a rolar nas faces pequeninas?",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_album_de_Eugenia",
       "tags": [
@@ -202,7 +207,7 @@
       "titulo": "Horto (1910)/A’ alma de minha mãe",
       "texto": "Partiu-se o fio branco e delicado\nDos sonhos de minh’alma desditosa...\nE as contas do rosário assim quebrado\nCaíram como folhas de uma rosa.\n\nDebalde eu as procuro lacrimosa,\nEstas doces relíquias do Passado,\nPara guardá-las na urna perfumosa,\nDo meu seio no cofre imaculado.\n\nAí! se eu ao menos uma só pudesse\nD’estas contas achar que me fizesse\nLembrar um mundo de alegrias doidas...\n\nFeliz seria... Mas minh’alma atenta\nEm vão procura uma continha benta:\nQuando partiste m’as levaste todas!\n\nNatal - Março de 1895.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A%E2%80%99_alma_de_minha_m%C3%A3e",
       "tags": [
@@ -214,7 +219,7 @@
       "titulo": "Horto (1910)/Angelina — ANGELINA",
       "texto": "ANGELINA\n\nBrilhante como uma estrella,\ncreança e já n’uma cova!\nJ. Eustachio de Azevedo.\n\nTer doze annos somente\nE nesta edade soffrer!\nSonhar um porvir ridente\nE nesta aurora morrer!\n\nEis o que foi-te a existencia,\nO’ desditosa Angelina!\nDoce lirio de innocencia,\nPobre flóco de neblina.\n\nComo dois botões pequenos,\nDuas flores orvalhadas,\nTeus olhos dormem serenos,\nSob as palpebras cerradas.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Angelina",
       "tags": [
@@ -225,7 +230,7 @@
       "titulo": "Horto (1910)/Angelina — Voaste, meiga creança,",
       "texto": "Voaste, meiga creança,\nTão feiticeira e mimosa,\nComo um riso de esperança,\nComo uma folha de rosa.\n\nE’ triste morrer no fim\nDe uma manhã de esplendores...\nA fronte occultar, assim,\nN’uma grinalda de flores.\n\nE sentir, por entre a dor\nDa derradeira agonia,\nDe mãe um beijo de amor\nRoçar a fronte já fria...\n\nQuando n’um suspiro leve,\nEst’alma que o corpo encerra,\n— Como uma pomba de neve\nA desprender-se da terra; —\n\nN’um vôo suave e franco\nFugiu para o Céo de anil...\nVestiram-te então de branco,\nComo uma noiva gentil.\n\nNo setineo caixãosinho,\nMais puro que as alvoradas,\nDepuzeram teu corpinho,\nEntre as cambraias nevadas.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Angelina",
       "tags": [
@@ -238,7 +243,7 @@
       "titulo": "Horto (1910)/Angelina — Ahi, no funereo leito,",
       "texto": "Ahi, no funereo leito,\nToda coberta de rosas,\nTendo cruzadas ao peito\nDuas mãosinhas formosas;\n\nPareces um anjo santo,\nEnvolto em gélido véo,\nTranspondo azulado manto,\nComo em procura do Céo.\n\nEu sigo-te o vôo alado,\nPela esphera diamantina,\nO’ meu anjo immaculado,\nO’ minha santa Angelina!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Angelina",
       "tags": [
@@ -249,7 +254,7 @@
       "titulo": "Horto (1910)/Anno bom",
       "texto": "Hoje começa o ano. Na alegria\nDe nívea pomba quando nasce a aurora,\nDeixa, minh’alma, a tua fantasia\nSubir, cantando, pelo espaço a fora...\n\nDeixa-a sumir-se além, rompendo gazas,\nSubindo em busca de ideais queridos:\nHá de trazer nas pequeninas asas\nTodo o perfume dos meus dias idos!\n\nHá de trazer o sonho transparente\nDa inocência feliz (quanto eu sonhava!)\nE o eco virginal da voz dolente\nQue o meu sono de arcanjo acalentava.\n\nE o meu sorriso e as minhas esperanças,\nEssas ingênuas ilusões de um dia,\nToda essa luz que as almas das crianças\nNum raio de luar acaricia...\n\nQue tudo venha sobre mim cantando\nO salmo doce da recordação.\nQual se pousesse um luminoso bando\nDe passarinhos no meu coração...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Anno_bom",
       "tags": [
@@ -260,7 +265,7 @@
       "titulo": "Horto (1910)/Antonieta",
       "texto": "ANTONIETA\n\nEsta creança formosa\nTem um sorriso argentino,\nComo o gorgeio divino\nQue solta uma ave saudosa.\n\nMuito innocente e mimosa,\nSemelha um lirio franzino.\nNo rostinho pequenino\nGuarda uma bocca de rosa.\n\nSe falla, a voz adorada\nE’ como uma harpa encantada\nQue os hymnos de Alem encerra.\n\nEsta creança, Senhor!\nE’ um mimo de teu amor,\nUm anjo descido á terra.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Antonieta",
       "tags": [
@@ -272,7 +277,7 @@
       "titulo": "Horto (1910)/O beija-flor",
       "texto": "O BEIJA-FLOR\n\nAcostumei-me a vel-o todo o dia\nDe manhãsinha, alegre e prasenteiro,\nBeijando as brancas flores de um canteiro\nNo meu jardim — a patria da ambrosia.\n\nPequeno e lindo, só me parecia\nQue era da noite o sonho derradeiro...\nVinha trazer ás rosas o primeiro\nBeijo do Sol, n’essa manhã tão fria!\n\nUm dia foi-se e não voltou... Mas, quando\nA suspirar, me ponho contemplando\nSombria e triste, o meu jardim risonho...\n\nDigo, a pensar no tempo já passado:\nTalvez, ó coração amargurado,\nAquelle beija-flor fosse o teu sonho!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/O_beija-flor",
       "tags": [
@@ -286,7 +291,7 @@
       "titulo": "Horto (1910)/Bemdita",
       "texto": "BEMDITA\n\nBemdita sejas, minha mãe, bemdito\nSeja o teu seio, immaculado e santo,\nOnde derrama as gottas de seu pranto\nMeu dolorido coração afflicto.\n\nO’ minha mãe, ó anjo sacrosanto,\nBemdito seja o teu amor, bemdito!\nOuve do Céo o amargurado grito\nCheio da dor de quem soluça tanto.\n\nE deixa que repouse em teus joelhos\nA minha fronte, ouvindo os teus conselhos\nLonge do mundo, ó sempiterna dita!\n\nEnvia lá do Ceo no teu sorriso\nA morte que levou-te ao Paraiso...\nBemdita sejas, minha mãe, bemdita!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Bemdita",
       "tags": [
@@ -299,7 +304,7 @@
       "titulo": "Horto (1910)/Bohemias",
       "texto": "BOHEMIAS\n\nA Rosa Monteiro.\n\nQuando me vires chorar\nQue sou infeliz não creias;\nEu choro porque no Mar\nNem sempre cantam sereias.\n\nChoro porque, no Infinito,\nAs estrellas luminosas\nChoram o orvalho bemdito,\nQue faz desbrochar as rosas.\n\nDo labio o consolo santo\nE’ o riso que vem cantando...\nO riso do olhar é o pranto:\nMeus olhos riem chorando.\n\nO seio branco da aurora\nDerrama orvalhos á flux...\nO cirio que brilha, chora:\nA dôr também fere a luz?\n\nTeus olhos cheios de ardores\nAninham rosas nas faces...\nQue seria dessas flores\nResponde, se não chorasses?\n\nSou moça e bem sabes que\nA moça não tem martyrios;\nSe chora sempre é porque\nPretende imitar os lirios.\n\nEmquanto eu viver no mundo,\nMeus olhos hão de chorar...\nAh! como é doce o profundo\nSoluço eterno do Mar!\n\nDo labio o consolo santo\nE’ o riso que vem cantando...\nO riso do olhar é o pranto:\nMeus olhos riem chorando.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Bohemias",
       "tags": [
@@ -310,7 +315,7 @@
       "titulo": "Horto (1910)/Ao cahir da noite — AO CAHIR DA NOITE",
       "texto": "AO CAHIR DA NOITE\n\nA Maria Emilia Loureiro\n\nNão sei que paz immensa\nEnvolve a Natureza,\nN’ess’hora de tristeza,\nDe dor e de pezar.\nMinh’alma, rindo, pensa\nQue a sombra é um grande véo\nQue a Virgem traz do Céo\nN’um raio de luar.\n\nEu junto as mãos, serena,\nA murmurar contricta,\nA saudação bemdita\nDo Anjo do Senhor;\nEmquanto a lua plena\nNo Azul, formosa e casta,\nUm longo manto arrasta\nDe lurido esplendor.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_cahir_da_noite",
       "tags": [
@@ -323,7 +328,7 @@
       "titulo": "Horto (1910)/Ao cahir da noite — Minhas saudades todas",
       "texto": "Minhas saudades todas\nSe vão mudando em astros...\nA magua vae de rastros\nMorrer na escuridão...\nAs amarguras doudas\nFogem como um lamento\nLonge do Pensamento,\nLonge do Coração.\n\nE a Noite desce, desce\nComo um sorriso doce,\nQue em sonhos desfolhou-se\nNa voz cheia de amor,\nDa mãe que ensina a Prece\nAo filho pequenino,\nDe olhar meigo e divino\nE labio aberto em flor.\n\nAh! como a Noite encanta!\nParece um Sanctuario,\nCom o lindo alampadario\nDe estrellas que ella tem!\nRecorda-me a luz santa,\nImmaculada e pura,\nDa grande noite escura\nDo olhar de minha Mãe!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_cahir_da_noite",
       "tags": [
@@ -337,7 +342,7 @@
       "titulo": "Horto (1910)/Ao cahir da noite — O’ Noite embalsamada",
       "texto": "O’ Noite embalsamada\nDe castas ambrosias ..\nNo mar das harmonias\nMeu ser deixa boiar.\nAfasta, ó Noite amada,\nA duvida e o receio,\nEmbala-me na seio\nE deixa-me sonhar!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_cahir_da_noite",
       "tags": [
@@ -350,7 +355,7 @@
       "titulo": "Horto (1910)/Caminho do sertão",
       "texto": "CAMINHO DO SERTÃO\n\nA meu irmão João Cancio\n\nTão longe a casa! Nem siquer alcanço\nVel-a atravez da matta. Nos caminhos\nA sombra desce; e sem achar descanço\nVamos nós dois, meu pobre irmão, sosinhos!\n\nE’ noite já. Como em feliz remanso\nDormem as aves nos pequenos ninhos...\nVamos mais devagar... de manso e manso,\nPara não assustar os passarinhos.\n\nBrilham estrellas. Todo o céo parece\nRezar de joelhos a chorosa prece\nQue a Noite ensina ao desespero e á dôr...\n\nAo longe, a Lua vem dourando a treva...\nThuribulo immenso para Deus eleva\nO incenso agreste da jurema em flôr.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Caminho_do_sert%C3%A3o",
       "tags": [
@@ -363,7 +368,7 @@
       "titulo": "Horto (1910)/Os canarios — Queriam-se na paz indefinida",
       "texto": "Queriam-se na paz indefinida\n      Das almas que são puras,\nCheios de amor, de luz e de carinhos,\nEles passavam docemente a vida,\n      Isentos de amarguras.\nEntão sorriam, sem pensar que a morte\nInda podia lhes mudar a sorte.\n      E sempre eles cantavam\n      Se no espaço adejavam!\n\n      Ao despontar da aurora\nChalravam, procurando, estrada a fora,\n      O alimento do dia.\n      Saltando de alegria\nAssim voltavam conversando a medo\nE pousavam, alegremente, rindo,\n      Nos ramos do arvoredo.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Os_canarios",
       "tags": [
@@ -376,7 +381,7 @@
       "titulo": "Horto (1910)/Os canarios — Eu quisera saber o seu segredo:",
       "texto": "Eu quisera saber o seu segredo:\n      Devia ser tão lindo!\nDepois, ruflando as asas amarelas,\nIam embora... E eu, triste e sozinha,\n      Olhava para as belas\nRamagens, onde eles mansamente\n      Pousavam à tardinha.\n\nA viração, gemendo docemente,\nVinha beijar as avezinhas puras.\n\nTerminaram, porém, tantas venturas:\n      Morreu um passarinho\n      Ficou deserto o ninho!\n\nO outro partiu... Não sei onde foi ter;\nTalvez bem longe, para, então, morrer,\n      Em triste soledade.\n      E o meu olhar dorido\nSeguiu a ave, pelo pavor ferido.\n      Ficava uma saudade!\n\nE murmurei comigo entristecida:\n      Ó asa aventureira!\nLevas toda a paixão de minha vida,\n      Levas minh’alma inteira!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Os_canarios",
       "tags": [
@@ -389,7 +394,7 @@
       "titulo": "Horto (1910)/Os canarios — Desde então vivo triste. Às vezes penso",
       "texto": "Desde então vivo triste. Às vezes penso\nNeste sofrer indefinido, imenso\n          D’um pobre coração\nQue nas asas do tempo vê voar,\n          A chorar,\n          A última ilusão...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Os_canarios",
       "tags": [
@@ -400,7 +405,7 @@
       "titulo": "Horto (1910)/Cantai",
       "texto": "CANTAI\n\nA Edwiges de Sá Pereira.\n\nÓ vós, que guardais no seio\nCom tanto amor e carinho,\n— Com o mesmo doce receio\nDe um’ave que guarda o ninho:\n\nAs illusões mais douradas\nQue um’alma de moça encerra: —\nCantai as crenças nevadas\nQue divinizam a terra;\n\nCantai a meiga harmonia\nDas esperanças em flor,\nCantai a vida, a alegria,\nNa lyra santa do amor.\n\nCantai! O amor é a vida:\n— Dizei-o nos vossos cantos —\nE’ uma aurora querida\nQue desabrocha sem prantos.\n\nExpatriai a saudade,\n— O espinho do coração.—\nCantai a felicidade\nDe uma existencia em botão.\n\nE’ para vós a ventura,\nA gloria que o mundo tem...\nQue vos importa a amargura\nDe um’alma que chora além?\n\nEu tambem irei cantando,\nComo vós, meus pensamentos,\nVivendo sempre sonhando\nSem dores e sem tormentos.\n\nE já que não tenho amores,\nE nem embalo esperanças...\nCanto o perfume das flores,\nCanto o riso das creanças.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cantai",
       "tags": [
@@ -414,7 +419,7 @@
       "titulo": "Horto (1910)/Cantando — CANTANDO",
       "texto": "CANTANDO\n\nA meu irmão Henrique\n\nTão mimosa estrella\nNo Céo hontem vi,\nQue minh’alma, ao vel-a,\nPensou logo em ti.\n\nPensou em ti, santo!\nVendo-a assim brilhar...\nParecia o encanto\nDe teu doce olhar.\n\nDe teu olhar puro,\nMeu celeste amor!\nOnde o meu futuro\nVai boiando em flor.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cantando",
       "tags": [
@@ -427,7 +432,7 @@
       "titulo": "Horto (1910)/Cantando — Vai boiando, a tôa,",
       "texto": "Vai boiando, a tôa,\nSem querer parar,\nQual penna que vôa,\nSuspensa no Ar.\n\nSuspensa voando\nComo um Cherubim\nQue passa cantando\nPelo Azul sem fim.\n\nPelo Azul se esconda\nQuem deseja amar,\nQual nuvem, qual onda,\nNo Céo ou no Mar.\n\nNo Céo, si anoitece,\nNinguem vê o Sol...\nMas que importa? A Prece\nE’ um rouxinol.\n\nRouxinol que chora,\nMas sempre a cantar.\nQuando nasce a aurora\nTambem canta o Luar.\n\nTambem canta amores\nUm’alma sem luz...\nNunca viste flores\nAos pés de uma Cruz?",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cantando",
       "tags": [
@@ -439,7 +444,7 @@
       "titulo": "Horto (1910)/Cantando — Aos pés de Maria,",
       "texto": "Aos pés de Maria,\nGomo é bom rezar!\nQue casta ambrosia\nSe espalha no altar,\n\nSe espalha no labio!\nSem gosto de fel,\nO doce resabio\nDe um favo de mel.\n\nDe um favo tão doce\nComo o teu olhar,\nPois nelle encarnou-se\nMimosa, a brilhar...\n\nMimosa e tão clara,\nA estrella que eu vi!\nA luz que me aclara,\nQuando penso em ti.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cantando",
       "tags": []
@@ -448,7 +453,7 @@
       "titulo": "Horto (1910)/Cantiga",
       "texto": "Meu sonho dourado e leve,\nQue buscas tu a voar?\nUm ninho branco de neve\nOnde me deixem cantar.\n\n····················\nE em busca das nuvens bellas\nLá vai meu sonho a cantar...\nMeu sonho côr das estrellas,\nMeu sonho côr do luar.\n\nPergunto ao sonho, chorando,\nPorque foges a cantar?\nE elle responde, cantando:\nPorque não quero chorar.\n\n····················\nE em busca das nuvens bellas\nFoi-se meu sonho a cantar...\nMeu sonho côr das estrellas,\nMeu sonho côr do luar.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cantiga",
       "tags": []
@@ -457,7 +462,7 @@
       "titulo": "Horto (1910)/Na capellinha — NA CAPELLINHA",
       "texto": "NA CAPELLINHA\n\nLembrança do collegio\n\nEntrou na Egreja sorrindo,\nCoberta com um fino véo.\nO seu rostinho era lindo\nComo o da Virgem do Céo.\n\nFoi ajoelhar-se contricta\nAo pé do sagrado altar,\nE, com piedade infinita,\nPrincipiou a rezar.\n\nUm doce sorriso veiu\nEncher-lhe a bocca de luz.\nUniu as mãos sobre o seio,\nFitou os olhos na Cruz.\n\nO que dizia... Alguem pode\nAdivinhar o que diz\nA prece que ao labio acode\nEmquanto a gente é feliz?",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Na_capellinha",
       "tags": []
@@ -466,7 +471,7 @@
       "titulo": "Horto (1910)/Na capellinha — Nessa idade para que",
       "texto": "Nessa idade para que\nSe reza... (saberei eu?)\nA gente reza porque\nTambem se reza no Céo.\n\nE ella, tão meiga e pura,\nQue não conhecia o mal,\nE que guardava a ventura\nNo coração virginal;\n\nEm sua fé de creança\nIngenua e cheia de amor,\nTalvez pedisse a esperança\nPara os que vivem na dôr.\n\nTalvez tivesse gemidos\nPara quem vive a chorar,\nPara os que vagam perdidos\nNas frias ondas do mar.\n\nE emquanto o labio querido\nOrava piedoso assim,\nDo negro olhar commovido\nO pranto rolou por fim.\n\nE deslisaram sem calma\nAs bagas por sua tez\nNo desconsolo de um’alma\nQue chora a primeira vez.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Na_capellinha",
       "tags": [
@@ -479,7 +484,7 @@
       "titulo": "Horto (1910)/Na capellinha — Su’alma santa onde moram",
       "texto": "Su’alma santa onde moram\nA Luz, a Innocencia e o Bem,\nPedindo pelos que choram\nFoi soluçando tambem.\n\nE comprehendendo o segredo\nD’aquella doce emoção,\nEu disse baixinho, a medo,\nFallando ao meu coração:\n\nBemditos nós que soffremos\nVarados por magua atroz...\nEmquanto assim padecemos\nOs anjos pedem por nós.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Na_capellinha",
       "tags": [
@@ -490,7 +495,7 @@
       "titulo": "Horto (1910)/Carlota",
       "texto": "CARLOTA\n\nA Carlota Valença\n\nQuiz bordar teu nome amado\nE roubei uns fios de oiro\nDas tranças de teu cabello,\nTão longas e perfumadas...\nDepois do nome bordado,\nCom aquelle cabello loiro,\nCuidei ver o Setestrello\nNas sete lettras douradas.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Carlota",
       "tags": [
@@ -501,7 +506,7 @@
       "titulo": "Horto (1910)/Celeste",
       "texto": "CELESTE\n\nA uma creança\n\nEu fiz do Céo azul minha esperança\nE dos astros dourados meu thesoiro...\nImagina porque, doce creança,\nNas noites de luar meus sonhos doiro!\n\nAdivinha, si podes, quanto é mansa\nA luz que boia sob um cilio de oiro.\nE como é lindo um laço azul na trança\nEmbalsamada de um cabello loiro!\n\nImagina porque peço, na morte,\n— Um esquife todo azul que me transporte,\nLonge da terra, longe dos escolhos...\n\nImagina porque... mas, lirio santo!\nNão digas a ninguem que eu amo tanto\nA côr de teu cabello e dos teus olhos!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Celeste",
       "tags": [
@@ -513,7 +518,7 @@
       "titulo": "Horto (1910)/Chorando",
       "texto": "Fazia noite... A tristeza\nTudo envolvia em seu véu;\nSoluçava a Natureza,\nCaía orvalho do Céu.\n\nE n’aquela noite assim,\nTão tenebrosa e tão fria!\nA minha mãe se partia\nPara o Céu azul sem fim.\n\nFalou-me a chorar: filhinha,\nO vício do mundo aterra...\nTu’alma reúne à minha,\nFujamos ambas da terra.\n\nBeijou-me... e, qual sonho doce,\nSua vida evaporou-se.\n········································\n\nÓ mãe! por que me deixaste\nNo mundo sem teu amor?\nSou como o lírio sem haste\nMurchando triste inda em flor.\n\nPodias ter-me levado\nAo Céu contigo, divina...\nIria em teu seio amado:\nEu era tão pequenina!\n\nFiquei sozinha e perdida,\nÓ mãe! no mundo de abrolhos...\nNa noite de minha vida\nDerrama a luz de teus olhos!\n\nQuanta tristeza se encerra\nDo mundo no escuro véu!\nNão quero morar na terra;\nContigo leva-me ao Céu!\n\nJulho de 1897.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Chorando",
       "tags": [
@@ -527,7 +532,7 @@
       "titulo": "Horto (1910)/Ciume",
       "texto": "Não brinques ao sol, menina!\nÉ tão preto o teu cabelo,\nQue exposto ao sol que ilumina,\nJamais, jamais quero vê-lo.\n\nNão sabes por que, Maria?...\nDo sol o brilhante açoite\nSó vem à terra de dia\nPorque não gosta da noite.\n\nE eu temo que ao ver formoso\nO teu cabelo, um tesouro!\nO sol, que  é tão invejoso,\nNão queira torná-lo louro.\n\nLouro, Maria! o repouso\nOnde vacilo com a cruz,\nO doce abrigo onde pouso\nMeus olhos fartos de luz?\n\nNão quero, flor de minh’alma,\nLinda esperança em botão...\nO dia não é que acalma\nAs mágoas do coração.\n\nQuando a dor em fúria brusca\nLhe vem magoar o seio,\nA treva da noite busca\nPara chorar sem receio.\n\nE a minha noite mais pura\nNo teu cabelo é que eu vejo;\nEsqueço toda a amargura\nSe a tua cabeça beijo!\n\nE agora, santa, avalia\nQue pena teria eu\nSe chegasse a ver um dia\nO teu cabelo, Maria,\nDa cor dos astros do céu!\n\nNova Cruz - Novembro - 1897.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ciume",
       "tags": [
@@ -541,7 +546,7 @@
       "titulo": "Horto (1910)/Clarisse",
       "texto": "CLARISSE\n\n«Não sei o que é tristeza,» ella me disse...\nE a sua bocca virginal sorria;\nNinho de estrellas, concha de ambrosia\nCheia de rosas que do Céo cahisse!\n\nE eu docemente murmurei: Clarisse,\nSerá possivel que tu’alma fria\nOuvindo o choro da Melancolia\nO resabio do fel nunca sentisse?\n\nSerá possivel que o teu seio, rosa,\nNunca embalasse a lagrima formosa?\nAh! não és rosa, pois não tens espinho!\n\nE os olhos teus, dois templos de Esperança,\nNunca viram soffrer uma creança,\nNunca viram morrer um passarinho!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Clarisse",
       "tags": [
@@ -552,7 +557,7 @@
       "titulo": "Horto (1910)/Consolo supremo — A quem sofre",
       "texto": "A quem sofre\n\n« Bem-aventurados os que choram\nporque eles serão consolados »\nJesus\n\nOs tristes dizem que a vida\nÉ feita de dissabores\nE a alma verga abatida\nAo peso das grandes dores.\n\nNão acredito que seja\nAssim como dizem, não...\nAi daquele que deseja\nViver sem uma ilusão!\n\nSe há noites frias, escuras,\nTambém há noites formosas;\nHá risos nas amarguras;\nEntre espinhos nascem rosas.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Consolo_supremo",
       "tags": [
@@ -564,7 +569,7 @@
       "titulo": "Horto (1910)/Consolo supremo — E rosas também cobriram",
       "texto": "E rosas também cobriram\nO  lenho santo da Cruz,\nQuando os espinhos cingiram\nA cabeça de Jesus.\n\nRosas do sangue adorado\n- Fonte de graça e de fé -\nBrotando do rosto amado\nDo Filho de Nazaré.\n⁂\nÓ alma triste, chorosa\nComo uma dália no inverno,\nDespe da mágoa trevosa\nO negro cilício eterno!\n\nEnquanto vires estrelas\nDo Céu no imenso sacrário,\nNa terra flores singelas\nE uma Cruz sobre o Calvário;\n\nEnquanto, mansa, pousar\nA prece nos lábios teus,\nE souberes murmurar\nCom as mãos unidas: meu Deus!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Consolo_supremo",
       "tags": [
@@ -577,7 +582,7 @@
       "titulo": "Horto (1910)/Consolo supremo — Não digas que à luz vieste",
       "texto": "Não digas que à luz vieste\nPara chorar e sofrer,\nE como a plantinha agreste\nSonhar um dia e... morrer...\n\nNão digas, pobre querida!\nMesmo se a dor te magoa;\nÉ sempre feliz na vida\nA alma que é purae boa.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Consolo_supremo",
       "tags": [
@@ -588,7 +593,7 @@
       "titulo": "Horto (1910)/O coração e o beijo",
       "texto": "Meu coração chorava e eu lhe dizia:\nPor que choras assim, pobre criança?\nE o triste, a soluçar, me respondia:\nNinguém pode viver sem Esperança.\n\nTu tens a Fé. - A Fé? Mas, o que é d’ela\nSem da Esperança as ilusões serenas?\nUm céu à noite sem nenhuma estrela,\nUm’alma em flor sem um sorriso apenas...\n\n- Mas tens a Caridade. - A Caridade?\nAh, sim! o vinho que embriaga a dor.\nMas eu não amo... Pois, não é verdade\nQue a Caridade é o que se chama - Amor?\n\nNisto passava uma criança linda,\nBotão de lírio, imaculado e santo.\nMeu coração que soluçava ainda\nSorriu ao ver o melindroso encanto.\n\nE foi beijar-lhe os pequeninos lábios,\nFolhas de rosa abrindo de manhã,\nOnde adejavam místicos ressabíos\nDos beijos de uma mãe e de uma irmã...\n\nCompreendeu, então, o desolado\nA linguagem sublime d’esse harpejo:\nNeste mundo de lágrimas povoado,\nA Caridade pode estar num beijo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/O_cora%C3%A7%C3%A3o_e_o_beijo",
       "tags": [
@@ -602,7 +607,7 @@
       "titulo": "Horto (1910)/Cores",
       "texto": "CÔRES\n\nA Cecilia Burle.\n\nEmquanto a gente é creança\nTem no seio um doce ninho\nOnde vive um passarinho\nFormoso como a Esperança.\n\nE elle canta noite e dia\nPorque se chama: Alegria.\n\nDepois... vae-se a Primavera...\nE’ o tempo em que a gente cresce...\nO riso se muda em prece,\nA alma não canta: espera!\n\nE ao ninho do Coração\nDesce outra ave: a Illusão.\n\nMas esta, como a Alegria,\nNos foge... E fica deserto\nO coração, na agonia\nDo inverno que já vem perto.\n\nNas ruinas da Mocidade\nE’ quando pousa a Saudade...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Cores",
       "tags": [
@@ -616,7 +621,7 @@
       "titulo": "Horto (1910)/Creanças",
       "texto": "A Antônia de Araújo, companheira \namada dos tempos  do colégio.\n\nMoro na rua da Ventura. Perto,\nHá um ninho - é a aula das meninas;\nTrazem-me sempre o coração desperto\nOs risos dessas almas cristalinas.\n\nSinto-me alegre. Vivo sem saudade,\nSem, desconforto, sem desesperanças.\nSou bem feliz na minha soledade\nOuvindo o pipilar d’essas crianças.\n\nA’s duas horas ergo-me da banca\nOnde medito: vai fechar-se a escola...\nQue bem me faz esta algazarra franca\nDe aves gentis que voam da gaiola!\n\nGosto de vê-las quando saem rindo\nAlegremente, as mansas andorinhas.\nSão doze ao todo. Que rebanho lindo\nDe inocentes e castas ovelhinhas!\n\nVem na frente a maior. Já quase moça,\nOlhos azuis e fronte cismadora:\nUma açucena de esquisito louça,\nDe face cor de neve e trança loura.\n\nÉ séria e triste. Chama-se Laurita;\nTem uma voz que me seduz e encanta;\nVeste sempre de azul e é tão bonita\nCom os seus ares de pequena santa!\n\nPassa depois Sophia, uma criança\nDe olhar mais negro do que a noite escura.\nVive sempre a sorrir como a Esperança,\nVive sempre a cantar como a Ventura!\n\nE aquela doida que lá vai correndo\nEm risco de tombar nas pedras duras?\nÉ Lúcia. A vida quer levar fazendo\nTodos os dias essas travessuras.\n\nDepois, Sarah e Rebecca... Borboletas\nIrmãs no olhar, no rosto e nos vestidos;\nSão dois anjinhos de madeixas pretas,\nGêmeos sorrisos, corações unidos!\n\nSegue-as a linda e ingênua moreninha\nDe nome terno e encantador: Dolores,\nUma singela e pálida amiguinha\nQue todas as manhãs guarda-me flores.\n\nHoje, está triste. Nem me deu bom dia!\nDeixou cair as rosas pela estrada.\n- Que é do teu canto, doce cotovia?\n(Reparem ela como vai zangada!)\n\nDesce em seguida a meiga Valentina,\nDez anos tem. Parece um Querubim...\nUma açucena pálida e franzina,\nUm encantado e pálido jasmim!\n\nE a Inocência? Vem chorando tanto!\nQue te fizeram, minha sensitiva?\nQuem foi que os olhos te inundou de pranto,\nQuem te causou essa amargura viva?\n\nJá sei: a mestra quis ralhar contigo,\nE foi bem feito, colibri travesso!\nFiquei alegre com o teu castigo;\nPor que não me dás beijos quando os peço?\n\nOuço chamar pelo meu nome... É Santa,\nUm diabrete muito engraçadinho...\n- Soube a lição? - Não me responde, canta...\n- Graça inocente, voa para o ninho!\n\nPuxando a trança de Lucília, passa\nCeleste, a loura; correm como doidas...\nPor que é que tarda a pequenina Garça,\nA mais mimosa e mais gentil de todas!\n\nEi-la! É um anjo a divagar na terra,\nUm beija-flor que prendem na gaiola...\nQuanta candura o seu sorriso encerra,\nQuanta inocência d’esse olhar se evola!\n\nComo eu a amo e que tristeza infinda,\nSinto nos dias em que não a vejo...\nAh! como adoro essa mãozinha linda, \nTão pequenina que parece um beijo!\n\nE eu digo ao ver das criancinhas mansas\nO bando alegre e luminoso e forte:\nVós sois no mundo claras esperanças,\nRosas da vida, embalsamando a morte!\n\nO vosso olhar é como um livro aberto\nOnde soletro as minhas alegrias...\nOásis santo num cruel deserto,\nNegro e sem fim, de fundas agonias.\n\nEm breve as férias chegarão, e eu triste\nQuantas semanas vou passar distante\nDe vosso olhar onde a Candura existe,\nDe vosso riso claro e hilariante!\n\nE para não ficar tão só, tão louca,\nPresa da cisma ao doloroso enleio,\nDai-me as cantigas que levais na boca,\nDai-me as quimeras que guardais no seio!\n\nPois já suspiro pela aurora mansa\nQue há de trazer com o sol do novo ano,\nPara a voss’alma mais uma esperança,\nPara a minh’alma mais um desengano.\n\nAnjos da terra, flores animadas,\nAves do céu que a chilrear passais...\nComo vos quero, evocações amadas\nDo meu passado que não volta mais!\n\nAh, quem me dera os sonhos perfumados\nD’aquele tempo de ideal fragrância...\nCantai! cantai! ó rouxinóis sagrados,\nLembrai-me os dias da primeira infância!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Crean%C3%A7as",
       "tags": [
@@ -630,7 +635,7 @@
       "titulo": "Horto (1910)/Crepusculo",
       "texto": "CREPUSCULO\n\nHa pelo Espaço um ciciar dolente\nDe prece, em torno da Igrejinha em ruina...\n·························\n\nCREPUSCULO\n\nA Julia Lyra.\n\nO Angelus sôa. Vagarosamente\nA noite desce, placida e divina.\nOuço gemer meu coração doente\nChorando a tarde, a noiva peregrina.\n\nHa pelo Espaço um ciciar dolente\nDe prece em torno da Igrejinha em ruina...\nPassaros voam compassadamente\nTreme no galho a rosa purpurina...\n\nE eu sinto que a tristeza vem suspensa\nSobre as azas da noite erma e sombria...\nE que, n’ess’hora de saudade immensa,\n\nRindo e chorando desce ao coração:\nToda a doçura da melancolia,\nTodo o conforto da recordação.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Crepusculo",
       "tags": [
@@ -642,7 +647,7 @@
       "titulo": "Horto (1910)/Dadá — Dadá tinha um filhinho muito louro,",
       "texto": "Dadá tinha um filhinho muito louro,\nTão louro como um raio de luar.\nAquela criancinha era o tesouro,\nO imaculado encanto do seu lar.\n\nDadá o amava tanto que no mundo\nSu’alma em cousa alguma achava brilho.\nNada alterava aquele amor profundo:\nSó via o berço onde sonhava o filho.\n\nQuanto cuidado e que afeição tão santa!\nA areia onde brincando ele corria,\nSe ela pudesse (ah! se não fosse tanta!)\nMesmo dentro do seio a guardaria.\n\nDesejava que a terra fosse um ninho\nHabitado por ela e os seus amores;\nQueria mais que o buliçoso anjinho\nSó visse o céu e só pisasse em flores.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Dad%C3%A1",
       "tags": [
@@ -655,7 +660,7 @@
       "titulo": "Horto (1910)/Dadá — Pois se ele era o sorriso de seus olhos",
       "texto": "Pois se ele era o sorriso de seus olhos\nDesde que o esposo para o Além se fora!\nSe era a luz que surgia entre os abrolhos\nDe su’alma tristonha e sofredora!\n\nSorrindo a mãe dizia olhando a terra\nE o casto manto azul de lá do céu:\n“Sois muito lindo, mas nenhum encerra\nJóia mais linda do que o filho meu.”\n\nE tinha bem razão. O seu Laurinho,\nAquela criatura tão franzina,\nGuardava lírios brancos no rostinho\nE uma rosa na boca pequenina.\n\nNão consentia que ele um só minuto\nDos cuidados maternos se afastasse:\nEra um contraste a sombra de seu luto\nNa alvura virginal d’aquela face!\n\nE se às vezes a garrula criança\nDisparava a correr jardim a fora.\nDadá pensava que sua esperança\nIa fugindo ou que morria a aurora...\n\nEntão cismava cheia de receio,\nComo se o seu filhinho mais não visse:\nE se alcançava, comprimia-o ao seio,\nTemerosa que ainda lhe fugisse..",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Dad%C3%A1",
       "tags": [
@@ -667,7 +672,7 @@
       "titulo": "Horto (1910)/Dadá — Se ele morresse, o que seria d’ela?",
       "texto": "Se ele morresse, o que seria d’ela?\nDadá cuidava às vezes tristemente -\nSe essa criança era como a estrela\nQue guiava os Reis Magos no Oriente?\n\nE entre esperanças e temores francos,\nLauro crescia cada vez mais lindo;\nQuando falava, os seus dentinhos brancos\nLembravam à gente um bogari abrindo.\n\n⁂\nUm dia, ao acordar, Lauro queixou-se\nDe que o corpinho todo lhe doía.\nA mãe cercou-o de um carinho doce:\nO seu filhinho de que sofreria?\n\nE ele chorava que fazia pena\nNaquela alegre e límpida manhã,\nPálida a face como uma açucena,\nE o róseo lábio a murmurar: “mamã”!\n\nDadá beijava aquela mão querida\nE os pés e o rosto e o peito nu e a boca:\nQueria ver se lhe incutia a vida\nNaqueles beijos que lhe dava, louca!\n\nO triste pobrezinho soluçava\nEntre as carícias do materno afago;\nE, em seus olhos, a morte esvoaçava\nBem como um corvo à tona azul de um lago.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Dad%C3%A1",
       "tags": [
@@ -679,7 +684,7 @@
       "titulo": "Horto (1910)/Dadá — Antes do sol pender sobre o horizonte",
       "texto": "Antes do sol pender sobre o horizonte\nO querubim cessava de existir;\nE alguém ainda lhe beijava a fronte:\nEra Dadá a soluçar e a rir.\n\nEstava louca. D’ora em diante, a vida,\nQuem lhe traria ao ninho seu deserto?\nLauro morrera... Branca flor pendida\nCaíra murcha num esquife aberto!\n\nEla bem vira quando carregavam\nO meigo arcanjo dentro de um caixão...\nAlmas cruéis! Do seio lh’o arrancaram\nE com ele também seu coração!\n\nHá muitos anos que isto sucedeu,\nMas, entretanto, o que da morte a salva\nÉ que Dadá, quando contempla o céu,\nDiz que seu filho está na estrela d’Alva.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Dad%C3%A1",
       "tags": [
@@ -691,7 +696,7 @@
       "titulo": "Horto (1910)/Desalento",
       "texto": "DESALENTO\n\nQuando o meu pensamento se transporta\n     A’s praias de alem mar,\nSinto no peito uma tristeza immensa\n     Que manda-me chorar.\n\nE’ que vejo morrerem, uma a uma,\n     Santas aspirações,\nE voarem com os passaros saudosos\n     As minhas illusões...\n\nNunca julguei que a terra fosse um tumulo\n     De sonhos juvenis,\nSorrindo acreditei que aqui, no mundo,\n     Podia ser feliz...\n\nEnganei-me: — a tristeza, que me opprime\n     O coração sem luz...\nComo do Sol o derradeiro raio\n     Nos braços de uma Cruz...\n\nA tremula saudade que entristece\n     E faz desfallecer;\nEssa agonia lenta que me inspira\n     Desejos de morrer... —\n\nTudo me diz que a vida é o desengano,\n     A morte da Illusão,\nE o mundo um grande manto de tristezas\n     Que enluta o coração.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Desalento",
       "tags": [
@@ -704,7 +709,7 @@
       "titulo": "Horto (1910)/Doente",
       "texto": "A lua veio... foi-se... e em breve ainda,\nHá de voltar, a doce lua amada,\nSem que eu a veja, a minha fada linda,\nSem que eu a veja, a minha boa fada.\n\nEla há de vir, Ofélia desmaiada,\nSob as nuvens do céu na alvura infinda\nDo seu branco roupão, noiva gelada,\nBoiando à flor de um rio que não finda.\n\nEla há de vir, sem que eu a veja... Entanto,\nCom que tristezas e saudoso encanto\nChoro estas noites que passando vão...\n\nÓ lua! mostra-me o teu rosto ameno:\nOlha que murcha à falta de sereno\nO lírio roxo do meu coração!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Doente",
       "tags": [
@@ -717,7 +722,7 @@
       "titulo": "Horto (1910)/Dolores",
       "texto": "DOLORES\n\nJá vão caminho do cemiterio\nMeus louros sonhos em visões negras\nE vão-se todos no Azul sidéreo\nComo uma nuvem de toutinegras.\n\nA noite de hontem levei chorando\nTodo o passado de meus amores;\nE o dia ainda me achou rezando\nNo immenso terço de minhas dôres.\n\nVejo na vida longo deserto\nSem doce oasis de salvação.\nDentro em minh’alma, douda, chorosa,\nDe pobre moça tuberculosa,\nCheio de medo, tremulo, incerto\nBate com força meu coração.\n\nE assim morrendo, coitada, aos poucos,\nConvulsa e fria, louca de espanto,\nSolto suspiros, soluços roucos,\nOlhando as cruzes do Campo Santo;\n\nPorque me lembro que muito breve\nLeva-me a elle tanta dor physica.\nE dentro em pouco, branco de neve,\nVerão o esquife da pobre tysica.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Dolores",
       "tags": [
@@ -730,7 +735,7 @@
       "titulo": "Horto (1910)/Estrada a fóra",
       "texto": "ESTRADA A FORA\n\n \n... são assim as paginas da vida;\nMil amarguras perto de cem flores.\nAo pé do riso, — a lagrima dorida.\nH. Castriciano — Ruinas.\n\nElla passou por mim toda de preto\nPela mão conduzindo uma creança...\nE eu cuidei ver alli uma Esperança\nE uma Saudade em pallido dueto.\n\nPois, quando a perda de um sagrado affecto\nDe lastimar esta mulher não cança,\nN’uma alegria descuidosa e mansa\nPassa a creança, o beija-flor inquieto.\n\nTambem na Vida o gôso e a desventura,\nCaminham sempre unidos, de mãos dadas,\nE o berço ás vezes leva á sepultura...\n\nNo Coração, — um horto de martyrios!—\nBrotam sem fim as illusões douradas,\nComo nas campas desabrocham lirios.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Estrada_a_f%C3%B3ra",
       "tags": [
@@ -742,7 +747,7 @@
       "titulo": "Horto (1910)/Eterna dor",
       "texto": "Alma de meu amor, lírio celeste,\nSonho feito de um beijo e de um carinho,\nCriatura gentil, pomba de arminho,\nArrulhando nas folhas de um cipreste.\n\nÓ minha mãe! Por que no mundo agreste,\nRola formosa, abandonaste o ninho?\nSe as roseiras do Céu não têm espinhos,\nQuero ir contigo, ó lírio meu celeste!\n\nAh! se soubesses como sofro, e tanto!\nLeva-me à terra onde não corre o pranto,\nLeva-me, santa, onde a ventura existe...\n\nAqui na vida - que tamanha mágoa! -\nO próprio olhar de Deus encheu-se d’água...\nÓ minha mãe, como este mundo é triste!\n\nUtinga - Outubro de 1898",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Eterna_dor",
       "tags": [
@@ -754,7 +759,7 @@
       "titulo": "Horto (1910)/A Eugenia",
       "texto": "A EUGENIA\n\nImagem santa, que entrevejo em sonho\n    Sempre, sempre a cantar,\nCreatura innocente, anjo risonho,\n    Que me ensinaste a amar!\n\nMeu doce amor! Calhandra maviosa\n    Que canta dentro em mim;\nMinha esperança timida e formosa,\n    Meu sonho de marfim!\n\nAmarantho do Céo, flor encantada,\n    Mimoso colibri;\nMinha açucena pallida e maguada,\n    Meu niveo bogary;\n\nGotta de orvalho a tremular n’um lirio\n    Que mal começa a abrir;\nO’ tu que apagas meu cruel martyrio\n    E que me fazes rir;\n\nMadresilva entreaberta, lyra de ouro,\n    Celeste beija-flôr;\nMinha camelia, meu sorriso louro,\n    Amor de meu amor;\n\nGuarda estes versos que só dizem magua\n    E tristezas sem fim...\nDeixa-os no seio como a gotta d’agua\n    No calix de um jasmim...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A_Eugenia",
       "tags": [
@@ -767,7 +772,7 @@
       "titulo": "Horto (1910)/Fallando ao coração — Desperta, coração! vamos morar",
       "texto": "Desperta, coração! vamos morar\nN’uma casinha branca, ao pé do Mar...\nQue seja linda como é linda a Lua\nQue em noites santas pelo Azul flutua:\nImaculada como a luz do Amor,\nAlva de neve como um sonho em flor.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Fallando_ao_cora%C3%A7%C3%A3o",
       "tags": [
@@ -780,7 +785,7 @@
       "titulo": "Horto (1910)/Fallando ao coração — Quando a Noite vier... se no meu seio",
       "texto": "Quando a Noite vier... se no meu seio\nEstremeceres cheio de receio,\n- Tremendo a sombra que amortalha o Dia\nE cobre a terra de melancolia, -\nLonge do mundo e da desesperança,\nHei de embalar-te como uma criança.\n\nQuero que escutes o gemer profundo\nDo Mar que chora a pequenez do mundo\nE ouças cantar a doce barcarola\nDa noite imensa que se desenrola,\nDando perfume ao coração dos lírios,\nTrazendo sonhos para os meus martírios.\n\nE quando o Sol nascer; quando, formosa\nComo uma garça branca e misteriosa,\nBatendo as asas cor de neve, a Aurora\nVier cantando pelo mundo a fora,\nRufla as asas também... e forte, então,\nTu podes palpitar, meu coração!\n\nAcorda para a Vida e canta e canta,\nO Sol da Terra - iluminada e santa!\nDeixa o teu sonho de saudade e dores\nDormir no seio trêmulo das flores...\nE foge e foge pelo Espaço, à toa,\nPomba exilada que a seus lares voa!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Fallando_ao_cora%C3%A7%C3%A3o",
       "tags": [
@@ -793,7 +798,7 @@
       "titulo": "Horto (1910)/Fallando ao coração — Esquece a louca e pálida amargura",
       "texto": "Esquece a louca e pálida amargura\nQue há tantos anos meu viver tortura...\nCanta o teu hino de ilusão querida,\nEsquece tudo o que não seja a Vida,\nE, para o Céu das alegrias mansas,\nConduz nas asas minhas esperanças...\n\nNão vês? Minh’alma é como a pena branca\nQue o vento amigo da poeira arranca\nE vai com ela assim, de ramo em ramo,\nPara um ninho gentil de gaturamo...\nLeva-me, ó coração, como esta pena\nDe dor em dor até à paz serena.\n\nDesperta, coração, vamos morar\nN’uma casinha branca, ao pé do Mar...\nQuero que escutes, a sonhar comigo,\nA queixa eterna do Oceano amigo\nE ouças o canto triunfal da Aurora\nBatendo as asas pelo Mar a fora...\n\nBarro Vermelho.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Fallando_ao_cora%C3%A7%C3%A3o",
       "tags": [
@@ -805,7 +810,7 @@
       "titulo": "Horto (1910)/Fefa",
       "texto": "Engraçada e pequenina\nEu imagino-a tão leve\nComo uma doce bonina,\nUma açucena de neve.\n\nNo rosto, claro e risonho,\nGuarda a brancura de um véu;\nTraz à mente um casto sonho,\nUm sonho vindo do Céu.\n\nChamam-n’a Fefa. É tão bela\nComo um sorriso sem fim,\nMimosa como uma estrela\nE pura como um jasmim...\n\nO nome não lhe vai bem,\nOutro melhor lhe cabia:\nÀquela nívea cessem\nDeviam chamar  Maria.\n\nParece do Céu. É linda\nComo um menino Jesus:\nNão fala direito ainda\nMas beija sorrindo a Cruz.\n\nÀs vezes, junta as mãozinhas\nE finge que vai rezar...\nEu penso nas andorinhas:\nQuando se põe a rezar\nO lábio das criancinhas\nÉ um’asa a palpitar.\n⁂\nMeu Deus! quanta luz se encerra\nD’aquela vida no albor...\nProtege, Jesus, na terra,\nO seio branco da flor.\n\nA alma que tu lhe deste\nGuarda-a, Senhor, do martírio:\nDerrama o orvalho celeste\nNo coração d’este lírio!\n\nSerra da Raiz, - Fevereiro de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Fefa",
       "tags": [
@@ -817,7 +822,7 @@
       "titulo": "Horto (1910)/Feliz",
       "texto": "Dizes-me que a ventura te foi dada\nE contente tu’alma jamais chora:\nVives sorrindo à luz de uma alvorada\nE a noite para ti é cor da aurora...\n\nNão creio nessa dita, me perdoa.\nNinguém na terra pode ser feliz.\nAté o sino que na torre soa\nTem sua dor, nem sempre ele bem-diz.\n\nLonge... distante... Pelo azul chalrando,\nA modular uns hinos tão suaves,\nPássaros meigos lá se vão cantando...\nMas tu crês na ventura d’essas aves?\n\nRepara bem naquela que ficou \nPousada lá no cimo da aroeira:\nEla chora, coitada, pois deixou\nMuito longe perdida a companheira.\n\nAves da terra, em tímidos adejos,\nTambém alegres como as rolas mansas,\nRostos corados, recendendo beijos,\nCorrem cantando grupos de crianças.\n\nE enquanto passa, em revoada louca,\nEste dourado batalhão de arcanjos,\nEu quero ouvir-te da risonha boca\nSe é eterna a ventura desses anjos.\n\nA moça também sofre... Um áureo cofre\nGuarda-lhe os prantos e o martírio duro,\nE, de todas, aquela que mais sofre\nÉ a que tem o coração mais puro.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Feliz",
       "tags": [
@@ -830,7 +835,7 @@
       "titulo": "Horto (1910)/Fio Partido",
       "texto": "Fugir à mágoa terrena\nE ao sonho, que faz sofrer,\nDeixar o mundo sem pena\n      Será morrer?\n\nFugir neste anseio infindo\nÀ treva do anoitecer,\nBuscar a aurora sorrindo\n      Será morrer?\n\nE ao grito que a dor arranca\nE o coração faz tremer,\nVoar uma pomba branca\n      Será morrer?\n\nII\nLá vai a pomba voando\nLivre, através dos espaços...\nSacode as asas cantando:\n      “Quebrei meus laços!”\n\nAqui, n’amplidão liberta,\nQuem pode deter-me os passos?\nDeixei a prisão deserta,\n      Quebrei meus laços!\n\nJesus, este vôo infindo\nHá de amparar-me nos braços\nEnquanto eu direi sorrindo:\n      Quebrei meus laços!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Fio_Partido",
       "tags": []
@@ -839,7 +844,7 @@
       "titulo": "Horto (1910)/Flor do campo — Moça ingênua e formosa,",
       "texto": "Moça ingênua e formosa,\nÓ doce filha do sertão agreste!\nO teu olhar celeste\nTem o fulgor da Noite luminosa.",
       "forma": "quadra",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flor_do_campo",
       "tags": [
@@ -851,7 +856,7 @@
       "titulo": "Horto (1910)/Flor do campo — Guarda a mesma doçura,",
       "texto": "Guarda a mesma doçura,\nO mesmo encanto feito de esperanças\nDos olhos das crianças,\nNinho de sonho e ninho de ternura.\n\nA luz do Paraíso,\nQuando a alegria tua boca enflora,\nResplende como a aurora\nNa graça virginal de um teu sorriso.\n\nÉ’s inocente e boa\nComo a Quimera que em teu seio canta\nTens a beleza santa\nDa pomba amiga que no Espaço voa. \n\nJamais alguém te disse\nQue tens o rosto branco como o gelo,\nA noite no cabelo\nE o sorriso tão cheio de meiguice. \n\nPor isso inda é mais bela\nA tua fronte cândida e tranqüila,\nE o fogo que cintila\nNo teu olhar é como o de uma estrela. \n\nAngélica e suave,\nÉ tua voz que as almas adormece,\nUm ciciar de prece,\nEmbalando a saudade de algum’ave.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flor_do_campo",
       "tags": [
@@ -864,7 +869,7 @@
       "titulo": "Horto (1910)/Flor do campo — Hoje tu’alma ignora",
       "texto": "Hoje tu’alma ignora\nToda a magia deste rosto puro;\nMas, olha, no futuro\nLembrar-te-ás do que não vês agora.\n\nE, então, com que saudade\nRecordarás esse passado morto\nEm triste desconforto,\nChorando os sonhos da primeira idade. \n\nÓ lindo malmequer,\nAnjo que vives a sonhar com Deus...\nPõe os olhos nos meus\nE ouve bem séria o que te vou dizer: \n\nUm dia, talvez cedo,\nTeu coração palpitará inquieto\nE, transbordando afeto,\nHá de afagar um íntimo segredo.\n\nPara tu’alma honesta\nO Céu inteiro, iluminado, ó flor!\nCom a luz de um puro amor\nHá de brilhar como uma Igreja em festa.\n\nE assim, risonha e calma,\nConduzirá ao porto da aliança,\nNa barca da Esperança,\nComo um troféu, o noivo de tu’alma.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flor_do_campo",
       "tags": [
@@ -878,7 +883,7 @@
       "titulo": "Horto (1910)/Flor do campo — E Deus há de baixar",
       "texto": "E Deus há de baixar\nSobre estas duas mãos que o padre estreita,\nA bênção mais perfeita,\nO seu mais doce e mais divino olhar.\n\nFeliz, muito feliz,\nA tua vida correrá de manso\nNo plácido remanso\nDe quem adora o Céu e o Céu bem-diz.\n\nDepois, do Paraíso,\nJesus há de enviar-te uma filhinha,\nFormosa criancinha\nQue embalarás cantando n’um sorriso.\n\nE ela há de ser bonita\nE boa como tu, anjo terrestre,\nÓ linda flor silvestre,\nMinha singela e casta margarida!\n\nE após anos e anos,\nQuando ela ficar moça e no teu rosto\nA sombra do sol posto\nFor desdobrando o manto dos enganos.\n\nN’um dia de verão,\nSentado à porta, à hora do descanso,\nSorrindo, bem de manso,\nHá de dizer, pegando-te na mão.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flor_do_campo",
       "tags": [
@@ -891,7 +896,7 @@
       "titulo": "Horto (1910)/Flor do campo — O velho esposo amigo:",
       "texto": "O velho esposo amigo:\n- Repara como é linda a nossa filha!\nSeu riso como brilha!\nEras assim quando casei contigo.\n\nE tu hás de evocar,\nEntre saudades trêmulas e ais,\nAquele tempo que não volta mais!\n\nE no gracioso olhar\nDe tua filha os olhos mergulhando,\nDeixarás a tu’alma ir flutuando\n\nSobre a onda bendita\nDaquele mar puríssimo e dolente...\n\nE, então, murmurarás saudosamente:\nAh! como fui bonita!\n\nAlto da Saudade.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flor_do_campo",
       "tags": [
@@ -905,7 +910,7 @@
       "titulo": "Horto (1910)/Flores",
       "texto": "FLORES\n\nA Leopoldina e Rosa Monteiro\n\nQuando começa a raiar\nO dia cheio de amor,\nEu gosto de contemplar\nO coração de uma flor;\n\nDesmaiada e tremulante,\nPendendo triste no galho\nTendo o pistillo brilhante\nEmbalsamado de orvalho:\n\nA rosa só me parece,\nAssim tão casta e sem veo,\nUm anjo rezando a prece,\nUm’alma voando ao Céo.\n\nDo jasmim puro e mimoso,\nA corolla embranquecida,\nE’ como um seio formoso\nDe creança adormecida.\n\nEsqueço-me, então, das horas\nA contemplar estas flores,\nAs violetas, auroras,\nSaudades, lindos amores.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Flores",
       "tags": [
@@ -919,7 +924,7 @@
       "titulo": "Horto (1910)/Gentil",
       "texto": "GENTIL\n\nA essa creancinha de olhos castanhos e sorriso claro, que eu vejo sempre á tarde, descalcinha e loura, sacudindo beijos...\n\nComo é gracioso e lindo o pequenino loiro\nQue ás vezes, á tardinha, eu vejo docemente\nPassar junto de mim como um sorriso de oiro,\nAnjo que vem do Céo na luz do Sol poente.\n\nComo é gracioso e lindo! Eu cuido ver um sonho,\n— Um sonho côr da aurora e belo como o Mar —\nQuando os olhos sem luz entristecidos ponho\nNa pupila gentil d’aquelle meigo olhar.\n\nO seu cabello guarda a côr serena e doce\nDa pallida estrelinha ao despontar do dia.\nTalvez que um anjo diga, ao vel-o: «desmanchou-se\nO louro resplendor do filho de Maria!»\n\nE se elle entreabre, a rir, a bocca ingenua e pura,\nCasta como da rosa o seio immaculado:\n«Abrem-se, par em par, — meu coração murmura —\nAs portas de coral de um palacio encantado!»\n\nAh! como fico alegre e como canto ao vel-o!\nFoge-me até do seio a sombra do Desgosto.\nInclino-me de leve e beijo-lhe o cabello\nEmquanto o Sol se ajoelha e vem beijar-lhe o rosto...\n\nO’ lirio perfumado! O’ manso cordeirinho\nQue guardas a Chimera em teu sorriso em flor...\nVive feliz, ó santo, e que jamais o espinho\nDa magua te atormente, ó pequenino amor!\n\nQue o meu Verso te leve, açucena bemdita,\nNas azas de cristal, as brancas esperanças...\nE o affecto sagrado e a ternura infinita\nQue minh’alma consagra a todas as creanças!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Gentil",
       "tags": [
@@ -933,7 +938,7 @@
       "titulo": "Horto (1910)/Goivos — GOIVOS",
       "texto": "GOIVOS\n\nA’ memoria de Irineu.\n\nUm dia... (eu era menina)\nTrouxeram-me um passarinho:\nEra uma ave pequenina,\nRoubada ao calor do ninho.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Goivos",
       "tags": [
@@ -944,7 +949,7 @@
       "titulo": "Horto (1910)/Goivos — Inda não era sol posto...",
       "texto": "Inda não era sol posto...\nQuanto perfume trazia\nA aragem fresca e macia\nD’aquella tarde de Agosto!\n\nDevagarinho, no solo,\nSentei-me a cantarolar;\nDe manso, puz-me a embalar\nO pobresinho no collo.\n\nQue tempo estive, não sei!\nDo mundo inteiro distante,\nO jardim, naquelle instante,\nFoi a terra que eu amei.\n\nDepois... a noite descia...\nE eu senti, dentro do seio,\nNão sei que vago receio\nDa tarde que, além, morria!\n\nN’uma gaiola pequena\nFui deitar o passarinho,\nFazendo lá dentro um ninho\nDê algodão frouxo e de penna.\n\nMas dias depois, ó dor!\nQue grande desdita a minha!\nNo fundo da gaiolinha\nAchei morto o pobre amor.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Goivos",
       "tags": [
@@ -958,7 +963,7 @@
       "titulo": "Horto (1910)/Goivos — Tinha o biquinho entreaberto",
       "texto": "Tinha o biquinho entreaberto\nQual se morresse a cantar,\nE um par de azas aberto\nComo se fosse a voar.\n\nChorei sem hypocrisia,\nComo se chora em creança...\nEra a primeira esperança\nQue do seio me fugia.\n\nII\n\nQue de annos ja vào! Entanto\nSó recordo, entristecida,\nA hora em que vi sem vida\nO meu pequenino encanto.\n\nE, daquelle triste dia\nDo meu viver de creança,\nConservo como lembrança\nA gaiolinha vasia.\n\nLembrança ingenua e sagrada!\nCaricia que se balouça,\nEntre os meus sonhos de moça,\nComo reliquia adorada!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Goivos",
       "tags": []
@@ -967,7 +972,7 @@
       "titulo": "Horto (1910)/Goivos — Um dia destes, enferma,",
       "texto": "III\n\nUm dia destes, enferma,\nEu recordava, a chorar,\nUm sonho que vi brilhar\nEm minha vida tão erma.\n\nE cheia de desconforto\nFui evocando o perfil,\nSereno, meigo e gentil,\nDe meu irmãosinho morto,\n\nQuando ouvi, muito baixinho,\nUm grito vago e dorido,\nComo o saudoso gemido\nDe um’ave, pedindo o ninho...\n\nQuem ousaria no mundo\nPenetrar na soledade,\nOnde gemia a saudade\nDo meu coração no fundo?\n\nJulguei sonhar... Mas, desperta\nEstava, ainda, e sosinha!\nAquelle gemido vinha\nLá da gaiola deserta.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Goivos",
       "tags": [
@@ -979,7 +984,7 @@
       "titulo": "Horto (1910)/Goivos — Era o soluço choroso",
       "texto": "Era o soluço choroso\nDa ave que se partira,\nE de meu seio fugira\nEm busca do Azul formoso!\n⁂\nMas... a gaiola vasia,\nQue eu conservo noite e dia\nNão sabem? E’ o Coração...\nE’ dentro d’elle que mora,\nE’ dentro d’elle que chora,\nA alma de meu irmão!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Goivos",
       "tags": [
@@ -991,7 +996,7 @@
       "titulo": "Horto (1910)/Hoje",
       "texto": "Fiz anos hoje... Quero ver agora\nSe este sofrer que me atormenta tanto\nMe não  deixa lembrar a paz, o encanto, \nA doce luz de meu viver de outr’ora.\n\nTão moça e mártir! Não conheço aurora,\nFoge-me a vida no correr do pranto,\nBem como a nota de choroso canto\nQue a noite leva pelo espaço em fora.\n\nMinh’alma voa aos sonhos do passado,\nEm busca sempre d’esse ninho amado\nOnde pousava cheia de alegria.\n\nMas, de repente, num pavor de morte,\nSente cortar-lhe o vôo a mão da sorte...\nMinha ventura só durou um dia.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Hoje",
       "tags": [
@@ -1005,7 +1010,7 @@
       "titulo": "Horto (1910)/Hora de paz",
       "texto": "Como é feliz a hora do descanso!\nQuando sinto os meus olhos, manso e manso,\n     Morrendo para a luz...\nTodas as dores da Saudade esqueço,\nJunto as mãos sobre o seio e adormeço\n     Sorrindo para a Cruz...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Hora_de_paz",
       "tags": [
@@ -1016,7 +1021,7 @@
       "titulo": "Horto (1910)",
       "texto": "Os tumulos dos teus dão-te regaços!\nAma-te a sombra do salgueiro afflicto...\nVae, pois, meu livro! e como o corvo agreste\nTraz-me, no bico, um ramo de cypreste!",
       "forma": "quadra",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29",
       "tags": [
@@ -1028,7 +1033,7 @@
       "titulo": "Horto (1910)/No Horto — HORTO",
       "texto": "HORTO\n\n« Oro de joelhos, Senhor, na terra\nPurificada pelo teu pranto...\nMinh’alma triste que a dor aterra\nBeija os teus passos, Cordeiro santo!\n\nEu tenho medo de tanto horror...\nReza commigo, doce Senhor!\n\nQue noite negra, cheia de sombras,\nNão foi a noite que aqui passaste?\nO’ noite immensa... porque me assombras,\nTu que nas trevas me sepultaste?\n\nJesus amado, reza commigo...\nAfasta a noite, divino amigo! »\n\nEu disse... e as sombras se dissiparam\nJesus descia sobre o meu Horto...\nEstrellas lindas no Céo brilharam,\nVoltou-me o riso, já quasi morto.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Horto",
       "tags": [
@@ -1042,7 +1047,7 @@
       "titulo": "Horto (1910)/No Horto — E a sua bocca falou tão doce,",
       "texto": "E a sua bocca falou tão doce,\nComo si a corda de um’harpa fosse:\n\n« Filha adorada que o teu gemido\nErgueste n’aza de uma oração,\nNa treva escura sempre envolvido\nPorque soluça teu coração?\n\nLevanta os olhos para o meu rosto\nQue á vista d’elle foge o Desgosto.\n\nNão tenhas medo do soffrimento,\nElle é a escada do Paraiso...\nContempla os astros do Firmamento,\nDoces reflexos de meu sorriso.\n\nNão pensa em dores nem canta maguas.\nA garça nivea fitando as aguas.\n\nSigo-te os passos por toda parte,\nVivo comtigo como um irmão,\nAcaso posso desamparar-te\nQuando me trazes no coração?\n\nNas oliveiras do mesmo Horto,\nEmquanto orares, terás confôrto.\n\nOlha as estrellas... no Céo escuro\nParecem sonhos amortalhados...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Horto",
       "tags": [
@@ -1053,7 +1058,7 @@
       "titulo": "Horto (1910)/No Horto — Assim, nas trevas do mundo impuro,",
       "texto": "Assim, nas trevas do mundo impuro,\nBrilham as almas dos desolados.\n\nMesmo das noites a mais sombria\nSempre conduz-nos á luz do dia. »\n\nErgui os olhos para o Céo lindo:\nVi-o boiando n’um mar de luz...\nE, então, minh’alma, n’um goso infindo,\nChorando e rindo, disse a Jesus:\n\n« Guia o meu passo, nos bons caminhos,\nNa longa estrada cheia de espinhos.\n\nDá-me nas noites, negras de dores,\nUma Cruz santa para adorar,\nE em dias claros, cheios de flores,\nUma creança para beijar.\n\nJunta os meus sonhos, no Azul dispersos,\nDesce os teus olhos sobre os meus versos... \n\nE vós, amigos tão carinhosos,\nIrmãos queridos que me adorais,\nE nos espinhos tão dolorosos,\nDe minha estrada tambem pisais...\n\nVelai commigo, longe da luz,\nQue já levantam a minha Cruz.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Horto",
       "tags": [
@@ -1066,7 +1071,7 @@
       "titulo": "Horto (1910)/No Horto — A hora triste já vem chegando",
       "texto": "A hora triste já vem chegando\nDe nossa longa separação...\nQue lança aguda vai traspassando,\nDe lado a lado meu coração!\n\nNão adormeçam, meus bem amados,\nJá vejo os cravos ensanguentados.\n\nLonge, bem longe, naquelle monte.\nNão brilha um astro de luz divina?\nE’ o diadema de minha fronte,\nE’ a esperança que me illumina!\n\nA Cruz bemdita, que aterra o vicio,\nFogueira ardente do sacrificio.\n\nAdeus, da vida sagrados laços...\nAdeus, ó lirios de meu sacrario!\nA Cruz, no monte, mostra-me os braços..\nEu vou subindo para o Calvario.\n\nFicai no valle, pobres irmãos,\nDa vóvósinha beijando as mãos.\n\nE si ella, inquieta, com a voz tremente.\nOuvindo as aves pela manhã,\nInterrogar-vos anciosamente:\n« Que é do sorriso de vossa irmã?\n\nDizei, alegres: « Foi passeiar...\nFoi colher flores para o Altar. »",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Horto",
       "tags": [
@@ -1079,7 +1084,7 @@
       "titulo": "Horto (1910)/No Horto — E, quando a tarde vier deixando",
       "texto": "E, quando a tarde vier deixando\nNos labios todos saudosos ais,\nE a pobre santa falar chorando:\n« A minha neta não volta mais? »\n\nDizei sem prantos: « A tarde é linda...\nAnda nos campos, brincando ainda. »\n\nLivrai su’alma do frio açoite\nDas ventanias que traz o Inverno...\nCerrai-lhe os olhos, na grande noite,\nNa noite immensa do somno eterno.\n\nAnjo da guarda, de rosto ameno,\nMostra-me o trilho do Nazareno...\n······················\nE... adeus, ó lirios do meu sacrario,\nQue eu vou subindo para o Calvario!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Horto",
       "tags": [
@@ -1092,7 +1097,7 @@
       "titulo": "Horto (1910)/Irineo",
       "texto": "Num dia turvo assim foi que partiste\nCheio de dor e de tristeza cheio.\nEu fiquei a chorar num doudo anceio\nOlhando o espaço merencorio, triste.\n\nNão sei se magua mais profunda existe\nQue esta saudade que me opprime o seio,\nPois a amargura que ferir-me veio\nNaquelle dia, ó meu irmão! persiste.\n\nOs annos que se foram! Emtanto eu scisnio\nA todo o instante, no profundo abysmo\nQue veio a morte entre nós dous abrir.\n\nMas cada noute, n’aza de uma prece,\nOu num raio de sol quando amanhece,\nVejo tu’ alma para o ceu subir...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Irineo",
       "tags": [
@@ -1105,7 +1110,7 @@
       "titulo": "Horto (1910)/Jesus! Maria!",
       "texto": "Meu coração guarda escritos\nE canta em doce harmonia\nEstes dois nomes benditos:\nJesus! Maria!\n\nSe o dia nasce e, na altura,\nO sol formoso irradia,\nMinh’alma acorda e murmura:\nJesus! Maria!\n\nSe a noite desce e, tão brando,\nO Sonho azul me inebria,\nSempre adormeço cantando:\nJesus! Maria!\n\nDa ilusão se o sopro lindo\nTodo o meu ser extasia,\nAlegre digo, sorrindo:\nJesus! Maria!\n\nMeu coração, quando pulsa,\nLouco de dor e agonia,\nAinda grito convulsa:\nJesus! Maria!\n\nJesus! Maria! Invocando\nEm vós o sol que alumia,\nQuero morrer soluçando:\nJesus! Maria!\n\n27 de Julho de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Jesus%21_Maria%21",
       "tags": [
@@ -1117,7 +1122,7 @@
       "titulo": "Horto (1910)/De joelhos",
       "texto": "Ajoelhada, ó minh’alma, abraçando o madeiro\nEm que morreu Jesus, o teu celeste amigo!\nA seus pés acharás o pouso derradeiro,\nO derradeiro amparo, o derradeiro abrigo.\n\nAjoelha e soluça... A noite, mãe piedosa,\nTe aperta contra o seio e te ensina a rezar...\nBalbucia a oração, pequenina e formosa,\nDas estrelas no céu e das ondas no Mar.\n\nAjoelha e soluça, implorando a alegria\nQue a saudade sem fim do coração te arranca,\nE a graça de viver, como a Virgem Maria,\nEternamente pura, eternamente branca.\n\nAjoelha e repete a prece imaculada\nQue aprendeste a rezar no tempo de criança;\nDeixa a prece subir como uma ária encantada\nSe evolando da terra ao País da Esperança.\n\nAjoelha e soluça... A dúvida, que importa?\nNinguém poderá rir ante uma dor tamanha...\nTodos beijam a Cruz, toda a descrença é morta\nQuando se chega ao pé da sagrada montanha.\n\nDe joelhos, minh’alma, ao pé do lenho santo\nEm que sofre Jesus a derradeira pena!\nDeixa cair-lhe aos pés em gotas o teu pranto...\nQue as enxugue no Céu a doce Madalena!\n\nAjoelha e soluça, implorando a alegria\nQue a saudade sem fim do coração te arranca,\nE a graça de viver, como a Virgem Maria,\nEternamente pura, eternamente branca...\n\nSerra da Raiz - 2 - 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/De_joelhos",
       "tags": [
@@ -1131,7 +1136,7 @@
       "titulo": "Horto (1910)/Na Judéa",
       "texto": "NA JUDÉA\n\nImitando a Transfiguração de G. Crespo\n\nTinha Jesus no olhar o doce azul dos mares\nE no cabello d’oiro os raios estrellares.\n\nNo seu sorriso em flor alguma cousa havia\nDos beijos virginaes dos labios de Maria.\n\nSeu passo era tão leve e sua voz tão mansa\nComo deve ser leve um sonho de creança.\n\nElle vinha do Céo dizer ao mundo inteiro:\n«Eu sou filho de Deus, Messias verdadeiro.»\n\nO povo soluçava ouvindo a voz dolente\nDo pallido Jesus, tão doce e tão clemente!\n\nE Maria tambem, lembrando a prophecia\nDo velho Simeão, da espada da agonia,\n\nSoluçava de dor fitando os olhos castos\nNo rosto de seu filho, em seus cabellos bastos.\n\nMas Jesus, a sorrir, fallava á turba immensa,\nSilenciosa a escutar, de sua voz suspensa...\n\nE a palavra de luz de seus labios descia,\nComo o pranto sem fim dos olhos de Maria.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Na_Jud%C3%A9a",
       "tags": [
@@ -1144,7 +1149,7 @@
       "titulo": "Horto (1910)/A Julia",
       "texto": "No teu olhar, cheio da luz chorosa\nQue envolve o Espaço quando a tarde expira,\nBóia uma doce mágoa lacrimosa,\nUma saudade indefinida gira.\n\nE quando afirmes que não tem começo\nA dor sem fim que no teu seio existe\nQueres assim, eu muito bem conheço,\nFazer-me crer que já nasceste triste.\n\nE falas a sorrir: “Essa dolente\nTristeza amarga que me empana o olhar\nÉ a vaga chorando eternamente\nPor não poder se separar do mar...”\n\nE se te fito a umedecida boca\nE vejo rubro o lábio que sorri,\nLogo pergunto, num cismar de louca,\nÀ mente e ao coração, se és tu quem ri.\n\nPois é tão mansa a chama destes olhos\nEnvoltos na carícia do sorriso,\nQue eu penso que teus cílios são abrolhos,\nAbrolhos rodeando um paraíso...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A_Julia",
       "tags": [
@@ -1156,7 +1161,7 @@
       "titulo": "Horto (1910)/Lagrimas",
       "texto": "Eu não sei o que tenho... Essa tristeza\nQue um sorriso de amor nem mesmo aclara,\nParece vir de alguma fonte amara\nOu de um rio de dor na correnteza.\n\nMinh’alma triste na agonia presa,\nNão compreende esta ventura clara,\nEssa harmonia maviosa e rara\nQue ouve cantar além, pela devesa.\n\nEu não sei o que tenho... Esse martírio,\nEssa saudade roxa como um lírio,\nPranto sem fim que dos meus olhos corre,\n\nAi, deve ser o trágico tormento,\nO estertor prolongado, lento, lento,\nDo último adeus de um coração que morre...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Lagrimas",
       "tags": [
@@ -1170,7 +1175,7 @@
       "titulo": "Horto (1910)/N’um leque",
       "texto": "N’UM LEQUE\n\nNa gaze loira d’este leque adeja\nNão sei que aroma mystico e encantado...\nDoce morena! Abençoado seja\nO doce aroma de teu leque amado!\n\nQuando o entreabres, a sorrir, na Egreja,\nO templo inteiro fica embalsamado...\nAté minh’alma carinhosa o beija,\nComo a toalha de um altar sagrado.\n\nE emquanto o aroma iuebriante vôa,\nUnido aos hymnos que, no côro, entôa\nA voz de um orgão soluçando dores,\n\nSó me parece que o choroso canto\nSobe da gaze de teu leque santo\nCheio de luz e de perfume e flores!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/N%E2%80%99um_leque",
       "tags": [
@@ -1183,7 +1188,7 @@
       "titulo": "Horto (1910)/Loli",
       "texto": "LOLI\n\nA’ memoria da pequena Loli, das «Caricias».\n\nFormosa e pura como um lirio puro\nNa sua alvura virginal de neve,\nLoli, no esquife pequenino e leve,\nLá vai caminho do sepulcro escuro.\n\nVai vestidinha como a Virgem santa\nMãe de Jesus, o doce Nazareno:\nMortalha branca de um alvor que encanta,\nManto estrellado, côr do Azul sereno.\n\nPallida a face, faz lembrar tão linda\nDe um lirio murcho a pallidez sem fim.\nComo é bonito amortalhado assim\nUm lirio branco, desbrochando ainda!\n\nO caixãosinho tem a côr divina\nDo mundo immenso, onde Jesus habita,\nE o frio corpo da gentil menina\nRepousa n’elle entre jasmins e fita.\n\nSeu cabellito, perfumado e loiro,\nCobriam todos de cheirosas flores...\nTraz-nos a mente, sepultado em dores,\nUm encantado e virginal thesoiro.\n\nTodos soluçam, meigos, contemplando\nO esquife santo que caminha ali.\nBeijos saudosos em formoso bando\nVoam, gemendo, a procurar Loli.\n\nO’ creancinha, ó pequenina aurora!\nDescerra as folhas, açucena amiga!\nRosa adorada que o tufão desliga\nDa haste mimosa, quem te beija agora?\n\nMas já não ouve, o pobre sonho morto...\nTão longe o esquife! ninguem mais o alcança...\nBarco celeste, vai levando ao porto\nO corpo amado d’esta flor creança.\n···························\n\nE branca, e branca como um lirio puro,\nNa sua alvura virginal de neve,\nLoli, no esquife pequenino e leve,\nLá foi caminho do sepulcro escuro.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Loli",
       "tags": [
@@ -1197,7 +1202,7 @@
       "titulo": "Horto (1910)/De longe",
       "texto": "DE LONGE\n\nA Antonia de Araujo.\n\nPara os teus annos, formosa,\nOnde não vão meus desejos?\nMas longe de ti, saudosa,\nSó posso enviar-te beijos.\n\nSeria, porem, com pressa,\nCheia de muito receio,\nQue eu faria esta remessa\nDe beijos pelo correio.\n\nE então pelo espaço alado\nEu vou soltal-os em bando,\nComo um batalhão dourado\nDe passarinhos voando.\n\nPodem, assim, os amores,\nLevar-te n’aza dispersos:\nMinh’alma desfeita em flôres\nE o meu coração em versos.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/De_longe",
       "tags": [
@@ -1210,7 +1215,7 @@
       "titulo": "Horto (1910)/Ao luar",
       "texto": "AO LUAR\n\nA Maria Fausta e a Mercês Coelho\n\nAstros celestes, docemente louros,\nGiram no Espaço, em luminoso bando;\nOuve-se ao longe um violão plangente\nE, mais além, n’um soluçar dolente,\nCanções serenas, ao luar voando.\n\nQuanta tristeza pela noite clara!\nQuanta saudade pelo Azul boiando!\nCuida-se ouvir n’um dolorido chôro\nAs preces tristes de um magoado côro\nDe almas penadas ao luar rezando.\n\nO Céo parece uma egrejinha antiga\nQue a Lua branca vai allumiando...\nE essas estrellas, muito alem dispersas,\nSão rosas brancas no Infinito immersas,\nMonjas bemditas, ao luar chorando.\n\nOs pyrilampos, pelas moitas tristes,\nVoam, calados e subtis, brilhando...\nLembram descrenças, a bailar sombrias,\nIllusões mortas de esquecidos dias,\nAlmas de loucos, ao luar passando.\n\nFlocos de nuvens pela Esphera adejam,\nBarcos de neve pelo Azul formando...\nSemelham preces que se vão da terra,\nAlmas mimosas, que este mundo encerra\nDe creancinhas, ao luar sonhando.\n\nElles parecem tambem velas brancas\nSoltas, a tôa, pelo Mar vogando...\nLeves e tenues, a correr immensas,\nFolhas de lirios pelo Ar suspensas,\nAves saudosas, ao luar chorando.\n\nAi! quem me dera ser tambem creança!\nAi! quem me dera andar tambem voando!\nFazer dos astros um barquinho amado,\nN’ elle vagar por todo o Céo dourado,\nAs minhas dores ao luar cantando!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_luar",
       "tags": [
@@ -1224,7 +1229,7 @@
       "titulo": "Horto (1910)/Luz e Sombra",
       "texto": "Vamos seguindo pela mesma estrada,\nEm busca das paragens da ilusão;\nA alma tranqüila para o Céu voltada,\nSuspensa a lira sobre o coração.\n\nRis e eu soluço... (Loucas peregrinas!)\nE em toda parte, enfim, onde passamos,\nDeixo chorando os olhos das meninas,\nDeixas cantando os pássaros nos ramos.\n\nPorque elas amam tua voz canora,\nÓ delicado sabiá da mata!\nE eu lembro triste a juriti que chora\nE a voz dorida em lágrimas desata.\n\nGostam de ver-te o rosto de criança\nLimpo das névoas de um martírio vago,\nO lábio em riso, desmanchada a trança,\nNo olhar sereno a candidez do lago.\n\nAté perguntam quando sobre a areia\nEm que tu pisas vão nascendo rosas:\n“Bela criança, tímida sereia,\nIrmã dos sonhos das manhãs radiosas.\n\nPor que trilhando a terra dos caminhos,\nOnde o teu passo faz brotar mil flores,\nEsta velhinha vai deixando espinhos\nE um longo rastro de saudade e dores?”\n\nNão lhes respondas... Pela mesma estrada\nSigamos sempre em busca da Ilusão;\nA alma tranqüila para o céu voltada,\nSuspensa a lira sobre o coração.\n\nVamos; desprende a doce voz canora,\nQue ela afugenta da tristeza o açoite;\nE, enquanto elevas o teu hino à aurora,\nEu vou rezando as orações da noite...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Luz_e_Sombra",
       "tags": [
@@ -1238,7 +1243,7 @@
       "titulo": "Horto (1910)/Lydia",
       "texto": "LYDIA\n\nA Esther.\n\nFeliz de quem se vai na tua idade,\nMurmura aquelle que nâo crê na vida,\nEj não pensa sequer na mãe querida\nQue te contempla cheia de saudade.\n\nPobre innocente! Se alegrar quem hade\nCom tua sorte, rosa empallecida!\nBranca açucena inda em botão cahida,\nO que irás tu fazer na eternidade?\n\nFoges da terra em busca de venturas?\nMas, meu amor, si conseguires tel-as\nDe certo não será nas sepulturas.\n\nFica entre nós, irmã das andorinhas:\nDeus fez do Céo a patria das estrellas,\nDo olhar das mães o Céo das creançinhas.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Lydia",
       "tags": [
@@ -1252,7 +1257,7 @@
       "titulo": "Horto (1910)/Manhã no campo",
       "texto": "MANHÃ NO CAMPO\n\nA Maria Nunes\n\nEstendo os olhos pelo prado afóra:\nVerdura e flores é o que a vista alcança...\n— Bemdito oasis onde o olhar descança\nQuando saudades do Passado chora. —\n\nEscuto ao longe uma canção sonora.\nVoz de mulher ou antes de creança\nEntôa o hymno branco da Esperança,\nHymno das aves ao nascer da Aurora.\n\nPor toda parte risos e fulgores\nE a Natureza desbrochando em flores\nIlluminada pelo Sol risonho,\n\nRecorda um’alma diluida em prece,\nUm coração feliz que inda estremece\nA’ luz sagrada do primeiro sonho!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Manh%C3%A3_no_campo",
       "tags": [
@@ -1266,7 +1271,7 @@
       "titulo": "Horto (1910)/As mãos de Clarisse",
       "texto": "AS MÃOS DE CLARISSE\n\nCausam-me tantos martyrios\nAs tuas mãos adoradas,\nCom estes dedos de fadas\nTão formosos e pequenos...\nQue eu chamaria dous lirios,\nSe houvesse lirios morenos!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/As_m%C3%A3os_de_Clarisse",
       "tags": []
@@ -1275,7 +1280,7 @@
       "titulo": "Horto (1910)/Ao mar",
       "texto": "AO MAR\n\nA D. Martha e D. Amelia Pacheco.\n\nHontem á tarde, ao pé de ti sentada,\nEu puz-me a contemplar-te, ó Mar bravio!\nPensava que acolhida em tuas ondas\nTalvez minh’alma não sentisse frio!\n\nContei-te, uma por uma, as cruas dôres\nDe minha vida, toda de saudade;\nQuiz afogar as minhas maguas fundas\nNo leito azul de tua immensidade.\n\nComo seria bom morrer ahi,\nMoça, innocente, tendo n’alma em flor,\nUm mundo virgem de sagradas crenças,\nTodo banhado no ideal do Amor!\n\nTu dar-me-hias, então, a sepultura\nNessas espumas murmurosas, belas...\nE á noite, se mirando em tuas aguas,\nMe cobriria o Céo de mil estrellas.\n\nAo pé de ti, como um soluço brando,\nSinto fugir-me, pouco a pouco, a vida...\nChorai, vagas, por mim! dobrai finados\nBem como os sinos de risonha ermida!\n\nNo mausoléo augusto do Oceano\nDe outros dobres minh’alma não precisa;\nPor supplica mortuaria só deseja\nO soluço do vento que deslisa...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_mar",
       "tags": [
@@ -1289,7 +1294,7 @@
       "titulo": "Horto (1910)/Mater",
       "texto": "MATER\n\nA meus irmãos\n\nO’ santa, ó minha mãe, meu sol primeiro!\nLuiz Murat.\n\nMinha mãe! meu amor! Porque voaste, rindo,\nPara o paiz azul e santo da chimera?\nMinha mãe! minha mãe! Si o Céo é sempre lindo,\nAqui tambem ha sol, tambem ha primavera...\n\nDepois que te partiste e os teus pobres filhinhos\nPequeninos e sós, deixaste na orphandade,\nFicamos a chorar — implumes passarinhos ! —\nQue os passaros tambem soluçam de saudade.\n\nPobres aves sem ninho, andamos á procura\nDo ninho de teu seio immaculado e amigo,\nCreancinhas sem berço, em busca de um abrigo\nNo berço de tu’alma alabastrina e pura.\n\nNão nos deixes soffrer. Outr’ora , quando afflicta\nTu nos vias chorar — os risos de tu’alma! —\nSoluçavas tambem e a tua mão bemdita\nNos enxugando o pranto, o transformava em calma.\n\nTeu seio, ó minha mãe, era a corrente mansa,\nSempre serena e doce em seu gemer eterno,\nOnde boiava, a rir, noss’alma de creança\nNo mimoso batel do coração materno.\n\nComo era bom dormir na curva de teu braço,\nSonhando adormecer ouvindo-te cantar...\nComo era bom dormir, ó mãe, em teu regaço,\nDourando-nos o somno a luz de teu olhar!\n\nAngicos — 1896.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Mater",
       "tags": [
@@ -1302,7 +1307,7 @@
       "titulo": "Horto (1910)/Melancolia",
       "texto": "Sinto no peito o coração bater\nCom tanta força que me causa medo...\nSerá a Morte, meu Deus? Mas é tão cedo!\nDeixai-me inda viver.\n\nTudo sorri por este campo em flor,\nO Amor e a Luz vão pelo Céu boiando...\nSó eu vagueio a suspirar, chorando\nSem Luz e sem Amor.\n\nLutando sempre com uma dor cruel\nCheia de tédio e desespero, às vezes;\nMinh’alma já tragou até às fezes\nO cálice de fel.\n········································\nE o coração no seio a palpitar,\nComo se acaso não tivesse crença,\nPulsa com a força indefinida, imensa,\nDos vagalhões do Mar.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Melancolia",
       "tags": [
@@ -1316,7 +1321,7 @@
       "titulo": "Horto (1910)/A’ memoria de uma ave",
       "texto": "A’ MEMORIA DE UMA AVE\n\nQuando morre uma creança\nDiz-se que o pallido anjinho,\nVoou como uma esperança,\nFoi para o Céo direitinho.\n\nMas nossa mente se cança\nA voar de ninho em ninho,\nInterrogando a lembrança,\nQuando morre um passarinho.\n\nSó eu, se alguem diz que a vida\nDe uma avesinha querida\nSe extingue, como um clarão;\n\nPonho-me a rir, pois, divina!\nOuço cantar, em surdina,\nTu, alma em meu coração.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A%E2%80%99_memoria_de_uma_ave",
       "tags": [
@@ -1328,7 +1333,7 @@
       "titulo": "Horto (1910)/Ao meu bom anjo",
       "texto": "AO MEU BOM ANJO\n\nDizem que a vida não é mais que um sonho,\n       Meu Deus, quero sonhar!\nEmpresta-me, anjo bom, as tuas azas,\nGuarda no seio a minha fronté em brazas,\n       Ensina-me a rezar!\n\nVamos, vamos, alem... foge commigo!\nProcuremos bem longe um doce abrigo\n       Na patria dos archanjos...\nA vida é sonho e como um sonho passa...\nPois, bem! vamos viver no Céo da graça,\n       Meu Deus, como dois anjos!\n\nQuero fugir do mundo tenebroso\n       Labyrintho de dores...\nMensageiro divino, vem commigo,\nQuero sonhar, viver, sorrir comtigo,\n       No Eden ha só flores!\n\nMinh’alma, casta rôla abandonada,\nDesfallece sosinha pela estrada\n       Não pode mais voar...\nEmpresta-lhe, anjo bom, as tuas azas:\nSinto estalar-me o coração em brazas\n       Cançado de chorar.\n\nAssim voando pelo espaço em fóra\nE vendo-te a meu lado a toda a hora,\nQuero — fugindo d’este mundo agreste\n       Unida ao seio teu,\nEmbalada por ti, anjo celeste! —\nBuscar meu ninho pelo azul do Céo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_meu_bom_anjo",
       "tags": [
@@ -1341,7 +1346,7 @@
       "titulo": "Horto (1910)/Meu pai (1)",
       "texto": "MEU PAI\n\nA’ minha tia Maria Concordia de Souza.\n\nVeste de luto a minha pobre lyra\nE canta a endeixa da saudade eterna;\nToda minh’alma, tremula, suspira\nCuidando ouvir a doce voz paterna.\n\nMeu velho Pai! Ligeiro como um’ave\nCruzando os Céos á hora do sol posto,\nEu vi passar o teu perfil suave\nMas nem ao menos pude olhar teu rosto!\n\nEntão voltei-me para o grande Espaço\nE perguntei a minha avó, sorrindo:\n« Assim, ás pressas, sem levar-me ao braço,\nPorque vae elle para o Azul fugindo!\n\nElla beijou-me a fronte docemente\nE a sua voz em lagrimas ungida,\nDisse baixinho, dolorosamente:\n« Vai ver no Céo a tua mãe querida. »\n········································\nEu espero por ti ha tantos annos,\nO’ mão piedosa que me abençoaste!\nTodos os dias chegam desenganos\nE ao lar deserto nunca mais voltaste!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Meu_pai_%281%29",
       "tags": [
@@ -1354,7 +1359,7 @@
       "titulo": "Horto (1910)/Mimo de annos",
       "texto": "Pensei ao acordar:\nFaz anos Sinhazinha.\nÀ minha afilhadinha\nQue mimo posso dar?\n\nE, d’alma nos refolhos,\nAlguém disse-me, então:\nLeva-lhe o coração\nE a bênção de teus olhos.\n\nE logo, ó flor celeste!\nCorri a abençoar-te...\nMas, antes de abraçar-te,\nA minha mão vieste\n\nBeijar tão docemente,\nCom tão gentil carinho,\nComo o de um pobrezinho\nBeijando a mão clemente\n\nD’aquele que o consola\nLançando-lhe no seio,\nCheio de humilde enleio,\nA pequenina esmola!\n\nE eu cismo, então, com pejo:\nBênção e coração,\nAcaso valerão\nO mimo d’esse beijo?\n\nUm beijo de criança,\nCaindo em minhas dores,\nÉ como o Sol nas flores.\nO pálio da esperança.\n\nE enquanto, ó lírio, voa\nA ti meu coração,\nBeijando a minha mão,\nÉ’s tu quem me abençoa... \n\n················\n\nÓ doce inocentinha,\nGuarda a sonhar, contigo,\nO coração amigo\nE a bênção da madrinha.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Mimo_de_annos",
       "tags": [
@@ -1367,7 +1372,7 @@
       "titulo": "Horto (1910)/A minha avó",
       "texto": "A MINHA AVÓ\n\nMinh’alma vai cantar, alma sagrada!\nRaio de sol dos meus primeiros dias...\nGotta de luz nas regiões sombrias\nDe minha vida triste e amargurada.\n\nMinh’alma vai cantar, velhinha amada!\nRio onde correm minhas alegrias...\nAnjo bemdito que me refugias\nNas tuas azas contra a sina irada!\n\nMinh’alma vai cantar... Transforma o seio\nN’um cofre santo de caricias cheio,\nPara este livro todo o meu thesoiro... –\n\nEu quero vel-o, em desejada calma,\nNo rico santuario de tu’alma...\n–  Hostia guardada n’um ciborio de oiro! –",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A_minha_av%C3%B3",
       "tags": [
@@ -1380,7 +1385,7 @@
       "titulo": "Horto (1910)/Minh’alma e o Verso — Não me olhes mais assim... Eu fico triste",
       "texto": "Não me olhes mais assim... Eu fico triste\nQuando a fitar-me o teu olhar persiste\n     Choroso e suplicante...\nJá não possuo a crença que conforta.\nVai bater, meu amigo, a uma outra porta.\n     Em terra mais distante.\n\nCuidavas que era amor o que eu sentia\nQuando meus olhos, loucos de alegria,\n     Sem nuvem de desgosto,\nCheios de luz e cheios de esperança,\nN’uma carícia ingenuamente mansa,\n     Pousavam no teu rosto?\n\nCuidavas que era amor? Ah! se assim fosse!\nSe eu conhecesse esta palavra doce,\n     Este queixume amado!\nTalvez minh’alma mesmo a ti voasse\nE n’um berço de flor ela embalasse\n     Um riso abençoado.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Minh%E2%80%99alma_e_o_Verso",
       "tags": [
@@ -1393,7 +1398,7 @@
       "titulo": "Horto (1910)/Minh’alma e o Verso — Mas, não, escuta bem: eu não te amava.",
       "texto": "Mas, não, escuta bem: eu não te amava.\nMinha alma era, como agora, escrava...\n     Meu sonho é tão diverso!\nTenho alguém a quem amo mais que a vida,\nDeus abençoa esta paixão querida:\n     Eu sou noiva do Verso.\n\nE foi assim. Num dia muito frio.\nAchei meu seio de ilusões vazio\n     E o coração chorando...\nEra o meu ideal que se ia embora,\nE eu soluçava, enquanto alguém lá fora\n     Baixinho ia cantando:\n\n     “Eu sou o orvalho sagrado\n     Que dá vida e alento às flores;\n     Eu sou o bálsamo amado\n     Que sara todas as dores.\n\n     Eu sou o pequeno cofre\n     Que guarda os risos da Aurora;\n     Perto de mim ninguém sofre,\n     Perto de mim ninguém chora.\n\n     Todos os dias bem cedo\n     Eu saio a procurar lírios,\n     Para enfeitar em segredo\n     A negra cruz dos martírios.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Minh%E2%80%99alma_e_o_Verso",
       "tags": [
@@ -1407,7 +1412,7 @@
       "titulo": "Horto (1910)/Minh’alma e o Verso —      Vem para mim, alma triste",
       "texto": "     Vem para mim, alma triste\n     Que soluças de agonia;\n     No meu seio o Amor existe,\n     Eu sou filho da Poesia.”\n\nMeu coração despiu toda a amargura,\nEmbalado na mística doçura\n     Da voz que ressoava...\nPresa do Amor na delirante calma,\nEu fui abrir as portas de minh’alma\n     Ao Verso que passava...\n\nDesde esse dia, nunca mais deixei-o;\nEle vive cantando no meu seio,\n     N’uma algazarra louca!\nQue seria de mim se ele fugisse,\nQue seria de mim se não ouvisse\n     A voz de sua boca!\n\nNão posso dar-te amor, bem vês. Meus sonhos\nSão da Poesia os ideais risonhos,\n     Em lago de ouro imersos...\nNão sabias dourar os meus abrolhos,\nE eu procurava apenas nos teus olhos\n     Assunto para versos.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Minh%E2%80%99alma_e_o_Verso",
       "tags": [
@@ -1419,7 +1424,7 @@
       "titulo": "Horto (1910)/Morena",
       "texto": "MORENA\n\nA’ mais bonita de minha terra\n\nO’ moça faceira\nDos olhos escuros,\nTão lindos, tão puros,\nQual noite fagueira!\n\nCreança morena,\nTeus olhos rasgados\nSão céos estrellados\nEm noite serena!\n\nQue doces encantos\nNo brilho fulgente,\nNo brilho dolente\nDe teus olhos santos!\n\nE eu vivo adorando,\nMeu anjo formoso,\nO brilho radioso\nQue vão derramando,\n\nEm chammas serenas,\nTão mansas e puras,\nTeus olhos escuros,\nO’ flor das morenas!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Morena",
       "tags": [
@@ -1432,7 +1437,7 @@
       "titulo": "Horto (1910)/Morta",
       "texto": "MORTA\n\nA Jahel Beltrão.\n\nDos braços da mãe querida\nDesceu Laura á sepultura:\nMorreu na manhã da vida,\nCreança ainda e tão pura!\n\nNão viu desbrochar-lhe n’alma\nA aurora dos quinze annos;\nFugiu innocente e calma\nDo mundo cheio de enganos.\n\nTemeu, pobre mariposa!\nO encanto louco das brazas,\nPois, na friez de uma lousa,\nO archanjo não queima as azas.\n\nDe todo o choroso dia\nSó nos resta na lembrança,\nComo visão fugidia\nD’aquella virgem creança:\n\nUm caixãosinho funereo,\n— Abysmo de nossas dôres —\nConduzido ao cemiterio\nComo uma cesta de flôres.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Morta",
       "tags": [
@@ -1444,7 +1449,7 @@
       "titulo": "Horto (1910)/A morte de Helena",
       "texto": "A MORTE DE HELENA\n\n«Eu não quero morrer;» dizia a pobre Helena,\nE a fronte, a soluçar, cahiu no travesseiro...\n(Ai! recordava assim a pallida açucena\nOu, do galho a pender, a flor do jasmineiro!)\n\n«Não me deixem morrer assim na Primavera:\nEsconde-me no seio, ó minha mãe querida!\nA morte como é triste! e o noivo que me espera\nHa de chamar por mim... Quem restitue-me a vida?»\n\nE se poz a chorar: mas, chegando o delirio,\nEsqueceu-se da morte e começou a rir...\nPobre noiva do Amor! Pobre folha de lirio!\nElla os olhos cerrou, como quem vai dormir.\n\nMiserrima creança! Estava ali bem perto\nA morte, a se abeirar de seu leito sagrado,\nPara arrastar-lhe o corpo ao tumulo deserto,\nOnde não brilha o Sol e nem o Riso amado.\n\nE, quando despertou daquelle doce encanto,\nConheceu que morria e, cheia de pavor,\nSupplicou a Jesus, por seu martyrio santo,\nQue a deixasse na terra ao pé de seu amor.\n\n«Mas, sei que parto sempre» accrescentou chorando.\n«Mostrou-se-me da crença o doloroso véo...\nMinha mãe vem commigo, a noite vai chegando\nE eu talvez possa errar o caminho do Céo!»\n·····························\nE nesta mesma noite, escura, tenebrosa,\nDeixou a doce Helena a terra, pobre goivo!\nMas tinha para ungir-lhe a campa lutuosa\nUma prece de mãe e as lagrimas do noivo.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/A_morte_de_Helena",
       "tags": [
@@ -1458,7 +1463,7 @@
       "titulo": "Horto (1910)/Mysterio",
       "texto": "MYSTERIO\n\nA’ memória do pequeno Alberto.\n\nSei que tu’alma carinhosa e mansa\nVoou, sorrindo, para o Azul celeste;\nSei que teu corpo virginal descança\nAqui da terra n’um cantinho agreste.\n\nTudo isto sei: mas tu não me disseste\nSe lá no Céo, na patria da Esperança,\nOu aqui no mundo, á sombra do cypreste,\nDeixaste o coração, loura creança!\n\nDesceu acaso com o corpo á terra\nElle tão puro e que só luz encerra?\nNão creio n’isso e ninguem crê de certo...\n\nEmtanto eu scismo que, n’um valle ameno,\nTalvez o seio de um jasmim pequeno,\nSirva de berço ao coração de Alberto.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Mysterio",
       "tags": [
@@ -1472,7 +1477,7 @@
       "titulo": "Horto (1910)/Mystico",
       "texto": "MYSTICO\n\nAo sahir da Egreja depois da Communhão.\n\nA chuva cae do Céo e o mundo é como um ermo,\nUm deserto sem fim de onde emigrou a luz..\nMas que me importa a treva, a escuridão sem termo,\nSi eu sinto dentro em mim quem fez o Sol — Jesus?",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Mystico",
       "tags": []
@@ -1481,7 +1486,7 @@
       "titulo": "Horto (1910)/Natal",
       "texto": "NATAL\n\nA’s moças da Serra\n\nE’ meia noite... O sino alviçareiro,\nLá da Igrejinha branca pendurado,\nComo n’um sonho mystico e fagueiro\nVem relembrar o tempo do Passado.\n\nO’ velho sino, ó bronze abençoado,\nNa alegria e na magua companheiro!\nTu me recordas o sorrir primeiro\nDo menino Jesus immaculado.\n\nE emquanto escuto a tua voz dolente,\nMeu ser que geme dolorosamente\nDa desventura aos gelidos açoites...\n\nBebe em teus sons tanta alegria, tanta!\nSino que lembras uma noite santa,\nNoite bemdita mais que as outras noites!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Natal",
       "tags": [
@@ -1493,7 +1498,7 @@
       "titulo": "Horto (1910)/Never more — Não te perdôo, não, meus tristes olhos",
       "texto": "I\n\nNão te perdôo, não, meus tristes olhos\nNão mais hei de fitar nos teus, sorrindo:\nJamais minh’alma sobre um mar de escolhos\nHá de chamar por ti no anseio infindo.\n\nJamais, jamais, nos delicados folhos\nDo coração como n’um ramo lindo,\nHá de cantar teu nome entre os abrolhos\nA ária gentil de meu sonhar já findo.\n\nNão te perdôo, não! E em tardes claras,\nCheias de sonhos e delícias raras,\nQuando eu passar à hora do Sol posto:\n\nNão rias para mim que sofro e penso,\nDeixa-me só neste deserto imenso...\nAh! se eu pudesse nunca ver teu rosto!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Never_more",
       "tags": [
@@ -1505,7 +1510,7 @@
       "titulo": "Horto (1910)/Never more — Ah! se eu pudesse nunca ver teu rosto!",
       "texto": "II\n\nAh! se eu pudesse nunca ver teu rosto!\nE nem sequer o som de tua fala\nOuvir de manso à hora do Sol posto\nQuando a Tristeza já do Céu resvala!\n\nTalvez assim o fúnebre desgosto\nQue eternamente a alma me avassala\nSe transformasse n’um luar de Agosto,\nSonho perene que a Ventura embala.\n\nTalvez o riso me voltasse à boca\nE se extinguisse essa amargura louca\nDe tanta dor que a minha vida junca...\n\nE, então, os dias de prazer voltassem\nE nunca mais os olhos meus chorassem...\nAh! se eu pudesse nunca ver-te, nunca!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Never_more",
       "tags": [
@@ -1516,7 +1521,7 @@
       "titulo": "Horto (1910)/No Jardim das Oliveiras",
       "texto": "“Minh’alma é triste até à morte...” Doce,\nJesus falou... E o Nazareno santo\nChorava, como se a su’alma fosse\nUm mar imenso de amargura e pranto.\n\nDepois, silencioso, ele afastou-se\nE foi rezar no mais sombrio canto.\nSeu grande olhar formoso iluminou-se\nFitando o etéreo e estrelejado manto.\n\n“Pai, tem piedade...” E sua vez plangente\nTremia, enquanto pelas trevas mudas\nBaixava manso o triste olhar dolente.\n\nPobre Jesus! Como n’um sonho via:\nEm cada sombra a traição de Judas,\nEm cada estrela os olhos de Maria!\n\nMacaíba - 7 de Abril de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_Jardim_das_Oliveiras",
       "tags": [
@@ -1530,7 +1535,7 @@
       "titulo": "Horto (1910)/Noemi",
       "texto": "NOEMI\n\nEu quizera saber em que ella pensa\nEsta mimosa e santa creatura,\nQuando indeciso o seu olhar procura\nAlguma estrella pelo Azul suspensa;\n\nE que tristeza, indefinida, immensa,\nDo seu olhar na flamma, ardente e pura,\nIntermina e suave se condensa\nComo as brumas no Céo em noite escura.\n\nPobre creança! Que infinita magua\nPunge-te o seio e te annuvia os olhos\n— Bemditos olhos sempre rasos d’agua! —\n\nChoras... E o mundo te offerece flôres...\nDeixa os espinhos, lagrimas e abrolhos,\nSó para mim, que só conheço dôres!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Noemi",
       "tags": [
@@ -1542,7 +1547,7 @@
       "titulo": "Horto (1910)/Noite cruel",
       "texto": "NOITE CRUEL\n\nA meu irmão Henrique\n\nMorrer... morrer... morrer... Fechar na terra os olhos\nA tudo o que se ama, a tudo o que se adora;\nE nunca mais ouvir a musica sonora\nDa Illusão a cantar da vida nos recolhos...\n\nSentir o coração ferir-se nos escolhos\nDe tormentoso mar, — pobre vaga que chora! —\nE no arranco final da derradeira hora,\nSoluçando morrer n’um oceano de abrolhos.\n\nNem ao menos beijar — ó supremo desgosto! —\nA mão doce e fiel que nos enxuga o rosto\nMostrando-nos o Céo suspenso de uma Cruz...\n\nE perguntar a Deus na agonia e nas trevas:\nOnde fica, Senhor, a terra a que nos levas,\nCom as mãos postas no seio e os dous olhos sem luz",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Noite_cruel",
       "tags": [
@@ -1555,7 +1560,7 @@
       "titulo": "Horto (1910)/Noites amadas",
       "texto": "Ó noites claras de lua cheia!\nEm vosso seio, noites chorosas,\nMinh’alma canta como a sereia,\nVive cantando n’um mar de rosas;\n\nNoites queridas que Deus prateia\nCom a luz dos sonhos das nebulosas,\nÓ noites claras de lua cheia,\nComo eu vos amo, noites formosas!\n\nVós sois um rio de luz sagrada\nOnde, sonhando, passa embalada\nMinha Esperança de mágoas nua...\n\nÓ noites claras de lua plena\nQue encheis a terra de paz serena,\nComo eu vos amo, noites de lua!\n\nMacaíba - Agosto de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Noites_amadas",
       "tags": [
@@ -1569,7 +1574,7 @@
       "titulo": "Horto (1910)/Nunca mais",
       "texto": "NUNCA MAIS\n\n.... Il n’est plus dans mon cœur\nUne fibre que n’ait résonné sa Douleur.\nLamartine — Harmonies.\n\nQue é feito de meu sonho, um sonho puro\nFeito de rosa e feito de alabastro,\nChimera que brilhava, como um astro,\nPela noite sem fim do meu futuro?\n\nQue é feito deste sonho, o cofre aberto\nQue recebia as gottas de meu pranto,\nBagas de orvalho, folhas de amarantho,\nPerdidas na soidão de meu deserto?\n\nElle passou como uma nuvem passa,\nRoçando o azul em flor do firmamento...\nElle partiu, e apenas o tormento,\nSobre minh’alma triste, inda esvoaça.\n\nMeu casto sonho! Lá se foi cantando\nTalvez em busca de uma patria nova.\nDeixou-me o coração como uma cova,\nE, dentro delle, o meu amor chorando.\n\nNunca mais voltará... Pois que lhe importa\nEsta morada lugubre e sombria?\nNão pode agazalhar uma alegria\n     Minh’alma, pobre morta!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Nunca_mais",
       "tags": [
@@ -1583,7 +1588,7 @@
       "titulo": "Horto (1910)/Obrigada!",
       "texto": "OBRIGADA!\n\nA Nininha Andrade.\n\n... E tu rezas por mim! Como agradeço\nEssa esmola gentil de teu carinho...\nComo as torturas de minh’alma esqueço\nNessa tua oração, floco de arminho!\n\nEu te bemdigo, ó santa que estremeço,\nAlma tão pura como a flor do linho.\nE’ tua prece á magua que padeço\nAza de pomba defendendo um ninho!\n\nReza, creança! Junta as mãos nevadas\nE cerra as niveas palpebras amadas\nSobre os teus olhos como um lindo véo...\n\nDepois, nas azas de uma prece ardente,\nDeixa cantar minh’alma docemente,\nDeixa subir meu coração ao Céo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Obrigada%21",
       "tags": [
@@ -1596,7 +1601,7 @@
       "titulo": "Horto (1910)/Olhos azues",
       "texto": "OLHOS AZUES\n\nA Palmyra Magalhães\n\nO teu olhar azul claro\nReflecte não sei que luz,\nO brilho fulgente e raro\nDo meigo olhar de Jesus.\n\nEu cuido ver todo o encanto,\nToda a belleza do Céo\nNestes teus olhos sem pranto,\nN’estes teus olhos sem véo.\n\nSinto uma doce ventura\nUma alegria sem fim\nSe d’elles a chamma pura\nA’s vezes cae sobre mim.\n\nSão flores azues boiando\nA’ tona d’agua, de leve,\nEsses dois olhos beijando\nO teu semblante de neve!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Olhos_azues",
       "tags": [
@@ -1607,7 +1612,7 @@
       "titulo": "Horto (1910)/Olhos de santa",
       "texto": "OLHOS DE SANTA\n\nA Antonia Araújo.\n\nCheios de treva e luz, teus olhos têm a côr\nDas noites sem luar, ó meu divino amor!\nE eu amo tanto a sombra e o brilho doce e puro\nDos grandes olhos teus, ó luz de meu futuro,\nComo adora minh’alma os rutilos clarões\nDo bando virginal de suas illusões.\n\nOlha-me sempre e sempre... Em teu olhar formoso,\nMinha noite e meu sol, ó Cherubim piedoso!\nEu quero ver atôa, eu quero ver boiar,\n—Como se fosse um lago o teu formoso olhar —\nTodo um mundo sem fim de sonhos e chimeras:\nLirios desabrochando ao sol da Primavera!\n\nNão vês? E’ noite, e o Céo nos mostra tanta luz\nQue, olhando para cima, eu cuido que Jesus\nAs estrellas formou de luridos novellos\nDos raios ideiaes do sol de seus cabellos...\nE assim no teu olhar, doce como um jasmim,\nUma estrella se fez do nosso amor sem fim.\n\nDeixa brilhar a estrella loura e mansa,\nQue nos ha de guiar á Terra da Esperança.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Olhos_de_santa",
       "tags": [
@@ -1620,7 +1625,7 @@
       "titulo": "Horto (1910)/Onde vai a lagrima",
       "texto": "Na terra se chora tanto \nQue, se Deus guardasse o pranto \nQue o mundo inteiro derrama. \n\nDos astros lá do infinito \nO choro do pobre aflito \nPodia apagar a chama. \n\nMas todo o pranto que desce \nPor nossa face, parece \nQue Deus o transforma em prece ... \n\nE a prece, cheiroso incenso, \nNas asas do vento imenso, \nSe perde no azul dos céus \nBuscando o seio de Deus.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Onde_vai_a_lagrima",
       "tags": [
@@ -1631,7 +1636,7 @@
       "titulo": "Horto (1910)/Oração da noite",
       "texto": "Ajoelhada, ó meu Deus, e as duas mãos unidas,\nOlhos fitos na Cruz, imploro a tua graça...\nEsconde-me, Jesus! da treva que esvoaça\nNa tristeza e no horror das noites mal dormidas,\n\nMaria! Virgem mãe das almas compungidas,\nSorriso no prazer, conforto na desgraça...\nRecolhe essa oração que nos meus lábios passa\nEm palavras de fé no teu amor ungidas.\n\nAnjo de minha guarda, ó doce companheiro!\nTu que levas do berço ao porto derradeiro\nO lúrido batel de meu sonhar sem fim,\n\nDá-me o sono que traz o bálsamo ao tormento,\nAfoga o coração no mar do esquecimento...\nAbre as asas, meu anjo, e estende-as sobre mim.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ora%C3%A7%C3%A3o_da_noite",
       "tags": [
@@ -1645,7 +1650,7 @@
       "titulo": "Horto (1910)/Oswaldo",
       "texto": "OSWALDO\n\nA D. Sinhá Medeiros.\n\nOswaldo é um lirio. Nos olhitos francos\nConserva um mundo precioso e lindo;\nQuando elle ri os seus dentinhos brancos\nLembram á gente um bugary abrindo.\n\nE’ um pequeno cherubim risonho;\nE se bem longe, meu olhar o avista,\nNão sei porque só me recordo em sonho\nDo cordeirinho de São João Baptista.\n\nA’s vezes beijo-o delicadamente,\nE o beijo canta sobre os olhos seus;\nEmquanto eu scismo carinhosamente\nQue beijo os olhos do menino Deus.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Oswaldo",
       "tags": [
@@ -1657,7 +1662,7 @@
       "titulo": "Horto (1910)/Pagina azul",
       "texto": "PAGINA AZUL\n\nA Zulmira Rosa\n\nNo paiz de minh’alma ha um rio sem maguas,\nUm rio cheio de ouro e de tanta harmonia,\nQue se cuida escutar no marulhar das aguas\nDo sussurro de um beijo a doce melodia.\n\nEste rio é o meu sonho, um sonho azul e puro,\nComo um canto do Céo, como um braço do Mar;\nLoira restea de sol a rebrilhar no escuro,\nCasta luz que scintilla em torno de um altar.\n\nDe um altar que palpita e que soffre e que sonha,\nSoletrando a cantar a linguagem do Amor...\nDo altar do Coração, a paisagem risonha\nOnde brotam sorrindo as illusões em flor.\n\nVem beber, meu amor, neste rio que é fonte,\nE fonte de esperança e lago de chimera...\nVem morar n’um paiz que não tem horizonte\nOnde não chora o Inverno e só ha Primavera.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pagina_azul",
       "tags": [
@@ -1670,7 +1675,7 @@
       "titulo": "Horto (1910)/Pagina triste",
       "texto": "PAGINA TRISTE\n\nHa muita dôr por este mundo afora,\nMuita lagrima á tôa derramada;\nMuito pranto de mãe angustiada\nQue vem saudar o despontar da aurora!\n\nAlma innocente só de amor cercada\nA creancinha a soluçar descora.\nTalvez no berço onde o menino chora\nTambem, oh Dor, tu queiras, desolada,\n\nErguer um throno, procurar guarida...\nFoge do berço! não magôes a vida\nD’esta ave implume, lirial botão...\n\nQueres um ninho, um carinhoso abrigo?\nPois bem! procura-o neste seio amigo,\nDentro em minh’alma, aqui no coração!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pagina_triste",
       "tags": [
@@ -1682,7 +1687,7 @@
       "titulo": "Horto (1910)/Palavras tristes",
       "texto": "Quando eu deixar a terra, anjo inocente,\nÓ meu formoso lírio perfumado!\nReza por mim, de joelhos, docemente,\nPostas as mãos no seio imaculado,\nQuando eu deixar a terra, anjo inocente!\n\nÉs a estrela gentil das minhas noites,\nNoites que mudas no mais claro dia.\nNão tenho medo aos gélidos açoites\nDa escuridão se a tua luz me guia,\nÓ estrela gentil das minhas noites!\n\nQuando eu deixar a terra, dá-me flores\nBoiando à tona de um sorriso teu;\nQue os risos das crianças são andores\nOnde os anjos nos levam para o céu...\nQuando eu deixar a terra, quero flores!\n\nFlores e risos me tecendo o manto,\nManto celeste feito de esperanças...\nQuando eu d’aqui me for, não quero pranto,\nSó quero riso, preces de criança:\nFlores e risos me tecendo um manto!\n\nAnjo moreno de alma cor de lírio,\nMais branca do que a estrela da Alvorada...\nMeu coração na hora do martírio\nPede o consolo de uma prece amada,\nAnjo moreno de asas cor do lírio!\n\nQuando eu deixar a terra, anjo inocente,\nÓ meu formoso lírio perfumado!\nReza por mim, de joelhos, docemente,\nPostas as mãos no seio imaculado,\nQuando eu deixar a terra, anjo inocente!\n\nSerra da Raiz - Fevereiro de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Palavras_tristes",
       "tags": [
@@ -1696,7 +1701,7 @@
       "titulo": "Horto (1910)/Passando",
       "texto": "PASSANDO\n\nAo Dr. Celestino Wanderley em agradecimento á sua «Morte de Cecy».\n\nQuando me veem passar risonha e calma,\nSem um pezar que me annuvie a fronte,\nPerdido o olhar na curva do horisonte,\nCuidam que eu tenho o paraiso n’alma.\n\nMesmo encontrei quem me dissesse um dia:\n«Invejo-te a existencia descuidosa.»\nComo si espinhos não tivesse a rosa,\nOu fosse a vida isenta de agonia!\n\nPorem, emquanto desdenhosa, altiva,\nEu vou passando, alegre ou pensativa...\nA rir, a rir, como um feliz demente,\n\nMeu pobre coração dentro do peito,\n— Triste doente a agonizar no leito —\nVai soluçando dolorosamente...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Passando",
       "tags": [
@@ -1708,7 +1713,7 @@
       "titulo": "Horto (1910)/Ao pé de um berço — AO PÉ DE UM BERÇO ",
       "texto": "AO PÉ DE UM BERÇO \n\nA Leopoldina Monteiro.\n\n(Pensei em ti, Leopoldina, escrevendo estes versos;\nquero que os cantes embalando o teu Milton.)\n\nDorme, dorme, pequenino\nEncanto de meu amor;\nQue o somno doce e divino\nCerre-te as folhas, ó flor!\n\nFecha os olhos, meu filhinho;\nE pede ao somno que leve\nAo Céo, em faixas de linho,\nTu’alma da cor da neve.\n\nMas não demores, meu filho,\nVolta nas azas do amor,\nTraz a meus olhos o brilho,\nTraz a meu seio o calor.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_p%C3%A9_de_um_ber%C3%A7o",
       "tags": [
@@ -1721,7 +1726,7 @@
       "titulo": "Horto (1910)/Ao pé de um berço — Meu coração é um ramo",
       "texto": "Meu coração é um ramo\nOnde teci o teu ninho;\nDorme nelle, gaturamo,\nO’ sonho branco de arminho!\n\nDorme, dorme; de mansinho\nVou te embalando a cantar...\nEsconde as azas no ninho,\nNão quero ouvir-te chorar.\n\nFecha os olhos docemente\nE vôa longe da terra,\nDorme o teu somno innocente,\nO’ nivea pomba da serra!\n\nDorme, santinho, as estrellas\nVirão cobrir-te com um véo;\nNão chores se queres vel-as\nFazer de teu berço um céo.\n\nFoge da noite aos abrolhos\nNeste celeste abandono;\nEu guardo um sonho nos olhos\nPara dourar o teu somno.\n\nOlha, meu santo, Jesus,\nQue tanto amava os meninos,\nVela sorrindo da Cruz\nO somno dos pequeninos.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_p%C3%A9_de_um_ber%C3%A7o",
       "tags": [
@@ -1732,7 +1737,7 @@
       "titulo": "Horto (1910)/Ao pé de um berço — E a Mãe do Céo, nos espaços",
       "texto": "E a Mãe do Céo, nos espaços\nDeixando de luz um trilho,\nTraz o filhinho nos braços\nPara beijar-te, meu filho!\n\nRecebe o carinho amigo\nE pede ao rei do Universo\nQue fique a sonhar comtigo,\nDormindo no mesmo berço.\n\nAs duas mães, n′um sorriso,\nSobre o ninho velarão...\nE eu direi ao Paraiso,\nBaixinho no coração:\n\nQual dos dois mais luz encerra,\nEnvoltos no mesmo véo:\nO filho da mãe da terra?\nO filho da mãe do Céo?\n\nDorme, bonina nevada,\nEmquanto eu velo a cantar;\nGuia-me á patria adorada,\nO’doce estrella do Mar!\n\nDorme e não chores, creança!\nA Lua do Céo sorri —\nNa vida sem esperança\nEu hei de chorar por ti.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_p%C3%A9_de_um_ber%C3%A7o",
       "tags": [
@@ -1745,7 +1750,7 @@
       "titulo": "Horto (1910)/Pelo passado",
       "texto": "PELO PASSADO \n\nEra um dia de Maio... Encheu-se o Templo\n      De grande multidão;\nSó rezavam aquellas que queriam\n      A paz do coração.\n\nEu era desse numero: ajoelhei-me,\n      Fiz o signal da Cruz...\nEstava muito triste e desejava\n      Conversar com Jesus.\n\nAo pé de seu santo Tabernaculo\n      Começei a chorar...\nLembrava-me da infancia que fugira\n      Para nunca voltar.\n\nE repassei na mente atribulada,\n      Assim nessa attitude,\nOs sonhos liriaes e perfumosos\n      De minha juventude.\n\nPorem se o triste labio murmurava\n      Sentidas orações,\nEu ouvia o soluço angustiado\n      De minhas illusões.\n\nDe minhas illusões que se partiam,\n      Dolentes e chorosas,\nComo os anjos voando d’este mundo\n      A’s plagas luminosas.\n\nE emquanto assim aos pés do Redemptor\n      Choviam meus lamentos...\nJá no Templo de todo se extinguia\n      A luz dos cirios bentos.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pelo_passado",
       "tags": [
@@ -1756,7 +1761,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Responde-me, ó jurity,",
       "texto": "I\nResponde-me, ó jurity,\nAo que te vou perguntar:\nPor que é que o Dia sorri\nE a Noite vive a chorar?\n\nII\nNão sabes? N’um sonho brando,\nO Dia ri quando quer;\nE a Noite vive chorando,\nSomente porque é mulher.\n\nIII\nQuando eu nasci, no telhado,\nUma coruja cantou...\nDizia a chorar: coitado!\nUm anjo do Céo voou.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1768,7 +1773,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Das noites de minha terra",
       "texto": "IV\nDas noites de minha terra\nDouradas pelo luar,\nNenhuma dellas encerra\nA graça de teu olhar.\n\nV\nMeus sonhos andam no mundo\nEm cantos negros dispersos...\nSão ondas de um mar profundo...\nAi! triste de quem faz versos!\n\nVI\nNas noites de lua, eu canto\nPara esquecer-me de ti.\nMinh’alma soluçou tanto\nQue o pranto já aborreci.\n\nVII\nFazem dois dias que penso\nN’uns olhos que vi chorar...\nQuem me dera ver meu lenço\nAquelle pranto enxugar!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1781,7 +1786,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Ó moça dos olhos puros,",
       "texto": "VIII\nÓ moça dos olhos puros,\nTão tristes que causam dor...\nTeus olhos são mais escuros\nQue os olhos do meu amor.\n\nIX\nMeu peito é triste, isolado,\nVazio, nú de esperanças,\nComo um ninho abandonado,\nUma casa sem creanças.\n\nX\nSe eu fosse rapaz, pequena,\nE me casasse algum dia,\nSó amava uma morena\nQue se chamasse Maria.\n\nXI\nO nome traz alegrias\nSem uma gotta de fel,\nO coração das Marias\nÉ todo cheio de mel.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1792,7 +1797,7 @@
       "titulo": "Horto (1910)/Pennas de garça — «Mentira» — alguém me dizia —",
       "texto": "XII\n«Mentira» — alguém me dizia —\nO nome engana tambem;\nEu conheço uma Maria\nQue não quer bem a ninguem.\n\nXIII\nEntanto, ela é linda e bôa,\nA dona dos sonhos meus...\n«Mas deixa-me ir só, á tôa,\nPor este mundo de Deus.»\n\nXIV\nMulher é coisa ruim,\nDizias esta manhã...\nSó pode falar assim\nQuem não tem mãe nem irmã.\n\nXV\nDe que me serve falar\nDos homens como ditos vãos,\nSe eu vivo para adorar\nOs olhos de meus irmãos?",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1803,7 +1808,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Lá vai uma mãi em prantos",
       "texto": "XVI\nLá vai uma mãi em prantos\nAtraz da filha querida...\nAh! ela não sabe quantos\nDesgostos lhe guarda a vida!\n\nXVII\nMorrer pequenina ainda,\nLevando as azas de um véo,\nNão vale mais que ser linda\nComo as estrellas do Céo?\n\nXVIII\nBrancos estão meus cabellos...\nÓ Dor, onde é que me levas?\nAi! noites de pesadelos,\nAi! dias cheios de trevas!\n\nXIX\nNas noites de lua cheia,\nO Céo parece sonhar...\nA Lua é como a sereia\nBoiando dentro do Mar.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1815,7 +1820,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Eu quero bem as creanças",
       "texto": "XX\nEu quero bem as creanças\nPorque não sabem mentir;\nSão pombas lindas e mansas,\nPassam na vida a sorrir.\n\nXXI\nQuando eu morrer, quero um manto\nComo o de Nossa Senhora,\nQue seja feito do pranto\nDo Céo quando nasce a aurora.\n\nXXII\nEu só adoro na terra\nDa creancinha o sorriso,\nUma casinha na Serra\nE um ninho no Paraiso.\n\nXXIII\nRepousa lá minha fronte\nDespindo da Magua o véo;\nQuem mora em cima do monte\nEstá mais perto do Céo.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1826,7 +1831,7 @@
       "titulo": "Horto (1910)/Pennas de garça — Quem dera que eu fosse lirio,",
       "texto": "XXIV\nQuem dera que eu fosse lirio,\nÓ minha Virgem Maria!\nAo menos, este martyrio\nDurava somente um dia.\n\nXXV\nQuando eu morrer, vou assim:\nSustendo meu coração...\nSaudade da terra? Sim!\nSaudade da vida? Não!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pennas_de_gar%C3%A7a",
       "tags": [
@@ -1837,7 +1842,7 @@
       "titulo": "Horto (1910)/Pobre flor",
       "texto": "POBRE FLOR!\n\nDeu-m’a um dia uma antiga companheira\nDo tempinho feliz de adolescente;\nE os meus labios roçaram docemente\nPelas folhas da nivea feiticeira.\n\nComo se apaga uma illusão primeira,\nUm sonho estremecido e resplendente,\nEu beijei-lhe a corolla, rescendente\nInda mais que a da flor da laranjeira.\n\nE como amava o seu formoso brilho!\nTinha-lhe quasi essa affeição sagrada\nDa joven mãe ao seu primeiro filho.\n\nDei-lhe no seio uma pousada franca...\nMas, ai! depressa ella murchou, coitada!\nDoce e misera flor, cheirosa e branca!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pobre_flor",
       "tags": [
@@ -1848,7 +1853,7 @@
       "titulo": "Horto (1910)/Pombos mensageiros",
       "texto": "POMBOS MENSAGEIROS\n\nA Amélia Moura\n\n     Foi hontem, minha santa,\n     A′ hora do sol posto:\n\n                 (Quanta saudade, quanta,\n                    Chorava no meu rosto!)\n\nTransformados em pombos côr de neve,\nEntraram-me a cantar pela janella,\nA tua carta delicada e leve\nE o beijo amigo que envolveste nella.\n\nO′ que alegria para o coração\nOnde a Saudade, sempre em flor, renasce!\nA carta leve me pousou na mão\nE o beijo amigo acarinhou-me a face.\n\nE então, a rir, ó pomba idolatrada!\nEu transformei meu coração em ninho:\nN’elle repousa a tua carta amada\nE canta o beijo a aria do carinho.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Pombos_mensageiros",
       "tags": [
@@ -1861,7 +1866,7 @@
       "titulo": "Horto (1910)/Na primeira pagina da Imitação de Christo",
       "texto": "Vinde a mim todos os que estais fatigados\ne oprimidos, e eu vos consolarei.\nIMIT. DE CRISTO L. IV. cap. I\n\nQuando meu pobre coração doente,\nCheio de mágoas, desolado e aflito,\nSinto bater descompassadamente,\nAbro este livro então: leio e medito.\n\nLeio e medito nesta voz celeste\nQuem vem do Além, qual mensageiro santo,\nTrazer um ramo de oliveira agreste\nAos que navegam sobre o mar do pranto.\n\nMeus pobres olhos sempre rasos d’água,\nPor um instante deixam de chorar;\nE nas asas da Prece a minha mágoa\nVai-se um momento para além do Mar.\n\nE d’entro d’alma, nua de esperança,\nEu penso ouvir como n’um sonho doce\nAlguém que fala numa voz tão mansa\nComo se o eco de um suspiro fosse:\n\n“Vem a mim se padeces: no meu seio\nCorre a fonte serena da Alegria...\nEu sou Aquele que sorrindo veio\nDourar as trevas da Melancolia.\n\nEu sou um branco e pálido sorriso\nIluminando a tua solidão:\nFaze de minha Cruz um Paraíso\nE do meu Coração teu coração.\n\nFaze-te humilde, humilde e pequenina,\nComo as crianças, como os passarinhos...\nEscuta e guarda a minha lei divina,\nNo sacrário ideal dos meus carinhos.\n\nNão sabes quanto padeci no Horto,\nPor ti, por teu amor, filha querida?\nEu sou o Anjo formoso do conforto,\nVenho trazer o bálsamo à ferida.\n\nCarrega a tua Cruz e vem comigo\nPela estrada da Dor e do Tormento.\nEu serei teu irmão, teu sol, o amigo\nQue em lírios mudará o sofrimento.\n\nVenho trazer a Paz... Longe da terra\nA Paz habita... Ao pé do Santuário,\nÓ minha filha, a doce paz se encerra\nDentro da Hóstia, dentro do Sacrário.\n\nFelizes os que sofrem e no meu seio\nRecolhem suas queixas como preces;\nVolta o pesar ao Céu de onde ele veio...\nFeliz, ó sim! feliz tu que padeces!”\n········································\nE a mesma voz escuto, o mesmo canto,\nDe cada vez que o meu olhar ungido\nCai docemente n’este livro santo,\nLembrança amiga de um irmão querido.\n\nAmo tanto o meu livro, ele é tão puro,\nConsola tanto o coração aflito!\nAh! desta vida no caminho escuro\nEle será meu talismã bendito!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Na_primeira_pagina_da_Imita%C3%A7%C3%A3o_de_Christo",
       "tags": [
@@ -1875,7 +1880,7 @@
       "titulo": "Horto (1910)/Quando eu morrer",
       "texto": "Quando eu morrer... (Quem me dera\nque fosse n’um dia assim,\nn’um dia de primavera\ncheirando cravo e jasmim!)\n\n... transformem meu coração\n- sacrário azul de esperanças -\nn’um pequenino caixão\npara enterrar as crianças.\n\nDe meus olhos façam círios,\nde meu sorriso um altar\n- cheio de rosas e lírios,\ntão doce como o luar -,\n\ne guardem nele, entre flores,\nlonge, bem longe da terra,\na Virgem santa das Dores\nlá da Igrejinha da Serra.\n\nD’aquele sonho formoso\nque minh’alma tanto adora,\nfaçam o turíbulo piedoso\nque incense os pés da Senhora...\n\nE as saudades orvalhadas\n- de meu amor triste enleio -\ntransformem nas sete espadas\nde dor que Ela tem no seio!...\n\nSe d’este repouso santo\nem que meu corpo adormece\nvier perturbar o encanto\no choro de quem padece:\neu quero as gotas de pranto\ntodas mudadas em prece...\n\nPrece que leve, cantando,\nminh’alma ao celeste ninho,\ncomo um pássaro ruflando\nas asas brancas de arminho.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Quando_eu_morrer",
       "tags": [
@@ -1889,7 +1894,7 @@
       "titulo": "Horto (1910)/O que são estrellas — O QUE SÃO ESTRELLAS",
       "texto": "O QUE SÃO ESTRELLAS\n\nA Jesuina Sampaio.\n\nAi! quantas vezes eu scismo\nA noite olhando as estrellas,\nComo quem sonda um abysino:\nMeu Deus! o que serào ellas?\n\nE julgo que são pequenas\nAlmas gentis de creanças,\nVoando ás plagas serenas\nComo um bando de esperanças.\n\nCaçoulas brancas, sagradas,\nCheias de amor e de encantos,\nHostias formosas, nevadas,\nEucharistia dos santos.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/O_que_s%C3%A3o_estrellas",
       "tags": [
@@ -1902,7 +1907,7 @@
       "titulo": "Horto (1910)/O que são estrellas — Sonhos de moça partidos,",
       "texto": "Sonhos de moça partidos,\nDesillusões de poetas,\nRaios de luz desprendidos\nDas azas das borboletas.\n\nDoces lirios transportados\nPara uma encantada horta,\nSorrisos tristes, maguados.\nDe uns labios de noiva morta.\n\nMimosos, lindos novellos,\nFormados da luz serena,\nQue aureolava os cabellos\nTão louros da Magdalena.\n\nCada estrella, penso, encerra\nUma alma branca de rosa,\nQue os anjos levam da terra\nPara a Santa mais formosa.\n\nDever ser o Azul brilhante\nO manto azul de Maria,\nE cada estrella um diamante\nQue neste manto irradia.\n\nOu talvez pennas dispersas\nDe um’aza nivea de archanjo...\nPupillas em luz immersas\nDos olhos castos de um anjo...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/O_que_s%C3%A3o_estrellas",
       "tags": [
@@ -1913,7 +1918,7 @@
       "titulo": "Horto (1910)/O que são estrellas — Parecem cirios divinos",
       "texto": "Parecem cirios divinos\nNo Azul immenso e sem véo...\nNinhos de ouro pequeninos\nDos beija-flores do céo...\n···················\nE emquanto scismo respondem\nOs astros, brancos arminhos:\nNós somos berços que escondem\nAs almas dos passarinhos.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/O_que_s%C3%A3o_estrellas",
       "tags": [
@@ -1924,7 +1929,7 @@
       "titulo": "Horto (1910)/Recuerdo",
       "texto": "RECUERDO\n\nA Chiquinha Pinheiro.\n\nFindava o mez de Maio envolto em preces,\nO doce mez das orações formosas...\nIam com elle as encantadas messes\nDos perfumes, dos sonhos e das rosas.\n\nEra muito a tardinha; as aves mansas\nVoavam todas, em formosos pares,\nComo se fossem garrulas creanças \nQue andassem, rindo, a percorrer os ares!\n\nE eu murmurei ao ver assim voando\nAquellas aves para os brandos ninhos:\n«Ah! quem me dera só andar cantando,\nSempre creança, como os passarinhos!»",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Recuerdo",
       "tags": []
@@ -1933,7 +1938,7 @@
       "titulo": "Horto (1910)/Regina cœli — REGINA CŒLI",
       "texto": "REGINA CŒLI\n\nA Antonia de Araújo\n\nTudo o que sobe ao céo, tudo o que desce á terra\nBalbucia o teu nome......\nLuiz Murat.\n\nTeu nome santo, ó Maria,\nTem a doçura innocente,\nDe uma caricia macia,\nDe uma chimera dolente.\n\nNelle se embala a Esperança\nN’uma meiguice dilecta,\nComo no berço a creança,\nComo no verso o poeta.\n\nDo Céo teu nome nos desce\nN’uma harmonia divina,\nComo um cicío de prece\nNos labios de uma menina.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Regina_c%C5%93li",
       "tags": []
@@ -1942,7 +1947,7 @@
       "titulo": "Horto (1910)/Regina cœli — Teu nome é setineo laço",
       "texto": "Teu nome é setineo laço\nPrendido em formoso véo,\nQual branca nuvem no Espaço,\nQual uma estrella no Céo.\n\nTeu nome reflecte a imagem\nDa melodia serena,\nQue passa rindo n’aragem\nE no voejar da phalena.\n\nUma blandicia suave\nNelle cantando divaga,\nComo no Azul uma ave,\nComo no Mar uma vaga.\n\nTeu nome, cheiroso lirio,\nNo niveo calice encerra\nTodo o mysterio do Empyreo,\nToda a alegria da Terra.\n\nComo um contraste do encanto,\nN’este teu nome diviso\nToda a saudade do pranto\nE todo o affago do riso...\n\nAh! todo o perfume amado,\nToda a fragrancia mimosa,\nQue o colibri namorado\nBebe no seio da rosa;",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Regina_c%C5%93li",
       "tags": [
@@ -1955,7 +1960,7 @@
       "titulo": "Horto (1910)/Regina cœli — Toda a pureza do Amor,",
       "texto": "Toda a pureza do Amor,\nTodo o feitiço do olhar,\nOrvalho a cahir na flor,\nSereno a cahir no Mar...\n\nTudo em teu nome palpita,\nTudo embriaga e seduz,\nComo a delicia infinita\nDe um paraiso de luz.\n\nE, n’um canto repassado\nDe lyrismo que extasia,\nTeu nome vive embalado,\nTeu nome santo, ó Maria!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Regina_c%C5%93li",
       "tags": [
@@ -1967,7 +1972,7 @@
       "titulo": "Horto (1910)/Regina martyrum",
       "texto": "Lírio do Céu, sagrada criatura,\nMãe das crianças e dos pecadores,\nAlma divina como a luz e as flores\nDas virgens castas a mais casta e pura;\n\nDo Azul imenso, d’essa imensa altura\nPara onde voam nossas grandes dores,\nDesce os teus olhos cheios de fulgores\nSobre os meus olhos cheios de amargura!\n\nNa dor sem termo pela negra estrada\nVou caminhando a sós, desatinada,\n- Ai! pobre cega sem amparo ou guia! -\n\nSê tu a mão que me conduza ao porto...\nÓ doce mãe da luz e do conforto,\nIlumina o terror d’esta agonia!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Regina_martyrum",
       "tags": [
@@ -1979,7 +1984,7 @@
       "titulo": "Horto (1910)/Renascimento",
       "texto": "RENASCIMENTO\n\nA Olegaria Siqueira.\n\nManhã de rosas. Lá no ethereo manto,\nO Sol derrama lucidos fulgores,\nE eu vou cantando pela estrada, em quanto\nRiem creanças e desbrocham flores.\n\nQuero viver! Ha quanto tempo, quanto\nNão venho ouvir na selva os trovadores!\nQuero sentir este consolo santo\nDe quem, voltando á vida, esquece as dores.\n\nOuves, minh’alma? Que prazer nos ninhos!\nComo é suave a voz dos passarinhos\nNeste tranquillo e placido deserto!\n\nAh! entre os risos da Natura em festa,\nEntoa o hymno da alegria honesta\nCanta o Te Deum, meu coração liberto!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Renascimento",
       "tags": [
@@ -1992,7 +1997,7 @@
       "titulo": "Horto (1910)/Renato",
       "texto": "RENATO\n\nUm menino interessante\nE’ o Renato de Carminha...\nUm cherubim tão galante\nCuidei que á terra não vinha.\n\nE como lhe assenta bem\nA roupinha azul que veste...\nDá-lhe os ares de quem vem\nDe uma paragem celeste.\n\nQuando elle passa, tão lindo!\nA’ tardinha a passear,\nTodos lhe falam sorrindo\nCom vontade de o beijar.\n\nAs mães o chamam  filhinho!\nAs moças dizem: meu bem!\nMas o capêta do anjinho\nNão olha para ninguem.\n\nComo elle fica engraçado\n— O pequenino taful —\nCom o bonet, posto ao lado,\nTodo de velludo azul.\n\nO seu cabellito louro\nA se escapar do chapéo,\nParece uma nuvem de ouro\nQuerendo cahir do Céo.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Renato",
       "tags": []
@@ -2001,7 +2006,7 @@
       "titulo": "Horto (1910)/Ao clarão da lua — AO CLARÃO DA LUA",
       "texto": "AO CLARÃO DA LUA\n\nA meu irmão Eloy\n\nO LIRIO\nLá nas alturas, modesta e loura,\n— Do Céo immenso na face núa —\nA lua branca todo o Azul doura...\n\nA NUVEM\nAh! si eu podesse mudar-me em lua!\n\nO PERFUME\nE aquella estrella, tão pequenina\nQue mal a gente consegue vel-a ,\nComo scintilla, casta e divina!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_clar%C3%A3o_da_lua",
       "tags": [
@@ -2012,7 +2017,7 @@
       "titulo": "Horto (1910)/Ao clarão da lua — A LUA",
       "texto": "A LUA\nAh! quem me dera ser uma estrella!\n\nA NUVEM\nO lirio branco, cheio de orvalho,\nInvoca a lua no seu martyrio\nE doce e triste treme no galho...\n\nA ESTRELLA\nAh ! quem me dera ser como o lirio!\n\nO CÉO\nPerfume doce boia nos ares...\nVirá nas azas de um vagalume?\nSerá da terra? Será dos mares?\n\nO ORVALHO\nAh! quem me dera ser o perfume!\n\nO POETA\nTerno instrumento suspira ao longe\nN’uma cadencia melodiosa...\nSerá na cella piedoso monge?\n\nUMA CREANÇA (sonhando)\nAh! quem me dera ser uma rosa!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_clar%C3%A3o_da_lua",
       "tags": [
@@ -2023,7 +2028,7 @@
       "titulo": "Horto (1910)/Ao clarão da lua — A NOITE",
       "texto": "A NOITE\nO sonho vive dentro em meu seio,\nGarrulo e meigo, doce e risonho,\nCheio de luzes, de aurora cheio...\n\nO PERFUME\nAh! quem me dera ser como o Sonho!\n\nA MADRUGADA (ao longe)\nOuvem? As aves ja vêm cantando,\nAs estrellinhas tomam seu véo...\nE’ tempo de irmos tambem chegando...\n\nO CORAÇÃO\nAh! quem me dera subir ao Céo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_clar%C3%A3o_da_lua",
       "tags": [
@@ -2035,7 +2040,7 @@
       "titulo": "Horto (1910)/Resando",
       "texto": "REZANDO\n\nA Laura Ramos.\n\nRoseo menino\nFeito de luz,\nLirio divino,\nSanto Jesus!\n\nMeu cravo olente,\nCôr de marfim,\nPobre innocente,\nBranco jasmim!\n\nEntre as palhinhas,\nPequeno amor,\nDas creancinhas\nTu és a flor.\n\nCabello loiro,\nOlhos azues...\nE’s meu thesoiro,\nManso Jesus!\n\nEstrella pura,\nSanto pharol,\nFlor de candura,\nRaio de sol...\n\nDá-me a esperança\nN’um teu olhar:\nLoura creança\nMe ensina a amar.\n\nSonho formoso\nCheio de luz,\nJesus piedoso,\nMeu bom Jesus..\n\nComo eu te adoro,\nPequeno assim!\nJesus, eu choro,\nTem dó de mim.\n\nNo doce encanto\nDe um riso teu,\nJesus tão santo,\nLeva-me ao Céo!\n\nEm ti espero,\nMostra-me a luz...\nLeva-me, eu quero\nVer-te, Jesus!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Resando",
       "tags": [
@@ -2047,7 +2052,7 @@
       "titulo": "Horto (1910)/Rimas",
       "texto": "Queres meus versos? São tristes,\nTalvez te façam chorar...\nÓ santa, tu não resistes\nÀs nuvens de meu penar.\n\nFoge do frio da dor,\nProcura o sol do conforto,\nAjoelha sobre o Tabor,\nNão venhas rezar no Horto.\n\nTeus olhos são lindos, lindos,\nComo noites de verão;\nGuardam sorrisos infindos:\nNão quero vê-los, ai! não...\n\nCheios de pranto, pousando\nSobre o meu verso dolente...\nTem pena do fulgor brando\nDe teu olhar Inocente!\n\nO pranto é que apaga o brilho\nDos olhos de quem padece:\nÀ mãe, quando perde um filho,\nNo olhar o brilho fenece.\n\nE tu, mimosa criança,\nPomba adorada e franzina,\nEm cujo seio a Esperança\nCanta a canção mais divina;\n\nPor que procuras o espinho\nDa dor que fere, atormenta,\nSe o teu sorriso é um ninho\nQue a graça eterna acalenta?\n\nDa mágoa o triste segredo\nVens penetrar sem rebuço...\nAh! queres saber bem cedo\nQuanto nos custa um soluço!\n\nÓ anjo! foge da dor,\nProcura o sol do conforto...\nAjoelha sobre o Tabor,\nNão venhas rezar no Horto.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Rimas",
       "tags": [
@@ -2059,7 +2064,7 @@
       "titulo": "Horto (1910)/Sancta Virgo Virginum",
       "texto": "SANCTA VIRGO VIRGINUM\n\nPRECE\n\nO’ Santa estremecida,\nFormosa e immaculada!\nEstrella abençoada\nDo Céo de minha vida!\n\nRainha casta e santa\nDas virgens do Senhor,\nEterno resplendor\nQue o mundo inteiro encanta.\n\nTu és minha alegria,\nMeu unico sorriso,\nO’ flor do Paraiso,\nAngelica Maria!\n\nAi! quantas vezes, quantas!\nA minha fronte inclina\nOrando a ti, divina,\nO’ Santa entre as mais santas!\n\nO’ Virgem tão serena!\nTu és meu sonho doce,\nPerfume que evolou-se\nDe um seio de Açucena!\n\nAmada creatura,\nLança-me estremecido\nO teu olhar, ungido\nDe immacula doçura!\n\nO’ Arco da Alliança,\nCeleste e branco lirio,\nSalva-me do martyrio,\nSenhora da bonança!\n\nEnvolve no teu véo\nA minha triste sorte,\nE mostra-me na morte\nA porta de teu Céo!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Sancta_Virgo_Virginum",
       "tags": [
@@ -2072,7 +2077,7 @@
       "titulo": "Horto (1910)/Saudação",
       "texto": "E’ chegado emfim o dia\nDas harmonias do lar,\nNos rostos vê-se a alegria\nDe corações a saltar.\nNos labios meigo sorriso,\nVindo lá do Paraiso\nEm effluvios divinaes;\nComo nuvens perfumosas\nDerramando sobre as rosas\nOs orvalhos matinaes.\n\nNão vês, meu irmão, que festa\nQue saudosa embriaguez\nNos mandam lá da floresta\nAs flores por sua vez?\nParece que a natureza\nOstenta com mais belleza\nAs suas graças gentis...\n\nE comnosco vem contente\nTrazer-te um lindo presente\nNestes perfumes subtis.\n\nNão ouves os periquitos\nQue povoam nosso lar?\nCom esses alegres gritos\nQuerem tambem te saudar.\nE os travessos passarinhos,\nComo encantados anjinhos.\nA sorrir lá n’amplidão,\nVêm n’uns adejos divinos,\nNos biquinhos purpurinos\nSustendo meu coração.\n\nAceita-o... E’ feito de rosas,\nDe margaridas, jasmins;\nAs suas fibras mimosas\nSão bellas como rubins.\nRecebe, pois, com carinhos\nNas azas dos passarinhos\nQue cantam nesta manhã,\nComo uma sincera humilia\nAs saudações da família\nE os beijos de tua irmã...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Sauda%C3%A7%C3%A3o",
       "tags": [
@@ -2084,7 +2089,7 @@
       "titulo": "Horto (1910)/Saudade — SAUDADE",
       "texto": "SAUDADE\n\nA ella, a Eugenia, a doce creatura que me chama irmã.\n\nAh! se soubesses quanto soffro e quanto\nLonge de ti meu coração padece!\nAh! se soubesses como dóe o pranto\nQue eternamente de meus olhos desce!\n\nAh! se soubesses!... Não perguntarias\nDe onde é que vem esta sombria magua\nQue traz-me o peito cheio de agonias\nE os tristes olhos arrasados d’agua!\n\nQuerem que a lyra de meus versos cante\nMais esperança e menos amargura,\nQue falle em noites de luar errante\nE não invoque a pobre noite escura.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Saudade",
       "tags": [
@@ -2096,7 +2101,7 @@
       "titulo": "Horto (1910)/Saudade — Mas... como posso eu levar sonhando",
       "texto": "Mas... como posso eu levar sonhando\nA vida inteira n’um anceio infindo,\nSe choro mesmo quando estou cantando,\nSe choro mesmo quando estou sorrindo!\n\nOuve, ó formosa e doce e immaculada,\nVisão gentil de eterna phantasia:\nMinh’alma é uma saudade desfolhada\nDe mãe querida sobre a cova fria.\n\nAh! minha Mãe! Pois tu não sabes, santa,\nQue Ella partiu e me deixou no berço?\nDesde esse dia a minha lyra canta\nToda a saudade que lhe inspira o verso!\n\nDepois que Ella se foi a Magua veio\nEncher-me o coração de luto e abrolhos.\nEu soffro tanto longe de seu seio,\nEu soffro tanto longe de seus olhos!\n\nO’ minha Eugenia! Estrella abençoada\nQue illuminas o horror deste deserto...\nDe teu affecto a chamma consagrada\nLança á minh’alma como um pallio aberto.\n\nQuando beijares teus filhinhos pensa\nO que seria d’elles sem teus beijos;\nE então comprehenderás a dor immensa,\nA amargura cruel destes harpejos!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Saudade",
       "tags": [
@@ -2109,7 +2114,7 @@
       "titulo": "Horto (1910)/Saudade — Junta as mãosinhas dos pequenos lirios,",
       "texto": "Junta as mãosinhas dos pequenos lirios,\nDas creancinhas que tu’alma adora,\nE ensina-os a rezar sobre os martyrios\nE a saudade infinita de quem chora.",
       "forma": "quadra",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Saudade",
       "tags": [
@@ -2121,7 +2126,7 @@
       "titulo": "Horto (1910)/Ao Senhor do Bom Fim",
       "texto": "Sofrer ou morrer!\nSanta Thereza de Jesus\n\nTu és meu amigo,\nMeu sol, minha luz!\nReparte comigo\nO peso da Cruz.\n\nBem vês quanto choro,\nTem pena de mim!\nA Ti só adoro\nSenhor do Bomfim.\n\nSerra da Raiz - 10 de Janeiro de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Ao_Senhor_do_Bom_Fim",
       "tags": []
@@ -2130,7 +2135,7 @@
       "titulo": "Horto (1910)/Simples",
       "texto": "Eu amo as minhas lembranças,\nMinhas saudades e dores,\nAssim como amo as crianças,\nOs passarinhos e as flores.\n\nA criancinha que chora\nÉ como o lírio ao nascer:\nUm raio de sol implora\nPara que chegue a viver.\n\nE o raio de sol que damos\nÀ pobre criança é o beijo...\nO lábio que nós beijamos\nRessoa como um harpejo.\n\nO pequeno passarinho\nEsmola também o amparo:\nAi! guardemos o seu ninho\nComo o tesouro mais caro.\n\nAs flores - no vil degredo\nDa terra - vivem um dia!\nVamos levá-las bem cedo\nÀ doce Virgem Maria.\n\nTerão assim melhor sorte\nQuando forem a murchar...\nAs rosas querem a morte\nQue as desfolha ao pé do altar.\n\nAi! tudo que é fraco e triste\nPrecisa de amparo e luz...\nE nada no mundo existe\nTão triste como uma  Cruz.\n\nPor isso, adoro as lembranças,\nAs amarguras e as dores,\nAssim como amo as crianças,\nAs andorinhas e as flores.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Simples",
       "tags": [
@@ -2144,7 +2149,7 @@
       "titulo": "Horto (1910)/Soledade",
       "texto": "SOLEDADE\n\nO’ doce morenita\nDe olhar magoado e triste,\nOnde a Saudade existe\nE o Desconsolo habita...\n\nFaz pena ver-te assim\nA’ hora do sol posto,\nAnnuviado o rosto,\nO’ meigo seraphim!\n\nAs vezes penso e scismo\nNo que te faz soffrer.\nE sinto que o meu ser\nQuer desvendar um abysmo.\n\nPorque soluça tanto\nUm coração de pomba,\nSe a noite amena tomba\nCheia de paz e encanto?\n\nPorque teu cilio treme\nInterrogando a lua?\nQue grande dor é a tua?\nPorque teu seio geme?\n\nAcaso esta saudade\nQue o teu olhar encerra\nSerá porque na terra\nChamam-te Soledade?\n\nSerá? Mas que lembrança\nFoi essa, meu jasmim,\nDe dar um nome assim\nA um’alma de creança?\n\nA um’alma que é um sonho\nMais branco do que um véo,\nCahido lá do Céo\nNeste paul medonho!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Soledade",
       "tags": [
@@ -2157,7 +2162,7 @@
       "titulo": "Horto (1910)/Soneto",
       "texto": "SONETO\n\nTudo o que é puro, santo e resplendente,\nN’este mundo cruel de desenganos,\nToda a ventura dos primeiros annos\nN’um’alma que desbrocha sorridente;\n\nTudo o que ainda vemos de potente\nNa vastidão sem fim dos oceanos,\nE da terra nos prantos soberanos\nTrazidos pela aurora refulgente;\n\nTudo o que desce do infinito ousado:\nO sol, a brisa, o orvalho prateado,\nA luz do amor, do bem, das esperanças;\n\nTudo afinal que vem do Céo doirado\nA despertar o coração maguado,\n— Deus encerrou nos olhos das creanças!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Soneto",
       "tags": [
@@ -2169,7 +2174,7 @@
       "titulo": "Horto (1910)/Meu sonho",
       "texto": "MEU SONHO\n\nA Yayá e a Maria Leonor Medeiros.\n\nEu tenho um sonho que no Céo mora\nFeito de luz e feito de amor,\nUm sonho roseo como uma aurora,\nUm sonho lindo como uma flor.\n\nE eu vivo sempre, sempre sonhando,\nO mesmo sonho de noite e dia,\nO mesmo sonho suave e brando\nDe minha vida toda a alegria.\n\nQuando soluço, quando minh’alma,\nCheia de angustia, fica a chorar,\nO sonho amado me traz a calma\nE então minh’alma põe-se a rezar.\n\nQuando, nas noites frias de inverno,\nEu tenho medo da tempestade,\nElle, o meu sonho, consolo eterno,\nTransforma as sombras em claridade.\n\nQuando no seio, choroso e louco,\nPalpita, incerto, meu coração...\nO sonho doce vem, pouco a pouco,\nTrazer-me a graça de uma illusão.\n\nE eu canto e rio na luz dispersa\nDeste diluvio de phantasias...\nMinh’alma vôa no Azul immersa\nBuscando a patria das harmonias.\n\nImagem doce, visão sagrada,\nChimera excelsa dos meus amores,\nPerola branca, delicia amada\nBalsamo puro das minhas dôres;\n\nElle, o meu sonho, pharol que encanta,\nGuia-me á patria da salvação\nSorriso ingênuo, reliquia santa,\nDo relicario do coração!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Meu_sonho",
       "tags": [
@@ -2183,7 +2188,7 @@
       "titulo": "Horto (1910)/Um sonho",
       "texto": "UM SONHO\n\nTudo era calmo... Junto, ao pé do altar,\nMeu coração rezava docemente;\nE um cirio branco, triste, a soluçar\nDizia á flor n’um murmurar dolente:\n\n«Vê, minha irmã, aqui na solidão\nDorme Jesus, sosinho, abandonado...\nNão sente palpitar um coração\nQue lhe traga um sorriso abençoado.\n\nElle diz: vinde á mim, vós que choraes\nE o vosso pranto mudarei em flores;\nEu quero recolher os vossos ais\nNo cofre onde descançam minhas dôres.\n\nFalla Jesus, e o mundo não responde. \nOs homens folgam nos salões ruidosos,\nE aqui, dorida, nossa voz esconde\nA magua funda dos que vão chorosos.»\n\nCalou-se o cirio, e a rosa entristecida,\nEntreabrindo o calice perfumado,\nMurmurou, n’uma prece indefinida\nDe mãe que pede pelo filho amado:\n\n«Quero o meu leito, aqui junto ao Sacrario,\nMinha tumba nos braços desta Cruz;\nE’ tão doce subir para o Calvario\nBeijando a terra onde pisou Jesus!\n\nE depois... Quando a luz te consumir\nCahirão minhas folhas resequidas.\nOutros cirios e rosas hão de vir\nRedizer nossas queixas doloridas.»\n\nAssim fallou a rosa, e, desfolhada\nTombou, chorando, sobre a pedra fria.\nDa pobre vela reduzida ao nada\nO pranto apenas sobre o altar se via.\n·························\nEu acordei... Uma tristeza infinda\nLembrou do sonho a imaginaria dôr,\nE, de meu leito eu escutava ainda\nGemer o cirio e soluçar a flôr.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Um_sonho",
       "tags": [
@@ -2195,7 +2200,7 @@
       "titulo": "Horto (1910)/Supplica",
       "texto": "Se tudo foge e tudo desaparece,\nSe tudo cai ao vento da Desgraça,\nSe a vida é o sopro que nos lábios passa\nGelando o ardor da derradeira prece;\n\nSe o sonho chora e geme e desfalece\nDentro do coração que o amor enlaça,\nSe a rosa murcha inda em botão, e a graça\nDa moça foge quando a idade cresce;\n\nSe Deus transforma em sua lei tão pura\nA dor das almas que o ideal tortura\nNa demência feliz de pobres loucos...\n\nSe a água do rio para o oceano corre,\nSe tudo cai, Senhor! por que não morre\nA dor sem fim que me devora aos poucos?",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Supplica",
       "tags": [
@@ -2208,7 +2213,7 @@
       "titulo": "Horto (1910)/Sylvio",
       "texto": "Ó mães que tendes filho, mães piedosas!\nQuando eles morrerem criancinhas,\nEnfeitai-lhes o caixão de brancas rosas;\nDeixai, deixai voar as andorinhas!\nEm busca das paragens luminosas!\nGuerra Junqueiro\n\nSylvio morreu. Docemente.\nSu’alma se foi, voando\nComo uma pomba dolente\nQue deixa a terra cantando.\n\n«Não murches, olha de rosa!\nEspera que chegue o inverno...\nCansaste, rola formosa?\nPousa no seio materno.»\n\nMas Sylvio voou sorrindo\nÀ pátria que a glória encerra...\nEra um anjo meigo e lindo,\nE os anjos não são da terra.\n\nNossa Senhora é que os leva\nAqui do mundo mesquinho;\nQuer vê-los, longe da treva,\nBrincando com o seu filhinho.\n\nQuando se vai n’um sorriso\nUma criança adorada,\nAo chegar ao Paraíso,\nDiz uma lenda encantada.\n\nJesus lhe entrega, risonho,\nPara a salvar do martírio,\nDuas asas da cor do Sonho\nE um pequenino círio.\n\nMas, se a mãe padece tanto\nNa terra, sempre chorando,\nMolham-se as asas de pranto\nE o círio vai-se apagando.\n\nEntão o pobre do anjinho\nJá não procura brincar,\nSoluça a um canto sozinho\nPorque não pode voar.\n\nE, se o círio, doce e puro,\nPouco a pouco perde a luz,\nComo pode ele no escuro\nVer o menino Jesus?\n\nPobre mãe! não chores tanto\nO filho do coração...\nVais apagar com teu pranto\nA vela que tem na mão.\n\nDepois ouvirás clamar,\nDo Céu entre as níveas gazas:\nÓ mãe, não posso voar\nTeu pranto molha-me as asas!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Sylvio",
       "tags": [
@@ -2220,7 +2225,7 @@
       "titulo": "Horto (1910)/Symbolicas — SYMBOLICAS",
       "texto": "SYMBOLICAS\n\nA Emilia Guerra.\n\nQuando Deus creou Alem\nAs estrellas em cardume,\nNa Terra creou tambem\nAs flores, mas sem perfume.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Symbolicas",
       "tags": [
@@ -2232,7 +2237,7 @@
       "titulo": "Horto (1910)/Symbolicas — Um dia, ao mundo de abrolhos",
       "texto": "Um dia, ao mundo de abrolhos\nA Virgem pura desceu,\nCom um manto da côr dos olhos\nE uns olhos da côr do Céo.\n\nNo Céo azul de seu manto\nBrilhava um astro: Jesus!\nE, em seu olhar sacrosanto,\nBoiava a Innocencia, a Luz...\n\nMaria! — os anjos clamaram\nA chorar, vendo-a partindo... —\nTu levas nossa alegria...»\nMas da Terra lhe acenaram\nAs flores todas, abrindo:\n        «Maria!»\n\nE Ella deixou do Infinito\nOs resplendentes fulgores,\nPara acudir ao bemdito\nAceno doce das flores.\n\nE teve pena de vel-as\nFormosas, mas sem ter brilho:\nOlhou sorrindo as estrellas\nDos cabellos de seu Filho...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Symbolicas",
       "tags": [
@@ -2243,7 +2248,7 @@
       "titulo": "Horto (1910)/Symbolicas — Ah! fôra Ella que as fizera",
       "texto": "Ah! fôra Ella que as fizera\nCom a graça de seu sorriso,\nN’um dia de Primavera,\nNa gloria do Paraiso!\n\nE seus olhos procuraram\nAlgum occulto thesouro:\n«Para as flôres que faria?»\nQuando do Céo à chamaram\nOs Anjos todos, em coro:\n        «Maria!»\n\nIa partir... Que lembrança\nPodia deixar no campo?\nDera o sorriso á creança,\nEstrellas ao pyrilampo!\n\nNos meigos olhos perpassa\nNão sei que lampejo doce...\nE a Virgem, cheia de graça,\nDo mundo triste evolou-se.\n\nMas, Ella, que dera o encanto\nDo riso sagrado á infancia,\nDa dobra azul de seu manto\nDeixou cahir a fragrancia.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Symbolicas",
       "tags": [
@@ -2255,7 +2260,7 @@
       "titulo": "Horto (1910)/Symbolicas — Desde esse dia, na Terra,",
       "texto": "Desde esse dia, na Terra,\nAs flores sabem fallar...\nA voz da flor é a ambrosia\nQue tanta doçura encerra\nQuando murmura ao luar:\n        «Maria!»",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Symbolicas",
       "tags": [
@@ -2266,7 +2271,7 @@
       "titulo": "Horto (1910)/No templo",
       "texto": "NO TEMPLO\n\nQue suave harmonia,\n    Em tua voz...\nTu roubaste-a , Maria,\n    Aos rouxinoes?\n\nAqui, na Egreja santa,\n    Si vens rezar,\nQuanta piedade, quanta!\n    Trazes no olhar.\n\nMaria! como és bella,\n    Junto a Jesus!\nO teu olhar de estrella\n    Parece luz.\n\nE que doce brancura\n    Na tua côr...\nTens a pallida alvura\n    De um lirio em flôr.\n\nJunta estas mãos, formosa!\n    Assim... assim...\nDeixa o labio de rosa\n    Pedir por mim.\n\nVale tanto uma prece,\n    Dita por ti!\nMas... a noite já desce.\n    Vamos d’aqui.\n\nOlha que eu tenho medo\n    Da escuridão...\nVamos; termina cedo\n    Tua oração.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/No_templo",
       "tags": [
@@ -2279,7 +2284,7 @@
       "titulo": "Horto (1910)/Teus annos",
       "texto": "TEUS ANNOS\n\nA Eugenia B. de Albuquerque Mello\n\nTeus annos amanhã. Fui ver, contente,\n(E como procurei por toda parte!)\nUm mimo que te desse... e achei, somente,\nMeu triste coração, mimo sem arte.\n\nMas... o que dirás tu quando, de leve,\nBem cedinho batendo á tua porta,\nVires meu coração frio, de neve,\nPobre flor sem perfume e quasi morta?\n\nManda-o entrar... E dize, ó doce amada!\nQue elle se aqueça d’esse olhar no brilho...\nVai de tão longe te pedir pousada:\nDeixa-o ficar no berço de teu filho...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Teus_annos",
       "tags": [
@@ -2291,7 +2296,7 @@
       "titulo": "Horto (1910)/Trança loura",
       "texto": "A linda trança dourada\nQue eu vi domingo à noitinha,\nGuardava a maciez amada\nDas penas de uma andorinha.\n\nRecordava uma esperança\nBordada com fios d’ouro...\nÓ doce e mimosa trança,\nMeu raio de sol tão louro!\n\nVentura, sonho, alegria,\nTudo se resume ali...\nPara tecer serviria\nO ninho de um colibri.\n\nEra já noite, e, no entanto,\nA loura madeixa olhando,\nCuidei que, cheio de encanto,\nO dia vinha raiando.\n\nDeus fez-la numa redoma\nDe beijos, de luz, de amor,\nE deu-lhe o sagrado aroma\nDas madressilvas em flor.\n\nAh! sobre aqueles risonhos,\nDourados, macios folhos,\nQuem dera embalar meus sonhos,\nQuem dera cerrar meus olhos!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Tran%C3%A7a_loura",
       "tags": [
@@ -2305,7 +2310,7 @@
       "titulo": "Horto (1910)/Tudo passa",
       "texto": "I\nAquela moça graciosa e bela\nQue passa sempre de vestido escuro\nE traz nos lábios um sorriso puro,\nTriste e formoso como os olhos dela...\n\nDiz que su’alma tímida e singela\nJá não tem coração: que o mundo impuro\nPara sempre o matou... e o seu futuro\nFoi-se n’um sonho, desmaiada estrela.\n\nEla não sabe que o desgosto passa\nNem que do orvalho a abençoada graça\nFaz reviver a planta que emurchece.\n\nFlávia! nas almas juvenis, formosas,\nBerço sagrado de jasmins e rosas,\nO coração não morre: ele adormece...\n\nII\nO coração não morre: ele adormece...\nE antes morresse o coração traído,\nMulher que choras teu amor perdido,\nAmor primeiro que não mais se esquece!\n\nQuando tu vais rezar, quando anoitece,\nBeijas as contas do colar partido;\nE o coração n’um trêmulo gemido\nVem perturbar a paz de tua prece.\n\nReza baixinho, ó noiva desolada!\nE quando, à tarde, pela mesma estrada\nChorando fores esse imenso amor...\n\nGeme de manso, juriti dolente!\nVais acordar o coração doente...",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Tudo_passa",
       "tags": [
@@ -2317,7 +2322,7 @@
       "titulo": "Horto (1910)/Versos á Inah",
       "texto": "Passaste rindo... E o teu perfil modesto,\nCheio de graça e cheio de inocência,\nÀ doce luz daquele riso honesto,\nTinha de um sonho a doce transparência.\n\nTeus lindos olhos castos e sagrados,\nIngênuos como os olhos das crianças,\nPareciam dois céus imaculados,\nTão azuis como as minhas esperanças.\n\nDesmanchou-se-te a trança cor de ouro\nEnquanto assim passavas rindo, rindo...\nE eu murmurei, ó meu gentil tesouro,\nFitando os olhos nesse olhar tão lindo:\n\n“Ó tranças cor da alegria,\nOlhar que um sorriso fez:\nOlhos de Santa Luzia,\nCabelos de Santa Ignez!\n\nDourai, dourai meus abrolhos,\nÓ tranças que o vento leva...\nOlhos, ficai nos meus olhos,\nQue eles são feitos de treva.\n\nCabelos cheios de luz,\nNão fujam, que eu vou chorar...\nAi! lindos olhos azuis,\nDescansem no meu olhar.\n\n⁂\n\nMas teus cabelos voaram\nTeus olhos...não mais os vi:\nOs olhos que me fitaram,\nAs tranças por que morri...\n\nÓ tranças cor da alegria,\nDourai, dourai meus abrolhos...\nOlhos que a graça alumia,\nVinde morar nos meus olhos...\n\n1 de Janeiro de 1898.",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Versos_%C3%A1_Inah",
       "tags": []
@@ -2326,7 +2331,7 @@
       "titulo": "Horto (1910)/Versos ligeiros",
       "texto": "VERSOS LIGEIROS\n\nEu acho tão feiticeira\nA Noemita da esquina,\nCom o seu recato de freira,\nMuito morena e franzina;\n\nQue fico toda encantada\nQuando na Egreja a contemplo,\nPois cuido ver uma fada,\nAjoelhada no Templo.\n\nDoce nuvem còr de rosa\nParece que a Deus se eleva,\nD’aquella bocca mimosa,\nD’aquelle olhar cor de treva.\n\nE’ sua prece que vôa,\nIndefinida e tão mansa,\nComo um hymno que resôa,\nComo uma voz de creança.\n\nA trança de seu cabello,\n(Como ella é negra, Jesus!)\nSemelha um lindo novello\nTão preto que já reluz.\n\nTem a boquinha vermelha\nComo uma rosa entreabrindo...\nE’ um favo de mel de abelha\nAquella bocca sorrindo!\n\nMinh’alma nunca se cança\nDe vel-a assim, tão divina,\nSempre formosa e creança\nCom o seu perfil de menina.\n\nA ’s vezes, eu olho-a tanto,\nCom tanta veneração,\nQue fico muda de espanto,\nDepois da contemplação.\n\nE’ verdade que não faz\nMal nenhum fital-a assim...\nMeu Deus! si eu fosse rapaz\nO que diriam de mim?!",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Versos_ligeiros",
       "tags": [
@@ -2337,7 +2342,7 @@
       "titulo": "Horto (1910)/Zirma",
       "texto": "Foi em dezembro, no mês bendito,\nNo mês de festa, que ela partiu...\nDesde esse tempo, do seu seio aflito\nMinh’alma louca, também fugiu.\n\nE foi tão grande minha agonia\nQue quase morro de soluçar,\nQuando beijei-a na boca fria\nComo uma concha que sai do Mar!\n\nPassava a noite...( lembro-me tanto!)\nNoite de lua, misteriosa...\nChoravam astros no etéreo manto...\nMeu Deus, que noite silenciosa!\n\nA lua mansa no Céu vogava,\nComo um barquinho n’agua do rio,\nE parecia que murmurava:\n“No Céu formoso faz tanto frio!”\n\nNo esquife azuleo, feito a capricho,\nPor entre rosas de alvura tanta,\nDeitaram Zirma como no nicho\nGuarda-se a imagem de alguma Santa.\n \nO rosto branco da cor de gelo\nUm doce lírio trazia á mente...\nNa noite escura de seu cabelo,\nNem um só astro resplandecente!\n \nNinguém diria que estava morta\nO lábio aberto por um sorriso,\nNa terra triste, - que desconforto!\nQuanta alegria - No Paraíso!\n \nQual uma virgem, pura e singela,\nQue deixa o mundo para ser freira,\nToda de branco, tinha a capela\nFeita de flores de laranjeira.\n \nPor sobre o manto, formosa e leve,\nMuito estrelado, de azul cetim,\nDas mãos pequenas da cor da neve\nPendia o terço cor de marfim.\n \nSubiu-me aos olhos, em doudo assomo,\nO amargo pranto do coração,\nVendo-a tão linda, vestida como\nNossa Senhora da Conceição.\n\nOs olhos negros eram dois círios\nQue se extinguiram no pé do altar...\nAqueles olhos, meus dois martírios,\nQuem contemplava sem soluçar!\n \nÓ pobre Zirma, nívea açucena,\nCamélia branca murchada na haste:\nPor que fugiste da vida amena?\nPor que tão cedo me abandonaste?\n \nEu precisava de teu carinho\nComo de orvalho precisa a flor,\nE embalde busco no meu caminho\nO amparo doce de teu amor.\n \nAnjo da guarda, formoso e santo,\nQue me escondias nas tuas asas,\nQuem é que agora me enxuga o pranto,\nCilício eterno na face em brasas!\n \nSem estes olhos que a morte cerra,\nSem o consolo de teu sorriso,\nComo é que posso viver na terra,\nÓ minha santa do Paraíso!\n\nNova Cruz - 1897",
       "forma": "outro",
-      "obra": "pt.wikisource: Auta de Sousa",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horto_%281910%29/Zirma",
       "tags": [

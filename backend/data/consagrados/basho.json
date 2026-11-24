@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Basho_by_Buson.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1644,
   "morte": 1694,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "JP",
   "poemas": [
     {
       "titulo": "[古池や蛙とびこむ水の音]",

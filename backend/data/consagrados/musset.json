@@ -4,12 +4,16 @@
   "bio": "Poeta francês do romantismo. As Noites e as poesias de amor e de ironia são a voz juvenil da geração de 1830, ao lado do teatro de Lorenzaccio.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Alfred_de_musset.jpg",
   "morte": 1857,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Poésies (Musset)/Par un mauvais temps",
       "texto": "Elle a mis, depuis que je l’aime,\n(Bien long-temps, peut-être toujours),\nBien des robes, jamais la même ;\nPalmire a dû compter les jours.\n\nMais, quand vous êtes revenue,\nVotre bras léger sur le mien,\nIl faisait, dans cette avenue,\nUn froid de loup, un temps de chien.\n\nVous m’aimiez un peu, mon bel ange,\nEt, tandis que vous bavardiez,\nDans cette pluie et cette fange\nSe mouillaient vos chers petits pieds.\n\nSongeait-elle, ta jambe fine,\nQuand tu parlais de nos amours,\nQu’elle allait porter sous l’hermine\nLe satin, l’or et le velours ?\n\nSi jamais mon cœur désavoue\nCe qu’il sentit en ce moment,\nPuisse à mon front sauter la boue\nOù tu marchais si bravement !",
       "forma": "outro",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/Par_un_mauvais_temps",
       "tags": []
@@ -18,7 +22,7 @@
       "titulo": "Poésies (Musset)/À Lydie",
       "texto": "HORACE.\nLorsque je t’avais pour amie,\nQuand nul jeune garçon, plus robuste que moi,\nN’entourait de ses bras ton épaule arrondie,\nAuprès de toi, blanche Lydie,\nJ’ai vécu plus joyeux et plus heureux qu’un roi.\nLYDIE.\nQuand pour toi j’étais la plus chère,\nQuand Chloé pâlissait auprès de Lydia,\nLydia qu’on vantait dans l’Italie entière\nVécut plus heureuse et plus fière\nQue dans les bras d’un dieu la Romaine Ilia.\nHORACE.\nChloé me gouverne à présent,\nChloé, savante au luth, habile en l’art du chant :\nLe doux son de sa voix de volupté m’enivre ;\nJe suis prêt à cesser de vivre,\nSi, pour la préserver, les dieux voulaient mon sang.\nLYDIE.\nJe me consume maintenant\nD’une amoureuse ardeur que rien ne peut éteindre\nPour le fils d’Ornythus, ce bel adolescent.\nJe mourrais deux fois sans me plaindre,\nSi, pour le préserver, les dieux voulaient mon sang.\nHORACE.\nEh quoi ! Si, dans notre pensée,\nL’ancien amour se rallumait ?\nSi, la blonde Chloé de ma maison chassée,\nMa porte se rouvrait ? si Vénus offensée\nAu joug d’airain nous ramenait ?\n\nLYDIE.\nCalaïs, ma richesse unique,\nEst plus beau qu’un soleil levant,\nEt toi plus léger que le vent,\nPlus prompt à t’irriter que l’âpre Adriatique.\nEt pourtant près de toi, si c’était ton plaisir,\nVolontiers j’irais vivre, et volontiers mourir.",
       "forma": "outro",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_Lydie",
       "tags": []
@@ -27,7 +31,7 @@
       "titulo": "Poésies (Musset)/À M. A. T.",
       "texto": "Ainsi, mon cher ami, vous allez donc partir !\nAdieu ; laissez les sots blâmer votre folie.\nQuel que soit le chemin, quel que soit l’avenir,\nLe seul guide en ce monde est la main d’une amie.\n\nVous me laissez pourtant bien seul, moi qui m’ennuie !\nMais qu’importe ? l’espoir de vous voir revenir\nMe donnera, malgré les dégoûts de la vie,\nCe courage d’enfant qui consiste à vieillir.\n\nQuelquefois seulement, près de votre maîtresse,\nSouvenez-vous d’un cœur qui prouva sa noblesse\nMieux que l’épervier d’or dont mon casque est armé ;\n\nQui vous a tout de suite et librement aimé,\nDans la force et la fleur de la belle jeunesse,\nEt qui dort maintenant, à tout jamais fermé.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_M._A._T.",
       "tags": []
@@ -36,7 +40,7 @@
       "titulo": "Poésies (Musset)/À M. V. H.",
       "texto": "Il faut dans ce bas monde aimer beaucoup de choses,\nPour savoir après tout ce qu’on aime le mieux :\nLes bonbons, l’océan, le jeu, l’azur des cieux,\nLes femmes, les chevaux, les lauriers et les roses.\n\nIl faut fouler aux pieds des fleurs à peine écloses ;\nIl faut beaucoup pleurer, dire beaucoup d’adieux.\nPuis le cœur s’aperçoit qu’il est devenu vieux,\nEt l’effet qui s’en va nous découvre les causes.\n\nDe ces biens passagers que l’on goûte à demi,\nLe meilleur qui nous reste est un ancien ami.\nOn se brouille, on se fuit. — Qu’un hasard nous rassemble,\n\nOn s’approche, on sourit, la main touche la main,\nEt nous nous souvenons que nous marchions ensemble,\nQue l’ame est immortelle, et qu’hier c’est demain.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_M._V._H.",
       "tags": []
@@ -45,7 +49,7 @@
       "titulo": "Poésies (Musset)/À Madame *** —  — Je vous ai vue enfant, maintenant que j’y pense,",
       "texto": " — Je vous ai vue enfant, maintenant que j’y pense,\nFraîche comme une rose et le cœur dans les yeux.\n— Je vous ai vu bambin, boudeur et paresseux ;\nVous aimiez lord Byron, les grands vers et la danse.\n\nAinsi nous revenaient les jours de notre enfance,\nEt nous parlions déjà le langage des vieux ;\nCe jeune souvenir riait entre nous deux,\nLéger comme un écho, gai comme l’espérance.\n\nLe lâche craint le temps parce qu’il fait mourir.\nIl croit son mur gâté lorsqu’une fleur y pousse.\nÔ voyageur ami, père du souvenir,\n\nC’est ta main consolante, et si vieille et si douce,\nQui consacre à jamais un pas fait sur la mousse,\nLe hochet d’un enfant, un regard, un soupir.\n\nQuand, par un jour de pluie, un oiseau de passage\nJette un cri, dans un chemin perdu,\nAu fond des bois fleuris, dans son nid de feuillage,\nLe rossignol pensif a parfois répondu.",
       "forma": "outro",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_Madame_%2A%2A%2A",
       "tags": []
@@ -54,7 +58,7 @@
       "titulo": "Poésies (Musset)/À Madame *** — Ainsi fut mon appel de votre ame entendu,",
       "texto": "Ainsi fut mon appel de votre ame entendu,\nEt vous me répondez dans notre cher langage.\nCe charme triste et doux, tant aimé d’un autre âge,\nCe pur toucher du cœur, vous me l’avez rendu.\n\nÉtait-ce donc bien vous ? Si bonne et si jolie,\nVous parlez de regret et de mélancolie.\n— Et moi, peut-être aussi j’avais un cœur blessé.\n\nAimer n’importe quoi, c’est un peu de folie.\nQui nous rapportera le bouquet d’Ophélie\nDe la rive inconnue où les flots l’ont laissé ?",
       "forma": "outro",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_Madame_%2A%2A%2A",
       "tags": []
@@ -63,7 +67,7 @@
       "titulo": "Poésies (Musset)/À Madame *** — Vous les regrettiez presque en me les envoyant",
       "texto": "Vous les regrettiez presque en me les envoyant\nCes vers, beaux comme un rêve et purs comme l’aurore.\nCe malheureux garçon, disiez-vous en riant,\nVa se croire obligé de me répondre encore.\n\nBonjour, ami sonnet, si doux, si bienveillant,\nPoésie, amitié que le vulgaire ignore,\nGentil bouquet de fleurs, de larmes tout brillant,\nQue dans un noble cœur un soupir fait éclore.\n\nOui nous avons ensemble, à peu près, commencé\nÀ songer ce grand songe où le monde est bercé.\nJ’ai perdu ces procès très chers, et j’en appelle ;\n\nMais en vous écoutant tout regret a cessé.\nMeure mon triste cœur, quand ma pauvre cervelle\nNe saura plus sentir le charme du passé !",
       "forma": "soneto",
-      "obra": "fr.wikisource: Poésies (Musset)",
+      "obra": "Poésies",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_%28Musset%29/%C3%80_Madame_%2A%2A%2A",
       "tags": []

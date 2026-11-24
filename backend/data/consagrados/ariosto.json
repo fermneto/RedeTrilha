@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 1474,
   "morte": 1533,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Orlando Furioso — Canto I, estâncias 1–4",

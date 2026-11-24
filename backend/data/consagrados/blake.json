@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/00/William_Blake_by_Thomas_Phillips.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1757,
   "morte": 1827,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "The Tyger",
@@ -114,7 +118,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/A Little Boy Lost",
       "texto": "Nought loves another as itself\nNor venerates another so.\nNor is it possible to thought\nA greater than itself to know:\n\nAnd, Father, how can I love you,\nOr any of my brothers more?\nI love you like the little bird\nThat picks up crumbs around the door.\n\nThe Priest sat by and heard the child\nIn trembling zeal he siez'd his hair:\nHe led him by his little coat:\nAnd all admir'd the Priestly care.\n\nAnd standing on the altar high\nLo what a fiend is here! said he:\nOne who sets reason up for judge\nOf our most holy Mystery.\n\nThe weeping child could not be heard.\nThe weeping parents wept in vain;\nThey strip'd him to his little shirt,\nAnd bound him in an iron chain,\n\nAnd burn'd him in a holy place,\nWhere many had been burn'd before:\nThe weeping parents wept in vain,\nAre such things done on Albion's shore.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/A_Little_Boy_Lost",
       "tags": []
@@ -123,7 +127,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/A Little Girl Lost",
       "texto": "Children of the future Age,\nReading this indignant page:\nKnow that in a former time,\nLove! sweet Love! was thought a crime.\nIn the Age of Gold,\nFree from winters cold:\nYouth and maiden bright,\nTo the holy light,\nNaked in the sunny beams delight.\n\nOnce a youthful pair\nFill'd with softest care:\nMet in garden bright,\nWhere the holy light,\nHad just removd the curtains of the night.\n\nThere in rising day,\nOn the grass they play:\nParents were afar:\nStrangers came not near:\nAnd the maiden soon forgot her fear.\n\nTired with kisses sweet\nThey agree to meet,\nWhen the silent sleep\nWaves o'er heavens deep:\nAnd the weary tired wanderers weep.\n\nTo her father white\nCame the maiden bright:\nBut his loving look,\nLike the holy book,\nAll her tender limbs with terror shook.\n\nOna! pale and weak!\nTo thy father speak!\nO the trembling fear!\nO the dismal care!\nThat shakes the blossoms of my hoary hair.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/A_Little_Girl_Lost",
       "tags": []
@@ -132,7 +136,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Ah! Sun-flower",
       "texto": "Ah Sun-flower! weary of time,\nWho countest the steps of the Sun;\nSeeking after that sweet golden clime\nWhere the travellers journey is done.\n\nWhere the Youth pined away with desire,\nAnd the pale Virgin shrouded in snow;\nArise from their graves and aspire,\nWhere my Sun-flower wishes to go.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Ah%21_Sun-flower",
       "tags": []
@@ -141,7 +145,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Earth's Answer",
       "texto": "Earth rais'd up her head,\nFrom the darkness dread & drear.\nHer light fled.\nStony dread!\nAnd her locks cover'd with grey despair.\n\nPrison'd on watry shore\nStarry Jealousy does keep my den\nCold and hoar\nWeeping o'er\nI hear the Father of the ancient men\n\nSelfish father of men\nCruel jealous selfish fear\nCan delight\nChain'd in night\nThe virgins of youth and morning bear.\n\nDoes spring hide its joy,\nWhen buds and blossoms grow?\nDoes the sower?\nSow by night?\nOr the plowman in darkness plow?\n\nBreak this heavy chain.\nThat does freeze my bones around\nSelfish! vain,\nEternal bane!\nThat free Love with bondage bound.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Earth%27s_Answer",
       "tags": []
@@ -150,7 +154,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Holy Thursday",
       "texto": "Is this a holy thing to see\nIn a rich and fruitful land,\nBabes reduced to misery\nFed with cold and usurous hand?\n\nIs that trembling cry a song?\nCan it be a song of joy?\nAnd so many children poor?\nIt is a land of poverty!\n\nAnd their sun does never shine.\nAnd their fields are bleak & bare.\nAnd their ways are fill'd with thorns\nIt is eternal winter there.\n\nFor where-e'er the sun does shine,\nAnd where-e'er the rain does fall:\nBabe can never hunger there,\nNor poverty the mind appall.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Holy_Thursday",
       "tags": []
@@ -159,7 +163,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Infant Sorrow",
       "texto": "My mother groand! my father wept.\nInto the dangerous world I leapt:\nHelpless, naked, piping loud:\nLike a fiend hid in a cloud.\n\nStruggling in my fathers hands:\nStriving against my swadling bands:\nBound and weary I thought best\nTo sulk upon my mothers breast.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Infant_Sorrow",
       "tags": []
@@ -168,7 +172,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Introduction",
       "texto": "Hear the voice of the Bard!\nWho Present, Past, & Future sees\nWhose ears have heard,\nThe Holy Word,\nThat walk'd among the ancient trees.\n\nCalling the lapsed Soul\nAnd weeping in the evening dew:\nThat might controll\nThe starry pole;\nAnd fallen fallen light renew!\n\nO Earth O Earth return!\nArise from out the dewy grass;\nNight is worn,\nAnd the morn\nRises from the slumberous mass.\n\nTurn away no more:\nWhy wilt thou turn away\nThe starry floor\nThe watry shore\nIs giv'n thee till the break of day.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Introduction",
       "tags": []
@@ -177,7 +181,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/London",
       "texto": "LONDON\nI wander thro' each charter'd street,\nNear where the charter'd Thames does flow\nAnd mark in every face I meet\nMarks of weakness, marks of woe.\n\nIn every cry of every Man,\nIn every Infants cry of fear,\nIn every voice; in every ban,\nThe mind-forg'd manacles I hear\n\nHow the Chimney-sweepers cry\nEvery blackning Church appalls,\nAnd the hapless Soldiers sigh,\nRuns in blood down Palace walls\n\nBut most thro' midnight streets I hear\nHow the youthful Harlots curse\nBlasts the new-born Infants tear\nAnd blights with plagues the Marriage hearse",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/London",
       "tags": []
@@ -186,7 +190,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/My Pretty Rose Tree",
       "texto": "A flower was offerd to me:\nSuch a flower as May never bore.\nBut I said I've a Pretty Rose-tree,\nAnd I passed the sweet flower o'er.\n\nThen I went to my Pretty Rose-tree:\nTo tend her by day and by night,\nBut my Rose turnd away with jealousy;\nAnd her thorns were my only delight.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/My_Pretty_Rose_Tree",
       "tags": []
@@ -195,7 +199,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/Nurse's Song",
       "texto": "When the voices of children are heard on the green\nAnd whisprings are in the dale:\nThe days of my youth rise fresh in my mind,\nMy face turns green and pale.\n\nThen come home my children the sun is gone down\nAnd the dews of night arise\nYour spring & your day, are wasted in play\nAnd your winter and night in disguise.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/Nurse%27s_Song",
       "tags": []
@@ -204,7 +208,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Angel",
       "texto": "I Dreamt a Dream! what can it mean?\nAnd that I was a maiden Queen:\nGuarded by an Angel mild:\nWitless woe, was ne'er beguil'd!\n\nAnd I wept both night and day\nAnd he wip'd my tears away\nAnd I wept both day and night\nAnd hid from him my hearts delight\n\nSo he took his wings and fled:\nThen the morn blush'd rosy red:\nI dried my tears & arm'd my fears,\nWith ten thousand shields and spears\n\nSoon my angel came again:\nI was arm'd, he came in vain;\nFor the time of youth was fled\nAnd grey hairs were on my head.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Angel",
       "tags": []
@@ -213,7 +217,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Chimney Sweeper",
       "texto": "A little black thing among the snow:\nCrying weep, weep, in notes of woe:\nWhere are thy father & mother? say?\nThey are both gone up to the church to pray.\n\nBecause I was happy upon the heath,\nAnd smil'd among the winters snow:\nThey clothed me in the clothes of death,\nAnd taught me to sing the notes of woe\n\nAnd because I am happy & dance & sing,\nThey think they have done me no injury:\nAnd are gone to praise God & his Priest & King\nWho make up a heaven of our misery.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Chimney_Sweeper",
       "tags": []
@@ -222,7 +226,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Clod and the Pebble",
       "texto": "Love seeketh not Itself to please,\nNor for itself hath any care;\nBut for another gives its ease,\nAnd builds a Heaven in Hells despair.\n\nSo sang a little Clod of Clay,\nTrodden with the cattles feet:\nBut a Pebble of the brook,\nWarbled out these metres meet.\n\nLove seeketh only Self to please\nTo bind another to its delight:\nJoys in anothers loss of ease,\nAnd builds a Hell in Heavens despite.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Clod_and_the_Pebble",
       "tags": []
@@ -231,7 +235,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Fly",
       "texto": "Little Fly\nThy summers play,\nMy thoughtless hand\nHas brush'd away.\n\nAm not I\nA fly like thee?\nOr art not thou\nA man like me?\n\nFor I dance\nAnd drink & sing:\nTill some blind hand\nShall brush my wing.\n\nIf thought is life\nAnd strength & breath;\nAnd the want\nOf thought is death;\n\nThen am I\nA happy fly,\nIf I live,\nOr if I die.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Fly",
       "tags": []
@@ -240,7 +244,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Human Abstract",
       "texto": "Pity would be no more,\nIf we did not make somebody Poor:\nAnd Mercy no more could be,\nIf all were as happy as we;\n\nAnd mutual fear brings peace:\nTill the selfish loves increase,\nThen Cruelty knits a snare,\nAnd spreads his baits with care.\n\nHe sits down with holy fears,\nAnd waters the ground with tears;\nThen Humility takes its root\nUnderneath his foot.\n\nSoon spreads the dismal shade\nOf Mystery over his head;\nAnd the Catterpiller and Fly,\nFeed on the Mystery.\n\nAnd it bears the fruit of Deceit,\nRuddy and sweet to eat;\nAnd the Raven his nest has made\nIn its thickest shade.\n\nThe Gods of the earth and sea,\nSought thro' Nature to find this Tree,\nBut their search was all in vain;\nThere grows one in the Human Brain",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Human_Abstract",
       "tags": []
@@ -249,7 +253,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Lilly",
       "texto": "The modest Rose puts forth a thorn;\nThe humble Sheep, a threatning horn;\nWhile the Lilly white, shall in Love delight,\nNor a thorn nor a threat stain her beauty bright.",
       "forma": "quadra",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Lilly",
       "tags": []
@@ -258,7 +262,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Little Girl Found",
       "texto": "ALL the night in woe,\nLyca's parents go;\nOver vallies deep\nWhile the desarts weep.\n\nTired and woe begone,\nHoarse with making moan\nArm in arm seven days\nThey trac'd the desart ways.\n\nSeven nights they sleep,\nAmong shadows deep,\nAnd dream they see their child\nStarv'd in desart wild\n\nPale thro pathless ways\nThe fancied image strays\n Famish'd weeping weak\nWith hollow piteous shriek\n\nRising from unrest,\nThe trembling woman prest,\nWith feet of weary woe:\nShe could no further go.\n\nIn his arms he bore\nHer arm'd with sorrow sore;\nTill before their way,\nA couching lion lay.\n\nTurning back was vain,\nSoon his heavy mane\nBore them to the ground;\nThen he stalk'd around,\n\nSmelling to his prey,\nBut their fears allay,\nWhen he licks their hands:\nAnd silent by them stands.\n\nThey look upon his eyes\nFill'd with deep surprise;\nAnd wondering behold,\nA Spirit arm'd in gold.\n\nOn his head a crown,\nOn his shoulders down,\nFlow'd his golden hair,\nGone was all their care.\n\nFollow me he said,\nWeep not for the maid;\nIn my palace deep\nLyca lies asleep.\n\nThen they followed\nWhere the vision led;\nAnd saw their sleeping child,\nAmong tygers wild.\n\nTo this day they dwell\nIn a lonely dell\nNor fear the wolvish howl,\nNor the lions growl.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Little_Girl_Found",
       "tags": []
@@ -267,7 +271,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Little Girl Lost",
       "texto": "In futurity\nI prophetic see,\nThat the earth from sleep,\n(Grave the sentence deep)\n\nShall arise and seek\nFor her maker meek;\nAnd the desart wild\nBecome a garden mild.\n\nIn the southern clime,\nWhere the summers prime,\nNever fades away;\nLovely Lyca lay.\n\nSeven summers old\nLovely Lyca told,\nShe had wanderd long,\nHearing wild birds song.\n\nSweet sleep come to me\nUnderneath this tree;\nDo father, mother weep,—\nWhere can Lyca sleep.\n\nLost in desart wild\nIs your little child.\nHow can Lyca sleep,\nIf her mother weep.\n\nIf her heart does ake,\nThen let Lyca wake;\nIf my mother sleep,\nLyca shall not weep.\n\nFrowning frowning night,\nO'er this desart bright,\nLet thy moon arise,\nWhile I close my eyes.\n\nSleeping Lyca lay;\nWhile the beasts of prey,\nCome from caverns deep,\nView'd the maid asleep\n\nThe kingly lion stood\nAnd the virgin view'd,\nThen he gambold round\nO'er the hallowd ground:\n\n Leopards, tygers play,\nRound her as she lay;\nWhile the lion old,\nBow'd his mane of gold,\n\nAnd her bosom lick,\nAnd upon her neck,\nFrom his eyes of flame,\nRuby tears there came;\n\nWhile the lioness,\nLoos'd her slender dress,\nAnd naked they convey'd\nTo caves the sleeping maid.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Little_Girl_Lost",
       "tags": []
@@ -276,7 +280,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Little Vagabond",
       "texto": "Does mother, dear mother, the Church is cold.\nBut the Ale-house is healthy & pleasant & warm:\nBesides I can tell where I am use'd well,\nSuch usage in heaven will never do well,\n\nBut if at the Church they would give us some Ale,\nAnd a pleasant fire our souls to regale:\nWe'd sing and we'd pray all the live-long day:\nNor ever once wish from the Church to stray.\n\nThen the Parson might preach & drink & sing,\nAnd we'd be as happy as birds in the spring:\nAnd modest dame Lurch, who is always at Church,\nWould not have bandy children nor fasting nor birch.\n\nAnd God like a father rejoicing to see,\nHis children as pleasant and happy as he:\nWould have no more quarrel with the Devil or the Barrel\nBut kiss him & give him both drink and apparel.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Little_Vagabond",
       "tags": []
@@ -285,7 +289,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The School Boy",
       "texto": "I love to rise in a summer morn,\nWhen the birds sing on every tree;\nThe distant huntsman winds his horn,\nAnd the sky-lark sings with me.\nO! what sweet company.\n\nBut to go to school in a summer morn\nO! it drives all joy away;\nUnder a cruel eye outworn,\nThe little ones spend the day,\nIn sighing and dismay.\n\nAh! then at times I drooping sit,\nAnd spend many an anxious hour,\nNor in my book can I take delight,\nNor sit in learnings bower,\nWorn thro’ with the dreary shower.\n\nHow can the bird that is born for joy,\nSit in a cage and sing.\nHow can a child when fears annoy,\nBut droop his tender wing,\nAnd forget his youthful spring.\n\nO! father & mother, if buds are nip’d,\nAnd blossoms blown away,\nAnd if the tender plants are strip’d\nOf their joy in the springing day,\nBy sorrow and cares dismay.\n\nHow shall the summer arise in joy\nOr the summer fruits appear,\nOr how shall we gather what griefs destroy\nOr bless the mellowing year,\nWhen the blasts of winter appear.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_School_Boy",
       "tags": []
@@ -294,7 +298,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Sick Rose",
       "texto": "O Rose thou art sick.\nThe invisible worm,\nThat flies in the night\nIn the howling storm:\n\nHas found out thy bed\nOf crimson joy:\nAnd his dark secret love\nDoes thy life destroy.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Sick_Rose",
       "tags": []
@@ -303,7 +307,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/The Voice of the Ancient Bard",
       "texto": "Youth of delight come hither,\nAnd see the opening morn,\nImage of truth new born\nDoubt is fled & clouds of reason,\nDark disputes & artful teazing.\nFolly is an endless maze,\nTangled roots perplex her ways,\nHow many have fallen there!\nThey stumble all night over bones of the dead\nAnd feel they know not what but care;\nAnd wish to lead others when they should be led",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/The_Voice_of_the_Ancient_Bard",
       "tags": []
@@ -312,7 +316,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Experience/To Tirzah",
       "texto": "Whate'er is Born of Mortal Birth,\nMust be consumed with the Earth\nTo rise from Generation free:\nThen what have I to do with thee?\n\nThe Sexes sprung from Shame & Pride\nBlowd in the morn; in evening died\nBut Mercy changd Death into Sleep;\nThe Sexes rose to work & weep.\n\nThou Mother of my Mortal part,\nWith cruelty didst mould my Heart\nAnd with false self-deceiving tears,\nDidst bind my Nostrils Eyes & Ears,\n\nDidst close my Tongue in senseless clay\nAnd me to Mortal Life betray:\nThe Death of Jesus set me free,\nThen what have I to do with thee?\n\nIt is Raised a Spiritual Body",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Experience/To_Tirzah",
       "tags": []
@@ -321,7 +325,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/A Cradle Song",
       "texto": "Sweet dreams form a shade\nO'er my lovely infants head,\nSweet dreams of pleasant streams,\nBy happy silent moony beams.\n\nSweet sleep with soft down,\nWeave thy brows an infant crown.\nSweet sleep, Angel mild,\nHover o'er my happy child.\n\nSweet smiles in the night,\nHover over my delight,\nSweet smiles Mothers smiles\nAll the livelong night beguiles.\n\nSweet moans, dovelike sighs,\nChase not slumber from thy eyes.\nSweet moans, sweeter smiles,\nAll the dovelike moans beguiles.\n\nSleep sleep happy child,\nAll creation slept and smil'd,\nSleep sleep, happy sleep,\nWhile o'er thee thy mother weep\n\nSweet babe in thy face,\nHoly image I can trace.\nSweet babe once like thee,\nThy maker lay and wept for me\n\n Wept for me for thee for all,\nWhen he was an infant small.\nThou his image ever see,\nHeavenly face that smiles on thee.\n\nSmiles on thee on me on all,\nWho became an infant small,\nInfant smiles are his own smiles,\nHeaven & earth to peace beguiles. ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/A_Cradle_Song",
       "tags": []
@@ -330,7 +334,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/A Dream",
       "texto": "Once a dream did weave a shade,\nO'er my Angel-guarded bed,\nThat an Emmet lost its way\nWhere on grass methought I lay.\n\nTroubled wilderd and forlorn\nDark benighted travel-worn,\nOver many a tangled spray,\nAll heart-broke I heard her say,\n\nO my children! do they cry,\nDo they hear their father sigh,\nNow they look abroad to see,\nNow return and weep for me.\n\nPitying I drop'd a tear;\nBut I saw a glow-worm near:\nWho replied, What wailing wight,\nCalls the watchman of the night.\n\nI am set to light the ground,\nWhile the beetle goes his round:\nFollow now the beetles hum,\nLittle wanderer hie thee home.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/A_Dream",
       "tags": []
@@ -339,7 +343,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Holy Thursday",
       "texto": "Twas on a Holy Thursday their innocent faces clean\nThe children walking two & two in red & blue & green\nGrey-headed beadles walkd before with wands as white as snow\nTill into the high dome of Pauls they like Thames waters flow\n\nO what a multitude they seemd these flowers of London town\nSeated in companies they sit with radiance all their own\nThe hum of multitudes was there but multitudes of lambs\nThousands of little boys & girls raising their innocent hands\n\nNow like a mighty wind they raise to Heaven the voice of song\nOr like harmonious thunderings the seats of heaven among\nBeneath them sit the aged men wise guardians of the poor\nThen cherish pity lest you drive an angel from your door ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Holy_Thursday",
       "tags": []
@@ -348,7 +352,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Infant Joy",
       "texto": "I have no name\nI am but two days old,—\nWhat shall I call thee?\nI happy am\nJoy is my name,—\nSweet joy befall thee!\n\nPretty joy!\nSweet joy but two days old,\nSweet joy I call thee:\nThou dost smile,\nI sing the while\nSweet joy befall thee.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Infant_Joy",
       "tags": []
@@ -357,7 +361,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Introduction",
       "texto": "Piping down the valleys wild\nPiping songs of pleasant glee\nOn a cloud I saw a child.\nAnd he laughing said to me\n\nPipe a song about a Lamb\nSo I piped with merry chear.\nPiper pipe that song again\nSo I piped, he wept to hear.\n\nDrop thy pipe thy happy pipe\nSing thy songs of happy chear\nSo I sung the same again\nWhile he wept with joy to hear\n\nPiper sit thee down and write\nIn a book that all may read\nSo he vanish'd from my sight\nAnd I pluck'd a hollow reed\n\nAnd I made a rural pen,\nAnd I stain'd the water clear,\nAnd I wrote my happy songs\nEvery child may joy to hear",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Introduction",
       "tags": []
@@ -366,7 +370,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Laughing Song",
       "texto": "When the green woods laugh with the voice of joy\nAnd the dimpling stream runs laughing by,\nWhen the air does laugh with our merry wit,\nAnd the green hill laughs with the noise of it.\n\nWhen the meadows laugh with lively green\nAnd the grasshopper laughs in the merry scene,\nWhen Mary and Susan and Emily,\nWith their sweet round mouths sing Ha, Ha, He.\n\nWhen the painted birds laugh in the shade\nWhere our table with cherries and nuts is spread\nCome live & be merry and join with me,\nTo sing the sweet chorus of Ha, Ha, He.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Laughing_Song",
       "tags": []
@@ -375,7 +379,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Night",
       "texto": "The sun descending in the west,\nThe evening star does shine,\nThe birds are silent in their nest,\nAnd I must seek for mine,\nThe moon like a flower,\nIn heavens high bower;\nWith silent delight,\nSits and smiles on the night.\n\nFarewell green fields and happy groves,\nWhere flocks have took delight;\nWhere lambs have nibbled, silent moves\nThe feet of angels bright;\nUnseen they pour blessing,\nAnd joy without ceasing,\nOn each bud and blossom,\nAnd each sleeping bosom.\n\nThey look in every thoughtless nest,\nWhere birds are covered warm;\nThey visit caves of every beast,\nTo keep them all from harm;\nIf they see any weeping,\nThat should have been sleeping,\nThey pour sleep on their head\nAnd sit down by their bed.\n\n When wolves and tygers howl for prey\nThey pitying stand and weep;\nSeeking to drive their thirst away,\nAnd keep them from the sheep.\nBut if they rush dreadful;\nThe angels most heedful,\nReceive each mild spirit,\nNew worlds to inherit.\n\nAnd there the lions ruddy eyes,\nShall flow with tears of gold;\nAnd pitying the tender cries,\nAnd walking round the fold;\nSaying: wrath by his meekness\nAnd by his health, sickness,\nIs driven away,\nFrom our immortal day.\n\nAnd now beside thee bleating lamb,\nI can lie down and sleep;\nOr think on him who bore thy name\nGraze after thee and weep.\nFor wash'd in lifes river,\nMy bright mane for ever,\nShall shine like the gold\nAs I guard o'er the fold",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Night",
       "tags": []
@@ -384,7 +388,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Nurse's Song",
       "texto": "When the voices of children are heard on the green\nAnd laughing is heard on the hill,\nMy heart is at rest within my breast\nAnd every thing else is still\n\nThen come home my children the sun is gone down\nAnd the dews of night arise\nCome come leave off play, and let us away\nTill the morning appears in the skies\n\nNo no let us play, for it is yet day\nAnd we cannot go to sleep\nBesides in the sky, the little birds fly\nAnd the hills are all coverd with sheep\n\nWell well go & play till the light fades away\nAnd then go home to bed\nThe little ones leaped & shouted & laugh'd\nAnd all the hills ecchoed",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Nurse%27s_Song",
       "tags": []
@@ -393,7 +397,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/On Another's Sorrow",
       "texto": "Can I see anothers woe,\nAnd not be in sorrow too.\nCan I see anothers grief,\nAnd not seek for kind relief.\n\nCan I see a falling tear,\nAnd not feel my sorrows share.\nCan a father see his child,\nWeep, nor be with sorrow fill'd.\n\nCan a mother sit and hear,\nAn infant groan an infant fear—\nNo no never can it be,\nNever never can it be.\n\nAnd can he who smiles on all\nHear the wren with sorrows small,\nHear the small birds grief & care\nHear the woes that infants bear—\n\nAnd not sit beside the nest\nPouring pity in their breast,\nAnd not sit the cradle near\nWeeping tear on infants tear,\n\nAnd not sit both night & day,\nWiping all our tears away,\nO! no never can it be,\nNever never can it be.\n\nHe doth give his joy to all,\nHe becomes an infant small,\nHe becomes a man of woe,\nHe doth feel the sorrow too\n\nThink not thou canst sigh a sigh,\nAnd thy maker is not by,\nThink not thou canst weep a tear,\nAnd thy maker is not near.\n\nO! he gives to us his joy,\nThat our grief he may destroy\nTill our grief is fled & gone\nHe doth sit by us and moan",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/On_Another%27s_Sorrow",
       "tags": []
@@ -402,7 +406,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/Spring",
       "texto": "Sound the Flute!\nNow it's mute.\nBirds delight\nDay and Night.\nNightingale\nIn the dale\nLark in Sky\nMerrily\nMerrily Merrily to welcome in the Year.\n\nLittle Boy\nFull of joy,\n Little Girl\nSweet and small,\nCock does crow\nSo do you,\nMerry voice\nInfant noise\nMerrily Merrily to welcome in the Year\n\nLittle Lamb\nHere I am\nCome and lick\nMy white neck,\nLet me pull\nYour soft Wool,\nLet me kiss\nYour soft face,\nMerrily Merrily we welcome in the Year",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/Spring",
       "tags": []
@@ -411,7 +415,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Blossom",
       "texto": "Merry Merry Sparrow\nUnder leaves so green\nA happy Blossom\nSees you swift as arrow\nSeek your cradle narrow\nNear my Bosom.\n\nPretty Pretty Robin\nUnder leaves so green\nA happy Blossom\nHears you sobbing sobbing\nPretty Pretty Robin\nNear my Bosom. ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Blossom",
       "tags": []
@@ -420,7 +424,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Divine Image",
       "texto": "To Mercy Pity Peace and Love,\nAll pray in their distress;\nAnd to these virtues of delight\nReturn their thankfulness.\n\nFor Mercy Pity Peace and Love,\nIs God our father dear;\nAnd Mercy Pity Peace and Love,\nIs Man his child and care.\n\nFor Mercy has a human heart\nPity, a human face;\nAnd Love, the human form divine,\nAnd Peace, the human dress.\n\nThen every man of every clime,\nThat prays in his distress,\nPrays to the human form divine\nLove Mercy Pity Peace.\n\nAnd all must love the human form,\nIn heathen, turk or jew,\nWhere Mercy, Love & Pity dwell\nThere God is dwelling too. ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Divine_Image",
       "tags": []
@@ -429,7 +433,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Ecchoing Green",
       "texto": "The Sun does arise\nAnd make happy the skies.\nThe merry bells ring,\nTo welcome the Spring.\nThe sky-lark and thrush,\nThe birds of the bush,\nSing louder around,\nTo the bells chearful sound,\nWhile our sports shall be seen\nOn the Ecchoing Green.\n\nOld John with white hair\nDoes laugh away care,\nSitting under the oak\nAmong the old folk.\n They laugh at our play,\nAnd soon they all say\nSuch such were the joys,\nWhen we all girls & boys,\nIn our youth-time were seen,\nOn the Ecchoing Green\n\nTill the little ones weary\nNo more can be merry\nThe sun does descend,\nAnd our sports have an end:\nRound the laps of their mothers,\nMany sisters and brothers,\nLike birds in their nest,\nAre ready for rest:\nAnd sport no more seen,\nOn the darkening Green.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Ecchoing_Green",
       "tags": []
@@ -438,7 +442,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Little Boy Found",
       "texto": "The little boy lost in the lonely fen,\nLed by the wand'ring light,\nBegan to cry; but God ever nigh,\nAppeard like his father in white.\n\nHe kissed the child & by the hand led\nAnd to his mother brought,\nWho in sorrow pale, thro' the lonely dale\nHer little boy weeping sought. ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Little_Boy_Found",
       "tags": []
@@ -447,7 +451,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Little Boy Lost",
       "texto": "Father, father where are you going\nO do not walk so fast.\nSpeak father speak to your little boy\nOr else I shall be lost.\n\nThe night was dark no father was there\nThe child was wet with dew.\nThe mire was deep & the child did weep\nAnd away the vapour flew. ",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Little_Boy_Lost",
       "tags": []
@@ -456,7 +460,7 @@
       "titulo": "Songs of Innocence and of Experience (1826)/Songs of Innocence/The Shepherd",
       "texto": "The Shepherd.\n\nHow sweet is the Shepherds sweet lot\nFrom the morn to the evening he strays;\nHe shall follow his sheep all the day\nAnd his tongue shall be filled with praise.\n\nFor he hears the lambs innocent call,\nAnd he hears the ewes tender reply.\nHe is watchful while they are in peace,\nFor they know when their Shepherd is nigh.",
       "forma": "outro",
-      "obra": "en.wikisource: Songs of Innocence and of Experience (1826)",
+      "obra": "Songs of Innocence and of Experience",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Songs_of_Innocence_and_of_Experience_%281826%29/Songs_of_Innocence/The_Shepherd",
       "tags": []

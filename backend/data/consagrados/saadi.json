@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/The_poet_Sa%60di_%28detail%29_with_his_friends_in_the_orchard_at_night%2C_from_Prince_Baysunghur%27s_Rose_Garden_%28Gulistan%29_by_Sa%60di.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1210,
   "morte": 1291,
+  "escolas": [
+    "classica_arabe_persa"
+  ],
+  "pais": "IR",
   "poemas": [
     {
       "titulo": "Golestan — Os filhos de Adão (بنی آدم اعضای یکدیگرند)",

@@ -4,12 +4,16 @@
   "bio": "Poeta inglês da Restauração. Absalom and Achitophel é a sátira política em dísticos que define o verso público do seu tempo.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/John_Dryden_portrait.jpg",
   "morte": 1700,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Absalom and Achitophel/Absalom and Achitophel, a Poem (estrofes iniciais)",
       "texto": "IN pious times, e're priest-craft did begin,\n\nBefore Polygamy was made a Sin;\n\nWhen Man, on many, multipli'd his kind,\n\nE're one to one was, cursedly, confin'd:\n\nWhen Nature prompted, and no Law deni'd\n\nPromiscuous Use of Concubine and Bride;\n\nThen, Israel's monarch, after Heavens own heart,\n\nHis vigorous warmth did, variously, impart\n\nTo Wives and Slaves: And, wide as his Command,\n\nScatter'd his Maker's Image through the Land.\n\nMichal, of Royal Blood, the Crown did wear;\n\nA Soil ungrateful to the Tiller's care:\n\nNot so the rest; for several Mothers bore\n\nTo God-like David, several Sons before.\n\nBut since like Slaves his Bed they did ascend,\n\nNo true Succession could their Seed attend.\n\nOf all this Numerous Progeny was none\n\nSo Beautiful, so Brave as Absalon:\n\nWhether, inspir'd by some diviner Lust,\n\nHis Father got him with a greater Gust;\n\nOr that his Conscious Destiny made way,\n\nBy manly Beauty to Imperial-Sway.\n\nEarly in Foreign Fields he won Renown,\n\nWith Kings and States alli'd to Israel's Crown:",
       "forma": "outro",
-      "obra": "en.wikisource: Absalom and Achitophel",
+      "obra": "Absalom and Achitophel",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Absalom_and_Achitophel/Absalom_and_Achitophel%2C_a_Poem",
       "tags": []
@@ -18,7 +22,7 @@
       "titulo": "Absalom and Achitophel/To the Conceal'd Author of this Incomparable Poem",
       "texto": "HAil Heav'n-born Muse! hail ev'ry Sacred page!\n\nThe Glory of our I'le and of our Age.\n\nTh' inspiring Sun to Albion draws more nigh,   }\n\nThe North at length seems with a Work to vie\n\nWith Homer's Flame and Virgil's Majesty.\n\nWhile Pindus lofty Heights our Poet sought,   }\n\n(His ravisht Mind with vast Idea's fraught)\n\nOur Language fail'd beneath his rising Thought:\n\nThis checks not his Attempt, for Maro's Mines,   }\n\nHe dreins of all their Gold t'adorn his Lines;\n\nThrough each of which the Mantuan Genius shines.\n\nThe Rock obey'd the pow'rfull Hebrew Guide,\n\nHer flinty Breast dissolv'd into a Tide:\n\nThus on our stubborn Language he prevails,\n\nAnd makes the Helicon in which he sails.\n\nThe Dialect, as well as Sense, invents,\n\nAnd, with his Poem, a new Speech presents.\n\nHail then thou matchless Bard, thou great Unknown,\n\nThat give your Countrey Fame, yet shun your own!\n\nIn vain———for ev'ry where your Praise you find,\n\nAnd not to meet it, you must shun Mankind.\n\nYour Loyal Theam each Loyal Reader draws,   }\n\nAnd ev'n the Factious give your Verse applause,\n\nWhose Lightning strikes to ground their Idol Cause.\n\nThe Cause for whose dear fake they drank a Floud\n\nOf Civil Gore, nor spar'd the Royal-bloud:\n\nThe Cause whose growth to crush, our Prelates wrote\n\nIn vain, almost in vain our Hero's fought.\n\nYet by one Stabb of your keen Satyr dies:\n\nBefore your Sacred Lines their Shatter'd Dagon lies.\n\n Oh! If unworthy we appear to know\n\nThe Sire, to whom this Lovely Birth we owe:\n\n(Deny'd our ready Homage to express,\n\nAnd can at best but thankfull be by guess:)\n\nThis hope remains,—May David's God-like Mind,\n\n(For him 'twas wrote) the Unknown Author find:\n\nAnd, having found, show'r equal Favours down\n\nOn Wit so vast as cou'd oblige a Crown.\n\nN. T.",
       "forma": "outro",
-      "obra": "en.wikisource: Absalom and Achitophel",
+      "obra": "Absalom and Achitophel",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Absalom_and_Achitophel/To_the_Conceal%27d_Author_of_this_Incomparable_Poem",
       "tags": []
@@ -27,7 +31,7 @@
       "titulo": "Absalom and Achitophel/To the Unknown Author of this Admirable Poem",
       "texto": "I Thought, forgive my Sin, the boasted fire\n\nOf Poets Souls did long ago expire;\n\nOf Folly or of Madness did accuse\n\nThe Wretch that thought himself possest with Muse;\n\nLaugh'd at the God within, that did inspire\n\nWith more than humane thoughts the tuneful Quire;\n\nBut sure 'tis more than Fansie, or the Dream\n\nOf Rhimers slumbring by the Muses stream.\n\nSome livelier Spark of Heav'n, and more refin'd\n\nFrom Earthly dross, fills the great Poet's Mind.\n\nWitness these mighty and immortal Lines,\n\nThrough each of which th' informing Genius shines.\n\nScarce a diviner Flame inspir'd the King,\n\nOf whom thy Muse does so sublimely sing.\n\nNot David's self could in a Nobler Verse\n\nHis gloriously offending Son rehearse,\n\nTho in his Breast the Prophet's Fury met\n\nThe Father's Fondness, and the Poet's Wit.\n\n Here all consent in Wonder and in Praise,\n\nAnd to the Unknown Poet Altars raise.\n\nWhich thou must needs accept with equal joy,\n\nAs when Ænæas heard the Wars of Troy,\n\nWrapt up himself in darkness and unseen,\n\nExtoll'd with Wonder by the Tyrian Queen.\n\nSure thou already art secure of Fame,\n\nNor want'st new Glories to exalt thy Name:\n\nWhat Father else woud have refus'd to own\n\nSo great a Son as God-like Absalon?\n\nR. D.",
       "forma": "outro",
-      "obra": "en.wikisource: Absalom and Achitophel",
+      "obra": "Absalom and Achitophel",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Absalom_and_Achitophel/To_the_Unknown_Author_of_this_Admirable_Poem",
       "tags": []
@@ -36,7 +40,7 @@
       "titulo": "Absalom and Achitophel/To the Unknown Author of this Excellent Poem",
       "texto": "TAke it as Earnest of a Faith renew'd,\n\nYour Theam is vast, your Verse divinely good:\n\nWhere, tho the Nine their beauteous stroaks repeat,   }\n\nAnd the turn'd Lines on golden Anvils beat,\n\nIt looks as if they strook 'em at a heat.\n\nSo all Serenely Great, so Just, refin'd,   }\n\nLike Angels love to Humane Seed enclin'd,\n\nIt starts a Giant, and exalts the Kind.\n\n'Tis Spirit seen, whose fiery Attoms roul,\n\nSo brightly fierce, each Syllable's a Soul:\n\n'Tis minuture of Man, but he's all heart;\n\n'Tis what the World woud be, but wants the Art:\n\nTo whom ev'n the Phanaticks Altars raise,\n\nBow in their own despight, and grin your praise.\n\nAs if a Milton from the dead arose,\n\nFil'd off his Rust, and the right Party chose.\n\nNor, Sir, be shock'd at what the Gloomy say,\n\nTurn not your feet too inward, nor too splay.\n\n'Tis Gracious all, and Great: Push on your Theam,\n\nLean your griev'd head on David's Diadem;\n\nDavid, that rebel Israels envy mov'd,\n\nDavid, by God and all Good Men belov'd.\n\nThe beauties of your Absalom excel:\n\nBut more the Charms of Charming Annabel;\n\nOf Annabel, than May's first Morn more bright,\n\nChearful as Summers Noon, and chast as Winter's Night.\n\nOf Annabel the Muses dearest Theam,\n\nOf Annabel the Angel of my dream.\n\nThus let a broken Eloquence attend,\n\nAnd to your Master-piece these Shadows send.",
       "forma": "outro",
-      "obra": "en.wikisource: Absalom and Achitophel",
+      "obra": "Absalom and Achitophel",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Absalom_and_Achitophel/To_the_Unknown_Author_of_this_Excellent_Poem",
       "tags": []

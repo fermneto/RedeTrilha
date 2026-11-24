@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Retrato_de_hombre_con_la_cruz_de_caballero_de_Alc%C3%A1ntara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1503,
   "morte": 1536,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "En tanto que de rosa y azucena",

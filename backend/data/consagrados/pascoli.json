@@ -4,12 +4,16 @@
   "bio": "Poeta italiano do crepuscularismo nascente. Myricae é o livro dos ninhos, da infância e do verso curto que mudou a dicção italiana depois de Carducci.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Giovanni_Pascoli_01.jpg",
   "morte": 1912,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "IT",
   "poemas": [
     {
       "titulo": "Myricae/Alberi e fiori/Canzone di nozze",
       "texto": "Guardi la vostra casa sopra un rivo,\nsopra le stipe, sopra le ginestre;\ned entri l’eco d’un gorgheggio estivo\n                                        dalle finestre.\n\nDolce dormire con nel sogno il canto\ndell’usignuolo! E sian sotto la gronda\nrondini nere. Dolce avere accanto\n                                        chi vi risponda,\n\nsul far dell’alba, quando voi direte\npian piano: È vero che non s’è più soli?\nSì sì, diranno, vero ver.... Che liete\n                                        grida! che voli!\n\nsul far dell’alba, quando tutto ancora\nsembra dormir dietro le imposte unite!\nSembra, e non è. Voi sì, forse, in quell’ora,\n                                        madri, dormite.\n\nSognate biondo: nelle vostre teste\nnon un fil bianco: bianche, nel giardino,\nsono sì quelle ch’ora vi tendeste,\n                                        fascie di lino.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Canzone_di_nozze",
       "tags": []
@@ -18,7 +22,7 @@
       "titulo": "Myricae/Alberi e fiori/Edera fiorita",
       "texto": "Quando, di maggio, tu le dolci sere\nimbalsamavi co’ tuoi fiori, ornello\n(era un sussurro alle finestre nere\n                                        del paesello!);\n\nnon ti rincrebbe d’un infermo arbusto\nche, mosso anch’egli da dolcezza estiva,\ncon le sue foglie, come cuori, al fusto\n                                        lento saliva.\n\nNon ti rincrebbe. Ed ora che gelata\nla tramontana soffia, e che traspare\ngià dalle porte chiuse la fiammata\n                                        del focolare;\n\nora che il verno spoglia le foreste\ne le tue foglie per le vie disperde;\no vecchio ornello, te ricopre e veste\n                                        l’edera verde.\n\nSui rami nudi i fiori suoi ti pone,\ntra verdi e gialli, piccoli, com’era\nla tua fiorita morta: illusïone\n                                        di primavera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Edera_fiorita",
       "tags": []
@@ -27,7 +31,7 @@
       "titulo": "Myricae/Alberi e fiori/Fior d'acanto",
       "texto": "Fiore di carta rigida, dentato\ni petali di fini aghi; che snello\nsorgi dal cespo, come un serpe alato\n                                        da un capitello;\n\nfiore che ringhi dai diritti scapi\ncon bocche tue di piccoli ippogrifi;\nfior del Poeta! industrïa te d’api\n                                        schifa, e tu schifi.\n\nL’ape te sdegna, piccola e regale;\nma spesso io vidi l’ape legnaiola\ncelare il corpo che riluce, quale\n                                        nera vïola,\n\ndentro il tuo duro calice, e rapirti\nnon so che buono, che da te pur viene\ncome le viti di tra i sassi e i mirti\n                                        di tra l’arene.\n\nLo sa la figlia del pastor, che vuoto\nun legno fende e lieta pasce quanto\nmiele le giova: il tuo nettare ignoto,\n                                        fiore d’acanto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Fior_d%27acanto",
       "tags": []
@@ -36,7 +40,7 @@
       "titulo": "Myricae/Alberi e fiori/I gigli",
       "texto": "Nel mio villaggio, dietro la Madonna\ndell’acqua, presso a molti pii bisbigli,\nsorgono sopra l’esile colonna\n                                        verde i miei gigli:\n\nmiei, chè a deporne i tuberi in quel canto\ndel suo giardino fu mia madre mesta.\nD’altri è il giardino: di mia madre (è tanto!...)\n                                        nulla più resta.\n\nSono tanti anni!... Ma quei gigli ogni anno\nescono ancora a biancheggiar tra folti\ncesti d’ortica; ed ora... ora saranno\n                                        forse già còlti.\n\nForse già sono su l’altar, lì presso,\na chieder acqua, or ch’è mietuto il grano,\nper il granturco: e nel pregar sommesso\n                                        meridïano,\n\nguardando i gigli, alcuna ebbe un fugace\nricordo; e chiede che Maria mi porti\nnella mia casa, per morirvi in pace\n                                        presso i miei morti.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/I_gigli",
       "tags": []
@@ -45,7 +49,7 @@
       "titulo": "Myricae/Alberi e fiori/Il castagno",
       "texto": "Quando sfioriva e rinverdiva il melo,\nquando s’apriva il fiore del cotogno,\nil greppo, azzurro, somigliava un cielo\n                                        visto nel sogno;\n\nbrullo io te vidi; e già per ogni ripa\nerano colte tutte le vïole,\ne tu lasciavi ai cesti ed alla stipa\n                                        tutto il tuo sole;\n\ne, pio castagno, i rami dalla bruma\nancora appena e dal nevischio vivi,\na mano a mano d’una lieve spuma\n                                        verde coprivi.\n\nMa poi, vedendo sotto il fascio greve\nle montanine tergersi la fronte,\ntu che le sai da quando per la neve\n                                        scendono il monte,\n\necco, pietoso tu di lor, tessesti\nlungo i torrenti, all’orlo dei burroni,\nuna fredda ombra, che gemè di mesti\n                                        cannareccioni.\n\nE qualche cosa già nell’aspro cardo\nchiuso ascondevi, come l’avo buono\nche nell’irsuta mano cela un tardo\n                                        facile dono.\n\nAi primi freddi, quando il buon villano\nrinumerò tutti i suoi bimbi al fuoco,\ne con lui lungamente il tramontano\n                                        brontolò roco;\n\ne tu quei cardi, in mezzo alle procelle,\nspargesti sopra l’erica ingiallita,\ne li schiudevi per pietà di quelle\n                                        povere dita....\n\nTutti spargesti i cardi irti e le fronde\nfragili, e tutto portò via festante\nla grama turba. Nudo con le monde\n                                        rame, o gigante,\n\nstavi, e vedevi tu la vite e il melo\nvestiti d’oro e porpora al riflesso\ngià delle nevi, e per lo scialbo cielo\n                                        nero il cipresso.\n\nPer te i tuguri sentono il tumulto\nor del paiolo che inquïeto oscilla;\nper te la fiamma sotto quel singulto\n                                        crepita e brilla;\n\ntu, pio castagno, solo tu, l’assai       \ndoni al villano che non ha che il sole;\ntu solo il chicco, il buon di più, tu dài\n                                        alla sua prole;\n\nha da te la sua bruna vaccherella\ntiepido il letto e non desìa la stoppia;\nha da te l’avo tremulo la bella\n                                        fiamma che scoppia.\n\nScoppia con gioia stridula la scorza\nde’ rami tuoi, co’ frutti tuoi la grata\npentola brontola. Il vento fa forza\n                                        nell’impannata.\n\nNevica su le candide montagne,\nnevica ancora. Lieto è l’avo, e breve\naugura, e dice: Tante più castagne,\n                                        quanta più neve.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Il_castagno",
       "tags": [
@@ -56,7 +60,7 @@
       "titulo": "Myricae/Alberi e fiori/Il dittamo",
       "texto": "Dittamo nato all’umile finestra,\ndonde pel Corpusdomini sorrisi\nalla soave tra fior di ginestra\n                                        e fiordalisi\n\nprocessïone; io so di te, che immensa\nvirtù possiedi ne’ chiomanti capi,\ncespo lanoso ed olezzante, mensa\n                                        ricca dell’api.\n\nTe, con la freccia tremolante al dosso,\ncerca nei monti il daino selvaggio,\nfarmaco certo — di lui segue un rosso\n                                        rigo il viaggio —\n\nDittamo blando per la mia ferita\nl’avete, o balze degli aerei monti,\ndove nell’alto piange la romita\n                                        culla dei fonti?\n\nBianche ai dirupi pendono le capre;\nl’aquila passa nera e solitaria;\nsibila l’erba inaridita; s’apre,\n                                        sotto il pie’, l’aria.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Il_dittamo",
       "tags": []
@@ -65,7 +69,7 @@
       "titulo": "Myricae/Alberi e fiori/Il pesco",
       "texto": "Penso a Livorno, a un vecchio cimitero\ndi vecchi morti; ove a dormir con essi\nniuno più scende; sempre chiuso; nero\n                                        d’alti cipressi.\n\nTra i loro tronchi che mai niuno vede,\ndi là dell’erto muro e delle porte\nch’hanno obliato i cardini, si crede\n                                        morta la Morte,\n\nanch’essa. Eppure, in un bel dì d’Aprile,\nsopra quel nero vidi, roseo, fresco,\nvivo, dal muro sporgere un sottile\n                                        ramo di pesco.\n\nFiglio d’ignoto nòcciolo, d’allora\nsei tu cresciuto tra gli ignoti morti?\ned ora invidii i mandorli che indora\n                                        l’alba negli orti?\n\nod i cipressi, gracile e selvaggio,\ndimenticàti, col tuo riso allieti,\ntu trovatello in un eremitaggio\n                                        d’anacoreti?",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Il_pesco",
       "tags": [
@@ -76,7 +80,7 @@
       "titulo": "Myricae/Alberi e fiori/Nel giardino",
       "texto": "Nel mio giardino, là nel canto oscuro\ndove ora il pettirosso tintinnìa,\ncol gelsomino rampicante al muro,\n                                        c’è la gaggìa;\n\ne or che ottobre dentro la vermiglia\nforesta il marzo rende morto al suolo,\ne sembra marzo, come rassomiglia\n                                        bacca a bocciuolo,\n\nalba a tramonto; nelle tenui trine\nl’una si stringe, al roseo vespro, quando\nl’altro i suoi fiori, candide stelline,\n                                        apre, alitando;\n\ned al sospiro dell’avemaria,\nquando nel bosco dalle cime nude\nil dì s’esala, il cuore in una pia\n                                        ombra si chiude;\n\ne l’anima in quell’ombra di ricordi\napre corolle che imbocciar non vide;\ne l’ombra di fior d’angelo e di fior di\n                                        spina sorride.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Nel_giardino",
       "tags": [
@@ -87,7 +91,7 @@
       "titulo": "Myricae/Alberi e fiori/Nel parco",
       "texto": "Certo il signore, e la chiomata moglie,\npartì pe’ campi, chè già il tordo zirla:\nmuto, tra un’ampia musica di foglie\n                                        4(dolce sentirla\n\nd’autunno, a tarda notte, se il libeccio\nsoffia con lunghi fremiti sonori),\nmuto è il palazzo. S’ode un cicaleccio\n                                        di tra gli allori;\n\nun cicaleccio donde acuti appelli\ns’alzano come strilli di piviere:\nil gatto è fuori: ruzzano i monelli\n                                        del giardiniere.\n\nTorvo, aggrondato, il candido palazzo\nformicolare a’ piedi suoi li mira;\ne sì n’echeggia un cupo, a quel rombazzo,\n                                        battito d’ira;\n\nma non s’adira il giovinetto alloro,\nil leccio, il pioppo tremulo ed il lento\nsalice: a prova corrono con loro;\n                                        cantano al vento.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Nel_parco",
       "tags": []
@@ -96,7 +100,7 @@
       "titulo": "Myricae/Alberi e fiori/Pervinca",
       "texto": "So perchè sempre ad un pensier di cielo\nmisterïoso il tuo pensier s’avvinca,\nsì come stelo tu confondi a stelo,\n                                        vinca pervinca:\n\nio ti coglieva sotto i vecchi tronchi\nnella foresta d’un convento oscura,\no presso l’arche, tra vilucchi e bronchi,\n                                        lungo la mura.\n\nSolo tra l’arche errava un cappuccino;\npareva spettro da quell’arche uscito,\nbianco la barba e gli occhi d’un turchino\n                                        vuoto, infinito;\n\ncome il tuo fiore: e io credea vedere\nocchi di cielo, dallo sguardo fiso,\nd’anacoreti, allo svoltar, tra nere\n                                        ombre, improvviso;\n\ne il bosco alzava, al palpito del vento,\nuna confusa e morta salmodia,\nmentre squillava, grave, dal convento\n                                        l’avemaria.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Pervinca",
       "tags": []
@@ -105,7 +109,7 @@
       "titulo": "Myricae/Alberi e fiori/Rosa di macchia",
       "texto": "Rosa di macchia, che dall’irta rama\nridi non vista a quella montanina,\nche stornellando passa e che ti chiama\n                                        rosa canina;\n\nse sottil mano i fiori tuoi non coglie,\nnon ti dolere della tua fortuna:\nle invidïate rose centofoglie\n                                        colgano a una\n\na una: al freddo sibilar del vento\nche l’arse foglie a una a una stacca,\nirto il rosaio dondolerà lento\n                                        senza una bacca;\n\nma tu di bacche brillerai nel lutto\ndel grigio inverno; al rifiorir dell’anno\ni fiori nuovi a qualche vizzo frutto\n                                        sorrideranno:\n\ne te, col tempo, stupirà cresciuta\nquella che all’alba svolta già leggiera\ncol suo stornello, e risalirà muta,\n                                        forse, una sera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Rosa_di_macchia",
       "tags": [
@@ -116,7 +120,7 @@
       "titulo": "Myricae/Alberi e fiori/Viole d'inverno",
       "texto": "— Donde, o vecchina, queste vïolette\nserene come un lontanar di monti\nnel puro occaso? Poi che il gelo ha strette\n                                        tutte le fonti;\n\nil gelo brucia dalle stelle, o nonna,\nogni foglia, ogni radica, ogni zolla — \n— Tiepida, sappi, lungo la Corsonna\n                                        geme una polla.\n\nLà noi sciacquiamo il candido bucato\nnell’onda calda in mezzo a nevi e brine;\ne il poggio è pieno di vïole e il prato\n                                        di pratelline —\n\nAh!... ma, poeta, non ancor nel pio\ntuo cuore è l’onda che discioglie il gelo?\nnon è la polla, calda nell’oblio\n                                        freddo del cielo?\n\nChè sempre, se ti agghiaccia la sventura,\nse l’odio altrui ti spoglia e ti desola,\nspunta, al tepor dell’anima tua pura,\n                                        qualche vïola.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Alberi_e_fiori/Viole_d%27inverno",
       "tags": []
@@ -125,7 +129,7 @@
       "titulo": "Myricae/Campane a sera",
       "texto": "Odi, sorella, come note al core\nquelle nel vespro tinnule campane\nempiono l’aria quasi di sonore\n                                        grida lontane?\n\nA quel tumulto aereo risponde\ndal cuore un fioco scampanìo, sì lieve,\ncome stormeggi, dietro macchie fonde,\n                                        candida pieve.\n\nForse una pieve ne’ cilestri monti\nla sagra annunzia ad ogni casolare,\nonde si fece a’ placidi tramonti\n                                        lungo parlare;\n\ned or, sospeso il ticchettìo dell’ago,\nguardano donne verso la marina,\nseguendo un fiocco di bambagia, vago,\n                                        che vi s’ostina.\n\nGrandi occhi, sotto grandi archi di ciglia,\nguardano il cielo, empiendosi di raggi,\nlà dove l’aria allumina vermiglia\n                                        boschi di faggi.\n\nVoci soavi, voi tinnite a festa\nda così strana e cupa lontananza,\nche là si trova il desiderio, e resta\n                                        qua la speranza.\n\nIo mi rivedo in un branchetto arguto\ndi biondi eguali su per l’Appennino\nopaco d’elci: o snelle, vi saluto,\n                                        torri d’Urbino!\n\nVi riconosco, o due sottili torri,\nvi riconosco, o memori Cesane\nfolte di lazzi cornïoli i borri\n                                        e d’avellane.\n\nVaga lo stuolo delle rosee bocche\npe’ clivi, e sparge nella via maestra\nmesse di fiordalisi e l’auree ciocche\n                                       della ginestra.\n\nNella via bianca il novo drappo svaria\ncoi rosolacci e le sottili felci;\ne par che attenda, nella solitaria\n                                        ombra dell’elci;\n\npare che attenda nella via tranquilla,\nsotto quest’ampio palpito sonoro,\nuno dai neri monti su cui brilla\n                                        porpora e oro.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Campane_a_sera",
       "tags": []
@@ -134,7 +138,7 @@
       "titulo": "Myricae/Colloquio",
       "texto": "Brulli i pioppi nell’aria di vïola\nsorgono sopra i lecci, sfavillando\ncome oro: sopra il tetto della scuola\nsi sfrangia un orlo a fiocchi rosei: quando,\n\nlieve come un sospiro, entra; poi sola,\nbianca, le mani al cuore, ristà, ansando;\ngira gli occhi — dov’è la famigliuola? — \ne ha sui labbri il suo sorriso blando;\n\nma piange. Oh! sì: son quello: il tuo Giovanni...\nun po’ mutato. O madre seppellita,\nche gli altri lasci, oggi, per me; parliamo.\n\nIo devo dirti cosa da molti anni\nchiusa dentro. E non piangere. La vita\nche tu mi desti — o madre, tu! — non l’amo.\n\nNon piangere. È uno sforzo così mesto\nviverla senza te questa tua vita!\nad ogni gioia è tanto dolor questo\nsubito ricordar te, seppellita!\n\nDai sogni, oh! brevi, della gioia desto\nio mi ritrovo a piangere infinita-\nmente con te: morire! così presto!\npartire, o madre, come sei partita!\n\nTu non dovevi. Con quelli occhi in pianto!\ncon quella bimba che parlava appena!\nDovevi, o madre pia, dirlo a Dio padre,\n\nche non potevi; e ti lasciasse; e in tanto\nte la guarisse Dio quella tua vena\nche ci si ruppe nel tuo cuore, o madre!\n\nNon piangere.... Sarebbe così bello\nquesto mondo odorato di mistero!\nsarebbe la tua via come un sentiero\ncon l’erba intatta, all’ombra dell’ornello.\n\nE nuova tu saresti anche all’amello,\nanche al frullo d’un passero ciarliero!\nMa rasentando il muto cimitero,\nti fermeresti pallida al cancello....\n\nE io direi del sonno delle larve\nche sognano ali, e delle siepi tetre\nch’hanno nel sonno grappoli di fiori.\n\nPianger ti lascierei di ciò che sparve;\nindi sorrideremmo anche alle pietre\nbianche, là, tra cipressi e sicomori.\n\nMa... ma tu piangi come non ti vidi\npiangere mai, nel dolce viso attento.\nMa se lo so, con che dolce lamento\nchiedevi al cielo e con che fiochi gridi,\n\nche ti lasciasse! Quali madri i nidi\nlascian soli pigolare al vento?\nS’era per mamma, t’avrei qui; lo sento:\nviva; lo so: perdonami; sorridi.\n\nMa se lo so: fioccava senza fine;\ne tu, tra i ceri, con la morte accanto,\nsentendo gli urli della tramontana,\n\nparlavi, ancora, delle tue bambine;\ncui non potevi, non potevi, in tanto,\ncucire i piccoli abiti di lana.\n\nMa sì: la vita mia — non piangere, ora\nnon è poi tanto sola e tanto nera:\ncantò la cingallegra in su l’aurora,\ncantava a mezzodì la capinera.\n\nI canarini cantano la sera\nper la mia cena piccola e canora:\npoi nell’orto, vedessi a primavera\ncome il ciclame e l’ulivella odora!\n\nI gerani vedrai, messi al coperto\ndal gelo: qualche foglia ha la cedrina,\nricordi? l’erba che piaceva a te....\n\nSorridi? a questo sbatter d’usci? È certo\nIda tua che sfaccenda, oggi, in cucina.\nE Maria? Maria prega, oggi, per me.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Colloquio",
       "tags": [
@@ -145,7 +149,7 @@
       "titulo": "Myricae/Creature/Abbandonato",
       "texto": "Nella soffitta è solo, è nudo, muore.\nStille su stille gemono dal tetto.\n\nGli dice il Santo - Ancora un po’; fa cuore -\nMormora - Il pane; è tanto che l’aspetto -\n\nL’angelo dice - Or viene il Salvatore -\nSospira - Un panno pel mio freddo letto -\n\nMaria dice - È finito il tuo dolore! -\n8- Oh! mamma io voglio, e dormire al suo petto -\n\nLagrima a goccia a goccia la bufera\nnella soffitta. Il Santo veglia, assiso;\n\nl’Angelo guarda, smorto come cera;\nla Vergine Maria piange un sorriso.\n\nTace il bambino, aspetta sino a sera,\nall’uscio guarda, coi grandi occhi, fiso.\n\nLa notte cade, l’ombra si fa nera;\negli va, desolato, in Paradiso.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Creature/Abbandonato",
       "tags": []
@@ -154,7 +158,7 @@
       "titulo": "Myricae/Creature/Ceppo",
       "texto": "È mezzanotte. Nevica. Alla pieve\nsuonano a doppio; suonano l’entrata.\nVa la Madonna bianca tra la neve:\nspinge una porta; l’apre; era accostata.\nEntra nella capanna: la cucina\nè piena d’un sentor di medicina.\nUn bricco al fuoco s’ode borbottare:\npiccolo il ceppo brucia al focolare.\n\nUn gran silenzio. Sono a messa? Bene.\nGesù trema; Maria si accosta al fuoco.\nMa ecco un suono, un rantolo che viene\ndi su, sempre più fievole e più roco.\nIl bricco versa e sfrigge: la campana,\ncol vento, or s’avvicina, or s’allontana.\nLa Madonna, con una mano al cuore,\ngeme: Una mamma, figlio mio, che muore!\n\nE piano piano, col suo bimbo fiso\nnel ceppo, torna all’uscio, apre, s’avvia.\nIl ceppo sbracia e crepita improvviso,\nil bricco versa e sfrigola via via:\nquel rantolo... è finito. O Maria stanca!\nbianca tu passi tra la neve bianca.\nSuona d’intorno il doppio dell’entrata:\nvoce velata, malata, sognata.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Creature/Ceppo",
       "tags": []
@@ -163,7 +167,7 @@
       "titulo": "Myricae/Creature/Fides",
       "texto": "Quando brillava il vespero vermiglio\ne il cipresso pareva oro, oro fino,\nla madre disse al piccoletto figlio:\nCosì fatto è lassù tutto un giardino.\nIl bimbo dorme, e sogna i rami d’oro,\ngli alberi d’oro, le foreste d’oro;\nmentre il cipresso nella notte nera\nscagliasi al vento, piange alla bufera.\n\nIl bimbo dorme, e sogna i rami d’oro,\ngli alberi d’oro, le foreste d’oro...",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Creature/Fides",
       "tags": []
@@ -172,7 +176,7 @@
       "titulo": "Myricae/Creature/Morto",
       "texto": " Manina chiusa, che nel sonno grande\nstringi qualcosa, dimmi cosa ci hai!\nCosa ci ha? cosa ci ha? Vane domande:\nquello che stringe, niuno saprà mai.4\nTe l’ha portato l’Angelo, il suo dono:\nnel sonno, sempre lo stringevi, un dono.\nLa notte c’era, non c’era il mattino.\nQuesto ti resterà. Dormi, bambino.8",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Creature/Morto",
       "tags": [
@@ -183,7 +187,7 @@
       "titulo": "Myricae/Creature/Orfano",
       "texto": "Lenta la neve fiocca, fiocca, fiocca:\nsenti: una zana dondola pian piano.\nUn bimbo piange, il piccol dito in bocca;\ncanta una vecchia, il mento su la mano.\nLa vecchia canta: Intorno al tuo lettino\nc’è rose e gigli, tutto un bel giardino.\nNel bel giardino il bimbo s’addormenta.\nLa neve fiocca lenta, lenta, lenta.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Creature/Orfano",
       "tags": []
@@ -192,7 +196,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Alba festiva",
       "texto": "Che hanno le campane,\nche squillano vicine,\nche ronzano lontane?\n\nÈ un inno senza fine,\nor d’oro, ora d’argento,\nnell’ombre mattutine.\n\nCon un dondolìo lento\nimplori, o voce d’oro,\nnel cielo sonnolento.\n\nTra il cantico sonoro\nil tuo tintinno squilla,\nvoce argentina — Adoro,\n\nadoro — Dilla, dilla,\nla nota d’oro — L’onda\npende dal ciel, tranquilla.\n\nMa voce più profonda\nsotto l’amor rimbomba,\npar che al desìo risponda:\n\nla voce della tomba.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Alba_festiva",
       "tags": [
@@ -203,7 +207,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Allora",
       "texto": "Allora... in un tempo assai lunge...\nfelice fui molto; non ora:\nma quanta dolcezza mi giunge\nda tanta dolcezza d’allora!\n\nQuell’anno!... per anni che poi\nfuggirono, che fuggiranno,\nnon puoi, mio pensiero, non puoi\nportare con te, che quell’anno!\n\nUn giorno fu quello, ch’è senza\ncompagno, ch’è senza ritorno;\nla vita fu vana parvenza\nsì prima sì dopo quel giorno!\n\nUn punto!... così passeggero,\nche in vero passò non raggiunto;\nma bello così, che molto ero\nfelice felice, quel punto!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Allora",
       "tags": [
@@ -214,7 +218,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Il Morticino",
       "texto": "Non è Pasqua d’ovo?\n\nPer oggi contai\ndi darteli, i piedi.\nÈ Pasqua: non sai?\nÈ Pasqua: non vedi\nil cercine novo?\n\nAndiamoci, a mimmi,\nlontano lontano...\nDin don... oh! ma dimmi:\nnon vedi ch’ho in mano\nil cercine novo,\n\nle scarpe d’avvìo?\n\nSei morto: non vedi,\nmio piccolo cieco!\nMa mettile ai piedi,\nma portale teco,\nma diglielo a Dio,\n\nche mamma ha filato\nsei notti e sei dì,\nsudato, vegliato,\nper farti, oh! così!\nle scarpe d’avvìo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Il_Morticino",
       "tags": [
@@ -225,7 +229,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Il nunzio",
       "texto": "Un murmure, un rombo....\n\nSon solo: ho la testa\nconfusa di tetri\npensieri. Mi desta\nquel murmure ai vetri.\nChe brontoli, o bombo?\n\nche nuove mi porti?\n\nE cadono l’ore\ngiù giù, con un lento\ngocciare. Nel cuore\nlontane risento\nparole di morti....\n\nChe brontoli, o bombo?\n\nche avviene nel mondo?\nSilenzio infinito.\nMa insiste profondo,\nsolingo smarrito,\nquel lugubre rombo.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Il_nunzio",
       "tags": []
@@ -234,7 +238,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Il rosicchiolo",
       "texto": "Per te l’ha serbato, soltanto\nper te, povero angiolo; ed eccolo\no pianto!\nlo vedi? un rosicchiolo secco.\n\nMoriva sul letto di strame;\ntu, bimbo, dormivi sicuro.\nChe pianto! che fame!\nma c’era un rosicchiolo duro.\n\nMa ella guardava lunghe ore,\nguardava il suo bimbo, e morì,\ndi pianto, di fame, d’amore;\ne... guarda! il rosicchiolo è qui.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Il_rosicchiolo",
       "tags": []
@@ -243,7 +247,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/La cucitrice",
       "texto": "L’alba per la valle nera\nsparpagliò le greggi bianche:\ntornano ora nella sera\ne s’arrampicano stanche:\nuna stella le conduce.\n\nTorna via dalla maestra\nla covata, e passa lenta:\nc’è del biondo alla finestra\ntra un basilico e una menta:\nè Maria che cuce e cuce.\n\nPer chi cuci e per che cosa?\nun lenzuolo? un bianco velo?\nTutto il cielo è color rosa,\nrosa e oro, e tutto il cielo\nsulla testa le riluce.\n\nAlza gli occhi dal lavoro:\nuna lagrima? un sorriso?\nSotto il cielo rosa e oro,\nchini gli occhi, chino il viso,\nella cuce, cuce, cuce.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/La_cucitrice",
       "tags": []
@@ -252,7 +256,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Patria",
       "texto": "Sogno d’un dì d’estate.\n\nQuanto scampanellare\ntremulo di cicale!\nStridule pel filare\nmoveva il maestrale\nle foglie accartocciate.\n\nScendea tra gli olmi il sole\nin fascie polverose:\nerano in ciel due sole\nnuvole, tenui, róse:\ndue bianche spennellate\n\nin tutto il ciel turchino.\n\nSiepi di melograno,\nfratte di tamerice,\nil palpito lontano\nd’una trebbïatrice,\nl’angelus argentino...\n\ndov’ero? Le campane\nmi dissero dov’ero,\npiangendo, mentre un cane\nlatrava al forestiero,\nche andava a capo chino.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Patria",
       "tags": [
@@ -263,7 +267,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Scalpitio",
       "texto": "Si sente un galoppo lontano\n(è la...?)\nche viene, che corre nel piano\ncon tremula rapidità.\n\nUn piano deserto, infinito;\ntutto ampio, tutto arido, eguale:\nqualche ombra d’uccello smarrito,\nche scivola simile a strale:\n\nnon altro. Essi fuggono via\nda qualche remoto sfacelo;\nma quale, ma dove egli sia,\nnon sa nè la terra nè il cielo.\n\nSi sente un galoppo lontano\npiù forte,\nche viene, che corre nel piano:\nla Morte! la Morte! la Morte!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Scalpitio",
       "tags": [
@@ -274,7 +278,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Sera festiva — O mamma, o mammina, hai stirato",
       "texto": "O mamma, o mammina, hai stirato\nla nuova camicia di lino?\nNon c’era laggiù tra il bucato,\nsul bossolo e sul biancospino.\nSu gli occhi tu tieni le mani...\nPerchè? non lo sai che domani...?\ndin don dan, din don dan.\n\nSi parlano i bianchi villaggi\ncantando in un lume di rosa:\ndall’ombra de’ monti selvaggi\nsi sente una romba festosa.\nTu tieni a gli orecchi le mani...\ntu piangi; ed è festa, domani...\ndin don dan, din don dan.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Sera_festiva",
       "tags": []
@@ -283,7 +287,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Sera festiva — Tu pensi.... Oh! ricordo: la pieve...",
       "texto": "Tu pensi.... Oh! ricordo: la pieve...\nquanti anni ora sono? una sera...\nil bimbo era freddo, di neve;\nil bimbo era bianco, di cera:\nallora sonò la campana\n(perchè non pareva lontana?)\ndin don dan, din don dan.\n\nSonavano a festa, come ora,\nper l’angiolo; il nuovo angioletto\nnel cielo volava a quell’ora;\nma tu lo volevi al tuo petto,\ncon noi, nella piccola zana:\ngridavi; e lassù la campana...\ndin don dan, din don dan.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Sera_festiva",
       "tags": []
@@ -292,7 +296,7 @@
       "titulo": "Myricae/Dall'alba al tramonto/Speranze e Memorie",
       "texto": "Paranzelle in alto mare\nbianche bianche,\nio vedeva palpitare\ncome stanche:\no speranze, ale di sogni\nper il mare!\n\nVolgo gli occhi; e credo in cielo\nrivedere\nparanzelle sotto un velo,\nnere nere:\no memorie, ombre di sogni\nper il cielo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dall%27alba_al_tramonto/Speranze_e_Memorie",
       "tags": []
@@ -301,7 +305,7 @@
       "titulo": "Myricae/Dialogo",
       "texto": "Scilp: i passeri neri su lo spalto\ncorrono, molleggiando. Il terren sollo\nrade la rondine e vanisce in alto:\n\nvitt... videvitt. Per gli uni il casolare,\nl’aia, il pagliaio con l’aereo stollo;\nma per l’altra il suo cielo ed il suo mare.\n\nQuesta, se gli olmi ingiallano la frasca,\ncerca i palmizi di Gerusalemme:\nquelli, allor che la foglia ultima casca,\nrestano ad aspettar le prime gemme.\n\nDib dib bilp bilp: e per le nebbie rare,\nquando alla prima languida dolciura\nl’olmo già sogna di rigermogliare,\n\nlasciano a branchi la città sonora\ne vanno, come per la mietitura,\nalla campagna, dove si lavora.\n\nDopo sementa, presso l’abituro\nil casereccio passero rimane;\ne dal pagliaio, dentro il cielo oscuro\nsaluta le migranti oche lontane.\n\nFischia un grecale gelido, che rade:\ncopre un tendone i monti solitari:\na notte il vento rugge, urla: poi cade.\n\nE tutto è bianco e tacito al mattino:\nnuovo: e dai bianchi e muti casolari\nil fumo sbalza, qua e là, turchino.\n\nLa neve! (Videvitt: la neve? il gelo?\n               ei di voi, rondini, ride:\n               bianco in terra, nero in cielo\n               v’è di voi chi vide... vide... videvitt?)\n\nLa neve! Allora poi che il cibo manca,\nalla città dai mille campanili\nscendono, alla città fumida e bianca;\n\na mendicare. Dalla lor grondaia\nspìano nelle chiostre e nei cortili\nla granata o il grembiul della massaia.\n\nTornano quindi ai campi, a seminare\nveccia e saggina coi villani scalzi,\ne — videvitt — venuta d’oltremare\ntrovano te, che scivoli, che sbalzi,\n\nrondine, e canti; ma non sai la gioia\n— scilp — della neve, il giorno che dimoia.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dialogo",
       "tags": []
@@ -310,7 +314,7 @@
       "titulo": "Myricae/Dolcezze/A nanna",
       "texto": "Come un rombo d’arnia suona\ntra il cricchiar della mortella.\nNonna, è detta la corona:\nnonna, or dì la tua novella.\n\nElla dice, ell’è pur buona,\nla più lunga, la più bella:\n— Sola (o Dio! bubbola e tuona!)\nsola va la reginella.\n\nEcco un lume, una stellina,\nma lontanamente, appare.\nVia, conviene andare andare.\n\nVa e va. — Ma ciondolare\ngià comincia una testina;\ndue sonnecchiano; cammina\n                                        che cammina,\n\ne le son tutte arrivate:\nsono in collo delle fate.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/A_nanna",
       "tags": [
@@ -321,7 +325,7 @@
       "titulo": "Myricae/Dolcezze/Benedizione",
       "texto": "È la sera: piano piano\npassa il prete pazïente,\nsalutando della mano\nciò che vede e ciò che sente.\n\nTutti e tutto il buon piovano\nbenedice santamente;\nanche il loglio, là, nel grano;\nqua, ne’ fiori, anche il serpente.\n\nOgni ramo, ogni uccellino\nsì del bosco e sì del tetto,\nnel passare ha benedetto;\n\nanche il falco, anche il falchetto\nnero in mezzo al ciel turchino,\nanche il corvo, anche il becchino,\n                                        poverino,\n\nche lassù nel cimitero\nraspa raspa il giorno intiero.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Benedizione",
       "tags": []
@@ -330,7 +334,7 @@
       "titulo": "Myricae/Dolcezze/Con gli angioli",
       "texto": "Erano in fiore i lilla e l’ulivelle;\n     ella cuciva l’abito di sposa:\n\nnè l’aria ancora aprìa bocci di stelle,\n     nè s’era chiusa foglia di mimosa:\n\nquand’ella rise; rise, o rondinelle\n     nere, improvvisa: ma con chi? di cosa?\n\nrise, così, con gli angioli; con quelle\n     nuvole d’oro, nuvole di rosa.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Con_gli_angioli",
       "tags": []
@@ -339,7 +343,7 @@
       "titulo": "Myricae/Dolcezze/Il mendico",
       "texto": "Presso il rudere un pezzente\ncena tra le due fontane:\npane alterna egli col pane,\nvolti gli occhi all’occidente.\n\nFa un incanto nella mente:\ncarne è fatto, ecco, l’un pane.\nTra il gracchiare delle rane\nsciala il mago sapïente.\n\nSorge e beve alle due fonti:\nchiara beve acqua nell’una,\nma nell’altra un dolce vino.\n\nGiace e guarda: sopra i monti\nsparge il lume della luna;\ngetta l’arti al ciel turchino,\n                                        baldacchino\n\ndi mirabile lavoro,\nch’ei trapunta a stelle d’oro.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Il_mendico",
       "tags": []
@@ -348,7 +352,7 @@
       "titulo": "Myricae/Dolcezze/Il piccolo aratore",
       "texto": "Scrive... (la nonna ammira): ara bel bello,\nguida l’aratro con la mano lenta;\nsemina col suo piccolo marrello;\nil campo è bianco, nera la sementa.\n\nD’inverno egli ara: la sementa nera\nd’inverno spunta, sfronza a primavera;\n\nfiorisce, ed ecco il primo tuon di Marzo\nrotola in aria, e il serpe esce dal balzo.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Il_piccolo_aratore",
       "tags": []
@@ -357,7 +361,7 @@
       "titulo": "Myricae/Dolcezze/Il piccolo mietitore",
       "texto": "Legge... (la nonna ammira): ecco il campetto\nbianco di grano nero in lunghe righe:\nesso, tutt’occhi, con il suo falcetto\na una a una miete quelle spighe;\n\nmiete, e le spighe restano pur quelle;\nmiete e lega coi denti le mannelle;\n\ne le mannelle di tra i denti suoi\nparlano... come noi, meglio di noi.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Il_piccolo_mietitore",
       "tags": []
@@ -366,7 +370,7 @@
       "titulo": "Myricae/Dolcezze/Mare",
       "texto": "M’affaccio alla finestra, e vedo il mare:\nvanno le stelle, tremolano l’onde.\nVedo stelle passare, onde passare;\nun guizzo chiama, un palpito risponde.\n\nEcco, sospira l’acqua, alita il vento:\nsul mare è apparso un bel ponte d’argento.\n\nPonte gettato sui laghi sereni,\nper chi dunque sei fatto e dove meni?",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Mare",
       "tags": []
@@ -375,7 +379,7 @@
       "titulo": "Myricae/Dolcezze/Notte",
       "texto": "Siedon fanciulle ad arcolai ronzanti,\n     e la lucerna i biondi capi indora:\n\ni biondi capi, i neri occhi stellanti,\n     volgono alla finestra ad ora ad ora:\n\nattendon esse a cavalieri erranti\n     che varcano la tenebra sonora?\n\nParlan d’amor, di cortesie, d’incanti:\n     così parlando aspettano l’aurora.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Dolcezze/Notte",
       "tags": [
@@ -386,7 +390,7 @@
       "titulo": "Myricae/Elegie/Agonia di madre",
       "texto": "Muore. Sfugge alla morta pupilla\n     già il bimbo che geme al suo piede:\node un suono lontano di squilla:\n     son due... gli occhi, grave, apre: vede.\n\nUno piange, ma l’altro sorride\n     d’un bianco sorriso di cieco.\nElla guarda, ella pensa: lo vide\n     così: quando? e ha come l’eco\n\nd’un gran pianto nel cuore, la traccia\n     di lagrime morte negli occhi.\nAh! ricordano un peso le braccia,\n     ricordano un peso i ginocchi,\n\ngrave. Due sono i bimbi: uno piange;\n     ma dorme il più piccolo ancora:\nella versa dal cuor che si frange\n     le lagrime d’ora e d’allora.\n\n— Dormi, o angelo — o angelo, déstati,\n     déstati — mormora il cuore.\nTra la culla e una bara s’arresta\n     la mano sua, rigida. Muore.\n\nIl suo primo, il suo morto, è sparito\n     con lei che nell’ombra lo reca:\npiange l’altro; ella n’ode il vagito\n     col bianco stupore di cieca.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/Agonia_di_madre",
       "tags": [
@@ -397,7 +401,7 @@
       "titulo": "Myricae/Elegie/L'anello",
       "texto": "Nella mano sua benedicente\n     l’anello brillava lontano.\nEgli alzò quella mano, morente:\n     di caldo s’empì quella mano...\n\no mio padre, di sangue! L’anello\n     lo tenne sul cuore mia madre...\no mia madre! Poi l’ebbe il fratello\n     mio grande... o mio piccolo padre!\n\nNel suo gracile dito il tesoro\n     raggiò di benedizïone.\nUna macchia avea preso quell’oro,\n     di ruggine, presso il castone...\n\no mio padre, di sangue! Una sera,\n     la macchia volevi lavare,\no fratello? che pianto fu! t’era\n     caduto l’anello nel mare.\n\nE nel mare è rimasto; nel fondo\n     del mare che grave sospira:\nuna stella dal cielo profondo\n     nel mare profondo lo mira.\n\nQuella macchia! S’adopra a lavarla\n     il mare infinito; ma in vano.\nE la stella che vede, ne parla\n     al cielo infinito; ah! in vano.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/L%27anello",
       "tags": []
@@ -406,7 +410,7 @@
       "titulo": "Myricae/Elegie/La felicità",
       "texto": "Quando, all’alba, dall’ombra s’affaccia,\n     discende le lucide scale\ne vanisce; ecco, dietro la traccia\n     d’un fievole sibilo d’ale,\n\nio la inseguo per monti, per piani,\n     nel mare, nel cielo: già in cuore\nio la vedo, già tendo le mani,\n     già tengo la gloria e l’amore...\n\nAhi! ma solo al tramonto m’appare,\n     su l’orlo dell’ombra, lontano,\ne mi sembra in silenzio accennare\n     lontano, lontano, lontano.\n\nLa via fatta, il trascorso dolore\n     m’accenna col tacito dito:\nimprovvisa, con lieve stridore,\n     discende al silenzio infinito.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/La_felicit%C3%A0",
       "tags": []
@@ -415,7 +419,7 @@
       "titulo": "Myricae/Elegie/Lapide",
       "texto": "Dietro spighe di tasso barbasso,\n     tra un rovo, onde un passero frulla\nimprovviso, si legge in un sasso:\n     qui dorme pia gigli fanciulla.\n\nRadicchiella dall’occhio celeste,\n     dianto di porpora, sai,\nsai, vilucchio, di Pia? la vedeste,\n     libellule tremule, mai?\n\nElla dorme. Da quando raccoglie\n     nel cuore il soave oblio? quante\noh! le nubi passate, le foglie\n     cadute, le lagrime piante;\n\nquanto, o Pia, si morì da che dormi\n     tu! Pura di vite create\na morire, tu, vergine, dormi,\n     le mani sul petto incrociate.\n\nDormi, vergine, in pace: il tuo lene\n     respiro nell’aria lo sento\nassonare al ronzìo delle andrene,\n     coi brividi brevi del vento.\n\nLascia argentei il cardo al leggiero\n     tuo alito i pappi suoi, come\nil morente alla morte un pensiero,\n     vago, ultimo: l’ombra d’un nome.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/Lapide",
       "tags": [
@@ -426,7 +430,7 @@
       "titulo": "Myricae/Elegie/Sorella",
       "texto": "Io non so se più madre gli sia\n     la mesta sorella o più figlia:\nella dolce ella grave ella pia,\n     corregge conforta consiglia.\n\nA lui preme i capelli, l’abbraccia\n     pensoso, gli dice, Che hai?\na lui cela sul petto la faccia\n     confusa, gli dice, Non sai?\n\nElla serba nel pallido viso,\n     negli occhi che sfuggono intorno,\nah! per quando egli parte il sorriso,\n     le lagrime per il ritorno.\n\nPer l’assente la madia che odora,\n     serbò la vivanda più buona;\ne lo accoglie lo sguardo che ignora,\n     col bacio che sa, ma perdona.\n\nElla cuce: nell’ombra romita\n     non s’ode che l’ago e l’anello:\necco, l’ago fra le agili dita\n     ripete, Stia caldo, sia bello!\n\nElla prega: un lungo alito d’ave-\n     marie con un murmure lene...\nella prega; ed un’eco soave\n     ripete, Sia buono, stia bene!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/Sorella",
       "tags": []
@@ -435,7 +439,7 @@
       "titulo": "Myricae/Elegie/X Agosto",
       "texto": "San Lorenzo, io lo so perchè tanto\n     di stelle per l’aria tranquilla\narde e cade, perchè sì gran pianto\n     nel concavo cielo sfavilla.\n\nRitornava una rondine al tetto:\n     l’uccisero: cadde tra spini:\nella aveva nel becco un insetto:\n     la cena de’ suoi rondinini.\n\nOra è là, come in croce, che tende\n     quel verme a quel cielo lontano;\ne il suo nido è nell’ombra, che attende,\n     che pigola sempre più piano.\n\nAnche un uomo tornava al suo nido:\n     l’uccisero: disse: Perdono;\ne restò negli aperti occhi un grido:\n     portava due bambole, in dono...\n\nOra là, nella casa romita,\n     lo aspettano, aspettano, in vano:\negli immobile, attonito, addita\n     le bambole al cielo lontano.\n\nE tu, Cielo, dall’alto dei mondi\n     sereni, infinito, immortale,\noh! d’un pianto di stelle lo inondi\n     quest’atomo opaco del Male!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Elegie/X_Agosto",
       "tags": []
@@ -444,7 +448,7 @@
       "titulo": "Myricae/Finestra illuminata/Dopo?",
       "texto": "Forse è una buona vedova... Quand’ella\nfacea l’imbastitura e il sopramano,\nvenne il suo bimbo e chiese la novella.\n\nVenne ai suoi piedi: ella contò del Topo,\ndel Mago... Alla costura, egli, pian piano,\nl’ultima volta le sussurrò, Dopo?\n\nDopo tanto, c’è sempre qualche occhiello.\nIl topo è morto, s’è smarrito il mago.\nIl bimbo dorme sopra lo sgabello,\ntra le ginocchia, al ticchettìo dell’ago.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Dopo%3F",
       "tags": [
@@ -455,7 +459,7 @@
       "titulo": "Myricae/Finestra illuminata/Mezzanotte",
       "texto": "Otto... nove... anche un tocco; e lenta scorre\nl’ora; ed un altro... un altro. Uggiola un cane.\nUn chiù singhiozza da non so qual torre.\n\nÈ mezzanotte. Un doppio suon di pesta\ns’ode, che passa. C’è per vie lontane\nun rotolìo di carri che s’arresta\n\ndi colpo. Tutto è chiuso, senza forme,\nsenza colori, senza vita. Brilla,\nsola nel mezzo alla città che dorme,\nuna finestra, come una pupilla",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Mezzanotte",
       "tags": []
@@ -464,7 +468,7 @@
       "titulo": "Myricae/Finestra illuminata/Mistero",
       "texto": "Vergine... bianca sopra il bianco letto,\nti prese il sonno a mezzo la preghiera?\nTu hai le mani in croce sopra il petto.\n\nTi prese tra i due ceri e le corone\nquel sonno? in mezzo agli Ave della sera?\nTu dici ancora quella orazïone.\n\nTieni il rosario tra le mani pie.\nNon muove i labbri un tremito leggiero?\nMa non scorrono più le avemarie,\ne tu contemplerai sempre un mistero.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Mistero",
       "tags": []
@@ -473,7 +477,7 @@
       "titulo": "Myricae/Finestra illuminata/Povero dono",
       "texto": "Getta quell’arma che t’incanta. Spera\nl’ultima volta. Aspetta ancora, aspetta\nche il gallo canti per la città nera.\n\nIl gallo canta, fuggono le larve.\nFuggirà, fuggirà la maledetta\nmaga che con fatali occhi t’apparve.\n\nVerrà tua madre morta, col suo mesto\nviso, col mormorìo della sua prece...\nti pregherà che tu lo serbi questo\npovero dono ch’ella un dì ti fece!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Povero_dono",
       "tags": []
@@ -482,7 +486,7 @@
       "titulo": "Myricae/Finestra illuminata/Sogno d'ombra",
       "texto": "Rantolo d’avo, rantolo d’infante.\nPar l’uno il cigolìo d’un abbaino\na cui percuota l’aquilone errante:\n\nl’altro è come a fior d’acqua un improvviso\nvanir di bolla, donde un cerchiolino\ns’apre ogni volta e scivola nel viso.\n\nVissero. Quanto? le pupille fisse\nchiedono. Uno la gente di sua gente\nvide; l’altro, non sè. Ma l’uno visse\nquello che l’altro: un sogno d’ombra, un niente.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Sogno_d%27ombra",
       "tags": []
@@ -491,7 +495,7 @@
       "titulo": "Myricae/Finestra illuminata/Un gatto nero",
       "texto": "aperta. Uomo che vegli nella stanza\nilluminata, chi ti fa vegliare?\ndolore antico o giovine speranza?\n\nTu cerchi un Vero. Il tuo pensier somiglia\nun mare immenso: nell’immenso mare,\nuna conchiglia; dentro la conchiglia,\n\nuna perla: la vuoi. Vecchio, un gran bosco\nnevato, ai primi languidi scirocchi,\nper la tua faccia. Un gatto nero, un fosco\nviso di sfinge, t’apre i suoi verdi occhi...",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Un_gatto_nero",
       "tags": []
@@ -500,7 +504,7 @@
       "titulo": "Myricae/Finestra illuminata/Un rondinotto",
       "texto": "È ben altro. Alle prese col destino\nveglia un ragazzo che con gesti rari\nfila un suo lungo penso di latino.\n\nIl capo ad ora ad ora egli solleva\ndalla catasta dei vocabolari,\ncome un galletto garrulo che beva.\n\nPovero bimbo! di tra i libri, via\nappare il bruno capo tuo, scompare;\ncome d’un rondinotto, quando spia\nse torna mamma e porta le zanzare.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Un_rondinotto",
       "tags": []
@@ -509,7 +513,7 @@
       "titulo": "Myricae/Finestra illuminata/Un rumore...",
       "texto": "Una fanciulla... La tua mano vola\nsopra la carta stridula: s’impenna:\ngli occhi cercano intorno una parola.\n\nE la parola te la dà la muta\nlampada che sussulta: onde la penna\nla via riprende scricchiolando arguta.\n\nSt! un rumore... ai labbri ti si porta\nla penna, un piede dondola... Che cosa?\nNulla: un tarlo, un brandir lieve di porta...\nOh! mamma dorme, e sogna... che sei sposa.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Un_rumore...",
       "tags": []
@@ -518,7 +522,7 @@
       "titulo": "Myricae/Finestra illuminata/Vagito",
       "texto": "Mammina... bianca sopra il letto bianco\ntu dormi. Chi sul volto ti compose\nquel dolor pago e quel sorriso stanco?\n\nTu dormi: intorno al languido origliere\ntutto biancheggia. Intorno a te le cose\nfanno piccoli cenni di tacere.\n\nE tutto albeggia e tutto tace. Il fine\nè questo, è questo il cominciar d’un rito?\nDi tra un silenzio candido di trine\nparla il mistero in suono di vagito.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Finestra_illuminata/Vagito",
       "tags": []
@@ -527,7 +531,7 @@
       "titulo": "Myricae/Germoglio",
       "texto": "La scabra vite che il lichene ingromma\ncome di gialla ruggine, germoglia:\nspuntar vidi una, lucida di gomma,\n                                        piccola foglia.\n\nAl sol che brilla in mezzo a gli umidicci\nsolchi anche l’olmo screpolato muove:\nmedita, il vecchio, rame, pei viticci\n                                        nuovi, pur nuove:\n\ncui tremolando cercano coi lenti\nviticci i tralci a foglie color rame,\nmentre su loro tremolano ai venti\n                                        anche le rame.\n\nDa qual profonda cavità m’ha scosso\nil canto dell’aereo cuculo?\nfiorisce a spiga per le prode il rosso\n                                        pandicuculo?\n\nÈ del fior d’uva questa ambra che sento\no una lieve traccia di vïole?\ndove si vede il grappolo d’argento\n                                        splendere al sole?\n\ngrappolo verde e pendulo, che invaia\nalle prime acque fumide d’agosto,\nquando il villano sente sopra l’aia\n                                        piovere mosto:\n\nmosto che cupo brontola e tra nere\nombre sospira e canta San Martino,\nallor che singultando nel bicchiere\n                                        sdrucciola vino;\n\nvino che rosso avanti il focolare\nbrilla, al fischiare della tramontana,\nche giunge come un fragoroso mare\n                                        e s’allontana\n\nsimile a sogno: quando su le strade\nvolano foglie cui persegue il cuore\nsimili a sogno; quando tutto cade,\n                                        stingesi, e muore.\n\nMuore? Anche un sogno, che sognai! Germoglia\nla scabra vite che il lichene ingromma:\nspunta da un nodo una lanosa foglia\n                                        molle di gomma.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Germoglio",
       "tags": []
@@ -536,7 +540,7 @@
       "titulo": "Myricae/I due cugini — Si amavano i bimbi cugini.",
       "texto": "Si amavano i bimbi cugini.\nPareva, un incontro di loro,\nl’incontro di due lucherini:\n\nvolavano. Nell’abbracciarsi\ni tòcchi cadevano, e l’oro\nmescevano i riccioli sparsi.\n\nPoi l’uno appassì, come rosa\nche in boccio appassisce nell’orto;\nma l’altra la piccola sposa\n\nrimase del piccolo morto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/I_due_cugini",
       "tags": [
@@ -547,7 +551,7 @@
       "titulo": "Myricae/I due cugini — Tu, piccola sposa, crescesti:",
       "texto": "Tu, piccola sposa, crescesti:\nman mano intrecciavi i capelli,\nman mano allungavi le vesti.\n\nCrescevi sott’occhi che negano\nancora; ed i petali snelli\ncadevano: il fiore già lega.\n\nMa l’altro non crebbe. Dal mite\nsuo cuore, ora, senza perchè,\nfioriscono le margherite\n\ne i non ti scordare di me.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/I_due_cugini",
       "tags": []
@@ -556,7 +560,7 @@
       "titulo": "Myricae/I due cugini — Ma tu.... ma tu l’ami. Lo vedi,",
       "texto": "Ma tu.... ma tu l’ami. Lo vedi,\nlo chiami. La senti da lunge\nla fretta dei taciti piedi....\n\nTu l’ami, egli t’ama tuttora;\nma egli col capo non giunge\nal seno tuo nuovo, che ignora.\n\nEgli esita: avanti la pura\ntua fronte ricinta d’un nimbo,\npiangendo l’antica sventura\n\ntentenna il suo capo di bimbo.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/I_due_cugini",
       "tags": []
@@ -565,7 +569,7 @@
       "titulo": "Myricae/Ida e Maria",
       "texto": "O mani d’oro, le cui tenui dita\nmenano i tenui fili ad escir fiori\ndal bianco bisso, e sì, che la fiorita\n                                        sembra che odori;\n\no mani d’oro, che leggiere andando,\nrigasi il lin, miracolo a vederlo,\nqual seccia arata nell’autunno, quando\n                                        chioccola il merlo;\n\no mani d’oro, di cui l’opra alterna\nsommessamente suona senza posa,\nmentre vi mira bionde la lucerna\n                                        silenzïosa:\n\nor m’apprestate quel che già chiedevo\nfunebre panno, o tenui mani d’oro,\nperò che i morti chiamano e ch’io devo\n                                        esser con loro.\n\nMa non sia raso stridulo, non sia\npuro amïanto; sia di que’ sinceri\nteli, onde grevi a voi lasciò la pia\n                                        madre i forzieri;\n\nteli, a cui molte calcole sonare\nudì San Mauro e molte alate spole:\nun canto a tratti n’emergea di chiare,\n                                        lente, parole:\n\nteli, che a notte biancheggiar sul fieno\nvidi con occhio credulo d’incanti,\nne’ prati al plenilunio sereno\n                                        riscintillanti.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ida_e_Maria",
       "tags": []
@@ -574,7 +578,7 @@
       "titulo": "Myricae/Il bacio del morto — È tacito, è grigio il mattino;",
       "texto": "È tacito, è grigio il mattino;\nla terra ha un odore di funghi;\ndi gocciole è pieno il giardino.\n\nImmobili tra la leggiera\ncaligine gli alberi: lunghi\nlamenti di vaporïera.\n\nI solchi ho nel cuore, i sussulti,\nd’un pianto sognato: parole,\nsospiri avanzati ai singulti:\n\nun solco sul labbro, che duole.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_bacio_del_morto",
       "tags": [
@@ -585,7 +589,7 @@
       "titulo": "Myricae/Il bacio del morto — Chi sei, che venisti, coi lievi",
       "texto": "Chi sei, che venisti, coi lievi\ntuoi passi, da me nella notte?\nNon so; non ricordo: piangevi.\n\nPiangevi: io sentii per il viso\nmio piangere fredde, dirotte,\nle stille dall’occhio tuo fiso\n\nsu me: io sentii che accostavi\nle labbra al mio labbro a baciarmi;\ne invano volli io levar gravi\n\nle palpebre: gravi: due marmi.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_bacio_del_morto",
       "tags": [
@@ -596,7 +600,7 @@
       "titulo": "Myricae/Il bacio del morto — Chi sei? donde vieni? presente",
       "texto": "Chi sei? donde vieni? presente\ntuttora? mi vedi? mi sai?\ne lacrimi tacitamente?\n\nChi sei? Trema ancora la porta.\nCerto eri di quelli che amai,\nma forse non so che sei morta....\n\nNè so come un’ombra d’arcano,\ntra l’umida nebbia leggiera,\nio senta in quel lungo lontano\n\nsaluto di vaporïera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_bacio_del_morto",
       "tags": [
@@ -607,7 +611,7 @@
       "titulo": "Myricae/Il cuore del cipresso — O cipresso, che solo e nero stacchi",
       "texto": "O cipresso, che solo e nero stacchi\ndal vitreo cielo, sopra lo sterpeto\nirto di cardi e stridulo di biacchi:\n\nin te sovente, al tempo delle more,\nodono i bimbi un pispillìo secreto,\ncome d’un nido che ti sogni in cuore.\n\nL’ultima cova. Tu canti sommesso\nmentre s’allunga l’ombra taciturna\nnel tristo campo: quasi, ermo cipresso,\nella ricerchi tra que’ bronchi un’urna.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_cuore_del_cipresso",
       "tags": [
@@ -618,7 +622,7 @@
       "titulo": "Myricae/Il cuore del cipresso — Più brevi i giorni, e l’ombra ogni dì meno",
       "texto": "Più brevi i giorni, e l’ombra ogni dì meno\ns’indugia e cerca, irrequïeta, al sole;\ne il sole è freddo e pallido il sereno.\n\nL’ombra, ogni sera prima, entra nell’ombra;\nnell’ombra ove le stelle errano sole.\nE il rovo arrossa e con le spine ingombra\n\ntutti i sentieri, e cadono già roggie\nle foglie intorno (indifferente oscilla\nl’ermo cipresso), e già le prime pioggie\nfischiano, ed il libeccio ulula e squilla.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_cuore_del_cipresso",
       "tags": []
@@ -627,7 +631,7 @@
       "titulo": "Myricae/Il cuore del cipresso — E il tuo nido? il tuo nido?... Ulula forte",
       "texto": "E il tuo nido? il tuo nido?... Ulula forte\nil vento e t’urta e ti percuote a lungo:\ntu sorgi, e resti; simile alla Morte.\n\nE il tuo cuore? il tuo cuore?... Orrida trebbia\nl’acqua i miei vetri, e là ti vedo, lungo,\ndi nebbia nera tra la grigia nebbia.\n\nE il tuo sogno? La terra ecco scompare:\nla neve, muta a guisa del pensiero,\ncade. Tra il bianco e tacito franare\ntu stai, gigante immobilmente nero.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_cuore_del_cipresso",
       "tags": [
@@ -638,7 +642,7 @@
       "titulo": "Myricae/Il giorno dei morti",
       "texto": "Io vedo (come è questo giorno, oscuro!),\nvedo nel cuore, vedo un camposanto\ncon un fosco cipresso alto sul muro.\n\nE quel cipresso fumido si scaglia\nallo scirocco: a ora a ora in pianto\nsciogliesi l’infinita nuvolaglia.\n\nO casa di mia gente, unica e mesta,\no casa di mio padre, unica e muta,\ndove l’inonda e muove la tempesta;\n\no camposanto che sì crudi inverni\nhai per mia madre gracile e sparuta,\noggi ti vedo tutto sempiterni\n\ne crisantemi. A ogni croce roggia\npende come abbracciata una ghirlanda\ndonde gocciano lagrime di pioggia.\n\nSibila tra la festa lagrimosa\nuna folata, e tutto agita e sbanda.\nSazio ogni morto di memorie, posa.\n\nNon i miei morti. Stretti tutti insieme,\ninsieme tutta la famiglia morta,\nsotto il cipresso fumido che geme,\n\nstretti così come altre sere al foco\n(urtava, come un povero, alla porta\nil tramontano con brontolìo roco)\n\npiangono. La pupilla umida e pia\nricerca gli altri visi a uno a uno\ne forma un’altra lagrima per via.\n\nPiangono, e quando un grido ch’esce stretto\nin un sospiro, mormora, Nessuno!...\ncupo rompe un singulto lor dal petto.\n\nLevano bianche mani a bianchi volti,\nnon altri, udendo il pianto disusato,\nsollevi il capo attonito ed ascolti.\n\nPosa ogni morto; e nel suo sonno culla\nqualche figlio de’ figli, ancor non nato.\nNessuno! i morti miei gemono: nulla!\n\n— O miei fratelli! — dice Margherita,\nla pia fanciulla che sotterra, al verno,\nsi risvegliò dal sogno della vita:\n\n— o miei fratelli, che bevete ancora\nla luce, a cui mi mancano in eterno\ngli occhi, assetati della dolce aurora;\n\no miei fratelli! nella notte oscura,\nquando il silenzio v’opprimeva, e vana\nl’ombra formicolava di paura;\n\nio veniva leggiera al vostro letto;\nDormite! vi dicea soave e piana:\nvoi dormivate con le braccia al petto.\n\nE ora, io tremo nella bara sola;\nil dolce sonno ora perdei per sempre\nio, senza un bacio, senza una parola.\n\nE voi, fratelli, o miei minori, nulla!...\nvoi che cresceste, mentre qui, per sempre,\nio son rimasta timida fanciulla.\n\nVenite, intanto che la pioggia tace,\nse vi fui madre e vergine sorella:\nditemi: Margherita, dormi in pace.\n\nCh’io l’oda il suono della vostra voce\nora che più non romba la procella:\nio dormirò con le mie braccia in croce.\n\nNessuno! — Dice; e si rinnova il pianto,\ne scroscia l’acqua: un impeto di vento\nsquassa il cipresso e corre il camposanto.\n\n— O figli — geme il padre in mezzo al nero\nfischiar dell’acqua — o figli che non sento\npiù da tanti anni! un altro cimitero\n\nforse v’accolse, e forse voi chiamate\nla vostra mamma, nudi abbrividendo\nsotto le nere sibilanti acquate.\n\nE voi le braccia dall’asil lontano\na me tendete, siccome io le tendo,\nfigli, a voi, disperatamente invano.\n\nO figli, figli! vi vedessi io mai!\nio vorrei dirvi che in quel solo istante\nper un’intera eternità v’amai.\n\nIn quel minuto avanti che morissi,\nportai la mano al capo sanguinante,\ne tutti, o figli miei, vi benedissi.\n\nIo gettai un grido in quel minuto, e poi\nmi pianse il cuore: come pianse e pianse!\ne quel grido e quel pianto era per voi.\n\nOh! le parole mute ed infinite\nche dissi! con qual mai strappo si franse\nla vita viva delle vostre vite.\n\nSerba la madre ai poveri miei figli:\nnon manchi loro il pane mai, nè il tetto,\nnè chi li aiuti, nè chi li consigli.\n\nUn padre, o Dio, che muore ucciso, ascolta:\naggiungi alla lor vita, o benedetto,\nquella che un uomo, non so chi, m’ha tolta.\n\nPerdona all’uomo, che non so; perdona:\nse non ha figli, egli non sa, buon Dio...\ne se ha figlioli, in nome lor perdona.\n\nChe sia felice; fagli le vie piane;\ndagli oro e nome; dàgli anche l’oblio;\ntutto: ma i figli miei mangino il pane.\n\nCosì dissi in quel lampo senza fine;\nVi chiamai, muto, esangue, a uno a uno,\ndalla più grandicella alle piccine.\n\nSpariva a gli occhi il mondo fatto vano.\nIn tutto il mondo più non era alcuno.\nUdii voi soli singhiozzar lontano — \n\nDice; e più triste si rinnova il pianto;\npiù stridula, più gelida, più scura\nscroscia la pioggia dentro il camposanto.\n\n— No, babbo, vive, vivono — Chi parla?\nVoce velata dalla sepoltura,\nvoce nuova, eppur nota ad ascoltarla,\n\no mio Luigi, o anima compagna!\ncome ti vedo abbrividire al vento\nche ti percuote, all’acqua che ti bagna!\n\ncome mutato! sembra che tu sia\nun bimbo ignudo, pieno di sgomento,\nche chieda, a notte, al canto della via.\n\n— vivono, vive. Non udite in questa\nnotte una voce querula, argentina,\nportata sino a noi dalla tempesta?\n\nÈ la sorella che morì lontano,\nche in questa notte, povera bambina,\nchiama chiama dal poggio di Sogliano.\n\nChiama. Oh! poterle carezzare i biondi\nriccioli qui, tra noi; fuori del nero\nchiostro, de’ sotterranei profondi!\n\nUn’altra voce tu, fratello, ascolta;\ndolce, triste, lontana: il tuo Ruggiero;\nin cui, babbo, moristi un’altra volta.\n\nParlano i morti. Non è spento il cuore\nnè chiusi gli occhi a chi morì cercando,\na chi non pianse tutto il suo dolore.\n\nE or per quanto stridula di vento\nombra ne dividesse, a quando a quando\nudrei, come da vivo, il tuo lamento,\n\no mio Giovanni, che vegliai, che ressi,\nche curai, che difesi, umile e buono,\ne morii senza che ti rivedessi!\n\nAvessi tu provato di quell’ora\nultima il freddo, e or quest’abbandono,\ngemendo a noi ti volgeresti ancora — \n\n— Ma se vivete, perchè, morti cuori,\nsolo è la nostra tomba illacrimata,\nsolo la nostra croce è senza fiori? — \n\nCosì singhiozza Giacomo: poi geme:\n— Quando sola restò la nidïata,\nIddio lo sa, come vi crebbi insieme:\n\nse con pia legge l’umili vivande\ntra voi divisi, e destinai de’ pani\nil più piccolo a me, ch’ero il più grande;\n\nse ribevvi le lagrime ribelli\nper non far voi pensosi del domani,\nse il pianto piansi in me di sei fratelli;\n\nse al sibilar di questi truci venti,\nal rombar di quest’acque, io suscitava\nla buona fiamma d’eriche e sarmenti;\n\ne io, quando vedea rosso ogni viso,\ne più rossi i più piccoli, tremava\nsì, del mio freddo, ma con un sorriso.\n\nMa non per me, non per me piango: io piango\nper questa madre che, tra l’acqua, spera,\nper questo padre che desìa, nel fango;\n\nper questi santi, o fratel mio, che vivi;\ndi cui morendo io ti dicea... ma era\ngrossa la lingua e forse non udivi — \n\nIo vedo, vedo, vedo un camposanto,\noscura cosa nella notte oscura:\nodo quel pianto della tomba, pianto\n\nd’occhi lasciati dalla morte attenti,\npianto di cuori cui la sepoltura\nlasciò, ma solo di dolor, viventi.\n\nL’odo: ora scorre libero: nessuno\npuò risvegliarsi, tanto è notte, il vento\nè così forte, il cielo è così bruno.\n\nNessuno udrà. La povera famiglia\npuò piangere. Nessuno, al suo lamento,\npuò dire: Altro è mio figlio! altra è mia figlia!\n\nAspettano. Oh! che notte di tempesta\npiena d’un tremulo ululo ferino!\nNon s’ode per le vie suono di pesta.\n\nUomini e fiere, in casolari e tane,\ntacciono. Tutto è chiuso. Un contadino\nsocchiude l’uscio del tugurio al cane.\n\nPiangono. Io vedo, vedo, vedo. Stanno\nin cerchio, avvolti dall’assidua romba.\nAspetteranno, ancora, aspetteranno.\n\nI figli morti stanno avvinti al padre\ninvendicato. Siede in una tomba\n186(io vedo, io vedo) in mezzo a lor, mia madre.\n\nSolleva ai morti, consolando, gli occhi,\ne poi furtiva esplora l’ombra. Culla\ndue bimbi morti sopra i suoi ginocchi.\n\nLi culla e piange con quelli occhi suoi,\npiange per gli altri morti, e per sè nulla,\ne piange, o dolce madre! anche per noi;\n\ne dice: — Forse non verranno. Ebbene,\npietà! Le tue due figlie, o sconsolato,\ndicono, ora, in ginocchio, un po’ di bene.\n\nForse un corredo cuciono, che preme:\nper altri: tutto il giorno hanno agucchiato,\nhanno agucchiato sospirando insieme.\n\nE solo a notte i poveri occhi smorti\nhanno levato, a un gemer di campane;\nhanno pensato, invidïando, ai morti.\n\nOra, in ginocchio, pregano Maria\nal suon delle campane, alte, lontane,\nper chi qui giunse e per chi resta in via,\n\nlà; per chi vaga in mezzo alla tempesta,\nper chi cammina, cammina, cammina;\ne non ha pietra ove posar la testa.\n\nPietà pei figli che tu benedivi!\nIn questa notte che non mai declina,\norate requie, o figli morti, ai vivi! — \n\nO madre! Il cielo si riversa in pianto\noscuramente sopra il camposanto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Il_giorno_dei_morti",
       "tags": [
@@ -649,7 +653,7 @@
       "titulo": "Myricae/In cammino",
       "texto": "Siede sopra una pietra del cammino,\na notte fonda, nel nebbioso piano:\ne tra la nebbia sente il pellegrino\nle foglie secche stridere pian piano:\nil cielo geme, immobile, lontano,\ne l’uomo pensa: Non sorgerò più.\n\nPensa: un’occhiata quale passeggero,\nvana, ha gettata a passeggero in via,\nè la sua vita, e impresse nel pensiero\nl’orma che lascia il sogno che s’oblìa;\nun’orma lieve, che non sa se sia\nspento dolore o gioia che non fu.\n\nEd ecco — quasi sopra la sua tomba\nsiede, tra l’invisibile caduta — \npassa uno squillo tremulo di tromba\nche tra la nebbia, nel passar, saluta;\nsquillo che viene d’oltre l’ombra muta,\nd’oltre la nebbia: di più su: più su,\n\ndove serene brillano le stelle\nsul mar di nebbia, sul fumoso mare\nin cui t’allunghi in pallide fiammelle\ntu, lento Carro, e tu, Stella polare,\npassano squilli come di fanfare,\npassa un nero triangolo di gru.\n\nTra le serene costellazïoni\nvanno e la nebbia delle lande strane;\nvanno incessanti a tiepidi valloni,\na verdi oasi, ad isole lontane,\na dilagate cerule fiumane,\nvanno al misterïoso Timbuctù.\n\nSono passate... Ma la testa alzava\ndalla sua pietra intento il pellegrino\na quella voce, e tra la nebbia cava\nriprese il suo bordone e il suo destino;\ntranquillamente seguitò il cammino\ndietro lo squillo che vanìa laggiù.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_cammino",
       "tags": [
@@ -660,7 +664,7 @@
       "titulo": "Myricae/In campagna/Alba",
       "texto": "Odoravano i fior di vitalba\n     per via, le ginestre nel greto;\nalïavano prima dell’alba\n     le rondini nell’uliveto.\n\nAlïavano mute con volo\n     nero, agile, di pipistrello;\ne tuttora gemea l’assïolo,\n     che già spincionava il fringuello.\n\nTra i pinastri era l’alba che i rivi\n     mirava discendere giù:\nguizzò un raggio, soffiò su gli ulivi;\n     virb... disse una rondine; e fu\n\ngiorno: un giorno di pace e lavoro,\n     che l’uomo mieteva il suo grano,\ne per tutto nel cielo sonoro\n     saliva un cantare lontano.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Alba",
       "tags": []
@@ -669,7 +673,7 @@
       "titulo": "Myricae/In campagna/Canzone d'aprile",
       "texto": "Fantasma tu giungi,\ntu parti mistero.\nVenisti, o di lungi?\nchè lega già il pero,\nfiorisce il cotogno\nlaggiù.\n\nDi cincie e fringuelli\nrisuona la ripa.\nSei tu tra gli ornelli,\nsei tu tra la stipa?\nOmbra! anima! sogno!\nsei tu...?\n\nOgni anno a te grido\ncon palpito nuovo.\nTu giungi: sorrido;\ntu parti: mi trovo\ndue lagrime amare\ndi più.\n\nQuest’anno... oh! quest’anno,\nla gioia vien teco:\ngià l’odo, o m’inganno,\n\nquell’eco dell’eco;\ngià t’odo cantare\nCu... cu.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Canzone_d%27aprile",
       "tags": []
@@ -678,7 +682,7 @@
       "titulo": "Myricae/In campagna/Dall'argine",
       "texto": "Posa il meriggio su la prateria.\nNon ala orma ombra nell’azzurro e verde.\nUn fumo al sole biancica; via via\n                                        fila e si perde.\n\nHo nell’orecchio un turbinìo di squilli,\nforse campani di lontana mandra;\ne, tra l’azzurro penduli, gli strilli\n                                        della calandra.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Dall%27argine",
       "tags": []
@@ -687,7 +691,7 @@
       "titulo": "Myricae/In campagna/Dopo l'acquazzone",
       "texto": "Passò strosciando e sibilando il nero\nnembo: or la chiesa squilla; il tetto, rosso,\nluccica; un fresco odor dal cimitero\n                                        viene, di bosso.\n\nPresso la chiesa; mentre la sua voce\ntintinna, canta, a onde lunghe romba;\nruzza uno stuolo, ed alla grande croce\n                                        tornano a bomba.\n\nUn vel di pioggia vela l’orizzonte;\nma il cimitero, sotto il ciel sereno,\nplacido olezza: va da monte a monte\n                                        l’arcobaleno.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Dopo_l%27acquazzone",
       "tags": [
@@ -698,7 +702,7 @@
       "titulo": "Myricae/In campagna/Il bove",
       "texto": "Al rio sottile, di tra vaghe brume,\nguarda il bove, coi grandi occhi: nel piano\nche fugge, a un mare sempre più lontano\nmigrano l’acque d’un ceruleo fiume;\n\ningigantisce agli occhi suoi, nel lume\npulverulento, il salice e l’ontano;\nsvaria su l’erbe un gregge a mano a mano,\ne par la mandra dell’antico nume:\n\nampie ali aprono imagini grifagne\nnell’aria; vanno tacite chimere,\nsimili a nubi, per il ciel profondo;\n\nil sole immenso, dietro le montagne\ncala, altissime: crescono già, nere,\nl’ombre più grandi d’un più grande mondo.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Il_bove",
       "tags": [
@@ -709,7 +713,7 @@
       "titulo": "Myricae/In campagna/Il passero solitario",
       "texto": "Tu nella torre avita,\n     passero solitario,\n     tenti la tua tastiera,\n     come nel santuario\n     monaca prigioniera,\n     l’organo, a fior di dita;\n\nche pallida, fugace,\n     stupì tre note, chiuse\n\n     nell’organo, tre sole,\n     in un istante effuse,\n     tre come tre parole\n     ch’ella ha sepolte, in pace.\n\nDa un ermo santuario\n     che sa di morto incenso\n     nelle grandi arche vuote,\n     di tra un silenzio immenso\n     mandi le tue tre note,\n     spirito solitario.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Il_passero_solitario",
       "tags": [
@@ -720,7 +724,7 @@
       "titulo": "Myricae/In campagna/Il piccolo bucato",
       "texto": "Come tetra la sizza che combatte\ngli alberi brulli e fa schioccar le rame\nsecche, e sottile fischia tra le fratte!\n\nSur una fratta (o forse è un biancor d’ale?)\nun corredino ride in quel marame:\nfascie, bavagli, un piccolo guanciale.\n\nAd ogni soffio del rovaio, che romba,\nle fascie si disvincolano lente;\ne da un tugurio triste come tomba\ngiunge una nenia, lunga, pazïente.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Il_piccolo_bucato",
       "tags": []
@@ -729,7 +733,7 @@
       "titulo": "Myricae/In campagna/Il vecchio dei campi",
       "texto": "Al sole, al fuoco, sue novelle ha pronte\nil bianco vecchio dalla faccia austera,\nche si ricorda, solo ormai, del ponte,\n                                        quando non c’era.\n\nRacconta al sole (i buoi fumidi stanno,\nfissando immoti la sua lenta fola),\ncome far sacca si dovè, quell’anno,\n                                        delle lenzuola.\n\nRacconta al fuoco (sfrigola bel bello\nun ciocco d’olmo in tanto che ragiona),\ncome a far erba uscisse con Rondello\n                                        Buovo d’Antona.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Il_vecchio_dei_campi",
       "tags": []
@@ -738,7 +742,7 @@
       "titulo": "Myricae/In campagna/L'assiuolo",
       "texto": "Dov’era la luna? chè il cielo\nnotava in un’alba di perla,\ned ergersi il mandorlo e il melo\nparevano a meglio vederla.\nVenivano soffi di lampi\nda un nero di nubi laggiù;\nveniva una voce dai campi:\nchiù...\n\nLe stelle lucevano rare\ntra mezzo alla nebbia di latte:\nsentivo il cullare del mare,\nsentivo un fru fru tra le fratte;\nsentivo nel cuore un sussulto,\ncom’eco d’un grido che fu.\nSonava lontano il singulto:\nchiù...\n\nSu tutte le lucide vette\ntremava un sospiro di vento:\nsquassavano le cavallette\nfinissimi sistri d’argento\n(tintinni a invisibili porte\nche forse non s’aprono più?...);\ne c’era quel pianto di morte...\nchiù...",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/L%27assiuolo",
       "tags": [
@@ -749,7 +753,7 @@
       "titulo": "Myricae/In campagna/La domenica dell'ulivo",
       "texto": "Hanno compiuto in questo dì gli uccelli\nil nido (oggi è la festa dell’ulivo)\ndi foglie secche, radiche, fuscelli;\n\nquel sul cipresso, questo su l’alloro,\nal bosco, lungo il chioccolo d’un rivo,\nnell’ombra mossa d’un tremolìo d’oro.\n\nE covano sul musco e sul lichene\nfissando muti il cielo cristallino,\ncon improvvisi palpiti, se viene\nun ronzìo d’ape, un vol di maggiolino.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/La_domenica_dell%27ulivo",
       "tags": []
@@ -758,7 +762,7 @@
       "titulo": "Myricae/In campagna/Nella macchia",
       "texto": "Errai nell’oblìo della valle\ntra ciuffi di stipe fiorite,\ntra quercie rigonfie di galle;\n\nerrai nella macchia più sola,\nper dove tra foglie marcite\nspuntava l’azzurra vïola;\n\nerrai per i botri solinghi:\nla cincia vedeva dai pini:\nsbuffava i suoi piccoli ringhi\n                                        argentini.\n\nIo siedo invisibile e solo\ntra monti e foreste: la sera\nnon freme d’un grido, d’un volo.\n\nIo siedo invisibile e fosco;\nma un cantico di capinera\nsi leva dal tacito bosco.\n\nE il cantico all’ombre segrete\nper dove invisibile io siedo,\ncon voce di flauto ripete,\n                                        Io ti vedo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Nella_macchia",
       "tags": []
@@ -767,7 +771,7 @@
       "titulo": "Myricae/In campagna/Novembre",
       "texto": "Gemmea l’aria, il sole così chiaro\nche tu ricerchi gli albicocchi in fiore,\ne del prunalbo l’odorino amaro\n                                        senti nel cuore...\n\nMa secco è il pruno, e le stecchite piante\ndi nere trame segnano il sereno,\ne vuoto il cielo, e cavo al piè sonante\n                                        sembra il terreno.\n\nSilenzio, intorno: solo, alle ventate,\nodi lontano, da giardini ed orti,\ndi foglie un cader fragile. È l’estate,\n                                        fredda, dei morti.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Novembre",
       "tags": []
@@ -776,7 +780,7 @@
       "titulo": "Myricae/In campagna/Pioggia",
       "texto": "Cantava al buio d’aia in aia il gallo.\n\nE gracidò nel bosco la cornacchia:\nil sole si mostrava a finestrelle.\nIl sol dorò la nebbia della macchia,\npoi si nascose; e piovve a catinelle.\nPoi tra il cantare delle raganelle\nguizzò sui campi un raggio lungo e giallo.\n\nStupìano i rondinotti dell’estate\ndi quel sottile scendere di spille:\nera un brusìo con languide sorsate\ne chiazze larghe e picchi a mille a mille;\npoi singhiozzi, e gocciar rado di stille:\ndi stille d’oro in coppe di cristallo.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Pioggia",
       "tags": []
@@ -785,7 +789,7 @@
       "titulo": "Myricae/In campagna/Sera d'ottobre",
       "texto": "Lungo la strada vedi su la siepe\nridere a mazzi le vermiglie bacche:\nnei campi arati tornano al presepe\n                                        tarde le vacche.\n\nVien per la strada un povero che il lento\npasso tra foglie stridule trascina:\nnei campi intuona una fanciulla al vento:\n                                        Fiore di spina!...",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Sera_d%27ottobre",
       "tags": []
@@ -794,7 +798,7 @@
       "titulo": "Myricae/In campagna/Stoppia",
       "texto": "Dov’è, campo, il brusìo della maretta\nquando rabbrividivi ai libeccioli?\nTi resta qualche fior d’erba cornetta,\ni fioralisi, i rosolacci soli.\n\nE nel silenzio del mattino azzurro\ncercano in vano il solito sussurro;\n\nmentre nell’aia, là, del contadino\ntrébbiano nel silenzio del mattino.\n\nDov’è, campo, il tuo mare ampio e tranquillo,\ncol tenue vel di reste, ai pleniluni?\n\nPei nudi solchi trilla trilla il grillo,\nlucciole vanno per i solchi bruni.\n\nE nella sera, con ansar di lampo,\ncercano il grano nel deserto campo;\n\nmentre tuttora, là, dalla riviera\nromba il mulino nella dolce sera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Stoppia",
       "tags": []
@@ -803,7 +807,7 @@
       "titulo": "Myricae/In campagna/Temporale",
       "texto": "Un bubbolìo lontano...\n\nRosseggia l’orizzonte,\ncome affocato, a mare:\nnero di pece, a monte,\nstracci di nubi chiare:\ntra il nero un casolare:\nun’ala di gabbiano.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Temporale",
       "tags": [
@@ -815,7 +819,7 @@
       "titulo": "Myricae/In campagna/Ultimo canto",
       "texto": "Solo quel campo, dove io volgo lento\nl’occhio, biondeggia di pannocchie ancora,\ne il solicello vi si trascolora.\n\nFragile passa fra’ cartocci il vento:\nuno stormo di passeri s’invola:\nnel cielo è un gran pallore di vïola.\n\nCanta una sfogliatrice a piena gola:\nAmor comincia con canti e con suoni\ne poi finisce con lacrime al cuore.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Ultimo_canto",
       "tags": [
@@ -826,7 +830,7 @@
       "titulo": "Myricae/In campagna/Vespro",
       "texto": "Dal cielo roseo pullula una stella.\n\nUna campana parla della cosa\ncol suo grave dan dan dalla badia;\nonde tra i pioppi tinti in color rosa\nsuona un continuo scalpicciar per via:\npassa una lunga e muta compagnia\ncon fasci di trifoglio e lupinella.\n\nUna fanciulla cuce, ed accompagna,\ncantarellando, dalla nera altana,\nun canto che s’alzò dalla campagna,\nquando nel cielo tacque la campana:\ns’alzò da un olmo solo in una piana,\nda un olmo nero che da sè stornella.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/In_campagna/Vespro",
       "tags": []
@@ -835,7 +839,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Arano",
       "texto": "Al campo, dove roggio nel filare\nqualche pampano brilla, e dalle fratte\nsembra la nebbia mattinal fumare,\n\narano: a lente grida, uno le lente\nvacche spinge; altri semina; un ribatte\nle porche con sua marra pazïente;\n\nchè il passero saputo in cor già gode,\ne il tutto spia dai rami irti del moro;\ne il pettirosso: nelle siepi s’ode\nil suo sottil tintinno come d’oro.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Arano",
       "tags": []
@@ -844,7 +848,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Carrettiere",
       "texto": "O carrettiere che dai neri monti\nvieni tranquillo, e fosti nella notte\nsotto ardue rupi, sopra aerei ponti;\n\nche mai diceva il querulo aquilone\nche muggìa nelle forre e tra le grotte?\nMa tu dormivi sopra il tuo carbone.\n\nA mano a mano lungo lo stradale\nvenìa fischiando un soffio di procella:\nma tu sognavi ch’era di natale;\nudivi i suoni d’una cennamella.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Carrettiere",
       "tags": []
@@ -853,7 +857,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Di lassù",
       "texto": "La lodola perduta nell’aurora\nsi spazia, e di lassù canta alla villa,\nche un fil di fumo qua e là vapora;\n\ndi lassù largamente bruni farsi\ni solchi mira quella sua pupilla\nlontana, e i bianchi bovi a coppie sparsi.\n\nQualche zolla nel campo umido e nero\nluccica al sole, netta come specchio:\nfa il villano mannelle in suo pensiero,\ne il canto del cuculo ha nell’orecchio.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Di_lass%C3%B9",
       "tags": []
@@ -862,7 +866,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Festa lontana",
       "texto": "Un piccolo infinito scampanìo\nne ronza e vibra, come d’una festa\nassai lontana, dietro un vel d’oblìo.\n\nLà, quando ondando vanno le campane,\nscoprono i vecchi per la via la testa\nbianca, e lo sguardo al suol fisso rimane.\n\nMa tondi gli occhi sgranano i bimbetti,\ncui trema intorno il loro ciel sereno.\nStrillano al crepitar de’ mortaretti.\nMamma li stringe all’odorato seno.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Festa_lontana",
       "tags": []
@@ -871,7 +875,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Galline",
       "texto": "Al cader delle foglie, alla massaia\nnon piange il vecchio cor, come a noi grami:\nche d’arguti galletti ha piena l’aia;\n\ne spessi nella pace del mattino\ndelle utili galline ode i richiami:\nzeppo il granaio; il vin canta nel tino.\n\nCantano a sera intorno a lei stornelli\nle fiorenti ragazze occhi pensosi,\nmentre il granturco sfogliano, e i monelli\nruzzano nei cartocci strepitosi.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Galline",
       "tags": []
@@ -880,7 +884,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Già dalla mattina",
       "texto": "Acqua, rimbomba; dondola, cassetta;\ngira, coperchio, intorno la bronzina;\nversa, tramoggia, il gran dalla bocchetta;\n\nspolvero, svola. Nero da una fratta\nl’asino attende già dalla mattina\npresso la risonante cateratta.\n\nLe orecchie scrolla e volgesi a guardare,\nchè tardi, tra finire, andar bel bello,\nintridere, spianare ed infornare,\nsul desco fumerai, pan di cruschello.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Gi%C3%A0_dalla_mattina",
       "tags": []
@@ -889,7 +893,7 @@
       "titulo": "Myricae/L'ultima passeggiata/I due bimbi",
       "texto": "I due bimbi si rizzano: uno, a stento,\nindolenzito; grave l’altro: il primo\nalza il corbello con un gesto lento;\n\ne in quel dell’altro fa cader, bel bello,\nil suo tesoro d’accattato fimo:\ne quello va più carico e più snello.\n\nIl vinto siede, prova un’altra volta\ncoi noccioli, li sperpera, li aduna,\ne dice (forse al grande olmo che ascolta?):\nE poi si dica che non ha fortuna!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/I_due_bimbi",
       "tags": []
@@ -898,7 +902,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Il cane",
       "texto": "Noi, mentre il mondo va per la sua strada,\nnoi ci rodiamo, e in cuor doppio è l’affanno,\ne perchè vada, e perchè lento vada.\n\nTal, quando passa il grave carro avanti\ndel casolare, che il rozzon normanno\nstampa il suolo con zoccoli sonanti,\n\nsbuca il can dalla fratta, come il vento;\nlo precorre, rincorre; uggiola, abbaia.\nIl carro è dilungato lento lento;\nil cane torna sternutando all’aia.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Il_cane",
       "tags": []
@@ -907,7 +911,7 @@
       "titulo": "Myricae/L'ultima passeggiata/In capannello",
       "texto": "Cigola il lungo e tremulo cancello\ne la via sbarra: ritte allo steccato\ncianciano le comari in capannello:\n\nparlan d’uno, ch’è un altro scrivo scrivo;\ndel vin che costa un occhio, e ce n’è stato;\ndel governo; di questo mal cattivo;\n\ndel piccino; del grande ch’è sui venti;\ndel maiale, che mangia e non ingrassa — \nNero avanti a quelli occhi indifferenti\nil traino con fragore di tuon passa.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/In_capannello",
       "tags": []
@@ -916,7 +920,7 @@
       "titulo": "Myricae/L'ultima passeggiata/La via ferrata",
       "texto": "Tra gli argini su cui mucche tranquilla-\nmente pascono, bruna si difila\nla via ferrata che lontano brilla;\n\ne nel cielo di perla dritti, uguali,\ncon loro trama delle aeree fila\ndigradano in fuggente ordine i pali.\n\nQual di gemiti e d’ululi rombando\ncresce e dilegua femminil lamento?\nI fili di metallo a quando a quando\nsquillano, immensa arpa sonora al vento.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/La_via_ferrata",
       "tags": []
@@ -925,7 +929,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Lavandare",
       "texto": "Nel campo mezzo grigio e mezzo nero\nresta un aratro senza buoi, che pare\ndimenticato, tra il vapor leggero. \n\nE cadenzato dalla gora viene\nlo sciabordare delle lavandare\ncon tonfi spessi e lunghe cantilene: \n\nIl vento soffia e nevica la frasca,\ne tu non torni ancora al tuo paese!\nquando partisti, come son rimasta!\ncome l’aratro in mezzo alla maggese.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Lavandare",
       "tags": []
@@ -934,7 +938,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Mezzogiorno",
       "texto": "L’osteria della Pergola è in faccende:\npiena è di grida, di brusìo, di sordi\ntonfi; il camin fumante a tratti splende.\n\nSu la soglia, tra il nembo degli odori\npingui, un mendico brontola: Altri tordi\nc’era una volta, e altri cacciatori.\n\nDice, e il cor s’è beato. Mezzogiorno\ndal villaggio a rintocchi lenti squilla;\ne dai remoti campanili intorno\nun’ondata di riso empie la villa.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Mezzogiorno",
       "tags": []
@@ -943,7 +947,7 @@
       "titulo": "Myricae/L'ultima passeggiata/O reginella",
       "texto": "Non trasandata ti creò per vero\nla cara madre: tal, lungo la via,\ntela albeggia, onde godi in tuo pensiero:\n\npresso è la festa, e ognuno a te domanda\ncandidi i lini, poi che in tua balìa\nè il cassone odorato di lavanda.\n\nFelici i vecchi tuoi; felici ancora\ni tuoi fratelli; e più, quando a te piaccia,\nchi sua ti porti nella sua dimora,\no reginella dalle bianche braccia.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/O_reginella",
       "tags": []
@@ -952,7 +956,7 @@
       "titulo": "Myricae/L'ultima passeggiata/O vano sogno",
       "texto": "Al camino, ove scoppia la mortella\ntra la stipa, o ch’io sogno, o veglio teco:\nmangio teco radicchio e pimpinella.\n\nAl soffiar delle raffiche sonanti,\nl’aulente fieno sul forcon m’arreco,\ne visito i miei dolci ruminanti:\n\npoi salgo, e teco — O vano sogno! Quando\nnella macchia fiorisce il pan porcino,\nlo scolaro i suoi divi ozi lasciando\nspolvera il badïale calepino:\n\nchioccola il merlo, fischia il beccaccino;\nanch’io torno a cantare in mio latino.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/O_vano_sogno",
       "tags": [
@@ -963,7 +967,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Quel giorno",
       "texto": "Dopo rissosi cinguettìi nell’aria,\nle rondini lasciato hanno i veroni\ndella Cura fra gli olmi solitaria.\n\nQuanti quel roseo campanil bisbigli\nudì, quel giorno, o strilli di rondoni\nimpazïenti a gl’inquïeti figli!\n\nOr nel silenzio del meriggio urtare\nlà dentro odo una seggiola, una gonna\nfrusciar d’un tratto: alla finestra appare\ncurïoso un gentil viso di donna.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Quel_giorno",
       "tags": []
@@ -972,7 +976,7 @@
       "titulo": "Myricae/L'ultima passeggiata/Ti chiama",
       "texto": "Quella sera i tuoi vecchi (odi? ti chiama\nla cara madre: al fumo della bruna\npentola, con irrequïeta brama,\n\nrissano i bimbi: frena tu, severa,\nquinci una mano trepida, quindi una\nstridula bocca, e al piccol volgo impera;\n\nsì che in pace, tra un grande acciottolìo,\nbruchi la sussurrante famigliola),\nquella notte i tuoi vecchi un dolor pio\nsoffocheranno contro le lenzuola.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/L%27ultima_passeggiata/Ti_chiama",
       "tags": []
@@ -981,7 +985,7 @@
       "titulo": "Myricae/La civetta",
       "texto": "Stavano neri al lume della luna\ngli erti cipressi, guglie di basalto,\nquando tra l’ombre svolò rapida una\n                                        ombra dall’alto:\n\norma sognata d’un volar di piume,\norma d’un soffio molle di velluto,\nche passò l’ombre e scivolò nel lume\n                                        pallido e muto:\n\ned i cipressi sul deserto lido\nstavano come un nero colonnato,\nrigidi, ognuno con tra i rami un nido\n                                        addormentato.\n\nE sopra tanta vita addormentata\ndentro i cipressi, in mezzo la brughiera\nsonare, ecco, una stridula risata\n                                        di fattucchiera:\n\nuna minaccia stridula seguita,\nforse, da brevi pigolìi sommessi,\ndal palpitar di tutta quella vita\n                                        dentro i cipressi.\n\nMorte, che passi per il ciel profondo,\npassi con ali molli come fiato,\ncon gli occhi aperti sopra il triste mondo\n                                        addormentato;\n\nMorte, lo squillo acuto del tuo riso\nunico muove l’ombra che ci occulta\nsilenzïosa e, desta all’improvviso\n                                        squillo, sussulta;\n\ne quando taci, e par che tutto dorma\nnel cipresseto, trema ancora il nido\nd’ogni vivente: ancor, nell’aria, l’orma\n                                        c’è del tuo grido.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/La_civetta",
       "tags": [
@@ -992,7 +996,7 @@
       "titulo": "Myricae/La notte dei morti — La casa è serrata; ma desta:",
       "texto": "La casa è serrata; ma desta:\nne fuma alla luna il camino.\nNon filano o torcono: è festa.\n\nScoppietta il castagno, il paiolo\nborbotta. Sul desco c’è il vino,\ncui spilla il capoccio da solo.\n\nIn tanto essi pregano al lume\ndel fuoco: via via la corteccia\nschizza arida.... Mormora il fiume\n\ncon rotto fragore di breccia....",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/La_notte_dei_morti",
       "tags": []
@@ -1001,7 +1005,7 @@
       "titulo": "Myricae/La notte dei morti — È forse (io non odo: non sento",
       "texto": "È forse (io non odo: non sento\nche il fiume passare, portare\nquel murmure al mare) d’un lento\n\nvegliardo la tremula voce\nche intuona il rosario, e che pare\nche venga da sotto una croce,\n\nda sotto un gran peso; da lunge.\nQuei poveri vecchi bisbigli\nsonora una romba raggiunge\n\ncol trillo dei figli de’ figli.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/La_notte_dei_morti",
       "tags": []
@@ -1010,7 +1014,7 @@
       "titulo": "Myricae/La notte dei morti — Oh! i morti! Pregarono anch’essi,",
       "texto": "Oh! i morti! Pregarono anch’essi,\nla notte dei morti, per quelli\nche tacciono sotto i cipressi.\n\nPassarono.... O cupo tinnito\ndi squille dagli ermi castelli!\no fiume dall’inno infinito!\n\nPassarono.... Sopra la luna\nche tacita sembra che chiami,\nio vedo passare un velo, una\n\nbreve ombra, ma bianca, di sciami.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/La_notte_dei_morti",
       "tags": []
@@ -1019,7 +1023,7 @@
       "titulo": "Myricae/Le gioie del poeta/Contrasto",
       "texto": "Io prendo un po’ di silice e di quarzo:\nlo fondo; aspiro; e soffio poi di lena:\nve’ la fïala, come un dì di marzo,\nazzurra e grigia, torbida e serena!\nUn cielo io faccio con un po’ di rena5\ne un po’ di fiato. Ammira: io son l’artista.\n\nIo vo per via guardando e riguardando,\nsolo soletto, muto, a capo chino:\nprendo un sasso, tra mille, a quando a quando:\nlo netto, arroto, taglio, lustro, affino:\nchi mi sia, non importa: ecco un rubino;\nvedi un topazio; prendi un’ametista.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/Contrasto",
       "tags": []
@@ -1028,7 +1032,7 @@
       "titulo": "Myricae/Le gioie del poeta/Gloria",
       "texto": "— Al santo monte non verrai, Belacqua? — \n\nIo non verrò: l’andare in su che porta?\nLungi è la Gloria, e piedi e mani vuole;\ne là non s’apre che al pregar la porta,\ne qui star dietro il sasso a me non duole,5\ned ascoltare le cicale al sole,\ne le rane che gracidano, Acqua acqua!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/Gloria",
       "tags": [
@@ -1039,7 +1043,7 @@
       "titulo": "Myricae/Le gioie del poeta/Il Mago",
       "texto": "«Rose al verziere, rondini al verone!»\n\nDice, e l’aria alle sue dolci parole\nsibila d’ali, e l’irta siepe fiora.\nAltro il savio potrebbe; altro non vuole;\npago se il ciel gli canta e il suol gli odora:5\nsuoi nunzi manda alla nativa aurora,\na biondi capi intreccia sue corone.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/Il_Mago",
       "tags": []
@@ -1048,7 +1052,7 @@
       "titulo": "Myricae/Le gioie del poeta/Il miracolo",
       "texto": "Vedeste, al tocco suo, morte pupille!\n\nVedeste in cielo bianchi lastricati\ncon macchie azzurre tra le lastre rare;\nbianche le fratte, bianchi erano i prati,\nqueto fumava un bianco casolare,5\nsfogliava il mandorlo ali di farfalle.\n\nVedeste l’erba lucido tappeto,\ne sulle pietre il musco smeraldino;\ntremava il verde ciuffo del canneto,\nsbocciava la ninfèa, nell’acquitrino,10\ntra rane verdi e verdi raganelle.\n\nVedeste azzurro scendere il ruscello\nfuori dei monti, fuor delle foreste,\ne quelle creste, aereo castello,\ntagliare in cielo un lembo più celeste:15\nera colore di vïola il colle.\n\nVedeste in mezzo a nuvole di cloro\nrossa raggiar la fuga de’ palazzi\nlungo la ripa, ed il tramonto d’oro\ndalle vetrate vaporare a sprazzi,20\na larghi fasci, a tremule scintille.\n\nDormono i corvi dentro i lecci oscuri,\nqualche fiaccola va pei cimiteri;\ndentro i palazzi, dentro gli abituri,\nal buio, accanto ai grandi letti neri,25\ndormono nere e piccole le culle.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/Il_miracolo",
       "tags": [
@@ -1059,7 +1063,7 @@
       "titulo": "Myricae/Le gioie del poeta/In alto",
       "texto": "Nel ciel dorato rotano i rondoni.\n\nAvessi al cor, come ali, così lena!\nPur l’amerei la negra terra infida,\n\nsol per la gioia di toccarla appena,\nfendendo al ciel non senza acute strida.5\nOra quel cielo sembra che m’irrida,\nmentre vado così, grondon grondoni.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/In_alto",
       "tags": []
@@ -1068,7 +1072,7 @@
       "titulo": "Myricae/Le gioie del poeta/La vite e il cavolo",
       "texto": "Dal glauco e pingue cavolo si toglie\ne fugge all’olmo la pampinea vite,\ned a sè, tra le branche inaridite,\ntira il puniceo strascico di foglie.\n\nPace, o pampinea vite! Aureo s’accoglie\nil sol nel lungo tuo grappolo mite;\naurea la gioia, e dentro le brunite\ncoppe ogni cura in razzi d’oro scioglie.\n\nMa, nobil vite, alcuna gloria è spesso\npur di quel gramo, se per lui l’oscuro\npaiol borbotta con suo lieve scrollo;\n\ne il core allegra al pio villan, che d’esso\ntrova odorato il tiepido abituro,\nmentre a’ fumanti buoi libera il collo.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_gioie_del_poeta/La_vite_e_il_cavolo",
       "tags": []
@@ -1077,7 +1081,7 @@
       "titulo": "Myricae/Le pene del poeta/I due fuchi",
       "texto": "Tu poeta, nel torbido universo\nt’affisi, tu per noi lo cogli e chiudi\nin lucida parola e dolce verso;\n\nsì ch’opera è di te ciò che l’uom sente\ntra l’ombre vane, tra gli spettri nudi.\nOr qual n’hai grazia tu presso la gente?\n\nDue fuchi udii ronzare sotto un moro.\nFanno queste api quel lor miele (il primo\ndiceva) e niente più: beate loro!\nE l’altro: E poi fa afa: troppo timo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_pene_del_poeta/I_due_fuchi",
       "tags": []
@@ -1086,7 +1090,7 @@
       "titulo": "Myricae/Le pene del poeta/Il cacciatore",
       "texto": "Frulla un tratto l’idea nell’aria immota;\ncanta nel cielo. Il cacciator la vede,\nl’ode; la segue: il cuor dentro gli nuota.\n\nSe poi col dardo, come fil di sole\nlucido e retto, bàttesela al piede,\noh il poeta! gioiva; ora si duole.\n\nDeh! gola d’oro e occhi di berilli,\npiccoletta del cielo alto sirena,\necco, tu più non voli, più non brilli,\npiù non canti: e non basti alla mia cena.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_pene_del_poeta/Il_cacciatore",
       "tags": []
@@ -1095,7 +1099,7 @@
       "titulo": "Myricae/Le pene del poeta/Il lauro",
       "texto": "Nell’orto, a Massa - o blocchi di turchese,\nalpi Apuane! o lunghi intagli azzurri\nnel celestino, all’orlo del paese!\n\nun odorato e lucido verziere\npieno di frulli, pieno di sussurri,\npieno de’ flauti delle capinere.\n\nNell’aie acuta la magnolia odora,\nlustra l’arancio popolato d’oro — \nio, quando al Belvedere era l’aurora,\nvenivo al piede d’uno snello alloro.\n\nSorgeva presso il vecchio muro, presso\nil vecchio busto d’un imperatore,\ncol tronco svelto come di cipresso.\n\nSlanciato avanti, sopra il muro, al sole\ndava la chioma. Intorno era un odore,\nsottil, di vecchio, e forse di vïole.\n\nIo sognava: una corsa lungo il puro\nFrigido, l’oro di capelli sparsi,\nuna fanciulla... Ancora al vecchio muro\ntremava il lauro che parea slanciarsi.\n\nUn’alba — si sentìa di due fringuelli\nchiaro il francesco mio: la capinera\ngià desta squittinìa di tra i piselli — \n\ntu più non c’eri, o vergine fugace:\nnetto il pedale era tagliato: v’era\nquel vecchio odore e quella vecchia pace;\n\nil lauro, no. Sarchiava lì vicino\nFiore, un ragazzo pieno di bontà.\nGli domandai del lauro; e Fiore, chino\nsopra il sarchiello: Faceva ombra, sa!\n\nE m’accennavi un campo glauco, o Fiore,\ndi cavolo cappuccio e cavolfiore.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_pene_del_poeta/Il_lauro",
       "tags": []
@@ -1104,7 +1108,7 @@
       "titulo": "Myricae/Le pene del poeta/Le femminelle",
       "texto": "E dice la rosa alba: Oh! chi mi svelle?\nSon mesta come un colchico: dal ciocco\ntanto mi germinò di femminelle!\n\nErano come punte tenerine\ndi sparagio: poi fecero lo stocco;\nbuttano anch’esse e s’armano di spine.\n\nVivono de’ miei fiori color d’alba,\nd’alba rosata; e tu non giovi, o ruta.\nMettono un boccio: una corolla scialba,\nsubito aperta, subito caduta.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Le_pene_del_poeta/Le_femminelle",
       "tags": []
@@ -1113,7 +1117,7 @@
       "titulo": "Myricae/Nota bibliografica",
       "texto": "Io vedo — come è questo giorno, oscuro — \nvedo in mio cuore, vedo un camposanto\ncon un fosco cipresso alto sul muro.\nE quel cipresso fumido si scaglia\nallo scirocco; ad ora ad ora in pianto\nsciogliesi l’infinita nuvolaglia.\n\n     O casa di mia gente, unica...\n\npiangono; la pupilla umida e pia\nricerca gli altri visi a uno a uno\ne forma un’altra lagrima per via.\nPiangono; e quando un grido ch’esce stretto\nin un sospiro, mormora, Nessuno!\ncupo rompe un singhiozzo lor dal petto.\n\nLevan le bianche mani ai bianchi volti;\nche non alcuno, al pianto disusato,\nsollevi il capo attonito ed ascolti.\nPosa ogni morto, e nel suo sonno culla\nqualche figlio de’ figli ancor non nato.\nNessuno! i morti miei gemono: nulla!\n\n \nLa naiv, dadora, flocca flocca flocca:\nTaidla: üna chüna in stüva va vi e nan.\nUn pitschen crida, cul daintin in bocca;\nLa nonna chanta, cul misun sül man.\nLa nonna chanta: «Intuorn a teis lettin\nDa rosas, gilgias es ün bel zardin».\nNel bel zardin il pitschen ’s drumanzet.\nDador la naiv flocca planet planet.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Nota_bibliografica",
       "tags": [
@@ -1124,7 +1128,7 @@
       "titulo": "Myricae/Nozze",
       "texto": "Dava moglie la Rana al suo figliolo.\nOr con la pace vostra, o raganelle,\nil suon lo chiese ad un cantor del brolo.\n\nEgli cantò: la cobbola giuliva\nparve un picchierellar trito di stelle5\nnel ciel di sera, che ne tintinniva.\n\nLe campagne addolcì quel tintinnìo\ne i neri boschi fumiganti d’oro.\nτιὸ τιὸ τιὸ τιὸ τιὸ τιὸ τιὸ τιό.\nτοροτοροτοροτοροτίξ.10\nτοροτοροτοροτορολιλιλίξ.\n\nÈ notte: ancora in un albor di neve\nsale quest’inno come uno zampillo;\nquando la Rana chiede, quanto deve;\n\nse quattro chioccioline, o qualche foglia\nd’appio, o voglia un mazzuolo di serpillo\no voglia un paio di bachi, o ciò che voglia.\n\nOh! rispos’egli: nulla al Rosignolo,\nnulla tu devi delle sue cantate:\nei l’ha per nulla e dà per nulla: solo,\nsì l’ascoltate e poi non gracidate.\n\nAl lume della luna ogni ranocchia\ngracidò: Quanta spocchia, quanta spocchia!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Nozze",
       "tags": []
@@ -1133,7 +1137,7 @@
       "titulo": "Myricae/Pensieri/Convivio",
       "texto": "O convitato della vita, è l’ora.\nBrillino rossi i calici di vino;\ntu nè bramoso più, nè sazio ancora,\n                                        lascia il festino.\n\nSplendano d’aurea luce i lampadari,\nspiri la rosa e il timo dell’Imetto,\nsorrida in cerchio tuttavia di cari\n                                        capi il banchetto:\n\ntu sorgi e... Triste, su la mensa ingombra,\ndelle morenti lampade lo svolo\nlugubre, lungo! triste errar nell’ombra,\n                                        ultimo, solo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Convivio",
       "tags": []
@@ -1142,7 +1146,7 @@
       "titulo": "Myricae/Pensieri/Cuore e Cielo",
       "texto": "Nel cuor dove ogni vision s’immilla,\ne spazio al cielo ed alla terra avanza,\ntalor si spenge un desiderio, e brilla\n                                        una speranza:\n\ncome nel cielo, oceano profondo,\ndove ascendendo il pensier nostro annega,\ntramonta un’Alfa, e pullula dal fondo\n                                        cupo un’Omega.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Cuore_e_Cielo",
       "tags": []
@@ -1151,7 +1155,7 @@
       "titulo": "Myricae/Pensieri/I tre grappoli",
       "texto": "Ha tre, Giacinto, grappoli la vite.\nBevi del primo il limpido piacere;\nbevi dell’altro l’oblio breve e mite;\n                                        e... più non bere:\n\nchè sonno è il terzo, e con lo sguardo acuto\nnel nero sonno vigila, da un canto,\nsappi, il dolore; e alto grida un muto\n                                        pianto già pianto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/I_tre_grappoli",
       "tags": []
@@ -1160,7 +1164,7 @@
       "titulo": "Myricae/Pensieri/Il passato",
       "texto": "Rivedo i luoghi dove un giorno ho pianto:\nun sorriso mi sembra ora quel pianto.\nRivedo i luoghi, dove ho già sorriso...\nOh! come lacrimoso quel sorriso!",
       "forma": "quadra",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Il_passato",
       "tags": []
@@ -1169,7 +1173,7 @@
       "titulo": "Myricae/Pensieri/Morte e sole",
       "texto": "Fissa la morte: costellazïone\nlugubre che in un cielo nero brilla:\nbreve parola, chiara visïone:\n                                        leggi, o pupilla.\n\nNon puoi. Così se fissi mai l’immoto\nastro nei cieli solitari ardente,\nse guardi il sole, occhio, che vedi? Un vòto\n                                        vortice, un niente.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Morte_e_sole",
       "tags": [
@@ -1180,7 +1184,7 @@
       "titulo": "Myricae/Pensieri/Nel cuore umano",
       "texto": "Non ammirare, se in un cuor non basso,\ncui tu rivolga a prova, un pungiglione\nsenti improvviso: c’è sott’ogni sasso\n                                        lo scorpïone.\n\nNon ammirare, se in un cuor concesso\nal male, senti a quando a quando un grido\nbuono, un palpito santo: ogni cipresso\n                                        porta il suo nido.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Nel_cuore_umano",
       "tags": []
@@ -1189,7 +1193,7 @@
       "titulo": "Myricae/Pensieri/Pianto",
       "texto": "Più bello il fiore cui la pioggia estiva\nlascia una stilla dove il sol si frange;\npiù bello il bacio che d’un raggio avviva\n                                        occhio che piange.",
       "forma": "quadra",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Pianto",
       "tags": []
@@ -1198,7 +1202,7 @@
       "titulo": "Myricae/Pensieri/Sapienza",
       "texto": "Sali pensoso la romita altura\nove ha il suo nido l’aquila e il torrente,\ne centro della lontananza oscura\n                                        sta, sapïente.\n\nOh! scruta intorno gl’ignorati abissi:\npiù ti va lungi l’occhio del pensiero,\npiù presso viene quello che tu fissi:\n                                        ombra e mistero.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Sapienza",
       "tags": []
@@ -1207,7 +1211,7 @@
       "titulo": "Myricae/Pensieri/Tra il dolore e la gioia",
       "texto": "Vidi il mio sogno sopra il monte, in cima;\nera una striscia pallida, co’ suoi\nboschi d’un verde quale mai nè prima\n                                        vidi nè poi.\n\nPrima, il sonante nembo coi velari,\ntutto ascondeva delle nubi nere:\npoi, tutto il sole disvelò del pari\n                                        bello a vedere.\n\nMa quel mio sogno al raggio d’un’aurora\nnuova m’apparve e sparve in un baleno,\nche il ciel non era torbo più, nè ancora\n                                        tutto sereno.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Tra_il_dolore_e_la_gioia",
       "tags": [
@@ -1218,7 +1222,7 @@
       "titulo": "Myricae/Pensieri/Tre versi dell'Ascreo",
       "texto": "«Non di perenni fiumi passar l’onda,\nche tu non preghi volto alla corrente\npura, e le mani tuffi nella monda\n                                        acqua lucente»\n\ndice il poeta. E così guarda, o saggio,\ntu nel dolore, cupo fiume errante:\npassa, e le mani reca dal passaggio\n                                        sempre più sante...",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Pensieri/Tre_versi_dell%27Ascreo",
       "tags": []
@@ -1227,7 +1231,7 @@
       "titulo": "Myricae/Placido — Io dissi a quel vecchio, «Dove?» Io",
       "texto": "Io dissi a quel vecchio, «Dove?» Io\ncercava un fanciullo mio buono,\nsmarrito: il mio Placido: mio!\n\nCercavo quelli occhi (... un cipresso?)\nco’ quali chiedeva perdono\ndi vivere, d’esserci anch’esso.\n\nCercavo. Ero giunto. Era quello\nper certo il paese azzurrino\nsuo: monti, una selva, un castello,\n\npoi monti: più su, San Marino.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Placido",
       "tags": []
@@ -1236,7 +1240,7 @@
       "titulo": "Myricae/Placido — Nel chiuso (... una croce?) noi soli",
       "texto": "Nel chiuso (... una croce?) noi soli\ntre s’era: non c’era altro fiore\nche l’oro di due girasoli.\n\nNel chiuso non c’era altra voce,\nrammento, che il cupo stridore\nd’un fuco ronzante a una croce;\n\ne qualche fruscìo di virgulto\nal passo del vecchio, che aveva\nle chiavi; e d’un tratto, un singulto\n\ndi lei: di Maria, che piangeva.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Placido",
       "tags": []
@@ -1245,7 +1249,7 @@
       "titulo": "Myricae/Placido — E in fine, guardandosi attorno,",
       "texto": "E in fine, guardandosi attorno,\n«Qui» disse quell’uomo. A Sogliano\nla torre sonò mezzogiorno.\n\nStridevano gli usci, i camini\nfumavano tutti: lontano\ns’udiva un vocìo di bambini.\n\nE lui? «Qui» mi disse: «non vede?»\nIo vidi: tra il grigio becchino\ne noi, vidi un nero, al mio piede,\n\ndi terra ah! scavata il mattino!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Placido",
       "tags": []
@@ -1254,7 +1258,7 @@
       "titulo": "Myricae/Primavera/Il fiume",
       "texto": "Fiume che là specchiasti un casolare\nco’ suoi rossi garofani, qua mura\nd’erme castella, e tremula verzura;\neccoti giunto al fragoroso mare;\n\ned ecco i flutti verso te balzare\nsu dall’interminabile pianura,\nin larghe file; e nella riva oscura\nquesta si frange, e in quella in alto appare;\n\ntituba e croscia. E là, donde tu lieto,\ndi sasso in sasso, al piè d’una betulla,\nsgorghi sonoro tra le brevi sponde;\n\na un po’ d’auretta scricchiola il canneto,\nfruscia il castagno, e forse una fanciulla\nsogna a quell’ombre, al mormorìo dell’onde.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Primavera/Il_fiume",
       "tags": []
@@ -1263,7 +1267,7 @@
       "titulo": "Myricae/Primavera/In chiesa",
       "texto": "Sciama con un ronzìo d’api la gente\ndalla chiesetta in sul colle selvaggio;\ne per la sera limpida di maggio\nvanno le donne, a schiera, lente lente;\n\ne passano tra l’alta erba stridente,\ne pare una fiorita il lor passaggio:\nle attende a valle tacito il villaggio\ncon le capanne chiuse e sonnolente.\n\nMa la chiesetta ancor nell’alto svaria\ntra le betulle, e il tetto d’un intenso\nrossor sfavilla nel silenzio alpestre.\n\nIl rombo delle pie laudi nell’aria\npalpita ancora; un lieve odor d’incenso\nsperdesi tra le mente e le ginestre.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Primavera/In_chiesa",
       "tags": []
@@ -1272,7 +1276,7 @@
       "titulo": "Myricae/Primavera/La pieve",
       "texto": "Giorno d’arrivi il tuo, san Benedetto:\necco una prima rondine che svola.\nE trova i pioppi nella valle sola,\nla grande pieve, il nido piccoletto.\n\nRazzano i vetri; l’occhio del coretto\nnereggia sotto un ciuffo di vïola:\necco la cigolante banderuola,\ngli embrici roggi del loquace tetto.\n\nE di saluti sonano le gronde\ne il chiuso, dove il cielo è vaporato\nda un rosseggiar di peschi e d’albicocchi.\n\nE la rondine stridula risponde\nalïando con lievi ombre: sul prato\nla segue un cane co’ fuggevoli occhi.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Primavera/La_pieve",
       "tags": []
@@ -1281,7 +1285,7 @@
       "titulo": "Myricae/Primavera/Lo stornello",
       "texto": "— Sospira e piange, e bagna le lenzuola\nla bella figlia, quando rifà il letto, — \ntale alcuno comincia un suo rispetto:\ntrema nell’aurea notte ogni parola;\n\ne sfiora i bossi, quasi arguta spola,\nl’aura con un bruire esile e schietto:\n— e si rimira il suo candido petto,\ne le rincresce avere a dormir sola. — \n\nSolo, là dalla siepe, è il casolare;\nnel casolare sta la bianca figlia;\nla bianca figlia il puro ciel rimira.\n\nLo vuole, a stella a stella, essa contare;\nma il ciel cammina, e la brezza bisbiglia,\ne quegli canta, e il cuor piange e sospira.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Primavera/Lo_stornello",
       "tags": []
@@ -1290,7 +1294,7 @@
       "titulo": "Myricae/Ricordi/Anniversario",
       "texto": "Sono più di trent’anni e, di queste ore,\nmamma, tu con dolor m’hai partorito;\ned il mio nuovo piccolo vagito\nt’addolorava più del tuo dolore.\n\nPoi tra il dolore sempre ed il timore,\no dolce madre, m’hai di te nutrito:\ne quando fui del corpo tuo vestito,\nquand’ebbi nel mio cuor tutto il tuo cuore;\n\nallor sei morta; e son vent’anni: un giorno!\ne già gli occhi materni io penso a vuoto;\ne il caro viso già mi si scolora;\n\nmamma, e più non ti so. Ma nel soggiorno\nfreddo de’ morti, nel tuo sogno immoto,\ntu m’accarezzi i riccioli d’allora.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Anniversario",
       "tags": []
@@ -1299,7 +1303,7 @@
       "titulo": "Myricae/Ricordi/Anniversario (2)",
       "texto": "Sappi — e forse lo sai, nel camposanto — \nla bimba dalle lunghe anella d’oro,\ne l’altra che fu l’ultimo tuo pianto,\nsappi ch’io le raccolsi e che le adoro.4\n\nPer lor ripresi il mio coraggio affranto,\ne mi detersi l’anima per loro:\nhanno un tetto, hanno un nido ora, mio vanto;\ne l’amor mio le nutre e il mio lavoro.8\n\nNon son felici, sappi, ma serene:\nil lor sorriso ha una tristezza pia:\nio le guardo — o mia sola erma famiglia! — 11\n\ne sempre agli occhi sento che mi viene\nquella che ti bagnò nell’agonia\nnon terminata lagrima le ciglia.14\n\n31 di dicembre 1890.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Anniversario_%282%29",
       "tags": [
@@ -1310,7 +1314,7 @@
       "titulo": "Myricae/Ricordi/Anniversario (3)",
       "texto": "Già li vedevo gli occhi tuoi, soavi\nseguirmi sempre per il mio cammino,\nchinarsi mesti sul mio capo chino,\nvolgersi, al mio dubbiar, dubbiosi e gravi.\n\nCome col dolor tuo mi consolavi,\ncome, o cuore vivente oltre il destino!\ncome al tuo collo ti tornai bambino\npiangendo il pianto che su me versavi!\n\nOr che rivivo alfine, or che trovai\nah! le due parti del tuo cuore infranto,\nora quell’occhio più che mai materno...\n\nNo: tu con gli altri, al freddo, all’acqua, stai,\ncon gli altri, solitari in camposanto,\nin questa sera torbida d’inverno.\n\n31 di dicembre 1891.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Anniversario_%283%29",
       "tags": []
@@ -1319,7 +1323,7 @@
       "titulo": "Myricae/Ricordi/Cavallino",
       "texto": "O bel clivo fiorito Cavallino\nch’io varcai co’ leggiadri eguali a schiera\nal mio bel tempo; chi sa dir se l’era\nd’olmo la tua parlante ombra o di pino?\n\nEra busso ricciuto o biancospino,\nda cui dorata trasparìa la sera?\nC’è un campanile tra una selva nera,\nche canta, bianco, l’inno mattutino?\n\nNon so: chè quando a te s’appressa il vano\ndesìo, per entro il cielo fuggitivo\nte vedo incerta visïon fluire.\n\nSo ch’or sembri il paese allor lontano\nlontano, che dal tuo fiorito clivo\nio rimirai nel limpido avvenire.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Cavallino",
       "tags": [
@@ -1330,7 +1334,7 @@
       "titulo": "Myricae/Ricordi/I puffini dell'Adriatico",
       "texto": "Tra cielo e mare (un rigo di carmino\nrecide intorno l’acque marezzate)\nparlano. È un’alba cerula d’estate:\nnon una randa in tutto quel turchino.\n\nPur voci reca il soffio del garbino\ncon ozïose e tremule risate.\nSono i puffini: su le mute ondate\npende quel chiacchiericcio mattutino.\n\nSembra un vociare, per la calma, fioco\ndi marinai, ch’ad ora ad ora giunga\ntra ’l fievole sciacquìo della risacca;\n\nquando, stagliate dentro l’oro e il fuoco,\nle paranzelle in una riga lunga\ndondolano sul mar liscio di lacca.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/I_puffini_dell%27Adriatico",
       "tags": [
@@ -1341,7 +1345,7 @@
       "titulo": "Myricae/Ricordi/Il bosco",
       "texto": "O vecchio bosco pieno d’albatrelli,\nche sai di funghi e spiri la malìa,\ncui tutto io già scampanellare udìa\ndi cicale invisibili e d’uccelli:\n\nin te vivono i fauni ridarelli\nch’hanno le sussurranti aure in balìa;\nvive la ninfa, e i passi lenti spia,\nbionda tra le interrotte ombre i capelli.\n\nDi ninfe albeggia in mezzo alla ramaglia\nor sì or no, che se il desìo le vinca,\nl’occhio alcuna ne attinge e il sol le bacia.\n\nDileguano; e pur viva è la boscaglia,\nviva sempre ne’ fior della pervinca\ne nelle grandi ciocche dell’acacia.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Il_bosco",
       "tags": []
@@ -1350,7 +1354,7 @@
       "titulo": "Myricae/Ricordi/Il fonte",
       "texto": "Mentre con lieve strepito perenne\ngeme tra il caprifoglio una fontana,\ntrema un trotto tranquillo, e s’allontana\nper le fatate rilucenti Ardenne.\n\nQuì pontò i piedi e s’alzò sulle penne\nquell’Ippogrifo, qui stallò l’Alfana:\nBrigliadoro dall’India Sericana\nin questo trebbio il lungo error sostenne:\n\nchè qui l’abbeverava il paladino,\ne meditava al mormorìo del fonte\nsenza piegar la ferrea persona:11\n\npoi seguì la sua corsa e il suo destino;\ncosì che intorno per la valle e il monte\nancor la notte il trotto ne rintrona.14",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Il_fonte",
       "tags": [
@@ -1361,7 +1365,7 @@
       "titulo": "Myricae/Ricordi/Il maniero",
       "texto": "Te sovente, o tra boschi arduo maniero\npopolai di baroni e di vassalli,\nmentre i falchetti udìa squittir su’ gialli\nmerli e radendo il baluardo nero.\n\nPei vetri un lume trascorrea leggiero,\ne nitrivano fervidi i cavalli:\na uno squillo che uscìa giù dalle valli,\napria le imposte il maggiordomo austero;\n\ne nel fosso stridea la fragorosa\nsaracinesca. Or tu, canto divino,\nsceso con l’ombre nel mio cuor cadenti,\n\ndove sei? Di tramonti, ora, pensosa,\nlà sur un torvo giogo d’Apennino\nqualch’elce nera lo ripete ai venti.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Il_maniero",
       "tags": []
@@ -1370,7 +1374,7 @@
       "titulo": "Myricae/Ricordi/Il santuario",
       "texto": "Come un’arca d’aromi oltremarini,\nil santuario, a mezzo la scogliera,\nesala ancora l’inno e la preghiera\ntra i lunghi intercolunnii de’ pini;\n\ne trema ancor de’ palpiti divini\nche l’hanno scosso nella dolce sera,\nquando dalla grand’abside severa\nuscìa l’incenso in fiocchi cilestrini.\n\nS’incurva in una luminosa arcata\nil ciel sovr’esso: alle colline estreme\nil Carro è fermo e spia l’ombra che sale.\n\nSale con l’ombra il suon d’una cascata\nche grave nel silenzio sacro geme\ncon un sospiro eternamente uguale.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Il_santuario",
       "tags": []
@@ -1379,7 +1383,7 @@
       "titulo": "Myricae/Ricordi/Le monache di Sogliano",
       "texto": "Dal profondo geme l’organo\ntra ’l fumar de’ cerei lento:\nc’è un brusìo cupo di femmine\nnella chiesa del convento:\n\nun vegliardo austero mormora\ndall’altar suoi brevi appelli:\ndietro questi s’acciabattano\ndelle donne i ritornelli.\n\nMa di mezzo a un lungo gemito,\nda invisibile cortina,\ns’alza a vol secura ed agile\nuna voce di bambina;\n\ne dintorno a questa ronzano,\ntutte a volo, unite e strette,\ne la seguono e rincorrono,\nvoci d’altre giovinette.\n\nPer noi prega, o santa Vergine,\nper noi prega, o Madre pia;\nper noi prega, esse ripetono,\no Maria! Maria! Maria!\n\nQuali note! Par che tinnino\nnell’infrangersi del cuore:\npaion umide di lagrime,\npaion ebbre di dolore.\n\nOh! qual colpa macchiò l’anima\ndi codeste prigioniere?\nqual dolor potè precorrervi\nla fiorita del piacere?\n\nQueste bimbe, queste vergini\nin che offesero Dio santo,\n\nche perdóno ne sospirano\ncon sì lungo inno di pianto?\n\nManda l’organo i suoi gemiti\ntra ’l fumar de’ cerei lento:\ndi lontane plaghe sembrano\ncupe e fredde onde di vento...\n\nDalle plaghe inaccessibili\ncupo e freddo il vento romba:\ngià sottentra ai lunghi gemiti\nil silenzio della tomba.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Le_monache_di_Sogliano",
       "tags": []
@@ -1388,7 +1392,7 @@
       "titulo": "Myricae/Ricordi/Rio Salto",
       "texto": "Lo so: non era nella valle fonda\nsuon che s’udia di palafreni andanti:\nera l’acqua che giù dalle stillanti\ntegole a furia percotea la gronda.\n\nPur via e via per l’infinita sponda\npassar vedevo i cavalieri erranti;\nscorgevo le corazze luccicanti,\nscorgevo l’ombra galoppar sull’onda.\n\nCessato il vento poi, non di galoppi\nil suono udivo, nè vedea tremando\nfughe remote al dubitoso lume;\n\nma voi solo vedevo, amici pioppi!\nBrusivano soave tentennando\nlungo la sponda del mio dolce fiume.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Rio_Salto",
       "tags": [
@@ -1399,7 +1403,7 @@
       "titulo": "Myricae/Ricordi/Romagna",
       "texto": "Sempre un villaggio, sempre una campagna\nmi ride al cuore (o piange), Severino:\nil paese ove, andando, ci accompagna\nl’azzurra visïon di San Marino:\n\nsempre mi torna al cuore il mio paese\ncui regnarono Guidi e Malatesta,\ncui tenne pure il Passator cortese,\nre della strada, re della foresta.\n\nLà nelle stoppie dove singhiozzando\nva la tacchina con l’altrui covata,\npresso gli stagni lustreggianti, quando\nlenta vi guazza l’anatra iridata,\n\noh! fossi io teco; e perderci nel verde,\ne di tra gli olmi, nido alle ghiandaie,\ngettarci l’urlo che lungi si perde\ndentro il meridïano ozio dell’aie;\n\nmentre il villano pone dalle spalle\ngobbe la ronca e afferra la scodella,\ne ’l bue rumina nelle opache stalle\nla sua laborïosa lupinella.\n\nDa’ borghi sparsi le campane in tanto\nsi rincorron coi lor gridi argentini:\nchiamano al rezzo, alla quiete, al santo\ndesco fiorito d’occhi di bambini.\n\nGià m’accoglieva in quelle ore bruciate\nsotto ombrello di trine una mimosa,\nche fiorìa la mia casa ai dì d’estate\nco’ suoi pennacchi di color di rosa;\n\ne s’abbracciava per lo sgretolato\nmuro un folto rosaio a un gelsomino;\nguardava il tutto un pioppo alto e slanciato,\nchiassoso a giorni come un biricchino.\n\nEra il mio nido: dove, immobilmente,\nio galoppava con Guidon Selvaggio\ne con Astolfo; o mi vedea presente\nl’imperatore nell’eremitaggio.\n\nE mentre aereo mi poneva in via\ncon l’ippogrifo pel sognato alone,\no risonava nella stanza mia\nmuta il dettare di Napoleone;\n\nudia tra i fieni allora allor falciati\nde’ grilli il verso che perpetuo trema,\nudiva dalle rane dei fossati\nun lungo interminabile poema.\n\nE lunghi, e interminati, erano quelli\nch’io meditai, mirabili a sognare:\nstormir di frondi, cinguettìo d’uccelli,\nrisa di donne, strepito di mare.\n\nMa da quel nido, rondini tardive,\ntutti tutti migrammo un giorno nero:\nio, la mia patria or è dove si vive:\ngli altri son poco lungi; in cimitero.\n\nCosì più non verrò per la calura\ntra que’ tuoi polverosi biancospini,\nch’io non ritrovi nella mia verzura\ndel cuculo ozïoso i piccolini,\n\nRomagna solatìa, dolce paese,\ncui regnarono Guidi e Malatesta;\ncui tenne pure il Passator cortese,\nre della strada, re della foresta.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ricordi/Romagna",
       "tags": [
@@ -1410,7 +1414,7 @@
       "titulo": "Myricae/Solitudine",
       "texto": "Da questo greppo solitario io miro\npassare un nero stormo, un aureo sciame;\nmentre sul capo al soffio d’un sospiro\nronzano i fili tremuli di rame.\n\nÈ sul mio capo un’eco di pensiero\nlunga, nè so se gioia o se martoro;\ne passa l’ombra dello stormo nero,\ne passa l’ombra dello sciame d’oro.\n\nii\n\nSono città che parlano tra loro,\ncittà nell’aria cerula lontane;\ntumultuanti d’un vocìo sonoro,\ndi rote ferree e querule campane.\n\nLà genti vanno irrequïete e stanche,\ncui falla il tempo, cui l’amore avanza\nper lungi, e l’odio. Qui, quell’eco, ed anche\nquel polverìo di ditteri, che danza.\n\niii\n\nParlano dall’azzurra lontananza\nnei giorni afosi, nelle vitree sere;\ne sono mute grida di speranza\ne di dolore, e gemiti e preghiere...\n\nQui quel ronzìo. Le cavallette sole\nstridono in mezzo alla gramigna gialla;\ni moscerini danzano nel sole;\ntrema uno stelo sotto una farfalla.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Solitudine",
       "tags": [
@@ -1421,7 +1425,7 @@
       "titulo": "Myricae/Tramonti/La sirena",
       "texto": "La sera, fra il sussurrìo lento\ndell’acqua che succhia la rena,\ndal mare nebbioso un lamento\nsi leva: il tuo canto, o Sirena.\n\nE sembra che salga, che salga,\npoi rompa in un gemito grave.\nE l’onda sospira tra l’alga,\ne passa una larva di nave:\n\nun’ombra di nave che sfuma\nnel grigio, ove muore quel grido;\nche porta con sè, nella bruma,\ndei cuori che tornano al lido:\n\nal lido che fugge, che scese\ngià nella caligine, via;\n\nche porta via tutto, le chiese\nche suonano l’avemaria,\n\nle case che su per la balza\nnel grigio traspaiono appena,\ne l’ombra del fumo che s’alza\ntra forse il brusìo della cena.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tramonti/La_sirena",
       "tags": []
@@ -1430,7 +1434,7 @@
       "titulo": "Myricae/Tramonti/Piano e monte",
       "texto": "Il disco, grandissimo, pende\nrossastro in un latte d’opale:\ne intaglia le case ed accende\ni lecci nel nero viale;\n\nche fumano, come foreste,\ndi polvere gialla e vermiglia:\ns’annuvola in rosa e celeste\nquel botro color di conchiglia.\n\nQua lampi di vetri, qua lente\ncantate, qua grida confuse:\nlà placido il muto orïente\nnell’ombra dei monti si chiuse.\n\nSi vedono opache le vette,\nè pace e silenzio tra i monti:\nun breve squittir di civette,\nun murmure lungo di fonti:\n\nvia via con fragore interrotto\nsi serra la casa tranquilla:\nè chiusa: nel bianco salotto\nla tacita lampada brilla.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tramonti/Piano_e_monte",
       "tags": [
@@ -1441,7 +1445,7 @@
       "titulo": "Myricae/Tristezze/Al fuoco",
       "texto": "Dorme il vecchio avanti i ciocchi.\nSogna un nuvolo di bimbi,\nche cinguetta. Il ceppo al foco\n                                        russa roco.\n\nDorme anch’esso. A tutti i nocchi\nsogna grappoli e corimbi.\nRosei pendono nell’aria\n                                        solitaria.\n\nBianchi i bimbi tra il fogliame,\nsu su, a quel roseo sorriso\nvanno. Il ceppo occhi di brace\n                                        apre, e tace.\n\nEcco pendulo lo sciame\ndal grande albero improvviso,\nsu su. Il vecchio nel cor teme,\n                                        guarda e geme.\n\nOgni bimbo al suo fiore alza\nla mano e... scivola e va.\nSbarra il ceppo la pupilla:\n                                        crocchia e brilla.\n\nE il vegliardo, al crocchiar, balza\nnella rotta oscurità.\nGira lento gli occhi. Solo!\n                                        solo! solo!",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Al_fuoco",
       "tags": []
@@ -1450,7 +1454,7 @@
       "titulo": "Myricae/Tristezze/Dalla spiaggia",
       "texto": "C’è sopra il mare tutto abbonacciato\nil tremolare quasi d’una maglia:\nin fondo in fondo un ermo colonnato,\nnivee colonne d’un candor che abbaglia:\n\nuna rovina bianca e solitaria,\nlà dove azzurra è l’acqua come l’aria:\n\nil mare nella calma dell’estate\nne canta tra le sue larghe sorsate.\n\nO bianco tempio che credei vedere\nnel chiaro giorno, dove sei vanito?\nDue barche stanno immobilmente nere,\ndue barche in panna in mezzo all’infinito.\n\nE le due barche sembrano due bare\nsmarrite in mezzo all’infinito mare;\n\ne piano il mare scivola alla riva\ne ne sospira nella calma estiva.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Dalla_spiaggia",
       "tags": []
@@ -1459,7 +1463,7 @@
       "titulo": "Myricae/Tristezze/I ciechi",
       "texto": "Siedono lungo il fosso, al solleone,\nfuor dello stormeggiante paesello.\nPassa un trotto via via tra il polverone,\nuna pesta, un alterco, uno stornello:\n\ne da terra una grave salmodia\nsi leva, una preghiera, al lor cospetto.\n— Il nostro pane — gemono via via:\nil nostro, il nostro: tu, Gesù, l’hai detto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/I_ciechi",
       "tags": []
@@ -1468,7 +1472,7 @@
       "titulo": "Myricae/Tristezze/I gattici",
       "texto": "E vi rivedo, o gattici d’argento,\nbrulli in questa giornata sementina:\ne pigra ancor la nebbia mattutina\nsfuma dorata intorno ogni sarmento.\n\nGià vi schiudea le gemme questo vento\nche queste foglie gialle ora mulina;\ne io che al tempo allor gridai, Cammina,\nora gocciare il pianto in cuor mi sento.\n\nOra, le nevi inerti sopra i monti,\ne le squallide pioggie, e le lunghe ire\ndel rovaio che a notte urta le porte,\n\ne i brevi dì che paiono tramonti\ninfiniti, e il vanire e lo sfiorire,\ne i crisantemi, il fiore della morte.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/I_gattici",
       "tags": [
@@ -1480,7 +1484,7 @@
       "titulo": "Myricae/Tristezze/Il lampo",
       "texto": "E cielo e terra si mostrò qual era:\n\nla terra ansante, livida, in sussulto;\nil cielo ingombro, tragico, disfatto:\nbianca bianca nel tacito tumulto\nuna casa apparì sparì d’un tratto;\ncome un occhio, che, largo, esterrefatto,\ns’aprì si chiuse, nella notte nera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Il_lampo",
       "tags": []
@@ -1489,7 +1493,7 @@
       "titulo": "Myricae/Tristezze/Il nido",
       "texto": "Dal selvaggio rosaio scheletrito\npenzola un nido. Come, a primavera,\nne prorompeva empiendo la riviera\nil cinguettìo del garrulo convito!\n\nOr v’è sola una piuma, che all’invito\ndel vento esita, palpita leggiera;\nqual sogno antico in anima severa,\nfuggente sempre e non ancor fuggito:\n\ne già l’occhio dal cielo ora si toglie;\ndal cielo dove un ultimo concento\nsalì raggiando e dileguò nell’aria;\n\ne si figge alla terra, in cui le foglie\nputride stanno, mentre a onde il vento\npiange nella campagna solitaria.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Il_nido",
       "tags": []
@@ -1498,7 +1502,7 @@
       "titulo": "Myricae/Tristezze/Il ponte",
       "texto": "La glauca luna lista l’orizzonte\ne scopre i campi nella notte occulti\ne il fiume errante. In suono di singulti\nl’onda si rompe al solitario ponte.\n\nDove il mar, che lo chiama? e dove il fonte,\nch’esita mormorando tra i virgulti?\nil fiume va con lucidi sussulti\nal mare ignoto dall’ignoto monte.\n\nSpunta la luna: a lei sorgono intenti\ngli alti cipressi dalla spiaggia triste,\nmovendo insieme come un pio sussurro.\n\nSostano, biancheggiando, le fluenti\nnubi, a lei volte, che salìan non viste\nle infinite scalèe del tempio azzurro.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Il_ponte",
       "tags": [
@@ -1509,7 +1513,7 @@
       "titulo": "Myricae/Tristezze/Il tuono",
       "texto": "E nella notte nera come il nulla,\n\na un tratto, col fragor d’arduo dirupo\nche frana, il tuono rimbombò di schianto:\nrimbombò, rimbalzò, rotolò cupo,\ne tacque, e poi rimareggiò rinfranto,\ne poi vanì. Soave allora un canto\ns’udì, di madre, e il moto di una culla.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Il_tuono",
       "tags": []
@@ -1518,7 +1522,7 @@
       "titulo": "Myricae/Tristezze/La baia tranquilla",
       "texto": "Getta l’ancora, amor mio:\nnon un’onda in questa baia.\nQuale assiduo sciacquìo\nfanno l’acque tra la ghiaia!\n\nVien dal lido solatìo,\nvien di là dalla giuncaia,\nlungo vien come un addio,\nun cantar di marinaia.\n\nTra le vetrici e gli ontani\nvedi un fiume luccicare;\nuno stormo di gabbiani\nnel turchino biancheggiare;\ne sul poggio, più lontani,\ni cipressi neri stare.\n\n                              Mare! mare!\ndolce là, dal poggio azzurro,\nil tuo urlo e il tuo sussurro.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/La_baia_tranquilla",
       "tags": [
@@ -1529,7 +1533,7 @@
       "titulo": "Myricae/Tristezze/La siepe",
       "texto": "Qualche bacca sui nudi ramicelli\ndel biancospino trema nel viale\ngelido: il suol rintrona, andando, quale\nper tardi passi il marmo degli avelli.\n\nLe pasce il piccol re, re degli uccelli,\ned altra gente piccola e vocale.\nS’odono a sera lievi frulli d’ale,\nvia, quando giunge un volo di monelli.\n\nAnch’io; ricordo, ma passò stagione;\nquelle bacche a gli uccelli della frasca\ninvidïavo, e le purpuree more;\n\ne l’ala, i cieli, i boschi, la canzone:\ni boschi antichi, ove una foglia casca,\nmuta, per ogni battito di cuore.",
       "forma": "soneto",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/La_siepe",
       "tags": []
@@ -1538,7 +1542,7 @@
       "titulo": "Myricae/Tristezze/Lontana",
       "texto": "Cantare, il giorno, ti sentii: felice?\nCantavi; la tua voce era lontana:\nlontana come di stornellatrice\nper la campagna frondeggiante e piana.\n\nLontana sì, ma io sentia nel cuore\nche quel lontano canto era d’amore:\n\nma sì lontana, che quel dolce canto,\ndentro, nel cuore, mi moriva in pianto.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Lontana",
       "tags": []
@@ -1547,7 +1551,7 @@
       "titulo": "Myricae/Tristezze/Nevicata",
       "texto": "Nevica: l’aria brulica di bianco;\n     la terra è bianca; neve sopra neve:\ngemono gli olmi a un lungo mugghio stanco:\n     cade del bianco con un tonfo lieve.\n\nE le ventate soffiano di schianto\n     e per le vie mulina la bufera:\npassano bimbi: un balbettìo di pianto;\n     passa una madre: passa una preghiera.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Nevicata",
       "tags": []
@@ -1556,7 +1560,7 @@
       "titulo": "Myricae/Tristezze/Notte di neve",
       "texto": "Pace! grida la campana,\nma lontana, fioca. Là\n\nun marmoreo cimitero\nsorge, su cui l’ombra tace:\ne ne sfuma al cielo nero\nun chiarore ampio e fugace.\nPace! pace! pace! pace!\nnella bianca oscurità.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Notte_di_neve",
       "tags": []
@@ -1565,7 +1569,7 @@
       "titulo": "Myricae/Tristezze/Notte di vento",
       "texto": "Allora sentii che non c’era,\nche non ci sarebbe mai più....\nLa tenebra vidi più nera,\npiù lugubre udii la bufera....\nuuh.... uuuh.... uuuh....\n\nVenìa come un volo di spetri,\ngridando ad ogni émpito più:\nun fragile squillo di vetri\nseguiva quelli ululi tetri....\nuuh.... uuuh.... uuuh....\n\nOh! solo nell’ombra che porta\nquei gridi.... (chi passa laggiù?)\nOh! solo nell’ombra già morta\nper sempre... (chi batte alla porta?)\nuuh.... uuuh.... uuuh....",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Notte_di_vento",
       "tags": []
@@ -1574,7 +1578,7 @@
       "titulo": "Myricae/Tristezze/Notte dolorosa",
       "texto": "Si muove il cielo, tacito e lontano:\n\nla terra dorme, e non la vuol destare;\ndormono l’acque, i monti, le brughiere.\nMa no, chè sente sospirare il mare,\ngemere sente le capanne nere:\nv’è dentro un bimbo che non può dormire:\npiange; e le stelle passano pian piano.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Notte_dolorosa",
       "tags": []
@@ -1583,7 +1587,7 @@
       "titulo": "Myricae/Tristezze/Paese notturno",
       "texto": "Capanne e stolli ed alberi alla luna\nsono, od un tempio dell’antico Anubi,\nfosca rovina? Stampano una bruna\n                                        orma le nubi\n\nsu la campagna, e più profonda e piena\nla notte preme le macerie strane,\nchiuse allo sguardo, dove alla catena\n                                        uggiola un cane.\n\nEcco la falce d’oro all’orizzonte:\ndue nere guglie a man a man dipinge,\nindi non so che candido. Una fronte\n                                        bianca di sfinge?",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Paese_notturno",
       "tags": []
@@ -1592,7 +1596,7 @@
       "titulo": "Myricae/Tristezze/Rammarico",
       "texto": "Chi questo nuovo pianto in cuor mi pone?\n\nVerso Occidente, o dolce madre Aurora,\nda te lontano la mia vita è corsa.\nIl cielo s’alza e tutto trascolora;\npassano stelle e stelle in lenta corsa;\nemerge dall’azzurro la grand’Orsa,\ne sta nell’arme fulgido Orïone.\n\nCome più lieta la tua vista, quando\nun poco accenni delle rosee dita;\ne la greggia s’avvia scampanellando,\nesce il bifolco e rauco i bovi incìta,\ncanta lassù la lodola — apparita\necco Giulietta, e piange, al suo balcone! —",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Rammarico",
       "tags": []
@@ -1601,7 +1605,7 @@
       "titulo": "Myricae/Tristezze/Sogno",
       "texto": "Per un attimo fui nel mio villaggio,\nnella mia casa. Nulla era mutato.\nStanco tornavo, come da un vïaggio;\nstanco, al mio padre, ai morti, ero tornato.\n\nSentivo una gran gioia, una gran pena;\nuna dolcezza ed un’angoscia, muta.\n— Mamma? — È là che ti scalda un po’ di cena — \nPovera mamma! e lei, non l’ho veduta.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Tristezze/Sogno",
       "tags": []
@@ -1610,7 +1614,7 @@
       "titulo": "Myricae/Ultimo sogno",
       "texto": "Da un immoto fragor di carrïaggi\nferrei, moventi verso l’infinito\ntra schiocchi acuti e fremiti selvaggi...\nun silenzio improvviso. Ero guarito.\n\nEra spirato il nembo del mio male\nin un alito. Un muovere di ciglia;\ne vidi la mia madre al capezzale:\nio la guardava senza meraviglia.\n\nLibero!... inerte sì, forse, quand’io\nle mani al petto sciogliere volessi:\nma non volevo. Udivasi un fruscìo\nsottile, assiduo, quasi di cipressi;\n\nquasi d’un fiume che cercasse il mare\ninesistente, in un immenso piano:\nio ne seguiva il vano sussurrare,\nsempre lo stesso, sempre più lontano.",
       "forma": "outro",
-      "obra": "it.wikisource: Myricae",
+      "obra": "Myricae",
       "ano": null,
       "fonte": "https://it.wikisource.org/wiki/Myricae/Ultimo_sogno",
       "tags": []

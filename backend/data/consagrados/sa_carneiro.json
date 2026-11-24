@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/M%C3%A1rio_de_S%C3%A1-Carneiro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1890,
   "morte": 1916,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Dispersão",

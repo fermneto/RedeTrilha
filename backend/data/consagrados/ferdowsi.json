@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Imaginary_depiction_of_the_poet_Firdausi._Folio_from_a_Khavarannama_%28The_Book_of_the_East%29_of_ibn_Husam_al-Din%2C_1476-1486.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 940,
   "morte": 1020,
+  "escolas": [
+    "classica_arabe_persa"
+  ],
+  "pais": "IR",
   "poemas": [
     {
       "titulo": "Shahnameh — Abertura (به نام خداوند جان و خرد)",

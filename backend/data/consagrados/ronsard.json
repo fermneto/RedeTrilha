@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Portrait_de_Ronsard_par_Benjamin_Foulon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1524,
   "morte": 1585,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Mignonne, allons voir si la rose",
@@ -101,7 +105,7 @@
       "titulo": "Sonnets pour Hélène/En choisissant l’esprit",
       "texto": "En choisissant l’esprit vous estes mal-apprise, \nQui refusez le corps, à mon gré le meilleur : \nDe l’un en l’esprouvant on cognoist la valeur, \nL’autre n’est rien que vent, que songe et que feintise.\n\nVous aimez l’intellect, et moins je vous en prise : \nVous volez, comme Icare, en l’air d’un beau malheur : \nVous aimez les tableaux qui n’ont point de couleur.\nAimer l’esprit. Madame, est aimer la sottise, \n\nEntre les courtisans, afin de les braver. \nIl faut en disputant Trimegiste approuver. \nEt de ce grand Platon n’estre point ignorante. \n\nMais moy qui suis bercé de telle vanité. \nUn discours fantastiq’ ma raison ne contante : \nJe n’aime point le faux, j’aime la vérité.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/En_choisissant_l%E2%80%99esprit",
       "tags": []
@@ -110,7 +114,7 @@
       "titulo": "Sonnets pour Hélène/Helene fut occasion",
       "texto": "Helene fut occasion que Troye \nSe vist brusler d’un feu victorieux : \nVous me bruslez du foudre de vos yeux, \nEt aux Amours vous me donnez en proye. \n\nEn vous servant vous me monstrez la voye \nPar vos vertus de m’en-aller aux cieux, \nRavy du nom qu’Amour malicieux \nMe tire au cœur, quelque part que je soye.\n \nNom tant de fois par Homère chanté, \nSeul tout le sang vous m’avez enchanté. \nO beau visage engendré d’un beau Cygne, \n\nDe mes pensers la fin et le milieu ! \nPour vous aimer mortel je ne suis digne : \nA la Déesse il appartient un Dieu.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Helene_fut_occasion",
       "tags": [
@@ -121,7 +125,7 @@
       "titulo": "Sonnets pour Hélène/Il ne faut s’estonner",
       "texto": "Il ne faut s’estonner si l’amour Pharienne,\nSçavante en l’art d’aimer, sceut gaigner un Romain :\nL’Europe n’est pas fine, et n’amorce point d’hain,\nEt les Philtres produit la terre égyptienne.\n \nSi une belle et jeune accorte Iberienne,\nQui loge la finesse et l’art dedans son sein,\nM’a pris, qui suis grossier, de nation Germain,\nJe n’en suis à blasmer, c’est la loy Cyprienne,\n\nLaquelle joint la tourtre avec les papegaux,\nEt lie à mesme joug les esprits inégaux,\nSans respect ny de mœurs, d’âge ny de patrie. \n\nAmour a Ciel et Terre en partage commun,\nIl est Père, il est Prince, il maistrise un chacun. \nEn Espagne aussi bien qu’il fait en Germanie.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Il_ne_faut_s%E2%80%99estonner",
       "tags": []
@@ -130,7 +134,7 @@
       "titulo": "Sonnets pour Hélène/Je faisois ces sonnets",
       "texto": "Je faisois ces Sonnets en l’antre Piéride,\nQuand on vit les François sous les armes suer,\nQuand on vit tout le peuple en fureur se ruer,\nQuand Bellonne sanglante alloit devant pour guide :\n\nQuand en lieu de la Loy le vice, l’homicide. \nL’impudence, le meurtre, et se sçavoir muer \nEn Glauque et en Protee, et l’Estat remuer,\nEstoient tiltres d’honneur, nouvelle Thebaïde. \n\nPour tromper les soucis d’un temps si vicieux,\nJ’escrivois en ces vers ma complainte inutile. \nMars aussi bien qu’Amour de larmes est joyeux. \n\nL’autre guerre est cruelle, et la mienne est gentille :\nLa mienne finiroit par un combat de deux,\nEt l’autre ne pourroit par un camp de cent mille.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Je_faisois_ces_sonnets",
       "tags": []
@@ -139,7 +143,7 @@
       "titulo": "Sonnets pour Hélène/Je n’ayme point les Juifs",
       "texto": "Je n’ayme point les Juifs, ils ont mis en la croix \nCe Christ, ce Messias qui nos péchez efface,\nDes Prophètes occis ensanglanté la place. \nMurmuré contre Dieu qui leur donna les loix. \n\nFils de Vespasian, grand Tite tu devois,\nDestruisant leur Cité, en destruire la race, \nSans leur donner ny temps, ny moment, ny espace\nDe chercher autre part autres divers endroits.\n \nJamais Léon Hebrieu des Juifs n’eust prins naissance,\nLéon Hebrieu, qui donne aux Dames cognoissance \nD’un amour fabuleux, la mesme fiction :\n\nFaux, trompeur, mensonger, plein de fraude et d’astuce,\nJe croy qu’en luy coupant la peau de son prépuce \nOn luy coupa le cœur et toute affection.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Je_n%E2%80%99ayme_point_les_Juifs",
       "tags": []
@@ -148,7 +152,7 @@
       "titulo": "Sonnets pour Hélène/Je trepassois d’amour",
       "texto": "Je trespassois d’amour assis auprès de toy,\nCherchant tous les moyens de voir ma flame esteinte ;\nAccorde, ce disoy-je, à la fin ma complainte,\nSi tu as quelque soin de mon mal et de moy. \n\nCe n’est (ce me dis-tu) le remors de la loy \nQui me fait t’éconduire, ou la honte, ou la crainte,\nNy la frayeur des Dieux, ou telle autre contrainte,\nC’est qu’en tes passetemps plaisir je ne reçoy. \n\nD’une extrême froideur tout mon corps se compose,\nJe n’ayme point Venus, j’abhorre telle chose, \nEt les presens d’Amour me sont une poison :\n\nPuis je ne le veux pas. O subtile deffaite !\nAinsi parlent les Roys, défaillant la raison,\n« Il me plaist, je le veux, ma volonté soit faite.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Je_trepassois_d%E2%80%99amour",
       "tags": []
@@ -157,7 +161,7 @@
       "titulo": "Sonnets pour Hélène/J’ay reçeu vos Cyprez",
       "texto": "J’ay reçeu vos Cyprez et vos Orangers verds ;\nLe Cyprez est ma mort, l’Oranger signifie \n(Ou Phebus me déçoit) qu’après ma courte vie \nUne gentille odeur sortira de mes vers. \n\nRecevez ces pavots que le somme a couvers \nD’un oubly Stygien : il est temps que j’oublie \nL’Amour qui sans profit depuis six ans me lie,\nSans alenter la corde ou descloüer mes fers.\n \nPour plaisir, en passant, d’une lettre bien grosse \nLes quatre vers suyvans engrave sur ma fosse :\nUne Espagnolle prist un Tudesque en ses mains :\n\nAinsi le sot Hercule estoit captif d’Iole. \nLa finesse appartient à la race Espagnolle,\nEt la simple Nature appartient aux Germains.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/J%E2%80%99ay_re%C3%A7eu_vos_Cyprez",
       "tags": []
@@ -166,7 +170,7 @@
       "titulo": "Sonnets pour Hélène/La Mere des Amours",
       "texto": "La Mère des Amours j’honore dans les Cieux \nPour avoir trois beautez, trois Grâces avec elle,\nMais tu as une laide et sotte Damoyselle \nQui te faic deshonneur, le change vaudroit mieux.\n\nJamais le chef d’Argus, fenestré de cent yeux. \nNe garda si soigneux l’Inachide pucelle. \nQue sa rude paupière, à veiller éternelle,\nTe regarde, t’espie et te suit en tous lieux. \n\nJe ne suis pas un dieu pour me changer en pluye ;\nDessoubs un cygne blanc mes flames je n’estuye,\nC’estoient de Jupiter les jeus malicieux.\n \nJe prens de tes beaux yeux ma pasture et ma vie,\nPourquoy de tes regards me portes tu envie ?\nOn voit sur les autels les images des Dieux.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/La_Mere_des_Amours",
       "tags": []
@@ -175,7 +179,7 @@
       "titulo": "Sonnets pour Hélène/La constance et l’honneur",
       "texto": "La constance et l’honneur sont noms pleins d’imposture,\nQue vous alléguez tant, sottement inventez \nDe nos pères resveurs, par lesquels vous ostez \nEt forcez les presens les meilleurs de Nature. \n\nVous trompez vostre sexe et luy faites injure :\nD’un frein imaginé faussement vous dontez \nVos plaisirs, vos désirs, vous et vos volontez,\nVous servant de la Loy pour vaine couverture.\n \nCcst honneur ceste loy sont bons pour un lourdaut \nQui ne cognoist soy-mesme et les plaisirs qu’il faut \nPour vivre heureusement dont Nature s’esgaye. \n\nVostre esprit est trop bon pour ne le sçavoir pas :\nVous prendrez, s’il vous plaist, les sots à tels appas :\nJe ne veux pour le faux tromper la chose vraye.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/La_constance_et_l%E2%80%99honneur",
       "tags": []
@@ -184,7 +188,7 @@
       "titulo": "Sonnets pour Hélène/L’enfant contre lequel",
       "texto": "L’enfant contre lequel ny targue ny salade \nNe pourroient résister, d’un trait plein de rigueur \nM’avoit de telle sorte ulcéré tout le cœur \nEt brûlé tout le sang que j’en devins malade. \n\nJ’avoy dedans le lict un teint jaunement fade,\nQuand celle qui pouvoit me remettre en vigueur,\nAyant quelque pitié de ma triste langueur. \nMe vint voir, guarissant mon mal de son œillade. \n\nEncores aujourd’huy les miracles se font :\nLes Sainctes et les Saincts les mesmes forces ont \nQu’aux bons siècles passez, car si tost que ma Sainte\n \nRenversa la vertu de ses rayons luisans \nSur moy qui languissois, ma fièvre fut esteinte,\nUn mortel médecin ne l’eust faict en dix ans.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/L%E2%80%99enfant_contre_lequel",
       "tags": [
@@ -195,7 +199,7 @@
       "titulo": "Sonnets pour Hélène/Maistresse, embrasse moy",
       "texto": "Maistresse, embrasse moy, baize moy, serre moy,\nHaleine contre haleine, échauffe moy la vie,\nMille et mille baizers donne moy je te prie, \nAmour veut tout sans nombre, amour n’a point de loy.\n\nBaize et rebaize moy ; belle bouche, pourquoy \nTe gardes tu là bas, quand tu seras blesmie,\nA baiser (de Pluton ou la femme ou l’amie) \nN’ayant plus ny couleur, ny rien semblable à toy ?\n\nEn vivant presse moy de tes lèvres de roses ;\nBégaye, en me baisant, à lèvres demy-closes \nMille mots trançonnez, mourant entre mes bras. \n\nJe mourray dans les tiens, puis, toy resuscitée,\nJe resusciteray ; allons ainsi là bas, \nLe jour tant soit-il court vaut mieux que la nuitée.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Maistresse%2C_embrasse_moy",
       "tags": []
@@ -204,7 +208,7 @@
       "titulo": "Sonnets pour Hélène/Mon page, Dieu te gard",
       "texto": "Mon page, Dieu te gard, que fait nostre Maistresse ?\nTu m’apportes tousjours ou mon mal ou mon bien :\nQuand je te voy je tremble, et je ne suis plus mien,\nTantost chaud d’un espoir, tantosf froid de tristesse.\n \nÇà baille moy la lettre, et pourtant ne me laisse,\nContemple bien mon front par qui tu pourras bien \nCognoistre en le fronçant ou défronçant, combien \nLa lettre me contente ou donne de détresse. \n\nMon page, que ne suis-je aussi riche qu’un Roy,\nJe ferois de porphyre un beau temple pour toy. \nTu serois tout semblable à ce Dieu des voyages :\n\nJe peindrois une table où l’on verroit pourtraits \nNos sermens, nos accords, nos guerres et nos paix,\nNos lettres, nos devis, tes tours et tes messages.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Mon_page%2C_Dieu_te_gard",
       "tags": []
@@ -213,7 +217,7 @@
       "titulo": "Sonnets pour Hélène/Plus estroit que la Vigne",
       "texto": "Plus estroit que la Vigne à l’Ormeau se marie \nDe bras souplement forts,\nDu lien de tes mains, Maistresse, je te prie,\nEnlace-moy le corps. \n\nEt feignant de dormir, d’une mignarde face,\nSur mon front panche toy :\nInspire, en me baisant, ton haleine et ta grâce \nEt ton cœur dedans moy. \n\nPuis appuyant ton sein sur le mien qui se pâme,\nPour mon mal appaiser. \nSerre plus fort mon’col, et me redonne l’ame \nPar l’esprit d’un baiser. \n\nSi tu me fais ce bien, par tes yeux je te jure,\nSerment qui m’est si cher,\nQue de tes bras aimez jamais autre avanture \nNe pourra m’arracher :\n\nMais souffrant doucement le joug de ton Empire,\nTant soit-il rigoureux,\n\nDans les champs Elisez une mesme navire \nNous passera tous deux. \n\nLà morts de trop aimer sous les branches Myrtines,\nNous verrons tous les jours \nLes anciens Héros auprès des Héroïnes \nNe parler que d’amours. \n\nTantost nous dancerons par les fleurs des rivages \nSous maints accords divers,\nTantost lassez du bal irons sous les ombrages \nDes Lauriers tousjours verds :\n\nOù le mollet Zephyre en haletant secoue,\nDe souspirs printaniers \nOres les Orangers, ores mignard se joue \nEntre les Citronniers. \n\nLà du plaisant Avril la saison immortelle \nSans eschange se suit :\nLa terre sans labeur de sa grasse mammelle \nToute chose y produit. \n\nD’embas la troupe sainte autrefois amoureuse,\nNous honorant sur tous. \nViendra nous saluer, s’estimant bien-heureuse \nDe s’accointer de nous.\n\nPuis nous faisant asseoir dessus l’herbe fleurie, \nDe toutes au milieu, \nNulle en se retirant ne sera point marrie \nDe nous quitter son lieu. \n\nNon celle qu’un Toreau sous une peau menteuse \nEmporta par la mer : \nNon celle qu’Apollon veit vierge despiteuse \nEn laurier se former : \n\nNy celles qui s’en vont toutes tristes ensemble, \nArtemise et Didon : \nNy ceste belle Grecque à qui ta beauté semble, \nComme tu fais de nom.",
       "forma": "outro",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Plus_estroit_que_la_Vigne",
       "tags": []
@@ -222,7 +226,7 @@
       "titulo": "Sonnets pour Hélène/Quand au commencement",
       "texto": "Quand au commencement j’admir[ay] ton mérite,\nTu vivois à la Cour sans louange et sans bruit :\nMaintenant un renom par la France te suit,\nEgallant en grandeur la Royalle Hippolyte. \n\nLibéral j’envoyay les Muses à ta suite. \nJe fis loin de ton chef esvanouir la nuit,\nJe fis flamber ton nom comme un astre qui luit,\nJ’ay dans l’azur du Ciel ta louange décrite. \n\nJe n’en suis pas marry, toutefois je me deux \nQue tu ne m’aymes pas, qu’ingrate tu ne veux \nMe payer que de ris, de lettres et d’œillades. \n\nMon labeur ne se paye en semblables façons,\nLes autres pour parade ont cinq ou six chansons \nAu front de quelque livre, et toy des Iliades.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Quand_au_commencement",
       "tags": []
@@ -231,7 +235,7 @@
       "titulo": "Sonnets pour Hélène/Quand je te promettrois",
       "texto": "Quand je te promettrois, je ne le tiendrois pas,\nJ’aymerois mieux mourir, j’ay trop de conscience :\nHeleine, tes propos sont pleins de défiance,\nJe ne me prens crédule à si commun apas. \n\nLe Piedmont et la Cour où d’enfance tu as \nDemeuré si longtemps, m’en donnent asseurance,\nAutrement dit ta langue, autrement ton cœur pense,\n« Le plaisir amoureux vaut mieux que le trespas.\n \nPlus d’un mignard refus, plus d’une face lente \nTu me dis que nenny, plus je suis resjouy :\nC’est langage de Cour que ta voix inconstante,\n\nOù nenny sert d’ouy : j’ay nenny trop ouy,\nDis quelquefois ouy : je serois sans attente,\nSi en lieu de nenny tu me disois ouy.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Quand_je_te_promettrois",
       "tags": []
@@ -240,7 +244,7 @@
       "titulo": "Sonnets pour Hélène/Si tu m’aymois de bouche",
       "texto": "Si tu m’aymois de bouche autant comme d’escrit,\nJe serois bien-heureux : ta lettre est amoureuse,\nTa parole au contraire est dure et rigoureuse,\nQui la douceur d’Amour de son fiel en-aigrit. \n\nBien-heureux l’Escrivain qui les lettres t’apprit,\nEt ta nourrice soit maudite et malheureuse. \nQui t’apprit à parler d’une voix si douteuse. \nVoix qui trouble mes sens, et me tourne l’esprit. \n\nMaistresse, s’il te plaist que mon cœur se console,\nHay-moy par escriture, et m’aymes de parole,\nSans tromper ton escrit, de l’esprit serviteur. \n\nS’il te plaist, ne promets espoir de recompense,\nParle d’autre façon, ton esprit est menteur,\nQui fait parler la bouche autrement qu’il ne pense.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Si_tu_m%E2%80%99aymois_de_bouche",
       "tags": []
@@ -249,7 +253,7 @@
       "titulo": "Sonnets pour Hélène/Voulant tuer le feu",
       "texto": "Voulant tuer le feu, dont la chaleur me cuit \nLes muscles et les nerfs, les tendons et les veines,\nEt cherchant de trouver une fin à mes peines,\nJe vy bien à tes yeux que j’estois esconduit. \n\nD’un refus asseuré tu me payas le fruit \nQue j’esperois avoir : ô espérances vaines !\nO fondemens assis sur débiles arènes !\nMalheureux qui soymesme abuse et se séduit !\n\nO beauté sans merci, ta fraude est descouverte !\nJ’aime mieux estre sage après quatre ans de perte,\nQue plus long temps ma vie en langueur desseicher.\n \nJe ne veux point blasmer ta beauté que j’honore,\nJe ne suis mesdisant comme fut Stesichore,\nMais je veux de mon col les liens destacher.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Sonnets pour Hélène",
+      "obra": "Sonnets pour Hélène",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Sonnets_pour_H%C3%A9l%C3%A8ne/Voulant_tuer_le_feu",
       "tags": []

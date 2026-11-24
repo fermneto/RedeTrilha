@@ -5,6 +5,11 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/FK_Hiemer_-_Friedrich_H%C3%B6lderlin_%28Pastell_1792%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1770,
   "morte": 1843,
+  "escolas": [
+    "romantismo",
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "DE",
   "poemas": [
     {
       "titulo": "Lebenslauf",
@@ -23,7 +28,7 @@
       "titulo": "Abbitte",
       "texto": "[168]  Abbitte.\n\nHeilig Wesen! gestört hab’ ich die goldene  \nGötterruhe dir oft, und der geheimeren,  \n     Tiefern Schmerzen des Lebens  \n          Hast du manche gelernt von mir.  \n    \n\nO vergiß es, vergieb! gleich dem Gewölke dort  \nVor dem friedlichen Mond, geh’ ich dahin und du  \n     Ruhst und glänzest in deiner  \n          Schöne wieder, du süsses Licht!",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Abbitte",
       "tags": []
@@ -32,7 +37,7 @@
       "titulo": "Abendphantasie (Friedrich Hölderlin)",
       "texto": "[94]  Abendphantasie.\n\nVor seiner Hütte ruhig im Schatten sizt\nDer Pflüger, dem Genügsamen raucht sein Herd.\nGastfreundlich tönt dem Wanderer im \nFriedlichen Dorfe die Abendglocke.\n\nWohl kehren izt die Schiffer zum Hafen auch,\nIn fernen Städten, fröhlich verrauscht des Markts\nGeschäft’ger Lärm; in stiller Laube\nGlänzt das gesellige Mahl den Freunden.\n\nWohin denn ich? Es leben die Sterblichen \n\nVon Lohn und Arbeit; wechselnd in Müh’ und Ruh’\nIst alles freudig; warum schläft denn \nNimmer nur mir in der Brust der Stachel?\n\nAm Abendhimmel blühet ein Frühling auf;\nUnzählig blühen die Rosen und ruhig scheint\n\nDie goldne Welt; o dorthin nimmt mich, \nPurpurne Wolken! und möge droben\n\nIn Licht und Luft zerrinnen mir Lieb’ und Leid! –\nDoch, wie verscheucht von thöriger Bitte, flieht\nDer Zauber; dunkel wirds und einsam\n\nUnter dem Himmel, wie immer, bin ich –\n\nKomm du nun, sanfter Schlummer! zu viel begehrt \nDas Herz; doch endlich, Jugend! verglühst du ja,\nDu ruhelose, träumerische!\nFriedlich und heiter ist dann das Alter.\n\n Hölderlin.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Abendphantasie_%28Friedrich_H%C3%B6lderlin%29",
       "tags": []
@@ -41,7 +46,7 @@
       "titulo": "Einer abwesenden Freundin",
       "texto": "Einer abwesenden Freundin.\n\n(1794.)\n\nWenn vom Frühling rund umschlungen,\nVon des Morgens Hauch umweht,\nTrunken nach Erinnerungen\nMeine wache Seele späht;\n\nWenn, wie einst am fernen Heerde,\nMir so süß die Sonne blinkt,\nUnd ihr Strahl ins Herz der Erde\nUnd der Erdenkinder dringt;\n\nWenn, umdämmert von der Weide,\n\nWo der Bach vorüber rinnt,\nTief bewegt von Leid und Freude,\nMeine Seele träumt und sinnt;\nWenn im Haine Geister säuseln,\nWenn im Mondenscheine sich\n\nKaum die stillen Teiche kräuseln,\nSchau ich oft und grüße dich.\n\nEdles Herz, du bist der Sterne\nUnd der schönen Erde werth,\nBist es werth, so viel die ferne,\n\nNahe Mutter uns beschert;\nDenn mit deiner Liebe lieben\nSchönes Auserwählte nur,\nDenn du bist ihr treu geblieben,\nDeiner Mutter, der Natur. –\n\nDer Gesang der Haine schalle,\nFroh, wie du, um deinen Pfad;\nSanft bewegt vom Weste, walle,\nWie dein friedlich Herz, die Saat!\nDeine liebste Blüthe regne,\n\nWo du wandelst, auf die Flur;\nWo dein Auge weilt, begegne\nDir das Lächeln der Natur!\n\nOft im stillen Tannenhaine,\nWebe dir ums Angesicht\n\nSeine zauberische, reine\nGlorie das Abendlicht!\nDeines Herzens Sorgen wiege\nDrauf die Nacht in süße Ruh,\nUnd die freie Seele fliege\n\nLiebend den Gestirnen zu.\n\n Hölderlin.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Einer_abwesenden_Freundin",
       "tags": []
@@ -50,7 +55,7 @@
       "titulo": "An den Aether",
       "texto": "An den Aether.\n\nTreu und freundlich, wie du, erzog der Götter und Menschen\nKeiner, o Vater Aether! mich auf; noch ehe die Mutter\nIn die Arme mich nahm und ihre Brüste mich tränkten,\nFaßtest du zärtlich mich an und gossest himmlischen Trank mir,\n\nMir den heiligen Odem zuerst in den keimenden Busen.\n\n      Nicht von irdischer Kost gedeihen einzig die Wesen,\nAber du nährst sie all’ mit deinem Nektar, o Vater!\nUnd es drängt sich und rinnt aus deiner ewigen Fülle\n\nDie beseelende Luft durch alle Röhren des Lebens.\n\nDarum lieben die Wesen dich auch und ringen und streben\nUnaufhörlich hinauf nach dir in freudigem Wachsthum.\n\n      Himmlischer! sucht nicht dich mit ihren Augen die Pflanze,\nStreckt nach dir die schüchternen Arme der niedrige Strauch nicht?\nDaß er dich finde, zerbricht der gefangene Saame die Hülse,\n\nDaß er belebt von dir in deiner Welle sich bade,\nSchüttelt der Wald den Schnee, wie ein überlästig Gewand ab.\nAuch die Fische kommen herauf und hüpfen verlangend\nUeber die glänzende Fläche des Stroms, als begehrten auch diese\n\nAus der Wiege zu dir; auch den edeln Thieren der Erde\n\nWird zum Fluge der Schritt, wenn oft das gewaltige Sehnen\nDie geheime Liebe zu dir sie ergreift, sie hinaufzieht.\n\n      Stolz verachtet den Boden das Roß, wie gebogener Stahl strebt\nIn die Höhe sein Hals, mit der Hufe berührt es den Sand kaum.\nWie zum Scherze, berührt der Fuß der Hirsche den Grashalm,\n\nHüpft, wie ein Zephyr, über den Bach, der reißend hinabschäumt,\nHin und wieder und schweift, kaum sichtbar durch die Gebüsche.\nAber des Aethers Lieblinge, sie, die glücklichen Vögel\nWohnen und spielen vergnügt in der ewigen Halle des Vaters!\n\nRaums genug ist für alle. Der Pfad ist keinem bezeichnet,\n\nUnd es regen sich frey im Hause die Großen und Kleinen.\nUeber dem Haupte frohlocken sie mir und es sehnt sich auch mein Herz\nWunderbar zu ihnen hinauf; wie die freundliche Heimath\nWinkt es von oben herab und auf die Gipfel der Alpen\nMöcht’ ich wandern und rufen von da dem eilenden Adler,\n\nDaß er, wie einst, in die Arme des Zeus den seeligen Knaben,\nAus der Gefangenschaft in des Aethers Halle mich trage.\nThöricht treiben wir uns umher; wie die irrende Rebe,\nWenn ihr der Stab gebricht, woran zum Himmel sie aufwächst,\n\nBreiten wir über dem Boden uns aus und suchen und wandern\n\nDurch die Zonen der Erd’, o Vater Aether! vergebens,\nDenn es treibt uns die Lust in deinen Gärten zu wohnen.\nIn die Meersfluth werfen wir uns, in den freieren Ebnen\nUns zu sättigen, und es umspielt die unendliche Wooge\nUnsern Kiel, es freut sich das Herz an den Kräften des Meergotts.\n\nDennoch genügt ihm nicht; denn der tiefere Ozean reitzt uns,\nWo die leichtere Welle sich regt – o wer dort an jene\nGoldnen Küsten das wandernde Schiff zu treiben vermöchte!\n\n      Aber indeß ich hinauf in die dämmernde Ferne mich sehne,\n\nWo du fremde Gestad’ umfängst mit der bläulichen Woge,\n\n Kömmst du säuselnd herab von des Fruchtbaums blühenden Wipfeln,\nVater Aether! und sänftigest selbst das strebende Herz mir,\nUnd ich lebe nun gern, wie zuvor, mit den Blumen der Erde.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_den_Aether",
       "tags": []
@@ -59,7 +64,7 @@
       "titulo": "An die Deutschen",
       "texto": "[68] An die Deutschen.\n\nSpottet ja nicht des Kinds, wenn es mit Peitsch' und Sporn \nAuf dem Rosse von Holz mutig und groß sich dünkt, \n     Denn, ihr Deutschen, auch ihr seyd \n          Thatenarm und gedankenvoll. \n \n\nOder kömmt, wie der Strahl aus dem Gewölke kömmt, \nAus Gedanken die That? Leben die Bücher bald? \n     O, ihr Lieben! so nimmt mich, \n          Daß ich büsse die Lästerung.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_die_Deutschen",
       "tags": []
@@ -68,7 +73,7 @@
       "titulo": "An die jungen Dichter",
       "texto": "[112] An die jungen Dichter.\n\nLieben Brüder! es reift unsere Kunst vielleicht, \nDa, dem Jünglinge gleich, lange sie schon gegährt, \n     Bald zur Stille der Schönheit; \n          Seyd nur fromm, wie der Grieche war.\n\nLiebt die Götter und denkt freundlich der Sterblichen! \nHaßt den Rausch wie den Frost! Lehrt und beschreibet nicht! \n     Wenn der Meister euch ängstigt, \n          Fragt die grosse Natur um Rath.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_die_jungen_Dichter",
       "tags": []
@@ -77,7 +82,7 @@
       "titulo": "An die Parzen (Hölderlin)",
       "texto": "[166] An die Parzen.\n\nNur Einen Sommer gönnt, ihr Gewaltigen! \nUnd einen Herbst zu reifem Gesange mir, \n     Daß williger mein Herz, vom süssen \n          Spiele gesättiget, dann mir sterbe. \n \n\nDie Seele, der im Leben ihr göttlich Recht \nNicht ward, sie ruht auch drunten im Orkus nicht;\n     Doch ist mir einst das Heil'ge, das am \n          Herzen mir liegt, das Gedicht gelungen;\n \nWillkommen dann, o Stille der Schattenwelt! \n\nZufrieden bin ich, wenn auch mein Saitenspiel \n     Mich nicht hinabgeleitet; Einmal \n          Lebt' ich, wie Götter, und mehr bedarfs nicht.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_die_Parzen_%28H%C3%B6lderlin%29",
       "tags": []
@@ -86,7 +91,7 @@
       "titulo": "An eine Rose",
       "texto": "An eine Rose.\n\nEwig trägt im Mutterschooße\nSüße Königin der Flur,\nDich und mich die stille, große,\nAllbelebende Natur!\n\nRöschen, unser Schmuck veraltet,\nStürm’ entblättern dich und mich,\nDoch der ew’ge Keim entfaltet\nStets zu neuer Blüthe sich.\n\n Hölderlin.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_eine_Rose",
       "tags": []
@@ -95,7 +100,7 @@
       "titulo": "An Ihren Genius",
       "texto": "[161] An Ihren Genius.\n\nSend’ ihr Blumen und Frücht’ aus nieversiegender Fülle, \n     Send’ ihr, freundlicher Geist, ewige Jugend herab! \nHüll’ in deine Wonnen sie ein und laß sie die Zeit nicht \n     Sehn, wo einsam und fremd sie, die Athenerin, lebt, \n\nBis sie im Lande der Seligen einst die fröhlichen Schwestern, \n     Die zu Phidias Zeit herrschten und liebten, umfängt.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_Ihren_Genius",
       "tags": []
@@ -104,7 +109,7 @@
       "titulo": "An unsre Dichter",
       "texto": "An unsre Dichter.\n\nDes Ganges Ufer hörten des Freudengotts\n     Triumph, als allerobernd vom Indus her\n          Der junge Bacchus kam, mit heilgem\n               Weine vom Schlafe die Völker weckend.\n\nO weckt, ihr Dichter! weckt sie vom Schlummer auch\n     Die jetzt noch schlafen, gebt die Gesetze, gebt\n          Uns Leben, siegt, Heroen! ihr nur\n               Habt der Eroberung Recht, wie Bacchus.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/An_unsre_Dichter",
       "tags": []
@@ -113,7 +118,7 @@
       "titulo": "Diotima",
       "texto": "[274]  Diotima.\n\nDu schweigst und duldest, und sie versteh’n dich nicht,\nDu heilig Leben! welkest hinweg und schweigst,\n     Denn ach, vergebens bey Barbaren\n          Suchst du die Deinen im Sonnenlichte,\n\nDie zärtlichgrossen Seelen, die nimmer sind!\nDoch eilt die Zeit. Noch flehet mein sterblich Lied\n     Den Tag, der, Diotima! nächst den\n          Göttern mit Helden dich nennt, und dir gleicht.\n ",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Diotima",
       "tags": []
@@ -122,7 +127,7 @@
       "titulo": "Ehemals und Jetzt",
       "texto": "[17] Ehemals und Jetzt.\n\nIn jüngern Tagen war ich des Morgens froh,\nDes Abends weint’ ich; jetzt, da ich älter bin,\n     Beginn’ ich zweifelnd meinen Tag, doch\n          Heilig und heiter ist mir sein Ende.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Ehemals_und_Jetzt",
       "tags": []
@@ -131,7 +136,7 @@
       "titulo": "Dem Genius der Kühnheit",
       "texto": "Wer bist du? wie zur Beute, breitet\nDas Unermeßliche vor dir sich aus,\nDu Herrlicher! mein Saitenspiel geleitet\nDich auch hinab in Plutons dunkles Haus;\n\nSo flogen auf Ortygias Gestaden,\nIndeß der Lieder Sturm die Wolken brach,\nDem Rebengott die taumelnden Mänaden\nIn wilder Lust durch Hain und Klüfte nach.\n\nEinst war, wie mir, der stille Funken\n\nZu freier heitrer Flamme dir erwacht,\nDu braustest so, von junger Freude trunken,\nVoll Übermuths durch deiner Wälder Nacht,\nAls von der Meisterinn, der Noth, geleitet,\nDein ungewohnter Arm die Keule schwang,\n\nUnd drohend sich, vom ersten Feind erbeutet,\nDie Löwenhaut um deine Schulter schlang. –\n\nWie nun in jugendlichem Kriege\nHeröenkraft mit der Natur sich maß.\nAch! wie der Geist, vom wunderbaren Siege\n\nBerauscht, der armen Sterblichkeit vergaß!\nDie stolzen Jünglinge! die kühnen!\nSie legten froh dem Tyger Fesseln an,\n\nSie bändigten, von staunenden Delphinen\nUmtanzt, den königlichen Ozean.\n\nOft hör’ ich deine Wehre rauschen,\nDu Genius der Kühnen! und die Lust,\nDen Wundern deines Heldenvolks zu lauschen,\nSie stärkt mir oft die lebensmüde Brust;\nDoch weilst du freundlicher um stille Laren,\n\nWo eine Welt der Künstler kühn belebt,\nWo um die Majestät des Unsichtbaren\nEin edler Geist der Dichtung Schleier webt.\n\nDen Geist des Alls, und seine Fülle\nBegrüßte Mäons Sohn auf heil’ger Spur,\n\nSie stand vor ihm, mit abgelegter Hülle,\nVoll Ernstes da, die ewige Natur;\nEr rief sie kühn vom dunklen Geisterlande,\nUnd lächelnd trat, in aller Freuden Chor,\nEntzückender im menschlichen Gewande\n\nDie namenlose Königin hervor.\n\nEr sah die dämmernden Gebiete,\nWohin das Herz in banger Lust begehrt,\nEr streuete der Hoffnung süße Blüthe\nIns Labyrinth, wo keiner wiederkehrt,\n\nDort glänzte nun in mildem Rosenlichte\nDer Lieb’ und Ruh’ ein lächelnd Heiligthum,\nEr pflanzte dort der Hestariden Kräfte,\nDort stillt die Sorgen nun Elysium.\n\nDoch schrecklich war, du Gott der Kühnen!\n\nDein heilig Wort, wenn unter Nacht und Schlaf\nVerkündiger des ew’gen Lichts erschienen,\nUnd den Betrug der Wahrheit Flamme traf;\nWie seinen Blitz aus hohen Wetternächten\nDer Donnerer auf bange Thale streut,\n\nSo zeigtest du entarteten Geschlechten\nDer Riesen Sturz, der Völker Sterblichkeit.\n\nDu wogst mit strenggerechter Schaale,\nWenn mit der Toga du das Schwerd vertauscht,\nDu sprachst, sie wankten die Sardanapale,\n\nVom Taumelkelche deines Zorns berauscht;\nEs schröckt umsonst mit ihrem Tygergrimme\nDein Tribunal die alte Finsterniß,\nDu hörtest ernst der Unschuld leise Stimme,\nUnd opfertest der heil’gen Nemesis.\n\nVerlaß mit deinem Götterschilde,\nVerlaß o du der Kühnen Genius!\nDie Unschuld nie. Gewinne dir und bilde\nDas Herz der Jünglinge mit Siegsgenuß!\nO säume nicht! ermahne, strafe, siege!\n\nUnd sichre stets der Wahrheit Majestät,\nBis aus der Zeit geheimnisvoller Wiege\nDes Himmels Kind, der ew’ge Friede geht.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Dem_Genius_der_K%C3%BChnheit",
       "tags": []
@@ -140,7 +145,7 @@
       "titulo": "Der Gott der Jugend",
       "texto": "Der Gott der Jugend.\n\n      Gehn dir im Dämmerlichte,\nWenn in der Sommernacht\nFür selige Gesichte\nDein liebend Auge wacht,\n\n Noch oft der Freunde Manen\nUnd, wie der Sterne Chor,\nDie Geister der Titanen\nDes Alterthums empor;\n\n      Wird da, wo sich im Schönen\n\n Das Göttliche verhüllt,\nNoch oft das tiefe Sehnen\nDer Liebe dir gestillt;\nBelohnt des Herzens Mühen\nDer Ruhe Vorgefühl,\n\nUnd tönt von Melodieen\nDer Seele Saitenspiel;\n\n      So such’ im stillsten Thale\nDen blüthenreichsten Hain,\nUnd gieß’ aus goldner Schaale\n\n Den frohen Opferwein!\nNoch lächelt unveraltet\nDes Herzens Frühling dir,\nDer Gott der Jugend waltet\nNoch über dir und mir.\n\n      Wie unter Tiburs Bäumen,\nWenn da der Dichter saß,\nUnd unter Götterträumen\nDer Jahre Flucht vergaß,\nWenn ihn die Ulme kühlte,\n\nUnd wenn sie stolz und froh\nUm Silberblüthen spielte,\nDie Flut des Anio;\n\n      Und wie um Platons Hallen,\nWenn durch der Haine Grün,\n\n Begrüßt von Nachtigallen,\nDer Stern der Liebe schien,\nWenn alle Lüfte schliefen,\nUnd, sanft bewegt vom Schwan,\nCephisus durch Oliven\n\n Und Myrtensträuche rann;\n\n      So schön ist’s noch hienieden!\nAuch unser Herz erfuhr\nDas Leben und den Frieden\nDer freundlichen Natur;\n\n Noch blüht des Himmels Schöne,\nNoch mischen brüderlich\nIn unsers Herzens Töne\nDes Frühlings Laute sich.\n\n      Drum such’ im stillsten Thale\n\n Den düftereichsten Hain,\nUnd gieß’ aus goldner Schaale\nDen frohen Opferwein,\n\nNoch lächelt unveraltet\nDas Bild der Erde dir,\n\n Der Gott der Jugend waltet\nNoch über dir und mir.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Der_Gott_der_Jugend",
       "tags": []
@@ -149,7 +154,7 @@
       "titulo": "Griechenland (Hölderlin)",
       "texto": "Hätt’ ich dich im Schatten der Platanen,\nWo durch Blumen der Cephissus rann,\nWo die Jünglinge sich Ruhm ersannen,\nWo die Herzen Sokrates gewann,\n\nWo Aspasia durch Myrthen wallte,\nWo der brüderlichen Freunde Ruf\nAus der lärmenden Agora schallte,\nWo mein Plato Paradiese schuf,\n\nWo den Frühling Festgesänge würzten\n\nWo die Ströme der Begeisterung\nVon Minervens heil’gem Berge stürzten –\nDer Beschützerin zur Huldigung –\nWo in tausend süßen Dichterstunden,\nWie ein Göttertraum, das Alter schwand,\n\nHätt’ ich da, Geliebter! Dich gefunden,\nWie vor Jahren dieses Herz dich fand;\n\nAch! wie anders hätt’ ich dich umschlungen! –\nMarathons Heröen sangst du mir,\nUnd die schonste der Begeisterungen\n\nLächelte vom trunknen Auge dir,\nDeine Brust verjüngten Siegsgefühle.\nDeinen Geist, vom Lorbeerzweig umspielt,\nDrükte nicht des Lebens stumpfe Schwüle,\nDie so karg der Hauch der Freude kühlt.\n\nIst der Stern der Liebe dir verschwunden?\nUnd der Jugend holdes Rosenlicht?\nAch! umtanzt von Hellas goldnen Stunden\nFühltest du die Flucht der Jahre nicht,\nEwig, wie der Vesta Flamme, glühte\n\nMuth und Liebe dort in jeder Brust,\nWie die Frucht der Hesperiden, blühte\nEwig dort der Jugend stolze Lust.\n\nAch! es hätt’ in jenen bessern Tagen\nNichts umsonst so brüderlich und gros\n\nFür das Volk dein liebend Herz geschlagen,\nDem so gern der Freude Zähre floss! –\nHarre nun! sie kömmt gewiss die Stunde,\nDie das Göttliche vom Kerker trennt –\n\nStirb! du suchst auf diesem Erdenrunde, \n\nEdler Geist! umsonst dein Element.\n\nAttika, die Heldin, ist gefallen, \nWo die alten Göttersöhne ruhn, \nIm Ruin der schönen Marmorhallen \nSteht der Kranich einsam trauernd nun; \n\nLächelnd kehrt der holde Frühling wieder, \nDoch er findet seine Brüder nie \nIn Ilissus heilgem Tale wieder - \nUnter Schutt und Dornen schlummern sie.\n\nMich verlangt ins ferne Land hinüber \n\nNach Alcäus und Anakreon, \nUnd ich schlief im engen Hause lieber, \nBei den Heiligen in Marathon;\nAch! es sey die letzte meiner Thräne, \nDie dem lieben Griechenlande rann, \n\nLasst, o Parzen, lasst die Schere tönen,\nDenn mein Herz gehört den Todten an!",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Griechenland_%28H%C3%B6lderlin%29",
       "tags": []
@@ -158,7 +163,7 @@
       "titulo": "Der gute Glaube",
       "texto": "[175]  Der gute Glaube.\n\nSchönes Leben! Du liegst krank, und das Herz ist mir \n     Müd vom Weinen, und schon dämmert die Furcht in mir;\n          Doch, doch kann ich nicht glauben, \n               Daß du sterbest, solang du liebst. ",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Der_gute_Glaube",
       "tags": []
@@ -167,7 +172,7 @@
       "titulo": "Hälfte des Lebens",
       "texto": "[85]  Hälfte des Lebens.\n\nMit gelben Birnen hänget\nUnd voll mit wilden Rosen\nDas Land in den See, \nIhr holden Schwäne,\n\nUnd trunken von Küssen\nTunkt ihr das Haupt\nIns heilignüchterne Wasser.\n\nWeh mir, wo nehm ich, wenn \nEs Winter ist, die Blumen, und wo\n\nDen Sonnenschein,\nUnd Schatten der Erde?\nDie Mauern stehn \nSprachlos und kalt, im Winde\nKlirren die Fahnen.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/H%C3%A4lfte_des_Lebens",
       "tags": []
@@ -176,7 +181,7 @@
       "titulo": "Die Heimath",
       "texto": "[304] Die Heimath.\n\nFroh kehrt der Schiffer heim an den stillen Strohm \n     Von fernen Inseln, wo er geerndtet hat.\n          Wohl möcht' auch ich zur Heimath wieder; \n               Aber was hab' ich, wie Leid, geerndtet? \n \n\nIhr holden Ufer, die ihr mich auferzogt, \n     Stillt ihr der Liebe Leiden? ach, gebt ihr mir, \n          Ihr Wälder meiner Kindheit! wann ich \n               Komme, die Ruhe noch Einmal wieder?",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Die_Heimath",
       "tags": []
@@ -185,7 +190,7 @@
       "titulo": "Hyperion an Bellarmin LVIII",
       "texto": "Ihr wandelt droben im Licht\n     Auf weichem Boden, seelige Genien!\n          Glänzende Götterlüfte\n               Rühren euch leicht,\n                    Wie die Finger der Künstlerin\n                         Heilige Saiten. \n\nSchiksaallos, wie der schlafende\n     Säugling, athmen die Himmlischen;\n          Keusch bewahrt\n               In bescheidener Knospe,\n                    Blühet ewig\n                         Ihnen der Geist,\n                              Und die seeligen Augen\n                                   Bliken in stiller\n                                        Ewiger Klarheit. \n\nDoch uns ist gegeben,\n     Auf keiner Stätte zu ruhn,\n          Es schwinden, es fallen\n               Die leidenden Menschen\n                    Blindlings von einer\n                         Stunde zur andern,\n                              Wie Wasser von Klippe\n                                   Zu Klippe geworfen,\n                                        Jahr lang ins Ungewisse hinab.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Hyperion_an_Bellarmin_LVIII",
       "tags": []
@@ -194,7 +199,7 @@
       "titulo": "Ihre Genesung",
       "texto": "[89] Ihre Genesung.\n\nDeine Freundinn, Natur! leidet und schläft und du, \nAllbelebende, säumst? ach! und ihr heilt sie nicht, \n     Mächt’ge Lüfte des Aethers, \n          Nicht ihr Quellen des Sonnenlichts? \n \n\nAlle Blumen der Erd’, alle die fröhlichen, \nSchönen Früchte des Hains, heitern sie alle nicht \n     Dieses Leben, ihr Götter! \n          Das ihr selber in Lieb’ erzogt? – \n \nAch! schon athmet und tönt heilige Lebenslust \n\nIhr im reizenden Wort wieder wie sonst und schon \n     Glänzt das Auge des Lieblings \n          Freundlichoffen, Natur! Dich an.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Ihre_Genesung",
       "tags": []
@@ -203,7 +208,7 @@
       "titulo": "Die Kürze",
       "texto": "[163]Die Kürze.\n\n„Warum bist du so kurz? liebst du, wie vormals, denn \n     Nun nicht mehr den Gesang? fandst du, als Jüngling, doch\n          In den Tagen der Hoffnung, \n               Wenn du sangest, das Ende nie?“ \n \n\nWie mein Glück, ist mein Lied. – Willst du im Abendroth \n     Froh dich baden? Hinweg ist’s, und die Erd’ ist kalt, \n          Und der Vogel der Nacht schwirrt \n               Unbequem vor das Auge dir.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Die_K%C3%BCrze",
       "tags": []
@@ -212,7 +217,7 @@
       "titulo": "Lebenslauf (Hölderlin)",
       "texto": "[158]  Lebenslauf.\n\nHochauf strebte mein Geist, aber die Liebe zog\nBald ihn nieder; Das Leid beugt ihn gewaltiger; \n     So durchlauf’ ich des Lebens \n          Bogen und kehre, woher ich kam.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Lebenslauf_%28H%C3%B6lderlin%29",
       "tags": []
@@ -221,7 +226,7 @@
       "titulo": "Die Liebenden",
       "texto": "[67] Die Liebenden.\n\nTrennen wollten wir uns, wähnten es gut und klug;\nDa wir's thaten, warum schröckt uns wie Mord die That? \n      Ach, wir kennen uns wenig, \n          Denn es waltet ein Gott in uns,",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Die_Liebenden",
       "tags": []
@@ -230,7 +235,7 @@
       "titulo": "Lied der Freundschaft — Lied der Freundschaft.",
       "texto": "Lied der Freundschaft.\n\n(1790.)\n\nFrei, wie Götter an dem Mahle,\nSingen wir um die Pokale,\nWo der edle Trank erglüht,\nIn der Abenddämmrung Hülle,\n\nUnd im Herzen ernst und stille,\nSingen wir der Freundschaft Lied.\n\nSchwebt herab aus kühlen Lüften,\nSchwebet aus den Schlummergrüften,\nHelden der Vergangenheit!\n\nKommt in unsern Kreis hernieder,\nStaunt und sprecht: Da ist sie wieder,\nUnsre deutsche Herzlichkeit!\n\nHa, der hohen Götterstunden,\nWenn der Edle sich gefunden,\n\nDer für unser Herz gehört!\nFest in Freud’ und Leid zu stehen,\nWie im Sturm die Felsenhöhen,\nIst des deutschen Jünglings werth.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Lied_der_Freundschaft",
       "tags": []
@@ -239,7 +244,7 @@
       "titulo": "Lied der Freundschaft — Froher schlägt das Herz und freier,",
       "texto": "Froher schlägt das Herz und freier,\n\nReichet zu des Bundes Feier\nUns der Freund den Becher dar;\nOhne Freuden, ohne Leben\nErndtet’ er Lyäus Reben,\nAls er ohne Freunde war.\n\nMännerstolz, wenn Lästrer schreien,\nWahrheit, wenn Despoten dräuen,\nSeelenkraft im Mißgeschick,\nDuldung, wenn die Schwachen sinken,\nLiebe, Duldung, Wärme trinken\n\nFreunde von des Freundes Blick.\n\nSanfter athmen Frühlingslüfte,\nSüßer sind der Linde Düfte,\nFreundlicher der Eichenhain,\nWenn mit offnem Sinn und Herzen,\n\nUnter Ernst und muntern Scherzen\nFreunde sich des Abends freu’n.\n\nBrüder, laßt die Thoren sinnen,\nWie sie Gunst und Dunst gewinnen,\nWie sie sammeln Gut und Geld;\n\nLächelnd kann’s der Edle missen,\nSich geliebt, geliebt zu wissen,\nIst sein schönstes Glück der Welt.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Lied_der_Freundschaft",
       "tags": []
@@ -248,7 +253,7 @@
       "titulo": "Lied der Freundschaft — Führt auch aus der trauten Halle",
       "texto": "Führt auch aus der trauten Halle\nEinst die Auserwählten alle\n\nIn die Ferne das Geschick,\nWandelt er mit Gram beladen\nOft auf freudelosen Pfaden,\nMissend das verlorne Glück;\n\nWankt er, wenn sich Wolken thürmen,\n\nEinsam in Gewitterstürmen,\nOhne Leiter, ohne Stab;\nLauscht er schmerzerfüllt und düster\nBangem Mitternachtsgeflüster\nSehnsuchtsvoll am frischen Grab;\n\nDann erquicken ihn die Stunden,\nIn der Freundschaft Arm verschwunden,\nTröstend durch Erinnerung;\nDas Gedächtniß vor’ger Freuden\nLabt das Herz in bangen Leiden,\n\nGibt der Seele neuen Schwung.\n\nDann gedenkt er ruhig wieder\nMancher frohgesungnen Lieder,\nUnd der Schwüre, treu und warm;\nUnd geweckt von stillem Sehnen\n\nQuellen schwerverhaltne Thränen,\nUnd beschwichtigt ist der Harm.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Lied_der_Freundschaft",
       "tags": []
@@ -257,7 +262,7 @@
       "titulo": "Lied der Freundschaft — Rauscht ihm dann des Todes Flügel,",
       "texto": "Rauscht ihm dann des Todes Flügel,\nSchläft er ruhig unter’m Hügel,\nWo der Freund den Kranz ihm flicht.\n\nIn das Herz der Bundesbrüder\nSäuselt noch sein Geist hernieder:\nLebet wohl! Vergeßt mein nicht!\n\n Hölderlin.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Lied_der_Freundschaft",
       "tags": []
@@ -266,7 +271,7 @@
       "titulo": "Die Nacht (Hölderlin)",
       "texto": "Rings um ruhet die Stadt. Still wird die erleuchtete Gasse,\n     Und mit Fackeln geschmückt rauschen die Wagen hinweg.\nSatt gehn heim von Freuden des Tags zu ruhen, die Menschen,\n     Und Gewinn und Verlust wäget ein sinniges Haupt\n\nWolzufrieden zu Haus; leer steht von Trauben und Blumen,\n     Und von Werken der Hand ruht der geschäftige Markt.\n[91]  Aber das Saitenspiel tönt fern aus Gärten; vielleicht, daß \n     Dort ein Liebendes spielt oder ein einsamer Mann\nFerner Freunde gedenkt und der Jugendzeit; und die Brunnen \n\n     Immerquillend und frisch rauschen an duftendem Beet.\nStill in dämmriger Luft ertönen geläutete Glocken, \n     Und der Stunden gedenk rufet ein Wächter die Zahl.\nJetzt auch kommet ein Wehn und regt die Gipfel des Hains auf, \n     Sieh! und das Ebenbild unserer Erde, der Mond,\n\nKommet geheim nun auch, die schwärmerische, die Nacht kommt,\n     Voll mit Sternen, und wol wenig bekümmert um uns \nGlänzt die Erstaunende dort, die Fremdlingin unter den Menschen\n     Über Gebirgeshöhn traurig und prächtig herauf.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Die_Nacht_%28H%C3%B6lderlin%29",
       "tags": []
@@ -275,7 +280,7 @@
       "titulo": "Das Schicksal (Hölderlin)",
       "texto": "Als von des Friedens heil’gen Thalen,\nWo sich die Liebe Kränze wand,\nHinüber zu den Göttermahlen\nDes goldnen Alters Zauber schwand,\n\nAls nun des Schicksals eh’rne Rechte,\nDie große Meisterin, die Noth,\nDem übermächtigen Geschlechte\nDen langen, bittern Kampf gebot:\n\nDa sprang er aus der Mutter Wiege,\n\nDa fand er sie, die schöne Spur.\nZu seiner Tugend schwerem Siege,\nDer Sohn der heiligen Natur;\nDer hohen Geister höchste Gabe,\nDer Tugend Löwenkraft begann\n\nIm Siege, den ein Götterknabe\nDen Ungeheuern abgewann.\n\nEs kann die Lust der goldnen Ernte\nIm Sonnenbrande nur gedeih’n;\nUnd nur in seinem Blute lernte\n\nDer Kämpfer, frei und stolz zu seyn;\nTriumph! Die Paradiese schwanden,\nWie Flammen aus der Wolke Schoos,\nWie Sonnen aus dem Chaos, wanden\nAus Stürmen sich Heroen loß.\n\nDer Noth ist jede Lust entsprossen,\nUnd unter Schmerzen nur gedeiht\nDas Liebste, was mein Herz genossen,\nDer holde Reiz der Menschlichkeit;\nSo stieg in tiefer Fluth erzogen,\n\nWohin kein sterblich Auge sah,\nStillächelnd aus den schwarzen Wogen\nIn stolzer Blüte Cypria.\n\nDurch Noth vereiniget, beschwuren\nVom Jugendtraume süß berauscht,\n\nDen Todesbund die Dioskuren,\nUnd Schwerd und Lanze ward getauscht;\nIn ihres Herzens Jubel eilten\nSie, wie ein Adlerpaar, zum Streit,\nWie Löwen ihre Beute, theilten\n\nDie Liebenden Unsterblichkeit. —\n\nDie Klagen lehrt die Noth verachten,\nBeschämt und ruhmlos läßt sie nicht\nDie Kraft der Jünglinge verschmachten,\nGiebt Muth der Brust, dem Geiste Licht;\n\nDer Greise Faust verjüngt sie wieder;\nSie kommt, wie Gottes Blitz, heran,\nUnd trümmert Felsenberge nieder,\nUnd wallt auf Riesen ihre Bahn.\n\nMit ihrem heil’gen Wetterschlage,\n\nMit Unerbittlichkeit vollbringt\nDie Noth an Einem großen Tage,\nWas kaum Jahrhunderten gelingt;\nUnd wenn in ihren Ungewittern\nSelbst ein Elysium vergeht,\n\nUnd Welten ihrem Donner zittern —\nWas groß und göttlich ist, besteht. —\n\nO du, Gespielin der Kolossen,\nO weise, zürnende Natur,\nWas je ein Riesenherz beschlossen,\n\nEs keimt’ in deiner Schule nur;\nWohl ist Arkadien entflohen.\nDes Lebens bessre Frucht gedeiht\nDurch sie, die Mutter der Heroen,\nDie eherne Nothwendigkeit. —\n\nFür meines Lebens goldnen Morgen\nSei Dank, o Pepromene, dir!\nEin Saitenspiel und süße Sorgen\nUnd Träum’ und Thränen gabst du mir;\nDie Flammen und die Stürme schonten\n\nMein jugendlich Elysium,\nUnd Ruh’ und stille Liebe thronten\nIn meines Herzens Heiligthum.\n\nEs reife von des Mittags Flamme,\nEs reife nun vom Kampf und Schmerz\n\nDie Blüth’ am gränzenlosen Stamme,\nWie Sprosse Gottes, dieses Herz!\nBeflügelt von dem Sturm, erschwinge\nMein Geist des Lebens höchste Lust,\nDer Tugend Siegeslust verjünge\n\nBei kargem Glücke mir die Brust!\n\nIm heiligsten der Stürme falle\nZusammen meine Kerkerwand,\nUnd herrlicher und freyer walle,\nMein Geist in’s unbekannte Land!\n\nHier blutet oft der Adler Schwinge;\nAuch drüben warte Kampf und Schmerz!\nBis an der Sonnen lezte ringe,\nGenährt vom Siege, dieses Herz.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Das_Schicksal_%28H%C3%B6lderlin%29",
       "tags": []
@@ -284,7 +289,7 @@
       "titulo": "Sokrates und Alcibiades",
       "texto": "Sokrates und Alcibiades.\n\n„Warum huldigest du, heiliger Sokrates,\n     Diesem Jünglinge stets? kennest du Grössers nicht,\n          Warum siehet mit Liebe,\n               Wie auf Götter, dein Aug’ auf ihn?“\n\nWer das tiefste gedacht, liebt das lebendigste,\n     Hohe Tugend versteht, wer in die Welt geblickt\n          Und es neigen die Weisen\n               Oft am Ende zu Schönen sich.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Sokrates_und_Alcibiades",
       "tags": []
@@ -293,7 +298,7 @@
       "titulo": "Das Unverzeihliche",
       "texto": "[5] Das Unverzeihliche.\n\nWenn ihr Freunde vergeßt, wenn ihr den Künstler höhnt, \n      Und den tieferen Geist klein und gemein versteht, \n          Gott vergibt es, doch stört nur \n               Nie den Frieden der Liebenden.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Das_Unverzeihliche",
       "tags": []
@@ -302,7 +307,7 @@
       "titulo": "Die Wanderung (Hölderlin)",
       "texto": "[55]Die Wanderung.\n\n     Glückselig Suevien, meine Mutter!\nAuch du, der glänzenderen, der Schwester \nLombarda drüben gleich, \nVon hundert Bächen durchflossen.\n\nUnd Bäume genug, weisblühend und rötlich, \nUnd dunklere, wild, tiefgrünendes Laubs voll –\nUnd Alpengebirg der Schweiz auch überschattet \nBenachbartes, dich; denn nah dem Heerde des Hauses \nWohnst du, und hörst, wie drinnen \n\nAus silbernen Opferschalen \nDer Quell rauscht, ausgeschüttet \nVon reinen Händen, wenn berührt \n\n     Von warmen Strahlen \nKristallenes Eis, und umgestürzt \n\nVom leichtanregenden Lichte \nDer schneeige Gipfel übergiesst die Erde \nMit reinestem Wasser. Darum ist \n\n[56]Dir angeboren die Treue. Schwer verlässt\nWas nahe dem Ursprung wohnet, den Ort. \n\nUnd deine Kinder, die Städte, \nAm weithin dämmernden See, \nAn Neckars Weiden, am Rheine \nSie alle meinen, es wäre \nSonst nirgend besser zu wohnen. \n\n     Ich aber will dem Kaukasos zu! \nDenn sagen hört' ich \nNoch heut in den Lüften:\nFrei sei'n, wie Schwalben, die Dichter. \nAuch hat mir ohnedies \n\nIn jüngeren Tagen einer vertraut, \nEs seien, vor alter Zeit, \nDie Eltern einst, das scharfe Geschlecht, \nStill fortgezogen, von Wellen der Donau, \nDort mit der Sonne Kindern\n\nAm strengsten Tage, staunendes Geistes, da diese\nSich Schatten suchten, zusammen \nAm schwarzen Meere gekommen, \nUnd nicht umsonst sei dies \nDas gastfreundliche genennet. \n\n[57]     Denn als sie erst sich angesehen, \nDa nahten die Andern zuerst. Dann sazten auch \nDie Unseren sich neugierig unter \nDen Ölbaum. Doch, als nun sich ihre Gewande \nBerührt, und keiner vernehmen konnte \n\nDie eigene Rede des andern, wäre fast\nEntstanden ein Zwist, wenn nicht aus Zweigen herunter \nGekommen wäre die Kühlung;\nDie Lächeln über das Angesicht \nDer Streitenden öfters breitet. Und eine Weile \n\nSahn still sie auf. Dann reichten sie sich \nDie Hände liebend einander. Und bald \n\n     Vertauschten sie Waffen und all \nDie lieben Güter des Hauses;\nVertauschten das Wort auch. Und es wünschten \n\nDie freundlichen Väter umsonst nichts \nBeim Hochzeitjubel den Kindern. \nDenn aus den Heiligvermählten \nWuchs schöner denn Alles, \n\n[58]Was vor und nach \nVon Menschen sich nannt', ein Geschlecht auf. Wo, \nWo aber wohnt ihr, liebe Verwandten, \nDass wir das Bündnis wiederbegehn, \nUnd der theuren Ahnen gedenken?\n\n     Dort an den Ufern, unter den Bäumen \n\nIonias, in Ebenen des Kaüstros, \nWo Kraniche, des Äthers froh, \nUmschlossen sind von fernhindämmernden Bergen,\nDort wart auch ihr, ihr Schönsten! oder pflegtet \nDer Inseln, die mit Wein bekränzt, \n\nVoll tönten von Gesang; noch andere wohnten \nAm Taüget, am vielgepriesnen Hümettos, \nUnd blühten zulezt. Doch von \nParnassos Quell bis zu des Tmolos \nGoldglänzenden Bächen erklang \n\nEin ewig Lied; so rauschten damals \nDie heiligen Wälder und all \nDie Saitenspiele zusamt,\nVon himmlischer Milde gerühret. \n\n[59]      O Land des Homer! \nAm purpurnen Kirschbaum, oder wenn, \nVon dir gesandt, im Weinberg mir \nDie jungen Pfirsiche grünen, \nUnd die Schwalbe fernher kommt und vieles erzählend \nAn meinen Wänden ihr Haus baut, in \n\nDen Tagen des Mais, auch unter den Sternen \nGedenk ich, o Ionia! dein. Doch Menschen \nIst Gegenwärtiges lieb. Drum bin ich \nGekommen, euch, ihr Inseln, zu sehn und euch, \nIhr Mündungen der Ströme, o ihr Hallen der Thetis, \n\nIhr Wälder, euch, und euch, ihr Wolken des Ida! \n\n     Doch nicht zu bleiben gedenk ich,\nUnbiegsam ist und schwer zu gewinnen \nDie Verschlossene, der ich entkommen, die Mutter. \nVon ihren Söhnen einer, der Rhein, \n\nMit Gewalt wollt' er ans Herz ihr stürzen und schwand, \n[60] Der Zurückgestossene, niemand weiss, wohin in die Ferne. \nDoch so nicht wünscht' ich gegangen zu sein\nVon ihr, und nur euch einzuladen \nBin ich zu euch, ihr Grazien Griechenlands, \n\nIhr Himmelstöchter! gegangen, \nDass wenn die Reise zu fern nicht ist, \nZu uns ihr kommet, ihr Holden!",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Die_Wanderung_%28H%C3%B6lderlin%29",
       "tags": []
@@ -311,7 +316,7 @@
       "titulo": "Der Winkel von Hahrdt",
       "texto": "[86] Der Winkel von Hahrdt.\n\nHinunter sinket der Wald,\nUnd Knospen ähnlich, hängen\nEinwärts die Blätter, denen\nBlüht unten auf ein Grund,\n\nNicht gar unmündig\nDa nämlich ist Ulrich\nGegangen; oft sinnt, über den Fußtritt,\nEin groß Schicksal\nBereit, an übrigem Orte.",
       "forma": "outro",
-      "obra": "de.wikisource: Friedrich Hölderlin",
+      "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Der_Winkel_von_Hahrdt",
       "tags": []

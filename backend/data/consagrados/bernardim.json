@@ -4,12 +4,16 @@
   "bio": "Poeta português do Renascimento. As éclogas e as cantigas, com a novela Menina e moça, definem a lírica da saudade anterior a Camões. O verso curto e o cantar tradicional convivem com a medida nova.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/%27Bernardim_Ribeiro%27%2C_marble_sculpture_by_Ant%C3%B3nio_Alberto_Nunes%2C_1891%2C_Museu_de_%C3%89vora%2C_Portugal.JPG",
   "morte": 1552,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "PT",
   "poemas": [
     {
       "titulo": "Ao longo de uma ribeira",
       "texto": "Ao longo da ribeira\nque vai polo pé da serra,\nonde me a mim fez a guerra\ngrande tempo grande amor,\nme levou a minha dor.\nJá era a tarde do dia,\ne a água dela corria\npor antre um alto arvoredo\nonde, às vezes, ia quedo\no rio, e às vezes, não.\nEntrada era do verão,\nquando começam as aves\ncom seus cantares suaves\nfazer tudo gracioso.\nAo rugido saudoso\ndas águas cantavam elas:\ntodalas minhas querelas\nse me puseram diante.\nAli morrer quisera ante\nque vir por onde passei.\nMas, como digo eu “passei”?\nAntes nunca hei de passar\nenquanto i houver pesar,\nque sempre o i há de haver.\nAs águas, que de correr\nnão cessavam um só momento,\nme trouxeram ao pensamento\nque assi eram minhas mágoas,\ndonde sempre correm águas\npor estes olhos mesquinhos\nque têm abertos caminhos\npolo meio do meu rosto.\nE já não tenho outro gosto\nna grande desdita minha.\nO qu’eu cuidava que tinha\nfoi-se-me assi, não sei como,\ndonde eu certa crença tomo\nque pera me deixar veio.\nMas tendo-me assi alheio\nde mim o que ali cuidava,\nda banda donde a água estava\nvi um homem todo cão,\nque lhe dava polo chão\na barba e o cabelo.\nFicando eu pasmado em vê-lo,\nolhando ele pera mim,\nfalou-me, e disse assim:\n“Também vai esta água ao Tejo”.\nNisto olhei, vi o meu desejo\nestar detrás, triste, só, \ntodo coberto de dó,\nchorando sem dizer nada,\na cara em sangue lavada,\nna boca posta ũa mão,\ncomo que a grande paixão\nforça em calar-se fazia.\nO velho, que tudo via,\nvendo-me também chorar,\ncomeçou assi a falar:\n“Eu mesmo são teu cuidado\nque noutra terra criado\nnesta primeiro nasci,\ne estoutro que está aqui\npor ti soubeste o que é.\nPor teu mal viste-o, porque\nnunca te ele esquecerá:\na terra ao mar passará\nprimeiro qu’a mágoa em ti\nQuando lhe eu aquisto ouve\nsoltei suspiros ao choro.\nAli caramente o foro\nmeus olhos tristes pagaram\ndo bem só que eles olharam\nque outro nunca mais tiver\nnem no tive, nem mo deram\nnem no espero tão-somente\nDe só ver fui tão contente\nque pera mais esperar\nnunca me deram lugar\nolhos com que vos olhei,\nvivos, como desejei,\ncomo nunca vos vi ora.\nMas nisto, acompanhando\nmeus olhos tristes, olhando\ndaquelas bandas d’além,\nolhei e não vi ninguém.\nDei então a caminhar\nio abaixo, até o lugar\nonde cerca o monte mor\nque todos os derredor\nda banda do meio-dia.\nAli minha fantasia,\nd’antre uns medonhos penedos\ndonde aves que fazem medos\nde noite os dias vão ter,\nme saiu a receber\ncom ũa mulher polo braço,\nque ao parecer, de cansaço,\nnão se tinha já em si,\ndizendo-me: “Vês aqui\na triste lembrança tua.”\nMinha vista então na sua\npus, e dela toda a enchi:\na prima cousa que vi\ne a derradeira também\nneste mundo e no que vem.\nSeus verdes olhos rasgados,\nde lágrimas carregados,\nogo, em vendo-os, pareciam\nque algũas delas corriam\ncontino polas suas faces\nque foram grão tempo pazes\nantre mim e meus cuidados.\nLouros cabelos ondados\nque um negro manto cobria, \nna tristeza parecia\nque lhe convinha morrer.\nOs seus olhos, de me ver,\ncomo furtados tirou;\ndepois em cheio me olhou\nseus alvos peitos rasgando\ne, a fala espedaçando,\nem voz disse alta e dorida\n“Pois houve morte na vida\npera que houve aí viver?”\nCalou-se, sem mais dizer.\nE, de mim, gemidos dando\nfui-me pera ela chorando\npera [a] haver de consolar\nNisto pôs-se o sol e o ar,\ne cerrou-se a noite escura.\nE disse “Mal à ventura\ne à vida, que não morri.”\nE muito longe dali\nouvi, como d’alto outeiro,\nchamar “Bernardim Ribeiro\ne dizer “Olha onde estás!”\nOlhei diante e detrás\ne vi tudo escuridão.\nCerrei meus olhos então\ne nunca os mais abri,\ne, depois que o ver perdi,\nnunca vi tamanho bem.\nPorém, inda mal, porém.",
       "forma": "outro",
-      "obra": "pt.wikisource: Bernardim Ribeiro",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ao_longo_de_uma_ribeira",
       "tags": [
@@ -23,7 +27,7 @@
       "titulo": "Cantiga sua a senhora Maria Coresma",
       "texto": "Uns esperam a coresma\npera se nela salvar, \neu perdi-me nela mesma\npera nunca me cobrar. \n\nMas com esta perda tal \neu m'ei por mui bem ganhado,\nporque o milhor do meu mal\nestá todo no cuidado. \nOs que cuidam qu'a coresma\nnam é pera condenar, \nse a virem ela mesma, \nmal se poderam salvar. ",
       "forma": "outro",
-      "obra": "pt.wikisource: Bernardim Ribeiro",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Cantiga_sua_a_senhora_Maria_Coresma",
       "tags": []
@@ -32,7 +36,7 @@
       "titulo": "Hontem pos-se a sol",
       "texto": "Hontem pos-se a sol, e a noute\ncobriu de sombra esta terra.\nAgora é já outro dia,\ntudo toma, toma o sol;\nsó foi a minha vontade\npara não tomar co tempo!\n\nTodalas coisas, per tempo,\npassam, como dia e noute;\nua só, minha vontade,\nnam, que a dor comigo a aterra;\nnela cuido enquanto ha sol,\nnela em quanto não há dia.\n\nMal quero per um só dia\na todo outro dia e tempo,\nque a mim pôs-se-me o sol\nonde eu só temia a noute;\ntenho a mim sobre a terra,\ndebaxo minha vontade.\n\nDentro na minha vontade\nnam ha momento no dia\nque nam seja tudo terra;\nora ponho a culpa ao tempo,\nora a tomo a pôr à noute:\nno milhor, pôs-se-me o sol!\nPrimeiro não haverá sol\nque eu descanse na vontade.\nPôs-se-me hua escura noute\nsobre a lembrança de um dia,\nInda mal porque houve tempo\ne porque tudo foi terra.\n\nHaver de ser tudo terra\nquanto ha debaxo de sol\nme descansa, porque o tempo\nme vingará da vontade:\nse nam que antes deste dia\nha de passar tanta noute!",
       "forma": "outro",
-      "obra": "pt.wikisource: Bernardim Ribeiro",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Hontem_pos-se_a_sol",
       "tags": [
@@ -44,7 +48,7 @@
       "titulo": "Écloga de Jano e Franco",
       "texto": "Dizem que havia um pastor\nantre Tejo e Odiana,\nque era perdido de amor\nper ua moça Joana.\nJoana patas guardava\npela ribeira do Tejo,\nseu pai acerca morava,\ne o pastor, do Alentejo\nera, e Jano se chamava.\n\nQuando as fomes grandes foram,\nque Alentejo foi perdido,\nda aldeia que chamam o Torrão\nfoi este pastor fugido.\nLevava um pouco de gado,\nque lhe ficou doutro muito\nque lhe morreu  de cansado;\nque Alentejo era enxuito\nd’água e mui seco de prado.\n\nToda a terra foi perdida\nno campo do Tejo só\nachava o gado guarida:\nver Alentejo era um dó!\nE Jano , para salvar\no gado que lhe ficou,\nfoi a esta terra buscar;\ne um cuidado levou,\noutro foi ele lá achar.\n \nO dia que ali chegou\ncom o seu gado e com o seu fato,\ncom tudo se agasalhou\nem ua bicada de um mato.\nE levando-o a pascer,\no outro dia, a ribeira,\nJoana acertou de ir ver,\nque  andava pela beira\ndo Tejo a flores colher.\n\nVestido branco trazia,\num pouco afrontada andava;\nfermosa bem parecia\naos olhos de quem a olhava.\nJano , em vendo-a, foi pasmado;\nmas, por ver que ela fazia,\nescondeu-se antre um prado;\nJoana flores colhia\nJano colhia cuidado",
       "forma": "outro",
-      "obra": "pt.wikisource: Bernardim Ribeiro",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/%C3%89cloga_de_Jano_e_Franco",
       "tags": [

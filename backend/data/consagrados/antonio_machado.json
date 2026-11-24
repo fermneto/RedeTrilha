@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Antonio_Machado_hacia_1917.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1875,
   "morte": 1939,
+  "escolas": [
+    "modernismo_hispanico"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "Recuerdo infantil",

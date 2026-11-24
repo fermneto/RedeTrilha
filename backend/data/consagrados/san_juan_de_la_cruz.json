@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Zurbar%C3%A1n_%28atribuido%29-John_of_the_Cross-1656.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1542,
   "morte": 1591,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "ES",
   "poemas": [
     {
       "titulo": "Noche oscura",
