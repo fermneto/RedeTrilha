@@ -246,7 +246,8 @@ export type Post = {
 };
 
 // Com cursor, o total vem null (como na timeline do X).
-export type FeedPage = Omit<Page<Post>, "total"> & {
+// O feed e o perfil misturam poemas e rengas (ItemDoFeed, na seção das Rengas).
+export type FeedPage = Omit<Page<ItemDoFeed>, "total"> & {
   total: number | null;
   proximo_cursor: string | null;
 };
@@ -758,6 +759,28 @@ export function encerrarRenga(id: number): Promise<RengaDetalhe> {
 
 export function convidarParaRenga(id: number, usernames: string[]): Promise<RengaDetalhe> {
   return apiPost<RengaDetalhe>(`/rengas/${id}/convites`, { usernames });
+}
+
+// Renga no feed e no perfil (RengaNoFeed em backend/app/schemas/feed.py), como um
+// repost no X: o rótulo é "fulano escreveu uma estrofe" ou "fulano abriu uma renga".
+export type RengaNoFeed = {
+  tipo: "renga";
+  renga: RengaDetalhe;
+  atividade: "abriu" | "escreveu";
+  // Os seguidos (ou você) do rótulo, quem escreveu por último primeiro.
+  por: User[];
+};
+
+// No feed e no perfil o poema vem com tipo "poema"; no Explorar, sem o campo.
+export type ItemDoFeed = (Post & { tipo?: "poema" }) | RengaNoFeed;
+
+export function ehRenga(item: ItemDoFeed): item is RengaNoFeed {
+  return item.tipo === "renga";
+}
+
+// Chave única entre os dois tipos (um poema e uma renga podem ter o mesmo id).
+export function chaveDoItem(item: ItemDoFeed): string {
+  return ehRenga(item) ? `renga-${item.renga.id}` : `poema-${item.id}`;
 }
 
 // "@ana, bia  @caio" → ["ana", "bia", "caio"]: separa por vírgula ou espaço, tira o "@" e repetidos.
