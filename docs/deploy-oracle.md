@@ -382,12 +382,13 @@ docker compose restart api
 A `api` roda o uvicorn com `WEB_CONCURRENCY` workers (processos). Vazio, o
 padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4).
 
-**Hoje o `.env.example` vem com `WEB_CONCURRENCY=1`, de propósito.** O índice
-de tags e o limite de traduções vivem na memória do processo (`app/core/`):
-com vários workers, cada um tem a sua cópia, e um poema novo com `#tag` só
-aparece na busca e no Em alta do worker que o recebeu. Quando o PR que tira
-esse estado da memória (backend sem estado) estiver na `main`, deixe
-`WEB_CONCURRENCY=` vazio e ajuste o pool.
+**O `.env.example` vem com `WEB_CONCURRENCY=2` e o pool 4 + 2**, o padrão
+recomendado (com 100 usuários simultâneos: 0 erro, p95 de 1,2 s mesmo sem
+pausa entre cliques; ver `docs/deploy.md`, "Pool de conexões"). Isso exige o
+backend sem estado na `main`: antes dele, o índice de tags e o limite de
+traduções vivem na memória do processo (`app/core/`), cada worker tem a sua
+cópia, e um poema novo com `#tag` só aparece na busca e no Em alta do worker
+que o recebeu. Sem ele, use `WEB_CONCURRENCY=1`.
 
 Cada worker abre o próprio pool de conexões. No Session pooler, cada conexão
 da API ocupa uma conexão no Supabase, e o **Pool Size** do plano free é 15
@@ -397,6 +398,7 @@ fechar:
 ```text
 WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
 1 worker:  1 × (5 + 5) = 10
+2 workers: 2 × (4 + 2) = 12   ← recomendado
 4 workers: 4 × (2 + 1) = 12
 ```
 

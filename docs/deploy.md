@@ -215,10 +215,16 @@ conexão de cliente**, e o pool dele no plano free é de 15 conexões (confira e
 
 ```text
 workers × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ Pool Size do Supabase
-1 worker  × (5 + 5) = 10   + 5 de folga (SQL Editor, importador, seed) = 15   ← padrão, Render free
-2 workers × (4 + 2) = 12   + 3 de folga = 15                                   ← DB_POOL_SIZE=4 DB_MAX_OVERFLOW=2
+1 worker  × (5 + 5) = 10   + 5 de folga (SQL Editor, importador, seed) = 15   ← padrão do código, Render free
+2 workers × (4 + 2) = 12   + 3 de folga = 15                                   ← recomendado: WEB_CONCURRENCY=2 DB_POOL_SIZE=4 DB_MAX_OVERFLOW=2
 3 workers × (3 + 1) = 12   + 3 de folga = 15                                   ← DB_POOL_SIZE=3 DB_MAX_OVERFLOW=1
 ```
+
+Recomendado (decisão do Neto): **2 workers com pool 4 + 2**, que já é o padrão
+do `deploy/oracle/.env.example`. Medido com 100 usuários simultâneos sem pausa
+entre cliques: 130 req/s, 0 erro e p95 de 1,2 s, contra 78 req/s e p95 de 1,6 s
+com 1 worker. Vários workers exigem o backend sem estado na `main` (ver
+`docs/deploy-oracle.md`, "Workers e pool").
 
 Passou do limite, o pooler recusa a conexão nova e a API dá 500. Com mais
 workers (`--workers N` no `startCommand`, ou `WEB_CONCURRENCY`), baixe o pool
@@ -237,9 +243,14 @@ esperam no event loop, na ordem de chegada. O `/saude` fica fora da fila.
 
 ### Índices
 
-Criados pelos models (`create_all`) num banco novo. **O `create_all` não cria
-índice novo em tabela que já existe**: num banco antigo (o Supabase que já
-subiu), rode uma vez no SQL Editor (ou com `psql "$DATABASE_URL"`):
+Declarados nos models. O `create_all` só os cria junto com uma tabela nova, então
+o `preparar_banco()` (`app/main.py`, chamado no boot e pelo serviço `seed` da
+Oracle) cria também, dentro do mesmo lock, os índices dos models que faltam em
+tabelas que já existiam (`criar_indices_que_faltam`). O deploy não tem passo
+manual: o banco antigo ganha os índices no próximo boot.
+
+Alternativa manual, se preferir criar antes do deploy, no SQL Editor (ou com
+`psql "$DATABASE_URL"`):
 
 ```sql
 CREATE INDEX IF NOT EXISTS ix_posts_autorais ON posts (autor_id, created_at, id)
@@ -253,7 +264,8 @@ VACUUM ANALYZE comentarios;
 ```
 
 O `VACUUM` atualiza o mapa de visibilidade, sem o qual o Postgres não faz
-Index Only Scan. Para conferir: `\di ix_*` no psql, ou
+Index Only Scan. O boot não roda `VACUUM`; sem ele, o autovacuum do Supabase faz
+isso sozinho depois de algum tempo. Para conferir: `\di ix_*` no psql, ou
 `SELECT indexname FROM pg_indexes WHERE tablename IN ('posts', 'comentarios');`.
 
 - `ix_posts_autorais`: os poemas autorais (tudo menos o repost puro), com as
@@ -283,7 +295,12 @@ Index Only Scan. Para conferir: `\di ix_*` no psql, ou
 resposta sem conferir o token. Ficam **sem cache** as rotas com dado de quem
 pede: feed, "Para você", perfil (`sigo`), poema (`curti`, `repostei`), poema do
 dia (`curti`), Explorar, Acervo (`sigo`), sugestões, rengas (`posso_escrever`),
-comentários e antologias.
+comentários e antologias. O poema do dia fica sem cache (decisão do Neto): o
+poema é o mesmo o dia todo, mas a resposta traz `curti` e `repostei`.
+
+No front, o `request` do `lib/api.ts` usa o cache do navegador (`cache:
+"default"`) só nessas cinco rotas (`modoDeCache`); o resto continua `no-store`.
+Rota nova com `cache(...)` no backend entra também no `ROTAS_COM_CACHE` do front.
 
 ### Gzip
 
