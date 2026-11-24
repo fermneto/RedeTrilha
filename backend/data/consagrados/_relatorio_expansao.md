@@ -169,7 +169,7 @@ JSON na pasta (exceto ficheiros `_`): 130 poetas, 7612 poemas.
 `make reset` depois do bloco das línguas latinas e do espanhol:
 
 ```
-consagrados: 130 poetas criados, 0 atualizados; 7527 poemas criados, 0 atualizados
+consagrados: 130 poetas criados, 0 atualizados; 7612 poemas criados, 0 atualizados
 ```
 
 O bloco português tinha fechado em 113 poetas e 4645 poemas. Este bloco somou as coleções em es, fr, it, gl, ca e ro. Bocage e Cláudio Manuel, no bloco anterior, foram gravados em duas passagens: a coluna «já havia» deles inclui a primeira.
