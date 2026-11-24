@@ -12,17 +12,20 @@ from sqlalchemy.orm import Session
 
 from app.core.indice_tags import indice_tags
 from app.models.post import Post
+from app.models.user import User
 from app.schemas.post import FORMAS, PostPage
-from app.services.posts import para_saida
+from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
 _MAIS_NOVO_PRIMEIRO = (Post.created_at.desc(), Post.id.desc())
 
 
-def posts_da_tag(db: Session, tag: str, offset: int, limit: int) -> PostPage:
+def posts_da_tag(
+    db: Session, usuario: User, tag: str, offset: int, limit: int
+) -> PostPage:
     ids = indice_tags.posts_da_tag(tag)
     fatia = _buscar_por_ids(db, ids[offset : offset + limit])
-    return _pagina(fatia, len(ids), offset, limit)
+    return _pagina(db, usuario, fatia, len(ids), offset, limit)
 
 
 def trending() -> list[tuple[str, int]]:
@@ -30,7 +33,12 @@ def trending() -> list[tuple[str, int]]:
 
 
 def explorar(
-    db: Session, tag: str | None, forma: str | None, offset: int, limit: int
+    db: Session,
+    usuario: User,
+    tag: str | None,
+    forma: str | None,
+    offset: int,
+    limit: int,
 ) -> PostPage:
     """Poemas de todos, mais novo primeiro; `tag` e `forma` juntos fazem interseção."""
     if forma is not None and forma not in FORMAS:
@@ -38,7 +46,7 @@ def explorar(
             status_code=422, detail=f"forma deve ser uma de: {', '.join(FORMAS)}"
         )
     if tag and forma is None:
-        return posts_da_tag(db, tag, offset, limit)
+        return posts_da_tag(db, usuario, tag, offset, limit)
 
     filtros = []
     if tag:
@@ -53,7 +61,7 @@ def explorar(
         .offset(offset)
         .limit(limit)
     )
-    return _pagina(list(posts), total, offset, limit)
+    return _pagina(db, usuario, list(posts), total, offset, limit)
 
 
 def _buscar_por_ids(db: Session, ids: list[int]) -> list[Post]:
@@ -64,9 +72,12 @@ def _buscar_por_ids(db: Session, ids: list[int]) -> list[Post]:
     return [por_id[post_id] for post_id in ids if post_id in por_id]
 
 
-def _pagina(posts: list[Post], total: int, offset: int, limit: int) -> PostPage:
+def _pagina(
+    db: Session, usuario: User, posts: list[Post], total: int, offset: int, limit: int
+) -> PostPage:
+    """Monta a página com curtidas e `curti` do usuário, contadas em lote."""
     return PostPage(
-        items=[para_saida(post) for post in posts],
+        items=para_saidas(db, posts, usuario),
         total=total,
         offset=offset,
         limit=limit,
