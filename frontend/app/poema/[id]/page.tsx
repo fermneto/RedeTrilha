@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { PoemaCard } from "@/components/PoemaCard";
 import { buscarEu, buscarPoema, temToken, type Post } from "@/lib/api";
 
@@ -36,13 +37,31 @@ export default function PoemaPage() {
       .catch(() => setEuId(null));
   }, [carregarPoema, router]);
 
-  if (erro) return <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>;
-  if (!poema) return <p className="text-sm text-tinta-suave">carregando...</p>;
+  const cabecalho = <CabecalhoPagina titulo="Poema" comoTitulo={false} />;
+  if (erro)
+    return (
+      <>
+        {cabecalho}
+        <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+      </>
+    );
+  if (!poema)
+    return (
+      <>
+        {cabecalho}
+        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+      </>
+    );
 
   return (
-    <div className="space-y-10">
-      <PoemaCard post={poema} linkarTitulo={false} inteiro />
-      <ArvoreComentarios postId={poema.id} euId={euId} aoMudar={carregarPoema} />
+    <div>
+      {cabecalho}
+      <div className="border-b border-borda">
+        <PoemaCard post={poema} linkarTitulo={false} inteiro />
+      </div>
+      <div className="px-4 py-6">
+        <ArvoreComentarios postId={poema.id} euId={euId} aoMudar={carregarPoema} />
+      </div>
     </div>
   );
 }

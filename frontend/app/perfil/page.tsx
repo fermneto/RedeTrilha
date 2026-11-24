@@ -21,6 +21,6 @@ export default function MeuPerfilPage() {
       .catch((e) => setErro(e instanceof Error ? e.message : "não deu para abrir o perfil"));
   }, [router]);
 
-  if (erro) return <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>;
-  return <p className="text-sm text-tinta-suave">carregando...</p>;
+  if (erro) return <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>;
+  return <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>;
 }
