@@ -70,6 +70,22 @@ Baseado em Conventional Commits, em português.
   prevalece**.
 - O uso de IA é registrado só na seção "Uso de IA" do `DECISIONS.md`, como a
   rubrica pede.
+- **O squash também não pode trazer coautoria.** Ao montar a mensagem do
+  squash, o GitHub acrescenta `Co-authored-by:` para cada autor dos commits do
+  PR (por exemplo `Cursor Agent <cursoragent@cursor.com>`), mesmo que o corpo
+  do PR não tenha nada. Por isso o merge é sempre feito com a mensagem
+  explícita, nunca com a padrão:
+  ```bash
+  gh pr merge <N> --repo fermneto/RedeTrilha --squash \
+    --subject "<título do PR> (#<N>)" --body "<corpo, sem trailers>"
+  ```
+  No botão do GitHub, apague as linhas `Co-authored-by:` da caixa de mensagem
+  antes de confirmar. Depois do merge, confira com
+  `git log -1 --format=%B origin/main | grep -i co-authored` (não deve
+  aparecer nada).
+- **Branches de agentes externos** (Cursor e outros) costumam pôr
+  `Co-authored-by` nos próprios commits. Antes do merge, confira com
+  `git log origin/main..origin/<branch> --format=%B | grep -i co-authored`.
 
 ## Comandos
 
