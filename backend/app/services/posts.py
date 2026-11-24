@@ -67,8 +67,8 @@ def para_saida(
 ) -> PostOut:
     """Monta o PostOut. `repost_de` vem com um nível só.
 
-    Sem `contagens`, `curtidas`, `comentarios` e `curti` saem zerados: use `para_saidas` ou
-    `para_saida_de` quando houver usuário atual.
+    Sem `contagens`, `curtidas`, `comentarios` e `curti` saem zerados: use
+    `para_saidas` ou `para_saida_de` quando houver usuário atual.
     """
     contagens = contagens or Contagens()
     original = post.repost_de if incluir_repost else None
