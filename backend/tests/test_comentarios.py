@@ -234,6 +234,26 @@ def test_apagar_com_respostas_deixa_marcador(client, como):
     assert _comentar(client, como, post_id, "oi", raiz["id"], "caio").status_code == 404
 
 
+def test_comentar_um_repost_puro_comenta_o_original(client, como):
+    from app.db import SessionLocal
+    from app.models.post import Post
+
+    original = _poema(client, como)
+    client.post(f"/posts/{original}/repostar", headers=como("caio"))
+    with SessionLocal() as db:
+        repost = db.scalar(select(Post.id).where(Post.repost_de_id == original))
+
+    raiz = _comentar(client, como, repost, "no repost").json()
+    assert _comentar(client, como, repost, "resposta", raiz["id"], "bia").status_code == 201
+
+    item = _pagina(client, como, f"/posts/{original}/comentarios", 20)["items"][0]
+    assert (item["texto"], [c["texto"] for c in item["respostas"]]) == (
+        "no repost",
+        ["resposta"],
+    )
+    assert client.get(f"/posts/{original}", headers=como("ana")).json()["comentarios"] == 2
+
+
 def test_core_monta_em_ordem_mesmo_com_entrada_fora_de_ordem():
     from app.core.arvore_comentarios import montar
 

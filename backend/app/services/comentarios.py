@@ -21,7 +21,7 @@ from app.models.user import User
 from app.schemas.comentario import ComentarioCreate, ComentarioOut, ComentarioPage
 from app.schemas.user import UserOut
 from app.services.cursor import codificar_cursor, ler_cursor
-from app.services.posts import buscar
+from app.services.posts import buscar, original_de
 
 PREVIA_RESPOSTAS = 3
 
@@ -29,11 +29,11 @@ PREVIA_RESPOSTAS = 3
 def comentar(
     db: Session, autor: User, post_id: int, dados: ComentarioCreate
 ) -> ComentarioOut:
-    """Comentário no poema ou resposta.
+    """Comentário no poema ou resposta. Num repost puro, vai para o original, como no X.
 
     Pai inexistente, de outro poema ou removido dá 404.
     """
-    buscar(db, post_id)
+    post_id = original_de(db, post_id).id
     if dados.parent_id is not None:
         pai = db.get(Comentario, dados.parent_id)
         if pai is None or pai.post_id != post_id or pai.removido:
