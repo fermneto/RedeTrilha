@@ -282,7 +282,8 @@ comentários e antologias.
 
 `GZipMiddleware` com `minimum_size=1000` no `main.py`: respostas de 1 KB ou
 mais saem comprimidas quando o cliente manda `Accept-Encoding: gzip` (o
-navegador sempre manda). Feeds e poemas são texto: o JSON cai a uns 25 a 30%.
+navegador sempre manda). Feeds e poemas são texto: uma página do feed cai de
+37 KB para 8,5 KB (23%).
 
 ## Limites do free tier
 
