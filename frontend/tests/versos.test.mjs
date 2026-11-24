@@ -9,7 +9,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { caminhoDaCitacaoDeVersos, referenciaDosVersos, selecionarVerso, trechoDosVersos, versosDoPoema } =
+const { caminhoDaCitacaoDeVersos, referenciaDosVersos, selecionarVerso, trechoDosVersos, versosDaSelecao, versosDoPoema } =
   await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
 
 const POEMA = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nAs aves, que aqui gorjeiam,\n  Não gorjeiam como lá.";
@@ -28,7 +28,19 @@ test("referência no singular e no plural", () => {
   assert.equal(referenciaDosVersos({ inicio: 5, fim: 8 }), "versos 5–8");
 });
 
-test("selecionar: um clique, outro estende, o mesmo desfaz e um intervalo recomeça", () => {
+test("a seleção de texto vira os versos inteiros que ela toca", () => {
+  assert.deepEqual(versosDaSelecao(POEMA, [2]), { inicio: 2, fim: 2 });
+  assert.deepEqual(versosDaSelecao(POEMA, [1, 2, 3, 4]), { inicio: 1, fim: 4 });
+});
+
+test("as linhas em branco das pontas saem da seleção; só elas não selecionam nada", () => {
+  assert.deepEqual(versosDaSelecao(POEMA, [2, 3]), { inicio: 2, fim: 2 });
+  assert.deepEqual(versosDaSelecao(POEMA, [3, 4]), { inicio: 4, fim: 4 });
+  assert.equal(versosDaSelecao(POEMA, [3]), null);
+  assert.equal(versosDaSelecao(POEMA, []), null);
+});
+
+test("pelo teclado: um clique, outro estende, o mesmo desfaz e um intervalo recomeça", () => {
   assert.deepEqual(selecionarVerso(null, 4), { inicio: 4, fim: 4 });
   assert.deepEqual(selecionarVerso({ inicio: 4, fim: 4 }, 2), { inicio: 2, fim: 4 });
   assert.deepEqual(selecionarVerso({ inicio: 4, fim: 4 }, 5), { inicio: 4, fim: 5 });

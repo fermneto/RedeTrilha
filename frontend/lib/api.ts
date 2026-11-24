@@ -688,10 +688,8 @@ export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
 export type Ancora = {
   verso_inicio: number;
   verso_fim: number;
-  // O trecho como estava ao comentar.
+  // As linhas verso_inicio a verso_fim do poema (poema publicado não se edita).
   trecho: string;
-  // false: o poema foi editado e esses versos mudaram (trecho de uma versão anterior).
-  atual: boolean;
 };
 
 export type SelecaoDeVersos = { inicio: number; fim: number };
@@ -711,17 +709,25 @@ export function referenciaDosVersos({ inicio, fim }: SelecaoDeVersos): string {
   return inicio === fim ? `verso ${inicio}` : `versos ${inicio}–${fim}`;
 }
 
-// Clique no número de um verso: sem seleção, seleciona aquele verso; com um verso
-// só, clicar nele desfaz e clicar em outro estende até ele; com um intervalo,
-// recomeça no verso clicado.
+// Seleção de texto com o mouse ou o toque: vira os versos inteiros, do primeiro
+// ao último que ela toca, sem as linhas em branco das pontas. null: nada a comentar.
+export function versosDaSelecao(texto: string, tocados: number[]): SelecaoDeVersos | null {
+  const versos = versosDoPoema(texto);
+  const comTexto = tocados.filter((n) => n >= 1 && n <= versos.length && versos[n - 1].trim() !== "");
+  if (comTexto.length === 0) return null;
+  return { inicio: Math.min(...comTexto), fim: Math.max(...comTexto) };
+}
+
+// Pelo teclado, o número de cada verso é um botão: sem seleção, seleciona aquele
+// verso; com um verso só, ativá-lo de novo desfaz e ativar outro estende até ele;
+// com um intervalo, recomeça no verso ativado.
 export function selecionarVerso(atual: SelecaoDeVersos | null, verso: number): SelecaoDeVersos | null {
   if (atual === null || atual.inicio !== atual.fim) return { inicio: verso, fim: verso };
   if (atual.inicio === verso) return null;
   return { inicio: Math.min(atual.inicio, verso), fim: Math.max(atual.inicio, verso) };
 }
 
-// PROVISÓRIO (o Neto decide): a citação começa com os versos e uma linha em
-// branco para o comentário do leitor.
+// A citação começa com os versos e uma linha em branco para o comentário do leitor.
 export function textoDaCitacaoDeVersos(trecho: string): string {
   return `${trecho}\n\n`;
 }
@@ -739,7 +745,7 @@ export function criticarVersos(postId: number, texto: string, selecao: SelecaoDe
   });
 }
 
-// As críticas cuja âncora atual cobre o verso, paginadas como as raízes.
+// As críticas cuja âncora cobre o verso, paginadas como as raízes.
 export function buscarComentariosDoVerso(postId: number, verso: number, cursor: string | null, limit = 20) {
   const params = new URLSearchParams({ limit: String(limit), verso: String(verso) });
   if (cursor) params.set("cursor", cursor);

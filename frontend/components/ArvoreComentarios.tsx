@@ -367,13 +367,11 @@ function ItemComentario({
 }
 
 // O trecho que a crítica comenta, acima do texto dela, com as quebras do poema.
-// Se o poema foi editado e esses versos mudaram, o aviso substitui a referência.
 function TrechoCitado({ ancora }: { ancora: Ancora }) {
-  const referencia = referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim });
   return (
     <figure className="mb-2 border-l-2 border-destaque/50 pl-3">
       <figcaption className="text-xs text-tinta-suave">
-        {ancora.atual ? referencia : `${referencia} · trecho de uma versão anterior`}
+        {referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim })}
       </figcaption>
       <blockquote className="poema-corpo mt-0.5 text-[0.9375rem]">{ancora.trecho}</blockquote>
     </figure>
@@ -422,7 +420,7 @@ function FormComentario({
     <form onSubmit={enviar} className="space-y-2">
       {selecao && trecho !== null && (
         <div className="rounded-md border border-borda bg-papel-alto p-3">
-          <TrechoCitado ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho, atual: true }} />
+          <TrechoCitado ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho }} />
           <button
             type="button"
             onClick={aoLimparSelecao}

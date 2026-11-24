@@ -1,11 +1,14 @@
 "use client";
-// Corpo do poema na página dele, verso a verso (#71): o número de cada verso é um
-// botão que seleciona o trecho a comentar ou citar, e os versos com críticas
-// ganham uma marca com quantas são, que filtra os comentários por aquele verso.
-// As linhas em branco entre estrofes contam na numeração, como no backend, mas
-// não têm botão: um trecho só de linhas em branco não se comenta.
+// Corpo do poema na página dele, verso a verso (#71). O leitor seleciona o texto
+// como em qualquer página (arrastando com o mouse ou segurando no toque) e a
+// seleção vira os versos inteiros que ela toca, com a barra "comentar estes
+// versos / citar estes versos". Pelo teclado, o número de cada verso é um botão
+// que faz a mesma seleção. Os versos com críticas ganham uma marca com quantas
+// são, que filtra os comentários por aquele verso. As linhas em branco entre
+// estrofes contam na numeração, como no backend, mas não se selecionam sozinhas.
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import {
@@ -13,6 +16,7 @@ import {
   referenciaDosVersos,
   selecionarVerso,
   trechoDosVersos,
+  versosDaSelecao,
   versosDoPoema,
   type Post,
   type SelecaoDeVersos,
@@ -20,7 +24,7 @@ import {
 
 type Props = {
   poema: Post;
-  // verso -> quantas críticas atuais o cobrem.
+  // verso -> quantas críticas o cobrem.
   marcas: Map<number, number>;
   selecao: SelecaoDeVersos | null;
   aoSelecionar: (selecao: SelecaoDeVersos | null) => void;
@@ -32,6 +36,25 @@ type Props = {
 
 export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoComentar, aoFiltrar }: Props) {
   const versos = versosDoPoema(poema.texto);
+  const lista = useRef<HTMLOListElement>(null);
+
+  // A seleção de texto do navegador vira a seleção de versos. Uma seleção que
+  // some (clique fora, no botão da barra) não desfaz a dos versos: só "limpar"
+  // ou uma seleção nova.
+  useEffect(() => {
+    function aoMudarSelecao() {
+      const selecaoDeTexto = document.getSelection();
+      if (!selecaoDeTexto || selecaoDeTexto.isCollapsed || !lista.current) return;
+      const tocados = Array.from(lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"))
+        .filter((li) => selecaoDeTexto.containsNode(li, true))
+        .map((li) => Number(li.dataset.verso));
+      const nova = versosDaSelecao(poema.texto, tocados);
+      if (nova && (nova.inicio !== selecao?.inicio || nova.fim !== selecao?.fim)) aoSelecionar(nova);
+    }
+    document.addEventListener("selectionchange", aoMudarSelecao);
+    return () => document.removeEventListener("selectionchange", aoMudarSelecao);
+  }, [poema.texto, selecao, aoSelecionar]);
+
   const selecionado = (n: number) => selecao !== null && selecao.inicio <= n && n <= selecao.fim;
   const acao =
     "inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm font-semibold text-destaque hover:bg-destaque/10";
@@ -39,9 +62,10 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
   return (
     <div className={poema.titulo ? "mt-2" : "mt-1"}>
       <p className="sr-only">
-        Toque no número de um verso para selecioná-lo; depois, no de outro verso para estender o trecho.
+        Para comentar ou citar versos, selecione o texto deles, ou ative o número do primeiro verso e
+        depois o do último.
       </p>
-      <ol className="poema-corpo">
+      <ol ref={lista} className="poema-corpo">
         {versos.map((linha, i) => {
           const n = i + 1;
           const vazia = linha.trim() === "";
@@ -49,9 +73,10 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
           return (
             <li
               key={n}
+              data-verso={n}
               className={`flex items-baseline gap-1 rounded ${selecionado(n) ? "bg-destaque/10" : ""}`}
             >
-              <span className="w-8 shrink-0 text-right">
+              <span className="w-8 shrink-0 text-right select-none">
                 {!vazia && (
                   <button
                     type="button"
@@ -73,7 +98,7 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
                   onClick={() => aoFiltrar(n)}
                   aria-label={`ver ${marca === 1 ? "o comentário" : `os ${marca} comentários`} sobre o verso ${n}`}
                   title={`comentários sobre o verso ${n}`}
-                  className="inline-flex shrink-0 cursor-pointer items-center gap-0.5 rounded-full px-1.5 font-sans text-xs text-tinta-suave tabular-nums hover:bg-destaque/10 hover:text-destaque"
+                  className="inline-flex shrink-0 cursor-pointer items-center gap-0.5 rounded-full select-none px-1.5 font-sans text-xs text-tinta-suave tabular-nums hover:bg-destaque/10 hover:text-destaque"
                 >
                   <IconeComentar className="h-3.5 w-3.5" />
                   {marca}
