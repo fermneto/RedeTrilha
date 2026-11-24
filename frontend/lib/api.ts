@@ -184,9 +184,21 @@ export const FORMAS = [
 
 export type Forma = (typeof FORMAS)[number];
 
-// Rótulo legível da forma: só troca o "_" por espaço (verso_livre → verso livre).
+// Rótulo legível de cada forma, com acento (o valor guardado não tem).
+const NOMES_DAS_FORMAS: Record<Forma, string> = {
+  soneto: "soneto",
+  haicai: "haicai",
+  trova: "trova",
+  quadra: "quadra",
+  cordel: "cordel",
+  verso_livre: "verso livre",
+  prosa_poetica: "prosa poética",
+  outro: "outro",
+};
+
+// Forma fora da lista (não deveria vir do backend) fica só com "_" virando espaço.
 export function nomeDaForma(forma: string): string {
-  return forma.replace(/_/g, " ");
+  return NOMES_DAS_FORMAS[forma as Forma] ?? forma.replace(/_/g, " ");
 }
 
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
