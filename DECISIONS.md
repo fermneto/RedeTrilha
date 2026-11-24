@@ -557,8 +557,10 @@ acima: é ela que tiraria o termo n·t.
   banco e aceita até 10.000 caracteres; o poema em si continua sem limite.
 - **Mistura do "Para você" (`core/mistura.py`).** Recebe as atividades da
   rede (poemas, reposts puros, estrofes de rengas abertas, comentários),
-  carregadas só com ids e datas. `rarear_consagrados` guarda o poema mais
-  recente de cada janela de 3 horas num dict janela → poema, em O(n). A
+  carregadas só com ids e datas. `rarear_consagrados` guarda um poema de
+  consagrado por janela de 3 horas num dict janela → poema, em O(n): o mais
+  recente na língua de quem vê (a do navegador ou, sem ela, a dos poemas da
+  pessoa) e, se a janela não tiver nenhum nessa língua, o mais recente. A
   janela é fixa no relógio, então a escolha não depende da página pedida.
   `misturar` ordena da atividade mais recente para a mais antiga, O(n log n),
   e deixa um item por poema ou renga, com quem está no rótulo, em O(n).
