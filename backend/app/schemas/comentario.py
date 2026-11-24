@@ -15,14 +15,11 @@ class AncoraCreate(BaseModel):
 
 
 class AncoraOut(BaseModel):
-    """O trecho como estava ao comentar. `atual` é False quando o poema foi
-    editado e aqueles versos não são mais esse trecho (a tela avisa e não
-    marca o verso)."""
+    """Os versos criticados e o `trecho` deles, tirado do texto do poema."""
 
     verso_inicio: int
     verso_fim: int
     trecho: str
-    atual: bool
 
 
 class ComentarioCreate(BaseModel):
@@ -78,7 +75,7 @@ class VersoComentado(BaseModel):
 
 
 class VersosComentadosOut(BaseModel):
-    """Os versos do poema atual com críticas ancoradas, em ordem de verso."""
+    """Os versos do poema com críticas ancoradas, em ordem de verso."""
 
     items: list[VersoComentado]
 

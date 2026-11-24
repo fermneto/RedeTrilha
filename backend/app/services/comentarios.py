@@ -44,11 +44,8 @@ def comentar(
     """
     poema = original_de(db, post_id)
     post_id = poema.id
-    trecho = (
+    if dados.ancora is not None:
         ancoras.validar(poema.texto, dados.parent_id, dados.ancora)
-        if dados.ancora is not None
-        else None
-    )
     if dados.parent_id is not None:
         pai = db.get(Comentario, dados.parent_id)
         if pai is None or pai.post_id != post_id or pai.removido:
@@ -59,11 +56,11 @@ def comentar(
     db.add(comentario)
     db.flush()
     if dados.ancora is not None:
-        ancoras.ancorar(db, comentario.id, dados.ancora, trecho)
+        ancoras.ancorar(db, comentario.id, dados.ancora)
     db.commit()
     db.refresh(comentario)
     ancora = (
-        AncoraOut(**dados.ancora.model_dump(), trecho=trecho, atual=True)
+        ancoras.saida(dados.ancora.verso_inicio, dados.ancora.verso_fim, poema.texto)
         if dados.ancora is not None
         else None
     )
@@ -75,12 +72,12 @@ def respostas_do_poema(
 ) -> ComentarioPage:
     """Num repost puro, a conversa do original, como no POST.
 
-    Com `verso`, só as críticas cuja âncora atual cobre aquele verso.
+    Com `verso`, só as críticas cuja âncora cobre aquele verso.
     """
     poema = original_de(db, post_id)
     filtro = and_(Comentario.post_id == poema.id, Comentario.parent_id.is_(None))
     if verso is not None:
-        filtro = and_(filtro, Comentario.id.in_(ancoras.comentarios_no_verso(db, poema, verso)))
+        filtro = and_(filtro, Comentario.id.in_(ancoras.ids_no_verso(poema, verso)))
     return _pagina(db, filtro, None, limit, cursor)
 
 

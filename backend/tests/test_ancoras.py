@@ -45,7 +45,6 @@ def test_critica_guarda_o_trecho_com_recuos_e_quebras(client, como):
         "verso_inicio": 1,
         "verso_fim": 2,
         "trecho": "  Minha terra tem palmeiras,\nOnde canta o Sabiá;",
-        "atual": True,
     }
 
 
@@ -143,22 +142,6 @@ def test_filtro_por_verso_pagina_por_cursor(client, como):
     segunda = _raizes(client, como, post_id, verso=1, limit=2, cursor=primeira["proximo_cursor"])
     assert [c["id"] for c in primeira["items"] + segunda["items"]] == ids
     assert segunda["proximo_cursor"] is None
-
-
-def test_poema_editado_deixa_a_ancora_de_uma_versao_anterior(client, como):
-    post_id = _poema(client, como)
-    _criticar(client, como, post_id, 4, 5)
-    _criticar(client, como, post_id, 1, 1)
-    novo = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nOutro verso novo,\noutro fim."
-    assert client.patch(f"/posts/{post_id}", json={"texto": novo}, headers=como("bia")).status_code == 200
-
-    itens = _raizes(client, como, post_id)["items"]
-    assert [(c["ancora"]["trecho"], c["ancora"]["atual"]) for c in itens] == [
-        ("As aves, que aqui gorjeiam,\n  Não gorjeiam como lá.", False),
-        ("  Minha terra tem palmeiras,", True),
-    ]
-    assert _marcas(client, como, post_id) == [(1, 1)]
-    assert _raizes(client, como, post_id, verso=4)["items"] == []
 
 
 def test_apagar_critica_e_poema_leva_as_ancoras(client, como):
