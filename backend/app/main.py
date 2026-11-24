@@ -24,6 +24,7 @@ from app.routers import (
     users,
 )
 from app.services.posts import reconstruir_indice
+from app.services.traducao import reconstruir_limite
 
 
 @asynccontextmanager
@@ -34,6 +35,7 @@ async def lifespan(app: FastAPI):
     with SessionLocal() as db:
         usernames = list(db.scalars(select(User.username)))
         reconstruir_indice(db)
+        reconstruir_limite(db)
     contador_iniciais.reconstruir(usernames)
     yield
 

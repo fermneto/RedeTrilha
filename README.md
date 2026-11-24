@@ -57,7 +57,8 @@ Se algum comando falhar, vejam o [guia 00](docs/guias/00-setup.md).
 O botão "Traduzir" do card traduz o poema para a língua do navegador com o
 Claude Haiku 5.5 (API da Anthropic), via `POST /posts/{id}/traduzir`. Cada
 tradução fica gravada na tabela `traducoes`: o mesmo poema na mesma língua só
-chama a API uma vez.
+chama a API uma vez. Cada usuário pode pedir até 30 traduções novas por hora
+(as que vêm do cache não contam); passou disso, a rota responde 429.
 
 A chave fica **só** na variável de ambiente `ANTHROPIC_API_KEY`. Nunca a
 escrevam num arquivo do repositório. Sem a chave, o resto do site funciona e a

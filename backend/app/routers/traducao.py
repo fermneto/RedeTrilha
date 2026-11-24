@@ -17,4 +17,4 @@ def traduzir(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.traduzir(db, post_id, pedido.para)
+    return service.traduzir(db, user, post_id, pedido.para)

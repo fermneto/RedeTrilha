@@ -20,6 +20,10 @@ class Traducao(Base):
     texto: Mapped[str] = mapped_column(Text)
     # Modelo que traduziu, para saber o que refazer se o modelo mudar.
     modelo: Mapped[str] = mapped_column(String(100))
+    # Quem pediu a tradução nova: reconstrói o limite por usuário no startup.
+    pedida_por_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"), default=None, index=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         default=lambda: datetime.now(timezone.utc)
     )

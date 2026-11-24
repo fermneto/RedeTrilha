@@ -205,3 +205,92 @@ def test_apagar_e_editar_o_poema_apagam_as_traducoes(client, logar, falso):
     assert _traducoes() == 1
     assert client.delete(f"/posts/{meu}", headers=ana).status_code == 204
     assert _traducoes() == 0
+
+
+def test_poema_novo_guarda_o_idioma_escolhido(client, logar):
+    ana = logar("ana")
+    r = client.post("/posts", json={"texto": "mi verso", "idioma": "es"}, headers=ana)
+    assert (r.status_code, r.json()["idioma"]) == (201, "es")
+    r = client.post("/posts", json={"texto": "???", "idioma": None}, headers=ana)
+    assert (r.status_code, r.json()["idioma"]) == (201, None)
+
+    r = client.patch(f"/posts/{r.json()['id']}", json={"idioma": "de"}, headers=ana)
+    assert (r.status_code, r.json()["idioma"]) == (200, "de")
+
+
+@pytest.mark.parametrize("idioma", ["PT", "por", "xx", "português", ""])
+def test_idioma_fora_da_iso_639_1_da_422_em_portugues(client, logar, idioma):
+    ana = logar("ana")
+    r = client.post("/posts", json={"texto": "verso", "idioma": idioma}, headers=ana)
+    assert r.status_code == 422
+    assert "ISO 639-1" in r.json()["detail"][0]["msg"]
+
+
+def test_mudar_o_idioma_apaga_as_traducoes(client, logar, falso):
+    ana = logar("ana")
+    meu = client.post("/posts", json={"texto": "verso"}, headers=ana).json()["id"]
+    client.post(f"/posts/{meu}/traduzir", json={"para": "en"}, headers=ana)
+    client.patch(f"/posts/{meu}", json={"idioma": "es"}, headers=ana)
+    assert _traducoes() == 0
+
+
+def test_janela_deslizante_libera_quando_o_evento_sai_da_janela():
+    from app.core.janela_deslizante import JanelaDeslizante
+
+    janela = JanelaDeslizante(limite=2, janela_segundos=60)
+    janela.registrar(1, 0)
+    janela.registrar(1, 30)
+    assert not janela.permitido(1, 59)
+    assert janela.permitido(2, 59)
+    assert janela.permitido(1, 60)
+
+    janela.reconstruir([(1, 100), (1, 90)])
+    assert not janela.permitido(1, 120)
+    assert janela.permitido(1, 151)
+
+
+def _linguas_menos_ingles(n: int) -> list[str]:
+    from app.schemas.idioma import IDIOMAS
+
+    return sorted(IDIOMAS - {"en"})[:n]
+
+
+def test_limite_de_30_traducoes_novas_por_hora(client, logar, falso):
+    ana, bia = logar("ana"), logar("bia")
+    post_id = _poema_em_ingles()
+    *trinta, trigesima_primeira = _linguas_menos_ingles(31)
+    for para in trinta:
+        r = client.post(f"/posts/{post_id}/traduzir", json={"para": para}, headers=ana)
+        assert r.status_code == 200
+
+    r = client.post(f"/posts/{post_id}/traduzir", json={"para": trigesima_primeira}, headers=ana)
+    assert (r.status_code, r.json()["detail"]) == (
+        429,
+        "limite de traduções atingido, tente mais tarde",
+    )
+    assert len(falso.pedidos) == 30
+
+    # A do cache não conta; outra pessoa tem o próprio limite.
+    r = client.post(f"/posts/{post_id}/traduzir", json={"para": trinta[0]}, headers=ana)
+    assert (r.status_code, r.json()["em_cache"]) == (200, True)
+    r = client.post(f"/posts/{post_id}/traduzir", json={"para": trigesima_primeira}, headers=bia)
+    assert r.status_code == 200
+
+
+def test_limite_sobrevive_ao_restart(client, logar, falso):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+
+    ana = logar("ana")
+    post_id = _poema_em_ingles()
+    *trinta, trigesima_primeira = _linguas_menos_ingles(31)
+    for para in trinta:
+        client.post(f"/posts/{post_id}/traduzir", json={"para": para}, headers=ana)
+
+    # Um TestClient novo roda o lifespan de novo, como um restart da API.
+    with TestClient(app) as reiniciado:
+        r = reiniciado.post(
+            f"/posts/{post_id}/traduzir", json={"para": trigesima_primeira}, headers=ana
+        )
+    assert r.status_code == 429
