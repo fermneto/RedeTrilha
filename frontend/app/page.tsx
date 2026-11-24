@@ -16,7 +16,7 @@ import { QuemSeguirNoFeed } from "@/components/QuemSeguirNoFeed";
 import { buscarFeed, buscarParaVoce, caminhoDoLogin, temToken } from "@/lib/api";
 
 const POR_PAGINA = 20;
-// PROVISÓRIO: o bloco "Quem seguir" entra no "Para você" depois de cada tantos itens.
+// O bloco "Quem seguir" entra no "Para você" a cada 10 itens.
 const QUEM_SEGUIR_A_CADA = 10;
 const QUEM_SEGUIR = { cada: QUEM_SEGUIR_A_CADA, bloco: (i: number) => <QuemSeguirNoFeed indice={i} /> };
 

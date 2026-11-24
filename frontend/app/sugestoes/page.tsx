@@ -20,7 +20,7 @@ import {
   type Sugestao,
 } from "@/lib/api";
 
-// PROVISÓRIO: quantos cartões por vez (a grade de 2 colunas fecha sem sobra).
+// Cartões por carga: a grade de 2 colunas fecha sem sobra.
 const POR_PAGINA = 12;
 
 export default function SugestoesPage() {
