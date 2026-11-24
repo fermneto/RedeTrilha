@@ -33,6 +33,17 @@ function headers(): HeadersInit {
   return h;
 }
 
+// Erro de resposta não-ok: a mensagem é o `detail` do backend, e o status fica
+// disponível para quem precisa distinguir (ex.: 404 = não existe mais).
+export class ErroDaApi extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message);
+  }
+}
+
 // O `detail` do FastAPI: texto (HTTPException) ou, no 422 do pydantic, uma lista
 // de erros com `msg`. As mensagens dos validadores vêm com "Value error, " na frente.
 function mensagemDoErro(detail: unknown): string | null {
@@ -62,7 +73,7 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   if (!res.ok) {
     // 422 = corpo inválido; 409 = conflito (ex.: username repetido). Ver guia 04.
     const erro = await res.json().catch(() => null);
-    throw new Error(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`);
+    throw new ErroDaApi(mensagemDoErro(erro?.detail) ?? `${method} ${path} → ${res.status}`, res.status);
   }
 
   // 204 No Content (seguir, curtir, apagar...) não tem corpo: não há JSON para ler.
