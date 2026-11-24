@@ -7,7 +7,8 @@ from sqlalchemy import select
 from app.core.contadores import contador_iniciais
 from app.db import Base, SessionLocal, engine
 from app.models.user import User
-from app.routers import follows, users
+from app.routers import follows, posts, users
+from app.services.posts import reconstruir_indice
 
 
 @asynccontextmanager
@@ -17,6 +18,7 @@ async def lifespan(app: FastAPI):
     # restart — inclusive no --reload; ver core/README.md).
     with SessionLocal() as db:
         usernames = list(db.scalars(select(User.username)))
+        reconstruir_indice(db)
     contador_iniciais.reconstruir(usernames)
     yield
 
@@ -34,3 +36,4 @@ app.add_middleware(
 # 1 linha por feature — registre o seu router aqui.
 app.include_router(users.router)
 app.include_router(follows.router)
+app.include_router(posts.router)
