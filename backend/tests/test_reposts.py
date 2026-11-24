@@ -175,3 +175,100 @@ def test_feed_mostra_citacao_de_poema_removido(client, como):
 
     [item] = client.get("/feed", headers=como("ana")).json()["items"]
     assert (item["texto"], item["repost_removido"]) == ("cito", True)
+
+
+def test_curtir_um_repost_puro_curte_o_original(client, como):
+    original = _poema(client, como)
+    client.post(f"/posts/{original}/repostar", headers=como("caio"))
+    [repost] = _reposts_puros("caio")
+
+    assert client.post(f"/posts/{repost.id}/curtir", headers=como("ana")).status_code == 204
+    r = client.get(f"/posts/{original}", headers=como("ana"))
+    assert (r.json()["curtidas"], r.json()["curti"]) == (1, True)
+    assert client.get(f"/posts/{repost.id}", headers=como("ana")).json()["curtidas"] == 0
+
+    assert client.delete(f"/posts/{repost.id}/curtir", headers=como("ana")).status_code == 204
+    r = client.get(f"/posts/{original}", headers=como("ana"))
+    assert (r.json()["curtidas"], r.json()["curti"]) == (0, False)
+
+
+def test_curtir_uma_citacao_curte_a_citacao(client, como):
+    original = _poema(client, como)
+    citacao = client.post(
+        "/posts", json={"texto": "cito", "repost_de_id": original}, headers=como("caio")
+    ).json()["id"]
+
+    client.post(f"/posts/{citacao}/curtir", headers=como("ana"))
+    assert client.get(f"/posts/{citacao}", headers=como("ana")).json()["curtidas"] == 1
+    assert client.get(f"/posts/{original}", headers=como("ana")).json()["curtidas"] == 0
+
+
+def test_citar_uma_citacao_aponta_para_a_citacao(client, como):
+    original = _poema(client, como)
+    citacao = client.post(
+        "/posts", json={"texto": "cito", "repost_de_id": original}, headers=como("caio")
+    ).json()["id"]
+
+    r = client.post(
+        "/posts", json={"texto": "cito a citação", "repost_de_id": citacao}, headers=como("ana")
+    )
+    assert r.json()["repost_de_id"] == citacao
+
+
+def test_desfazer_pelo_id_do_repost_de_outra_pessoa_desfaz_o_proprio(client, como):
+    original = _poema(client, como)
+    client.post(f"/posts/{original}/repostar", headers=como("caio"))
+    client.post(f"/posts/{original}/repostar", headers=como("ana"))
+    [repost_do_caio] = _reposts_puros("caio")
+
+    r = client.delete(f"/posts/{repost_do_caio.id}/repostar", headers=como("ana"))
+    assert r.status_code == 204
+    assert _reposts_puros("ana") == []
+    assert len(_reposts_puros("caio")) == 1
+
+
+def test_indice_unico_barra_repost_puro_duplicado(client, como):
+    from sqlalchemy.exc import IntegrityError
+
+    from app.db import SessionLocal
+    from app.models.post import Post
+    from app.services.users import buscar_por_username
+
+    original = _poema(client, como)
+    with SessionLocal() as db:
+        ana = buscar_por_username(db, "ana").id
+        db.add_all(
+            [
+                Post(autor_id=ana, texto="cito 1", repost_de_id=original),
+                Post(autor_id=ana, texto="cito 2", repost_de_id=original),
+                Post(autor_id=ana, texto="", repost_de_id=original),
+            ]
+        )
+        db.commit()
+        db.add(Post(autor_id=ana, texto="", repost_de_id=original))
+        with pytest.raises(IntegrityError):
+            db.commit()
+
+
+def test_repostar_em_corrida_vale_como_ja_repostado(client, como, monkeypatch):
+    from app.services import reposts
+
+    original = _poema(client, como)
+    client.post(f"/posts/{original}/repostar", headers=como("ana"))
+    # Simula a outra chamada simultânea: a checagem não vê o repost que já existe.
+    monkeypatch.setattr(reposts, "_repost_puro", lambda db, usuario, original_id: None)
+
+    assert client.post(f"/posts/{original}/repostar", headers=como("ana")).status_code == 204
+    assert len(_reposts_puros("ana")) == 1
+
+
+def test_explorar_nao_lista_reposts_puros(client, como):
+    original = _poema(client, como, texto="um soneto")
+    client.post(f"/posts/{original}/repostar", headers=como("ana"))
+    citacao = client.post(
+        "/posts", json={"texto": "cito", "repost_de_id": original}, headers=como("caio")
+    ).json()["id"]
+
+    r = client.get("/explorar", headers=como("ana"))
+    assert r.json()["total"] == 2
+    assert [p["id"] for p in r.json()["items"]] == [citacao, original]
