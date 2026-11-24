@@ -73,6 +73,8 @@ def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoO
 
     Sem respostas, sai do banco. Devolve qual dos dois aconteceu e o total de
     respostas, que pode ser maior que o da tela (alguém respondeu depois).
+    Um marcador já removido continua como marcador para sempre (decisão do
+    Neto): apagar de novo não faz nada.
     """
     comentario = _buscar(db, comentario_id)
     if comentario.autor_id != usuario.id:
@@ -80,6 +82,8 @@ def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoO
     total = db.scalar(
         select(func.count()).select_from(Comentario).where(Comentario.parent_id == comentario_id)
     )
+    if comentario.removido:
+        return ComentarioApagadoOut(resultado="removido", total_respostas=total)
     if total == 0:
         db.execute(delete(Comentario).where(Comentario.id == comentario_id))
         resultado = "apagado"
