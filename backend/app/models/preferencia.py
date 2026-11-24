@@ -1,13 +1,10 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy import JSON, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datas import agora_utc
 from app.db import Base
-
-
-def _agora() -> datetime:
-    return datetime.now(timezone.utc)
 
 
 class Preferencia(Base):
@@ -28,4 +25,4 @@ class Preferencia(Base):
     # ISO 3166-1 alfa-2; a UF só com o Brasil.
     pais: Mapped[str | None] = mapped_column(String(2), default=None)
     uf: Mapped[str | None] = mapped_column(String(2), default=None)
-    updated_at: Mapped[datetime] = mapped_column(default=_agora, onupdate=_agora)
+    updated_at: Mapped[datetime] = mapped_column(default=agora_utc, onupdate=agora_utc)

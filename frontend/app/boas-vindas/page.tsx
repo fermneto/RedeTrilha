@@ -32,10 +32,11 @@ import {
   caminhoDoLogin,
   destinoSeguro,
   ehTelaDeBoasVindas,
-  passoInicial,
-  passosDasPreferencias,
+  mensagemDeFalha,
   nomeDaForma,
   nomeDoPais,
+  passoInicial,
+  passosDasPreferencias,
   QUEM_SEGUIR_NO_ONBOARDING,
   salvarPreferencias,
   temToken,
@@ -91,7 +92,7 @@ function BoasVindas() {
         setOpcoes(o);
         setPrefs(p);
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar as opções"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as opções")));
     // Só para a saudação do primeiro passo; sem o nome, ela fica sem ele.
     buscarEu()
       .then((eu) => setNome(eu.name))
@@ -136,7 +137,7 @@ function BoasVindas() {
       setPrefs(await salvarPreferencias(prefs));
       avancar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para salvar");
+      setErro(mensagemDeFalha(e, "não deu para salvar"));
     } finally {
       setSalvando(false);
     }
