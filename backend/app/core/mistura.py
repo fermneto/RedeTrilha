@@ -1,7 +1,7 @@
-"""A mistura do feed "Para você" e das sugestões de quem seguir, em Python puro.
+"""A mistura do feed "Para você", em Python puro.
 
-O "Para você" junta atividades de toda a rede (poemas publicados, estrofes de
-rengas abertas, comentários e críticas) numa linha do tempo só, cronológica
+O "Para você" junta atividades de toda a rede (poemas publicados, reposts
+puros, estrofes de rengas abertas, comentários e críticas) numa linha do tempo só, cronológica
 pela atividade, sem ranking por engajamento (decisão 3). Três passos:
 
 1. `rarear_consagrados`: os consagrados têm milhares de poemas espalhados pelos
@@ -12,59 +12,58 @@ pela atividade, sem ranking por engajamento (decisão 3). Três passos:
 2. `misturar`: ordena da atividade mais recente para a mais antiga e deixa um
    item por poema ou renga, na atividade mais recente, como um repost no X. O
    item guarda quem fez as atividades do mesmo tipo da que o subiu (quem
-   comentou, quem escreveu estrofe), a mais recente primeiro.
+   repostou, quem comentou, quem escreveu estrofe), a mais recente primeiro.
 3. O service pagina a lista com o cursor (data, chave), como o feed Seguindo.
 
 Desempate: atividades de tabelas diferentes podem ter o mesmo id e a mesma
-data; a `chave` (3·id + 2 para poema, 3·id + 1 para estrofe, 3·id para
-comentário) é única entre as três e crescente com o id dentro de cada uma.
+data; a `chave` (3·id + 2 para post, poema ou repost puro, 3·id + 1 para
+estrofe, 3·id para comentário) é única entre as três e crescente com o id dentro de cada uma.
 
 Montada por request, como `arvore_comentarios.py`: não é singleton. Com n =
 atividades carregadas:
 
 - rarear: O(n), um dict janela -> poema mais recente;
-- misturar: O(n log n) pela ordenação, mais O(n) para deduplicar;
-- intercalar (sugestões): O(a + b).
+- misturar: O(n log n) pela ordenação, mais O(n) para deduplicar.
 
 Memória O(n).
 """
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Literal, TypeVar
+from typing import Literal
 
 from app.core.datas import para_utc
 
 TipoDoItem = Literal["poema", "renga"]
-# "publicou": o poema em si. "comentou" / "criticou": um comentário (com âncora
+# "publicou": o poema em si. "repostou": um repost puro dele. "comentou" / "criticou": um comentário (com âncora
 # nos versos, é crítica). "abriu" / "escreveu": uma estrofe do criador da renga
 # ou de outra pessoa.
-Acao = Literal["publicou", "comentou", "criticou", "abriu", "escreveu"]
+Acao = Literal["publicou", "repostou", "comentou", "criticou", "abriu", "escreveu"]
 
 _DESEMPATE: dict[Acao, int] = {
     "publicou": 2,
+    "repostou": 2,
     "abriu": 1,
     "escreveu": 1,
     "comentou": 0,
     "criticou": 0,
 }
 
-# Ações que juntam várias pessoas no rótulo ("ana e bia comentaram").
+# Ações que juntam várias pessoas no rótulo ("repostado por ana e bia",
+# "ana e bia comentaram").
 _ROTULO_COLETIVO: dict[Acao, tuple[Acao, ...]] = {
+    "repostou": ("repostou",),
     "comentou": ("comentou", "criticou"),
     "criticou": ("comentou", "criticou"),
     "escreveu": ("escreveu",),
 }
 
-T = TypeVar("T")
-
-
 @dataclass(frozen=True)
 class Atividade:
     """Algo que aconteceu num poema ou numa renga.
 
-    `origem_id` é o id da linha que gerou a atividade (o poema, a estrofe ou o
-    comentário) e `alvo_id` o do item mostrado (o poema ou a renga).
+    `origem_id` é o id da linha que gerou a atividade (o poema, o repost puro,
+    a estrofe ou o comentário) e `alvo_id` o do item mostrado (o poema ou a renga).
     """
 
     tipo: TipoDoItem
@@ -119,8 +118,8 @@ def misturar(atividades: list[Atividade]) -> list[ItemMisturado]:
     """Um item por poema ou renga, na atividade mais recente, mais novo primeiro.
 
     `por` é quem fez as atividades do mesmo tipo da que subiu o item, a mais
-    recente primeiro e sem repetir: quem comentou ou criticou, quem escreveu
-    estrofe. Poema que subiu pela publicação vem com `por` vazio; renga que subiu
+    recente primeiro e sem repetir: quem repostou, quem comentou ou criticou,
+    quem escreveu estrofe. Poema que subiu pela publicação vem com `por` vazio; renga que subiu
     por estrofe do criador ("abriu") traz só o criador.
     """
     ordenadas = sorted(atividades, key=lambda a: a.posicao, reverse=True)
@@ -138,10 +137,3 @@ def misturar(atividades: list[Atividade]) -> list[ItemMisturado]:
             item.por.append(atividade.autor_id)
     return list(itens.values())
 
-
-def intercalar(primeira: list[T], segunda: list[T]) -> list[T]:
-    """Um de cada, começando pela primeira; quando uma acaba, segue a outra. O(a + b)."""
-    juntas: list[T] = []
-    for i in range(max(len(primeira), len(segunda))):
-        juntas.extend(lista[i] for lista in (primeira, segunda) if i < len(lista))
-    return juntas
