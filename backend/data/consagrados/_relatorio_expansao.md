@@ -354,14 +354,42 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | — | — |
 
+## Bloco: Ásia oriental
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| — | nenhum |  |  |  |  |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| — | — |  |  |  |  |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| Li Bai, Du Fu, Wang Wei, Qu Yuan, Bashō, Buson, Issa | Não apareceu uma edição legível isolada em domínio público. As categorias de autor no Wikisource chinês e japonês passam de 400 páginas e não cabem como um livro só neste passe. Os poemas originais já importados ficam. |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
 JSON na pasta (exceto ficheiros `_`): 155 poetas, 11236 poemas.
 
-`make reset` depois das Américas não hispânicas:
+`make reset` depois da Ásia oriental (não acrescentou poemas):
 
 ```
 consagrados: 155 poetas criados, 0 atualizados; 11236 poemas criados, 0 atualizados
 ```
 
-Phillis Wheatley, Émile Nelligan e Louis Fréchette entraram com um livro cada. O Rubaiyat de FitzGerald e a antiguidade latina já estavam contados no passo anterior.
+Wheatley, Nelligan e Fréchette estão neste total. Nova tentativa ao Gutenberg e ao gutendex, no fim: Gutenberg 503, gutendex sem resposta. Eugénio de Castro e os portugueses sem coleção no pt.wikisource continuam sem texto de fonte aceite.
