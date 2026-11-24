@@ -8,7 +8,7 @@ import { useEffect, useId, useState } from "react";
 
 import { anosDeVida, type User } from "@/lib/api";
 
-export const ROTULO_CONSAGRADO = "Poeta consagrado (domínio público)";
+const ROTULO_CONSAGRADO = "Poeta consagrado (domínio público)";
 
 // Largura máxima do tooltip (max-w-56) e folga mínima até a borda da tela.
 const LARGURA_DO_TOOLTIP = 224;

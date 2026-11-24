@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import { buscarEu, destinoSeguro, entrar, ErroDaApi, salvarToken, temToken } from "@/lib/api";
+import { buscarEu, destinoSeguro, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
 
 // useSearchParams precisa de Suspense no build estático do Next.
 export default function LoginPage() {
@@ -48,7 +48,7 @@ function Login() {
       router.replace(destino);
     } catch (err) {
       if (err instanceof ErroDaApi && err.status === 401) setErro("username ou senha incorretos");
-      else setErro(err instanceof Error ? err.message : "não deu para entrar");
+      else setErro(mensagemDeFalha(err, "não deu para entrar"));
       setEnviando(false);
     }
   }

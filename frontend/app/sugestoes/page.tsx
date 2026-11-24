@@ -22,6 +22,7 @@ import {
   buscarSugestoes,
   CAMINHO_DOS_GOSTOS,
   caminhoDoLogin,
+  mensagemDeFalha,
   POR_PAGINA_DO_ACERVO,
   temToken,
   type PoetaDoAcervo,
@@ -66,7 +67,7 @@ export default function SugestoesPage() {
       setTotal(pagina.total);
     } catch (e) {
       if (meu !== pedido.current) return;
-      setErro(e instanceof Error ? e.message : q ? "não deu para buscar" : "não deu para carregar as sugestões");
+      setErro(mensagemDeFalha(e, q ? "não deu para buscar" : "não deu para carregar as sugestões"));
     } finally {
       if (meu === pedido.current) setCarregando(false);
     }

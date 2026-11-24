@@ -1,15 +1,12 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 from sqlalchemy import JSON, ColumnElement, ForeignKey, Index, String, Text, and_, text
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datas import agora_utc
 from app.db import Base
 from app.models.user import User
-
-
-def _agora() -> datetime:
-    return datetime.now(timezone.utc)
 
 
 class Post(Base):
@@ -47,8 +44,8 @@ class Post(Base):
     )
     # Citação cujo original foi apagado: o `repost_de_id` vira None e isto fica True.
     repost_removido: Mapped[bool] = mapped_column(default=False)
-    created_at: Mapped[datetime] = mapped_column(default=_agora, index=True)
-    updated_at: Mapped[datetime] = mapped_column(default=_agora, onupdate=_agora)
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc, index=True)
+    updated_at: Mapped[datetime] = mapped_column(default=agora_utc, onupdate=agora_utc)
 
     autor: Mapped[User] = relationship(lazy="joined")
     repost_de: Mapped["Post | None"] = relationship(remote_side=[id])

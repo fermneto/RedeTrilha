@@ -11,7 +11,7 @@ import { LinhaPoeta } from "@/components/ColunaDireita";
 import { buscarSugestoes, type Sugestao } from "@/lib/api";
 
 // Perfis em cada bloco "Quem seguir" do feed.
-export const PERFIS_NO_BLOCO = 3;
+const PERFIS_NO_BLOCO = 3;
 
 export function QuemSeguirNoFeed({ indice }: { indice: number }) {
   const [contas, setContas] = useState<Sugestao[]>([]);

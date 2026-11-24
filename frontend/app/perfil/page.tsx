@@ -5,7 +5,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { buscarEu, caminhoDoLogin, temToken } from "@/lib/api";
+import { buscarEu, caminhoDoLogin, mensagemDeFalha, temToken } from "@/lib/api";
 
 export default function MeuPerfilPage() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function MeuPerfilPage() {
     }
     buscarEu()
       .then((eu) => router.replace(`/u/${eu.username}`))
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para abrir o perfil"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para abrir o perfil")));
   }, [router]);
 
   if (erro) return <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>;
