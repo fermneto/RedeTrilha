@@ -44,17 +44,17 @@ As validações do Henrique e do Pedro ficam nas issues #57 a #62.
 
 ## Produto (rascunho para o `DECISIONS.md`)
 
-- **Público:** poetas iniciantes universitários (UFPB e outras) que escrevem e
-  não têm onde publicar.
+- **Público:** pessoas que leem e escrevem poesia e querem publicar o poema
+  inteiro e conversar sobre ele (a versão final está no `DECISIONS.md`).
 - **Problema:** no X o limite de caracteres quebra o poema; no Instagram o poema
   vira imagem e não dá para citar um verso; os feeds algorítmicos enterram texto
-  longo. Além disso, o iniciante lê pouco os clássicos.
+  longo. Além disso, quase ninguém lê os clássicos ao lado do que escreve.
 - **Como a rede resolve:** um poema é um post de verdade (título, corpo sem
   limite com as quebras de linha preservadas, forma), com conversa em árvore,
   repost/citação de versos e os **consagrados** (Augusto dos Anjos, Bilac,
   Pessoa...) convivendo no mesmo feed.
-- **Sinal de sucesso:** o iniciante cita um verso de um consagrado ou de um
-  colega e recebe respostas na árvore de comentários.
+- **Sinal de sucesso:** alguém cita um verso de um consagrado ou de outro
+  poeta da rede e recebe respostas na árvore de comentários.
 
 ## Divisão
 
@@ -302,7 +302,7 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 ### Acervo (dono: Neto)
 
-- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `iniciantes`), `q`
+- `GET /acervo` 🔒, com `tipo` (`todos` \| `consagrados` \| `do_verso`), `q`
   (nome ou @username, sem diferença de acento), `lingua` (ISO 639-1), `epoca`
   (`antiguidade`, `idade_media`, `xvi` … `xx`, pelo ano de morte), `ordem`
   (`alfabetica` \| `seguidos` \| `poemas`), `offset` e `limit` (padrão 24) →
@@ -431,7 +431,7 @@ Os IDs são usados nas issues e nos PRs (`[H1] posts CRUD`).
 | N1 | Follow: model `Follow` (`follows`), `POST/DELETE /usuarios/{username}/follow` idempotentes, listas e a função de contagem usada pelo perfil | P0 | H2, P4 | concluída |
 | N2 | **Consagrados**: scraping (fora do repositório) → JSON no formato de `docs/consagrados.md` → `scripts/importar_consagrados.py` idempotente (cria o user sem senha e os poemas) | P1 (campos do User), H1 | N4, N5 | concluída |
 | N3 | **Formas/temas**: índice invertido real em `core/indice_tags.py`, `GET /tags/{tag}/posts`, `GET /tags/trending`, `GET /explorar?tag=&forma=`; tela Explorar com chips de forma e tags clicáveis | H1, H6 (card) | — | concluída |
-| N4 | Seed fake do nicho: mais de 20 poetas iniciantes fictícios (cursos da UFPB na bio), mais de 50 poemas originais, follows (inclusive a consagrados), curtidas, comentários em árvore, reposts e citações; `seed_fake(db)` e `make seed` também importa os consagrados | todos os models (H1, H3, H4, H5, N1, P5) | N5 | concluída |
+| N4 | Seed fake do nicho: mais de 20 poetas fictícios de vários lugares e idades (alguns universitários), mais de 50 poemas originais, follows (inclusive a consagrados), curtidas, comentários em árvore, reposts e citações; `seed_fake(db)` e `make seed` também importa os consagrados | todos os models (H1, H3, H4, H5, N1, P5) | N5 | concluída |
 | N5 | Deploy: Render (backend, `SEED_ON_BOOT=true`, **sem DEBUG**) + Vercel (front) + Supabase (Postgres), CORS com a URL pública | N4 | bônus +10 | pendente, com o Neto (#19) |
 | N6 | Consolidar o `DECISIONS.md` (produto, decisões, escolha técnica e, opcional, `make bench` do índice invertido contra varredura) | — | entrega | concluída |
 

@@ -7,18 +7,31 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ## Produto
 
-- **Público:** poetas iniciantes universitários, principalmente da UFPB. São
-  estudantes de Letras, mas também de Engenharia, Medicina, Computação e Direito,
-  que escrevem no caderno ou no bloco de notas do celular e não têm onde
-  publicar o poema inteiro e ser lidos por quem também escreve.
+- **Público:** pessoas que leem e escrevem poesia e querem publicar o poema
+  inteiro e conversar sobre ele. Não é um grupo de idade nem de profissão: o
+  que une essas pessoas é o hábito de escrever poemas e de ler os dos outros.
+  - **Quem são:** a estudante de Letras que escreve no caderno, a professora
+    aposentada que relê Camões e escreve sonetos à mão, o motorista que faz
+    cordel no ponto final, o engenheiro que escreve haicai no ônibus, a mãe que
+    lê Florbela no recreio da escola onde ensina, o aluno do ensino médio que
+    guarda poemas no bloco de notas do celular.
+  - **O que fazem hoje:** escrevem no caderno ou no celular e mostram a um ou
+    dois amigos. Quando publicam, partem o soneto num fio no X ou postam o
+    poema como imagem no Instagram. Leem os clássicos num livro ou num PDF, e
+    os versos que circulam nas redes vêm soltos, sem poema nem autor.
+  - **O que falta:** um lugar onde o poema apareça inteiro, como foi escrito,
+    e onde a resposta seja sobre o poema: sobre um verso, uma rima, uma imagem.
+    E onde o poema de quem escreve hoje e o dos clássicos estejam no mesmo
+    feed.
 - **Problema:**
   - No X, o limite de caracteres obriga a partir um soneto em fio.
   - No Instagram, o poema vira imagem: não dá para copiar nem citar um verso, e
     o texto não aparece numa busca.
-  - Feeds ranqueados por engajamento enterram texto longo, e um iniciante com
-    poucos seguidores nunca é visto.
-  - Além disso, o iniciante lê pouco os clássicos e quase nunca os lê ao lado
-    do que ele mesmo escreve.
+  - Feeds ranqueados por engajamento enterram texto longo, e quem escreve
+    poemas e tem poucos seguidores nunca é visto.
+  - Além disso, os clássicos ficam num lugar (o livro, o PDF) e o que se
+    escreve fica em outro: quase ninguém lê os clássicos ao lado do que ele
+    mesmo escreve.
 - **Como a rede resolve:**
   - O post é o poema: título opcional, corpo sem limite, com as quebras, as
     estrofes e os recuos preservados, e uma forma (soneto, haicai, cordel...).
@@ -30,23 +43,23 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
   - Quem escreve tem uma oficina no compositor (sílabas poéticas e esquema
     de rimas, desligáveis) e rascunhos privados. O poema só vai a público
     quando está pronto, e publicado não muda mais.
-  - A renga, o poema colaborativo, faz a turma escrever junto, estrofe por
-    estrofe.
+  - A renga, o poema colaborativo, faz várias pessoas escreverem um poema
+    junto, estrofe por estrofe.
   - 155 poetas consagrados em domínio público (11.236 poemas, no original, em 20
     línguas) estão no mesmo feed, como contas que se seguem. A tradução por IA
     sai com um clique.
-- **Como saberíamos que funcionou:** um iniciante cita um verso de um
-  consagrado ou de um colega e recebe respostas na árvore de comentários. Isso
-  dá para contar no banco: citações (`repost_de_id` com texto) que têm
-  comentários de outra pessoa. Ainda não temos usuários reais, então não temos
-  esse número.
+- **Como saberíamos que funcionou:** alguém cita um verso de um consagrado ou
+  de outro poeta da rede e recebe respostas de outra pessoa na árvore de
+  comentários. Isso dá para contar no banco: citações (`repost_de_id` com
+  texto) que têm comentários de outra pessoa. Ainda não temos usuários reais,
+  então não temos esse número.
 
 ## Decisões de produto
 
 ### 1. O poema inteiro como unidade, não um post curto
 
-- **Contexto:** o iniciante escreve sonetos de 14 versos, poemas em verso
-  livre de duas páginas e haicais de três linhas. A quebra de linha faz parte
+- **Contexto:** quem escreve poesia escreve sonetos de 14 versos, poemas em
+  verso livre de duas páginas e haicais de três linhas. A quebra de linha faz parte
   do poema, e o recuo também.
 - **Opções:** um post curto com limite, como no template, ou um post que é um
   poema, com campos próprios.
@@ -68,7 +81,7 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 ### 2. Os consagrados no feed, no original e com tradução por IA
 
 - **Contexto:** queríamos que Augusto dos Anjos aparecesse no feed ao lado do
-  poema do colega de Letras, e não numa biblioteca à parte.
+  soneto que alguém publicou hoje, e não numa biblioteca à parte.
 - **Opções:** uma biblioteca separada de clássicos; trechos soltos sem autor;
   ou os poetas como contas de verdade.
 - **Escolha:**
@@ -109,7 +122,8 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 ### 3. Feed cronológico; descoberta por formas e temas
 
 - **Contexto:** feeds ranqueados por engajamento premiam o que é curto e
-  chamativo. O iniciante, com poucos seguidores, nunca chegaria ao topo.
+  chamativo. Quem escreve poemas e tem poucos seguidores nunca chegaria ao
+  topo.
 - **Opções:** um feed ranqueado por curtidas, um feed cronológico, ou
   cronológico mais um jeito de descobrir poemas fora da bolha.
 - **Escolha:**
@@ -122,12 +136,12 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     clicáveis. O **Explorar** filtra por tag e por chips de forma (inclusive
     "outras formas"). A tag é normalizada, então `#Solidão` acha `#solidao`.
   - **"Em alta"** mostra as tags com mais poemas nas últimas 24 horas, ou seja,
-    sobre o que a turma está escrevendo, e não quem tem mais curtidas.
+    sobre o que a rede está escrevendo, e não quem tem mais curtidas.
   - **Poema do dia:** um poema de consagrado, o mesmo para todos no mesmo dia
     (o hash da data escolhe o poema).
 - **O que cortamos e por quê:** qualquer ranking por engajamento ("mais
-  curtidos da semana"). Quem abre a rede quer ler o que os colegas escreveram
-  hoje, e quem procura algo novo procura "um haicai sobre chuva", não o post
+  curtidos da semana"). Quem abre a rede quer ler o que as pessoas que segue
+  escreveram hoje, e quem procura algo novo procura "um haicai sobre chuva", não o post
   mais curtido.
 
 ### 4. Citar um verso e conversar sobre o poema
@@ -160,13 +174,14 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 - **Escolha:**
   - Antologias com nome, descrição e o switch **pública/privada** (pública é o
     padrão).
-  - Elas aceitam qualquer poema: de colega, de consagrado ou citação.
+  - Elas aceitam qualquer poema: de outro poeta da rede, de consagrado ou
+    citação.
   - O card tem a ação "adicionar à antologia", que já mostra em quais
     antologias o poema está.
   - As públicas aparecem numa aba do perfil. Uma privada de outra pessoa dá
     404, para não revelar que existe.
 - **O que cortamos e por quê:** reordenar os poemas. A ordem é a de inserção,
-  e uma antologia já ajuda o iniciante a mostrar o que lê sem uma tela a mais
+  e uma antologia já ajuda o leitor a mostrar o que lê sem uma tela a mais
   para arrastar poemas.
 
 ### 6. Visual de leitura e dados que não somem
@@ -219,9 +234,9 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ### 8. A oficina no compositor: sílabas e rimas, desligáveis
 
-- **Contexto:** o iniciante que tenta um soneto não sabe se o verso tem 10
-  sílabas poéticas nem qual é o esquema de rimas. Mas muitos escrevem em verso
-  livre, e marcar sílabas em todo poema seria tratar a métrica como regra.
+- **Contexto:** quem tenta um soneto nem sempre sabe se o verso tem 10
+  sílabas poéticas nem qual é o esquema de rimas, e quem sabe contar quer
+  conferir sem contar nos dedos. Mas muitos escrevem em verso livre, e marcar sílabas em todo poema seria tratar a métrica como regra.
 - **Opções:** nenhuma ajuda; um validador que bloqueia o poema fora da forma;
   ou marcas ao lado dos versos que o poeta liga e desliga.
 - **Escolha:**
@@ -249,8 +264,8 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ### 9. Rascunhos privados e o poema publicado imutável
 
-- **Contexto:** o iniciante reescreve o poema muitas vezes antes de mostrar a
-  alguém. E a crítica ancorada (decisão 7) e as citações apontam para versos
+- **Contexto:** quem escreve reescreve o poema muitas vezes antes de mostrar
+  a alguém. E a crítica ancorada (decisão 7) e as citações apontam para versos
   exatos: se o poema mudasse depois, a crítica do verso 6 passaria a falar de
   outro verso.
 - **Opções:** editar o poema publicado com um histórico de versões; marcar
@@ -273,11 +288,12 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
     quem apaga para corrigir. A conversa sobre um verso só vale se o verso
     continua lá.
 
-### 10. A renga: o poema escrito pela turma
+### 10. A renga: o poema escrito a várias mãos
 
 - **Contexto:** a renga japonesa é um poema escrito em cadeia, cada poeta
-  respondendo à estrofe anterior. É o exercício de oficina que mais faz um
-  iniciante escrever, e ele escreve para alguém, não para a gaveta.
+  respondendo à estrofe anterior. É um exercício clássico de oficina: faz
+  escrever quem anda sem tempo ou sem assunto, e cada um escreve para alguém,
+  não para a gaveta.
 - **Opções:** só comentários; um "poema colaborativo" sem regra; ou uma renga
   com regras simples.
 - **Escolha:**
@@ -310,16 +326,16 @@ time, e o registro de cada uma está nos PRs, na seção "Decisões do Neto".
 
 ### O que ficou de fora e por quê
 
-Cada corte foi pensado para o poeta iniciante, em 12 dias de prazo (16/11 a 27/11), com o código a partir de 23/11.
+Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo (16/11 a 27/11), com o código a partir de 23/11.
 
 - **Mensagens diretas.** A crítica de um poema serve a quem a lê também. Numa
-  DM, ela sai do lugar onde os outros iniciantes aprendem com ela. A conversa
+  DM, ela sai do lugar onde os outros leitores aprendem com ela. A conversa
   fica na árvore de comentários, que é pública.
 - **Stories.** Somem em 24 horas, e um poema é feito para ficar. Seria também
   o formato da imagem, que é exatamente o problema do Instagram.
 - **Enquetes.** Não ajudam ninguém a escrever nem a ser lido.
 - **Notificações.** Custariam dias (eventos, contagem de não lidas, tela) e
-  trariam de volta a lógica do engajamento. O iniciante volta para ler o feed,
+  trariam de volta a lógica do engajamento. Quem escreve volta para ler o feed,
   e as respostas estão na página do poema.
 - **Busca por palavra.** A busca é por tag e por forma, pelo índice invertido.
   Busca de texto livre em poemas sem limite pediria um índice de texto
@@ -339,8 +355,8 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Auth (núcleo) | Pedro | Consagrados existem como contas sem login; o resto entra com senha. |
 | Cadastro e login (telas) | Pedro | O fluxo do vídeo começa aqui, com erros em português no campo certo. |
 | Posts/poemas (núcleo) | Henrique | Título, corpo sem limite e forma: o poema como unidade, não como tweet. |
-| Feed (núcleo) | Henrique | Cronológico e com reposts como no X: o iniciante vê o que os colegas escreveram hoje. |
-| Curtidas (núcleo) | Henrique | Feedback mínimo para quem está começando. |
+| Feed (núcleo) | Henrique | Cronológico e com reposts como no X: você vê o que quem você segue escreveu hoje. |
+| Curtidas (núcleo) | Henrique | Um retorno mínimo para quem publica, sem virar ranking. |
 | Comentários em árvore | Henrique | A crítica de poema vira conversa, não uma lista solta. |
 | Repost + citação | Henrique | Citar um verso é o gesto central de quem lê poesia. |
 | PoemaCard, compositor e página do poema | Henrique | Quebras e recuos preservados na tela, e o poema longo cortado no fim da estrofe. |
@@ -348,14 +364,14 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Layout em 3 colunas e tipografia | Pedro | Uma coluna de leitura em Literata e a coluna Descobrir ao lado. |
 | Antologias | Pedro | O leitor monta coleções ("Poemas de chuva"), como uma antologia de verdade. |
 | Follow (núcleo) | Neto | Seguir um consagrado traz os clássicos para o feed. |
-| Seed fake (núcleo) | Neto | A demo abre com 24 poetas universitários fictícios e 68 poemas em todas as formas. |
-| Consagrados (importador e dados) | Neto | 155 poetas de domínio público, no original, convivem com os iniciantes. |
-| Formas/temas, Em alta e Explorar | Neto | Descobrir sonetos, haicais e temas, e ver sobre o que a turma escreve. |
+| Seed fake (núcleo) | Neto | A demo abre com 29 poetas fictícios de vários lugares e idades (alguns universitários) e 78 poemas em todas as formas. |
+| Consagrados (importador e dados) | Neto | 155 poetas de domínio público, no original, convivem com os poetas da rede. |
+| Formas/temas, Em alta e Explorar | Neto | Descobrir sonetos, haicais e temas, e ver sobre o que a rede escreve. |
 | Tradução por IA | Neto | Lê-se Li Bai e Baudelaire no original, com a tradução a um clique. |
 | Crítica ancorada no verso | Neto | A crítica de oficina aponta o verso, como na margem do caderno. |
-| Oficina: sílabas e rimas no compositor | Neto | O iniciante vê o metro e as rimas enquanto escreve, e desliga se não usa. |
+| Oficina: sílabas e rimas no compositor | Neto | Quem escreve vê o metro e as rimas enquanto escreve, e desliga se não usa. |
 | Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
-| Rengas | Neto | A turma escreve um poema junto, estrofe por estrofe. |
+| Rengas | Neto | Várias pessoas escrevem um poema junto, estrofe por estrofe. |
 | Deploy (Render + Vercel + Supabase) | Neto | A banca usa a rede na URL pública, e os dados não somem. |
 
 ## Uma escolha técnica
@@ -363,7 +379,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 ### Índice invertido de tags em `core/indice_tags.py`
 
 A descoberta por forma e tema (decisão 3) depende de responder rápido a duas
-perguntas: "quais poemas têm `#saudade`?" e "sobre o que a turma está
+perguntas: "quais poemas têm `#saudade`?" e "sobre o que a rede está
 escrevendo?". Varrer todos os poemas e procurar a tag no texto a cada request
 custaria O(n·L), com L o tamanho do poema, e poemas não têm limite. Por isso o
 `IndiceTags` guarda duas estruturas em memória:
@@ -500,10 +516,13 @@ acima: é ela que tiraria o termo n·t.
   do Neto com apoio do agente de revisão. O Henrique e o Pedro registram a validação deles nas issues #57 a #62 e na
   revisão deste arquivo (#63).
 - **Conteúdo:**
-  - Os poemas do seed foram escritos com IA (Claude): os 24 poetas iniciantes,
-    os 68 poemas, as citações e as conversas de oficina
-    (`backend/scripts/seed_conteudo.py`). São fictícios, sem copiar autor real
-    nem imitar poeta vivo.
+  - Os poemas do seed foram escritos com IA (Claude): os 29 poetas, os 78
+    poemas, as citações, as conversas de oficina e as rengas
+    (`backend/scripts/seed_conteudo.py`). Os perfis são de gente de vários
+    lugares e idades que lê e escreve poesia: alguns universitários, uma
+    professora aposentada, um motorista que escreve cordel, uma mãe que lê
+    Florbela, estudantes do ensino médio. São fictícios, sem copiar autor
+    real nem imitar poeta vivo.
   - Os poemas dos consagrados vieram de um scraper do Neto (Wikisource e
     Wikiquote). Foram validados e não foram alterados: saíram os poemas com
     defeito, e a única limpeza foi mecânica, nos caracteres invisíveis e no TAB

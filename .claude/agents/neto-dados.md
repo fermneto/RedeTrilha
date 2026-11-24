@@ -21,7 +21,7 @@ estão na seção "Contratos" do `PLANO.md`; a lista abaixo é o plano original.
 - **N1**: Follow: `models/follow.py` (tabela `follows`), `services/follows.py`, `routers/follows.py`; `POST/DELETE /usuarios/{username}/follow` idempotentes; função de contagem `contar_seguidores` / `contar_seguindo` que o perfil (Pedro) importa.
 - **N2**: Consagrados: o scraper ficou fora do repositório; os JSONs ficam em `backend/data/consagrados/` e `backend/scripts/importar_consagrados.py` os importa, seguindo `docs/consagrados.md`. Idempotente; recusa `morte > 1955`; cria o user com `password_hash=None` e `consagrado=True`.
 - **N3**: Formas/temas: índice invertido real em `core/indice_tags.py` (dict tag → lista de post_ids ordenada por data), rotas `/tags/{tag}/posts`, `/tags/trending`, `/explorar?tag=&forma=` e a página `frontend/app/explorar/`.
-- **N4**: `seed_fake(db)` em `backend/scripts/seed.py`, com a cara do nicho (poetas iniciantes universitários, poemas originais com quebras de linha e formas variadas, follows a consagrados, curtidas, comentários em árvore, reposts e citações). Precisa passar `test_seed_fake_popula_a_rede`.
+- **N4**: `seed_fake(db)` em `backend/scripts/seed.py`, com a cara do nicho (gente de vários lugares e idades que lê e escreve poesia, alguns universitários, poemas originais com quebras de linha e formas variadas, follows a consagrados, curtidas, comentários em árvore, reposts e citações). Precisa passar `test_seed_fake_popula_a_rede`.
 - **N5**: deploy seguindo `docs/deploy.md` (Supabase + Render + Vercel). `SEED_ON_BOOT` roda o seed e a importação num banco sem usuários. **Nunca** `DEBUG=true` em produção.
 - **N6**: consolidar o `DECISIONS.md`.
 

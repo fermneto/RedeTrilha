@@ -1,6 +1,6 @@
 """Acervo: GET /acervo (filtros, ordem, páginas) e GET /acervo/filtros.
 
-Os iniciantes ana, bia e caio vêm da fixture `como`; os consagrados são gravados
+Os poetas da rede ana, bia e caio vêm da fixture `como`; os consagrados são gravados
 direto no banco, com poemas na língua do original, como faz o importador.
 """
 
@@ -33,7 +33,7 @@ def _consagrado(
 
 @pytest.fixture()
 def acervo(client, como):
-    """3 iniciantes e 5 consagrados de línguas e épocas diferentes, com follows e poemas."""
+    """3 poetas da rede e 5 consagrados de línguas e épocas diferentes, com follows e poemas."""
     _consagrado("homero", "Homero", -800, -700, ["el", "el"])
     _consagrado("camoes", "Luís de Camões", 1524, 1580, ["pt", "pt", "pt", "es"])
     _consagrado("alvares_de_azevedo", "Álvares de Azevedo", 1831, 1852, ["pt"])
@@ -87,16 +87,16 @@ def test_item_traz_contagens_e_sigo(client, acervo):
     assert {"id", "name", "bio", "avatar_url", "created_at"} <= itens["ana"].keys()
 
 
-def test_tipo_separa_consagrados_de_iniciantes(client, acervo):
-    assert _usernames(client, acervo, "tipo=iniciantes") == ["ana", "bia", "caio"]
+def test_tipo_separa_consagrados_dos_poetas_do_verso(client, acervo):
+    assert _usernames(client, acervo, "tipo=do_verso") == ["ana", "bia", "caio"]
     assert _usernames(client, acervo, "tipo=consagrados") == [
         "alvares_de_azevedo", "baudelaire", "pessoa", "homero", "camoes",
     ]
 
 
-def test_conta_nova_entra_como_iniciante(client, logar, acervo):
+def test_conta_nova_entra_nos_poetas_do_verso(client, logar, acervo):
     logar("dani", "Dani")
-    assert "dani" in _usernames(client, acervo, "tipo=iniciantes")
+    assert "dani" in _usernames(client, acervo, "tipo=do_verso")
     assert "dani" not in _usernames(client, acervo, "tipo=consagrados")
 
 
@@ -115,8 +115,8 @@ def test_lingua_e_a_mais_frequente_e_so_de_consagrados(client, acervo):
     assert _usernames(client, acervo, "lingua=pt") == ["alvares_de_azevedo", "pessoa", "camoes"]
     assert _usernames(client, acervo, "lingua=es") == []
     assert _usernames(client, acervo, "lingua=fr") == ["baudelaire"]
-    # os iniciantes escrevem em pt (o padrão), mas a língua é filtro de consagrado
-    assert _usernames(client, acervo, "tipo=iniciantes&lingua=pt") == []
+    # os poetas da rede escrevem em pt (o padrão), mas a língua é filtro de consagrado
+    assert _usernames(client, acervo, "tipo=do_verso&lingua=pt") == []
 
 
 def test_epoca_pelo_ano_de_morte(client, acervo):
@@ -125,7 +125,7 @@ def test_epoca_pelo_ano_de_morte(client, acervo):
     assert _usernames(client, acervo, "epoca=xix") == ["alvares_de_azevedo", "baudelaire"]
     assert _usernames(client, acervo, "epoca=xx") == ["pessoa"]
     assert _usernames(client, acervo, "epoca=xvii") == []
-    assert _usernames(client, acervo, "tipo=iniciantes&epoca=xix") == []
+    assert _usernames(client, acervo, "tipo=do_verso&epoca=xix") == []
 
 
 def test_filtros_combinados(client, acervo):
@@ -161,7 +161,7 @@ def test_paginas_e_total(client, acervo):
     assert (fora["items"], fora["total"]) == ([], 8)
 
     # o total é o dos filtros, não o da tabela
-    assert client.get("/acervo?tipo=iniciantes&limit=1", headers=acervo("ana")).json()["total"] == 3
+    assert client.get("/acervo?tipo=do_verso&limit=1", headers=acervo("ana")).json()["total"] == 3
     # padrão da tela: 24 por página
     assert client.get("/acervo", headers=acervo("ana")).json()["limit"] == 24
 

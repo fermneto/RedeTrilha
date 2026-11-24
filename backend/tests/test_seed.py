@@ -83,6 +83,13 @@ def test_conta_de_demonstracao_tem_a_rede_toda(semeado):
     assert contar(semeado, Antologia, Antologia.dono_id == demo.id) >= 1
 
 
+def test_perfis_misturados_com_alguns_universitarios():
+    """O público é quem lê e escreve poesia: universitários são parte, não a maioria."""
+    universitarios = [p for p in POETAS if any(u in p.bio for u in ("UFPB", "UFPE", "UFCG"))]
+    assert 0 < len(universitarios) < len(POETAS) / 2
+    assert not any("iniciante" in p.bio.lower() for p in POETAS)
+
+
 def test_usernames_validos_e_fora_dos_reservados():
     usernames = [p.username for p in POETAS]
     assert len(usernames) == len(set(usernames)) >= 20
@@ -177,7 +184,7 @@ def test_tags_aparecem_depois_do_restart(client, semeado):
         assert r.json()["total"] >= 3
 
 
-def test_iniciantes_seguem_e_citam_consagrados(semeado, tmp_path):
+def test_poetas_do_seed_seguem_e_citam_consagrados(semeado, tmp_path):
     shutil.copy(importar_consagrados.PASTA_CONSAGRADOS / "_exemplo.json", tmp_path / "augusto.json")
     importar_consagrados.importar(semeado, importar_consagrados.ler_consagrados(tmp_path))
     seed.interagir_com_consagrados(semeado)
@@ -190,7 +197,7 @@ def test_iniciantes_seguem_e_citam_consagrados(semeado, tmp_path):
     assert citacoes == 1
 
 
-def test_main_liga_os_iniciantes_aos_consagrados_reais(client):
+def test_main_liga_os_poetas_do_seed_aos_consagrados_reais(client):
     """Com os JSONs de data/consagrados: follows, curtidas, repost e citação de clássico."""
     seed.main()
     with SessionLocal() as db:

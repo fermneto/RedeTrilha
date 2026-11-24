@@ -1,4 +1,4 @@
-"""Acervo: a lista navegável de todos os poetas, consagrados e iniciantes."""
+"""Acervo: a lista navegável de todos os poetas, consagrados e poetas do Verso."""
 
 from typing import Literal
 
@@ -7,7 +7,7 @@ from pydantic import BaseModel
 from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
-Tipo = Literal["todos", "consagrados", "iniciantes"]
+Tipo = Literal["todos", "consagrados", "do_verso"]
 Ordem = Literal["alfabetica", "seguidos", "poemas"]
 # As chaves de FAIXAS_DE_EPOCA (services/acervo.py); um teste confere que batem.
 ChaveEpoca = Literal["antiguidade", "idade_media", "xvi", "xvii", "xviii", "xix", "xx"]

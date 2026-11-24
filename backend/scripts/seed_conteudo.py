@@ -1,4 +1,8 @@
-"""Conteúdo do seed fake: poetas iniciantes fictícios, poemas, conversas e antologias.
+"""Conteúdo do seed fake: poetas fictícios, poemas, conversas, antologias e rengas.
+
+Os poetas são gente que lê e escreve poesia, de vários lugares e idades: alguns
+universitários, uma professora aposentada, um motorista que escreve cordel, uma
+mãe que lê Florbela, estudantes do ensino médio.
 
 Só dados (tuplas e strings): os objetos do banco são criados em `seed.py`, dentro
 das funções, para o seed poder rodar mais de uma vez no mesmo processo.
@@ -62,22 +66,22 @@ POETAS = (
     Poeta(
         "caio_eng",
         "Caio Nóbrega",
-        "Engenharia Civil, UFPB. De Patos. Calculo vigas de dia e versos de madrugada.",
+        "Engenheiro civil, 34 anos. De Patos, moro em João Pessoa. Haicai no ônibus, a caminho da obra.",
     ),
     Poeta(
         "bia_med",
         "Beatriz Farias",
-        "Medicina, UFPB, 3º ano. Poema é o que sobra entre uma prova e um plantão.",
+        "Médica residente em João Pessoa, 27 anos. Poema é o que sobra entre um plantão e outro.",
     ),
     Poeta(
         "joao_direito",
         "João Pedro Medeiros",
-        "Direito, UFPB. Tentando escrever soneto com a paciência de quem lê o Código Civil.",
+        "Advogado trabalhista em Natal, 41 anos. Escrevo soneto com a paciência de quem lê o Código Civil.",
     ),
     Poeta(
         "luiza_psi",
         "Luiza Cavalcanti",
-        "Psicologia, UFPB. Estagiária da clínica-escola. Escuto mais do que escrevo.",
+        "Psicóloga do CAPS de Caruaru há vinte anos. Escuto mais do que escrevo.",
     ),
     Poeta(
         "rafa_cc",
@@ -87,12 +91,12 @@ POETAS = (
     Poeta(
         "helena_musica",
         "Helena Brito",
-        "Música (flauta transversal), UFPB. Ainda erro o fá.",
+        "Professora de flauta aposentada, 68 anos, Olinda. Toco na orquestra do bairro e ainda erro o fá.",
     ),
     Poeta(
         "davi_arq",
         "Davi Lucena",
-        "Arquitetura e Urbanismo, UFPB. Desenho a cidade e escrevo o que não cabe na planta.",
+        "Arquiteto, 38 anos. Voltei a João Pessoa depois de dez anos em São Paulo. Escrevo o que não cabe na planta.",
     ),
     Poeta(
         "ana_clara_bio",
@@ -102,17 +106,17 @@ POETAS = (
     Poeta(
         "thiago_hist",
         "Thiago Araújo",
-        "História, UFPB. Cordelista de fim de semana, neto de repentista.",
+        "Professor de História da rede estadual em João Pessoa. Cordelista de fim de semana, neto de repentista.",
     ),
     Poeta(
         "isabela_jor",
         "Isabela Rangel",
-        "Jornalismo, UFPB. O que não sai no jornal eu escrevo aqui.",
+        "Repórter de cidades em Fortaleza, 29 anos. O que não sai no jornal eu escrevo aqui.",
     ),
     Poeta(
         "pedro_fisio",
         "Pedro Henrique Lins",
-        "Fisioterapia, UFPB. Aprendendo com os pacientes a andar devagar.",
+        "Fisioterapeuta em Teresina, 52 anos. Aprendo com os pacientes a andar devagar.",
     ),
     Poeta(
         "camila_filo",
@@ -127,12 +131,12 @@ POETAS = (
     Poeta(
         "yasmin_enf",
         "Yasmin Freitas",
-        "Enfermagem, UFPB. Plantão no HU, caderno no bolso do jaleco.",
+        "Enfermeira do HU há doze anos. Caderno no bolso do jaleco.",
     ),
     Poeta(
         "lucas_agro",
         "Lucas Ventura",
-        "Agronomia, UFPB, campus de Areia. Filho e neto de agricultor do Cariri.",
+        "Agricultor e técnico agrícola no Cariri paraibano, 58 anos. Repente na feira de domingo.",
     ),
     Poeta(
         "sofia_cinema",
@@ -142,12 +146,12 @@ POETAS = (
     Poeta(
         "matheus_quimica",
         "Matheus Gadelha",
-        "Química, UFPB, 2º período. Misturo coisas que não deviam reagir.",
+        "17 anos, 3º ano do ensino médio em Mossoró. Quero fazer Química. Misturo coisas que não deviam reagir.",
     ),
     Poeta(
         "larissa_ped",
         "Larissa Queiroga",
-        "Pedagogia, UFPB. Estágio numa escola municipal do Valentina.",
+        "Professora do fundamental numa escola municipal do Valentina, mãe de dois. Leio Florbela no recreio.",
     ),
     Poeta(
         "vitor_ufcg",
@@ -162,17 +166,42 @@ POETAS = (
     Poeta(
         "enzo_eco",
         "Enzo Pacheco",
-        "Economia, UFPB. Bolsista de iniciação científica, planilha e poesia.",
+        "Bancário em Salvador, 47 anos. Economista de formação: planilha de dia, poesia de noite.",
     ),
     Poeta(
         "clara_teatro",
         "Clara Wanderley",
-        "Teatro, UFPB. De Sapé. Escrevo monólogos que ninguém encena.",
+        "Atriz de um grupo de teatro de rua de Sapé. Escrevo monólogos que ninguém encena.",
     ),
     Poeta(
         "iago_ifpb",
         "Iago Ramalho",
-        "Sistemas para Internet, IFPB. Cordel, acróstico e Wi-Fi que não pega.",
+        "16 anos, ensino médio integrado em Informática no IFPB. Cordel, acróstico e Wi-Fi que não pega.",
+    ),
+    Poeta(
+        "damiao_cordel",
+        "Damião Ferreira",
+        "Motorista de ônibus em Caruaru há 22 anos. Escrevo cordel no ponto final, entre uma viagem e outra.",
+    ),
+    Poeta(
+        "lourdes_paiva",
+        "Maria de Lourdes Paiva",
+        "Professora de Português aposentada, 72 anos, Teresina. Releio Camões e escrevo sonetos à mão.",
+    ),
+    Poeta(
+        "tomas_guaiba",
+        "Tomás Brandão",
+        "Bibliotecário em Porto Alegre, 55 anos. Verso livre na beira do Guaíba.",
+    ),
+    Poeta(
+        "aline_libras",
+        "Aline Sampaio",
+        "Intérprete de Libras em Manaus, 33 anos. Escrevo o que as mãos dizem.",
+    ),
+    Poeta(
+        "cida_costura",
+        "Aparecida Gomes",
+        "Costureira em Juiz de Fora, 61 anos, avó de três. Aprendi trova com a minha mãe.",
     ),
 )
 
@@ -216,7 +245,7 @@ mas desde aquela tarde eu não sosseguei.
 
 Juntei as provas todas que guardei:
 o bilhete, o café, o tom menor
-do riso na aula de Processo, a cor
+do riso na audiência das três, a cor
 da chuva em seu cabelo. E nada sei.
 
 Peço clemência, peço ao tribunal
@@ -227,7 +256,7 @@ quando ela entrava, assim, desconcertante;
 e a pena que eu mereço, afinal,
 é escrever sonetos dela, doravante.
 
-#amor #direito #ufpb""",
+#amor #direito #tribunal""",
         "Soneto do réu confesso",
     ),
     Poema(
@@ -263,7 +292,7 @@ e eu fico ali, cansada, e vou sorrindo.
         """\
 Calculei toda a carga sobre a viga,
 o momento fletor, a compressão,
-e o professor me disse: "Atenção,
+e o mestre de obras disse: "Atenção,
 há forças que nenhuma conta abriga."
 
 Eu ri, achando que era uma cantiga
@@ -277,7 +306,7 @@ e leva o interior numa lembrança.
 
 O concreto resiste, o aço avança,
 mas a ponte entre Patos e o peito meu
-nenhum cálculo da turma ainda alcança.
+nenhum cálculo da obra ainda alcança.
 
 #saudade #engenharia #sertao""",
         "Soneto do cálculo estrutural",
@@ -298,14 +327,14 @@ devolvia o meu erro sem recurso,
 como quem ri baixinho na cadeira.
 
 Mas quando a noite veio pela janela
-e a professora já tinha ido embora,
+e o maestro já tinha ido embora,
 toquei sem partitura, só por ela,
 
 uma canção que eu não sabia até agora;
 e a nota que eu errava saiu bela,
 sem metrônomo, sem medo e sem demora.
 
-#musica #ufpb #ensaio""",
+#musica #flauta #ensaio""",
         "Soneto em ré menor",
     ),
     Poema(
@@ -365,12 +394,12 @@ um contínuo inteiro, a minha prova humana.
         "luiza_psi",
         "soneto",
         """\
-Na sala de espera da clínica-escola
+Na sala de espera, ao lado da escola,
 o relógio de parede anda devagar;
 a moça ao lado tenta respirar
 e aperta a alça da sua sacola.
 
-Eu sou a estagiária, e o meu papel
+Faz vinte anos que este é o meu papel:
 é ouvir o que se cala, e não julgar,
 deixar que o silêncio tenha o seu lugar,
 mesmo quando ele pesa, mesmo quando é fel.
@@ -383,7 +412,7 @@ relatórios do que eu nem entendi;
 mas na quinta ela sorriu ao dizer:
 "Doutora, essa semana eu dormi."
 
-#psicologia #ufpb #cuidado""",
+#psicologia #caps #cuidado""",
         "Soneto da sessão de quinta",
     ),
     # ---------------------------------------------------------------- haicais
@@ -624,7 +653,7 @@ fumaça, ônibus e gritos.
         """\
 A inflação subiu de novo,
 a passagem subiu também;
-só a bolsa de estágio
+só o salário do banco
 não sobe pra ninguém.
 
 #economia #ônibus""",
@@ -636,7 +665,7 @@ não sobe pra ninguém.
         """\
 Escrevi uma manchete
 que ninguém vai publicar:
-"Moça de vinte e um anos
+"Moça de vinte e nove anos
 ainda aprende a amar."
 
 #amor #jornalismo""",
@@ -740,7 +769,7 @@ já sabe o que é sofrer, e ri:
 conhece a história do Brasil
 melhor que o livro que eu li.
 
-#ônibus #ufpb #prova #cordel""",
+#ônibus #joaopessoa #prova #cordel""",
         "O estudante e o 1500",
     ),
     Poema(
@@ -755,8 +784,8 @@ procurando o bem-te-vi,
 que dizia, no seu canto,
 se a chuva vinha por aqui.
 
-Eu fui pra universidade
-estudar solo e semente,
+Eu fiz o curso de técnico
+pra estudar solo e semente,
 aprendi o pH da terra,
 a irrigação diferente,
 mas a ciência do meu avô
@@ -777,7 +806,7 @@ a seca ensina a ficar,
 e ficar é o que eu mais quero.
 
 #sertao #chuva #agronomia""",
-        "Peleja do agrônomo com a seca",
+        "Peleja do agricultor com a seca",
     ),
     Poema(
         "cordel_wifi",
@@ -799,13 +828,13 @@ o sinal é feito paquera:
 some quando eu vou chegar.
 
 Mas um dia, no almoço,
-na fila do RU, que alegria!
+na fila da cantina, que alegria!
 três barrinhas no telefone,
 mandei o trabalho que eu devia,
 e o "recebido" do professor
 foi o verso mais bonito do dia.
 
-#wifi #ru #cordel""",
+#wifi #escola #cordel""",
         "Cordel do Wi-Fi",
     ),
     Poema(
@@ -838,33 +867,33 @@ até o fim do São João.
         "Circuito de São João",
     ),
     Poema(
-        "cordel_calouro",
+        "cordel_aluno_novo",
         "thiago_hist",
         "cordel",
         """\
-Calouro, preste atenção
+Menino, preste atenção
 no que eu vou lhe ensinar:
-o RU abre às onze,
+o recreio é às nove,
 mas a fila é de amargar;
-quem chega depois do meio-dia
+quem chega depois do sinal
 come o que sobrar.
 
-A biblioteca é sagrada,
-lá ninguém fala alto, não;
-o CCEN é longe à beça,
+A biblioteca é pequena,
+mas lá dentro cabe o sertão;
+a quadra não tem cobertura,
 leve garrafa na mão;
-e se perder no campus,
+e se perder na escola,
 pergunte ao vigia do portão.
 
-Mas o mais importante, amigo,
-não está no manual:
+Mas o mais importante, aluno,
+não está no boletim, não:
 faça amigo no corredor,
-leia poesia, afinal,
-que a universidade passa
-e o verso é que é imortal.
+leia poesia, então,
+que a escola um dia passa
+e o verso fica, irmão.
 
-#calouro #ufpb #cordel""",
-        "Conselhos ao calouro",
+#escola #conselho #cordel""",
+        "Conselhos ao aluno novo",
     ),
     # ---------------------------------------------------------- prosa poética
     Poema(
@@ -910,11 +939,11 @@ A câmera não corta. A câmera nunca corta na vida real, e é por isso que eu g
         "isabela_jor",
         "prosa_poetica",
         """\
-Quem: eu, vinte e um anos, estudante de Jornalismo. O quê: me apaixonei. Quando: terça-feira, às 14h, na aula de Ética. Onde: terceira fileira, do lado da janela que não fecha. Como: ele emprestou uma caneta e não pediu de volta. Por quê: ainda estou apurando.
+Quem: eu, vinte e nove anos, repórter de cidades. O quê: me apaixonei. Quando: terça-feira, às 14h, na coletiva da prefeitura. Onde: terceira fileira, do lado da janela que não fecha. Como: ele emprestou uma caneta e não pediu de volta. Por quê: ainda estou apurando.
 
 Fontes ouvidas pela reportagem não quiseram se identificar. A redação segue acompanhando o caso.
 
-#amor #jornalismo #ufpb""",
+#amor #jornalismo #fortaleza""",
         "Lide",
     ),
     Poema(
@@ -924,7 +953,7 @@ Fontes ouvidas pela reportagem não quiseram se identificar. A redação segue a
         """\
 Desenhei a casa onde a gente ia morar. Tem uma varanda virada para o nascente, porque você acorda cedo, e um quarto de leitura virado para o poente, porque eu leio tarde. A cozinha não tem parede, para a conversa atravessar. O banheiro tem uma janela alta, só para ver a copa do cajueiro.
 
-O professor de Projeto deu nota oito e escreveu na margem: falta circulação. Ele tinha razão. Faltou um corredor para você voltar.
+Mostrei à minha sócia, e ela riscou na margem: falta circulação. Ela tinha razão. Faltou um corredor para você voltar.
 
 #arquitetura #amor #saudade""",
         "Planta baixa de uma casa que não existe",
@@ -946,11 +975,11 @@ Mas não existe campo na ficha para anotar o medo dele, nem o meu, e a gente fic
         "enzo_eco",
         "prosa_poetica",
         """\
-Toda escolha tem um custo de oportunidade, ensinou o professor de Micro na primeira semana. Se eu fico na biblioteca, perco o mar. Se vou ao mar, perco a prova. Se estudo Economia, perco a Música que eu quase fiz. Se digo que te amo, perco o conforto de não saber se você também.
+Toda escolha tem um custo de oportunidade, ensinou o professor de Micro, há vinte e cinco anos. Se eu fico na agência até as sete, perco o mar. Se vou ao mar, perco a meta do mês. Quando escolhi Economia, perdi a Música que eu quase fiz. Se digo que te amo, perco o conforto de não saber se você também.
 
-Passei o semestre inteiro calculando. Hoje resolvi pagar o preço: fui ao mar, disse o que sentia e deixei a prova para segunda-feira.
+Passei a vida inteira calculando. Hoje resolvi pagar o preço: fui ao mar, disse o que sentia e deixei a meta para segunda-feira.
 
-#economia #mar #prova""",
+#economia #mar #trabalho""",
         "Custo de oportunidade",
     ),
     # ------------------------------------------------------------- verso livre
@@ -1001,7 +1030,7 @@ como quem não aguenta mais esperar o fim do expediente.
         Os carros, em fila,
         são vértebras de uma cobra cansada.
 
-Eu, que estudo cidades,
+Eu, que desenho cidades,
 devia saber explicar
 por que a gente constrói tudo de costas para o poente,
 por que os prédios da orla
@@ -1107,7 +1136,8 @@ num comentário que ninguém vai ler:
         "helena_musica",
         "verso_livre",
         """\
-Na sala 104 do Departamento de Música
+Na sala dos fundos da igreja do Carmo,
+onde a orquestra do bairro ensaia,
 alguém afina um violoncelo
 há vinte minutos.
 
@@ -1122,7 +1152,7 @@ por um segundo
 e sumir
 antes do aplauso.
 
-#musica #ufpb #ensaio""",
+#musica #orquestra #ensaio""",
         "Ensaio de terça",
     ),
     Poema(
@@ -1157,12 +1187,12 @@ As folhas tiveram milhões de anos.
         """\
 Pauta do dia:
 cobrir a greve dos motoristas,
-entrevistar o reitor,
+entrevistar o prefeito,
 escrever trinta linhas sobre a chuva que alagou a avenida.
 
 Fora de pauta:
 a senhora que me ofereceu o guarda-chuva
-na parada do Castelo Branco
+na parada da Aldeota
 e disse "pode ficar, minha filha,
 eu já me molhei demais nessa vida".
 
@@ -1207,7 +1237,7 @@ A luz se acende do outro lado.
     pela primeira vez
     inteira.
 
-#teatro #ufpb #mae""",
+#teatro #palco #mae""",
         "Monólogo para a coxia",
     ),
     Poema(
@@ -1251,7 +1281,7 @@ e um dia vai subir.
 Meu irmão é sódio:
 basta um pouco de água para explodir.
 
-E eu, que ainda estou no segundo período,
+E eu, que ainda estou no terceiro ano,
 ainda não sei.
 Talvez um desses elementos instáveis
 que só existem por uma fração de segundo
@@ -1266,7 +1296,7 @@ antes de virar outra coisa.
         "larissa_ped",
         "verso_livre",
         """\
-No estágio, a professora titular
+Na escola, a coordenadora
 me pediu para olhar as crianças no recreio.
 
 Olhei.
@@ -1283,7 +1313,7 @@ de rasgar o plano de aula
 e escrever só isto no quadro:
     hoje a gente vai aprender a esperar.
 
-#pedagogia #infancia #estagio""",
+#pedagogia #infancia #escola""",
         "Recreio",
     ),
     Poema(
@@ -1366,12 +1396,12 @@ Fiz uma planilha da minha vida:
 receitas, despesas, saldo.
 
 Na coluna de receitas:
-a bolsa de iniciação científica,
+o salário do dia cinco,
 o almoço de domingo na casa da avó,
-o abraço do meu amigo quando passei em Cálculo.
+o abraço do meu amigo quando passei no concurso.
 
 Na coluna de despesas:
-o aluguel no Castelo Branco,
+o aluguel no Rio Vermelho,
 as madrugadas,
 o tempo que perdi com quem não me via.
 
@@ -1491,7 +1521,7 @@ a cada luva que eu calço.
 Não é a mesma coisa.
 É a mesma coisa.
 
-#enfermagem #mae #ufpb""",
+#enfermagem #mae #cuidado""",
         "Mãe, eu escolhi cuidar",
     ),
     Poema(
@@ -1515,18 +1545,225 @@ por alguém da turma de Álgebra Linear.
 #matematica #amor #prova""",
         "Assíntota",
     ),
+    # ------------------------------------------- de outros lugares e idades
+    Poema(
+        "cordel_ponto_final",
+        "damiao_cordel",
+        "cordel",
+        """\
+Sou motorista de linha
+faz vinte e dois carnavais,
+conheço cada buraco
+da Agamenon e mais,
+conheço cada freguês
+que desce e não volta mais.
+
+Às cinco eu ligo o motor,
+o café ainda quente;
+sobe a moça da feira,
+sobe o velho, sobe o doente,
+sobe o menino da escola
+com o sono na frente.
+
+No ponto final eu paro
+quinze minutos de paz,
+tiro o caderno do bolso,
+escrevo o que a rua me traz:
+a briga, o beijo, o troco,
+o povo que vai e que faz.
+
+Tem gente que lê jornal,
+tem gente que lê o celular;
+eu leio a cara do povo
+pelo espelho, devagar,
+e cada rosto que eu levo
+vira verso no lugar.
+
+Se um dia eu me aposentar,
+não me deem relógio, não:
+me deem este cordel
+num livro de papelão,
+que a linha que eu mais rodei
+foi a do meu coração.
+
+#ônibus #caruaru #cordel""",
+        "Cordel do ponto final",
+    ),
+    Poema(
+        "trova_lotado",
+        "damiao_cordel",
+        "trova",
+        """\
+O ônibus vai lotado,
+o povo vai sem lugar;
+mas quem anda apertado
+aprende a se abraçar.
+
+#ônibus #cidade""",
+    ),
+    Poema(
+        "soneto_giz",
+        "lourdes_paiva",
+        "soneto",
+        """\
+Guardei o giz na última gaveta,
+junto com a chamada e uma lembrança:
+o nome de uma aluna, ainda criança,
+que me escreveu, com letra incompleta,
+
+"professora, eu também vou ser poeta".
+Passaram trinta anos. A esperança
+anda devagar, mas sempre alcança:
+ontem li seu soneto, e a rima é completa.
+
+Contei as sílabas, como no passado,
+batendo o dedo na mesa da cozinha,
+e achei um verso torto, um só, coitado.
+
+Não corrigi. Deixei-o ali, sozinha,
+sorrindo para o verso desajeitado:
+o erro, agora, é dela. A lição foi minha.
+
+#escola #memoria""",
+        "Soneto do giz",
+    ),
+    Poema(
+        "quadra_camoes",
+        "lourdes_paiva",
+        "quadra",
+        """\
+Li Camões aos dezessete,
+reli aos setenta e dois:
+o amor que ele promete
+só se entende depois.
+
+#amor #releitura""",
+    ),
+    Poema(
+        "livre_secao_poesia",
+        "tomas_guaiba",
+        "verso_livre",
+        """\
+Todo fim de tarde
+a cidade desce até o Guaíba
+para ver o sol se afogar
+devagar,
+como quem não quer incomodar.
+
+Eu fecho a biblioteca às seis,
+confiro as janelas,
+apago a luz da seção de poesia
+por último,
+porque é ali que os livros conversam
+quando ninguém está.
+
+    No caminho, levo um deles emprestado
+    sem anotar na ficha.
+    É o único furto que eu cometo:
+    devolvo sempre,
+    um pouco mais lido.
+
+O sol já foi.
+O rio ficou com a cor dele
+por mais uns minutos,
+e eu também.
+
+#portoalegre #biblioteca #rio""",
+        "Seção de poesia",
+    ),
+    Poema(
+        "haicai_minuano",
+        "tomas_guaiba",
+        "haicai",
+        """\
+minuano na fresta —
+o chimarrão esfria
+antes do poema
+
+#frio #portoalegre""",
+    ),
+    Poema(
+        "livre_interprete",
+        "aline_libras",
+        "verso_livre",
+        """\
+Na reunião da escola
+eu traduzo a diretora para as mãos
+e as mãos para a mãe da terceira fila.
+
+Ela não ouve o microfone chiar,
+mas vê quando eu faço o sinal de orgulho
+e sorri antes de todo mundo.
+
+Tem palavra que custa a caber nas mãos.
+Saudade, por exemplo:
+eu faço devagar, perto do peito,
+com o rosto olhando longe,
+e ela entende
+melhor que muita gente que ouve.
+
+#libras #manaus #saudade""",
+        "Intérprete",
+    ),
+    Poema(
+        "trova_costura",
+        "cida_costura",
+        "trova",
+        """\
+Costuro a barra da saia,
+costuro a manga e o botão;
+só não há linha que caia
+no rasgo do coração.
+
+#costura #saudade""",
+    ),
+    Poema(
+        "quadra_neta",
+        "cida_costura",
+        "quadra",
+        """\
+Minha neta pediu um verso
+pra ler na escola amanhã;
+dei a ela, num envelope,
+a trova que eu fiz pra mãe.
+
+#familia #neta""",
+    ),
+    Poema(
+        "livre_florbela",
+        "larissa_ped",
+        "verso_livre",
+        """\
+Leio Florbela no recreio,
+entre um apito e outro,
+com o pão de queijo esfriando no guardanapo.
+
+Ela sofria tão bonito
+que eu tenho vergonha
+de sofrer só de cansaço.
+
+Mas à noite, depois do banho dos meninos,
+quando a casa enfim dorme,
+eu abro o caderno
+e escrevo o meu cansaço
+com a mesma letra caprichada
+que eu ensino de manhã.
+
+#florbela #mae #escola""",
+        "Recreio com Florbela",
+    ),
     # ------------------------------------------------------------------ outro
     Poema(
-        "acrostico_ufpb",
+        "acrostico_ifpb",
         "iago_ifpb",
         "outro",
         """\
-Um banco debaixo do ipê,
+Ipê na entrada da escola,
 Florido em setembro de amarelo;
 Passo por ele toda manhã, atrasado:
 Bom dia, árvore. Hoje eu volto cedo.
 
-#ufpb #acrostico""",
+#ifpb #acrostico""",
         "Acróstico",
     ),
 )
@@ -1565,7 +1802,7 @@ Talvez toda poesia seja isso: uma tentativa de fazer o mundo rodar sem erro.
         "lucas_agro",
         "cordel_1500",
         """\
-Mandei pro grupo da turma e todo mundo se reconheceu no Zé.
+Mandei pro grupo da família e meu neto, que pega ônibus pra escola, se reconheceu no Zé.
 
 #ônibus""",
     ),
@@ -1856,6 +2093,41 @@ CONVERSAS = {
             ),
         ),
     ),
+    "cordel_ponto_final": (
+        Conversa(
+            "thiago_hist",
+            "O senhor é o Zé do meu cordel, só que do outro lado do volante.",
+            (
+                Conversa(
+                    "damiao_cordel",
+                    "Já levei muito Zé atrasado pra prova, professor. Todos chegaram.",
+                ),
+            ),
+        ),
+        Conversa(
+            "lourdes_paiva",
+            "\"pelo espelho, devagar\" é a melhor imagem: ler o povo pelo retrovisor. "
+            "Só no quarto verso da primeira estrofe a métrica pede uma sílaba.",
+            (
+                Conversa(
+                    "damiao_cordel",
+                    "A senhora tem razão. Vou pensar no ponto final de hoje.",
+                ),
+            ),
+        ),
+    ),
+    "soneto_giz": (
+        Conversa(
+            "nina_ufpe",
+            "\"o erro, agora, é dela. A lição foi minha.\" Que fecho, dona Lourdes.",
+            (
+                Conversa(
+                    "lourdes_paiva",
+                    "Obrigada, minha filha. Quarenta anos corrigindo redação servem pra alguma coisa.",
+                ),
+            ),
+        ),
+    ),
 }
 
 ANTOLOGIAS = (
@@ -1888,8 +2160,8 @@ ANTOLOGIAS = (
     ),
     Antologia(
         "nina_ufpe",
-        "Sonetos da turma",
-        "Catorze versos de cada curso. A oficina prova que soneto não é coisa do passado.",
+        "Sonetos da rede",
+        "Catorze versos de cada canto: do advogado à flautista aposentada. Soneto não é coisa do passado.",
         True,
         (
             "soneto_biblioteca",
@@ -1900,6 +2172,7 @@ ANTOLOGIAS = (
             "soneto_estuario",
             "soneto_infinito",
             "soneto_sessao",
+            "soneto_giz",
         ),
     ),
     Antologia(
@@ -1972,7 +2245,7 @@ que continue a viagem.""",
     ),
     Renga(
         "bia_med",
-        "Renga do RU",
+        "Renga da feira de domingo",
         "aberta",
         4,
         (),
@@ -1980,32 +2253,32 @@ que continue a viagem.""",
             (
                 "bia_med",
                 """\
-Fila do RU às onze e meia:
-o sol do campus derrete a paciência
-e o cardápio, colado na pilastra,
-promete feijão como quem promete chuva.""",
+Domingo cedo na feira:
+o sol ainda não decidiu
+e a moça da banca de coentro
+já sabe o nome de todo mundo.""",
             ),
             (
                 "thiago_hist",
                 """\
-Na mesa comprida, quatro cursos
-dividem o mesmo guardanapo:
-    História explica a farofa,
-    Agronomia defende o milho.""",
+Na barraca do caldo de cana,
+quatro desconhecidos dividem o banco:
+    um explica a crise,
+    outro defende o milho.""",
             ),
             (
                 "yasmin_enf",
                 """\
-Alguém derruba a bandeja
-e o refeitório inteiro aplaude —
-é o único aplauso do semestre
-que ninguém precisou merecer.""",
+Alguém derruba as laranjas
+e a feira inteira ajuda a catar —
+é o único mutirão da semana
+que ninguém precisou marcar.""",
             ),
             (
                 "lucas_agro",
                 """\
-Saio com a barriga cheia
-e o coração de três reais:
+Volto com a sacola cheia
+e o troco de três reais:
 o mais barato que já pesou
 tanto quanto um poema.""",
             ),
@@ -2013,7 +2286,7 @@ tanto quanto um poema.""",
     ),
     Renga(
         "nina_ufpe",
-        "Renga da oficina de quinta",
+        "Renga do sarau de quinta",
         "convidados",
         8,
         ("marina_letras", "helena_musica", "clara_teatro"),
@@ -2021,9 +2294,9 @@ tanto quanto um poema.""",
             (
                 "nina_ufpe",
                 """\
-Quinta à noite, sala 204:
-a oficina começa sem o professor
-e o ar-condicionado,
+Quinta à noite, no fundo da livraria:
+o sarau começa sem microfone
+e o ventilador de teto,
     como sempre, decide por nós.""",
             ),
             (
