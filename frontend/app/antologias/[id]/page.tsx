@@ -106,7 +106,7 @@ export default function AntologiaPage() {
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda px-4 pt-5 pb-5">
+      <div className="border-b border-borda px-4 pt-8 pb-6">
         {editando ? (
           <AntologiaFormulario
             inicial={antologia}
@@ -132,23 +132,39 @@ export default function AntologiaPage() {
       </div>
 
       {antologia.poemas.length === 0 ? (
-        <div className="px-4 py-10 text-center">
+        <div className="px-4 py-12 text-center">
           <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
           {dono && (
-            <p className="mt-1 text-sm text-tinta-suave">
-              Nos poemas do feed, use “adicionar à antologia” para trazê-los para cá.
+            <p className="mx-auto mt-1 max-w-sm text-sm text-tinta-suave">
+              Nos poemas do feed, use o botão “adicionar à antologia” para trazê-los para cá.
             </p>
+          )}
+          {dono && (
+            <Link
+              href="/"
+              className="mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold realce"
+            >
+              Ir para o feed
+            </Link>
           )}
         </div>
       ) : (
-        <ul className="divide-y divide-borda border-b border-borda">
-          {antologia.poemas.map((p) => (
-            <li key={p.id}>
-              <PoemaCard post={p} />
-              {dono && <TirarDaAntologia poema={p} aoTirar={() => tirar(p.id)} />}
-            </li>
-          ))}
-        </ul>
+        <>
+          {antologia.poemas.length > 1 && <Indice poemas={antologia.poemas} />}
+          <h2 className="sr-only">Poemas</h2>
+          <ol className="divide-y divide-borda border-b border-borda">
+            {antologia.poemas.map((p) => (
+              <li
+                key={p.id}
+                id={ancora(p)}
+                className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
+              >
+                <PoemaCard post={p} />
+                {dono && <TirarDaAntologia poema={p} aoTirar={() => tirar(p.id)} />}
+              </li>
+            ))}
+          </ol>
+        </>
       )}
     </div>
   );
@@ -159,6 +175,63 @@ function semOPoema(antologia: AntologiaDetalhe, postId: number): AntologiaDetalh
   const fica = (p: Post) => p.id !== postId && !(p.texto === "" && p.repost_de?.id === postId);
   const poemas = antologia.poemas.filter(fica);
   return { ...antologia, poemas, qtd: antologia.qtd - (antologia.poemas.length - poemas.length) };
+}
+
+// O poema que o leitor vê no card: num repost puro, o original.
+function poemaVisivel(p: Post): Post {
+  return p.repost_de && p.texto === "" ? p.repost_de : p;
+}
+
+function ancora(p: Post): string {
+  return `poema-${p.id}`;
+}
+
+// Como nos livros de poemas: o poema sem título entra no índice pelo primeiro verso.
+function primeiroVerso(texto: string): string {
+  return texto.split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
+}
+
+// O índice da antologia, na ordem em que os poemas entraram: cada linha leva
+// ao poema mais abaixo na página.
+function Indice({ poemas }: { poemas: Post[] }) {
+  return (
+    <nav aria-labelledby="indice-da-antologia" className="border-b border-borda px-4 pt-5 pb-4">
+      <h2 id="indice-da-antologia" className="text-sm font-bold">
+        Índice
+      </h2>
+      <ol className="mt-2">
+        {poemas.map((p, i) => {
+          const poema = poemaVisivel(p);
+          return (
+            <li key={p.id}>
+              <a
+                href={`#${ancora(p)}`}
+                className="group -mx-2 flex min-h-11 items-baseline gap-3 rounded-lg px-2 py-2 realce"
+              >
+                <span className="w-5 shrink-0 text-right text-[0.8125rem] text-tinta-suave tabular-nums">
+                  {i + 1}
+                </span>
+                <span className="min-w-0 flex-1">
+                  {poema.titulo ? (
+                    <span className="block font-serifada font-semibold break-words group-hover:underline">
+                      {poema.titulo}
+                    </span>
+                  ) : (
+                    <span className="block truncate font-serifada italic group-hover:underline">
+                      {primeiroVerso(poema.texto) || "poema sem título"}
+                    </span>
+                  )}
+                  <span className="block truncate text-[0.8125rem] text-tinta-suave">
+                    {poema.autor.name || `@${poema.autor.username}`}
+                  </span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
 }
 
 function Cabecalho({
@@ -173,23 +246,34 @@ function Cabecalho({
   aoApagar: () => Promise<void>;
 }) {
   return (
-    <header className="space-y-2">
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <h1 className="font-serifada text-3xl break-words">{antologia.nome}</h1>
-        {!antologia.publica && <SeloPrivada />}
-      </div>
-      {antologia.descricao && <p className="break-words whitespace-pre-wrap">{antologia.descricao}</p>}
-      <p className="flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>por</span>
+    <header>
+      <h1 className="font-serifada text-[2rem] leading-tight font-semibold tracking-[-0.02em] break-words">
+        {antologia.nome}
+      </h1>
+      {antologia.descricao && (
+        <p className="mt-3 max-w-[60ch] font-serifada text-[1.0625rem] leading-relaxed break-words whitespace-pre-wrap italic">
+          {antologia.descricao}
+        </p>
+      )}
+      <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-tinta-suave">
+        <span>reunida por</span>
         <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
-        <span aria-hidden="true">·</span>
-        <span>{antologia.publica ? "pública" : "privada"}</span>
         <span aria-hidden="true">·</span>
         <span className="tabular-nums">
           {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
         </span>
+        {!antologia.publica && (
+          <span className="inline-flex items-center gap-x-1.5">
+            <span aria-hidden="true">·</span>
+            <SeloPrivada />
+          </span>
+        )}
       </p>
-      {dono && <AcoesDoDono aoEditar={aoEditar} aoApagar={aoApagar} />}
+      {dono && (
+        <div className="mt-3">
+          <AcoesDoDono aoEditar={aoEditar} aoApagar={aoApagar} />
+        </div>
+      )}
     </header>
   );
 }

@@ -5,7 +5,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-import { IconeAntologias } from "@/components/icones/IconeAntologias";
 import type { Antologia, Page } from "@/lib/api";
 
 type Props = {
@@ -54,12 +53,12 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
   return (
     <div>
       {erro && (
-        <div className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <div role="alert" className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
           <p>{erro}</p>
           <button
             type="button"
             onClick={() => carregar(antologias.length)}
-            className="mt-1 cursor-pointer underline"
+            className="mt-1 min-h-11 cursor-pointer underline"
           >
             tentar de novo
           </button>
@@ -78,14 +77,18 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
 
       {total === 0 && visiveis.length === 0 && vazio}
 
-      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
+      {carregando && (
+        <p role="status" className="py-8 text-center text-sm text-tinta-suave">
+          carregando...
+        </p>
+      )}
 
       {faltam && !carregando && !erro && (
         <div className="py-4 text-center">
           <button
             type="button"
             onClick={() => carregar(antologias.length)}
-            className="cursor-pointer text-sm text-tinta-suave underline hover:text-tinta"
+            className="min-h-11 cursor-pointer text-sm text-tinta-suave underline hover:text-tinta"
           >
             carregar mais antologias
           </button>
@@ -95,29 +98,31 @@ export function AntologiaLista({ buscar, vazio, novas = [] }: Props) {
   );
 }
 
+// Como a lombada de um livro na estante: o nome em serifa, quantos poemas
+// alinhado à direita (fácil de varrer de cima a baixo) e a descrição por baixo.
 function AntologiaItem({ antologia }: { antologia: Antologia }) {
   return (
-    <Link href={`/antologias/${antologia.id}`} className="realce flex gap-3 px-4 py-3">
-      <span
-        aria-hidden="true"
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-painel text-tinta-suave"
-      >
-        <IconeAntologias className="h-5 w-5" />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-          <span className="font-serifada text-[1.0625rem] font-semibold break-words">{antologia.nome}</span>
-          {!antologia.publica && <SeloPrivada />}
-        </span>
-        {antologia.descricao && (
-          <span className="mt-0.5 line-clamp-2 block text-sm break-words whitespace-pre-wrap text-tinta-suave">
-            {antologia.descricao}
+    <Link href={`/antologias/${antologia.id}`} className="realce group block px-4 py-4">
+      <span className="flex items-baseline gap-3">
+        <span className="min-w-0 flex-1">
+          <span className="font-serifada text-[1.1875rem] leading-snug font-semibold break-words group-hover:underline">
+            {antologia.nome}
           </span>
-        )}
-        <span className="mt-1 block text-[0.8125rem] text-tinta-suave tabular-nums">
-          {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
+          {!antologia.publica && (
+            <span className="ml-2 inline-block align-[0.125rem]">
+              <SeloPrivada />
+            </span>
+          )}
+        </span>
+        <span className="shrink-0 text-[0.8125rem] text-tinta-suave tabular-nums">
+          {antologia.qtd === 0 ? "vazia" : `${antologia.qtd} ${antologia.qtd === 1 ? "poema" : "poemas"}`}
         </span>
       </span>
+      {antologia.descricao && (
+        <span className="mt-1 line-clamp-2 block max-w-[60ch] font-serifada text-[0.9375rem] break-words whitespace-pre-wrap text-tinta-suave italic">
+          {antologia.descricao}
+        </span>
+      )}
     </Link>
   );
 }
