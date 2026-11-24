@@ -101,6 +101,16 @@ def test_arquivo_invalido_traz_o_nome_no_erro(tmp_path):
         ler_consagrados(tmp_path)
 
 
+def test_nome_e_bio_seguem_as_regras_do_cadastro():
+    with pytest.raises(ValidationError, match="o nome é obrigatório e tem até 80 caracteres"):
+        Consagrado.model_validate(consagrado(name="   "))
+    with pytest.raises(ValidationError, match="o nome é obrigatório e tem até 80 caracteres"):
+        Consagrado.model_validate(consagrado(name="x" * 81))
+    with pytest.raises(ValidationError, match="a bio tem até 1000 caracteres"):
+        Consagrado.model_validate(consagrado(bio="x" * 1001))
+    assert Consagrado.model_validate(consagrado(bio="x" * 1000)).bio == "x" * 1000
+
+
 def test_username_reservado_e_recusado():
     with pytest.raises(ValidationError, match="reservado"):
         Consagrado.model_validate(consagrado(username="explorar"))
