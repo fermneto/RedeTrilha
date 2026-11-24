@@ -6,6 +6,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { limparToken, temToken } from "@/lib/api";
+
 const LINKS = [
   { href: "/", rotulo: "Feed" },
   { href: "/explorar", rotulo: "Explorar" },
@@ -21,11 +23,12 @@ export function Nav() {
 
   // Relê o token a cada navegação: o login (P3) grava e depois redireciona.
   useEffect(() => {
-    setLogado(Boolean(localStorage.getItem("token")));
+    setLogado(temToken());
   }, [caminho]);
 
-  function sair() {
-    localStorage.removeItem("token");
+  // limparToken apaga a sessão no backend e o token local, mesmo sem rede.
+  async function sair() {
+    await limparToken();
     setLogado(false);
     router.push("/login");
   }
