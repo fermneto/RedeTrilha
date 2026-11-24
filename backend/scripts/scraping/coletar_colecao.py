@@ -40,7 +40,7 @@ from scripts.seed_conteudo import POETAS
 
 PASTA = Path(__file__).resolve().parents[2] / "data" / "consagrados"
 RELATORIO = PASTA / "_relatorio_expansao.md"
-LIMITE_VERSO = 500
+LIMITE_VERSO = 700
 _EPICO = re.compile(
     r"(?i)lus[ií]adas|uraguai|uraguay|caramuru|vila rica|"
     r"confedera[cç][aã]o dos tamo|guesa|cartas chilenas|"

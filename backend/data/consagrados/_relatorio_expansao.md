@@ -290,14 +290,48 @@ Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
 |---|---|
 | — | — |
 
+## Bloco: Árabe, persa, turco e índico
+
+Coleção única por autor, no Wikisource da língua. Epopeia: só a abertura.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| — | nenhum |  |  |  |  |
+
+### Coleções aprofundadas
+
+| username | coleção | páginas | já havia | importados | pulados |
+|---|---|---:|---:|---:|---|
+| `omar_khayyam` | en.wikisource: The Rubaiyat of Omar Khayyam (tr. Fitzgerald, 5th edition) | 1 | 10 | 1 | — |
+
+### Descartados
+
+| nome | motivo |
+|---|---|
+| hafez | sem coleção transcrita no en.wikisource (Hafez-en) |
+| rumi | sem coleção transcrita no en.wikisource (Rumi-en) |
+| saadi | sem coleção transcrita no en.wikisource (Saadi-en) |
+| ferdowsi | sem coleção transcrita no en.wikisource (Ferdowsi-en) |
+| kalidasa | sem coleção transcrita no en.wikisource (Kalidasa) |
+| al_mutanabbi | sem coleção transcrita no en.wikisource (Al-Mutanabbi) |
+| imru_al_qais | sem coleção transcrita no en.wikisource (Imru al-Qais) |
+
+### Para decisão humana
+
+| nome | porquê |
+|---|---|
+| — | — |
+
 ## 4. Contagem
 
-JSON na pasta (exceto ficheiros `_`): 152 poetas, 10965 poemas.
+JSON na pasta (exceto ficheiros `_`): 152 poetas, 10966 poemas.
 
-`make reset` depois do bloco da antiguidade:
+`make reset` depois do bloco árabe, persa e índico:
 
 ```
-consagrados: 152 poetas criados, 0 atualizados; 10965 poemas criados, 0 atualizados
+consagrados: 152 poetas criados, 0 atualizados; 10966 poemas criados, 0 atualizados
 ```
 
-O bloco germânico tinha fechado em 152 poetas e 10797 poemas. Horácio ganhou as odes, Catulo os carmina, Homero a abertura da Ilíada na tradução de Pope (1744). Ovídio e Lucrécio ficam na abertura do livro I. Nove éclogas de Virgílio não estão em marcação de verso.
+Omar Khayyam ganhou o Rubaiyat completo na 5ª edição de Edward FitzGerald (1883), numa página só. O Gitanjali em inglês não renderiza o verso do djvu. Hafez, Rumi, Saadi, Ferdowsi, Kalidasa, al-Mutanabbi e Imru' al-Qais continuam com os poemas originais já importados: não apareceu uma edição legível isolada.
