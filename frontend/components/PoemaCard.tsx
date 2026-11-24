@@ -10,8 +10,8 @@ import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { curtir, formatarData, nomeDaForma, repostar, type Post, type User } from "@/lib/api";
 
-// No feed, poema com mais versos que isto aparece cortado, com link para o inteiro.
-// Linhas em branco entre estrofes contam como verso.
+// Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
+// para o inteiro. Linhas em branco entre estrofes contam.
 const VERSOS_NO_FEED = 20;
 
 type Props = {
@@ -20,7 +20,8 @@ type Props = {
   aninhado?: boolean;
   // Na página do próprio poema o título não precisa ser link.
   linkarTitulo?: boolean;
-  // Na página do poema ele aparece sempre inteiro; no resto, até VERSOS_NO_FEED.
+  // Na página do poema ele (e o original que ele cita) aparece sempre inteiro;
+  // no resto, cortado por linhasVisiveis.
   inteiro?: boolean;
 };
 
@@ -59,7 +60,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
       {citacao && !aninhado && (
         <div className="mt-4">
           {poema.repost_de ? (
-            <PoemaCard post={poema.repost_de} aninhado />
+            <PoemaCard post={poema.repost_de} aninhado inteiro={inteiro} />
           ) : (
             <p className="rounded-md border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
               poema removido pelo autor
@@ -75,14 +76,27 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
   );
 }
 
+// Quantas linhas mostrar de um poema longo: até o fim da última estrofe completa
+// que caiba em VERSOS_NO_FEED linhas, sem terminar em linha vazia. Se a primeira
+// estrofe sozinha passar do limite, corta no limite. null = cabe inteiro.
+function linhasVisiveis(versos: string[]): number | null {
+  if (versos.length <= VERSOS_NO_FEED) return null;
+  const vazia = (i: number) => versos[i].trim() === "";
+  for (let fim = VERSOS_NO_FEED; fim > 0; fim--) {
+    if (vazia(fim) && !vazia(fim - 1)) return fim;
+  }
+  return VERSOS_NO_FEED;
+}
+
 // Corta só a exibição: o texto do poema não muda, e o link leva à versão inteira.
 function Corpo({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
   const versos = poema.texto.split("\n");
-  const cortar = !inteiro && versos.length > VERSOS_NO_FEED;
+  const visiveis = inteiro ? null : linhasVisiveis(versos);
+  const cortar = visiveis !== null;
   return (
     <>
       <p className="poema-corpo mt-4">
-        {cortar ? versos.slice(0, VERSOS_NO_FEED).join("\n") : poema.texto}
+        {cortar ? versos.slice(0, visiveis).join("\n") : poema.texto}
       </p>
       {cortar && (
         <Link href={`/poema/${poema.id}`} className="mt-2 inline-block text-sm text-destaque hover:underline">
@@ -210,34 +224,54 @@ function Acoes({ poema }: { poema: Post }) {
     }
   }
 
-  const botao = "inline-flex cursor-pointer items-center gap-1.5 transition-colors hover:text-tinta";
+  // Como no X: só ícone e número, e o número some quando é zero. O nome da
+  // ação vai no aria-label (com o número, que o aria-label esconderia) e no title.
+  const botao =
+    "inline-flex min-w-[2.5rem] cursor-pointer items-center gap-1.5 tabular-nums transition-colors hover:text-tinta";
+  const rotulo = (acao: string, n?: number) => (n ? `${acao} (${n})` : acao);
   return (
     <div className="mt-5 border-t border-borda pt-3">
-      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-tinta-suave">
+      <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-tinta-suave">
         <button
           type="button"
           onClick={alternarCurtida}
           aria-pressed={curti}
+          aria-label={rotulo("curtir", curtidas)}
+          title="curtir"
           className={`${botao} ${curti ? "text-destaque" : ""}`}
         >
-          <IconeCurtir cheio={curti} /> curtir · {curtidas}
+          <IconeCurtir cheio={curti} />
+          <Contador n={curtidas} />
         </button>
         <button
           type="button"
           onClick={alternarRepost}
           aria-pressed={repostei}
+          aria-label={rotulo("repostar", reposts)}
+          title="repostar"
           className={`${botao} ${repostei ? "text-destaque" : ""}`}
         >
-          <IconeRepostar /> repostar · {reposts}
+          <IconeRepostar />
+          <Contador n={reposts} />
         </button>
-        <Link href={`/escrever?citar=${poema.id}`} className={botao}>
-          <IconeCitar /> citar
+        <Link href={`/escrever?citar=${poema.id}`} aria-label="citar" title="citar" className={botao}>
+          <IconeCitar />
         </Link>
-        <Link href={`/poema/${poema.id}#comentarios`} className={botao}>
-          <IconeComentar /> comentar · {poema.comentarios}
+        <Link
+          href={`/poema/${poema.id}#comentarios`}
+          aria-label={rotulo("comentar", poema.comentarios)}
+          title="comentar"
+          className={botao}
+        >
+          <IconeComentar />
+          <Contador n={poema.comentarios} />
         </Link>
       </div>
       {erro && <p className="mt-2 text-xs text-destaque">{erro}</p>}
     </div>
   );
+}
+
+function Contador({ n }: { n: number }) {
+  return n > 0 ? <span aria-hidden="true">{n}</span> : null;
 }
