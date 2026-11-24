@@ -11,8 +11,8 @@ import { EmAlta } from "@/components/ColunaDireita";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { buscarExplorar, caminhoDoLogin, FORMAS, nomeDaForma, normalizarTag, temToken } from "@/lib/api";
 
-// "outro" junta poemas sem nada em comum, então não vira filtro.
-const FORMAS_DO_FILTRO: readonly string[] = FORMAS.filter((f) => f !== "outro");
+// Espera da digitação antes de filtrar pela tag.
+const ESPERA_DA_TAG_MS = 400;
 
 const chip =
   "min-h-11 cursor-pointer rounded-full px-4 text-sm font-bold transition-colors duration-150";
@@ -33,7 +33,7 @@ function Explorar() {
   const params = useSearchParams();
   const tag = normalizarTag(params.get("tag") ?? "");
   const formaDaUrl = params.get("forma");
-  const forma = formaDaUrl && FORMAS_DO_FILTRO.includes(formaDaUrl) ? formaDaUrl : null;
+  const forma = formaDaUrl && (FORMAS as readonly string[]).includes(formaDaUrl) ? formaDaUrl : null;
   const idDaTag = useId();
   const idDasFormas = useId();
   const [termo, setTermo] = useState(tag);
@@ -45,24 +45,34 @@ function Explorar() {
     else router.replace(caminhoDoLogin());
   }, [router]);
 
-  // A tag também muda por fora (busca da coluna direita, link de uma #tag).
+  // A tag também muda por fora (busca da coluna direita, link de uma #tag). Se o
+  // campo já equivale a ela (o que a pessoa digitou), fica como está.
   useEffect(() => {
-    setTermo(tag);
+    setTermo((atual) => (normalizarTag(atual) === tag ? atual : tag));
   }, [tag]);
 
-  function filtrar(novaTag: string, novaForma: string | null) {
-    const busca = new URLSearchParams();
-    if (novaTag) busca.set("tag", novaTag);
-    if (novaForma) busca.set("forma", novaForma);
-    const texto = busca.toString();
-    router.replace(texto ? `/explorar?${texto}` : "/explorar", { scroll: false });
-  }
+  const filtrar = useCallback(
+    (novaTag: string, novaForma: string | null) => {
+      const busca = new URLSearchParams();
+      if (novaTag) busca.set("tag", novaTag);
+      if (novaForma) busca.set("forma", novaForma);
+      const texto = busca.toString();
+      router.replace(texto ? `/explorar?${texto}` : "/explorar", { scroll: false });
+    },
+    [router],
+  );
+
+  // Filtra enquanto a pessoa digita, depois de uma pausa; o Enter aplica na hora.
+  useEffect(() => {
+    const nova = normalizarTag(termo);
+    if (nova === tag) return;
+    const espera = setTimeout(() => filtrar(nova, forma), ESPERA_DA_TAG_MS);
+    return () => clearTimeout(espera);
+  }, [termo, tag, forma, filtrar]);
 
   function aplicarTag(e: React.FormEvent) {
     e.preventDefault();
-    const nova = normalizarTag(termo);
-    setTermo(nova);
-    filtrar(nova, forma);
+    filtrar(normalizarTag(termo), forma);
   }
 
   const buscar = useCallback(
@@ -131,7 +141,7 @@ function Explorar() {
             >
               todas
             </button>
-            {FORMAS_DO_FILTRO.map((f) => (
+            {FORMAS.map((f) => (
               <button
                 key={f}
                 type="button"
@@ -139,7 +149,7 @@ function Explorar() {
                 onClick={() => filtrar(tag, forma === f ? null : f)}
                 className={`${chip} ${forma === f ? chipLigado : chipDesligado}`}
               >
-                {nomeDaForma(f)}
+                {nomeDoChip(f)}
               </button>
             ))}
           </div>
@@ -163,9 +173,13 @@ function Explorar() {
   );
 }
 
+// No filtro, "outro" é o grupo das formas fora da lista.
+function nomeDoChip(forma: string): string {
+  return forma === "outro" ? "outras formas" : nomeDaForma(forma);
+}
+
 function textoDoVazio(tag: string, forma: string | null): string {
-  if (tag && forma) return `Nenhum poema com #${tag} na forma ${nomeDaForma(forma)}.`;
-  if (tag) return `Nenhum poema com #${tag}.`;
-  if (forma) return `Nenhum poema na forma ${nomeDaForma(forma)}.`;
-  return "Ainda não há poemas.";
+  if (!forma) return tag ? `Nenhum poema com #${tag}.` : "Ainda não há poemas.";
+  const naForma = forma === "outro" ? "em outras formas" : `na forma ${nomeDaForma(forma)}`;
+  return tag ? `Nenhum poema com #${tag} ${naForma}.` : `Nenhum poema ${naForma}.`;
 }
