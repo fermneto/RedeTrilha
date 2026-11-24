@@ -19,10 +19,11 @@ import {
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
 
-export function Compositor({ citarId }: { citarId: number | null }) {
+// `textoInicial`: na citação de versos (#71), o corpo já começa com eles.
+export function Compositor({ citarId, textoInicial = "" }: { citarId: number | null; textoInicial?: string }) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
-  const [texto, setTexto] = useState("");
+  const [texto, setTexto] = useState(textoInicial);
   const [forma, setForma] = useState("");
   const [idioma, setIdioma] = useState<string>(IDIOMAS_DO_COMPOSITOR[0]);
   const [original, setOriginal] = useState<Post | null>(null);
