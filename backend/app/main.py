@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from sqlalchemy import select, text
+from sqlalchemy import inspect, select, text
 
 from app.db import POOL, Base, SessionLocal, engine
 from app.erros import erro_de_validacao
@@ -48,7 +48,8 @@ def _banco_vazio() -> bool:
 
 
 def preparar_banco() -> None:
-    """Cria as tabelas e, com SEED_ON_BOOT=true, roda o seed num banco SEM usuários.
+    """Cria as tabelas, os índices que faltam e, com SEED_ON_BOOT=true, roda o seed num
+    banco SEM usuários.
 
     Deploy: o seed só roda no primeiro boot no Postgres do Supabase; nos reinícios
     seguintes os dados criados na URL pública ficam. Com vários workers (Oracle,
@@ -58,10 +59,29 @@ def preparar_banco() -> None:
     """
     with _trava_do_preparo():
         Base.metadata.create_all(engine)
+        criar_indices_que_faltam()
         if os.environ.get("SEED_ON_BOOT") == "true" and _banco_vazio():
             from scripts.seed import main as rodar_seed
 
             rodar_seed()
+
+
+def criar_indices_que_faltam() -> list[str]:
+    """Cria os índices dos models que faltam em tabelas que já existiam; devolve os nomes.
+
+    O `create_all` cria a tabela nova com os índices, mas não acrescenta índice em
+    tabela que já existe: o banco do deploy anterior ficaria sem os índices de
+    desempenho (docs/deploy.md, "Índices"). Índice não é coluna: criar não muda dado.
+    """
+    existentes = inspect(engine)
+    criados = []
+    for tabela in Base.metadata.sorted_tables:
+        nomes = {i["name"] for i in existentes.get_indexes(tabela.name)}
+        for indice in tabela.indexes:
+            if indice.name not in nomes:
+                indice.create(engine, checkfirst=True)
+                criados.append(indice.name)
+    return criados
 
 
 @contextmanager

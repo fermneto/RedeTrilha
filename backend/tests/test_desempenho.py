@@ -210,3 +210,20 @@ def test_indices_de_desempenho_existem(client):
     nomes = lambda tabela: {i["name"] for i in inspect(engine).get_indexes(tabela)}  # noqa: E731
     assert {"ix_posts_autorais", "ix_posts_originais"} <= nomes("posts")
     assert "ix_comentarios_do_poema" in nomes("comentarios")
+
+
+def test_preparo_cria_o_indice_que_falta_em_tabela_que_ja_existia(client):
+    # O banco do deploy anterior: tabela criada antes do índice existir.
+    from sqlalchemy import inspect, text
+
+    from app.main import criar_indices_que_faltam, preparar_banco
+
+    with engine.begin() as conexao:
+        conexao.execute(text("DROP INDEX ix_posts_autorais"))
+        conexao.execute(text("DROP INDEX ix_comentarios_do_poema"))
+    assert sorted(criar_indices_que_faltam()) == ["ix_comentarios_do_poema", "ix_posts_autorais"]
+    nomes = {i["name"] for i in inspect(engine).get_indexes("posts")}
+    assert "ix_posts_autorais" in nomes
+    # Tudo criado: rodar o preparo de novo não cria nada nem quebra.
+    preparar_banco()
+    assert criar_indices_que_faltam() == []
