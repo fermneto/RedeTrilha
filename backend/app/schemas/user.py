@@ -32,7 +32,7 @@ _PADRAO_USERNAME = re.compile(r"[a-z0-9_]{3,30}")
 # nos validadores, e não em Field(max_length=...), porque o Field responde em inglês.
 LIMITE_NOME = 80
 LIMITE_BIO = 1000
-LIMITE_AVATAR_URL = 300
+LIMITE_AVATAR_URL = 500
 
 
 def _validar_username(username: str) -> str:
