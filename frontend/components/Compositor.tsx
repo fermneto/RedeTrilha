@@ -68,7 +68,8 @@ export function Compositor({ citarId }: { citarId: number | null }) {
     }
   }
 
-  const campo = "w-full rounded border border-borda bg-papel px-3 py-2 text-tinta";
+  const campo =
+    "w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
   return (
     <form onSubmit={publicar} className="space-y-4">
       <label className="block text-sm">
@@ -119,7 +120,7 @@ export function Compositor({ citarId }: { citarId: number | null }) {
       <button
         type="submit"
         disabled={enviando}
-        className="cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel disabled:opacity-50"
+        className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
       >
         {enviando ? "publicando..." : citarId === null ? "publicar" : "publicar citação"}
       </button>

@@ -1,0 +1,140 @@
+{
+  "username": "tennyson",
+  "name": "Alfred Tennyson",
+  "bio": "Alfred Tennyson, poeta inglês de Lincolnshire, Poeta Laureado durante a era vitoriana. Autor de In Memoriam, Ulysses, The Charge of the Light Brigade e Idylls of the King, de grande musicalidade. É o poeta mais representativo da Inglaterra vitoriana.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Alfred%2C_Lord_Tennyson_by_Julia_Margaret_Cameron.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1809,
+  "morte": 1892,
+  "poemas": [
+    {
+      "titulo": "Ulysses",
+      "texto": "It little profits that an idle king,\nBy this still hearth, among these barren crags,\nMatch'd with an aged wife, I mete and dole\nUnequal laws unto a savage race,\nThat hoard, and sleep, and feed, and know not me.\nI cannot rest from travel: I will drink\nLife to the lees: all times I have enjoy'd\nGreatly, have suffer'd greatly, both with those\nThat loved me, and alone; on shore, and when\nThro' scudding drifts the rainy Hyades\nVext the dim sea: I am become a name;\nFor always roaming with a hungry heart\nMuch have I seen and known; cities of men\nAnd manners, climates, councils, governments,\n\nMyself not least, but honour'd of them all;\nAnd drunk delight of battle with my peers,\nFar on the ringing plains of windy Troy.\nI am a part of all that I have met;\nYet all experience is an arch wherethro'\nGleams that untravell'd world, whose margin fades\nFor ever and for ever when I move.\nHow dull it is to pause, to make an end,\nTo rust unburnish'd, not to shine in use!\nAs tho' to breathe were life. Life piled on life\nWere all too little, and of one to me\nLittle remains: but every hour is saved\nFrom that eternal silence, something more,\nA bringer of new things; and vile it were\nFor some three suns to store and hoard myself,\nAnd this gray spirit yearning in desire\nTo follow knowledge, like a sinking star,\nBeyond the utmost bound of human thought.\nThis is my son, mine own Telemachus,\nTo whom I leave the sceptre and the isle—\nWell-loved of me, discerning to fulfil\nThis labour, by slow prudence to make mild\n\nA rugged people, and thro' soft degrees\nSubdue them to the useful and the good.\nMost blameless is he, centred in the sphere\nOf common duties, decent not to fail\nIn offices of tenderness, and pay\nMeet adoration to my household gods\nWhen I am gone. He works his work, I mine.\nThere lies the port: the vessel puffs her sail:\nThere gloom the dark broad seas. My mariners,\nSouls that have toil'd, and wrought, and thought with me—\nThat ever with a frolic welcome took\nThe thunder and the sunshine, and opposed\nFree hearts, free foreheads—you and I are old;\nOld age hath yet his honour and his toil;\nDeath closes all: but something ere the end,\nSome work of noble note, may yet be done,\nNot unbecoming men that strove with Gods.\nThe lights begin to twinkle from the rocks:\nThe long day wanes: the slow moon climbs: the deep\nMoans round with many voices. Come, my friends,\n'Tis not too late to seek a newer world.\nPush off, and sitting well in order smite\n\nThe sounding furrows; for my purpose holds\nTo sail beyond the sunset, and the baths\nOf all the western stars, until I die.\nIt may be that the gulfs will wash us down:\nIt may be we shall touch the Happy Isles,\nAnd see the great Achilles, whom we knew.\nTho' much is taken, much abides; and tho'\nWe are not now that strength which in old days\nMoved earth and heaven; that which we are, we are;\nOne equal temper of heroic hearts,\nMade weak by time and fate, but strong in will\nTo strive, to seek, to find, and not to yield.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_(Tennyson,_1843)/Volume_2/Ulysses",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Crossing the Bar",
+      "texto": "Sunset and evening star,\nAnd one clear call for me!\nAnd may there be no moaning of the bar,\nWhen I put out to sea,\n\nBut such a tide as moving seems asleep,\nToo full for sound and foam,\nWhen that which drew from out the boundless deep\nTurns again home.\n\nTwilight and evening bell,\nAnd after that the dark!\n\nAnd may there be no sadness of farewell,\nWhen I embark;\n\nFor tho' from out our bourne of Time and Place\nThe flood may bear me far,\nI hope to see my Pilot face to face\nWhen I have crost the bar.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Demeter_and_other_poems/Crossing_the_Bar",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Break, Break, Break",
+      "texto": "Break, break, break,\nOn thy cold gray stones, O Sea!\nAnd I would that my tongue could utter\nThe thoughts that arise in me.\n\nO well for the fisherman's boy,\nThat he shouts with his sister at play!\nO well for the sailor lad,\nThat he sings in his boat on the bay!\n\nAnd the stately ships go on\nTo their haven under the hill;\nBut O for the touch of a vanish'd hand,\nAnd the sound of a voice that is still!\n\nBreak, break, break,\nAt the foot of thy crags, O Sea!\nBut the tender grace of a day that is dead\nWill never come back to me.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_(Tennyson,_1843)/Volume_2/Break,_break,_break",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Lady of Shalott",
+      "texto": "On either side the river lie\nLong fields of barley and of rye,\nThat clothe the wold, and meet the sky.\nAnd thro' the field the road runs by\nTo manytowered Camelot.\nThe yellowleavèd waterlily,\nThe green-sheathèd daffodilly,\nTremble in the water chilly,\nRound about Shalott.\n\nWillows whiten, aspens shiver,\nThe sunbeam-showers break and quiver\nIn the stream that runneth ever\nBy the island in the river,\nFlowing down to Camelot.\nFour gray walls, and four gray towers\nOverlook a space of flowers,\nAnd the silent isle imbowers\nThe Lady of Shalott.\n\nUnderneath the bearded barley,\nThe reaper, reaping late and early,\nHears her ever chanting cheerly,\nLike an angel, singing clearly,\nO'er the stream of Camelot.\nPiling the sheaves in furrows airy,\nBeneath the moon, the reaper weary\nListening whispers, \"'tis the fairy\nLady of Shalott.\"\n\nThe little isle is all inrailed\nWith a rose-fence, and overtrailed\nWith roses: by the marge unhailed\nThe shallop flitteth silkensailed,\nSkimming down to Camelot.\nA pearlgarland winds her head:\nShe leaneth on a velvet bed,\nFull royally apparellèd,\nThe Lady of Shalott.\n\nPART THE SECOND.\n\nNo time hath she to sport and play:\nA charmèd web she weaves alway.\nA curse is on her, if she stay\nHer weaving, either night or day,\nTo look down to Camelot.\n\nShe knows not what the curse may be;\nTherefore she weaveth steadily,\nTherefore no other care hath she,\nThe Lady of Shalott.\n\nShe lives with little joy or fear.\nOver the water, running near,\nThe sheepbell tinkles in her ear.\nBefore her hangs a mirror clear,\nReflecting tower'd Camelot.\nAnd as the mazy web she whirls,\nShe sees the surly village churls,\nAnd the red cloaks of market-girls,\nPass onward from Shalott.\n\nSometimes a troop of damsels glad,\nAn abbot on an ambling pad,\nSometimes a curly shepherd lad,\nOr longhair'd page in crimson clad,\nGoes by to towered Camelot.\n\nAnd sometimes thro' the mirror blue,\nThe knights come riding, two and two.\nShe hath no loyal knight and true,\nThe Lady of Shalott.\n\nBut in her web she still delights\nTo weave the mirror's magic sights:\nFor often thro' the silent nights\nA funeral, with plumes and lights\nAnd music, came from Camelot.\nOr, when the moon was overhead,\nCame two young lovers, lately wed:\n\"I am half-sick of shadows,\" said\nThe Lady of Shalott.\n\nPART THE THIRD.\n\nA bowshot from her bower-eaves.\nHe rode between the barley-sheaves:\nThe sun came dazzling thro' the leaves,\nAnd flamed upon the brazen greaves\nOf bold Sir Lancelot.\nA redcross knight for ever kneeled\nTo a lady in his shield,\nThat sparkled on the yellow field,\nBeside remote Shalott.\n\nThe gemmy bridle glittered free,\nLike to some branch of stars we see\nHung in the golden Galaxy.\nThe bridle-bells rang merrily,\nAs he rode down from Camelot.\n\nAnd from his blazon'd baldric slung,\nA mighty silver bugle hung,\nAnd, as he rode, his armour rung,\nBeside remote Shalott.\n\nAll in the blue unclouded weather,\nThickjewelled shone the saddle-leather.\nThe helmet, and the helmet-feather\nBurned like one burning flame together,\nAs he rode down from Camelot.\nAs often thro' the purple night,\nBelow the starry clusters bright,\nSome bearded meteor, trailing light,\nMoves over green Shalott.\n\nHis broad clear brow in sunlight glowed.\nOn burnished hooves his war-horse trode.\nFrom underneath his helmet flowed\nHis coalblack curls, as on he rode,\nAs he rode down from Camelot.\n\nFrom the bank, and from the river,\nHe flashed into the crystal mirror,\n\"Tirra lirra, tirra lirra,\"\nSang Sir Lancelot.\n\nShe left the web: she left the loom:\nShe made three paces thro' the room:\nShe saw the waterflower bloom:\nShe saw the helmet and the plume:\nShe looked down to Camelot.\nOut flew the web, and floated wide,\nThe mirror cracked from side to side,\n\"The curse is come upon me,\" cried\nThe Lady of Shalott.\n\nPART THE FOURTH.\n\nIn the stormy eastwind straining\nThe pale-yellow woods were waning,\nThe broad stream in his banks complaining,\nHeavily the low sky raining\nOver towered Camelot:\nOutside the isle a shallow boat\nBeneath a willow lay afloat,\nBelow the carven stern she wrote,\nThe Lady of Shalott.\n\nA cloudwhite crown of pearl she dight.\nAll raimented in snowy white\nThat loosely flew, (her zone in sight,\nClasped with one blinding diamond bright,)\nHer wide eyes fixed on Camelot,\n\nThough the squally eastwind keenly\nBlew, with folded arms serenely\nBy the water stood the queenly\nLady of Shalott.\n\nWith a steady, stony glance—\nLike some bold seer in a trance,\nBeholding all his own mischance,\nMute, with a glassy countenance—\nShe looked down to Camelot.\nIt was the closing of the day,\nShe loosed the chain, and down she lay,\nThe broad stream bore her far away,\nThe Lady of Shalott.\n\nAs when to sailors while they roam,\nBy creeks and outfalls far from home,\nRising and dropping with the foam,\nFrom dying swans wild warblings come,\nBlown shoreward; so to Camelot\n\nStill as the boathead wound along\nThe willowy hills and fields among,\nThey heard her chanting her deathsong,\nThe Lady of Shalott.\n\nA longdrawn carol, mournful, holy,\nShe chanted loudly, chanted lowly,\nTill her eyes were darkened wholly,\nAnd her smooth face sharpened slowly\nTurned to towered Camelot:\nFor ere she reach'd upon the tide\nThe first house by the waterside,\nSinging in her song she died,\nThe Lady of Shalott.\n\nUnder tower and balcony,\nBy gardenwall and gallery,\nA pale, pale corpse she floated by,\nDeadcold, between the houses high,\nDead into towered Camelot.\n\nKnight and burgher, lord and dame,\nTo the plankèd wharfage came:\nBelow the stern they read her name,\n\"The Lady of Shalott.\"\n\nThey cross'd themselves, their stars they blest,\nKnight, minstrel, abbot, squire and guest.\nThere lay a parchment on her breast,\nThat puzzled more than all the rest,\nThe wellfed wits at Camelot.\n\"The web was woven curiously\nThe charm is broken utterly,\nDraw near and fear not,—this is I,\nThe Lady of Shalott.\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Poems_(Tennyson,_1833)/The_Lady_of_Shalott",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Tears, Idle Tears",
+      "texto": "   Tears, idle tears, I know not what they mean,\nTears from the depth of some divine despair\nRise in the heart, and gather to the eyes,\nIn looking on the happy Autumn-fields,\nAnd thinking of the days that are no more.\n\n   Fresh as the first beam glittering on a sail,\nThat brings our friends up from the underworld,\nSad as the last which reddens over one\nThat sinks with all we love below the verge;\nSo sad, so fresh, the days that are no more.\n\n   Ah, sad and strange as in dark summer dawns\nThe earliest pipe of half-awakened birds\nTo dying ears, when unto dying eyes\nThe casement slowly grows a glimmering square;\nSo sad, so strange, the days that are no more.\n\n   Dear as remembered kisses after death,\nAnd sweet as those by hopeless fancy feigned\nOn lips that are for others; deep as love,\nDeep as first love, and wild with all regret;\nO Death in Life, the days that are no more!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Tears,_Idle_Tears",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Eagle",
+      "texto": "He clasps the crag with crooked hands;\nClose to the sun in lonely lands,\nRing'd with the azure world, he stands.\n\nThe wrinkled sea beneath him crawls;\nHe watches from his mountain walls,\nAnd like a thunderbolt he falls.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Eagle_(Tennyson)",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Ring Out, Wild Bells",
+      "texto": "Ring out wild bells to the wild sky,\nThe flying cloud, the frosty light:\nThe year is dying in the night;\nRing out, wild bells, and let him die.\n\nRing out the old, ring in the new,\nRing, happy bells, across the snow:\nThe year is going, let him go;\nRing out the false, ring in the true.\n\nRing out the grief that saps the mind,\nFor those that here we see no more;\nRing out the feud of rich and poor,\nRing in redress to all mankind.\n\nRing out a slowly dying cause,\nAnd ancient forms of party strife;\nRing in the nobler modes of life,\nWith sweeter manners, purer laws.\n\nRing out the want, the care, the sin,\nThe faithless coldness of the times;\nRing out, ring out my mournful rhymes,\nBut ring the fuller minstrel in.\n\nRing out false pride in place and blood,\nThe civic slander and the spite;\nRing in the love of truth and right,\nRing in the common love of good.\n\nRing out old shapes of foul disease,\nRing out the narrowing lust of gold;\nRing out the thousand wars of old,\nRing in the thousand years of peace.\n\nRing in the valiant man and free,\nThe larger heart, the kindlier hand;\nRing out the darkness of the land,\nRing in the Christ that is to be.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/In_Memoriam_(Tennyson)/Canto_104",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "The Kraken",
+      "texto": "Below the thunders of the upper deep ;\nFar, far beneath in the abysmal sea,\nHis ancient, dreamless, uninvaded sleep\nThe Kraken sleepeth : faintest sunlights flee\nAbout his shadowy sides : above him swell\nHuge sponges of millennial growth and height;\nAnd far away into the sickly light,\nFrom many a wondrous grot and secret cell\nUnnumber’d and enormous polypi\nWinnow with giant arms the slumbering green.\nThere hath he lain for ages and will lie\nBattening upon huge seaworms in his sleep,\nUntil the latter fire shall heat the deep ;\nThen once by man and angels to be seen,\nIn roaring he shall rise and on the surface die.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Works_of_Alfred_Lord_Tennyson_(1899)/Juvenilia/The_Kraken",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Tithonus",
+      "texto": "The woods decay, the woods decay and fall,\nThe vapours weep their burthen to the ground,\nMan comes and tills the field and lies beneath,\nAnd after many a summer dies the swan.\nMe only cruel immortality\nConsumes: I wither slowly in thine arms,\nHere at the quiet limit of the world,\nA white-hair'd shadow roaming like a dream\nThe ever silent spaces of the East,\nFar-folded mists, and gleaming halls of morn.\n\nAlas! for this gray shadow, once a man—\nSo glorious in his beauty and thy choice,\nWho madest him thy chosen, that he seem'd\nTo his great heart none other than a God!\nI ask'd thee, 'Give me immortality.'\nThen didst thou grant mine asking with a smile,\nLike wealthy men who care not how they give.\nBut thy strong Hours indignant work'd their wills,\nAnd beat me down and marr'd and wasted me,\nAnd tho' they could not end me, left me maim'd\nTo dwell in presence of immortal youth,\nImmortal age beside immortal youth,\nAnd all I was in ashes. Can thy love\nThy beauty, make amends, tho' even now,\nClose over us, the silver star, thy guide,\nShines in those tremulous eyes that fill with tears\nTo hear me? Let me go: take back thy gift:\nWhy should a man desire in any way\nTo vary from the kindly race of men,\nOr pass beyond the goal of ordinance\n\nWhere all should pause, as is most meet for all?\n\nA soft air fans the cloud apart; there comes\nA glimpse of that dark world where I was born.\nOnce more the old mysterious glimmer steals\nFrom thy pure brows, and from thy shoulders pure,\nAnd bosom beating with a heart renew'd.\nThy cheek begins to redden thro' the gloom,\nThy sweet eyes brighten slowly close to mine,\nEre yet they blind the stars, and the wild team\nWhich love thee, yearning for thy yoke, arise,\nAnd shake the darkness from their loosen'd manes,\nAnd beat the twilight into flakes of fire.\n\nLo! ever thus thou growest beautiful\nIn silence, then before thine answer given\nDepartest, and thy tears are on my cheek.\n\nWhy wilt thou ever scare me with thy tears,\nAnd make me tremble lest a saying learnt,\n\nIn days far-off, on that dark earth, be true?\n\"The Gods themselves cannot recall their gifts.\"\n\nAy me! ay me! with what another heart\nIn days far-off, and with what other eyes\nI used to watch—if I be he that watch'd—\nThe lucid outline forming round thee; saw\nThe dim curls kindle into sunny rings;\nChanged with thy mystic change, and felt my blood\nGlow with the glow that slowly crimson'd all\nThy presence and thy portals, while I lay,\nMouth, forehead, eyelids, growing dewy-warm\nWith kisses balmier than half-opening buds\nOf April, and could hear the lips that kiss'd\nWhispering I knew not what of wild and sweet,\nLike that strange song I heard Apollo sing,\nWhile Ilion like a mist rose into towers.\n\nYet hold me not for ever in thine East;\nHow can my nature longer mix with thine?\n\nColdly thy rosy shadows bathe me, cold\nAre all thy lights, and cold my wrinkled feet\nUpon thy glimmering thresholds, when the steam\nFloats up from those dim fields about the homes\nOf happy men that have the power to die,\nAnd grassy barrows of the happier dead.\nRelease me, and restore me to the ground;\nThou seëst all things, thou wilt see my grave:\nThou wilt renew thy beauty morn by morn;\nI earth in earth forget these empty courts,\nAnd thee returning on thy silver wheels.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Enoch_Arden,_etc/Tithonus",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    },
+    {
+      "titulo": "Now Sleeps the Crimson Petal",
+      "texto": "  Now sleeps the crimson petal, now the white;\nNor waves the cypress in the palace walk;\n  Nor winks the gold fin in the porphyry font:\nThe firefly wakens: waken thou with me.\n\n   Now droops the milk-white peacock like a ghost,\nAnd like a ghost she glimmers on to me.\n   Now lies the Earth all Danaë to the stars,\nAnd all thy heart lies open unto me.\n   Now slides the silent meteor on, and leaves\nA shining furrow, as thy thoughts in me.\n\n   Now folds the lily all her sweetness up,\nAnd slips into the bosom of the lake:\nSo fold thyself, my dearest, thou, and slip\nInto my bosom and be lost in me.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Now_Sleeps_the_Crimson_Petal",
+      "tags": [
+        "heroismo",
+        "luto",
+        "ingles"
+      ]
+    }
+  ]
+}

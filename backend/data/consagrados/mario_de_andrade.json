@@ -1,0 +1,70 @@
+{
+  "username": "mario_de_andrade",
+  "name": "Mário de Andrade",
+  "bio": "Poeta, romancista, musicólogo e pesquisador paulistano. Líder da Semana de Arte Moderna de 1922, publicou Pauliceia Desvairada, marco do verso livre modernista no Brasil, e o romance Macunaíma. Defendeu uma língua literária brasileira e documentou a cultura popular do país.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Mario_de_andrade_1928b.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1893,
+  "morte": 1945,
+  "poemas": [
+    {
+      "titulo": "Inspiração",
+      "texto": "«Onde até na fôrça do verão havia\ntempestades de ventos e frios de\ncrudelíssimo inverno»\nFR. LUIS DE SOUSA\n\nSão Paulo! comoção de minha vida...\nOs meus amores são flores feitas de original...\nArlequinal!... Traje de losangos... Cinza e ouro....\nLuz e bruma... Forno e inverno morno...\nElegáncias sutis sem escándalos, sem ciumes...\nPerfumes de Paris... Arys !\nBofetadas líricas no Trianon... Algodoal!...\n\nSão Paulo ! comoção de minha vida...\nGalicismo a berrar nos desertos da América!",
+      "forma": "verso_livre",
+      "obra": "Pauliceia Desvairada",
+      "ano": 1922,
+      "fonte": "https://pt.wikisource.org/wiki/Paulicea_Desvairada/Inspira%C3%A7%C3%A3o",
+      "tags": [
+        "cidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Os cortejos",
+      "texto": "Monotonias das minhas retinas...\nSerpentinas de entes frementes a se desenrolar...\nTodos os sempres das minhas visões! «Bon giorno, caro.»\n\nHorríveis as cidades !\nVaidades e mais vaidades...\nNada de asas ! Nada de poesia ! Nada de alegria !\nOh ! os tumultuários das auséncias !\nPaulicea — a grande bocca de mil dentes;\ne os jôrros dentre a  lingua trissulca\nde pús e de mais pús de distinção...\n\nGiram homens fracos, baixos, magros...\nSerpentinas de entes frementes a se desenrolar...\n\nEstes homens de São Paulo,\ntodos iguais e desiguais,\nquando vivem dentro dos meus olhos tão ricos,\nparecem-me uns macacos, uns macacos.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Paulicea_Desvairada/Os_Cortejos",
+      "tags": [
+        "cidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O trovador",
+      "texto": "Sentimentos em mim do asperamente\ndos homens das primeiras eras...\nAs primaveras de sarcasmo\nintermitentemente no meu coração arlequinal...\nIntermitentemente...\nOutras vezes é um doente, um frio\nna minha alma doente como um longo som redondo...\nCantabona ! Cantabona !\nDlorom...\n\nSou um tupi tangendo um alaúde !",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Paulicea_Desvairada/O_Trovador",
+      "tags": [
+        "cidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Rua de São Bento",
+      "texto": "Triángulo\n\nHa navios de vela para os meus naufrágios !\nE os cantares da uiara rua de São Bento...\n\nEntre estas duas ondas plúmbeas de casas plúmbeas\nas minhas delícias das asfixias da alma !\nHa leilão. Ha feira de carnes brancas. Pobres arrozais !\nPobres brisas sem pelúcias lisas a alisar !\nA cainçalha... A Bolsa... As jogatinas...\n\nNão tenho navios de vela para mais naufrágios !\nFaltam-me as fôrças ! Falta-me o ar !\nMas qual ! Não ha siquer um pôrto môrto !\n«Can you dance the tarantella ?» — «Ach ! ya.»\nSão as califórnias duma vida milionária\nnuma cidade arlequinal...\n\nO Clube Comercial... A Padaria Espiritual...\nMas a desilusão dos sombrais amorosos\npõe majoration temporaire, 100 % nt !...\n\nMinha Loucura, acalma-te !\nVeste o water-proof dos tambens !\n\nNem chegarás tão cedo\ná fábrica de tecidos dos teus êxtases;\ntelefone: Alem, 3991...\nEntre estas duas ondas plúmbeas de casas plúmbeas,\nvê, lá nos muito-ao-longes do horisonte,\na sua chaminé de céu azul !",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Paulicea_Desvairada/Rua_de_S%C3%A3o_Bento",
+      "tags": [
+        "cidade",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Sambinha",
+      "texto": "Vêm duas costureirinhas pela rua das Palmeiras ..\nAfobadas braços-dados depressinha\nBonitas, Senhor! que até dão vontade pros homens da rua.\nAs costureirinhas vão explorando perigos.\nVestido é de seda.\nRoupa-branca é de morim.\n\nFalando conversas fiadas\nAs duas costureirinhas passam por mim.\n«Você vai ? »\n          «Não vou não».\nParece que a rua parou pra escuta-las.\nNem os trilhos sapecas\nJogam mais bondes um pro outro.\nE o Sol da tardinha de Abril\nEspia entre as palpebras sapiroquentas de duas nuvens.\nAs nuvens são vermelhas.\nA tardinha é cor-de-rosa.\n\nFiquei querendo bem aquellas duas costureirinhas...\nFizeram-me peito batendo\nTão bonitas tão modernas tão brasileiras !\nIsto é...\nUma era italo-brasileira.\nOutra era africo-brasileira.\nUma era branca.\nOutra era preta.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_Revista/Ano_1/N%C3%BAmero_3/Sambinha",
+      "tags": [
+        "cidade",
+        "portugues"
+      ]
+    }
+  ]
+}

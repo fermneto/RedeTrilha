@@ -1,0 +1,140 @@
+{
+  "username": "antero_de_quental",
+  "name": "Antero de Quental",
+  "bio": "Poeta açoriano de Ponta Delgada, líder da Geração de 70 e da Questão Coimbrã. Seus Sonetos levam ao soneto português a angústia filosófica, a dúvida religiosa e o pessimismo. Ativista socialista, suicidou-se em Ponta Delgada.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Antero_de_Quental_%28ca._1887%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1842,
+  "morte": 1891,
+  "poemas": [
+    {
+      "titulo": "Na mão de Deus",
+      "texto": "Na mão de Deus, na sua mão direita,\nDescansou afinal meu coração.\nDo palácio encantado da Ilusão\nDesci a passo e passo a escada estreita.\n\nComo as flores mortais, com que se enfeita\nA ignorância infantil, despôjo vão,\nDepus do Ideal e da Paixão\nA forma transitória e imperfeita.\n\nComo criança, em lôbrega jornada,\nQue a mãe leva ao colo agasalhada\nE atravessa, sorrindo vagamente,\n\nSelvas, mares, areias do deserto...\nDorme o teu sono, coração liberto,\nDorme na mão de Deus eternamente!",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Na_m%C3%A3o_de_Deus",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Mors-Amor",
+      "texto": "Esse negro corcél cujas passadas\nEscuto em sonhos, quando a sombra desce,\nE, passando a galope, me apparece\nDa noite nas fantasticas estradas,\n\nDonde vem elle? Que regiões sagradas\nE terriveis cruzou, que assim parece\nTenebroso e sublime, e lhe estremece\nNão sei que horror nas crinas agitadas?\n\nUm cavalleiro de expressão potente,\nFormidavel, mas placido no porte,\nVestido de armadura reluzente,\n\nCavalga a féra extranha sem temor.\nE o corcél negro diz: «Eu sou a Morte!»\nResponde o cavalleiro: «Eu sou o Amor!»",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sonetos_(Antero_de_Quental,_1880)/Mors_-_Amor",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Solemnia verba",
+      "texto": "Disse ao meu coração: Olha por quantos\nCaminhos vãos andámos! Considera\nAgora, desta altura, fria e austera,\nOs ermos que regaram nossos prantos...\n\nPó e cinzas, onde houve flor e encantos!\nE a noite, onde foi luz a Primavera!\nOlha a teus pés o mundo e desespera,\nSemeador de sombras e quebrantos!\n\nPorém o coração, feito valente\nNa escola da tortura repetida,\nE no uso do pensar tornado crente,\n\nRespondeu: Desta altura vejo o Amor!\nViver não foi em vão, se isto é vida,\nNem foi demais o desengano e a dor.",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Solemnia_Verba",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O palácio da ventura",
+      "texto": "Sonho que sou um cavaleiro andante.\nPor desertos, por sóis, por noite escura,\nPaladino do amor, busco anelante\nO palácio encantado da Ventura!\n\nMas já desmaio, exausto e vacilante,\nQuebrada a espada já, rota a armadura...\nE eis que súbito o avisto, fulgurante\nNa sua pompa e aérea formosura!\n\nCom grandes golpes bato à porta e brado:\nEu sou o Vagabundo, o Deserdado...\nAbri-vos, portas de ouro, ante meus ais!\n\nAbrem-se as portas d'ouro com fragor...\nMas dentro encontro só, cheio de dor,\nSilêncio e escuridão - e nada mais!",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/O_Pal%C3%A1cio_da_Ventura",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Hino à Razão",
+      "texto": "Razão, irmã do Amor e da Justiça,\nMais uma vez escuta a minha prece.\nÉ a voz dum coração que te apetece,\nDuma alma livre só a ti submissa.\n\nPor ti é que a poeira movediça\nDe astros, sóis e mundos permanece;\nE é por ti que a virtude prevalece,\nE a flor do heroísmo medra e viça.\n\nPor ti, na arena trágica, as nações\nbuscam a liberdade entre clarões;\ne os que olham o futuro e cismam, mudos,\n\nPor ti podem sofrer e não se abatem,\nMãe de filhos robustos que combatem\nTendo o teu nome escrito em seus escudos!",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Hino_%C3%A0_Raz%C3%A3o",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Nirvana",
+      "texto": "Para além do Universo luminoso,\nCheio de fórmas, de rumor, de lida,\nDe forças, de desejos e de vida,\nAbre-se como um vácuo tenebroso.\n\nA onda desse mar tumultuoso\nVem ali expirar, esmaecida...\nNuma immobilidade indefinida\nTermina ali o ser, inerte, ocioso...\n\nE quando o pensamento, assim absorto,\nEmerge a custo desse mundo morto\nE torna a olhar as coisas naturaes,\n\nÁ bella luz da vida, ampla, infinita,\nSó vê com tédio, em tudo quanto fita,\nA illusão e o vasio universaes.",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sonetos_(Antero_de_Quental,_1880)/Nirvana",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Transcendentalismo",
+      "texto": "Já socega, depois de tanta lucta,\nJá me descança em paz o coração.\nCahi na conta, emfim, de quanto é vão\nO bem que ao Mundo e á Sorte se disputa.\n\nPenetrando, com fronte não enxuta,\nNo sacrario do templo da Illusão,\nSó encontrei, com dôr e confusão,\nTrevas e pó, uma materia bruta...\n\nNão é no vasto mundo — por immenso\nQue elle pareça á nossa mocidade —\nQue a alma sacia o seu desejo intenso...\n\nNa esféra do invisivel, do intangivel,\nSobre desertos, vacuo, soledade,\nVôa e paira o espirito impassivel!",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sonetos_(Antero_de_Quental,_1880)/Transcendentalismo",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Despondency",
+      "texto": "Deixal-a ir, a ave, a quem roubaram\nNinho e filhos e tudo, sem piedade...\nQue a leve o ar sem fim da soledade\nOnde as azas partidas a levaram...\n\nDeixal-a ir, a vella, que arrojaram\nOs tufões pelo mar, na escuridade,\nQuando a noite surgiu da immensidade,\nQuando os ventos do Sul se levantaram...\n\nDeixal-a ir, a alma lastimosa,\nQue perdeu fé e paz e confiança,\nÁ morte queda, á morte silenciosa...\n\nDeixal-a ir, a nota desprendida\nD’um canto extremo... e a ultima esperança...\nE a vida... e o amor... deixal-a ir, a vida!",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Primaveras_romanticas_(1872)/Poesias_diversas/Despondency",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Redenção",
+      "texto": "Vozes do mar, das arvores, do vento!\nQuando ás vezes, n'um sonho doloroso,\nMe embala o vosso canto poderoso,\nEu julgo igual ao meu vosso tormento...\n\nVerbo crepuscular e intimo alento\nDas cousas mudas; psalmo mysterioso;\nNão serás tu, queixume vaporoso,\nO suspiro do mundo e o seu lamento?\n\nUm espirito habita a immensidade:\nUma ancia cruel de liberdade\nAgita e abala as formas fugitivas.\n\nE eu comprehendo a vossa lingua estranha,\nVozes do mar, da selva, da montanha...\nAlmas irmans da minha, almas captivas!\n\nNão choreis, ventos, arvores e mares,\nCôro antigo de vozes rumorosas,\nDas vozes primitivas, dolorosas\nComo um pranto de larvas tumulares...\n\nDa sombra das visões crepusculares\nRompendo, um dia, surgireis radiosas\nD'esse sonho e essas ancias affrontosas,\nQue exprimem vossas queixas singulares...\n\nAlmas no limbo ainda da existencia,\nAccordareis um dia na Consciencia,\nE pairando, já puro pensamento,\n\nVereis as Formas, filhas da Ilusão,\nCahir desfeitas, como um sonho vão...\nE acabará por fim vosso tormento.",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Reden%C3%A7%C3%A3o",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Elogio da morte",
+      "texto": "Altas horas da noite, o Inconsciente\nSacode-me com força, e acórdo em susto.\nComo se o esmagassem de repente,\nAssim me pára o coração robusto.\n\nNão que de larvas me povôe a mente\nEsse vacuo nocturno, mudo e augusto,\nOu forceje a rasão por que afugente\nAlgum remorso, com que encara a custo...\n\nNem fantasmas nocturnos visionarios,\nNem desfilar de espectros mortuarios,\nNem dentro em mim terror de Deus ou Sorte...\n\nNada! o fundo dum poço, humido e morno,\nUm muro de silencio e treva em torno,\nE ao longe os passos sepulcraes da Morte.\n\nII\n\nNa floresta dos sonhos, dia a dia,\nSe interna meu dorido pensamento...\nNas regiões do vago esquecimento\nMe conduz, passo a passo, a fantasia...\n\nAtravesso, no escuro, a nevoa fria\nDum mundo estranho, que povôa o vento\nE meu queixoso e incerto sentimento\nSó das visões da noite se confia.\n\nQue misticos desejos me enlouquecem?\nOs abismos do Nírvana apparecem\nA meus olhos, na muda immensidade!\n\nNesta viagem pelo ermo espaço,\nSó busco o teu encontro e o teu abraço,\nMorte! irman do Amor e da Verdade!\n\nIII\n\nEu não sei quem tu és — mas não procuro\n(Tal é minha confiança) devassal-o.\nBasta sentir-te ao pé de mim, no escuro,\nEntre as fórmas da noite, com quem falo.\n\nAtravez do silencio frio e obscuro\nTeus passos vou seguindo, e, sem abalo,\nNo cairel dos abismos do Futuro\nMe inclino á tua voz, para sondal-o.\n\nPor ti me engolfo no nocturno mundo\nDas visões da região innominada,\nA ver se fixo o teu olhar profundo...\n\nFixal-o, comprehendel-o, basta uma hora,\nFunerea Beatriz de mão gelada...\nMas unica Beatriz consoladora!\n\nIV\n\nLongo tempo ignorei (mas que cegueira\nMe trazia este espirito enublado!)\nQuem fosses tu, que andavas a meu lado,\nNoite e dia, impassivel companheira...\n\nMuitas vezes, é certo, na canceira,\nNo tedio extremo dum viver maguado,\nPara ti levantei o olhar turbado,\nInvocando-te, amiga derradeira...\n\nMas não te amava então nem conhecia:\nMeu pensamento inerte nada lia\nSobre essa muda fronte, austera e calma.\n\nLuz intima, afinal, alumiou-me...\nFilha do mesmo pae, já sei teu nome,\nMorte, irman coeterna da minha alma!\n\nV\n\nQue nome te darei, austera imagem,\nQue avisto já num angulo da estrada,\nQuando me desmaiava a alma prostrada\nDo cansaço e do tedio da viagem?\n\nEm teus olhos vê a turba uma voragem,\nCobre o rosto e recua apavorada...\nMas eu confio em ti, sombra vellada,\nE cuido perceber tua linguagem...\n\nMais claros vejo, a cada passo, escritos,\nFilha da noite, os lemmas do Ideal,\nNos teus olhos profundos sempre fitos...\n\nDormirei no teu seio inalteravel,\nNa communhão da paz universal,\nMorte libertadora e inviolavel!\n\nVI\n\nSó quem teme o Não-ser é que se assusta\nCom teu vasto silencio mortuario,\nNoite sem fim, espaço solitario,\nNoite da Morte, tenebrosa e augusta...\n\nEu não: minh’alma humilde mas robusta\nEntra crente em teu átrio funerario:\nPara os mais és um vácuo cinerario,\nA mim surri-me a tua face adusta.\n\nA mim seduz-me a paz santa e inefavel,\nE o silencio ideal do Inalteravel,\nQue involve o eterno amor no eterno lucto.\n\nTalvez seja peccado procurar-te,\nMas não sonhar comtigo e adorar-te,\nNão-ser, que és o Ser único absoluto.",
+      "forma": "soneto",
+      "obra": "Sonetos",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Sonetos_(Antero_de_Quental,_1880)/Elogio_da_Morte",
+      "tags": [
+        "filosofia",
+        "morte",
+        "portugues"
+      ]
+    }
+  ]
+}

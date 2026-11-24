@@ -1,0 +1,140 @@
+{
+  "username": "li_bai",
+  "name": "Li Bai",
+  "bio": "Poeta da dinastia Tang, provavelmente nascido na Ásia Central e criado em Sichuan. Taoísta, viajante e bebedor lendário, é chamado de Imortal da Poesia. Seus poemas sobre a lua, o vinho, a amizade e a natureza, como Pensamento numa Noite Tranquila, estão entre os mais recitados da China.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/%E6%9D%8E%E7%99%BD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 701,
+  "morte": 762,
+  "poemas": [
+    {
+      "titulo": "靜夜思",
+      "texto": "牀前明月光，\n疑是地上霜。\n舉頭望明月，\n低頭思故鄉。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%9D%9C%E5%A4%9C%E6%80%9D",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "將進酒",
+      "texto": "君不見，黃河之水天上來，奔流到海不復迴！\n君不見，高堂明鏡悲白髮，朝如青絲暮成雪！\n人生得意須盡歡，莫使金樽空對月。\n天生我材必有用，千金散盡還復來。\n烹羊宰牛且爲樂，會須一飲三百杯。\n岑夫子，丹丘生。（將）進酒杯莫停。\n與君歌一曲，請君爲我傾耳聽。\n鐘鼓饌玉不足貴，但願長醉不復醒。\n古來聖賢皆寂寞，惟有飲者留其名。\n陳王昔時宴平樂，斗酒十千恣歡謔。\n主人何為言少錢？徑須沽取對君酌。\n五花馬，千金裘。\n呼兒將出換美酒，與爾同銷萬古愁。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E5%B0%87%E9%80%B2%E9%85%92_(%E6%9D%8E%E7%99%BD)",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "月下獨酌",
+      "texto": "花間一壺酒，獨酌無相親。\n舉杯邀明月，對影成三人。\n月既不解飲，影徒隨我身。\n暫伴月將影，行樂須及春。\n我歌月徘徊，我舞影零亂。\n醒時同交歡，醉後各分散。\n永結無情遊，相期邈雲漢。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%9C%88%E4%B8%8B%E7%8D%A8%E9%85%8C%E5%9B%9B%E9%A6%96",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "早發白帝城",
+      "texto": "朝辭白帝彩雲間，\n千里江陵一日還。\n兩岸猿聲啼不盡，\n輕舟已過萬重山。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%97%A9%E7%99%BC%E7%99%BD%E5%B8%9D%E5%9F%8E",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "望廬山瀑布",
+      "texto": "西登香爐峯，南見瀑布水。\n挂流三百丈，噴壑數十里。\n欻如飛電來，隱若白虹起。\n初驚河漢落，半灑雲天裏。\n仰觀勢轉雄，壯哉造化功。\n海風吹不斷，江月照還空。\n空中亂潨射，左右洗青壁。\n飛珠散輕霞，流沫沸穹石。\n而我樂名山，對之心益閑。\n無論漱瓊液，且得洗塵顔。\n且諧宿所好，永願辭人間。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%9C%9B%E5%BB%AC%E5%B1%B1%E7%80%91%E5%B8%83",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "黃鶴樓送孟浩然之廣陵",
+      "texto": "故人西辭黃鶴樓，\n煙花三月下揚州。\n孤帆遠影碧山盡，\n唯見長江天際流。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%BB%83%E9%B6%B4%E6%A8%93%E9%80%81%E5%AD%9F%E6%B5%A9%E7%84%B6%E4%B9%8B%E5%BB%A3%E9%99%B5",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "蜀道難",
+      "texto": "噫吁嚱！危乎高哉！\n蜀道之難，難於上青天！\n蠶叢及魚鳧，開國何茫然！\n爾來四萬八千歲，不與秦塞通人煙。\n西當太白有鳥道，可以橫絶峨眉巔。\n地崩山摧壯士死，然後天梯石棧相鉤連。\n上有六龍回日之高標，\n下有衝波逆折之回川。\n黃鶴之飛尚不得過，猿猱欲度愁攀援。\n青泥何盤盤！百步九折縈巖巒。\n捫參歷井仰脅息，以手撫膺坐長歎。\n問君西遊何時還？畏途巉巖不可攀。\n但見悲鳥號古木，雄飛雌從繞林間。\n又聞子規啼夜月，愁空山。\n蜀道之難，難於上青天，\n使人聽此凋朱顏！\n連峯去天不盈尺，枯松倒挂倚絶壁。\n飛湍瀑流爭喧豗，砯崖轉石萬壑雷。\n其險也若此，嗟爾遠道之人胡爲乎來哉？\n劍閣崢嶸而崔嵬，一夫當關，萬夫莫開。\n所守或匪親，化爲狼與豺。\n朝避猛虎，夕避長蛇。\n磨牙吮血，殺人如麻。\n錦城雖云樂，不如早還家。\n蜀道之難，難於上青天，\n側身西望長咨嗟！",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E8%9C%80%E9%81%93%E9%9B%A3_(%E6%9D%8E%E7%99%BD)",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "贈汪倫",
+      "texto": "李白乘舟將欲行，忽聞岸上踏歌聲。\n桃花潭水深千尺，不及汪倫送我情。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E8%B4%88%E6%B1%AA%E5%80%AB",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "春思",
+      "texto": "燕草如碧絲，秦桑低綠枝。\n當君懷歸日，是妾斷腸時。\n春風不相識，何事入羅幃。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%9D_(%E6%9D%8E%E7%99%BD)",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "行路難",
+      "texto": "金樽清酒斗十千，玉盤珍羞直萬錢。\n停杯投筯不能食，拔劍四顧心茫然。\n欲渡黃河冰塞川，將登太行雪满山。\n閒來垂釣碧溪上，忽復乘舟夢日邊。\n行路難！行路難！多岐路，今安在？\n長風破浪會有時，直挂雲帆濟滄海。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E8%A1%8C%E8%B7%AF%E9%9B%A3_(%E6%9D%8E%E7%99%BD)",
+      "tags": [
+        "lua",
+        "vinho",
+        "chines"
+      ]
+    }
+  ]
+}

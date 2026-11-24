@@ -7,6 +7,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { UserCard } from "@/components/UserCard";
 import { apiGet, apiPost, type Page, type User } from "@/lib/api";
 
@@ -50,8 +51,9 @@ export default function UsuariosPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Usuários</h1>
+    <div>
+      <CabecalhoPagina titulo="Poetas" />
+      <div className="space-y-6 px-4 py-5">
 
       <form onSubmit={criar} className="flex flex-wrap items-end gap-2 rounded-lg border border-borda bg-papel-alto p-3">
         <label className="flex flex-col text-sm">
@@ -100,6 +102,7 @@ export default function UsuariosPage() {
           </p>
         </>
       )}
+      </div>
     </div>
   );
 }

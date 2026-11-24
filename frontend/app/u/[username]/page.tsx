@@ -5,10 +5,11 @@
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
-import { buscarEu, buscarPerfil, buscarPoemasDoPerfil, temToken, type Perfil } from "@/lib/api";
+import { buscarEu, buscarPerfil, buscarPoemasDoPerfil, caminhoDoLogin, temToken, type Perfil } from "@/lib/api";
 
 export default function PerfilPage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function PerfilPage() {
 
   useEffect(() => {
     if (!temToken()) {
-      router.replace("/login");
+      router.replace(caminhoDoLogin());
       return;
     }
     setPerfil(null);
@@ -39,36 +40,52 @@ export default function PerfilPage() {
     [username],
   );
 
-  if (erro) return <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>;
-  if (!perfil) return <p className="text-sm text-tinta-suave">carregando...</p>;
+  const cabecalho = <CabecalhoPagina titulo={perfil?.name ?? "Perfil"} comoTitulo={false} />;
+  if (erro)
+    return (
+      <>
+        {cabecalho}
+        <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+      </>
+    );
+  if (!perfil)
+    return (
+      <>
+        {cabecalho}
+        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+      </>
+    );
 
   return (
-    <div className="space-y-10">
-      {editando ? (
-        <PerfilEdicao
-          perfil={perfil}
-          aoSalvar={(novo) => {
-            setPerfil(novo);
-            setEditando(false);
-          }}
-          aoCancelar={() => setEditando(false)}
-        />
-      ) : (
-        <PerfilCabecalho
-          perfil={perfil}
-          proprio={perfil.id === meuId}
-          aoMudar={setPerfil}
-          aoEditar={() => setEditando(true)}
-        />
-      )}
+    <div>
+      {cabecalho}
+      <div className="px-4 pt-5 pb-6">
+        {editando ? (
+          <PerfilEdicao
+            perfil={perfil}
+            aoSalvar={(novo) => {
+              setPerfil(novo);
+              setEditando(false);
+            }}
+            aoCancelar={() => setEditando(false)}
+          />
+        ) : (
+          <PerfilCabecalho
+            perfil={perfil}
+            proprio={perfil.id === meuId}
+            aoMudar={setPerfil}
+            aoEditar={() => setEditando(true)}
+          />
+        )}
+      </div>
 
-      <section className="space-y-6">
-        <h2 className="border-b border-borda pb-2 text-xl">Poemas</h2>
+      <section>
+        <h2 className="border-y border-borda px-4 py-3 text-lg">Poemas</h2>
         <ListaDePoemas
           key={username}
           buscar={buscarPoemas}
           textoDoFim="fim dos poemas"
-          vazio={<p className="text-tinta-suave">Nenhum poema ainda.</p>}
+          vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
         />
       </section>
     </div>

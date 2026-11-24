@@ -63,8 +63,8 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
   }, [carregarMais, fim, erro]);
 
   return (
-    <div className="space-y-6">
-      <ul className="space-y-6">
+    <div>
+      <ul className="divide-y divide-borda border-b border-borda">
         {poemas.map((p) => (
           <li key={p.id}>
             <PoemaCard post={p} />
@@ -73,7 +73,7 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
       </ul>
 
       {erro && (
-        <div className="rounded border border-destaque p-3 text-sm text-destaque">
+        <div className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
           <p>{erro}</p>
           <button type="button" onClick={() => setErro(null)} className="mt-1 cursor-pointer underline">
             tentar de novo
@@ -83,10 +83,10 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim }: Props) {
 
       {fim && poemas.length === 0 && vazio}
 
-      {fim && poemas.length > 0 && <p className="text-center text-sm text-tinta-suave">{textoDoFim}</p>}
+      {fim && poemas.length > 0 && <p className="py-8 text-center text-sm text-tinta-suave">{textoDoFim}</p>}
 
       <div ref={sentinela} aria-hidden />
-      {carregando && <p className="text-center text-sm text-tinta-suave">carregando...</p>}
+      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
     </div>
   );
 }

@@ -1,0 +1,139 @@
+{
+  "username": "horacio",
+  "name": "Horácio",
+  "bio": "Quintus Horatius Flaccus, poeta romano de Venúsia, filho de liberto, protegido de Mecenas na era de Augusto. Autor das Odes, Sátiras e Epístolas e da Arte Poética, deixou máximas como carpe diem e aurea mediocritas, que moldaram a lírica e a crítica literária ocidentais.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Quintus_Horatius_Flaccus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": -65,
+  "morte": -8,
+  "poemas": [
+    {
+      "titulo": "Odes I, 11 (Carpe diem)",
+      "texto": "Tu ne quaesieris, scire nefas, quem mihi, quem tibi\nFinem di dederint, Leuconoe, nec Babylonios\nTemptaris numeros. Ut melius quidquid erit pati,\nSeu pluris hiemes seu tribuit Iuppiter ultimam,\nQuae nunc oppositis debilitat pumicibus mare\nTyrrhenum: sapias, vina liques, et spatio brevi\nSpem longam reseces. Dum loquimur, fugerit invida\nAetas: carpe diem, quam minimum credula postero.",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_I/Carmen_XI",
+      "tags": [
+        "tempo",
+        "carpe_diem",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes III, 30 (Exegi monumentum)",
+      "texto": "Exegi monumentum aere perennius\nregalique situ pyramidum altius,\nquod non imber edax, non aquilo impotens\npossit diruere aut innumerabilis\nannorum series et fuga temporum.\nnon omnis moriar multaque pars mei\nvitabit Libitinam; usque ego postera\ncrescam laude recens, dum Capitolium\nscandet cum tacita virgine pontifex.\ndicar, qua violens obstrepit Aufidus\net qua pauper aquae Daunus agrestium\nregnavit populorum, ex humili potens,\nprinceps Aeolium carmen ad Italos\ndeduxisse modos. sume superbiam\nquaesitam meritis et mihi Delphica\nlauro cinge volens, Melpomene, comam",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_III/Carmen_XXX",
+      "tags": [
+        "poesia",
+        "imortalidade",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes I, 9 (Vides ut alta stet nive candidum)",
+      "texto": "Vides ut alta stet nive candidum\nSoracte, nec iam sustineant onus\n    Silvae laborantes, geluque\n        Flumina constiterint acuto.\n\nDissolve frigus ligna super foco\nLarge reponens atque benignius\n    Deprome quadrimum Sabina,\n        O Thaliarche, merum diota.\n\nPermitte divis cetera; qui simul\nStravere ventos aequore fervido\n    Deproeliantis, nec cupressi\n        Nec veteres agitantur orni.\n\nQuid sit futurum cras, fuge quaerere et\nQuem fors dierum cumque dabit lucro\n    Adpone, nec dulcis amores\n        Sperne puer neque tu choreas,\n\nDonec virenti canities abest\nMorosa. Nunc et campus et areae\n    Lenesque sub noctem susurri\n        Composita repetantur hora;\n\nNunc et latentis proditor intimo\nGratus puellae risus ab angulo\n    Pignusque dereptum lacertis\n        Aut digito male pertinaci.",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_I/Carmen_IX",
+      "tags": [
+        "inverno",
+        "tempo",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes I, 37 (Nunc est bibendum)",
+      "texto": "Nunc est bibendum, nunc pede libero\npulsanda tellus; nunc Saliaribus\nornare pulvinar deorum\ntempus erat dapibus, sodales.\n\nantehac nefas depromere Caecubum\ncellis avitis, dum Capitolio\nregina dementis ruinas,\nfunus et imperio parabat\n\ncontaminato cum grege turpium\nmorbo virorum quidlibet inpotens\nsperare fortunaque dulci\nebria. sed minuit furorem\n\nvix una sospes navis ab ignibus\nmentemque lymphatam Mareotico\nredegit in veros timores\nCaesar ab Italia volantem\n\nremis adurgens, accipiter velut\nmollis columbas aut leporem citus\nvenator in campis nivalis\nHaemoniae, daret ut catenis\n\nfatale monstrum. quae generosius\nperire quaerens nec muliebriter\nexpavit ensem nec latentis\nclasse cita reparavit oras.\n\nausa et iacentem visere regiam\nvoltu sereno, fortis et asperas\ntractare serpentes, ut atrum\ncorpore conbiberet venenum,\n\ndeliberata morte ferocior;\nsaevis Liburnis scilicet invidens\nprivata deduci superbo,\nnon humilis mulier, triumpho",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_I/Carmen_XXXVII",
+      "tags": [
+        "vitoria",
+        "cleopatra",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes II, 10 (Aurea mediocritas)",
+      "texto": "Rectius vives, Licini, neque altum\nsemper urgendo neque, dum procellas\ncautus horrescis, nimium premendo\nlitus iniquum.\n\nauream quisquis mediocritatem\ndiligit, tutus caret obsoleti\nsordibus tecti, caret invidenda\nsobrius aula.\n\nsaepius ventis agitatur ingens\npinus et celsae graviore casu\ndecidunt turres feriuntque summos\nfulgura montis\n\nsperat infestis, metuit secundis\nalteram sortem bene praeparatum\npectus. informis hiemes reducit\nIuppiter, idem\n\nsubmovet. non, si male nunc, et olim\nsic erit: quondam cithara tacentem\nsuscitat Musam neque semper arcum\ntendit Apollo.\n\nrebus angustis animosus atque\nfortis adpare: sapienter idem\ncontrahes vento nimium secundo\nturgida vela",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_II/Carmen_X",
+      "tags": [
+        "sabedoria",
+        "moderacao",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes II, 14 (Eheu fugaces, Postume)",
+      "texto": "Eheu fugaces, Postume, Postume,\nlabuntur anni nec pietas moram\nrugis et instanti senectae\nadferet indomitaeque morti,\n\nnon, si trecenis quotquot eunt dies,\namice, places inlacrimabilem\nPlutona tauris, qui ter amplum\nGeryonen Tityonque tristi\n\nconpescit unda, scilicet omnibus\nquicumque terrae munere vescimur\nenaviganda, sive reges\nsive inopes erimus coloni.\n\nfrustra cruento Marte carebimus\nfractisque rauci fluctibus Hadriae,\nfrustra per autumnos nocentem\ncorporibus metuemus Austrum:\n\nvisendus ater flumine languido\nCocytos errans et Danai genus\ninfame damnatusque longi\nSisyphus Aeolides laboris.\n\nlinquenda tellus et domus et placens\nuxor neque harum quas colis arborum\nte praeter invisas cupressos\nulla brevem dominum sequetur.\n\nabsumet heres Caecuba dignior\nservata centum clavibus et mero\ntinguet pavimentum superbo,\npontificum potiore cenis",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_II/Carmen_XIV",
+      "tags": [
+        "tempo",
+        "morte",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes I, 5 (A Pirra)",
+      "texto": "Quis multa gracilis te puer in rosa\nPerfusus liquidis urget odoribus\n    Grato, Pyrrha, sub antro?\n        Cui flavam religas comam,\n\nSimplex munditiis? Heu quotiens fidem\nMutatosque deos flebit et aspera\n    Nigris aequora ventis\n        Emirabitur insolens,\n\nQui nunc te fruitur credulus aurea,\nQui semper vacuam, semper amabilem\n    Sperat, nescius aurae\n        Fallacis. Miseri, quibus\n\nIntentata nites. Me tabula sacer\nVotiva paries indicat uvida\n    Suspendisse potenti\n        Vestimenta maris deo.",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_I/Carmen_V",
+      "tags": [
+        "amor",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes I, 22 (Integer vitae)",
+      "texto": "Integer vitae scelerisque purus\nNon eget Mauris iaculis neque arcu\nNec venenatis gravida sagittis,\n          Fusce, pharetra,\n\nSive per Syrtis iter aestuosas,\nSive facturus per inhospitalem\nCaucasum vel quae loca fabulosus\n          Lambit Hydaspes.\n\nNamque me silva lupus in Sabina,\nDum meam canto Lalagen et ultra\nTerminum curis vagor expeditis,\n          Fugit inermem,\n\nQuale portentum neque militaris\nDaunias latis alit aesculetis\nNec Iubae tellus generat, leonum\n          Arida nutrix.\n\nPone me pigris ubi nulla campis\nArbor aestiva recreatur aura,\nQuod latus mundi nebulae malusque\n          Iuppiter urget;\n\nPone sub curru nimium propinqui\nSolis in terra domibus negata:\nDulce ridentem Lalagen amabo,\n          Dulce loquentem.",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_I/Carmen_XXII",
+      "tags": [
+        "virtude",
+        "amor",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes IV, 7 (Diffugere nives)",
+      "texto": "Diffugere nives, redeunt iam gramina campis\n   arboribusque comae;\nmutat terra vices et decrescentia ripas\n   flumina praetereunt;\n\nGratia cum Nymphis geminisque sororibus audet\n   ducere nuda choros:\ninmortalia ne speres, monet annus et almum\n   quae rapit hora diem.\n\nfrigora mitescunt Zephyris, ver proterit aestas\n   interitura, simul\npomifer autumnus fruges effuderit, et mox\n   bruma recurrit iners.\n\ndamna tamen celeres reparant caelestia lunae:\n   nos ubi decidimus\nquo pius Aeneas, quo Tullus dives et Ancus,\n   pulvis et umbra sumus.\n\nquis scit an adiciant hodiernae crastina summae\n   tempora di superi?\ncuncta manus avidas fugient heredis amico\n   quae dederis animo.\n\ncum semel occideris et de te, splendide, Minos\n   fecerit arbitria,\nnon, Torquate, genus, non te facundia, non te\n   restituet pietas;\n\ninfernis neque enim tenebris Diana pudicum\n   liberat Hippolytum\nnec Lethaea valet Theseus abrumpere caro\n   vincula Perithoo.",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_IV/Carmen_VII",
+      "tags": [
+        "primavera",
+        "morte",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Odes III, 2 (Dulce et decorum est pro patria mori)",
+      "texto": "Angustam amice pauperiem pati\nrobustus acri militia puer\ncondiscat et Parthos ferocis\nvexet eques metuendus hasta\n\nvitamque sub divo et trepidis agat\nin rebus. illum ex moenibus hosticis\nmatrona bellantis tyranni\nprospiciens et adulta virgo\n\nsuspiret ‘eheu, ne rudis agminum\nsponsus lacessat regius asperum\ntactu leonem, quem cruenta\nper medias rapit ira caedes.’\n\ndulce et decorum est pro patria mori:\nmors et fugacem persequitur virum\nnec parcit inbellis iuventae\npoplitibus timidoque tergo.\n\nVirtus, repulsae nescia sordidae,\nintaminatis fulget honoribus\nnec sumit aut ponit securis\narbitrio popularis aurae.\n\nVirtus, recludens inmeritis mori\ncaelum, negata temptat iter via\ncoetusque volgaris et udam\nspernit humum fugiente penna.\n\nest et fideli tuta silentio\nmerces: vetabo, qui Cereris sacrum\nvolgarit arcanae, sub isdem\nsit trabibus fragilemque mecum\n\nsolvat phaselon; saepe Diespiter\nneglectus incesto addidit integrum,\nraro antecedentem scelestum\ndeseruit pede Poena claudo",
+      "forma": "outro",
+      "obra": "Carmina (Odes)",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Carmina_(Horatius)/Liber_III/Carmen_II",
+      "tags": [
+        "patria",
+        "virtude",
+        "latim"
+      ]
+    }
+  ]
+}

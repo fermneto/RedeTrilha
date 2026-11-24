@@ -1,0 +1,75 @@
+{
+  "username": "antonio_machado",
+  "name": "Antonio Machado",
+  "bio": "Antonio Machado, poeta sevilhano da Geração de 98, professor em Soria e Segóvia. Em Soledades e Campos de Castilla uniu meditação sobre o tempo e paisagem de Castela, com versos como caminante, no hay camino. Morreu no exílio em Collioure.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Antonio_Machado_hacia_1917.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1875,
+  "morte": 1939,
+  "poemas": [
+    {
+      "titulo": "Recuerdo infantil",
+      "texto": "Una tarde parda y fría\nde invierno. Los colegiales\nestudian. Monotonía\nde lluvia tras los cristales.\n\n  Es la clase. En un cartel\nse representa a Caín\nfugitivo, y muerto Abel,\njunto a una mancha carmín.\n\n  Con timbre sonoro y hueco,\ntruena el maestro, un anciano\nmal vestido, enjuto y seco,\nque lleva un libro en la mano.\n\n  Y todo un coro infantil\nva cantando la lección:\nmil veces ciento, cien mil;\nmil veces mil, un millón.\n\n  Una tarde parda y fría\nde invierno. Los colegiales\nestudian. Monotonía\nde la lluvia en los cristales.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Recuerdo_infantil",
+      "tags": [
+        "tempo",
+        "paisagem",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Es una tarde cenicienta y mustia",
+      "texto": "  Es una tarde cenicienta y mustia,\ndestartalada, como el alma mía;\ny es esta vieja angustia\nque habita mi usual hipocondría.\n\n  La causa de esta angustia no consigo\nni vagamente comprender siquiera;\npero recuerdo y, recordando, digo:\n—Sí, yo era niño. y tú, mi compañera.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Es_una_tarde_cenicienta_y_mustia",
+      "tags": [
+        "tempo",
+        "paisagem",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Anoche cuando dormía",
+      "texto": "  Anoche cuando dormía\nsoñé, ¡bendita ilusión!,\nque una fontana fluía\ndentro de mi corazón.\nDi: ¿por qué acequia escondida,\nagua, vienes hasta mí,\nmanantial de nueva vida\nen donde nunca bebí?\n  Anoche cuando dormía\nsoñé, ¡bendita ilusión!,\nque una colmena tenía\ndentro de mi corazón;\ny las doradas abejas\niban fabricando en él,\ncon las amarguras viejas,\nblanca cera y dulce miel.\n  Anoche cuando dormía\nsoñé, ¡bendita ilusión!,\nque un sol ardiente lucía\ndentro de mi corazón.\n  Era ardiente porque daba\ncalores de rojo hogar,\ny era sol porque alumbraba\ny porque hacía llorar.\n  Anoche cuando dormía\nsoñé, ¡bendita ilusión!,\nque era Dios lo que tenía\ndentro de mi corazón.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Anoche_cuando_dorm%C3%ADa...",
+      "tags": [
+        "tempo",
+        "paisagem",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Abel Martín",
+      "texto": "Consejos, coplas, apuntes\n\n        1\n\nTengo dentro de un herbario\nuna tarde disecada,\nlila, violeta y dorada.\nCaprichos de solitario.\n\n        2\n\nY en la página siguiente,\nlos ojos de Guadalupe,\ncuyo color nunca supe.\n\n        3\n\nY una frente...\n\n        4\n\nCalidoscopio infantil.\nUna damita, al piano.\nDo, re, mi.\nOtra se pinta al espejo\nlos labios de colorín.\n\n        5\n\nY rosas en un balcón\na la vuelta de una esquina,\ncalle de Válgame Dios.\n\n        6\n\nAmores por el atajo,\nde los de “Vente conmigo”\n...”Que vuelvas pronto serrano”\n\n        7\n\nEn el mar de la mujer\npocos naufragan de noche;\nmuchos, al amanecer.\n\n        8\n\nSiempre que nos vemos\nes cita para mañana.\nNunca nos encontraremos\n\n        9\n\nLa plaza tiene una torre,\nla torre tiene un balcón,\nel balcón tiene una dama,\nla dama una blanca flor.\nHa pasado un caballero,\n—¡quién sabe por qué pasó!—,\ny se ha llevado la plaza\ncon su torre y su balcón,\ncon su balcón y su dama,\nsu dama y su blanca flor.\n\n        10\n\nPor la calle de mis celos\nen veinte rejas con otro\nhablando siempre te veo.\n\n        11\n\nMalos sueños he.\nMe despertaré.\n\n        12\n\nMe despertarán\ncampanas del alba\nque sonando están.\n\n        13\n\nPara tu ventana\nun ramo de rosas me dio la mañana.\nPor un laberinto, de calle en calleja,\nbuscando, he corrido tu casa y tu reja.\nY en un laberinto me encuentro perdido\nen esta mañana de mayo florido.\nDime donde estás.\nVueltas y revueltas. Ya no puedo más.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Abel_Mart%C3%ADn",
+      "tags": [
+        "tempo",
+        "paisagem",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Sonetos escritos en una noche de bombardeo en Rocafort — I",
+      "texto": "Mas fuerte que la guerra  -espanto y grima-\nCuando con torpe vuelo de avutarda\nEl ominoso trimotor se encima,\ny sobre el vano techo se retarda,\nHoy tu alegre zalema el campo anima,\nEn claro verde el chopo en yemas guarda.\nFundida irá la nieve de la cima\nEl hielo rojo  de la tierra parda\nMientras retumba el monte, el mar humea,\nDa la sirena el lúgubre alarido,\nY en el azul el avión platea\n¡Cuan agudo se filtra hasta mi oido\nNiña inmortal, infatigable dea,\nEl agrio son de tu rabel florido!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Sonetos_escritos_en_una_noche_de_bombardeo_en_Rocafort_(Valencia)/I",
+      "tags": [
+        "tempo",
+        "paisagem",
+        "espanhol"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "username": "mallarme",
+  "name": "Stéphane Mallarmé",
+  "bio": "Stéphane Mallarmé, poeta parisiense e professor de inglês. Mestre do Simbolismo, reuniu em suas terças-feiras a vanguarda de Paris. Poemas como L'Après-midi d'un faune e Un coup de dés, de linguagem hermética, anteciparam a poesia do século XX.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Mallarm%C3%A9_Nadar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1842,
+  "morte": 1898,
+  "poemas": [
+    {
+      "titulo": "L’Azur",
+      "texto": "De l’éternel Azur la sereine ironie\nAccable, belle indolemment comme les fleurs,\nLe poëte impuissant qui maudit son génie\nÀ travers un désert stérile de Douleurs.\n\nFuyant, les yeux fermés, je le sens qui regarde\nAvec l’intensité d’un remords atterrant,\nMon âme vide. Où fuir ? Et quelle nuit hagarde\nJeter, lambeaux, jeter sur ce mépris navrant ?\n\nBrouillards, montez ! versez vos cendres monotones\nAvec de longs haillons de brume dans les cieux\nQue noiera le marais livide des automnes\nEt bâtissez un grand plafond silencieux !\n\nEt toi, sors des étangs léthéens et ramasse\nEn t’en venant la vase et les pâles roseaux,\nCher Ennui, pour boucher d’une main jamais lasse\nLes grands trous bleus que font méchamment les oiseaux\n\nEncor ! que sans répit les tristes cheminées\nFument, et que de suie une errante prison\nÉteigne dans l’horreur de ses noires traînées\nLe soleil se mourant jaunâtre à l’horizon !\n\n— Le Ciel est mort. — Vers toi, j’accours ! donne, ô matière,\nL’oubli de l’Idéal cruel et du Péché\nÀ ce martyr qui vient partager la litière\nOù le bétail heureux des hommes est couché,\n\nCar j’y veux, puisque enfin ma cervelle, vidée\nComme le pot de fard gisant au pied d’un mur,\nN’a plus l’art d’attifer la sanglotante idée,\nLugubrement bâiller vers un trépas obscur..\n\nEn vain ! l’Azur triomphe, et je l’entends qui chante\nDans les cloches. Mon âme, il se fait voix pour plus\nNous faire peur avec sa victoire méchante,\nEt du métal vivant sort en bleus angelus !\n\nIl roule par la brume, ancien et traverse\nTa native agonie ainsi qu’un glaive sûr ;\nOù fuir dans la révolte inutile et perverse ?\nJe suis hanté. L’Azur ! l’Azur ! l’Azur ! l’Azur !",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/L%E2%80%99Azur",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Le vierge, le vivace et le bel aujourd’hui",
+      "texto": "Le vierge, le vivace et le bel aujourd’hui\nVa-t-il nous déchirer avec un coup d’aile ivre\nCe lac dur oublié que hante sous le givre\nLe transparent glacier des vols qui n’ont pas fui !\n\nUn cygne d’autrefois se souvient que c’est lui\nMagnifique mais qui sans espoir se délivre\nPour n’avoir pas chanté la région où vivre\nQuand du stérile hiver a resplendi l’ennui.\n\nTout son col secouera cette blanche agonie\nPar l’espace infligée à l’oiseau qui le nie,\nMais non l’horreur du sol où le plumage est pris.\n\nFantôme qu’à ce lieu son pur éclat assigne,\nIl s’immobilise au songe froid de mépris\nQue vêt parmi l’exil inutile le Cygne.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/%C2%AB_Le_vierge,_le_vivace_et_le_bel_aujourd%E2%80%99hui_%C2%BB",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Apparition",
+      "texto": "La lune s’attristait. Des séraphins en pleurs\nRêvant, l’archet aux doigts, dans le calme des fleurs\nVaporeuses, tiraient de mourantes violes\nDe blancs sanglots glissant sur l’azur des corolles\n— C’était le jour béni de ton premier baiser.\nMa songerie aimant à me martyriser\nS’enivrait savamment du parfum de tristesse\nQue même sans regret et sans déboire laisse\n\nLa cueillaison d’un Rêve au cœur qui l’a cueilli.\nJ’errais donc, l’œil rivé sur le pavé vieilli\nQuand avec du soleil aux cheveux, dans la rue\nEt dans le soir, tu m’es en riant apparue\nEt j’ai cru voir la fée au chapeau de clarté\nQui jadis sur mes beaux sommeils d’enfant gâté\nPassait, laissant toujours de ses mains mal fermées\nNeiger de blancs bouquets d’étoiles parfumées.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Apparition",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Le Tombeau d’Edgar Poe",
+      "texto": "Tel qu’en Lui-même enfin l’éternité le change,\nLe Poëte suscite avec un glaive nu\nSon siècle épouvanté de n’avoir pas connu\nQue la mort triomphait dans cette voix étrange !\n\nEux, comme un vil sursaut d’hydre oyant jadis l’ange\nDonner un sens plus pur aux mots de la tribu\nProclamèrent très haut le sortilège bu\nDans le flot sans honneur de quelque noir mélange.\n\nDu sol et de la nue hostiles, ô grief !\nSi notre idée avec ne sculpte un bas-relief\nDont la tombe de Poe éblouissante s’orne\n\nCalme bloc ici-bas chu d’un désastre obscur\nQue ce granit du moins montre à jamais sa borne\nAux noirs vols du Blasphème épars dans le futur.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Le_Tombeau_d%E2%80%99Edgar_Poe",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "L’Après-midi d’un faune",
+      "texto": "Ces nymphes, je les veux perpétuer.\n\nCes nymphes, je les veux perpétuer. Si clair,\nLeur incarnat léger, qu’il voltige dans l’air\nAssoupi de sommeils touffus.\n\nAssoupi de sommeils touffus. Aimai-je un rêve ?\n\nMon doute, amas de nuit ancienne, s’achève\nEn maint rameau subtil, qui, demeuré les vrais\nBois mêmes, prouve, hélas ! que bien seul je m’offrais\nPour triomphe la faute idéale de roses —\n\nRéfléchissons…\n\nRéfléchissons… ou si les femmes dont tu gloses\n\nFigurent un souhait de tes sens fabuleux !\nFaune, l’illusion s’échappe des yeux bleus\nEt froids, comme une source en pleurs, de la plus chaste :\nMais, l’autre tout soupirs, dis-tu qu’elle contraste\nComme brise du jour chaude dans ta toison ?\nQue non ! par l’immobile et lasse pamoison\nSuffoquant de chaleurs le matin frais s’il lutte,\nNe murmure point d’eau que ne verse ma flûte\nAu bosquet arrosé d’accords ; et le seul vent\nHors des deux tuyaux prompt à s’exhaler avant\nQu’il disperse le son dans une pluie aride,\nC’est, à l’horizon pas remué d’une ride,\nLe visible et serein souffle artificiel\nDe l’inspiration, qui regagne le ciel.\n\nÔ bords siciliens d’un calme marécage\nQu’à l’envi des soleils ma vanité saccage,\nTacites sous les fleurs d’étincelles, CONTEZ\n» Que je coupais ici les creux roseaux domptés\n» Par le talent ; quand, sur l’or glauque de lointaines\n» Verdures dédiant leur vigne à des fontaines,\n» Ondoie une blancheur animale au repos :\n» Et qu’au prélude lent où naissent les pipeaux,\n» Ce vol de cygnes, non ! de naïades se sauve\n» Ou plonge…\n» Ou plonge… Inerte, tout brûle dans l’heure fauve\n\nSans marquer par quel art ensemble détala\nTrop d’hymen souhaité de qui cherche le la :\nAlors m’éveillerais-je à la ferveur première,\nDroit et seul, sous un flot antique de lumière,\nLys ! et l’un de vous tous pour l’ingénuité.\n\nAutre que ce doux rien par leur lèvre ébruité,\nLe baiser, qui tout bas des perfides assure,\nMon sein, vierge de preuve, atteste une morsure\nMystérieuse, due à quelque auguste dent ;\nMais, bast ! arcane tel élut pour confident\nLe jonc vaste et jumeau dont sous l’azur on joue :\nQui, détournant à soi le trouble de la joue,\nRêve, en un long solo, que nous amusions\nLa beauté d’alentour par des confusions\nFausses entre elle-même et notre chant crédule ;\nEt de faire aussi haut que l’amour se module\nÉvanouir du songe ordinaire de dos\nOu de flanc pur suivis avec mes regards clos,\nUne sonore, vaine et monotone ligne.\n\nTâche donc, instrument des fuites, ô maligne\nSyrinx, de refleurir aux lacs où tu m’attends !\nMoi, de ma rumeur fier, je vais parler longtemps\n\nDes déesses ; et, par d’idolâtres peintures,\nÀ leur ombre enlever encore des ceintures :\nAinsi, quand des raisins j’ai sucé la clarté,\nPour bannir un regret par ma feinte écarté,\nRieur, j’élève au ciel d’été la grappe vide\nEt, soufflant dans ses peaux lumineuses, avide\nD’ivresse, jusqu’au soir je regarde au travers.\n\nÔ nymphes, regonflons des souvenirs divers.\n» Mon œil, trouant les joncs, dardait chaque encolure\n» Immortelle, qui noie en l’onde sa brûlure\n» Avec un cri de rage au ciel de la forêt ;\n» Et le splendide bain de cheveux disparaît\n» Dans les clartés et les frissons, ô pierreries !\n» J’accours ; quand, à mes pieds, s’entrejoignent (meurtries\n» De la langueur goûtée à ce mal d’être deux)\n» Des dormeuses parmi leurs seuls bras hazardeux :\n» Je les ravis, sans les désenlacer, et vole\n» À ce massif, haï par l’ombrage frivole,\n» De roses tarissant tout parfum au soleil,\n» Où notre ébat au jour consumé soit pareil.\nJe t’adore, courroux des vierges, ô délice\nFarouche du sacré fardeau nu qui se glisse\nPour fuir ma lèvre en feu buvant, comme un éclair\nTressaille ! la frayeur secrète de la chair :\nDes pieds de l’inhumaine au cœur de la timide\n\nQue délaisse à la fois une innocence, humide\nDe larmes folles ou de moins tristes vapeurs.\n» Mon crime, c’est d’avoir, gai de vaincre ces peurs\n» Traîtresses, divisé la touffe échevelée\n» De baisers que les dieux gardaient si bien mêlée ;\n» Car, à peine j’allais cacher un rire ardent\n» Sous les replis heureux d’une seule (gardant\n» Par un doigt simple, afin que sa candeur de plume\n» Se teignît à l’émoi de sa sœur qui s’allume,\n» La petite, naïve et ne rougissant pas :)\n» Que de mes bras, défaits par de vagues trépas,\n» Cette proie, à jamais ingrate, se délivre\n» Sans pitié du sanglot dont j’étais encore ivre.\n\nTant pis ! vers le bonheur d’autres m’entraîneront\nPar leur tresse nouée aux cornes de mon front :\nTu sais, ma passion, que, pourpre et déjà mûre,\nChaque grenade éclate et d’abeilles murmure ;\nEt notre sang, épris de qui le va saisir,\nCoule pour tout l’essaim éternel du désir.\nÀ l’heure où ce bois d’or et de cendres se teinte\nUne fête s’exalte en la feuillée éteinte :\nEtna ! c’est parmi toi visité de Vénus\nSur ta lave posant ses talons ingénus,\nQuand tonne un somme triste ou s’épuise la flamme.\n\nJe tiens la reine !\n\nJe tiens la reine ! Ô sûr châtiment…\n\nJe tiens la reine ! Ô sur châtiment… Non, mais l’âme\n\nDe paroles vacante et ce corps allourdi\nTard succombent au fier silence de midi :\nSans plus il faut dormir en l’oubli du blasphème,\nSur le sable altéré gisant et comme j’aime\nOuvrir ma bouche à l’astre efficace des vins !\n\nCouple, adieu ; je vais voir l’ombre que tu devins.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/L%E2%80%99Apr%C3%A8s-Midi_d%E2%80%99un_faune/%C3%89dition_1876",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Salut",
+      "texto": "Rien, cette écume, vierge vers\nÀ ne désigner que la coupe ;\nTelle loin se noie une troupe\nDe sirènes mainte à l’envers.\n\nNous naviguons, ô mes divers\nAmis, moi déjà sur la poupe\nVous l’avant fastueux qui coupe\nLe flot de foudres et d’hivers ;\n\nUne ivresse belle m’engage\nSans craindre même son tangage\nDe porter debout ce salut\n\nSolitude, récif, étoile\nÀ n’importe ce qui valut\nLe blanc souci de notre toile.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Salut",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Les Fenêtres",
+      "texto": "Las du triste hôpital, et de l’encens fétide\nQui monte en la blancheur banale des rideaux\nVers le grand crucifix ennuyé du mur vide,\nLe moribond sournois y redresse un vieux dos,\n\nSe traîne et va, moins pour chauffer sa pourriture\nQue pour voir du soleil sur les pierres, coller\nLes poils blancs et les os de la maigre figure\nAux fenêtres qu’un beau rayon clair veut hâler,\n\nEt la bouche, fiévreuse et d’azur bleu vorace,\nTelle, jeune, elle alla respirer son trésor,\nUne peau virginale et de jadis ! encrasse\nD’un long baiser amer les tièdes carreaux d’or.\n\nIvre, il vit, oubliant l’horreur des saintes huiles,\nLes tisanes, l’horloge et le lit infligé,\nLa toux ; et quand le soir saigne parmi les tuiles,\nSon œil, à l’horizon de lumière gorgé,\n\nVoit des galères d’or, belles comme des cygnes,\nSur un fleuve de pourpre et de parfums dormir\nEn berçant l’éclair fauve et riche de leurs lignes\nDans un grand nonchaloir chargé de souvenir !\n\nAinsi, pris du dégoût de l’homme à l’âme dure\nVautré dans le bonheur, où ses seuls appétits\nMangent, et qui s’entête à chercher cette ordure\nPour l’offrir à la femme allaitant ses petits,\n\nJe fuis et je m’accroche à toutes les croisées\nD’où l’on tourne l’épaule à la vie, et, béni,\nDans leur verre, lavé d’éternelles rosées,\nQue dore le matin chaste de l’Infini\n\nJe me mire et me vois ange ! et je meurs, et j’aime\n— Que la vitre soit l’art, soit la mysticité —\nÀ renaître, portant mon rêve en diadème,\nAu ciel antérieur où fleurit la Beauté !\n\nMais, hélas ! Ici-bas est maître : sa hantise\nVient m’écœurer parfois jusqu’en cet abri sûr,\nEt le vomissement impur de la Bêtise\nMe force à me boucher le nez devant l’azur.\n\nEst-il moyen, ô Moi qui connais l’amertume,\nD’enfoncer le cristal par le monstre insulté\nEt de m’enfuir, avec mes deux ailes sans plume\n— Au risque de tomber pendant l’éternité ?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Les_Fen%C3%AAtres",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Soupir",
+      "texto": "Mon âme vers ton front où rêve, ô calme sœur,\nUn automne jonché de taches de rousseur\nEt vers le ciel errant de ton œil angélique\nMonte, comme dans un jardin mélancolique,\nFidèle, un blanc jet d’eau soupire vers l’Azur !\n— Vers l’Azur attendri d’Octobre pâle et pur\nQui mire aux grands bassins sa langueur infinie\nEt laisse, sur l’eau morte où la fauve agonie\nDes feuilles erre au vent et creuse un froid sillon,\nSe traîner le soleil jaune d’un long rayon.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Soupir",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Renouveau",
+      "texto": "Le printemps maladif a chassé tristement\nL’hiver, saison de l’art serein, l’hiver lucide,\nEt dans mon être à qui le sang morne préside\nL’impuissance s’étire en un long baîllement.\n\nDes crépuscules blancs tiédissent sous mon crâne\nQu’un cercle de fer serre ainsi qu’un vieux tombeau,\nEt, triste, j’erre après un rêve vague et beau,\nPar les champs où la sève immense se pavane\n\nPuis je tombe énervé de parfums d’arbres, las,\nEt creusant de ma face une fosse à mon rêve,\nMordant la terre chaude où poussent les lilas,\n\nJ’attends, en m’abîmant que mon ennui s’élève…\n— Cependant l’Azur rit sur la haie et l’éveil\nDe tant d’oiseaux en fleur gazouillant au soleil.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Renouveau",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    },
+    {
+      "titulo": "Don du poème",
+      "texto": "Je t’apporte l’enfant d’une nuit d’Idumée !\nNoire, à l’aile saignante et pâle, déplumée,\nPar le verre brûlé d’aromates et d’or,\nPar les carreaux glacés, hélas ! mornes encor\nL’aurore se jeta sur la lampe angélique,\nPalmes ! et quand elle a montré cette relique\n\nÀ ce père essayant un sourire ennemi,\nLa solitude bleue et stérile a frémi.\nÔ la berceuse, avec ta fille et l’innocence\nDe vos pieds froids, accueille une horrible naissance\nEt ta voix rappelant viole et clavecin,\nAvec le doigt fané presseras-tu le sein\nPar qui coule en blancheur sibylline la femme\nPour des lèvres que l’air du vierge azur affame ?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sies_(Mallarm%C3%A9,_1914,_8e_%C3%A9d.)/Don_du_po%C3%A8me",
+      "tags": [
+        "poesia",
+        "ideal",
+        "frances"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "username": "alphonsus_de_guimaraens",
+  "name": "Alphonsus de Guimaraens",
+  "bio": "Poeta mineiro de Ouro Preto, juiz em Mariana. Grande nome do Simbolismo brasileiro, fez uma poesia mística e mariana, dominada pela morte da noiva Constança. Ismália, sobre a moça que enlouquece e se lança ao mar em busca da lua, é seu poema mais célebre.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Alphonsus_de_Guimaraens_%28facing_left%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1870,
+  "morte": 1921,
+  "poemas": [
+    {
+      "titulo": "Ismália",
+      "texto": "Quando Ysmalia enlouqueceu,\nPoz-se na torre a sonhar...\nViu uma lua no céu,\nViu outra lua no mar.\n\nNo sonho em que se perdeu,\nBanhou-se toda em luar...\nQueria subir ao céu,\nQueria descer ao mar...\n\nE no desvario seu,\nNa torre poz-se a cantar...\nEstava perto do céu,\nEstava longe do mar...\n\nE como um anjo pendeu\nAs azas para voar...\nQueria a lua do céu,\nQueria a lua do mar...\n\nAs azas que Deus lhe deu\nRuflaram de par em par...\nSua alma subiu ao céu,\nSeu corpo desceu ao mar...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_(1923)/Ysmalia",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A catedral",
+      "texto": "Entre brumas ao longe surge a aurora,\nO hyalino orvalho aos poucos se evapora,\nAgoniza o arrebol.\nA cathedral eburnea do meu sonho\nApparece na paz do céo risonho\nToda branca de sol.\n\nE o sino canta em lugubres responsos:\nPobre Alphonsus! Pobre Alphonsus!\n\nO astro glorioso segue a eterna estrada.\nUma aurea setta lhe scintilla em cada\nRefulgente raio de luz.\nA cathedral eburnea do meu sonho,\nOnde os meus olhos tão cançados ponho,\nRecebe a bençam de Jesus.\n\nE o sino clama em lugubres responsos:\nPobre Alphonsus ! Pobre Alphonsus!\n\nPor entre lirios e lilazes desce\nA tarde esquiva: amargurada prece\nPõe-se a lua a rezar.\nA cathedral eburnea do meu sonho\nApparece na paz do céu tristonho\nToda branca de luar.\n\nE o sino chora em lugubres responsos:\nPobre Alphonsus! Pobre Alphonsus!\n\nO céu é todo trevas: o vento uiva.\nDo relampago a cabelleira ruiva\nVem açoitar o rosto meu.\nE a cathedral eburnea do meu sonho\nAfunda-se no cháos do céu medonho\nComo um astro que já morreu.\n\nE o sino geme em lugubres responsos:\nPobre Alphonsus! Pobre Alphonsus!\n\n    Julho — 14, de 1914.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_(1923)/A_Cathedral",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Hão de chorar por ela os cinamomos",
+      "texto": "Hão de chorar por ella os cinnamomos,\nMurchando as flores ao tombar do dia.\nDos laranjaes hão de cahir os pomos,\nLembrando-se daquella que os colhia.\n\nAs estrellas dirão: — Ai! nada somos,\nPois ella se morreu, fulgente e fria...\nE pondo os olhos nella como pomos,\nHão de chorar a irman que lhes sorria.\n\nA lua, que lhe foi mãe carinhosa,\nQue a viu nascer e amar, ha-de envolvel-a\nEntre lirios e petalas de rosa.\n\nOs meus sonhos de amor serão defuntos...\nE os archanjos dirão no azul, ao vel-a,\nPensando em mim: — Porque não vieram juntos?",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_(1923)/H%C3%A3o_de_chorar_por_ella_os_cinnamomos",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Encontrei-te. Era o mês...",
+      "texto": "Encontrei-te. Era o mês... Que importa o mês? agosto,\nSetembro, outubro, maio, abril, janeiro ou março,\nBrilhasse o luar, que importa? ou fosse o sol já posto,\nNo teu olhar todo o meu sonho andava esparso.\n\nQue saudades de amor na aurora do teu rosto,\nQue horizonte de fé no olhar tranqüilo e garço!\nNunca mais me lembrei se era no mês de agosto,\nSetembro, outubro, maio, abril, janeiro ou março.\n\nEncontrei-te. Depois... depois tudo se some:\nDesfaz-se o teu olhar em nuvens de ouro e poeira...\nEra o dia... Que importa o dia, um simples nome?\n\nOu sábado sem luz, domingo sem conforto,\nSegunda, terça ou quarta ou quinta ou sexta-feira,\nBrilhasse o sol, que importa? ou fosse o luar já morto!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Encontrei-te._Era_o_m%C3%AAs...",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "A cabeça de corvo",
+      "texto": "Na mesa, quando em meio à noite lenta\nEscrevo antes que o sono me adormeça,\nTenho o negro tinteiro que a cabeça\n          De um corvo representa.\n\nA contemplá-lo mudamente fico\nE numa dor atroz mais me concentro:\nE entreabrindo-lhe o grande e fi no bico,\n          Meto-lhe a pena pela goela a dentro.\n\nE solitariamente, pouco a pouco,\nDo bojo tiro a pena, rasa em tinta...\nE a minha mão, que treme toda, pinta\n          Versos próprios de um louco.\n\nE o aberto olhar vidrado da funesta\nAve que representa o meu tinteiro,\nVai-me seguindo a mão, que corre lesta.\n          Toda a tremer pelo papel inteiro.\n\nDizem-me todos que atirar eu devo\nTrevas em fora este agoirento corvo,\nPois dele sangra o desespero torvo\n          Destes versos que escrevo.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/A_Cabe%C3%A7a_de_Corvo",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Mãos que os lírios invejam",
+      "texto": "Mãos que os lírios invejam, mãos eleitas,\nPara aliviar de Cristo os sofrimentos,\nCujas veias azuis parecem feitas\nDa mesma essência astral dos olhos bentos:\n\nMãos de sonho e de crença, mãos afeitas\nA guiar do moribundo os passos lentos,\nE em séculos de fé, rosas desfeitas,\nEm hinos sobre as torres dos conventos:\n\nMãos a bordar o santo Escapulário,\nQue revelastes para quem padece\nO inefável consolo do Rosário:\n\nMãos ungidas no sangue da Coroa,\nDeixai tombar sobre a minha Alma em prece\nA bênção que redime e que perdoa!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/M%C3%A3os_que_os_l%C3%ADrios_invejam,_m%C3%A3os_eleitas",
+      "tags": [
+        "morte",
+        "misticismo",
+        "portugues"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "username": "wang_wei",
+  "name": "Wang Wei",
+  "bio": "Poeta, pintor, músico e funcionário da dinastia Tang, nascido em Shanxi. Budista devoto, é o mestre da poesia de paisagem, com versos breves e silenciosos sobre montanhas e rios, como os da série do Rio Wang. Su Shi disse que em sua poesia há pintura e em sua pintura há poesia.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Wang_Wei.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 699,
+  "morte": 761,
+  "poemas": [
+    {
+      "titulo": "鹿柴",
+      "texto": "空山不見人，但聞人語響。\n返景入深林，復照青苔上。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%B9%BF%E6%9F%B4_(%E7%8E%8B%E7%B6%AD)",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "送元二使安西",
+      "texto": "渭城朝雨浥輕塵，客舍青青柳色新。\n勸君更盡一杯酒，西出陽關無故人。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%80%81%E5%85%83%E4%BA%8C%E4%BD%BF%E5%AE%89%E8%A5%BF",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "九月九日憶山東兄弟",
+      "texto": "獨在異鄉為異客，每逢佳節倍思親。\n遙知兄弟登高處，遍插茱萸少一人。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E4%B9%9D%E6%9C%88%E4%B9%9D%E6%97%A5%E6%86%B6%E5%B1%B1%E6%9D%B1%E5%85%84%E5%BC%9F",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "山居秋暝",
+      "texto": "空山新雨後，天氣晚來秋。\n明月松間照，清泉石上流。\n竹喧歸浣女，蓮動下漁舟。\n隨意春芳歇，王孫自可留。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E5%B1%B1%E5%B1%85%E7%A7%8B%E6%9A%9D",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "竹里館",
+      "texto": "獨坐幽篁裏，彈琴復長嘯。\n深林人不知，明月來相照。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E8%BC%9E%E5%B7%9D%E9%9B%86_(%E7%8E%8B%E7%B6%AD)/%E7%AB%B9%E9%87%8C%E9%A4%A8",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "鳥鳴澗",
+      "texto": "人閑桂花落，夜靜春山空。\n月出驚山鳥，時鳴春澗中。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E7%9A%87%E7%94%AB%E5%B6%BD%E9%9B%B2%E6%BA%AA%E9%9B%9C%E9%A1%8C%E4%BA%94%E9%A6%96/%E9%B3%A5%E9%B3%B4%E6%BE%97",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "使至塞上",
+      "texto": "单车欲問邊，屬國過居延。\n征蓬出漢塞，歸雁入胡天。\n大漠孤煙直，長河落日圓。\n蕭關逢候騎，都護在燕然。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E4%BD%BF%E8%87%B3%E5%A1%9E%E4%B8%8A",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "雜詩",
+      "texto": "雙燕初命子，五桃新作花。\n王昌是東舍，宋玉次西家。\n小小能織綺，時時出浣紗。\n親勞使君問，南陌駐香車。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%9B%9C%E8%A9%A9_(%E7%8E%8B%E7%B6%AD)",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "送別",
+      "texto": "下馬飲君酒，問君何所之。\n君言不得意，歸臥南山陲。\n但去莫復問，白雲無盡時。",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E9%80%81%E5%88%A5_(%E4%B8%8B%E9%A6%AC%E9%A3%B2%E5%90%9B%E9%85%92)",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    },
+    {
+      "titulo": "終南山",
+      "texto": "太乙近天都，連山接海隅。\n白雲迴望合，青靄入看無。\n分野中峰變，陰晴眾壑殊。\n欲投人處宿，隔水問樵夫。",
+      "forma": "quadra",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://zh.wikisource.org/wiki/%E7%B5%82%E5%8D%97%E5%B1%B1_(%E7%8E%8B%E7%B6%AD)",
+      "tags": [
+        "natureza",
+        "solidao",
+        "chines"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "username": "ovidio",
+  "name": "Ovídio",
+  "bio": "Publius Ovidius Naso, poeta romano de Sulmona. Autor das Metamorfoses, coleção de mitos de transformação que foi a grande fonte de mitologia para a arte europeia, e de obras de amor como a Arte de Amar. Exilado por Augusto em Tomis, no Mar Negro, lá morreu.",
+  "avatar_url": "",
+  "nascimento": -43,
+  "morte": 17,
+  "poemas": [
+    {
+      "titulo": "Metamorfoses — Livro I, proêmio (vv. 1–4)",
+      "texto": "In nova fert animus mūtātās dīcere fōrmās\ncorpora; dī, coeptīs (nam vōs mūtāstis et illās)\nadspīrāte meīs prīmāque ab orīgine mundī\nad mea perpetuum dēdūcite tempora carmen!",
+      "forma": "quadra",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_I",
+      "tags": [
+        "mitologia",
+        "transformacao",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Metamorfoses — Livro IV, Píramo e Tisbe (início)",
+      "texto": "'Pyramus et Thisbe, iuvenum pulcherrimus alter,\naltera, quas Oriens habuit, praelata puellis,\ncontiguas tenuere domos, ubi dicitur altam\ncoctilibus muris cinxisse Semiramis urbem.\nnotitiam primosque gradus vicinia fecit,\ntempore crevit amor; taedae quoque iure coissent,\nsed vetuere patres: quod non potuere vetare,\nex aequo captis ardebant mentibus ambo.\nconscius omnis abest; nutu signisque loquuntur,\nquoque magis tegitur, tectus magis aestuat ignis.\nfissus erat tenui rima, quam duxerat olim,\ncum fieret, paries domui communis utrique.",
+      "forma": "outro",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_IV",
+      "tags": [
+        "amor",
+        "morte",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Metamorfoses — Livro VIII, Dédalo e Ícaro (início)",
+      "texto": "Daedalus interea Creten longumque perosus\nexilium tactusque loci natalis amore\nclausus erat pelago. 'terras licet' inquit 'et undas\nobstruat: et caelum certe patet; ibimus illac:\nomnia possideat, non possidet aera Minos.'\ndixit et ignotas animum dimittit in artes\nnaturamque novat. nam ponit in ordine pennas\na minima coeptas, longam breviore sequenti,\nut clivo crevisse putes: sic rustica quondam\nfistula disparibus paulatim surgit avenis;\ntum lino medias et ceris alligat imas\natque ita conpositas parvo curvamine flectit,",
+      "forma": "outro",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_VIII",
+      "tags": [
+        "mitologia",
+        "voo",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Metamorfoses — Livro XV, epílogo (Iamque opus exegi)",
+      "texto": "Iamque opus exegi, quod nec Iovis ira nec ignis\nnec poterit ferrum nec edax abolere vetustas.\ncum volet, illa dies, quae nil nisi corporis huius\nius habet, incerti spatium mihi finiat aevi:\nparte tamen meliore mei super alta perennis\nastra ferar, nomenque erit indelebile nostrum,\nquaque patet domitis Romana potentia terris,\nore legar populi, perque omnia saecula fama,\nsi quid habent veri vatum praesagia, vivam.",
+      "forma": "outro",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_XV",
+      "tags": [
+        "poesia",
+        "imortalidade",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Metamorfoses — Livro III, Narciso (vv. 339 ss.)",
+      "texto": "Ille per Aonias fama celeberrimus urbes\ninreprehensa dabat populo responsa petenti;\nprima fide vocisque ratae temptamina sumpsit\ncaerula Liriope, quam quondam flumine curvo\ninplicuit clausaeque suis Cephisos in undis\nvim tulit: enixa est utero pulcherrima pleno\ninfantem nymphe, iam tunc qui posset amari,\nNarcissumque vocat. de quo consultus, an esset\ntempora maturae visurus longa senectae,\nfatidicus vates 'si se non noverit' inquit.\nvana diu visa est vox auguris: exitus illam\nresque probat letique genus novitasque furoris.",
+      "forma": "outro",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_III",
+      "tags": [
+        "amor",
+        "vaidade",
+        "latim"
+      ]
+    },
+    {
+      "titulo": "Metamorfoses — Livro X, Orfeu e Eurídice (início)",
+      "texto": "Inde per inmensum croceo velatus amictu\naethera digreditur Ciconumque Hymenaeus ad oras\ntendit et Orphea nequiquam voce vocatur.\nadfuit ille quidem, sed nec sollemnia verba\nnec laetos vultus nec felix attulit omen.\nfax quoque, quam tenuit, lacrimoso stridula fumo\nusque fuit nullosque invenit motibus ignes.\nexitus auspicio gravior: nam nupta per herbas\ndum nova naiadum turba comitata vagatur,\noccidit in talum serpentis dente recepto.\nquam satis ad superas postquam Rhodopeius auras\ndeflevit vates, ne non temptaret et umbras,",
+      "forma": "outro",
+      "obra": "Metamorfoses",
+      "ano": null,
+      "fonte": "https://la.wikisource.org/wiki/Metamorphoses_(Ovidius)/Liber_X",
+      "tags": [
+        "amor",
+        "morte",
+        "latim"
+      ]
+    }
+  ]
+}

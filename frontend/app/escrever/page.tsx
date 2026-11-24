@@ -3,8 +3,9 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { Compositor } from "@/components/Compositor";
-import { temToken } from "@/lib/api";
+import { caminhoDoLogin, temToken } from "@/lib/api";
 
 // useSearchParams precisa de Suspense no build estático do Next.
 export default function EscreverPage() {
@@ -21,13 +22,15 @@ function Escrever() {
   const citarId = Number.isInteger(citar) && citar > 0 ? citar : null;
 
   useEffect(() => {
-    if (!temToken()) router.replace("/login");
+    if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl">{citarId === null ? "Escrever" : "Citar poema"}</h1>
-      <Compositor key={citarId ?? "novo"} citarId={citarId} />
+    <div>
+      <CabecalhoPagina titulo={citarId === null ? "Escrever" : "Citar poema"} />
+      <div className="px-4 py-5">
+        <Compositor key={citarId ?? "novo"} citarId={citarId} />
+      </div>
     </div>
   );
 }

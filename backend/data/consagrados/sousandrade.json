@@ -1,0 +1,36 @@
+{
+  "username": "sousandrade",
+  "name": "Sousândrade",
+  "bio": "Joaquim de Sousa Andrade, poeta maranhense que viveu em Nova York e viajou pelo mundo. Seu poema longo O Guesa, com o episódio do Inferno de Wall Street, antecipou procedimentos das vanguardas do século XX. Ignorado em vida, foi redescoberto pelos poetas concretos nos anos 1960.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Sousandrade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1833,
+  "morte": 1902,
+  "poemas": [
+    {
+      "titulo": "O Guesa — Canto I (início)",
+      "texto": "Eia, imaginação divina!\nOs Andes\nVolcanicos elevam cumes calvos,\nCircumdados de gelos, mudos, alvos,\nNuvens fluctuando-que espectac’los grandes!\nLá, onde o poncto do kondor negreja,\nScintillando no espaço como brilhos\nD’olhos, e cae a prumo sobre os filhos\nDo lhama descuidado; onde lampeja\nDa tempestade o raio; onde deserto,\nO azul sertão formoso e deslumbrante,\nArde do sol o incendio, delirante\nCoração vivo em céu profundo aberto!\n\n“Nos aureos tempos, nos jardins da America\nInfante adoração dobrando a crença\nAnte o bello signal, nuvem iberica\nEm sua noite a involveu ruidosa e densa.\n“Candidos Incas! Quando já campeiam\nOs heroes vencedores do innocente\nIndio nú; quando os templos s’incendeiam,\nJá sem virgens, sem oiro reluzente,\n“Sem as sombras dos rêis filhos de Manko,\nViu-se... (que tinham feito? e pouco havia\nA fazer-se...) n’um leito puro e branco\nA corrupção, que os braços estendia!\n“E da existencia meiga, afortunada,\nO roseo fio n’esse albor ameno\nFoi destruido. Como ensanguentada\nA terra fez sorrir ao céu sereno!\n“Foi tal a maldicção dos que caidos\nMorderam d’essa mãe querida o seio,\nA contrahir-se aos beijos, denegridos,\nO desespero se imprimil-os veiu,\n“Que resentiu-se, verdejante e válido,\nO floripondio em flor; e quando o vento\nMugindo estorce-o doloroso, pallido,\nGemidos se ouvem no amplo firmamento!",
+      "forma": "outro",
+      "obra": "O Guesa",
+      "ano": 1884,
+      "fonte": "https://pt.wikisource.org/wiki/P%C3%A1gina:O_Guesa_(1884).pdf/17",
+      "tags": [
+        "america",
+        "andes",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "O Guesa — Canto I (continuação)",
+      "texto": "\"E o Sol, que resplandece na montanha\nAs noivas não encontra, não se abraçam\nNo puro amor; e os fanfarrões d’Hespanha,\nEm sangue edeneo os pés lavando, passam.\n“Caiu a noite da nação formosa;\nCervaes romperam por nevado armento,\nQuando com a ave a corte deliciosa\nFestejava o purpureo nascimento.\"\nAssim volvia a olhar o Guesa Errante\nÁs meneiadas cimas qual altares\nDo genio patrio, que a ficar distante\nS’eleva a alma beijando-o além dos ares.\nE enfraquecido o coração, perdoa\nPungentes males que lhe estão dos seus —\nTalvez feridas settas abençoa\nNa hora saudosa, murmurando adeus.\n\nPorém, não s’interrompa esta paisagem\nDo sol no espaço! mysteriosa calma\nNo horizonte; na luz, bella miragem\nErrando, sonhos de doirada palma!\nEia, imaginação divina! Sobre\nAs ondas do Pacifico azulado\nO phantasma da Serra projectado\nAspero cincto de nevoeiros cobre:\nD’onde as torrentes espumando saltam\nE o lago anila seus lençóes d’espelho,\nE as columnas dos picos d’um vermelho\nClarão ao longe as solidões esmaltam.\nA fórma os Andes tomam solitaria\nDa eternidade em roto vendaval\nE os mares compellindo procellaria,\nCondensa, altiva, indomita, infernal!\n(Ao que do oceano sobe, avista a curva\nPerdendo-se lá do ether no infinito,\nTreme-lhe o coração; a mente turva\nS’inclina e beija a terra-Deus bemdicto!)\nOu a da noite austral, co’a flor do prado\nCommunicando o astro; ou a do bronco\nE convulsivo se annellar d’um tronco\nDe constrictor, o paramo abrazado!\n\nE o deus no espaço, em fulgorosas vagas\nRepercutida a luz no céu profundo,",
+      "forma": "outro",
+      "obra": "O Guesa",
+      "ano": 1884,
+      "fonte": "https://pt.wikisource.org/wiki/P%C3%A1gina:O_Guesa_(1884).pdf/18",
+      "tags": [
+        "america",
+        "viagem",
+        "portugues"
+      ]
+    }
+  ]
+}
