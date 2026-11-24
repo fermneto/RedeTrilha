@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator
 
+from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.user import UserOut
 
 FORMAS = [
@@ -33,22 +34,27 @@ class PostCreate(BaseModel):
     titulo: str | None = Field(default=None, max_length=200)
     texto: str
     forma: str | None = None
+    # ISO 639-1; null = língua desconhecida (o "outra" do compositor).
+    idioma: str | None = IDIOMA_PADRAO
     # Com texto, é citação do poema `repost_de_id` (repost puro é POST /posts/{id}/repostar).
     repost_de_id: int | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)
+    _idioma = field_validator("idioma")(validar_idioma)
 
 
 class PostUpdate(BaseModel):
-    """PATCH parcial: só os campos enviados mudam; `titulo` e `forma` aceitam null."""
+    """PATCH parcial: só os campos enviados mudam; `titulo`, `forma` e `idioma` aceitam null."""
 
     titulo: str | None = Field(default=None, max_length=200)
     texto: str | None = None
     forma: str | None = None
+    idioma: str | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)
+    _idioma = field_validator("idioma")(validar_idioma)
 
 
 class PostOut(BaseModel):
@@ -60,6 +66,7 @@ class PostOut(BaseModel):
     obra: str | None
     ano: int | None
     fonte: str | None
+    idioma: str | None
     repost_de_id: int | None
     created_at: datetime
     updated_at: datetime

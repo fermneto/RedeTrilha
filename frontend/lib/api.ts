@@ -184,9 +184,31 @@ export const FORMAS = [
 
 export type Forma = (typeof FORMAS)[number];
 
-// Rótulo legível da forma: só troca o "_" por espaço (verso_livre → verso livre).
+// Rótulo legível de cada forma, com acento (o valor guardado não tem).
+const NOMES_DAS_FORMAS: Record<Forma, string> = {
+  soneto: "soneto",
+  haicai: "haicai",
+  trova: "trova",
+  quadra: "quadra",
+  cordel: "cordel",
+  verso_livre: "verso livre",
+  prosa_poetica: "prosa poética",
+  outro: "outro",
+};
+
+// Forma fora da lista (não deveria vir do backend) fica só com "_" virando espaço.
 export function nomeDaForma(forma: string): string {
-  return forma.replace(/_/g, " ");
+  return NOMES_DAS_FORMAS[forma as Forma] ?? forma.replace(/_/g, " ");
+}
+
+// A forma também vira tag (#soneto).
+function ehForma(tag: string): boolean {
+  return (FORMAS as readonly string[]).includes(tag);
+}
+
+// Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
+export function caminhoDaTag(tag: string): string {
+  return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;
 }
 
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
@@ -205,6 +227,8 @@ export type Post = {
   obra: string | null;
   ano: number | null;
   fonte: string | null;
+  // Código ISO 639-1 da língua do poema ("pt", "en", "zh"); null = desconhecida.
+  idioma: string | null;
   repost_de_id: number | null;
   created_at: string;
   updated_at: string;
@@ -254,8 +278,13 @@ export type NovoPoema = {
   titulo: string | null;
   texto: string;
   forma: string | null;
+  // ISO 639-1; null = outra língua (desconhecida). Sem o campo, o backend usa "pt".
+  idioma?: string | null;
   repost_de_id?: number;
 };
+
+// Línguas do seletor do compositor, português primeiro (o padrão). "outra" manda null.
+export const IDIOMAS_DO_COMPOSITOR = ["pt", "es", "en", "fr", "it", "de", "la"] as const;
 
 // Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
 export function temToken(): boolean {
@@ -412,6 +441,25 @@ export function buscarTrending(): Promise<{ items: TagContagem[] }> {
   return apiGet<{ items: TagContagem[] }>("/tags/trending");
 }
 
+export type FiltrosDoExplorar = { tag: string | null; forma: string | null };
+
+// GET /explorar: poemas de todos, mais novo primeiro; tag e forma juntas fazem
+// interseção. A rota pagina por offset e a ListaDePoemas por cursor, então o
+// cursor aqui é o próximo offset em texto, e vira null quando chega ao total.
+export async function buscarExplorar(
+  { tag, forma }: FiltrosDoExplorar,
+  cursor: string | null,
+  limit = 20,
+): Promise<FeedPage> {
+  const offset = cursor === null ? 0 : Number(cursor);
+  const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
+  if (tag) params.set("tag", tag);
+  if (forma) params.set("forma", forma);
+  const pagina = await apiGet<Page<Post>>(`/explorar?${params}`);
+  const proximo = offset + pagina.limit;
+  return { ...pagina, proximo_cursor: proximo < pagina.total ? String(proximo) : null };
+}
+
 // Equivale a core/indice_tags.normalizar: casefold e sem acento ("#Solidão" → "solidao").
 // O JS não tem casefold; toLowerCase mais "ß" → "ss" cobre a diferença que importa
 // aqui. Depois fica só o que cabe numa tag ([a-z0-9_]), sem o "#".
@@ -437,6 +485,38 @@ export function listarSeguindo(username: string, limit = 100): Promise<Page<User
 export function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
   return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+}
+
+// ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
+
+export type Traducao = {
+  titulo: string | null;
+  texto: string;
+  idioma_origem: string | null;
+  idioma_destino: string;
+  modelo: string;
+  // Veio da tabela de traduções, sem chamar a IA de novo.
+  em_cache: boolean;
+};
+
+// `para` é um código ISO 639-1 ("pt"). 422 se o poema já está nessa língua; 503 sem IA.
+export function traduzirPoema(id: number, para: string): Promise<Traducao> {
+  return apiPost<Traducao>(`/posts/${id}/traduzir`, { para });
+}
+
+// Língua do navegador, só o subtag primário ("pt" de "pt-BR"). null no servidor.
+export function idiomaDoNavegador(): string | null {
+  if (typeof navigator === "undefined" || !navigator.language) return null;
+  return navigator.language.split("-")[0].toLowerCase();
+}
+
+// Nome da língua em português ("en" → "inglês"); o próprio código se o navegador não souber.
+export function nomeDoIdioma(codigo: string): string {
+  try {
+    return new Intl.DisplayNames(["pt-BR"], { type: "language" }).of(codigo)?.toLowerCase() ?? codigo;
+  } catch {
+    return codigo;
+  }
 }
 
 // ---- Antologias (P5): espelham backend/app/schemas/antologia.py ----

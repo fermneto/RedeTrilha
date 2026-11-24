@@ -17,6 +17,6 @@ services:
       # A URL da Vercel, sem barra no fim (várias: separadas por vírgula).
       - key: CORS_ORIGINS
         sync: false
-      # Opcional: só quando a tradução (que usa a API da Anthropic) estiver na main.
-      # - key: ANTHROPIC_API_KEY
-      #   sync: false
+      # Tradução de poemas (API da Anthropic). Sem ela, só a tradução fica fora (503).
+      - key: ANTHROPIC_API_KEY
+        sync: false
