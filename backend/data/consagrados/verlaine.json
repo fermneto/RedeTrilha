@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Paul_Verlaine.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1844,
   "morte": 1896,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "FR",
   "poemas": [
     {
       "titulo": "Il pleure dans mon cœur",
@@ -140,7 +144,7 @@
       "titulo": "Fêtes galantes (1902)/Colombine",
       "texto": "Léandre le sot,\nPierrot qui d’un saut\n        De puce\nFranchit le buisson,\nCassandre sous son\n        Capuce,\n\nArlequin aussi,\nCet aigrefin si\n        Fantasque\nAux costumes fous,\nSes yeux luisants sous\n        Son masque,\n\n— Do, mi, sol, mi, fa, —\nTout ce monde va,\n        Rit, chante\nEt danse devant\nUne belle enfant\n        Méchante\n\nDont les yeux pervers\nComme les yeux verts\n        Des chattes\nGardent ses appas\nEt disent : « À bas\n        Les pattes ! »\n\n— Eux ils vont toujours ! —\nFatidique cours\n        Des astres,\nOh ! dis-moi vers quels\nMornes ou cruels\n        Désastres\n\nL’implacable enfant,\nPreste et relevant\n        Ses jupes,\nLa rose au chapeau,\nConduit son troupeau\n        De dupes ?",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Colombine",
       "tags": []
@@ -149,7 +153,7 @@
       "titulo": "Fêtes galantes (1902)/Cortège",
       "texto": "Un singe en veste de brocart\nTrotte et gambade devant elle\nQui froisse un mouchoir de dentelle\nDans sa main gantée avec art,\n\nTandis qu’un négrillon tout rouge\nMaintient à tour de bras les pans\nDe sa lourde robe en suspens,\nAttentif à tout pli qui bouge ;\n\nLe singe ne perd pas des yeux\nLa gorge blanche de la dame.\nOpulent trésor que réclame\nLe torse nu de l’un des dieux ;\n\nLe négrillon parfois soulève\nPlus haut qu’il ne faut, l’aigrefin,\nSon fardeau somptueux, afin\nDe voir ce dont la nuit il rêve ;\n\nElle va par les escaliers\nEt ne paraît pas davantage\nSensible à l’insolent suffrage\nDe ses animaux familiers.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Cort%C3%A8ge",
       "tags": []
@@ -158,7 +162,7 @@
       "titulo": "Fêtes galantes (1902)/Cythère",
       "texto": "Un pavillon à claires-voies\nAbrite doucement nos joies\nQu’éventent des rosiers amis ;\n\nL’odeur des roses, faible, grâce\nAu vent léger d’été qui passe,\nSe mêle aux parfums qu’elle a mis ;\n\nComme ses yeux l’avaient promis,\nSon courage est grand et sa lèvre\nCommunique une exquise fièvre ;\n\nEt l’Amour comblant tout, hormis\nLa Faim, sorbets et confitures\nNous préservent des courbatures.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Cyth%C3%A8re",
       "tags": []
@@ -167,7 +171,7 @@
       "titulo": "Fêtes galantes (1902)/Dans la grotte",
       "texto": "        Là ! Je me tue à vos genoux !\n        Car ma détresse est infinie,\nEt la tigresse épouvantable d’Hyrcanie\n        Est une agnelle au prix de vous.\n\n        Oui, céans, cruelle Clymène,\n        Ce glaive qui, dans maints combats,\nMit tant de Scipions et de Cyrus à bas,\n        Va finir ma vie et ma peine !\n\n        Ai-je même besoin de lui\n        Pour descendre aux Champs-Élysées ?\nAmour perça-t-il pas de flèches aiguisées\n        Mon cœur, dès que votre œil m’eût lui ?",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Dans_la_grotte",
       "tags": []
@@ -176,7 +180,7 @@
       "titulo": "Fêtes galantes (1902)/En bateau",
       "texto": "L’étoile du berger tremblote\nDans l’eau plus noire et le pilote\nCherche un briquet dans sa culotte.\n\nC’est l’instant, Messieurs, ou jamais,\nD’être audacieux, et je mets\nMes deux mains partout désormais !\n\nLe chevalier Atys qui gratte\nSa guitare, à Chloris l’ingrate\nLance une œillade scélérate.\n\nL’abbé confesse bas Églé,\nEt ce vicomte déréglé\nDes champs donne à son cœur la clé.\n\nCependant la lune se lève\nEt l’esquif en sa course brève\nFile gaîment sur l’eau qui rêve.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/En_bateau",
       "tags": []
@@ -185,7 +189,7 @@
       "titulo": "Fêtes galantes (1902)/En patinant",
       "texto": "Nous fûmes dupes, vous et moi,\nDe manigances mutuelles,\nMadame, à cause de l’émoi\nDont l’Été férut nos cervelles.\n\nLe Printemps avait bien un peu\nContribué, si ma mémoire\nEst bonne, à brouiller notre jeu,\nMais que d’une façon moins noire !\n\nCar au printemps l’air est si frais\nQu’en somme les roses naissantes,\nQu’Amour semble entr’ouvrir exprès,\nOnt des senteurs presque innocentes ;\n\nEt même les lilas ont beau\nPousser leur haleine poivrée,\nDans l’ardeur du soleil nouveau,\nCet excitant au plus récrée,\n\nTant le zéphyr souffle, moqueur,\nDispersant l’aphrodisiaque\nEffluve, en sorte que le cœur\nChôme et que même l’esprit vaque,\n\nEt qu’émoustillés, les cinq sens\nSe mettent alors de la fête,\nMais seuls, tout seuls, bien seuls et sans\nQue la crise monte à la tête.\n\nCe fut le temps, sous de clairs ciels\n(Vous en souvenez-vous, Madame ?),\nDes baisers superficiels\nEt des sentiments à fleur d’âme,\n\nExempts de folles passions,\nPleins d’une bienveillance amène.\nComme tous deux nous jouissions\nSans enthousiasme — et sans peine !\n\nHeureux instants ! — mais vint l’Été :\nAdieu, rafraîchissantes brises ?\nUn vent de lourde volupté\nInvestit nos âmes surprises.\n\nDes fleurs aux calices vermeils\nNous lancèrent leurs odeurs mûres,\n\nEt partout les mauvais conseils\nTombèrent sur nous des ramures\n\nNous cédâmes à tout cela,\nEt ce fut un bien ridicule\nVertigo qui nous affola\nTant que dura la canicule.\n\nRires oiseux, pleurs sans raisons,\nMains indéfiniment pressées,\nTristesses moites, pâmoisons,\nEt quel vague dans les pensées !\n\nL’automne heureusement, avec\nSon jour froid et ses bises rudes,\nVint nous corriger, bref et sec,\nDe nos mauvaises habitudes,\n\nEt nous induisit brusquement\nEn l’élégance réclamée\nDe tout irréprochable amant\nComme de toute digne aimée…\n\nOr, cet Hiver, Madame, et nos\nParieurs tremblent pour leur bourse,\nEt déjà les autres traîneaux\nOsent nous disputer la course.\n\nLes deux mains dans votre manchon,\nTenez-vous bien sur la banquette\nEt filons ! — et bientôt Fanchon\nNous fleurira quoiqu’on caquette !",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/En_patinant",
       "tags": [
@@ -196,7 +200,7 @@
       "titulo": "Fêtes galantes (1902)/En sourdine",
       "texto": "Calmes dans le demi-jour\nQue les branches hautes font,\nPénétrons bien notre amour\nDe ce silence profond.\n\nFondons nos âmes, nos cœurs\nEt nos sens extasiés,\nParmi les vagues langueurs\nDes pins et des arbousiers.\n\nFerme tes yeux à demi,\nCroise tes bras sur ton sein,\nEt de ton cœur endormi\nChasse à jamais tout dessein.\n\nLaissons-nous persuader\nAu souffle berceur et doux\nQui vient à tes pieds rider\nLes ondes de gazon roux.\n\nEt quand, solennel, le soir\nDes chênes noirs tombera,\nVoix de notre désespoir,\nLe rossignol chantera.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/En_sourdine",
       "tags": []
@@ -205,7 +209,7 @@
       "titulo": "Fêtes galantes (1902)/Fantoches",
       "texto": "Scaramouche et Pulcinella,\nQu’un mauvais dessein rassembla,\nGesticulent, noirs sur la lune.\n\nCependant l’excellent docteur\nBolonais cueille avec lenteur\nDes simples parmi l’herbe brune.\n\nLors sa fille, piquant minois,\nSous la charmille en tapinois\nSe glisse demi-nue, en quête\n\nDe son beau pirate espagnol,\nDont un langoureux rossignol\nClame la détresse à tue-tête.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Fantoches",
       "tags": []
@@ -214,7 +218,7 @@
       "titulo": "Fêtes galantes (1902)/Le Faune",
       "texto": "Un vieux faune de terre cuite\nRit au centre des boulingrins,\nPrésageant sans doute une suite\nMauvaise à ces instants sereins\n\nQui m’ont conduit et t’ont conduite,\nMélancoliques pèlerins,\nJusqu’à cette heure dont la fuite\nTournoie au son des tambourins.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Le_Faune",
       "tags": []
@@ -223,7 +227,7 @@
       "titulo": "Fêtes galantes (1902)/Les Coquillages",
       "texto": "Chaque coquillage incrusté\nDans la grotte où nous nous aimâmes\nA sa particularité\n\nL’un a la pourpre de nos âmes\nDérobée au sang de nos cœurs\nQuand je brûle et que tu t’enflammes ;\n\nCet autre affecte tes langueurs\nEt tes pâleurs alors que, lasse,\nTu m’en veux de mes yeux moqueurs ;\n\nCelui-ci contrefait la grâce\nDe ton oreille, et celui-là\nTa nuque rose, courte et grasse ;\n\nMais un, entre autres, me troubla.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Les_Coquillages",
       "tags": []
@@ -232,7 +236,7 @@
       "titulo": "Fêtes galantes (1902)/Les Indolents",
       "texto": "Bah ! malgré les destins jaloux,\nMourons ensemble, voulez-vous ?\n— La proposition est rare.\n\n— Le rare est le bon. Donc mourons\nComme dans les Décamérons.\n— Hi ! hi ! hi ! quel amant bizarre !\n\n— Bizarre, je ne sais. Amant\nIrréprochable, assurément.\nSi vous voulez, mourons ensemble ?\n\n— Monsieur, vous raillez mieux encor\nQue vous n’aimez, et parlez d’or ;\nMais taisons-nous, si bon vous semble ?\n\nSi bien que ce soir-là Tircis\nEt Dorimène, à deux assis\nNon loin de deux silvains hilares,\n\nEurent l’inexpiable tort\nD’ajourner une exquise mort.\nHi ! hi ! hi ! les amants bizarres !",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Les_Indolents",
       "tags": []
@@ -241,7 +245,7 @@
       "titulo": "Fêtes galantes (1902)/Les ingénus",
       "texto": "Les hauts talons luttaient avec les longues jupes,\nEn sorte que, selon le terrain et le vent,\nParfois luisaient des bas de jambe, trop souvent\nInterceptés ! — et nous aimions ce jeu de dupes.\n\nParfois aussi le dard d’un insecte jaloux\nInquiétait le col des belles, sous les branches,\nEt c’était des éclairs soudains de nuques blanches\nEt ce régal comblait nos jeunes yeux de fous.\n\nLe soir tombait, un soir équivoque d’automne :\nLes belles, se pendant rêveuses à nos bras,\nDirent alors des mots si spécieux, tout bas,\nQue notre âme depuis ce temps tremble et s’étonne.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Les_ing%C3%A9nus",
       "tags": []
@@ -250,7 +254,7 @@
       "titulo": "Fêtes galantes (1902)/Lettre",
       "texto": "Éloigné de vos yeux, Madame, par des soins\nImpérieux (j’en prends tous les dieux à témoins),\nJe languis et je meurs, comme c’est ma coutume\nEn pareil cas, et vais, le cœur plein d’amertume,\nÀ travers des soucis où votre ombre me suit,\nLe jour dans mes pensées, dans mes rêves la nuit.\nEt la nuit et le jour adorable, Madame !\nSi bien qu’enfin, mon corps faisant place à mon âme,\nJe deviendrai fantôme à mon tour aussi, moi,\nEt qu’alors, et parmi le lamentable émoi\nDes enlacements vains et des désirs sans nombre,\nMon ombre se fondra à jamais en votre ombre.\n\nEn attendant, je suis, très chère, ton valet.\n\nTout se comporte-t-il là-bas comme il te plaît,\nTa perruche, ton chat, ton chien ? La compagnie\nEst-elle toujours belle ? et cette Silvanie\n\nDont j’eusse aimé l’œil noir si le tien n’était bleu,\nEt qui parfois me fit des signes, palsambleu !\nTe sert-elle toujours de douce confidente ?\n\nOr, Madame, un projet impatient me hante\nDe conquérir le monde et tous ses trésors pour\nMettre à vos pieds ce gage — indigne — d’un amour\nÉgal à toutes les flammes les plus célèbres\nQui des grands cœurs aient fait resplendir les ténèbres.\nCléopâtre fut moins aimée, oui, sur ma foi !\nPar Marc-Antoine et par César que vous par moi,\nN’en doutez pas, Madame, et je saurai combattre\nComme César pour un sourire, ô Cléopâtre,\n\nEt comme Antoine fuir au seul prix d’un baiser.\n\nSur ce, très chère, adieu. Car voilà trop causer,\nEt le temps que l’on perd à lire une missive\nN’aura jamais valu la peine qu’on l’écrive.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Lettre",
       "tags": []
@@ -259,7 +263,7 @@
       "titulo": "Fêtes galantes (1902)/L’Amour par terre",
       "texto": "Le vent de l’autre nuit a jeté bas l’Amour\nQui, dans le coin le plus mystérieux du parc,\nSouriait en bandant malignement son arc,\nEt dont l’aspect nous fit tant songer tout un jour !\n\nLe vent de l’autre nuit l’a jeté bas ! Le marbre\nAu souffle du matin tournoie, épars. C’est triste\nDe voir le piédestal, où le nom de l’artiste\nSe lit péniblement parmi l’ombre d’un arbre.\n\nOh ! c’est triste de voir debout le piédestal\nTout seul ! et des pensers mélancoliques vont\nEt viennent dans mon rêve où le chagrin profond\nÉvoque un avenir solitaire et fatal.\n\nOh ! c’est triste ! — Et toi-même, est-ce pas ? es touchée\nD’un si dolent tableau, bien que ton œil frivole\nS’amuse au papillon de pourpre et d’or qui vole\nAu-dessus des débris dont l’allée est jonchée.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/L%E2%80%99Amour_par_terre",
       "tags": []
@@ -268,7 +272,7 @@
       "titulo": "Fêtes galantes (1902)/Mandoline",
       "texto": "Les donneurs de sérénades\nEt les belles écouteuses\nÉchangent des propos fades\nSous les ramures chanteuses.\n\nC’est Tircis et c’est Aminte,\nEt c’est l’éternel Clitandre,\nEt c’est Damis qui pour mainte\nCruelle fait maint vers tendre.\n\nLeurs courtes vestes de soie,\nLeurs longues robes à queues,\nLeur élégance, leur joie\nEt leurs molles ombres bleues,\n\nTourbillonnent dans l’extase\nD’une lune rose et grise,\nEt la mandoline jase\nParmi les frissons de brise.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Mandoline",
       "tags": []
@@ -277,7 +281,7 @@
       "titulo": "Fêtes galantes (1902)/Pantomime",
       "texto": "Pierrot, qui n’a rien d’un Clitandre,\nVide un flacon sans plus attendre,\nEt, pratique, entame un pâté.\n\nCassandre, au fond de l’avenue,\nVerse une larme méconnue\nSur son neveu déshérité.\n\nCe faquin d’Arlequin combine\nL’enlèvement de Colombine\nEt pirouette quatre fois.\n\nColombine rêve, surprise\nDe sentir un cœur dans la brise\nEt d’entendre en son cœur des voix.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Pantomime",
       "tags": []
@@ -286,7 +290,7 @@
       "titulo": "Fêtes galantes (1902)/Sur l’herbe",
       "texto": "L’abbé divague. — Et toi, marquis,\nTu mets de travers ta perruque.\n— Ce vieux vin de Chypre est exquis\nMoins, Camargo, que votre nuque.\n\n— Ma flamme… — Do, mi, sol, la, si.\n— L’abbé, ta noirceur se dévoile.\n— Que je meure, mesdames, si\nJe ne vous décroche une étoile.\n\n— Je voudrais être petit chien !\n— Embrassons nos bergères, l’une\nAprès l’autre. — Messieurs, eh bien ?\n— Do, mi, sol. — Hé ! bonsoir la Lune !",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/Sur_l%E2%80%99herbe",
       "tags": []
@@ -295,7 +299,7 @@
       "titulo": "Fêtes galantes (1902)/À Clymène",
       "texto": "Mystiques barcarolles,\nRomances sans paroles,\nChère, puisque tes yeux,\n      Couleur des cieux,\n\nPuisque ta voix, étrange\nVision qui dérange\nEt trouble l’horizon\n      De ma raison,\n\nPuisque l’arôme insigne\nDe ta pâleur de cygne\nEt puisque la candeur\n      De ton odeur,\n\nAh ! puisque tout ton être,\nMusique qui pénètre,\nNimbes d’anges défunts,\n      Tons et parfums,\n\nA sur d’almes cadences\nEn ses correspondances\nInduit mon cœur subtil,\n      Ainsi soit-il !",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/%C3%80_Clym%C3%A8ne",
       "tags": []
@@ -304,7 +308,7 @@
       "titulo": "Fêtes galantes (1902)/À la promenade",
       "texto": "Le ciel si pâle et les arbres si grêles\nSemblent sourire à nos costumes clairs\nQui vont flottant légers avec des airs\nDe nonchalance et des mouvements d’ailes.\n\nEt le vent doux ride l’humble bassin,\nEt la lueur du soleil qu’atténue\nL’ombre des bas tilleuls de l’avenue\nNous parvient bleue et mourante à dessein.\n\nTrompeurs exquis et coquettes charmantes\nCœurs tendres mais affranchis du serment\nNous devisons délicieusement,\nEt les amants lutinent les amantes\n\nDe qui la main imperceptible sait\nParfois donner un soufflet qu’on échange\nContre un baiser sur l’extrême phalange\nDu petit doigt, et comme la chose est\n\nImmensément excessive et farouche,\nOn est puni par un regard très sec,\nLequel contraste, au demeurant, avec\nLa moue assez clémente de la bouche.",
       "forma": "outro",
-      "obra": "fr.wikisource: Fêtes galantes",
+      "obra": "Fêtes galantes",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/F%C3%AAtes_galantes_%281902%29/%C3%80_la_promenade",
       "tags": []

@@ -4,12 +4,17 @@
   "bio": "Romancista e poeta inglês. Wessex Poems and Other Verses é o primeiro livro de poemas, sobre o campo, o tempo e a ironia do destino.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Thomashardy_restored.jpg",
   "morte": 1928,
+  "escolas": [
+    "realismo",
+    "modernismo_vanguardas"
+  ],
+  "pais": "GB",
   "poemas": [
     {
       "titulo": "Wessex Poems and Other Verses/\"I Look into my Glass\"",
       "texto": "I LOOK into my glass,\nAnd view my wasting skin,\nAnd say, \"Would God it came to pass\nMy heart had shrunk as thin!\"\n\nFor then, I, undistrest\nBy hearts grown cold to me,\nCould lonely wait my endless rest\nWith equanimity.\n\nBut Time, to make me grieve,\nPart steals, lets part abide;\nAnd shakes this fragile frame at eve\nWith throbbings of noontide.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/%22I_Look_into_my_Glass%22",
       "tags": []
@@ -18,7 +23,7 @@
       "titulo": "Wessex Poems and Other Verses/\"In Vision I Roamed\"",
       "texto": "IN vision I roamed the flashing Firmament,\nSo fierce in blazon that the Night waxed wan,\nAs though with an awed sense of such ostent;\nAnd as I thought my spirit ranged on and on\n\nIn footless traverse through ghast heights of sky,\nTo the last chambers of the monstrous Dome,\nWhere stars the brightest here to darkness die:\nThen, any spot on our own Earth seemed Home!\n\nAnd the sick grief that you were far away\nGrew pleasant thankfulness that you were near,\nWho might have been, set on some outstep sphere,\nLess than a Want to me, as day by day\nI lived unware, uncaring all that lay\nLocked in that Universe taciturn and drear.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/%22In_Vision_I_Roamed%22",
       "tags": []
@@ -27,7 +32,7 @@
       "titulo": "Wessex Poems and Other Verses/A Confession to a Friend in Trouble",
       "texto": "YOUR troubles shrink not, though I feel them less\nHere, far away, than when I tarried near:\nI even smile old smiles—with listlessness—\nYet smiles they are, not ghastly mockeries mere.\n\nI thought too strange to house within my brain\nHaunting its outer precincts I discern:\n—That I will not show zeal again to learn\nYour griefs, and, sharing them, renew my pain. . . .\n\nIt goes, like murky bird or buccaneer\nThat shapes its lawless figure on the main,\nAnd each new impulse tends to make outflee\nThe unseemly instinct that had lodgment here;\nYet, comrade old, can bitterer knowledge be\nThan that, though banned, such instinct was in me!\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Confession_to_a_Friend_in_Trouble",
       "tags": []
@@ -36,7 +41,7 @@
       "titulo": "Wessex Poems and Other Verses/A Meeting with Despair — AS evening shaped I found me on a moor",
       "texto": "AS evening shaped I found me on a moor\nWhich sight could scarce sustain:\nThe black lean land, of featureless contour,\nWas like a tract in pain.\n\n\"This scene, like my own life,\" I said, \"is one\nWhere many glooms abide;\nToned by its fortune to a deadly dun—\nLightless on every side.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Meeting_with_Despair",
       "tags": []
@@ -45,7 +50,7 @@
       "titulo": "Wessex Poems and Other Verses/A Meeting with Despair — I glanced aloft and halted, pleasure-caught",
       "texto": "I glanced aloft and halted, pleasure-caught\nTo see the contrast there:\nThe ray-lit clouds gleamed glory; and I thought,\n\"There's solace everywhere!\"\n\nThen bitter self-reproaches as I stood\nI dealt me silently\nAs one perverse—misrepresenting Good\nIn graceless mutiny.\n\nAgainst the horizon's dim-discerned wheel\nA form rose, strange of mould:\nThat he was hideous, hopeless, I could feel\nRather than could behold.\n\n\"'Tis a dead spot, where even the light lies spent\nTo darkness!\" croaked the Thing.\n\"Not if you look aloft!\" said I, intent\nOn my new reasoning.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Meeting_with_Despair",
       "tags": []
@@ -54,7 +59,7 @@
       "titulo": "Wessex Poems and Other Verses/A Meeting with Despair — \"Yea—but await awhile!\" he cried. \"Ho-ho!—",
       "texto": "\"Yea—but await awhile!\" he cried. \"Ho-ho!—\nLook now aloft and see!\"\nI looked. There, too, sat night: Heaven's radiant show\nHad gone. Then chuckled he.",
       "forma": "quadra",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Meeting_with_Despair",
       "tags": []
@@ -63,7 +68,7 @@
       "titulo": "Wessex Poems and Other Verses/A Sign-Seeker — I MARK the months in liveries dank and dry,",
       "texto": "I MARK the months in liveries dank and dry,\nThe day-tides many-shaped and hued;\nI see the nightfall shades subtrude,\nAnd hear the monotonous hours clang negligently by.\n\nI view the evening bonfires of the sun\nOn hills where morning rains have hissed;\nThe eyeless countenance of the mist\nPallidly rising when the summer droughts are done.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Sign-Seeker",
       "tags": []
@@ -72,7 +77,7 @@
       "titulo": "Wessex Poems and Other Verses/A Sign-Seeker — I have seen the lightning-blade, the leaping star,",
       "texto": "I have seen the lightning-blade, the leaping star,\nThe caldrons of the sea in storm,\nHave felt the earthquake's lifting arm,\nAnd trodden where abysmal fires and snowcones are.\n\nI learn to prophesy the hid eclipse,\nThe coming of eccentric orbs;\nTo mete the dust the sky absorbs,\nTo weigh the sun, and fix the hour cach planet dips.\n\nI witness fellow earth-men surge and strive;\nAssemblies meet, and throb, and part;\nDeath's soothing finger, sorrow's smart;\n—All the vast various moils that mean a world alive.\n\nBut that I fain would wot of shuns my sense—\nThose sights of which old prophets tell,\nThose signs the general word so well,\nVouchsafed to their unheed, denied my watchings tense.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Sign-Seeker",
       "tags": []
@@ -81,7 +86,7 @@
       "titulo": "Wessex Poems and Other Verses/A Sign-Seeker — In graveyard green, behind his monument",
       "texto": "In graveyard green, behind his monument\nTo glimpse a phantom parent, friend,\nWearing his smile, and \"Not the end!\"\nOutbreathing softly: that were blest enlightenment;\n\nOr, if a dead Love's lips, whom dreams reveal\nWhen midnight imps of King Decay\nDelve sly to solve me back to clay,\nShould leave some print to prove her spiritkisses real;\n\nOr, when Earth's Frail lie bleeding of her Strong,\nIf some Recorder, as in Writ,\nNear to the weary scene should flit\nAnd drop one plume as pledge that Heaven inscrolls the wrong.\n\n—There are who, rapt to heights of trancéd trust,\nThese tokens claim to feel and see,\nRead radiant hints of times to be—\nOf heart to heart returning after dust to dust.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Sign-Seeker",
       "tags": []
@@ -90,7 +95,7 @@
       "titulo": "Wessex Poems and Other Verses/A Sign-Seeker — Such scope is granted not my powers indign . . .",
       "texto": "Such scope is granted not my powers indign . . .\nI have lain in dead men's beds, have walked\nThe tombs of those with whom I'd talked,\nCalled many a gone and goodly one to shape a sign,\n\nAnd panted for response. But none replies;\nNo warnings loom, nor whisperings\nTo open out my limitings,\nAnd Nescience mutely muses: When a man falls he lies.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/A_Sign-Seeker",
       "tags": []
@@ -99,7 +104,7 @@
       "titulo": "Wessex Poems and Other Verses/Amabel",
       "texto": "I MARKED her ruined hues,\nHer custom-straitened views,\nAnd asked, “Can there indwell\nMy Amabel?\"\n\nI looked upon her gown,\nOnce rose, now earthen brown:\nThe change was like the knell\nOf Amabel.\n\nHer step's mechanic ways\nHad lost the life of May's;\nHer laugh, once sweet in swell,\nSpoilt Amabel.\n\nI mused: \"Who sings the strain\nI sang cre warmth did wane?\nWho thinks its numbers spell\nHis Amabel?\"—\n\nKnowing that, though Love cease,\nLove's race shows undecrease:\nAll find in dorp or dell\nAn Amabel.\n\n—I felt that I could creep\nTo some housetop, and weep,\nThat Time the tyrant fell\nRuled Amabel!\n\nI said (the while I sighed\nThat love like ours had died),\n\"Fond things I'll no more tell\nTo Amabel,\n\n\"But leave her to her fate,\nAnd fling across the gate,\n'Till the Last Trump, farewell,\nO Amabel!'\"\n\n1865.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Amabel",
       "tags": []
@@ -108,7 +113,7 @@
       "titulo": "Wessex Poems and Other Verses/At a Bridal",
       "texto": "WHEN you paced forth, to wait maternity,\nA dream of other offspring held my mind.\nCompounded of us twain as Love designed;\nRare forms, that corporate now will never be!\n\nShould I, too, wed as slave to Mode's decree,\nAnd each thus found apart, of false desire,\nA stolid line, whom no high aims will fire\nAs had fired ours could ever have mingled we:\n\nAnd, grieved that lives so matched should miscompose,\nEach mourn the double waste; and question dare\nTo the Great Dame whence incarnation flows,\nWhy those high-purposed children never were:\nWhat will she answer? That she does not care\nIf the race all such sovereign types unknows.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/At_a_Bridal",
       "tags": []
@@ -117,7 +122,7 @@
       "titulo": "Wessex Poems and Other Verses/At an Inn",
       "texto": "WHEN we as strangers sought\nTheir catering care,\nVeiled smiles bespoke their thought\nOf what we were.\nThey warmed as they opined\nUs more than friends—\nThat we had all resigned\nFor love's dear ends.\n\nAnd that swift sympathy\nWith living love\n\nWhich quicks the world—maybe\nThe spheres above,\nMade them our ministers,\nMoved them to say,\n\"Ah, God, that bliss like theirs\nWould flush our day!\"\n\nAnd we were left alone\nAs Love's own pair;\nYet never the love-light shone\nBetween us there!\nBut that which chilled the breath\nOf afternoon,\nAnd palsied unto death\nThe pane-fly's tune.\n\nThe kiss their zeal foretold,\nAnd now deemed come,\nCame not: within his hold\nLove lingered numb.\nWhy cast he on our port\nA bloom not ours?\nWhy shaped us for his sport\nIn after-hours?\n\nAs we seemed we were not\nThat day afar,\nAnd now we seem not what\nWe aching are.\nO severing sea and land,\nO laws of men,\nEre death, once let us stand\nAs we stood then!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/At_an_Inn",
       "tags": []
@@ -126,7 +131,7 @@
       "titulo": "Wessex Poems and Other Verses/Ditty",
       "texto": "BENEATH a knap where flown\nNestlings play,\nWithin walls of weathered stone,\nFar away\nFrom the files of formal houses,\nBy the bough the firstling browses,\nLives a Sweet: no merchants meet,\nNo man barters, no man sells\nWhere she dwells.\n\nUpon that fabric fair\n“Here is she!\"\nSeems written everywhere\nUnto me.\nBut to friends and nodding neighbors,\nFellow wights in lot and labors,\nWho descry the times as I,\nNo such lucid legend tells\nWhere she dwells.\n\nShould I lapse to what I was\nIn days by—\n(Such cannot be, but because\nSome loves die\nLet me feign it)—none would notice\nThat where she I know by rote is\nSpread a strange and withering change,\nLike a drying of the wells\nWhere she dwells.\n\nTo feel I might have kissed—\nLoved as true—\nOtherwhere, nor Mine have missed\nMy life through,\n\nHad I never wandered near her,\nIs a smart severe—severer\nIn the thought that she is nought,\nEven as I, beyond the dells\nWhere she dwells.\n\nAnd Devotion droops her glance\nTo recall\nWhat bond-servants of Chance\nWe are all.\nI but found her in that, going\nOn my errant path unknowing,\nI did not out-skirt the spot\nThat no spot on earth excels—\nWhere she dwells!\n\n1870.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Ditty",
       "tags": []
@@ -135,7 +140,7 @@
       "titulo": "Wessex Poems and Other Verses/Friends Beyond",
       "texto": "WILLIAM DEWY, Tranter Reuben, Farmer Ledlow late at plough,\nRobert's kin, and Jolin's, and Ned's,\nAnd the Squire, and Lady Susan, lie in Mellstock churchyard now!\n\n\"Gone,\" I call them, gone for good, that group of local hearts and heads;\nYet at mothy curfew-tide,\nAnd at midnight when the noon-heat breathes it back from walls and leads,\n\nThey've a way of whispering to me—fellow-wight who yet abide—\nIn the muted, incasured note\nOf a ripple under archways, or a lone cave's stillicide:\n\n\"We have triumphed: this achievement turns the bane to antidote,\nUnsuccesses to success,\nMany thought-worn eves and morrows to a morrow free of thought.\n\n\"No more need we corn and clothing, feel of old terrestrial stress;\nChill detraction stirs no sigh;\nFear of death has even bygone us: death gave all that we possess.\"\n\nW. D.—\"Ye mid burn the wold bass-viol that I set such vallie by.\"\nSquire.—\"You may hold the manse in fee,\nYou may wed my spouse, my children's memory of me may decry.\"\n\nLady.—\"You may have my rich brocades, my laces; take each household key;\nRansack coffer, desk, bureau;\nQuiz the few poor treasures hid there, con the letters kept by me.\"\n\nFar.—\"Ye mid zell my favorite heifer, ye mid let the charlock grow,\nFoul the grinterns, give up thrift.\"\nWife.—\"If ye break my best blue china, children, I sha'n't care or ho.\"\n\nAll—\"We've no wish to hear the tidings, how the people's fortunes shift;\nWhat your daily doings are;\nWho are wedded, born, divided; if your lives beat slow or swift.\n\n\"Curious not the least are we if our intents you make or mar,\nIf you quire to our old tune.\nIf the City stage still passes, if the weirs still roar afar.\"\n\n—Thus, with very gods' composure, freed those crosses late and soon\nWhich, in life, the Trine allow\n(Why, none witteth), and ignoring all that haps beneath the moon,\n\nWilliam Dewy, Tranter Reuben, Farmer Ledlow late at plough,\nRobert's kin, and John's, and Ned's,\nAnd the Squire, and Lady Susan, murmur mildly to me now.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Friends_Beyond",
       "tags": [
@@ -146,7 +151,7 @@
       "titulo": "Wessex Poems and Other Verses/Hap",
       "texto": "IF but some vengeful god would call to me\nFrom up the sky, and laugh: \"Thou suffering thing,\nKnow that thy sorrow is my ecstasy,\nThat thy love's loss is my hate's profiting!\"\n\nThen would I bear, and clench myself, and die,\nSteeled by the sense of ire unmerited;\nHalf-eased, too, that a Powerfuller than I\nHad willed and meted me the tears I shed.\n\nBut not so. How arrives it joy lies slain,\nAnd why unblooms the best hope ever sown?\n—Crass Casualty obstructs the sun and rain,\nAnd dicing Time for gladness casts a moan. . . .\nThese purblind Doomsters had as readily strown\nBlisses about my pilgrimage as pain.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Hap",
       "tags": []
@@ -155,7 +160,7 @@
       "titulo": "Wessex Poems and Other Verses/Heiress and Architect",
       "texto": "SHE sought the Studios, beckoning to her side\nAn arch-designer, for she planned to build.\nHe was of wise contrivance, deeply skilled\nIn every intervolve of high and wide—\nWell fit to be her guide.\n\n\"Whatever it be,\"\nResponded he,\nWith cold, clear voice, and cold, clear view,\n\n\"In true accord with prudent fashionings\nFor such vicissitudes as living brings,\nAnd thwarting not the law of stable things,\nThat will I do.\"\n\n\"Shape me,\" she said, \"high walls with tracery\nAnd open ogive-work, that scent and hue\nOf buds, and travelling bees, may come in through,\nThe note of birds, and singings of the sea,\nFor these are much to me.\"\n\n\"An idle whim!\"\nBroke forth from him\nWhom nought could warm to gallantries:\n“Cede all these buds and birds, the zephyr's call.\nAnd scents, and hues, and things that falter all,\nAnd choose as best the close and surly wall,\nFor winter's freeze.\"\n\n\"Then frame,\" she cried, \"wide fronts of crystal glass,\nThat I may show my laughter and my light—\nLight like the sun's by day, the stars' by night—\nTill rival heart-queens, envying, wail, 'Alas,\nHer glory!' as they pass.\"\n\n“O maid misled!\"\nHe sternly said,\nWhose facile foresight pierced her dire;\n\"Where shall abide the soul when, sick of glee,\nIt shrinks, and hides, and prays no eye may see?\nThose house them best who house for secrecy,\nFor you will tire.\"\n\n\"A little chamber, then, with swan and dove\nRanged thickly, and engrailed with rare device\nOf reds and purples, for a Paradise\nWherein my Love may greet me, I my Love,\nWhen he shall know thereof?\"\n\n\"This, too, is ill,\"\nHe answered still,\nThe man who swayed her like a shade.\n\"An hour will come when sight of such sweet nook\nWould bring a bitterness too sharp to brook,\nWhen brighter eyes have won away his look;\nFor you will fade.\"\n\nThen said she faintly: \"O, contrive some way—\nSome narrow winding turret, quite mine own,\nTo reach a loft where I may grieve alone!\nIt is a slight thing; hence do not, I pray,\nThis last dear fancy slay!\"\n\n\"Such winding ways\nFit not your days,\"\nSaid he, the man of measuring eye;\n\"I must even fashion as my rule declares,\nTo wit: Give space (since life ends unawares)\nTo hale a coffined corpse adown the stairs;\nFor you will die.\"\n\n1867.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Heiress_and_Architect",
       "tags": []
@@ -164,7 +169,7 @@
       "titulo": "Wessex Poems and Other Verses/Her Death and After",
       "texto": "'TWAS a death-bed summons, and forth I went\nBy the way of the Western Wall, so drear\nOn that winter night, and sought a gate—\nThe home, by Fate,\nOf one I had long held dear.\n\nAnd there, as I paused by her tenement,\nAnd the trees shed on me their rime and hoar,\nI thought of the man who had left her lone—\nHim who made her his own\nWhen I loved her, long before.\n\nThe rooms within had the piteous shine\nThat home-things wear which the housewife miss;\nFrom the stairway floated the rise and fall\nOf an infant's call,\nWhose birth had brought her to this.\n\nHer life was the price she would pay for that whine—\nFor a child by the man she did not love.\n\"But let that rest forever,\" I said,\nAnd bent my tread\nTo the chamber up above.\n\nShe took my hand in her thin white own,\nAnd smiled her thanks—though nigh too weak—\nAnd made them a sign to leave us there;\nThen faltered, ere\nShe could bring herself to speak.\n\n\"'Twas to see you before I go—he'll condone\nSuch a natural thing now my time's not much—\n\nWhen Death is so near it hustles hence\nAll passioned sense\nBetween woman and man as such!\n\n\"My husband is absent. As heretofore\nThe City detains him. But, in truth,\nHe has not been kind. . . . I will speak no blame,\nBut—the child is lame;\nO, I pray she may reach his ruth!\n\n\"Forgive past days—I can say no more—\nMaybe if we'd wedded you'd now repine! . . .\nBut I treated you ill. I was punished. Farewell!\n—Truth shall I tell?\nWould the child were yours and mine!\n\n\"As a wife I was true. But, such my unease\nThat, could I insert a deed back in Time,\nI'd make her yours, to secure your care;\nAnd the scandal bear,\nAnd the penalty for the crime!\"\n\n—When I had left, and the swinging trees\nRang above me, as lauding her candid say,\nAnother was I. Her words were enough:\nCame smooth, came rough,\nI felt I could live my day.\n\nNext night she died; and her obsequies\nIn the Field of Tombs, by the Via renowned,\nHad her husband's heed. His tendance spent,\nI often went\nAnd pondered by her mound.\n\nAll that year and the next year whiled,\nAnd I still went thitherward in the gloam;\nBut the Town forgot her and her nook,\nAnd her husband took\nAnother Love to his home.\n\nAnd the rumor flew that the lame lone child\nWhom she wished for its safety child of mine,\n\nWas treated ill when offspring came\nOf the new-made dame,\nAnd marked a more vigorous line.\n\nA smarter grief within me wrought\nThan even at loss of her so dear;\nDead the being whose soul my soul suffused,\nHer child ill-used,\nI helpless to interfere!\n\nOne eve as I stood at my spot of thought\nIn the white-stoned Garth, brooding thus her wrong,\nHer husband neared; and to shun his view\nBy her hallowed mew\nI went from the tombs among\n\nTo the Cirque of the Gladiators which faced—\nThat haggard mark of Imperial Rome.\nWhose Pagan echoes mock the chime\nOf our Christian time:\nIt was void, and I inward clomb.\n\nScarce had night the sun's gold touch displaced\nFrom the vast Rotund and the neighboring dead\nWhen her husband followed; bowed; halfpassed,\nWith lip upcast;\nThen, halting, sullenly said:\n\n\"It is noised that you visit my first wife's tomb.\nNow, I gave her an honored name to bear\nWhile living, when dead. So I've claim to ask\nBy what right you task\nMy patience by vigiling there?\n\n\"There's decency even in death, I assume;\nPreserve it, sir, and keep away;\nFor the mother of my first-born you\nShow mind undue!\n—Sir, I've nothing more to say.\"\n\nA desperate stroke discerned I then—\nGod pardon—or pardon not—the lie;\n\nShe had sighed that she wished (lest the child should pine\nOf slights) 'twere mine,\nSo I said: \"But the father I.\n\n\"That you thought it yours is the way of men;\nBut I won her troth long ere your day:\nYou learnt how, in dying, she summoned me?\n'Twas in fealty.\n—Sir, I've nothing more to say,\n\n“Save that, if you'll hand me my little maid,\nI'll take her, and rear her, and spare you toil.\nThink it more than a friendly act none can;\nI'm a lonely man,\nWhile you've a large pot to boil.\n\n\"If not, and you'll put it to ball or blade—\nTo-night, to-morrow night, anywhen—\nI'll meet you here. . . . But think of it,\nAnd in season fit\nLet me hear from you again.\"\n\n—Well, I went away, hoping; but nought I heard\nOf my stroke for the child, till there greeted me\nA little voice that one day came\nTo my window-frame\nAnd babbled innocently:\n\n\"My father who's not my own, sends word\nI'm to stay here, sir, where I belong!\"\nNext a writing came: \"Since the child was the fruit\nOf your passions brute,\nPray take her, to right a wrong.\"\n\nAnd I did. And I gave the child my love,\nAnd the child loved me, and estranged us none.\nBut compunctions loomed; for I'd harmed the dead\nBy what I'd said\nFor the good of the living one.\n\n—Yet though, God wot, I am sinner enough,\nAnd unworthy the woman who drew me so,\nPerhaps this wrong for her darling's good\nShe forgives, or would,\nIf only she could know!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Her_Death_and_After",
       "tags": []
@@ -173,7 +178,7 @@
       "titulo": "Wessex Poems and Other Verses/Her Dilemma",
       "texto": "THE two were silent in a sunless church,\nWhose mildewed walls, uneven pavingstones,\nAnd wasted carvings passed antique research;\nAnd nothing broke the clock's dull monotones.\n\nLeaning against a wormy poppy-head,\nSo wan and worn that he could scarcely stand,\n\n—For he was soon to die,—he softly said,\n\"Tell me you love me!\"—holding hard her hand.\n\nShe would have given a world to breathe \"yes\" truly,\nSo much his life seemed hanging on her mind,\nAnd hence she lied, her heart persuaded throughly,\n'Twas worth her soul to be a moment kind.\n\nBut the sad need thereof, his nearing death,\nSo mocked humanity that she shamed to prize\nA world conditioned thus, or care for breath\nWhere Nature such dilemmas could devise.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Her_Dilemma",
       "tags": []
@@ -182,7 +187,7 @@
       "titulo": "Wessex Poems and Other Verses/Her Immortality",
       "texto": "UPON a noon I pilgrimed through\nA pasture, mile by mile,\nUnto the place where I last saw\nMy dead Love's living smile.\n\nAnd sorrowing I lay me down\nUpon the heated sod:\nIt seemed as if my body pressed\nThe very ground she trod.\n\nI lay, and thought; and in a trance\nShe came and stood me by—\nThe same, even to the marvellous ray\nThat used to light her eye.\n\n\"You draw me, and I come to you,\nMy faithful one,\" she said,\nIn voice that had the moving tone\nIt bore in maidenhead.\n\nShe said: \"'Tis seven years since I died:\nFew now remember me;\nMy husband clasps another bride;\nMy children mothers she.\n\n\"My brethren, sisters, and my friends\nCare not to meet my sprite:\nWho prized me most I did not know\nTill I passed down from sight.\"\n\nI said: \"My days are lonely here;\nI need thy smile alway;\nI'll use this night my ball or blade,\nAnd join thee ere the day.\"\n\nA tremor stirred her tender lips,\nWhich parted to dissuade:\n“That cannot be, O friend,\" she cried;\n“Think, I am but a Shade!\n\n\"A Shade but in its mindful ones\nHas immortality;\nBy living, me you keep alive,\nBy dying you slay me.\n\n\"In you resides my single power\nOf sweet continuance here;\nOn your fidelity I count\nThrough many a coming year.\"\n\n—I started through me at her plight,\nSo suddenly confessed:\nDismissing late distaste for life,\nI craved its bleak unrest.\n\n\"I will not die, my One of all!—\nTo lengthen out thy days\nI'll guard me from minutest harms\nThat may invest my ways!\"\n\nShe smiled and went. Since then she comes\nOft when her birth-moon climbs,\nOr at the seasons' ingresses\nOr anniversary times;\n\nBut grows my grief. When I surcease,\nThrough whom alone lives she,\nCeases my Love, her words, her ways,\nNever again to be!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Her_Immortality",
       "tags": []
@@ -191,7 +196,7 @@
       "titulo": "Wessex Poems and Other Verses/Her Initials",
       "texto": "UPON a poet's page I wrote\nOf old two letters of her name;\nPart seemed she of the effulgent thought\nWhence that high singer's rapture came.\n—When now I turn the leaf the same\nImmortal light illumes the lay\nBut from the letters of her name\nThe radiance has died away.\n\n1869.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Her_Initials",
       "tags": []
@@ -200,7 +205,7 @@
       "titulo": "Wessex Poems and Other Verses/In a Eweleaze near Weatherbury",
       "texto": "THE years have gathered grayly\nSince I danced upon this leaze\nWith one who kindled gayly\nLove's fitful ecstasies!\nBut despite the term as teacher,\nI remain what I was then\nIn each essential feature\nOf the fantasies of men.\n\nYet I note the little chisel\nOf ever-napping Time,\n\nDefacing ghast and grizzel\nThe blazon of my prime.\nWhen at night he thinks me sleeping,\nI feel him boring sly\nWithin my bones, and heaping\nQuaintest pains for by-and-by.\n\nStill, I'd go the world with Beauty,\nI would laugh with her and sing,\nI would shun divinest duty\nTo resume her worshipping.\nBut she'd scorn my brave endeavor,\nShe would not balm the breeze\nBy murnuring \"Thine for ever!\"\nAs she did upon this leaze.\n\n1890.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/In_a_Eweleaze_near_Weatherbury",
       "tags": []
@@ -209,7 +214,7 @@
       "titulo": "Wessex Poems and Other Verses/In a Wood",
       "texto": "PALE beech and pine-tree blue,\nSet in one clay,\nBough to bough cannot you\nBide out your day?\nWhen the rains skim and skip,\nWhy mar sweet comradeship,\nBlighting with poison-drip\nNeighborly spray?\n\nHeart-halt and spirit-lame,\nCity-opprest,\n\nUnto this wood I came\nAs to a nest;\nDreaming that sylvan peace\nOffered the harrowed ease—\nNature a soft release\nFrom men's unrest.\n\nBut, having entered in,\nGreat growths and small\nShow them to men akin—\nCombatants all!\nSycamore shoulders oak,\nBines the slim sapling yoke,\nIvy-spun halters choke\nElms stout and tall.\n\nTouches from ash, O wych,\nSting you like scorn!\nYou, too, brave hollies, twitch\nSidelong from thorn.\nEven the rank poplars bear\nIlly a rival's air,\nCankering in black despair\nIf overborne.\n\nSince, then, no grace I find\nTaught me of trees,\nTurn I back to my kind,\nWorthy as these.\nThere at least smiles abound,\nThere discourse trills around,\nThere, now and then, are found\nLife-loyalties.\n\n1887-1896.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/In_a_Wood",
       "tags": [
@@ -220,7 +225,7 @@
       "titulo": "Wessex Poems and Other Verses/Leipzig",
       "texto": "\"OLD Norbert with the flat blue cap—\nA German said to be—\nWhy let your pipe die on your lap,\nYour eyes blink absently?\"—\n\n—\"Ah!... Well, I had thought till my cheek was wet\nOf my mother—her voice and mien\nWhen she used to sing and pirouette,\nAnd touse the tambourine\n\n\"To the march that yon street-fiddler plies;\nShe told me 'twas the same\nShe'd heard from the trumpets, when the Allies\nHer city overcame.\n\n\"My father was one of the German Hussars,\nMy mother of Leipzig; but he,\nLong quartered here, fetched her at close of the wars,\nAnd a Wessex lad reared me.\n\n\"And as I grew up, again and again\nShe'd tell, after trilling that air,\nOf her youth, and the battles on Leipzig plain\nAnd of all that was suffered there! . . .\n\n\"—'Twas a time of alarms. Three Chiefs-at-arms\nCombined them to crush One,\nAnd by numbers' might, for in equal fight\nHe stood the matched of none.\n\n“Carl Schwartzenburg was of the plot,\nAnd Blücher, prompt and prow,\nAnd Jean the Crown-Prince Bernadotte:\nBuonaparte was the foe.\n\n\"City and plain had felt his reign\nFrom the North to the Middle Sea,\nAnd he'd now sat down in the noble town\nOf the King of Saxony.\n\n\"October's deep dew its wet gossamer threw\nUpon Leipzig's lawns, leaf-strewn,\nWhere lately each fair avenue\nWrought shade for summer noon.\n\n\"To westward two dull rivers crept\nThrough miles of marsh and slough,\nWhereover a streak of whiteness swept—\nThe Bridge of Lindenau.\n\n\"Hard by, in the City, the One, care-crossed,\nGloomed over his shrunken power;\nAnd without the walls the hemming host\nWaxed denser every hour.\n\n\"He had speech that night on the morrow's designs\nWith his chiefs by the bivouac fire,\nWhile the belt of flames from the enemy's lines\nFlared nigher him yet and nigher.\n\n\"Three sky-lights then from the girdling trine\nTold, 'Ready!' As they rose\nTheir flashes seemed his Judgment-Sign\nFor bleeding Europe's woes.\n\n\"'Twas seen how the French watch-fires that night\nGlowed still and steadily:\nAnd the Three rejoiced, for they read in the sight\nThat the One disdained to flee. . . .\n\n\"—Five hundred guns began the affray\nOn next day morn at nine;\nSuch mad and mangling cannon-play\nHad never torn human line.\n\n\"Around the town three battles beat,\nContracting like a gin;\nAs nearer marched the million feet\nOf columns closing in.\n\n\"The first battle nighed on the low Southern side;\nThe second by the Western way;\nThe nearing of the third on the North was heard:\n—The French held all at bay.\n\n\"Against the first band did the Emperor stand;\nAgainst the second stood Ney;\nMarmont against the third gave the orderword.\n—Thus raged it throughout the day.\n\n\"Fifty thousand sturdy souls on those trampled plains and knolls,\nWho met the dawn hopefully,\nAnd were lotted their shares in a quarrel not theirs,\nDropt then in their agony.\n\n\"'O,' the old folks said, 'ye Preachers stern!\nO so-called Christian time!\nWhen will men's swords to ploughshares turn?\nWhen come the promised prime?' . . .\n\n\"—The clash of horse and man which that day began,\nClosed not as evening wore;\nAnd the morrow's armies, rear and van,\nStill mustered more and more.\n\n\"From the City towers the Confederate Powers\nWere eyed in glittering lines,\nAnd up from the vast a murmuring passed\nAs from a wood of pines.\n\n\"'Tis well to cover a feeble skill\nBy numbers! scoffèd He;\n'But give me a third of their strength, I'd fill\nHalf Hell with their soldiery!'\n\n\"All that day raged the war they waged,\nAnd again dumb night held reign,\nSave that ever upspread from the dark death-bed\nA miles-wide pant of pain.\n\n\"Hard had striven brave Ney, the true Bertrand,\nVictor, and Augereau,\nBold Poniatowski, and Lauriston,\nTo stay their overthrow;\n\n\"But, as in the dream of one sick to death\nThere comes a narrowing room\nThat pens him, body and limbs and breath,\nTo wait a hideous doom,\n\n\"So to Napoleon, in the hush\nThat held the town and towers\nThrough these dire nights, a creeping crush\nSeemned inborne with the hours.\n\n“One road to the rearward, and but one,\nDid fitful Chance allow:\n'Twas where the Piciss' and Elster run—\nThe Bridge of Lindenau.\n\n\"The nineteenth dawned. Down street and Platz\nThe wasted French sank back,\nStretching long lines across the Flats\nAnd on the bridge-way track;\n\n“When there surged on the sky an earthen wave,\nAnd stones, and men, as though\nSome rebel churchyard crew updrave\nTheir sepulchres from below.\n\n\"To Heaven is blown Bridge Lindenau;\nWrecked regiments reel therefrom;\nAnd rank and file in masses plough\nThe sullen Elster-Strom.\n\n\"A gulf was Lindenau; and dead\nWere fifties, hundreds, tens;\nAnd every current rippled red\nWith Marshal's blood and men's.\n\n“The smart Macdonald swam therein,\nAnd barely won the verge;\nBold Poniatowski plunged him in\nNever to re-emerge.\n\n\"Then stayed the strife. The remnants wound\nTheir Rhineward way pell-mell;\nAnd thus did Leipzig City sound\nAn Empire's passing bell;\n\n“While in cavalcade, with band and blade,\nCame Marshals, Princes, Kings:\nAnd the town was theirs. . . . Ay, as simple maid,\nMy mother saw these things!\n\n\"And whenever those notes in the street begin,\nI recall her, and that far scene,\nAnd her acting of how the Allies marched in,\nAnd her touse of the tambourine!\"",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Leipzig",
       "tags": []
@@ -229,7 +234,7 @@
       "titulo": "Wessex Poems and Other Verses/Lines",
       "texto": "BEFORE we part to alien thoughts and aims,\nPermit the one brief word the occasion claims;\n—When mumming and grave projects are allied,\nPerhaps an Epilogue is justified.\n\nOur under-purpose has, in truth, to-day\nCommanded most our musings; least the play:\n\nA purpose futile but for your good-will\nSwiftly responsive to the cry of ill:\nA purpose all too limited!—to aid\nFrail human flowerets, sicklied by the shade,\nIn winning some short spell of upland breeze,\nOr strengthening sunlight on the level leas.\n\nWho has not marked, where the full check should be,\nIncipient lines of lank flaccidity,\nLymphatic pallor where the pink should glow,\nAnd where the throb of transport, pulses low?—\nMost tragical of shapes from Pole to Line,\nO wondering child, unwitting Time's design,\nWhy should Art add to Nature's quandary,\nAnd worsen ill by thus immuring thee?\n—That races can do despite to their own,\nThat Might supernal do indeed condone\nWrongs individual for the general ease,\nInstance the proof in victims such as these.\n\nLaunched into thoroughfares too thronged before,\nMothered by those whose protest is “No more!\"\nVitalized without option: who shall say\nThat did Life hang on choosing—Yea or Nay—\nThey had not scorned it with such penalty,\nAnd nothingness implored of Destiny?\n\nAnd yet behind the horizon smile serene\nThe down, the cornland, and the stretching green—\nSpace—the child's heaven: scenes which at least ensure\nSome palliative for ill they cannot cure.\n\nDear friends—now moved by this poor show of ours\nTo make your own long joy in buds and bowers\n\nFor one brief while the joy of infant eyes,\nChanging their urban murk to paradise—\nYou have our thanks!—may your reward include\nMore than our thanks, far more: their gratitude.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Lines",
       "tags": []
@@ -238,7 +243,7 @@
       "titulo": "Wessex Poems and Other Verses/Middle-Age Enthusiasms",
       "texto": " WE passed where flag and flower\nSignalled a jocund throng;\nWe said: \"Go to, the hour\nIs apt!\"—and joined the song;\nAnd, kindling, laughed at life and care,\nAlthough we know no laugh lay there.\n\nWe walked where shy birds stood\nWatching us, wonder-dumb;\n\nTheir friendship met our mood;\nWe cried: \"We'll often come:\nWe'll come morn, noon, eve, everywhen!\"\n—We doubted we should come again.\n\nWe joyed to see strange sheens\nLeap from quaint leaves in shade;\nA secret light of greens\nThey'd for their pleasure made.\nWe said: “We'll set such sorts as these!\"\n—We knew with night the wish would cease.\n\n\"So sweet the place,\" we said,\n\"Its tacit tales so dear,\nOur thoughts, when breath has sped,\nWill meet and mingle here!\" . . .\n\"Words!\" mused we. \"Passed the mortal door,\nOur thoughts will reach this nook no more.\"",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Middle-Age_Enthusiasms",
       "tags": []
@@ -247,7 +252,7 @@
       "titulo": "Wessex Poems and Other Verses/My Cicely",
       "texto": "\"АLIVE?\"—And I leapt in my wonder,\nWas faint of my joyance,\nAnd grasses and grove shone in garments\nOf glory to me.\n\n\"She lives, in a plenteous well-being,\nTo-day as aforehand;\nThe dead bore the name—though a rare one—\nThe name that bore she.\"\n\nShe lived . . . I, afar in the city\nOf frenzy-led factions,\nHad squandered green years and maturer\nIn bowing the knee\n\nTo Baals illusive and specious,\nTill chance had there voiced me\nThat one I loved vainly in nonage\nHad ceased her to be.\n\nThe passion the planets had scowled on,\nAnd change had let dwindle,\nHer death-rumor smartly relifted\nTo full apogee.\n\nI mounted a steed in the dawning\nWith acheful remembrance,\nAnd made for the ancient West Highway\nTo far Exonb'ry.\n\nPassing heaths, and the House of Long Sieging,\nI neared the thin steeple\n\nThat tops the fair fane of Poore's olden\nEpiscopal see;\n\nAnd, changing anew my onbearer,\nI traversed the downland\nWhereon the bleak hill-graves of Chieftains\nBulge barren of tree;\n\nAnd still sadly onward I followed\nThat Highway the Icen,\nWhich trails its pale ribbon down Wessex\nO'er lynchet and lea.\n\nAlong through the Stour-bordered Forum,\nWhere Legions had wayfared,\nAnd where the slow river upglasses\nIts green canopy,\n\nAnd by Weatherbury Castle, and therence\nThrough Casterbridge, bore I,\nTo tomb her whose light, in my deeming,\nExtinguished had He.\n\nNo highwayman's trot blew the night-wind\nTo me so life-weary,\nBut only the creak of the gibbets\nOr wagoners' jee.\n\nTriple-ramparted Maidon gloomed grayly\nAbove me from southward,\nAnd north the hill-fortress of Eggar,\nAnd square Pummerie.\n\nThe Nine-Pillared Cromlech, the Bride-streams,\nThe Axe, and the Otter\nI passed, to the gate of the city\nWhere Exe scents the sea;\n\nTill, spent, in the graveacre pausing,\nI learnt 'twas not my Love\nTo whom Mother Church had just murmured\nA last lullaby.\n\n\"Then, where dwells the Canon's kinswoman,\nMy friend of aforetime?\"—\n\n('Twas hard to repress my heart-heavings\nAnd new ecstasy.)\n\n\"She wedded.\"—\"Ah!\"—\"Wedded beneath her—\nShe keeps the stage-hostel\nTen miles hence, beside the great Highway\nThe famed Lions-Three.\n\n\"Her spouse was her lackey—no option\n'Twixt wedlock and worse things;\nA lapse over-sad for a lady\nOf her pedigree!\"\n\nI shuddered, said nothing, and wandered\nTo shades of green laurel:\nToo ghastly had grown those first tidings\nSo brightsome of blee!\n\nFor, on my ride hither, I'd halted\nAwhile at the Lions,\nAnd her—her whose name had once opened\nMy heart as a key—\n\nI'd looked on, unknowing, and witnessed\nHer jests with the tapsters,\nHer liquor-fired face, her thick accents\nIn naming her fee.\n\n\"O God, why this hocus satiric!\"\nI cried in my anguish:\n\"O once Loved, O fair Unforgotten—\nThat Thing—meant it thee!\n\n\"Inurned and at peace, lost but sainted,\nWere grief I could compass;\nDepraved—'tis for Christ's poor dependent\nA cruel decree!\"\n\nI backed on the Highway; but passed not\nThe hostel. Within there\nToo mocking to Love's re-expression\nWas Time's repartee!\n\nUptracking where Legions had wayfared,\nBy cromlechs unstoried,\nAnd lynchets, and sepultured Chieftains,\nIn self-colloquy,\n\nA feeling stirred in me and strengthened\nThat she was not my Love,\nBut she of the garth, who lay rapt in\nHer long reverie.\n\nAnd thence till to-day I persuade me\nThat this was the true one;\nThat Death stole intact her young dearness\nAnd innocency.\n\nFrail-witted, illuded they call me;\nI may be. 'Tis better\nTo dream than to own the debasement\nOf sweet Cicely.\n\nMoreover I rate it unseemly\nTo hold that kind Heaven\nCould work such device—to her ruin\nAnd my misery.\n\nSo, lest I disturb my choice vision,\nI shun the West Highway,\nEven now, when the knaps ring with rhythms\nFrom blackbird and bee;\n\nAnd feel that with slumber half-conscious\nShe rests in the church-hay,\nHer spirit unsoiled as in youth-time\nWhen lovers were we.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/My_Cicely",
       "tags": []
@@ -256,7 +261,7 @@
       "titulo": "Wessex Poems and Other Verses/Nature's Questioning",
       "texto": " WHEN I look forth at dawning, pool,\nField, flock, and lonely tree,\nAll seem to look at me\nLike chastened children sitting silent in a school;\n\nTheir faces dulled, constrained, and worn,\nAs though the master's ways\nThrough the long teaching days\nTheir first terrestrial zest had chilled and overborne.\n\nAnd on them stirs, in lippings mere\n(As if once clear in call,\nBut now scarce breathed at all)—\n\"We wonder, ever wonder, why we find us here!\n\n\"Has some Vast Imbecility,\nMighty to build and blend,\nBut impotent to tend,\nFramed us in jest, and left us now to hazardry?\n\n\"Or come we of an Automaton\nUnconscious of our pains? . . .\nOr are we live remains\nOf Godhead dying downwards, brain and eye now gone?\n\n\"Or is it that some high Plan betides,\nAs yet not understood,\nOf Evil stormed by Good,\nWe the Forlorn Hope over which Achievement strides?\"\n\nThus things around. No answerer I. . . .\nMeanwhile the winds, and rains,\nAnd Earth's old glooms and pains\nAre still the same, and gladdest Life Death neighbors nigh.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Nature%27s_Questioning",
       "tags": []
@@ -265,7 +270,7 @@
       "titulo": "Wessex Poems and Other Verses/Neutral Tones",
       "texto": "WE stood by a pond that winter day,\nAnd the sun was white, as though chidden of God,\nAnd a few leaves lay on the starving sod,\n—They had fallen from an ash, and were gray.\n\nYour eyes on me were as eyes that rove\nOver tedious riddles solved years ago:\nAnd some words played between us to and fro—\nOn which lost the more by our love.\n\nThe smile on your mouth was the deadest thing\nAlive enough to have strength to die;\nAnd a grin of bitterness swept thereby\nLike an ominous bird a-wing. . . .\n\nSince then, keen lessons that love deceives,\nAnd wrings with wrong, have shaped to me\nYour face, and the God-curst sun, and a tree,\nAnd a pond edged with grayish leaves.\n\n1867.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Neutral_Tones",
       "tags": []
@@ -274,7 +279,7 @@
       "titulo": "Wessex Poems and Other Verses/Postponement",
       "texto": "SNOW-BOUND in woodland, a mournful word,\nDropt now and then from the bill of a bird,\nReached me on wind-wafts; and thus I heard,\nWearily waiting:—\n\n“I planned her a nest in a leafless tree,\nBut the passers eyed and twitted me,\nAnd said: 'How reckless a bird is he,\nCheerily mating!'\n\n\"Fear-filled, I stayed me till summer-tide,\nIn lewth of leaves to throne her bride;\nBut alas! her love for me waned and died,\nWearily waiting.\n\n\"Ah, had I been like some I see,\nBorn to an evergreen nesting-tree,\nNone had eyed and twitted me,\nCheerily mating!\"\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Postponement",
       "tags": []
@@ -283,7 +288,7 @@
       "titulo": "Wessex Poems and Other Verses/Revulsion",
       "texto": "THOUGH I waste watches framing words to fetter\nSome spirit to mine own in clasp and kiss,\nOut of the night there looms a sense 'twere better\nTo fail obtaining whom one fails to miss.\n\nFor winning love we win the risk of losing,\nAnd losing love is as one's life were riven;\nIt cuts like contumely and keen ill-using\nTo cede what was superfluously given.\n\nLet me then feel no more the fateful thrilling\nThat devastates the love-worn wooer's frame,\nThe hot ado of fevered hopes, the chilling\nThat agonizes disappointed aim!\nSo may I live no junctive law fulfilling,\nAnd my heart's table bear no woman's name.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Revulsion",
       "tags": []
@@ -292,7 +297,7 @@
       "titulo": "Wessex Poems and Other Verses/San Sebastian",
       "texto": "\"WHY, Sergeant, stray on the Ivel Way,\n\nAs though at home there were spectres rife?\n\nFrom first to last 'twas a proud career!\n\nAnd your sunny years with a gracious wife\n\nHave brought you a daughter dear.\n\n\"I watched her to-day; a more comely maid,\n\nAs she danced in her muslin bowed with blue,\n\nRound a Hintock maypole never gayed.\"\n\n—“Aye, aye; I watched her this day, too,\n\nAs it happens,\" the Sergeant said.\n\n\"My daughter is now,\" he again began,\n\n\"Of just such an age as one I knew\n\nWhen we of the Line, in the Foot-Guard van,\n\nOn an August morning—a chosen few—\n\nStormed San Sebastian.\n\n\"She's a score less three; so about was she—\n\nThe maiden I wronged in Peninsular days. . . .\n\nYou may prate of your prowess in lusty times,\n\nBut as years gnaw inward you blink your bays,\n\nAnd see too well your crimes!\n\n“We'd stormed it at night, by the vlanker-light\n\nOf burning towers, and the mortar's boom:\n\nWe'd topped the breach but had failed to stay,\n\nFor our files were misled by the baffling gloom;\n\nAnd we said we'd storm by day.\n\n\"So, out of the trenches, with features set,\n\nOn that hot, still morning, in measured pace,\n\nOur column climbed; climbed higher yet,\n\nPast the fauss'bray, scarp, up the curtain-face,\n\nAnd along the parapet.\n\n\"From the batteried hornwork the cannoneers\n\nHove crashing balls of iron fire;\n\nOn the shaking gap mount the volunteers\n\nIn files, and as they mount expire\n\nAmid curses, groans, and cheers.\n\n\"Five hours did we storm, five hours re-form,\n\nAs Death cooled those hot blood pricked on;\n\nTill our cause was helped by a woe within:\n\nThey swayed from the summit we'd leapt upon,\n\nAnd madly we entered in.\n\n\"On end for plunder, 'mid rain and thunder\n\nThat burst with the lull of our cannonade,\n\nWe vamped the streets in the stifling air—\n\nOur hunger unsoothed, our thirst unstayed—\n\nAnd ransacked the buildings there.\n\n\"Down the stony steps of the house-fronts white\n\nWe rolled rich puncheons of Spanish grape,\n\nTill at length, with the fire of the wine alight,\n\nI saw at a doorway a fair fresh shape—\n\nA woman, a sylph, or sprite.\n\n\"Afeard she fled, and with heated head\n\nI pursued to the chamber she called her own;\n\n—When might is right no qualms deter,\n\nAnd having her helpless and alone\n\nI wreaked my lust on her.\n\n\"She raised her beseeching eyes to me,\n\nAnd I heard the words of prayer she sent\n\nIn her own soft language. . . . Seemingly\n\nI copied those eyes for my punishment\n\nIn begetting the girl you see!\n\n\"So, to-day I stand with a God-set brand\n\nLike Cain's, when he wandered from kindred's ken. . . .\n\nI served through the war that made Europe free;\n\nI wived me in peace-year. But, hid from men,\n\nI bear that mark on me.\n\n\"And I nightly stray on the Ivel Way\n\nAs though at home there were spectres rife;\n\nI delight me not in my proud career;\n\nAnd 'tis coals of fire that a gracious wife\n\nShould have brought me a daughter dear!\"",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/San_Sebastian",
       "tags": []
@@ -301,7 +306,7 @@
       "titulo": "Wessex Poems and Other Verses/She",
       "texto": "THEY bear him to his resting-place—\nIn slow procession sweeping by;\nI follow at a stranger's space;\nHis kindred they, his sweetheart I.\nUnchanged my gown of garish dye,\nThough sable-sad is their attire:\nBut they stand round with griefless eye,\nWhilst my regret consumes like fire!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/She",
       "tags": []
@@ -310,7 +315,7 @@
       "titulo": "Wessex Poems and Other Verses/She, to Him, I",
       "texto": "WHEN you shall see me lined by tool of Time,\nMy lauded beauties carried off from me,\nMy eyes no longer stars as in their prime,\nMy name forgot of Maiden Fair and Free;\n\nWhen in your being heart concedes to mind,\nAnd judgment, though you scarce its process know,\nRecalls the excellencies I once enshrined,\nAnd you are irked that they have withered so:\n\nRemembering that with me lies not the blame,\nThat Sportsman Time but rears his brood to kill,\nKnowing me in my soul the very same—\nOne who would die to spare you touch of ill!—\nWill you not grant to old affection's claim\nThe hand of friendship down Life's sunless hill?\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/She%2C_to_Him%2C_I",
       "tags": []
@@ -319,7 +324,7 @@
       "titulo": "Wessex Poems and Other Verses/She, to Him, II",
       "texto": "PERHAPS, long hence, when I have passed away,\nSome other's feature, accent, thought like mine.\nWill carry you back to what I used to say,\nAnd bring some memory of your love's decline.\n\nThen you may pause awhile and think, \"Poor jade!\"\nAnd yield a sigh to me—as gift benign,\nNot as the tittle of a debt unpaid\nTo one who could to you her all resign—\n\nAnd thus reflecting, you will never see\nThat your thin thought, in two small words conveyed,\nWas no such fleeting phantom-thought to me,\nBut the Whole Life wherein my part was played;\nAnd you amid its fitful masquerade\nA Thought—as I in yours but seem to be.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/She%2C_to_Him%2C_II",
       "tags": []
@@ -328,7 +333,7 @@
       "titulo": "Wessex Poems and Other Verses/She, to Him, III",
       "texto": "I WILL be faithful to thee; aye, I will!\nAnd Death shall choose me with a wondering eye\nThat he did not discern and domicile\nOne his by right ever since that last Goodbye!\n\nI have no care for friends, or kin, or prime\nOf manhood who deal gently with me here:\nAmid the happy people of my time\nWho work their love's fulfilment, I appear\n\nNumb as a vane that cankers on its point,\nTrue to the wind that kissed ere canker came;\nDespised by souls of Now, who would disjoint\nThe mind from memory, and make Life all aim,\n\nMy old dexterities of hue quite gone,\nAnd nothing left for Love to look upon.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/She%2C_to_Him%2C_III",
       "tags": []
@@ -337,7 +342,7 @@
       "titulo": "Wessex Poems and Other Verses/She, to Him, IV",
       "texto": "THIS love puts all humanity from me:\nI can but maledict her, pray her dead,\nFor giving love and getting love of thee—\nFeeding a heart that else mine own had fed!\n\nHow much I love I know not, life not known,\nSave as some unit I would add love by;\nBut this I know, my being is but thine own—\nFused from its separateness by ecstasy,\n\nAnd thus I grasp thy amplitudes, of her\nUngrasped, though helped by nigh-regarding eyes;\nCanst thou then hate me as an envier\nWho see unrecked what I so dearly prize?\nBelieve me, Lost One, Love is lovelier\nThe more it shapes its moan in selfish-wise.\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/She%2C_to_Him%2C_IV",
       "tags": []
@@ -346,7 +351,7 @@
       "titulo": "Wessex Poems and Other Verses/The Alarm",
       "texto": " IN a ferny byway\nNear the great South-Wessex Highway,\nA homestead raised its breakfast-smoke aloft;\nThe dew-damps still lay steamless, for the sun had made no sky-way,\nAnd twilight cloaked the croft.\n\n'Twas hard to realize on\nThis snug side the mute horizon\nThat beyond it hostile armaments might steer,\nSave from seeing in the porchway a fair woman weep with eyes on\nA harnessed Volunteer.\n\nIn haste he'd flown there\nTo his comely wife alone there,\nWhile marching south hard by, to still her fears,\nFor she soon would be a mother, and few messengers were known there\nIn these campaigning years.\n\n'Twas time to be Good-bying,\nSince the assembly-hour was nighing\nIn royal George's town at six that morn;\nAnd betwixt its wharves and this retreat were ten good miles of hieing\nEre ring of bugle-horn.\n\n\"I've laid in food, Dear,\nAnd broached the spiced and brewed, Dear;\nAnd if our July hope should antedate,\nLet the char-wench mount and gallop by the halterpath and wood, Dear,\nAnd fetch assistance straight.\n\n\"As for Buonaparte, forget him;\nHe's not like to land! But let him,\nThose strike with aim who strike for wives and sons!\nAnd the war-boats built to float him; 'twere but wanted to upset him\nA slat from Nelson's guns!\n\n\"But, to assure thee,\nAnd of creeping fears to cure thee,\nIf he should be rumored anchoring in the Road,\nDrive with the nurse to Kingsbere; and let nothing thence allure thee\nTill we've him safe-bestowed.\n\n\"Now, to turn to marching matters:—\nI've my knapsack, firelock, spatters,\nCrossbelts, priming-horn, stock, bay'net, blackball, clay,\nPouch, magazine, flints, flint-box that at every quick-step clatters;\n. . . My heart, Dear; that must stay!\"\n\n—With breathings broken\nFarewell was kissed unspoken,\nAnd they parted there as morning stroked the panes;\nAnd the Volunteer went on, and turned, and twirled his glove for token,\nAnd took the coastward lanes.\n\nWhen above He'th Hills he found him,\nHe saw, on gazing round him,\nThe Barrow-Beacon burning—burning low,\nAs if, perhaps, uplighted ever since he'd homeward bound him;\nAnd it meant: Expect the Foe!\n\nLeaving the byway,\nAnd following swift the highway,\nCar and chariot met he, faring fast inland;\n\"He's anchored, Soldier\" shouted some: \"God save thee, marching thy way,\nTh'lt front him on the strand!\"\n\nHe slowed; he stopped; he paltered\nAwhile with self, and faltered,\n\"Why courting misadventure shoreward roam?\nTo Molly, surely! Seek the woods with her till times have altered;\nCharity favors home.\n\n\"Else, my denying\nHe would come she'll read as lying—\nThink the Barrow-Beacon must have met my eyes—\nThat my words were not unwareness, but deceit of her, while trying\nMy life to jeopardize.\n\n\"At home is stocked provision,\nAnd to-night, without suspicion,\nWe might bear it with us to a covert near:\nSuch sin, to save a childing wife, would earn it Christ's remission,\nThough none forgive it here!\"\n\nWhile thus he, thinking,\nA little bird, quick drinking\nAmong the crowfoot tufts the river bore,\nWas tangled in their stringy arms, and fluttered, well-nigh sinking,\nNear him, upon the moor.\n\nHe stepped in, reached, and seized it,\nAnd, preening, had released it\nBut that a thought of Holy Writ occurred,\nAnd Signs Divine ere battle, till it seemed him Heaven had pleased it\nAs guide to send the bird.\n\n\"O Lord, direct me! . . .\nDoth Duty now expect me\nTo march a-coast, or guard my weak ones near?\nGive this bird a flight according, that I thence know to elect me\nThe southward or the rear.\"\n\nHe loosed his clasp; when, rising,\nThe bird—as if surmising—\nBore due to southward, crossing by the Froom,\nAnd Durnover Great-Field and Fort, the soldier clear advising—\nPrompted he wist by Whom.\n\nThen on he panted\nBy grim Mai-Don, and slanted\nUp the steep Ridge-way, hearkening betwixt whiles;\nTill, nearing coast and harbor, he beheld the shore-line planted\nWith Foot and Horse for miles.\n\nMistrusting not the omen,\nHe gained the beach, where Yeomen,\nMilitia, Fencibles, and Pikemen bold,\nWith Regulars in thousands, were enmassed to meet the Foemen,\nWhose fleet had not yet shoaled.\n\nCaptain and Colonel,\nSere Generals, Ensigns vernal,\nWere there, of neighbor-natives, Michel, Smith,\nMeggs, Bingham, Gambier, Cunningham, roused by the hued nocturnal\nSwoop on their land and kith.\n\nBut Buonaparte still tarried;\nHis project had miscarried;\nAt the last hour, equipped for victory,\nThe fleet had paused; his subtle combinations had been parried\nBy British strategy.\n\nHomeward returning\nAnon, no beacons burning,\nNo alarms, the Volunteer, in modest bliss,\nTe Deum sang with wife and friends: \"We praise Thee, Lord, discerning\nThat Thou hast helped in this!\"",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Alarm",
       "tags": []
@@ -355,7 +360,7 @@
       "titulo": "Wessex Poems and Other Verses/The Burghers",
       "texto": "THE sun had wheeled from Grey's to Dammer's Crest,\nAnd still I mused on that Thing imminent:\nAt length I sought the High-street to the West.\n\nThe level flare raked pane and pediment\nAnd my wrecked face, and shaped my nearing friend\nLike one of those the Furnace held unshent.\n\n\"I've news concerning her,\" he said. \"Attend.\nThey fly to-night at the late moon's first gleam:\nWatch with thy steel: two righteous thrusts will end\n\n\"Her shameless visions and his passioned dream.\nI'll watch with thee, to testify thy wrong—\nTo aid, maybe—Law consecrates the scheme.\"\n\nI started, and we paced the flags along\nTill I replied: \"Since it has come to this\nI'll do it! But alone. I can be strong.\"\n\nThree hours past Curfew, when the Froom's mild hiss\nReigned sole, undulled by whirr of merchandise,\nFrom Pummery-Tout to where the Gibbet is,\n\nI crossed my pleasaunce hard by Glyd'path Rise,\nAnd stood beneath the wall. Eleven strokes went,\nAnd to the door they came, contrariwise,\n\nAnd met in clasp so close I had but bent\nMy lifted blade upon them to have let\nTheir two souls loose upon the firmament.\n\nBut something held my arm. “A moment yet\nAs pray-time ere you wantons die!\" I said;\nAnd then they saw me. Swift her gaze was set\n\nWith eye and cry of love illimited\nUpon her Heart-king. Never upon me\nHad she thrown look of love so thoroughsped! . . .\n\nAt once she flung her faint form shieldingly\nOn his, against the vengeance of my vows;\nThe which o'erruling, her shape shielded he.\n\nBlanked by such love, I stood as in a drowse,\nAnd the slow moon edged from the upland nigh,\nMy sad thoughts moving thuswise: \"I may house\n\n\"And I may husband her, yet what am I\nBut licensed tyrant to this bonded pair?\nSays Charity, Do as ye would be done by.\" . . .\n\nHurling my iron to the bushes there,\nI bade them stay. And, as if brain and breast\nWere passive, they walked with me to the stair.\n\nInside the house none watched; and on we prest\nBefore a mirror, in whose gleam I read\nHer beauty, his,—and mine own mien unblest;\n\nTill at her room I turned. \"Madam,\" I said,\n\"Have you the wherewithal for this? Pray speak\nLove fills no cupboard. You'll need daily bread.\"\n\n\"We've nothing, sire,\" said she, “and nothing seek,\n'Twere base in me to rob my lord unware;\nOur hands will earn a pittance week by week.\"\n\nAnd next I saw she'd piled her raiment rare\nWithin the garde-robes, and her household purse,\nHer jewels, and least lace of personal wear;\n\nAnd stood in homespun. Now grown wholly hers,\nI handed her the gold, her jewels all,\nAnd him the choicest of her robes diverse.\n\n\"I'll take you to the doorway in the wall,\nAnd then adieu,\" I to them. \"Friends, withdraw.\"\nThey did so; and she went—beyond recall.\n\nAnd as I paused beneath the arch I saw\nTheir moonlit figures—slow, as in surprise—\nDescend the slope, and vanish on the haw.\n\n\"'Fool,' some will say,\" I thought. \"But who is wise,\nSave God alone, to weigh my reasons why?\"\n—\"Hast thou struck home?\" came with the boughs' night-sighs.\n\nIt was my friend. “I have struck well. They fly,\nBut carry wounds that none can cicatrize.\"\n—\"Not mortal?\" said he. \"Lingering—worse,\" said I.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Burghers",
       "tags": []
@@ -364,7 +369,7 @@
       "titulo": "Wessex Poems and Other Verses/The Casterbridge Captains — THREE captains went to Indian wars,",
       "texto": "THREE captains went to Indian wars,\nAnd only one returned:\nTheir mate of yore, he singly wore\nThe laurels all had earned.",
       "forma": "quadra",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Casterbridge_Captains",
       "tags": []
@@ -373,7 +378,7 @@
       "titulo": "Wessex Poems and Other Verses/The Casterbridge Captains — At home he sought the ancient aisle",
       "texto": "At home he sought the ancient aisle\nWherein, untrumped of fame,\nThe three had sat in pupilage,\nAnd each had carved his name.\n\nThe names, rough-hewn, of equal size,\nStood on the panel still;\nUnequal since.—“'Twas theirs to aim,\nMine was it to fulfil!\"\n\n—\"Who saves his life shall lose it, friends!\"\nOutspake the preacher then,\nUnweeting he his listener, who\nLooked at the names again.\n\nThat he had come and they'd been stayed,\n'Twas but the chance of war:\nAnother chance, and they'd sat here,\nAnd he had lain afar.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Casterbridge_Captains",
       "tags": []
@@ -382,7 +387,7 @@
       "titulo": "Wessex Poems and Other Verses/The Casterbridge Captains — Yet saw he something in the lives",
       "texto": "Yet saw he something in the lives\nOf those who'd ceased to live\nThat rounded them with majesty\nWhich living failed to give.\n\nTranscendent triumph in return\nNo longer lit his brain;\nTranscendence rayed the distant urn\nWhere slept the fallen twain.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Casterbridge_Captains",
       "tags": []
@@ -391,7 +396,7 @@
       "titulo": "Wessex Poems and Other Verses/The Dance at the Phœnix",
       "texto": "TO Jenny came a gentle youth\nFrom inland leazes lone;\nHis love was fresh as apple-blooth\nBy Parrett, Yeo, or Tone.\nAnd duly he entreated her\nTo be his tender minister,\nAnd call him aye her own.\n\nFair Jenny's life had hardly been\nA life of modesty;\nAt Casterbridge experience keen\nOf many loves had she\n\nFrom scarcely sixteen years above:\nAmong them sundry troopers of\nThe King's-Own Cavalry.\n\nBut cach with charger, sword, and gun,\nHad bluffed the Biscay wave;\nAnd Jenny prized her gentle one\nFor all the love he gave.\nShe vowed to be, if they were wed,\nHis honest wife in heart and head\nFrom bride-ale hour to grave.\n\nWedded they were. Her husband's trust\nIn Jenny knew no bound,\nAnd Jenny kept her pure and just,\nTill even malice found\nNo sin or sign of ill to be\nIn one who walked so decently\nThe duteous helpmate's round.\n\nTwo sons were born, and bloomed to men,\nAnd roamed, and were as not:\nAlone was Jenny left again\nAs ere her mind had sought\n\nA solace in domestic joys,\nAnd ere the vanished pair of boys\nWere sent to sun her cot.\n\nShe numbered near on sixty years,\nAnd passed as elderly,\nWhen, in the street, with flush of fears,\nOne day discovered she,\nFrom shine of swords and thump of drum,\nHer early loves from war had come,\nThe King's-Own Cavalry.\n\nShe turned aside, and bowed her head\nAnigh Saint Peter's door;\n\"Alas for chastened thoughts!\" she said:\n\"I'm faded now, and hoar,\nAnd yet those notes—they thrill me through,\nAnd those gay forms move me anew\nAs in the years of yore!\" . . .\n\n—'Twas Christmas, and the Phœnix Ina\nWas lit with tapers tall,\nFor thirty of the trooper men\nHad vowed to give a ball\n\nAs \"Theirs\" had done (fame handed down)\nWhen lying in the self-same town\nEre Buonaparté's fall.\n\nThat night the throbbing \"Soldier's Joy,\"\nThe measured tread and sway\nOf \"Fancy-Lad\" and \"Maiden Coy,\"\nReached Jenny as she lay\nBeside her spouse: till springtide blood\nSeemed scouring through her like a flood\nThat whisked the years away.\n\nShe rose, and rayed, and decked her head\nTo hide her ringlets thin;\nUpon her cap two bows of red\nShe fixed with hasty pin:\nUnheard descending to the street,\nShe trod the flags with tune-led feet,\nAnd stood before the Inn.\n\nSave for the dancers', not a sound\nDisturbed the icy air;\nNo watchman on his midnight round\nOr traveller was there;\n\nBut over All-Saints', high and bright,\nPulsed to the music Sirius white,\nThe Wain by Bullstake Square.\n\nShe knocked, but found her further stride\nChecked by a sergeant tall:\n\"Gay Granny, whence come you?\" he cried;\n“This is a private ball.\"\n—\"No one has more right here than me!\nEre you were born, man,\" answered she,\n“I knew the regiment all!\"\n\n\"Take not the lady's visit ill!\"\nUpspoke the steward free;\n“We lack sufficient partners still,\nSo, prithee let her be!\"\nThey seized and whirled her 'mid the maze,\nAnd Jenny felt as in the days\nOf her immodesty.\n\nHour chased each hour, and night advanced:\nShe sped as shod with wings:\nEach time and every time she danced—\nReels, jigs, poussettes, and flings:\n\nThey cheered her as she soared and swooped\n(She'd learnt ere art in dancing drooped\nFrom hops to slothful swings).\n\nThe favorite Quick-step \"Speed the Plough\"—\n(Cross hands, cast off, and wheel)—\n\"The Triumph,\" \"Sylph,\" \"The Row-dow dow.\"\nFamed \"Major Malley's Reel,\"\n“The Duke of York's,\" \"The Fairy Dance,\"\n\"The Bridge of Lodi\" (brought from France),\nShe beat out, toe and heel.\n\nThe “Fall of Paris\" clanged its close,\nAnd Peter's chime told four,\nWhen Jenny, bosom-beating, rose\nTo seek her silent door.\nThey tiptoed in escorting her,\nLest stroke of heel or clink of spur\nShould break her goodman's snore.\n\nThe fire that late had burnt fell slack\nWhen lone at last stood she;\nHer nine-and-fifty years came back;\nShe sank upon her knee\nBeside the durn, and like a dart\nA something arrowed through her heart\nIn shoots of agony.\n\nTheir footsteps died as she leant there,\nLit by the morning star\nHanging above the moorland, where\nThe aged elm-rows are;\nAnd, as o'ernight, from Pummery Ridge\nTo Maembury Ring and Standfast Bridge\nNo life stirred, near or far.\n\nThough inner mischief worked amain,\nShe reached her husband's side;\nWhere, toil-weary, as he had lain\nBeneath the patchwork pied\nWhen yestereve she'd forthward crept,\nAnd as unwitting, still he slept\nWho did in her confide.\n\nA tear sprang as she turned and viewed\nHis features free from guile;\nShe kissed him long, as when, just wooed.\nShe chose his domicile.\nDeath menaced now; yet loss for life\nShe wished than that she were the wife\nThat she had been erstwhile.\n\nTime wore to six. Her husband rose\nAnd struck the steel and stone;\nHe glanced at Jenny, whose repose\nSeemed deeper than his own.\nWith dumb dismay, on closer sight,\nHe gathered sense that in the night,\nOr morn, her soul had flown.\n\nWhen told that some too mighty strain\nFor one so many-yeared\nHad burst her bosom's master-vein,\nHis doubts remained unstirred.\nHis Jenny had not left his side\nBetwixt the eve and morning-tide:\n—The King's said not a word.\n\nWell! times are not as times were then,\nNor fair ones half so free;\nAnd truly they were martial men,\nThe King's-Own Cavalry.\nAnd when they went from Casterbridge\nAnd vanished over Mellstock Ridge,\n'Twas saddest morn to see.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Dance_at_the_Ph%C5%93nix",
       "tags": []
@@ -400,7 +405,7 @@
       "titulo": "Wessex Poems and Other Verses/The Fire at Tranter Sweatley's",
       "texto": "THEY had long met o' Zundays—her true love and she—\nAnd at junketings, maypoles, and flings;\nBut she bode wi' a thirtover uncle, and he\nSwore by noon and by night that her goodman should be\nNaibor Sweatley—a gaffer oft weak at the knee\nFrom taking o' sommat more cheerful than tea—\nWho tranted, and moved people's things.\n\nShe cried, \"O pray pity me!\" Nought would he hear;\nThen with wild rainy eyes she obeyed.\nShe chid when her Love was for clinking off wi' her.\nThe pa'son was told, as the season drew near\nTo throw over pu'pit the names of the peäir\nAs fitting one flesh to be made.\n\nThe wedding-day dawned and the morning drew on;\nThe couple stood bridegroom and bride;\nThe evening was passed, and when midnight had gone\nThe folks horned out, “God save the King,\" and anon\nThe two home-along gloomily hied.\n\nThe lover Tim Tankens mourned heart-sick and drear\nTo be thus of his darling deprived:\nHe roamed in the dark ath'art field, mound, and mere,\n\nAnd, a'most without knowing it, found himself near\nThe house of the tranter, and now of his Dear,\nWhere the lantern-light showed 'em arrived.\n\nThe bride sought her cham'er so calm and so pale\nThat a Northern had thought her resigned:\nBut to eyes that had seen her in tide-times of weal,\nLike the white cloud o' smoke, the red battlefield's vail,\nThat look spak' of havoc behind.\n\nThe bridegroom yet laitered a beaker to drain,\nThen reeled to the linhay for more,\nWhen the candle-snoff kindled some chaff from his grain—\nFlames spread, and red vlankers, wi' might and wi' main,\nAnd round beams, thatch, and chimley-tun roar.\n\nYoung Tim away yond, rafted up by the light,\nThrough brimble and underwood tears,\nTill he comes to the orchet, when crooping thereright\nIn the lewth of a codlin-tree, bivering wi' fright,\nWi' on'y her night-rail to screen her from sight,\nHis lonesome young Barbree appears.\n\nHer cwold little figure half-naked he views\nPlayed about by the frolicsome breeze,\nHer light-tripping totties, her ten little tooes,\nAll bare and besprinkled wi' Fall's chilly dews,\nWhile her great gallied eyes, through her hair hanging loose,\nSheened as stars through a tardle o' trees.\n\nShe eyed en; and, as when a weir-hatch is drawn,\nHer tears, penned by terror afore,\n\nWith a rushing of sobs in a shower were strawn,\nTill her power to pour 'em seemed wasted and gone\nFrom the left o' misfortune she bore.\n\n\"O Tim, my own Tim I must call 'ee—I will!\nAll the world ha' turned round on me so!\nCan you help her who loved 'ee, though acting so ill?\nCan you pity her misery—feel for her still?\nWhen worse than her body so quivering and chill\nIs her heart in its winter o' woe!\n\n“I think I mid almost ha' bore it,\" she said,\n\"Had my griefs one by one come to hand;\nBut O, to be slave to thik husbird for bread,\nAnd then, upon top o' that, driven to wed,\nAnd then, upon top o' that, burnt out o' bed,\nIs more than my nater can stand!\"\n\nTim's soul like a lion 'ithin en outsprung—\n(Tim had a great soul when his feelings were wrung)—\n“Feel for 'ee, dear Barbree?\" he cried;\nAnd his warm working-jacket about her he flung,\nMade a back, horsed her up, till behind him she clung\nLike a chiel on a gipsy, her figure uphung\nBy the sleeves that around her he tied.\n\nOver piggeries, and mixens, and apples, and hay,\nThey lumpered straight into the night;\nAnd finding bylong where a halter-path lay,\nAt dawn reached Tim's house, on'y seen on their way\nBy a naibor or two who were up wi' the day;\nBut they gathered no clue to the sight.\n\nThen tender Tim Tankens he searched here and there\nFor some garment to clothe her fair skin;\n\nBut though he had breeches and waistcoats to spare,\nHe had nothing quite seemly for Barbree to wear,\nWho, half shrammed to death, stood and cried on a chair\nAt the caddle she found herself in.\n\nThere was one thing to do, and that one thing he did,\nHe lent her some clouts of his own,\nAnd she took 'em perforce; and while in 'em she slid,\nTim turned to the winder, as modesty bid,\nThinking, \"O that the picter my duty keeps bid\nTo the sight o' my eyes mid be shown!\"\n\nIn the tallet he stowed her; there huddied she lay,\nShortening sleeves, legs, and tails to her limbs;\nBut most o' the time in a mortal bad way,\n\nWell knowing that there'd be the divel to pay\nIf 'twere found that, instead o' the elements' prey,\nShe was living in lodgings at Tim's.\n\n“Where's the tranter?\" said men and boys: \"where can er be?\"\n“Where's the tranter?\" said Barbree alone.\n\"Where on e'th is the tranter!\" said everybod-y:\nThey sifted the dust of his perished roof-tree,\nAnd all they could find was a bone.\n\nThen the uncle cried, \"Lord, pray have mercy on me!\"\nAnd in terror began to repent.\nBut before 'twas complete, and till sure she was free,\nBarbree drew up her loft-ladder, tight turned her key—\nTim bringing up breakfast and dinner and tea—\nTill the news of her hiding got vent.\n\nThen followed the custom-kept rout, shout, and flare\nOf a skimmington-ride through the naiborhood, ere\nFolk had proof o' wold Sweatley's decay.\nWhereupon decent people all stood in a stare,\nSaying Tim and his lodger should risk it, and pair:\nSo he took her to church. An' some laughing lads there\nCried to Tim, “After Sweatley!\" She said, \"I declare\nI stand as a maiden to-day!\"\n\nWritten 1866; printed 1875.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Fire_at_Tranter_Sweatley%27s",
       "tags": []
@@ -409,7 +414,7 @@
       "titulo": "Wessex Poems and Other Verses/The Impercipient",
       "texto": "THAT from this bright believing band\nAn outcast I should be,\nThat faiths by which my comrades stand\nSeem fantasies to me,\nAnd mirage-mists their Shining Land,\nIs a drear destiny.\n\nWhy thus my soul should be consigned\nTo infelicity,\n\nWhy always I must feel as blind\nTo sights my brethren see,\nWhy joys they've found I cannot find,\nAbides a mystery.\n\nSince heart of mine knows not that ease\nWhich they know; since it be\nThat He who breathes All's Well to these\nBreathes no All's Well to me,\nMy lack might move their sympathies\nAnd Christian charity!\n\nI am like a gazer who should mark\nAn inland company\nStanding upfingered, with, \"Hark! hark!\nThe glorious distant sea!\"\nAnd feel, \"Alas, 'tis but yon dark\nAnd wind-swept pine to me!\"\n\nYet I would bear my shortcomings\nWith meet tranquillity,\nBut for the charge that blessed things\nI'd liefer have unbe.\n\nO, doth a bird deprived of wings\nGo earth-bound wilfully!\n  ....\nEnough. As yet disquiet clings\nAbout us. Rest shall we.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Impercipient",
       "tags": []
@@ -418,7 +423,7 @@
       "titulo": "Wessex Poems and Other Verses/The Ivy-Wife",
       "texto": "I LONGED to love a full-boughed beech\nAnd be as high as he:\nI stretched an arm within his reach,\nAnd signalled unity.\nBut with his drip he forced a breach,\nAnd tried to poison me.\n\nI gave the grasp of partnership\nTo one of other race—\n\nA plane: he barked him strip by strip\nFrom upper bough to base;\nAnd me therewith; for gone my grip,\nMy arms could not enlace.\n\nIn new affection next I strove\nTo coll an ash I saw,\nAnd he in trust received my love;\nTill with my soft green claw\nI cramped and bound him as I wove . . .\nSuch was my love: ha-ha!\n\nBy this I gained his strength and height\nWithout his rivalry.\nBut in my triumph I lost sight\nOf afterhaps. Soon he,\nBeing bark-bound, flagged, snapped, fell outright,\nAnd in his fall felled me!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Ivy-Wife",
       "tags": []
@@ -427,7 +432,7 @@
       "titulo": "Wessex Poems and Other Verses/The Peasant's Confession",
       "texto": "“Si le maréchal Grouchy avait été rejoint par l'officier que Napoléon lui avait expédié la veille à dix heures du soir, toute question eût disparu. Mais cet officier n'était point parvenu à sa destination, ainsi que le marèchal n'a cessé de l'affirmer toute sa vie, et il faut l'en croire, car autrement il n'aurait eu aucune raison pour hésiter. Cet officier avait-il été pris? avait-il passé à l'ennemi? C'est ce qu'on a toujours ignoré.\"\n—Thiers: Histoire de l'Empire. “Waterloo.\"\n\nGOOD Father! . . . 'Twas an eve in middle June,\nAnd war was waged anew\nBy great Napoleon, who for years had strewn\nMen's bones all Europe through.\n\nThree nights ere this, with columned corps he'd crossed\nThe Sambre at Charleroi,\nTo move on Brussels, where the English host\nDallied in Parc and Bois.\n\nThe yestertide we'd heard the gloomy gun\nGrowl through the long-sunned day\nFrom Quatre-Bras and Ligny; till the dun\nTwilight suppressed the fray;\n\nAlbeit therein—as lated tongues bespoke—\nBrunswick's high heart was drained,\nAnd Prussia's Line and Landwehr, though unbroke,\nStood cornered and constrained.\n\nAnd at next noon-time Grouchy slowly passed\nWith thirty thousand men:\nWe hoped thenceforth no army, small or vast,\nWould trouble us again.\n\nMy hut lay deeply in a vale recessed,\nAnd never a soul seemed nigh\nWhen, reassured at length, we went to rest—\nMy children, wife, and I.\n\nBut what was this that broke our humble ease?\nWhat noise, above the rain,\nAbove the dripping of the poplar trees\nThat smote along the pane?\n\n—A call of mastery, bidding me arise.\nCompelled me to the door,\nAt which a horseman stood in martial guise—\nSplashed-sweating from every pore.\n\nHad I seen Grouchy? Yes? Which track took he?\nCould I lead thither on?—\nFulfilment would ensure gold pieces three,\nPerchance more gifts anon.\n\n\"I bear the Emperor's mandate,\" then he said,\n\"Charging the Marshal straight\nTo strike between the double host ahead\nEre they co-operate,\n\n\"Engaging Blücher till the Emperor put\nLord Wellington to flight,\nAnd next the Prussians. This to set afoot\nIs my emprise to-night.\"\n\nI joined him in the mist; but, pausing, sought\nTo estimate his say.\nGrouchy had made for Wavre; and yet, on thought,\nI did not lead that way.\n\nI mused: \"If Grouchy thus instructed be,\nThe clash comes sheer hereon;\nMy farm is stript. While, as for pieces three,\nMoney the French have none.\n\n\"Grouchy unwarned, moreo'er, the English win,\nAnd mine is left to me—\nThey buy, not borrow.\"—Hence did I begin\nTo lead him treacherously.\n\nBy Joidoigne, near to east, as we ondrew,\nDawn pierced the humid air;\nAnd eastward faced I with him, though I knew\nNever marched Grouchy there.\n\nNear Ottignies we passed, across the Dyle\n(Lim'lette left far aside),\nAnd thence direct toward Pervez and Noville\nThrough green grain, till he cried:\n\n“I doubt thy conduct, man! no track is here\nI doubt thy gagèd word!\"\nThereat he scowled on me, and pranced me near,\nAnd pricked me with his sword.\n\n\"Nay, Captain, hold! We skirt, not trace the course\nOf Grouchy,\" said I then:\n\"As we go, yonder went he, with his force\nOf thirty thousand men.\"\n\n—At length noon nighed, when west, from Saint-John's-Mound,\nA hoarse artillery boomed,\nAnd from Saint-Lambert's upland, chapel-crowned,\nThe Prussian squadrons loomed.\n\nThen to the wayless wet gray ground he leapt;\n\"My mission fails!\" he cried;\n\"Too late for Grouchy now to intercept,\nFor, peasant, you have lied!\"\n\nHe turned to pistol me. I sprang, and drew\nThe sabre from his flank,\nAnd 'twixt his nape and shoulder, ere he knew,\nI struck, and dead he sank.\n\nI hid him deep in nodding rye and oat—\nHis shroud green stalks and loam;\nHis requiem the corn-blade's husky note—\nAnd then I hastened home. . . .\n\n—Two armies writhe in coils of red and blue,\nAnd brass and iron clang\nFrom Goumont, past the front of Waterloo,\nTo Pap'lotte and Smohain.\n\nThe Guard Imperial wavered on the height;\nThe Emperor's face grew glum;\n\"I sent,\" he said, \"to Grouchy yesternight,\nAnd yet he does not come!\"\n\n'Twas then, Good Father, that the French espied,\nStreaking the summer land,\nThe men of Blücher. But the Emperor cried,\n\"Grouchy is now at hand!\"\n\nAnd meanwhile Vand'leur, Vivian, Maitland, Kempt,\nMet d'Erlon, Friant, Ney;\nBut Grouchy—mis-sent, blamed, yet blame-exempt—\nGrouchy was far away.\n\nBy even, slain or struck, Michel the strong,\nBold Travers, Dnop, Delord,\nSmart Guyot, Reil-le, l'Heriter, Friant.\nScattered that champaign o'er.\n\nFallen likewise wronged Duhesme, and skilled Lobau\nDid that red sunset see;\nColbert, Legros, Blancard! . . . And of the foe\nPicton and Ponsonby;\n\nWith Gordon, Canning, Blackman, Ompteda,\nL'Estrange, Delancey, Packe,\nGrose, D'Oyly, Stables, Morice, Howard, Hay,\nVon Schwerin, Watzdorf, Boek,\n\nSmith, Phelips, Fuller, Lind, and Battersby,\nAnd hosts of ranksmen round . . .\nMemorials linger yet to speak to thee\nOf those that bit the ground!\n\nThe Guards' last column yielded; dykes of dead\nLay between vale and ridge,\nAs, thinned yet closing, faint yet fierce, they sped\nIn packs to Genappe Bridge.\n\nSafe was my stock; my capple cow unslain;\nIntact each cock and hen;\nBut Grouchy far at Wavre all day had lain,\nAnd thirty thousand men.\n\nO Saints, had I but lost my earing corn\nAnd saved the cause once prized!\nO Saints, why such false witness had I borne\nWhen late I'd sympathized! . . .\n\nSo now, being old, my children eye askance\nMy slowly dwindling store,\nAnd crave my mite; till, worn with tarriance,\nI care for life no more.\n\nTo Almighty God henceforth I stand confessed,\nAnd Virgin-Saint Marie;\nO Michael, John, and Holy Ones in rest,\nEntreat the Lord for me!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Peasant%27s_Confession",
       "tags": [
@@ -438,7 +443,7 @@
       "titulo": "Wessex Poems and Other Verses/The Sergeant's Song",
       "texto": "WHEN Lawyers strive to heal a breach,\nAnd Parsons practise what they preach;\nThen Little Boney he'll pounce down,\nAnd march his men on London town!\nRollicum-rorum, tol-lol-lorum,\nRollicum-rorum, tol-lol-lay!\n\nWhen Justices hold equal scales,\nAnd Rogues are only found in jails;\n\nThen Little Boney he'll pounce down,\nAnd march his men on London town!\nRollicum-rorum, etc.\n\nWhen Rich Men find their wealth a curse,\nAnd fill therewith the Poor Man's purse;\nThen Little Boney he'll pounce down,\nAnd march his men on London town!\nRollicum-rorum, etc.\n\nWhen Husbands with their Wives agree,\nAnd Maids won't wed from modesty:\nThen Little Boney he'll pounce down,\nAnd march his men on London town!\nRollicum-rorum, tol-lol-lorum,\nRollicum-rorum, tol-lol-lay!\n\n1878.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Sergeant%27s_Song",
       "tags": []
@@ -447,7 +452,7 @@
       "titulo": "Wessex Poems and Other Verses/The Slow Nature",
       "texto": "\"THY husband—poor, poor Heart!—is dead—\nDead, out by Moreford Rise;\nA bull escaped the barton-shed,\nGored him, and there he lies!\"\n\n—\"Ha, ha—go away! 'Tis a tale, methink,\nThou joker Kit!\" laughed she.\n\"I've known thee many a year, Kit Twink,\nAnd ever hast thou fooled me!\"\n\n—\"But, Mistress Damon—I can swear\nThy goodman John is dead!\nAnd soon th'lt hear their feet who bear\nHis body to his bed.\"\n\nSo unwontedly sad the merry man's face—\nThat face which had long deceived—\nThat she gazed and gazed; and then could trace\nThe truth there; and she believed.\n\nShe laid a hand on the dresser-ledge,\nAnd scanned far Egdon-side;\nAnd stood; and you heard the wind-swept sedge\nAnd the rippling Froom; till she cried:\n\n\"O my chamber's untidied, unmade my bed,\nThough the day has begun to wear!\n'What a slovenly hussif!' it will be said,\nWhen they all go up my stair!\"\n\nShe disappeared; and the joker stood\nDepressed by his neighbor's doom,\nAnd amazed that a wife struck to widowhood\nThought first of her unkempt room.\n\nBut a fortnight thence she could take no food,\nAnd she pined in a slow decay;\nWhile Kit soon lost his mournful mood\nAnd laughed in his ancient way.\n\n1894.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Slow_Nature",
       "tags": []
@@ -456,7 +461,7 @@
       "titulo": "Wessex Poems and Other Verses/The Stranger's Song",
       "texto": "O MY trade it is the rarest one,\nSimple shepherds all—\nMy trade is a sight to see;\nFor my customers I tie, and take 'em up on high,\nAnd waft 'em to a far countree!\n\nMy tools are but common ones,\nSimple shepherds all—\n\nMy tools are no sight to see:\nA little hempen string, and a post whereon to swing,\nAre implements enough for me!\n\nTo-morrow is my working day,\nSimple shepherds all—\nTo-morrow is a working day for me:\nFor the farmer's sheep is slain, and the lad who did it ta'en,\nAnd on his soul may God ha' mer-cy!\n\nPrinted in \"The Three Strangers,\" 1883.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Stranger%27s_Song",
       "tags": []
@@ -465,7 +470,7 @@
       "titulo": "Wessex Poems and Other Verses/The Temporary the All — CHANGE and chancefulness in my flowering youthtime,",
       "texto": "CHANGE and chancefulness in my flowering youthtime,\nSet me sun by sun near to one unchosen;\nWrought us fellowly, and despite divergence,\nFriends interblent us.",
       "forma": "quadra",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Temporary_the_All",
       "tags": [
@@ -476,7 +481,7 @@
       "titulo": "Wessex Poems and Other Verses/The Temporary the All — \"Cherish him can I while the true one forthcome—",
       "texto": "\"Cherish him can I while the true one forthcome—\nCome the rich fulfiller of my prevision;\nLife is roomy yet, and the odds unbounded.\"\nSo self-communed I.\n\nThwart my wistful way did a damsel saunter,\nFair not fairest, good not best of her feather:\n\"Maiden meet,\" held I, \"till arise my forefelt\nWonder of women.\"\n\nLong a visioned hermitage deep desiring,\nTenements uncouth I was fain to house in;\n“Let such lodging be for a breath-while,\" thought I,\n\"Soon a more seemly.\n\n\"Then, high handiwork will I make my lifedeed,\nTruth and Light outshow; but the ripe time pending,\nIntermissive aim at the thing sufficeth.\"\nThus I . . . But lo, me!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Temporary_the_All",
       "tags": [
@@ -487,7 +492,7 @@
       "titulo": "Wessex Poems and Other Verses/The Temporary the All — Mistress, friend, place, aims to be bettered straightway,",
       "texto": "Mistress, friend, place, aims to be bettered straightway,\nBettered not has Fate or my hand's achieving;\nSole the showance those of my onward earthtrack—\nNever transcended!",
       "forma": "quadra",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Temporary_the_All",
       "tags": [
@@ -498,7 +503,7 @@
       "titulo": "Wessex Poems and Other Verses/The Two Men",
       "texto": "THERE were two youths of equal age,\nWit, station, strength, and parentage;\nThey studied at the self-same schools,\nAnd shaped their thoughts by common rules.\n\nOne pondered on the life of man,\nHis hopes, his ending, and began\nTo rate the Market's sordid war\nAs something scarce worth living for.\n\n\"I'll brace to higher aims,\" said he,\n\"I'll further Truth and Purity;\nThereby to mend the mortal lot\nAnd sweeten sorrow. Thrive I not,\n\n\"Winning their hearts, my kind will give\nEnough that I may lowly live,\nAnd house my Love in some dim dell,\nFor pleasing them and theirs so well.\"\n\nIdly attired, with features wan,\nIn secret swift he labored on;\nSuch press of power had brought much gold\nApplied to things of meaner mould.\n\nSometimes he wished his aims had been\nTo gather gains like other men;\nThen thanked his God he'd traced his track\nToo far for wish to drag him back.\n\nHe looked from his loft one day\nTo where his slighted garden lay;\nNettles and hemlock hid each lawn,\nAnd every flower was starved and gone.\n\nHe fainted in his heart, whereon\nHe rose, and sought his plighted one,\nResolved to loose her bond withal,\nLest she should perish in his fall.\n\nHe met her with a careless air,\nAs though he'd ceased to find her fair,\nAnd said: “True love is dust to me;\nI cannot kiss: I tire of thee!\"\n\n(That she might scorn him was he fain,\nTo put her sooner out of pain;\nFor incensed love breathes quick and dies,\nWhen famished love a-lingering lies.)\n\nOnce done, his soul was so betossed,\nIt found no more the force it lost:\nHope was his only drink and food,\nAnd hope extinct, decay ensued.\n\nAnd, living long so closely penned,\nHe had not kept a single friend;\nHe dwindled thin as phantoms be,\nAnd drooped to death in poverty. . . .\n\nMeantime his schoolmate had gone out\nTo join the fortune-finding rout;\nHe liked the winnings of the mart,\nBut wearied of the working part.\n\nHe turned to seek a privy lair,\nNeglecting note of garb and hair,\nAnd day by day reclined and thought\nHow he might live by doing nought.\n\n\"I plan a valued scheme,\" he said\nTo some. \"But lend me of your bread,\nAnd when the vast result looms nigh,\nIn profit you shall stand as I.\"\n\nYet they took counsel to restrain\nTheir kindness till they saw the gain;\nAnd, since his substance now had run,\nHe rose to do what might be done.\n\nHe went unto his Love by night.\nAnd said: \"My Love, I faint in fight:\nDeserving as thou dost a crown.\nMy cares shall never drag thee down.\"\n\n(He had descried a maid whose line\nWould hand her on much corn and wine.\nInd held her far in worth above\nOne who could only pray and love.)\n\nBut this Fair read him; whence he failed\nTo do the deed so blithely hailed;\nHe saw his projects wholly marred,\nAnd gloom and want oppressed him hard;\n\nTill, living to so mean an end,\nWhereby he'd lost his every friend,\nHe perished in a pauper sty,\nHis mate the dying pauper nigh.\n\nAnd moralists, reflecting, said,\nAs \"dust to dust\" in burial read\nWas echoed from each coffin-lid,\n\"These men were like in all they did.\"\n\n1866.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/The_Two_Men",
       "tags": []
@@ -507,7 +512,7 @@
       "titulo": "Wessex Poems and Other Verses/Thoughts of Ph—a",
       "texto": " NOT a line of her writing have I,\nNot a thread of her hair,\nNo mark of her late time as dame in her dwelling, whereby\nI may picture her there;\nAnd in vain do I urge my unsight\nTo conceive my lost prize\nAt her close, whom I knew when her dreams were upbrimming with light,\nAnd with laughter her eyes.\n\nWhat scenes spread around her last days,\nSad, shining, or dim?\nDid her gifts and compassions enray and enarch her sweet ways\nWith an aureate nimb?\nOr did life-light decline from her years,\nAnd mischances control\nHer full day-star; unease, or regret, or forebodings, or fears\nDisennoble her soul?\n\nThus I do but the phantom retain\nOf the maiden of yore\nAs my relic; yet haply the best of her—fined in my brain\nIt may be the more\nThat no line of her writing have I,\nNor a thread of her hair,\nNo mark of her late time as dame in her dwelling, whereby\nI may picture her there.\n\nMarch, 1890.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Thoughts_of_Ph%E2%80%94a",
       "tags": []
@@ -516,7 +521,7 @@
       "titulo": "Wessex Poems and Other Verses/To Outer Nature",
       "texto": "SHOW thee as I thought thee\nWhen I early sought thee,\nOmen-scouting,\nAll undoubting\nLove alone had wrought thee—\n\nWrought thee for my pleasure,\nPlanned thee as a measure\nFor expounding\nAnd resounding\nGlad things that men treasure.\n\nO for but a moment\nOf that old endowment—\nLight to gaily\nSee thy daily\nIrisèd embowment!\n\nBut such readorning\nTime forbids with scorning—\nMakes me see things\nCease to be things\nThey were in my morning.\n\nFad'st thou, glow-forsaken,\nDarkness-overtaken!\nThy first sweetness,\nRadiance, meetness,\nNone shall reawaken.\n\nWhy not sempiternal\nThou and I? Our vernal\nBrightness keeping,\nTime outleaping:\nPassed the hodiernal!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/To_Outer_Nature",
       "tags": []
@@ -525,7 +530,7 @@
       "titulo": "Wessex Poems and Other Verses/To a Lady",
       "texto": "NOW that my page upcloses, doomed, maybe,\nNever to press thy cosy cushions more,\nOr wake thy ready Yeas as heretofore,\nOr stir thy gentle vows of faith in me:\n\nKnowing thy natural receptivity,\nI figure that, as flambeaux banish eve,\nMy sombre image, warped by insidious heave\nOf those less forthright, must lose place in thee.\n\nSo be it. I have borne such. Let thy dreams\nOf me and mine diminish day by day,\nAnd yield their space to shine of smugger things;\nTill I shape to thee but in fitful gleams,\nAnd then in far and feeble visitings,\nAnd then surcease. Truth will be truth alway.",
       "forma": "soneto",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/To_a_Lady",
       "tags": []
@@ -534,7 +539,7 @@
       "titulo": "Wessex Poems and Other Verses/To an Orphan Child",
       "texto": "AH, child, thou art but half thy darling mother's;\nHers couldst thou wholly be,\nMy light in thee would outglow all in others;\nShe would relive to me.\nBut niggard Nature's trick of birth\nBars, lest she overjoy,\nRenewal of the loved on earth\nSave with alloy.\n\nThe Dame has no regard, alas, my maiden,\nFor love and loss like mine—\nNo sympathy with mind-sight memory-laden;\nOnly with fickle eyne.\nTo her mechanic artistry\nMy dreams are all unknown,\nAnd why I wish that thou couldst be\nBut One's alone!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/To_an_Orphan_Child",
       "tags": []
@@ -543,7 +548,7 @@
       "titulo": "Wessex Poems and Other Verses/Unknowing",
       "texto": "WHEN, soul in soul reflected,\nWe breathed an æthered air,\nWhen we neglected\nAll things elsewhere,\nAnd left the friendly friendless\nTo keep our love aglow,\nWe deemed it endless ...\n—We did not know!\n\nWhen, by mad passion goaded,\nWe planned to hie away,\n\nBut, unforeboded,\nThe storm-shafts gray\nSo heavily down-pattered\nThat none could forthward go,\nOur lives seemed shattered ...\n—We did not know!\n\nWhen I found you, helpless lying,\nAnd you waived my deep misprise,\nAnd swore me, dying,\nIn phantom-guise\nTo wing to me when grieving,\nAnd touch away my woe,\nWe kissed, believing ...\n—We did not know!\n\nBut though, your powers outreckoning,\nYou hold you dead and dumb,\nOr scorn my beckoning,\nAnd will not come;\nAnd I say, “'Twere mood ungainly\nTo store her memory so:\"\nI say it vainly—\nI feel and know!",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Unknowing",
       "tags": []
@@ -552,7 +557,7 @@
       "titulo": "Wessex Poems and Other Verses/Valenciennes — WE trenched, we trumpeted and drummed,",
       "texto": "WE trenched, we trumpeted and drummed,\nAnd from our mortars tons of iron hummed\nAth'art the ditch, the month we bombed\nThe Town o' Valencieën.",
       "forma": "quadra",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Valenciennes",
       "tags": []
@@ -561,7 +566,7 @@
       "titulo": "Wessex Poems and Other Verses/Valenciennes — 'Twas in the June o' Ninety-dree",
       "texto": "'Twas in the June o' Ninety-dree\n(The Duke o' Yark our then Commander beën)\nThe German Legion, Guards, and we\nLaid siege to Valencieën.\n\nThis was the first time in the war\nThat French and English spilled each other's gore;\n—God knows what year will end the roar\nBegun at Valencieën!\n\n'Twas said that we'd no business there\nA-topperèn the French for disagreën;\nHowever, that's not my affair—\nWe were at Valencieën.\n\nSuch snocks and slats, since war began\nNever knew raw recruit or veteràn:\nStone-deaf therence went many a man\nWho served at Valencieën.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Valenciennes",
       "tags": []
@@ -570,7 +575,7 @@
       "titulo": "Wessex Poems and Other Verses/Valenciennes — Into the strects, ath'art the sky,",
       "texto": "Into the strects, ath'art the sky,\nA hundred thousand balls and bombs were fleën;\nAnd harmless townsfolk fell to die\nEach hour at Valencieën!\n\nAnd, sweatèn wi' the bombardiers,\nA shell was slent to shards anighst my ears:\n—'Twas nigh the end of hopes and fears\nFor me at Valencieën!\n\nThey bore my wownded frame to camp,\nAnd shut my gapèn skull, and washed on cleän,\nAnd jined en wi' a zilver clamp\nThik night at Valencieën.\n\n\"We've fetched en back to quick from dead;\nBut never more on earth while rose is red\nWill drum rouse Corpel!\" Doctor said\nO' me at Valencieën.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Valenciennes",
       "tags": []
@@ -579,7 +584,7 @@
       "titulo": "Wessex Poems and Other Verses/Valenciennes — \"Twer true. No voice o' friend or foe",
       "texto": "\"Twer true. No voice o' friend or foe\nCan reach me now, or any livèn beën;\nAnd little have I power to know\nSince then at Valencieën!\n\nI never hear the zummer hums\nO' bees; and don't know when the cuckoo comes;\nBut night and day I hear the bombs\nWe threw at Valencieën. . . .\n\nAs for the Duke o' Yark in war,\nThere be some volk whose judgment o' en is meän;\nBut this I say—'a was not far\nFrom great at Valencieën.\n\nO' wild wet nights, when all seems sad,\nMy wownds come back, as though new wownds I'd had;\nBut yet—at times I'm sort o' glad\nI fout at Valencieën.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Valenciennes",
       "tags": []
@@ -588,7 +593,7 @@
       "titulo": "Wessex Poems and Other Verses/Valenciennes — Well: Heaven wi' its jasper halls",
       "texto": "Well: Heaven wi' its jasper halls\nIs now the on'y Town I care to be in. . . .\nGood Lord, if Nick should bomb the walls\nAs we did Valencieën!\n\n1878-1897.",
       "forma": "outro",
-      "obra": "en.wikisource: Wessex Poems and Other Verses",
+      "obra": "Wessex Poems and Other Verses",
       "ano": null,
       "fonte": "https://en.wikisource.org/wiki/Wessex_Poems_and_Other_Verses/Valenciennes",
       "tags": []

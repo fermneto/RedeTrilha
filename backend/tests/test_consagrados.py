@@ -346,3 +346,46 @@ def test_pasta_so_com_exemplo_importa_zero(client, tmp_path, monkeypatch, capsys
     importar_consagrados.main()
     assert "0 poetas criados" in capsys.readouterr().out
     assert _usuario("poeta_teste") is None
+
+
+# --- escolas e país (atributos_consagrado) ---
+
+
+def _atributos(username: str):
+    from app.db import SessionLocal
+    from app.models.atributos_consagrado import AtributosConsagrado
+
+    with SessionLocal() as db:
+        return db.get(AtributosConsagrado, _usuario(username).id)
+
+
+def test_escolas_e_pais_validos_sao_gravados_e_reimportar_atualiza(client, tmp_path):
+    dados = consagrado(escolas=["simbolismo", "simbolismo"], pais="BR")
+    escrever(tmp_path, "poeta_teste.json", dados)
+    _importar_pasta(tmp_path)
+    atributos = _atributos("poeta_teste")
+    assert (atributos.escolas, atributos.pais) == (["simbolismo"], "BR")
+
+    novas = ["realismo", "modernismo_hispanico"]
+    escrever(tmp_path, "poeta_teste.json", consagrado(escolas=novas, pais=None))
+    _importar_pasta(tmp_path)
+    atributos = _atributos("poeta_teste")
+    assert (atributos.escolas, atributos.pais) == (novas, None)
+
+
+def test_escolas_e_pais_ausentes_gravam_vazio(client, tmp_path):
+    escrever(tmp_path, "poeta_teste.json", consagrado())
+    _importar_pasta(tmp_path)
+    atributos = _atributos("poeta_teste")
+    assert (atributos.escolas, atributos.pais) == ([], None)
+
+
+@pytest.mark.parametrize(
+    "campos", [{"escolas": ["surrealismo"]}, {"pais": "XX"}, {"pais": "br"}, {"pais": "BRA"}]
+)
+def test_escola_ou_pais_invalido_e_recusado(campos, tmp_path):
+    with pytest.raises(ValidationError):
+        Consagrado.model_validate(consagrado(**campos))
+    escrever(tmp_path, "poeta_teste.json", consagrado(**campos))
+    with pytest.raises(ArquivoConsagradoInvalido, match="poeta_teste.json"):
+        ler_consagrados(tmp_path)

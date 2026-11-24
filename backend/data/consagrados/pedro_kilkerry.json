@@ -4,12 +4,16 @@
   "bio": "Poeta baiano do simbolismo, quase inédito em vida. Os sonetos e fragmentos recuperados no século XX — a dicção torta, a imagem rara — colocam-no entre os precursores da modernidade poética no Brasil.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Pedro_Kilkerry.jpg",
   "morte": 1917,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "A esses sons longínquos estremeço",
       "texto": "Vagos desejos e um pesar profundo\nInvadem-me o coração corado apenas.\nParece que unhas por lábios queridos apertando\nSangram de novo, caem lentamente\nQuentes e rubras gotas, uma a uma\nNo mar, sobre uma velha casa submarina.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/A_esses_sons_long%C3%ADnquos_estreme%C3%A7o",
       "tags": [
@@ -20,7 +24,7 @@
       "titulo": "Ad juvenis diem",
       "texto": "Cor de leite é a manhã. E vem envolta de ouro\nEm mãos de aroma, unhas de seda!\nE um ritmo feliz, doce, fresco, qual coro\nQue, em voz feliz, segreda\nAmor às árvores, segreda.\nE oh! volúpia, aromal, como de âmbar! O dia\nQue doida, esperta, corta, em fogo, a alegria\nDas asas\nSobre os montes, sobre os vales, sobre as casas!\nÉ o dia?\nDançam corolas, dançam, vagas de ouro,\nRitmos de um coro...\nE a ânsia de quanto ser ergue um vôo subindo,\nLuzindo, luzindo!\n\nHá curvas quentes, linhas leves de almas\nEspirituais jóias incalmas...\nInsetos vão ou vêm, na altura,\nPara a sede matar, na amorosa doçura\nDe um vinho azul, tão bom das almas!\nE a ânsia de quanto ser ergue um vôo luzindo,\nSubindo, subindo!\nMas bom é o Sol! Faz um banquete\nNo prado, na rechã, no bosque, nas montanhas,\nE nos fica a vontade a um alfinete\nDe ouro voluptuosamente e (inda) outro alfinete...\n\nMas são venturas e tamanhas\nOh! vida! Oh! bem-amada!\nDe fina luz mais encantada\nComo a criança nua, o coração nos banhas!\nRio claro...Ah! por que choras?\nSão dez horas!\nPassos azuis do dia!\nFlórea magia!\n\nO Sol, que é muito amigo\nE servo do Homem que, ora, é um Lúculo mendigo,\nPratos de luz, neste banquete\nTão largo! Tão louro!\nDá-nos a ver agora, como\nHalos de um deus em cada pomo\nE a vontade nos fica a um trêmulo alfinete,\nA um doce alfinete, de ouro.\n\nA Harpa do céu azul vibra como a Alegria\nEm cada peito\nSatisfeito\nÉ meio dia! É meio dia!\n\nOh! Natureza moça em túnica esmeralda\nFlavo o seio a mostrar à boca ressequida\nNa hora ruiva e que escalda\nDá-nos eterno o fruto à fome.\nQue não te abate ou te consome\nE essa, incontida,\nChuva de ouro vital que transfigura a Vida!\n\nAí vem a hora viúva...\nO Sol, nem sempre a fruto louro\nHomens! nos levará, os alfinetes de ouro\nSobre nós e como chuva.\nCinzas serão depois dessa hora...\n\nMas natureza moça, a pingar, de esmeralda,\nNa hora metálica, que escalda\nE agoniza agora\nAlonga o tempo a essa magia\nQue não vai muito além da hora do meio-dia.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ad_juvenis_diem",
       "tags": [
@@ -34,7 +38,7 @@
       "titulo": "Ad veneris lacrimas",
       "texto": " Em meus nervos, a arder, a alma é volúpia... Sinto\nQue Amor embriaga a Íon e a pele de ouro. Estua,\nDeita-se Íon: enrodilha a cauda o meu Instinto\nAos seus rosados pés... Nyx se arrasta, na rua...\n\nCanta a alâmpada brônzea? O ouvido aos sons extinto\nAcorda e ouço a voz ou da alâmpada ou sua.\nO silêncio anda à escuta. Abre um luar de Corinto\nAqui dentro a lamber Hélada nua, nua.\n\nÌon treme, estremece. Adora o ritmo louro\nDa áurea chama, a estorcer os gestos com que crava\nFinas frechas de luz na cúpula aquecida...\n\nQuerem cantar de Íon os dois seios, em coro...\nMas sua alma – por Zeus! – na água azul doutra Vida\nLava os meus sonhos, treme em seus olhos, escrava.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ad_veneris_lacrimas",
       "tags": [
@@ -47,7 +51,7 @@
       "titulo": "Amor volat",
       "texto": "Não, não é comigo que ele nasceu... A sua asa \nSó a um tempo ruflou desse modo, tamanho! \nBateu-me o coração... E outro não sei que, estranho, \nRudamente o rasgou como o seu bico em brasa... \n\nEntrou-mo todo, enfim, como quem entra em casa \nE em meu sangue, a cantar, fez de um boêmio no banho! \nOh! Que pássaro mau! E eu nunca mais o apanho! \nVês: estou velho já. Treme-me o passo, e atrasa... \n\nOlha-me bem, no peito, o rubro ninho aberto! \nHoje fúnebre, a piar, uma estrige ao telhado \nE o meu seio vazio! e o meu leito deserto! \n\nE vivo só por ver, como curvo aqui fico, \nEsse pássaro voar largamente, um bocado \nde músculos pingando a levar-me no bico!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Amor_volat",
       "tags": [
@@ -59,7 +63,7 @@
       "titulo": "Cetáceo",
       "texto": "Fuma. E cobre o zênite. E, chagosos do flanco,\nFuga e pó, são corcéis de anca na atropelada.\nE tesos no horizonte, a muda cavalgada.\nCoalha bebendo o azul um largo vôo branco.\n\nQuando e quando esbagoa ao longe uma enfiada\nDe barcos em betume indo as proas de arranco.\nPerto uma janga embala um marujo no banco\nBrunindo ao sol brunida a pele atijolada.\n\nTine em cobre o zênite e o vento arqueja e o oceano\nLongo enforca-se a vez e vez e arrufa,\nComo se a asa que o roce ao côncavo de um pano.\n\nE na verde ironia ondulosa de espelho\nÚmida raiva iriando a pedraria. Bufa\nO cetáceo a escorrer d’água ou do sol vermelho.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Cet%C3%A1ceo",
       "tags": []
@@ -68,7 +72,7 @@
       "titulo": "Cérbero",
       "texto": "É, não vens mais aqui... Pois eu te espero, \nGele-me o frio inverno, o sol adusto \nDê-me a feição de um tronco, a rir, vetusto \n- Meu amor a ulular... E é o teu Cérbero! \n\nÉ, não vens mais aqui... E eu mais te quero, \nVago o vergel, todo o pomar venusto \nE a cada fruto de ouro estendo o busto, \nEstendo os braços, e o teu seio espero. \n\nMas como pesa esta lembrança... a volta \nDa aléia em flor que em vão, toda transponho, \nE onde te foste, e a cabeleira solta! \n\nVais corações rompendo em toda a parte! \nVirás, um dia... E à porta do meu Sonho \nJá Cérbero morreu, para agarrar-te.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/C%C3%A9rbero",
       "tags": [
@@ -80,7 +84,7 @@
       "titulo": "Da Idade Média",
       "texto": "Perto, as Curi-Muri. Aves mortas de sono,\nNa água que ao céu azul os reflexos indaga,\nCaravelas de Assombro, em cansado abandono,\nEmbalam-se ao cantar requebroso da vaga.\n\nGrande, em Socotorá, pelo esplendor do entrono\nDe Lísia, fora a luta, - e o chuço e a lança e a adaga\nTudo fremiu... e o brônzeo estrondeante detono\nDe montanha em montanha ecoou, de fraga em fraga.\n\nAmplas asas do Mal, dormem, rinzam-se as velas...\nMas os corcéis, em fúria, eis que Bóreas desata,\nSolta em longo bufido, assombrando as estrelas... \nSolta... e ao peso das naus que o largo sonho perde,\n- Formidável Tritão – alça a cauda de prata\nE, alto, o Mar espadana a cabeleira verde. \n\nNovamente, espadana a verde cabeleira\nTriunfalmente a tremer e ébrio raiva revolta,\nE no louco rugir do rugido que solta\nVai-lhe o despedaçar da loucura primeira.\n\nA procela se enfreia e à tenebrenta escolta...\nMas na salsugem salta a brocada madeira\nDos cascos; o velame é solto e à derradeira\nÂnsia, a redomoinhar, são-lhe os mastros, em volta.\n\nE a procela se enfreia e à dura escolta enfreia...\nAmortece o fragor. Em temblado que entrista,\nHá por longe o chorar de tristonha sereia...\n\n- Rosa – desbrocha a luz às venturas e às mágoas,\nE mais desbrocha, e mais... Conquistador, conquista,\nTodo o orgulho de um sonho, aboiavam nas águas!",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Da_Idade_M%C3%A9dia",
       "tags": [
@@ -91,7 +95,7 @@
       "titulo": "Evoé",
       "texto": "Primavera! — versos, vinhos...\nNós, primaveras em flor.\nE ai! corações, cavaquinhos\nCom quatro cordas de Amor!\n\nRequebrem árvores — ufa! —\nComo as mulheres, ligeiro!\nComo um pandeiro que rufa\nO Sol, no monte, é um pandeiro!\n\nE o campo de ouro transborda...\nÓ Primavera, um vintém!\nOnde é que se compra a corda\nDa desventura, também?\n\nAgora, um rio, água esparsa...\nNas águas claras de um rio,\nLavem-se penas à garça\nDo riso, branco e sadio!\n\nE o dedo estale, na prima...\nQue primaveras, e em flor!\nAi! corações, uma rima\nPor quatro versos de Amor!",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Evo%C3%A9",
       "tags": [
@@ -103,7 +107,7 @@
       "titulo": "Floresta Morta",
       "texto": "Por que, à luz de um sol de primavera\nUrna floresta morta? Um passarinho\nCruzou, fugindo-a, o seio que lhe dera\nAbrigo e pouso e que lhe guarda o ninho.\n\nNem vale, agora, a mesma vida, que era\nComo a doçura quente de um carinho,\nE onde flores abriram, vai a fera\n— Vidrado o olhar — lá vai pelo caminho.\n\nAh! quanto dói o vê-la, aqui, Setembro,\nInda banhada pela mesma vida!\nFloresta morta a mesma cousa lembro;\n\nSob outro céu assim, que pouco importa,\nAbrigo á fera, mas, da ave fugida,\nHá no meu peito urna floresta morta.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Floresta_Morta",
       "tags": [
@@ -114,7 +118,7 @@
       "titulo": "Harpa Esquisita",
       "texto": "Dói-te a festa feliz da verdade da vida...\nTanges da harpa, em teu sonho, almas ou cordas, cantas,\nBóiam-te as notas no ar, a asa no Azul diluída\nE, assombrados, reptis – homens, não! tu levantas!\n\nE apupilam-te a frente as mil pedras agudas\nDe ódios e ódios a olhar-te... E és um rei que as avista,\nNo halo, de Amor, que tens! Se em colar as transmudas,\nVais – um dervixe persa, o manto azul – Artista!\n\nInda olhar adormido abre, e é de ocre, e avermelha!...\nVem colar-te ao colar... e, oh! tua harpa esquisita\nPlange...flora a zumbir, minúscula, que imita\nA abelheira da Dor, em centelha e centelha. \n\nE é a sombra...E o instrumento, a gemer, iluminado,\nComo que à noite estrela um núbio corvo... E lindo\n(Inda que as asas tens não no terás ao lado)\nPor que os pétalos de ouro, a haste de prata, abrindo,\n\nUm lírio de ouro se alça?... Os passos voam-te, pelas\nRibas... Oh! que ilusões da flor, que tantaliza!\nSobe a flor? Sobes tu e a alma nas pedras pisa?...\nPairas... Em frente, o mar, polvos de luz – estrelas...\n\nPairas... e o busto a arfar – longe, vela sem norte.\nNegro o céu desestrela, o seio arqueando: escuta.\nNo amoroso oboé solfeja um vento forte\nE, alta, em surdo ressôo, a onda betúmea e bruta,\n\nA ânsia do mar, lá vem, esfrola-se na areia...\nSeu líquido cachimbo é mágoa acesa, e fuma!\nE chamas a onda: “irmã!”. E em fósforo incendeia\nNa praia a onda do mar, ri com dentes de espuma.\n\nDe ametista, em teu sonho, uma antiga cratera\nMal te embebe – alegria! – alvos dedos de frio,\nEis se te emperla o rosto e a prantear vês, sombrio\nA onda crescer, rajar-se em brutal besta-fera!\n\nOlhas... E, soluçoso, à música das mágoas\nAmedulas o Mar e amedulas a Terra!\nA sombra aclara... E é ver a dança verde das águas\nE arvoredos dançando ao coruto da serra!\n\nGemes... Dedando o Azul as magras mãos dos astros\nSomem, luzindo... Ao longe, esqueleta uma ruína\nEm teu sonho a anervar argentina, argentina...\nDe ilusões, no horizonte, ossos brancos... são mastros!\n\nQuente estrias a alma, à frialgem, nas cousas...\nQue bom morrer! Manhã, luz, remada sonora...\nPousas um dedo níveo às níveas cordas, pousas\nE és náufrago de ti, a harpa caída, agora.\n\nAh! os homens percorre um frêmito. Num choro...\nMove oceânica a espécie, amorosa, amorosa!\nMais que um dervixe, és deus, que morre, a irradiosa\nGlorificação de ouro e o sol de ouro... à paz de ouro.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Harpa_Esquisita",
       "tags": [
@@ -128,7 +132,7 @@
       "titulo": "Horas Ígneas",
       "texto": "I\n\nEu sorvo o haxixe do estio...\nE evolve um cheiro, bestial,\nAo solo quente, como o cio\nDe um chacal.\n\nDistensas, rebrilham sobre\nUm verdor, flamâncias de asa...\nCircula um vapor de cobre\nOs montes — de cinza e brasa.\n\nSombras de voz hei no ouvido\n— De amores ruivos, protervos —\nE anda no céu, sacudido,\nUm pó vibrante de nervos.\n\nO mar faz medo... que espanca\nA redondez sensual\nDa praia, como uma anca\nDe animal.\n\nII\n\nO Sol, de bárbaro, estangue,\nOlho, em volúpia de cisma,\nPor uma cor só do prisma,\nVeleiras, as naus — de sangue...\n\nIII\n\nTão longe levadas, pelas\nMãos de fluido ou braços de ar!\nCinge uma flora solar\n— Grandes Rainhas — as velas.\n\nOnda por onda ébria, erguida,\nAs ondas — povo do mar —\nTremem, nest'hora a sangrar,\nMorrem — desejos da Vida!\n\nIV\n\nNem ondas de sangue... e sangue\nNem de uma nau — Morre a cisma.\nDoiram-me as faces do prisma\nMulheres — flores — num mangue...",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Horas_%C3%8Dgneas",
       "tags": [
@@ -140,7 +144,7 @@
       "titulo": "Longe do Céu, perto do verde Mar",
       "texto": "Oh! essas manhãs altas e quietas!\nNo ar, florescem as grandes borboletas,\nFloresce a luz, como em veludo\nE teu olhar espiritualiza tudo\nComo à flor matinal do firmamento\nO alvo sorriso areento – ,\nPerto de mim teu verde e fundo olhar\nLonge do céu, perto de um verde Mar.\n\nAh! dobrar joelhos de ouro ao mundo!\nDar-lhe as almas das virgens religiosas\nCoroadas de rosas!\nE fazê-lo adorar-te!\nMagnificamente amar-te\nO verde olhar líquido e fundo, \n\nOnde as minhas ruivas esperanças,\nSoltas, enérgicas as tranças,\nEmbarcações soltas as velas\nDe um sol de fogo às rosas amarelas\n- Antes Rainhas passeando em Alamedas,\nRoupas em asas fúlgidas, de sedas –\nSe vão nas águas do Infinito Mar!\nE é tão modesto o teu risonho olhar! \n\nFlor tão clara, em meu sonho, onde és incompreendid\na\nEm tua carne branca, como a lua\nQue em noites de verão num céu negro flutua\nOh! minha amada! Oh! minha vida!\nQue loira nau vens a meu lado\nNesse ritmo sagrado!\nE és a riqueza\nQue empresto a toda a rica Natureza!\nE és a pedreira viva, de onde arranco\nMármore antigo\nPara as loucuras de meu sonho branco,\nDe que anda por aí tanto mendigo,\nPara as que como as pérolas de um Mar\nPesquei, mas não são mais, no teu olhar! \n\nSou tua criatura! És minha criatura\nVirginalmente esguia!\nMagneticamente fria –\nEm minha dor escura –\nOnde ressoa uma Harpa da Vontade,\nIluminada e forte,\nComo as doiradas convulsões da Morte!\nE doce, como a tua suavidade,\nQuando a minha alma vai beber-te o olhar \nEm duas taças verdes, cor do verde Mar! \n\nEm sua face, não terá que linhas\nÚmida, a Primavera\n- Que se a roçasse um Deus com as asas minhas! –\nQuando romper, chover o dia\nDe nosso Amor em todo o Amor cantando\nNa germinal alegria\nPara além de nós mesmos nesta Esfera,\nQuando a Nova Manhã lavar os lodos\nAos homens todos\nE as almas todas se banharem rindo\nNo rio que vamos nós abrindo\nE irá rolar no Mar –\nRio de meu olhar! Rio de teu olhar! \n\nAbrem, florescem as grandes borboletas\nFilhas, talvez, dessas manhãs quietas,\nEm que nós vamos juntos\nE, mortalha dos beijos no ar defuntos,\nFloresce a luz, como em veludo\nAh! teu olhar espiritualiza tudo,\nPerto à dança do Mar\nA dança verde e longe em teu olhar.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Longe_do_C%C3%A9u%2C_perto_do_verde_Mar",
       "tags": [
@@ -154,7 +158,7 @@
       "titulo": "Mare Vitae",
       "texto": "— Remar! remar! — E a embarcação ligeira\nFoi deslizando, como um sonho da água.\nDe pé, na proa, era a gonfaloneira\n— Remar! remar! — a minha própria Mágoa.\n\nE esmaia, logo, uma ilusão. E afago-a\nAo som de fogo de canção guerreira,\nVai deslizando como um sonho da água\n— Remar! remar! a embarcação ligeira.\n\nMas uma voz de súbito. Gemendo,\nSob o silêncio côncavo dos astros\nQuem canta assim de amor? Eu não compreendo...\n\nE oh! Morte — eu disse — esta canção me aterra:\nDá-me que tremam palpitando os mastros\nAo som vermelho da canção de guerra.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Mare_Vitae",
       "tags": [
@@ -166,7 +170,7 @@
       "titulo": "Na Via Appia",
       "texto": "..Ei-los passam enfim, capacetes brunidos...\nPurpureia, assombroso, oceano flamejante\nDe mil togas flutuando. E ebria, nesse instante,\nUma pompa de fogo os plebeios sentidos.\n\nLá vão rufos leões, a áureos carros jungidos,\nAo concento da voz dos histriões em descante.\nDe volúpia, a marmórea, a Carne eletrizante,\nÉ qual lírio que vai de pétalos flectidos.\n\nNua! — à espádua esparzida a manhã dos cabelos —\nNua! na esplendidez que, Áureo Sonhar, prelibes...\nComo em leito de sol, levam-na, doce fardo,\n\nCordos núbios de bronze, — agitando flabelos\nDa plumagem real e centínea das íbis,\nPor seu rosto de alambre aromado de nardo...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Na_Via_Appia",
       "tags": []
@@ -175,7 +179,7 @@
       "titulo": "Noturnos",
       "texto": " É o silêncio, é o cigarro e a vela acesa\nOlha-me a estante em cada livro que olha.\nE a luz nalgum volume sobre a mesa...\nMas o sangue da luz em cada folha.\n\nNão sei se é mesmo a minha mão que molha\nA pena, ou mesmo o instinto que a tem presa.\nPenso um presente, num passado. E enfolha\nA natureza tua natureza.\nMas é um bulir das cousas... Comovido\nPego da pena, iludo-me que traço\nA ilusão de um sentido e outro sentido.\nTão longe vai!\nTão longe se aveluda esse teu passo,\nAsa que o ouvido anima...\nE a câmara muda. E a sala muda, muda...\nAfonamente rufa. A asa da rima\nPaira-me no ar. Quedo-me como um Buda\nNovo, um fantasma ao som que se aproxima.\nCresce-me a estante como quem sacuda\nUm pesadelo de papéis acima...\n........................................................\nE abro a janela. Ainda a lua esfia\nÚltimas notas trêmulas... O dia\nTarde florescerá pela montanha.\n\nE oh! Minha amada, o sentimento é cego...\nVês? Colaboram na saudade a aranha,\nPatas de um gato e as asas de um morcego.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Noturnos",
       "tags": [
@@ -189,7 +193,7 @@
       "titulo": "Não sei a causa",
       "texto": "Não sei da causa. Oh! tanto gelo\nE tanta névoa por sobre mim,\nQue dizes brilha no meu cabelo\nE que, no rosto, me brilha assim. \n\nSe bebo em vaso de marmor preto\nO vinho negro da minha dor,\nE arde no fogo do meu soneto\nA ovelha branca da minha dor.\n\nChoro se penso no teu afeto\nNa alta doçura de teu amor,\nRio, se ao peso do mal secreto\nEncurva as asas a minha dor...",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/N%C3%A3o_sei_a_causa",
       "tags": [
@@ -201,7 +205,7 @@
       "titulo": "O Muro",
       "texto": "Movendo os pés doirados, lentamente,\nHoras brancas lá vão, de amor e rosas\nAs impalpáveis formas, no ar, cheirosas.. . .\nSombras, sombras que são da alma doente!\n\nE eu, magro, espio... e um muro, magro, em frente\nAbrindo á tarde as órbitas musgosas\n— Vazias? Menos do que misteriosas —\nPestaneja, estremece. . . O muro sente!\n\nE que cheiro que sai dos nervos dele,\nEmbora o caio roído, cor de brasa,\nE lhe doa talvez aquela pele!\n\nMas um prazer ao sofrimento casa. . .\nPois o ramo em que o vento á dor lhe impele\nÉ onde a volúpia está de urna asa e outra asa. . .",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_Muro",
       "tags": [
@@ -214,7 +218,7 @@
       "titulo": "O Verme e a Estrela",
       "texto": "Agora sabes que sou verme.\nAgora, sei da tua luz,\nSe não notei minha epiderme...\nÉ, nunca estrela eu te supus\nMas, se cantar pudesse um verme,\nEu cantaria a tua luz!\n\nE eras assim... Por que não deste\nUm raio, brando, ao teu viver?\nNão te lembrava. Azul-celeste\nO céu, talvez, não pôde ser...\nMas, ora! Enfim, por que não deste\nSomente um raio ao teu viver?\n\nOlho, examino-me a epiderme,\nOlho e não vejo a tua luz!\nVamos que sou, talvez, um verme...\nEstrela nunca eu te supus!\nOlho, examino-me a epiderme...\nCeguei! Ceguei da tua luz?",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/O_Verme_e_a_Estrela",
       "tags": []
@@ -223,7 +227,7 @@
       "titulo": "Ritmo Eterno",
       "texto": "Abro as asas da Vida à Vida que há lá fora.\nOlha... Um sorriso da alma! — Um sorriso da aurora!\nE Deus — ou Bem! ou Mal — é Deus cantando em mim,\nQue Deus és tu, sou eu — a Natureza assim.\n\nÁrvore! boa ou má, os frutos que darás\nSinto-os sabendo em nós, em mim, árvore, estás.\nE o Sol, de cujo olhar meu pensamento inundo,\nCasa multiplicando as asas deste mundo...\n\nOh, braços para a Vida! Oh, vida para amar!\nSendo uma onda do mar, dou-me ilusões de um mar...\nAlvor, turquesa, ondula a matéria... É veludo,\n\nÉ minh'alma, é teu seio, e um firmamento mudo.\nMas, aos ritmos da Terra, és um ritmo do Amor?\nHomem! ouvir a teus pés a Natureza em flor!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ritmo_Eterno",
       "tags": [
@@ -236,7 +240,7 @@
       "titulo": "Sob os ramos",
       "texto": "É no Estio. A alma, aqui, vai-me sonora,\nNo meu cavalo — sob a loira poeira\nQue chove o sol — e vai-me a vida inteira\nNo meu cavalo, pela estrada a fora.\n\nAi! desta em que te escrevo alta mangueira\nSob a copada verde a gente mora.\nE em vindo a noite, acende-se a fogueira\nQue se fez cinza de fogueira agora.\n\nPassa-me a vida pelo campo... E a vida\nLevo-a cantando, pássaros no seio,\nQual se os levasse a minha mocidade...\n\nCada ilusão floresce renascida;\nFlora, renasces ao primeiro anseio\nDo teu amor... nas asas da Saudade!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Sob_os_ramos",
       "tags": [
@@ -250,7 +254,7 @@
       "titulo": "Sobre um mar de rosas que arde",
       "texto": "Sobre um mar de rosas que arde\nEm ondas fulvas, distante,\nErram meus olhos, diamante,\nComo as naus dentro da tarde.\n\nAsas no azul, melodias,\nE as horas são velas fluidas\nDa nau em que, oh! alma, descuidas\nDas esperanças tardias.",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Sobre_um_mar_de_rosas_que_arde",
       "tags": [
@@ -262,7 +266,7 @@
       "titulo": "Symbolum",
       "texto": "Que flora na alma se abre acesa!\nE à noite em festa do meu pensamento\nVens, oh! Lua nevada de tristeza!\nPára, fogo-fantasma... Astro agoirento!\n\nSe a carne, em ti, soluça, e reza...\nE me atiras abraço nevoento,\n- Nesse horizonte a que te quero presa,\nArde, oh fogueira branca! Oh! Sofrimento!\n\nE apaga-te! No céu, que espaço resta\nA tua face histérica e medrosa,\nLua de Dor à noite em festa?\n\nCada estrela, embriagada, te maltrata... \nCanto! Minha alegria, caprichosa,\n(...), aos teus ais tange liras de prata!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Symbolum",
       "tags": [
@@ -274,7 +278,7 @@
       "titulo": "Taça",
       "texto": "Aquela taça de metal que, um dia,\nÀ Laura, um dia assim, lhe oferecera,\nEntre relevos delicados de hera,\n\"Saudade\" em letras de rubis trazia.\n\nE era um riso de amor e de poesia\nEm cada riso ou flor da primavera...\nE Laura, a um canto, cruel, por que a esquecera,\nLaura que soluçou, porque eu partia?\n\nAnos derivam. De remorsos presa\nNão é que vai, acaso, à soledade\nDa abandonada... Vai por fantasia.\n\nMas, como um choro, vê, vê com surpresa,\nDesmancharem-se as letras da \"Saudade\"\nQue aquela taça de metal trazia.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ta%C3%A7a",
       "tags": [
@@ -287,7 +291,7 @@
       "titulo": "Velhinho",
       "texto": "À Piche do Jackson\n\nNão, não é que comigo ele nascesse... A sua asa\nSó a um tempo ruflou, desse modo, tamanho!\n- Bateu-me o coração. E outro eu não sei que, estranho,\nRudemente o rasgou, como o seu bico em brasa.\n\nEntrou-no todo, enfim, como quem entra em casa,\nE em meu sangue, a cantar, fez de um boêmio no banho.\nAh! Que pássaro mau!E nunca mais o apanho!\nVês: estou velho já... treme-me o passo, e atrasa...\n \nOlha-no bem, no peito, um rubro ninho aberto!\nHoje, fúnebre, a piar uma estrige ao telhado,\nE o meu seio vazio! E o meu leito deserto!\n \nAh! Vivi só por ver, como curvo aqui fico,\nEsse pássaro voar, longamente, um bocado\nDe músculo pingando a levar-me no bico!",
       "forma": "outro",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Velhinho",
       "tags": [
@@ -298,7 +302,7 @@
       "titulo": "Vinho",
       "texto": "Alma presa da Grécia, em prisão de turquesa!\nVibre a Vida a cantar nessas taças à Vida,\nComo, dentro do Sangue, a Alma da Natureza\n— Num seio nu, num ventre nu, — ferve incendida!\n\nVinho de Cós! e quente! a escorrer sobre a mesa\nComo um rio de fogo, onde vela perdida,\nBraço branco, embalada à flor da correnteza,\nFloresce ao sol, floresce à luz, floresce à Vida!\n\nOh! bem-vinda; bem-vinda essa vela que chega!\nNau de rastro que traz a ilusão de uma grega\nDescerrando à Volúpia a clâmida aquecida...\n\nVinho de Cós! vinho de Cós! e os nossos olhos\nDe Virgílios a errar entre vagas e escolhos,\nArgonautas de Amor sobre os mares da Vida!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Pedro Kilkerry",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Vinho",
       "tags": [

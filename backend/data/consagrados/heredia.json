@@ -4,12 +4,16 @@
   "bio": "Poeta francês de origem cubana, do Parnaso. Les Trophées é um livro de sonetos sobre a Antiguidade, a Idade Média e o trópico, modelo da escola.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Jos%C3%A9-Maria_de_Heredia_1896.jpg",
   "morte": 1905,
+  "escolas": [
+    "parnasianismo"
+  ],
+  "pais": "CU",
   "poemas": [
     {
       "titulo": "Les Trophées/Andromède au Monstre",
       "texto": "La Vierge Céphéenne, hélas ! encor vivante,\nLiée, échevelée, au roc des noirs îlots,\nSe lamente en tordant avec de vains sanglots\nSa chair royale où court un frisson d’épouvante.\n\nL’Océan monstrueux que la tempête évente\nCrache à ses pieds glacés l’âcre bave des flots,\nEt partout elle voit, à travers ses cils clos,\nBâiller la gueule glauque, innombrable et mouvante.\n\nTel qu’un éclat de foudre en un ciel sans éclair,\nTout à coup, retentit un hennissement clair.\nSes yeux s’ouvrent. L’horreur les emplit, et l’extase ;\n\nCar elle a vu, d’un vol vertigineux et sûr,\nSe cabrant sous le poids du fils de Zeus, Pégase\nAllonger sur la mer sa grande ombre d’azur.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Androm%C3%A8de_au_Monstre",
       "tags": []
@@ -18,7 +22,7 @@
       "titulo": "Les Trophées/Antoine et Cléopâtre",
       "texto": "Tous deux ils regardaient, de la haute terrasse,\nL’Égypte s’endormir sous un ciel étouffant\nEt le Fleuve, à travers le Delta noir qu’il fend,\nVers Bubaste ou Saïs rouler son onde grasse.\n\nEt le Romain sentait sous la lourde cuirasse,\nSoldat captif berçant le sommeil d’un enfant,\nPloyer et défaillir sur son cœur triomphant\nLe corps voluptueux que son étreinte embrasse.\n\nTournant sa tête pâle entre ses cheveux bruns\nVers celui qu’enivraient d’invincibles parfums,\nElle tendit sa bouche et ses prunelles claires ;\n\nEt sur elle courbé, l’ardent Imperator\nVit dans ses larges yeux étoilés de points d’or\nToute une mer immense où fuyaient des galères.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Antoine_et_Cl%C3%A9op%C3%A2tre",
       "tags": []
@@ -27,7 +31,7 @@
       "titulo": "Les Trophées/Après Cannes",
       "texto": "Un des consuls tué, l’autre fuit vers Linterne\nOu Venuse. L’Aufide a débordé, trop plein\nDe morts et d’armes. La foudre au Capitolin\nTombe, le bronze sue et le ciel rouge est terne.\n\nEn vain le Grand Pontife a fait un lectisterne\nEt consulté deux fois l’oracle sibyllin ;\nD’un long sanglot l’aïeul, la veuve, l’orphelin\nEmplissent Rome en deuil que la terreur consterne.\n\nEt chaque soir la foule allait aux aqueducs,\nPlèbe, esclaves, enfants, femmes, vieillards caducs\nEt tout ce que vomit Subure et l’ergastule ;\n\nTous anxieux de voir surgir, au dos vermeil\nDes monts Sabins où luit l’œil sanglant du soleil,\nLe Chef borgne monté sur l’éléphant Gétule.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Apr%C3%A8s_Cannes",
       "tags": [
@@ -38,7 +42,7 @@
       "titulo": "Les Trophées/Ariane",
       "texto": "Au choc clair et vibrant des cymbales d’airain,\nNue, allongée au dos d’un grand tigre, la Reine\nRegarde, avec l’Orgie immense qu’il entraîne,\nIacchos s’avancer sur le sable marin.\n\nEt le monstre royal, ployant son large rein,\nSous le poids adoré foule la blonde arène,\nEt, frôlé par la main d’où pend l’errante rêne,\nEn rugissant d’amour mord les fleurs de son frein.\n\nLaissant sa chevelure à son flanc qui se cambre\nParmi les noirs raisins rouler ses grappes d’ambre,\nL’Épouse n’entend pas le sourd rugissement ;\n\nEt sa bouche éperdue, ivre enfin d’ambroisie,\nOubliant ses longs cris vers l’infidèle amant,\nRit au baiser prochain du Dompteur de l’Asie.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Ariane",
       "tags": []
@@ -47,7 +51,7 @@
       "titulo": "Les Trophées/Armor",
       "texto": "Pour me conduire au Raz, j’avais pris à Trogor\nUn berger chevelu comme un ancien Évhage ;\nEt nous foulions, humant son arome sauvage,\nL’âpre terre kymrique où croît le genêt d’or.\n\nLe couchant rougissait et nous marchions encor,\nLorsque le souffle amer me fouetta le visage ;\nEt l’homme, par-delà le morne paysage\nÉtendant un long bras, me dit : Senèz Ar-mor !\n\nEt je vis, me dressant sur la bruyère rose,\nL’Océan qui, splendide et monstrueux, arrose\nDu sel vert de ses eaux les caps de granit noir ;\n\nEt mon cœur savoura, devant l’horizon vide\nQue reculait vers l’Ouest l’ombre immense du soir,\nL’ivresse de l’espace et du vent intrépide.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Armor",
       "tags": []
@@ -56,7 +60,7 @@
       "titulo": "Les Trophées/Artémis",
       "texto": "L’âcre senteur des bois montant de toutes parts,\nChasseresse, a gonflé ta narine élargie,\nEt dans ta virginale et virile énergie,\nRejetant tes cheveux en arrière, tu pars !\n\nEt du rugissement des rauques léopards\nJusqu’à la nuit tu fais retentir Ortygie,\nEt bondis à travers la haletante orgie\nDes grands chiens éventrés sur l’herbe rouge épars.\n\nEt, bien plus, il te plaît, Déesse, que la ronce\nTe morde et que la dent ou la griffe s’enfonce\nDans tes bras glorieux que le fer a vengés ;\n\nCar ton cœur veut goûter cette douceur cruelle\nDe mêler, en tes jeux, une pourpre immortelle\nAu sang horrible et noir des monstres égorgés.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Art%C3%A9mis",
       "tags": []
@@ -65,7 +69,7 @@
       "titulo": "Les Trophées/Au Même",
       "texto": "Qu’ils aient vaincu l’Inca, l’Aztèque, les Hiaquis, \nLes Andes, la forêt, les pampas ou le fleuve, \nLes autres n’ont laissé pour vestige et pour preuve \nQu’un nom, un titre vain de comte ou de marquis. \n\nToi, tu fondas, orgueil du sang dont je naquis, \nDans la mer caraïbe une Carthage neuve, \nEt du Magdalena jusqu’au Darien qu’abreuve \nL’Atrato, le sol rouge à la Croix fut conquis. \n\nAssise sur son île où l’Océan déferle,\nMalgré les siècles, l’homme et la foudre et les vents,\nTa cité dresse au ciel ses forts et ses couvents ; \n\nAussi tes derniers fils, sans trèfle, ache ni perle, \nTimbrent-ils leur écu d’un palmier ombrageant \nDe son panache d’or une Ville d’argent.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Au_M%C3%AAme",
       "tags": []
@@ -74,7 +78,7 @@
       "titulo": "Les Trophées/Au Tragédien E. Rossi",
       "texto": " \n\nÔ Rossi, je t’ai vu, traînant le manteau noir,\nBriser le faible cœur de la triste Ophélie,\nEt, tigre exaspéré d’amour et de folie,\nÉtrangler tes sanglots dans le fatal mouchoir.\n\nJ’ai vu Lear et Macbeth, et pleuré de te voir\nBaiser, suprême amant de l’antique Italie,\nAu tombeau nuptial Juliette pâlie.\nPourtant tu fus plus grand et plus terrible, un soir.\n\nCar j’ai goûté l’horreur et le plaisir sublimes,\nPour la première fois, d’entendre les trois rimes\nSonner par ta voix d’or leur fanfare de fer ;\n\nEt, rouge du reflet de l’infernale flamme,\nJ’ai vu — j’en ai frémi jusques au fond de l’âme —\nAlighieri vivant dire un chant de l’Enfer.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Au_Trag%C3%A9dien_E._Rossi",
       "tags": []
@@ -83,7 +87,7 @@
       "titulo": "Les Trophées/Aux Montagnes Divines",
       "texto": "GEMINVS SERVVS\nET PRO SVIS CONSERVIS.\n\nGlaciers bleus, pics de marbre et d’ardoise, granits,\nMoraines dont le vent, du Néthou jusqu’à Bègle,\nArrache, brûle et tord le froment et le seigle,\nCols abrupts, lacs, forêts pleines d’ombre et de nids !\n\nAntres sourds, noirs vallons que les anciens bannis,\nPlutôt que de ployer sous la servile règle,\nHantèrent avec l’ours, le loup, l’isard et l’aigle,\nPrécipices, torrents, gouffres, soyez bénis !\n\nAyant fui l’ergastule et le dur municipe,\nL’esclave Geminus a dédié ce cippe\nAux Monts, gardiens sacrés de l’âpre liberté ;\n\nEt sur ces sommets clairs où le silence vibre,\nDans l’air inviolable, immense et pur, jeté,\nJe crois entendre encor le cri d’un homme libre !",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Aux_Montagnes_Divines",
       "tags": []
@@ -92,7 +96,7 @@
       "titulo": "Les Trophées/Bacchanale",
       "texto": "Une brusque clameur épouvante le Gange.\nLes tigres ont rompu leurs jougs et, miaulants,\nIls bondissent, et sous leurs bonds et leurs élans\nLes Bacchantes en fuite écrasent la vendange.\n\nEt le pampre que l’ongle ou la morsure effrange\nRougit d’un noir raisin les gorges et les flancs\nOù près des reins rayés luisent des ventres blancs\nDe léopards roulés dans la pourpre et la fange.\n\nSur les corps convulsifs les fauves éblouis,\nAvec des grondements que prolonge un long râle,\nFlairent un sang plus rouge à travers l’or du hâle ;\n\nMais le Dieu, s’enivrant à ces jeux inouïs,\nPar le thyrse et les cris les exaspère et mêle\nAu mâle rugissant la hurlante femelle.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Bacchanale",
       "tags": []
@@ -101,7 +105,7 @@
       "titulo": "Les Trophées/Blason céleste",
       "texto": "J’ai vu parfois, ayant tout l’azur pour émail, \nLes nuages d’argent et de pourpre et de cuivre, \nÀ l’Occident où l’œil s’éblouit à les suivre, \nPeindre d’un grand blason le céleste vitrail. \n\nPour cimier, pour supports, l’héraldique bétail, \nLicorne, léopard, alérion ou guivre, \nMonstres, géants captifs qu’un coup de vent délivre, \nExhaussent leur stature et cabrent leur poitrail. \n\nCerte, aux champs de l’espace, en ces combats étranges \nQue les noirs Séraphins livrèrent aux Archanges, \nCet écu fut gagné par un Baron du ciel ; \n\nComme ceux qui jadis prirent Constantinople, \nIl porte, en bon croisé, qu’il soit George ou Michel, \nLe soleil, besant d’or, sur la mer de sinople.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Blason_c%C3%A9leste",
       "tags": []
@@ -110,7 +114,7 @@
       "titulo": "Les Trophées/Bretagne",
       "texto": "Pour que le sang joyeux dompte l’esprit morose,\nIl faut, tout parfumé du sel des goëmons,\nQue le souffle atlantique emplisse tes poumons ;\nArvor t’offre ses caps que la mer blanche arrose.\n\nL’ajonc fleurit et la bruyère est déjà rose.\nLa terre des vieux clans, des nains et des démons,\nAmi, te garde encor, sur le granit des monts,\nL’homme immobile auprès de l’immuable chose.\n\nViens. Partout tu verras, par les landes d’Arèz,\nMonter vers le ciel morne, infrangible cyprès,\nLe menhir sous lequel gît la cendre du Brave ;\n\nEt l’Océan, qui roule en un lit d’algues d’or\nIs la voluptueuse et la grande Occismor,\nBercera ton cœur triste à son murmure grave.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Bretagne",
       "tags": [
@@ -121,7 +125,7 @@
       "titulo": "Les Trophées/Brise marine",
       "texto": "L’hiver a défleuri la lande et le courtil.\nTout est mort. Sur la roche uniformément grise\nOù la lame sans fin de l’Atlantique brise,\nLe pétale fané pend au dernier pistil.\n\nEt pourtant je ne sais quel arome subtil\nExhalé de la mer jusqu’à moi par la brise,\nD’un effluve si tiède emplit mon cœur qu’il grise ; \nCe souffle étrangement parfumé, d’où vient-il ? \n\nAh ! Je le reconnais. C’est de trois mille lieues\nQu’il vient, de l’Ouest, là-bas où les Antilles bleues\nSe pâment sous l’ardeur de l’astre occidental ; \n\nEt j’ai, de ce récif battu du flot kymrique,\nRespiré dans le vent qu’embauma l’air natal\nLa fleur jadis éclose au jardin d’Amérique.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Brise_marine",
       "tags": []
@@ -130,7 +134,7 @@
       "titulo": "Les Trophées/Carolo Quinto imperante",
       "texto": " \nCelui-là peut compter parmi les grands défunts,\nCar son bras a guidé la première carène\nÀ travers l’archipel des Jardins de la Reine\nOù la brise éternelle est faite de parfums.\n\nPlus que les ans, la houle et ses âcres embruns,\nLes calmes de la mer embrasée et sereine\nEt l’amour et l’effroi de l’antique sirène\nOnt fait sa barbe blanche et blancs ses cheveux bruns.\n\nCastille a triomphé par cet homme, et ses flottes\nOnt sous lui complété l’empire sans pareil\nPour lequel ne pouvait se coucher le soleil ;\n\nC’est Bartolomé Ruiz, prince des vieux pilotes,\nQui, sur l’écu royal qu’elle enrichit encor,\nPorte une ancre de sable à la gumène d’or.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Carolo_Quinto_imperante",
       "tags": []
@@ -139,7 +143,7 @@
       "titulo": "Les Trophées/Centaures et Lapithes",
       "texto": "La foule nuptiale au festin s’est ruée, \nCentaures et guerriers ivres, hardis et beaux ; \nEt la chair héroïque, au reflet des flambeaux, \nSe mêle au poil ardent des fils de la Nuée. \n\nRires, tumulte… Un cri !… L’Épouse polluée \nQue presse un noir poitrail, sous la pourpre en lambeaux \nSe débat, et l’airain sonne au choc des sabots \nEt la table s’écroule à travers la huée. \n\nAlors celui pour qui le plus grand est un nain, \nSe lève. Sur son crâne, un mufle léonin \nSe fronce, hérissé de crins d’or. C’est Hercule. \n\nEt d’un bout de la salle immense à l’autre bout, \nDompté par l’œil terrible où la colère bout, \nLe troupeau monstrueux en renâclant recule.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Centaures_et_Lapithes",
       "tags": []
@@ -148,7 +152,7 @@
       "titulo": "Les Trophées/Entre donc. Mes piliers…",
       "texto": "Entre donc. Mes piliers sont fraîchement crépis,\nEt sous ma treille neuve où le soleil se glisse\nL’ombre est plus douce. L’air embaume la mélisse.\nAvril jonche la terre en fleur d’un frais tapis.\n\nLes saisons tour à tour me parent : blonds épis\nRaisins mûrs, verte olive ou printanier calice\nEt le lait du matin caille encor sur l’éclisse,\nQue la chèvre me tend la mamelle et le pis.\n\nLe maître de ce clos m’honore. J’en suis digne.\nJamais grive ou larron ne marauda sa vigne\nEt nul n’est mieux gardé de tout le Champ Romain.\n\nLes fils sont beaux, la femme est vertueuse, et l’homme,\nChaque soir de marché, fait tinter dans sa main\nLes deniers d’argent clair qu’il rapporte de Rome.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Entre_donc._Mes_piliers%E2%80%A6",
       "tags": []
@@ -157,7 +161,7 @@
       "titulo": "Les Trophées/Et la foule grandit…",
       "texto": "Et la foule grandit plus innombrable encor.\nEt le sombre hypogée où s’alignent les couches\nEst vide. Du milieu déserté des cartouches,\nLes éperviers sacrés ont repris leur essor.\n\nBêtes, peuples et rois, ils vont. L’uræus d’or\nS’enroule, étincelant, autour des fronts farouches ;\nMais le bitume épais scelle les maigres bouches.\nEn tête, les grands dieux : Hor, Khnoum, Ptah, Neith, Hathor.\n\nPuis tous ceux que conduit Toth Ibiocéphale,\nVêtus de la schenti, coiffés du pschent, ornés\nDu lotus bleu. La pompe errante et triomphale\n\nOndule dans l’horreur des temples ruinés,\nEt la lune, éclatant au pavé froid des salles,\nProlonge étrangement des ombres colossales.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Et_la_foule_grandit%E2%80%A6",
       "tags": []
@@ -166,7 +170,7 @@
       "titulo": "Les Trophées/Fleur séculaire",
       "texto": "Sur le roc calciné de la dernière rampe \nOù le flux volcanique autrefois s’est tari, \nLa graine que le vent au haut Gualatieri \nSema, germe, s’accroche et, frêle plante, rampe. \n\nElle grandit. En l’ombre où sa racine trempe, \nSon tronc, buvant la flamme obscure, s’est nourri ;\nEt les soleils d’un siècle ont longuement mûri \nLe bouton colossal qui fait ployer sa hampe. \n\nEnfin, dans l’air brûlant et qu’il embrase encor,\nSous le pistil géant qui s’érige, il éclate,\nEt l’étamine lance au loin le pollen d’or ;\n\nEt le grand aloès à la fleur écarlate, \nPour l’hymen ignoré qu’a rêvé son amour, \nAyant vécu cent ans, n’a fleuri qu’un seul jour.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Fleur_s%C3%A9culaire",
       "tags": []
@@ -175,7 +179,7 @@
       "titulo": "Les Trophées/Fleurs de feu",
       "texto": "Bien des siècles depuis les siècles du Chaos, \nLa flamme par torrents jaillit de ce cratère, \nEt le panache igné du volcan solitaire \nFlamba plus haut encor que les Chimborazos. \n\nNul bruit n’éveille plus la cime sans échos. \nOù la cendre pleuvait l’oiseau se désaltère ;\nLe sol est immobile et le sang de la Terre, \nLa lave, en se figeant, lui laissa le repos. \n\nPourtant, suprême effort de l’antique incendie, \nÀ l’orle de la gueule à jamais refroidie, \nÉclatant à travers les rocs pulvérisés, \n\nComme un coup de tonnerre au milieu du silence, \nDans le poudroîment d’or du pollen qu’elle lance, \nS’épanouit la fleur des cactus embrasés.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Fleurs_de_feu",
       "tags": []
@@ -184,7 +188,7 @@
       "titulo": "Les Trophées/Floridum Mare",
       "texto": "La moisson débordant le plateau diapré\nRoule, ondule et déferle au vent frais qui la berce ;\nEt le profil, au ciel lointain, de quelque herse\nSemble un bateau qui tangue et lève un noir beaupré.\n\nEt sous mes pieds, la mer, jusqu’au couchant pourpré,\nCéruléenne ou rose ou violette ou perse\nOu blanche de moutons que le reflux disperse,\nVerdoie à l’infini comme un immense pré.\n\nAussi les goëlands qui suivent la marée,\nVers les blés mûrs que gonfle une houle dorée,\nAvec des cris joyeux, volaient en tourbillons ;\n\nTandis que, de la terre, une brise emmiellée\nÉparpillait au gré de leur ivresse ailée\nSur l’Océan fleuri des vols de papillons.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Floridum_Mare",
       "tags": []
@@ -193,7 +197,7 @@
       "titulo": "Les Trophées/Fuite de Centaures",
       "texto": "Ils fuient, ivres de meurtre et de rébellion, \nVers le mont escarpé qui garde leur retraite ; \nLa peur les précipite, ils sentent la mort prête \nEt flairent dans la nuit une odeur de lion. \n\nIls franchissent, foulant l’hydre et le stellion, \nRavins, torrents, halliers, sans que rien les arrête ; \nEt déjà, sur le ciel, se dresse au loin la crête \nDe l’Ossa, de l’Olympe ou du noir Pélion. \n\nParfois, l’un des fuyards de la farouche harde \nSe cabre brusquement, se retourne, regarde. \nEt rejoint d’un seul bond le fraternel bétail ;\n \nCar il a vu la lune éblouissante et pleine \nAllonger derrière eux, suprême épouvantail, \nLa gigantesque horreur de l’ombre Herculéenne.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Fuite_de_Centaures",
       "tags": []
@@ -202,7 +206,7 @@
       "titulo": "Les Trophées/Holà, maudits enfants !",
       "texto": "Ecce villicus\nVenit…\n\nHolà, maudits enfants ! Gare au piège, à la trappe,\nAu chien ! je ne veux plus, moi qui garde ce lieu,\nQu’on vienne, sous couleur d’y quérir un caïeu\nD’ail, piller mes fruitiers et grappiller ma grappe.\n\nD’ailleurs, là-bas, du fond des chaumes qu’il étrape,\nLe colon vous épie, et, s’il vient, par mon pieu !\nVos reins sauront alors tout ce que pèse un Dieu\nDe bois dur emmanché d’un bras d’homme qui frappe.\n\nVite, prenez la sente à gauche, suivez-la\nJusqu’au bout de la haie où croît ce hêtre, et là\nProfitez de l’avis qu’on vous glisse à l’oreille :\n\nUn négligent Priape habite au clos voisin ;\nD’ici, vous pouvez voir les piliers de sa treille\nOù sous l’ombre du pampre a rougi le raisin.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Hol%C3%A0%2C_maudits_enfants_%21",
       "tags": []
@@ -211,7 +215,7 @@
       "titulo": "Les Trophées/Jason et Médée",
       "texto": "En un calme enchanté, sous l’ample frondaison\nDe la forêt, berceau des antiques alarmes,\nUne aube merveilleuse avivait de ses larmes,\nAutour d’eux, une étrange et riche floraison.\n\nPar l’air magique où flotte un parfum de poison,\nSa parole semait la puissance des charmes ;\nLe Héros la suivait et sur ses belles armes\nSecouait les éclairs de l’illustre Toison.\n\nIlluminant les bois d’un vol de pierreries,\nDe grands oiseaux passaient sous les voûtes fleuries,\nEt dans les lacs d’argents pleuvait l’azur des cieux.\n\nL’Amour leur souriait, mais la fatale Épouse\nEmportait avec elle et sa fureur jalouse\nEt les philtres d’Asie et son père et les Dieux.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Jason_et_M%C3%A9d%C3%A9e",
       "tags": []
@@ -220,7 +224,7 @@
       "titulo": "Les Trophées/Jouvence",
       "texto": "Juan Ponce de Leon, par le Diable tenté, \nDéjà très vieux et plein des antiques études, \nVoyant l’âge blanchir ses cheveux courts et rudes, \nPrit la mer pour chercher la Source de Santé. \n\nSur sa belle Armada, d’un vain songe hanté, \nTrois ans il explora les glauques solitudes, \nLorsque enfin, déchirant le brouillard des Bermudes, \nLa Floride apparut sous un ciel enchanté. \n\nEt le Conquistador, bénissant sa folie, \nVint planter son pennon d’une main affaiblie \nDans la terre éclatante où s’ouvrait son tombeau. \n\nVieillard, tu fus heureux, et ta fortune est telle\nQue la Mort, malgré toi, fit ton rêve plus beau ;\nLa Gloire t’a donné la jeunesse immortelle.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Jouvence",
       "tags": []
@@ -229,7 +233,7 @@
       "titulo": "Les Trophées/La Centauresse",
       "texto": "Jadis, à travers bois, rocs, torrents et vallons \nErrait le fier troupeau des Centaures sans nombre ; \nSur leurs flancs le soleil se jouait avec l’ombre ; \nIls mêlaient leurs crins noirs parmi nos cheveux blonds. \n\nL’été fleurit en vain l’herbe. Nous la foulons \nSeules. L’antre est désert que la broussaille encombre ; \nEt parfois je me prends, dans la nuit chaude et sombre, \nÀ frémir à l’appel lointain des étalons. \n\nCar la race de jour en jour diminuée \nDes fils prodigieux qu’engendra la Nuée, \nNous délaisse et poursuit la Femme éperdument. \n\nC’est que leur amour même aux brutes nous ravale ; \nLe cri qu’il nous arrache est un hennissement. \nEt leur désir en nous n’étreint que la cavale.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Centauresse",
       "tags": []
@@ -238,7 +242,7 @@
       "titulo": "Les Trophées/La Chasse",
       "texto": "Le quadrige, au galop de ses étalons blancs,\nMonte au faîte du ciel, et les chaudes haleines\nOnt fait onduler l’or bariolé des plaines.\nLa Terre sent la flamme immense ardre ses flancs.\n\nLa forêt masse en vain ses feuillages plus lents ;\nLe Soleil, à travers les cimes incertaines\nEt l’ombre où rit le timbre argentin des fontaines,\nSe glisse, darde et luit en jeux étincelants.\n\nC’est l’heure flamboyante où, par la ronce et l’herbe,\nBondissant au milieu des molosses, superbe,\nDans les clameurs de mort, le sang et les abois,\n\nFaisant voler les traits de la corde tendue,\nLes cheveux dénoués, haletante, éperdue,\nInvincible, Artémis épouvante les bois.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Chasse",
       "tags": [
@@ -249,7 +253,7 @@
       "titulo": "Les Trophées/La Conque",
       "texto": "Par quels froids Océans, depuis combien d’hivers,\n— Qui le saura jamais, Conque frêle et nacrée ! —\nLa houle, les courants et les raz de marée \nT’ont-ils roulée au creux de leurs abîmes verts ? \n\nAujourd’hui, sous le ciel, loin des reflux amers, \nTu t’es fait un doux lit de l’arène dorée. \nMais ton espoir est vain. Longue et désespérée, \nEn toi gémit toujours la grande voix des mers. \n\nMon âme est devenue une prison sonore : \nEt comme en tes replis pleure et soupire encore \nLa plainte du refrain de l’ancienne clameur ; \n\nAinsi du plus profond de ce cœur trop plein d’Elle, \nSourde, lente, insensible et pourtant éternelle, \nGronde en moi l’orageuse et lointaine rumeur.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Conque",
       "tags": []
@@ -258,7 +262,7 @@
       "titulo": "Les Trophées/La Dogaresse",
       "texto": "Le palais est de marbre où, le long des portiques,\nConversent des seigneurs que peignit Titien,\nEt les colliers massifs au poids du marc ancien\nRehaussent la splendeur des rouges dalmatiques.\n\nIls regardent au fond des lagunes antiques,\nDe leurs yeux où reluit l’orgueil patricien,\nSous le pavillon clair du ciel vénitien\nÉtinceler l’azur des mers Adriatiques.\n\nEt tandis que l’essaim brillant des Cavaliers\nTraîne la pourpre et l’or par les blancs escaliers\nJoyeusement baignés d’une lumière bleue ;\n\nIndolente et superbe, une Dame, à l’écart,\nSe tournant à demi dans un flot de brocart,\nSourit au négrillon qui lui porte la queue.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Dogaresse",
       "tags": []
@@ -267,7 +271,7 @@
       "titulo": "Les Trophées/La Flûte",
       "texto": "Voici le soir. Au ciel passe un vol de pigeons.\nRien ne vaut pour charmer une amoureuse fièvre,\nÔ chevrier, le son d’un pipeau sur la lèvre\nQu’accompagne un bruit frais de source entre les joncs.\n\nÀ l’ombre du platane où nous nous allongeons\nL’herbe est plus molle. Laisse, ami, l’errante chèvre,\nSourde aux chevrotements du chevreau qu’elle sèvre,\nEscalader la roche et brouter les bourgeons.\n\nMa flûte, faite avec sept tiges de ciguë\nInégales que joint un peu de cire, aiguë\nOu grave, pleure, chante ou gémit à mon gré.\n\nViens. Nous t’enseignerons l’art divin du Silène,\nEt tes soupirs d’amour, de ce tuyau sacré,\nS’envoleront parmi l’harmonieuse haleine.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Fl%C3%BBte",
       "tags": []
@@ -276,7 +280,7 @@
       "titulo": "Les Trophées/La Jeune Morte",
       "texto": "Qui que tu sois, Vivant, passe vite parmi\nL’herbe du tertre où gît ma cendre inconsolée ;\nNe foule point les fleurs de l’humble mausolée\nD’où j’écoute ramper le lierre et la fourmi.\n\nTu t’arrêtes ? Un chant de colombe a gémi.\nNon ! qu’elle ne soit pas sur ma tombe immolée !\nSi tu veux m’être cher, donne-lui la volée.\nLa vie est si douce, ah ! laisse-la vivre, ami.\n\nLe sais-tu ? Sous le myrte enguirlandant la porte,\nÉpouse et vierge, au seuil nuptial, je suis morte,\nSi proche et déjà loin de celui que j’aimais.\n\nMes yeux se sont fermés à la lumière heureuse,\nEt maintenant j’habite, hélas ! et pour jamais,\nL’inexorable Érèbe et la Nuit Ténébreuse.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Jeune_Morte",
       "tags": [
@@ -287,7 +291,7 @@
       "titulo": "Les Trophées/La Magicienne",
       "texto": "En tous lieux, même au pied des autels que j’embrasse,\nJe la vois qui m’appelle et m’ouvre ses bras blancs.\nÔ père vénérable, ô mère dont les flancs\nM’ont porté, suis-je né d’une exécrable race ?\n\nL’Eumolpide vengeur n’a point dans Samothrace\nSecoué vers le seuil les longs manteaux sanglants,\nEt, malgré moi, je fuis, le cœur las, les pieds lents ;\nJ’entends les chiens sacrés qui hurlent sur ma trace.\n\nPartout je sens, j’aspire, à moi-même odieux,\nLes noirs enchantements et les sinistres charmes\nDont m’enveloppe encor la colère des Dieux ;\n\nCar les grands Dieux ont fait d’irrésistibles armes\nDe sa bouche enivrante et de ses sombres yeux,\nPour armer contre moi ses baisers et ses larmes.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Magicienne",
       "tags": []
@@ -296,7 +300,7 @@
       "titulo": "Les Trophées/La Mort de L’Aigle",
       "texto": "Quand l’aigle a dépassé les neiges éternelles, \nÀ sa vaste envergure il veut chercher plus d’air \nEt le soleil plus proche en un azur plus clair \nPour échauffer l’éclat de ses mornes prunelles. \n\nIl s’enlève. Il aspire un torrent d’étincelles. \nToujours plus haut, enflant son vol tranquille et fier, \nIl monte vers l’orage où l’attire l’éclair ;\nMais la foudre d’un coup a rompu ses deux ailes. \n\nAvec un cri sinistre, il tournoie, emporté \nPar la trombe, et, crispé, buvant d’un trait sublime \nLa flamme éparse, il plonge au fulgurant abîme. \n\nHeureux qui pour la Gloire ou pour la Liberté,\nDans l’orgueil de la force et l’ivresse du rêve,\nMeurt ainsi, d’une mort éblouissante et brève !",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Mort_de_L%E2%80%99Aigle",
       "tags": [
@@ -307,7 +311,7 @@
       "titulo": "Les Trophées/La Naissance d’Aphrodité",
       "texto": "Avant tout, le Chaos enveloppait les mondes \nOù roulaient sans mesure et l’Espace et le Temps ; \nPuis Gaia, favorable à ses fils les Titans, \nLeur prêta son grand sein aux mamelles fécondes. \n\nIls tombèrent. Le Styx les couvrit de ses ondes. \nEt jamais, sous l’éther foudroyé, le Printemps \nN’avait fait resplendir les soleils éclatants, \nNi l’Été généreux mûri les moissons blondes. \n\nFarouches, ignorants des rires et des jeux, \nLes Immortels siégeaient sur l’Olympe neigeux. \nMais le ciel fit pleuvoir la virile rosée ; \n\nL’Océan s’entr’ouvrit, et dans sa nudité \nRadieuse, émergeant de l’écume embrasée, \nDans le sang d’Ouranos fleurit Aphrodité.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Naissance_d%E2%80%99Aphrodit%C3%A9",
       "tags": []
@@ -316,7 +320,7 @@
       "titulo": "Les Trophées/La Prière du Mort",
       "texto": "Arrête ! Écoute-moi, voyageur. Si tes pas\nTe portent vers Cypsèle et les rives de l’Hèbre,\nCherche le vieil Hyllos et dis-lui qu’il célèbre\nUn long deuil pour le fils qu’il ne reverra pas.\n\nMa chair assassinée a servi de repas\nAux loups. Le reste gît en ce hallier funèbre.\nEt l’Ombre errante aux bords que l’Érèbe enténèbre\nS’indigne et pleure. Nul n’a vengé mon trépas.\n\nPars donc. Et si jamais, à l’heure où le jour tombe,\nTu rencontres au pied d’un tertre ou d’une tombe\nUne femme au front blanc que voile un noir lambeau ;\n\nApproche-toi, ne crains ni la nuit ni les charmes ;\nC’est ma mère, Étranger, qui sur un vain tombeau\nEmbrasse une urne vide et l’emplit de ses larmes.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Pri%C3%A8re_du_Mort",
       "tags": []
@@ -325,7 +329,7 @@
       "titulo": "Les Trophées/La Revanche de Diego Laynez",
       "texto": "Ce soir, seul au haut bout, car il n’a pas d’égaux,\nDiego Laynez, plus pâle aux lueurs de la cire,\nS’est assis pour souper avec ses hidalgos.\n\nSes fils, ses trois aînés, sont là ; mais le vieux sire\nEn son cœur angoissé songe au plus jeune. Hélas !\nIl n’est point revenu. Le Comte a dû l’occire.\n\nLe vin rit dans l’argent des brocs ; le coutelas\nDégainé, l’écuyer, ayant troussé sa manche,\nLaisse échauffer le vin et refroidir les plats.\n\nCar le maître et seigneur n’a pas dit : Que l’on tranche !\nDepuis que dans sa chaise il est venu s’asseoir,\nDeux longs ruisseaux de pleurs mouillent sa barbe blanche.\n\nEt le grave écuyer se tient près du dressoir,\nDevant la table vide et la foule béante,\nEt nul, fils ou vassal, ne soupera ce soir.\n\nComme pour ne pas voir le spectre qui le hante,\nLaynez ferme les yeux et baisse encor le front ;\nMais il voit son fils mort et sa honte vivante.\n\nIl a perdu l’honneur, il a gardé l’affront ;\nEt ses aïeux, de race irréprochable et forte,\nAu jour du Jugement le lui reprocheront.\n\nL’outrage l’accompagne et le mépris l’escorte.\nDe tout l’orgueil antique il ne lui reste rien.\nHélas ! hélas ! Son fils est mort, sa gloire est morte !\n\n— Seigneur, ouvre les yeux. C’est moi. Regarde bien.\nCette table sans viande a trop piètre figure ;\nAujourd’hui j’ai chassé sans valet et sans chien ;\n\nJ’ai forcé ce ragot ; je t’en offre la hure ! —\nRuy dit, et tend le chef livide et hérissé\nQu’il tient empoigné par l’horrible chevelure.\n\nDiego Laynez d’un bond sur ses pieds s’est dressé :\n— Est-ce toi, Comte infâme ? Est-ce toi, tête exsangue,\nAvec ce rire fixe et cet œil convulsé ?\n\nOui, c’est bien toi ! Tes dents mordent encor ta langue ;\nPour la dernière fois l’insolente a raillé,\nEt le glaive a tranché le fil de sa harangue !\n\nSous le col d’un seul coup par Tizona taillé,\nD’épais et noirs caillots pendent à chaque fibre ;\nLe Vieux frotte sa joue avec le sang caillé.\n\nD’une voix éclatante et dont la salle vibre,\nIl s’écrie : — Ô Rodrigue, ô mon fils, cher vainqueur,\nL’affront me fit esclave et ton bras me fait libre !\n\nEt toi, visage affreux qui réjouis mon cœur,\nMa main va donc, au gré de ma haine indomptable,\nSatisfaire sur toi ma gloire et ma rancœur ! —\n\nEt souffletant alors la tête épouvantable :\n— Vous avez vu, vous tous, il m’a rendu raison !\nRuy, sieds-toi sur mon siège au haut bout de la table.\n\nCar qui porte un tel chef est Chef de ma maison. —",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Revanche_de_Diego_Laynez",
       "tags": [
@@ -336,7 +340,7 @@
       "titulo": "Les Trophées/La Sieste",
       "texto": " \n\nPas un seul bruit d’insecte ou d’abeille en maraude,\nTout dort sous les grands bois accablés de soleil\nOù le feuillage épais tamise un jour pareil\nAu velours sombre et doux des mousses d’émeraude.\n\nCriblant le dôme obscur, Midi splendide y rôde\nEt, sur mes cils mi-clos alanguis de sommeil,\nDe mille éclairs furtifs forme un réseau vermeil\nQui s’allonge et se croise à travers l’ombre chaude.\n\nVers la gaze de feu que trament les rayons\nVole le frêle essaim des riches papillons\nQu’enivrent la lumière et le parfum des sèves ;\n\nAlors mes doigts tremblants saisissent chaque fil,\nEt dans les mailles d’or de ce filet subtil,\nChasseur harmonieux, j’emprisonne mes rêves.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Sieste",
       "tags": []
@@ -345,7 +349,7 @@
       "titulo": "Les Trophées/La Source",
       "texto": "L’autel gît sous la ronce et l’herbe enseveli ;\nEt la source sans nom qui goutte à goutte tombe\nD’un son plaintif emplit la solitaire combe.\nC’est la Nymphe qui pleure un éternel oubli.\n\nL’inutile miroir que ne ride aucun pli\nÀ peine est effleuré par un vol de colombe\nEt la lune, parfois, qui du ciel noir surplombe,\nSeule, y reflète encore un visage pâli.\n\nDe loin en loin, un pâtre errant s’y désaltère.\nIl boit, et sur la dalle antique du chemin\nVerse un peu d’eau resté dans le creux de sa main.\n\nIl a fait, malgré lui, le geste héréditaire,\nEt ses yeux n’ont pas vu sur le cippe romain\nLe vase libatoire auprès de la patère.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Source",
       "tags": []
@@ -354,7 +358,7 @@
       "titulo": "Les Trophées/La Trebbia",
       "texto": "L’aube d’un jour sinistre a blanchi les hauteurs.\nLe camp s’éveille. En bas roule et gronde le fleuve\nOù l’escadron léger des Numides s’abreuve.\nPartout sonne l’appel clair des buccinateurs.\n\nCar malgré Scipion, les augures menteurs,\nLa Trebbia débordée, et qu’il vente et qu’il pleuve,\nSempronius Consul, fier de sa gloire neuve,\nA fait lever la hache et marcher les licteurs.\n\nRougissant le ciel noir de flamboîments lugubres,\nÀ l’horizon, brûlaient les villages Insubres ;\nOn entendait au loin barrir un éléphant.\n\nEt là-bas, sous le pont, adossé contre une arche,\nHannibal écoutait, pensif et triomphant,\nLe piétinement sourd des légions en marche.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Trebbia",
       "tags": []
@@ -363,7 +367,7 @@
       "titulo": "Les Trophées/La Vie des Morts",
       "texto": "Lorsque la sombre croix sur nous sera plantée,\nLa terre nous ayant tous deux ensevelis,\nTon corps refleurira dans la neige des lys\nEt de ma chair naîtra la rose ensanglantée.\n\nEt la divine Mort que tes vers ont chantée,\nEn son vol noir chargé de silence et d’oublis,\nNous fera par le ciel, bercés d’un lent roulis,\nVers des astres nouveaux une route enchantée.\n\nEt montant au soleil, en son vivant foyer\nNos deux esprits iront se fondre et se noyer\nDans la félicité des flammes éternelles ;\n\nCependant que sacrant le poète et l’ami,\nLa Gloire nous fera vivre à jamais parmi\nLes Ombres que la Lyre a faites fraternelles.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_Vie_des_Morts",
       "tags": []
@@ -372,7 +376,7 @@
       "titulo": "Les Trophées/La belle Viole",
       "texto": "À vous troupe légère\nQui d’aile passagère\nPar le monde volez…\n\nJOACHIM DU BELLAY.\n\nAccoudée au balcon d’où l’on voit le chemin\nQui va des bords de Loire aux rives d’Italie,\nSous un pâle rameau d’olive son front plie.\nLa violette en fleur se fanera demain.\n\nLa viole que frôle encor sa frêle main\nCharme sa solitude et sa mélancolie,\nEt son rêve s’envole à celui qui l’oublie\nEn foulant la poussière où gît l’orgueil Romain.\n\nDe celle qu’il nommait sa douceur Angevine,\nSur la corde vibrante erre l’âme divine\nQuand l’angoisse d’amour étreint son cœur troublé ;\n\nEt sa voix livre aux vents qui l’emportent loin d’elle,\nEt le caresseront peut-être, l’infidèle,\nCette chanson qu’il fit pour un vanneur de blé.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_belle_Viole",
       "tags": []
@@ -381,7 +385,7 @@
       "titulo": "Les Trophées/La lune sur le Nil…",
       "texto": "La lune sur le Nil, splendide et ronde, luit.\nEt voici que s’émeut la nécropole antique\nOù chaque roi, gardant la pose hiératique,\nGît sous la bandelette et le funèbre enduit.\n\nTel qu’aux jours de Rhamsès, innombrable et sans bruit,\nTout un peuple formant le cortège mystique,\nMultitude qu’absorbe un calme granitique,\nS’ordonne et se déploie et marche dans la nuit.\n\nSe détachant des murs brodés d’hiéroglyphes,\nIls suivent la Bari que portent les pontifes\nD’Ammon-Ra, le grand Dieu conducteur du soleil ;\n\nEt les sphinx, les béliers ceints du disque vermeil,\nÉblouis, d’un seul coup se dressant sur leurs griffes,\nS’éveillent en sursaut de l’éternel sommeil.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/La_lune_sur_le_Nil%E2%80%A6",
       "tags": []
@@ -390,7 +394,7 @@
       "titulo": "Les Trophées/Le Bain",
       "texto": " \n\nL’homme et la bête, tels que le beau monstre antique,\nSont entrés dans la mer, et nus, libres, sans frein,\nParmi la brume d’or de l’âcre pulvérin,\nSur le ciel embrasé font un groupe athlétique.\n\nEt l’étalon sauvage et le dompteur rustique,\nHumant à pleins poumons l’odeur du sel marin,\nSe plaisent à laisser sur la chair et le crin\nFrémir le flot glacé de la rude Atlantique.\n\nLa houle s’enfle, court, se dresse comme un mur\nEt déferle. Lui crie. Il hennit, et sa queue\nEn jets éblouissants fait rejaillir l’eau bleue ;\n\nEt, les cheveux épars, s’effarant dans l’azur,\nIls opposent, cabrés, leur poitrail noir qui fume,\nAu fouet échevelé de la fumante écume.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Bain",
       "tags": []
@@ -399,7 +403,7 @@
       "titulo": "Les Trophées/Le Bain des Nymphes",
       "texto": "C’est un vallon sauvage abrité de l’Euxin ; \nAu-dessus de la source un noir laurier se penche,\nEt la Nymphe, riant, suspendue à la branche,\nFrôle d’un pied craintif l’eau froide du bassin.\n\nSes compagnes, d’un bond, à l’appel du buccin,\nDans l’onde jaillissante où s’ébat leur chair blanche,\nPlongent, et de l’écume émergent une hanche,\nDe clairs cheveux, un torse ou la rose d’un sein.\n\nUne gaîté divine emplit le grand bois sombre.\nMais deux yeux, brusquement, ont illuminé l’ombre.\nLe Satyre !… Son rire épouvante leurs jeux ;\n\nElle s’élancent. Tel, lorsqu’un corbeau sinistre\nCroasse, sur le fleuve éperdument neigeux\nS’effarouche le vol des cygnes du Caÿstre.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Bain_des_Nymphes",
       "tags": []
@@ -408,7 +412,7 @@
       "titulo": "Les Trophées/Le Chevrier",
       "texto": "O berger, ne suis pas dans cet âpre ravin\nLes bonds capricieux de ce bouc indocile ;\nAux pentes du Ménale, où l’été nous exile,\nLa nuit monte trop vite et ton espoir est vain.\n\nRestons ici, veux-tu ? J’ai des figues, du vin.\nNous attendrons le jour en ce sauvage asile.\nMais parle bas. Les Dieux sont partout, ô Mnasyle !\nHécate nous regarde avec son œil divin.\n\nCe trou d’ombre là-bas est l’antre où se retire\nLe Démon familier des hauts lieux, le Satyre ;\nPeut-être il sortira, si nous ne l’effrayons.\n\nEntends-tu le pipeau qui chante sur ses lèvres ?\nC’est lui ! Sa double corne accroche les rayons,\nEt, vois, au clair de lune il fait danser mes chèvres !",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Chevrier",
       "tags": [
@@ -419,7 +423,7 @@
       "titulo": "Les Trophées/Le Cocher",
       "texto": "Étranger, celui qui, debout au timon d’or,\nMaîtrise d’une main par leur quadruple rêne\nSes chevaux noirs et tient de l’autre un fouet de frêne,\nGuide un quadrige mieux que le héros Castor.\n\nIssu d’un père illustre et plus illustre encor…\nMais vers la borne rouge où la course l’entraîne,\nIl part, semant déjà ses rivaux sur l’arène,\nLe Libyen hardi cher à l’Autocrator.\n\nDans le cirque ébloui, vers le but et la palme,\nSept fois, triomphateur vertigineux et calme,\nIl a tourné. Salut, fils de Calchas le Bleu !\n\nEt tu vas voir, si l’œil d’un mortel peut suffire\nÀ cette apothéose où fuit un char de feu,\nLa Victoire voler pour rejoindre Porphyre.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Cocher",
       "tags": [
@@ -430,7 +434,7 @@
       "titulo": "Les Trophées/Le Coureur",
       "texto": "Tel que Delphes l’a vu quand, Thymos le suivant,\nIl volait par le stade aux clameurs de la foule,\nTel Ladas court encor sur le socle qu’il foule\nD’un pied de bronze, svelte et plus vif que le vent.\n\nLe bras tendu, l’œil fixe et le torse en avant,\nUne sueur d’airain à son front perle et coule ;\nOn dirait que l’athlète a jailli hors du moule,\nTandis que le sculpteur le fondait, tout vivant.\n\nIl palpite, il frémit d’espérance et de fièvre,\nSon flanc halète, l’air qu’il fend manque à sa lèvre\nEt l’effort fait saillir ses muscles de métal ;\n\nL’irrésistible élan de la course l’entraîne\nEt passant par-dessus son propre piédestal,\nVers la palme et le but il va fuir dans l’arène.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Coureur",
       "tags": []
@@ -439,7 +443,7 @@
       "titulo": "Les Trophées/Le Cydnus",
       "texto": "Sous l’azur triomphal, au soleil qui flamboie,\nLa trirème d’argent blanchit le fleuve noir\nEt son sillage y laisse un parfum d’encensoir\nAvec des sons de flûte et des frissons de soie.\n\nÀ la proue éclatante où l’épervier s’éploie,\nHors de son dais royal se penchant pour mieux voir,\nCléopâtre debout en la splendeur du soir\nSemble un grand oiseau d’or qui guette au loin sa proie.\n\nVoici Tarse, où l’attend le guerrier désarmé ;\nEt la brune Lagide ouvre dans l’air charmé\nSes bras d’ambre où la pourpre a mis des reflets roses ;\n\nEt ses yeux n’ont pas vu, présage de son sort,\nAuprès d’elle, effeuillant sur l’eau sombre des roses,\nLes deux enfants divins, le Désir et la Mort.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Cydnus",
       "tags": []
@@ -448,7 +452,7 @@
       "titulo": "Les Trophées/Le Daïmio",
       "texto": "Sous le noir fouet de guerre à quadruple pompon, \nL’étalon belliqueux en hennissant se cabre \nEt fait bruire, avec des cliquetis de sabre, \nLa cuirasse de bronze aux lames du jupon. \n\nLe Chef vêtu d’airain, de laque et de crépon, \nÔtant le masque à poils de son visage glabre, \nRegarde le volcan sur un ciel de cinabre\nDresser la neige où rit l’aurore du Nippon. \n\nMais il a vu, vers l’Est éclaboussé d’or, l’astre,\nGlorieux d’éclairer ce matin de désastre,\nPoindre, orbe éblouissant, au-dessus de la mer ;\n\nEt, pour couvrir ses yeux dont pas.un cil ne bouge, \nIl ouvre d’un seul coup son éventail de fer \nOù dans le satin blanc se lève un Soleil rouge.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Da%C3%AFmio",
       "tags": []
@@ -457,7 +461,7 @@
       "titulo": "Les Trophées/Le Dieu Hêtre",
       "texto": "Le Garumne a bâti sa rustique maison\nSous un grand hêtre au tronc musculeux comme un torse\nDont la sève d’un Dieu gonfle la blanche écorce.\nLa forêt maternelle est tout son horizon.\n\nCar l’homme libre y trouve, au gré de la saison,\nLes faînes, le bois, l’ombre et les bêtes qu’il force\nAvec l’arc ou l’épieu, le filet ou l’amorce,\nPour en manger la chair et vêtir leur toison.\n\nLongtemps il a vécu riche, heureux et sans maître,\nEt le soir, lorsqu’il rentre au logis, le vieux Hêtre\nDe ses bras familiers semble lui faire accueil ;\n\nEt quand la Mort viendra courber sa tête franche,\nSes petits-fils auront pour tailler son cercueil\nL’incorruptible cœur de la maîtresse branche.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Dieu_H%C3%AAtre",
       "tags": []
@@ -466,7 +470,7 @@
       "titulo": "Les Trophées/Le Huchier de Nazareth",
       "texto": "Le bon maître huchier, pour finir un dressoir,\nCourbé sur l’établi depuis l’aurore ahane,\nManiant tour à tour le rabot, le bédane\nEt la râpe grinçante ou le dur polissoir.\n\nAussi, non sans plaisir, a-t-il vu, vers le soir,\nS’allonger jusqu’au seuil l’ombre du grand platane\nOù madame la Vierge et sa mère sainte Anne\nEt Monseigneur Jésus près de lui vont s’asseoir.\n\nL’air est brûlant et pas une feuille ne bouge ;\nEt saint Joseph, très las, a laissé choir la gouge\nEn s’essuyant le front au coin du tablier ;\n\nMais l’Apprenti divin qu’une gloire enveloppe\nFait toujours, dans le fond obscur de l’atelier,\nVoler des copeaux d’or au fil de sa varlope.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Huchier_de_Nazareth",
       "tags": []
@@ -475,7 +479,7 @@
       "titulo": "Les Trophées/Le Laboureur",
       "texto": "Le semoir, la charrue, un joug, des socs luisants,\nLa herse, l’aiguillon et la faulx acérée\nQui fauchait en un jour les épis d’une airée,\nEt la fourche qui tend la gerbe aux paysans ;\n\nCes outils familiers, aujourd’hui trop pesants,\nLe vieux Parmis les voue à l’immortelle Rhée\nPar qui le germe éclôt sous la terre sacrée.\nPour lui, sa tâche est faite ; il a quatre-vingts ans.\n\nPrès d’un siècle, au soleil, sans en être plus riche,\nIl a poussé le coutre au travers de la friche ;\nAyant vécu sans joie, il vieillit sans remords.\n\nMais il est las d’avoir tant peiné sur la glèbe\nEt songe que peut-être il faudra, chez les morts,\nLabourer des champs d’ombre arrosés par l’Érèbe.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Laboureur",
       "tags": []
@@ -484,7 +488,7 @@
       "titulo": "Les Trophées/Le Lit",
       "texto": " \n\nQu’il soit encourtiné de brocart ou de serge,\nTriste comme une tombe ou joyeux comme un nid,\nC’est là que l’homme naît, se repose et s’unit,\nEnfant, époux, vieillard, aïeule, femme ou vierge.\n\nFunèbre ou nuptial, que l’eau sainte l’asperge,\nSous le noir crucifix ou le rameau bénit,\nC’est là que tout commence et là que tout finit,\nDe la première aurore au feu du dernier cierge.\n\nHumble, rustique et clos, ou fier du pavillon,\nTriomphalement peint d’or et de vermillon,\nQu’il soit de chêne brut, de cyprès ou d’érable ;\n\nHeureux qui peut dormir sans peur et sans remords\nDans le lit paternel, massif et vénérable,\nOù tous les siens sont nés aussi bien qu’ils sont morts.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Lit",
       "tags": []
@@ -493,7 +497,7 @@
       "titulo": "Les Trophées/Le Naufragé",
       "texto": "Avec la brise en poupe et par un ciel serein,\nVoyant le Phare fuir à travers la mâture,\nIl est parti d’Égypte au lever de l’Arcture,\nFier de sa nef rapide aux flancs doublés d’airain.\n\nIl ne reverra plus le môle Alexandrin.\nDans le sable où pas même un chevreau ne pâture\nLa tempête a creusé sa triste sépulture ;\nLe vent du large y tord quelque arbuste marin.\n\nAu pli le plus profond de la mouvante dune,\nEn la nuit sans aurore et sans astre et sans lune,\nQue le navigateur trouve enfin le repos.\n\nÔ Terre, ô Mer, pitié pour son Ombre anxieuse !\nEt sur la rive hellène où sont venus ses os,\nSoyez-lui, toi, légère, et toi, silencieuse.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Naufrag%C3%A9",
       "tags": []
@@ -502,7 +506,7 @@
       "titulo": "Les Trophées/Le Prisonnier",
       "texto": "Là-bas, les muezzins ont cessé leurs clameurs. \nLe ciel vert, au couchant de pourpre et d’or se frange ;\nLe crocodile plonge et cherche un lit de fange, \nEt le grand fleuve endort ses dernières rumeurs. \n\nAssis, jambes en croix, comme il sied aux fumeurs, \nLe Chef rêvait, bercé par le haschisch étrange, \nTandis qu’avec effort faisant mouvoir la cange, \nDeux nègres se courbaient, nus, au banc des rameurs. \n\nÀ l’arrière, joyeux et l’insulte à la bouche, \nGrattant l’aigre guzla qui rhythme un air farouche, \nSe penchait un Arnaute à l’œil féroce et vil ; \n\nCar lié sur la barque et saignant sous l’entrave, \nUn vieux Scheikh regardait d’un air stupide et grave \nLes minarets pointus qui tremblent dans le Nil.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Prisonnier",
       "tags": []
@@ -511,7 +515,7 @@
       "titulo": "Les Trophées/Le Ravissement d’Andromède",
       "texto": "D’un vol silencieux, le grand Cheval ailé\nSoufflant de ses naseaux élargis l’air qui fume,\nLes emporte avec un frémissement de plume\nÀ travers la nuit bleue et l’éther étoilé.\n\nIls vont. L’Afrique plonge au gouffre flagellé,\nPuis l’Asie… un désert… le Liban ceint de brume…\nEt voici qu’apparaît, toute blanche d’écume,\nLa mer mystérieuse où vint sombrer Hellé.\n\nEt le vent gonfle ainsi que deux immenses voiles\nLes ailes qui, volant d’étoiles en étoiles,\nAux amants enlacés font un tiède berceau ;\n\nTandis que, l’œil au ciel où palpite leur ombre,\nIls voient, irradiant du Bélier au Verseau,\nLeurs Constellations poindre dans l’azur sombre.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Ravissement_d%E2%80%99Androm%C3%A8de",
       "tags": []
@@ -520,7 +524,7 @@
       "titulo": "Les Trophées/Le Récif de corail",
       "texto": "Le soleil sous la mer, mystérieuse aurore,\nÉclaire la forêt des coraux abyssins\nQui mêle, aux profondeurs de ses tièdes bassins,\nLa bête épanouie et la vivante flore.\n\nEt tout ce que le sel ou l’iode colore,\nMousse, algue chevelue, anémones, oursins,\nCouvre de pourpre sombre, en somptueux dessins,\nLe fond vermiculé du pâle madrépore.\n\nDe sa splendide écaille éteignant les émaux,\nUn grand poisson navigue à travers les rameaux ;\nDans l’ombre transparente indolemment il rôde ;\n\nEt, brusquement, d’un coup de sa nageoire en feu,\nIl fait, par le cristal morne, immobile et bleu,\nCourir un frisson d’or, de nacre et d’émeraude.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_R%C3%A9cif_de_corail",
       "tags": []
@@ -529,7 +533,7 @@
       "titulo": "Les Trophées/Le Réveil d’un Dieu",
       "texto": "La chevelure éparse et la gorge meurtrie,\nIrritant par les pleurs l’ivresse de leurs sens,\nLes femmes de Byblos, en lugubres accents,\nMènent la funéraire et lente théorie.\n\nCar sur le lit jonché d’anémone fleurie\nOù la Mort avait clos ses longs yeux languissants,\nRepose, parfumé d’aromate et d’encens,\nLe jeune homme adoré des vierges de Syrie.\n\nJusqu’à l’aurore ainsi le chœur s’est lamenté,\nMais voici qu’il s’éveille à l’appel d’Astarté,\nL’Époux mystérieux que le cinname arrose.\n\nIl est ressuscité, l’antique adolescent !\nEt le ciel tout en fleur semble une immense rose\nQu’un Adonis céleste a teinte de son sang.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_R%C3%A9veil_d%E2%80%99un_Dieu",
       "tags": []
@@ -538,7 +542,7 @@
       "titulo": "Les Trophées/Le Samouraï",
       "texto": "D’un doigt distrait frôlant la sonore bîva,\nÀ travers les bambous tressés en fine latte, \nElle a vu, par la plage éblouissante et plate, \nS’avancer le vainqueur que son amour rêva. \n\nC’est lui. Sabres au flanc, l’éventail haut, il va. \nLa cordelière rouge et le gland écarlate \nCoupent l’armure sombre, et, sur l’épaule, éclate \nLe blason de Hizen ou de Tokungawa. \n\nCe beau guerrier vêtu de lames et de plaques, \nSous le bronze, la soie et les brillantes laques, \nSemble un crustacé noir, gigantesque et vermeil. \n\nIl l’a vue. Il sourit dans la barbe du masque, \nEt son pas plus hâtif fait reluire au soleil \nLes deux antennes d’or qui tremblent à son casque.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Samoura%C3%AF",
       "tags": []
@@ -547,7 +551,7 @@
       "titulo": "Les Trophées/Le Serrement de mains — Songeant à sa maison, grande parmi les grandes,",
       "texto": "Songeant à sa maison, grande parmi les grandes,\nPlus grande qu’Iñigo lui-même et qu’Abarca,\nLe vieux Diego Laynez ne goûte plus aux viandes.\n\nIl ne dort plus, depuis qu’un sang honteux marqua\nLa joue encore chaude où l’a frappé le Comte,\nEt que pour se venger la force lui manqua.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Serrement_de_mains",
       "tags": []
@@ -556,7 +560,7 @@
       "titulo": "Les Trophées/Le Serrement de mains — Il craint que ses amis ne lui demandent compte,",
       "texto": "Il craint que ses amis ne lui demandent compte,\nEt ne veut pas, navré d’un vertueux ennui,\nLeur laisser respirer l’haleine de sa honte.\n\nAlors il fit quérir et rangea devant lui\nLes quatre rejetons de sa royale branche,\nSanche, Alfonse, Manrique et le plus jeune, Ruy.\n\nSon cœur tremblant faisait trembler sa barbe blanche ;\nMais l’honneur roidissant ses vieux muscles glacés,\nIl serra fortement les mains de l’aîné, Sanche.\n\nCelui-ci, stupéfait, s’écria : — C’est assez !\nAh ! vous me faites mal ! — Et le second, Alfonse,\nLui dit : — Qu’ai-je donc fait, père ? Vous me blessez ! —\n\nPuis Manrique : — Seigneur, votre griffe s’enfonce\nDans ma paume et me fait souffrir comme un damné !\n— Mais il ne daigna pas leur faire une réponse.\n\nSombre, désespérant en son cœur consterné\nD’enter sur un bras fort son antique courage,\nDiego Laynez marcha vers Ruy, le dernier-né.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Serrement_de_mains",
       "tags": []
@@ -565,7 +569,7 @@
       "titulo": "Les Trophées/Le Serrement de mains — Il l’étreignit, tâtant et palpant avec rage",
       "texto": "Il l’étreignit, tâtant et palpant avec rage\nCes épaules, ces bras frêles, ces poignets blancs,\nCes mains, faibles outils pour un si grand ouvrage.\n\nIl les serra, suprême espoir, derniers élans !\nEntre ses doigts durcis par la guerre et le hâle.\nL’enfant ne baissa pas ses yeux étincelants.\n\nLes yeux froids du vieillard flamboyaient. Ruy tout pâle,\nSentant l’horrible étau broyer sa jeune chair,\nVoulut crier ; sa voix s’étrangla dans un râle.\n\nIl rugit : — Lâche-moi, lâche-moi, par l’enfer !\nSinon, pour t’arracher le cœur avec le foie,\nMes mains se feront marbre et mes dix ongles fer ! —\n\nLe Vieux tout transporté dit en pleurant de joie :\n— Fils de l’âme, ô mon sang, mon Rodrigue, que Dieu\nTe garde pour l’espoir que ta fureur m’octroie ! —\n\nAvec des cris de haine et des larmes de feu,\nIl dit alors sa joue insolemment frappée,\nLe nom de l’insulteur et l’instant et le lieu ;",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Serrement_de_mains",
       "tags": []
@@ -574,7 +578,7 @@
       "titulo": "Les Trophées/Le Serrement de mains — Et tirant du fourreau Tizona bien trempée,",
       "texto": "Et tirant du fourreau Tizona bien trempée,\nAyant baisé la garde ainsi qu’un crucifix,\nIl tendit à l’enfant la haute et lourde épée.\n\n— Prends-la. Sache en user aussi bien que je fis.\nQue ton pied soit solide et que ta main soit prompte.\nMon honneur est perdu. Rends-le moi. Va, mon fils. —\n\nUne heure après, Ruy Diaz avait tué le Comte.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Serrement_de_mains",
       "tags": []
@@ -583,7 +587,7 @@
       "titulo": "Les Trophées/Le Tepidarium",
       "texto": "La myrrhe a parfumé leurs membres assouplis ;\nElles rêvent, goûtant la tiédeur de décembre,\nEt le brasier de bronze illuminant la chambre\nJette la flamme et l’ombre à leurs beaux fronts pâlis.\n\nAux coussins de byssus, dans la pourpre des lits,\nSans bruit, parfois un corps de marbre rose ou d’ambre\nOu se soulève à peine ou s’allonge ou se cambre ;\nLe lin voluptueux dessine de longs plis.\n\nSentant à sa chair nue errer l’ardent effluve,\nUne femme d’Asie, au milieu de l’étuve,\nTord ses bras énervés en un ennui serein ;\n\nEt le pâle troupeau des filles d’Ausonie\nS’enivre de la riche et sauvage harmonie\nDes noirs cheveux roulant sur un torse d’airain.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Tepidarium",
       "tags": []
@@ -592,7 +596,7 @@
       "titulo": "Les Trophées/Le Thermodon",
       "texto": "Vers Thémiscyre en feu qui tout le jour trembla\nDes clameurs et du choc de la cavalerie,\nDans l’ombre, morne et lent, le Thermodon charrie\nCadavres, armes, chars que la mort y roula.\n\nOù sont Phœbé, Marpé, Philippis, Aella,\nQui, suivant Hippolyte et l’ardente Astérie,\nMenèrent l’escadron royal à la tuerie ?\nLeurs corps déchevelés et blêmes gisent là.\n\nTelle une floraison de lys géants fauchée,\nLa rive est aux deux bords de guerrières jonchée,\nOù, parfois, se débat et hennit un cheval ;\n\nEt l’Euxin vit, à l’aube, aux plus lointaines berges\nDu fleuve ensanglanté d’amont jusqu’en aval,\nFuir des étalons blancs rouges du sangs des Vierges.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Thermodon",
       "tags": []
@@ -601,7 +605,7 @@
       "titulo": "Les Trophées/Le Tombeau du Conquérant",
       "texto": "À l’ombre de la voûte en fleur des catalpas\nEt des tulipiers noirs qu’étoile un blanc pétale, \nIl ne repose point dans la terre fatale ; \nLa Floride conquise a manqué sous ses pas.\n\nUn vil tombeau messied à de pareils trépas.\nLinceul du Conquérant de l’Inde Occidentale,\nTout le Meschacébé par-dessus lui s’étale.\nLe Peau-Rouge et l’ours gris ne le troubleront pas.\n\nIl dort au lit profond creusé par les eaux vierges.\nQu’importe un monument funéraire, des cierges,\nLe psaume et la chapelle ardente et l’ex-voto ?\n\nPuisque le vent du Nord, parmi les cyprières,\nPleure et chante à jamais d’éternelles prières\nSur le Grand Fleuve où gît Hernando de Soto.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Tombeau_du_Conqu%C3%A9rant",
       "tags": []
@@ -610,7 +614,7 @@
       "titulo": "Les Trophées/Le Triomphe du Cid",
       "texto": " \n\nLes portes du palais s’ouvrirent toutes grandes,\nEt le roi Don Fernan sortit pour recevoir\nLe jeune chef rentrant avec ses vieilles bandes.\n\nQuittant cloître, métier, champ, taverne et lavoir,\nClercs, bourgeois ou vilains, tout le bon peuple exulte ;\nLes femmes aux balcons se penchent pour mieux voir.\n\nC’est que, vengeur du Christ que le Croissant insulte,\nRodrigue de Bivar, vainqueur, rentre aujourd’hui\nDans Zamora qu’emplit un merveilleux tumulte.\n\nIl revient de la guerre, et partout devant lui,\nSur son genet rapide et rayé comme un zèbre\nLe cavalier berbère en blasphémant a fui.\n\nIl a tout pris, pillé, rasé, brûlé, de l’Èbre\nJusques au Guadiana qui roule un sable d’or,\nEt de l’Algarbe en feu monte un long cri funèbre.\n\nIl revient tout chargé de butin, plus encor\nDe gloire, ramenant cinq rois de Morérie.\nSes captifs l’ont nommé le Cid Campeador.\n\nTel Ruy Diaz, à travers le peuple qui s’écrie,\nLa lance sur la cuisse, en triomphal arroi,\nRentre dans Zamora pavoisée et fleurie.\n\nDonc, lorsque les huissiers annoncèrent : Le Roi !\nTelle fut la clameur, que corbeaux et corneilles\nDes tours et des clochers s’envolèrent d’effroi.\n\nEt Don Fernan debout sous les portes vermeilles,\nUn instant, ébloui, s’arrêta sur le seuil\nAux acclamations qui flattaient ses oreilles.\n\nIl s’avançait, charmé du glorieux accueil...\nTout à coup, repoussant peuple, massiers et garde,\nUne femme apparut, pâle, en habits de deuil.\n\nSes yeux resplendissaient dans sa face hagarde,\nEt, sous le voile épars de ses longs cheveux roux,\nSanglotante et pâmée, elle cria : — Regarde !\n\nReconnais-moi ! Seigneur, j’embrasse tes genoux.\nMon père est mort qui fut ton fidèle homme lige ;\nFais justice, Fernan, venge-le, venge-nous !\n\nJe me plains hautement que le Roi me néglige\nEt ne veux plus attendre, au gré du meurtrier,\nLa vengeance à laquelle un grand serment t’oblige.\n\nOui, certe, ô Roi, je suis lasse de larmoyer ;\nLa haine dans mon cœur bout et s’irrite et monte\nEt me prend à la gorge et me force à crier :\n\nVengeance, ô Roi, vengeance et justice plus prompte !\nTire de l’assassin tout le sang qu’il me doit ! —\nEt le peuple disait : — C’est la fille du Comte.\n\nCar d’un geste rigide elle montrait du doigt\nCid Ruy Diaz de Bivar qui, du haut de sa selle,\nLui dardait un regard étincelant et droit.\n\nEt l’œil sombre de l’homme et les yeux clairs de celle\nQui l’accusait, alors se croisèrent ainsi\nQue deux fers d’où jaillit une double étincelle.\n\nDon Fernan se taisait, fort perplexe et transi,\nCar l’un et l’autre droit que son esprit balance\nPèse d’un poids égal qui le tient en souci.\n\nIl hésite. Le peuple attendait en silence.\nEt le vieux Roi promène un regard incertain\nSur cette foule où luit l’éclair des fers de lance.\n\nIl voit les cavaliers qui gardent le butin,\nGlaive au poing, casque en tête, au dos la brigandine,\nRangés autour du Cid impassible et hautain.\n\nPortant l’étendard vert consacré dans Médine,\nIl voit les captifs pris au Miramamolin,\nLes cinq Émirs vêtus de soie incarnadine ;\n\nEt derrière eux, plus noirs sous leurs turbans de lin,\nDouze nègres, chacun menant un cheval barbe.\nOr, le bon prince était à la justice enclin :\n\n— Il a vengé son père, il a conquis l’Algarbe ;\nElle, au nom de son père, inculpe son amant. —\nEt Don Fernan pensif se caresse la barbe.\n\n— Que faire, songe-t-il, en un tel jugement ? —\nChimène à ses genoux pleurait toutes ses larmes.\nIl la prit par la main et très courtoisement :\n\n— Relève-toi, ma fille, et calme tes alarmes,\nCar sur le cœur d’un prince espagnol et chrétien\nLes larmes de tes yeux sont de trop fortes armes.\n\nCertes, Bivar m’est cher ; c’est l’espoir, le soutien\nDe Castille ; et pourtant j’accorde ta requête,\nIl mourra si tu veux, ô Chimène, il est tien.\n\nDispose, il est à toi. Parle, la hache est prête ! —\nRuy Diaz la regardait, grave et silencieux.\nElle ferma les yeux, elle baissa la tête.\n\nElle n’a pu braver ce front victorieux\nQu’illumine l’ardeur du regard qui la dompte ;\nElle a baissé la tête, elle a fermé les yeux.\n\nElle n’est plus la fille orgueilleuse du Comte,\nCar elle sent rougir son visage, enflammé\nMoins encor de courroux que d’amour et de honte.\n\n— C’est sous un bras loyal par l’honneur même armé\nQue ton père a rendu son âme — que Dieu sauve !\nL’homme applaudit au coup que le prince a blâmé.\n\nCar l’honneur de Laynez et de Laÿn le Chauve,\nNon moins pur que celui des rois dont je descends,\nVaut l’orgueil du sang goth qui dore ton poil fauve.\n\nCondamne, si tu peux… Pardonne, j’y consens.\nQue Gormaz et Laynez à leur antique souche,\nVoient par vous reverdir des rameaux florissants.\n\nParle, et je donne à Ruy, sur un mot de ta bouche,\nBelforado, Saldagne et Carrias del Castil. —\nMais Chimène gardait un silence farouche.\n\nFernan lui murmura : — Dis, ne te souvient-il,\nNe te souvient-il plus de l’amour ancienne ? —\nAinsi parle le Roi gracieux et subtil.\n\nEt la main de Chimène a frémi dans la sienne.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Triomphe_du_Cid",
       "tags": [
@@ -621,7 +625,7 @@
       "titulo": "Les Trophées/Le Vase",
       "texto": "L’ivoire est ciselé d’une main fine et telle\nQue l’on voit les forêts de Colchide et Jason\nEt Médée aux grands yeux magiques. La Toison\nRepose, étincelante, au sommet d’une stèle.\n\nAuprès d’eux est couché le Nil, source immortelle\nDes fleuves, et, plus loin, ivres du doux poison,\nLes Bacchantes, d’un pampre à l’ample frondaison\nEnguirlandent le joug des taureaux qu’on dételle.\n\nAu-dessous, c’est un choc hurlant de cavaliers ;\nPuis les héros rentrant morts sur leurs boucliers\nEt les vieillards plaintifs et les larmes des mères.\n\nEnfin, en forme d’anse arrondissant leurs flancs,\nEt posant aux deux bords leurs seins fermes et blancs,\nDans le vase sans fond s’abreuvent des Chimères.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_Vase",
       "tags": []
@@ -630,7 +634,7 @@
       "titulo": "Les Trophées/Le Vœu",
       "texto": "Jadis l’Ibère noir et le Gall au poil fauve\nEt le Garumne brun peint d’ocre et de carmin,\nSur le marbre votif entaillé par leur main,\nOnt dit l’eau bienfaisante et sa vertu qui sauve.\n\nPuis les Imperators, sous le Venasque chauve,\nBâtirent la piscine et le therme romain,\nEt Fabia Festa, par ce même chemin,\nA cueilli pour les Dieux la verveine ou la mauve.\n\nAujourd’hui, comme aux jours d’Iscitt et d’Ilixon,\nLes sources m’ont chanté leur divine chanson ;\nLe soufre fume encore à l’air pur des moraines.\n\nC’est pourquoi, dans ces vers, accomplissant les vœux,\nTel qu’autrefois Hunnu, fils d’Ulohox, je veux\nDresser l’autel barbare aux Nymphes Souterraines.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_V%C5%93u",
       "tags": []
@@ -639,7 +643,7 @@
       "titulo": "Les Trophées/Le vieil Orfèvre",
       "texto": "Mieux qu’aucun maître inscrit au livre de maîtrise,\nQu’il ait nom Ruyz, Arphé, Ximeniz, Becerril,\nJ’ai serti le rubis, la perle et le béryl,\nTordu l’anse d’un vase et martelé sa frise.\n\nDans l’argent, sur l’émail où le paillon s’irise,\nJ’ai peint et j’ai sculpté, mettant l’âme en péril,\nAu lieu de Christ en croix et du Saint sur le gril,\nÔ honte ! Bacchus ivre ou Danaé surprise.\n\nJ’ai de plus d’un estoc damasquiné le fer\nEt, pour le vain orgueil de ces œuvres d’Enfer,\nAventuré ma part de l’éternelle Vie.\n\nAussi, voyant mon âge incliner vers le soir,\nJe veux, ainsi que fit Fray Juan de Ségovie,\nMourir en ciselant dans l’or un ostensoir.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Le_vieil_Orf%C3%A8vre",
       "tags": []
@@ -648,7 +652,7 @@
       "titulo": "Les Trophées/Les Bergers",
       "texto": "Viens. Le sentier s’enfonce aux gorges du Cyllène.\nVoici l’antre et la source, et c’est là qu’il se plaît\nÀ dormir sur un lit d’herbe et de serpolet\nÀ l’ombre du grand pin où chante son haleine.\n\nAttache à ce vieux tronc moussu la brebis pleine.\nSais-tu qu’avant un mois, avec son agnelet,\nElle lui donnera des fromages, du lait ?\nLes Nymphes fileront un manteau de sa laine.\n\nSois-nous propice, Pan ! ô Chèvre-pied, gardien\nDes troupeaux que nourrit le mont Arcadien,\nJe t’invoque… Il entend ! J’ai vu tressaillir l’arbre.\n\nPartons. Le soleil plonge au couchant radieux.\nLe don du pauvre, ami, vaut un autel de marbre,\nSi d’un cœur simple et pur l’offrande est faite aux Dieux.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Les_Bergers",
       "tags": []
@@ -657,7 +661,7 @@
       "titulo": "Les Trophées/Les Conquérants",
       "texto": "Comme un vol de gerfauts hors du charnier natal,\nFatigués de porter leurs misères hautaines,\nDe Palos de Moguer, routiers et capitaines\nPartaient, ivres d’un rêve héroïque et brutal.\n\nIls allaient conquérir le fabuleux métal\nQue Cipango mûrit dans ses mines lointaines,\nEt les vents alizés inclinaient leurs antennes\nAux bords mystérieux du monde Occidental.\n\nChaque soir, espérant des lendemains épiques,\nL’azur phosphorescent de la mer des Tropiques\nEnchantait leur sommeil d’un mirage doré ;\n\nOu penchés à l’avant des blanches caravelles,\nIls regardaient monter en un ciel ignoré\nDu fond de l’Océan des étoiles nouvelles.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Les_Conqu%C3%A9rants",
       "tags": [
@@ -668,7 +672,7 @@
       "titulo": "Les Trophées/Les Conquérants de l’Or (estrofes iniciais)",
       "texto": "Après que Balboa menant son bon cheval\nPar les bois non frayés, droit, d’amont en aval,\nEut, sur l’autre versant des Cordillères hautes,\nFoulé le chaud limon des insalubres côtes\nDe l’Isthme qui partage avec ses monts géants\nLa glauque immensité des deux grands Océans,\nEt qu’il eut, s’y jetant tout armé de la berge,\nPlanté son étendard dans l’écume encor vierge,\nTous les aventuriers, dont l’esprit s’enflamma,\n\nRêvaient, en arrivant au port de Panama,\nDe retrouver, espoir cupide et magnifique,\nAux rivages dorés de la mer Pacifique,\nEl Dorado promis qui fuyait devant eux,\nEt, mêlant avec l’or des songes monstrueux,\nDe forcer jusqu’au fond de ces torrides zones\nL’âpre virginité des rudes Amazones\nQue n’avait pu dompter la race des héros,\nDe renverser des dieux à têtes de taureaux\nEt de vaincre, vrais fils de leur ancêtre Hercule,\nLes peuples de l’Aurore et ceux du Crépuscule.\n\nIls savaient que, bravant ces illustres périls,\nIls atteindraient les bords où germent les béryls\nEt Doboyba qui comble, en ses riches ravines,\nDu vaste écroulement des temples en ruines,",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Les_Conqu%C3%A9rants_de_l%E2%80%99Or",
       "tags": []
@@ -677,7 +681,7 @@
       "titulo": "Les Trophées/Les Funérailles",
       "texto": "Vers la Phocide illustre, aux temples que domine \nLa rocheuse Pytho toujours ceinte d’éclairs, \nQuand les guerriers anciens descendaient aux enfers, \nLa Grèce accompagnait leur image divine.\n\nEt leurs Ombres, tandis que la nuit illumine \nL’Archipel radieux et les golfes déserts, \nÉcoutaient, du sommet des promontoires clairs, \nChanter sur leurs tombeaux la mer de Salamine.\n\nEt moi je m’éteindrai, vieillard, en un long deuil; \nMon corps sera cloué dans un étroit cercueil \nEt l’on paîra la terre et le prêtre et les cierges.\n\nEt pourtant j’ai rêvé ce destin glorieux \nDe tomber au soleil ainsi que les aïeux, \nJeune encore et pleuré des héros et des vierges.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Les_Fun%C3%A9railles",
       "tags": []
@@ -686,7 +690,7 @@
       "titulo": "Les Trophées/Lupercus",
       "texto": "Lupercus, du plus loin qu’il me voit : — Cher poète,\nTa nouvelle épigramme est du meilleur latin ;\nDis, veux-tu, j’enverrai chez toi demain matin,\nMe prêter les rouleaux de ton œuvre complète ?\n\n— Non. Ton esclave boite, il est vieux, il halète,\nMes escaliers sont durs et mon logis lointain ;\nNe demeures-tu pas auprès du Palatin ?\nAtrectus, mon libraire, habite l’Argilète.\n\nSa boutique est au coin du Forum. Il y vend\nLes volumes des morts et celui du vivant,\nVirgile et Silius, Pline, Térence ou Phèdre ;\n\nLà, sur l’un des rayons, et non certe aux derniers,\nPoncé, vêtu de pourpre et dans un nid de cèdre,\nMartial est en vente au prix de cinq deniers.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Lupercus",
       "tags": []
@@ -695,7 +699,7 @@
       "titulo": "Les Trophées/L’Ancêtre",
       "texto": "La gloire a sillonné de ses illustres rides\nLe visage hardi de ce grand Cavalier\nQui porte sur son front que nul n’a fait plier\nLe hâle de la guerre et des soleils torrides.\n\nEn tous lieux, Côte-Ferme, îles, sierras arides,\nIl a planté la croix, et, depuis l’escalier\nDes Andes, promené son pennon familier\nJusqu’au golfe orageux qui blanchit les Florides.\n\nPour ses derniers neveux, Claudius, tes pinceaux,\nSous l’armure de bronze aux splendides rinceaux,\nFont revivre l’aïeul fier et mélancolique ;\n\nEt ses yeux assombris semblent chercher encor\nDans le ciel de l’émail ardent et métallique\nLes éblouissements de la Castille d’Or.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99Anc%C3%AAtre",
       "tags": []
@@ -704,7 +708,7 @@
       "titulo": "Les Trophées/L’Esclave",
       "texto": "Tel, nu, sordide, affreux, nourri des plus vils mets,\nEsclave — vois, mon corps en a gardé les signes —\nJe suis né libre au fond du golfe aux belles lignes\nOù l’Hybla plein de miel mire ses bleus sommets.\n\nJ’ai quitté l’île heureuse, hélas !… Ah ! si jamais\nVers Syracuse et les abeilles et les vignes\nTu retournes, suivant le vol vernal des cygnes,\nCher hôte, informe-toi de celle que j’aimais.\n\nReverrai-je ses yeux de sombre violette,\nSi purs, sourire au ciel natal qui s’y reflète\nSous l’arc victorieux que tend un sourcil noir ?\n\nSois pitoyable ! Pars, va, cherche Cléariste\nEt dis-lui que je vis encor pour la revoir.\nTu la reconnaîtras, car elle est toujours triste.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99Esclave",
       "tags": []
@@ -713,7 +717,7 @@
       "titulo": "Les Trophées/L’Estoc",
       "texto": "Au pommeau de l’épée on lit : Calixte Pape.\nLa tiare, les clefs, la barque et le tramail\nBlasonnent, en reliefs d’un somptueux travail,\nLe Bœuf héréditaire armoyé sur la chappe.\n\nÀ la fusée, un Dieu païen, Faune ou Priape,\nRit, engaîné d’un lierre à graines de corail ;\nEt l’éclat du métal s’exalte sous l’émail\nSi clair, que l’estoc brille encor plus qu’il ne frappe.\n\nMaître Antonio Perez de Las Cellas forgea\nCe bâton pastoral pour le premier Borja,\nComme s’il pressentait sa fameuse lignée ;\n\nEt ce glaive dit mieux qu’Arioste ou Sannazar,\nPar l’acier de sa lame et l’or de sa poignée,\nLa pontife Alexandre et le prince César.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99Estoc",
       "tags": []
@@ -722,7 +726,7 @@
       "titulo": "Les Trophées/L’Exilée",
       "texto": "MONTIBVS…\nGARRI DEO…\nSABINVLA.\nV. S. L. M.\n\nDans ce vallon sauvage où César t’exila,\nSur la roche moussue, au chemin d’Ardiège,\nPenchant ton front qu’argente une précoce neige,\nChaque soir, à pas lents, tu viens t’accouder là.\n\nTu revois ta jeunesse et ta chère villa\nEt le Flamine rouge avec son blanc cortège ;\nEt pour que le regret du sol Latin s’allège,\nTu regardes le ciel, triste Sabinula.\n\nVers le Gar éclatant aux sept pointes calcaires,\nLes aigles attardés qui regagnent leurs aires\nEmportent en leur vol tes rêves familiers ;\n\nEt seule, sans désirs, n’espérant rien de l’homme,\nTu dresses des autels aux Monts hospitaliers\nDont les Dieux plus prochains te consolent de Rome.",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99Exil%C3%A9e",
       "tags": []
@@ -731,7 +735,7 @@
       "titulo": "Les Trophées/L’Oubli",
       "texto": "Le temple est en ruine au haut du promontoire. \nEt la Mort a mêlé, dans ce fauve terrain, \nLes Déesses de marbre et les Héros d’airain \nDont l’herbe solitaire ensevelit la gloire. \n\nSeul, parfois, un bouvier menant ses buffles boire, \nDe sa conque où soupire un antique refrain \nEmplissant le ciel calme et l’horizon marin, \nSur l’azur infini dresse sa forme noire. \n\nLa Terre maternelle et douce aux anciens Dieux, \nFait à chaque printemps, vainement éloquente,\nAu chapiteau brisé verdir une autre acanthe ; \n\nMais l’Homme indifférent au rêve des aïeux \nÉcoute sans frémir, du fond des nuits sereines, \nLa Mer qui se lamente en pleurant les Sirènes.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99Oubli",
       "tags": []
@@ -740,7 +744,7 @@
       "titulo": "Les Trophées/L’Épée",
       "texto": "Crois-moi, pieux enfant, suis l’antique chemin.\nL’épée aux quillons droits d’où part la branche torse,\nAu poing d’un gentilhomme ardent et plein de force\nEst un faix plus léger qu’un rituel romain.\n\nPrends-la. L’Hercule d’or qui tiédit dans ta main,\nAux doigts de tes aïeux ayant poli son torse,\nGonfle plus fièrement, sous la splendide écorce,\nLes beaux muscles de fer de son corps surhumain.\n\nBrandis-la ! L’acier souple en bouquets d’étincelles\nPétille. Elle est solide, et sa lame est de celles\nQui font courir au cœur un orgueilleux frisson ;\n\nCar elle porte au creux de sa brillante gorge,\nComme une noble Dame un joyau, le poinçon\nDe Julian del Rey, le prince de la forge.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/L%E2%80%99%C3%89p%C3%A9e",
       "tags": []
@@ -749,7 +753,7 @@
       "titulo": "Les Trophées/Maris Stella",
       "texto": " \n\nSous les coiffes de lin, toutes, croisant leurs bras\nVêtus de laine rude ou de mince percale,\nLes femmes, à genoux sur le roc de la cale,\nRegardent l’Océan blanchir l’île de Batz.\n\nLes hommes, pères, fils, maris, amants, là-bas,\nAvec ceux de Paimpol, d’Audierne et de Cancale,\nVers le Nord, sont partis pour la lointaine escale.\nQue de hardis pêcheurs qui ne reviendront pas !\n\nPar-dessus la rumeur de la mer et des côtes\nLe chant plaintif s’élève, invoquant à voix hautes\nL’Étoile sainte, espoir des marins en péril ;\n\nEt l’Angélus, courbant tous ces fronts noirs de hâle,\nDes clochers de Roscoff à ceux de Sybiril\nS’envole, tinte et meurt dans le ciel rose et pâle.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Maris_Stella",
       "tags": []
@@ -758,7 +762,7 @@
       "titulo": "Les Trophées/Marsyas",
       "texto": "Les pins du bois natal que charmait ton haleine\nN’ont pas brûlé ta chair, ô malheureux ! Tes os\nSont dissous, et ton sang s’écoule avec les eaux\nQue les monts de Phrygie épanchent vers la plaine.\n\nLe jaloux Citharède, orgueil du ciel hellène,\nDe son plectre de fer a brisé tes roseaux\nQui, domptant les lions, enseignaient les oiseaux ;\nIl ne reste plus rien du chanteur de Célène.\n\nRien qu’un lambeau sanglant qui flotte au tronc de l’if\nAuquel on l’a lié pour l’écorcher tout vif.\nÔ Dieu cruel ! Ô cris ! Voix lamentable et tendre !\n\nNon, vous n’entendrez plus, sous un doigt trop savant,\nLa flûte soupirer aux rives du Méandre…\nCar la peau du Satyre est le jouet du vent.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Marsyas",
       "tags": []
@@ -767,7 +771,7 @@
       "titulo": "Les Trophées/Mer montante",
       "texto": " \n\nLe soleil semble un phare à feux fixes et blancs.\nDu Raz jusqu’à Penmarc’h la côte entière fume,\nEt seuls, contre le vent qui rebrousse leur plume,\nÀ travers la tempête errent les goëlands.\n\nL’une après l’autre, avec de furieux élans,\nLes lames glauques sous leur crinière d’écume\nDans un tonnerre sourd s’éparpillant en brume,\nEmpanachent au loin les récifs ruisselants.\n\nEt j’ai laissé courir le flot de ma pensée,\nRêves, espoirs, regrets de force dépensée,\nSans qu’il en reste rien qu’un souvenir amer.\n\nL’Océan m’a parlé d’une voix fraternelle,\nCar la même clameur que pousse encor la mer\nMonte de l’homme aux Dieux, vainement éternelle.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Mer_montante",
       "tags": [
@@ -778,7 +782,7 @@
       "titulo": "Les Trophées/Michel-Ange",
       "texto": "Certe, il était hanté d’un tragique tourment, \nAlors qu’à la Sixtine et loin de Rome en fêtes, \nSolitaire, il peignait Sibylles et Prophètes \nEt, sur le sombre mur, le dernier jugement. \n\nIl écoutait en lui pleurer obstinément, \nTitan que son désir enchaîne aux plus hauts faîtes,\nLa Patrie et l’Amour, la Gloire et leurs défaites ;\nIl songeait que tout meurt et que le rêve ment. \n\nAussi ces lourds Géants, las de leur force exsangue, \nCes Esclaves qu’étreint une infrangible gangue,\nComme il les a tordus d’une étrange façon ; \n\nEt dans les marbres froids où bout son âme altière, \nComme il a fait courir avec un grand frisson \nLa colère d’un Dieu vaincu par la Matière !",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Michel-Ange",
       "tags": []
@@ -787,7 +791,7 @@
       "titulo": "Les Trophées/Midi. L’air brûle…",
       "texto": "Midi. L’air brûle, et sous la terrible lumière\nLe vieux fleuve alangui roule des flots de plomb ;\nDu zénith aveuglant le jour tombe d’aplomb,\nEt l’implacable Phré couvre l’Égypte entière.\n\nLes grands sphinx qui jamais n’ont baissé la paupière,\nAllongés sur leur flanc que baigne un sable blond,\nPoursuivent d’un regard mystérieux et long\nL’élan démesuré des aiguilles de pierre.\n\nSeul, tachant d’un point noir le ciel blanc et serein,\nAu loin, tourne sans fin le vol des gypaëtes ;\nLa flamme immense endort les hommes et les bêtes.\n\nLe sol ardent pétille, et l’Anubis d’airain\nImmobile au milieu de cette chaude joie\nSilencieusement vers le soleil aboie.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Midi._L%E2%80%99air_br%C3%BBle%E2%80%A6",
       "tags": []
@@ -796,7 +800,7 @@
       "titulo": "Les Trophées/Médaille",
       "texto": "Seigneur de Rimini, Vicaire et Podestà,\nSon profil d’épervier vit, s’accuse ou recule\nÀ la lueur d’airain d’un fauve crépuscule\nDans l’orbe où Matteo de’ Pastis l’incrusta.\n\nOr, de tous les tyrans qu’un peuple détesta,\nNul, comte, marquis, duc, prince ou principicule,\nQu’il ait nom Ezzelin, Can, Galéas, Hercule,\nNe fût maître si fier que le Malatesta.\n\nCelui-ci, le meilleur, ce Sisigmond Pandolphe,\nMit à sang la Romagne et la Marche et le Golfe,\nBâtit un temple, fit l’amour et le chanta ;\n\nEt leurs femmes aussi sont rudes et sévères,\nCar sur le même bronze où sourit Isotta,\nL’Éléphant triomphale foule des primevères.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/M%C3%A9daille",
       "tags": []
@@ -805,7 +809,7 @@
       "titulo": "Les Trophées/Médaille antique",
       "texto": "L’Etna mûrit toujours la pourpre et l’or du vin \nDont l’Erigone antique enivra Théocrite,\nMais celles dont la grâce en ses vers fut écrite, \nLe poète aujourd’hui les chercherait en vain. \n\nPerdant la pureté de son profil divin, \nTour à tour Aréthuse esclave et favorite \nA mêlé dans sa veine où le sang grec s’irrite \nLa fureur sarrasine à l’orgueil angevin. \n\nLe temps passe. Tout meurt. Le marbre même s’use.\nAgrigente n’est plus qu’une ombre, et Syracuse\nDort sous le bleu linceul de son ciel indulgent ; \n\nEt seul le dur métal que l’amour fit docile \nGarde encore en sa fleur, aux médailles d’argent, \nL’immortelle beauté des vierges de Sicile.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/M%C3%A9daille_antique",
       "tags": []
@@ -814,7 +818,7 @@
       "titulo": "Les Trophées/Nessus",
       "texto": "Du temps que je vivais à mes frères pareil\nEt comme eux ignorant d’un sort meilleur ou pire,\nLes monts Thessaliens étaient mon vague empire\nEt leurs torrents glacés lavaient mon poil vermeil. \n\nTel j’ai grandi, beau, libre, heureux, sous le soleil ;\nSeule, éparse dans l’air que ma narine aspire,\nLa chaleureuse odeur des cavales d’Épire\nInquiétait parfois ma course ou mon sommeil.\n\nMais depuis que j’ai vu l’Épouse triomphale \nSourire entre les bras de l’Archer de Stymphale, \nLe désir me harcèle et hérisse mes crins ; \n\nCar un Dieu, maudit soit le nom dont il se nomme ! \nA mêlé dans le sang enfiévré de mes reins \nAu rut de l’étalon l’amour qui dompte l’homme.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Nessus",
       "tags": []
@@ -823,7 +827,7 @@
       "titulo": "Les Trophées/Nymphée",
       "texto": "Le quadrige céleste à l’horizon descend,\nEt, voyant fuir sous lui l’occidentale arène,\nLe Dieu retient en vain de la quadruple rêne\nSes étalons cabrés dans l’or incandescent.\n\nLe char plonge. La mer, de son soupir puissant,\nEmplit le ciel sonore où la pourpre se traîne,\nEt, plus clair en l’azur noir de la nuit sereine,\nSilencieusement s’argente le Croissant.\n\nVoici l’heure où la Nymphe, au bord des sources fraîches,\nJette l’arc détendu près du carquois sans flèches.\nTout se tait. Seul, un cerf brame au loin vers les eaux\n\nLa lune tiède luit sur la nocturne danse,\nEt Pan, ralentissant ou pressant la cadence,\nRit de voir son haleine animer les roseaux.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Nymph%C3%A9e",
       "tags": []
@@ -832,7 +836,7 @@
       "titulo": "Les Trophées/Némée",
       "texto": "Depuis que le Dompteur entra dans la forêt\nEn suivant sur le sol la formidable empreinte,\nSeul, un rugissement a trahi leur étreinte.\nTout s’est tu. Le soleil s’abîme et disparaît.\n\nÀ travers le hallier, la ronce et le guéret,\nLe pâtre épouvanté qui s’enfuit vers Tirynthe,\nSe tourne, et voit d’un œil élargi par la crainte\nSurgir au bord des bois le grand fauve en arrêt.\n\nIl s’écrie. Il a vu la terreur de Némée\nQui sur le ciel sanglant ouvre sa gueule armée,\nEt la crinière éparse et les sinistres crocs ;\n \nCar l’ombre grandissante avec le crépuscule\nFait, sous l’horrible peau qui flotte autour d’Hercule,\nMêlant l’homme à la bête, un monstrueux héros.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/N%C3%A9m%C3%A9e",
       "tags": []
@@ -841,7 +845,7 @@
       "titulo": "Les Trophées/Pan",
       "texto": "À travers les halliers, par les chemins secrets\nQui se perdent au fond des vertes avenues,\nLe Chèvre-pied, divin chasseur de Nymphes nues,\nSe glisse, l’œil ardent, sous les hautes forêts.\n\nIl est doux d’écouter les soupirs, les bruits frais\nQui montent à midi des sources inconnues\nQuand le Soleil, vainqueur étincelant des nues,\nDans la mouvante nuit darde l’or de ses traits.\n\nUne Nymphe s’égare et s’arrête. Elle écoute\nLes larmes du matin qui pleuvent goutte à goutte\nSur la mousse. L’ivresse emplit son jeune cœur.\n\nMais, d’un seul bond, le Dieu du noir taillis s’élance,\nLa saisit, frappe l’air de son rire moqueur,\nDisparaît… Et les bois retombent au silence.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Pan",
       "tags": [
@@ -852,7 +856,7 @@
       "titulo": "Les Trophées/Persée et Andromède",
       "texto": "Au milieu de l’écume arrêtant son essor,\nLe Cavalier vainqueur du monstre et de Méduse,\nRuisselant d’une bave horrible où le sang fuse,\nEmporte entre ses bras la vierge aux cheveux d’or.\n\nSur l’étalon divin, frère de Chrysaor,\nQui piaffe dans la mer et hennit et refuse,\nIl a posé l’Amante éperdue et confuse\nQui lui rit et l’étreint et qui sanglote encor.\n\nIl l’embrasse. La houle enveloppe leur groupe.\nElle, d’un faible effort, ramène sur la croupe\nSes beaux pieds qu’en fuyant baise un flot vagabond ;\n\nMais Pégase irrité par le fouet de la lame,\nÀ l’appel du Héros s’enlevant d’un seul bond,\nBat le ciel ébloui de ses ailes de flamme.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Pers%C3%A9e_et_Androm%C3%A8de",
       "tags": []
@@ -861,7 +865,7 @@
       "titulo": "Les Trophées/Plus Ultra",
       "texto": " \n\nL’homme a conquis la terre ardente des lions\nEt celle des venins et celle des reptiles,\nEt troublé l’Océan où cinglent les nautiles\nDu sillage doré des anciens galions.\n\nMais plus loin que la neige et que les tourbillons\nDu Ström et que l’horreur des Spitzbergs infertiles,\nLe Pôle bat d’un flot tiède et libre des îles\nOù nul marin n’a pu hisser ses pavillons.\n\nPartons ! je briserai l’infranchissable glace,\nCar dans mon corps hardi je porte une âme lasse\nDu facile renom des Conquérants de l’or.\n\nJ’irai. Je veux monter au dernier promontoire,\nEt qu’une mer, pour tous silencieuse encor,\nCaresse mon orgueil d’un murmure de gloire.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Plus_Ultra",
       "tags": [
@@ -872,7 +876,7 @@
       "titulo": "Les Trophées/Pour le Vaisseau de Virgile",
       "texto": "Que vos astres plus clairs gardent mieux du danger,\nDioscures brillants, divins frères d’Hélène,\nLe poète latin qui veut, au ciel hellène,\nVoir les Cyclades d’or de l’azur émerger.\n\nQue des souffles de l’air, de tous le plus léger,\nQue le doux lapyx, redoublant son haleine,\nD’une brise embaumée enfle la voile pleine\nEt pousse le navire au rivage étranger.\n\nÀ travers l’Archipel où le dauphin se joue,\nGuidez heureusement le chanteur de Mantoue ;\nPrêtez-lui, fils du Cygne, un fraternel rayon.\n\nLa moitié de mon âme est dans la nef fragile\nQui, sur la mer sacrée où chantait Arion,\nVers la terre des Dieux porte le grand Virgile.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Pour_le_Vaisseau_de_Virgile",
       "tags": []
@@ -881,7 +885,7 @@
       "titulo": "Les Trophées/Quel froid ! le givre brille…",
       "texto": "Quel froid ! le givre brille aux derniers pampres verts ;\nJe guette le soleil, car je sais l’heure exacte\nOù l’aurore rougit les neiges du Soracte.\nLe sort d’un Dieu champêtre est dur. L’homme est pervers.\n\nDans ce clos ruiné, seul, depuis vingt hivers\nJe me morfonds. Ma barbe est hirsute et compacte,\nMon vermillon s’écaille et mon bois se rétracte\nEt se gerce, et j’ai peur d’être piqué des vers.\n\nQue ne suis-je un Pénate ou même simple Lare\nDomestique, repeint, repu, toujours hilare,\nGorgé de miel, de fruits ou ceint des fleurs d’avril !\n\nPrès des aïeux de cire, au fond du vestibule,\nJe vieillirais et les enfants, au jour viril,\nÀ mon col vénéré viendraient pendre leur bulle.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Quel_froid_%21_le_givre_brille%E2%80%A6",
       "tags": []
@@ -890,7 +894,7 @@
       "titulo": "Les Trophées/Regilla",
       "texto": "Passant, ce marbre couvre Annia Regilla\nDu sang de Ganymède et d’Aphrodite née.\nLe noble Hérode aima cette fille d’Énée.\nHeureuse, jeune et belle, elle est morte. Plains-la.\n\nCar l’Ombre dont le corps délicieux gît là,\nChez le prince infernal de l’île Fortunée\nCompte les jours, les mois et la si longue année\nDepuis que loin des siens la Parque l’exila.\n\nHanté du souvenir de sa forme charmante,\nL’Époux désespéré se lamente et tourmente\nLa pourpre sans sommeil du lit d’ivoire et d’or.\n\nIl tarde. Il ne vient pas. Et l’âme de l’Amante,\nAnxieuse, espérant qu’il vienne, vole encor\nAutour du sceptre noir que lève Rhadamanthe.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Regilla",
       "tags": [
@@ -901,7 +905,7 @@
       "titulo": "Les Trophées/Respecte, ô Voyageur…",
       "texto": "Respecte, ô Voyageur, si tu crains ma colère,\nCet humble toit de joncs tressés et de glaïeul.\nLà, parmi ses enfants, vit un robuste aïeul ;\nC’est le maître du clos et de la source claire.\n\nEt c’est lui qui planta droit au milieu de l’aire\nMon emblème équarri dans un cœur de tilleul ;\nIl n’a point d’autres Dieux, aussi je garde seul\nLe verger qu’il cultive et fleurit pour me plaire.\n\nCe sont de pauvres gens, rustiques et dévots.\nPar eux, la violette et les sombres pavots\nOrnent ma gaine avec les verts épis de l’orge ;\n\nEt toujours, deux fois l’an, l’agreste autel a bu,\nSous le couteau sacré du colon qui l’égorge,\nLe sang d’un jeune bouc impudique et barbu.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Respecte%2C_%C3%B4_Voyageur%E2%80%A6",
       "tags": []
@@ -910,7 +914,7 @@
       "titulo": "Les Trophées/Rêves d’Émail",
       "texto": "Ce soir, au réduit sombre où ronfle l’athanor,\nLe grand feu prisonnier de la brique rougie \nExalte son ardeur et souffle sa magie \nAu cuivre que l’émail fait plus riche que l’or. \n\nEt sous mes pinceaux naît, vit, court et prend l’essor \nLe peuple monstrueux de la mythologie, \nLes Centaures, Pan, Sphinx, la Chimère, l’Orgie\nEt, du sang de Gorgo, Pégase et Chrysaor. \n\nPeindrai-je Achille en pleurs près de Penthésilée ? \nOrphée ouvrant les bras vers l’Épouse exilée \nSur la porte infernale aux infrangibles gonds ? \n\nHercule terrassant le dogue de l’Averne\nOu la Vierge qui tord au seuil de la caverne\nSon corps épouvanté que flairent les Dragons ?",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/R%C3%AAves_d%E2%80%99%C3%89mail",
       "tags": []
@@ -919,7 +923,7 @@
       "titulo": "Les Trophées/Soir de Bataille",
       "texto": "Le choc avait été très rude. Les tribuns\nEt les centurions, ralliant les cohortes,\nHumaient encor dans l’air où vibraient leurs voix fortes\nLa chaleur du carnage et ses âcres parfums.\n\nD’un œil morne, comptant leurs compagnons défunts,\nLes soldats regardaient, comme des feuilles mortes,\nAu loin, tourbillonner les archers de Phraortes ;\nEt la sueur coulait de leurs visages bruns.\n\nC’est alors qu’apparut, tout hérissé de flèches,\nRouge du flux vermeil de ses blessures fraîches,\nSous la pourpre flottante et l’airain rutilant,\n\nAu fracas des buccins qui sonnaient leur fanfare,\nSuperbe, maîtrisant son cheval qui s’effare,\nSur le ciel enflammé, l’Imperator sanglant.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Soir_de_Bataille",
       "tags": [
@@ -930,7 +934,7 @@
       "titulo": "Les Trophées/Soleil couchant",
       "texto": "Les ajoncs éclatants, parure du granit,\nDorent l’âpre sommet que le couchant allume ;\nAu loin, brillante encor par sa barre d’écume,\nLa mer sans fin commence où la terre finit.\n\nÀ mes pieds c’est la nuit, le silence. Le nid\nSe tait, l’homme est rentré sous le chaume qui fume ;\nSeul, l’Angélus du soir, ébranlé dans la brume,\nÀ la vaste rumeur de l’Océan s’unit.\n\nAlors, comme du fond d’un abîme, des traînes,\nDes landes, des ravins, montent des voix lointaines\nDe pâtres attardés ramenant le bétail.\n\nL’horizon tout entier s’enveloppe dans l’ombre,\nEt le soleil mourant sur un ciel riche et sombre,\nFerme les branches d’or de son rouge éventail.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Soleil_couchant",
       "tags": [
@@ -941,7 +945,7 @@
       "titulo": "Les Trophées/Sphinx",
       "texto": "Au flanc du Cithéron, sous la ronce enfoui,\nLe roc s’ouvre, repaire où resplendit au centre\nPar l’éclat des yeux d’or, de la gorge et du ventre,\nLa Vierge aux ailes d’aigle et dont nul n’a joui.\n\nEt l’Homme s’arrêta sur le seuil, ébloui.\n— Quelle est l’ombre qui rend plus sombre encor mon antre ?\n— L’Amour. — Es-tu le Dieu ? — Je suis le Héros. — Entre ;\nMais tu cherches la mort. L’oses-tu braver ? — Oui.\n\nBellérophon dompta la Chimère farouche.\n— N’approche pas. — Ma lèvre a fait frémir ta bouche…\n— Viens donc ! Entre mes bras tes os vont se briser ;\n\nMes ongles dans ta chair… — Qu’importe le supplice,\nSi j’ai conquis la gloire et ravi le baiser ?\n— Tu triomphes en vain, car tu meurs. — Ô délice !…",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Sphinx",
       "tags": []
@@ -950,7 +954,7 @@
       "titulo": "Les Trophées/Stymphale",
       "texto": "Et partout devant lui, par milliers, les oiseaux,\nDe la berge fangeuse où le Héros dévale,\nS’envolèrent, ainsi qu’une brusque rafale,\nSur le lugubre lac dont clapotaient les eaux.\n \nD’autres, d’un vol plus bas croisant leurs noirs réseaux,\nFrôlaient le front baisé par les lèvres d’Omphale,\nQuand, ajustant au nerf la flèche triomphale,\nL’Archer superbe fit un pas dans les roseaux.\n\nEt dès lors, du nuage effarouché qu’il crible. \nAvec des cris stridents plut une pluie horrible \nQue l’éclair meurtrier rayait de traits de feu.\n \nEnfin, le Soleil vit, à travers ces nuées \nOù son arc avait fait d’éclatantes trouées, \nHercule tout sanglant sourire au grand ciel bleu.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Stymphale",
       "tags": []
@@ -959,7 +963,7 @@
       "titulo": "Les Trophées/Suivant Pétrarque",
       "texto": "Vous sortiez de l’église et, d’un geste pieux,\nVos nobles mains faisaient l’aumône au populaire,\nEt sous le porche obscur votre beauté si claire\nAux pauvres éblouis montrait tout l’or des cieux.\n\nEt je vous saluai d’un salut gracieux,\nTrès humble, comme il sied à qui ne veut déplaire,\nQuand, tirant votre mante et d’un air de colère\nVous détournant de moi, vous couvrîtes vos yeux.\n\nMais Amour qui commande au cœur le plus rebelle\nNe voulut pas souffrir que, moins tendre que belle,\nLa source de pitié me refusât merci ;\n\nEt vous fûtes si lente à ramener le voile,\nQue vos cils ombrageux palpitèrent ainsi\nQu’un noir feuillage où filtre un long rayon d’étoiles.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Suivant_P%C3%A9trarque",
       "tags": []
@@ -968,7 +972,7 @@
       "titulo": "Les Trophées/Sur le Livre des Amours de Pierre de Ronsard",
       "texto": "Jadis plus d’un amant, aux jardins de Bougueil,\nA gravé plus d’un nom dans l’écorce qu’il ouvre,\nEt plus d’un cœur, sous l’or des hauts plafonds du Louvre,\nÀ l’éclair d’un sourire a tressailli d’orgueil.\n\nQu’importe ? Rien n’a dit leur ivresse ou leur deuil ;\nIls gisent tout entiers entre quatre ais de rouvre\nEt nul n’a disputé, sous l’herbe qui les couvre,\nLeur inerte poussière à l’oubli du cercueil.\n\nTout meurt. Marie, Hélène et toi, fière Cassandre,\nVos beaux corps ne seraient qu’une insensible cendre,\n— Les roses et les lys n’ont pas de lendemain —\n\nSi Ronsard, sur la Seine ou sur la blonde Loire,\nN’eût tressé pour vos fronts, d’une immortelle main,\nAux myrtes de l’Amour le laurier de la Gloire.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Sur_le_Livre_des_Amours_de_Pierre_de_Ronsard",
       "tags": []
@@ -977,7 +981,7 @@
       "titulo": "Les Trophées/Sur le Pont-Vieux",
       "texto": "Le vaillant Maître Orfèvre, à l’œuvre dès matines,\nFaisait, de ses pinceaux d’où s’égouttait l’émail,\nSur la paix niellée ou sur l’or du fermail\nÉpanouir la fleur des devises latines.\n\nSur le Pont, au son clair des cloches argentines,\nLa cape coudoyait le froc et le camail ;\nEt le soleil montant en un ciel de vitrail\nMettait un nimbe au front des belles Florentines.\n\nEt prompts au rêve ardent qui les savait charmer,\nLes apprentis, pensifs, oubliaient de fermer\nLes mains des fiancés au chaton de la bague\n\nTandis que d’un burin trempé comme un stylet,\nLe jeune Cellini, sans rien voir, ciselait\nLe combat des Titans au pommeau d’une dague.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Sur_le_Pont-Vieux",
       "tags": []
@@ -986,7 +990,7 @@
       "titulo": "Les Trophées/Sur l’Othrys",
       "texto": "L’air fraîchit. Le soleil plonge au ciel radieux.\nLe bétail ne craint plus le taon ni le bupreste.\nAux pentes de l’Othrys l’ombre est plus longue. Reste,\nReste avec moi, cher hôte envoyé par les Dieux.\n\nTandis que tu boiras un lait fumant, tes yeux\nContempleront du seuil de ma cabane agreste,\nDes cimes de l’Olympe aux neiges du Thymphreste,\nLa riche Thessalie et les monts glorieux.\n\nVois la mer et l’Eubée et, rouge au crépuscule,\nLe Callidrome sombre et l’Œta, dont Hercule\nFit son bûcher suprême et son premier autel ;\n\nEt là-bas, à travers la lumineuse gaze,\nLe Parnasse où, le soir, las d’un vol immortel,\nSe pose, et d’où s’envole, à l’aurore, Pégase !",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Sur_l%E2%80%99Othrys",
       "tags": []
@@ -995,7 +999,7 @@
       "titulo": "Les Trophées/Sur un Marbre brisé",
       "texto": "La mousse fut pieuse en fermant ses yeux mornes ;\nCar, dans ce bois inculte, il chercherait en vain \nLa Vierge qui versait le lait pur et le vin \nSur la terre au beau nom dont il marqua les bornes. \n\nAujourd’hui le houblon, le lierre et les viornes \nQui s’enroulent autour de ce débris divin, \nIgnorant s’il fut Pan, Faune, Hermès ou Silvain, \nÀ  son front mutilé tordent leurs vertes cornes. \n\nVois. L’oblique rayon, le caressant encor,\nDans sa face camuse a mis deux orbes d’or ;\nLa vigne folle y rit comme une lèvre rouge ;\n\nEt, prestige mobile, un murmure du vent, \nLes feuilles, l’ombre errante et le soleil qui bouge, \nDe ce marbre en ruine ont fait un Dieu vivant.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Sur_un_Marbre_bris%C3%A9",
       "tags": []
@@ -1004,7 +1008,7 @@
       "titulo": "Les Trophées/Texte entier (estrofes iniciais)",
       "texto": "Le temple est en ruine au haut du promontoire. \nEt la Mort a mêlé, dans ce fauve terrain, \nLes Déesses de marbre et les Héros d’airain \nDont l’herbe solitaire ensevelit la gloire. \n\nSeul, parfois, un bouvier menant ses buffles boire, \nDe sa conque où soupire un antique refrain \nEmplissant le ciel calme et l’horizon marin, \nSur l’azur infini dresse sa forme noire. \n\nLa Terre maternelle et douce aux anciens Dieux, \nFait à chaque printemps, vainement éloquente,\nAu chapiteau brisé verdir une autre acanthe ; ",
       "forma": "outro",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Texte_entier",
       "tags": []
@@ -1013,7 +1017,7 @@
       "titulo": "Les Trophées/Tranquillus",
       "texto": "C’est dans ce doux pays qu’a vécu Suétone ;\nEt de l’humble villa voisine de Tibur,\nParmi la vigne, il reste encore un pan de mur,\nUn arceau ruiné que le pampre festonne.\n\nC’est là qu’il se plaisait à venir, chaque automne,\nLoin de Rome, aux rayons des derniers ciels d’azur,\nVendanger ses ormeaux qu’alourdit le cep mûr.\nLà sa vie a coulé tranquille et monotone.\n\nAu milieu de la paix pastorale, c’est là\nQue l’ont hanté Néron, Claude, Caligula,\nMessaline rôdant sous la stole pourprée ;\n\nEt que, du fer d’un style à la pointe acérée\nÉgratignant la cire impitoyable, il a\nDécrit les noirs loisirs du vieillard de Caprée.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Tranquillus",
       "tags": []
@@ -1022,7 +1026,7 @@
       "titulo": "Les Trophées/Un Peintre",
       "texto": "Il a compris la race antique aux yeux pensifs \nQui foule le sol dur de la terre bretonne, \nLa lande rase, rose et grise et monotone \nOù croulent les manoirs sous le lierre et les ifs. \n\nDes hauts talus plantés de hêtres convulsifs, \nIl a vu, par les soirs tempétueux d’automne, \nSombrer le soleil rouge en la mer qui moutonne ;\nSa lèvre s’est salée à l’embrun des récifs. \n\nIl a peint l’Océan splendide, immense et triste, \nOù le nuage laisse un reflet d’améthyste, \nL’émeraude écumante et le calme saphir ; \n\nEt fixant l’eau, l’air, l’ombre et l’heure insaisissables, \nSur une toile étroite il a fait réfléchir \nLe ciel occidental dans le miroir des sables.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Un_Peintre",
       "tags": []
@@ -1031,7 +1035,7 @@
       "titulo": "Les Trophées/Vendange",
       "texto": " \n\nLes vendangeurs lassés ayant rompu leurs lignes,\nDes voix claires sonnaient à l’air vibrant du soir\nEt les femmes, en chœur, marchant vers le pressoir,\nMêlaient à leurs chansons des appels et des signes.\n\nC’est par un ciel pareil, tout blanc du vol des cygnes,\nQue, dans Naxos fumant comme un rouge encensoir,\nLa Bacchanale vit la Crétoise s’asseoir\nAuprès du beau Dompteur ivre du sang des vignes.\n\nAujourd’hui, brandissant le thyrse radieux,\nDionysos vainqueur des bêtes et des Dieux\nD’un joug enguirlandé n’étreint plus les panthères ;\n\nMais, fille du soleil, l’Automne enlace encor\nDu pampre ensanglanté des antiques mystères\nLa noire chevelure et la crinière d’or.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Vendange",
       "tags": []
@@ -1040,7 +1044,7 @@
       "titulo": "Les Trophées/Villula",
       "texto": "Oui, c’est au vieux Gallus qu’appartient l’héritage\nQue tu vois au penchant du coteau cisalpin ;\nLa maison tout entière est à l’abri d’un pin\nEt le chaume du toit couvre à peine un étage.\n\nIl suffit pour qu’un hôte avec lui le partage.\nIl a sa vigne, un four à cuire plus d’un pain,\nEt dans son potager foisonne le lupin.\nC’est peu ? Gallus n’a pas désiré davantage.\n\nSon bois donne un fagot ou deux tous les hivers,\nEt de l’ombre, l’été, sous les feuillages verts ;\nÀ l’automne on y prend quelque grive au passage.\n\nC’est là que, satisfait de son destin borné,\nGallus finit de vivre où jadis il est né.\nVa, tu sais à présent que Gallus est un sage.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Villula",
       "tags": []
@@ -1049,7 +1053,7 @@
       "titulo": "Les Trophées/Vitrail",
       "texto": "Cette verrière a vu dames et hauts barons\nÉtincelants d’azur, d’or, de flamme et de nacre,\nIncliner, sous la dextre auguste qui consacre,\nL’orgueil de leurs cimiers et de leurs chaperons ;\n\nLorsqu’ils allaient, au bruit du cor ou des clairons,\nAyant le glaive au poing, le gerfaut ou le sacre,\nVers la plaine ou le bois, Byzance ou Saint-Jean d’Acre,\nPartir pour la croisade ou le vol des hérons.\n\nAujourd’hui, les seigneurs auprès des châtelaines,\nAvec le lévrier à leurs longues poulaines,\nS’allongent aux carreaux de marbre blanc et noir ;\n\nIls gisent là sans voix, sans geste et sans ouïe,\nEt de leurs yeux de pierre ils regardent sans voir\nLa rose du vitrail toujours épanouie.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/Vitrail",
       "tags": []
@@ -1058,7 +1062,7 @@
       "titulo": "Les Trophées/Vélin doré",
       "texto": "Vieux maître relieur, l’or que tu ciselas\nAu dos du livre et dans l’épaisseur de la tranche,\nN’a plus, malgré les fers poussés d’une main franche,\nLa rutilante ardeur de ses premiers éclats.\n\nLes chiffres enlacés que liait l’entrelacs\nS’effacent chaque jour de la peau fine et blanche ;\nÀ peine si mes yeux peuvent suivre la branche\nDe lierre que tu fis serpenter sur les plats.\n\nMais cet ivoire souple et presque diaphane,\nMarguerite, Marie, ou peut-être Diane,\nDe leurs doigts amoureux l’ont jadis caressé ;\n\nEt ce vélin pâli que dora Clovis Ève\nÉvoque, je ne sais par quel charme passé,\nL’âme de leur parfum et l’ombre de leur rêve.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/V%C3%A9lin_dor%C3%A9",
       "tags": []
@@ -1067,7 +1071,7 @@
       "titulo": "Les Trophées/« N’approche pas ! Va-t’en ! »",
       "texto": "N’approche pas ! Va-t’en ! Passe au large, Étranger !\nInsidieux pillard, tu voudrais, j’imagine,\nDérober les raisins, l’olive ou l’aubergine\nQue le soleil mûrit à l’ombre du verger ?\n\nJ’y veille. À coups de serpe, autrefois, un berger\nM’a taillé dans le tronc d’un dur figuier d’Égine ;\nRis du sculpteur, Passant, mais songe à l’origine\nDe Priape, et qu’il peut rudement se venger.\n\nJadis, cher aux marins, sur un bec de galère\nJe me dressais, vermeil, joyeux de la colère\nÉcumante ou du rire éblouissant des flots ;\n\nÀ présent, vil gardien de fruits et de salades,\nContre les maraudeurs je défends cet enclos...\nEt je ne verrai plus les riantes Cyclades.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C2%AB_N%E2%80%99approche_pas_%21_Va-t%E2%80%99en_%21_%C2%BB",
       "tags": []
@@ -1076,7 +1080,7 @@
       "titulo": "Les Trophées/À Claudius Popelin",
       "texto": "Dans le cadre de plomb des fragiles verrières,\nLes maîtres d’autrefois ont peint de hauts barons\nEt, de leurs doigts pieux tournant leurs chaperons,\nPloyé l’humble genou des bourgeois en prières.\n\nD’autres sur le vélin jauni des bréviaires\nEnluminaient des Saints parmi de beaux fleurons,\nOu laissaient rutiler, en traits souples et prompts,\nLes arabesques d’or au ventre des aiguières.\n\nAujourd’hui Claudius, leur fils et leur rival,\nFaisant revivre en lui ces ouvriers sublimes,\nA fixé son génie au solide métal ;\n\nC’est pourquoi j’ai voulu, sous l’émail de mes rimes,\nFaire autour de son front glorieux verdoyer,\nPour les âges futurs, l’héroïque laurier.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_Claudius_Popelin",
       "tags": []
@@ -1085,7 +1089,7 @@
       "titulo": "Les Trophées/À Hermès Criophore",
       "texto": "Pour que le compagnon des Naïades se plaise\nÀ rendre la brebis agréable au bélier\nEt qu’il veuille par lui sans fin multiplier\nL’errant troupeau qui broute aux berges du Galèse ;\n\nIl faut lui faire fête et qu’il se sente à l’aise\nSous le toit de roseaux du pâtre hospitalier ;\nLe sacrifice est doux au Démon familier\nSur la table de marbre ou sur un bloc de glaise.\n\nDonc, honorons Hermès. Le subtil Immortel\nPréfère à la splendeur du temple et de l’autel\nLa main pure immolant la victime impollue.\n\nAmi, dressons un tertre aux bornes de ton pré\nEt qu’un vieux bouc, du sang de sa gorge velue,\nFasse l’argile noire et le gazon pourpré.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_Herm%C3%A8s_Criophore",
       "tags": []
@@ -1094,7 +1098,7 @@
       "titulo": "Les Trophées/À Sextius",
       "texto": "Le ciel est clair. La barque a glissé sur les sables.\nLes vergers sont fleuris et le givre argentin\nN’irise plus les prés au soleil du matin.\nLes bœufs et le bouvier désertent les étables.\n\nTout tenait. Mais la Mort et ses funèbres fables\nNous pressent, et, pour toi, seul le jour est certain\nOù les dés renversés en un libre festin\nNe t’assigneront plus la royauté des tables.\n\nLa vie, ô Sextius, est brève. Hâtons-nous\nDe vivre. Déjà l’âge a rompu nos genoux.\nIl n’est pas de printemps au froid pays des Ombres.\n\nViens donc. Les bois sont verts, et voici la saison\nD’immoler à Faunus, en ses retraites sombres,\nUn bouc noir ou l’agnelle à la blanche toison.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_Sextius",
       "tags": []
@@ -1103,7 +1107,7 @@
       "titulo": "Les Trophées/À un Fondateur de ville",
       "texto": "Las de poursuivre en vain l’Ophir insaisissable, \nTu fondas, en un pli de ce golfe enchanté \nOù l’étendard royal par tes mains fut planté, \nUne Carthage neuve au pays de la Fable. \n\nTu voulais que ton nom ne fût point périssable, \nEt tu crus l’avoir bien pour toujours cimenté \nÀ ce mortier sanglant dont tu fis ta cité ; \nMais ton espoir, Soldat, fut bâti sur le sable. \n\nCarthagène étouffant sous le torride azur,\nAvec ses noirs palais voit s’écrouler ton mur\nDans l’Océan fiévreux qui dévore sa grève ;\n\nEt seule, à ton cimier brille, ô Conquistador, \nHéraldique témoin des splendeurs de ton rêve, \nUne Ville d’argent qu’ombrage un palmier d’or.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_un_Fondateur_de_ville",
       "tags": []
@@ -1112,7 +1116,7 @@
       "titulo": "Les Trophées/À un Triomphateur",
       "texto": "Fais sculpter sur ton arc, Imperator illustre,\nDes files de guerriers barbares, de vieux chefs\nSous le joug, des tronçons d’armures et de nefs,\nEt la flotte captive et le rostre et l’aplustre.\n\nQuel que tu sois, issu d’Ancus ou né d’un rustre,\nTes noms, famille, honneurs et titres, longs ou brefs,\nGrave-les dans la frise et dans les bas-reliefs\nProfondément, de peur que l’avenir te frustre.\n\nDéjà le Temps brandit l’arme fatale. As-tu\nL’espoir d’éterniser le bruit de ta vertu ?\nUn vil lierre suffit à disjoindre un trophée ;\n\nEt seul, aux blocs épars des marbres triomphaux\nOù ta gloire en ruine est par l’herbe étouffée,\nQuelque faucheur Samnite ébréchera sa faulx.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_un_Triomphateur",
       "tags": []
@@ -1121,7 +1125,7 @@
       "titulo": "Les Trophées/À une Ville morte",
       "texto": "Morne Ville, jadis reine des Océans \nAujourd’hui le requin poursuit en paix les scombres\nEt le nuage errant allonge seul des ombres \nSur ta rade où roulaient les galions géants. \n\nDepuis Drake et l’assaut des Anglais mécréants, \nTes murs désemparés croulent en noirs décombres \nEt, comme un glorieux collier de perles sombres, \nDes boulets de Pointis montrent les trous béants. \n\nEntre le ciel qui brûle et la mer qui moutonne,\nAu somnolent soleil d’un midi monotone,\nTu songes, ô Guerrière, aux vieux Conquistadors ;\n\nEt dans l’énervement des nuits chaudes et calmes, \nBerçant ta gloire éteinte, ô Cité, tu t’endors \nSous les palmiers, au long frémissement des palmes.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%80_une_Ville_morte",
       "tags": [
@@ -1132,7 +1136,7 @@
       "titulo": "Les Trophées/Émail",
       "texto": "Le four rougit ; la plaque est prête. Prends ta lampe.\nModèle le paillon qui s’irise ardemment, \nEt fixe avec le feu dans le sombre pigment \nLa poudre étincelante où ton pinceau se trempe. \n\nDis, ceindras-tu de myrte ou de laurier la tempe \nDu penseur, du héros, du prince ou de l’amant ? \nPar quel Dieu feras-tu, sur un noir firmament, \nCabrer l’hydre écaillée ou le glauque hippocampe ? \n\nNon. Plutôt, en un orbe éclatant de saphir \nInscris un fier profil de guerrière d’Ophir, \nThalestris, Bradamante, Aude ou Penthésilée. \n\nEt pour que sa beauté soit plus terrible encor, \nCasque ses blonds cheveux de quelque bête ailée \nEt fais bomber son sein sous la gorgone d’or.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%89mail",
       "tags": []
@@ -1141,7 +1145,7 @@
       "titulo": "Les Trophées/Épigramme funéraire",
       "texto": "Ici gît, Étranger, la verte sauterelle\nQue durant deux saisons nourrit la jeune Hellé,\nEt dont l’aile vibrant sous le pied dentelé\nBruissait dans le pin, le cytise ou l’airelle.\n\nElle s’est tue, hélas ! la lyre naturelle,\nLa muse des guérets, des sillons et du blé ;\nDe peur que son léger sommeil ne soit troublé,\nAh ! passe vite, ami, ne pèse point sur elle.\n\nC’est là. Blanche, au milieu d’une touffe de thym,\nSa pierre funéraire est fraîchement posée.\nQue d’hommes n’ont pas eu ce suprême destin !\n\nDes larmes d’un enfant sa tombe est arrosée,\nEt l’Aurore pieuse y fait chaque matin\nUne libation de gouttes de rosée.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%89pigramme_fun%C3%A9raire",
       "tags": []
@@ -1150,7 +1154,7 @@
       "titulo": "Les Trophées/Épigramme votive",
       "texto": "Au rude Arès ! À la belliqueuse Discorde !\nAide-moi, je suis vieux, à suspendre au pilier\nMes glaives ébréchés et mon lourd bouclier,\nEt ce casque rompu qu’un crin sanglant déborde.\n\nJoins-y cet arc. Mais, dis, convient-il que je torde\nLe chanvre autour du bois ? — c’est un dur néflier\nQue nul autre jamais n’a su faire plier —\nOu que d’un bras tremblant je tende encor la corde ?\n\nPrends aussi le carquois. Ton œil semble chercher\nEn leur gaine de cuir les armes de l’archer,\nLes flèches que le vent des batailles disperse ;\n\nIl est vide. Tu crois que j’ai perdu mes traits ?\nAu champ de Marathon tu les retrouverais,\nCar ils y sont restés dans la gorge du Perse.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%89pigramme_votive",
       "tags": []
@@ -1159,7 +1163,7 @@
       "titulo": "Les Trophées/Épiphanie",
       "texto": "Donc, Balthazar, Melchior et Gaspar, les Rois Mages,\nChargés de nefs d’argent, de vermeil et d’émaux\nEt suivis d’un très long cortège de chameaux,\nS’avancent, tels qu’ils sont dans les vieilles images.\n\nDe l’Orient lointain, ils portent leurs hommages\nAux pieds du fils de Dieu né pour guérir les maux\nQue souffrent ici-bas l’homme et les animaux ;\nUn page noir soutient leurs robes à ramages.\n\nSur le seuil de l’étable où veille Saint Joseph,\nIls ôtent humblement la couronne du chef\nPour saluer l’Enfant qui rit et les admire.\n\nC’est ainsi qu’autrefois, sous Augustus Cæsar,\nSont venus, présentant l’or, l’encens et la myrrhe,\nLes Rois Mages Gaspar, Melchior et Balthazar.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%89piphanie",
       "tags": []
@@ -1168,7 +1172,7 @@
       "titulo": "Les Trophées/Épitaphe",
       "texto": "Ô passant, c’est ici que repose Hyacinte\nQui fut de son vivant seigneur de Maugiron ;\nIl est mort — Dieu l’absolve et l’ait en son giron ! —\nTombé sur le terrain, il gît en terre sainte.\n\nNul, ni même Quélus, n’a mieux, de perles ceinte,\nPorté la toque à plume ou la fraise à godron ;\nAussi vois-tu, sculpté par un nouveau Myron,\nDans ce marbre funèbre un morceau de jacinthe.\n\nAprès l’avoir baisé, fait tondre, et de sa main\nMis au linceul, Henry voulut qu’à Saint-Germain\nFût porté ce beau corps, hélas ! inerte et blême ;\n\nEt jaloux qu’un tel deuil dure éternellement,\nIl lui fit en l’église ériger cet emblème,\nDes regrets d’Appolo triste et doux monument.",
       "forma": "soneto",
-      "obra": "fr.wikisource: Les Trophées",
+      "obra": "Les Trophées",
       "ano": null,
       "fonte": "https://fr.wikisource.org/wiki/Les_Troph%C3%A9es/%C3%89pitaphe",
       "tags": []

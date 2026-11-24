@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Alphonsus_de_Guimaraens_%28facing_left%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1870,
   "morte": 1921,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Ismália",
@@ -88,7 +92,7 @@
       "titulo": "Cantem outros a clara cor virente",
       "texto": "Cantem outros a clara cor virente\nDo bosque em flor e a luz do dia eterno...\nEnvoltos nos clarões fulvos do oriente,\nCantem a primavera: eu canto o inverno.\n\nPara muitos o imoto céu clemente\nÉ um manto de carinho suave e terno:\nCantam a vida, e nenhum deles sente\nQue decantando vai o próprio inferno.\n\nCantem esta mansão, onde entre prantos\nCada um espera o sepulcral punhado\nDe úmido pó que há de abafar-lhe os cantos...\n\nCada um de nós é a bússola sem norte.\nSempre o presente pior do que o passado.\nCantem outros a vida: eu canto a morte...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Cantem_outros_a_clara_cor_virente",
       "tags": [
@@ -101,7 +105,7 @@
       "titulo": "Pastoral aos crentes do amor e da morte (1923)/O cinnamomo floresce",
       "texto": "O cinnamomo floresce\nEm frente do teu postigo:\nCada flor murcha que desce\nMorre de sonhar comtigo.\n\nE as folhas verdes que vejo\nCahidas por sobre o solo,\nChamadas pelo teu beijo\nVão procurar o teu collo.\n\nAi! Senhora, se eu pudesse\nSer o cinnamomo antigo\nQue em flores rôxas floresce\nEm frente do teu postigo!\n\nVerias talvez, ai! como\nSão tristes em noite calma\nAs flores do cinnamomo\nDe que está cheia a minh’alma!",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_%281923%29/O_cinnamomo_floresce",
       "tags": [
@@ -115,7 +119,7 @@
       "titulo": "Pastoral aos crentes do amor e da morte (1923)/Cysnes brancos",
       "texto": "O’ cysnes brancos, cysnes brancos,\nPorque viestes, se era tão tarde?\nO sol não beija mais os flancos\nDa montanha onde morre a tarde.\n\nO’ cysnes brancos, dolorida,\nMinh’alma sente dores novas.\nCheguei á terra promettida:\nE’ um deserto cheio de covas.\n\nVoae para outras risonhas plagas,\nCysnes brancos! Sêde felizes...\nDeixae-me só com as minhas chagas,\nE só com as minhas cicatrizes.\n\nVenham as aves agoireiras,\nDe risada que esfria os ossos...\nMinh’alma, cheia de caveiras,\nEstá branca de padre-nossos.\n\nQueimando a carne como brazas,\nVenham as tentações damninhas,\nQue eu lhes porei, bem sob as azas,\nA alma cheia de ladainhas.\n\nO’ cysnes brancos, cysnes brancos,\nDoce afago de alva plumagem!\nMinh’alma morre aos solavancos\nNesta medonha carruagem...",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_%281923%29/Cysnes_brancos",
       "tags": [
@@ -128,7 +132,7 @@
       "titulo": "Como se moço e não bem velho eu fosse",
       "texto": "Como se moço e não bem velho eu fosse,\nUma nova ilusão veio animar-me,\nNa minh'alma floriu um novo carme,\nO meu ser para o céu alcandorou-se.\n\nOuvi gritos em mim como um alarme.\nE o meu olhar, outrora suave e doce,\nNas ânsias de escalar o azul, tornou-se\nTodo em raios, que vinham desolar-me.\n\nVi-me no cimo eterno da montanha\nTentando unir ao peito a luz dos círios\nQue brilhavam na paz da noite estranha.\n\nAcordei do áureo sonho em sobressalto;\nDo céu tombei ao caos dos meus martírios,\nSem saber para que subi tão alto...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Como_se_mo%C3%A7o_e_n%C3%A3o_bem_velho_eu_fosse",
       "tags": [
@@ -140,7 +144,7 @@
       "titulo": "Deus é a luz celestial que os astros unge e veste",
       "texto": "Deus é a luz celestial que os astros unge e veste,\nE dessa eterna luz nós todos fomos feitos.\nUm fulgor de orações brilha nos nossos peitos:\nÉ o reflexo estelar dessa origem celeste.\n\nO homem mais louco e vil, cuja alma ímpia se creste\nAos fogos infernais dos mais torpes defeitos,\nDe vez em quando sente esplendores eleitos,\nQue tombam nele como o luar sobre um cipreste.\n\nQuem não sentiu no peito a carícia divina,\nA enchê-lo de clarões na transparência hialina\nDe um astro que cintila em pleno azul sem véus?\n\nTudo é luz na nossa alma, e o mais vil, o mais louco,\nBem sabe que esta vida é um sol que dura pouco\nE que Deus vive em nós como dentro dos céus...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Deus_%C3%A9_a_luz_celestial_que_os_astros_unge_e_veste",
       "tags": [
@@ -151,7 +155,7 @@
       "titulo": "Pastoral aos crentes do amor e da morte (1923)/Minh’alma é a torre de uma egreja",
       "texto": "Minh’alma é a torre de uma egreja:\nPassa de lucto o sacristão...\nA coruja que nella adeja\nE’ o meu proprio coração.\n\nE o sacristão que nunca dorme\n(E’ um esqueleto que não conheço.)\nSobe a escadaria enorme\nQue não tem fim nem tem começo.\n\nSobe e põe-se lá de cima,\nComo dolente trovador que é,\nA dizer versos onde a rima\nE’ a uncção de um peito cheio de fé.\n\nSão psalmos tristes, mortuarios,\nProfundas preces de penitencia.\nSurgem imagens de calvarios,\nNo fim de cada uma existencia.\n\nMatinas, vesperas, completas,\nSoluçam na sua voz.\nSeguem-se horas de silencio, inquietas,\nDe uma agonia atroz.\n\nE o sacristão, todo de preto,\nBeija o retrato de uma dama.\nE’ bem gentil este esqueleto\nFazendo um gesto de quem ama.\n\nSó neste instante é que, fitando\nOs finos ossos que Deus me deu,\nMe reconheço no miserando\nEspectro vil: sou eu! sou eu!\n\nQuando morre quem quer que seja,\nO sacristão põe-se a rezar.\nMinh’alma é a torre de uma egreja,\nQue tem um sino sempre a dobrar...",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_%281923%29/Minh%E2%80%99alma_%C3%A9_a_torre_de_uma_egreja",
       "tags": [
@@ -164,7 +168,7 @@
       "titulo": "Mãos de finada, aquelas mãos de neve",
       "texto": "Mãos de finada, aquelas mãos de neve,\nDe tons marfíneos, de ossatura rica,\nPairando no ar, num gesto brando e leve,\nQue parece ordenar, mas que suplica.\n\nErguem-se ao longe como se as eleve\nAlguém que ante os altares sacrifica:\nMãos que consagram, mãos que partem breve,\nMas cuja sombra nos meus olhos fica...\n\nMãos de esperança para as almas loucas,\nBrumosas mãos que vêm brancas, distantes,\nFechar ao mesmo tempo tantas bocas...\n\nSinto-as agora, ao luar, descendo juntas,\nGrandes, magoadas, pálidas, tateantes,\nCerrando os olhos das visões defuntas...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/M%C3%A3os_de_finada%2C_aquelas_m%C3%A3os_de_neve",
       "tags": [
@@ -176,7 +180,7 @@
       "titulo": "Ninguém anda com Deus mais do que eu ando",
       "texto": "Ninguém anda com Deus mais do que eu ando,\nNinguém segue os seus passos como sigo.\nNão bendigo a ninguém, e nem maldigo:\nTudo é morto num peito miserando.\n\nVejo o sol, vejo a lua e todo o bando\nDas estrelas no olímpico jazigo.\nA misteriosa mão de Deus o trigo\nQue ela plantou aos poucos vai ceifando.\n\nE vão-se as horas em completa calma.\nUm dia (já vem longe ou já vem perto?)\nTudo que sofro e que sofri se acalma.\n\nAh se chegasse em breve o dia incerto!\nFar-se-á luz dentro em mim, pois a minh’alma\nSerá trigo de Deus no céu aberto...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Ningu%C3%A9m_anda_com_Deus_mais_do_que_eu_ando",
       "tags": [
@@ -189,7 +193,7 @@
       "titulo": "Pastoral aos crentes do amor e da morte (1923)/Olhos",
       "texto": "Olhos sublimes, sombras chinezas,\nSob a arcaria das sobrancelhas...\nSolar magnifico, onde princezas\nPassam de tunicas vermelhas...\n\nOlhos de poente, luares remotos\nPor entre torres inaccessiveis...\nRosas e lirios, goivos e lotos,\nRôxas violetas impassoveis...\n\nOlhos viuvos, santos, blasphemos,\nLadainha dos Sete Peccados...\nNuvens doiradas de crysanthemos,\nSonhos de mysticos noivados...\n\nOlhos pungentes, que choraes tanto,\nDias de lucto, noites em calma...\nInstrumentados por algum Santo\nPara o responso da minh’alma...\n\nOlhos profundos, florindo juntos,\nCheios do sangue dos sacrificios...\nEças armadas para defuntos,\nDobres dos ultimos officios...\n\nOlhos, olhares evocadores\nDe espectros mudos de altivo porte...\nFechae a campa dos meus amores,\nOfficiantes da minha morte!",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_%281923%29/Olhos",
       "tags": [
@@ -203,7 +207,7 @@
       "titulo": "Olhos sublimes, onde os Anjos cantam salmos",
       "texto": "Per istam Sanctam Unctionem, et suam piissimam misericordiam, indulgeat tibi Dominus quidquid peccasti per visum, per auditum, per odoratum, per gustum, per tactum, per incessum...\n\nOlhos sublimes, onde os Anjos cantam salmos\nLonge do resplendor das paixões transitórias:\nE vós, conchas do Amor de Deus, ouvidos almos,\nQue nada ouvistes a não ser hinos e glórias:\n\nLábios em oração, dolentemente calmos,\nQue repetistes sempre as Sagradas Memórias:\nVós, brancas mãos, que já tínheis medido os palmos\n\nDa cova incerta, vós, brancas mãos incorpóreas:\nPés doloridos, pés de arminho, acostumados\nA caminhar por sobre o chão dos cemitérios\nE de pisar no mundo impuro fatigados:\n\nLábios pungentes, mãos e pés, olhos e ouvidos,\nQuietos e frios para sempre entre mistérios,\nPor toda a eternidade eternamente ungidos!",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Olhos_sublimes%2C_onde_os_Anjos_cantam_salmos",
       "tags": [
@@ -216,7 +220,7 @@
       "titulo": "Pulchra ut Luna",
       "texto": "Celeste... É assim, divina, que te chamas.\nBelo nome tu tens, Dona Celeste...\nQue outro terias entre humanas damas,\nTu que embora na terra do céu vieste?\n\nCeleste... E como tu és do céu não amas:\nForma imortal que o espírito reveste\nDe luz, não temes sol, não temes chamas,\nPorque és sol, porque és luar, sendo celeste.\n\nIncoercível como a melancolia,\nAndas em tudo: o sol no poente vasto\nPede-te a mágoa do findar do dia.\n\nE a lua, em meio à noite constelada,\nPede-te o luar indefinido e casto\nDa tua palidez de hóstia sagrada.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pulchra_ut_Luna",
       "tags": [
@@ -227,7 +231,7 @@
       "titulo": "Responsorium",
       "texto": "Alma que teve quem dela se recordasse\nNa ignóbil terra infiel onde tudo se esquece:\n                   Requiescat in pace.\n\nCorpo a esperar que o Noivo-Esperado chegasse,\nRosa autunal que o sol do Amor não mais aquece:\n                   Requiescat in pace.\n\nOlhar que se apagou sem que nunca pecasse,\nCiliciado altair que entre luares floresce:\n                   Requiescat in pace.\n\nLábio que dera a quem neste mundo a beijasse\nA luz espiritual de uma longínqua prece:\n                   Requiescat in pace.\n\nBeijo, fruto estival que lhe floriu na face,\nEvocador de tão prometedora messe:\n                   Requiescat in pace.\n\nCabelo, pôr-do-sol que entre neves brilhasse,\nNuvem dispersa além quando a tarde anoitece:\n                   Requiescat in pace.\n\nAlma que teve quem dela se recordasse\nNa ignóbil terra infiel onde tudo se esquece:\n                   Requiescat in pace.",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Responsorium",
       "tags": [
@@ -240,7 +244,7 @@
       "titulo": "Pastoral aos crentes do amor e da morte (1923)/Rosas que já vos fostes, desfolhadas",
       "texto": "Rosas que já vos fostes, desfolhadas\nPor mãos tambem que já se foram, rosas\nSuaves e tristes! Rosas que as amadas,\nMortas tambem, beijaram suspirosas...\n\nUmas rubras e vans, outras fanadas,\nMas cheias do calor das amorosas...\nSois aroma de alfombras silenciosas\nOnde dormiram tranças destrançadas.\n\nUmas brancas, da côr das pobres freiras,\nOutras cheias de viço e de frescura,\nRosas primeiras, rosas derradeiras!\n\nAi! quem melhor que vós, se a dôr perdura,\nPara coroar-me, rosas passageiras,\nO sonho que se esvae na desventura?",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Pastoral_aos_crentes_do_amor_e_da_morte_%281923%29/Rosas_que_j%C3%A1_vos_fostes%2C_desfolhadas",
       "tags": [
@@ -252,7 +256,7 @@
       "titulo": "Sempre vivi com a morte dentro da alma",
       "texto": "Sempre vivi com a morte dentro da alma,\nSempre tacteei nas trevas de um jazigo.\nA sombra que me envolve é eterna e calma,\nE sigo sem saber quem vai comigo.\n\nO fantasma que o coração me ensalma\nNão me ouve mais as orações que digo.\nNão existe no solo uma só palma\nPela alameda olímpica que sigo...\n\nVós que ao meu lado viestes, visionários\nDa esperança! fi castes no caminho,\nEnvolvidos nas dobras dos sudários...\n\nQue seria de mim, se eu não tivesse\nO calor subalar do teu carinho,\nÓ minha ânsia, ó meu sonho, ó minha prece!",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Sempre_vivi_com_a_morte_dentro_da_alma",
       "tags": [
@@ -265,7 +269,7 @@
       "titulo": "Terceira dor",
       "texto": "É Sião que dorme ao luar. Vozes diletas\nModulam salmos de visões contritas...\nE a sombra sacrossanta dos Profetas\nMelancoliza o canto dos levitas.\n\nAs torres brancas, terminando em setas,\nOnde velam, nas noites infinitas,\nMil guerreiros sombrios como ascetas,\nErguem ao Céu as cúpulas benditas.\n\nAs virgens de Israel as negras comas\nAromatizam com os ungüentos brancos\ndos nigromantes de mortais aromas...\n\nJerusalém, em meio às Doze Portas,\nDorme: e o luar que lhe vem beijar os flancos\nEvoca ruínas de cidades mortas.",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Terceira_dor",
       "tags": [
@@ -276,7 +280,7 @@
       "titulo": "Vagueiam suavemente os teus olhares",
       "texto": "Vagueiam suavemente os teus olhares\nPelo amplo céu franjado em linho:\nComprazem-te as visões crepusculares...\nTu és uma ave que perdeu o ninho.\n\nEm que nichos doirados, em que altares\nRepoisas, anjo errante, de mansinho?\nE penso, ao ver-te envolta em véus de luares,\nQue vês no azul o teu caixão de pinho.\n\nÉs a essência de tudo quanto desce\nDo solar das celestes maravilhas...\nHarpa dos crentes, cítola da prece...\n\nLua eterna que não tivesse fases,\nCintilas branca, imaculada brilhas,\nE poeiras de astros nas sandálias trazes...",
       "forma": "soneto",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Vagueiam_suavemente_os_teus_olhares",
       "tags": [
@@ -288,7 +292,7 @@
       "titulo": "Árias e canções",
       "texto": "A suave castelã das horas mortas\nAssoma à torre do castelo. As portas,\nQue o rubro ocaso em onda ensangüentara,\nBrilham do luar à Luz celeste e clara.\nComo em órbitas de fatais caveiras\nOlhos que fossem de defuntas freiras,\nOs astros morrem pelo céu pressago...\nSão como círios a tombar num lago.\nE o céu, diante de mim, todo escurece...\nE eu nem sei de cor uma só prece!\nPobre Alma, que me queres, que me queres?\nSão assim todas, todas as mulheres.\nHirta e branca... Repousa a sua áurea cabeça\nNuma almofada de cetim bordada em lírios.\nEi-la morta afinal como quem adormeça\nAqui para sofrer Além novos martírios.\nDe mãos postas, num sonho ausente, a sombra espessa\nDo seu corpo escurece a luz dos quatro círios:\nEla faz-me pensar numa ancestral Condessa\nDa Idade Média, morta em sagrados delírios.\nOs poentes sepulcrais do extremo desengano\nVão enchendo de luto as paredes vazias,\nE velam para sempre o seu olhar humano.\nExpira, ao longe, o vento, e o luar, longinquamente,\nAlveja, embalsamando as brancas agonias\nNa sonolenta paz desta Câmara-ardente...",
       "forma": "outro",
-      "obra": "pt.wikisource: Alphonsus de Guimaraens",
+      "obra": null,
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/%C3%81rias_e_can%C3%A7%C3%B5es",
       "tags": [

@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Qu_Yuan_Chen_Hongshou_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": -340,
   "morte": -278,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "CN",
   "poemas": [
     {
       "titulo": "離騷 (Li Sao) — versos iniciais",

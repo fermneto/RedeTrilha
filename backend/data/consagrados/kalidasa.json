@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 380,
   "morte": 450,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "IN",
   "poemas": [
     {
       "titulo": "Kumarasambhava (कुमारसम्भवम्) — Canto I, estrofes iniciais (o Himalaia)",

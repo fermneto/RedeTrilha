@@ -5,6 +5,10 @@
   "avatar_url": "",
   "nascimento": 1763,
   "morte": 1828,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": "JP",
   "poemas": [
     {
       "titulo": "[雪とけて村いっぱいの子供かな]",

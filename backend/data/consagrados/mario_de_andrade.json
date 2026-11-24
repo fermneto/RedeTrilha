@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Mario_de_andrade_1928b.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 1893,
   "morte": 1945,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Inspiração",

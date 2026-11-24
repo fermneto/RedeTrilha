@@ -5,6 +5,10 @@
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/%E6%9D%8E%E7%99%BD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
   "nascimento": 701,
   "morte": 762,
+  "escolas": [
+    "classica_oriental"
+  ],
+  "pais": null,
   "poemas": [
     {
       "titulo": "靜夜思",

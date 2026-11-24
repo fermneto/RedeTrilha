@@ -2,6 +2,8 @@
 
 from datetime import UTC, datetime, timedelta
 
+from sqlalchemy import select
+
 from app.db import SessionLocal
 from app.models.comentario import Comentario
 from app.models.post import Post
@@ -140,16 +142,56 @@ def test_cursor_estavel_com_tipos_misturados_e_mesma_data(client, como):
     assert paginas == inteiro
 
 
-def test_rascunhos_reposts_puros_e_rengas_fechadas_ficam_de_fora(client, como):
+def test_rascunhos_e_rengas_fechadas_ficam_de_fora(client, como):
     r = client.post("/rascunhos", json={"texto": "rascunho secreto"}, headers=como("ana"))
     assert r.status_code == 201
-    original = _poema(client, como, "bia", "original", BASE)
-    assert client.post(f"/posts/{original}/repostar", headers=como("caio")).status_code == 204
+    _poema(client, como, "bia", "publicado", BASE)
     renga_id = _renga(client, como, "caio", BASE)
     assert client.post(f"/rengas/{renga_id}/encerrar", headers=como("caio")).status_code == 200
 
     for quem in ("ana", "bia"):
-        assert _resumo(_para_voce(client, como, quem)) == [("poema", "original", None, [])]
+        assert _resumo(_para_voce(client, como, quem)) == [("poema", "publicado", None, [])]
+
+
+def _repostar(client, como, quem: str, post_id: int, data: datetime) -> None:
+    assert client.post(f"/posts/{post_id}/repostar", headers=como(quem)).status_code == 204
+    with SessionLocal() as db:
+        repost = db.scalar(
+            select(Post).where(Post.autor_id == _id(quem), Post.repost_de_id == post_id)
+        )
+        repost.created_at = data
+        db.commit()
+
+
+def _id(username: str) -> int:
+    with SessionLocal() as db:
+        return db.scalar(select(User.id).where(User.username == username))
+
+
+def test_repost_puro_sobe_o_poema_uma_vez_com_repostado_por(client, como):
+    original = _poema(client, como, "bia", "original", BASE)
+    _poema(client, como, "caio", "do caio", BASE + timedelta(hours=1))
+    _repostar(client, como, "caio", original, BASE + timedelta(hours=2))
+    _repostar(client, como, "ana", original, BASE + timedelta(hours=3))
+
+    itens = _para_voce(client, como, "bia")["items"]
+    assert [(i["texto"], [u["username"] for u in i["repostado_por"]]) for i in itens] == [
+        ("original", ["ana", "caio"]),
+        ("do caio", []),
+    ]
+    assert itens[0]["id"] == original
+
+    # Um comentário depois do repost sobe o poema de novo, agora com o rótulo do comentário.
+    _comentar(client, como, "caio", original, BASE + timedelta(hours=4))
+    [primeiro, _] = _para_voce(client, como)["items"]
+    assert (primeiro["subiu_por"], primeiro["repostado_por"]) == ("comentario", [])
+
+
+def test_repost_de_poema_apagado_some(client, como):
+    original = _poema(client, como, "bia", "vai sumir", BASE)
+    _repostar(client, como, "caio", original, BASE + timedelta(hours=1))
+    assert client.delete(f"/posts/{original}", headers=como("bia")).status_code == 204
+    assert _para_voce(client, como)["items"] == []
 
 
 def test_consagrados_nao_afogam_a_rede(client, como):

@@ -4,12 +4,16 @@
   "bio": "Frei e poeta mineiro do Arcadismo. Caramuru é a epopeia do achamento da Bahia e de Diogo Álvares Correia, par a par com O Uraguai no século XVIII brasileiro. Entra o excerto de abertura, não o poema inteiro.",
   "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Santa_Rita_Dur%C3%A3o_1981_Brazil_stamp.jpg",
   "morte": 1784,
+  "escolas": [
+    "arcadismo_neoclassicismo"
+  ],
+  "pais": "BR",
   "poemas": [
     {
       "titulo": "Caramuru/I (estrofes iniciais)",
       "texto": "I.\nDe hum Varão em mil caſos agitado,\nQue as praias diſcorrendo do Occidente,\nDescubrio o Reconcavo affamado\nDa Capital Brazilica potente:\nDo Filho do Trovão denominado,\nQue o peito domar ſoube á fera gente;\nO valor cantarei na adverſa ſorte,\nPois ſó conheço Heróe quem nella he forte.\nII.\nSanto Eſplendor, que do grão Padre manas\nAo ſeio intacto de huma Virgem bella,\nSe da enchente de luzes Soberanas\nTudo diſpenſas pela Mãi Donzella;\nRompendo as ſombras de illusões humanas,\nTu do grão caſo a pura luz revéla;\nFaze que em ti comece, e em ti conclua\nEſta grande Obra, que por fim foi tua.\n\nIII.\nE vós, Principe excelſo, do Ceo dado\nPara baſe immortal do Luſo Throno;\nVós, que do aureo Brazil no Principado\nDa Real ſuceſsão ſois alto abono:\nEm quanto o Imperio tendes deſcançado",
       "forma": "outro",
-      "obra": "pt.wikisource: Caramuru",
+      "obra": "Caramuru",
       "ano": null,
       "fonte": "https://pt.wikisource.org/wiki/Caramuru/I",
       "tags": []
