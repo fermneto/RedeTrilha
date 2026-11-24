@@ -1,0 +1,20 @@
+{
+  "username": "basilio_da_gama",
+  "name": "Basílio da Gama",
+  "bio": "Poeta fluminense do Arcadismo. O Uraguai, epopeia em versos brancos sobre a guerra contra as missões jesuíticas, é o poema narrativo mais célebre do século XVIII brasileiro. Aqui entra só a abertura do canto I, não a epopeia inteira.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Bas%C3%ADlio_da_Gama.jpg",
+  "morte": 1795,
+  "poemas": [
+    {
+      "titulo": "O Uraguai/I (estrofes iniciais)",
+      "texto": "Fumam ainda nas desertas praias\nLagos de sangue tépidos e impuros\nEm que ondeiam cadáveres despidos,\nPasto de corvos. Dura inda nos vales\nO rouco som da irada artilheria.\nMusa, honremos o Herói que o povo rude\nSubjugou do Uraguai, e no seu sangue\nDos decretos reais lavou a afronta.\nAi tanto custas, ambição de império!\nE Vós, por quem o Maranhão pendura\nRotas cadeias e grilhões pesados,\nHerói e irmão de heróis, saudosa e triste\nSe ao longe a vossa América vos lembra,\nProtegei os meus versos. Possa entanto\nAcostumar ao vôo as novas asas\nEm que um dia vos leve. Desta sorte\nMedrosa deixa o ninho a vez primeira\nÁguia, que depois foge à humilde terra\nE vai ver de mais perto no ar vazio\nO espaço azul, onde não chega o raio.\nJá dos olhos o véu tinha rasgado\nA enganada Madri, e ao Novo Mundo\nDa vontade do Rei núncio severo\nAportava Catâneo: e ao grande Andrade",
+      "forma": "outro",
+      "obra": "pt.wikisource: O Uraguai",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/O_Uraguai/I",
+      "tags": [
+        "morte"
+      ]
+    }
+  ]
+}

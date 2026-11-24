@@ -36,3 +36,6 @@ docs/review-painel-v2.md
 
 # typescript incremental build
 *.tsbuildinfo
+
+# cache do scraper de consagrados (HTML da API; não versionar)
+backend/scripts/scraping/cache/

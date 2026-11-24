@@ -1,0 +1,24 @@
+{
+  "username": "joao_de_deus",
+  "name": "João de Deus",
+  "bio": "Poeta português do lirismo simples de Campo de flores. À margem das escolas, o verso curto e sentimental ficou na memória popular e na leitura escolar do fim do século XIX.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Joao_de_Deus_Ramos.jpg",
+  "morte": 1896,
+  "poemas": [
+    {
+      "titulo": "Primaveras romanticas (1872)/Poesias diversas/Resposta (de João de Deus)",
+      "texto": "Em fumo se vai tudo, amigo! Olhando\nPara as nuvens do ceu (nuvens d’aquellas,\nE até não sei se diga que mais bellas...)\nAnda a gente fazendo e desmanchando!\n\nDá-me uma saudade, em me lembrando\nDo bello tempo que passei com ellas,\nPor essa immensa abobada de estrellas,\nPor esse mar de fogo viajando!\n\nAndasse eu inda lá, que não me havia\nDe vêr por estes charcos atolado,\nOnde nem sol nem lua me alumia!\n\nAndasse eu inda lá... desenganado,\nMesmo já como estou, de achar um dia\nA patria de onde ando desterrado!",
+      "forma": "soneto",
+      "obra": "pt.wikisource: João de Deus",
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Primaveras_romanticas_%281872%29/Poesias_diversas/Resposta_%28de_Jo%C3%A3o_de_Deus%29",
+      "tags": [
+        "natureza",
+        "noite",
+        "patria",
+        "religiao"
+      ]
+    }
+  ],
+  "nascimento": 1830
+}

@@ -365,5 +365,10 @@ acima: é ela que tiraria o termo n·t.
     Wikiquote). Foram validados e não foram alterados: saíram os poemas com
     defeito, e a única limpeza foi mecânica, nos caracteres invisíveis e no TAB
     do início dos versos (#45 e #49).
+  - A expansão do bloco em português (coleções inteiras no pt.wikisource, mais
+    poetas novos em domínio público) foi preparada com agente. Cada texto foi
+    copiado da página do poema; o que já existia não mudou de título nem de
+    obra. O relatório está em `backend/data/consagrados/_relatorio_expansao.md`.
+    A revisão e o merge continuam humanos.
 - **Henrique:** _(completar com a ferramenta e o uso próprio)_
 - **Pedro:** _(completar com a ferramenta e o uso próprio)_
