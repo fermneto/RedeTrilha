@@ -14,7 +14,7 @@ class User(Base):
     username: Mapped[str] = mapped_column(String(30), unique=True, index=True)
     name: Mapped[str] = mapped_column(String(80))
     bio: Mapped[str] = mapped_column(String(1000), default="")
-    avatar_url: Mapped[str] = mapped_column(String(300), default="")
+    avatar_url: Mapped[str] = mapped_column(String(500), default="")
     # None = conta sem login: os consagrados.
     password_hash: Mapped[str | None] = mapped_column(String(100), default=None)
     consagrado: Mapped[bool] = mapped_column(default=False)

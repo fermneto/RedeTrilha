@@ -71,6 +71,10 @@ O backend aceita `postgresql://` e `postgres://` e troca sozinho para o driver
 psycopg 3. As tabelas são criadas no primeiro boot do Render
 (`create_all`), e não há nada a fazer no SQL Editor.
 
+Se a tabela `users` já existir no Postgres (criada antes do limite de 500
+caracteres da `avatar_url`), rode uma vez no SQL Editor:
+`ALTER TABLE users ALTER COLUMN avatar_url TYPE varchar(500);`
+
 ## Passo 2: chave da Anthropic só para a demo
 
 A tradução fica ligada na URL pública, limitada a 30 traduções por hora por

@@ -83,12 +83,16 @@ def test_editar_perfil_valida_os_campos(client, logar):
         {"name": ""},
         {"name": "x" * 81},
         {"bio": "x" * 1001},
-        {"avatar_url": "x" * 301},
+        {"avatar_url": "x" * 501},
         {"name": None},
         {"bio": None},
     ):
         assert client.patch("/usuarios/eu", json=corpo, headers=ana).status_code == 422, corpo
     # a bio de 1000 caracteres (a dos consagrados) cabe
+    url = "https://exemplo.com/"
+    assert len(url + "a" * 480) == 500
+    assert client.patch("/usuarios/eu", json={"avatar_url": url + "a" * 480}, headers=ana).status_code == 200
+    assert client.patch("/usuarios/eu", json={"avatar_url": url + "a" * 481}, headers=ana).status_code == 422
     assert client.patch("/usuarios/eu", json={"bio": "x" * 1000}, headers=ana).status_code == 200
 
 
@@ -143,7 +147,7 @@ def test_poemas_do_perfil_paginam_por_cursor(client, logar):
         ({"name": ""}, "o nome é obrigatório e tem até 80 caracteres"),
         ({"name": "x" * 81}, "o nome é obrigatório e tem até 80 caracteres"),
         ({"bio": "x" * 1001}, "a bio tem até 1000 caracteres"),
-        ({"avatar_url": "https://exemplo.com/" + "a" * 300}, "a avatar_url tem até 300 caracteres"),
+        ({"avatar_url": "https://exemplo.com/" + "a" * 482}, "a avatar_url tem até 500 caracteres"),
         ({"avatar_url": "exemplo.com/a.png"}, "avatar_url deve ser vazia ou uma URL http(s) válida"),
         ({"name": None}, "o nome não pode ser null"),
         ({"bio": None}, "a bio não pode ser null"),

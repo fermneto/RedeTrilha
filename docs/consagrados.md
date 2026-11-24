@@ -38,7 +38,7 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
   "username": "augusto_dos_anjos",   // [a-z0-9_]{3,30}
   "name": "Augusto dos Anjos",
   "bio": "Poeta paraibano (Cruz do Espírito Santo). Autor de um único livro, Eu.",
-  "avatar_url": "https://...",        // opcional, "" se não houver
+  "avatar_url": "https://...",        // opcional, até 500 caracteres; "" se não houver
   "nascimento": 1884,                 // opcional (ano incerto → omita); perfil mostra só "† 1914"
   "morte": 1914,                      // obrigatório; > 1955 é recusado (domínio público)
   "escolas": ["simbolismo", "pre_modernismo"],  // opcional; códigos de ESCOLAS (abaixo)

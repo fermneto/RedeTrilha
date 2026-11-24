@@ -92,7 +92,7 @@ descreve o código atual; o OpenAPI completo está em `localhost:8000/docs`.
 | `username` | `str` (30), único | `[a-z0-9_]{3,30}`, fora de `USERNAMES_RESERVADOS` (`schemas/user.py`) |
 | `name` | `str` (80) | obrigatório |
 | `bio` | `str` (1000) | consagrados têm bio maior |
-| `avatar_url` | `str` (300) | vazia ou URL http(s) |
+| `avatar_url` | `str` (500) | vazia ou URL http(s) |
 | `password_hash` | `str \| None` | `None` = conta consagrada, **sem login** (login → 401) |
 | `consagrado` | `bool`, default `False` | selo no perfil e no card |
 | `nascimento` | `int \| None` | ano (negativo = a.C.); só consagrados, opcional |

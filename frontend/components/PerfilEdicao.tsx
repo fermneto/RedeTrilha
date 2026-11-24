@@ -61,7 +61,7 @@ export function PerfilEdicao({ perfil, aoSalvar, aoCancelar }: Props) {
           type="url"
           value={avatarUrl}
           onChange={(e) => setAvatarUrl(e.target.value)}
-          maxLength={300}
+          maxLength={500}
           placeholder="https://..."
           className={`${campo} mt-1`}
         />
