@@ -370,8 +370,11 @@ PRs, na seção "Decisões do Neto".
   - **O cartão é o perfil:** avatar, nome com selo, @, os anos de vida (no
     consagrado) ou a bio (no poeta da rede), poemas, seguidores e o botão
     seguir. O cartão inteiro leva ao perfil.
-- **O que cortamos e por quê:** a tela não filtra por escola literária, por forma nem
-  por país, e o cartão não mostra trecho de poema.
+- **O que cortamos e por quê:** os filtros por escola literária, forma e
+  país, e o trecho de poema no cartão. A afinidade por escola e forma já
+  orienta as sugestões de quem seguir (decisão 11), e a forma tem o Explorar
+  (decisão 3): o Acervo é para achar um poeta pelo nome, pela língua e pela
+  época. O cartão é o perfil, e o poema se lê no perfil.
 
 ### O que ficou de fora e por quê
 
