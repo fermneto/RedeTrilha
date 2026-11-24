@@ -69,6 +69,8 @@ class PostOut(BaseModel):
     repostei: bool = False
     repost_de: "PostOut | None" = None
     tags: list[str] = []
+    # Só no feed: quem repostou, quando o item entrou por um repost puro.
+    repostado_por: UserOut | None = None
 
 
 class PostPage(BaseModel):

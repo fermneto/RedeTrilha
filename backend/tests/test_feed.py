@@ -61,22 +61,84 @@ def test_feed_vazio_sem_seguir_ninguem(client, como):
     assert (r.json()["total"], r.json()["items"]) == (0, [])
 
 
-def test_feed_traz_reposts_e_curtidas(client, como):
+def _repostar(autor: str, original: int, texto: str = "") -> int:
+    """Repost direto no banco: a rota de repost é da H5 e ainda não existe."""
     from app.db import SessionLocal
     from app.models.post import Post
     from app.services.users import buscar_por_username
 
+    with SessionLocal() as db:
+        post = Post(
+            autor_id=buscar_por_username(db, autor).id, texto=texto, repost_de_id=original
+        )
+        db.add(post)
+        db.commit()
+        return post.id
+
+
+def test_repost_puro_de_seguido_traz_o_original_com_quem_repostou(client, como):
     original = _postar(client, como, "caio", "do caio")
     client.post(f"/posts/{original}/curtir", headers=como("ana"))
-    with SessionLocal() as db:
-        bia = buscar_por_username(db, "bia")
-        db.add(Post(autor_id=bia.id, texto="", repost_de_id=original))
-        db.commit()
+    _repostar("bia", original)
     client.post("/usuarios/bia/follow", headers=como("ana"))
 
     r = client.get("/feed", headers=como("ana"))
-    [repost] = r.json()["items"]
-    assert repost["repost_de_id"] == original
-    assert repost["repost_de"]["texto"] == "do caio"
-    assert (repost["repost_de"]["curtidas"], repost["repost_de"]["curti"]) == (1, True)
-    assert (repost["curtidas"], repost["curti"]) == (0, False)
+    [item] = r.json()["items"]
+    assert (item["id"], item["texto"]) == (original, "do caio")
+    assert item["repostado_por"]["username"] == "bia"
+    assert (item["curtidas"], item["curti"]) == (1, True)
+
+
+def test_poema_repetido_aparece_uma_vez_na_ocorrencia_mais_recente(client, como):
+    original = _postar(client, como, "bia", "da bia")
+    _postar(client, como, "caio", "do caio")
+    _repostar("ana", original)
+    depois = _postar(client, como, "bia", "bia depois")
+    _repostar("caio", original)
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+    client.post("/usuarios/caio/follow", headers=como("ana"))
+
+    r = client.get("/feed", headers=como("ana"))
+    assert r.json()["total"] == 3
+    itens = r.json()["items"]
+    assert [p["id"] for p in itens][:2] == [original, depois]
+    assert itens[0]["repostado_por"]["username"] == "caio"
+    assert itens[1]["repostado_por"] is None
+    assert itens[2]["texto"] == "do caio"
+
+    r = client.get("/feed?offset=1&limit=5", headers=como("ana"))
+    assert [p["texto"] for p in r.json()["items"]] == ["bia depois", "do caio"]
+
+
+def test_citacao_nao_deduplica_com_o_original(client, como):
+    original = _postar(client, como, "bia", "da bia")
+    citacao = _repostar("caio", original, texto="olha esse verso")
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+    client.post("/usuarios/caio/follow", headers=como("ana"))
+
+    r = client.get("/feed", headers=como("ana"))
+    assert [p["id"] for p in r.json()["items"]] == [citacao, original]
+    citado = r.json()["items"][0]
+    assert citado["repostado_por"] is None
+    assert citado["repost_de"]["texto"] == "da bia"
+
+
+def test_repost_puro_de_poema_apagado_fica_fora(client, como):
+    original = _postar(client, como, "caio", "do caio")
+    _repostar("bia", original)
+    client.delete(f"/posts/{original}", headers=como("caio"))
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+
+    r = client.get("/feed", headers=como("ana"))
+    assert (r.json()["total"], r.json()["items"]) == (0, [])
+
+
+def test_repostado_por_fica_none_fora_do_feed(client, como):
+    original = _postar(client, como, "caio", "do caio")
+    _repostar("bia", original)
+    assert client.get(f"/posts/{original}", headers=como("ana")).json()["repostado_por"] is None
+
+
+def test_feed_sem_limite_maximo_de_pagina(client, como):
+    r = client.get("/feed?limit=500", headers=como("ana"))
+    assert (r.status_code, r.json()["limit"]) == (200, 500)
