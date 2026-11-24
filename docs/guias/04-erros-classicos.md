@@ -60,7 +60,7 @@ the "use client" directive.
 Causa: página com estado ou efeito sem `"use client"` na primeira linha.
 
 Conserto: adicionem `"use client";` na primeira linha do arquivo, antes dos
-imports. Referência: `app/usuarios/page.tsx`.
+imports. Referência: `app/acervo/page.tsx`.
 
 ## 4. failed to fetch
 
