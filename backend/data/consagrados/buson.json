@@ -1,0 +1,140 @@
+{
+  "username": "buson",
+  "name": "Yosa Buson",
+  "bio": "Yosa Buson, poeta e pintor japonês do período Edo, nascido perto de Osaka. Segundo grande mestre do haicai depois de Bashō, fez uma poesia visual e luminosa, ligada à sua pintura. Foi redescoberto no fim do século XIX por Masaoka Shiki.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Yosa_Buson.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1716,
+  "morte": 1784,
+  "poemas": [
+    {
+      "titulo": "[なの花や月は東に日は西に]",
+      "texto": "なの花や月は東に日は西に",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "primavera",
+        "lua",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[五月雨や大河を前に家二軒]",
+      "texto": "五月雨や大河を前に家二軒",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "chuva",
+        "rio",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[月天心貧しき町を通りけり]",
+      "texto": "月天心貧しき町を通りけり",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "lua",
+        "pobreza",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[牡丹散りて打ちかさなりぬ二三片]",
+      "texto": "牡丹散りて打ちかさなりぬ二三片",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "flores",
+        "efemero",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[夏河を越すうれしさよ手に草履]",
+      "texto": "夏河を越すうれしさよ手に草履",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "verao",
+        "alegria",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[鳥羽殿へ五六騎急ぐ野分かな]",
+      "texto": "鳥羽殿へ五六騎急ぐ野分かな",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "historia",
+        "outono",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[春風や堤長うして家遠し]",
+      "texto": "春風や堤長うして家遠し",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "primavera",
+        "saudade",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[菜の花や鯨もよらず海暮れぬ]",
+      "texto": "菜の花や鯨もよらず海暮れぬ",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "primavera",
+        "mar",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[秋風のうごかしてゆく案山子かな]",
+      "texto": "秋風のうごかしてゆく案山子かな",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "outono",
+        "campo",
+        "japones"
+      ]
+    },
+    {
+      "titulo": "[橋なくて日くれんとする春の水]",
+      "texto": "橋なくて日くれんとする春の水",
+      "forma": "haicai",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://ja.wikiquote.org/wiki/%E4%B8%8E%E8%AC%9D%E8%95%AA%E6%9D%91",
+      "tags": [
+        "primavera",
+        "rio",
+        "japones"
+      ]
+    }
+  ]
+}

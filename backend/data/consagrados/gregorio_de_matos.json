@@ -1,0 +1,82 @@
+{
+  "username": "gregorio_de_matos",
+  "name": "Gregório de Matos",
+  "bio": "Poeta baiano do Barroco, formado em Coimbra. Apelidado de Boca do Inferno pela sátira feroz contra a sociedade colonial de Salvador, foi também autor de líricas amorosas e poemas religiosos de grande força. Desterrado para Angola, morreu no Recife. É considerado o primeiro grande poeta do Brasil.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Greg%C3%B3rio_de_Matos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1636,
+  "morte": 1696,
+  "poemas": [
+    {
+      "titulo": "Triste Bahia",
+      "texto": "Triste Bahia! Oh quão dessemelhante\nEstás, e estou do nosso antigo estado!\nPobre te vejo a ti, tu a mi empenhado,\nRica te vejo eu já, tu a mi abundante.\n\nA ti tocou-te a máquina mercante,\nQue em tua larga barra tem entrado,\nA mim foi-me trocando, e tem trocado\nTanto negócio, e tanto negociante.\n\nDeste em dar tanto açúcar excelente\nPelas drogas inúteis, que abelhuda\nSimples aceitas do sangaz Brichote.\n\nOh se quisera Deus, que de repente\nUm dia amanheceras tão sisuda\nQue fora de algodão o teu capote!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Triste_Bahia!_Oh_qu%C3%A3o_dessemelhante",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Buscando a Cristo",
+      "texto": "A vós correndo vou, braços sagrados,\nNessa cruz sacrossanta descobertos\nQue, para receber-me, estais abertos,\nE, por não castigar-me, estais cravados.\n\nA vós, divinos olhos, eclipsados\nDe tanto sangue e lágrimas abertos,\nPois, para perdoar-me, estais despertos,\nE, por não condenar-me, estais fechados.\n\nA vós, pregados pés, por não deixar-me,\nA vós, sangue vertido, para ungir-me,\nA vós, cabeça baixa, p'ra chamar-me\n\nA vós, lado patente, quero unir-me,\nA vós, cravos preciosos, quero atar-me,\nPara ficar unido, atado e firme.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Buscando_a_Cristo",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Pequei, Senhor",
+      "texto": "Pequei, Senhor, mas não porque hei pecado,\nDa vossa piedade me despido,\nPorque quanto mais tenho delinqüido,\nVos tenho a perdoar mais empenhado.\n\nSe basta a vos irar tanto um pecado,\nA abrandar-nos sobeja um só gemido,\nQue a mesma culpa, que vos há ofendido,\nVos tem para o perdão lisonjeado.\n\nSe uma ovelha perdida, e já cobrada\nGlória tal, e prazer tão repentino\nvos deu, como afirmais na Sacra História:\n\nEu sou, Senhor, a ovelha desgarrada\nCobrai-a, e não queirais, Pastor divino,\nPerder na vossa ovelha a vossa glória.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Pequei,_Senhor,_mas_n%C3%A3o_porque_hei_pecado",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Discreta e formosíssima Maria",
+      "texto": "Discreta e formosíssima Maria,\nEnquanto estamos vendo a qualquer hora\nEm tuas faces a rosada Aurora,\nEm teus olhos, e boca o Sol, e o dia:\n\nEnquanto com gentil descortesia\nO ar, que fresco Adônis te namora,\nTe espalha a rica trança voadora,\nQuando vem passear-te pela fria:\n\nGoza, goza, da flor da mocidade,\nQue o tempo trota a toda ligeireza,\nE imprime em toda a flor sua pisada.\n\nOh não aguardes, que a madura idade\nTe converta em flor, essa beleza\nEm terra, em cinza, em pó, em sombra, em nada.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Discreta_e_formos%C3%ADssima_Maria",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Epílogos",
+      "texto": "Que falta nesta cidade?................Verdade\nQue mais por sua desonra?...........Honra\nFalta mais que se lhe ponha..........Vergonha.\n\nO demo a viver se exponha,\nPor mais que a fama a exalta,\nnuma cidade, onde falta\nVerdade, Honra, Vergonha.\n\nQuem a pôs neste socrócio?..........Negócio\nQuem causa tal perdição?.............Ambição\nE o maior desta loucura?...............Usura.\n\nNotável desventura\nde um povo néscio, e sandeu,\nque não sabe, que o perdeu\nNegócio, Ambição, Usura.\n\nQuais são os seus doces objetos?....Pretos\nTem outros bens mais maciços?.....Mestiços\nQuais destes lhe são mais gratos?...Mulatos.\n\nDou ao demo os insensatos,\ndou ao demo a gente asnal,\nque estima por cabedal\nPretos, Mestiços, Mulatos.\n\nQuem faz os círios mesquinhos?...Meirinhos\nQuem faz as farinhas tardas?.........Guardas\nQuem as tem nos aposentos?.........Sargentos.\n\nOs círios lá vêm aos centos,\ne a terra fica esfaimando,\nporque os vão atravessando\nMeirinhos, Guardas, Sargentos.\n\nE que justiça a resguarda?.............Bastarda\nÉ grátis distribuída?......................Vendida\nQue tem, que a todos assusta?.......Injusta.\n\nValha-nos Deus, o que custa,\no que El-Rei nos dá de graça,\nque anda a justiça na praça\nBastarda, Vendida, Injusta.\n\nQue vai pela clerezia?..................Simonia\nE pelos membros da Igreja?..........Inveja\nCuidei, que mais se lhe punha?.....Unha.\n\nSazonada caramunha!\nenfim que na Santa Sé\no que se pratica, é\nSimonia, Inveja, Unha.\n\nE nos frades há manqueiras?.........Freiras\nEm que ocupam os serões?............Sermões\nNão se ocupam em disputas?.........Putas.\n\nCom palavras dissolutas\nme concluís na verdade,\nque as lidas todas de um Frade são\nFreiras, Sermões, e Putas.\n\nO açúcar já se acabou?..................Baixou\nE o dinheiro se extinguiu?.............Subiu\nLogo já convalesceu?.....................Morreu.\n\nÀ Bahia aconteceu\no que a um doente acontece,\ncai na cama, o mal lhe cresce,\nBaixou, Subiu, e Morreu.\n\nA Câmara não acode?...................Não pode\nPois não tem todo o poder?...........Não quer\nÉ que o governo a convence?........Não vence.\n\nQue haverá que tal pense,\nque uma Câmara tão nobre\npor ver-se mísera, e pobre\nNão pode, não quer, não vence.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Ep%C3%ADlogos",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    },
+    {
+      "titulo": "Neste mundo é mais rico o que mais rapa",
+      "texto": "Neste mundo é mais rico, o que mais rapa:\nQuem mais limpo se faz, tem mais carepa:\nCom sua língua ao nobre o vil decepa:\nO Velhaco maior sempre tem capa.\n\nMostra o patife da nobreza o mapa:\nQuem tem mão de agarrar, ligeiro trepa;\nQuem menos falar pode, mais increpa:\nQuem dinheiro tiver, pode ser Papa.\n\nA flor baixa se inculca por Tulipa;\nBengala hoje na mão, ontem garlopa:\nMais isento se mostra, o que mais chupa.\n\nPara a tropa do trapo vazo a tripa,\nE mais não digo, porque a Musa topa\nEm apa, epa, ipa, opa, upa.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Neste_mundo_%C3%A9_mais_rico,_o_que_mais_rapa",
+      "tags": [
+        "satira",
+        "portugues"
+      ]
+    }
+  ]
+}

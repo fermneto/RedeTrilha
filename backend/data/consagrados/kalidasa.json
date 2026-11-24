@@ -1,0 +1,36 @@
+{
+  "username": "kalidasa",
+  "name": "Kalidasa",
+  "bio": "Maior poeta e dramaturgo do sânscrito clássico, ligado à corte Gupta por volta do século V (datas aproximadas e muito discutidas). Autor do drama Shakuntala e dos poemas Meghaduta (A Nuvem Mensageira) e Kumarasambhava, que fixaram o ideal da poesia clássica indiana.",
+  "avatar_url": "",
+  "nascimento": 380,
+  "morte": 450,
+  "poemas": [
+    {
+      "titulo": "Kumarasambhava (कुमारसम्भवम्) — Canto I, estrofes iniciais (o Himalaia)",
+      "texto": "अस्त्युत्तरस्यां दिशि देवतात्मा हिमालयो नाम नगाधिराजः ।\nपूर्वापरौ तोयनिधी वगाह्य स्थितः पृथिव्या इव मानदण्डः ।। १. १ ।।\n\nयं सर्वशैलाः परिकल्प्य वत्सं मेरौ स्थिते दौग्धरि दोहदक्षे ।\nभास्वन्ति रत्नानि महौषधीश्च पृथूपदिष्टां दुदुहुर्धरित्रीम् ।। १. २ ।।\n\nअनन्तरत्नप्रभवस्य यस्य हिमं न सौभाग्यविलोपि जातम्।\nएको हि दोषो गुणसन्निपाते निमज्जतीन्दोः किरणेष्विवाङ्कः ।। १. ३ ।।\n\nयश्चाप्सरोविभ्रममण्डनानां संपादयित्रीं शीखरैबिभर्ति ।\nबलाहकच्छेदविभक्तरागामकालसंध्यामिव धातुमत्ताम् ।। १.४ ।।",
+      "forma": "outro",
+      "obra": "Kumarasambhava",
+      "ano": null,
+      "fonte": "https://sa.wikisource.org/wiki/%E0%A4%95%E0%A5%81%E0%A4%AE%E0%A4%BE%E0%A4%B0%E0%A4%B8%E0%A4%AE%E0%A5%8D%E0%A4%AD%E0%A4%B5%E0%A4%AE%E0%A5%8D/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A5%E0%A4%AE%E0%A4%83_%E0%A4%B8%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%83",
+      "tags": [
+        "mitologia",
+        "montanha",
+        "sanscrito"
+      ]
+    },
+    {
+      "titulo": "Ritusamhara (ऋतुसंहारम्) — Canto I, o verão (estrofes iniciais)",
+      "texto": "प्रचण्डसूर्यः स्पृहणीयचन्द्रमाः सदावगाहक्षतवारिसंचयः   ।\nदिनान्तरम्योऽभ्युपशान्तमन्मथो निदाघकालोऽयमुपागतः प्रिये   ।। १.१  ।।\n\nनिशाः शशाङ्कक्षतनीलराजयः क्वचिद्विचित्रं जलयन्त्रमन्दिरं  ।\nमणिप्रकाराः सरसं च चन्दनं शुचौ प्रिये यान्ति जनस्य सेव्यतां  ।। १.२  ।।\n\nसुवासितं हर्म्यतलं मनोहरं प्रियामुखोच्छ्वासविकम्पितं मधु   ।\nसुतन्त्रिगीतं मदनस्य दीपनं शुचौ निशीथेऽनुभवन्ति कामिनः   ।। १.३  ।।\n\nनितम्बबिम्बैः सदुकूलमेखलैः स्तनैः सहाराभरणैः सचन्दनैः   ।\nशिरोरुहैः स्नानकषायवासितैः स्त्रियो निदाघं शमयन्ति कामिनां  ।। १.४  ।।",
+      "forma": "outro",
+      "obra": "Ritusamhara",
+      "ano": null,
+      "fonte": "https://sa.wikisource.org/wiki/%E0%A4%8B%E0%A4%A4%E0%A5%81%E0%A4%B8%E0%A4%82%E0%A4%B9%E0%A4%BE%E0%A4%B0%E0%A4%AE%E0%A5%8D/%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A5%E0%A4%AE%E0%A4%83_%E0%A4%B8%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%83",
+      "tags": [
+        "estacoes",
+        "natureza",
+        "sanscrito"
+      ]
+    }
+  ]
+}

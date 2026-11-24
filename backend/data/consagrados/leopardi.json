@@ -1,0 +1,49 @@
+{
+  "username": "leopardi",
+  "name": "Giacomo Leopardi",
+  "bio": "Giacomo Leopardi, poeta e filósofo de Recanati. Erudito precoce, escreveu os Canti, com poemas como L'infinito e A Silvia, de profundo pessimismo e beleza musical. É o maior poeta italiano do século XIX.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Giacomo_Leopardi_Morelli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1798,
+  "morte": 1837,
+  "poemas": [
+    {
+      "titulo": "La quiete dopo la tempesta",
+      "texto": "     Passata è la tempesta:\nodo augelli far festa, e la gallina,\ntornata in su la via,\nche ripete il suo verso. Ecco il sereno\nrompe lá da ponente, alla montagna:\nsgombrasi la campagna,\ne chiaro nella valle il fiume appare.\nOgni cor si rallegra, in ogni lato\nrisorge il romorio,\ntorna il lavoro usato.\nL’artigiano a mirar l’umido cielo,\ncon l’opra in man, cantando,\nfassi in su l’uscio; a prova\nvien fuor la femminetta a côr dell’acqua\ndella novella piova;\ne l’erbaiuol rinnova\ndi sentiero in sentiero\nil grido giornaliero.\nEcco il sol che ritorna, ecco sorride\nper li poggi e le ville. Apre i balconi,\napre terrazzi e logge la famiglia:\n\ne, dalla via corrente, odi lontano\ntintinnio di sonagli; il carro stride\ndel passeggier che il suo cammin ripiglia.\n\n     Si rallegra ogni core.\nSí dolce, sí gradita\nquand’è, com’or, la vita?\nQuando con tanto amore\nl’uomo a’ suoi studi intende?\no torna all’opre? o cosa nova imprende?\nquando de’ mali suoi men si ricorda?\nPiacer figlio d’affanno;\ngioia vana, ch’è frutto\ndel passato timore, onde si scosse\ne paventò la morte\nchi la vita abborria;\nonde in lungo tormento,\nfredde, tacite, smorte,\nsudâr le genti e palpitâr, vedendo\nmossi alle nostre offese\nfolgori, nembi e vento.\n\n     O natura cortese,\nson questi i doni tuoi,\nquesti i diletti sono\nche tu porgi ai mortali. Uscir di pena\nè diletto fra noi.\nPene tu spargi a larga mano; il duolo\nspontaneo sorge: e di piacer, quel tanto\nche per mostro e miracolo talvolta\nnasce d’affanno, è gran guadagno. Umana\nprole cara agli eterni! assai felice\nse respirar ti lice\nd’alcun dolor; beata\nse te d’ogni dolor morte risana.",
+      "forma": "outro",
+      "obra": "Canti",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Canti_(Leopardi_-_Donati)/XXIV._La_quiete_dopo_la_tempesta",
+      "tags": [
+        "natureza",
+        "melancolia",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "A se stesso",
+      "texto": "     Or poserai per sempre,\nstanco mio cor. Perí l’inganno estremo,\nch’eterno io mi credei. Perí. Ben sento,\nin noi di cari inganni,\nnon che la speme, il desiderio è spento.\nPosa per sempre. Assai\npalpitasti. Non val cosa nessuna\ni moti tuoi, né di sospiri è degna\nla terra. Amaro e noia\nla vita, altro mai nulla; e fango è il mondo.\nT’acqueta omai. Dispera\nl’ultima volta. Al gener nostro il fato\nnon donò che il morire. Omai disprezza\nte, la natura, il brutto\npoter che, ascoso, a comun danno impera,\ne l’infinita vanitá del tutto.",
+      "forma": "outro",
+      "obra": "Canti",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Canti_(Leopardi_-_Donati)/XXVIII._A_se_stesso",
+      "tags": [
+        "natureza",
+        "melancolia",
+        "italiano"
+      ]
+    },
+    {
+      "titulo": "All'Italia",
+      "texto": "       O patria mia, vedo le mura e gli archi\nE le colonne e i simulacri e l’erme\nTorri de gli avi nostri,\nMa la gloria non vedo,\nNon vedo il lauro e ’l ferro ond’eran carchi\nI nostri padri antichi. Or fatta inerme,\nNuda la fronte e nudo il petto mostri.\nOimè quante ferite,\nChe lividor, che sangue: oh qual ti veggio,\nFormosissima donna. Io chiedo al cielo\nE al mondo: dite dite;\nChi la ridusse a tale? E questo è ’l peggio\nChe di catene ha carche ambe le braccia;\nSì che sparte le chiome e senza velo\nSiede in terra negletta e sconsolata,\nNascondendo la faccia\nTra le ginocchia, e piange.\nPiangi, chè n’hai ben donde, Italia mia,\nLe genti a vincer nata\nE ne la fausta sorte e ne la ria.\n\n        Se fosser gli occhi miei due fonti vive,\nNon potrei pianger tanto\nCh’adeguassi il tuo danno e men lo scorno;\nChè fosti donna, or se’ povera ancella.\nChi di te parla o scrive\nChe rimembrando il tuo passato vanto,\nNon dica; già fu grande, or non è quella?\nPerchè, perchè? dov’è la forza antica,\nDove l’armi e ’l valore e la costanza?\nChi ti discinse il brando?\nChi ti tradì? qual arte o qual fatica\nO qual tanta possanza\nValse a spogliarti il manto e l’auree bende?\nCome cadesti o quando\nDa tanta altezza in così basso loco?\nNessun pugna per te? non ti difende\nNessun de’ tuoi? L’armi, qua l’armi: io solo\nCombatterò, procomberò sol io.\nDammi o Ciel, che sia foco\nA gl’italici petti il sangue mio.\n\n       Dove sono i tuoi figli? Odo suon d’armi\nE di carri e di voci e di timballi:\nIn estranie contrade\nPugnano i tuoi figliuoli.\nAttendi, Italia, attendi. Io veggio, o parmi,\nUn fluttuar di fanti e di cavalli,\nE fumo e polve, e luccicar di spade\nCome tra nebbia lampi.\nE taci, e piangi, e i tremebondi lumi\nPiegar non soffri al dubitoso evento?\nA che pugna in quei campi\nL’itala gioventude? O numi o numi:\nPugnan per altra terra itali acciari.\nOh misero colui che in guerra è spento,\nNon per li patrii lidi e per la pia\nConsorte e i figli cari,\nMa da’ nemici altrui\nPer altra gente, e non può dir morendo;\nAlma terra natia,\nLa vita che mi desti ecco ti rendo.\n\n        Oh venturose e care e benedette\nLe antich’età, che a morte\nPer la patria correan le genti a squadre;\nE voi sempre onorate e gloriose\nO tessaliche strette,\nDove la Persia e ’l fato assai men forte\nFu di poch’alme franche e generose.\nIo credo che le piante e i sassi e l’onda\nE le montagne vostre al passeggere\nCon indistinta voce\nNarrin siccome tutte quella sponda\nCoprír le invitte schiere\nDe’ corpi ch’a la Grecia eran devoti.\nAllor vile e feroce\nSerse per l’Ellesponto si fuggia,\nFatto ludibrio a gli ultimi nepoti;\nE sul colle d’Antela, ove morendo\nSi sottrasse da morte il santo stuolo,\nSimonide salia,\nGuardando l’etra e la marina e ’l suolo.\n\n       E di lagrime sparso ambe le guance,\nE ’l petto ansante, e vacillante il piede,\nToglieasi in man la lira:\nBeatissimi voi,\nCh’offriste il petto a le nemiche lance\nPer amor di costei ch’al sol vi diede;\nVoi che la Grecia cole, e ’l mondo ammira.\nNe l’armi e ne’ perigli\nQual tanto amor le giovanette menti.\nQual ne l’acerbo fato amor vi trasse?\nCome sì lieta o figli,\nL’ora estrema v’apparve, onde ridenti\nCorreste al passo lagrimoso e duro?\nParea ch’a danza e non a morte andasse\nCiascun de’ vostri o a splendido convito:\nMa v’attendea lo scuro\nTartaro e l’onda morta,\nNè le spose vi fóro o i figli accanto\nQuando su l’aspro lito\nSenza baci moriste e senza pianto.\n\n       Ma non senza de’ Persi orrida pena\nEd immortale angoscia.\nCome lion di tori entro una mandra\nOr salta a quello in tergo e sì gli scava\nCon le zanne la schiena,\nOr questo fianco addenta or quella coscia;\nTal fra le pérse torme infuriava\nL’ira de’ greci petti e la virtute.\nVe’ cavalli supini e cavalieri;\nVedi intralciar de’ vinti\nLa fuga i carri e le tende cadute,\nE correr fra’ primieri\nPallido e scapigliato esso tiranno;\nVe’ come infusi e tinti\nDel barbarico sangue i greci eroi\nCagione a i Persi d’infinito affanno,\nA poco a poco vinti da le piaghe,\nL’un sopra l’altro cade. Evviva evviva:\nBeatissimi voi\nMentre nel mondo si favelli o scriva.\n\n        Prima divelte, in mar precipitando,\nSpente ne l’imo strideran le stelle,\nChe la memoria e ’l vostro\nAmor trascorra o scemi.\nAra vi fia la tomba; e qua mostrando\nVerran le madri a i parvoli le belle\nOrme del vostro sangue. Ecco i’ mi prostro\nO benedetti, al suolo,\nE bacio questi sassi e queste zolle\nChe fien lodate e chiare eternamente\nDa l’uno a l’altro polo.\nDeh foss’io pur con voi qui sotto, e molle\nFosse del sangue mio quest’alma terra.\nChe se ripugna il fato, e non consente\nCh’io per la Grecia i moribondi lumi\nChiuda prostrato in guerra,\nCosì la vereconda\nFama del vostro vate appo i futuri\nPossa, volendo i numi,\nTanto durar quanto la vostra duri.",
+      "forma": "outro",
+      "obra": "Canti",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Canzoni_(1824)/All'Italia",
+      "tags": [
+        "natureza",
+        "melancolia",
+        "italiano"
+      ]
+    }
+  ]
+}

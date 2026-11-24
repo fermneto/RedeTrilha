@@ -32,6 +32,14 @@ from app.schemas.consagrado import Consagrado, PoemaConsagrado, idioma_da_fonte
 
 PASTA_CONSAGRADOS = Path(__file__).resolve().parents[1] / "data" / "consagrados"
 JANELA_DO_FEED = timedelta(days=30)
+# O scraper marca cada poema com a língua do original. A língua não é tema: essas tags
+# ficam fora do índice (os JSONs não mudam). Lista conferida nos JSONs de data/consagrados.
+TAGS_DE_LINGUA = frozenset(
+    {
+        "alemao", "arabe", "bengali", "chines", "espanhol", "frances", "grego", "ingles",
+        "italiano", "japones", "latim", "persa", "portugues", "russo", "sanscrito",
+    }
+)
 
 
 class ArquivoConsagradoInvalido(ValueError):
@@ -154,7 +162,7 @@ def _gravar_poema(
     post.ano = poema.ano
     post.fonte = poema.fonte
     post.idioma = idioma_da_fonte(poema.fonte)
-    post.tags_extras = list(poema.tags)
+    post.tags_extras = [tag for tag in poema.tags if tag not in TAGS_DE_LINGUA]
     db.flush()
 
 

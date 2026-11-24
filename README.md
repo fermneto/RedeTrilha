@@ -52,6 +52,8 @@ make dev-front  # site em localhost:3000/usuarios
 
 Se algum comando falhar, vejam o [guia 00](docs/guias/00-setup.md).
 
+Deploy público (Render + Vercel): [docs/deploy.md](docs/deploy.md).
+
 ## Tradução
 
 O botão "Traduzir" do card traduz o poema para a língua do navegador com o

@@ -18,6 +18,12 @@ def test_forma_entra_como_tag():
     assert extrair_tags("sem hashtag nenhuma", "haicai") == {"haicai"}
 
 
+def test_forma_outro_nao_vira_tag_mas_a_hashtag_outro_sim():
+    assert extrair_tags("sem hashtag nenhuma", "outro") == set()
+    assert extrair_tags("um verso #outro", "outro") == {"outro"}
+    assert extrair_tags("#mar", "soneto") == {"mar", "soneto"}
+
+
 def test_posts_da_tag_mais_novo_primeiro_e_empate_pelo_maior_id():
     indice = IndiceTags()
     indice.indexar(1, {"amor"}, dias_atras(3))

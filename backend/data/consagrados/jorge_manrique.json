@@ -1,0 +1,63 @@
+{
+  "username": "jorge_manrique",
+  "name": "Jorge Manrique",
+  "bio": "Poeta e soldado castelhano, morto em combate. Suas Coplas por la muerte de su padre, elegia sobre a fugacidade da vida e a igualdade diante da morte, são um dos poemas mais célebres da língua espanhola.",
+  "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Jorge_Manrique_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "nascimento": 1440,
+  "morte": 1479,
+  "poemas": [
+    {
+      "titulo": "Coplas por la muerte de su padre — copla I (Recuerde el alma dormida)",
+      "texto": "Recuerde el alma dormida,\nabiue el seso y despierte,\n      contemplando\ncomo se passa la vida,\ncomo se viene la muerte\n      tan callando;\nquan presto se va el plazer,\ncomo después de acordado\n      da dolor,\ncomo, a nuestro paresçer,\nqualquiera tiempo passado\n      fue mejor.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1476,
+      "fonte": "https://es.wikisource.org/wiki/Coplas_por_la_muerte_de_su_padre/1",
+      "tags": [
+        "morte",
+        "tempo",
+        "pai",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Coplas por la muerte de su padre — copla III (Nuestras vidas son los ríos)",
+      "texto": "Nuestras vidas son los rios\nque van a dar en la mar\n      que es el morir:\nalli van los señorios\nderechos a se acabar\n      y consumir;\nalli los rios caudales,\nalli los otros, medianos\n      y mas chicos,\nallegados son yguales,\nlos que biuen por sus manos\n      y los ricos.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1476,
+      "fonte": "https://es.wikisource.org/wiki/Coplas_por_la_muerte_de_su_padre/3",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Coplas por la muerte de su padre — copla XL (final)",
+      "texto": "Asi con tal entender,\ntodos sentidos humanos\n      conseruados,\nçercado de su muger,\nde sus fijos y hermanos\n      y criados,\ndio el alma a quien ge la dio,\nel qual la ponga en el çielo\n      en su gloria,\ny avnque la vida murio,\nnos dexo harto consuelo\n      su memoria.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1476,
+      "fonte": "https://es.wikisource.org/wiki/Coplas_por_la_muerte_de_su_padre/40",
+      "tags": [
+        "morte",
+        "fe",
+        "espanhol"
+      ]
+    },
+    {
+      "titulo": "Escala de amor",
+      "texto": "Estando triste, seguro,\nmi voluntad reposaba,\ncuando escalaron el muro\ndo mi libertad estaba.\n   A escala vista subieron\nvuestra beldad y mesura,\ny tan de recio hirieron,\nque vencieron mi cordura.\n\n   Luego, todos mis sentidos\nhuyeron a lo más fuerte,\nmas iban ya mal heridos\ncon sendas llagas de muerte;\n    y mi libertad quedó\nen vuestro poder cautiva;\nmas gran placer hube yo\ndesque supe que era viva.\n\n   Mis ojos fueron traidores,\nellos fueron consintientes,\nellos fueron causadores\nque entrasen aquestas gentes;\n    que el atalaya tenían,\ny nunca dijeron nada\nde la batalla que vían,\nni hicieron ahumada.\n\n   Después que hubieron entrado,\naquestos escaladores\nabrieron el mi costado\ny entraron vuestros amores;\n    y mi firmeza tomaron,\ny mi corazón prendieron,\ny mis sentidos robaron,\ny a mí sólo no quisieron.\n\n                FIN\n\n    ¡Qué gran aleve hicieron\nmis ojos y qué traición:\npor una vista que os vieron,\nvenderos mi corazón!\n\n    Pues traición tan conocida\nya les placía hacer,\nvendieron mi triste vida\ny hubiera de ello placer;\n    mas al mal que cometieron\nno tienen excusación:\n¡Por una vista que os vieron,\nvenderos mi corazón!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Escala_de_amor",
+      "tags": [
+        "morte",
+        "tempo",
+        "espanhol"
+      ]
+    }
+  ]
+}
