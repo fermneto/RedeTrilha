@@ -138,7 +138,10 @@ PRs, na seção "Decisões do Neto".
     abertas, os reposts ("repostado por") e os poemas que acabaram de receber
     comentário ou crítica ("fulano comentou", "fulano criticou os versos").
     Os consagrados entram rareados, **um a cada 3 horas**, para os milhares de
-    poemas do acervo não afogarem os poetas da rede.
+    poemas do acervo não afogarem os poetas da rede. Em cada janela entra o
+    mais recente na língua de quem vê (a do navegador ou, sem ela, a dos poemas
+    da pessoa); se a janela não tiver nenhum nessa língua, entra o mais recente
+    de qualquer língua.
   - **"Seguindo":** os poemas de quem você segue e os seus. Um poema repostado
     por vários seguidos aparece uma vez, na posição do repost mais recente, com
     todos os nomes.
@@ -334,7 +337,8 @@ PRs, na seção "Decisões do Neto".
     em comum vale 2. Ficam fora a própria pessoa, quem ela já segue e as contas
     sem poema.
   - **No "Para você", um bloco "Quem seguir"** com 3 perfis aparece a cada 10
-    itens, com "ver mais".
+    itens, com "ver mais". A tela "Quem seguir" tem no topo uma busca por nome
+    ou @, a mesma do Acervo (decisão 12).
 - **O que cortamos e por quê:**
   - **A recomendação pelo histórico de leitura e de curtidas:** seria um
     ranking por engajamento com outro nome, e pediria guardar o que cada pessoa
