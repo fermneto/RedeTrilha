@@ -16,16 +16,16 @@ def criar_post(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.para_saida(service.criar(db, user, dados))
+    return service.para_saida_de(db, service.criar(db, user, dados), user)
 
 
 @router.get("/{post_id}", response_model=PostOut)
 def ler_post(
     post_id: int,
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.para_saida(service.buscar(db, post_id))
+    return service.para_saida_de(db, service.buscar(db, post_id), user)
 
 
 @router.patch("/{post_id}", response_model=PostOut)
@@ -35,7 +35,7 @@ def editar_post(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.para_saida(service.editar(db, user, post_id, dados))
+    return service.para_saida_de(db, service.editar(db, user, post_id, dados), user)
 
 
 @router.delete("/{post_id}", status_code=204)
