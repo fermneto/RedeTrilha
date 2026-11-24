@@ -14,7 +14,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(80))
     bio: Mapped[str] = mapped_column(String(1000), default="")
     avatar_url: Mapped[str] = mapped_column(String(300), default="")
-    # None = conta sem login: consagrados e quem veio do POST /usuarios do slice.
+    # None = conta sem login: os consagrados.
     password_hash: Mapped[str | None] = mapped_column(String(100), default=None)
     consagrado: Mapped[bool] = mapped_column(default=False)
     nascimento: Mapped[int | None] = mapped_column(default=None)

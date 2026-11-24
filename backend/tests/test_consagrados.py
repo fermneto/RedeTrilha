@@ -326,10 +326,10 @@ def test_morte_depois_de_1955_nao_grava_nada(client, tmp_path, monkeypatch):
     assert _usuario("vivo_demais") is None
 
 
-def test_username_de_conta_comum_aborta_tudo(client, tmp_path):
+def test_username_de_conta_comum_aborta_tudo(client, criar_usuario, tmp_path):
     from scripts.importar_consagrados import UsernameDeUsuarioComum
 
-    client.post("/usuarios", json={"username": "b_comum", "name": "Comum"})
+    criar_usuario("b_comum", "Comum")
     escrever(tmp_path, "a_poeta.json", consagrado(username="a_poeta"))
     escrever(tmp_path, "b_comum.json", consagrado(username="b_comum"))
     with pytest.raises(UsernameDeUsuarioComum):

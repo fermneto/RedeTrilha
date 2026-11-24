@@ -181,17 +181,6 @@ def test_avatar_url_invalida_da_422_no_patch(client, logar):
         assert "http(s)" in r.json()["detail"][0]["msg"]
 
 
-def test_avatar_url_invalida_da_422_no_post_usuarios(client):
-    for url in AVATARES_INVALIDOS:
-        r = client.post("/usuarios", json={"username": "ana", "name": "Ana", "avatar_url": url})
-        assert r.status_code == 422, url
-    r = client.post(
-        "/usuarios",
-        json={"username": "ana", "name": "Ana", "avatar_url": "https://exemplo.com/a.png"},
-    )
-    assert r.status_code == 201
-
-
 def test_avatar_url_invalida_recusada_no_json_de_consagrado():
     from app.schemas.consagrado import Consagrado
 

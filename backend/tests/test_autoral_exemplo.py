@@ -7,9 +7,9 @@ limite? Um bom teste fica VERMELHO se a feature for quebrada.
 """
 
 
-def test_autoral_offset_alem_do_total_devolve_vazio_e_nao_erro(client):
+def test_autoral_offset_alem_do_total_devolve_vazio_e_nao_erro(client, criar_usuario):
     # caso de borda: paginar além do fim não é erro — é lista vazia com total certo
-    client.post("/usuarios", json={"username": "ana", "name": "Ana"})
+    criar_usuario("ana")
 
     r = client.get("/usuarios?offset=50&limit=10")
 

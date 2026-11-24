@@ -1,8 +1,4 @@
-"""Slice de exemplo completo: model → schema → service → router → página Next.
-
-Toda feature nova imita este caminho. 1 arquivo por router — registre o seu
-com uma linha em main.py.
-"""
+"""Usuários: a lista da tela Poetas e o perfil. Conta nova nasce só em POST /auth/registro."""
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -11,7 +7,7 @@ from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.feed import FeedPage
-from app.schemas.user import PerfilOut, PerfilUpdate, UserCreate, UserOut, UserPage
+from app.schemas.user import PerfilOut, PerfilUpdate, UserPage
 from app.services import perfil
 from app.services import users as service
 
@@ -25,13 +21,6 @@ def listar_usuarios(
     db: Session = Depends(get_db),
 ):
     return service.listar(db, offset, limit)
-
-
-@router.post("", response_model=UserOut, status_code=201)
-def criar_usuario(dados: UserCreate, db: Session = Depends(get_db)):
-    # slice de exemplo: cria sem senha (password_hash=None, não loga).
-    # Conta com login nasce em POST /auth/registro.
-    return service.criar(db, dados)
 
 
 # Rota fixa (/eu) antes de /{username}: o FastAPI casa na ordem de registro,

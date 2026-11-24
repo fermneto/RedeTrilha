@@ -64,7 +64,7 @@ def test_dados_criados_depois_do_seed_sobrevivem_ao_reinicio(monkeypatch):
         assert r.status_code == 200
 
 
-def test_seed_on_boot_nao_roda_se_o_banco_ja_tem_usuarios(monkeypatch):
+def test_seed_on_boot_nao_roda_se_o_banco_ja_tem_usuarios(monkeypatch, criar_usuario):
     from app.db import Base, engine
 
     from app.main import app
@@ -72,7 +72,7 @@ def test_seed_on_boot_nao_roda_se_o_banco_ja_tem_usuarios(monkeypatch):
     Base.metadata.drop_all(engine)
     monkeypatch.delenv("SEED_ON_BOOT", raising=False)
     with TestClient(app) as c:
-        c.post("/usuarios", json={"username": "unica", "name": "Única"})
+        criar_usuario("unica", "Única")
     with _bootar_com_seed(monkeypatch) as c:
         # Banco com gente: nem o seed nem a importação dos consagrados rodam.
         assert c.get("/usuarios").json()["total"] == 1
@@ -125,9 +125,9 @@ def test_cors_libera_so_a_origem_configurada(client):
 
 
 @pytest.mark.parametrize("debug", [None, "", "false", "1", "True", "yes"])
-def test_x_user_id_nunca_vale_sem_debug_true(client, monkeypatch, debug):
+def test_x_user_id_nunca_vale_sem_debug_true(client, criar_usuario, monkeypatch, debug):
     # Em produção (Render) não existe DEBUG: o header precisa ser ignorado sempre.
-    user_id = client.post("/usuarios", json={"username": "bia", "name": "Bia"}).json()["id"]
+    user_id = criar_usuario("bia")
     if debug is None:
         monkeypatch.delenv("DEBUG", raising=False)
     else:

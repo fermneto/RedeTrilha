@@ -28,10 +28,8 @@ def test_consagrado_sem_senha_nao_loga(client):
     assert r.status_code == 401
 
 
-def test_usuario_do_slice_de_exemplo_nao_loga(client):
-    r = client.post("/usuarios", json={"username": "ana", "name": "Ana"})
-    assert r.status_code == 201
-    assert r.json()["consagrado"] is False
+def test_conta_sem_senha_nao_loga(client, criar_usuario):
+    criar_usuario("ana")
 
     r = client.post("/auth/login", json={"username": "ana", "password": SENHA})
     assert r.status_code == 401
@@ -48,8 +46,8 @@ def test_token_invalido_da_401(client):
     assert r.status_code == 401
 
 
-def test_bypass_x_user_id_so_com_debug(client, monkeypatch):
-    user_id = client.post("/usuarios", json={"username": "bia", "name": "Bia"}).json()["id"]
+def test_bypass_x_user_id_so_com_debug(client, criar_usuario, monkeypatch):
+    user_id = criar_usuario("bia")
     headers = {"X-User-Id": str(user_id)}
 
     monkeypatch.delenv("DEBUG", raising=False)
@@ -81,8 +79,8 @@ def test_x_user_id_invalido_sem_debug_da_401_e_nao_422(client, monkeypatch):
     assert client.get("/auth/eu", headers={"X-User-Id": "abc"}).status_code == 401
 
 
-def test_token_invalido_da_401_mesmo_com_debug_e_x_user_id(client, monkeypatch):
-    user_id = client.post("/usuarios", json={"username": "bia", "name": "Bia"}).json()["id"]
+def test_token_invalido_da_401_mesmo_com_debug_e_x_user_id(client, criar_usuario, monkeypatch):
+    user_id = criar_usuario("bia")
     monkeypatch.setenv("DEBUG", "true")
 
     for authorization in ("Bearer nao-existe", "Basic abc", "Bearer "):
@@ -162,12 +160,6 @@ def test_registro_recusa_username_reservado(client, username):
     assert "reservado" in r.json()["detail"][0]["msg"]
 
 
-def test_username_reservado_vale_tambem_no_post_usuarios(client):
-    r = client.post("/usuarios", json={"username": "login", "name": "Alguém"})
-    assert r.status_code == 422
-    assert "reservado" in r.json()["detail"][0]["msg"]
-
-
 def test_username_que_so_contem_um_reservado_passa(client):
     r = client.post(
         "/auth/registro", json={"username": "feed_da_ana", "name": "Ana", "password": SENHA}
@@ -186,6 +178,7 @@ MSG_NOME = "o nome é obrigatório e tem até 80 caracteres"
         ({"username": "a" * 31}, MSG_USERNAME),
         ({"username": "Ana"}, MSG_USERNAME),
         ({"username": "ana-lima"}, MSG_USERNAME),
+        ({"username": "a b"}, MSG_USERNAME),
         ({"name": ""}, MSG_NOME),
         ({"name": "   "}, MSG_NOME),
         ({"name": "x" * 81}, MSG_NOME),
@@ -195,21 +188,6 @@ MSG_NOME = "o nome é obrigatório e tem até 80 caracteres"
 def test_registro_explica_o_erro_em_portugues(client, campos, mensagem):
     corpo = {"username": "ana", "name": "Ana", "password": SENHA, **campos}
     r = client.post("/auth/registro", json=corpo)
-    assert r.status_code == 422
-    assert r.json()["detail"][0]["msg"] == mensagem
-
-
-@pytest.mark.parametrize(
-    ("campos", "mensagem"),
-    [
-        ({"username": "a b"}, MSG_USERNAME),
-        ({"name": "x" * 81}, MSG_NOME),
-        ({"bio": "x" * 1001}, "a bio tem até 1000 caracteres"),
-        ({"avatar_url": "https://exemplo.com/" + "a" * 300}, "a avatar_url tem até 300 caracteres"),
-    ],
-)
-def test_post_usuarios_explica_o_erro_em_portugues(client, campos, mensagem):
-    r = client.post("/usuarios", json={"username": "ana", "name": "Ana", **campos})
     assert r.status_code == 422
     assert r.json()["detail"][0]["msg"] == mensagem
 

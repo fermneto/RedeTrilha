@@ -9,9 +9,9 @@ Todo teste tem três partes. Vejam o modelo que já vem no repo,
 `tests/test_autoral_exemplo.py`:
 
 ```python
-def test_autoral_offset_alem_do_total_devolve_vazio_e_nao_erro(client):
-    # ARRANGE: monte o cenário (pela API, nunca direto no banco)
-    client.post("/usuarios", json={"username": "ana", "name": "Ana"})
+def test_autoral_offset_alem_do_total_devolve_vazio_e_nao_erro(client, criar_usuario):
+    # ARRANGE: monte o cenário (aqui, um usuário pela fixture criar_usuario do conftest)
+    criar_usuario("ana")
 
     # ACT: a UMA ação que está sendo testada
     r = client.get("/usuarios?offset=50&limit=10")

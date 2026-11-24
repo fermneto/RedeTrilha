@@ -89,10 +89,31 @@ def logar(client):
 
 
 @pytest.fixture()
-def como(client):
+def criar_usuario():
+    """Fábrica: grava um usuário sem senha direto no banco e devolve o id.
+
+    Para testes que precisam de gente mas não do login (o /auth/registro faz um
+    bcrypt por conta). Rode depois do `client`, que cria as tabelas:
+        bia_id = criar_usuario("bia")
+    """
+    from app.db import SessionLocal
+    from app.models.user import User
+
+    def _criar(username: str, name: str | None = None) -> int:
+        with SessionLocal() as db:
+            user = User(username=username, name=name or username.title())
+            db.add(user)
+            db.commit()
+            return user.id
+
+    return _criar
+
+
+@pytest.fixture()
+def como(client, criar_usuario):
     """Troca get_current_user pelo usuário do header X-Teste-Usuario (sem depender da auth).
 
-    Cria ana, bia e caio (contas sem senha, pelo POST /usuarios). Uso:
+    Cria ana, bia e caio (contas sem senha). Uso:
         client.post("/posts", json={...}, headers=como("ana"))
     """
     from fastapi import Header
@@ -109,7 +130,7 @@ def como(client):
 
     app.dependency_overrides[get_current_user] = usuario_do_header
     for nome in ("ana", "bia", "caio"):
-        client.post("/usuarios", json={"username": nome, "name": nome.title()})
+        criar_usuario(nome)
     yield lambda username: {"X-Teste-Usuario": username}
     app.dependency_overrides.clear()
 

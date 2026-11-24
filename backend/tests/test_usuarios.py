@@ -1,9 +1,9 @@
-"""GET /usuarios (a tela Poetas) e POST /usuarios: paginação e criação."""
+"""GET /usuarios (a tela Poetas): a lista paginada. Conta nova nasce só no /auth/registro."""
 
 
-def test_lista_usuarios_paginada(client):
-    client.post("/usuarios", json={"username": "ana", "name": "Ana"})
-    client.post("/usuarios", json={"username": "bia", "name": "Bia"})
+def test_lista_usuarios_paginada(client, criar_usuario):
+    criar_usuario("bia")
+    criar_usuario("ana")
 
     r = client.get("/usuarios?offset=0&limit=1")
 
@@ -14,10 +14,17 @@ def test_lista_usuarios_paginada(client):
     assert corpo["items"][0]["username"] == "ana"
 
 
-def test_cria_usuario_e_aparece_na_lista(client):
-    r = client.post("/usuarios", json={"username": "carla", "name": "Carla"})
+def test_registro_aparece_na_lista(client):
+    senha = "senha-forte-123"
+    r = client.post("/auth/registro", json={"username": "carla", "name": "Carla", "password": senha})
     assert r.status_code == 201
-    assert r.json()["username"] == "carla"
 
     r = client.get("/usuarios")
     assert [u["username"] for u in r.json()["items"]] == ["carla"]
+
+
+def test_post_usuarios_nao_existe_mais(client):
+    """A conta sem senha do slice de exemplo saiu: criar conta é só pelo /auth/registro."""
+    r = client.post("/usuarios", json={"username": "ana", "name": "Ana"})
+    assert r.status_code in (404, 405)
+    assert client.get("/usuarios").json()["total"] == 0
