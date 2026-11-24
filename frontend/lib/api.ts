@@ -1090,6 +1090,13 @@ export function referenciaDosVersos({ inicio, fim }: SelecaoDeVersos): string {
   return inicio === fim ? `verso ${inicio}` : `versos ${inicio}–${fim}`;
 }
 
+// Se a crítica ancorada cobre o verso do filtro. Sem filtro (null), tudo entra;
+// com filtro, comentário sem âncora não entra.
+export function ancoraCobreOVerso(ancora: Ancora | null, verso: number | null): boolean {
+  if (verso === null) return true;
+  return ancora !== null && ancora.verso_inicio <= verso && verso <= ancora.verso_fim;
+}
+
 // Seleção de texto com o mouse ou o toque: vira os versos inteiros, do primeiro
 // ao último que ela toca, sem as linhas em branco das pontas. null: nada a comentar.
 export function versosDaSelecao(texto: string, tocados: number[]): SelecaoDeVersos | null {

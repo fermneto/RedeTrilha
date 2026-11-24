@@ -13,6 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { NomeAutor } from "@/components/NomeAutor";
 import {
+  ancoraCobreOVerso,
   apagarComentario,
   buscarComentarios,
   buscarComentariosDoVerso,
@@ -101,7 +102,10 @@ export function ArvoreComentarios({
 
   // Um comentário novo pode chegar de novo numa página carregada depois: fica só no topo.
   const idsNovos = new Set(meusNovos.map((c) => c.id));
-  const visiveis = [...meusNovos, ...raizes.filter((c) => !idsNovos.has(c.id))];
+  const visiveis = [
+    ...meusNovos.filter((c) => ancoraCobreOVerso(c.ancora, verso)),
+    ...raizes.filter((c) => !idsNovos.has(c.id)),
+  ];
 
   return (
     <section id="comentarios" className="space-y-4">
