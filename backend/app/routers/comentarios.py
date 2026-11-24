@@ -9,6 +9,7 @@ from app.schemas.comentario import (
     ComentarioCreate,
     ComentarioOut,
     ComentarioPage,
+    VersosComentadosOut,
 )
 from app.services import comentarios as service
 
@@ -30,10 +31,20 @@ def listar_comentarios(
     post_id: int,
     limit: Limite = 20,
     cursor: str | None = None,
+    verso: int | None = None,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.respostas_do_poema(db, post_id, limit, cursor)
+    return service.respostas_do_poema(db, post_id, limit, cursor, verso)
+
+
+@router.get("/posts/{post_id}/comentarios/versos", response_model=VersosComentadosOut)
+def versos_comentados(
+    post_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return service.versos_comentados(db, post_id)
 
 
 @router.get("/comentarios/{comentario_id}/respostas", response_model=ComentarioPage)

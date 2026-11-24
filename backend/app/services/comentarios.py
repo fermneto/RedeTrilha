@@ -19,12 +19,15 @@ from app.core import arvore_comentarios
 from app.models.comentario import Comentario
 from app.models.user import User
 from app.schemas.comentario import (
+    AncoraOut,
     ComentarioApagadoOut,
     ComentarioCreate,
     ComentarioOut,
     ComentarioPage,
+    VersosComentadosOut,
 )
 from app.schemas.user import UserOut
+from app.services import ancoras
 from app.services.cursor import codificar_cursor, ler_cursor
 from app.services.posts import original_de
 
@@ -36,9 +39,16 @@ def comentar(
 ) -> ComentarioOut:
     """Comentário no poema ou resposta. Num repost puro, vai para o original, como no X.
 
-    Pai inexistente, de outro poema ou removido dá 404.
+    Pai inexistente, de outro poema ou removido dá 404. Com `ancora`, critica
+    os versos escolhidos (ver `services/ancoras.py`); âncora inválida dá 422.
     """
-    post_id = original_de(db, post_id).id
+    poema = original_de(db, post_id)
+    post_id = poema.id
+    trecho = (
+        ancoras.validar(poema.texto, dados.parent_id, dados.ancora)
+        if dados.ancora is not None
+        else None
+    )
     if dados.parent_id is not None:
         pai = db.get(Comentario, dados.parent_id)
         if pai is None or pai.post_id != post_id or pai.removido:
@@ -47,18 +57,36 @@ def comentar(
         post_id=post_id, autor_id=autor.id, texto=dados.texto, parent_id=dados.parent_id
     )
     db.add(comentario)
+    db.flush()
+    if dados.ancora is not None:
+        ancoras.ancorar(db, comentario.id, dados.ancora, trecho)
     db.commit()
     db.refresh(comentario)
-    return _para_saida(comentario, 0, [])
+    ancora = (
+        AncoraOut(**dados.ancora.model_dump(), trecho=trecho, atual=True)
+        if dados.ancora is not None
+        else None
+    )
+    return _para_saida(comentario, 0, [], ancora)
 
 
 def respostas_do_poema(
-    db: Session, post_id: int, limit: int, cursor: str | None
+    db: Session, post_id: int, limit: int, cursor: str | None, verso: int | None = None
 ) -> ComentarioPage:
-    """Num repost puro, a conversa do original, como no POST."""
-    post_id = original_de(db, post_id).id
-    filtro = and_(Comentario.post_id == post_id, Comentario.parent_id.is_(None))
+    """Num repost puro, a conversa do original, como no POST.
+
+    Com `verso`, só as críticas cuja âncora atual cobre aquele verso.
+    """
+    poema = original_de(db, post_id)
+    filtro = and_(Comentario.post_id == poema.id, Comentario.parent_id.is_(None))
+    if verso is not None:
+        filtro = and_(filtro, Comentario.id.in_(ancoras.comentarios_no_verso(db, poema, verso)))
     return _pagina(db, filtro, None, limit, cursor)
+
+
+def versos_comentados(db: Session, post_id: int) -> VersosComentadosOut:
+    """As marcas no corpo do poema: quantas críticas cobrem cada verso."""
+    return ancoras.versos_comentados(db, original_de(db, post_id))
 
 
 def respostas_do_comentario(
@@ -85,6 +113,7 @@ def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoO
     if comentario.removido:
         return ComentarioApagadoOut(resultado="removido", total_respostas=total)
     if total == 0:
+        ancoras.apagar(db, [comentario_id])
         db.execute(delete(Comentario).where(Comentario.id == comentario_id))
         resultado = "apagado"
     else:
@@ -125,12 +154,13 @@ def _pagina(
     pagina, tem_mais = linhas[:limit], len(linhas) > limit
     carregados = pagina + _previas(db, [c.id for c in pagina])
     totais = _totais_de_respostas(db, [c.id for c in carregados])
+    ancoras_da_pagina = ancoras.das_saidas(db, carregados)
     nos = arvore_comentarios.montar(
         [(c.id, c.parent_id, c.created_at, c) for c in carregados], raiz=raiz
     )
     ultimo = pagina[-1] if pagina else None
     return ComentarioPage(
-        items=[_saida_do_no(no, totais) for no in nos],
+        items=[_saida_do_no(no, totais, ancoras_da_pagina) for no in nos],
         total=db.scalar(select(func.count()).select_from(Comentario).where(filtro)) or 0,
         limit=limit,
         proximo_cursor=(
@@ -177,13 +207,20 @@ def _totais_de_respostas(db: Session, ids: list[int]) -> dict[int, int]:
     return dict(linhas.all())
 
 
-def _saida_do_no(no: arvore_comentarios.No, totais: dict[int, int]) -> ComentarioOut:
-    respostas = [_saida_do_no(filho, totais) for filho in no.respostas]
-    return _para_saida(no.payload, totais.get(no.id, 0), respostas)
+def _saida_do_no(
+    no: arvore_comentarios.No, totais: dict[int, int], ancoras_da_pagina: dict[int, AncoraOut]
+) -> ComentarioOut:
+    respostas = [_saida_do_no(filho, totais, ancoras_da_pagina) for filho in no.respostas]
+    return _para_saida(
+        no.payload, totais.get(no.id, 0), respostas, ancoras_da_pagina.get(no.id)
+    )
 
 
 def _para_saida(
-    comentario: Comentario, total_respostas: int, respostas: list[ComentarioOut]
+    comentario: Comentario,
+    total_respostas: int,
+    respostas: list[ComentarioOut],
+    ancora: AncoraOut | None,
 ) -> ComentarioOut:
     return ComentarioOut(
         id=comentario.id,
@@ -195,4 +232,5 @@ def _para_saida(
         removido=comentario.removido,
         total_respostas=total_respostas,
         respostas=respostas,
+        ancora=ancora,
     )
