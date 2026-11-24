@@ -153,8 +153,15 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 ### Feed e posts do perfil (`FeedPage`)
 
 `GET /feed` 🔒 e `GET /usuarios/{username}/posts` 🔒 devolvem `FeedPage`
-(`schemas/feed.py`), que herda da `PostPage` e acrescenta
-`proximo_cursor: str | None`.
+(`schemas/feed.py`): uma `Pagina` de itens com `tipo`, mais
+`proximo_cursor: str | None`. Cada item é:
+
+- `PoemaNoFeed` (`tipo: "poema"`): o `PostOut` de sempre, com o campo `tipo`.
+- `RengaNoFeed` (`tipo: "renga"`): `renga: RengaDetalhe`, `atividade`
+  (`"abriu"` | `"escreveu"`) e `por: list[UserOut]`, o rótulo "fulano escreveu
+  uma estrofe" / "fulano abriu uma renga" (ver "Rengas" abaixo).
+
+O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo`.
 
 - Reposts como no X: cada poema aparece uma vez, na ocorrência mais recente.
   `repostado_por` lista todos os seguidos (e o próprio usuário) que repostaram,
@@ -164,6 +171,32 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
   `total` vem `null`; sem cursor, `offset` e `total` valem (teste do núcleo).
   `proximo_cursor` é `null` no fim.
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
+- Rengas como reposts: uma renga entra no feed de quem segue o criador ou
+  alguém que escreveu estrofe (e no de quem participou), uma vez só, na
+  estrofe mais recente de um seguido. `por` lista os seguidos que escreveram
+  depois da 1ª estrofe, quem escreveu por último primeiro; se não há, é
+  `atividade: "abriu"` e `por` = [o criador]. Fechada, continua no feed. No
+  perfil, a renga aparece na estrofe mais recente da pessoa.
+- Desempate do cursor: a posição é (data, chave), com chave = 2·id + 1 para
+  post e 2·id para estrofe; o cursor continua opaco.
+
+### Rengas (dono: Neto)
+
+Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
+`limite`, `fechada_em`, `created_at`), `estrofes_renga` (`renga_id`,
+`autor_id`, `posicao`, `texto`, unique (`renga_id`, `posicao`)) e
+`convites_renga` (unique (`renga_id`, `user_id`)).
+
+- `GET /rengas?situacao=aberta|fechada` 🔒 → `RengaPage`; `POST /rengas` 🔒
+  (`titulo`, `primeira_estrofe`, `modo`, `limite` de 3 a 40, padrão 12,
+  `convidados`) → 201 `RengaDetalhe`; `GET /rengas/{id}` 🔒.
+- `POST /rengas/{id}/estrofes` 🔒: 403 para não convidado, 409 para renga
+  fechada ou "não é a sua vez" (ninguém escreve duas seguidas).
+- `POST /rengas/{id}/encerrar` 🔒 só o criador (idempotente) e
+  `POST /rengas/{id}/convites` 🔒 só o criador, no modo convidados.
+- `RengaDetalhe`: `RengaOut` (`autores` em ordem, `qtd_estrofes`, `fechada`)
+  mais `estrofes`, `convidados`, `posso_escrever` e `motivo`.
+- Qualquer pessoa logada lê qualquer renga; só os convidados escrevem nas de convidados.
 
 ### `Follow` (dono: Neto)
 
