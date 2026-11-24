@@ -78,8 +78,38 @@ def listar(
 
 def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
     renga = _buscar(db, renga_id)
-    estrofes = _estrofes(db, renga.id)
-    convidados = _convidados(db, renga.id)
+    return _detalhe(renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario)
+
+
+def detalhar_varias(db: Session, usuario: User, renga_ids: list[int]) -> dict[int, RengaDetalhe]:
+    """O `detalhar` de várias rengas (as de uma página do feed) em três queries, sem N+1."""
+    if not renga_ids:
+        return {}
+    rengas = list(db.scalars(select(Renga).where(Renga.id.in_(renga_ids))))
+    estrofes: dict[int, list[EstrofeRenga]] = {}
+    for estrofe in db.scalars(
+        select(EstrofeRenga)
+        .where(EstrofeRenga.renga_id.in_(renga_ids))
+        .order_by(EstrofeRenga.renga_id, EstrofeRenga.posicao)
+    ):
+        estrofes.setdefault(estrofe.renga_id, []).append(estrofe)
+    convidados: dict[int, list[User]] = {}
+    for renga_id, convidado in db.execute(
+        select(ConviteRenga.renga_id, User)
+        .join(User, User.id == ConviteRenga.user_id)
+        .where(ConviteRenga.renga_id.in_(renga_ids))
+        .order_by(ConviteRenga.id)
+    ):
+        convidados.setdefault(renga_id, []).append(convidado)
+    return {
+        r.id: _detalhe(r, estrofes.get(r.id, []), convidados.get(r.id, []), usuario)
+        for r in rengas
+    }
+
+
+def _detalhe(
+    renga: Renga, estrofes: list[EstrofeRenga], convidados: list[User], usuario: User
+) -> RengaDetalhe:
     ultimo_autor = estrofes[-1].autor_id if estrofes else None
     impedimento = _impedimento(renga, usuario, {u.id for u in convidados}, ultimo_autor)
     return RengaDetalhe(

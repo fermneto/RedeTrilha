@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, Text
+from sqlalchemy import ForeignKey, Index, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.datas import agora_utc
@@ -12,6 +12,11 @@ class Comentario(Base):
     """Comentário num poema. Com `parent_id`, é resposta a outro comentário do mesmo poema."""
 
     __tablename__ = "comentarios"
+    # Desempenho: a página de comentários de um poema (respostas diretas, em ordem
+    # cronológica, por cursor) sai do índice já ordenada, sem varrer a tabela.
+    __table_args__ = (
+        Index("ix_comentarios_do_poema", "post_id", "parent_id", "created_at", "id"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"), index=True)
