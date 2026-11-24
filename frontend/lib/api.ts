@@ -217,9 +217,12 @@ export function caminhoDaTag(tag: string): string {
 
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
 // Sem o "Z", o navegador leria como horário local e a data poderia mudar de dia.
+function lerData(iso: string): Date {
+  return new Date(/(Z|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : `${iso}Z`);
+}
+
 export function formatarData(iso: string): string {
-  const comFuso = /(Z|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : `${iso}Z`;
-  return new Date(comFuso).toLocaleDateString("pt-BR");
+  return lerData(iso).toLocaleDateString("pt-BR");
 }
 
 export type Post = {
@@ -1080,4 +1083,29 @@ export function apagarRascunho(id: number): Promise<void> {
 // Vira poema (ou citação) publicado agora, e o rascunho deixa de existir.
 export function publicarRascunho(id: number): Promise<Post> {
   return apiPost<Post>(`/rascunhos/${id}/publicar`);
+}
+
+// Quando o rascunho foi mexido pela última vez: "hoje, 14:32", "ontem, 09:05" ou
+// "12/11/2026", no fuso de quem lê.
+export function quandoEditado(iso: string, agora: Date = new Date()): string {
+  const data = lerData(iso);
+  const dia = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const dias = Math.round((dia(agora) - dia(data)) / 86_400_000);
+  const hora = data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  if (dias === 0) return `hoje, ${hora}`;
+  if (dias === 1) return `ontem, ${hora}`;
+  return data.toLocaleDateString("pt-BR");
+}
+
+// O começo do rascunho na lista: os primeiros `quantos` versos, sem as linhas em
+// branco do começo e do fim (as do meio, entre estrofes, ficam). `versos` conta as
+// linhas com texto do rascunho inteiro; `cortado` diz se ficou verso de fora.
+export function previaDoRascunho(texto: string, quantos: number): { previa: string; versos: number; cortado: boolean } {
+  const linhas = texto.split("\n");
+  while (linhas.length > 0 && !linhas[0].trim()) linhas.shift();
+  while (linhas.length > 0 && !linhas[linhas.length - 1].trim()) linhas.pop();
+  const versos = linhas.filter((l) => l.trim()).length;
+  const mostradas = linhas.slice(0, quantos);
+  while (mostradas.length > 0 && !mostradas[mostradas.length - 1].trim()) mostradas.pop();
+  return { previa: mostradas.join("\n"), versos, cortado: mostradas.length < linhas.length };
 }
