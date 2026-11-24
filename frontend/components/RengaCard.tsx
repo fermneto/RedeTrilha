@@ -38,12 +38,14 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
         ))}
       </p>
 
-      <ol className="mt-3 space-y-4">
+      <ol aria-label="estrofes" className="mt-3 space-y-5">
         {estrofes.map((e) => (
           <li key={e.id}>
             <p className="poema-corpo">{e.texto}</p>
-            <p className="mt-1 text-xs text-tinta-suave">
-              — <NomeAutor usuario={e.autor} className="font-semibold" />
+            <p className="mt-1.5 text-[0.8125rem] text-tinta-suave">
+              <span aria-hidden="true">— </span>
+              <span className="sr-only">estrofe de </span>
+              <NomeAutor usuario={e.autor} className="font-semibold" />
             </p>
           </li>
         ))}
