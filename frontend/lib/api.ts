@@ -47,6 +47,12 @@ export class ErroDaApi extends Error {
   }
 }
 
+// O que a tela mostra quando uma chamada falha: a mensagem do erro (no ErroDaApi,
+// o `detail` do backend) ou, se não veio um Error, o texto `padrao`.
+export function mensagemDeFalha(e: unknown, padrao: string): string {
+  return e instanceof Error ? e.message : padrao;
+}
+
 type ErroDoPydantic = { msg?: unknown; loc?: unknown };
 
 // O `msg` já vem em português (backend/app/erros.py).
@@ -217,9 +223,12 @@ export function caminhoDaTag(tag: string): string {
 
 // O backend grava em UTC, mas o SQLite devolve a data sem fuso ("2026-11-24T02:29:21").
 // Sem o "Z", o navegador leria como horário local e a data poderia mudar de dia.
+function lerData(iso: string): Date {
+  return new Date(/(Z|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : `${iso}Z`);
+}
+
 export function formatarData(iso: string): string {
-  const comFuso = /(Z|[+-]\d{2}:?\d{2})$/.test(iso) ? iso : `${iso}Z`;
-  return new Date(comFuso).toLocaleDateString("pt-BR");
+  return lerData(iso).toLocaleDateString("pt-BR");
 }
 
 export type Post = {
@@ -347,26 +356,44 @@ export function caminhoDoLogin(): string {
   return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
 }
 
-// "/boas-vindas?voltar=<página atual>": as preferências pelo menu da conta, que
-// voltam para onde a pessoa estava. Vindo do próprio onboarding, volta ao perfil.
-export function caminhoDasPreferencias(atual: string, username: string): string {
-  const noOnboarding = /^\/(boas-vindas|sugestoes)(?=[/?#]|$)/.test(atual);
-  const voltar = noOnboarding ? `/u/${username}` : atual;
-  return `/boas-vindas?voltar=${encodeURIComponent(voltar)}`;
+// A grade de quem seguir como último passo do onboarding, em tela cheia.
+export const QUEM_SEGUIR_NO_ONBOARDING = "/boas-vindas/quem-seguir";
+
+// As preferências fora do onboarding: a mesma página de /boas-vindas, mas dentro do
+// layout do site (com a navegação e a coluna Descobrir).
+export const PREFERENCIAS = "/preferencias";
+
+// As telas do onboarding ocupam a tela toda, sem a navegação nem a coluna
+// Descobrir: o Layout confere com isto. As /preferencias ficam com o layout do site.
+export function ehTelaDeBoasVindas(caminho: string): boolean {
+  return caminho === "/boas-vindas" || caminho.startsWith("/boas-vindas/");
 }
 
-// Só o passo dos gostos (escolas e formas), pelo link da tela de sugestões: ao
-// salvar volta para a grade, que recalcula as sugestões.
-export const CAMINHO_DOS_GOSTOS = "/boas-vindas?voltar=%2Fsugestoes&so=gostos";
+// "/preferencias?voltar=<página atual>": as preferências pelo menu da conta, que
+// voltam para onde a pessoa estava. Vindo do próprio onboarding, volta ao perfil.
+export function caminhoDasPreferencias(atual: string, username: string): string {
+  const noOnboarding = /^\/(boas-vindas|sugestoes|preferencias)(?=[/?#]|$)/.test(atual);
+  const voltar = noOnboarding ? `/u/${username}` : atual;
+  return `${PREFERENCIAS}?voltar=${encodeURIComponent(voltar)}`;
+}
 
-// O documento foi carregado já em /boas-vindas (link direto ou recarga)? Então não
-// há página do Verso antes no histórico, e o "cancelar" das preferências vai ao
-// perfil em vez de usar o voltar do navegador. Recebe a URL do carregamento
+// Só o passo dos gostos (escolas e formas), pelo link da grade de quem seguir: ao
+// salvar volta para a grade, que recalcula as sugestões. Da grade do onboarding
+// continua em tela cheia; da /sugestoes, dentro do layout do site.
+export function caminhoDosGostos(grade: string): string {
+  const base = ehTelaDeBoasVindas(grade) ? "/boas-vindas" : PREFERENCIAS;
+  return `${base}?voltar=${encodeURIComponent(grade)}&so=gostos`;
+}
+
+// O documento foi carregado já nas preferências (link direto ou recarga)? Então não
+// há página do Verso antes no histórico, e o "cancelar" vai ao perfil em vez de usar
+// o voltar do navegador. Recebe a URL do carregamento
 // (performance.getEntriesByType("navigation")[0].name).
 export function abertaDireto(urlDoCarregamento: string | undefined): boolean {
   if (!urlDoCarregamento) return true;
   try {
-    return new URL(urlDoCarregamento).pathname === "/boas-vindas";
+    const { pathname } = new URL(urlDoCarregamento);
+    return pathname === "/boas-vindas" || pathname === PREFERENCIAS;
   } catch {
     return true;
   }
@@ -379,6 +406,12 @@ export function passosDasPreferencias(so: string | null): PassoDasPreferencias[]
   return so === "gostos" ? ["gostos"] : ["gostos", "regiao"];
 }
 
+// Em que passo abrir: o de ?passo= (o "voltar" da grade de quem seguir abre na
+// região), ou o primeiro.
+export function passoInicial(passos: PassoDasPreferencias[], passo: string | null): number {
+  return Math.max(0, passos.indexOf(passo as PassoDasPreferencias));
+}
+
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
@@ -386,9 +419,11 @@ export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage>
 }
 
 // Aba "Para você": a rede inteira (seguidos ou não), cronológica pela atividade.
+// `lingua` (a do navegador) escolhe o consagrado de cada janela de 3 h.
 export function buscarParaVoce(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
+  comLinguaDoNavegador(params);
   return apiGet<FeedPage>(`/feed/para-voce?${params}`);
 }
 
@@ -523,10 +558,53 @@ export function buscarPoemaDoDia(): Promise<Post> {
 }
 
 // Espelha Trending (backend/app/schemas/tags.py): as 5 tags com mais poemas nas últimas 24 h.
-export type TagContagem = { tag: string; contagem: number };
+// `trecho` é o primeiro verso do poema mais novo com a tag, com o recuo de quem
+// escreveu; null quando não há verso com texto (e ausente num backend antigo).
+export type TagContagem = { tag: string; contagem: number; trecho?: string | null };
 
-export function buscarTrending(): Promise<{ items: TagContagem[] }> {
-  return apiGet<{ items: TagContagem[] }>("/tags/trending");
+// `limit` de 1 a 10 (padrão 5, o da coluna direita; o Explorar pede 10).
+export function buscarTrending(limit = 5): Promise<{ items: TagContagem[] }> {
+  return apiGet<{ items: TagContagem[] }>(`/tags/trending?limit=${limit}`);
+}
+
+// Espelha BuscaDeTags: GET /tags/busca?q= devolve até 5 tags que começam pelo
+// termo (normalizado no backend), com quantos poemas cada uma tem.
+export type TagEncontrada = { tag: string; poemas: number };
+
+export function buscarTags(q: string): Promise<{ items: TagEncontrada[] }> {
+  return apiGet<{ items: TagEncontrada[] }>(`/tags/busca?${new URLSearchParams({ q })}`);
+}
+
+// Poetas da busca do Explorar: a mesma busca do Acervo (GET /acervo?q=, nome ou
+// @username, sem acento), como na tela Quem seguir, só com menos resultados e
+// quem eu sigo primeiro (sigo_primeiro), depois em ordem alfabética.
+export const POETAS_NA_BUSCA = 5;
+
+export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
+  const params = new URLSearchParams({ q, offset: "0", limit: String(POETAS_NA_BUSCA), sigo_primeiro: "true" });
+  return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
+
+// "ver todos no Acervo": a tela do Acervo já abre com a busca pelo ?q=.
+export function caminhoDoAcervoComBusca(q: string): string {
+  return `/acervo?${new URLSearchParams({ q: q.trim() })}`;
+}
+
+// O que o campo do Explorar procura: a tag (normalizada, sem o "#") e o nome ou
+// @username do poeta. "#saudade" procura só tags; "@ana", só poetas.
+export function termosDaBusca(texto: string): { tag: string; poeta: string } {
+  const limpo = texto.trim();
+  if (limpo.startsWith("#")) return { tag: normalizarTag(limpo), poeta: "" };
+  if (limpo.startsWith("@")) return { tag: "", poeta: limpo.slice(1).trim() };
+  return { tag: normalizarTag(limpo), poeta: limpo };
+}
+
+// Seta para cima e para baixo na lista de resultados: dá a volta nas pontas, e
+// -1 (nenhuma opção ativa) vai para a primeira ou para a última.
+export function opcaoVizinha(atual: number, total: number, passo: 1 | -1): number {
+  if (total === 0) return -1;
+  if (atual < 0) return passo === 1 ? 0 : total - 1;
+  return (atual + passo + total) % total;
 }
 
 export type FiltrosDoExplorar = { tag: string | null; forma: string | null };
@@ -577,8 +655,7 @@ export type Sugestao = PoetaDoAcervo & { escolas: string[] };
 // Ordem pela nota do backend (core/pontuacao_sugestoes.py); `lingua` é a do navegador.
 export function buscarSugestoes(offset = 0, limit = 20): Promise<Page<Sugestao>> {
   const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
-  const lingua = idiomaDoNavegador();
-  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
+  comLinguaDoNavegador(params);
   return apiGet<Page<Sugestao>>(`/sugestoes?${params}`);
 }
 
@@ -624,9 +701,14 @@ export function alternarNaLista(lista: string[], codigo: string): string[] {
   return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
 }
 
-export function seguir(username: string, seguindo: boolean): Promise<void> {
+// Evento de window disparado depois de seguir ou deixar de seguir alguém: o feed
+// Seguindo, que fica montado na home, recarrega a lista quando o recebe.
+export const EVENTO_SEGUIR_MUDOU = "verso:seguir-mudou";
+
+export async function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
-  return seguindo ? apiPost<void>(caminho) : apiDelete(caminho);
+  await (seguindo ? apiPost<void>(caminho) : apiDelete(caminho));
+  window.dispatchEvent(new Event(EVENTO_SEGUIR_MUDOU));
 }
 
 // ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
@@ -650,6 +732,13 @@ export function traduzirPoema(id: number, para: string): Promise<Traducao> {
 export function idiomaDoNavegador(): string | null {
   if (typeof navigator === "undefined" || !navigator.language) return null;
   return navigator.language.split("-")[0].toLowerCase();
+}
+
+// `?lingua=` com a língua do navegador, se for um código ISO 639-1; sem ela, o
+// backend usa a língua dos poemas da própria pessoa.
+function comLinguaDoNavegador(params: URLSearchParams): void {
+  const lingua = idiomaDoNavegador();
+  if (lingua && /^[a-z]{2}$/.test(lingua)) params.set("lingua", lingua);
 }
 
 // Nome da língua em português ("en" → "inglês"); o próprio código se o navegador não souber.
@@ -1080,4 +1169,29 @@ export function apagarRascunho(id: number): Promise<void> {
 // Vira poema (ou citação) publicado agora, e o rascunho deixa de existir.
 export function publicarRascunho(id: number): Promise<Post> {
   return apiPost<Post>(`/rascunhos/${id}/publicar`);
+}
+
+// Quando o rascunho foi mexido pela última vez: "hoje, 14:32", "ontem, 09:05" ou
+// "12/11/2026", no fuso de quem lê.
+export function quandoEditado(iso: string, agora: Date = new Date()): string {
+  const data = lerData(iso);
+  const dia = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const dias = Math.round((dia(agora) - dia(data)) / 86_400_000);
+  const hora = data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  if (dias === 0) return `hoje, ${hora}`;
+  if (dias === 1) return `ontem, ${hora}`;
+  return data.toLocaleDateString("pt-BR");
+}
+
+// O começo do rascunho na lista: os primeiros `quantos` versos, sem as linhas em
+// branco do começo e do fim (as do meio, entre estrofes, ficam). `versos` conta as
+// linhas com texto do rascunho inteiro; `cortado` diz se ficou verso de fora.
+export function previaDoRascunho(texto: string, quantos: number): { previa: string; versos: number; cortado: boolean } {
+  const linhas = texto.split("\n");
+  while (linhas.length > 0 && !linhas[0].trim()) linhas.shift();
+  while (linhas.length > 0 && !linhas[linhas.length - 1].trim()) linhas.pop();
+  const versos = linhas.filter((l) => l.trim()).length;
+  const mostradas = linhas.slice(0, quantos);
+  while (mostradas.length > 0 && !mostradas[mostradas.length - 1].trim()) mostradas.pop();
+  return { previa: mostradas.join("\n"), versos, cortado: mostradas.length < linhas.length };
 }

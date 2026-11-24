@@ -76,6 +76,8 @@ class Filtros:
     lingua: str | None = None
     epoca: ChaveEpoca | None = None
     ordem: Ordem = "alfabetica"
+    # Busca do Explorar: quem o usuário segue vem antes, na ordem escolhida.
+    sigo_primeiro: bool = False
 
 
 def listar(
@@ -83,6 +85,10 @@ def listar(
 ) -> AcervoPage:
     linhas = _filtrar_por_nome(db.execute(_consulta(filtros)).all(), filtros.q)
     linhas.sort(key=_chave_de_ordem(filtros.ordem))
+    if filtros.sigo_primeiro:
+        sigo_todos = seguidos_entre(db, usuario.id, [linha.id for linha in linhas])
+        # sort estável: dentro de cada grupo fica a ordem de cima.
+        linhas.sort(key=lambda linha: linha.id not in sigo_todos)
     pagina = linhas[offset : offset + limit]
 
     ids = [linha.id for linha in pagina]
@@ -183,6 +189,15 @@ def lingua_por_autor():
     return (
         select(ranking.c.user_id, ranking.c.idioma).where(ranking.c.posicao == 1).subquery()
     )
+
+
+def lingua_de_quem_ve(db: Session, usuario: User, lingua: str | None) -> str | None:
+    """A língua de quem vê: a do navegador (`lingua`) ou, sem ela, a mais frequente nos
+    poemas da própria pessoa (None se ela não tem poema com idioma)."""
+    if lingua is not None:
+        return lingua
+    propria = lingua_por_autor()
+    return db.scalar(select(propria.c.idioma).where(propria.c.user_id == usuario.id))
 
 
 def _epoca_sql():

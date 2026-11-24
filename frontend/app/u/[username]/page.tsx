@@ -4,8 +4,9 @@
 // numa segunda aba as antologias públicas dela.
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect, useId, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 
+import { Abas } from "@/components/Abas";
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
@@ -17,6 +18,7 @@ import {
   buscarPoemasDoPerfil,
   caminhoDoLogin,
   listarAntologiasDe,
+  mensagemDeFalha,
   temToken,
   type Perfil,
 } from "@/lib/api";
@@ -67,7 +69,7 @@ function PerfilDoPoeta() {
         setMeuId(eu.id);
         setErro(null);
       })
-      .catch((e) => setErro(e instanceof Error ? e.message : "não deu para carregar o perfil"));
+      .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar o perfil")));
   }, [username, router]);
 
   const buscarPoemas = useCallback(
@@ -119,7 +121,7 @@ function PerfilDoPoeta() {
         )}
       </div>
 
-      <Abas key={username} atual={aba} aoMudar={trocarAba}>
+      <Abas key={username} abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="Conteúdo do perfil" bordaEmCima>
         {(valor) =>
           valor === "poemas" ? (
             <ListaDePoemas
@@ -140,80 +142,5 @@ function PerfilDoPoeta() {
         }
       </Abas>
     </div>
-  );
-}
-
-// Abas no padrão do WAI-ARIA: setas trocam de aba, e cada painel só monta na
-// primeira vez que abre (depois fica escondido, sem perder a rolagem já carregada).
-function Abas({
-  atual,
-  aoMudar,
-  children,
-}: {
-  atual: Aba;
-  aoMudar: (aba: Aba) => void;
-  children: (aba: Aba) => React.ReactNode;
-}) {
-  const id = useId();
-  const [abertas, setAbertas] = useState<Set<Aba>>(new Set([atual]));
-  const botoes = useRef<Record<string, HTMLButtonElement | null>>({});
-
-  useEffect(() => {
-    setAbertas((a) => (a.has(atual) ? a : new Set(a).add(atual)));
-  }, [atual]);
-
-  function aoTeclar(e: React.KeyboardEvent) {
-    const i = ABAS.findIndex((a) => a.valor === atual);
-    const passo = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-    if (passo === 0) return;
-    e.preventDefault();
-    const proxima = ABAS[(i + passo + ABAS.length) % ABAS.length].valor;
-    aoMudar(proxima);
-    botoes.current[proxima]?.focus();
-  }
-
-  return (
-    <section>
-      <div role="tablist" aria-label="Conteúdo do perfil" onKeyDown={aoTeclar} className="flex border-y border-borda">
-        {ABAS.map(({ valor, rotulo }) => {
-          const ativa = valor === atual;
-          return (
-            <button
-              key={valor}
-              ref={(el) => {
-                botoes.current[valor] = el;
-              }}
-              id={`${id}-aba-${valor}`}
-              type="button"
-              role="tab"
-              aria-selected={ativa}
-              aria-controls={`${id}-painel-${valor}`}
-              tabIndex={ativa ? 0 : -1}
-              onClick={() => aoMudar(valor)}
-              className={`realce flex min-h-13 flex-1 cursor-pointer items-center justify-center text-[0.9375rem] ${
-                ativa ? "font-bold text-tinta" : "text-tinta-suave"
-              }`}
-            >
-              <span
-                className={`flex h-full items-center border-b-4 py-3 ${ativa ? "border-destaque" : "border-transparent"}`}
-              >
-                {rotulo}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-      {ABAS.map(({ valor }) => (
-        <div
-          key={valor}
-          id={`${id}-painel-${valor}`}
-          role="tabpanel"
-          aria-labelledby={`${id}-aba-${valor}`}
-          hidden={valor !== atual}
-        >
-          {abertas.has(valor) && children(valor)}
-        </div>
-      ))}
-    </section>
   );
 }

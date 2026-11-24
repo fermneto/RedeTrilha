@@ -31,7 +31,7 @@ from app.models.preferencia import Preferencia
 from app.models.user import User
 from app.schemas.sugestao import SugestaoOut, SugestaoPage
 from app.schemas.user import UserOut
-from app.services.acervo import lingua_por_autor
+from app.services.acervo import lingua_de_quem_ve, lingua_por_autor
 from app.services.follows import seguidores_por_usuario
 from app.services.perfil import poemas_por_autor
 
@@ -127,14 +127,11 @@ def _candidatas(db: Session, usuario: User) -> dict[int, Perfil]:
 
 def _quem_ve(db: Session, usuario: User, lingua: str | None) -> Perfil:
     pref = db.get(Preferencia, usuario.id)
-    if lingua is None:
-        propria = lingua_por_autor()
-        lingua = db.scalar(select(propria.c.idioma).where(propria.c.user_id == usuario.id))
     return Perfil(
         id=usuario.id,
         escolas=frozenset(pref.escolas if pref else []),
         formas=frozenset(pref.formas if pref else []),
-        lingua=lingua,
+        lingua=lingua_de_quem_ve(db, usuario, lingua),
         pais=pref.pais if pref else None,
         uf=pref.uf if pref else None,
     )

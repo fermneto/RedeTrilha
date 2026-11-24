@@ -1,5 +1,5 @@
 "use client";
-// Topo do feed: o convite compacto para escrever. Leva ao compositor completo em
+// Topo do feed e dos Rascunhos: o convite compacto para escrever. Leva ao compositor completo em
 // /escrever, que tem título, forma e a regra do Tab.
 
 import Link from "next/link";

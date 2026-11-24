@@ -5,6 +5,7 @@ direto no banco, com poemas na língua do original, como faz o importador.
 """
 
 import typing
+from itertools import pairwise
 
 import pytest
 
@@ -110,6 +111,17 @@ def test_busca_por_nome_ou_username_sem_acento_nem_maiuscula(client, acervo):
     assert len(_usernames(client, acervo, "q=%20%20")) == 8
 
 
+def test_sigo_primeiro_poe_quem_eu_sigo_antes_na_mesma_ordem(client, acervo):
+    # ana segue pessoa, baudelaire e caio
+    assert _usernames(client, acervo, "sigo_primeiro=true") == [
+        "caio", "baudelaire", "pessoa", "alvares_de_azevedo", "ana", "bia", "homero", "camoes",
+    ]
+    assert _usernames(client, acervo, "q=a&sigo_primeiro=true&limit=3") == ["caio", "baudelaire", "pessoa"]
+    assert _usernames(client, acervo, "q=de&sigo_primeiro=true") == ["baudelaire", "alvares_de_azevedo", "camoes"]
+    # sem o parâmetro, a ordem de sempre
+    assert _usernames(client, acervo, "q=de") == ["alvares_de_azevedo", "baudelaire", "camoes"]
+
+
 def test_lingua_e_a_mais_frequente_e_so_de_consagrados(client, acervo):
     # Camões tem 3 em pt e 1 em es: é pt
     assert _usernames(client, acervo, "lingua=pt") == ["alvares_de_azevedo", "pessoa", "camoes"]
@@ -196,5 +208,5 @@ def test_opcoes_de_filtro_com_contagem(client, acervo):
 def test_faixas_de_epoca_sao_contiguas():
     from app.services.acervo import FAIXAS_DE_EPOCA
 
-    for anterior, seguinte in zip(FAIXAS_DE_EPOCA, FAIXAS_DE_EPOCA[1:]):
+    for anterior, seguinte in pairwise(FAIXAS_DE_EPOCA):
         assert seguinte.inicio == anterior.fim + 1

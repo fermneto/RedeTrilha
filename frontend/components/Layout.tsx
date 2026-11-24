@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { ColunaDireita } from "@/components/ColunaDireita";
 import { Nav } from "@/components/Nav";
+import { ehTelaDeBoasVindas } from "@/lib/api";
 
 // Login e cadastro ficam limpos e centrados, sem as barras (decisão do Neto).
 // Checagem pelo pathname, e não por um route group app/(auth)/, porque as
@@ -14,6 +15,12 @@ const ROTAS_SEM_BARRAS = ["/login", "/cadastro"];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const caminho = usePathname();
+
+  // O onboarding (/boas-vindas e /boas-vindas/quem-seguir) é um momento à parte:
+  // a página desenha a própria tela cheia (components/TelaDeBoasVindas.tsx), sem a
+  // navegação, a coluna Descobrir nem a barra do celular. Mesma checagem pelo
+  // pathname do login, para nenhuma página mudar de pasta.
+  if (ehTelaDeBoasVindas(caminho)) return children;
 
   if (ROTAS_SEM_BARRAS.includes(caminho)) {
     return (

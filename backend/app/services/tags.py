@@ -1,9 +1,10 @@
-"""Leitura do índice de tags: poemas por tag, trending e o feed Explorar.
+"""Leitura do índice de tags: poemas por tag, trending, busca e o feed Explorar.
 
 O índice (core/indice_tags.py) devolve só ids na ordem certa; aqui a página
 é recortada antes de ir ao banco, que busca só a fatia.
 """
 
+import re
 from datetime import UTC, datetime, timedelta
 
 from fastapi import HTTPException
@@ -14,10 +15,14 @@ from app.core.indice_tags import indice_tags
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.post import FORMAS, PostPage
-from app.schemas.tags import TagContagem, Trending
+from app.schemas.tags import BuscaDeTags, TagContagem, TagEncontrada, Trending
 from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
+# Linha só de #tags ("#saudade #mar"): não serve de trecho.
+_SO_TAGS = re.compile(r"\s*(#\S+\s*)+")
+# Quantas tags a busca do Explorar mostra (o resto dos poetas e tags fica para digitar mais).
+TAGS_NA_BUSCA = 5
 _MAIS_NOVO_PRIMEIRO = (Post.created_at.desc(), Post.id.desc())
 
 
@@ -29,10 +34,39 @@ def posts_da_tag(
     return _pagina(db, usuario, fatia, len(ids), offset, limit)
 
 
-def trending() -> Trending:
-    """Top 5 tags dos poemas das últimas 24 h (ver IndiceTags.trending)."""
-    pares = indice_tags.trending(datetime.now(UTC) - JANELA_TRENDING)
-    return Trending(items=[TagContagem(tag=tag, contagem=n) for tag, n in pares])
+def trending(db: Session, k: int = 5) -> Trending:
+    """Top k tags dos poemas das últimas 24 h (ver IndiceTags.trending).
+
+    Cada uma vem com o primeiro verso de um poema dela, um poema diferente por
+    tag (IndiceTags.representantes): uma consulta só, pelos ids escolhidos.
+    """
+    pares = indice_tags.trending(datetime.now(UTC) - JANELA_TRENDING, k)
+    escolhidos = indice_tags.representantes([tag for tag, _ in pares])
+    ids = [post_id for post_id in escolhidos.values() if post_id is not None]
+    textos = dict(db.execute(select(Post.id, Post.texto).where(Post.id.in_(ids))).all()) if ids else {}
+    return Trending(
+        items=[
+            TagContagem(tag=tag, contagem=n, trecho=primeiro_verso(textos.get(escolhidos[tag], "")))
+            for tag, n in pares
+        ]
+    )
+
+
+def buscar_tags(q: str) -> BuscaDeTags:
+    """Tags que começam pelo termo (normalizado), mais usadas primeiro."""
+    pares = indice_tags.buscar(q, TAGS_NA_BUSCA)
+    return BuscaDeTags(items=[TagEncontrada(tag=tag, poemas=n) for tag, n in pares])
+
+
+def primeiro_verso(texto: str) -> str | None:
+    """A primeira linha com texto que não seja só #tags, como foi escrita.
+
+    Sem strip: o recuo é do poema.
+    """
+    for linha in texto.split("\n"):
+        if linha.strip() and not _SO_TAGS.fullmatch(linha):
+            return linha.removesuffix("\r")
+    return None
 
 
 def explorar(

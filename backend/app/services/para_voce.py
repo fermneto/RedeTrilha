@@ -7,7 +7,9 @@ Mistura, de todos os poetas (seguidos ou não, inclusive a própria pessoa):
   "repostado por" (todos que repostaram, por último primeiro), uma vez só;
 - rengas abertas, na estrofe mais recente ("fulano abriu uma renga" /
   "fulano escreveu uma estrofe", como no feed Seguindo);
-- poemas de consagrados, rareados (ver `JANELA_DO_CONSAGRADO`);
+- poemas de consagrados, rareados, com os da língua de quem vê na frente (ver
+  `JANELA_DO_CONSAGRADO`): a do navegador (`lingua`) ou, sem ela, a mais
+  frequente nos poemas da própria pessoa, como nas sugestões;
 - poemas que receberam comentário ou crítica: o poema sobe com o comentário
   mais recente e o rótulo "fulano comentou" ("subiu_por" e "comentado_por").
 
@@ -21,8 +23,8 @@ Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave) que
 tem precedência sobre o offset e devolve `total` None.
 
 Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + estrofes das rengas
-abertas + comentários, carregados só com ids e datas (sem o texto); depois as
-mesmas queries O(limit) do feed Seguindo para montar a página.
+abertas + comentários, carregados só com ids e datas (sem o texto); depois a
+mesma montagem O(limit) do feed Seguindo (`montar_pagina`, em `services/feed.py`).
 """
 
 from datetime import timedelta
@@ -36,55 +38,64 @@ from app.models.comentario import Comentario
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.user import User
-from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
+from app.schemas.feed import FeedPage, PoemaNoFeed
+from app.schemas.post import PostOut
 from app.schemas.user import UserOut
-from app.services import rengas as rengas_service
-from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
-from app.services.posts import para_saidas
+from app.services.acervo import lingua_de_quem_ve
+from app.services.cursor import utc_sem_fuso
+from app.services.feed import Linha, montar_pagina, recortar
 
-# Dos poemas de consagrados, entra só o mais recente de cada janela de 3 horas,
-# uns 8 por dia, para os milhares de poemas do acervo não afogarem os poetas da
-# rede. Comentário em poema de consagrado sobe o poema do mesmo jeito, fora
+# Dos poemas de consagrados, entra só um de cada janela de 3 horas, uns 8 por
+# dia, para os milhares de poemas do acervo não afogarem os poetas da rede: o
+# mais recente na língua de quem vê, se a janela tiver algum, senão o mais
+# recente. Comentário em poema de consagrado sobe o poema do mesmo jeito, fora
 # dessa conta.
 JANELA_DO_CONSAGRADO = timedelta(hours=3)
 
 
 def feed(
-    db: Session, usuario: User, offset: int, limit: int, cursor: str | None = None
+    db: Session,
+    usuario: User,
+    offset: int,
+    limit: int,
+    cursor: str | None = None,
+    lingua: str | None = None,
 ) -> FeedPage:
     atividades = rarear_consagrados(
         [*_poemas(db), *_reposts(db), *_estrofes_abertas(db), *_comentarios(db)],
         int(JANELA_DO_CONSAGRADO.total_seconds()),
+        lingua_de_quem_ve(db, usuario, lingua),
     )
-    itens = misturar(atividades)
-    if cursor is not None:
-        depois = ler_cursor(cursor)
-        offset = next(
-            (i for i, item in enumerate(itens) if item.atividade.posicao < depois), len(itens)
-        )
-    pagina = itens[offset : offset + limit]
-    tem_mais = offset + limit < len(itens)
-    return FeedPage(
-        items=_montar(db, pagina, usuario),
-        total=None if cursor is not None else len(itens),
-        offset=offset,
-        limit=limit,
-        proximo_cursor=(
-            codificar_cursor(*pagina[-1].atividade.posicao) if pagina and tem_mais else None
-        ),
+    recorte = recortar(
+        misturar(atividades), lambda item: item.atividade.posicao, offset, limit, cursor
     )
+    return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
+
+
+def _linha(item: ItemMisturado) -> Linha:
+    atividade = item.atividade
+    return Linha(atividade.tipo, atividade.alvo_id, atividade.acao, item.por, atividade.posicao)
 
 
 def _poemas(db: Session) -> list[Atividade]:
     """Poemas e citações da rede (reposts puros ficam fora)."""
     linhas = db.execute(
-        select(Post.id, Post.autor_id, User.consagrado, Post.created_at)
+        select(Post.id, Post.autor_id, User.consagrado, Post.created_at, Post.idioma)
         .join(User, User.id == Post.autor_id)
         .where(~Post.repost_puro)
     )
     return [
-        Atividade("poema", "publicou", post_id, post_id, autor_id, utc_sem_fuso(criado), consagrado)
-        for post_id, autor_id, consagrado, criado in linhas
+        Atividade(
+            "poema",
+            "publicou",
+            post_id,
+            post_id,
+            autor_id,
+            utc_sem_fuso(criado),
+            consagrado,
+            idioma,
+        )
+        for post_id, autor_id, consagrado, criado, idioma in linhas
     ]
 
 
@@ -158,40 +169,9 @@ def _comentarios(db: Session) -> list[Atividade]:
 _SUBIU_POR = {"comentou": "comentario", "criticou": "critica"}
 
 
-def _montar(
-    db: Session, pagina: list[ItemMisturado], usuario: User
-) -> list[PoemaNoFeed | RengaNoFeed]:
-    poemas = [item for item in pagina if item.atividade.tipo == "poema"]
-    ids = {item.atividade.alvo_id for item in poemas}
-    por_id = {post.id: post for post in db.scalars(select(Post).where(Post.id.in_(ids)))}
-    ids_do_rotulo = {autor_id for item in pagina for autor_id in item.por}
-    usuarios = {
-        user.id: UserOut.model_validate(user)
-        for user in db.scalars(select(User).where(User.id.in_(ids_do_rotulo)))
-    }
-    saidas = iter(para_saidas(db, [por_id[item.atividade.alvo_id] for item in poemas], usuario))
-
-    itens: list[PoemaNoFeed | RengaNoFeed] = []
-    for item in pagina:
-        rotulo = [usuarios[autor_id] for autor_id in item.por]
-        acao = item.atividade.acao
-        if item.atividade.tipo == "poema":
-            itens.append(
-                PoemaNoFeed(
-                    **{
-                        **next(saidas).model_dump(),
-                        "repostado_por": rotulo if acao == "repostou" else [],
-                    },
-                    subiu_por=_SUBIU_POR.get(acao),
-                    comentado_por=rotulo if acao in _SUBIU_POR else [],
-                )
-            )
-        else:
-            itens.append(
-                RengaNoFeed(
-                    renga=rengas_service.detalhar(db, usuario, item.atividade.alvo_id),
-                    atividade=acao,
-                    por=rotulo,
-                )
-            )
-    return itens
+def _poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
+    return PoemaNoFeed(
+        **{**saida.model_dump(), "repostado_por": rotulo if acao == "repostou" else []},
+        subiu_por=_SUBIU_POR.get(acao),
+        comentado_por=rotulo if acao in _SUBIU_POR else [],
+    )

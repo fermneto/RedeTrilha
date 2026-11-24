@@ -8,10 +8,10 @@
 // críticas daquele verso.
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
+import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { NomeAutor } from "@/components/NomeAutor";
-import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarComentario,
   buscarComentarios,
@@ -20,6 +20,7 @@ import {
   comentar,
   criticarVersos,
   formatarData,
+  mensagemDeFalha,
   referenciaDosVersos,
   trechoDosVersos,
   type Ancora,
@@ -86,7 +87,7 @@ export function ArvoreComentarios({
         setCursor(pagina.proximo_cursor);
         setErro(null);
       } catch (e) {
-        setErro(e instanceof Error ? e.message : "não deu para carregar os comentários");
+        setErro(mensagemDeFalha(e, "não deu para carregar os comentários"));
       } finally {
         setCarregando(false);
       }
@@ -198,20 +199,8 @@ function ItemComentario({
   // undefined: ainda não pediu /respostas; null: já carregou tudo.
   const [cursor, setCursor] = useState<string | null | undefined>(undefined);
   const [respondendo, setRespondendo] = useState(false);
-  // "apagar" pede confirmação ali mesmo: vira "apagar? sim / não".
-  const [confirmando, setConfirmando] = useState(false);
-  const confirmacao = useRef<HTMLSpanElement>(null);
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-
-  // Clique fora da confirmação ou Esc cancelam o "apagar?".
-  useFecharAoSair(confirmando, confirmacao, () => setConfirmando(false));
-
-  // Ao abrir a confirmação, o foco vai para o "não": Enter sem querer não apaga
-  // (como no apagar antologia).
-  useEffect(() => {
-    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-  }, [confirmando]);
 
   const faltam = total - respostas.length;
   const autor = removido ? null : comentario.autor;
@@ -225,14 +214,13 @@ function ItemComentario({
       setCursor(pagina.proximo_cursor);
       setErro(null);
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para carregar as respostas");
+      setErro(mensagemDeFalha(e, "não deu para carregar as respostas"));
     } finally {
       setOcupado(false);
     }
   }
 
   async function apagar() {
-    setConfirmando(false);
     setOcupado(true);
     try {
       // Com respostas, o backend deixa o marcador; sem, o comentário sai do banco.
@@ -247,7 +235,7 @@ function ItemComentario({
       }
       aoMudar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar");
+      setErro(mensagemDeFalha(e, "não deu para apagar"));
     } finally {
       setOcupado(false);
     }
@@ -300,32 +288,18 @@ function ItemComentario({
               <button type="button" onClick={() => setRespondendo((r) => !r)} className={acao}>
                 {respondendo ? "cancelar" : "responder"}
               </button>
-              {euId === autor.id &&
-                (confirmando ? (
-                  <span ref={confirmacao} className="text-xs text-tinta-suave">
-                    apagar?{" "}
-                    <button
-                      type="button"
-                      onClick={apagar}
-                      disabled={ocupado}
-                      className="cursor-pointer text-destaque hover:underline disabled:opacity-50"
-                    >
-                      sim
-                    </button>{" "}
-                    /{" "}
-                    <button
-                      type="button"
-                      onClick={() => setConfirmando(false)}
-                      className="cursor-pointer hover:text-tinta"
-                    >
-                      não
-                    </button>
-                  </span>
-                ) : (
-                  <button type="button" onClick={() => setConfirmando(true)} disabled={ocupado} className={acao}>
-                    apagar
-                  </button>
-                ))}
+              {euId === autor.id && (
+                // "apagar" pede confirmação ali mesmo: vira "apagar? sim / não".
+                <ConfirmacaoInline
+                  pergunta="apagar?"
+                  rotulo="apagar"
+                  classeDoBotao={acao}
+                  aoConfirmar={apagar}
+                  desabilitado={ocupado}
+                  compacta
+                  devolverFoco={false}
+                />
+              )}
             </div>
           </>
         )}
@@ -410,7 +384,7 @@ function FormComentario({
       setTexto("");
       aoComentar(novo);
     } catch (err) {
-      setErro(err instanceof Error ? err.message : "não deu para comentar");
+      setErro(mensagemDeFalha(err, "não deu para comentar"));
     } finally {
       setEnviando(false);
     }

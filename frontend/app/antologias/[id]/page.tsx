@@ -4,15 +4,15 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
-import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -21,6 +21,7 @@ import {
   editarAntologia,
   ErroDaApi,
   marcarNaAntologia,
+  mensagemDeFalha,
   temToken,
   type AntologiaDetalhe,
   type Post,
@@ -53,7 +54,7 @@ export default function AntologiaPage() {
       .catch((e) => {
         // Privada de outra pessoa também dá 404: a tela não revela que ela existe.
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
-        else setErro(e instanceof Error ? e.message : "não deu para carregar a antologia");
+        else setErro(mensagemDeFalha(e, "não deu para carregar a antologia"));
       });
   }, [id, router]);
 
@@ -106,7 +107,7 @@ export default function AntologiaPage() {
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda px-4 pt-5 pb-5">
+      <div className="border-b border-borda px-4 pt-8 pb-6">
         {editando ? (
           <AntologiaFormulario
             inicial={antologia}
@@ -132,23 +133,39 @@ export default function AntologiaPage() {
       </div>
 
       {antologia.poemas.length === 0 ? (
-        <div className="px-4 py-10 text-center">
+        <div className="px-4 py-12 text-center">
           <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
           {dono && (
-            <p className="mt-1 text-sm text-tinta-suave">
-              Nos poemas do feed, use “adicionar à antologia” para trazê-los para cá.
+            <p className="mx-auto mt-1 max-w-sm text-sm text-tinta-suave">
+              Nos poemas do feed, use o botão “adicionar à antologia” para trazê-los para cá.
             </p>
+          )}
+          {dono && (
+            <Link
+              href="/"
+              className="mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold realce"
+            >
+              Ir para o feed
+            </Link>
           )}
         </div>
       ) : (
-        <ul className="divide-y divide-borda border-b border-borda">
-          {antologia.poemas.map((p) => (
-            <li key={p.id}>
-              <PoemaCard post={p} />
-              {dono && <TirarDaAntologia poema={p} aoTirar={() => tirar(p.id)} />}
-            </li>
-          ))}
-        </ul>
+        <>
+          {antologia.poemas.length > 1 && <Indice poemas={antologia.poemas} />}
+          <h2 className="sr-only">Poemas</h2>
+          <ol className="divide-y divide-borda border-b border-borda">
+            {antologia.poemas.map((p) => (
+              <li
+                key={p.id}
+                id={ancora(p)}
+                className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
+              >
+                <PoemaCard post={p} />
+                {dono && <TirarDaAntologia poema={p} aoTirar={() => tirar(p.id)} />}
+              </li>
+            ))}
+          </ol>
+        </>
       )}
     </div>
   );
@@ -159,6 +176,98 @@ function semOPoema(antologia: AntologiaDetalhe, postId: number): AntologiaDetalh
   const fica = (p: Post) => p.id !== postId && !(p.texto === "" && p.repost_de?.id === postId);
   const poemas = antologia.poemas.filter(fica);
   return { ...antologia, poemas, qtd: antologia.qtd - (antologia.poemas.length - poemas.length) };
+}
+
+// O poema que o leitor vê no card: num repost puro, o original.
+function poemaVisivel(p: Post): Post {
+  return p.repost_de && p.texto === "" ? p.repost_de : p;
+}
+
+function ancora(p: Post): string {
+  return `poema-${p.id}`;
+}
+
+// Como nos livros de poemas: o poema sem título entra no índice pelo primeiro verso.
+function primeiroVerso(texto: string): string {
+  return texto.split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
+}
+
+// Antologia com mais poemas que isto é "longa": o índice abre recolhido, para os
+// poemas não ficarem lá embaixo; com até tantos, ele abre aberto e nem recolhe.
+const POEMAS_NO_INDICE_ABERTO = 8;
+
+// O índice da antologia, na ordem em que os poemas entraram: cada linha leva
+// ao poema mais abaixo na página.
+function Indice({ poemas }: { poemas: Post[] }) {
+  const longa = poemas.length > POEMAS_NO_INDICE_ABERTO;
+  const [aberto, setAberto] = useState(!longa);
+  const idLista = useId();
+
+  return (
+    <nav aria-labelledby="indice-da-antologia" className="border-b border-borda px-4 pt-5 pb-4">
+      {longa ? (
+        <h2 id="indice-da-antologia" className="text-sm font-bold">
+          <button
+            type="button"
+            aria-expanded={aberto}
+            aria-controls={idLista}
+            onClick={() => setAberto((a) => !a)}
+            className="-mx-2 -my-3 flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-2 realce"
+          >
+            Índice
+            <span className="font-normal text-tinta-suave tabular-nums">{poemas.length} poemas</span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`h-4 w-4 text-tinta-suave transition-transform duration-150 ${aberto ? "rotate-180" : ""}`}
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </h2>
+      ) : (
+        <h2 id="indice-da-antologia" className="text-sm font-bold">
+          Índice
+        </h2>
+      )}
+      <ol id={idLista} hidden={longa && !aberto} className="mt-2">
+        {poemas.map((p, i) => {
+          const poema = poemaVisivel(p);
+          return (
+            <li key={p.id}>
+              <a
+                href={`#${ancora(p)}`}
+                className="group -mx-2 flex min-h-11 items-baseline gap-3 rounded-lg px-2 py-2 realce"
+              >
+                <span className="w-5 shrink-0 text-right text-[0.8125rem] text-tinta-suave tabular-nums">
+                  {i + 1}
+                </span>
+                <span className="min-w-0 flex-1">
+                  {poema.titulo ? (
+                    <span className="block font-serifada font-semibold break-words group-hover:underline">
+                      {poema.titulo}
+                    </span>
+                  ) : (
+                    <span className="block truncate font-serifada italic group-hover:underline">
+                      {primeiroVerso(poema.texto) || "poema sem título"}
+                    </span>
+                  )}
+                  <span className="block truncate text-[0.8125rem] text-tinta-suave">
+                    {poema.autor.name || `@${poema.autor.username}`}
+                  </span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
 }
 
 function Cabecalho({
@@ -173,55 +282,51 @@ function Cabecalho({
   aoApagar: () => Promise<void>;
 }) {
   return (
-    <header className="space-y-2">
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <h1 className="font-serifada text-3xl break-words">{antologia.nome}</h1>
-        {!antologia.publica && <SeloPrivada />}
-      </div>
-      {antologia.descricao && <p className="break-words whitespace-pre-wrap">{antologia.descricao}</p>}
-      <p className="flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>por</span>
+    <header>
+      <h1 className="font-serifada text-[2rem] leading-tight font-semibold tracking-[-0.02em] break-words">
+        {antologia.nome}
+      </h1>
+      {antologia.descricao && (
+        <p className="mt-3 max-w-[60ch] font-serifada text-[1.0625rem] leading-relaxed break-words whitespace-pre-wrap italic">
+          {antologia.descricao}
+        </p>
+      )}
+      <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-tinta-suave">
+        <span>reunida por</span>
         <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
-        <span aria-hidden="true">·</span>
-        <span>{antologia.publica ? "pública" : "privada"}</span>
         <span aria-hidden="true">·</span>
         <span className="tabular-nums">
           {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
         </span>
+        {!antologia.publica && (
+          <span className="inline-flex items-center gap-x-1.5">
+            <span aria-hidden="true">·</span>
+            <SeloPrivada />
+          </span>
+        )}
       </p>
-      {dono && <AcoesDoDono aoEditar={aoEditar} aoApagar={aoApagar} />}
+      {dono && (
+        <div className="mt-3">
+          <AcoesDoDono aoEditar={aoEditar} aoApagar={aoApagar} />
+        </div>
+      )}
     </header>
   );
 }
 
-// "apagar" pede confirmação ali mesmo, como no apagar comentário: vira
-// "apagar? sim / não"; Esc ou clique fora cancelam.
+// "apagar" pede confirmação ali mesmo (ConfirmacaoInline): vira
+// "apagar a antologia? sim / não"; Esc ou clique fora cancelam.
 function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: () => Promise<void> }) {
-  const [confirmando, setConfirmando] = useState(false);
   const [apagando, setApagando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-  const confirmacao = useRef<HTMLSpanElement>(null);
-  const botaoApagar = useRef<HTMLButtonElement>(null);
-
-  // O foco vai para o "não": Enter sem querer não apaga nada.
-  useEffect(() => {
-    if (confirmando) confirmacao.current?.querySelector<HTMLButtonElement>("button:last-of-type")?.focus();
-  }, [confirmando]);
-
-  // Esc devolve o foco ao "apagar"; o clique fora deixa o foco onde o clique o pôs.
-  useFecharAoSair(confirmando, confirmacao, (e) => {
-    setConfirmando(false);
-    if (e.type === "keydown") requestAnimationFrame(() => botaoApagar.current?.focus());
-  });
 
   async function apagar() {
-    setConfirmando(false);
     setApagando(true);
     setErro(null);
     try {
       await aoApagar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para apagar a antologia");
+      setErro(mensagemDeFalha(e, "não deu para apagar a antologia"));
       setApagando(false);
     }
   }
@@ -233,39 +338,13 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
         <button type="button" onClick={aoEditar} disabled={apagando} className={acao}>
           editar
         </button>
-        {confirmando ? (
-          <span ref={confirmacao} className="text-sm text-tinta-suave">
-            apagar a antologia?{" "}
-            <button
-              type="button"
-              onClick={apagar}
-              className="min-h-11 cursor-pointer text-destaque hover:underline"
-            >
-              sim
-            </button>{" "}
-            /{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setConfirmando(false);
-                requestAnimationFrame(() => botaoApagar.current?.focus());
-              }}
-              className="min-h-11 cursor-pointer hover:text-tinta"
-            >
-              não
-            </button>
-          </span>
-        ) : (
-          <button
-            ref={botaoApagar}
-            type="button"
-            onClick={() => setConfirmando(true)}
-            disabled={apagando}
-            className={acao}
-          >
-            {apagando ? "apagando..." : "apagar"}
-          </button>
-        )}
+        <ConfirmacaoInline
+          pergunta="apagar a antologia?"
+          rotulo={apagando ? "apagando..." : "apagar"}
+          classeDoBotao={acao}
+          aoConfirmar={apagar}
+          desabilitado={apagando}
+        />
       </div>
       <p className="text-xs text-tinta-suave">Apagar a antologia não apaga os poemas.</p>
       {erro && <p className="mt-1 text-sm text-destaque">{erro}</p>}
@@ -284,7 +363,7 @@ function TirarDaAntologia({ poema, aoTirar }: { poema: Post; aoTirar: () => Prom
     try {
       await aoTirar();
     } catch (e) {
-      setErro(e instanceof Error ? e.message : "não deu para tirar o poema");
+      setErro(mensagemDeFalha(e, "não deu para tirar o poema"));
       setTirando(false);
     }
   }

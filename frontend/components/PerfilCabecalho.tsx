@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { SeloConsagrado } from "@/components/SeloConsagrado";
-import { anosDeVida, seguir, type Perfil } from "@/lib/api";
+import { anosDeVida, mensagemDeFalha, seguir, type Perfil } from "@/lib/api";
 
 type Props = {
   perfil: Perfil;
@@ -31,7 +31,7 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
       await seguir(perfil.username, novo);
     } catch (e) {
       aoMudar(antes);
-      setErro(e instanceof Error ? e.message : "não deu para seguir");
+      setErro(mensagemDeFalha(e, "não deu para seguir"));
     } finally {
       setEnviando(false);
     }
