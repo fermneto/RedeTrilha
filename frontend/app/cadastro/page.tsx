@@ -123,9 +123,11 @@ export default function CadastroPage() {
     }
   }
 
-  if (conferindo) return <p className="text-sm text-tinta-suave">carregando...</p>;
+  if (conferindo) return <p className="text-center text-sm text-tinta-suave">carregando...</p>;
 
-  const campo = "w-full rounded border border-borda bg-papel px-3 py-2 text-tinta";
+  // Mesmos estilos do Compositor (input arredondado, foco na cor de destaque).
+  const campo =
+    "w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
   // aria-describedby junta a dica do campo (quando há) e o erro dele.
   function descricao(c: Campo, dica?: string) {
     return [dica, erros[c] && `erro-${c}`].filter(Boolean).join(" ") || undefined;
@@ -133,7 +135,7 @@ export default function CadastroPage() {
   function erroDoCampo(c: Campo) {
     return (
       erros[c] && (
-        <span id={`erro-${c}`} className="mt-1 block text-xs text-destaque">
+        <span id={`erro-${c}`} className="mt-1 block text-xs font-normal text-destaque">
           {erros[c]}
         </span>
       )
@@ -141,16 +143,16 @@ export default function CadastroPage() {
   }
 
   return (
-    <div className="mx-auto max-w-sm space-y-6">
+    <div className="space-y-6">
       <title>Criar conta · Verso</title>
-      <h1 className="text-center text-3xl">Criar conta</h1>
+      <h1 className="text-center text-2xl">Criar conta</h1>
 
       <form
         onSubmit={aoCadastrar}
         noValidate
-        className="space-y-4 rounded-lg border border-borda bg-papel-alto p-6"
+        className="space-y-4 rounded-2xl border border-borda bg-painel p-6"
       >
-        <label className="block text-sm">
+        <label className="block text-sm font-semibold">
           nome
           <input
             ref={refs.name}
@@ -163,12 +165,12 @@ export default function CadastroPage() {
             autoComplete="name"
             aria-invalid={Boolean(erros.name)}
             aria-describedby={descricao("name")}
-            className={`${campo} mt-1`}
+            className={`${campo} mt-1 font-normal`}
           />
           {erroDoCampo("name")}
         </label>
 
-        <label className="block text-sm">
+        <label className="block text-sm font-semibold">
           username
           <input
             ref={refs.username}
@@ -183,15 +185,15 @@ export default function CadastroPage() {
             spellCheck={false}
             aria-invalid={Boolean(erros.username)}
             aria-describedby={descricao("username", "dica-username")}
-            className={`${campo} mt-1`}
+            className={`${campo} mt-1 font-normal`}
           />
-          <span id="dica-username" className="mt-1 block text-xs text-tinta-suave">
+          <span id="dica-username" className="mt-1 block text-xs font-normal text-tinta-suave">
             Letras minúsculas, números e _, de {USERNAME_MIN} a {USERNAME_MAX} caracteres.
           </span>
           {erroDoCampo("username")}
         </label>
 
-        <label className="block text-sm">
+        <label className="block text-sm font-semibold">
           senha
           <input
             ref={refs.password}
@@ -203,9 +205,9 @@ export default function CadastroPage() {
             autoComplete="new-password"
             aria-invalid={Boolean(erros.password)}
             aria-describedby={descricao("password", "dica-senha")}
-            className={`${campo} mt-1`}
+            className={`${campo} mt-1 font-normal`}
           />
-          <span id="dica-senha" className="mt-1 block text-xs text-tinta-suave">
+          <span id="dica-senha" className="mt-1 block text-xs font-normal text-tinta-suave">
             De {SENHA_MIN} a {SENHA_MAX} caracteres.
           </span>
           {erroDoCampo("password")}
@@ -214,7 +216,7 @@ export default function CadastroPage() {
         {/* Anuncia os erros para leitores de tela; o texto fica também ao lado de cada campo. */}
         <div aria-live="polite">
           {erroGeral && (
-            <p className="rounded border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
+            <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
           )}
           <span className="sr-only">{ORDEM.map((c) => erros[c]).filter(Boolean).join(". ")}</span>
         </div>
@@ -222,7 +224,7 @@ export default function CadastroPage() {
         <button
           type="submit"
           disabled={enviando}
-          className="w-full cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel disabled:opacity-50"
+          className="min-h-11 w-full cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
         >
           {enviando ? "criando conta..." : "Criar conta"}
         </button>
@@ -230,7 +232,7 @@ export default function CadastroPage() {
 
       <p className="text-center text-sm text-tinta-suave">
         Já tem conta?{" "}
-        <Link href="/login" className="text-tinta underline">
+        <Link href="/login" className="font-semibold text-destaque hover:underline">
           Entre
         </Link>
       </p>

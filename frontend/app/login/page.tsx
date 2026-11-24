@@ -53,19 +53,21 @@ function Login() {
     }
   }
 
-  if (conferindo) return <p className="text-sm text-tinta-suave">carregando...</p>;
+  if (conferindo) return <p className="text-center text-sm text-tinta-suave">carregando...</p>;
 
-  const campo = "w-full rounded border border-borda bg-papel px-3 py-2 text-tinta";
+  // Mesmos estilos do Compositor (input arredondado, foco na cor de destaque).
+  const campo =
+    "w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
   return (
-    <div className="mx-auto max-w-sm space-y-6">
+    <div className="space-y-6">
       <title>Entrar · Verso</title>
-      <h1 className="text-center text-3xl">Entrar</h1>
+      <h1 className="text-center text-2xl">Entrar</h1>
 
       <form
         onSubmit={aoEntrar}
-        className="space-y-4 rounded-lg border border-borda bg-papel-alto p-6"
+        className="space-y-4 rounded-2xl border border-borda bg-painel p-6"
       >
-        <label className="block text-sm">
+        <label className="block text-sm font-semibold">
           username
           <input
             name="username"
@@ -79,11 +81,11 @@ function Login() {
             spellCheck={false}
             aria-invalid={erro !== null}
             aria-describedby={erro ? "erro-login" : undefined}
-            className={`${campo} mt-1`}
+            className={`${campo} mt-1 font-normal`}
           />
         </label>
 
-        <label className="block text-sm">
+        <label className="block text-sm font-semibold">
           senha
           <input
             name="password"
@@ -94,18 +96,18 @@ function Login() {
             autoComplete="current-password"
             aria-invalid={erro !== null}
             aria-describedby={erro ? "erro-login" : undefined}
-            className={`${campo} mt-1`}
+            className={`${campo} mt-1 font-normal`}
           />
         </label>
 
         <div id="erro-login" aria-live="polite">
-          {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+          {erro && <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
         </div>
 
         <button
           type="submit"
           disabled={enviando}
-          className="w-full cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel disabled:opacity-50"
+          className="min-h-11 w-full cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
         >
           {enviando ? "entrando..." : "Entrar"}
         </button>
@@ -113,7 +115,7 @@ function Login() {
 
       <p className="text-center text-sm text-tinta-suave">
         Ainda não tem conta?{" "}
-        <Link href="/cadastro" className="text-tinta underline">
+        <Link href="/cadastro" className="font-semibold text-destaque hover:underline">
           Cadastre-se
         </Link>
       </p>
