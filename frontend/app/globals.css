@@ -124,6 +124,28 @@
   }
 }
 
+/* O esqueleto do carregamento (components/Esqueleto.tsx): as peças na cor da
+   borda, que se destaca do papel e do painel nos dois modos, num pulso lento.
+   Com prefers-reduced-motion, fica parado. */
+@layer components {
+  .esqueleto {
+    background-color: var(--color-borda);
+    animation: esqueleto-pulso 1.6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .esqueleto {
+      animation: none;
+    }
+  }
+}
+
+@keyframes esqueleto-pulso {
+  50% {
+    opacity: 0.45;
+  }
+}
+
 /* A vitrine da landing (components/LayoutDaEntradaVitrine.tsx). As peças já
    nascem na posição final, visíveis; na entrada, os cartões de trás abrem em leque
    de trás do cartão do centro (partem de --de, rentes a ele, sem giro) e a barra
