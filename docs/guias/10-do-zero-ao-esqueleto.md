@@ -97,7 +97,7 @@ export async function apiPost<T>(path: string, body: unknown): Promise<T> {
 Criem uma página `"use client"` que chama `apiGet("/ping")` e mostra o
 resultado. Se `pong` aparecer na tela, o esqueleto funciona. O caminho model →
 rota → fetch → tela é o mesmo do Acervo deste repo (`routers/acervo.py` →
-`lib/api.ts` → `app/acervo/page.tsx`).
+`lib/api.ts` → `components/Acervo.tsx`).
 
 Façam isso uma vez na semana antes do hackathon, cronometrando. A meta é 30
 minutos consultando só esta página.

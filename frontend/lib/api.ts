@@ -620,9 +620,9 @@ export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
 }
 
-// "ver todos no Acervo": a tela do Acervo já abre com a busca pelo ?q=.
+// "ver todos no Acervo": a aba Poetas do Explorar já abre com a busca pelo ?q=.
 export function caminhoDoAcervoComBusca(q: string): string {
-  return `/acervo?${new URLSearchParams({ q: q.trim() })}`;
+  return caminhoDoAcervo({ ...FILTROS_PADRAO_DO_ACERVO, q }, 1);
 }
 
 // O que o campo do Explorar procura: a tag (normalizada, sem o "#") e o nome ou
@@ -931,6 +931,55 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
 
 export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+}
+
+// O Acervo é a aba "Poetas" do Explorar (decisões 12 e 17). Tudo mora na URL
+// (/explorar?aba=poetas&tipo=&q=&lingua=&epoca=&ordem=&pagina=): o link abre a mesma
+// vista. A rota antiga /acervo e o ?aba=acervo de antes redirecionam para cá com os
+// mesmos parâmetros.
+export const FILTROS_PADRAO_DO_ACERVO: FiltrosDoAcervo = {
+  tipo: "todos",
+  q: "",
+  lingua: null,
+  epoca: null,
+  ordem: "alfabetica",
+};
+
+// Lê os filtros e a página da URL; valor desconhecido vira o padrão. Língua e época
+// são só de consagrados: com "do_verso", saem. Página inválida ("0", "abc") é a 1.
+export function lerFiltrosDoAcervo(params: { get(nome: string): string | null }): {
+  filtros: FiltrosDoAcervo;
+  pagina: number;
+} {
+  const tipoDaUrl = params.get("tipo") ?? "";
+  const tipo = (TIPOS_DO_ACERVO as readonly string[]).includes(tipoDaUrl) ? (tipoDaUrl as TipoDoAcervo) : "todos";
+  const ordemDaUrl = params.get("ordem") ?? "";
+  const ordem = (ORDENS_DO_ACERVO as readonly string[]).includes(ordemDaUrl)
+    ? (ordemDaUrl as OrdemDoAcervo)
+    : "alfabetica";
+  const n = Number(params.get("pagina"));
+  return {
+    filtros: {
+      tipo,
+      q: params.get("q") ?? "",
+      lingua: tipo === "do_verso" ? null : params.get("lingua") || null,
+      epoca: tipo === "do_verso" ? null : params.get("epoca") || null,
+      ordem,
+    },
+    pagina: Number.isInteger(n) && n >= 1 ? n : 1,
+  };
+}
+
+// A URL só leva o que difere do padrão: /explorar?aba=poetas é a vista inicial.
+export function caminhoDoAcervo(filtros: FiltrosDoAcervo, pagina: number): string {
+  const busca = new URLSearchParams({ aba: "poetas" });
+  if (filtros.tipo !== FILTROS_PADRAO_DO_ACERVO.tipo) busca.set("tipo", filtros.tipo);
+  if (filtros.q.trim()) busca.set("q", filtros.q.trim());
+  if (filtros.tipo !== "do_verso" && filtros.lingua) busca.set("lingua", filtros.lingua);
+  if (filtros.tipo !== "do_verso" && filtros.epoca) busca.set("epoca", filtros.epoca);
+  if (filtros.ordem !== FILTROS_PADRAO_DO_ACERVO.ordem) busca.set("ordem", filtros.ordem);
+  if (pagina > 1) busca.set("pagina", String(pagina));
+  return `/explorar?${busca}`;
 }
 
 // ---- Rengas (poema colaborativo): espelham backend/app/schemas/renga.py ----
