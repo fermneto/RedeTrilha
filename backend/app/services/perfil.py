@@ -41,18 +41,13 @@ def poemas(
     na estrofe mais recente dela, como um repost."""
     pessoa = buscar_por_username(db, username)
     bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
+    # Quem bloqueou a pessoa abre o perfil dela só para desbloquear: não vê nada do
+    # que ela publicou nem repostou.
+    if bloqueios.bloqueou(db, usuario.id, pessoa.id):
+        return FeedPage(items=[], total=0, offset=offset, limit=limit)
     # O encerramento sobe a renga no feed, mas no perfil vale a estrofe mais recente.
-    # Quem bloqueou a pessoa ainda vê o perfil dela (para desbloquear), com os poemas;
-    # no perfil de outra pessoa, somem os reposts de quem tem bloqueio comigo.
     return pagina_dos_autores(
-        db,
-        [pessoa.id],
-        usuario,
-        offset,
-        limit,
-        cursor,
-        com_encerramentos=False,
-        sem_bloqueados=not bloqueios.bloqueou(db, usuario.id, pessoa.id),
+        db, [pessoa.id], usuario, offset, limit, cursor, com_encerramentos=False
     )
 
 

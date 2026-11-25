@@ -428,7 +428,9 @@ PRs, na seção "Decisões do Neto".
     respostas, viram "comentário removido" e as respostas ficam; sem respostas,
     somem, também das marcas dos versos. Isso é um filtro na leitura, e não uma
     remoção: desbloquear traz os comentários de volta. Quem bloqueou ainda abre
-    o perfil do bloqueado, para desbloquear (pelo perfil ou pela conversa). A
+    o perfil do bloqueado, mas só o cabeçalho, com o aviso de que bloqueou e o
+    "Desbloquear": nada do que ele publicou, repostou ou juntou em antologias
+    aparece. Também dá para desbloquear pela conversa. A
     conversa de mensagens fica, com o histórico, e desbloquear não refaz os
     follows. A renga de outra pessoa com estrofes dos dois aparece inteira.
   - **Silenciar** uma conversa a tira do contador.

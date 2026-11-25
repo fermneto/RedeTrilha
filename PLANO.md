@@ -454,11 +454,13 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
   `POST`/`DELETE /usuarios/{username}/bloqueio` 🔒 → 204, idempotentes;
   `GET /usuarios/{username}/bloqueio` 🔒 → `{"bloqueei"}` (404 se a pessoa me
   bloqueou). Bloquear apaga os follows nos dois sentidos. Para quem foi
-  bloqueado, o perfil (`GET /usuarios/{u}` e `/posts`), os poemas
+  bloqueado, o perfil (`GET /usuarios/{u}`, `/posts` e `/antologias`), os poemas
   (`GET /posts/{id}`) e as rengas (`GET /rengas/{id}`) de quem bloqueou dão 404.
   Curtir, comentar, repostar, citar, escrever estrofe, seguir e mandar o poema
   por mensagem entre os dois: 404 para o bloqueado, 403 para quem bloqueou.
   `GET /feed`, `/feed/para-voce`, `/tags/{tag}/posts`, `/explorar`, `/rengas` e
+  Para quem bloqueou, `GET /usuarios/{u}/posts` e `/antologias` do bloqueado
+  vêm vazios (o cabeçalho `GET /usuarios/{u}` continua, para desbloquear).
   `/sugestoes`, `/acervo` e `/usuarios/{u}/seguidores` e `/seguindo` tiram,
   para os dois, o outro e os poemas, as rengas e as atividades (reposts,
   estrofes, comentários) dele; as listas de quem me bloqueou dão 404. Convidar

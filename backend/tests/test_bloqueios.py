@@ -40,17 +40,21 @@ def test_bloquear_desfaz_os_follows_nos_dois_sentidos_e_impede_seguir(client, co
 
 def test_quem_foi_bloqueado_nao_ve_poema_nem_perfil(client, como):
     da_bia = poema(client, como, "bia")
-    do_caio = poema(client, como, "caio")
     bloquear(client, como)
 
     assert client.get(f"/posts/{da_bia}", headers=como("caio")).status_code == 404
     assert client.get("/usuarios/bia", headers=como("caio")).status_code == 404
     assert client.get("/usuarios/bia/posts", headers=como("caio")).status_code == 404
     assert client.get("/usuarios/bia/bloqueio", headers=como("caio")).status_code == 404
-    # Quem bloqueou ainda vê o perfil e os poemas do bloqueado (para desbloquear).
-    assert client.get(f"/posts/{do_caio}", headers=como("bia")).status_code == 200
+    # Quem bloqueou ainda abre o cabeçalho do perfil (para desbloquear), mas não vê
+    # nada do que o bloqueado publicou, repostou ou juntou em antologias.
+    client.post("/antologias", json={"nome": "Mar"}, headers=como("caio"))
     assert client.get("/usuarios/caio", headers=como("bia")).status_code == 200
-    assert [p["id"] for p in client.get("/usuarios/caio/posts", headers=como("bia")).json()["items"]] == [do_caio]
+    vazio = client.get("/usuarios/caio/posts", headers=como("bia")).json()
+    assert (vazio["items"], vazio["total"]) == ([], 0)
+    assert client.get("/usuarios/caio/antologias", headers=como("bia")).json()["items"] == []
+    assert client.get("/usuarios/bia/antologias", headers=como("caio")).status_code == 404
+    assert len(client.get("/usuarios/caio/antologias", headers=como("ana")).json()["items"]) == 1
     assert client.get("/usuarios/caio/bloqueio", headers=como("bia")).json() == {"bloqueei": True}
     assert client.get("/usuarios/caio/bloqueio", headers=como("ana")).json() == {"bloqueei": False}
     # Para os outros, nada muda.

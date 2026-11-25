@@ -26,15 +26,21 @@ type Props = {
   proprio: boolean;
   aoMudar: (perfil: Perfil) => void;
   aoEditar: () => void;
+  // Avisa a página se eu bloqueei a pessoa: aí ela esconde as abas do perfil.
+  aoMudarBloqueio?: (bloqueei: boolean) => void;
 };
 
-export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
+export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBloqueio }: Props) {
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
   const router = useRouter();
   const vida = anosDeVida(perfil);
   const podeBloquear = !proprio && !perfil.consagrado;
-  const [bloqueei, setBloqueei] = useState(false);
+  const [bloqueei, setBloqueioLocal] = useState(false);
+  function setBloqueei(valor: boolean) {
+    setBloqueioLocal(valor);
+    aoMudarBloqueio?.(valor);
+  }
 
   useEffect(() => {
     if (!podeBloquear) return;
