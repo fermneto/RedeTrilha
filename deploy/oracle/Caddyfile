@@ -2,6 +2,11 @@
 # DOMINIO vem do .env: o seu domínio, um DuckDNS (verso.duckdns.org) ou um
 # sslip.io com o IP público (api.129-146-10-20.sslip.io). Com "localhost", o
 # Caddy usa uma CA interna (teste local, curl -k).
+#
+# Balanceador: o Caddy divide as requisições entre as duas réplicas da API
+# (api_1 e api_2, no compose.yaml). Uma réplica que cai ou não responde ao
+# /saude sai da roda em segundos, e a requisição que falhou ao conectar tenta a
+# outra. É o que deixa o atualizar.sh reiniciar uma réplica de cada vez sem queda.
 {
 	email {$ACME_EMAIL}
 	servers {
@@ -13,6 +18,38 @@
 			idle 2m
 		}
 	}
+}
+
+# As duas réplicas e o que fazer quando uma falha; entra em cada reverse_proxy.
+(replicas) {
+	to api_1:8000 api_2:8000
+
+	# Ativo: GET /saude em cada réplica a cada 2 s. Duas falhas seguidas (ou 2 s sem
+	# resposta) tiram a réplica da roda; uma resposta boa a devolve.
+	health_uri /saude
+	health_interval 2s
+	health_timeout 2s
+	health_fails 2
+	health_passes 1
+
+	# Passivo: uma requisição que falhou (conexão recusada, réplica parando) tira
+	# a réplica por 10 s, sem esperar o próximo /saude. Um 500 da API não conta: é
+	# erro da rota, não da réplica.
+	fail_duration 10s
+	max_fails 1
+
+	# Tentar a outra réplica: até 2 vezes, por até 5 s. Se a CONEXÃO falhou, a
+	# requisição não chegou à API e o Caddy tenta de novo qualquer método (é
+	# seguro). Se ela chegou e a resposta falhou no meio, só GET e HEAD são
+	# repetidos: um POST (publicar, curtir, mandar mensagem) nunca vai duas vezes.
+	lb_retries 2
+	lb_try_duration 5s
+	lb_try_interval 250ms
+	lb_retry_match {
+		method GET HEAD
+	}
+	# O transport (dial_timeout de 2 s) fica em cada reverse_proxy: um segundo
+	# bloco transport substitui o primeiro, não soma.
 }
 
 {$DOMINIO} {
@@ -34,15 +71,20 @@
 		-Server
 	}
 
-	reverse_proxy api:8000 {
-		health_uri /saude
-		health_interval 30s
+	# Requisições curtas: round_robin, uma réplica de cada vez. O least_conn
+	# contaria os streams abertos como carga e mandaria tudo para a réplica que
+	# acabou de reiniciar (ela volta sem nenhum).
+	reverse_proxy {
+		import replicas
+		lb_policy round_robin
 		transport http {
-			dial_timeout 5s
+			dial_timeout 2s
 			response_header_timeout 60s
 		}
 	}
 
+	# Cada linha do log diz qual réplica respondeu (docker compose logs caddy).
+	log_append upstream {rp.upstream.hostport}
 	log {
 		output stdout
 		format json

@@ -10,7 +10,8 @@ services:
     profiles: [nunca]
   seed:
     depends_on: !reset {}
-  api:
+  api_1: &sem-db
     depends_on: !override
       seed:
         condition: service_completed_successfully
+  api_2: *sem-db
