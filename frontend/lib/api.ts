@@ -5,12 +5,28 @@ const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 const CHAVE_TOKEN = "token";
 
+// Avisa quem depende da sessão (o Layout, que troca a landing pelo feed em "/")
+// que o token entrou ou saiu nesta aba; o evento "storage" só chega nas outras.
+const EVENTO_SESSAO_MUDOU = "verso:sessao-mudou";
+
 export function salvarToken(token: string): void {
   localStorage.setItem(CHAVE_TOKEN, token);
+  window.dispatchEvent(new Event(EVENTO_SESSAO_MUDOU));
 }
 
 function esquecerToken(): void {
   localStorage.removeItem(CHAVE_TOKEN);
+  window.dispatchEvent(new Event(EVENTO_SESSAO_MUDOU));
+}
+
+// Para o useSyncExternalStore: chama aoMudar quando o token muda nesta aba ou em outra.
+export function assinarSessao(aoMudar: () => void): () => void {
+  window.addEventListener(EVENTO_SESSAO_MUDOU, aoMudar);
+  window.addEventListener("storage", aoMudar);
+  return () => {
+    window.removeEventListener(EVENTO_SESSAO_MUDOU, aoMudar);
+    window.removeEventListener("storage", aoMudar);
+  };
 }
 
 // Logout: apaga a sessão no backend e depois o token local. Usa fetch direto,
@@ -132,8 +148,9 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   // servidor do deploy reiniciou). Joga o token fora e volta para o login.
   if (res.status === 401 && typeof window !== "undefined" && localStorage.getItem(CHAVE_TOKEN)) {
     esquecerToken();
-    // Login e cadastro conferem o token salvo e tratam o 401 na própria tela.
-    if (!["/login", "/cadastro"].includes(window.location.pathname)) {
+    // Login e cadastro conferem o token salvo e tratam o 401 na própria tela; em
+    // "/", sem o token, o Layout já mostra a landing com o formulário no lugar do feed.
+    if (!["/", "/login", "/cadastro"].includes(window.location.pathname)) {
       window.location.href = caminhoDoLogin();
     }
   }

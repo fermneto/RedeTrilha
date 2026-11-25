@@ -3,24 +3,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSyncExternalStore } from "react";
 
 import { ColunaDireita } from "@/components/ColunaDireita";
 import { Nav } from "@/components/Nav";
-import { ehTelaDeBoasVindas } from "@/lib/api";
+import { TelaDeEntrada } from "@/components/LayoutDaEntrada";
+import { assinarSessao, ehTelaDeBoasVindas, temToken } from "@/lib/api";
 
-// Login e cadastro ficam limpos e centrados, sem as barras (decisão do Neto).
-// Checagem pelo pathname, e não por um route group app/(auth)/, porque as
-// páginas vêm do #44 em app/login e app/cadastro: assim nada precisa mudar de pasta.
-const ROTAS_SEM_BARRAS = ["/login", "/cadastro"];
+// O cadastro fica limpo e centrado, sem as barras (decisão do Neto). Checagem pelo
+// pathname, e não por um route group app/(auth)/, para nada mudar de pasta.
+const ROTAS_SEM_BARRAS = ["/cadastro"];
+
+// O token só existe no navegador: no servidor (e na hidratação) a resposta é null,
+// "ainda não sei"; no cliente, true ou false, e muda junto com o login e o logout.
+const semSessaoNoServidor = () => null;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const caminho = usePathname();
+  const logado = useSyncExternalStore<boolean | null>(assinarSessao, temToken, semSessaoNoServidor);
 
   // O onboarding (/boas-vindas e /boas-vindas/quem-seguir) é um momento à parte:
   // a página desenha a própria tela cheia (components/TelaDeBoasVindas.tsx), sem a
   // navegação, a coluna Descobrir nem a barra do celular. Mesma checagem pelo
   // pathname do login, para nenhuma página mudar de pasta.
-  if (ehTelaDeBoasVindas(caminho)) return children;
+  // A landing (/login) também desenha a própria tela cheia (components/LayoutDaEntrada.tsx).
+  if (ehTelaDeBoasVindas(caminho) || caminho === "/login") return children;
+
+  // "/" é o feed para quem está logado e a landing para quem não está. Antes de
+  // ler o token, só o papel vazio: nem o feed nem a landing piscam errados.
+  if (caminho === "/" && logado !== true) {
+    return logado === null ? <div className="min-h-dvh" /> : <TelaDeEntrada />;
+  }
 
   if (ROTAS_SEM_BARRAS.includes(caminho)) {
     return (
