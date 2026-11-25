@@ -433,6 +433,10 @@ trocando a URL do Render pela sua.
 ### Ping externo (UptimeRobot)
 
 1. Crie a conta em [uptimerobot.com](https://uptimerobot.com) (plano free).
+   O cadastro já pede a URL do primeiro monitor: se a API ainda não estiver no
+   ar, use a URL da Vercel (o front já responde) e crie o da API depois. A
+   lista de "próximos passos" que aparece em seguida (alertas por app, SSL,
+   "cubra cada página", API) é opcional: os alertas por e-mail já vêm ligados.
 2. **Add New Monitor**:
 
    ```text
@@ -453,9 +457,13 @@ a palavra `total`: essa rota é pública e lê do banco.
 O backend já tem o `sentry-sdk`, mas ele **só liga se `SENTRY_DSN` estiver
 definido**. Vazio, nada é enviado.
 
-1. Em [sentry.io](https://sentry.io) (plano Developer, grátis): **Create
-   Project** → plataforma **FastAPI** → copie o **DSN**
-   (`https://...@o....ingest.sentry.io/...`).
+1. Em [sentry.io](https://sentry.io) (plano Developer, grátis): se o cadastro
+   perguntar os produtos, marque **só Error Monitoring** (Tracing, Session
+   Replay, Profiling e Logs gastam a cota e não são usados). Depois, **Create
+   Project** → plataforma **FastAPI** (ou Python), nome `verso-api` → copie o
+   **DSN** (`https://...@o....ingest.sentry.io/...`). Não precisa seguir o
+   código de instalação da tela: o backend já tem a integração. Perdeu o DSN?
+   Settings → Projects → verso-api → Client Keys (DSN).
 2. No `.env` da VM: `SENTRY_DSN=<o DSN>`   **<<< COLE AQUI**, e
    `docker compose up -d`.
 3. Para desligar: apague o valor e `docker compose up -d` de novo.
