@@ -120,7 +120,7 @@ nos poemas dele.
 | `id` | int | |
 | `autor_id` | FK `users.id` | |
 | `titulo` | `str \| None` (200) | opcional |
-| `texto` | `Text` | **sem limite**, gravado como veio; vazio só em repost puro |
+| `texto` | `Text` | **sem limite**, gravado como veio; vazio só em repost puro; pode ter as marcas de formatação (abaixo) |
 | `forma` | `str \| None` | uma de `FORMAS` (abaixo) |
 | `obra` | `str \| None` | livro de origem (consagrados) |
 | `ano` | `int \| None` | ano de publicação original (consagrados) |
@@ -133,6 +133,22 @@ nos poemas dele.
 
 Um repost puro por (autor, original), garantido por um índice único parcial
 (`uq_repost_puro`).
+
+**Formato do texto (#137):** o `texto` continua uma string de texto puro, mas
+pode ter negrito, itálico, sublinhado e tachado num subconjunto de Markdown:
+`**negrito**`, `*itálico*`, `++sublinhado++` e `~~tachado~~`, com `\` antes de
+`*`, `+`, `~` ou `\` para o caractere literal. Uma marca nunca atravessa a
+quebra de linha (o compositor fecha e reabre em cada verso), então
+`texto.split("\n")` tem o mesmo número de linhas com ou sem marcas. Um
+delimitador só abre antes de um caractere que não é espaço e só fecha depois de
+um; o que não fecha no mesmo verso é literal (`* * *`, `2 * 3` e o `shade*,` de
+um consagrado continuam como estão). As regras ficam em `core/marcas.py`
+(`texto_sem_marcas`) e em `frontend/lib/marcas.ts`, com os mesmos casos de
+teste (`backend/tests/casos_marcas.json`). Valem no `texto` do poema, da
+citação, do rascunho e da estrofe de renga; comentários (e mensagens diretas)
+são texto puro, sem interpretação. A oficina mede, as `#tags` se extraem e o
+"verso em branco" da âncora se testa no texto sem as marcas; o `trecho` da
+âncora e a tradução trazem as marcas, e o `trecho` do Em alta sai sem elas.
 
 `FORMAS = ["soneto", "haicai", "trova", "quadra", "cordel", "verso_livre", "prosa_poetica", "outro"]`
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
@@ -365,6 +381,9 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 
 ### Tradução (dono: Neto)
 
+- O `texto` traduzido mantém as marcas de formatação nos mesmos versos; se
+  elas vêm quebradas (um `**` que não fecha) ou aparecem num poema sem marcas,
+  a tradução é gravada sem formatação (#137).
 - `POST /posts/{id}/traduzir` 🔒, body `{"para": "<ISO 639-1>"}` →
   `TraducaoOut` (`titulo`, `texto`, `idioma_origem`, `idioma_destino`,
   `modelo`, `em_cache`).
@@ -379,7 +398,7 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - `POST /oficina/analise`, sem login e sem banco, body `{"texto", "forma"?}`
   (`texto` até 10.000 caracteres; `forma` uma de `FORMAS`) →
   `{"versos": [{"silabas", "rima", "tipo_rima"}], "esquema", "aviso"}`, um item
-  por linha de `texto.split("\n")`. `tipo_rima` é `consoante`, `toante` ou
+  por linha de `texto.split("\n")`, medido sem as marcas de formatação. `tipo_rima` é `consoante`, `toante` ou
   `null`; `esquema` sai como `"ABBA ABBA CDC DCD"`; `aviso` só para soneto
   (14 versos) e haicai (3 versos de 5-7-5 sílabas poéticas).
 - Algoritmo em `core/metrica.py`. Só o compositor usa: o `Post` não muda.
