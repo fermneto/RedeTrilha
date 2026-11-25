@@ -11,7 +11,6 @@ import { EsqueletoDeRengas } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   formatarData,
   listarRengas,
@@ -66,8 +65,6 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
   const [resultado, setResultado] = useState<Page<Renga> | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const filtros = useRef<HTMLElement>(null);
-  // O esqueleto fica pelo menos 500 ms; a lista entra depois.
-  const esperando = useEsperaMinima(!resultado && !erro);
 
   // No celular a fila de chips rola de lado: o filtro escolhido fica à vista.
   useEffect(() => {
@@ -115,9 +112,9 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
       </div>
 
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-      {!erro && (!resultado || esperando) && <EsqueletoDeRengas quantos={6} />}
-      {resultado && !esperando && resultado.items.length === 0 && (
-        <div className="surgir px-4 py-10 text-center">
+      {!erro && !resultado && <EsqueletoDeRengas quantos={6} />}
+      {resultado && resultado.items.length === 0 && (
+        <div className="px-4 py-10 text-center">
           <p className="font-serifada text-lg">{VAZIO[situacao ?? "todas"]}</p>
           <p className="mt-1 text-sm text-tinta-suave">
             Escreva a primeira estrofe e chame a turma para continuar.
@@ -130,9 +127,9 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
           </Link>
         </div>
       )}
-      {resultado && !esperando && resultado.items.length > 0 && (
-        <div className="surgir">
-          <ul className="divide-y divide-borda border-b border-borda">
+      {resultado && resultado.items.length > 0 && (
+        <>
+          <ul className="surgir divide-y divide-borda border-b border-borda">
             {resultado.items.map((r) => (
               <li key={r.id}>
                 <CartaoDaRenga renga={r} />
@@ -142,7 +139,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
           <div className="py-4">
             <Paginacao atual={pagina} total={totalDePaginas} href={(p) => caminhoDasRengas(situacao, p)} />
           </div>
-        </div>
+        </>
       )}
     </div>
   );

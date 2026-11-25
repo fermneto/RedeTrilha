@@ -129,9 +129,8 @@
    de brilho que atravessa a página da esquerda para a direita. Com
    background-attachment: fixed, a faixa é uma só para todas as peças (o
    gradiente mede a janela, não a peça). Com prefers-reduced-motion, a peça fica
-   parada e sem brilho. O conteúdo que chega entra com .surgir, um fade curto
-   (parado com prefers-reduced-motion; o tempo mínimo do esqueleto continua, ver
-   hooks/useEsperaMinima.ts). */
+   parada e sem brilho. O conteúdo que chega entra com .surgir, um fade de 150 ms
+   que começa na hora em que ele aparece (sem fade com prefers-reduced-motion). */
 @layer components {
   .esqueleto {
     --brilho: rgb(255 255 255 / 0.4);
@@ -144,7 +143,7 @@
   }
 
   .surgir {
-    animation: surgir 200ms ease-out both;
+    animation: surgir 150ms ease-out both;
   }
 
   @media (prefers-color-scheme: dark) {

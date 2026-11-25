@@ -12,7 +12,6 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import { EsqueletoDeCartoes } from "@/components/Esqueleto";
-import { useEsperaMinima, useItensLiberados } from "@/hooks/useEsperaMinima";
 import {
   buscarAcervo,
   buscarEu,
@@ -53,10 +52,6 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
   const [erro, setErro] = useState<string | null>(null);
   // Resposta atrasada de um termo antigo não sobrescreve a do termo atual.
   const pedido = useRef(0);
-  // O esqueleto fica pelo menos 500 ms; os cartões novos esperam por ele (os que
-  // já estão na tela ficam).
-  const esperando = useEsperaMinima(carregando);
-  const visiveis = useItensLiberados(contas, esperando, chaveDaConta);
 
   const carregar = useCallback(async (offset: number, q: string) => {
     const meu = ++pedido.current;
@@ -124,7 +119,7 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
       </form>
 
       <ul className={`grid gap-3 ${colunas}`}>
-        {visiveis.map((conta) => (
+        {contas.map((conta) => (
           <li key={conta.id} className="surgir">
             <CartaoDoAcervo
               poeta={conta}
@@ -148,19 +143,19 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
           </button>
         </div>
       )}
-      {esperando && (
-        <div className={visiveis.length > 0 ? "mt-3" : ""}>
+      {carregando && (
+        <div className={contas.length > 0 ? "mt-3" : ""}>
           <EsqueletoDeCartoes quantos={6} className={colunas} />
         </div>
       )}
-      {!esperando && !erro && contas.length === 0 && (
-        <p className="surgir py-10 text-center text-tinta-suave">
+      {!carregando && !erro && contas.length === 0 && (
+        <p className="py-10 text-center text-tinta-suave">
           {busca
             ? "Nenhum poeta encontrado."
             : "Nenhuma sugestão agora: você já segue todos os poetas com poemas publicados."}
         </p>
       )}
-      {!esperando && contas.length < total && (
+      {!carregando && contas.length < total && (
         <button
           type="button"
           onClick={() => carregar(contas.length, busca)}
@@ -171,8 +166,4 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
       )}
     </div>
   );
-}
-
-function chaveDaConta(conta: Conta): number {
-  return conta.id;
 }

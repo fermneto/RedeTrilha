@@ -12,7 +12,6 @@ import { Abas } from "@/components/Abas";
 import { Avatar } from "@/components/Avatar";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDeConversas } from "@/components/Esqueleto";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   buscarEu,
   caminhoDoLogin,
@@ -121,12 +120,10 @@ function ListaDaCaixa({
   euId: number | null;
   aoCarregarMais: () => void;
 }) {
-  // O esqueleto fica pelo menos 500 ms; as conversas entram depois.
-  const esperando = useEsperaMinima(!lista);
-  if (!lista || esperando) return <EsqueletoDeConversas quantos={5} />;
+  if (!lista) return <EsqueletoDeConversas quantos={5} />;
 
   return (
-    <div className="surgir">
+    <>
       {aba === "pedidos" && (
         <p className="border-b border-borda px-4 py-3 text-sm text-tinta-suave">
           Mensagens de quem você não segue. Quem mandou só fica sabendo que você leu se você aceitar.
@@ -161,7 +158,7 @@ function ListaDaCaixa({
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

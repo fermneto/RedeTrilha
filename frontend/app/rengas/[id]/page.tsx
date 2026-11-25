@@ -21,7 +21,6 @@ import { EsqueletoDaPaginaDaRenga } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   acrescentarEstrofe,
   buscarEu,
@@ -65,8 +64,6 @@ export default function RengaPage() {
   // ?versos=2-4: lido uma vez, quando a renga chega, e passado uma vez aos versos.
   const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
   const leuAUrl = useRef(false);
-  // O esqueleto fica pelo menos 500 ms; a renga entra depois.
-  const esperando = useEsperaMinima(!renga && !erro && !naoExiste);
 
   // Também chamado pela árvore depois de comentar ou apagar. Sem as marcas, a
   // renga continua legível: só não mostra os números.
@@ -100,13 +97,12 @@ export default function RengaPage() {
       });
   }, [id, router, carregarMarcas]);
 
-  // Só com a renga na tela: os versos recebem o pedido no mesmo commit.
   useEffect(() => {
-    if (!renga || esperando || leuAUrl.current) return;
+    if (!renga || leuAUrl.current) return;
     leuAUrl.current = true;
     const versos = new URLSearchParams(window.location.search).get("versos");
     setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoDaRenga(renga.estrofes))));
-  }, [renga, esperando]);
+  }, [renga]);
 
   // Os versos aplicam o pedido no mesmo commit; depois ele se apaga.
   useEffect(() => {
@@ -152,7 +148,7 @@ export default function RengaPage() {
         <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
       </>
     );
-  if (!renga || esperando)
+  if (!renga)
     return (
       <>
         {cabecalho}
@@ -217,7 +213,7 @@ export default function RengaPage() {
       </article>
 
       {!renga.fechada && (
-        <section aria-labelledby="titulo-proxima-estrofe" className="surgir border-b border-borda px-4 py-5">
+        <section aria-labelledby="titulo-proxima-estrofe" className="border-b border-borda px-4 py-5">
           <h2 id="titulo-proxima-estrofe" className="text-sm font-semibold tracking-normal">
             Próxima estrofe
             <span className="font-normal text-tinta-suave tabular-nums">
@@ -234,13 +230,13 @@ export default function RengaPage() {
       )}
 
       {souCriador && !renga.fechada && (
-        <section aria-label="ações de quem criou" className="surgir space-y-5 border-b border-borda px-4 py-5">
+        <section aria-label="ações de quem criou" className="space-y-5 border-b border-borda px-4 py-5">
           {renga.modo === "convidados" && <Convidar rengaId={renga.id} aoConvidar={setRenga} />}
           <Encerrar rengaId={renga.id} aoEncerrar={setRenga} />
         </section>
       )}
 
-      <div className="surgir px-4 py-6">
+      <div className="px-4 py-6">
         <ArvoreComentarios
           alvo={{ tipo: "renga", id: renga.id }}
           euId={eu?.id ?? null}

@@ -3,8 +3,8 @@
 // conteúdo real (poema-corpo, text-sm...), então cada linha ocupa a altura da
 // linha de verdade. O contêiner (Carregando) fica com aria-busy e diz
 // "carregando…" só ao leitor de tela; as peças são aria-hidden. A cor e o brilho
-// vêm de .esqueleto, no globals.css; o tempo mínimo na tela, de
-// hooks/useEsperaMinima.ts.
+// vêm de .esqueleto, no globals.css. O esqueleto some no instante em que o
+// dado chega, sem tempo mínimo.
 
 import { TAMANHOS_DO_AVATAR } from "@/components/Avatar";
 

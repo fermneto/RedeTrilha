@@ -22,7 +22,6 @@ import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconePerfil } from "@/components/icones/IconePerfil";
 import { IconeRenga } from "@/components/icones/IconeRenga";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   acaoDoAviso,
   caminhoDoLogin,
@@ -102,14 +101,11 @@ export default function AvisosPage() {
     }
   }
 
-  // O esqueleto fica pelo menos 500 ms; os avisos entram depois.
-  const esperando = useEsperaMinima(!lista && !erro);
-
   return (
     <div>
       <CabecalhoPagina titulo="Avisos" />
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-      {!lista || esperando ? (
+      {!lista ? (
         !erro && <EsqueletoDeAvisos quantos={6} />
       ) : lista.itens.length === 0 ? (
         <Vazio />
@@ -122,7 +118,7 @@ export default function AvisosPage() {
           ))}
         </ul>
       )}
-      {lista?.cursor && !esperando && (
+      {lista?.cursor && (
         <div className="flex justify-center py-4">
           <button
             type="button"
@@ -186,7 +182,7 @@ function LinhaDoAviso({ aviso, novo }: { aviso: Aviso; novo: boolean }) {
 
 function Vazio() {
   return (
-    <div className="surgir px-6 py-14 text-center">
+    <div className="px-6 py-14 text-center">
       <IconeAvisos className="mx-auto h-10 w-10 text-tinta-suave" />
       <p className="mt-4 font-serifada text-xl">Nenhum aviso por enquanto.</p>
       <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-tinta-suave">

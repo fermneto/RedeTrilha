@@ -4,8 +4,8 @@
 // "Em alta" já estão no corpo da tela (como no X), então a coluna fica só com os
 // outros dois; abaixo de 1100 px, esses dois vão para o Explorar (DescobrirNoTopo).
 // Todas as rotas, a da busca inclusive, são protegidas: sem login, a coluna fica vazia.
-// Enquanto carrega (e pelo menos 500 ms), cada bloco mostra o título e o esqueleto
-// do conteúdo; depois, some quando não tem o que mostrar (ou quando a rota falha).
+// Enquanto carrega, cada bloco mostra o título e o esqueleto do conteúdo; depois,
+// some quando não tem o que mostrar (ou quando a rota falha).
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,7 +18,6 @@ import { EsqueletoDeEmAlta, EsqueletoDePessoas, EsqueletoDoPoemaDoDia } from "@/
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
 import { TextoFormatado } from "@/components/TextoFormatado";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   buscarEu,
   buscarPoemaDoDia,
@@ -126,8 +125,7 @@ function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
       .catch(() => setPoema(null));
   }, []);
 
-  const esperando = useEsperaMinima(poema === undefined);
-  if (poema === undefined || esperando)
+  if (poema === undefined)
     return (
       <Bloco titulo="Poema do dia" recolhivel={recolhivel}>
         <EsqueletoDoPoemaDoDia />
@@ -170,8 +168,7 @@ function linhasDaPrevia(versos: string[]): number | null {
 
 function EmAlta() {
   const tags = useEmAlta();
-  const esperando = useEsperaMinima(!tags);
-  if (!tags || esperando)
+  if (!tags)
     return (
       <Bloco titulo="Em alta">
         <div className="pb-2">
@@ -215,8 +212,7 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
     };
   }, []);
 
-  const esperando = useEsperaMinima(poetas === null);
-  if (poetas === null || esperando)
+  if (poetas === null)
     return (
       <Bloco titulo="Consagrados para seguir" recolhivel={recolhivel}>
         <EsqueletoDePessoas quantos={CONSAGRADOS_NO_BLOCO} comLink />
@@ -234,7 +230,7 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
       </ul>
       <Link
         href="/sugestoes"
-        className="surgir realce flex min-h-11 items-center rounded-b-2xl px-4 text-sm font-semibold text-destaque"
+        className="realce flex min-h-11 items-center rounded-b-2xl px-4 text-sm font-semibold text-destaque"
       >
         ver mais poetas para seguir
       </Link>

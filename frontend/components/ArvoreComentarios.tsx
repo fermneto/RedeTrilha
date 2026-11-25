@@ -15,7 +15,6 @@ import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDeComentarios } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { TextoFormatado } from "@/components/TextoFormatado";
-import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   ancoraCobreOVerso,
   apagarComentario,
@@ -111,8 +110,6 @@ export function ArvoreComentarios({
     ...meusNovos.filter((c) => ancoraCobreOVerso(c.ancora, verso)),
     ...raizes.filter((c) => !idsNovos.has(c.id)),
   ];
-  // Só a primeira carga mostra o esqueleto (pelo menos 500 ms); "carregar mais" é o botão.
-  const esperando = useEsperaMinima(carregando && visiveis.length === 0);
 
   return (
     <section id="comentarios" className="space-y-4">
@@ -139,27 +136,25 @@ export function ArvoreComentarios({
         </p>
       )}
       {erro && <p className="text-sm text-destaque">{erro}</p>}
-      {esperando ? (
+      {visiveis.length === 0 && carregando ? (
         <EsqueletoDeComentarios />
       ) : visiveis.length === 0 && !erro ? (
-        <p className="surgir text-sm text-tinta-suave">Ainda não há comentários.</p>
+        <p className="text-sm text-tinta-suave">Ainda não há comentários.</p>
       ) : (
-        <div className="surgir">
-          <ListaComentarios
-            alvo={alvo}
-            comentarios={visiveis}
-            destacados={idsNovos}
-            nivel={0}
-            euId={euId}
-            aoMudar={aoMudar}
-            aoSumir={(id) => {
-              setMeusNovos((atuais) => atuais.filter((c) => c.id !== id));
-              setRaizes((atuais) => atuais.filter((c) => c.id !== id));
-            }}
-          />
-        </div>
+        <ListaComentarios
+          alvo={alvo}
+          comentarios={visiveis}
+          destacados={idsNovos}
+          nivel={0}
+          euId={euId}
+          aoMudar={aoMudar}
+          aoSumir={(id) => {
+            setMeusNovos((atuais) => atuais.filter((c) => c.id !== id));
+            setRaizes((atuais) => atuais.filter((c) => c.id !== id));
+          }}
+        />
       )}
-      {cursor && !esperando && (
+      {cursor && (
         <button
           type="button"
           onClick={() => carregar(cursor)}
