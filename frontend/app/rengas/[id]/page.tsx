@@ -17,6 +17,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
+import { EsqueletoDaPaginaDaRenga } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
@@ -151,7 +152,7 @@ export default function RengaPage() {
     return (
       <>
         {cabecalho}
-        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+        <EsqueletoDaPaginaDaRenga />
       </>
     );
 
@@ -160,7 +161,7 @@ export default function RengaPage() {
   return (
     <div>
       {cabecalho}
-      <article className="border-b border-borda px-4 pt-6 pb-6">
+      <article className="surgir border-b border-borda px-4 pt-6 pb-6">
         <header>
           <h1 className="poema-titulo break-words">{renga.titulo}</h1>
           <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">

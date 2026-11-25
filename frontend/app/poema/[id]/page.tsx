@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
 import {
@@ -88,14 +89,14 @@ export default function PoemaPage() {
     return (
       <>
         {cabecalho}
-        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+        <EsqueletoDaPaginaDoPoema />
       </>
     );
 
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda">
+      <div className="surgir border-b border-borda">
         <PoemaCard
           post={poema}
           linkarTitulo={false}
@@ -128,7 +129,7 @@ export default function PoemaPage() {
           <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
         )}
       </div>
-      <div className="px-4 py-6">
+      <div className="surgir px-4 py-6">
         <ArvoreComentarios
           alvo={{ tipo: "poema", id: poema.id }}
           euId={euId}

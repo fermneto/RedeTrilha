@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
+import { EsqueletoDeCartoes } from "@/components/Esqueleto";
 import {
   buscarAcervo,
   buscarEu,
@@ -119,7 +120,7 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
 
       <ul className={`grid gap-3 ${colunas}`}>
         {contas.map((conta) => (
-          <li key={conta.id}>
+          <li key={conta.id} className="surgir">
             <CartaoDoAcervo
               poeta={conta}
               proprio={conta.id === meuId}
@@ -142,7 +143,11 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
           </button>
         </div>
       )}
-      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
+      {carregando && (
+        <div className={contas.length > 0 ? "mt-3" : ""}>
+          <EsqueletoDeCartoes quantos={6} className={colunas} />
+        </div>
+      )}
       {!carregando && !erro && contas.length === 0 && (
         <p className="py-10 text-center text-tinta-suave">
           {busca

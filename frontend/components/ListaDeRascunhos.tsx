@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
+import { EsqueletoDeRascunhos } from "@/components/Esqueleto";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { TextoFormatado } from "@/components/TextoFormatado";
@@ -69,10 +70,10 @@ export function ListaDeRascunhos() {
         Poemas guardados e ainda não publicados. Só você vê.
       </p>
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-      {rascunhos === null && !erro && <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>}
+      {rascunhos === null && !erro && <EsqueletoDeRascunhos quantos={3} />}
       {rascunhos?.length === 0 && <GavetaVazia />}
       {rascunhos && rascunhos.length > 0 && (
-        <ul>
+        <ul className="surgir">
           {rascunhos.map((rascunho) => (
             <ItemDoRascunho
               key={rascunho.id}

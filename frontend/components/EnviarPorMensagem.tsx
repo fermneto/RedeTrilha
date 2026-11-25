@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { EsqueletoDoMenu } from "@/components/Esqueleto";
 import { IconeEnviar } from "@/components/icones/IconeEnviar";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
@@ -198,7 +199,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
           {!achados && recentes && recentes.length > 0 && (
             <p className="px-2 pb-1 text-xs text-tinta-suave">Conversas recentes</p>
           )}
-          {pessoas === null && <p className="px-2 py-2 text-tinta-suave">carregando...</p>}
+          {pessoas === null && <EsqueletoDoMenu quantos={3} com="avatar" />}
           {pessoas !== null && pessoas.length === 0 && (
             <p className="px-2 py-2 text-tinta-suave">
               {achados ? "Ninguém com esse nome." : "Busque alguém para mandar o poema."}

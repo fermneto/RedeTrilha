@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
+import { EsqueletoDeComentarios } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { TextoFormatado } from "@/components/TextoFormatado";
 import {
@@ -135,7 +136,9 @@ export function ArvoreComentarios({
         </p>
       )}
       {erro && <p className="text-sm text-destaque">{erro}</p>}
-      {visiveis.length === 0 && !carregando && !erro ? (
+      {visiveis.length === 0 && carregando ? (
+        <EsqueletoDeComentarios />
+      ) : visiveis.length === 0 && !erro ? (
         <p className="text-sm text-tinta-suave">Ainda não há comentários.</p>
       ) : (
         <ListaComentarios

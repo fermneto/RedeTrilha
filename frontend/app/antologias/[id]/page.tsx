@@ -11,6 +11,7 @@ import { SeloPrivada } from "@/components/AntologiaLista";
 import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
+import { EsqueletoDaPaginaDaAntologia } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
 import {
@@ -94,7 +95,7 @@ export default function AntologiaPage() {
     return (
       <>
         {cabecalho}
-        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+        <EsqueletoDaPaginaDaAntologia />
       </>
     );
 
@@ -108,7 +109,7 @@ export default function AntologiaPage() {
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda px-4 pt-8 pb-6">
+      <div className="surgir border-b border-borda px-4 pt-8 pb-6">
         {editando ? (
           <AntologiaFormulario
             inicial={antologia}

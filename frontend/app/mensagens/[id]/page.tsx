@@ -14,6 +14,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from
 
 import { Avatar } from "@/components/Avatar";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
+import { EsqueletoDeMensagens, EsqueletoDoTopoDaConversa } from "@/components/Esqueleto";
 import { IconeEnviar } from "@/components/icones/IconeEnviar";
 import { IconeMais } from "@/components/icones/IconeMais";
 import { PoemaCard } from "@/components/PoemaCard";
@@ -204,7 +205,7 @@ export default function ConversaPage() {
 
   return (
     <div className="flex min-h-[calc(100dvh-3.25rem)] flex-col sm:min-h-dvh">
-      <Cabecalho conversa={conversa} aoMudar={recarregarConversa} aoErro={setErro} />
+      <Cabecalho conversa={conversa} carregando={!conversa && !erro} aoMudar={recarregarConversa} aoErro={setErro} />
 
       <div className="flex-1 px-4 pt-3 pb-4">
         {antes && (
@@ -218,6 +219,7 @@ export default function ConversaPage() {
             </button>
           </div>
         )}
+        {!conversa && !erro && mensagens.length === 0 && <EsqueletoDeMensagens />}
         {conversa && mensagens.length === 0 && (
           <p className="py-10 text-center text-sm text-tinta-suave">
             Comece a conversa com @{conversa.outro.username}. Pode ser um verso.
@@ -293,10 +295,12 @@ function BalaoDaMensagem({ mensagem, minha }: { mensagem: Mensagem; minha: boole
 
 function Cabecalho({
   conversa,
+  carregando,
   aoMudar,
   aoErro,
 }: {
   conversa: Conversa | null;
+  carregando: boolean;
   aoMudar: () => void;
   aoErro: (erro: string) => void;
 }) {
@@ -325,6 +329,8 @@ function Cabecalho({
           </Link>
           <MenuDaConversa conversa={conversa} aoMudar={aoMudar} aoErro={aoErro} />
         </>
+      ) : carregando ? (
+        <EsqueletoDoTopoDaConversa />
       ) : (
         <span className="flex-1" />
       )}

@@ -26,6 +26,7 @@ import { AntologiaLista } from "@/components/AntologiaLista";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
 import { DescobrirNoTopo } from "@/components/ColunaDireita";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
+import { EsqueletoDeEmAlta } from "@/components/Esqueleto";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { lerPagina, lerSituacao, ListaDeRengas } from "@/components/ListaDeRengas";
 import {
@@ -262,13 +263,13 @@ const TAGS_EM_ALTA = 10;
 // "Em alta" no corpo da tela; some quando não há tags nas últimas 24 h.
 function EmAltaDoExplorar() {
   const tags = useEmAlta(TAGS_EM_ALTA);
-  if (!tags || tags.length === 0) return null;
+  if (tags?.length === 0) return null;
   return (
     <section aria-labelledby="em-alta" className="border-b border-borda pt-3 pb-1">
       <h2 id="em-alta" className="px-4 text-xl font-bold">
         Em alta
       </h2>
-      <ListaEmAlta tags={tags} />
+      {tags ? <ListaEmAlta tags={tags} /> : <EsqueletoDeEmAlta quantos={TAGS_EM_ALTA} />}
     </section>
   );
 }

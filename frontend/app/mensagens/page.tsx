@@ -11,6 +11,7 @@ import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { Abas } from "@/components/Abas";
 import { Avatar } from "@/components/Avatar";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EsqueletoDeConversas } from "@/components/Esqueleto";
 import {
   buscarEu,
   caminhoDoLogin,
@@ -119,7 +120,7 @@ function ListaDaCaixa({
   euId: number | null;
   aoCarregarMais: () => void;
 }) {
-  if (!lista) return <p className="px-4 py-6 text-sm text-tinta-suave">carregando...</p>;
+  if (!lista) return <EsqueletoDeConversas quantos={5} />;
 
   return (
     <>

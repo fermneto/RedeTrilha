@@ -14,6 +14,7 @@ import Link from "next/link";
 
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EsqueletoDePerfil } from "@/components/Esqueleto";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { ListaDeRascunhos } from "@/components/ListaDeRascunhos";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
@@ -110,7 +111,7 @@ function PerfilDoPoeta() {
     return (
       <>
         {cabecalho}
-        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+        <EsqueletoDePerfil />
       </>
     );
 
@@ -120,7 +121,7 @@ function PerfilDoPoeta() {
   return (
     <div>
       {cabecalho}
-      <div className="px-4 pt-5 pb-6">
+      <div className="surgir px-4 pt-5 pb-6">
         {editando ? (
           <PerfilEdicao
             perfil={perfil}

@@ -4,7 +4,8 @@
 // "Em alta" já estão no corpo da tela (como no X), então a coluna fica só com os
 // outros dois; abaixo de 1100 px, esses dois vão para o Explorar (DescobrirNoTopo).
 // Todas as rotas, a da busca inclusive, são protegidas: sem login, a coluna fica vazia.
-// Cada bloco some quando não tem o que mostrar (ou quando a rota falha).
+// Enquanto carrega, cada bloco mostra o título e o esqueleto do conteúdo; depois,
+// some quando não tem o que mostrar (ou quando a rota falha).
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +14,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
+import { EsqueletoDeEmAlta, EsqueletoDePessoas, EsqueletoDoPoemaDoDia } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
 import { TextoFormatado } from "@/components/TextoFormatado";
@@ -114,7 +116,8 @@ function IconeSeta({ className }: { className?: string }) {
 }
 
 function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
-  const [poema, setPoema] = useState<Post | null>(null);
+  // undefined enquanto carrega; null quando a rota falha.
+  const [poema, setPoema] = useState<Post | null | undefined>(undefined);
 
   useEffect(() => {
     buscarPoemaDoDia()
@@ -122,13 +125,19 @@ function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
       .catch(() => setPoema(null));
   }, []);
 
+  if (poema === undefined)
+    return (
+      <Bloco titulo="Poema do dia" recolhivel={recolhivel}>
+        <EsqueletoDoPoemaDoDia />
+      </Bloco>
+    );
   if (!poema) return null;
   const versos = poema.texto.split("\n");
   const corte = linhasDaPrevia(versos);
   const autor = poema.autor;
   return (
     <Bloco titulo="Poema do dia" recolhivel={recolhivel}>
-      <div className="px-4 pb-4">
+      <div className="surgir px-4 pb-4">
         {poema.titulo && <p className="poema-titulo mt-1 text-[1.0625rem]">{poema.titulo}</p>}
         <p className="poema-corpo mt-2 text-[0.9375rem] leading-[1.7]">
           <TextoFormatado texto={corte === null ? poema.texto : versos.slice(0, corte).join("\n")} />
@@ -159,10 +168,18 @@ function linhasDaPrevia(versos: string[]): number | null {
 
 function EmAlta() {
   const tags = useEmAlta();
-  if (!tags || tags.length === 0) return null;
+  if (!tags)
+    return (
+      <Bloco titulo="Em alta">
+        <div className="pb-2">
+          <EsqueletoDeEmAlta quantos={5} />
+        </div>
+      </Bloco>
+    );
+  if (tags.length === 0) return null;
   return (
     <Bloco titulo="Em alta">
-      <div className="pb-2">
+      <div className="surgir pb-2">
         <ListaEmAlta tags={tags} />
       </div>
     </Bloco>
@@ -172,7 +189,8 @@ function EmAlta() {
 // Consagrados que o usuário ainda não segue. /usuarios não filtra por consagrado,
 // então o filtro é feito aqui sobre a primeira página (até 100 contas).
 function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
-  const [poetas, setPoetas] = useState<User[]>([]);
+  // null enquanto carrega.
+  const [poetas, setPoetas] = useState<User[] | null>(null);
 
   useEffect(() => {
     let vivo = true;
@@ -194,10 +212,16 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
     };
   }, []);
 
+  if (poetas === null)
+    return (
+      <Bloco titulo="Consagrados para seguir" recolhivel={recolhivel}>
+        <EsqueletoDePessoas quantos={CONSAGRADOS_NO_BLOCO} comLink />
+      </Bloco>
+    );
   if (poetas.length === 0) return null;
   return (
     <Bloco titulo="Consagrados para seguir" recolhivel={recolhivel}>
-      <ul className="pb-2">
+      <ul className="surgir pb-2">
         {poetas.map((poeta) => (
           <li key={poeta.id}>
             <LinhaPoeta poeta={poeta} />
