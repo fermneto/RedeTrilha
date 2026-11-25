@@ -420,10 +420,17 @@ PRs, na seção "Decisões do Neto".
     os poemas, as rengas nem o perfil de quem o bloqueou (como se não
     existissem), e nenhum dos dois segue, curte, comenta, reposta, cita, escreve
     na renga ou manda mensagem ao outro. Bloquear desfaz os follows nos dois
-    sentidos, e um some do outro nos feeds, nas tags, no Explorar, nas rengas e
-    nas sugestões. Quem bloqueou ainda abre o perfil do bloqueado, para
-    desbloquear (pelo perfil ou pela conversa). O que já existia fica: a
-    conversa, com o histórico, e os comentários dele nos seus poemas.
+    sentidos, e um some do outro nos feeds, nas tags, no Explorar, nas rengas,
+    no Acervo, nas listas de seguidores e nas sugestões; nenhum convida o outro
+    para uma renga. Numa citação feita por outra pessoa, o poema de quem
+    bloqueou aparece para o bloqueado como "poema indisponível". Os comentários
+    de um nos poemas do outro somem para todos, como os apagados: com
+    respostas, viram "comentário removido" e as respostas ficam; sem respostas,
+    somem, também das marcas dos versos. Isso é um filtro na leitura, e não uma
+    remoção: desbloquear traz os comentários de volta. Quem bloqueou ainda abre
+    o perfil do bloqueado, para desbloquear (pelo perfil ou pela conversa). A
+    conversa de mensagens fica, com o histórico, e desbloquear não refaz os
+    follows. A renga de outra pessoa com estrofes dos dois aparece inteira.
   - **Silenciar** uma conversa a tira do contador.
   - **Contador e visto.** "Mensagens" na navegação mostra as conversas com
     mensagem não lida e os pedidos novos, e a conversa mostra "Visto" embaixo
@@ -762,6 +769,9 @@ poemas e as rengas do outro. Medido de novo, com 13 bloqueios entre as contas
 da carga: p95 de 63 ms com pausa de 3 s (57 a 94 ms sem bloqueios na mesma
 rodada) e de 1.080 ms sem pausa (876 a 1.083 ms sem bloqueios), 0 erro de
 servidor; os 404 são os perfis e poemas que o bloqueio esconde.
+Com os comentários escondidos, o Acervo e as listas filtrados (mais uma
+consulta curta por página de comentários), de novo com os 13 bloqueios: p95 de
+74 e 101 ms com pausa de 3 s e de 936 ms sem pausa, 0 erro de servidor.
 
 ## Uso de IA
 

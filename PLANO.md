@@ -459,9 +459,19 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
   Curtir, comentar, repostar, citar, escrever estrofe, seguir e mandar o poema
   por mensagem entre os dois: 404 para o bloqueado, 403 para quem bloqueou.
   `GET /feed`, `/feed/para-voce`, `/tags/{tag}/posts`, `/explorar`, `/rengas` e
-  `/sugestoes` tiram, para os dois, os poemas, as rengas e as atividades
-  (reposts, estrofes, comentários) do outro. O `GET /rengas` agora usa o
-  usuário (a assinatura do service mudou). Índices: o par único
+  `/sugestoes`, `/acervo` e `/usuarios/{u}/seguidores` e `/seguindo` tiram,
+  para os dois, o outro e os poemas, as rengas e as atividades (reposts,
+  estrofes, comentários) dele; as listas de quem me bloqueou dão 404. Convidar
+  para renga quem tem bloqueio com o criador → 422. Os comentários de quem tem
+  bloqueio com o autor do poema ficam escondidos para todos na leitura
+  (`GET /posts/{id}/comentarios`, `/comentarios/versos`,
+  `/comentarios/{id}/respostas`): com respostas, saem como o marcador
+  `removido` (sem âncora); sem, somem das páginas, dos totais e das marcas dos
+  versos; para quem o autor bloqueou, essas rotas dão 404. `PostOut` ganhou
+  `repost_indisponivel` (opcional, `false` por padrão): a citação de um poema
+  de quem bloqueou quem vê vem com `repost_de: null` e `repost_indisponivel:
+  true`. As assinaturas dos services de rengas (`listar`), follows (listas) e
+  comentários (leitura) passaram a receber o usuário. Índices: o par único
   `(bloqueador_id, bloqueado_id)` e `(bloqueado_id, bloqueador_id)`.
 - Quem não participa recebe 404 em toda rota da conversa.
 - `GET /mensagens/stream` 🔒 → `text/event-stream`: `pronto` ao abrir; depois
