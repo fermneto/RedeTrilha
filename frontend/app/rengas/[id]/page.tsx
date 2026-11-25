@@ -134,7 +134,7 @@ export default function RengaPage() {
         {cabecalho}
         <div className="px-4 py-10 text-center">
           <h1 className="font-serifada text-xl">Renga não encontrada</h1>
-          <Link href="/rengas" className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline">
+          <Link href="/explorar?aba=rengas" className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline">
             ver as rengas
           </Link>
         </div>

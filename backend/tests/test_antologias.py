@@ -423,3 +423,38 @@ def test_marcando_nao_faz_uma_query_por_antologia(client, ana, bia):
     for nome in ("Duas", "Três", "Quatro"):
         _antologia(client, ana, nome)
     assert contar_queries() == com_uma
+
+
+def test_publicas_de_todo_mundo_so_com_poema(client, ana, bia):
+    """O Explorar lista as públicas de todos com ao menos um poema, a mais nova primeiro."""
+    poema = _poema(client, ana)
+    vazia = _antologia(client, ana, "Vazia")
+    chuva = _antologia(client, ana, "Poemas de chuva")
+    client.post(f"/antologias/{chuva}/poemas", json={"post_id": poema}, headers=ana)
+    privada = client.post("/antologias", json={"nome": "Gaveta", "publica": False}, headers=bia).json()["id"]
+    client.post(f"/antologias/{privada}/poemas", json={"post_id": poema}, headers=bia)
+    mar = _antologia(client, bia, "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": poema}, headers=bia)
+
+    r = client.get("/antologias/publicas", headers=ana)
+
+    assert r.status_code == 200
+    corpo = r.json()
+    assert [a["nome"] for a in corpo["items"]] == ["Mar", "Poemas de chuva"]
+    assert corpo["total"] == 2
+    assert vazia not in [a["id"] for a in corpo["items"]]
+    assert corpo["items"][0]["qtd"] == 1
+
+
+def test_publicas_sem_as_de_quem_tem_bloqueio(client, ana, bia):
+    poema = _poema(client, bia)
+    mar = _antologia(client, bia, "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": poema}, headers=bia)
+    assert client.post("/usuarios/bia/bloqueio", headers=ana).status_code == 204
+
+    assert client.get("/antologias/publicas", headers=ana).json()["items"] == []
+    assert [a["nome"] for a in client.get("/antologias/publicas", headers=bia).json()["items"]] == ["Mar"]
+
+
+def test_publicas_exige_login(client):
+    assert client.get("/antologias/publicas").status_code == 401

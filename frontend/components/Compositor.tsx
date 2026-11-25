@@ -4,6 +4,8 @@
 // `rascunhoId`, abre o rascunho (de poema ou de citação); "salvar rascunho"
 // guarda sem publicar. O corpo é o editor de poemas (negrito, itálico,
 // sublinhado e tachado, #137); o texto guardado é o de lib/marcas.ts.
+// `aoMudar` conta à página o poema em andamento, para o seletor de formato
+// (FormatoDeEscrita) levá-lo à renga ou guardá-lo antes da antologia.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -24,11 +26,15 @@ import {
   nomeDoIdioma,
   publicarPoema,
   publicarRascunho,
+  type NovoRascunho,
   type Post,
 } from "@/lib/api";
 
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
+
+// O poema em andamento: os dados de um rascunho e o rascunho já salvo, se houver.
+export type PoemaEmAndamento = { dados: NovoRascunho; rascunhoId: number | null };
 
 type Props = {
   citarId: number | null;
@@ -37,9 +43,10 @@ type Props = {
   rascunhoId?: number | null;
   // Chamado quando o rascunho aberto é de citação (a página troca o título).
   aoAbrirCitacao?: () => void;
+  aoMudar?: (poema: PoemaEmAndamento) => void;
 };
 
-export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAbrirCitacao }: Props) {
+export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAbrirCitacao, aoMudar }: Props) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState(textoInicial);
@@ -82,6 +89,10 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       .catch((e) => setErro(mensagemDeFalha(e, "não achei o rascunho")));
   }, [rascunhoId]);
 
+  useEffect(() => {
+    aoMudar?.({ dados: dadosDoRascunho(), rascunhoId: rascunho });
+  }, [titulo, texto, forma, idioma, rascunho]);
+
   function dadosDoRascunho() {
     return {
       titulo: titulo.trim() ? titulo : null,
@@ -91,7 +102,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
     };
   }
 
-  // Guarda sem publicar; o rascunho fica só para o autor (página Rascunhos).
+  // Guarda sem publicar; o rascunho fica só para o autor (aba Rascunhos do perfil).
   async function salvarRascunho() {
     if (!texto.trim()) {
       setErro("o poema não pode ficar vazio");
@@ -233,7 +244,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       </button>
       {salvo && (
         <p role="status" className="text-sm text-tinta-suave">
-          rascunho salvo. Só você vê; ele fica em <Link href="/rascunhos" className="underline">Rascunhos</Link>.
+          rascunho salvo. Só você vê; ele fica nos <Link href="/rascunhos" className="underline">Rascunhos</Link> do seu perfil.
         </p>
       )}
     </form>

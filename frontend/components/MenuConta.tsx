@@ -1,7 +1,8 @@
 "use client";
 // Menu da conta logada, no rodapé da barra lateral: o avatar abre um popover com
 // "Preferências" (os passos de gostos e região do onboarding, que voltam para a
-// página atual) e "Sair de @username". No celular, isso fica no "Mais" (MenuMais).
+// página atual) e "Sair de @username". Os dois também ficam
+// nos ajustes do meu perfil (MenuDoPerfil), que é o caminho no celular.
 // Fecha com Esc (o foco volta ao avatar), com clique fora ou quando o Tab sai dele.
 // Ao abrir, o foco vai para o primeiro item; o menu vem depois do botão no DOM.
 

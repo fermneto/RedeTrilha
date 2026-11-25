@@ -14,7 +14,7 @@ e a regra da vez não quebra.
 from datetime import UTC, datetime
 
 from fastapi import HTTPException
-from sqlalchemy import func, select
+from sqlalchemy import exists, func, or_, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -67,11 +67,25 @@ def criar(db: Session, criador: User, dados: RengaCreate) -> RengaDetalhe:
 
 
 def listar(
-    db: Session, usuario: User, situacao: str | None, offset: int, limit: int
+    db: Session,
+    usuario: User,
+    situacao: str | None,
+    offset: int,
+    limit: int,
+    minhas: bool = False,
 ) -> RengaPage:
     """As rengas de todo mundo, a mais nova primeiro; `situacao` filtra aberta/fechada.
-    Ficam fora as criadas por quem tem bloqueio com o usuário."""
+    Com `minhas`, só as do usuário: as que criou, em que escreveu uma estrofe ou para
+    as quais foi convidado. Ficam fora as criadas por quem tem bloqueio com o usuário."""
     filtros = []
+    if minhas:
+        filtros.append(
+            or_(
+                Renga.criador_id == usuario.id,
+                exists().where(EstrofeRenga.renga_id == Renga.id, EstrofeRenga.autor_id == usuario.id),
+                exists().where(ConviteRenga.renga_id == Renga.id, ConviteRenga.user_id == usuario.id),
+            )
+        )
     bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
     if bloqueados:
         filtros.append(Renga.criador_id.not_in(bloqueados))

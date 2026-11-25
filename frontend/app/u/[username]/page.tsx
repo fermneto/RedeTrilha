@@ -1,15 +1,21 @@
 "use client";
 // Perfil do poeta: cabeçalho (ou o formulário de edição, no próprio perfil) e os
 // poemas, citações e reposts da pessoa, com rolagem infinita como o feed, e
-// numa segunda aba as antologias públicas dela.
+// numa segunda aba as antologias públicas dela. No próprio perfil, a aba
+// Antologias traz também as privadas, e uma terceira, "Rascunhos", a gaveta dos
+// poemas não publicados: só o dono a vê (decisão 9), e para os outros ela nem
+// existe (?aba=rascunhos no perfil alheio abre "Poemas").
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
 
 import { Abas } from "@/components/Abas";
+import Link from "next/link";
+
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
+import { ListaDeRascunhos } from "@/components/ListaDeRascunhos";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
 import {
@@ -28,7 +34,14 @@ const ABAS = [
   { valor: "antologias", rotulo: "Antologias" },
 ] as const;
 
-type Aba = (typeof ABAS)[number]["valor"];
+const ABAS_DO_DONO = [...ABAS, { valor: "rascunhos", rotulo: "Rascunhos" }] as const;
+
+type Aba = (typeof ABAS_DO_DONO)[number]["valor"];
+
+function lerAba(valor: string | null, proprio: boolean): Aba {
+  if (valor === "antologias") return valor;
+  return valor === "rascunhos" && proprio ? valor : "poemas";
+}
 
 // useSearchParams precisa de Suspense no build do Next.
 export default function PerfilPage() {
@@ -42,9 +55,9 @@ export default function PerfilPage() {
 function PerfilDoPoeta() {
   const router = useRouter();
   const username = decodeURIComponent(useParams<{ username: string }>().username);
-  // A aba fica na URL (?aba=antologias): o link direto abre nela. Sem o
-  // parâmetro (ou com um valor desconhecido), "Poemas".
-  const aba: Aba = useSearchParams().get("aba") === "antologias" ? "antologias" : "poemas";
+  // A aba fica na URL (?aba=antologias, ?aba=rascunhos): o link direto abre nela.
+  // Sem o parâmetro (ou com um valor desconhecido), "Poemas".
+  const abaDaUrl = useSearchParams().get("aba");
   const [perfil, setPerfil] = useState<Perfil | null>(null);
   const [meuId, setMeuId] = useState<number | null>(null);
   const [editando, setEditando] = useState(false);
@@ -101,6 +114,9 @@ function PerfilDoPoeta() {
       </>
     );
 
+  const proprio = perfil.id === meuId;
+  const aba = lerAba(abaDaUrl, proprio);
+
   return (
     <div>
       {cabecalho}
@@ -117,7 +133,7 @@ function PerfilDoPoeta() {
         ) : (
           <PerfilCabecalho
             perfil={perfil}
-            proprio={perfil.id === meuId}
+            proprio={proprio}
             aoMudar={setPerfil}
             aoEditar={() => setEditando(true)}
             aoMudarBloqueio={setBloqueei}
@@ -126,9 +142,18 @@ function PerfilDoPoeta() {
       </div>
 
       {!bloqueei && (
-        <Abas key={username} abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="Conteúdo do perfil" bordaEmCima>
+        <Abas
+          key={username}
+          abas={proprio ? ABAS_DO_DONO : ABAS}
+          atual={aba}
+          aoMudar={trocarAba}
+          rotulo="Conteúdo do perfil"
+          bordaEmCima
+        >
           {(valor) =>
-            valor === "poemas" ? (
+            valor === "rascunhos" ? (
+              <ListaDeRascunhos />
+            ) : valor === "poemas" ? (
               <ListaDePoemas
                 key={username}
                 buscar={buscarPoemas}
@@ -140,7 +165,23 @@ function PerfilDoPoeta() {
                 key={username}
                 buscar={buscarAntologias}
                 vazio={
-                  <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
+                  proprio ? (
+                    <div className="px-4 py-10 text-center">
+                      <p className="font-serifada text-lg">Nenhuma antologia ainda.</p>
+                      <p className="mt-1 text-sm text-tinta-suave">
+                        Reúna os poemas que você ama, como &ldquo;Poemas de chuva&rdquo; ou &ldquo;Para ler no
+                        ônibus&rdquo;.
+                      </p>
+                      <Link
+                        href="/antologias/nova"
+                        className="realce mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold"
+                      >
+                        Criar a primeira antologia
+                      </Link>
+                    </div>
+                  ) : (
+                    <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
+                  )
                 }
               />
             )
