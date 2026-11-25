@@ -222,3 +222,30 @@ def test_evento_atravessa_processos_pelo_notify(client):
         for processo in processos:
             processo.terminate()
             processo.wait(10)
+
+
+@pytest.mark.skipif(not os.environ.get("TEST_POSTGRES_URL"), reason="defina TEST_POSTGRES_URL para rodar")
+def test_listen_que_cai_reconecta_e_pede_para_ressincronizar(servidor):
+    """O Postgres derruba a conexão do LISTEN; o worker reconecta e avisa os streams."""
+    from sqlalchemy import text
+
+    from app.db import engine
+
+    bia = entrar(servidor, "bia")
+
+    async def cenario():
+        async with httpx.AsyncClient(base_url=servidor, timeout=10) as c:
+            async with c.stream("GET", "/mensagens/stream", headers=bia) as r:
+                linhas = r.aiter_lines()
+                await ler_eventos(linhas, "pronto")
+                with engine.begin() as conexao:
+                    derrubadas = conexao.scalar(
+                        text(
+                            "SELECT count(pg_terminate_backend(pid)) FROM pg_stat_activity "
+                            "WHERE query LIKE 'LISTEN verso_mensagens%'"
+                        )
+                    )
+                assert derrubadas >= 1
+                assert (await ler_eventos(linhas, "ressincronizar", prazo=10))[-1][0] == "ressincronizar"
+
+    asyncio.run(cenario())

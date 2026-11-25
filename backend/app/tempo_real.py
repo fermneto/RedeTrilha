@@ -125,14 +125,11 @@ class OuvinteDoPostgres:
     def __init__(self, url: str) -> None:
         self._url = url
         self._tarefa: asyncio.Task | None = None
-        # Ligado enquanto o LISTEN está de pé (os testes esperam por ele).
-        self.ouvindo = asyncio.Event()
 
     def avisar(self, db: Session, para: list[int], evento: dict) -> None:
         db.execute(select(func.pg_notify(CANAL, json.dumps({"para": para, **evento}))))
 
     async def iniciar(self) -> None:
-        self.ouvindo = asyncio.Event()
         self._tarefa = asyncio.create_task(self._ouvir())
 
     async def parar(self) -> None:
@@ -157,7 +154,6 @@ class OuvinteDoPostgres:
                     keepalives_count=3,
                 ) as conexao:
                     await conexao.execute(f"LISTEN {CANAL}")
-                    self.ouvindo.set()
                     espera = ESPERA_MINIMA
                     if reconectando:
                         # Enquanto o LISTEN esteve fora, eventos se perderam.
@@ -166,7 +162,6 @@ class OuvinteDoPostgres:
                         _entregar(aviso.payload)
             except (psycopg.Error, OSError) as erro:
                 logger.warning("LISTEN das mensagens caiu (%s); nova tentativa em %.0f s", erro, espera)
-            self.ouvindo.clear()
             reconectando = True
             await asyncio.sleep(espera)
             espera = min(espera * 2, ESPERA_MAXIMA)
