@@ -303,13 +303,38 @@ portas 80 e 443 estão abertas (passo 4). Por isso a ordem importa:
 **Quando fazer cada parte:**
 
 - **Já, antes da VM:** confira no [registro.br](https://registro.br) que o
-  domínio está ativo e que o DNS é o do próprio Registro.br ("Utilizar os
-  servidores DNS do Registro.br"). Domínio novo pode levar algumas horas para
-  ativar. O front pode ganhar o domínio já (passo 9, parte A).
+  domínio está ativo. Domínio novo pode levar algumas horas para ativar. O
+  front pode ganhar o domínio já (passo 9, parte A).
+
+**Quem cuida do DNS: o Registro.br ou a Vercel.** São dois caminhos; o
+registro da API é o mesmo nos dois, só muda **onde** ele é criado:
+
+- **DNS do Registro.br** ("Utilizar os servidores DNS do Registro.br"): a
+  zona é editada no Registro.br (abaixo).
+- **DNS da Vercel** (no Registro.br, em DNS, os servidores
+  `ns1.vercel-dns.com` e `ns2.vercel-dns.com`): o Registro.br deixa de editar
+  a zona, e **todos** os registros, inclusive o da API, ficam na Vercel. A
+  Vercel cuida sozinha do `verso.net.br` e do `www`. A troca de servidores
+  passa por uma verificação do Registro.br e leva de minutos a algumas horas
+  para valer: enquanto isso, o `nslookup` dá `NXDOMAIN`. Confira a delegação
+  com `dig +norecurse NS verso.net.br @a.dns.br`: quando mostrar
+  `vercel-dns.com`, virou. Na espera, dá para preparar tudo e subir com o
+  sslip.io (abaixo).
 - **Com o IP da VM na mão (depois do passo 3):** crie o registro da API.
 - **Depois da API no ar (passo 8):** aponte o front para ela (passo 9, parte B).
 
-**Criar o registro da API no Registro.br:**
+**Criar o registro da API na Vercel** (se o DNS é o da Vercel):
+
+1. Na Vercel, **Domains** (no menu da conta ou do time, não dentro do
+   projeto) → `verso.net.br` → **DNS Records** → **Add**.
+2. **Name** `api`, **Type** `A`, **Value** o IP público da VM, **TTL** 60.
+   Salve. Não mexa nos registros que a Vercel criou para o `verso.net.br` e o
+   `www`.
+3. Confira, depois que a delegação virar: `nslookup api.verso.net.br` tem
+   que responder o IP da VM. Antes disso, a Vercel já responde por ele:
+   `dig A api.verso.net.br @ns1.vercel-dns.com +short`.
+
+**Criar o registro da API no Registro.br** (se o DNS é o do Registro.br):
 
 1. Entre em [registro.br](https://registro.br) → **Meus domínios** → `verso.net.br`.
 2. Em **DNS** → **Configurar zona DNS** (ou "Editar zona", modo avançado).
