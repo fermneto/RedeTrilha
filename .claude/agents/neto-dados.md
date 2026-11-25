@@ -31,7 +31,7 @@ estão na seção "Contratos" do `PLANO.md`; a lista abaixo é o plano original.
 `backend/app/{models,schemas,services,routers}/{follow*,tags*,acervo,traducao,poema_do_dia,saude,consagrado}.py`,
 `backend/scripts/**`, `backend/data/**`,
 `backend/tests/test_{follows,tags,tags_rotas,consagrados,seed,acervo,traducao,poema_do_dia,deploy,postgres}.py`,
-`frontend/app/{explorar,acervo}/**`, `frontend/components/{ColunaDireita,CartaoDoAcervo,Paginacao}.tsx`,
+`frontend/app/{explorar,acervo}/**`, `frontend/components/{Acervo,ColunaDireita,CartaoDoAcervo,Paginacao}.tsx`,
 a sua seção no fim de `frontend/lib/api.ts`, uma linha de `include_router` e o
 rebuild no lifespan em `backend/app/main.py`, `DECISIONS.md` e os arquivos de deploy.
 
