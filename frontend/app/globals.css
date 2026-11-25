@@ -13,6 +13,10 @@
   --color-tinta-suave: #6b6359;
   --color-borda: #e4ddd0;
   --color-destaque: #8a3b2e;
+  /* O caderno (components/Caderno*.tsx): a mesa onde ele está aberto, um tom
+     abaixo do papel, e os marcadores guardados, entre a mesa e a folha. */
+  --color-mesa: #eee8dc;
+  --color-marcador: #f3eee3;
 }
 
 /* Fontes carregadas pelo next/font em app/layout.tsx, com fallback de sistema
@@ -32,6 +36,8 @@
     --color-tinta-suave: #a39a8b;
     --color-borda: #36312a;
     --color-destaque: #e09a7f;
+    --color-mesa: #100e0a;
+    --color-marcador: #13110c;
   }
 }
 
@@ -107,6 +113,24 @@
     font-size: 1.0625rem;
     line-height: 1.75;
     color: var(--color-tinta);
+  }
+
+  /* O poema na página do caderno: o título maior e os versos com mais ar. A
+     citação dentro dele volta ao tamanho do card. */
+  .poema-titulo-folha {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .folha-poema .poema-corpo {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  .folha-poema article .poema-corpo {
+    font-size: 1.0625rem;
+    line-height: 1.75;
   }
 
   /* O editor de poemas (components/EditorDePoema.tsx, ProseMirror): cada verso é
@@ -237,5 +261,164 @@
 @keyframes vitrine-flutua {
   from {
     transform: scale(0.5) rotate(0deg);
+  }
+}
+
+/* O caderno aberto (components/CadernoFolhas.tsx). Cada página é uma camada
+   absoluta: no desktop, a esquerda e a direita da página dupla; no celular, uma
+   só. Virar a página é girar a folha em torno da lombada: a página da direita
+   vai de 0 a -180 graus (presa pela borda esquerda) e, no mesmo tempo, o verso
+   dela, a nova página da esquerda, vai de 180 a 0 (presa pela borda direita).
+   As duas metades usam a mesma curva, então formam uma folha só. A dobra no
+   meio é um degradê de 2 a 4% de tinta, nada mais. Com prefers-reduced-motion,
+   a folha não gira: a página nova só aparece por cima, num fade curto. */
+@layer components {
+  .caderno {
+    perspective: 3200px;
+  }
+
+  .pagina {
+    position: absolute;
+    inset-block: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-papel);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .pagina-u {
+    inset-inline: 0;
+    border-radius: 0.5rem;
+  }
+
+  .pagina-e,
+  .pagina-d {
+    width: 50%;
+  }
+
+  .pagina-e {
+    left: 0;
+    border-radius: 0.375rem 0 0 0.375rem;
+    background-image: linear-gradient(to left, rgb(31 27 22 / 0.04), transparent 2rem);
+  }
+
+  .pagina-d {
+    left: 50%;
+    border-radius: 0 0.375rem 0.375rem 0;
+    background-image: linear-gradient(to right, rgb(31 27 22 / 0.04), transparent 2rem);
+  }
+
+  .pagina-rolagem {
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  .vira-frente,
+  .volta-verso {
+    transform-origin: left center;
+  }
+
+  .vira-verso,
+  .volta-frente {
+    transform-origin: right center;
+  }
+
+  .vira-frente {
+    animation: vira-frente var(--virada) var(--curva-da-virada) both;
+  }
+
+  .vira-verso {
+    animation: vira-verso var(--virada) var(--curva-da-virada) both;
+  }
+
+  .volta-frente {
+    animation: volta-frente var(--virada) var(--curva-da-virada) both;
+  }
+
+  .volta-verso {
+    animation: volta-verso var(--virada) var(--curva-da-virada) both;
+  }
+
+  /* A sombra que a folha leva enquanto gira: some quando ela deita. */
+  .vira-frente,
+  .vira-verso,
+  .volta-frente,
+  .volta-verso {
+    box-shadow: 0 0 2rem rgb(31 27 22 / 0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .pagina-e {
+      background-image: linear-gradient(to left, rgb(0 0 0 / 0.28), transparent 2.5rem);
+    }
+
+    .pagina-d {
+      background-image: linear-gradient(to right, rgb(0 0 0 / 0.28), transparent 2.5rem);
+    }
+
+    .vira-frente,
+    .vira-verso,
+    .volta-frente,
+    .volta-verso {
+      box-shadow: 0 0 2rem rgb(0 0 0 / 0.5);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vira-frente,
+    .volta-frente {
+      animation: folha-some 180ms ease-out both;
+    }
+
+    .vira-verso,
+    .volta-verso {
+      animation: folha-surge 180ms ease-out both;
+    }
+  }
+}
+
+:root {
+  --virada: 680ms;
+  --curva-da-virada: cubic-bezier(0.4, 0.06, 0.2, 1);
+}
+
+@keyframes vira-frente {
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes vira-verso {
+  from {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes volta-frente {
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes volta-verso {
+  from {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes folha-some {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes folha-surge {
+  from {
+    opacity: 0;
   }
 }

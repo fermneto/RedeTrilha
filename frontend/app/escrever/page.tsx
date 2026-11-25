@@ -4,6 +4,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { CadernoFolhas } from "@/components/CadernoFolhas";
+import { MARGEM_DA_PAGINA } from "@/components/CadernoPoema";
 import { Compositor, type PoemaEmAndamento } from "@/components/Compositor";
 import { ConfirmacaoDaTroca } from "@/components/ConfirmacaoDaTroca";
 import { FormatoDeEscrita, type Formato } from "@/components/FormatoDeEscrita";
@@ -70,33 +72,49 @@ function Escrever() {
     if (comTeclado) requestAnimationFrame(() => linkDaAntologia.current?.focus());
   }
 
+  const titulo = citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema";
+  // Na página dupla, a escrita na esquerda e a ficha (oficina, forma, publicar)
+  // na direita; no celular, as duas numa página só, para publicar sem virar.
   return (
-    <div>
-      <CabecalhoPagina titulo={citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema"} />
-      {poemaNovo && (
-        <FormatoDeEscrita atual="poema" aoEscolher={aoEscolher}>
-          {perguntando && (
-            <ConfirmacaoDaTroca
-              aoSalvar={salvarEIrParaAntologia}
-              aoDescartar={() => router.replace("/antologias/nova")}
-              aoContinuar={continuarEscrevendo}
-            />
-          )}
-        </FormatoDeEscrita>
-      )}
-      <div className="px-4 py-5">
-        <Compositor
-          key={citarId ?? (rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")}
-          citarId={citarId}
-          textoInicial={versos ? textoDaCitacaoDeVersos(versos) : undefined}
-          rascunhoId={rascunhoId}
-          aoAbrirCitacao={() => setRascunhoDeCitacao(true)}
-          aoMudar={(p) => {
-            poema.current = p;
-          }}
+    <Compositor
+      key={citarId ?? (rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")}
+      citarId={citarId}
+      textoInicial={versos ? textoDaCitacaoDeVersos(versos) : undefined}
+      rascunhoId={rascunhoId}
+      aoAbrirCitacao={() => setRascunhoDeCitacao(true)}
+      aoMudar={(p) => {
+        poema.current = p;
+      }}
+      dispor={({ escrita, ficha }) => (
+        <CadernoFolhas
+          folhas={[
+            {
+              chave: "escrever",
+              rotulo: titulo,
+              juntarNoCelular: true,
+              esquerda: (
+                <div className="pb-4 lg:px-10">
+                  <CabecalhoPagina titulo={titulo} />
+                  {poemaNovo && (
+                    <FormatoDeEscrita atual="poema" aoEscolher={aoEscolher}>
+                      {perguntando && (
+                        <ConfirmacaoDaTroca
+                          aoSalvar={salvarEIrParaAntologia}
+                          aoDescartar={() => router.replace("/antologias/nova")}
+                          aoContinuar={continuarEscrevendo}
+                        />
+                      )}
+                    </FormatoDeEscrita>
+                  )}
+                  <div className="px-4 py-5">{escrita}</div>
+                </div>
+              ),
+              direita: <div className={MARGEM_DA_PAGINA}>{ficha}</div>,
+            },
+          ]}
         />
-      </div>
-    </div>
+      )}
+    />
   );
 }
 

@@ -65,6 +65,10 @@ type Props = {
   // Sem a barra "comentar estes versos" ao selecionar o corpo (o original na
   // prévia do compositor: o link tiraria o leitor da citação que ele escreve).
   semCritica?: boolean;
+  // A página do poema no caderno (CadernoPoema.tsx): sem avatar, o título grande,
+  // o autor discreto logo abaixo e os versos; a ficha (forma, tags) e as ações
+  // ficam na página da direita.
+  folha?: boolean;
 };
 
 export function PoemaCard({
@@ -75,12 +79,60 @@ export function PoemaCard({
   corpo,
   aoTraduzir,
   semCritica = false,
+  folha = false,
 }: Props) {
   // Repost puro (texto vazio) fora do feed: mostra o original com o aviso de quem repostou.
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
   const reposters = repostPuro ? [post.autor] : (post.repostado_por ?? []);
   const citacao = !repostPuro && (post.repost_de !== null || post.repost_removido || post.repost_indisponivel);
+
+  if (folha) {
+    return (
+      <article className="folha-poema">
+        {reposters.length > 0 && (
+          <RotuloDeAtividade
+            icone={<IconeRepostar className="h-4 w-4" />}
+            usuarios={reposters}
+            antes="repostado por "
+            solto
+          />
+        )}
+        <ComentadoPor post={post} solto />
+        <TextoDoPoema
+          key={`texto-${poema.id}`}
+          poema={poema}
+          linkarTitulo={linkarTitulo}
+          inteiro
+          corpo={corpo}
+          aoTraduzir={aoTraduzir}
+          semCritica={semCritica}
+          folha
+          autor={
+            <p className="mt-2 mb-8 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
+              <NomeAutor usuario={poema.autor} className="font-semibold text-tinta-suave hover:text-tinta" />
+              {!poema.autor.consagrado && (
+                <time dateTime={poema.created_at} className="tabular-nums">
+                  · {formatarData(poema.created_at)}
+                </time>
+              )}
+            </p>
+          }
+        />
+        {citacao && (
+          <div className="mt-6">
+            {poema.repost_de ? (
+              <PoemaCard post={poema.repost_de} aninhado inteiro />
+            ) : (
+              <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
+                {poema.repost_indisponivel ? "poema indisponível" : "poema removido pelo autor"}
+              </p>
+            )}
+          </div>
+        )}
+      </article>
+    );
+  }
 
   // Fora de uma citação: avatar numa coluna à esquerda e tudo o mais alinhado ao
   // texto, à direita. Na citação, o avatar pequeno vai na linha do nome.
@@ -161,6 +213,8 @@ function TextoDoPoema({
   corpo,
   aoTraduzir,
   semCritica,
+  folha = false,
+  autor,
 }: {
   poema: Post;
   linkarTitulo: boolean;
@@ -168,6 +222,9 @@ function TextoDoPoema({
   corpo?: (poema: Post) => ReactNode;
   aoTraduzir?: () => void;
   semCritica: boolean;
+  folha?: boolean;
+  // Na folha, a linha do autor, entre o título e os versos.
+  autor?: ReactNode;
 }) {
   // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
   // do servidor e o da hidratação baterem.
@@ -206,16 +263,17 @@ function TextoDoPoema({
   }
 
   const lang = exibido.lang ?? undefined;
+  const classeDoTitulo = folha ? "poema-titulo poema-titulo-folha" : "poema-titulo mt-2";
   const titulo =
     exibido.titulo &&
     (linkarTitulo ? (
-      <h2 className="poema-titulo mt-2" lang={lang}>
+      <h2 className={classeDoTitulo} lang={lang}>
         <Link href={`/poema/${poema.id}`} className="hover:underline">
           {exibido.titulo}
         </Link>
       </h2>
     ) : (
-      <h1 className="poema-titulo mt-2" lang={lang}>
+      <h1 className={classeDoTitulo} lang={lang}>
         {exibido.titulo}
       </h1>
     ));
@@ -244,6 +302,7 @@ function TextoDoPoema({
   return (
     <>
       {titulo}
+      {autor}
       {texto}
       {traduzivel && (
         <div className="mt-1">
@@ -355,17 +414,22 @@ function RotuloDeAtividade({
   usuarios,
   antes = "",
   depois = "",
+  solto = false,
 }: {
   icone: ReactNode;
   usuarios: User[];
   antes?: string;
   depois?: string;
+  // Na folha não há a coluna do avatar: o ícone fica junto do texto.
+  solto?: boolean;
 }) {
   const [a, b] = usuarios;
   const resto = usuarios.length - 2;
   return (
-    <p className="mb-1 flex items-center gap-3 text-[0.8125rem] font-semibold text-tinta-suave">
-      <span className="flex w-10 shrink-0 justify-end">{icone}</span>
+    <p
+      className={`flex items-center text-[0.8125rem] font-semibold text-tinta-suave ${solto ? "mb-4 gap-2" : "mb-1 gap-3"}`}
+    >
+      <span className={`flex shrink-0 justify-end ${solto ? "" : "w-10"}`}>{icone}</span>
       <span className="min-w-0">
         {antes}
         <NomeLink usuario={a} />
@@ -380,7 +444,7 @@ function RotuloDeAtividade({
 
 // Só no "Para você": o poema subiu por um comentário ou crítica, como o "repostado
 // por" do X ("ana comentou", "ana e bia criticaram os versos").
-function ComentadoPor({ post }: { post: Post }) {
+function ComentadoPor({ post, solto = false }: { post: Post; solto?: boolean }) {
   const rotulo = rotuloDoComentario(post);
   if (!rotulo) return null;
   return (
@@ -388,6 +452,7 @@ function ComentadoPor({ post }: { post: Post }) {
       icone={<IconeComentar className="h-4 w-4" />}
       usuarios={post.comentado_por ?? []}
       depois={` ${rotulo.verbo}`}
+      solto={solto}
     />
   );
 }
@@ -417,7 +482,7 @@ function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; 
   );
 }
 
-function Detalhes({ poema }: { poema: Post }) {
+export function Detalhes({ poema }: { poema: Post }) {
   const origem = [poema.obra, poema.ano].filter(Boolean).join(", ");
   if (!poema.forma && !origem && !poema.fonte && poema.tags.length === 0) return null;
   return (
@@ -455,7 +520,7 @@ function Detalhes({ poema }: { poema: Post }) {
 // Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
 // pedidos simultâneos podem ser processados fora de ordem e deixar a tela
 // diferente do servidor.
-function Acoes({ poema }: { poema: Post }) {
+export function Acoes({ poema }: { poema: Post }) {
   const [curti, setCurti] = useState(poema.curti);
   const [curtidas, setCurtidas] = useState(poema.curtidas);
   const [repostei, setRepostei] = useState(poema.repostei);

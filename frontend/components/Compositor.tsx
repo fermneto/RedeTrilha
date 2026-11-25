@@ -6,10 +6,13 @@
 // sublinhado e tachado, #137); o texto guardado é o de lib/marcas.ts.
 // `aoMudar` conta à página o poema em andamento, para o seletor de formato
 // (FormatoDeEscrita) levá-lo à renga ou guardá-lo antes da antologia.
+// `dispor` reparte o compositor entre as páginas do caderno: a escrita (título e
+// corpo, dentro do <form>) e a ficha (oficina, forma, língua, o original citado
+// e os botões, ligados ao form pelo atributo `form`).
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
@@ -44,9 +47,10 @@ type Props = {
   // Chamado quando o rascunho aberto é de citação (a página troca o título).
   aoAbrirCitacao?: () => void;
   aoMudar?: (poema: PoemaEmAndamento) => void;
+  dispor?: (partes: { escrita: ReactNode; ficha: ReactNode }) => ReactNode;
 };
 
-export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAbrirCitacao, aoMudar }: Props) {
+export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAbrirCitacao, aoMudar, dispor }: Props) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState(textoInicial);
@@ -155,8 +159,8 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
 
   const campo =
     "w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
-  return (
-    <form onSubmit={publicar} className="space-y-4">
+  const escrita = (
+    <form id={`${id}-form`} onSubmit={publicar} className="space-y-4">
       <label className="block text-sm">
         título (opcional)
         <input
@@ -186,7 +190,10 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
           Tab sai do campo. Para formatar, selecione o trecho.
         </span>
       </div>
-
+    </form>
+  );
+  const ficha = (
+    <div className="space-y-4">
       <OficinaPainel oficina={oficina} />
 
       <label className="block text-sm">
@@ -229,6 +236,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
 
       <button
         type="submit"
+        form={`${id}-form`}
         disabled={enviando}
         className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
       >
@@ -247,6 +255,13 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
           rascunho salvo. Só você vê; ele fica nos <Link href="/rascunhos" className="underline">Rascunhos</Link> do seu perfil.
         </p>
       )}
-    </form>
+    </div>
+  );
+  if (dispor) return dispor({ escrita, ficha });
+  return (
+    <div className="space-y-4">
+      {escrita}
+      {ficha}
+    </div>
   );
 }
