@@ -2,7 +2,8 @@
 
 `seed_fake(db)` cria os poetas de `seed_conteudo.py`, publica os poemas e monta a rede em volta deles: follows, curtidas,
 comentários em árvore (com dois removidos que têm respostas), reposts puros,
-citações, antologias e rengas. Rode com: make seed (ou make reset, do zero).
+citações, antologias e rengas, e os avisos de tudo isso (gerados pelos mesmos
+services, com a data da ação; ver `_datar_avisos`). Rode com: make seed (ou make reset, do zero).
 
 Interações pelos services. Poemas, curtidas, reposts, comentários, follows e
 antologias passam pelas mesmas funções que a API usa, então valem as mesmas
@@ -32,11 +33,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.orm import Session
 
 from app.db import Base, SessionLocal, engine
 from app.models.antologia import Antologia
+from app.models.aviso import Aviso
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.follow import Follow
@@ -142,6 +144,7 @@ def _popular(db: Session, agora: datetime) -> None:
     _comentar(db, usuarios, poemas, datas, agora)
     _montar_antologias(db, usuarios, poemas)
     _escrever_rengas(db, usuarios)
+    _datar_avisos(db, agora)
 
 
 def _interagir_com_consagrados(db: Session, agora: datetime) -> None:
@@ -440,6 +443,40 @@ def _escrever_rengas(db: Session, usuarios: dict[str, User]) -> None:
         )
         for autor, texto in seguintes:
             rengas_service.acrescentar(db, usuarios[autor], criada.id, texto)
+
+
+def _datar_avisos(db: Session, agora: datetime) -> None:
+    """Os avisos nascem dos services, com a hora atual; aqui ganham a data da ação
+    que os gerou (a curtida, o follow, o comentário reescritos acima). Os de antes
+    de ontem ficam lidos e os das últimas 48 h, não: a tela de avisos da demo abre
+    preenchida e com o contador aceso."""
+    data_da_acao = {
+        "curtida": select(Curtida.created_at).where(
+            Curtida.user_id == Aviso.ator_id, Curtida.post_id == Aviso.post_id
+        ),
+        "seguidor": select(Follow.created_at).where(
+            Follow.seguidor_id == Aviso.ator_id, Follow.seguido_id == Aviso.destinatario_id
+        ),
+        "repost": select(Post.created_at).where(
+            Post.autor_id == Aviso.ator_id, Post.repost_de_id == Aviso.post_id, Post.texto == ""
+        ),
+        "citacao": select(Post.created_at).where(Post.id == Aviso.post_id),
+    }
+    for tipo, data in data_da_acao.items():
+        db.execute(
+            update(Aviso).where(Aviso.tipo == tipo).values(created_at=data.scalar_subquery())
+        )
+    db.execute(
+        update(Aviso)
+        .where(Aviso.post_id.is_not(None), Aviso.comentario_id.is_not(None))
+        .values(
+            created_at=select(Comentario.created_at)
+            .where(Comentario.id == Aviso.comentario_id)
+            .scalar_subquery()
+        )
+    )
+    db.execute(update(Aviso).where(Aviso.created_at < agora - timedelta(days=2)).values(lido=True))
+    db.commit()
 
 
 def contagens(db: Session) -> dict[str, int]:
