@@ -206,75 +206,25 @@ PRs, na seção "Decisões do Neto".
   a antologia já mostra o que o leitor lê, sem uma tela a mais para arrastar
   poemas.
 
-### 6. Visual de leitura e dados que não somem
+### 6. Visual de leitura
 
-- **Contexto:** o poema precisa ser lido, não passado. E a banca e os colegas
-  vão criar contas na URL pública.
-- **Opções:** o visual do template e o SQLite do Render, que zera a cada
-  restart, ou um layout de leitura e um banco persistente.
+- **Contexto:** o poema precisa ser lido, não passado. Um feed de poemas
+  inteiros pede uma coluna de texto confortável e pouca coisa disputando o
+  olhar.
+- **Opções:** o visual do template, ou um layout de leitura com tipografia
+  própria.
 - **Escolha:**
   - **Três colunas, como num microblog:** navegação à esquerda, uma coluna de
     leitura de 600 px no centro e, à direita, a coluna Descobrir: busca por
     tag, Poema do dia, Em alta e consagrados para seguir.
   - **Duas fontes:** Schibsted Grotesk na interface e Literata só no corpo dos
     poemas. Os ícones são SVG próprios.
-  - **Postgres na mesma VM da API** em vez do SQLite que zera (#55). O seed
-    roda só num banco vazio, então o que se publica na URL pública continua lá.
-    O banco fica no Docker Compose da VM da Oracle, sem porta pública, com
-    `pg_dump` diário (7 diários e 4 semanais) copiado para o Object Storage da
-    Oracle. Na mesma máquina, a ida e volta até o banco é de 0,06 ms (mediana
-    de um `select 1` da API), e cada request faz várias consultas. O teto passa
-    a ser o `max_connections` do próprio Postgres (60), e não as 15 conexões do
-    Supabase free; sobra para o backup e para crescer com a VM. A VM usa todo
-    o gratuito A1 (4 OCPU, 24 GB); a do deploy saiu com 2 OCPU e 12 GB (faltou
-    capacidade) e pode crescer depois. Medido nos 4 núcleos, 100 usuários: 2
-    workers × (4 + 2) deram p95 de 47 a 48 ms com pausa de 3 s e de 0,8 a
-    0,92 s sem pausa, 0 erro; 4 workers empataram com pausa e oscilaram sem
-    pausa (0,84 a 2,2 s). Com 2 núcleos, o p95 sem pausa passava de 1,1 s.
-    Cada dump leva no nome a data e a hora (UTC) e o hostname da VM, então
-    nenhum backup sobrescreve outro.
-    Na mesma VM, a API roda em **várias réplicas com o Caddy balanceando**
-    (`/saude` a cada 2 s e nova tentativa noutra réplica): um processo que
-    cai não derruba o site, e o `atualizar.sh` troca a versão uma réplica de
-    cada vez, sem queda. O número de réplicas segue a VM, 1 worker cada
-    (100 usuários; req/s sem pausa e p95 com pausa de 3 s):
-
-    | Réplicas | 4 núcleos | 2 núcleos |
-    |---|---|---|
-    | 2 | 104–106 req/s, p95 73–80 ms | **92 req/s, p95 67 ms** |
-    | 3 | 127–132 req/s, p95 67–72 ms | 87–90 req/s, p95 65–69 ms |
-    | 4 | **153–154 req/s, p95 62–63 ms** | 82–86 req/s, p95 67–68 ms |
-
-    Em 4 núcleos, cada réplica a mais rende; em 2, além de duas elas só
-    disputam a CPU com o Postgres. Por isso 2 réplicas na VM de 2 OCPU (o
-    padrão) e 4 na de 4. Derrubar uma réplica no meio da carga e rodar o
-    `atualizar.sh` (28 s com 2 réplicas, 52 s com 4) deram 0 erro nas
-    leituras, e os streams das mensagens, fechados no SIGTERM, voltaram
-    noutra réplica em 1,0 a 1,4 s (mediana).
-    **Em produção (2026-11-25)**, na VM de 2 OCPU com 2 réplicas, o mesmo
-    `carga.py` (só as 14 rotas de leitura, sem streams nem mensagens, um
-    login só, da `marina_letras`) rodado da rede doméstica do Neto até São
-    Paulo, com a internet no meio: o `/saude` sozinho, com a conexão aberta,
-    leva de 84 a 197 ms (mediana), e é essa a base de cada número abaixo.
-    0 erro em todas as etapas:
-
-    | Usuários, pausa média | Duração | req/s | p50 | p95 | p99 |
-    |---|---|---|---|---|---|
-    | 10, 3 s | 20 s | 2 | 178 ms | 402 ms | 957 ms |
-    | 50, 3 s | 30 s | 13 | 103 ms | 209 ms | 382 ms |
-    | 100, 3 s | 30 s | 28 | 108 ms | 249 ms | 348 ms |
-    | 100, sem pausa | 30 s | 61 | 1.438 ms | 2.617 ms | 6.839 ms |
-
-    Com 100 pessoas navegando, a vazão é a mesma do local (28 contra 26 a 28
-    req/s) e o p95 de 249 ms é quase todo internet: tirada a base, sobra
-    perto dos 67 ms do compose local. Sem pausa, a VM real rende 61
-    req/s, dois terços dos 92 do compose local preso a 2 núcleos, com p95
-    de 2,6 s; esse é o teto das 2 OCPU, longe do uso de uma turma.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
-  ações. E o banco gerenciado: o Supabase dá painel e backup, mas paga a rede a
-  cada consulta e limita as conexões. Ele fica documentado como alternativa
-  (`docs/deploy-oracle.md`).
+  ações.
+
+Onde a rede roda, e por que os dados não somem nem o site cai, está na
+decisão 15.
 
 ### 7. A crítica ancorada no verso
 
@@ -535,6 +485,154 @@ PRs, na seção "Decisões do Neto".
   - **HTML livre:** abriria a porta para script e estilo de fora no feed. O
     formato tem só quatro marcas, e a tela as monta como elementos, nunca como
     HTML.
+
+### 15. A infra: no ar sem cair e pronta para crescer
+
+- **Contexto:** a banca e a turma vão criar contas e usar a URL pública ao
+  mesmo tempo. A meta é 100 pessoas navegando sem cair, com p95 abaixo de 1 s,
+  e sem custo. O que se publica lá não pode sumir.
+- **Opções:**
+  - **Render free com o SQLite do template:** o serviço dorme depois de uns
+    15 minutos sem tráfego, tem 0,1 CPU e 1 worker, e o SQLite zera a cada
+    restart.
+  - **Um processo só numa VM:** a API era um serviço só, com 2 workers. Aguenta
+    a carga, mas um processo que trava ou uma atualização tira o site do ar.
+  - **Banco gerenciado no Supabase:** dá painel e backup, mas o banco fica
+    fora da VM e o plano free aceita 15 conexões no total.
+  - **Uma VM com várias réplicas da API atrás de um balanceador**, com o banco
+    na mesma máquina. Foi a escolhida.
+- **Escolha, em camadas:**
+
+  | Camada | Tecnologia | Por quê |
+  |---|---|---|
+  | Front | **Vercel** (Next.js) | Servido pela CDN; cada push na `main` vira um deploy novo. |
+  | Domínio | **`verso.net.br`** (Registro.br), DNS na Vercel | `verso.net.br` e `www` vão para o front; o registro A `api.verso.net.br` vai para o IP da VM. |
+  | Máquina | **VM Oracle Always Free**, Ampere A1 (ARM), São Paulo | Não dorme. Hoje 2 OCPU e 12 GB; o gratuito vai até 4 OCPU e 24 GB. |
+  | Serviços | **Docker Compose** | Um arquivo sobe o banco, o seed, as réplicas, o Caddy e o backup, numa rede interna. |
+  | Entrada e balanceador | **Caddy 2.10** | Único serviço com porta aberta (80 e 443). HTTPS automático (Let's Encrypt, ZeroSSL de reserva) e balanceamento entre as réplicas. |
+  | API | **FastAPI no uvicorn**, réplicas `api_1` a `api_4`, 1 worker cada | 2 réplicas na VM de 2 OCPU (o padrão), 4 na de 4 OCPU, escolhidas por `COMPOSE_PROFILES` e `REPLICAS_DA_API` no `.env`. |
+  | Banco | **Postgres 16** na mesma VM | Sem porta pública. Ida e volta de 0,06 ms; teto de `max_connections` 60. |
+  | Backup | **`pg_dump` diário** e cópia no **Object Storage da Oracle** | Às 03:30, com 7 diários e 4 semanais; `restaurar.sh` testa e restaura. |
+  | Monitoramento | **UptimeRobot** no `/saude` a cada 5 min; Sentry opcional | Avisa por e-mail se a API cair. |
+
+  ```text
+  navegador ──> verso.net.br ──────> Vercel (CDN, o front)
+      │
+      └── HTTPS ──> api.verso.net.br ──> VM Oracle A1 (Docker Compose)
+                      caddy ──┬──> api_1 ──┐
+                              └──> api_2 ──┴──> db (Postgres 16)
+                      (api_3 e api_4 só na VM de 4 OCPU)      │
+                      backup: pg_dump diário <────────────────┘
+                              └──> Object Storage da Oracle
+  ```
+
+  - **O balanceador** (`deploy/oracle/caddy/Caddyfile`):
+    - **Health check ativo:** `GET /saude` em cada réplica a cada 2 s. Duas
+      falhas seguidas tiram a réplica da roda; uma resposta boa a devolve.
+    - **Health check passivo:** uma requisição que não conecta tira a réplica
+      por 10 s, sem esperar o próximo `/saude`. Um 500 da API não conta.
+    - **Nova tentativa noutra réplica:** até 2 vezes, por até 5 s. Se a
+      conexão falhou, a requisição não chegou à API e qualquer método é
+      repetido. Se ela chegou e a resposta falhou no meio, só `GET` e `HEAD`
+      são repetidos: um `POST` (publicar, curtir, mandar mensagem) nunca vai
+      duas vezes.
+    - **Política:** `round_robin` nas rotas comuns e `least_conn` no stream das
+      mensagens (`/mensagens/stream`), que espalha os streams entre as
+      réplicas.
+  - **A API não guarda estado em memória**, e é isso que deixa balancear: o
+    índice de tags está na tabela `post_tags`, o limite de traduções é contado
+    na tabela `traducoes`, as mensagens diretas chegam em tempo real pelo
+    LISTEN/NOTIFY do Postgres, inclusive as que saem de outra réplica, e no
+    SIGTERM a réplica fecha na hora os streams, que reconectam noutra (ver "Uma
+    escolha técnica").
+  - **O banco não estoura.** Cada worker tem um pool de 4 conexões mais 2 de
+    folga (`backend/app/db.py`) e deixa no máximo 6 requisições usando o banco
+    ao mesmo tempo; as outras esperam numa fila, sem segurar thread nem conexão
+    (`backend/app/limite_do_banco.py`). A conta fecha no `max_connections` de
+    60: 2 réplicas × (4 + 2 + 1 do LISTEN) = 14, e 4 réplicas, 28, mais 8 de
+    folga para o backup, a restauração, o seed e a manutenção.
+  - **Os dados ficam.** O seed roda só num banco vazio (#55), então o que se
+    publica na URL pública continua lá. Cada dump leva no nome a data e a hora
+    (UTC) e o hostname da VM, então nenhum backup sobrescreve outro.
+- **Como evita quedas:**
+  - Uma réplica que trava, morre ou está sendo atualizada sai da roda em
+    segundos, e as outras atendem.
+  - O `atualizar.sh` troca a versão uma réplica de cada vez: espera a nova
+    responder ao `/saude` antes de parar a próxima. Um `Caddyfile` novo entra
+    com `caddy reload`, sem fechar conexão.
+  - Medido com 100 usuários e os 100 streams das mensagens abertos: derrubar
+    uma réplica no meio da carga deu 0 erro nas leituras e nos envios; o
+    `atualizar.sh` levou 28 s com 2 réplicas e 52 s com 4, com 0 erro nas
+    leituras (com 4 réplicas, 2 envios de mensagem deram 502 e a pessoa
+    reenvia). Os streams voltaram noutra réplica em 1,0 a 1,4 s (mediana). O
+    `Caddyfile` novo durante a carga: 0 falha em 300 `curl`.
+  - **1 worker por réplica**, e não 2: com 2, o processo pai do uvicorn segura
+    a porta aberta enquanto os workers desligam, e derrubar uma réplica deu 39
+    erros nas leituras e 4 nos envios. Com 1, a porta fecha na hora e o Caddy
+    tenta outra.
+  - O que isto não cobre: a VM inteira cair, porque todas as réplicas estão
+    nela. Aí o backup do Object Storage volta numa VM nova, e perde-se no
+    máximo um dia.
+- **Como escala, em degraus:**
+  1. **Hoje:** VM de 2 OCPU e 12 GB (a de 4 OCPU não saiu: faltou capacidade
+     na Oracle) com 2 réplicas.
+  2. **VM de 4 OCPU e 24 GB, ainda de graça:** 4 réplicas, trocando duas
+     linhas do `.env` (`COMPOSE_PROFILES=4-ocpu` e `REPLICAS_DA_API`) e
+     rodando `./atualizar.sh --sem-pull`. Sem pausa, a vazão sobe de 104–106
+     para 153–154 req/s.
+  3. **O próximo degrau** seria sair de uma VM só. Ainda não está feito nem
+     medido.
+
+  **Medido no compose local**, com o seed completo (184 usuários, 11.336
+  poemas) e o `db`, as réplicas e o `caddy` presos a 4 ou a 2 núcleos, 100
+  usuários, 1 worker por réplica (req/s sem pausa e p95 com pausa de 3 s):
+
+  | Réplicas | 4 núcleos | 2 núcleos |
+  |---|---|---|
+  | 2 | 104–106 req/s, p95 73–80 ms | **92 req/s, p95 67 ms** |
+  | 3 | 127–132 req/s, p95 67–72 ms | 87–90 req/s, p95 65–69 ms |
+  | 4 | **153–154 req/s, p95 62–63 ms** | 82–86 req/s, p95 67–68 ms |
+
+  Em 4 núcleos, cada réplica a mais rende; em 2, além de duas elas só
+  disputam a CPU com o Postgres. Por isso 2 réplicas na VM de 2 OCPU (o
+  padrão) e 4 na de 4. Antes das réplicas, com um processo só, 2 workers ×
+  (4 + 2) deram nos 4 núcleos p95 de 47 a 48 ms com pausa de 3 s e de 0,8 a
+  0,92 s sem pausa, 0 erro; 4 workers empataram com pausa e oscilaram sem
+  pausa (0,84 a 2,2 s). Com 2 núcleos, o p95 sem pausa passava de 1,1 s.
+
+  **Em produção (2026-11-25)**, na VM de 2 OCPU com 2 réplicas, o mesmo
+  `carga.py` (só as 14 rotas de leitura, sem streams nem mensagens, um
+  login só, da `marina_letras`) rodado da rede doméstica do Neto até São
+  Paulo, com a internet no meio: o `/saude` sozinho, com a conexão aberta,
+  leva de 84 a 197 ms (mediana), e é essa a base de cada número abaixo.
+  0 erro em todas as etapas:
+
+  | Usuários, pausa média | Duração | req/s | p50 | p95 | p99 |
+  |---|---|---|---|---|---|
+  | 10, 3 s | 20 s | 2 | 178 ms | 402 ms | 957 ms |
+  | 50, 3 s | 30 s | 13 | 103 ms | 209 ms | 382 ms |
+  | 100, 3 s | 30 s | 28 | 108 ms | 249 ms | 348 ms |
+  | 100, sem pausa | 30 s | 61 | 1.438 ms | 2.617 ms | 6.839 ms |
+
+  Com 100 pessoas navegando, a vazão é a mesma do local (28 contra 26 a 28
+  req/s) e o p95 de 249 ms é quase todo internet: tirada a base, sobra
+  perto dos 67 ms do compose local. Sem pausa, a VM real rende 61
+  req/s, dois terços dos 92 do compose local preso a 2 núcleos, com p95
+  de 2,6 s; esse é o teto das 2 OCPU, longe do uso de uma turma.
+- **O que cortamos e por quê:**
+  - **Kubernetes ou outro orquestrador:** é peça demais para uma VM só. O
+    Docker Compose sobe tudo com um arquivo, e o `atualizar.sh` faz a troca
+    sem queda.
+  - **`deploy.replicas` do Compose:** recriaria todas as réplicas juntas. Com
+    réplicas com nome (`api_1`, `api_2`...), o Caddy alcança cada uma e o
+    `atualizar.sh` reinicia uma de cada vez.
+  - **O banco gerenciado (Supabase):** cada request faz várias consultas, e
+    cada uma pagaria a rede até fora da VM; o plano free aceita 15 conexões
+    para a API, o seed, o backup e o SQL Editor juntos. Ele fica documentado
+    como alternativa (`deploy/oracle/compose.supabase.yaml`,
+    `docs/deploy-oracle.md`).
+  - **O Render free:** dorme depois de uns 15 minutos sem tráfego, e a
+    primeira visita leva cerca de 1 minuto. Fica como plano B, com o Supabase (`docs/deploy.md`).
 
 ### O que ficou de fora e por quê
 
