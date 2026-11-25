@@ -327,8 +327,8 @@ SEED_ON_BOOT=true                                  (deixe true: só popula um ba
 CORS_ORIGINS=http://localhost:3000                 <<< por enquanto; o passo 9 troca pela URL da Vercel
 ANTHROPIC_API_KEY=sk-ant-...                       <<< opcional, a chave da demo
 SENTRY_DSN=                                        <<< opcional, passo 10
-OCI_BUCKET=, OCI_S3_ENDPOINT=, OCI_REGIAO=,
-OCI_ACCESS_KEY=, OCI_SECRET_KEY=                   <<< passo 11 (vazios: só o backup local)
+OCI_S3_ENDPOINT=, OCI_ACCESS_KEY=, OCI_SECRET_KEY=  <<< passo 11 (OCI_BUCKET e OCI_REGIAO já vêm
+                                                       preenchidos; sem as chaves, só o backup local)
 ```
 
 Não há `DATABASE_URL` para colar: o `compose.yaml` monta
@@ -490,37 +490,60 @@ uma VM nova no mesmo bucket. A retenção conta datas, não arquivos: dois
 backups do mesmo dia ficam ou saem juntos. O dump do seed tem uns 6 MB. Isso já funciona sem configurar nada. Mas o
 volume mora no disco da VM: se a Oracle recolher a VM ou o disco se perder, os
 backups vão junto. Por isso o `backup` também copia cada dump para um bucket do
-**Object Storage** da Oracle (Always Free: 20 GB no total da conta), pela API
-compatível com S3 e com o `rclone`. O que fazer na conta, uma vez:
+**Object Storage** da Oracle, pela API compatível com S3 e com o `rclone`. O
+Always Free dá 20 GB no total da conta, e sobra: cada backup tem poucos MB, e
+o bucket guarda no máximo uns 11. O que fazer na conta, uma vez:
 
-1. **Bucket.** Menu ☰ → **Storage** → **Buckets** → **Create Bucket**:
+1. **Bucket.** Menu ☰ → **Storage** → **Object Storage & Archive Storage** →
+   **Buckets**. Antes de criar, confira:
+   - **Compartment:** `root` (o da tenancy). A API compatível com S3 procura
+     os buckets no compartimento designado para ela, que por padrão é o root;
+     num outro compartimento, o `rclone` não acha o bucket.
+   - **Região** (topo do console): **Brazil East (Sao Paulo)**.
 
-   ```text
-   Name:              verso-backups
-   Default Storage Tier: Standard
-   (o resto no padrão; o bucket nasce privado)
-   ```
-
-   Crie no compartimento raiz (o padrão da API S3). Nome do bucket:
-   `verso-backups`   **<<< ANOTE AQUI** (vai em `OCI_BUCKET`)
-2. **Namespace.** Menu do perfil (canto superior direito) → **Tenancy:
-   <nome>** → **Object storage namespace** (uma sequência como `axk1abcd2efg`).
-   O endpoint é:
+   **Create Bucket**:
 
    ```text
-   https://<namespace>.compat.objectstorage.<regiao>.oci.customer-oci.com
-   ex.: https://axk1abcd2efg.compat.objectstorage.sa-saopaulo-1.oci.customer-oci.com
+   Bucket Name:            verso-backups
+   Default Storage Tier:   Standard      (não Archive: o Archive leva horas para devolver um arquivo)
+   Enable Auto-Tiering:    desligado
+   Enable Object Versioning: desligado
+   Emit Object Events:     desligado
+   Encryption:             Encrypt using Oracle managed keys
    ```
 
-   A região é o identificador da Home Region (`sa-saopaulo-1`,
-   `us-ashburn-1`...), que aparece no topo do console.
-   **<<< COLE AQUI** em `OCI_S3_ENDPOINT` e `OCI_REGIAO`.
-3. **Customer Secret Key.** Menu do perfil → **User settings** (ou **My
-   profile**) → **Customer secret keys** → **Generate secret key** → nome
-   `verso-backup`. Copie o **Secret Key** na hora (ele aparece uma vez só); o
-   **Access Key** fica na lista. **<<< COLE AQUI** em `OCI_SECRET_KEY` e
-   `OCI_ACCESS_KEY`. Cada usuário pode ter até duas chaves; elas não expiram,
-   então apague esta depois da entrega se não for manter o deploy.
+   O bucket nasce **privado** (Visibility: Private); deixe assim. → **Create**.
+2. **Namespace.** Abra o bucket: em **Bucket Information**, anote o
+   **Namespace** (uma sequência como `axk1abcd2efg`). Com ele e a região, o
+   endpoint S3 é:
+
+   ```text
+   https://<namespace>.compat.objectstorage.sa-saopaulo-1.oraclecloud.com
+   ex.: https://axk1abcd2efg.compat.objectstorage.sa-saopaulo-1.oraclecloud.com
+   ```
+
+   (A Oracle também documenta o domínio novo,
+   `<namespace>.compat.objectstorage.sa-saopaulo-1.oci.customer-oci.com`; os
+   dois levam ao mesmo lugar.)
+3. **Customer Secret Key.** Menu do perfil (canto superior direito) → **My
+   profile** → **Customer secret keys** (em algumas contas, dentro de **Tokens
+   and keys**) → **Generate secret key** → nome `verso-backup` → **Generate
+   secret key**. Copie o **Secret Key** na hora: ele aparece **uma vez só**.
+   Feche a janela e copie o **Access Key** da linha nova na lista. Cada usuário
+   pode ter até duas chaves; elas não expiram, então apague esta depois da
+   entrega se não for manter o deploy.
+
+   **Onde cada valor entra no `.env`** (todos marcados com `<<< COLE AQUI` no
+   `.env.example`):
+
+   ```text
+   OCI_BUCKET=verso-backups
+   OCI_S3_ENDPOINT=https://<namespace>.compat.objectstorage.sa-saopaulo-1.oraclecloud.com
+   OCI_REGIAO=sa-saopaulo-1
+   OCI_ACCESS_KEY=<o Access Key da lista>
+   OCI_SECRET_KEY=<o Secret Key copiado na geração>
+   ```
+
 4. Na VM: `docker compose up -d` (recria o `backup` com o `.env` novo) e um
    backup na hora para conferir:
 
