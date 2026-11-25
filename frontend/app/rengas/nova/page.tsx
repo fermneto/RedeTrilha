@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EditorDePoema } from "@/components/EditorDePoema";
 import {
   caminhoDoLogin,
   criarRenga,
@@ -99,23 +100,19 @@ export default function NovaRengaPage() {
         </div>
 
         <div>
-          <label htmlFor={`${id}-estrofe`} className="block text-sm font-semibold">
-            Primeira estrofe
-          </label>
-          <span id={`${id}-estrofe-ajuda`} className="mt-0.5 block text-xs text-tinta-suave">
-            Quebras de linha e recuos ficam como você escrever.
-          </span>
-          <textarea
-            id={`${id}-estrofe`}
-            value={estrofe}
-            onChange={(e) => setEstrofe(e.target.value)}
-            rows={6}
-            aria-invalid={Boolean(campos.primeira_estrofe)}
-            aria-describedby={
-              campos.primeira_estrofe ? `${id}-estrofe-ajuda ${id}-estrofe-erro` : `${id}-estrofe-ajuda`
-            }
-            className={`${campo} poema-corpo mt-1.5 resize-y`}
+          <EditorDePoema
+            valor={estrofe}
+            aoMudar={setEstrofe}
+            rotulo={<span className="font-semibold">Primeira estrofe</span>}
+            idRotulo={`${id}-estrofe`}
+            idAjuda={campos.primeira_estrofe ? `${id}-estrofe-ajuda ${id}-estrofe-erro` : `${id}-estrofe-ajuda`}
+            invalido={Boolean(campos.primeira_estrofe)}
+            linhas={6}
+            classe={campo}
           />
+          <span id={`${id}-estrofe-ajuda`} className="mt-1 block text-xs text-tinta-suave">
+            Quebras de linha e recuos ficam como você escrever. Para formatar, selecione o trecho.
+          </span>
           {campos.primeira_estrofe && (
             <span id={`${id}-estrofe-erro`} className="mt-1 block text-xs text-destaque">
               {campos.primeira_estrofe}

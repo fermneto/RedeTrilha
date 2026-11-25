@@ -34,3 +34,9 @@ test("a prévia não termina numa linha em branco e não mexe no recuo do verso"
   assert.deepEqual(previaDoRascunho("um\ndois\n\n\ttrês", 3), { previa: "um\ndois", versos: 3, cortado: true });
   assert.equal(previaDoRascunho("\tum", 3).previa, "\tum");
 });
+
+test("a prévia do rascunho guarda as marcas, que a tela formata (#137)", () => {
+  const { previa, versos } = previaDoRascunho("\n**Esboço** em *itálico*\n\n  ++recuo++\n", 5);
+  assert.equal(previa, "**Esboço** em *itálico*\n\n  ++recuo++");
+  assert.equal(versos, 2);
+});

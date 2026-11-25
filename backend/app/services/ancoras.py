@@ -4,7 +4,9 @@ Os versos são as linhas de `texto.split("\\n")`, contadas a partir de 1, com as
 linhas em branco entre estrofes incluídas: o número de um verso é a posição da
 linha no texto gravado, sem `strip()` nem normalização. Poema publicado não se
 edita (decisão do Neto), então a âncora guarda só o intervalo e o trecho sai
-do texto do poema.
+do texto do poema. As marcas de formatação (core/marcas.py) nunca atravessam a
+quebra de linha: a numeração é a mesma com ou sem elas, e o trecho sai com as
+marcas dos versos citados.
 """
 
 from collections import Counter
@@ -13,6 +15,7 @@ from fastapi import HTTPException
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
+from app.core.marcas import texto_sem_marcas
 from app.models.ancora_comentario import AncoraComentario
 from app.models.comentario import Comentario
 from app.models.post import Post
@@ -45,7 +48,7 @@ def validar(texto: str, parent_id: int | None, dados: AncoraCreate) -> None:
         raise HTTPException(
             status_code=422, detail=f"o poema tem {total} versos; escolha entre o 1 e o {total}"
         )
-    if not trecho_de(texto, dados.verso_inicio, dados.verso_fim).strip():
+    if not texto_sem_marcas(trecho_de(texto, dados.verso_inicio, dados.verso_fim)).strip():
         raise HTTPException(status_code=422, detail="o trecho escolhido está em branco")
 
 

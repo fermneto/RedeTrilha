@@ -15,6 +15,7 @@ import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
+import { TextoFormatado } from "@/components/TextoFormatado";
 import {
   buscarEu,
   buscarPoemaDoDia,
@@ -130,7 +131,7 @@ function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
       <div className="px-4 pb-4">
         {poema.titulo && <p className="poema-titulo mt-1 text-[1.0625rem]">{poema.titulo}</p>}
         <p className="poema-corpo mt-2 text-[0.9375rem] leading-[1.7]">
-          {corte === null ? poema.texto : versos.slice(0, corte).join("\n")}
+          <TextoFormatado texto={corte === null ? poema.texto : versos.slice(0, corte).join("\n")} />
         </p>
         <p className="mt-3 text-sm text-tinta-suave">
           <NomeAutor usuario={autor} className="font-semibold text-tinta" />

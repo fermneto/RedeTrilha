@@ -8,6 +8,7 @@ import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
 import { EnviarPorMensagem } from "@/components/EnviarPorMensagem";
 import { NomeAutor } from "@/components/NomeAutor";
+import { TextoFormatado } from "@/components/TextoFormatado";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
@@ -134,7 +135,7 @@ function Corpo({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
   return (
     <>
       <p className={`poema-corpo ${poema.titulo ? "mt-2" : "mt-1"}`}>
-        {cortar ? versos.slice(0, visiveis).join("\n") : poema.texto}
+        <TextoFormatado texto={cortar ? versos.slice(0, visiveis).join("\n") : poema.texto} />
       </p>
       {cortar && (
         <Link
@@ -198,7 +199,7 @@ function Traduzir({ poema }: { poema: Post }) {
         </p>
         {traducao.titulo && <p className="poema-titulo mt-1">{traducao.titulo}</p>}
         <p lang={traducao.idioma_destino} className={`poema-corpo ${traducao.titulo ? "mt-2" : "mt-1"}`}>
-          {traducao.texto}
+          <TextoFormatado texto={traducao.texto} />
         </p>
       </section>
     );

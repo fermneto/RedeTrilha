@@ -12,6 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { NomeAutor } from "@/components/NomeAutor";
+import { TextoFormatado } from "@/components/TextoFormatado";
 import {
   ancoraCobreOVerso,
   apagarComentario,
@@ -351,7 +352,9 @@ function TrechoCitado({ ancora }: { ancora: Ancora }) {
       <figcaption className="text-xs text-tinta-suave">
         {referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim })}
       </figcaption>
-      <blockquote className="poema-corpo mt-0.5 text-[0.9375rem]">{ancora.trecho}</blockquote>
+      <blockquote className="poema-corpo mt-0.5 text-[0.9375rem]">
+        <TextoFormatado texto={ancora.trecho} />
+      </blockquote>
     </figure>
   );
 }

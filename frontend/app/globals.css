@@ -108,4 +108,18 @@
     line-height: 1.75;
     color: var(--color-tinta);
   }
+
+  /* O editor de poemas (components/EditorDePoema.tsx, ProseMirror): cada verso é
+     um <p> sem margem, os espaços e as tabulações ficam como foram digitados. */
+  .editor-poema {
+    position: relative;
+    tab-size: 4;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0;
+  }
+
+  .editor-poema u,
+  .poema-corpo u {
+    text-underline-offset: 0.18em;
+  }
 }

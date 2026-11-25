@@ -12,6 +12,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.indice_tags import normalizar
+from app.core.marcas import texto_sem_marcas
 from app.models.post import Post
 from app.models.post_tag import PostTag
 from app.models.user import User
@@ -74,10 +75,13 @@ def buscar_tags(db: Session, q: str) -> BuscaDeTags:
 def primeiro_verso(texto: str) -> str | None:
     """A primeira linha com texto que não seja só #tags, como foi escrita.
 
+    A escolha olha o texto sem as marcas de formatação (core/marcas.py), mas a
+    linha volta com elas: o Em alta a mostra formatada. Uma marca nunca
+    atravessa a quebra de linha, então a linha sozinha é um verso válido.
     Sem strip: o recuo é do poema.
     """
-    for linha in texto.split("\n"):
-        if linha.strip() and not _SO_TAGS.fullmatch(linha):
+    for linha, visivel in zip(texto.split("\n"), texto_sem_marcas(texto).split("\n")):
+        if visivel.strip() and not _SO_TAGS.fullmatch(visivel):
             return linha.removesuffix("\r")
     return None
 
