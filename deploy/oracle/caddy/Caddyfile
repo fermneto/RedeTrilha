@@ -1,10 +1,10 @@
 # Proxy reverso do Verso: HTTPS automático (Let's Encrypt, com ZeroSSL de reserva).
-# DOMINIO vem do .env: o seu domínio, um DuckDNS (verso.duckdns.org) ou um
-# sslip.io com o IP público (api.129-146-10-20.sslip.io). Com "localhost", o
-# Caddy usa uma CA interna (teste local, curl -k).
+# DOMINIO vem do .env: api.verso.net.br (o registro A "api" no Registro.br,
+# passo 6 do guia). Para testar antes de o DNS resolver, um sslip.io com o IP
+# público. Com "localhost", o Caddy usa uma CA interna (teste local, curl -k).
 #
 # Balanceador: o Caddy divide as requisições entre as réplicas da API
-# (api_1 a api_4, no compose.yaml). Uma réplica que cai ou não responde ao
+# (REPLICAS_DA_API, do .env: api_1 e api_2, ou de api_1 a api_4 na VM de 4 OCPU). Uma réplica que cai ou não responde ao
 # /saude sai da roda em segundos, e a requisição que falhou ao conectar tenta a
 # outra. É o que deixa o atualizar.sh reiniciar uma réplica de cada vez sem queda.
 {
@@ -24,7 +24,7 @@
 
 # As réplicas e o que fazer quando uma falha; entra em cada reverse_proxy.
 (replicas) {
-	to api_1:8000 api_2:8000 api_3:8000 api_4:8000
+	to {$REPLICAS_DA_API}
 
 	# Ativo: GET /saude em cada réplica a cada 2 s. Duas falhas seguidas (ou 2 s sem
 	# resposta) tiram a réplica da roda; uma resposta boa a devolve.

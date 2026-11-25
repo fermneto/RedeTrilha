@@ -41,6 +41,18 @@ if [ "$puxar" = true ]; then
     git pull --ff-only
 fi
 
+# As réplicas são os serviços api_N ativos no compose: api_1 e api_2, e também api_3
+# e api_4 com COMPOSE_PROFILES=4-ocpu. O Caddy tem de conhecer as mesmas
+# (REPLICAS_DA_API no .env); senão, uma réplica nova ficaria fora da roda.
+replicas=$($compose config --services | grep -E '^api_[0-9]+$' | sort -t_ -k2 -n)
+# config caddy mostra também as dependências (o .env vai a todas): -u tira as repetidas.
+no_caddy=$($compose config caddy | sed -n 's/^ *REPLICAS_DA_API: *//p' | tr ' ' '\n' | sed 's/:8000$//' | sort -t_ -k2 -n -u)
+if [ "$replicas" != "$no_caddy" ]; then
+    echo "as réplicas do compose ($(echo $replicas)) e o REPLICAS_DA_API do .env ($(echo $no_caddy)) não batem"
+    echo "  veja docs/deploy-oracle.md, \"Workers e pool\" (COMPOSE_PROFILES e REPLICAS_DA_API)"
+    exit 1
+fi
+
 echo "$(agora) build das imagens"
 $compose build
 
@@ -60,8 +72,6 @@ if ! $compose wait seed >/dev/null; then
     exit 1
 fi
 
-# As réplicas são os serviços api_N do compose (api_1 a api_4).
-replicas=$($compose config --services | grep -E '^api_[0-9]+$' | sort -t_ -k2 -n)
 
 saude() { docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{end}}' "$1" 2>/dev/null; }
 

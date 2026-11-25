@@ -4,9 +4,9 @@
 #
 # db     -> Postgres 16 na mesma VM, sem porta pública: só a rede interna o alcança.
 # seed   -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
-# api_1  -> quatro réplicas da API, 1 worker cada (a mesma imagem e configuração,
-# ...       x-api abaixo): só sobem depois que o seed terminar bem; sem porta pública.
-# api_4
+# api_1  -> as réplicas da API, 1 worker cada (a mesma imagem e configuração, x-api
+# ...       abaixo): só sobem depois que o seed terminar bem; sem porta pública.
+# api_4     2 na VM de 2 OCPU (o padrão); 4 na de 4 OCPU (COMPOSE_PROFILES=4-ocpu).
 # caddy  -> único serviço exposto (80/443): HTTPS automático e balanceador entre as
 #           réplicas, com health check (caddy/Caddyfile).
 # Atualizar sem tirar do ar: ./atualizar.sh (reinicia uma réplica de cada vez).
@@ -85,9 +85,9 @@ services:
       # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
       - -c
       - maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM:-512MB}
-      # O padrão: 4 réplicas da API x 1 worker x (pool 4 + overflow 2 + 1 LISTEN) = 28;
-      # e mais 8 de folga (backup, restauração, seed, psql e 3 reservadas ao
-      # superusuário) = 36 (docs/deploy-oracle.md, "Workers e pool").
+      # Réplicas da API x 1 worker x (pool 4 + overflow 2 + 1 LISTEN): 2 x 7 = 14 na VM
+      # de 2 OCPU, 4 x 7 = 28 na de 4; e mais 8 de folga (backup, restauração, seed,
+      # psql e 3 reservadas ao superusuário): 22 e 36 (docs/deploy-oracle.md, "Workers e pool").
       - -c
       - max_connections=60
       # O disco da VM é um block volume em SSD: ler fora de ordem custa quase o mesmo.
@@ -124,12 +124,22 @@ services:
 
   api_1: *api
   api_2: *api
-  api_3: *api
-  api_4: *api
+  # VM de 4 OCPU: mais duas réplicas, com COMPOSE_PROFILES=4-ocpu e o REPLICAS_DA_API
+  # com as quatro no .env (docs/deploy-oracle.md, "Workers e pool"). Em 2 OCPU, 4
+  # réplicas disputam a CPU com o Postgres e rendem menos que 2.
+  api_3:
+    <<: *api
+    profiles: [4-ocpu]
+  api_4:
+    <<: *api
+    profiles: [4-ocpu]
 
   caddy:
     image: caddy:2.10-alpine
     env_file: .env
+    environment:
+      # Os upstreams do Caddyfile ({$REPLICAS_DA_API}): as réplicas que estão de pé.
+      REPLICAS_DA_API: ${REPLICAS_DA_API:-api_1:8000 api_2:8000}
     ports:
       - "${HTTP_PORT:-80}:80"
       - "${HTTPS_PORT:-443}:443"
@@ -146,10 +156,13 @@ services:
         condition: service_healthy
       api_2:
         condition: service_healthy
+      # Só com o perfil 4-ocpu; sem ele, o caddy não espera por elas.
       api_3:
         condition: service_healthy
+        required: false
       api_4:
         condition: service_healthy
+        required: false
     restart: unless-stopped
     logging: *logs
     networks: [interna]
