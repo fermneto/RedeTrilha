@@ -283,7 +283,7 @@ function CartaoDaFrente() {
 
       <div
         aria-hidden="true"
-        className="vitrine-flutua mt-2 inline-flex w-max max-w-full items-center gap-1.5 rounded-full border border-borda bg-papel-alto px-3 py-1.5 text-sm sombra-de-papel [--giro:-1.5deg] [--atraso:520ms]"
+        className="vitrine-flutua mt-2 inline-flex w-max max-w-full items-center gap-1.5 rounded-full border border-borda bg-papel-alto px-3 py-1.5 text-sm sombra-de-papel [--atraso:520ms]"
       >
         <span className="text-tinta-suave">verso {AUTOPSICOGRAFIA.grifado}</span>
         <span className="inline-flex items-center gap-1 font-semibold text-destaque">
