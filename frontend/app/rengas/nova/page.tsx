@@ -1,7 +1,9 @@
 "use client";
 // Nova renga: título, a primeira estrofe e as configurações (modo, limite de
 // estrofes e, no modo convidados, os usernames de quem pode escrever). Chega-se
-// pelo seletor de formato do compositor (FormatoDeEscrita), no "Escrever".
+// pelo seletor de formato do compositor (FormatoDeEscrita), no "Escrever"; se a
+// pessoa já tinha começado um poema, ele chega como a 1ª estrofe e o título dele
+// como o da renga, os dois editáveis (lib/trocaDeFormato.ts).
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
@@ -22,6 +24,7 @@ import {
   temToken,
   type ModoDaRenga,
 } from "@/lib/api";
+import { lerPoemaParaRenga } from "@/lib/trocaDeFormato";
 
 const MODOS: { valor: ModoDaRenga; rotulo: string; explicacao: string }[] = [
   { valor: "aberta", rotulo: "Aberta", explicacao: "qualquer pessoa logada escreve a próxima estrofe" },
@@ -46,6 +49,14 @@ export default function NovaRengaPage() {
   useEffect(() => {
     if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
+
+  // O poema trazido do compositor, lido uma vez (e apagado) ao abrir a página.
+  useEffect(() => {
+    const poema = lerPoemaParaRenga();
+    if (!poema) return;
+    setEstrofe(poema.estrofe);
+    if (poema.titulo) setTitulo(poema.titulo);
+  }, []);
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();

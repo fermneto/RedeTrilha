@@ -3,6 +3,10 @@
 // "Escrever" da navegação abre direto no poema, então o poema nunca custa um clique
 // a mais; trocar de formato é trocar de página, por isso são links (com
 // aria-current), e não abas nem um modal.
+//
+// No compositor, `aoEscolher` deixa a página olhar a troca antes: levar o poema
+// para a renga, ou segurar a ida à antologia para perguntar o que fazer com ele
+// (a pergunta vem em `children`, logo abaixo do seletor).
 
 import Link from "next/link";
 
@@ -14,7 +18,14 @@ const FORMATOS = [
 
 export type Formato = (typeof FORMATOS)[number]["valor"];
 
-export function FormatoDeEscrita({ atual }: { atual: Formato }) {
+type Props = {
+  atual: Formato;
+  // Chamado no clique, antes de navegar; `e.preventDefault()` segura a troca.
+  aoEscolher?: (formato: Formato, e: React.MouseEvent<HTMLAnchorElement>) => void;
+  children?: React.ReactNode;
+};
+
+export function FormatoDeEscrita({ atual, aoEscolher, children }: Props) {
   return (
     <nav aria-label="O que escrever" className="border-b border-borda px-4 py-3">
       <ul className="inline-flex rounded-full border border-borda p-1">
@@ -26,6 +37,7 @@ export function FormatoDeEscrita({ atual }: { atual: Formato }) {
                 href={href}
                 replace
                 aria-current={ativo ? "page" : undefined}
+                onClick={ativo ? undefined : (e) => aoEscolher?.(valor, e)}
                 className={`flex min-h-10 items-center rounded-full px-4 text-sm font-bold transition-colors duration-150 ${
                   ativo ? "bg-tinta text-papel" : "text-tinta-suave hover:text-tinta"
                 }`}
@@ -36,6 +48,7 @@ export function FormatoDeEscrita({ atual }: { atual: Formato }) {
           );
         })}
       </ul>
+      {children}
     </nav>
   );
 }
