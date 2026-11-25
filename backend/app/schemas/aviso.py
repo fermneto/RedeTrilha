@@ -19,7 +19,7 @@ TipoDeAviso = Literal[
 
 
 class AvisoOut(BaseModel):
-    """Uma linha da tela de avisos. Curtidas e reposts do mesmo poema vêm numa só.
+    """Uma linha da tela de avisos. Curtidas e reposts do mesmo poema no mesmo dia (de Brasília) vêm numa só.
 
     `atores` traz os dois mais recentes; `total_atores` conta todos (a frase
     "Ana e mais 3 curtiram"). `id` e `created_at` são os do aviso mais recente da

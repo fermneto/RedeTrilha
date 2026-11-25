@@ -99,6 +99,46 @@ def test_curtidas_e_reposts_do_mesmo_poema_viram_uma_linha(client, eu):
     assert _nao_lidos(client, eu) == 2
 
 
+def _datar(datas: dict[str, str]) -> None:
+    """Muda a data (UTC) dos avisos de curtida de cada ator."""
+    from datetime import datetime
+
+    from app.db import SessionLocal
+    from app.models.aviso import Aviso
+    from app.models.user import User
+
+    with SessionLocal() as db:
+        for username, quando in datas.items():
+            ator = db.query(User.id).filter(User.username == username).scalar()
+            db.execute(
+                update(Aviso).where(Aviso.ator_id == ator).values(created_at=datetime.fromisoformat(quando))
+            )
+        db.commit()
+
+
+def test_curtidas_agrupam_por_dia_de_brasilia(client, eu):
+    post_id = _poema(client, eu)
+    for quem in ("ana", "caio", "dani"):
+        client.post(f"/posts/{post_id}/curtir", headers=eu(quem))
+    # 02:00 UTC do dia 20 ainda é dia 19 em Brasília (23:00); 04:00 e 20:00 UTC são dia 20.
+    _datar({"ana": "2026-11-20 02:00:00", "caio": "2026-11-20 04:00:00", "dani": "2026-11-20 20:00:00"})
+
+    itens = _avisos(client, eu)["items"]
+    assert [(a["tipo"], a["total_atores"], [u["username"] for u in a["atores"]]) for a in itens] == [
+        ("curtida", 2, ["dani", "caio"]),
+        ("curtida", 1, ["ana"]),
+    ]
+    assert _nao_lidos(client, eu) == 2
+    # Paginando de uma em uma, as duas linhas do mesmo poema aparecem uma vez cada.
+    primeira = _avisos(client, eu, limit=1)
+    segunda = _avisos(client, eu, limit=1, cursor=primeira["proximo_cursor"])
+    assert [a["total_atores"] for a in primeira["items"] + segunda["items"]] == [2, 1]
+    assert segunda["proximo_cursor"] is None
+    # Lida a linha de ontem só, o contador fica com a de hoje.
+    client.post("/avisos/lidos", json={"ate": itens[1]["id"]}, headers=eu("bia"))
+    assert _nao_lidos(client, eu) == 1
+
+
 def test_curtir_um_repost_puro_avisa_o_autor_do_original(client, eu):
     post_id = _poema(client, eu)
     client.post(f"/posts/{post_id}/repostar", headers=eu("ana"))

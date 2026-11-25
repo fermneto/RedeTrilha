@@ -15,9 +15,10 @@ apontam para ele (`apagar_do_poema`, `apagar_do_comentario`). O stream avisa de
 novo, e o contador desce.
 
 **Ler.** Uma linha por ação no banco; na tela, as curtidas de um mesmo poema
-viram uma linha só ("Ana e mais 3 curtiram"), e os reposts também. O
-agrupamento é um GROUP BY nos avisos da pessoa (tipo, poema, e o id para os
-tipos que não agrupam), ordenado pelo aviso mais recente de cada grupo e
+num mesmo dia viram uma linha só ("Ana e mais 3 curtiram"), e os reposts
+também (decisão do Neto). O dia é o de Brasília. O agrupamento é um GROUP BY
+nos avisos da pessoa (tipo, poema e dia; o id para os tipos que não agrupam),
+ordenado pelo aviso mais recente de cada grupo e
 paginado por cursor nesse mesmo par (data, id). Um bloqueio feito depois do
 aviso o esconde na leitura (como nos comentários), sem apagar.
 
@@ -50,8 +51,12 @@ from app.schemas.user import UserOut
 from app.services import bloqueios
 from app.services.cursor import codificar_cursor, ler_cursor
 
-# Os tipos que viram uma linha por poema na tela.
+# Os tipos que viram uma linha por poema e por dia na tela.
 AGRUPADOS = ("curtida", "repost")
+# O dia da linha agrupada é o de Brasília. No SQLite (dev e testes), que não tem
+# base de fusos, vale o deslocamento fixo: o Brasil não tem horário de verão desde 2019.
+FUSO = "America/Sao_Paulo"
+DESLOCAMENTO_DO_FUSO = "-3 hours"
 # Quantos atores a linha agrupada mostra pelo nome.
 ATORES_NA_LINHA = 2
 EVENTO = {"tipo": "aviso"}
@@ -129,11 +134,11 @@ def listar(db: Session, eu: User, cursor: str | None, limit: int) -> AvisoPage:
 
 
 def resumo(db: Session, eu: User) -> ResumoDeAvisos:
-    """Quantas linhas da tela têm aviso não lido (as curtidas de um poema contam uma)."""
+    """Quantas linhas da tela têm aviso não lido (as curtidas de um poema num dia contam uma)."""
     grupos = (
         select(Aviso.tipo)
         .where(*_meus(db, eu), Aviso.lido.is_(False))
-        .group_by(*_chave_do_grupo())
+        .group_by(*_chave_do_grupo(db))
         .subquery()
     )
     return ResumoDeAvisos(nao_lidos=db.scalar(select(func.count()).select_from(grupos)) or 0)
@@ -180,32 +185,44 @@ def _meus(db: Session, eu: User) -> list:
     return filtros
 
 
-def _chave_do_grupo() -> tuple:
-    """(tipo, poema, id): curtidas e reposts do mesmo poema caem na mesma linha
-    (o id vira 0); os outros tipos ficam uma linha por aviso."""
+def _dia(db: Session):
+    """O dia do aviso no fuso de Brasília (`created_at` é gravado em UTC)."""
+    if db.get_bind().dialect.name == "postgresql":
+        return func.date(func.timezone(FUSO, func.timezone("UTC", Aviso.created_at)))
+    return func.date(Aviso.created_at, DESLOCAMENTO_DO_FUSO)
+
+
+def _chave_do_grupo(db: Session) -> tuple:
+    """(tipo, poema, id, dia): curtidas e reposts do mesmo poema no mesmo dia caem
+    na mesma linha (o id vira 0); os outros tipos ficam uma linha por aviso (o dia
+    vira nulo)."""
+    agrupa = Aviso.tipo.in_(AGRUPADOS)
     return (
         Aviso.tipo,
         Aviso.post_id,
-        case((Aviso.tipo.in_(AGRUPADOS), 0), else_=Aviso.id),
+        case((agrupa, 0), else_=Aviso.id),
+        case((agrupa, _dia(db)), else_=None),
     )
 
 
 def _grupos(db: Session, eu: User, cursor: str | None, limit: int) -> list:
-    """As linhas da página: (tipo, post_id, quando, ultimo, atores, lido), mais uma
-    para saber se há próxima página."""
+    """As linhas da página: (tipo, post_id, dia, quando, ultimo, atores, lido), mais
+    uma para saber se há próxima página."""
     quando = func.max(Aviso.created_at)
     ultimo = func.max(Aviso.id)
+    chave = _chave_do_grupo(db)
     consulta = (
         select(
             Aviso.tipo,
             Aviso.post_id,
+            chave[3].label("dia"),
             quando.label("quando"),
             ultimo.label("ultimo"),
             func.count(distinct(Aviso.ator_id)).label("atores"),
             func.min(case((Aviso.lido, 1), else_=0)).label("lido"),
         )
         .where(*_meus(db, eu))
-        .group_by(*_chave_do_grupo())
+        .group_by(*chave)
     )
     if cursor is not None:
         data, id_ = ler_cursor(cursor)
@@ -224,7 +241,7 @@ def _montar(db: Session, eu: User, grupos: list) -> list[AvisoOut]:
     for grupo in grupos:
         aviso = principais[grupo.ultimo]
         if grupo.tipo in AGRUPADOS:
-            de_quem = atores.get((grupo.tipo, grupo.post_id), [aviso.ator])
+            de_quem = atores.get((grupo.tipo, grupo.post_id, grupo.dia), [aviso.ator])
         else:
             de_quem = [aviso.ator]
         itens.append(
@@ -246,36 +263,40 @@ def _montar(db: Session, eu: User, grupos: list) -> list[AvisoOut]:
 
 def _atores_dos_agrupados(db: Session, eu: User, grupos: list) -> dict[tuple, list[User]]:
     """Os ATORES_NA_LINHA atores mais recentes de cada linha agrupada, numa consulta
-    (ROW_NUMBER por tipo e poema), sem carregar as mil curtidas de um poema."""
-    chaves = [(g.tipo, g.post_id) for g in grupos if g.tipo in AGRUPADOS]
+    (ROW_NUMBER por tipo, poema e dia), sem carregar as mil curtidas de um poema."""
+    chaves = {(g.tipo, g.post_id, g.dia) for g in grupos if g.tipo in AGRUPADOS}
     if not chaves:
         return {}
+    dia = _dia(db).label("dia")
     posicao = (
         func.row_number()
         .over(
-            partition_by=(Aviso.tipo, Aviso.post_id),
+            partition_by=(Aviso.tipo, Aviso.post_id, dia),
             order_by=(Aviso.created_at.desc(), Aviso.id.desc()),
         )
         .label("posicao")
     )
     recentes = (
-        select(Aviso.id, posicao)
+        select(Aviso.id, dia, posicao)
         .where(
             *_meus(db, eu),
             Aviso.tipo.in_(AGRUPADOS),
-            Aviso.post_id.in_({post_id for _, post_id in chaves}),
+            Aviso.post_id.in_({post_id for _, post_id, _ in chaves}),
         )
         .subquery()
     )
-    linhas = db.scalars(
-        select(Aviso)
+    linhas = db.execute(
+        select(Aviso, recentes.c.dia)
         .join(recentes, recentes.c.id == Aviso.id)
-        .where(recentes.c.posicao <= ATORES_NA_LINHA)
+        .where(
+            recentes.c.posicao <= ATORES_NA_LINHA,
+            recentes.c.dia.in_({d for _, _, d in chaves}),
+        )
         .order_by(recentes.c.posicao)
     )
     por_chave: dict[tuple, list[User]] = {}
-    for aviso in linhas:
-        por_chave.setdefault((aviso.tipo, aviso.post_id), []).append(aviso.ator)
+    for aviso, dia_do_aviso in linhas:
+        por_chave.setdefault((aviso.tipo, aviso.post_id, dia_do_aviso), []).append(aviso.ator)
     return por_chave
 
 
