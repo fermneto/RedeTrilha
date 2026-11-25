@@ -45,8 +45,8 @@ Pedro (@CorreiaPedro208).
 
 ## Onde está no ar
 
-- **Site:** https://verso.net.br (front na Vercel; também em https://verso-blond.vercel.app), depois do deploy.
-- **API:** https://api.verso.net.br, depois do deploy.
+- **Site:** https://verso.net.br (front na Vercel; também em https://verso-blond.vercel.app).
+- **API:** https://api.verso.net.br.
 - **Onde roda a API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose
   (2 a 4 réplicas da API, conforme a VM, e o Caddy, com HTTPS automático, balanceando entre
   elas) e o Postgres na mesma VM, com backup diário para o Object Storage da

@@ -243,6 +243,25 @@ PRs, na seção "Decisões do Neto".
     `atualizar.sh` (28 s com 2 réplicas, 52 s com 4) deram 0 erro nas
     leituras, e os streams das mensagens, fechados no SIGTERM, voltaram
     noutra réplica em 1,0 a 1,4 s (mediana).
+    **Em produção (2026-11-25)**, na VM de 2 OCPU com 2 réplicas, o mesmo
+    `carga.py` (só as 14 rotas de leitura, sem streams nem mensagens, um
+    login só, da `marina_letras`) rodado da rede doméstica do Neto até São
+    Paulo, com a internet no meio: o `/saude` sozinho, com a conexão aberta,
+    leva de 84 a 197 ms (mediana), e é essa a base de cada número abaixo.
+    0 erro em todas as etapas:
+
+    | Usuários, pausa média | Duração | req/s | p50 | p95 | p99 |
+    |---|---|---|---|---|---|
+    | 10, 3 s | 20 s | 2 | 178 ms | 402 ms | 957 ms |
+    | 50, 3 s | 30 s | 13 | 103 ms | 209 ms | 382 ms |
+    | 100, 3 s | 30 s | 28 | 108 ms | 249 ms | 348 ms |
+    | 100, sem pausa | 30 s | 61 | 1.438 ms | 2.617 ms | 6.839 ms |
+
+    Com 100 pessoas navegando, a vazão é a mesma do local (28 contra 26 a 28
+    req/s) e o p95 de 249 ms é quase todo internet: tirada a base, sobra
+    perto dos 67 ms do compose local. Sem pausa, a VM real rende 61
+    req/s, dois terços dos 92 do compose local preso a 2 núcleos, com p95
+    de 2,6 s; esse é o teto das 2 OCPU, longe do uso de uma turma.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
   ações. E o banco gerenciado: o Supabase dá painel e backup, mas paga a rede a
