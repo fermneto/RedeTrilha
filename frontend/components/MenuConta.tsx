@@ -51,7 +51,7 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
   }
 
   return (
-    <div ref={caixa} onBlur={aoPerderFoco} className={inferior ? "relative" : "relative mb-2 w-full"}>
+    <div ref={caixa} onBlur={aoPerderFoco} className={inferior ? "relative w-full" : "relative mb-2 w-full"}>
       <button
         ref={botao}
         type="button"
@@ -64,7 +64,7 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
         aria-label={`Conta de ${eu.name} (@${eu.username})`}
         className={
           inferior
-            ? "flex h-13 min-w-11 cursor-pointer items-center justify-center px-2"
+            ? "flex h-13 w-full cursor-pointer items-center justify-center"
             : "realce flex w-full cursor-pointer items-center justify-center gap-3 rounded-full p-3 text-left xl:justify-start"
         }
       >

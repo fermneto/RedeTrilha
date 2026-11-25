@@ -5,11 +5,21 @@ uma rota ao acaso, faz a requisição e pausa um tempo sorteado entre 0 e 2 x --
 segundos (média --pausa); a primeira pausa espalha as chegadas. Com --pausa 0, há sempre N requisições em voo. No fim,
 mostra req/s, erros e os percentis do tempo de resposta.
 
-Só lê: não publica, não curte, não traduz (não gasta a chave da Anthropic).
+Mensagens diretas (opcional): com --streams S, os S primeiros usuários mantêm o
+stream das mensagens (SSE) aberto o tempo todo, como uma aba aberta; com
+--mensageiros F, a fração F dos usuários, em vez de navegar, manda mensagens a
+outra conta do seed (pausa média de pelo menos 3 s, abaixo do limite por minuto).
+O resumo separa o tempo das rotas de leitura do envio das mensagens e conta os
+eventos que chegaram pelos streams e os streams que caíram.
+
+Sem as mensagens, só lê: não publica, não curte, não traduz (não gasta a chave da
+Anthropic).
 
     cd backend
     uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 3
     uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 0
+    uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 3 \
+        --streams 100 --mensageiros 0.1
 
 Contra o compose local (deploy/oracle/compose.local.yaml), o Caddy usa um
 certificado interno: o script não confere o certificado.
@@ -25,6 +35,8 @@ from collections import Counter
 import httpx
 
 SENHA_SEED = "verso123"
+# Quem manda mensagem pausa em média pelo menos isto (o limite é 30 por minuto).
+PAUSA_MINIMA_DE_QUEM_MANDA = 3.0
 
 
 def rotas(usernames: list[str], post_ids: list[int], tags: list[str]) -> list:
@@ -54,7 +66,8 @@ async def entrar(cliente: httpx.AsyncClient, username: str) -> str:
 
 
 async def preparar(cliente: httpx.AsyncClient, n: int) -> tuple[list[str], list, list[str]]:
-    """Os tokens de n contas do seed e as amostras (usernames, poemas, tags) para as rotas."""
+    """Os tokens de n contas do seed, as amostras (usernames, poemas, tags) para as rotas e
+    as contas, na ordem dos tokens."""
     r = await cliente.get("/usuarios", params={"limit": 100})
     r.raise_for_status()
     contas = [u["username"] for u in r.json()["items"] if not u.get("consagrado")]
@@ -64,7 +77,7 @@ async def preparar(cliente: httpx.AsyncClient, n: int) -> tuple[list[str], list,
     post_ids = [p["id"] for p in feed if "id" in p] or [1]
     em_alta = (await cliente.get("/tags/trending", headers=cab)).json()
     tags = [t["tag"] for t in em_alta["items"]] or ["soneto"]
-    return tokens, rotas(contas, post_ids, tags), tags
+    return tokens, rotas(contas, post_ids, tags), [contas[i % len(contas)] for i in range(n)]
 
 
 async def usuario(cliente, token, mix, pausa, fim, tempos, status):
@@ -84,6 +97,62 @@ async def usuario(cliente, token, mix, pausa, fim, tempos, status):
             await asyncio.sleep(random.uniform(0, 2 * pausa))
 
 
+async def mensageiro(cliente, token, para, pausa, fim, tempos, status):
+    """Manda mensagens a `para`, uma conversa só, até o fim."""
+    cab = {"Authorization": f"Bearer {token}"}
+    pausa = max(pausa, PAUSA_MINIMA_DE_QUEM_MANDA)
+    r = await cliente.post("/mensagens/conversas", json={"username": para}, headers=cab)
+    r.raise_for_status()
+    caminho = f"/mensagens/conversas/{r.json()['id']}/mensagens"
+    await asyncio.sleep(random.uniform(0, 2 * pausa))
+    n = 0
+    while time.monotonic() < fim:
+        inicio = time.monotonic()
+        try:
+            r = await cliente.post(caminho, json={"texto": f"verso {n}\nda carga"}, headers=cab)
+            status[r.status_code] += 1
+        except httpx.HTTPError as erro:
+            status[type(erro).__name__] += 1
+        tempos.append(time.monotonic() - inicio)
+        n += 1
+        await asyncio.sleep(random.uniform(0, 2 * pausa))
+
+
+async def stream(url, token, fim, eventos, quedas):
+    """Mantém o stream das mensagens aberto até o fim, contando eventos e quedas."""
+    cab = {"Authorization": f"Bearer {token}"}
+    async with httpx.AsyncClient(base_url=url, verify=False, timeout=None) as cliente:
+        try:
+            async with cliente.stream("GET", "/mensagens/stream", headers=cab) as r:
+                r.raise_for_status()
+
+                async def ler():
+                    async for linha in r.aiter_lines():
+                        if linha.startswith("event: "):
+                            eventos[linha.removeprefix("event: ")] += 1
+
+                await asyncio.wait_for(ler(), max(0.0, fim - time.monotonic()))
+            quedas["terminou antes"] += 1
+        except TimeoutError:
+            return
+        except httpx.HTTPError as erro:
+            quedas[type(erro).__name__] += 1
+
+
+def resumir(nome: str, tempos: list[float], status: Counter, decorrido: float) -> None:
+    erros = sum(n for codigo, n in status.items() if codigo not in (200, 201))
+    ms = [t * 1000 for t in tempos]
+    if len(ms) < 2:
+        print(f"{nome}: {len(ms)} req")
+        return
+    print(
+        f"{nome}: {len(ms)} req, {len(ms) / decorrido:.0f} req/s, {erros} erros, "
+        f"p50 {percentil(ms, 50):.0f} ms, p95 {percentil(ms, 95):.0f} ms, p99 {percentil(ms, 99):.0f} ms"
+    )
+    if erros:
+        print("  status:", dict(status))
+
+
 def percentil(valores: list[float], p: float) -> float:
     return statistics.quantiles(valores, n=100, method="inclusive")[int(p) - 1]
 
@@ -94,32 +163,44 @@ async def main() -> None:
     parser.add_argument("--usuarios", type=int, default=100)
     parser.add_argument("--pausa", type=float, default=3.0, help="pausa média entre cliques (s)")
     parser.add_argument("--duracao", type=float, default=30.0, help="segundos de carga")
+    parser.add_argument("--streams", type=int, default=0, help="usuários com o stream das mensagens aberto")
+    parser.add_argument("--mensageiros", type=float, default=0.0, help="fração dos usuários que manda mensagens")
     args = parser.parse_args()
 
     limites = httpx.Limits(max_connections=args.usuarios, max_keepalive_connections=args.usuarios)
     async with httpx.AsyncClient(
         base_url=args.url, verify=False, timeout=60, limits=limites
     ) as cliente:
-        tokens, mix, _ = await preparar(cliente, args.usuarios)
+        tokens, mix, contas = await preparar(cliente, args.usuarios)
+        n_mensageiros = round(args.usuarios * args.mensageiros)
         tempos: list[float] = []
         status: Counter = Counter()
+        tempos_msg: list[float] = []
+        status_msg: Counter = Counter()
+        eventos: Counter = Counter()
+        quedas: Counter = Counter()
         inicio = time.monotonic()
         fim = inicio + args.duracao
-        await asyncio.gather(
-            *(usuario(cliente, t, mix, args.pausa, fim, tempos, status) for t in tokens)
-        )
+        tarefas = [stream(args.url, t, fim, eventos, quedas) for t in tokens[: args.streams]]
+        for i, token in enumerate(tokens):
+            if i < n_mensageiros:
+                # Cada um escreve para a conta seguinte do seed (outra pessoa).
+                para = next(c for c in contas[i + 1 :] + contas if c != contas[i])
+                tarefas.append(mensageiro(cliente, token, para, args.pausa, fim, tempos_msg, status_msg))
+            else:
+                tarefas.append(usuario(cliente, token, mix, args.pausa, fim, tempos, status))
+        await asyncio.gather(*tarefas)
         decorrido = time.monotonic() - inicio
 
-    erros = sum(n for codigo, n in status.items() if codigo != 200)
-    ms = [t * 1000 for t in tempos]
     print(
-        f"{args.usuarios} usuários, pausa média {args.pausa:g} s, {args.duracao:g} s: "
-        f"{len(ms)} req, {len(ms) / decorrido:.0f} req/s, {erros} erros, "
-        f"p50 {percentil(ms, 50):.0f} ms, p95 {percentil(ms, 95):.0f} ms, "
-        f"p99 {percentil(ms, 99):.0f} ms"
+        f"{args.usuarios} usuários, pausa média {args.pausa:g} s, {args.duracao:g} s, "
+        f"{args.streams} streams abertos, {n_mensageiros} mandando mensagens"
     )
-    if erros:
-        print("status:", dict(status))
+    resumir("rotas de leitura", tempos, status, decorrido)
+    if n_mensageiros:
+        resumir("envio de mensagens", tempos_msg, status_msg, decorrido)
+    if args.streams:
+        print(f"streams: eventos recebidos {dict(eventos)}, quedas {sum(quedas.values())} {dict(quedas)}")
 
 
 if __name__ == "__main__":

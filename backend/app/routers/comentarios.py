@@ -35,7 +35,7 @@ def listar_comentarios(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.respostas_do_poema(db, post_id, limit, cursor, verso)
+    return service.respostas_do_poema(db, user, post_id, limit, cursor, verso)
 
 
 @router.get("/posts/{post_id}/comentarios/versos", response_model=VersosComentadosOut)
@@ -44,7 +44,7 @@ def versos_comentados(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.versos_comentados(db, post_id)
+    return service.versos_comentados(db, user, post_id)
 
 
 @router.get("/comentarios/{comentario_id}/respostas", response_model=ComentarioPage)
@@ -55,7 +55,7 @@ def listar_respostas(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.respostas_do_comentario(db, comentario_id, limit, cursor)
+    return service.respostas_do_comentario(db, user, comentario_id, limit, cursor)
 
 
 @router.delete("/comentarios/{comentario_id}", response_model=ComentarioApagadoOut)

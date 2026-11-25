@@ -94,7 +94,7 @@ def test_compose_db_sem_porta_publica_e_api_espera_o_banco():
 
 
 def test_max_connections_cabe_os_workers_do_env_example():
-    """WEB_CONCURRENCY_MAX x (pool + overflow) + folga <= max_connections do db."""
+    """WEB_CONCURRENCY_MAX x (pool + overflow + o LISTEN das mensagens) + folga <= max_connections."""
     import re
 
     env = dict(
@@ -103,7 +103,8 @@ def test_max_connections_cabe_os_workers_do_env_example():
         if linha and not linha.startswith("#")
     )
     maximo = int(re.search(r"max_connections=(\d+)", _deploy("compose.yaml")).group(1))
-    por_worker = int(env["DB_POOL_SIZE"]) + int(env["DB_MAX_OVERFLOW"])
+    # + 1: a conexão do LISTEN das mensagens, fora do pool (app/tempo_real.py).
+    por_worker = int(env["DB_POOL_SIZE"]) + int(env["DB_MAX_OVERFLOW"]) + 1
     folga = 3 + 5  # reservadas ao superusuário + backup, restauração e psql
     assert int(env["WEB_CONCURRENCY_MAX"]) * por_worker + folga <= maximo
     assert int(env["WEB_CONCURRENCY"]) <= int(env["WEB_CONCURRENCY_MAX"])

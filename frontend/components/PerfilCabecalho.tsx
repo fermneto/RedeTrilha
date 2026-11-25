@@ -1,24 +1,75 @@
 "use client";
 // Cabeçalho do perfil: avatar, nome, selo de consagrado, bio, contadores e a ação
-// (Seguir/Deixar de seguir para os outros, Editar perfil para o próprio).
+// (Seguir/Deixar de seguir para os outros, Editar perfil para o próprio). Para
+// quem não é consagrado (que não tem login), também "Mensagem", que abre a conversa,
+// e "Bloquear" (ou "Desbloquear"), que vale para a rede inteira, como no X.
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
+import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { SeloConsagrado } from "@/components/SeloConsagrado";
-import { anosDeVida, mensagemDeFalha, seguir, type Perfil } from "@/lib/api";
+import {
+  abrirConversa,
+  anosDeVida,
+  bloquear,
+  buscarBloqueio,
+  mensagemDeFalha,
+  seguir,
+  type Perfil,
+} from "@/lib/api";
 
 type Props = {
   perfil: Perfil;
   proprio: boolean;
   aoMudar: (perfil: Perfil) => void;
   aoEditar: () => void;
+  // Avisa a página se eu bloqueei a pessoa: aí ela esconde as abas do perfil.
+  aoMudarBloqueio?: (bloqueei: boolean) => void;
 };
 
-export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
+export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBloqueio }: Props) {
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  const router = useRouter();
   const vida = anosDeVida(perfil);
+  const podeBloquear = !proprio && !perfil.consagrado;
+  const [bloqueei, setBloqueioLocal] = useState(false);
+  function setBloqueei(valor: boolean) {
+    setBloqueioLocal(valor);
+    aoMudarBloqueio?.(valor);
+  }
+
+  useEffect(() => {
+    if (!podeBloquear) return;
+    buscarBloqueio(perfil.username)
+      .then((r) => setBloqueei(r.bloqueei))
+      .catch(() => undefined);
+  }, [podeBloquear, perfil.username]);
+
+  // Bloquear desfaz os follows nos dois sentidos (o contador acompanha).
+  async function alternarBloqueio(novo: boolean) {
+    setErro(null);
+    try {
+      await bloquear(perfil.username, novo);
+      setBloqueei(novo);
+      if (novo && perfil.sigo) aoMudar({ ...perfil, sigo: false, seguidores: perfil.seguidores - 1 });
+    } catch (e) {
+      setErro(mensagemDeFalha(e, novo ? "não deu para bloquear" : "não deu para desbloquear"));
+    }
+  }
+
+  async function abrirMensagem() {
+    setErro(null);
+    try {
+      const conversa = await abrirConversa(perfil.username);
+      router.push(`/mensagens/${conversa.id}`);
+    } catch (e) {
+      setErro(mensagemDeFalha(e, "não deu para abrir a conversa"));
+    }
+  }
 
   // Otimista: muda o botão e o contador antes da resposta e volta atrás se falhar.
   async function alternarSeguir() {
@@ -61,19 +112,34 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
             Editar perfil
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={alternarSeguir}
-            disabled={enviando}
-            aria-pressed={perfil.sigo}
-            className={
-              perfil.sigo
-                ? "shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
-                : "shrink-0 cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel"
-            }
-          >
-            {perfil.sigo ? "Deixar de seguir" : "Seguir"}
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            {!perfil.consagrado && (
+              <button
+                type="button"
+                onClick={abrirMensagem}
+                aria-label={`Mensagem para @${perfil.username}`}
+                title="Mensagem"
+                className="realce flex h-[2.375rem] w-[2.375rem] cursor-pointer items-center justify-center rounded border border-borda"
+              >
+                <IconeMensagens className="h-5 w-5" />
+              </button>
+            )}
+            {!bloqueei && (
+              <button
+                type="button"
+                onClick={alternarSeguir}
+                disabled={enviando}
+                aria-pressed={perfil.sigo}
+                className={
+                  perfil.sigo
+                    ? "shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
+                    : "shrink-0 cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel"
+                }
+              >
+                {perfil.sigo ? "Deixar de seguir" : "Seguir"}
+              </button>
+            )}
+          </div>
         )}
       </div>
 
@@ -84,6 +150,27 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
         <Contador n={perfil.seguidores} singular="seguidor" plural="seguidores" />
         <Contador n={perfil.seguindo} singular="seguindo" plural="seguindo" />
       </ul>
+
+      {podeBloquear &&
+        (bloqueei ? (
+          <p className="flex flex-wrap items-center gap-x-3 text-sm text-tinta-suave">
+            Você bloqueou @{perfil.username}: vocês não se veem nos feeds e não interagem.
+            <button
+              type="button"
+              onClick={() => alternarBloqueio(false)}
+              className="min-h-11 cursor-pointer font-semibold text-destaque hover:underline"
+            >
+              Desbloquear
+            </button>
+          </p>
+        ) : (
+          <ConfirmacaoInline
+            pergunta={`Bloquear @${perfil.username}? Vocês deixam de se seguir e de se ver nos feeds.`}
+            rotulo={`Bloquear @${perfil.username}`}
+            classeDoBotao="min-h-11 cursor-pointer text-sm text-tinta-suave hover:text-destaque hover:underline"
+            aoConfirmar={() => alternarBloqueio(true)}
+          />
+        ))}
 
       {erro && <p className="text-sm text-destaque">{erro}</p>}
     </header>
