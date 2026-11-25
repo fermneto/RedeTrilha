@@ -2,7 +2,8 @@
 // A landing do Verso, a porta de entrada sem login: em "/" (quando não há token) e
 // em /login. Duas colunas no desktop: à esquerda a marca, a frase e a vitrine (o
 // Verso mostrado por ele mesmo, LayoutDaEntradaVitrine.tsx); à direita o formulário
-// de entrar e o "Criar conta". No celular e no tablet empilha na ordem do DOM
+// de entrar e o "Criar conta", com o topo alinhado ao do cartão da frente (de
+// 1280 px em diante). Abaixo disso empilha na ordem do DOM
 // (marca, formulário, vitrine), para o formulário aparecer logo na primeira tela.
 
 import Link from "next/link";
@@ -22,8 +23,8 @@ type Props = {
 export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
   return (
     <div className="flex min-h-dvh flex-col overflow-x-clip">
-      <main className="mx-auto grid w-full max-w-[68rem] flex-1 content-center gap-x-20 gap-y-10 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:[grid-template-areas:'marca_entrar''vitrine_entrar'] lg:gap-y-14 lg:py-16">
-        <div className="lg:self-end lg:[grid-area:marca]">
+      <main className="mx-auto grid w-full max-w-[70rem] flex-1 grid-cols-[minmax(0,1fr)] content-center gap-y-10 px-4 pt-12 pb-16 sm:px-6 xl:grid-cols-[minmax(0,1fr)_22rem] xl:[grid-template-areas:'marca_.''vitrine_entrar'] xl:gap-x-14 xl:gap-y-12 xl:py-14 2xl:max-w-[74rem] 2xl:gap-x-20">
+        <div className="xl:self-end xl:[grid-area:marca]">
           <Link
             href="/"
             aria-label="Verso, início"
@@ -31,16 +32,16 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
           >
             <span aria-hidden="true">Verso</span>
           </Link>
-          <h1 className="mt-4 text-[1.75rem] leading-tight font-semibold lg:mt-5 lg:text-[2.25rem]">
+          <h1 className="mt-4 text-[1.75rem] leading-tight font-semibold lg:mt-5 lg:text-[2.25rem] 2xl:text-[2.5rem]">
             Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
           </h1>
         </div>
 
-        <section aria-labelledby="titulo-entrar" className="w-full max-w-sm lg:max-w-none lg:self-center lg:[grid-area:entrar]">
+        <section aria-labelledby="titulo-entrar" className="w-full max-w-sm xl:mt-5 xl:max-w-none xl:self-start xl:[grid-area:entrar]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
-        <div className="pt-4 pb-6 lg:self-start lg:pt-6 xl:px-32 lg:[grid-area:vitrine]">
+        <div className="pt-4 xl:self-start xl:pt-0 xl:[grid-area:vitrine]">
           <Vitrine />
         </div>
       </main>
