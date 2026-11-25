@@ -7,6 +7,7 @@ import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 import { SwitchPublica } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
+import { EsqueletoDoMenu } from "@/components/Esqueleto";
 import { IconeAdicionarAntologia } from "@/components/icones/IconeAdicionarAntologia";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
@@ -222,7 +223,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
         Adicionar à antologia
       </p>
 
-      {linhas === null && !erro && <p className="px-2 py-2 text-tinta-suave">carregando...</p>}
+      {linhas === null && !erro && <EsqueletoDoMenu quantos={2} com="caixa" />}
 
       {linhas !== null && linhas.length === 0 && !criando && (
         <p className="px-2 py-1 text-tinta-suave">Você ainda não tem antologias.</p>

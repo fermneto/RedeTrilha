@@ -13,6 +13,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
+import { EsqueletoDeCartoes } from "@/components/Esqueleto";
 import { Paginacao } from "@/components/Paginacao";
 import { CampoDaBusca } from "@/components/BuscaDoExplorar";
 import {
@@ -234,7 +235,7 @@ export function Acervo() {
         {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
 
         {!erro && resultado === null && carregando && (
-          <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>
+          <EsqueletoDeCartoes quantos={6} className="grid-cols-1 sm:grid-cols-2" />
         )}
 
         {!erro && resultado && resultado.items.length === 0 && !carregando && (

@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { EsqueletoDeRengas } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
@@ -111,7 +112,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
       </div>
 
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-      {!erro && !resultado && <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>}
+      {!erro && !resultado && <EsqueletoDeRengas quantos={6} />}
       {resultado && resultado.items.length === 0 && (
         <div className="px-4 py-10 text-center">
           <p className="font-serifada text-lg">{VAZIO[situacao ?? "todas"]}</p>

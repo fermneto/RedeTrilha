@@ -14,6 +14,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EsqueletoDeAvisos } from "@/components/Esqueleto";
 import { IconeAvisos } from "@/components/icones/IconeAvisos";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
@@ -105,7 +106,7 @@ export default function AvisosPage() {
       <CabecalhoPagina titulo="Avisos" />
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
       {!lista ? (
-        !erro && <p className="px-4 py-6 text-sm text-tinta-suave">carregando...</p>
+        !erro && <EsqueletoDeAvisos quantos={6} />
       ) : lista.itens.length === 0 ? (
         <Vazio />
       ) : (

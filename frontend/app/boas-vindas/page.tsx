@@ -16,6 +16,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
+import { EsqueletoDasOpcoes } from "@/components/Esqueleto";
 import {
   AberturaDoPasso,
   BOTAO_PRIMARIO,
@@ -176,7 +177,7 @@ function BoasVindas() {
         {abertura(passo, ajuste, nome)}
       </AberturaDoPasso>
 
-      {!opcoes && !erro && <p className="text-sm text-tinta-suave">carregando...</p>}
+      {!opcoes && !erro && <EsqueletoDasOpcoes passo={passo} />}
 
       {opcoes && passo === "gostos" && (
         <div className="space-y-10">

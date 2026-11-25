@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import { EsqueletoDeAntologias } from "@/components/Esqueleto";
 import { mensagemDeFalha, type Antologia, type Page } from "@/lib/api";
 
 type Props = {
@@ -76,11 +77,7 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
 
       {total === 0 && antologias.length === 0 && vazio}
 
-      {carregando && (
-        <p role="status" className="py-8 text-center text-sm text-tinta-suave">
-          carregando...
-        </p>
-      )}
+      {carregando && <EsqueletoDeAntologias quantos={antologias.length === 0 ? 4 : 2} comDono={comDono} />}
 
       {faltam && !carregando && !erro && (
         <div className="py-4 text-center">
