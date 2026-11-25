@@ -3,14 +3,15 @@
 // existe no navegador.
 //
 // Duas formas da mesma navegação: a barra lateral (sm em diante; só ícones até
-// xl, ícone e rótulo a partir de xl) e a barra inferior do celular. As duas
-// terminam no menu da conta (MenuConta), que tem o "Sair".
+// xl, ícone e rótulo a partir de xl) e a barra inferior do celular. A lateral
+// termina no menu da conta (MenuConta), que tem o "Sair".
 //
 // "Avisos" e "Mensagens" levam um contador cada (linhas de aviso não lidas;
 // conversas não lidas e pedidos novos), atualizados pelo stream das mensagens
 // (ouvirMensagens, em lib/api.ts), que também traz o evento "aviso", sem recarregar.
-// Na barra do celular, os dez itens dividem a largura por igual (em 360 px, 36 px
-// cada).
+// A barra do celular tem só Início, Explorar, Escrever, Avisos e Mensagens, e o
+// "Mais" (MenuMais), com o resto, o Perfil, as Preferências e o "Sair": seis
+// botões de 60 px em 360 px (decisão do Neto).
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -28,6 +29,7 @@ import { IconeRascunhos } from "@/components/icones/IconeRascunhos";
 import { IconeRenga } from "@/components/icones/IconeRenga";
 import type { PropsIcone } from "@/components/icones/Icone";
 import { MenuConta } from "@/components/MenuConta";
+import { MenuMais } from "@/components/MenuMais";
 import {
   buscarEu,
   buscarResumoDeAvisos,
@@ -44,6 +46,9 @@ type Item = {
   Icone: (props: PropsIcone) => React.ReactNode;
   soLogado?: boolean;
 };
+
+// O que fica na barra do celular quando logado; o resto vai para o "Mais".
+const NA_BARRA_DO_CELULAR = ["/", "/explorar", "/escrever", "/avisos", "/mensagens"];
 
 const ITENS: Item[] = [
   { href: "/", rotulo: "Início", Icone: IconeInicio },
@@ -149,8 +154,12 @@ export function Nav() {
 
   const ativo = (href: string) => (href === "/" ? caminho === "/" : caminho.startsWith(href));
   const itens = ITENS.filter((item) => logado || !item.soLogado);
-  // No celular, o último item é o avatar (menu com Perfil e Sair) ou o "Entrar".
-  const itensDoCelular = itens.filter((item) => item.href !== "/perfil");
+  // No celular, logado: os cinco da barra e o "Mais" com o resto (o Perfil entra lá
+  // com o avatar). Sem login: os itens públicos e o "Entrar".
+  const itensDoCelular = logado ? itens.filter((item) => NA_BARRA_DO_CELULAR.includes(item.href)) : itens;
+  const itensDoMais = itens.filter((item) => !NA_BARRA_DO_CELULAR.includes(item.href) && item.href !== "/perfil");
+  const noMais =
+    itensDoMais.some((item) => ativo(item.href)) || ativo("/perfil") || (eu !== null && caminho === `/u/${eu.username}`);
   const contador = (href: string) => (href === "/mensagens" ? aLer : href === "/avisos" ? avisos : 0);
 
   return (
@@ -207,7 +216,7 @@ export function Nav() {
         </div>
 
         {logado ? (
-          eu && <MenuConta eu={eu} aoSair={sair} variante="lateral" />
+          eu && <MenuConta eu={eu} aoSair={sair} />
         ) : (
           <Link
             href="/login"
@@ -245,14 +254,7 @@ export function Nav() {
           })}
           <li className="flex min-w-0 flex-1 justify-center">
             {logado ? (
-              eu && (
-                <MenuConta
-                  eu={eu}
-                  aoSair={sair}
-                  variante="inferior"
-                  ativo={ativo("/perfil") || caminho === `/u/${eu.username}`}
-                />
-              )
+              eu && <MenuMais eu={eu} itens={itensDoMais} aoSair={sair} ativo={noMais} caminho={caminho} />
             ) : (
               <Link href="/login" className="flex h-13 items-center px-2 text-sm font-semibold">
                 Entrar
