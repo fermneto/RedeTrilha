@@ -17,10 +17,12 @@ from app.routers import (
     acervo,
     antologias,
     auth,
+    bloqueios,
     comentarios,
     curtidas,
     feed,
     follows,
+    mensagens,
     oficina,
     poema_do_dia,
     posts,
@@ -35,6 +37,7 @@ from app.routers import (
     users,
 )
 from app.services import indice_tags
+from app.tempo_real import canal
 
 # Número arbitrário e fixo do advisory lock do preparo do banco (ver _trava_do_preparo).
 _CHAVE_DO_PREPARO = 7_302_019
@@ -115,7 +118,10 @@ async def lifespan(app: FastAPI):
     # Nada a reconstruir: o índice de tags e o limite de tradução moram no banco
     # (core/README.md), então o boot é rápido e vale para vários workers.
     preparar_banco()
+    # O tempo real das mensagens: no Postgres, o LISTEN deste worker (app/tempo_real.py).
+    await canal.iniciar()
     yield
+    await canal.parar()
 
 
 def origens_permitidas() -> list[str]:
@@ -137,6 +143,8 @@ app.add_exception_handler(Exception, erro_interno)
 # Fila: no máximo POOL.maximo requisições com conexão ao mesmo tempo (app/limite_do_banco.py).
 app.add_middleware(LimiteDeConexoes, maximo=POOL.maximo)
 # Poemas e feeds são JSON de texto: o gzip corta ~70% dos bytes. Abaixo de 1 KB não compensa.
+# O stream de mensagens (text/event-stream) fica fora: o Starlette não comprime esse
+# tipo, porque comprimir seguraria os eventos em buffer (tests/test_mensagens_stream.py).
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
@@ -166,3 +174,5 @@ app.include_router(oficina.router)
 app.include_router(rascunhos.router)
 app.include_router(sugestoes.router)
 app.include_router(preferencias.router)
+app.include_router(mensagens.router)
+app.include_router(bloqueios.router)

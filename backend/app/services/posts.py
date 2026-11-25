@@ -8,6 +8,7 @@ from app.models.ancora_comentario import AncoraComentario
 from app.models.antologia import AntologiaPoema
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
+from app.models.mensagem import Mensagem
 from app.models.post import Post
 from app.models.rascunho import Rascunho
 from app.models.traducao import Traducao
@@ -196,6 +197,12 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         update(Rascunho)
         .where(Rascunho.repost_de_id == post_id)
         .values(repost_de_id=None, repost_removido=True)
+    )
+    # A mensagem direta que compartilhou o poema fica, com "poema removido pelo autor".
+    db.execute(
+        update(Mensagem)
+        .where(Mensagem.post_id.in_([post_id, *puros]))
+        .values(post_id=None, post_removido=True)
     )
     db.delete(post)
     db.commit()
