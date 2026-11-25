@@ -3,8 +3,8 @@
 # sslip.io com o IP público (api.129-146-10-20.sslip.io). Com "localhost", o
 # Caddy usa uma CA interna (teste local, curl -k).
 #
-# Balanceador: o Caddy divide as requisições entre as duas réplicas da API
-# (api_1 e api_2, no compose.yaml). Uma réplica que cai ou não responde ao
+# Balanceador: o Caddy divide as requisições entre as réplicas da API
+# (api_1 a api_4, no compose.yaml). Uma réplica que cai ou não responde ao
 # /saude sai da roda em segundos, e a requisição que falhou ao conectar tenta a
 # outra. É o que deixa o atualizar.sh reiniciar uma réplica de cada vez sem queda.
 {
@@ -22,9 +22,9 @@
 	}
 }
 
-# As duas réplicas e o que fazer quando uma falha; entra em cada reverse_proxy.
+# As réplicas e o que fazer quando uma falha; entra em cada reverse_proxy.
 (replicas) {
-	to api_1:8000 api_2:8000
+	to api_1:8000 api_2:8000 api_3:8000 api_4:8000
 
 	# Ativo: GET /saude em cada réplica a cada 2 s. Duas falhas seguidas (ou 2 s sem
 	# resposta) tiram a réplica da roda; uma resposta boa a devolve.
@@ -40,7 +40,7 @@
 	fail_duration 10s
 	max_fails 1
 
-	# Tentar a outra réplica: até 2 vezes, por até 5 s. Se a CONEXÃO falhou, a
+	# Tentar outra réplica: até 2 vezes, por até 5 s. Se a CONEXÃO falhou, a
 	# requisição não chegou à API e o Caddy tenta de novo qualquer método (é
 	# seguro). Se ela chegou e a resposta falhou no meio, só GET e HEAD são
 	# repetidos: um POST (publicar, curtir, mandar mensagem) nunca vai duas vezes.
@@ -73,9 +73,9 @@
 	# compressão (o encode seguraria os eventos em buffer) e com flush a cada
 	# evento. A API manda um comentário a cada 20 s, então a conexão nunca fica
 	# parada o bastante para o idle derrubar. Balanceado como o resto: se a
-	# réplica do stream cair, o navegador reconecta e o Caddy o manda à outra.
+	# réplica do stream cair, o navegador reconecta e o Caddy o manda a outra.
 	# least_conn: cada stream novo vai para a réplica com menos conexões abertas,
-	# e os streams se espalham entre as duas.
+	# e os streams se espalham entre elas.
 	@stream path /mensagens/stream
 	handle @stream {
 		reverse_proxy {
@@ -94,7 +94,7 @@
 		encode zstd gzip
 		# Requisições curtas: round_robin, uma réplica de cada vez. O least_conn
 		# contaria os streams abertos como carga e, depois de um deploy (os streams
-		# todos na réplica que ficou de pé), mandaria tudo para a outra.
+		# todos nas réplicas que ficaram de pé), mandaria tudo para a última reiniciada.
 		reverse_proxy {
 			import replicas
 			lb_policy round_robin

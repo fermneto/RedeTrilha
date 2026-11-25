@@ -10,14 +10,14 @@
 # 1. git pull e docker compose build (as réplicas continuam atendendo).
 # 2. O seed roda uma vez e põe o banco em dia (tabelas e índices novos), antes das
 #    réplicas. Se ele falhar, o script para e as réplicas antigas seguem no ar.
-# 3. api_1 é recriada; enquanto isso o Caddy manda tudo para a api_2. O script
+# 3. api_1 é recriada; enquanto isso o Caddy manda tudo para as outras. O script
 #    espera a api_1 ficar healthy (o /saude dela responde) e o Caddy a pôr de
-#    volta na roda, e só então faz o mesmo com a api_2.
+#    volta na roda, e só então faz o mesmo com a api_2, e assim até a última.
+# 4. caddy reload: um Caddyfile novo entra sem derrubar nenhuma conexão.
 set -eu
 
 cd "$(dirname "$0")"
 compose="docker compose"   # respeita COMPOSE_FILE (teste local: compose.yaml:compose.local.yaml)
-replicas="api_1 api_2"
 # Segundos esperando uma réplica ficar healthy (o start_period do compose é 60 s).
 espera_maxima=${ESPERA_MAXIMA:-120}
 # O Caddy confere o /saude a cada 2 s (Caddyfile): esta folga cobre a conferência
@@ -60,18 +60,21 @@ if ! $compose wait seed >/dev/null; then
     exit 1
 fi
 
+# As réplicas são os serviços api_N do compose (api_1 a api_4).
+replicas=$($compose config --services | grep -E '^api_[0-9]+$' | sort -t_ -k2 -n)
+
 saude() { docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{end}}' "$1" 2>/dev/null; }
 
 for replica in $replicas; do
-    echo "$(agora) $replica: recriando (a outra réplica atende)"
-    # --no-deps: não mexer no db, no seed nem na outra réplica.
+    echo "$(agora) $replica: recriando (as outras réplicas atendem)"
+    # --no-deps: não mexer no db, no seed nem nas outras réplicas.
     $compose up -d --no-deps $recriar "$replica"
     container=$($compose ps -q "$replica")
     passou=0
     while [ "$(saude "$container")" != "healthy" ]; do
         if [ "$passou" -ge "$espera_maxima" ]; then
             echo "$(agora) $replica não ficou healthy em ${espera_maxima} s; parei aqui"
-            echo "  a outra réplica segue atendendo. Veja: docker compose logs $replica"
+            echo "  as outras réplicas seguem atendendo. Veja: docker compose logs $replica"
             exit 1
         fi
         sleep 1
@@ -83,13 +86,11 @@ done
 
 # O Caddy só é recriado se a imagem ou a configuração dele no compose mudou.
 $compose up -d --no-deps caddy
-# Caddyfile novo: o git troca o arquivo por outro, e o container continua vendo o
-# antigo (o volume aponta para o arquivo, não para o caminho). Só um restart o
-# relê: as conexões abertas caem e voltam em cerca de 1 s (os streams reconectam).
-if ! $compose exec -T caddy cat /etc/caddy/Caddyfile | cmp -s - Caddyfile; then
-    echo "$(agora) Caddyfile mudou: reiniciando o caddy (cerca de 1 s fora)"
-    $compose restart caddy
-fi
+# O Caddyfile novo (a pasta caddy/ está montada no container) entra com o reload:
+# o Caddy troca a configuração sem fechar as conexões abertas. Sem mudança, nada
+# acontece.
+echo "$(agora) caddy reload"
+$compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
 
 echo "$(agora) pronto"
 $compose ps

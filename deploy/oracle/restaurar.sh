@@ -88,12 +88,15 @@ printf 'Isto APAGA o banco verso e põe no lugar o conteúdo de %s. Digite "rest
 read -r resposta
 [ "$resposta" = restaurar ] || { echo "cancelado"; exit 1; }
 
-$compose stop api_1 api_2
+replicas=$($compose config --services | grep -E '^api_[0-9]+$')
+# shellcheck disable=SC2086
+$compose stop $replicas
 no_backup psql -d postgres -v ON_ERROR_STOP=1 \
     -c "select pg_terminate_backend(pid) from pg_stat_activity where datname = 'verso' and pid <> pg_backend_pid()" \
     -c "drop database verso" \
     -c "create database verso"
 no_backup pg_restore --no-owner --no-privileges --exit-on-error -d verso "$dump"
 echo "restaurado: $(contar verso)"
-$compose start api_1 api_2
+# shellcheck disable=SC2086
+$compose start $replicas
 echo "as réplicas da api de volta (docker compose ps)"

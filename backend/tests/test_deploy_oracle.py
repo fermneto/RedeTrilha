@@ -107,9 +107,9 @@ def test_compose_db_sem_porta_publica_e_api_espera_o_banco():
         assert "db:\n" in blocos[servico] and "condition: service_healthy" in blocos[servico]
 
 
-def test_compose_tem_duas_replicas_da_api_depois_do_seed():
+def test_compose_tem_as_replicas_da_api_depois_do_seed():
     replicas = _replicas()
-    assert replicas == ["api_1", "api_2"]
+    assert replicas == [f"api_{n}" for n in range(1, len(replicas) + 1)] and len(replicas) >= 2
     blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
     assert "api" not in blocos  # nenhuma api avulsa fora do balanceador
     for replica in replicas:
@@ -139,7 +139,7 @@ def test_max_connections_cabe_as_replicas_do_env_example():
 def test_caddyfile_balanceia_as_replicas_com_health_check():
     import re
 
-    caddy = _deploy("Caddyfile")
+    caddy = _deploy("caddy/Caddyfile")
     snippet = caddy.split("(replicas) {", 1)[1].split("\n}\n", 1)[0]
     assert re.search(r"^\tto (.+)$", snippet, flags=re.M).group(1).split() == [
         f"{r}:8000" for r in _replicas()
@@ -157,9 +157,18 @@ def test_caddyfile_balanceia_as_replicas_com_health_check():
 
 def test_atualizar_roda_o_seed_e_depois_uma_replica_de_cada_vez():
     script = _deploy("atualizar.sh")
-    assert f'replicas="{" ".join(_replicas())}"' in script
+    assert "grep -E '^api_[0-9]+$'" in script  # as réplicas vêm do compose
     seed = script.index("up -d --no-deps seed")
     laco = script.index("for replica in $replicas")
     assert seed < script.index("wait seed") < laco
     corpo = script[laco:]
     assert 'up -d --no-deps $recriar "$replica"' in corpo and "healthy" in corpo
+    # Caddyfile novo sem queda: reload, nunca restart do caddy.
+    assert "caddy reload" in corpo and "restart caddy" not in script
+
+
+def test_caddy_monta_a_pasta_da_configuracao_e_nao_o_arquivo():
+    """O git troca o Caddyfile por um arquivo novo: só a pasta montada deixa o reload vê-lo."""
+    caddy = _blocos_dos_servicos(_deploy("compose.yaml"))["caddy"]
+    assert "- ./caddy:/etc/caddy:ro" in caddy
+    assert "Caddyfile:/etc/caddy/Caddyfile" not in caddy

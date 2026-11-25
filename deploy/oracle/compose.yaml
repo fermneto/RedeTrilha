@@ -4,10 +4,11 @@
 #
 # db     -> Postgres 16 na mesma VM, sem porta pública: só a rede interna o alcança.
 # seed   -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
-# api_1  -> duas réplicas da API (a mesma imagem e configuração, x-api abaixo): só
-# api_2     sobem depois que o seed terminar bem; sem porta pública.
+# api_1  -> quatro réplicas da API, 1 worker cada (a mesma imagem e configuração,
+# ...       x-api abaixo): só sobem depois que o seed terminar bem; sem porta pública.
+# api_4
 # caddy  -> único serviço exposto (80/443): HTTPS automático e balanceador entre as
-#           duas réplicas, com health check (Caddyfile).
+#           réplicas, com health check (caddy/Caddyfile).
 # Atualizar sem tirar do ar: ./atualizar.sh (reinicia uma réplica de cada vez).
 # backup -> pg_dump diário com retenção, e cópia no Object Storage se configurado.
 #
@@ -25,7 +26,7 @@ x-banco: &banco
   # O db da VM por padrão; DATABASE_URL no .env troca (Supabase, compose.supabase.yaml).
   DATABASE_URL: ${DATABASE_URL:-postgresql://verso:${POSTGRES_PASSWORD}@db:5432/verso}
 
-# As réplicas da API: a mesma definição em api_1 e api_2. Duas réplicas com nome,
+# As réplicas da API: a mesma definição de api_1 a api_4. Réplicas com nome,
 # e não deploy.replicas: o Caddy alcança cada uma pelo nome (api_1:8000), e o
 # atualizar.sh reinicia uma de cada vez (com replicas, o compose recria todas juntas).
 x-api: &api
@@ -43,7 +44,7 @@ x-api: &api
     seed:
       condition: service_completed_successfully
   # Na subida, o /saude é conferido a cada 2 s (e não a cada 30): o atualizar.sh
-  # espera a réplica ficar healthy antes de reiniciar a outra.
+  # espera a réplica ficar healthy antes de reiniciar a próxima.
   healthcheck:
     test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/saude', timeout=4).status == 200 else 1)"]
     interval: 30s
@@ -84,9 +85,9 @@ services:
       # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
       - -c
       - maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM:-512MB}
-      # O padrão: 2 réplicas da API x 1 worker x (pool 4 + overflow 2 + 1 LISTEN) = 14;
-      # com o teto WEB_CONCURRENCY_MAX=2, 28. E mais backup, restauração, seed, psql e
-      # 3 reservadas ao superusuário (docs/deploy-oracle.md, "Workers e pool").
+      # O padrão: 4 réplicas da API x 1 worker x (pool 4 + overflow 2 + 1 LISTEN) = 28;
+      # e mais 8 de folga (backup, restauração, seed, psql e 3 reservadas ao
+      # superusuário) = 36 (docs/deploy-oracle.md, "Workers e pool").
       - -c
       - max_connections=60
       # O disco da VM é um block volume em SSD: ler fora de ordem custa quase o mesmo.
@@ -123,6 +124,8 @@ services:
 
   api_1: *api
   api_2: *api
+  api_3: *api
+  api_4: *api
 
   caddy:
     image: caddy:2.10-alpine
@@ -132,13 +135,20 @@ services:
       - "${HTTPS_PORT:-443}:443"
       - "${HTTPS_PORT:-443}:443/udp"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # A pasta, e não o arquivo: o git troca o Caddyfile por um arquivo novo, e um
+      # volume de arquivo continuaria vendo o antigo. Com a pasta, o caddy reload do
+      # atualizar.sh lê o novo sem reiniciar o container (sem queda).
+      - ./caddy:/etc/caddy:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
       api_1:
         condition: service_healthy
       api_2:
+        condition: service_healthy
+      api_3:
+        condition: service_healthy
+      api_4:
         condition: service_healthy
     restart: unless-stopped
     logging: *logs
