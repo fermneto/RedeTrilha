@@ -112,9 +112,13 @@ PRs, na seção "Decisões do Neto".
     (decisão 12).
   - **Tradução sob demanda por IA.** O botão "Traduzir" aparece quando a língua
     do poema é diferente da do navegador. A tradução (Claude Haiku 5.5)
-    preserva o número de versos, as estrofes e os recuos. A tela mostra
-    "Traduzido do {língua} por IA · ver original", e o original fica sempre
-    visível. Cada tradução fica em cache por poema e língua, e cada usuário
+    preserva o número de versos, as estrofes, os recuos e a formatação. A
+    tradução toma o lugar do original no card (título e corpo), com
+    "Traduzido do {língua} por IA · ver original" logo abaixo, e "ver
+    original" volta ao texto do poeta; "ver tradução" a mostra de novo sem
+    chamar a IA. Na página do poema, a seleção de versos e as marcas de
+    crítica são do original: com a tradução na tela, elas somem e voltam com
+    "ver original". Cada tradução fica em cache por poema e língua, e cada usuário
     pede até 30 traduções novas por hora (as do cache não contam).
 - **O que cortamos e por quê:**
   - **Os modernos que o público mais conhece** (Drummond, Bandeira, Cecília,
@@ -123,6 +127,9 @@ PRs, na seção "Decisões do Neto".
   - **Traduções humanas publicadas:** têm direito de tradutor. O acervo fica no
     original, e a tradução gerada na hora, marcada como IA, ajuda a ler sem
     substituir o poema.
+  - **Original e tradução lado a lado:** num poema longo, os dois textos
+    empilhados dobram a rolagem, e no celular não cabem em colunas. A tradução
+    substitui o original na tela, com "ver original" sempre à mão.
   - **A tradução ilimitada:** a URL é pública e cada tradução nova custa uma
     chamada paga. O cache e o limite por usuário seguram o custo.
 
