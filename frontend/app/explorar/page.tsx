@@ -4,23 +4,22 @@
 // primeiro, filtrados por tag e por chips de forma. Os filtros moram na URL
 // (?tag=&forma=): a busca, o "Em alta" e as #tags do PoemaCard trazem para cá.
 //
-// Abaixo da busca, três abas: Poemas, Rengas (abertas para participar e
-// fechadas) e Antologias (as públicas de todo mundo). Rengas e antologias saíram
-// da navegação e se descobrem aqui (decisão do Neto). A aba também mora na URL
-// (?aba=rengas&situacao=&pagina=, ?aba=antologias); com uma tag escolhida, a tela
-// é o resultado dela e as abas somem, como na busca do X.
-//
-// No celular, o Acervo não está na barra de baixo: um atalho acima das abas leva a
-// ele (no computador, ele continua na barra lateral).
+// Abaixo da busca, quatro abas: Poemas, Acervo (todos os poetas, com filtros),
+// Rengas (abertas para participar e fechadas) e Antologias (as públicas de todo
+// mundo). Acervo, rengas e antologias saíram da navegação e se descobrem aqui
+// (decisões do Neto). O Acervo vem logo depois dos Poemas: são as duas formas de
+// achar o que ler, pelo poema ou pelo poeta. A aba também mora na URL
+// (?aba=acervo&tipo=&q=..., ?aba=rengas&situacao=&pagina=, ?aba=antologias); com
+// uma tag escolhida, a tela é o resultado dela e as abas somem, como na busca do X.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense, useCallback, useEffect, useId, useState } from "react";
 
 import { Abas } from "@/components/Abas";
+import { Acervo } from "@/components/Acervo";
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
-import { IconeAcervo } from "@/components/icones/IconeAcervo";
 import { DescobrirNoTopo } from "@/components/ColunaDireita";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
@@ -37,6 +36,7 @@ import {
 
 const ABAS = [
   { valor: "poemas", rotulo: "Poemas" },
+  { valor: "acervo", rotulo: "Acervo" },
   { valor: "rengas", rotulo: "Rengas" },
   { valor: "antologias", rotulo: "Antologias" },
 ] as const;
@@ -44,7 +44,7 @@ const ABAS = [
 type Aba = (typeof ABAS)[number]["valor"];
 
 function lerAba(valor: string | null): Aba {
-  return valor === "rengas" || valor === "antologias" ? valor : "poemas";
+  return ABAS.some((a) => a.valor === valor) ? (valor as Aba) : "poemas";
 }
 
 const chip =
@@ -186,31 +186,23 @@ function Explorar() {
       {tag ? (
         poemas
       ) : (
-        <>
-          <Link
-            href="/acervo"
-            className="realce flex min-h-14 items-center gap-3 border-b border-borda px-4 py-2 sm:hidden"
-          >
-            <IconeAcervo className="h-6 w-6 shrink-0" />
-            <span className="min-w-0">
-              <span className="block font-semibold">Acervo</span>
-              <span className="block text-sm text-tinta-suave">todos os poetas, por língua e época</span>
-            </span>
-          </Link>
-          <Abas abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="O que explorar">
-            {(valor) =>
-              valor === "poemas" ? (
-                poemas
-              ) : valor === "rengas" ? (
-                logado && (
-                  <ListaDeRengas situacao={lerSituacao(params.get("situacao"))} pagina={lerPagina(params.get("pagina"))} />
-                )
-              ) : (
-                logado && <AntologiasDoExplorar />
+        <Abas abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="O que explorar">
+          {(valor) =>
+            valor === "poemas" ? (
+              poemas
+            ) : valor === "acervo" ? (
+              // Só a aba aberta monta o Acervo: escondido, ele leria os
+              // parâmetros das outras abas (a ?pagina= das rengas) e buscaria à toa.
+              logado && aba === "acervo" && <Acervo />
+            ) : valor === "rengas" ? (
+              logado && (
+                <ListaDeRengas situacao={lerSituacao(params.get("situacao"))} pagina={lerPagina(params.get("pagina"))} />
               )
-            }
-          </Abas>
-        </>
+            ) : (
+              logado && <AntologiasDoExplorar />
+            )
+          }
+        </Abas>
       )}
     </div>
   );

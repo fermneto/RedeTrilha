@@ -9,22 +9,20 @@
 // "Avisos" e "Mensagens" levam um contador cada (linhas de aviso não lidas;
 // conversas não lidas e pedidos novos), atualizados pelo stream das mensagens
 // (ouvirMensagens, em lib/api.ts), que também traz o evento "aviso", sem recarregar.
-// A navegação é enxuta (decisão 17): Início, Explorar, Acervo, Avisos, Mensagens
-// e Perfil, mais o "Escrever", o único botão de criar, que abre direto o
-// compositor no poema (lá, um seletor troca para renga ou antologia). Rengas e
-// antologias se descobrem no Explorar; os rascunhos e as antologias próprias
-// ficam no perfil.
+// A navegação é enxuta (decisão 17): Início, Explorar, Avisos, Mensagens e
+// Perfil, mais o "Escrever", o único botão de criar, que abre direto o
+// compositor no poema (lá, um seletor troca para renga ou antologia). O Acervo,
+// as rengas e as antologias se descobrem nas abas do Explorar; os rascunhos e as
+// antologias próprias ficam no perfil.
 // A barra do celular tem Início, Explorar, Escrever, Avisos, Mensagens e o meu
-// avatar, que leva ao perfil: seis botões de 60 px em 360 px. O Acervo, no
-// celular, fica num atalho do Explorar; Preferências e "Sair", no menu do meu
-// perfil (MenuDoPerfil).
+// avatar, que leva ao perfil: seis botões de 60 px em 360 px. Preferências e
+// "Sair" ficam no menu do meu perfil (MenuDoPerfil).
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
-import { IconeAcervo } from "@/components/icones/IconeAcervo";
 import { IconeAvisos } from "@/components/icones/IconeAvisos";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { IconeExplorar } from "@/components/icones/IconeExplorar";
@@ -54,7 +52,6 @@ type Item = {
 const ITENS: Item[] = [
   { href: "/", rotulo: "Início", Icone: IconeInicio },
   { href: "/explorar", rotulo: "Explorar", Icone: IconeExplorar },
-  { href: "/acervo", rotulo: "Acervo", Icone: IconeAcervo },
   { href: "/avisos", rotulo: "Avisos", Icone: IconeAvisos, soLogado: true },
   { href: "/mensagens", rotulo: "Mensagens", Icone: IconeMensagens, soLogado: true },
   { href: "/perfil", rotulo: "Perfil", Icone: IconePerfil, soLogado: true },
@@ -155,8 +152,8 @@ export function Nav() {
   const ativo = (href: string) => (href === "/" ? caminho === "/" : caminho.startsWith(href));
   const itens = ITENS.filter((item) => logado || !item.soLogado);
   // No celular: Início, Explorar e Escrever; logado, Avisos e Mensagens e, no fim,
-  // o avatar (o Perfil). Sem login, o Acervo (o Explorar pede login) e o "Entrar".
-  const naBarra = logado ? ["/", "/explorar", "/avisos", "/mensagens"] : ["/", "/explorar", "/acervo"];
+  // o avatar (o Perfil). Sem login, no fim, o "Entrar".
+  const naBarra = ["/", "/explorar", "/avisos", "/mensagens"];
   const itensDoCelular = itens.filter((item) => naBarra.includes(item.href));
   itensDoCelular.splice(2, 0, ESCREVER);
   const noPerfil = ativo("/perfil") || (eu !== null && caminho.startsWith(`/u/${eu.username}`));
