@@ -10,6 +10,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { EsqueletoDoMenu } from "@/components/Esqueleto";
 import { IconeEnviar } from "@/components/icones/IconeEnviar";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   abrirConversa,
@@ -135,6 +136,8 @@ function Popover({ id, postId }: { id: string; postId: number }) {
   }
 
   const pessoas = achados ?? recentes;
+  // O esqueleto das conversas recentes fica pelo menos 500 ms.
+  const esperando = useEsperaMinima(pessoas === null);
   return (
     <div
       id={id}
@@ -196,17 +199,17 @@ function Popover({ id, postId }: { id: string; postId: number }) {
               className="w-full rounded-full border border-borda bg-papel px-3 py-2 text-sm focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
             />
           </label>
-          {!achados && recentes && recentes.length > 0 && (
+          {!achados && !esperando && recentes && recentes.length > 0 && (
             <p className="px-2 pb-1 text-xs text-tinta-suave">Conversas recentes</p>
           )}
-          {pessoas === null && <EsqueletoDoMenu quantos={3} com="avatar" />}
-          {pessoas !== null && pessoas.length === 0 && (
-            <p className="px-2 py-2 text-tinta-suave">
+          {esperando && <EsqueletoDoMenu quantos={3} com="avatar" />}
+          {pessoas !== null && !esperando && pessoas.length === 0 && (
+            <p className="surgir px-2 py-2 text-tinta-suave">
               {achados ? "Ninguém com esse nome." : "Busque alguém para mandar o poema."}
             </p>
           )}
-          {pessoas && pessoas.length > 0 && (
-            <ul className="max-h-60 overflow-y-auto">
+          {pessoas && !esperando && pessoas.length > 0 && (
+            <ul className="surgir max-h-60 overflow-y-auto">
               {pessoas.map((pessoa) => (
                 <li key={pessoa.id}>
                   <button

@@ -9,6 +9,7 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { EsqueletoDaLista } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
+import { useEsperaMinima, useItensLiberados } from "@/hooks/useEsperaMinima";
 import { chaveDoItem, ehRenga, mensagemDeFalha, temToken, type FeedPage, type ItemDoFeed } from "@/lib/api";
 
 type Props = {
@@ -33,6 +34,9 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
   // Ref e não estado: evita dois pedidos da mesma página antes do re-render.
   const pedindo = useRef(false);
   const sentinela = useRef<HTMLDivElement>(null);
+  // O esqueleto do pé fica pelo menos 500 ms; até lá, a página nova espera fora da tela.
+  const esperando = useEsperaMinima(carregando);
+  const visiveis = useItensLiberados(poemas, esperando, chaveDoItem);
 
   const carregarMais = useCallback(async () => {
     if (pedindo.current || fim) return;
@@ -56,9 +60,11 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
   }, [buscar, cursor, fim]);
 
   // O observer é recriado a cada página (cursor novo); com erro, para de pedir.
+  // Enquanto a página nova espera o esqueleto, a sentinela continua à vista: o
+  // observer volta depois, para não pedir a página seguinte antes da hora.
   useEffect(() => {
     const alvo = sentinela.current;
-    if (!alvo || fim || erro || !temToken()) return;
+    if (!alvo || fim || erro || esperando || !temToken()) return;
     const observer = new IntersectionObserver(
       (entradas) => {
         if (entradas[0]?.isIntersecting) carregarMais();
@@ -67,16 +73,16 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
     );
     observer.observe(alvo);
     return () => observer.disconnect();
-  }, [carregarMais, fim, erro]);
+  }, [carregarMais, fim, erro, esperando]);
 
   return (
     <div>
       <ul className="divide-y divide-borda border-b border-borda">
-        {poemas.map((p, i) => (
+        {visiveis.map((p, i) => (
           <Fragment key={chaveDoItem(p)}>
-            <li>{ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}</li>
+            <li className="surgir">{ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}</li>
             {intercalar && (i + 1) % intercalar.cada === 0 && (
-              <li>{intercalar.bloco((i + 1) / intercalar.cada - 1)}</li>
+              <li className="surgir">{intercalar.bloco((i + 1) / intercalar.cada - 1)}</li>
             )}
           </Fragment>
         ))}
@@ -91,13 +97,15 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
         </div>
       )}
 
-      {fim && poemas.length === 0 && vazio}
+      {fim && !esperando && poemas.length === 0 && vazio}
 
-      {fim && poemas.length > 0 && <p className="py-8 text-center text-sm text-tinta-suave">{textoDoFim}</p>}
+      {fim && !esperando && poemas.length > 0 && (
+        <p className="py-8 text-center text-sm text-tinta-suave">{textoDoFim}</p>
+      )}
 
       <div ref={sentinela} aria-hidden />
       {/* A primeira página ocupa a tela; a seguinte, o pé da lista. */}
-      {carregando && <EsqueletoDaLista quantos={poemas.length === 0 ? 3 : 2} desde={poemas.length} />}
+      {esperando && <EsqueletoDaLista quantos={visiveis.length === 0 ? 3 : 2} desde={visiveis.length} />}
     </div>
   );
 }

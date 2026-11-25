@@ -18,6 +18,7 @@ import { EsqueletoDeMensagens, EsqueletoDoTopoDaConversa } from "@/components/Es
 import { IconeEnviar } from "@/components/icones/IconeEnviar";
 import { IconeMais } from "@/components/icones/IconeMais";
 import { PoemaCard } from "@/components/PoemaCard";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   aceitarPedido,
@@ -61,6 +62,8 @@ export default function ConversaPage() {
   const euIdAtual = useRef<number | null>(null);
   euIdAtual.current = euId;
   const colarNoFim = useRef(true);
+  // O esqueleto fica pelo menos 500 ms; a conversa entra depois.
+  const esperando = useEsperaMinima(!conversa && !erro);
 
   const juntar = useCallback((novas: Mensagem[]) => {
     setMensagens((atuais) => {
@@ -155,10 +158,11 @@ export default function ConversaPage() {
     return () => document.removeEventListener("visibilitychange", marcar);
   }, [id, ultimaNaTela, lidaAte]);
 
-  // Fica no fim quando chega mensagem, se a pessoa já estava lá embaixo.
+  // Fica no fim quando chega mensagem (ou quando a conversa entra na tela, depois
+  // do esqueleto), se a pessoa já estava lá embaixo.
   useLayoutEffect(() => {
     if (colarNoFim.current) window.scrollTo({ top: document.body.scrollHeight });
-  }, [mensagens.length]);
+  }, [mensagens.length, esperando]);
   useEffect(() => {
     function aoRolar() {
       colarNoFim.current = window.innerHeight + window.scrollY >= document.body.scrollHeight - 120;
@@ -205,10 +209,15 @@ export default function ConversaPage() {
 
   return (
     <div className="flex min-h-[calc(100dvh-3.25rem)] flex-col sm:min-h-dvh">
-      <Cabecalho conversa={conversa} carregando={!conversa && !erro} aoMudar={recarregarConversa} aoErro={setErro} />
+      <Cabecalho
+        conversa={esperando ? null : conversa}
+        carregando={esperando}
+        aoMudar={recarregarConversa}
+        aoErro={setErro}
+      />
 
       <div className="flex-1 px-4 pt-3 pb-4">
-        {antes && (
+        {antes && !esperando && (
           <div className="flex justify-center pb-2">
             <button
               type="button"
@@ -219,47 +228,49 @@ export default function ConversaPage() {
             </button>
           </div>
         )}
-        {!conversa && !erro && mensagens.length === 0 && <EsqueletoDeMensagens />}
-        {conversa && mensagens.length === 0 && (
+        {esperando && <EsqueletoDeMensagens />}
+        {conversa && !esperando && mensagens.length === 0 && (
           <p className="py-10 text-center text-sm text-tinta-suave">
             Comece a conversa com @{conversa.outro.username}. Pode ser um verso.
           </p>
         )}
-        <ol aria-label="Mensagens" className="flex flex-col">
-          {mensagens.map((m, i) => {
-            const minha = m.autor_id === euId;
-            const proxima = mensagens[i + 1];
-            const mesmoAutorDepois = proxima?.autor_id === m.autor_id;
-            const intervalo = proxima ? Date.parse(proxima.created_at) - Date.parse(m.created_at) : Infinity;
-            const comHora = !mesmoAutorDepois || intervalo > INTERVALO_DA_HORA_MS;
-            return (
-              <li
-                key={m.id}
-                className={`flex flex-col ${minha ? "items-end" : "items-start"} ${comHora ? "mb-4" : "mb-1"}`}
-              >
-                <BalaoDaMensagem mensagem={m} minha={minha} />
-                {(comHora || minhaUltima?.id === m.id) && (
-                  <p className="mt-1 px-1 text-xs text-tinta-suave">
-                    {comHora && <time dateTime={m.created_at}>{quandoEditado(m.created_at)}</time>}
-                    {minhaUltima?.id === m.id && (
-                      <>
-                        {comHora && <span aria-hidden="true"> · </span>}
-                        {minhaUltima.rotulo}
-                      </>
-                    )}
-                  </p>
-                )}
-              </li>
-            );
-          })}
-        </ol>
+        {!esperando && (
+          <ol aria-label="Mensagens" className="surgir flex flex-col">
+            {mensagens.map((m, i) => {
+              const minha = m.autor_id === euId;
+              const proxima = mensagens[i + 1];
+              const mesmoAutorDepois = proxima?.autor_id === m.autor_id;
+              const intervalo = proxima ? Date.parse(proxima.created_at) - Date.parse(m.created_at) : Infinity;
+              const comHora = !mesmoAutorDepois || intervalo > INTERVALO_DA_HORA_MS;
+              return (
+                <li
+                  key={m.id}
+                  className={`flex flex-col ${minha ? "items-end" : "items-start"} ${comHora ? "mb-4" : "mb-1"}`}
+                >
+                  <BalaoDaMensagem mensagem={m} minha={minha} />
+                  {(comHora || minhaUltima?.id === m.id) && (
+                    <p className="mt-1 px-1 text-xs text-tinta-suave">
+                      {comHora && <time dateTime={m.created_at}>{quandoEditado(m.created_at)}</time>}
+                      {minhaUltima?.id === m.id && (
+                        <>
+                          {comHora && <span aria-hidden="true"> · </span>}
+                          {minhaUltima.rotulo}
+                        </>
+                      )}
+                    </p>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        )}
         <p aria-live="polite" className="sr-only">
           {anuncio}
         </p>
         {erro && <p className="mt-2 text-sm text-destaque">{erro}</p>}
       </div>
 
-      {conversa && <Pe conversa={conversa} aoEnviar={enviar} aoMudar={recarregarConversa} />}
+      {conversa && !esperando && <Pe conversa={conversa} aoEnviar={enviar} aoMudar={recarregarConversa} />}
     </div>
   );
 }
@@ -317,7 +328,7 @@ function Cabecalho({
       </Link>
       {conversa ? (
         <>
-          <Link href={`/u/${conversa.outro.username}`} className="flex min-w-0 flex-1 items-center gap-3 rounded-full">
+          <Link href={`/u/${conversa.outro.username}`} className="surgir flex min-w-0 flex-1 items-center gap-3 rounded-full">
             <Avatar usuario={conversa.outro} tamanho="p" />
             <span className="min-w-0 leading-5">
               <h1 className="truncate text-[1.0625rem] font-bold">{conversa.outro.name}</h1>

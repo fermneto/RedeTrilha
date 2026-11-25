@@ -9,6 +9,7 @@ import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   buscarEu,
   buscarPoema,
@@ -36,6 +37,8 @@ export default function PoemaPage() {
   // lidos uma vez, quando o poema chega, e passados uma vez aos versos.
   const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
   const leuAUrl = useRef(false);
+  // O esqueleto fica pelo menos 500 ms; o poema entra depois.
+  const esperando = useEsperaMinima(!poema && !erro);
 
   // Também chamado pela árvore depois de comentar ou apagar: o contador de
   // comentários do card e as marcas nos versos vêm do poema. A árvore se carrega sozinha.
@@ -64,12 +67,13 @@ export default function PoemaPage() {
       .catch(() => setEuId(null));
   }, [carregarPoema, router]);
 
+  // Só com o poema na tela: os versos recebem o pedido no mesmo commit.
   useEffect(() => {
-    if (!poema || leuAUrl.current) return;
+    if (!poema || esperando || leuAUrl.current) return;
     leuAUrl.current = true;
     const versos = new URLSearchParams(window.location.search).get("versos");
     setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoComentado(poema))));
-  }, [poema]);
+  }, [poema, esperando]);
 
   // Os versos aplicam o pedido no mesmo commit (o efeito do filho roda antes);
   // depois ele se apaga, para não voltar quando o original reaparece após a tradução.
@@ -85,7 +89,7 @@ export default function PoemaPage() {
         <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
       </>
     );
-  if (!poema)
+  if (!poema || esperando)
     return (
       <>
         {cabecalho}
@@ -96,7 +100,7 @@ export default function PoemaPage() {
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda">
+      <div className="surgir border-b border-borda">
         <PoemaCard
           post={poema}
           linkarTitulo={false}
@@ -129,7 +133,7 @@ export default function PoemaPage() {
           <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
         )}
       </div>
-      <div className="px-4 py-6">
+      <div className="surgir px-4 py-6">
         <ArvoreComentarios
           alvo={{ tipo: "poema", id: poema.id }}
           euId={euId}

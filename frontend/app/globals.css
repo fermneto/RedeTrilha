@@ -124,25 +124,59 @@
   }
 }
 
-/* O esqueleto do carregamento (components/Esqueleto.tsx): as peças na cor da
-   borda, que se destaca do papel e do painel nos dois modos, num pulso lento.
-   Com prefers-reduced-motion, fica parado. */
+/* O esqueleto do carregamento (components/Esqueleto.tsx): as peças num tom de
+   tinta sobre o papel (visível no claro, no escuro e sobre o painel) e uma faixa
+   de brilho que atravessa a página da esquerda para a direita. Com
+   background-attachment: fixed, a faixa é uma só para todas as peças (o
+   gradiente mede a janela, não a peça). Com prefers-reduced-motion, a peça fica
+   parada e sem brilho. O conteúdo que chega entra com .surgir, um fade curto
+   (parado com prefers-reduced-motion; o tempo mínimo do esqueleto continua, ver
+   hooks/useEsperaMinima.ts). */
 @layer components {
   .esqueleto {
-    background-color: var(--color-borda);
-    animation: esqueleto-pulso 1.6s ease-in-out infinite;
+    --brilho: rgb(255 255 255 / 0.4);
+    background-color: color-mix(in srgb, var(--color-tinta) 14%, var(--color-papel));
+    background-image: linear-gradient(100deg, transparent 30%, var(--brilho) 50%, transparent 70%);
+    background-size: 100vw 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation: esqueleto-brilho 1.4s ease-in-out infinite;
+  }
+
+  .surgir {
+    animation: surgir 200ms ease-out both;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .esqueleto {
+      --brilho: rgb(235 229 216 / 0.08);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .esqueleto {
+      background-image: none;
+      animation: none;
+    }
+
+    .surgir {
       animation: none;
     }
   }
 }
 
-@keyframes esqueleto-pulso {
-  50% {
-    opacity: 0.45;
+@keyframes esqueleto-brilho {
+  from {
+    background-position: -100vw 0;
+  }
+  to {
+    background-position: 100vw 0;
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
   }
 }
 

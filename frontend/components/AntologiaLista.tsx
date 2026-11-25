@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { EsqueletoDeAntologias } from "@/components/Esqueleto";
+import { useEsperaMinima, useItensLiberados } from "@/hooks/useEsperaMinima";
 import { mensagemDeFalha, type Antologia, type Page } from "@/lib/api";
 
 type Props = {
@@ -49,6 +50,9 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
   }, [carregar]);
 
   const faltam = total !== null && antologias.length < total;
+  // O esqueleto fica pelo menos 500 ms; as antologias novas esperam por ele.
+  const esperando = useEsperaMinima(carregando);
+  const visiveis = useItensLiberados(antologias, esperando, chaveDaAntologia);
 
   return (
     <div>
@@ -65,21 +69,21 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
         </div>
       )}
 
-      {antologias.length > 0 && (
+      {visiveis.length > 0 && (
         <ul className="divide-y divide-borda border-b border-borda">
-          {antologias.map((a) => (
-            <li key={a.id}>
+          {visiveis.map((a) => (
+            <li key={a.id} className="surgir">
               <AntologiaItem antologia={a} comDono={comDono} />
             </li>
           ))}
         </ul>
       )}
 
-      {total === 0 && antologias.length === 0 && vazio}
+      {total === 0 && antologias.length === 0 && !esperando && vazio}
 
-      {carregando && <EsqueletoDeAntologias quantos={antologias.length === 0 ? 4 : 2} comDono={comDono} />}
+      {esperando && <EsqueletoDeAntologias quantos={visiveis.length === 0 ? 4 : 2} comDono={comDono} />}
 
-      {faltam && !carregando && !erro && (
+      {faltam && !esperando && !erro && (
         <div className="py-4 text-center">
           <button
             type="button"
@@ -92,6 +96,10 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
       )}
     </div>
   );
+}
+
+function chaveDaAntologia(antologia: Antologia): number {
+  return antologia.id;
 }
 
 // Como a lombada de um livro na estante: o nome em serifa, quantos poemas

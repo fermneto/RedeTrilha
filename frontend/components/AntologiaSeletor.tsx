@@ -9,6 +9,7 @@ import { SwitchPublica } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { EsqueletoDoMenu } from "@/components/Esqueleto";
 import { IconeAdicionarAntologia } from "@/components/icones/IconeAdicionarAntologia";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   ANTOLOGIA_NOME_MAX,
@@ -106,6 +107,8 @@ function fimDaTela(): number {
 function Popover({ id, postId }: { id: string; postId: number }) {
   const [linhas, setLinhas] = useState<Linha[] | null>(null);
   const [erro, setErro] = useState<string | null>(null);
+  // O esqueleto das antologias fica pelo menos 500 ms.
+  const esperando = useEsperaMinima(linhas === null && !erro);
   const [criando, setCriando] = useState(false);
   const [nome, setNome] = useState("");
   const [publica, setPublica] = useState(true);
@@ -223,14 +226,14 @@ function Popover({ id, postId }: { id: string; postId: number }) {
         Adicionar à antologia
       </p>
 
-      {linhas === null && !erro && <EsqueletoDoMenu quantos={2} com="caixa" />}
+      {esperando && <EsqueletoDoMenu quantos={2} com="caixa" />}
 
-      {linhas !== null && linhas.length === 0 && !criando && (
-        <p className="px-2 py-1 text-tinta-suave">Você ainda não tem antologias.</p>
+      {linhas !== null && !esperando && linhas.length === 0 && !criando && (
+        <p className="surgir px-2 py-1 text-tinta-suave">Você ainda não tem antologias.</p>
       )}
 
-      {linhas !== null && linhas.length > 0 && (
-        <ul className="max-h-60 overflow-y-auto">
+      {linhas !== null && !esperando && linhas.length > 0 && (
+        <ul className="surgir max-h-60 overflow-y-auto">
           {linhas.map((l) => (
             <li key={l.id}>
               <label className="realce flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-2">

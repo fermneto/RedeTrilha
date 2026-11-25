@@ -13,6 +13,7 @@ import { EsqueletoDeRascunhos } from "@/components/Esqueleto";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { TextoFormatado } from "@/components/TextoFormatado";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   apagarRascunho,
   buscarPoema,
@@ -38,6 +39,8 @@ export function ListaDeRascunhos() {
   const [rascunhos, setRascunhos] = useState<Rascunho[] | null>(null);
   const [citados, setCitados] = useState<Citados>({});
   const [erro, setErro] = useState<string | null>(null);
+  // O esqueleto fica pelo menos 500 ms; a gaveta entra depois.
+  const esperando = useEsperaMinima(rascunhos === null && !erro);
 
   useEffect(() => {
     listarRascunhos()
@@ -70,10 +73,10 @@ export function ListaDeRascunhos() {
         Poemas guardados e ainda não publicados. Só você vê.
       </p>
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
-      {rascunhos === null && !erro && <EsqueletoDeRascunhos quantos={3} />}
-      {rascunhos?.length === 0 && <GavetaVazia />}
-      {rascunhos && rascunhos.length > 0 && (
-        <ul>
+      {esperando && <EsqueletoDeRascunhos quantos={3} />}
+      {!esperando && rascunhos?.length === 0 && <GavetaVazia />}
+      {!esperando && rascunhos && rascunhos.length > 0 && (
+        <ul className="surgir">
           {rascunhos.map((rascunho) => (
             <ItemDoRascunho
               key={rascunho.id}
@@ -92,7 +95,7 @@ export function ListaDeRascunhos() {
 // Nenhum rascunho, seja no primeiro uso ou depois de apagar todos: o convite a escrever.
 function GavetaVazia() {
   return (
-    <div className="px-4 py-12 text-center">
+    <div className="surgir px-4 py-12 text-center">
       <p className="font-serifada text-xl italic">A gaveta está vazia.</p>
       <p className="mx-auto mt-2 max-w-[42ch] text-sm text-tinta-suave">
         No compositor, &ldquo;salvar rascunho&rdquo; guarda o poema sem publicar. Ele espera aqui até você

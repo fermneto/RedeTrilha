@@ -24,6 +24,7 @@ import {
   PassosNoSite,
   TelaDeBoasVindas,
 } from "@/components/TelaDeBoasVindas";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   abertaDireto,
   alternarNaLista,
@@ -82,6 +83,8 @@ function BoasVindas() {
   const [nome, setNome] = useState<string | null>(null);
   const refTitulo = useRef<HTMLHeadingElement>(null);
   const primeiraVez = useRef(true);
+  // O esqueleto das opções fica pelo menos 500 ms; os chips e os campos entram depois.
+  const esperando = useEsperaMinima(!opcoes && !erro);
 
   useEffect(() => {
     if (!temToken()) {
@@ -177,10 +180,10 @@ function BoasVindas() {
         {abertura(passo, ajuste, nome)}
       </AberturaDoPasso>
 
-      {!opcoes && !erro && <EsqueletoDasOpcoes passo={passo} />}
+      {esperando && <EsqueletoDasOpcoes passo={passo} />}
 
-      {opcoes && passo === "gostos" && (
-        <div className="space-y-10">
+      {opcoes && !esperando && passo === "gostos" && (
+        <div className="surgir space-y-10">
           <Chips
             titulo="Escolas e períodos"
             opcoes={opcoes.escolas}
@@ -196,7 +199,11 @@ function BoasVindas() {
         </div>
       )}
 
-      {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
+      {opcoes && !esperando && passo === "regiao" && (
+        <div className="surgir">
+          <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />
+        </div>
+      )}
 
       {erro && (
         <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">

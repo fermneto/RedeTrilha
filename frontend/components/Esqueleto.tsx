@@ -2,8 +2,9 @@
 // pular quando os dados chegam. As peças usam as mesmas classes de texto do
 // conteúdo real (poema-corpo, text-sm...), então cada linha ocupa a altura da
 // linha de verdade. O contêiner (Carregando) fica com aria-busy e diz
-// "carregando…" só ao leitor de tela; as peças são aria-hidden. A cor e o pulso
-// vêm de .esqueleto, no globals.css.
+// "carregando…" só ao leitor de tela; as peças são aria-hidden. A cor e o brilho
+// vêm de .esqueleto, no globals.css; o tempo mínimo na tela, de
+// hooks/useEsperaMinima.ts.
 
 import { TAMANHOS_DO_AVATAR } from "@/components/Avatar";
 

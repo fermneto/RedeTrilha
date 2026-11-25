@@ -16,6 +16,7 @@ import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import { EsqueletoDeCartoes } from "@/components/Esqueleto";
 import { Paginacao } from "@/components/Paginacao";
 import { CampoDaBusca } from "@/components/BuscaDoExplorar";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   buscarAcervo,
   buscarEu,
@@ -68,6 +69,9 @@ export function Acervo() {
   const idOrdem = useId();
   const [resultado, setResultado] = useState<Page<PoetaDoAcervo> | null>(null);
   const [carregando, setCarregando] = useState(true);
+  // Só a primeira carga mostra o esqueleto (pelo menos 500 ms); trocar de filtro ou
+  // de página esmaece a grade que já está na tela.
+  const esperando = useEsperaMinima(resultado === null && carregando);
   const [erro, setErro] = useState<string | null>(null);
   const [opcoes, setOpcoes] = useState<OpcoesDoAcervo | null>(null);
   const [meuId, setMeuId] = useState<number | null>(null);
@@ -234,12 +238,12 @@ export function Acervo() {
       <div className="space-y-6 px-4 py-5">
         {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
 
-        {!erro && resultado === null && carregando && (
+        {!erro && esperando && (
           <EsqueletoDeCartoes quantos={6} className="grid-cols-1 sm:grid-cols-2" />
         )}
 
-        {!erro && resultado && resultado.items.length === 0 && !carregando && (
-          <div className="py-10 text-center text-tinta-suave">
+        {!erro && !esperando && resultado && resultado.items.length === 0 && !carregando && (
+          <div className="surgir py-10 text-center text-tinta-suave">
             {resultado.total > 0 ? (
               <p>Esta página não existe: o acervo tem {totalDePaginas} com esses filtros.</p>
             ) : (
@@ -259,8 +263,8 @@ export function Acervo() {
           </div>
         )}
 
-        {!erro && resultado && resultado.items.length > 0 && (
-          <>
+        {!erro && !esperando && resultado && resultado.items.length > 0 && (
+          <div className="surgir space-y-6">
             <ul
               aria-busy={carregando}
               className={`grid grid-cols-1 gap-3 transition-opacity duration-150 sm:grid-cols-2 ${
@@ -278,7 +282,7 @@ export function Acervo() {
               total={totalDePaginas}
               href={(p) => caminhoDoAcervo(filtros, p)}
             />
-          </>
+          </div>
         )}
       </div>
     </div>

@@ -14,6 +14,7 @@ import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDaPaginaDaAntologia } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -36,6 +37,8 @@ export default function AntologiaPage() {
   const [meuId, setMeuId] = useState<number | null>(null);
   const [naoExiste, setNaoExiste] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  // O esqueleto fica pelo menos 500 ms; a antologia entra depois.
+  const esperando = useEsperaMinima(!antologia && !erro && !naoExiste);
   const [editando, setEditando] = useState(false);
 
   useEffect(() => {
@@ -91,7 +94,7 @@ export default function AntologiaPage() {
         <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
       </>
     );
-  if (!antologia)
+  if (!antologia || esperando)
     return (
       <>
         {cabecalho}
@@ -109,7 +112,7 @@ export default function AntologiaPage() {
   return (
     <div>
       {cabecalho}
-      <div className="border-b border-borda px-4 pt-8 pb-6">
+      <div className="surgir border-b border-borda px-4 pt-8 pb-6">
         {editando ? (
           <AntologiaFormulario
             inicial={antologia}
@@ -135,7 +138,7 @@ export default function AntologiaPage() {
       </div>
 
       {antologia.poemas.length === 0 ? (
-        <div className="px-4 py-12 text-center">
+        <div className="surgir px-4 py-12 text-center">
           <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
           {dono && (
             <p className="mx-auto mt-1 max-w-sm text-sm text-tinta-suave">
@@ -152,7 +155,7 @@ export default function AntologiaPage() {
           )}
         </div>
       ) : (
-        <>
+        <div className="surgir">
           {antologia.poemas.length > 1 && <Indice poemas={antologia.poemas} />}
           <h2 className="sr-only">Poemas</h2>
           <ol className="divide-y divide-borda border-b border-borda">
@@ -167,7 +170,7 @@ export default function AntologiaPage() {
               </li>
             ))}
           </ol>
-        </>
+        </div>
       )}
     </div>
   );

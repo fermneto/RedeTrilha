@@ -19,6 +19,7 @@ import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { ListaDeRascunhos } from "@/components/ListaDeRascunhos";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
+import { useEsperaMinima } from "@/hooks/useEsperaMinima";
 import {
   buscarEu,
   buscarPerfil,
@@ -65,6 +66,8 @@ function PerfilDoPoeta() {
   // Eu bloqueei a pessoa: o perfil mostra só o cabeçalho, com o "Desbloquear".
   const [bloqueei, setBloqueei] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  // O esqueleto fica pelo menos 500 ms; o perfil entra depois.
+  const esperando = useEsperaMinima(!perfil && !erro);
 
   // replace, e não push: trocar de aba não enche o histórico do "voltar".
   function trocarAba(nova: Aba) {
@@ -107,7 +110,7 @@ function PerfilDoPoeta() {
         <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
       </>
     );
-  if (!perfil)
+  if (!perfil || esperando)
     return (
       <>
         {cabecalho}
@@ -121,7 +124,7 @@ function PerfilDoPoeta() {
   return (
     <div>
       {cabecalho}
-      <div className="px-4 pt-5 pb-6">
+      <div className="surgir px-4 pt-5 pb-6">
         {editando ? (
           <PerfilEdicao
             perfil={perfil}
@@ -143,51 +146,53 @@ function PerfilDoPoeta() {
       </div>
 
       {!bloqueei && (
-        <Abas
-          key={username}
-          abas={proprio ? ABAS_DO_DONO : ABAS}
-          atual={aba}
-          aoMudar={trocarAba}
-          rotulo="Conteúdo do perfil"
-          bordaEmCima
-        >
-          {(valor) =>
-            valor === "rascunhos" ? (
-              <ListaDeRascunhos />
-            ) : valor === "poemas" ? (
-              <ListaDePoemas
-                key={username}
-                buscar={buscarPoemas}
-                textoDoFim="fim dos poemas"
-                vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
-              />
-            ) : (
-              <AntologiaLista
-                key={username}
-                buscar={buscarAntologias}
-                vazio={
-                  proprio ? (
-                    <div className="px-4 py-10 text-center">
-                      <p className="font-serifada text-lg">Nenhuma antologia ainda.</p>
-                      <p className="mt-1 text-sm text-tinta-suave">
-                        Reúna os poemas que você ama, como &ldquo;Poemas de chuva&rdquo; ou &ldquo;Para ler no
-                        ônibus&rdquo;.
-                      </p>
-                      <Link
-                        href="/antologias/nova"
-                        className="realce mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold"
-                      >
-                        Criar a primeira antologia
-                      </Link>
-                    </div>
-                  ) : (
-                    <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
-                  )
-                }
-              />
-            )
-          }
-        </Abas>
+        <div className="surgir">
+          <Abas
+            key={username}
+            abas={proprio ? ABAS_DO_DONO : ABAS}
+            atual={aba}
+            aoMudar={trocarAba}
+            rotulo="Conteúdo do perfil"
+            bordaEmCima
+          >
+            {(valor) =>
+              valor === "rascunhos" ? (
+                <ListaDeRascunhos />
+              ) : valor === "poemas" ? (
+                <ListaDePoemas
+                  key={username}
+                  buscar={buscarPoemas}
+                  textoDoFim="fim dos poemas"
+                  vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
+                />
+              ) : (
+                <AntologiaLista
+                  key={username}
+                  buscar={buscarAntologias}
+                  vazio={
+                    proprio ? (
+                      <div className="px-4 py-10 text-center">
+                        <p className="font-serifada text-lg">Nenhuma antologia ainda.</p>
+                        <p className="mt-1 text-sm text-tinta-suave">
+                          Reúna os poemas que você ama, como &ldquo;Poemas de chuva&rdquo; ou &ldquo;Para ler no
+                          ônibus&rdquo;.
+                        </p>
+                        <Link
+                          href="/antologias/nova"
+                          className="realce mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold"
+                        >
+                          Criar a primeira antologia
+                        </Link>
+                      </div>
+                    ) : (
+                      <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
+                    )
+                  }
+                />
+              )
+            }
+          </Abas>
+        </div>
       )}
     </div>
   );
