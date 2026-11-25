@@ -22,7 +22,7 @@ function Escrever() {
   const citarId = idDoParametro(params.get("citar"));
   // "citar estes versos", na página do poema: os versos vêm no parâmetro `versos`.
   const versos = citarId === null ? null : params.get("versos");
-  // /escrever?rascunho=3 abre o rascunho no compositor (vindo da página Rascunhos).
+  // /escrever?rascunho=3 abre o rascunho no compositor (vindo da aba Rascunhos do perfil).
   const rascunhoId = citarId === null ? idDoParametro(params.get("rascunho")) : null;
   // Rascunho de citação: o compositor avisa ao carregar, e o título vira "Citar poema".
   const [rascunhoDeCitacao, setRascunhoDeCitacao] = useState(false);

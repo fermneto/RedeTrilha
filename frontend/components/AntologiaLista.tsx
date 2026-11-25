@@ -1,6 +1,7 @@
 "use client";
-// Lista de antologias (as minhas, ou as públicas de alguém no perfil): cada
-// linha leva ao detalhe, com nome, descrição, quantos poemas e o selo "privada".
+// Lista de antologias (as de alguém no perfil, ou as públicas de todo mundo no
+// Explorar): cada linha leva ao detalhe, com nome, descrição, quantos poemas, o
+// selo "privada" e, no Explorar, quem reuniu.
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -12,9 +13,11 @@ type Props = {
   buscar: (offset: number) => Promise<Page<Antologia>>;
   // O que mostrar quando não há nenhuma antologia.
   vazio: React.ReactNode;
+  // No Explorar, as antologias são de várias pessoas: a linha diz de quem.
+  comDono?: boolean;
 };
 
-export function AntologiaLista({ buscar, vazio }: Props) {
+export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
   const [antologias, setAntologias] = useState<Antologia[]>([]);
   const [total, setTotal] = useState<number | null>(null);
   const [carregando, setCarregando] = useState(false);
@@ -65,7 +68,7 @@ export function AntologiaLista({ buscar, vazio }: Props) {
         <ul className="divide-y divide-borda border-b border-borda">
           {antologias.map((a) => (
             <li key={a.id}>
-              <AntologiaItem antologia={a} />
+              <AntologiaItem antologia={a} comDono={comDono} />
             </li>
           ))}
         </ul>
@@ -96,7 +99,7 @@ export function AntologiaLista({ buscar, vazio }: Props) {
 
 // Como a lombada de um livro na estante: o nome em serifa, quantos poemas
 // alinhado à direita (fácil de varrer de cima a baixo) e a descrição por baixo.
-function AntologiaItem({ antologia }: { antologia: Antologia }) {
+function AntologiaItem({ antologia, comDono }: { antologia: Antologia; comDono: boolean }) {
   return (
     <Link href={`/antologias/${antologia.id}`} className="realce group block px-4 py-4">
       <span className="flex items-baseline gap-3">
@@ -114,6 +117,11 @@ function AntologiaItem({ antologia }: { antologia: Antologia }) {
           {antologia.qtd === 0 ? "vazia" : `${antologia.qtd} ${antologia.qtd === 1 ? "poema" : "poemas"}`}
         </span>
       </span>
+      {comDono && (
+        <span className="mt-0.5 block truncate text-sm text-tinta-suave">
+          reunida por <span className="font-semibold text-tinta">{antologia.dono.name}</span>
+        </span>
+      )}
       {antologia.descricao && (
         <span className="mt-1 line-clamp-2 block max-w-[60ch] font-serifada text-[0.9375rem] break-words whitespace-pre-wrap text-tinta-suave italic">
           {antologia.descricao}

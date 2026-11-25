@@ -1,7 +1,7 @@
 "use client";
 // "Mais", o último item da barra de baixo do celular: abre uma folha com o que não
-// cabe na barra (Antologias, Rascunhos, Acervo, Rengas, Perfil), as Preferências e
-// o "Sair". A barra fica com cinco itens de toque largo (decisão do Neto).
+// cabe na barra (o Acervo e o Perfil, onde ficam os rascunhos e as antologias), as
+// Preferências e o "Sair". A barra fica com cinco itens de toque largo (decisão do Neto).
 //
 // Acessível como um diálogo leve: o botão tem aria-expanded; ao abrir, o foco vai
 // para o primeiro item e fica preso na folha (Tab e Shift+Tab dão a volta); Esc

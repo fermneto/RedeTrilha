@@ -830,6 +830,11 @@ export function listarMinhasAntologiasMarcando(
   );
 }
 
+// As públicas de todo mundo com ao menos um poema, a mais nova primeiro (aba do Explorar).
+export function listarAntologiasPublicas(offset = 0, limit = 20): Promise<Page<Antologia>> {
+  return apiGet<Page<Antologia>>(`/antologias/publicas?offset=${offset}&limit=${limit}`);
+}
+
 // As públicas de alguém (as minhas privadas também, se o perfil for o meu).
 export function listarAntologiasDe(
   username: string,

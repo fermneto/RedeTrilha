@@ -91,7 +91,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
     };
   }
 
-  // Guarda sem publicar; o rascunho fica só para o autor (página Rascunhos).
+  // Guarda sem publicar; o rascunho fica só para o autor (aba Rascunhos do perfil).
   async function salvarRascunho() {
     if (!texto.trim()) {
       setErro("o poema não pode ficar vazio");
@@ -233,7 +233,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       </button>
       {salvo && (
         <p role="status" className="text-sm text-tinta-suave">
-          rascunho salvo. Só você vê; ele fica em <Link href="/rascunhos" className="underline">Rascunhos</Link>.
+          rascunho salvo. Só você vê; ele fica nos <Link href="/rascunhos" className="underline">Rascunhos</Link> do seu perfil.
         </p>
       )}
     </form>

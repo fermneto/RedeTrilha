@@ -3,15 +3,45 @@
 // "Em alta" com posição, contagem e um verso, e os poemas de todos, mais novos
 // primeiro, filtrados por tag e por chips de forma. Os filtros moram na URL
 // (?tag=&forma=): a busca, o "Em alta" e as #tags do PoemaCard trazem para cá.
+//
+// Abaixo da busca, três abas: Poemas, Rengas (abertas para participar e
+// fechadas) e Antologias (as públicas de todo mundo). Rengas e antologias saíram
+// da navegação e se descobrem aqui (decisão do Neto). A aba também mora na URL
+// (?aba=rengas&situacao=&pagina=, ?aba=antologias); com uma tag escolhida, a tela
+// é o resultado dela e as abas somem, como na busca do X.
 
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Suspense, useCallback, useEffect, useId, useState } from "react";
 
+import { Abas } from "@/components/Abas";
+import { AntologiaLista } from "@/components/AntologiaLista";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
 import { DescobrirNoTopo } from "@/components/ColunaDireita";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
-import { buscarExplorar, caminhoDoLogin, FORMAS, nomeDaForma, normalizarTag, temToken } from "@/lib/api";
+import { lerPagina, lerSituacao, ListaDeRengas } from "@/components/ListaDeRengas";
+import {
+  buscarExplorar,
+  caminhoDoLogin,
+  FORMAS,
+  listarAntologiasPublicas,
+  nomeDaForma,
+  normalizarTag,
+  temToken,
+} from "@/lib/api";
+
+const ABAS = [
+  { valor: "poemas", rotulo: "Poemas" },
+  { valor: "rengas", rotulo: "Rengas" },
+  { valor: "antologias", rotulo: "Antologias" },
+] as const;
+
+type Aba = (typeof ABAS)[number]["valor"];
+
+function lerAba(valor: string | null): Aba {
+  return valor === "rengas" || valor === "antologias" ? valor : "poemas";
+}
 
 const chip =
   "min-h-11 shrink-0 cursor-pointer rounded-full px-4 text-sm font-bold whitespace-nowrap transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-destaque";
@@ -33,6 +63,7 @@ function Explorar() {
   const tag = normalizarTag(params.get("tag") ?? "");
   const formaDaUrl = params.get("forma");
   const forma = formaDaUrl && (FORMAS as readonly string[]).includes(formaDaUrl) ? formaDaUrl : null;
+  const aba = tag ? "poemas" : lerAba(params.get("aba"));
   const idDasFormas = useId();
   // Como na coluna direita: as rotas do topo são protegidas, então só com login.
   const [logado, setLogado] = useState(false);
@@ -58,6 +89,11 @@ function Explorar() {
     [tag, forma],
   );
 
+  // Trocar de aba começa a outra do zero (sem filtro), e replace não enche o "voltar".
+  function trocarAba(nova: Aba) {
+    router.replace(nova === "poemas" ? "/explorar" : `/explorar?aba=${nova}`, { scroll: false });
+  }
+
   const comFiltro = Boolean(tag || forma);
   const limpar = (
     <button
@@ -69,13 +105,8 @@ function Explorar() {
     </button>
   );
 
-  return (
-    <div>
-      <header className="sticky top-0 z-10 border-b border-borda bg-papel">
-        <h1 className="sr-only">Explorar</h1>
-        <BuscaDoExplorar tagAtual={tag} aoEscolherTag={(nova) => filtrar(nova, forma)} />
-      </header>
-
+  const poemas = (
+    <>
       {/* Com uma tag escolhida, a tela vira o resultado dela, como a busca do X. */}
       {tag ? (
         <div className="flex items-center justify-between gap-3 border-b border-borda px-4 py-3">
@@ -135,6 +166,60 @@ function Explorar() {
           <div className="px-4 py-10 text-center text-tinta-suave">
             <p>{textoDoVazio(tag, forma)}</p>
             {comFiltro && limpar}
+          </div>
+        }
+      />
+    </>
+  );
+
+  return (
+    <div>
+      <header className="sticky top-0 z-10 border-b border-borda bg-papel">
+        <h1 className="sr-only">Explorar</h1>
+        <BuscaDoExplorar tagAtual={tag} aoEscolherTag={(nova) => filtrar(nova, forma)} />
+      </header>
+
+      {tag ? (
+        poemas
+      ) : (
+        <Abas abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="O que explorar">
+          {(valor) =>
+            valor === "poemas" ? (
+              poemas
+            ) : valor === "rengas" ? (
+              logado && (
+                <ListaDeRengas situacao={lerSituacao(params.get("situacao"))} pagina={lerPagina(params.get("pagina"))} />
+              )
+            ) : (
+              logado && <AntologiasDoExplorar />
+            )
+          }
+        </Abas>
+      )}
+    </div>
+  );
+}
+
+// As antologias públicas de todo mundo com ao menos um poema, a mais nova primeiro.
+function AntologiasDoExplorar() {
+  return (
+    <div>
+      <p className="border-b border-borda px-4 py-4 text-sm text-tinta-suave">
+        Coleções de poemas reunidas por quem lê, como uma antologia de verdade.
+      </p>
+      <AntologiaLista
+        buscar={listarAntologiasPublicas}
+        comDono
+        vazio={
+          <div className="px-4 py-10 text-center">
+            <p className="font-serifada text-lg">Nenhuma antologia pública ainda.</p>
+            <p className="mt-1 text-sm text-tinta-suave">Reúna os poemas que você ama e mostre para a rede.</p>
+            <Link
+              href="/antologias/nova"
+              className="realce mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold"
+            >
+              Criar uma antologia
+            </Link>
           </div>
         }
       />

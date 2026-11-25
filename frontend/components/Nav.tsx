@@ -9,26 +9,27 @@
 // "Avisos" e "Mensagens" levam um contador cada (linhas de aviso não lidas;
 // conversas não lidas e pedidos novos), atualizados pelo stream das mensagens
 // (ouvirMensagens, em lib/api.ts), que também traz o evento "aviso", sem recarregar.
-// A barra do celular tem só Início, Explorar, Escrever, Avisos e Mensagens, e o
-// "Mais" (MenuMais), com o resto, o Perfil, as Preferências e o "Sair": seis
-// botões de 60 px em 360 px (decisão do Neto).
+// A navegação é enxuta (decisão do Neto): Início, Explorar, Acervo, Avisos,
+// Mensagens e Perfil, mais o "Escrever" (MenuEscrever), o único botão de criar,
+// que abre poema, renga e antologia. Rengas e antologias se descobrem no
+// Explorar; os rascunhos e as antologias próprias ficam no perfil.
+// A barra do celular tem Início, Explorar, Escrever, Avisos e Mensagens, e o
+// "Mais" (MenuMais), com o Acervo, o Perfil, as Preferências e o "Sair": seis
+// botões de 60 px em 360 px.
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 import { IconeAcervo } from "@/components/icones/IconeAcervo";
-import { IconeAntologias } from "@/components/icones/IconeAntologias";
 import { IconeAvisos } from "@/components/icones/IconeAvisos";
-import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { IconeExplorar } from "@/components/icones/IconeExplorar";
 import { IconeInicio } from "@/components/icones/IconeInicio";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { IconePerfil } from "@/components/icones/IconePerfil";
-import { IconeRascunhos } from "@/components/icones/IconeRascunhos";
-import { IconeRenga } from "@/components/icones/IconeRenga";
 import type { PropsIcone } from "@/components/icones/Icone";
 import { MenuConta } from "@/components/MenuConta";
+import { MenuEscrever } from "@/components/MenuEscrever";
 import { MenuMais } from "@/components/MenuMais";
 import {
   buscarEu,
@@ -47,17 +48,15 @@ type Item = {
   soLogado?: boolean;
 };
 
-// O que fica na barra do celular quando logado; o resto vai para o "Mais".
-const NA_BARRA_DO_CELULAR = ["/", "/explorar", "/escrever", "/avisos", "/mensagens"];
+// O que fica na barra do celular quando logado; o resto vai para o "Mais". O
+// "Escrever" entra depois do Explorar, nas duas barras.
+const NA_BARRA_DO_CELULAR = ["/", "/explorar", "/avisos", "/mensagens"];
+const ANTES_DO_ESCREVER = 2;
 
 const ITENS: Item[] = [
   { href: "/", rotulo: "Início", Icone: IconeInicio },
   { href: "/explorar", rotulo: "Explorar", Icone: IconeExplorar },
-  { href: "/escrever", rotulo: "Escrever", Icone: IconeEscrever },
-  { href: "/antologias", rotulo: "Antologias", Icone: IconeAntologias, soLogado: true },
-  { href: "/rascunhos", rotulo: "Rascunhos", Icone: IconeRascunhos, soLogado: true },
   { href: "/acervo", rotulo: "Acervo", Icone: IconeAcervo },
-  { href: "/rengas", rotulo: "Rengas", Icone: IconeRenga, soLogado: true },
   { href: "/avisos", rotulo: "Avisos", Icone: IconeAvisos, soLogado: true },
   { href: "/mensagens", rotulo: "Mensagens", Icone: IconeMensagens, soLogado: true },
   { href: "/perfil", rotulo: "Perfil", Icone: IconePerfil, soLogado: true },
@@ -206,13 +205,7 @@ export function Nav() {
             </ul>
           </nav>
 
-          <Link
-            href="/escrever"
-            className="mt-4 flex h-13 w-13 items-center justify-center rounded-full bg-destaque font-semibold text-papel transition-[filter] duration-150 hover:brightness-110 xl:w-[90%] xl:text-[1.0625rem]"
-          >
-            <IconeEscrever className="h-6 w-6 xl:hidden" />
-            <span className="sr-only xl:not-sr-only">Escrever poema</span>
-          </Link>
+          <MenuEscrever forma="lateral" caminho={caminho} />
         </div>
 
         {logado ? (
@@ -232,24 +225,31 @@ export function Nav() {
         className="fixed inset-x-0 bottom-0 z-20 border-t border-borda bg-papel pb-[env(safe-area-inset-bottom)] sm:hidden"
       >
         <ul className="flex justify-around">
-          {itensDoCelular.map(({ href, rotulo, Icone }) => {
+          {itensDoCelular.map(({ href, rotulo, Icone }, i) => {
             const atual = ativo(href);
             return (
-              <li key={href} className="flex min-w-0 flex-1 justify-center">
-                <Link
-                  href={href}
-                  aria-label={rotuloComContador(rotulo, contador(href))}
-                  aria-current={atual ? "page" : undefined}
-                  className={`flex h-13 w-full max-w-14 items-center justify-center ${
-                    atual ? "text-tinta" : "text-tinta-suave"
-                  }`}
-                >
-                  <span className="relative">
-                    <Icone className={`h-[26px] w-[26px] ${atual ? TRACO_ATIVO : ""}`} />
-                    <Contador n={contador(href)} />
-                  </span>
-                </Link>
-              </li>
+              <Fragment key={href}>
+                {i === ANTES_DO_ESCREVER && (
+                  <li className="flex min-w-0 flex-1 justify-center">
+                    <MenuEscrever forma="barra" caminho={caminho} />
+                  </li>
+                )}
+                <li className="flex min-w-0 flex-1 justify-center">
+                  <Link
+                    href={href}
+                    aria-label={rotuloComContador(rotulo, contador(href))}
+                    aria-current={atual ? "page" : undefined}
+                    className={`flex h-13 w-full max-w-14 items-center justify-center ${
+                      atual ? "text-tinta" : "text-tinta-suave"
+                    }`}
+                  >
+                    <span className="relative">
+                      <Icone className={`h-[26px] w-[26px] ${atual ? TRACO_ATIVO : ""}`} />
+                      <Contador n={contador(href)} />
+                    </span>
+                  </Link>
+                </li>
+              </Fragment>
             );
           })}
           <li className="flex min-w-0 flex-1 justify-center">
