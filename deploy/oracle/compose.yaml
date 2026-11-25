@@ -30,22 +30,23 @@ services:
       POSTGRES_USER: verso
       POSTGRES_DB: verso
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env (openssl rand -hex 24)}
-    # Dimensionado para a VM do guia (2 OCPU, 12 GB), dividida com a API e o Caddy.
+    # Dimensionado para a VM do guia (4 OCPU, 24 GB), dividida com a API e o Caddy.
+    # VM menor: os PG_* do .env (a tabela está em docs/deploy-oracle.md, "Disco e memória").
     command:
       - postgres
-      # Cache do próprio Postgres. O banco tem dezenas de MB: 1 GB guarda tudo
-      # e deixa a RAM para a API e para o cache de disco do Linux.
+      # Cache do próprio Postgres. O banco tem dezenas de MB: 2 GB guardam tudo com
+      # folga para crescer e deixam a RAM para a API e para o cache de disco do Linux.
       - -c
-      - shared_buffers=1GB
+      - shared_buffers=${PG_SHARED_BUFFERS:-2GB}
       # Só uma estimativa para o planejador: o que o Linux deve ter em cache (metade da RAM).
       - -c
-      - effective_cache_size=6GB
+      - effective_cache_size=${PG_EFFECTIVE_CACHE_SIZE:-12GB}
       # Memória por ordenação/hash de cada consulta; 60 conexões x poucos sorts cabem com folga.
       - -c
-      - work_mem=8MB
+      - work_mem=${PG_WORK_MEM:-16MB}
       # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
       - -c
-      - maintenance_work_mem=256MB
+      - maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM:-512MB}
       # O padrão usa 2 workers x (pool 4 + overflow 2) = 12. 60 deixa ir até 4 x (5 + 5) = 40
       # sem mexer aqui, + backup, restauração, psql e 3 reservadas ao superusuário.
       - -c
@@ -144,6 +145,8 @@ services:
       RCLONE_CONFIG_OCI_NO_CHECK_BUCKET: "true"
     volumes:
       - backups:/backups
+      # O nome da VM entra no nome de cada dump (backup.sh).
+      - /etc/hostname:/etc/hostname-da-vm:ro
     depends_on:
       db:
         condition: service_healthy

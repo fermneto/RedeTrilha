@@ -2,11 +2,12 @@
 # Restaura um backup do serviço backup (docs/deploy-oracle.md, "Backup e restauração").
 # Rode na VM, de deploy/oracle, com o compose de pé.
 #
-#   ./restaurar.sh --listar                       # backups locais e no Object Storage
-#   ./restaurar.sh diario/verso-2026-11-24.dump   # TESTE: restaura num banco temporário,
-#                                                 # confere as contagens e apaga o temporário
-#   ./restaurar.sh remoto:diario/verso-2026-11-24.dump   # o mesmo, baixando do Object Storage
-#   ./restaurar.sh --producao diario/verso-2026-11-24.dump   # SUBSTITUI o banco verso
+#   ./restaurar.sh --listar             # backups locais e no Object Storage
+#   ./restaurar.sh ultimo               # TESTE com o diário mais novo: restaura num banco
+#                                       # temporário, confere as contagens e apaga o temporário
+#   ./restaurar.sh remoto:ultimo        # o mesmo, baixando do Object Storage
+#   ./restaurar.sh diario/verso-2026-11-24T063000Z-verso-api.dump   # um arquivo (local ou remoto:)
+#   ./restaurar.sh --producao remoto:ultimo                          # SUBSTITUI o banco verso
 #
 # O teste não mexe no banco verso nem tira a API do ar. O --producao para a api,
 # apaga e recria o banco verso com o conteúdo do dump e sobe a api de novo.
@@ -18,7 +19,7 @@ compose="docker compose"   # respeita COMPOSE_FILE (teste local: compose.yaml:co
 no_backup() { $compose exec -T backup "$@"; }
 
 uso() {
-    sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'
+    sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//'
     exit 1
 }
 
@@ -41,6 +42,18 @@ case "${1:-}" in
 esac
 [ $# -eq 1 ] || uso
 origem=$1
+
+# "ultimo": o diário mais novo (os nomes começam pela data e hora, em UTC).
+case "$origem" in
+    ultimo)
+        origem="diario/$(no_backup sh -c 'ls /backups/diario | grep "^verso-.*\.dump$" | sort | tail -n 1')"
+        ;;
+    remoto:ultimo)
+        origem="remoto:diario/$(no_backup sh -c 'rclone lsf "oci:$OCI_BUCKET/verso/diario" | grep "^verso-.*\.dump$" | sort | tail -n 1')"
+        ;;
+esac
+[ "${origem%/}" = "$origem" ] || { echo "nenhum backup diário encontrado (./restaurar.sh --listar)"; exit 1; }
+echo "backup: $origem"
 
 case "$origem" in
     remoto:*)

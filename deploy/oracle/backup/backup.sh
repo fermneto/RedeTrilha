@@ -3,8 +3,10 @@
 # se o OCI_BUCKET estiver no .env, cópia no Object Storage da Oracle.
 #   docker compose exec backup backup.sh      # backup na hora, fora do agendamento
 #
-# /backups/diario/verso-AAAA-MM-DD.dump   os BACKUP_DIARIOS mais novos (7)
-# /backups/semanal/verso-AAAA-Sss.dump    domingo: os BACKUP_SEMANAIS mais novos (4)
+# /backups/diario/verso-AAAA-MM-DDTHHMMSSZ-<host>.dump   os de BACKUP_DIARIOS datas (7)
+# /backups/semanal/(o mesmo nome)                         domingo: BACKUP_SEMANAIS semanas (4)
+# Data e hora em UTC e o hostname da VM no nome: dois backups (no mesmo dia, ou de
+# duas VMs no mesmo bucket) nunca têm o mesmo nome. A retenção conta datas, não arquivos.
 # Sem o envio configurado (ou se ele falhar), o backup local fica do mesmo jeito.
 set -eu
 
@@ -12,23 +14,40 @@ diarios=${BACKUP_DIARIOS:-7}
 semanais=${BACKUP_SEMANAIS:-4}
 mkdir -p /backups/diario /backups/semanal
 
-arquivo="/backups/diario/verso-$(date +%F).dump"
+# O /etc/hostname da VM vem montado do host (compose.yaml); sem ele, o do container.
+host=$(cat /etc/hostname-da-vm 2>/dev/null || hostname)
+host=$(printf %s "$host" | tr -c 'A-Za-z0-9.-' '-' | sed 's/-*$//')
+nome="verso-$(date -u +%Y-%m-%dT%H%M%SZ)-$host.dump"
+arquivo="/backups/diario/$nome"
 pg_dump --format=custom --compress=6 --no-owner --no-privileges --file="$arquivo.parcial"
 mv "$arquivo.parcial" "$arquivo"
 echo "backup ok: $arquivo ($(du -h "$arquivo" | cut -f1))"
 
-if [ "$(date +%u)" = 7 ]; then
-    cp "$arquivo" "/backups/semanal/verso-$(date +%G-S%V).dump"
+if [ "$(date -u +%u)" = 7 ]; then
+    cp -p "$arquivo" "/backups/semanal/$nome"
 fi
 
-# Retenção: os nomes têm a data, então a ordem alfabética é a cronológica.
+# A data (UTC) de um arquivo, tirada do nome: verso-2026-11-24T063000Z-... -> 2026-11-24.
+data_de() { basename "$1" | sed -n 's/^verso-\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\)T.*/\1/p'; }
+
+# Retenção: guarda os arquivos das N chaves mais novas (chave = data ou semana ISO).
 apagar_antigos() {
-    ls -1 "$1"/verso-*.dump 2>/dev/null | sort -r | tail -n +"$(($2 + 1))" | while read -r velho; do
-        rm -f "$velho" && echo "apagado (retenção): $velho"
-    done
+    pasta=$1 quantas=$2 formato=$3
+    for f in "$pasta"/verso-*.dump; do
+        [ -e "$f" ] || continue
+        d=$(data_de "$f")
+        [ -n "$d" ] || continue
+        echo "$(date -u -d "$d" +"$formato") $f"
+    done | sort -r > /tmp/retencao
+    manter=$(cut -d' ' -f1 /tmp/retencao | uniq | head -n "$quantas")
+    while read -r chave f; do
+        if ! printf '%s\n' "$manter" | grep -qx "$chave"; then
+            rm -f "$f" && echo "apagado (retenção): $f"
+        fi
+    done < /tmp/retencao
 }
-apagar_antigos /backups/diario "$diarios"
-apagar_antigos /backups/semanal "$semanais"
+apagar_antigos /backups/diario "$diarios" %F
+apagar_antigos /backups/semanal "$semanais" %G-%V
 
 uso=$(df -P /backups | awk 'NR == 2 { sub("%", "", $5); print $5 }')
 if [ "$uso" -ge 80 ]; then
