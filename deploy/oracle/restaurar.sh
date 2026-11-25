@@ -9,8 +9,8 @@
 #   ./restaurar.sh diario/verso-2026-11-24T063000Z-verso-api.dump   # um arquivo (local ou remoto:)
 #   ./restaurar.sh --producao remoto:ultimo                          # SUBSTITUI o banco verso
 #
-# O teste não mexe no banco verso nem tira a API do ar. O --producao para a api,
-# apaga e recria o banco verso com o conteúdo do dump e sobe a api de novo.
+# O teste não mexe no banco verso nem tira a API do ar. O --producao para as réplicas da api,
+# apaga e recria o banco verso com o conteúdo do dump e as sobe de novo.
 set -eu
 
 cd "$(dirname "$0")"
@@ -88,12 +88,15 @@ printf 'Isto APAGA o banco verso e põe no lugar o conteúdo de %s. Digite "rest
 read -r resposta
 [ "$resposta" = restaurar ] || { echo "cancelado"; exit 1; }
 
-$compose stop api
+replicas=$($compose config --services | grep -E '^api_[0-9]+$')
+# shellcheck disable=SC2086
+$compose stop $replicas
 no_backup psql -d postgres -v ON_ERROR_STOP=1 \
     -c "select pg_terminate_backend(pid) from pg_stat_activity where datname = 'verso' and pid <> pg_backend_pid()" \
     -c "drop database verso" \
     -c "create database verso"
 no_backup pg_restore --no-owner --no-privileges --exit-on-error -d verso "$dump"
 echo "restaurado: $(contar verso)"
-$compose start api
-echo "api de volta (docker compose ps)"
+# shellcheck disable=SC2086
+$compose start $replicas
+echo "as réplicas da api de volta (docker compose ps)"

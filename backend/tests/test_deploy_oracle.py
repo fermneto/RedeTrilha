@@ -77,34 +77,121 @@ def _deploy(nome: str) -> str:
 
 
 def _blocos_dos_servicos(compose: str) -> dict[str, str]:
-    """O texto de cada serviço do compose.yaml (dois espaços de recuo), sem um parser de YAML."""
+    """O texto de cada serviço do compose.yaml (dois espaços de recuo), sem um parser de YAML.
+
+    Uma réplica da API (`api_1: *api`, ou `<<: *api` com um perfil) leva junto o texto
+    da âncora `x-api`.
+    """
     import re
 
+    ancora = compose.split("\nx-api: &api\n", 1)[1].split("\nservices:\n", 1)[0]
     servicos = compose.split("\nservices:\n", 1)[1].split("\nnetworks:\n", 1)[0]
-    partes = re.split(r"^  ([a-z0-9-]+):\n", servicos, flags=re.M)
-    return dict(zip(partes[1::2], partes[2::2]))
+    partes = re.split(r"^  ([a-z0-9_-]+):( \*api)?\n", servicos, flags=re.M)
+    return {
+        nome: ancora + texto if alias or "<<: *api" in texto else texto
+        for nome, alias, texto in zip(partes[1::3], partes[2::3], partes[3::3])
+    }
+
+
+def _replicas() -> list[str]:
+    """Todas as réplicas da API no compose.yaml: os serviços que repetem a âncora x-api."""
+    blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
+    return [nome for nome, texto in blocos.items() if 'SEED_ON_BOOT: "false"' in texto]
+
+
+def _replicas_sem_perfil() -> list[str]:
+    """As que sobem sempre (a VM de 2 OCPU); as outras só com COMPOSE_PROFILES=4-ocpu."""
+    blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
+    return [r for r in _replicas() if "profiles:" not in blocos[r]]
+
+
+def _env_example() -> dict[str, str]:
+    return dict(
+        linha.split("=", 1)
+        for linha in _deploy(".env.example").splitlines()
+        if linha and not linha.startswith("#")
+    )
 
 
 def test_compose_db_sem_porta_publica_e_api_espera_o_banco():
     blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
     assert "ports:" not in blocos["db"]
     assert "pg_isready" in blocos["db"]
-    for servico in ("seed", "api", "backup"):
-        assert "db:\n        condition: service_healthy" in blocos[servico]
+    for servico in ("seed", "backup", *_replicas()):
+        assert "db:\n" in blocos[servico] and "condition: service_healthy" in blocos[servico]
 
 
-def test_max_connections_cabe_os_workers_do_env_example():
-    """WEB_CONCURRENCY_MAX x (pool + overflow + o LISTEN das mensagens) + folga <= max_connections."""
+def test_compose_tem_as_replicas_da_api_depois_do_seed():
+    replicas = _replicas()
+    assert replicas == ["api_1", "api_2", "api_3", "api_4"]
+    # 2 sempre (a VM de 2 OCPU); 3 e 4 só no perfil da VM de 4 OCPU.
+    assert _replicas_sem_perfil() == ["api_1", "api_2"]
+    blocos = _blocos_dos_servicos(_deploy("compose.yaml"))
+    for replica in ("api_3", "api_4"):
+        assert "profiles: [4-ocpu]" in blocos[replica]
+        assert f"{replica}:\n        condition: service_healthy\n        required: false" in blocos["caddy"]
+    assert "api" not in blocos  # nenhuma api avulsa fora do balanceador
+    for replica in replicas:
+        assert "ports:" not in blocos[replica]
+        assert "seed:\n      condition: service_completed_successfully" in blocos[replica]
+        assert 'SEED_ON_BOOT: "false"' in blocos[replica]
+        assert f"{replica}:\n        condition: service_healthy" in blocos["caddy"]
+
+
+def test_max_connections_cabe_as_replicas_do_env_example():
+    """réplicas x WEB_CONCURRENCY_MAX x (pool + overflow + o LISTEN) + folga <= max_connections."""
     import re
 
-    env = dict(
-        linha.split("=", 1)
-        for linha in _deploy(".env.example").splitlines()
-        if linha and not linha.startswith("#")
-    )
+    env = _env_example()
     maximo = int(re.search(r"max_connections=(\d+)", _deploy("compose.yaml")).group(1))
     # + 1: a conexão do LISTEN das mensagens, fora do pool (app/tempo_real.py).
     por_worker = int(env["DB_POOL_SIZE"]) + int(env["DB_MAX_OVERFLOW"]) + 1
-    folga = 3 + 5  # reservadas ao superusuário + backup, restauração e psql
-    assert int(env["WEB_CONCURRENCY_MAX"]) * por_worker + folga <= maximo
+    folga = 3 + 5  # reservadas ao superusuário + backup, restauração (2), seed e psql
+    assert len(_replicas()) * int(env["WEB_CONCURRENCY_MAX"]) * por_worker + folga <= maximo
     assert int(env["WEB_CONCURRENCY"]) <= int(env["WEB_CONCURRENCY_MAX"])
+
+
+def test_caddyfile_balanceia_as_replicas_com_health_check():
+    import re
+
+    caddy = _deploy("caddy/Caddyfile")
+    snippet = caddy.split("(replicas) {", 1)[1].split("\n}\n", 1)[0]
+    assert re.search(r"^\tto (.+)$", snippet, flags=re.M).group(1) == "{$REPLICAS_DA_API}"
+    # O padrão do compose e do .env.example são as réplicas sem perfil; a linha
+    # comentada da VM de 4 OCPU, todas.
+    padrao = " ".join(f"{r}:8000" for r in _replicas_sem_perfil())
+    assert f"REPLICAS_DA_API: ${{REPLICAS_DA_API:-{padrao}}}" in _deploy("compose.yaml")
+    assert _env_example()["REPLICAS_DA_API"] == padrao
+    todas = " ".join(f"{r}:8000" for r in _replicas())
+    assert f"#     REPLICAS_DA_API={todas}" in _deploy(".env.example")
+    assert "#     COMPOSE_PROFILES=4-ocpu" in _deploy(".env.example")
+    for diretiva in ("health_uri /saude", "health_interval", "health_timeout", "fail_duration"):
+        assert diretiva in snippet
+    assert "lb_try_duration" in snippet and "lb_retries" in snippet
+    # Só GET e HEAD são repetidos depois de chegar à API: um POST nunca vai duas vezes.
+    metodos = re.search(r"lb_retry_match \{\s*method ([A-Z ]+)\n", snippet).group(1).split()
+    assert set(metodos) <= {"GET", "HEAD", "OPTIONS"}
+    # Todo reverse_proxy passa pelo balanceador, nenhum aponta para uma réplica só.
+    assert caddy.count("reverse_proxy {") == caddy.count("import replicas") >= 1
+    assert not re.search(r"reverse_proxy api", caddy)
+
+
+def test_atualizar_roda_o_seed_e_depois_uma_replica_de_cada_vez():
+    script = _deploy("atualizar.sh")
+    assert "grep -E '^api_[0-9]+$'" in script  # as réplicas vêm do compose
+    # e o script para se o REPLICAS_DA_API do Caddy não tiver as mesmas.
+    assert script.index("REPLICAS_DA_API") < script.index("build das imagens")
+    seed = script.index("up -d --no-deps seed")
+    laco = script.index("for replica in $replicas")
+    assert seed < script.index("wait seed") < laco
+    corpo = script[laco:]
+    assert 'up -d --no-deps $recriar "$replica"' in corpo and "healthy" in corpo
+    # Caddyfile novo sem queda: reload, nunca restart do caddy.
+    assert "caddy reload" in corpo and "restart caddy" not in script
+
+
+def test_caddy_monta_a_pasta_da_configuracao_e_nao_o_arquivo():
+    """O git troca o Caddyfile por um arquivo novo: só a pasta montada deixa o reload vê-lo."""
+    caddy = _blocos_dos_servicos(_deploy("compose.yaml"))["caddy"]
+    assert "- ./caddy:/etc/caddy:ro" in caddy
+    assert "Caddyfile:/etc/caddy/Caddyfile" not in caddy

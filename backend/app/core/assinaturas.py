@@ -24,6 +24,10 @@ Custos, com d = streams abertos dos destinatários e S = streams do processo:
 Cada fila tem limite (`LIMITE_DA_FILA`): um cliente que não lê não faz a memória
 crescer. Ao passar do limite, a fila descarta o que guardava e entrega um único
 `ressincronizar`, e o cliente busca tudo de novo pelas rotas.
+
+`encerrar_todos` fecha os streams quando o processo vai desligar (O(S)): cada
+fila devolve `ENCERRAR`, o stream termina, e o cliente reconecta noutra réplica
+em vez de o desligamento esperar o `TIMEOUT_GRACEFUL_SHUTDOWN` (docs/deploy-oracle.md).
 """
 
 import asyncio
@@ -33,6 +37,8 @@ from collections.abc import Iterable
 LIMITE_DA_FILA = 100
 
 RESSINCRONIZAR = {"tipo": "ressincronizar"}
+# Não vai ao cliente: avisa o stream para terminar (o processo vai desligar).
+ENCERRAR = {"tipo": "encerrar"}
 
 
 class Fila:
@@ -43,6 +49,7 @@ class Fila:
         self._limite = limite
         self._eventos: deque[dict] = deque()
         self._transbordou = False
+        self._encerrada = False
         self._chegou = asyncio.Event()
 
     def por(self, evento: dict) -> None:
@@ -53,14 +60,24 @@ class Fila:
             self._eventos.append(evento)
         self._chegou.set()
 
+    def encerrar(self) -> None:
+        self._encerrada = True
+        self._chegou.set()
+
     async def proximo(self, espera: float) -> dict | None:
-        """O próximo evento, ou None se nada chegou em `espera` segundos (hora da batida)."""
-        if not self._eventos and not self._transbordou:
+        """O próximo evento, ou None se nada chegou em `espera` segundos (hora da batida).
+
+        Fila encerrada: `ENCERRAR`, antes do que ainda estiver guardado (o cliente
+        busca o resto pelas rotas ao reconectar).
+        """
+        if not self._eventos and not self._transbordou and not self._encerrada:
             self._chegou.clear()
             try:
                 await asyncio.wait_for(self._chegou.wait(), espera)
             except TimeoutError:
                 return None
+        if self._encerrada:
+            return ENCERRAR
         if self._transbordou:
             self._transbordou = False
             return RESSINCRONIZAR
@@ -70,9 +87,13 @@ class Fila:
 class Assinaturas:
     def __init__(self) -> None:
         self._por_pessoa: dict[int, set[Fila]] = {}
+        self.encerrando = False
 
     def assinar(self, user_id: int) -> Fila:
         fila = Fila(user_id)
+        if self.encerrando:
+            # O processo já vai desligar: o stream termina logo e o cliente vai a outro.
+            fila.encerrar()
         self._por_pessoa.setdefault(user_id, set()).add(fila)
         return fila
 
@@ -100,6 +121,16 @@ class Assinaturas:
                 fila.por(evento)
                 entregues += 1
         return entregues
+
+    def encerrar_todos(self) -> int:
+        """Encerra os streams abertos e os que abrirem depois; devolve quantos estavam abertos."""
+        self.encerrando = True
+        encerrados = 0
+        for filas in self._por_pessoa.values():
+            for fila in filas:
+                fila.encerrar()
+                encerrados += 1
+        return encerrados
 
     def __len__(self) -> int:
         return sum(len(filas) for filas in self._por_pessoa.values())

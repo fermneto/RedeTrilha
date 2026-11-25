@@ -47,9 +47,10 @@ Pedro (@CorreiaPedro208).
 
 - **Site:** https://verso.net.br (front na Vercel; também em https://verso-blond.vercel.app), depois do deploy.
 - **API:** https://api.verso.net.br, depois do deploy.
-- **Onde roda a API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose (API com
-  vários workers do uvicorn + Caddy com HTTPS automático) e o Postgres na mesma
-  VM, com backup diário para o Object Storage da Oracle. `GET /saude` responde
+- **Onde roda a API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose
+  (2 a 4 réplicas da API, conforme a VM, e o Caddy, com HTTPS automático, balanceando entre
+  elas) e o Postgres na mesma VM, com backup diário para o Object Storage da
+  Oracle. `GET /saude` responde
   `{"ok":true}`.
 - **Conta de demonstração:** `marina_letras` / `verso123`.
 
@@ -112,7 +113,7 @@ backend/app/
              comentários, janela deslizante da tradução)
 backend/scripts/   seed, importador de consagrados, preparar_banco, check_setup, bench, carga
 backend/Dockerfile imagem da API (arm64 e amd64)
-deploy/oracle/     compose.yaml (API, Postgres, Caddy, backup), restaurar.sh e .env.example
+deploy/oracle/     compose.yaml (réplicas da API, Postgres, Caddy, backup), atualizar.sh, restaurar.sh e .env.example
 backend/data/consagrados/   um JSON por poeta consagrado
 frontend/
   app/         páginas (feed, explorar, escrever, acervo, antologias, perfil,

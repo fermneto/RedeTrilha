@@ -4,8 +4,12 @@
 #
 # db     -> Postgres 16 na mesma VM, sem porta pública: só a rede interna o alcança.
 # seed   -> roda UMA vez (tabelas + seed se o banco estiver vazio) e sai.
-# api    -> só sobe depois que o seed terminar bem; vários workers, sem porta pública.
-# caddy  -> único serviço exposto (80/443): HTTPS automático e proxy para a api.
+# api_1  -> as réplicas da API, 1 worker cada (a mesma imagem e configuração, x-api
+# ...       abaixo): só sobem depois que o seed terminar bem; sem porta pública.
+# api_4     2 na VM de 2 OCPU (o padrão); 4 na de 4 OCPU (COMPOSE_PROFILES=4-ocpu).
+# caddy  -> único serviço exposto (80/443): HTTPS automático e balanceador entre as
+#           réplicas, com health check (caddy/Caddyfile).
+# Atualizar sem tirar do ar: ./atualizar.sh (reinicia uma réplica de cada vez).
 # backup -> pg_dump diário com retenção, e cópia no Object Storage se configurado.
 #
 # Banco gerenciado no Supabase em vez do db: compose.supabase.yaml (docs/deploy-oracle.md).
@@ -21,6 +25,40 @@ x-logs: &logs
 x-banco: &banco
   # O db da VM por padrão; DATABASE_URL no .env troca (Supabase, compose.supabase.yaml).
   DATABASE_URL: ${DATABASE_URL:-postgresql://verso:${POSTGRES_PASSWORD}@db:5432/verso}
+
+# As réplicas da API: a mesma definição de api_1 a api_4. Réplicas com nome,
+# e não deploy.replicas: o Caddy alcança cada uma pelo nome (api_1:8000), e o
+# atualizar.sh reinicia uma de cada vez (com replicas, o compose recria todas juntas).
+x-api: &api
+  image: verso-api:local
+  env_file: .env
+  environment:
+    <<: *banco
+    # O seed é do serviço seed: nunca nas réplicas (rodariam juntas).
+    SEED_ON_BOOT: "false"
+    # Só o Caddy, nesta rede, pode dizer o IP e o https do visitante.
+    FORWARDED_ALLOW_IPS: "172.30.0.0/24"
+  depends_on:
+    db:
+      condition: service_healthy
+    seed:
+      condition: service_completed_successfully
+  # Na subida, o /saude é conferido a cada 2 s (e não a cada 30): o atualizar.sh
+  # espera a réplica ficar healthy antes de reiniciar a próxima.
+  healthcheck:
+    test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/saude', timeout=4).status == 200 else 1)"]
+    interval: 30s
+    timeout: 5s
+    retries: 3
+    start_period: 60s
+    start_interval: 2s
+  # O uvicorn espera até 20 s (TIMEOUT_GRACEFUL_SHUTDOWN) as requisições em voo e os
+  # streams abertos; o padrão do Docker (10 s) o mataria antes.
+  stop_grace_period: 30s
+  restart: unless-stopped
+  expose: ["8000"]
+  logging: *logs
+  networks: [interna]
 
 services:
   db:
@@ -47,8 +85,9 @@ services:
       # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
       - -c
       - maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM:-512MB}
-      # O padrão usa 2 workers x (pool 4 + overflow 2) = 12. 60 deixa ir até 4 x (5 + 5) = 40
-      # sem mexer aqui, + backup, restauração, psql e 3 reservadas ao superusuário.
+      # Réplicas da API x 1 worker x (pool 4 + overflow 2 + 1 LISTEN): 2 x 7 = 14 na VM
+      # de 2 OCPU, 4 x 7 = 28 na de 4; e mais 8 de folga (backup, restauração, seed,
+      # psql e 3 reservadas ao superusuário): 22 e 36 (docs/deploy-oracle.md, "Workers e pool").
       - -c
       - max_connections=60
       # O disco da VM é um block volume em SSD: ler fora de ordem custa quase o mesmo.
@@ -83,39 +122,47 @@ services:
     logging: *logs
     networks: [interna]
 
-  api:
-    image: verso-api:local
-    env_file: .env
-    environment:
-      <<: *banco
-      # O seed é do serviço acima: nunca nos workers (rodariam juntos).
-      SEED_ON_BOOT: "false"
-      # Só o Caddy, nesta rede, pode dizer o IP e o https do visitante.
-      FORWARDED_ALLOW_IPS: "172.30.0.0/24"
-    depends_on:
-      db:
-        condition: service_healthy
-      seed:
-        condition: service_completed_successfully
-    restart: unless-stopped
-    expose: ["8000"]
-    logging: *logs
-    networks: [interna]
+  api_1: *api
+  api_2: *api
+  # VM de 4 OCPU: mais duas réplicas, com COMPOSE_PROFILES=4-ocpu e o REPLICAS_DA_API
+  # com as quatro no .env (docs/deploy-oracle.md, "Workers e pool"). Em 2 OCPU, 4
+  # réplicas disputam a CPU com o Postgres e rendem menos que 2.
+  api_3:
+    <<: *api
+    profiles: [4-ocpu]
+  api_4:
+    <<: *api
+    profiles: [4-ocpu]
 
   caddy:
     image: caddy:2.10-alpine
     env_file: .env
+    environment:
+      # Os upstreams do Caddyfile ({$REPLICAS_DA_API}): as réplicas que estão de pé.
+      REPLICAS_DA_API: ${REPLICAS_DA_API:-api_1:8000 api_2:8000}
     ports:
       - "${HTTP_PORT:-80}:80"
       - "${HTTPS_PORT:-443}:443"
       - "${HTTPS_PORT:-443}:443/udp"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # A pasta, e não o arquivo: o git troca o Caddyfile por um arquivo novo, e um
+      # volume de arquivo continuaria vendo o antigo. Com a pasta, o caddy reload do
+      # atualizar.sh lê o novo sem reiniciar o container (sem queda).
+      - ./caddy:/etc/caddy:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      api:
+      api_1:
         condition: service_healthy
+      api_2:
+        condition: service_healthy
+      # Só com o perfil 4-ocpu; sem ele, o caddy não espera por elas.
+      api_3:
+        condition: service_healthy
+        required: false
+      api_4:
+        condition: service_healthy
+        required: false
     restart: unless-stopped
     logging: *logs
     networks: [interna]
