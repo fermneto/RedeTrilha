@@ -1454,7 +1454,10 @@ export type EventoDeMensagem =
   | { tipo: "conectou" }
   | { tipo: "mensagem" | "pedido"; conversa_id: number; mensagem_id: number }
   | { tipo: "lida"; conversa_id: number; leitor_id: number; ultima_lida_id: number }
-  | { tipo: "conversa"; conversa_id: number };
+  | { tipo: "conversa"; conversa_id: number }
+  // Os avisos (curtidas, seguidores, comentários...) vêm pelo mesmo stream: só o
+  // sinal, e quem ouve busca o contador e a lista pelas rotas de /avisos.
+  | { tipo: "aviso" };
 
 // Separa os eventos completos (terminados em linha em branco) do pedaço que ainda
 // não chegou inteiro. Linhas de comentário (": batida") não viram evento.
@@ -1551,4 +1554,116 @@ export function ouvirMensagens(aoEvento: (evento: EventoDeMensagem) => void): ()
 export function buscarQuemRecebeMensagem(q: string): Promise<Page<PoetaDoAcervo>> {
   const params = new URLSearchParams({ q, tipo: "do_verso", offset: "0", limit: "6", sigo_primeiro: "true" });
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
+
+// ---- Avisos (DECISIONS.md, decisão 16) ----
+// Curtidas, seguidores, reposts, citações, comentários, críticas, respostas e
+// rengas. Chegam pelo stream das mensagens (evento "aviso"); as curtidas e os
+// reposts de um mesmo poema vêm numa linha só.
+
+export type TipoDeAviso =
+  | "curtida"
+  | "seguidor"
+  | "repost"
+  | "citacao"
+  | "comentario"
+  | "critica"
+  | "resposta"
+  | "estrofe"
+  | "convite";
+
+export type Aviso = {
+  id: number;
+  tipo: TipoDeAviso;
+  created_at: string;
+  lido: boolean;
+  atores: User[];
+  total_atores: number;
+  post_id: number | null;
+  renga_id: number | null;
+  comentario_id: number | null;
+  titulo: string | null;
+  trecho: string;
+  verso_inicio: number | null;
+  verso_fim: number | null;
+};
+
+export type AvisoPage = { items: Aviso[]; limit: number; proximo_cursor: string | null };
+
+export function listarAvisos(cursor: string | null, limit = 20): Promise<AvisoPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<AvisoPage>(`/avisos?${params}`);
+}
+
+export function buscarResumoDeAvisos(): Promise<{ nao_lidos: number }> {
+  return apiGet<{ nao_lidos: number }>("/avisos/resumo");
+}
+
+// Marca como lidos até o aviso mais recente que a tela mostrou (o que chegou
+// depois continua aceso).
+export function marcarAvisosLidos(ate?: number): Promise<void> {
+  return apiPost("/avisos/lidos", ate === undefined ? {} : { ate });
+}
+
+// "Ana", "Ana e Bia", "Ana e mais 3": quem fez, na frase do aviso.
+export function quemNoAviso(aviso: Aviso): string {
+  const [primeiro, segundo] = aviso.atores.map((u) => u.name);
+  if (!primeiro) return "Alguém";
+  const resto = aviso.total_atores - 1;
+  if (resto <= 0) return primeiro;
+  if (resto === 1 && segundo) return `${primeiro} e ${segundo}`;
+  return `${primeiro} e mais ${resto}`;
+}
+
+// O que aconteceu, depois de quem: "curtiu seu poema", "criticou os versos 5–8 da renga".
+export function acaoDoAviso(aviso: Aviso): string {
+  const varios = aviso.total_atores > 1;
+  const versos =
+    aviso.verso_inicio === null
+      ? ""
+      : aviso.verso_inicio === aviso.verso_fim
+        ? `o verso ${aviso.verso_inicio}`
+        : `os versos ${aviso.verso_inicio}–${aviso.verso_fim}`;
+  const naRenga = aviso.renga_id !== null;
+  switch (aviso.tipo) {
+    case "curtida":
+      return varios ? "curtiram seu poema" : "curtiu seu poema";
+    case "repost":
+      return varios ? "repostaram seu poema" : "repostou seu poema";
+    case "seguidor":
+      return "começou a seguir você";
+    case "citacao":
+      return "citou seu poema";
+    case "comentario":
+      return naRenga ? "comentou na renga" : "comentou seu poema";
+    case "critica":
+      return naRenga ? `criticou ${versos} da renga` : `criticou ${versos} do seu poema`;
+    case "resposta":
+      return "respondeu ao seu comentário";
+    case "estrofe":
+      return "escreveu uma estrofe na renga";
+    case "convite":
+      return "convidou você para uma renga";
+  }
+}
+
+// Para onde a linha leva: o poema (com ?versos= na crítica), a renga ou o perfil.
+export function linkDoAviso(aviso: Aviso): string {
+  if (aviso.tipo === "seguidor") return `/u/${encodeURIComponent(aviso.atores[0]?.username ?? "")}`;
+  const base = aviso.renga_id !== null ? `/rengas/${aviso.renga_id}` : `/poema/${aviso.post_id}`;
+  if (aviso.tipo === "critica" && aviso.verso_inicio !== null) {
+    return `${base}?versos=${aviso.verso_inicio}-${aviso.verso_fim}`;
+  }
+  return base;
+}
+
+// "agora", "5 min", "3 h", "2 d" e, passada uma semana, a data.
+export function tempoRelativo(iso: string, agora: Date = new Date()): string {
+  const segundos = Math.max(0, (agora.getTime() - lerData(iso).getTime()) / 1000);
+  if (segundos < 60) return "agora";
+  if (segundos < 3600) return `${Math.floor(segundos / 60)} min`;
+  if (segundos < 86_400) return `${Math.floor(segundos / 3600)} h`;
+  if (segundos < 7 * 86_400) return `${Math.floor(segundos / 86_400)} d`;
+  return formatarData(iso);
 }

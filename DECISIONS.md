@@ -54,6 +54,8 @@ PRs, na seção "Decisões do Neto".
     (decisão 12).
   - As mensagens diretas servem ao que é pessoal: combinar uma renga, trocar
     poemas, conversar. A crítica do poema continua pública (decisão 13).
+  - Os avisos contam a quem escreve que alguém curtiu, citou, criticou um
+    verso, respondeu ou escreveu a estrofe seguinte da renga (decisão 16).
 - **Como saberíamos que funcionou:** alguém cita um verso de um consagrado ou
   de outro poeta da rede e recebe respostas de outra pessoa. Isso dá para
   contar no banco: citações (`repost_de_id` com texto) com comentários de outra
@@ -660,6 +662,66 @@ decisão 15.
   - **O Render free:** dorme depois de uns 15 minutos sem tráfego, e a
     primeira visita leva cerca de 1 minuto. Fica como plano B, com o Supabase (`docs/deploy.md`).
 
+### 16. Avisos: a conversa chega a quem escreve
+
+- **Contexto:** na primeira versão, cortamos as notificações para não trazer de
+  volta a lógica do engajamento (ver "O que ficou de fora"). Na prática, quem
+  publica um soneto não sabe que alguém criticou o verso 6 nem que a estrofe
+  seguinte da renga chegou, e a conversa morre sem resposta. A crítica e a renga
+  só funcionam se a pessoa volta para responder.
+- **Opções:** nenhum aviso (o corte anterior); avisos só da conversa
+  (comentário, crítica, resposta, estrofe); ou avisos gerais, como no X, com
+  curtidas, seguidores, reposts e citações também (decisão do Neto).
+- **Escolha:**
+  - **Avisos gerais**, numa página "Avisos" com um contador no menu, como o de
+    Mensagens: curtida, novo seguidor, repost, citação (também a de versos),
+    comentário, crítica ("criticou os versos 5–8 do seu poema"), resposta ao seu
+    comentário, nova estrofe na renga que você criou ou em que escreveu, e
+    convite para renga.
+  - **Na renga, o poema é de todos:** o comentário geral avisa o criador e todos
+    os autores de estrofe; a crítica avisa o criador e só os autores das estrofes
+    que os versos tocam; a resposta avisa quem foi respondido e o criador
+    (decisão do Neto).
+  - **A resposta no poema avisa duas pessoas:** quem foi respondido ("respondeu
+    ao seu comentário") e o autor do poema ("comentou seu poema"), porque a
+    conversa é no poema dele (decisão do Neto).
+  - **Quem não recebe:** quem fez a ação, os consagrados (não têm login) e quem
+    tem bloqueio, em qualquer sentido, com quem agiu ou com o dono do poema ou da
+    renga. Um bloqueio feito depois esconde os avisos antigos da outra pessoa.
+  - **Desfazer apaga o aviso:** descurtir, desfazer o repost, deixar de seguir,
+    apagar o comentário ou o poema. O aviso não fica dizendo que alguém curtiu o
+    que já não curte.
+  - **Curtidas e reposts de um poema numa linha por dia:** "Ana e mais 3
+    curtiram seu poema" hoje, outra linha ontem (decisão do Neto). O dia é o de
+    Brasília. Sem o dia, a curtida de hoje entraria na linha das do mês passado. O
+    comentário e a crítica nunca se agrupam: cada um tem o seu texto, e a linha
+    mostra o começo dele.
+  - **O contador conta linhas da tela, não ações** (decisão do Neto): as 20
+    curtidas de hoje num poema contam 1, como a linha que a pessoa vai ler.
+  - **Cada linha leva ao lugar certo:** o poema; a crítica abre o poema com os
+    versos selecionados (`/poema/7?versos=5-8`); a renga; o perfil de quem seguiu.
+  - **Em tempo real, pelo stream das mensagens:** o contador sobe sem recarregar
+    e zera ao abrir a página, também nas outras abas.
+  - **Bloqueio feito depois esconde, não apaga** (decisão do Neto): os avisos
+    antigos de quem foi bloqueado somem da lista e do contador; desbloquear os
+    traz de volta, como os comentários (decisão 13).
+  - **No celular, a barra de baixo ficou com cinco itens** (decisão do Neto):
+    Início, Explorar, Escrever, Avisos e Mensagens, os dois com contador, e um
+    "Mais" que abre uma folha com Antologias, Rascunhos, Acervo, Rengas, Perfil,
+    Preferências e "Sair". Com os Avisos, seriam dez ícones de 36 px em 360 px.
+    O menu lateral do computador não muda.
+  - **A ordem é cronológica**, como o feed (decisão 3): o aviso mais recente
+    primeiro, nunca "os mais curtidos".
+- **O que cortamos e por quê:**
+  - **Push e e-mail:** pediriam permissão do navegador, um serviço de entrega e
+    um opt-out por tipo; com a aba aberta, o aviso já chega em tempo real.
+  - **Mensagem direta nos avisos:** já tem o contador próprio em Mensagens
+    (decisão 13), e contar duas vezes a mesma conversa confunde.
+  - **Escolher que avisos receber:** um painel de preferências por tipo é mais
+    uma tela para manter; ficou para depois, se alguém pedir.
+  - **"Renga encerrada" e "atingiu o limite":** quem escreveu vê a renga fechada
+    no feed (decisão 10). Também não há aviso de desbloqueio.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo
@@ -686,10 +748,8 @@ sobre o produto:
 - **Upload de imagem.** O poema é texto para poder ser citado, copiado e
   traduzido; uma imagem no post traria de volta o "poema em print". O avatar é
   só uma URL.
-- **Notificações de curtida, comentário e seguidor.** Trariam de volta a
-  lógica do engajamento. Quem escreve volta para ler o feed, e as respostas
-  estão na página do poema. O único contador do Verso é o das mensagens
-  diretas (decisão 13), que é uma conversa com alguém, e não uma métrica.
+- **Push e e-mail dos avisos** (decisão 16). Os avisos ficam na página
+  Avisos, em tempo real com a aba aberta; o celular não vibra a cada curtida.
 - **Busca por palavra.** Quem procura poesia costuma procurar por tema
   ("#chuva") ou por forma ("haicai"), e é isso que o Explorar faz, com o índice
   invertido. Texto livre em poemas sem limite pediria um índice de texto
@@ -734,6 +794,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Oficina: sílabas e rimas no compositor | Neto | Quem escreve vê o metro e as rimas enquanto escreve, e desliga se não usa. |
 | Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
 | Rengas | Neto | Várias pessoas escrevem um poema junto, estrofe por estrofe. |
+| Avisos | Neto | Quem escreve fica sabendo da crítica, da resposta e da estrofe nova, e volta para continuar a conversa. |
 | Mensagens diretas | Neto | Combinar uma renga ou mandar um poema a alguém sem sair do Verso, com a crítica continuando pública. |
 | Negrito, itálico, sublinhado e tachado no compositor | Neto | O poeta marca a palavra como no Google Docs, e o poema continua texto, com os mesmos versos. |
 | Deploy (Vercel + VM da Oracle com API e Postgres) | Neto | A banca usa a rede na URL pública, e os dados não somem: backup diário no Object Storage. |
@@ -987,6 +1048,41 @@ servidor; os 404 são os perfis e poemas que o bloqueio esconde.
 Com os comentários escondidos, o Acervo e as listas filtrados (mais uma
 consulta curta por página de comentários), de novo com os 13 bloqueios: p95 de
 74 e 101 ms com pausa de 3 s e de 936 ms sem pausa, 0 erro de servidor.
+
+### Avisos: uma linha por ação, agrupadas na leitura
+
+Os avisos (decisão 16) moram na tabela nova `avisos`, uma linha por ação e por
+destinatário, gravada pelo service da ação **na mesma transação** (o
+`services/avisos.avisar` roda antes do commit da curtida ou do comentário; se a
+ação volta num rollback, o aviso volta junto). O evento `aviso` sai pelo mesmo
+`tempo_real.avisar` das mensagens: o NOTIFY só é entregue no commit, chega ao
+stream aberto em qualquer réplica, e o cliente busca o contador pela rota. Não
+há segundo stream nem estado na API.
+
+Uma linha por ação, e não uma por grupo, porque desfazer precisa apagar só a
+curtida de quem descurtiu. O agrupamento ("Ana e mais 3 curtiram") é um
+`GROUP BY (tipo, post_id, dia de Brasília, id se o tipo não agrupa)` nos avisos
+da pessoa (no Postgres, `timezone('America/Sao_Paulo', ...)`; no SQLite de dev,
+o deslocamento fixo de -3 h, já que o Brasil não tem horário de verão desde 2019),
+ordenado pelo aviso mais recente de cada grupo, com o cursor `(data, id)` desse
+aviso no `HAVING`. O contador agrupa do mesmo jeito, só os não lidos. Os dois
+atores mais recentes de cada grupo saem de um `ROW_NUMBER` por grupo, e os alvos da página (poemas, rengas, comentários,
+estrofes, âncoras) de uma consulta por tabela, sem N+1. As regras puras
+(quem recebe, sem repetir e sem o ator; que estrofes uma crítica de renga toca;
+o trecho da linha) ficam em `core/avisos.py`.
+
+| Operação | Custo | Quando roda |
+|---|---|---|
+| gravar | O(c log n), c = candidatos | cada curtida, follow, comentário, estrofe |
+| listar | O(a) no índice `(destinatario_id, created_at, id)` para agrupar + O(k log n) | `GET /avisos` |
+| contador | O(u) no índice `(destinatario_id, lido)`, u = não lidos | `GET /avisos/resumo`, a cada evento |
+| marcar lidos | O(u) | abrir a página |
+
+O agrupamento custa O(a), com a = avisos da pessoa: para os poetas da demo,
+centenas. Se uma conta chegar a dezenas de milhares, o próximo passo é ler só
+uma janela recente (por exemplo, os últimos 30 dias) ou guardar o grupo numa
+tabela; não foi preciso. Os testes de avisos rodam também contra o Postgres 16
+(`TEST_POSTGRES_URL`), com o dia de Brasília e o NOTIFY.
 
 ## Uso de IA
 

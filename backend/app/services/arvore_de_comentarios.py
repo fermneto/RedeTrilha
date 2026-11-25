@@ -108,12 +108,14 @@ def apagar(
     usuario: User,
     comentario,
     antes_de_sair: Callable[[int], None] | None = None,
+    ao_tirar: Callable[[int], None] | None = None,
 ) -> ComentarioApagadoOut:
     """Só o autor. Com respostas, vira marcador (texto vazio, `removido`).
 
     Sem respostas, sai do banco (`antes_de_sair` apaga o que depende dele, como a
-    âncora dos poemas). Devolve qual dos dois aconteceu e o total de respostas,
-    que pode ser maior que o da tela (alguém respondeu depois). Um marcador já
+    âncora dos poemas). Nos dois casos, `ao_tirar` roda antes do commit (saem os
+    avisos do comentário: o texto não está mais lá). Devolve qual dos dois
+    aconteceu e o total de respostas, que pode ser maior que o da tela (alguém respondeu depois). Um marcador já
     removido continua como marcador para sempre (decisão do Neto): apagar de
     novo não faz nada.
     """
@@ -133,6 +135,8 @@ def apagar(
         comentario.texto = ""
         comentario.removido = True
         resultado = "removido"
+    if ao_tirar is not None:
+        ao_tirar(comentario.id)
     db.commit()
     return ComentarioApagadoOut(resultado=resultado, total_respostas=total)
 
