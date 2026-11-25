@@ -126,8 +126,8 @@
 
 /* A vitrine da landing (components/LayoutDaEntradaVitrine.tsx). As peças já
    nascem na posição final, visíveis; na entrada, os cartões de trás abrem em leque
-   de trás do cartão do centro (partem de --de, rentes a ele, sem giro) e a curtida
-   surge por cima (--atraso). Cada cartão de trás guarda a posição em variáveis:
+   de trás do cartão do centro (partem de --de, rentes a ele, sem giro) e a barra
+   "comentar estes versos" surge depois (--atraso). Cada cartão de trás guarda a posição em variáveis:
    --y (deslocamento vertical), --giro e --escala. Com prefers-reduced-motion,
    nada se mexe. */
 @layer components {

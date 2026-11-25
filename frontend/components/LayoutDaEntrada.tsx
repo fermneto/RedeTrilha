@@ -3,7 +3,7 @@
 // em /login. Como a entrada do Instagram: a marca pequena no canto de cima e, no
 // meio da tela, a frase centralizada com a vitrine em leque embaixo
 // (LayoutDaEntradaVitrine.tsx) e, à direita, o cartão de entrar com o "Criar
-// conta". No desktop a largura se divide em duas metades fixas (60% e 40% da
+// conta". No desktop a largura se divide em duas metades fixas (55% e 45% da
 // tela) e cada bloco fica no centro da sua, na horizontal e na vertical.
 // Embaixo, o rodapé de largura total.
 // Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
@@ -34,12 +34,12 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
         <span aria-hidden="true">Verso</span>
       </Link>
 
-      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[60%_40%] lg:content-center lg:gap-x-0 lg:gap-y-10 lg:px-0 lg:py-0 lg:[grid-template-areas:'frase_entrar''leque_entrar']">
+      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[55%_45%] lg:content-center lg:gap-x-0 lg:gap-y-10 lg:px-0 lg:py-0 lg:[grid-template-areas:'frase_entrar''leque_entrar']">
         <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:justify-self-center lg:px-6 lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
 
-        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[20rem] lg:max-w-none lg:self-center lg:justify-self-center lg:[grid-area:entrar] xl:w-[22rem]">
+        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:self-center lg:justify-self-center lg:[grid-area:entrar] 2xl:w-[26rem]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
@@ -60,7 +60,7 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
 
 // Mesmos estilos do Compositor (input arredondado, foco na cor de destaque).
 const CAMPO =
-  "mt-1 w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 font-normal text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
+  "mt-1 w-full rounded-xl border border-borda bg-papel-alto px-3 py-2 font-normal lg:mt-1.5 lg:min-h-12 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
 
 // Login: troca username e senha por um token (POST /auth/login), guarda o token
 // e vai para o destino. Com token já salvo, confere se ele ainda vale antes de
@@ -103,8 +103,8 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
   // página não pula quando ele aparece.
   return (
     <div aria-busy={conferindo} className={conferindo ? "invisible" : undefined}>
-      <form onSubmit={aoEntrar} className="space-y-4 rounded-2xl border border-borda bg-painel p-6">
-        <h2 id="titulo-entrar" className="text-xl">
+      <form onSubmit={aoEntrar} className="space-y-4 rounded-2xl border border-borda bg-painel p-6 lg:space-y-5 lg:p-8">
+        <h2 id="titulo-entrar" className="text-xl lg:pb-2 lg:text-2xl">
           Entrar no Verso
         </h2>
 
@@ -148,13 +148,13 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
         <button
           type="submit"
           disabled={enviando}
-          className="min-h-11 w-full cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
+          className="min-h-11 w-full cursor-pointer rounded-full bg-destaque lg:min-h-12 px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
         >
           {enviando ? "entrando..." : "Entrar"}
         </button>
       </form>
 
-      <div className="my-5 flex items-center gap-3 text-xs text-tinta-suave" role="separator" aria-label="ou">
+      <div className="my-5 flex items-center gap-3 text-xs lg:my-8 text-tinta-suave" role="separator" aria-label="ou">
         <span aria-hidden="true" className="h-px flex-1 bg-borda" />
         <span aria-hidden="true">ou</span>
         <span aria-hidden="true" className="h-px flex-1 bg-borda" />
@@ -162,7 +162,7 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
 
       <Link
         href="/cadastro"
-        className="realce flex min-h-11 w-full items-center justify-center rounded-full border border-borda px-5 text-sm font-bold text-tinta"
+        className="realce flex min-h-11 w-full items-center lg:min-h-12 justify-center rounded-full border border-borda px-5 text-sm font-bold text-tinta"
       >
         Criar conta
       </Link>

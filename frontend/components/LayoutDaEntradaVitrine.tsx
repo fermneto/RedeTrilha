@@ -111,8 +111,7 @@ const CARTAO = "rounded-2xl border border-borda bg-papel-alto sombra-de-papel";
 // O leque, como as fotos da entrada do Instagram: o poema no centro, reto e à
 // frente; a renga atrás à esquerda e a Dickinson atrás à direita, em espelho
 // (85% da escala, ±6°, cerca de 37% para fora do cartão do centro, um pouco
-// esmaecidas). A curtida encavala no canto de baixo do cartão do centro. Abaixo
-// de 640 px fica só o cartão do centro; abaixo de 1024 px o leque todo em 80%, e
+// esmaecidas). Abaixo de 640 px fica só o cartão do centro; abaixo de 1024 px o leque todo em 80%, e
 // de 1536 px em diante, em 115%.
 // As medidas dos de trás: caixa de 20rem; com a escala, 17rem visíveis, e a
 // borda visível fica 6.3rem para fora da do centro (caixa a -7.8rem).
@@ -127,12 +126,6 @@ export function Vitrine() {
 
         <div className="relative z-30">
           <CartaoDaFrente />
-          <span
-            aria-hidden="true"
-            className="vitrine-flutua absolute -bottom-5 -left-5 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-destaque text-papel sombra-de-papel [--giro:-12deg] [--atraso:420ms] max-sm:-left-2"
-          >
-            <IconeCurtir cheio className="h-7 w-7" />
-          </span>
         </div>
       </div>
     </div>
