@@ -1,8 +1,8 @@
 "use client";
 // Menu da conta logada: o avatar abre um popover com "Preferências" (os passos de
 // gostos e região do onboarding, que voltam para a página atual) e "Sair de
-// @username" (e, na barra inferior do celular, também "Perfil" e "Rascunhos", que
-// ali não têm item próprio).
+// @username" (e, na barra inferior do celular, também "Perfil", que ali não tem
+// item próprio).
 // Fecha com Esc (o foco volta ao avatar), com clique fora ou quando o Tab sai dele.
 // Ao abrir, o foco vai para o primeiro item; o menu vem depois do botão no DOM.
 
@@ -51,7 +51,7 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
   }
 
   return (
-    <div ref={caixa} onBlur={aoPerderFoco} className={inferior ? "relative" : "relative mb-2 w-full"}>
+    <div ref={caixa} onBlur={aoPerderFoco} className={inferior ? "relative w-full" : "relative mb-2 w-full"}>
       <button
         ref={botao}
         type="button"
@@ -64,7 +64,7 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
         aria-label={`Conta de ${eu.name} (@${eu.username})`}
         className={
           inferior
-            ? "flex h-13 min-w-11 cursor-pointer items-center justify-center px-2"
+            ? "flex h-13 w-full cursor-pointer items-center justify-center"
             : "realce flex w-full cursor-pointer items-center justify-center gap-3 rounded-full p-3 text-left xl:justify-start"
         }
       >
@@ -92,14 +92,9 @@ export function MenuConta({ eu, aoSair, variante, ativo = false }: Props) {
         }`}
       >
         {inferior && (
-          <>
-            <Link href={`/u/${eu.username}`} onClick={() => setAberto(false)} className={ITEM_DO_MENU}>
-              Perfil
-            </Link>
-            <Link href="/rascunhos" onClick={() => setAberto(false)} className={ITEM_DO_MENU}>
-              Rascunhos
-            </Link>
-          </>
+          <Link href={`/u/${eu.username}`} onClick={() => setAberto(false)} className={ITEM_DO_MENU}>
+            Perfil
+          </Link>
         )}
         <Link
           href={caminhoDasPreferencias(atual, eu.username)}

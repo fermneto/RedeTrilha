@@ -8,8 +8,8 @@
 //
 // "Mensagens" leva o contador de conversas não lidas e pedidos novos, atualizado
 // pelo stream das mensagens (ouvirMensagens, em lib/api.ts) sem recarregar.
-// Na barra do celular não cabem nove ícones em 360 px: "Rascunhos" vai para o
-// menu da conta, como o "Perfil".
+// Na barra do celular, os nove itens dividem a largura por igual (em 360 px, 40 px
+// cada).
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -57,8 +57,6 @@ const ITENS: Item[] = [
 // Item ativo: traço mais grosso no ícone e rótulo em negrito.
 const TRACO_ATIVO = "[stroke-width:2.25]";
 
-// Fora da barra do celular (ficam no menu da conta).
-const SO_NA_LATERAL = ["/perfil", "/rascunhos"];
 
 // O número de conversas a ler, em cima do ícone de Mensagens. Acima de 99, "99+".
 function Contador({ n }: { n: number }) {
@@ -132,7 +130,7 @@ export function Nav() {
   const ativo = (href: string) => (href === "/" ? caminho === "/" : caminho.startsWith(href));
   const itens = ITENS.filter((item) => logado || !item.soLogado);
   // No celular, o último item é o avatar (menu com Perfil e Sair) ou o "Entrar".
-  const itensDoCelular = itens.filter((item) => !SO_NA_LATERAL.includes(item.href));
+  const itensDoCelular = itens.filter((item) => item.href !== "/perfil");
   const contador = (href: string) => (href === "/mensagens" ? aLer : 0);
 
   return (
@@ -208,12 +206,12 @@ export function Nav() {
           {itensDoCelular.map(({ href, rotulo, Icone }) => {
             const atual = ativo(href);
             return (
-              <li key={href}>
+              <li key={href} className="flex min-w-0 flex-1 justify-center">
                 <Link
                   href={href}
                   aria-label={rotuloComContador(rotulo, contador(href))}
                   aria-current={atual ? "page" : undefined}
-                  className={`flex h-13 min-w-11 items-center justify-center px-2 ${
+                  className={`flex h-13 w-full max-w-14 items-center justify-center ${
                     atual ? "text-tinta" : "text-tinta-suave"
                   }`}
                 >
@@ -225,7 +223,7 @@ export function Nav() {
               </li>
             );
           })}
-          <li>
+          <li className="flex min-w-0 flex-1 justify-center">
             {logado ? (
               eu && (
                 <MenuConta

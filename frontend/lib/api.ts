@@ -1319,6 +1319,12 @@ export function silenciarConversa(id: number, silenciar: boolean): Promise<void>
   return silenciar ? apiPost(caminho) : apiDelete(caminho);
 }
 
+// Se eu bloqueei a pessoa (o perfil mostra "Desbloquear"). Quem me bloqueou dá 404.
+export function buscarBloqueio(username: string): Promise<{ bloqueei: boolean }> {
+  return apiGet<{ bloqueei: boolean }>(`/usuarios/${encodeURIComponent(username)}/bloqueio`);
+}
+
+// Bloquear vale para a rede inteira, como no X (DECISIONS.md, decisão 13).
 export function bloquear(username: string, bloqueado: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/bloqueio`;
   return bloqueado ? apiPost(caminho) : apiDelete(caminho);
