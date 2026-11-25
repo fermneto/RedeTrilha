@@ -433,6 +433,10 @@ trocando a URL do Render pela sua.
 ### Ping externo (UptimeRobot)
 
 1. Crie a conta em [uptimerobot.com](https://uptimerobot.com) (plano free).
+   O cadastro já pede a URL do primeiro monitor: se a API ainda não estiver no
+   ar, use a URL da Vercel (o front já responde) e crie o da API depois. A
+   lista de "próximos passos" que aparece em seguida (alertas por app, SSL,
+   "cubra cada página", API) é opcional: os alertas por e-mail já vêm ligados.
 2. **Add New Monitor**:
 
    ```text
