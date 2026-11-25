@@ -49,7 +49,7 @@ const AUTOPSICOGRAFIA = {
 const ACOES = [
   { nome: "curtir", Icone: IconeCurtir, n: 86, ativa: true },
   { nome: "repostar", Icone: IconeRepostar, n: 9, ativa: false },
-  { nome: "citar", Icone: IconeCitar, n: 0, ativa: false },
+  { nome: "citar", Icone: IconeCitar, n: 4, ativa: false },
   { nome: "comentar", Icone: IconeComentar, n: 14, ativa: false },
 ];
 

@@ -4,7 +4,9 @@
 // meio da tela, a frase centralizada com a vitrine em leque embaixo
 // (LayoutDaEntradaVitrine.tsx) e, à direita, o cartão de entrar com o "Criar
 // conta". No desktop a largura se divide em duas metades fixas (55% e 45% da
-// tela) e cada bloco fica no centro da sua, na horizontal e na vertical.
+// tela): a frase e o leque ficam no centro da metade esquerda, e o cartão de
+// entrar fica a 5.5vw do começo da metade direita, mais perto do leque. Os dois
+// ficam centrados na vertical.
 // Embaixo, o rodapé de largura total.
 // Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
 // única parte interativa é o formulário, então o foco segue a mesma ordem).
@@ -39,7 +41,7 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
 
-        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:self-center lg:justify-self-center lg:[grid-area:entrar] 2xl:w-[26rem]">
+        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
