@@ -91,3 +91,12 @@ test("comentários continuam texto puro: a árvore não formata o corpo do comen
   assert.ok(fonte.includes('<p className="mt-1 text-sm whitespace-pre-wrap">{comentario.texto}</p>'));
   assert.ok(!/TextoFormatado texto=\{comentario/.test(fonte));
 });
+
+test("o verso do Em alta aparece formatado, sem ** vazando", () => {
+  const fonte = readFileSync(new URL("../components/EmAlta.tsx", import.meta.url), "utf8");
+  assert.ok(fonte.includes("<VersoFormatado linha={trecho} />"));
+  assert.equal(
+    renderToStaticMarkup(createElement(VersoFormatado, { linha: "  a **casa** *vazia*" })),
+    '  a <strong class="font-bold">casa</strong> <em>vazia</em>',
+  );
+});

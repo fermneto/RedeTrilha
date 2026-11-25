@@ -41,10 +41,11 @@ def test_tags_dentro_de_marcas_continuam_tags(client, como):
     assert [p["id"] for p in r.json()["items"]] == [post_id]
 
 
-def test_trecho_do_em_alta_sai_sem_marcas(client, como):
-    _poema(client, como, "#saudade\n  a **casa** *vazia*")
+def test_trecho_do_em_alta_vem_com_as_marcas(client, como):
+    # A linha só de #tags (mesmo em negrito) é pulada; a escolhida volta formatada.
+    _poema(client, como, "**#saudade** *#mar*\n  a **casa** *vazia*")
     item = client.get("/tags/trending", headers=como("ana")).json()["items"][0]
-    assert item["trecho"] == "  a casa vazia"
+    assert item["trecho"] == "  a **casa** *vazia*"
 
 
 def test_numeracao_de_versos_e_trecho_com_marcas(client, como):
