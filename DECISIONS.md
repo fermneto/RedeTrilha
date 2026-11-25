@@ -207,8 +207,9 @@ PRs, na seção "Decisões do Neto".
     privadas: é ali que ficam "as minhas antologias".
   - **Descobrir no Explorar, criar no "Escrever"** (decisão 17): a aba
     Antologias do Explorar lista as públicas de todo mundo com ao menos um
-    poema, a mais nova primeiro, com quem reuniu; a nova se cria em "Escrever →
-    Antologia" (`/antologias/nova`).
+    poema, inclusive as minhas, a mais nova primeiro, com quem reuniu (decisão
+    do Neto); a nova se cria no "Escrever", trocando o formato para Antologia
+    (`/antologias/nova`).
 - **O que cortamos e por quê:** reordenar os poemas. A ordem é a de inserção:
   a antologia já mostra o que o leitor lê, sem uma tela a mais para arrastar
   poemas.
@@ -355,8 +356,10 @@ decisão 15.
   - Duas pessoas escrevendo ao mesmo tempo não quebram as regras: quem perde a
     corrida recebe "outra pessoa acrescentou uma estrofe agora".
   - **Descobrir no Explorar, abrir no "Escrever"** (decisão 17): a aba Rengas do
-    Explorar lista as de todo mundo, com os filtros abertas (para participar) e
-    fechadas; a nova se abre em "Escrever → Renga". `/rengas` leva à aba, e
+    Explorar lista as de todo mundo, com os filtros abertas (para participar),
+    fechadas e "Minhas" (as que criei, em que escrevi ou para as quais fui
+    convidado); a nova se abre no "Escrever", trocando o formato para Renga.
+    `/rengas` leva à aba, e
     `/rengas/{id}` continua sendo a página da renga, aonde levam os avisos.
   - **Rengas, abertas ou encerradas, recebem comentários e crítica por verso**
     (decisão do Neto), com a mesma árvore, as mesmas marcas nos versos e o
@@ -716,11 +719,10 @@ decisão 15.
   - **Bloqueio feito depois esconde, não apaga** (decisão do Neto): os avisos
     antigos de quem foi bloqueado somem da lista e do contador; desbloquear os
     traz de volta, como os comentários (decisão 13).
-  - **No celular, a barra de baixo ficou com cinco itens** (decisão do Neto):
-    Início, Explorar, Escrever, Avisos e Mensagens, os dois com contador, e um
-    "Mais" com o resto. Com os Avisos, seriam dez ícones de 36 px em 360 px. A
-    navegação enxuta da decisão 17 deixou no "Mais" só Acervo, Perfil,
-    Preferências e "Sair".
+  - **No celular, a barra de baixo ficou com seis botões** (decisão do Neto):
+    Início, Explorar, Escrever, Avisos e Mensagens, os dois com contador, e o
+    avatar, que leva ao perfil. Com os Avisos, seriam dez ícones de 36 px em
+    360 px; o resto achou lugar na decisão 17.
   - **A ordem é cronológica**, como o feed (decisão 3): o aviso mais recente
     primeiro, nunca "os mais curtidos".
 - **O que cortamos e por quê:**
@@ -747,34 +749,44 @@ decisão 15.
 - **Escolha:**
   - **A barra lateral tem seis destinos e um botão:** Início, Explorar, Acervo,
     Avisos, Mensagens e Perfil, e o "Escrever", o único botão de criar.
-  - **"Escrever" abre uma lista curta:** Poema (em primeiro e com o foco nele),
-    Renga e Antologia, cada um no fluxo de criação que já existia
-    (`/escrever`, `/rengas/nova` e `/antologias/nova`, esta nova, com o mesmo
-    formulário). É um botão que abre e fecha (`aria-expanded`), como o menu da
-    conta: três links lidos como links, as setas andam entre eles, Esc fecha e
-    devolve o foco ao botão, clique fora fecha. O poema custa um clique a mais
-    pelo botão (Enter, Enter no teclado), mas o "O que você está escrevendo?"
-    do topo do feed continua levando direto ao compositor em um clique. Um
-    botão dividido (poema no corpo, setinha para o resto) pouparia esse clique,
-    mas não cabe na barra do celular e esconde a renga e a antologia num alvo
-    pequeno.
+  - **"Escrever" leva direto ao compositor, no poema** (decisão do Neto): o
+    poema nunca custa um clique a mais. No topo do compositor, um seletor
+    "Poema · Renga · Antologia" troca de formato e leva aos fluxos de criação
+    (`/rengas/nova` e `/antologias/nova`, esta nova, com o mesmo formulário),
+    que mostram o mesmo seletor. São três links, com `aria-current` no formato
+    atual, e não abas nem um modal, porque trocar de formato é trocar de
+    página; o "voltar" volta para onde a pessoa estava antes do "Escrever".
+    O seletor some na citação e no rascunho aberto, que já têm formato. Uma
+    primeira versão punha o seletor num menu do próprio botão, e o poema
+    custava dois cliques.
   - **Rascunhos no perfil:** a aba "Rascunhos" do próprio perfil (decisão 9).
     Visitantes não veem a aba, e `?aba=rascunhos` no perfil alheio abre Poemas.
     As antologias próprias, privadas inclusive, já eram a aba Antologias.
   - **Rengas e antologias no Explorar:** abaixo da busca, as abas Poemas, Rengas
-    e Antologias, com a aba na URL (`?aba=rengas&situacao=aberta`). Com uma tag
+    e Antologias, com a aba na URL (`?aba=rengas&situacao=aberta`). As rengas
+    filtram Todas, Abertas, Fechadas e Minhas (as que criei, em que escrevi ou
+    para as quais fui convidado; `GET /rengas?minhas=true`). Com uma tag
     escolhida, a tela é o resultado dela e as abas somem, como na busca do X.
+  - **No celular**, a barra é Início, Explorar, Escrever, Avisos, Mensagens e o
+    meu avatar, que leva ao perfil (decisão do Neto; antes era um "Mais"). O
+    Acervo, que no computador continua na barra lateral, fica num atalho no
+    topo do Explorar; Preferências e "Sair" ficam no botão de ajustes do meu
+    perfil, ao lado de "Editar perfil" (no computador, também no menu da conta).
   - **Nenhum link quebra:** `/rascunhos` e `/antologias` levam às abas do
     perfil, `/rengas` à aba do Explorar (com o filtro e a página), e
     `/rengas/{id}` e `/antologias/{id}` continuam onde estavam, inclusive para
     os avisos.
-  - **No celular**, a barra fica Início, Explorar, Escrever, Avisos, Mensagens e
-    "Mais", e o "Escrever" abre a mesma lista, numa folha acima da barra. O
-    "Mais" ficou com Acervo, Perfil, Preferências e "Sair".
+  - **O nome no perfil, no celular, fica embaixo do avatar e dos botões**, na
+    largura toda, como no X, e quebra só entre palavras; com mais de 20
+    caracteres, a fonte desce um passo. Espremido entre o avatar e os botões,
+    "Albuquerque" partia no meio.
 - **O que cortamos e por quê:** os itens Antologias, Rascunhos e Rengas da
-  navegação, o item "Escrever" repetido ao lado do botão, e as páginas próprias
-  "Minhas antologias" e "Rengas" (viraram abas). A rota da lista de rengas e a
-  das minhas antologias só redirecionam, para os favoritos e links antigos.
+  navegação, o item "Escrever" repetido ao lado do botão, o "Mais" do celular,
+  e as páginas próprias "Minhas antologias" e "Rengas" (viraram abas). A rota
+  da lista de rengas e a das minhas antologias só redirecionam, para os
+  favoritos e links antigos. O texto já escrito no compositor não passa para a
+  renga ao trocar de formato: são formulários diferentes, e a primeira estrofe
+  de uma renga raramente é o poema que se começou.
 
 ### O que ficou de fora e por quê
 

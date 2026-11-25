@@ -257,7 +257,9 @@ Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
 `autor_id`, `posicao`, `texto`, unique (`renga_id`, `posicao`)) e
 `convites_renga` (unique (`renga_id`, `user_id`)).
 
-- `GET /rengas?situacao=aberta|fechada` 🔒 → `RengaPage`; `POST /rengas` 🔒
+- `GET /rengas?situacao=aberta|fechada&minhas=true` 🔒 → `RengaPage` (`minhas`:
+  só as que criei, em que escrevi ou para as quais fui convidado);
+  `POST /rengas` 🔒
   (`titulo`, `primeira_estrofe`, `modo`, `limite` de 3 a 40, padrão 12,
   `convidados`) → 201 `RengaDetalhe`; `GET /rengas/{id}` 🔒.
 - `POST /rengas/{id}/estrofes` 🔒: 403 para não convidado, 409 para renga
