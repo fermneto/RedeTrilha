@@ -1,13 +1,14 @@
 "use client";
-// Nova antologia, pelo "Escrever" (MenuEscrever): nome, descrição e o switch
-// Pública/Privada, e daí para a antologia recém-criada. Cancelar volta para onde
-// a pessoa estava (ou para o início, se a página abriu direto).
+// Nova antologia, pelo seletor de formato do "Escrever" (FormatoDeEscrita): nome,
+// descrição e o switch Pública/Privada, e daí para a antologia recém-criada.
+// Cancelar volta para onde a pessoa estava (ou para o início, se abriu direto).
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
 import { caminhoDoLogin, criarAntologia, temToken } from "@/lib/api";
 
 export default function NovaAntologiaPage() {
@@ -19,7 +20,8 @@ export default function NovaAntologiaPage() {
 
   return (
     <div>
-      <CabecalhoPagina titulo="Nova antologia" />
+      <CabecalhoPagina titulo="Escrever" />
+      <FormatoDeEscrita atual="antologia" />
       <div className="px-4 py-5">
         <p className="mb-5 text-sm text-tinta-suave">
           Reúna os poemas que você ama, como &ldquo;Poemas de chuva&rdquo; ou &ldquo;Para ler no ônibus&rdquo;. Depois,

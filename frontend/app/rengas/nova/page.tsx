@@ -1,12 +1,14 @@
 "use client";
 // Nova renga: título, a primeira estrofe e as configurações (modo, limite de
-// estrofes e, no modo convidados, os usernames de quem pode escrever).
+// estrofes e, no modo convidados, os usernames de quem pode escrever). Chega-se
+// pelo seletor de formato do compositor (FormatoDeEscrita), no "Escrever".
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
+import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
 import {
   caminhoDoLogin,
   criarRenga,
@@ -76,7 +78,8 @@ export default function NovaRengaPage() {
 
   return (
     <div>
-      <CabecalhoPagina titulo="Nova renga" />
+      <CabecalhoPagina titulo="Escrever" />
+      <FormatoDeEscrita atual="renga" />
       <form onSubmit={enviar} noValidate className="space-y-6 px-4 py-5">
         <div>
           <label htmlFor={`${id}-titulo`} className="block text-sm font-semibold">

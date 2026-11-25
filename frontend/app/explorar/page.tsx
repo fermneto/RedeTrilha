@@ -9,6 +9,9 @@
 // da navegação e se descobrem aqui (decisão do Neto). A aba também mora na URL
 // (?aba=rengas&situacao=&pagina=, ?aba=antologias); com uma tag escolhida, a tela
 // é o resultado dela e as abas somem, como na busca do X.
+//
+// No celular, o Acervo não está na barra de baixo: um atalho acima das abas leva a
+// ele (no computador, ele continua na barra lateral).
 
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -17,6 +20,7 @@ import { Suspense, useCallback, useEffect, useId, useState } from "react";
 import { Abas } from "@/components/Abas";
 import { AntologiaLista } from "@/components/AntologiaLista";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
+import { IconeAcervo } from "@/components/icones/IconeAcervo";
 import { DescobrirNoTopo } from "@/components/ColunaDireita";
 import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
 import { ListaDePoemas } from "@/components/ListaDePoemas";
@@ -182,19 +186,31 @@ function Explorar() {
       {tag ? (
         poemas
       ) : (
-        <Abas abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="O que explorar">
-          {(valor) =>
-            valor === "poemas" ? (
-              poemas
-            ) : valor === "rengas" ? (
-              logado && (
-                <ListaDeRengas situacao={lerSituacao(params.get("situacao"))} pagina={lerPagina(params.get("pagina"))} />
+        <>
+          <Link
+            href="/acervo"
+            className="realce flex min-h-14 items-center gap-3 border-b border-borda px-4 py-2 sm:hidden"
+          >
+            <IconeAcervo className="h-6 w-6 shrink-0" />
+            <span className="min-w-0">
+              <span className="block font-semibold">Acervo</span>
+              <span className="block text-sm text-tinta-suave">todos os poetas, por língua e época</span>
+            </span>
+          </Link>
+          <Abas abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="O que explorar">
+            {(valor) =>
+              valor === "poemas" ? (
+                poemas
+              ) : valor === "rengas" ? (
+                logado && (
+                  <ListaDeRengas situacao={lerSituacao(params.get("situacao"))} pagina={lerPagina(params.get("pagina"))} />
+                )
+              ) : (
+                logado && <AntologiasDoExplorar />
               )
-            ) : (
-              logado && <AntologiasDoExplorar />
-            )
-          }
-        </Abas>
+            }
+          </Abas>
+        </>
       )}
     </div>
   );

@@ -5,6 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { Compositor } from "@/components/Compositor";
+import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
 import { caminhoDoLogin, temToken, textoDaCitacaoDeVersos } from "@/lib/api";
 
 // useSearchParams precisa de Suspense no build estático do Next.
@@ -31,9 +32,14 @@ function Escrever() {
     if (!temToken()) router.replace(caminhoDoLogin());
   }, [router]);
 
+  // O seletor Poema · Renga · Antologia só num poema novo: citação e rascunho já
+  // têm formato.
+  const poemaNovo = citarId === null && rascunhoId === null;
+
   return (
     <div>
       <CabecalhoPagina titulo={citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema"} />
+      {poemaNovo && <FormatoDeEscrita atual="poema" />}
       <div className="px-4 py-5">
         <Compositor
           key={citarId ?? (rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")}

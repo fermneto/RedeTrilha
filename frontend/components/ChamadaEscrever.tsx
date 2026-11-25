@@ -1,7 +1,7 @@
 "use client";
 // Topo do feed: o convite compacto para escrever um poema. Leva direto ao compositor
 // completo em /escrever, que tem título, forma e a regra do Tab: é o caminho de um
-// clique para o poema; renga e antologia ficam no "Escrever" da navegação.
+// clique para o poema; lá, o seletor do topo troca para renga ou antologia.
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
