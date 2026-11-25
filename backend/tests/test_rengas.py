@@ -232,6 +232,23 @@ def test_listar_pagina_e_filtra(client, como):
     assert client.get("/rengas?situacao=outra", headers=como("caio")).status_code == 422
 
 
+def test_minhas_sao_as_que_criei_escrevi_ou_fui_convidado(client, como):
+    criei = _renga(client, como("ana"), titulo="Criei")
+    escrevi = _renga(client, como("bia"), titulo="Escrevi")
+    assert _estrofe(client, como("ana"), escrevi["id"]).status_code == 201
+    convidada = _renga(client, como("bia"), titulo="Convite", modo="convidados", convidados=["ana"])
+    alheia = _renga(client, como("caio"), titulo="Alheia")
+
+    def ids(url):
+        return [i["id"] for i in client.get(url, headers=como("ana")).json()["items"]]
+
+    assert ids("/rengas?minhas=true") == [convidada["id"], escrevi["id"], criei["id"]]
+    assert alheia["id"] in ids("/rengas")
+    client.post(f"/rengas/{criei['id']}/encerrar", headers=como("ana"))
+    assert ids("/rengas?minhas=true&situacao=fechada") == [criei["id"]]
+    assert client.get("/rengas?minhas=true", headers=como("caio")).json()["total"] == 1
+
+
 def test_seed_tem_renga_aberta_fechada_e_de_convidados(client):
     from sqlalchemy import select
 

@@ -985,14 +985,17 @@ export type NovaRenga = {
   convidados: string[];
 };
 
-// A mais nova primeiro; sem `situacao`, abertas e fechadas juntas.
+// A mais nova primeiro; sem `situacao`, abertas e fechadas juntas. Com `minhas`, só
+// as que criei, em que escrevi ou para as quais fui convidado.
 export function listarRengas(
   situacao: SituacaoDaRenga | null,
   offset = 0,
   limit = 20,
+  minhas = false,
 ): Promise<Page<Renga>> {
   const params = new URLSearchParams({ offset: String(offset), limit: String(limit) });
   if (situacao) params.set("situacao", situacao);
+  if (minhas) params.set("minhas", "true");
   return apiGet<Page<Renga>>(`/rengas?${params}`);
 }
 

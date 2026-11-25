@@ -32,10 +32,11 @@ def listar_rengas(
     offset: Offset = 0,
     limit: Limite = 20,
     situacao: Literal["aberta", "fechada"] | None = Query(default=None),
+    minhas: bool = Query(default=False, description="só as que criei, em que escrevi ou para as quais fui convidado"),
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.listar(db, user, situacao, offset, limit)
+    return service.listar(db, user, situacao, offset, limit, minhas=minhas)
 
 
 @router.get("/rengas/{renga_id}", response_model=RengaDetalhe)

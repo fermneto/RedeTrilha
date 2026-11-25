@@ -1,10 +1,11 @@
 "use client";
 // As rengas de todo mundo, a mais nova primeiro, numa aba do Explorar. Os chips
-// filtram abertas (para participar) e fechadas; filtro e página moram na URL
+// filtram abertas (para participar), fechadas e as minhas (que criei, em que
+// escrevi ou para as quais fui convidado); filtro e página moram na URL
 // (?aba=rengas&situacao=&pagina=), como no Acervo, e é o Explorar que lê a URL.
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
@@ -20,26 +21,31 @@ import {
 
 const POR_PAGINA = 20;
 
-const FILTROS: { valor: SituacaoDaRenga | null; rotulo: string }[] = [
+// "minhas" só existe no front: vira `minhas=true` na API.
+export type FiltroDasRengas = SituacaoDaRenga | "minhas";
+
+const FILTROS: { valor: FiltroDasRengas | null; rotulo: string }[] = [
   { valor: null, rotulo: "Todas" },
   { valor: "aberta", rotulo: "Abertas" },
   { valor: "fechada", rotulo: "Fechadas" },
+  { valor: "minhas", rotulo: "Minhas" },
 ];
 
-const VAZIO: Record<SituacaoDaRenga | "todas", string> = {
+const VAZIO: Record<FiltroDasRengas | "todas", string> = {
   todas: "Nenhuma renga por aqui ainda.",
   aberta: "Nenhuma renga aberta agora.",
   fechada: "Nenhuma renga fechada ainda.",
+  minhas: "Você ainda não está em nenhuma renga.",
 };
 
 // Os mesmos chips do Explorar e do Acervo.
 const chip =
-  "inline-flex min-h-11 items-center rounded-full px-4 text-sm font-bold transition-colors duration-150";
+  "inline-flex min-h-11 shrink-0 items-center rounded-full px-4 text-sm font-bold whitespace-nowrap transition-colors duration-150";
 const chipLigado = "bg-tinta text-papel hover:bg-tinta/85";
 const chipDesligado = "border border-borda text-tinta hover:border-destaque hover:text-destaque";
 
-export function lerSituacao(valor: string | null): SituacaoDaRenga | null {
-  return valor === "aberta" || valor === "fechada" ? valor : null;
+export function lerSituacao(valor: string | null): FiltroDasRengas | null {
+  return valor === "aberta" || valor === "fechada" || valor === "minhas" ? valor : null;
 }
 
 export function lerPagina(valor: string | null): number {
@@ -47,20 +53,29 @@ export function lerPagina(valor: string | null): number {
   return Number.isInteger(n) && n >= 1 ? n : 1;
 }
 
-export function caminhoDasRengas(situacao: SituacaoDaRenga | null, pagina: number): string {
+export function caminhoDasRengas(situacao: FiltroDasRengas | null, pagina: number): string {
   const busca = new URLSearchParams({ aba: "rengas" });
   if (situacao) busca.set("situacao", situacao);
   if (pagina > 1) busca.set("pagina", String(pagina));
   return `/explorar?${busca}`;
 }
 
-export function ListaDeRengas({ situacao, pagina }: { situacao: SituacaoDaRenga | null; pagina: number }) {
+export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas | null; pagina: number }) {
   const [resultado, setResultado] = useState<Page<Renga> | null>(null);
   const [erro, setErro] = useState<string | null>(null);
+  const filtros = useRef<HTMLElement>(null);
+
+  // No celular a fila de chips rola de lado: o filtro escolhido fica à vista.
+  useEffect(() => {
+    filtros.current
+      ?.querySelector<HTMLElement>('[aria-current="page"]')
+      ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [situacao]);
 
   useEffect(() => {
     setResultado(null);
-    listarRengas(situacao, (pagina - 1) * POR_PAGINA, POR_PAGINA)
+    const minhas = situacao === "minhas";
+    listarRengas(minhas ? null : situacao, (pagina - 1) * POR_PAGINA, POR_PAGINA, minhas)
       .then((p) => {
         setResultado(p);
         setErro(null);
@@ -74,7 +89,12 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: SituacaoDaRenga 
     <div>
       <div className="space-y-3 border-b border-borda px-4 py-4">
         <p className="text-sm text-tinta-suave">Poemas escritos a várias mãos, uma estrofe por vez.</p>
-        <nav aria-label="filtrar rengas" className="flex flex-wrap gap-2">
+        {/* Como os chips de forma do Explorar: no celular, uma fila que rola de lado. */}
+        <nav
+          ref={filtros}
+          aria-label="filtrar rengas"
+          className="-mx-4 flex gap-2 overflow-x-auto px-4 py-1 [scrollbar-width:thin] sm:flex-wrap sm:overflow-visible"
+        >
           {FILTROS.map(({ valor, rotulo }) => (
             <Link
               key={rotulo}
