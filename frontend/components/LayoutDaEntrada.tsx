@@ -1,23 +1,16 @@
 "use client";
 // A landing do Verso, a porta de entrada sem login: em "/" (quando não há token) e
-// em /login. Duas colunas no desktop: à esquerda a marca, a frase e um poema; à
-// direita o formulário de entrar e o "Criar conta". No celular empilha na ordem do
-// DOM (marca, formulário, poema), para o formulário aparecer logo na primeira tela.
+// em /login. Duas colunas no desktop: à esquerda a marca, a frase e a vitrine (o
+// Verso mostrado por ele mesmo, LayoutDaEntradaVitrine.tsx); à direita o formulário
+// de entrar e o "Criar conta". No celular e no tablet empilha na ordem do DOM
+// (marca, formulário, vitrine), para o formulário aparecer logo na primeira tela.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Vitrine } from "@/components/LayoutDaEntradaVitrine";
 import { buscarEu, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
-
-// Primeira estrofe de "Autopsicografia" (1932), de Fernando Pessoa, domínio
-// público. Fica fixa no front, sem depender do backend.
-const POEMA = {
-  titulo: "Autopsicografia",
-  autor: "Fernando Pessoa",
-  texto: "O poeta é um fingidor.\nFinge tão completamente\nQue chega a fingir que é dor\nA dor que deveras sente.",
-  fonte: "https://pt.wikisource.org/wiki/Autopsicografia",
-};
 
 type Props = {
   // Para onde ir depois de entrar (já passado pelo destinoSeguro).
@@ -28,32 +21,28 @@ type Props = {
 
 export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
   return (
-    <div className="flex min-h-dvh flex-col">
-      <main className="mx-auto grid w-full max-w-[60rem] flex-1 content-center gap-x-16 gap-y-10 px-4 pt-12 pb-10 sm:px-6 md:grid-cols-[minmax(0,1fr)_22rem] md:[grid-template-areas:'marca_entrar''poema_entrar'] md:py-16">
-        <div className="md:self-end md:[grid-area:marca]">
+    <div className="flex min-h-dvh flex-col overflow-x-clip">
+      <main className="mx-auto grid w-full max-w-[68rem] flex-1 content-center gap-x-20 gap-y-10 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:[grid-template-areas:'marca_entrar''vitrine_entrar'] lg:gap-y-14 lg:py-16">
+        <div className="lg:self-end lg:[grid-area:marca]">
           <Link
             href="/"
             aria-label="Verso, início"
-            className="-mx-1 inline-block rounded-lg px-1 font-serifada text-6xl leading-none font-semibold italic tracking-tight md:text-7xl"
+            className="-mx-1 inline-block rounded-lg px-1 font-serifada text-6xl leading-none font-semibold italic tracking-tight lg:text-7xl"
           >
             <span aria-hidden="true">Verso</span>
           </Link>
-          <h1 className="mt-4 text-2xl leading-snug font-semibold text-tinta-suave md:mt-5 md:text-[1.75rem]">
-            Onde a poesia acontece.
+          <h1 className="mt-4 text-[1.75rem] leading-tight font-semibold lg:mt-5 lg:text-[2.25rem]">
+            Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
           </h1>
         </div>
 
-        <section aria-labelledby="titulo-entrar" className="md:self-center md:[grid-area:entrar]">
+        <section aria-labelledby="titulo-entrar" className="w-full max-w-sm lg:max-w-none lg:self-center lg:[grid-area:entrar]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
-        <figure className="max-w-md rounded-2xl border border-borda bg-papel-alto px-6 py-7 shadow-[0_1px_2px_rgb(31_27_22/0.04),0_12px_32px_-12px_rgb(31_27_22/0.12)] sm:px-8 sm:py-8 dark:shadow-none md:self-start md:[grid-area:poema]">
-          <h2 className="poema-titulo">{POEMA.titulo}</h2>
-          <blockquote cite={POEMA.fonte} className="poema-corpo mt-4">
-            {POEMA.texto}
-          </blockquote>
-          <figcaption className="mt-5 text-sm text-tinta-suave">{POEMA.autor}</figcaption>
-        </figure>
+        <div className="pt-4 pb-6 lg:self-start lg:pt-6 xl:px-32 lg:[grid-area:vitrine]">
+          <Vitrine />
+        </div>
       </main>
 
       <footer className="px-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
