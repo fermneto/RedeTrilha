@@ -8,6 +8,11 @@ trocam `_cliente` por um falso (nunca chamam a API real).
 Formato da resposta: texto simples, com a primeira linha "TÍTULO: ..." quando o
 poema tem título. É mais simples que structured outputs (JSON), e o poema sai
 sem escapes, com as quebras de linha e os recuos como o modelo os escreveu.
+
+O poema pode ter negrito, itálico, sublinhado e tachado no formato do Verso
+(core/marcas.py). O modelo é instruído a manter as marcas nos mesmos versos;
+se elas voltam quebradas (um `**` que não fecha) ou inventadas num poema sem
+marcas, a tradução é gravada sem formatação, para a tela não mostrar lixo.
 """
 
 import logging
@@ -20,6 +25,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core.marcas import marcas_quebradas, sem_marcas_quebradas, tem_marcas
 from app.models.post import Post
 from app.models.traducao import Traducao
 from app.models.user import User
@@ -49,6 +55,11 @@ Preserve EXATAMENTE a estrutura do poema:
 - o mesmo número de estrofes, com as linhas em branco entre elas nos mesmos lugares;
 - os recuos (espaços no começo do verso) como estão no original.
 Não junte nem divida versos.
+
+O poema pode ter formatação em marcas: **negrito**, *itálico*, ++sublinhado++ e ~~tachado~~, \
+com \\ antes de um *, + ou ~ literal. Mantenha cada marca em volta das palavras traduzidas \
+correspondentes, no mesmo verso; abra e feche a marca dentro do verso, nunca atravessando a \
+quebra de linha. Não acrescente marcas que não estejam no original.
 
 Responda só com a tradução, sem notas, sem explicações, sem comentários e sem aspas ou \
 marcações que não estejam no original.
@@ -191,6 +202,7 @@ def _chamar_modelo(post: Post, para: str) -> tuple[str | None, str]:
         logger.warning("tradução do poema %s para %s veio vazia", post.id, para)
         raise HTTPException(status_code=502, detail=FALHOU)
 
+    texto = formatacao_da_traducao(post.texto, texto, post.id, para)
     linhas_original, linhas_traducao = post.texto.count("\n") + 1, texto.count("\n") + 1
     if linhas_original != linhas_traducao:
         # Aceita mesmo assim: uma linha a mais ou a menos não invalida a tradução.
@@ -202,6 +214,18 @@ def _chamar_modelo(post: Post, para: str) -> tuple[str | None, str]:
             linhas_original,
         )
     return titulo, texto
+
+
+def formatacao_da_traducao(original: str, traducao: str, post_id: int, para: str) -> str:
+    """A tradução com as marcas, se elas vieram inteiras; senão, sem formatação."""
+    if marcas_quebradas(traducao) or (tem_marcas(traducao) and not tem_marcas(original)):
+        logger.warning(
+            "tradução do poema %s para %s veio com marcas quebradas ou a mais; gravada sem formatação",
+            post_id,
+            para,
+        )
+        return sem_marcas_quebradas(traducao)
+    return traducao
 
 
 def _saida(traducao: Traducao, post: Post, em_cache: bool) -> TraducaoOut:

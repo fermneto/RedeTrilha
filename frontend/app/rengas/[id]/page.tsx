@@ -9,8 +9,10 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EditorDePoema } from "@/components/EditorDePoema";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
+import { TextoFormatado } from "@/components/TextoFormatado";
 import {
   acrescentarEstrofe,
   buscarEu,
@@ -122,7 +124,9 @@ export default function RengaPage() {
         <ol aria-label="estrofes" className="mt-7 space-y-8">
           {renga.estrofes.map((e) => (
             <li key={e.id}>
-              <p className="poema-corpo">{e.texto}</p>
+              <p className="poema-corpo">
+                <TextoFormatado texto={e.texto} />
+              </p>
               <p className="mt-2 text-[0.8125rem] text-tinta-suave">
                 <span aria-hidden="true">— </span>
                 <span className="sr-only">estrofe de </span>
@@ -223,14 +227,14 @@ function ProximaEstrofe({
         {anterior ? <>É a sua vez: responda à estrofe de {anterior.autor.name}.</> : "É a sua vez."}
         {ultima && " É a última: com ela, a renga fecha."}
       </p>
-      <textarea
-        value={texto}
-        onChange={(e) => setTexto(e.target.value)}
-        rows={5}
-        aria-labelledby="titulo-proxima-estrofe"
-        aria-describedby={erro ? `${idAjuda} ${idErro}` : idAjuda}
-        aria-invalid={Boolean(erro)}
-        className={`${campo} poema-corpo resize-y`}
+      <EditorDePoema
+        valor={texto}
+        aoMudar={setTexto}
+        idRotulo="titulo-proxima-estrofe"
+        idAjuda={erro ? `${idAjuda} ${idErro}` : idAjuda}
+        invalido={Boolean(erro)}
+        linhas={5}
+        classe={campo}
       />
       {erro && (
         <p id={idErro} role="alert" className="text-sm text-destaque">

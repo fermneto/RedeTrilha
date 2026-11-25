@@ -65,3 +65,14 @@ test("o filtro do verso só deixa passar a crítica cuja âncora cobre o verso",
   assert.equal(ancoraCobreOVerso(ancora, 1), false);
   assert.equal(ancoraCobreOVerso(null, 7), false);
 });
+
+// #137: o poema pode ter negrito, itálico, sublinhado e tachado no texto.
+const FORMATADO = "**Minha terra** tem *palmeiras*,\nOnde canta o ~~Sabiá~~;\n\n++As aves++";
+
+test("com marcas, a numeração não muda e a citação de versos leva as marcas", () => {
+  assert.equal(versosDoPoema(FORMATADO).length, 4);
+  assert.equal(trechoDosVersos(FORMATADO, { inicio: 1, fim: 2 }), "**Minha terra** tem *palmeiras*,\nOnde canta o ~~Sabiá~~;");
+  assert.deepEqual(versosDaSelecao(FORMATADO, [2, 3]), { inicio: 2, fim: 2 });
+  const caminho = caminhoDaCitacaoDeVersos(7, trechoDosVersos(FORMATADO, { inicio: 4, fim: 4 }));
+  assert.equal(new URL(caminho, "http://x").searchParams.get("versos"), "++As aves++");
+});

@@ -6,11 +6,14 @@
 // que faz a mesma seleção. Os versos com críticas ganham uma marca com quantas
 // são, que filtra os comentários por aquele verso. As linhas em branco entre
 // estrofes contam na numeração, como no backend, mas não se selecionam sozinhas.
+// A numeração e a seleção usam o texto sem as marcas de formatação (mesmo número
+// de linhas); o verso aparece formatado, e "citar estes versos" leva as marcas.
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { IconeComentar } from "@/components/icones/IconeComentar";
+import { VersoFormatado } from "@/components/TextoFormatado";
 import {
   caminhoDaCitacaoDeVersos,
   referenciaDosVersos,
@@ -21,6 +24,7 @@ import {
   type Post,
   type SelecaoDeVersos,
 } from "@/lib/api";
+import { textoSemMarcas } from "@/lib/marcas";
 
 type Props = {
   poema: Post;
@@ -36,6 +40,7 @@ type Props = {
 
 export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoComentar, aoFiltrar }: Props) {
   const versos = versosDoPoema(poema.texto);
+  const visiveis = versosDoPoema(textoSemMarcas(poema.texto));
   const lista = useRef<HTMLOListElement>(null);
   // O poema e a barra: um clique aqui dentro não desfaz a seleção feita pelos números.
   const corpo = useRef<HTMLDivElement>(null);
@@ -56,7 +61,7 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
         : Array.from(lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"))
             .filter((li) => selecaoDeTexto.containsNode(li, true))
             .map((li) => Number(li.dataset.verso));
-      const nova = versosDaSelecao(poema.texto, tocados);
+      const nova = versosDaSelecao(textoSemMarcas(poema.texto), tocados);
       if (nova) {
         origem.current = "texto";
         if (nova.inicio !== selecao?.inicio || nova.fim !== selecao?.fim) aoSelecionar(nova);
@@ -99,7 +104,7 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
       <ol ref={lista} className="poema-corpo">
         {versos.map((linha, i) => {
           const n = i + 1;
-          const vazia = linha.trim() === "";
+          const vazia = visiveis[i].trim() === "";
           const marca = vazia ? 0 : (marcas.get(n) ?? 0);
           return (
             <li
@@ -128,7 +133,9 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
                   </button>
                 )}
               </span>
-              <span className="min-h-[1lh] min-w-0 flex-1">{linha}</span>
+              <span className="min-h-[1lh] min-w-0 flex-1">
+                <VersoFormatado linha={linha} />
+              </span>
               {marca > 0 && (
                 <button
                   type="button"

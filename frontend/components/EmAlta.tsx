@@ -1,11 +1,13 @@
 "use client";
 // "Em alta" como os trends do X: a posição, a #tag, quantos poemas a usaram nas
-// últimas 24 h e o primeiro verso de um poema dela (um poema diferente por tag). A ordem é a do
+// últimas 24 h e o primeiro verso de um poema dela (um poema diferente por tag),
+// com o negrito, o itálico, o sublinhado e o tachado do poema. A ordem é a do
 // backend (mais poemas na janela), sem curtidas. Usado no Explorar e na coluna direita.
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { VersoFormatado } from "@/components/TextoFormatado";
 import { buscarTrending, caminhoDaTag, type TagContagem } from "@/lib/api";
 
 // null enquanto carrega; [] quando não há tags (ou a rota falhou).
@@ -47,7 +49,7 @@ export function ListaEmAlta({ tags }: { tags: TagContagem[] }) {
             <span className="block font-bold break-words">#{tag}</span>
             {trecho && (
               <span className="mt-0.5 block overflow-hidden font-serifada text-[0.9375rem] text-ellipsis whitespace-pre text-tinta-suave">
-                {trecho}
+                <VersoFormatado linha={trecho} />
               </span>
             )}
           </Link>

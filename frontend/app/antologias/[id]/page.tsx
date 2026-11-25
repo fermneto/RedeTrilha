@@ -26,6 +26,7 @@ import {
   type AntologiaDetalhe,
   type Post,
 } from "@/lib/api";
+import { textoSemMarcas } from "@/lib/marcas";
 
 export default function AntologiaPage() {
   const router = useRouter();
@@ -189,7 +190,7 @@ function ancora(p: Post): string {
 
 // Como nos livros de poemas: o poema sem título entra no índice pelo primeiro verso.
 function primeiroVerso(texto: string): string {
-  return texto.split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
+  return textoSemMarcas(texto).split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
 }
 
 // Antologia com mais poemas que isto é "longa": o índice abre recolhido, para os

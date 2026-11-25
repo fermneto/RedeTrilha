@@ -2,12 +2,14 @@
 // Compositor de poema: título opcional, corpo e forma. Com `citarId`, vira
 // citação (POST /posts com repost_de_id) e mostra o original embaixo. Com
 // `rascunhoId`, abre o rascunho (de poema ou de citação); "salvar rascunho"
-// guarda sem publicar.
+// guarda sem publicar. O corpo é o editor de poemas (negrito, itálico,
+// sublinhado e tachado, #137); o texto guardado é o de lib/marcas.ts.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
+import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { PoemaCard } from "@/components/PoemaCard";
 import {
@@ -54,21 +56,9 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
   const [citado, setCitado] = useState<number | null>(citarId);
   const [citadoRemovido, setCitadoRemovido] = useState(false);
   const citacao = citado !== null || citadoRemovido;
-  const corpo = useRef<HTMLTextAreaElement>(null);
-  // Depois de Esc, o próximo Tab sai do campo (para quem navega só pelo teclado).
-  const liberarTab = useRef(false);
-  // Onde o cursor fica depois do recuo inserido pelo Tab (null: nada pendente).
-  const cursorDoRecuo = useRef<number | null>(null);
+  const corpo = useRef<HTMLElement | null>(null);
+  const id = useId();
   const oficina = useOficina(texto, forma);
-
-  // Ao trocar o value, o navegador joga o cursor para o fim do texto. Acerta a
-  // posição no mesmo commit, antes de pintar e antes da próxima tecla: num
-  // requestAnimationFrame, o que se digitava logo depois do Tab ia para o fim.
-  useLayoutEffect(() => {
-    if (cursorDoRecuo.current === null) return;
-    corpo.current?.setSelectionRange(cursorDoRecuo.current, cursorDoRecuo.current);
-    cursorDoRecuo.current = null;
-  }, [texto]);
 
   useEffect(() => {
     if (citado === null) return;
@@ -123,23 +113,6 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
     }
   }
 
-  // Tab no corpo insere um recuo em vez de pular para o próximo campo.
-  function aoTeclar(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (e.key === "Escape") {
-      liberarTab.current = true;
-      return;
-    }
-    if (e.key !== "Tab" || e.shiftKey || liberarTab.current) {
-      liberarTab.current = false;
-      return;
-    }
-    e.preventDefault();
-    const campo = e.currentTarget;
-    const { value, selectionStart: inicio, selectionEnd: fim } = campo;
-    cursorDoRecuo.current = inicio + 1;
-    setTexto(value.slice(0, inicio) + "\t" + value.slice(fim));
-  }
-
   async function publicar(e: React.FormEvent) {
     e.preventDefault();
     if (!texto.trim()) {
@@ -183,30 +156,25 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
         />
       </label>
 
-      <label className="block text-sm">
-        {citacao ? "seu comentário sobre o poema" : "poema"}
-        <div className="mt-1 flex gap-2">
-          <textarea
-            ref={corpo}
-            value={texto}
-            onChange={(e) => {
-              setTexto(e.target.value);
-              setSalvo(false);
-            }}
-            onKeyDown={aoTeclar}
-            required
-            rows={12}
-            spellCheck
-            className={`${campo} poema-corpo min-w-0 flex-1 resize-y`}
-            style={{ tabSize: 4 }}
-          />
-          <OficinaMarcas oficina={oficina} texto={texto} campo={corpo} />
-        </div>
-        <span className="mt-1 block text-xs text-tinta-suave">
+      <div>
+        <EditorDePoema
+          valor={texto}
+          aoMudar={(novo) => {
+            setTexto(novo);
+            setSalvo(false);
+          }}
+          rotulo={citacao ? "seu comentário sobre o poema" : "poema"}
+          idRotulo={`${id}-rotulo`}
+          idAjuda={`${id}-ajuda`}
+          classe={campo}
+          refEditavel={corpo}
+          aoLado={<OficinaMarcas oficina={oficina} texto={texto} campo={corpo} />}
+        />
+        <span id={`${id}-ajuda`} className="mt-1 block text-xs text-tinta-suave">
           Quebras de linha e recuos ficam como você escreveu. Tab insere um recuo; Esc e depois
-          Tab sai do campo.
+          Tab sai do campo. Para formatar, selecione o trecho.
         </span>
-      </label>
+      </div>
 
       <OficinaPainel oficina={oficina} />
 

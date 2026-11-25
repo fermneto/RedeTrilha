@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
+import { TextoFormatado } from "@/components/TextoFormatado";
 import { IconeRenga } from "@/components/icones/IconeRenga";
 import type { RengaNoFeed, User } from "@/lib/api";
 
@@ -41,7 +42,9 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
       <ol aria-label="estrofes" className="mt-3 space-y-5">
         {estrofes.map((e) => (
           <li key={e.id}>
-            <p className="poema-corpo">{e.texto}</p>
+            <p className="poema-corpo">
+              <TextoFormatado texto={e.texto} />
+            </p>
             <p className="mt-1.5 text-[0.8125rem] text-tinta-suave">
               <span aria-hidden="true">— </span>
               <span className="sr-only">estrofe de </span>

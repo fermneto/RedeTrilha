@@ -263,3 +263,39 @@ def test_limite_sobrevive_ao_restart(client, logar, falso):
             f"/posts/{post_id}/traduzir", json={"para": trigesima_primeira}, headers=ana
         )
     assert r.status_code == 429
+
+
+def _traduzir_formatado(client, logar, falso, resposta: str) -> str:
+    ana = logar("ana")
+    texto = "**Amor** é *fogo*\n\n  ++que arde++"
+    meu = client.post("/posts", json={"texto": texto}, headers=ana).json()["id"]
+    falso.resposta.content[1].text = resposta
+    r = client.post(f"/posts/{meu}/traduzir", json={"para": "en"}, headers=ana)
+    assert r.status_code == 200
+    return r.json()["texto"]
+
+
+def test_prompt_pede_as_marcas_nos_mesmos_versos(client, logar, falso):
+    _traduzir_formatado(client, logar, falso, "**Love** is *fire*\n\n  ++that burns++")
+    [pedido] = falso.pedidos
+    assert "**negrito**" in pedido["system"] and "mesmo verso" in pedido["system"]
+    assert "**Amor** é *fogo*" in pedido["messages"][0]["content"]
+
+
+def test_traducao_preserva_marcas_inteiras(client, logar, falso):
+    texto = _traduzir_formatado(client, logar, falso, "**Love** is *fire*\n\n  ++that burns++")
+    assert texto == "**Love** is *fire*\n\n  ++that burns++"
+
+
+def test_traducao_com_marcas_quebradas_sai_sem_formatacao(client, logar, falso, caplog):
+    texto = _traduzir_formatado(client, logar, falso, "**Love is *fire*\n\n  that burns++")
+    assert texto == "Love is fire\n\n  that burns"
+    assert "marcas quebradas" in caplog.text
+
+
+def test_poema_sem_marcas_nao_ganha_marcas_na_traducao(client, logar, falso):
+    falso.resposta.content[1].text = "TÍTULO: Porque eu não pude\n\n**Porque** eu não pude parar"
+    ana = logar("ana")
+    post_id = _poema_em_ingles()
+    r = client.post(f"/posts/{post_id}/traduzir", json={"para": "pt"}, headers=ana)
+    assert r.json()["texto"] == "Porque eu não pude parar"

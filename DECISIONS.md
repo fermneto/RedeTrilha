@@ -461,6 +461,41 @@ PRs, na seção "Decisões do Neto".
     entrega, e a conversa já chega em tempo real com a aba aberta.
   - **DM com consagrado:** não há quem responda.
 
+### 14. Negrito, itálico, sublinhado e tachado no poema
+
+- **Contexto:** quem escreve poesia usa o itálico para a voz de outra pessoa, o
+  estrangeirismo ou a ênfase, e às vezes o negrito, o sublinhado ou o risco
+  como recurso do poema. O texto do Verso era puro, e o poeta não tinha como
+  marcar a palavra.
+- **Opções:** continuar sem formatação; aceitar Markdown visível (o poeta
+  digita `**` e vê os asteriscos enquanto escreve); ou um editor rico, como no
+  Google Docs.
+- **Escolha:**
+  - **Um editor rico pequeno, configurado para poesia** (ProseMirror): o poeta
+    seleciona e aperta Ctrl+B, Ctrl+I, Ctrl+U ou Ctrl+Shift+X, ou os botões
+    B, I, U e S, e o trecho já aparece formatado. Enter é quebra de verso, Tab
+    insere recuo, as linhas em branco e os espaços ficam, e o que se cola de
+    fora entra como texto puro.
+  - **O poema continua texto:** a formatação é gravada no próprio texto, num
+    pedaço de Markdown (`**negrito**`, `*itálico*`, `++sublinhado++`,
+    `~~tachado~~`). Uma marca nunca passa de um verso para o outro, então a
+    numeração dos versos, a crítica ancorada (decisão 7) e a oficina
+    (decisão 8) contam as mesmas linhas. Os poemas antigos e os dos consagrados
+    não mudam: um `*` solto, como a nota de rodapé de Thomas Moore, continua
+    um asterisco.
+  - **Onde vale:** no poema, na citação, no rascunho e nas estrofes da renga.
+    A tela formata o poema no feed, na página dele, no Em alta, nos versos
+    citados e na tradução, sem interpretar HTML; copiar o poema dá o texto
+    limpo.
+- **O que cortamos e por quê:**
+  - **Outras formatações** (títulos, listas, links, cores, tamanhos): o poema
+    é verso, e cada uma dessas pediria regras de exibição no feed.
+  - **Formatação nos comentários e nas mensagens diretas:** a conversa é sobre
+    o poema, e o comentário continua texto puro.
+  - **HTML livre:** abriria a porta para script e estilo de fora no feed. O
+    formato tem só quatro marcas, e a tela as monta como elementos, nunca como
+    HTML.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo
@@ -536,6 +571,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
 | Rengas | Neto | Várias pessoas escrevem um poema junto, estrofe por estrofe. |
 | Mensagens diretas | Neto | Combinar uma renga ou mandar um poema a alguém sem sair do Verso, com a crítica continuando pública. |
+| Negrito, itálico, sublinhado e tachado no compositor | Neto | O poeta marca a palavra como no Google Docs, e o poema continua texto, com os mesmos versos. |
 | Deploy (Vercel + VM da Oracle com API e Postgres) | Neto | A banca usa a rede na URL pública, e os dados não somem: backup diário no Object Storage. |
 
 ## Uma escolha técnica
@@ -660,6 +696,13 @@ rede crescer.
   vogal tônica, e toante (mesmas vogais) só para o verso sem par consoante.
   Tudo é O(L) no tamanho do texto. A rota `POST /oficina/analise` não usa o
   banco e aceita até 10.000 caracteres; o poema em si continua sem limite.
+- **Marcas de formatação (`core/marcas.py`).** Lê o negrito, o itálico, o
+  sublinhado e o tachado de cada verso numa passada da esquerda para a
+  direita, com uma pilha de marcas abertas: O(L) no tamanho do verso; um
+  delimitador que abre e não fecha vira literal e a passada recomeça, O(d·L) no
+  pior caso, com d delimitadores no verso. Sem estado. `texto_sem_marcas` é o
+  que a oficina mede e de onde saem as `#tags`; o front tem a mesma regra em
+  `lib/marcas.ts`, e os dois lados rodam os mesmos casos de teste.
 - **Mistura do "Para você" (`core/mistura.py`).** Recebe as atividades da
   rede (poemas, reposts puros, estrofes de rengas abertas, comentários),
   carregadas só com ids e datas. `rarear_consagrados` guarda um poema de

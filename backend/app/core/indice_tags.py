@@ -18,6 +18,7 @@ from collections.abc import Iterable
 from datetime import datetime
 
 from app.core.datas import para_utc
+from app.core.marcas import texto_sem_marcas
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
 _FORA_DA_TAG = re.compile(r"[^a-z0-9_]")
@@ -37,8 +38,11 @@ def termo_de_tag(texto: str) -> str:
 
 
 def extrair_tags(texto: str, forma: str | None) -> set[str]:
-    """Tags do poema: as #hashtags do texto mais a forma (soneto, haicai...), menos "outro"."""
-    tags = set(_PADRAO_TAG.findall(normalizar(texto)))
+    """Tags do poema: as #hashtags do texto mais a forma (soneto, haicai...), menos "outro".
+
+    Lidas no texto sem as marcas de formatação: `**#mar**` é a tag `mar`.
+    """
+    tags = set(_PADRAO_TAG.findall(normalizar(texto_sem_marcas(texto))))
     if forma and forma != FORMA_SEM_TAG:
         tags.add(forma)
     return tags
