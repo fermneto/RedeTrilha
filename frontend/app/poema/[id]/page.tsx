@@ -47,7 +47,7 @@ export default function PoemaPage() {
       return;
     }
     // Sem as marcas, o poema continua legível: só não mostra os números.
-    buscarVersosComentados(id)
+    buscarVersosComentados({ tipo: "poema", id })
       .then(({ items }) => setMarcas(new Map(items.map((m) => [m.verso, m.comentarios]))))
       .catch(() => setMarcas(new Map()));
   }, [id]);
@@ -104,7 +104,9 @@ export default function PoemaPage() {
           aoTraduzir={() => setSelecao(null)}
           corpo={(exibido) => (
             <VersosComentaveis
-              poema={exibido}
+              texto={exibido.texto}
+              comTitulo={Boolean(exibido.titulo)}
+              citarPostId={exibido.id}
               marcas={marcas}
               selecao={selecao}
               aoSelecionar={setSelecao}
@@ -128,7 +130,7 @@ export default function PoemaPage() {
       </div>
       <div className="px-4 py-6">
         <ArvoreComentarios
-          postId={poema.id}
+          alvo={{ tipo: "poema", id: poema.id }}
           euId={euId}
           aoMudar={carregarPoema}
           textoDoPoema={textoComentado(poema)}

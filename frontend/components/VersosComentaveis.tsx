@@ -11,9 +11,12 @@
 // Selecionar versos num card fora daqui (feed, perfil...) traz para esta página
 // com ?versos=2-4: a página passa a seleção pedida e ela chega já "fixa", com o
 // foco no campo de comentário, como depois de "comentar estes versos".
+// A página da renga usa o mesmo corpo: o texto é o das estrofes juntas (uma linha
+// em branco entre elas), o autor de cada estrofe vem embaixo do último verso dela
+// (`rodape`) e não há "citar estes versos" (a citação cita poemas).
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { VersoFormatado } from "@/components/TextoFormatado";
@@ -25,13 +28,19 @@ import {
   versosDaSelecao,
   versosDoPoema,
   versosTocados,
-  type Post,
   type SelecaoDeVersos,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
 
 type Props = {
-  poema: Post;
+  // O texto cujos versos se numeram (o do poema ou o da renga).
+  texto: string;
+  // Com título acima, o corpo respira um pouco mais.
+  comTitulo?: boolean;
+  // Id do poema para "citar estes versos"; null tira o botão (renga).
+  citarPostId: number | null;
+  // Embaixo de um verso, fora da seleção (o autor da estrofe na renga).
+  rodape?: Map<number, ReactNode>;
   // verso -> quantas críticas o cobrem.
   marcas: Map<number, number>;
   selecao: SelecaoDeVersos | null;
@@ -52,7 +61,10 @@ export const CLASSE_DA_ACAO_DE_VERSOS =
   "inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm font-semibold text-destaque hover:bg-destaque/10";
 
 export function VersosComentaveis({
-  poema,
+  texto,
+  comTitulo = false,
+  citarPostId,
+  rodape,
   marcas,
   selecao,
   aoSelecionar,
@@ -60,8 +72,8 @@ export function VersosComentaveis({
   aoFiltrar,
   selecaoPedida = null,
 }: Props) {
-  const versos = versosDoPoema(poema.texto);
-  const visiveis = versosDoPoema(textoSemMarcas(poema.texto));
+  const versos = versosDoPoema(texto);
+  const visiveis = versosDoPoema(textoSemMarcas(texto));
   const lista = useRef<HTMLOListElement>(null);
   // O poema e a barra: um clique aqui dentro não desfaz a seleção feita pelos números.
   const corpo = useRef<HTMLDivElement>(null);
@@ -78,7 +90,7 @@ export function VersosComentaveis({
       const selecaoDeTexto = document.getSelection();
       if (!selecaoDeTexto || !lista.current) return;
       const tocados = versosTocados(selecaoDeTexto, lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"));
-      const nova = versosDaSelecao(textoSemMarcas(poema.texto), tocados);
+      const nova = versosDaSelecao(textoSemMarcas(texto), tocados);
       if (nova) {
         origem.current = "texto";
         if (nova.inicio !== selecao?.inicio || nova.fim !== selecao?.fim) aoSelecionar(nova);
@@ -88,7 +100,7 @@ export function VersosComentaveis({
     }
     document.addEventListener("selectionchange", aoMudarSelecao);
     return () => document.removeEventListener("selectionchange", aoMudarSelecao);
-  }, [poema.texto, selecao, aoSelecionar]);
+  }, [texto, selecao, aoSelecionar]);
 
   useEffect(() => {
     if (!selecaoPedida) return;
@@ -123,9 +135,9 @@ export function VersosComentaveis({
   const acao = CLASSE_DA_ACAO_DE_VERSOS;
 
   return (
-    <div ref={corpo} className={poema.titulo ? "mt-2" : "mt-1"}>
+    <div ref={corpo} className={comTitulo ? "mt-2" : "mt-1"}>
       <p className="sr-only">
-        Para comentar ou citar versos, selecione o texto deles, ou ative o número do primeiro verso e
+        Para {citarPostId === null ? "comentar" : "comentar ou citar"} versos, selecione o texto deles, ou ative o número do primeiro verso e
         depois o do último.
       </p>
       <ol ref={lista} className="poema-corpo">
@@ -162,6 +174,7 @@ export function VersosComentaveis({
               </span>
               <span className="min-h-[1lh] min-w-0 flex-1">
                 <VersoFormatado linha={linha} />
+                {rodape?.get(n) && <span className="block select-none">{rodape.get(n)}</span>}
               </span>
               {marca > 0 && (
                 <button
@@ -199,9 +212,11 @@ export function VersosComentaveis({
           >
             comentar estes versos
           </button>
-          <Link href={caminhoDaCitacaoDeVersos(poema.id, trechoDosVersos(poema.texto, selecao))} className={acao}>
-            citar estes versos
-          </Link>
+          {citarPostId !== null && (
+            <Link href={caminhoDaCitacaoDeVersos(citarPostId, trechoDosVersos(texto, selecao))} className={acao}>
+              citar estes versos
+            </Link>
+          )}
           <button
             type="button"
             onClick={() => {

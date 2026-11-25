@@ -1,14 +1,29 @@
+"use client";
 // Renga no feed e no perfil, como um repost no X: o rótulo diz quem abriu ou
 // escreveu, e o card mostra o começo da renga. Aberta, convida a escrever (ou diz
 // por que não dá); fechada, é um poema de todos os autores.
+// Selecionar versos das estrofes mostra a barra "comentar estes versos / limpar",
+// como no PoemaCard (sem "citar": a citação cita poemas), e leva à página da
+// renga com ?versos=. Os números contam a renga inteira (textoDaRenga), mesmo com
+// só as primeiras estrofes no card.
 
 import Link from "next/link";
+import { Fragment, useRef } from "react";
 
+import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
-import { TextoFormatado } from "@/components/TextoFormatado";
+import { VersoFormatado } from "@/components/TextoFormatado";
+import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeRenga } from "@/components/icones/IconeRenga";
-import type { RengaNoFeed, User } from "@/lib/api";
+import {
+  caminhoDaCriticaNaRenga,
+  fimDasEstrofes,
+  textoDaRenga,
+  versosDoPoema,
+  type RengaNoFeed,
+  type User,
+} from "@/lib/api";
 
 // Fora da página da renga, só as primeiras estrofes, com link para o resto.
 const ESTROFES_NO_FEED = 4;
@@ -18,6 +33,10 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
   const estrofes = renga.estrofes.slice(0, ESTROFES_NO_FEED);
   const faltam = renga.estrofes.length - estrofes.length;
   const link = `/rengas/${renga.id}`;
+  const texto = textoDaRenga(renga.estrofes);
+  const fins = fimDasEstrofes(renga.estrofes);
+  const lista = useRef<HTMLOListElement>(null);
+  const { selecao, limpar, barra } = useVersosSelecionados(lista, texto, true);
 
   return (
     <article className="px-4 pt-3 pb-4">
@@ -39,11 +58,18 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
         ))}
       </p>
 
-      <ol aria-label="estrofes" className="mt-3 space-y-5">
-        {estrofes.map((e) => (
+      <ol ref={lista} aria-label="estrofes" className="mt-3 space-y-5">
+        {estrofes.map((e, i) => (
           <li key={e.id}>
             <p className="poema-corpo">
-              <TextoFormatado texto={e.texto} />
+              {versosDoPoema(e.texto).map((linha, j, linhas) => (
+                <Fragment key={j}>
+                  {j > 0 && "\n"}
+                  <span data-verso={fins[i] - linhas.length + 1 + j}>
+                    <VersoFormatado linha={linha} />
+                  </span>
+                </Fragment>
+              ))}
             </p>
             <p className="mt-1.5 text-[0.8125rem] text-tinta-suave">
               <span aria-hidden="true">— </span>
@@ -53,6 +79,15 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
           </li>
         ))}
       </ol>
+      {selecao && (
+        <BarraDeVersos
+          selecao={selecao}
+          barra={barra}
+          caminhoDaCritica={caminhoDaCriticaNaRenga(renga.id, selecao)}
+          caminhoDaCitacao={null}
+          aoLimpar={limpar}
+        />
+      )}
 
       <p className="mt-3 flex flex-wrap items-center gap-x-3 text-sm">
         {faltam > 0 && (
@@ -71,6 +106,15 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
         <span className="text-xs text-tinta-suave tabular-nums">
           {renga.qtd_estrofes} de {renga.limite} estrofes
         </span>
+        <Link
+          href={`${link}#comentarios`}
+          aria-label={renga.comentarios ? `comentar (${renga.comentarios})` : "comentar"}
+          title="comentar"
+          className="inline-flex min-h-11 min-w-11 items-center gap-1 text-[0.8125rem] text-tinta-suave tabular-nums transition-colors duration-150 hover:text-destaque"
+        >
+          <IconeComentar className="h-5 w-5" />
+          {renga.comentarios > 0 && <span aria-hidden="true">{renga.comentarios}</span>}
+        </Link>
       </p>
     </article>
   );

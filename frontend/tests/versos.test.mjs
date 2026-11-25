@@ -13,6 +13,11 @@ const {
   ancoraCobreOVerso,
   caminhoDaCitacaoDeVersos,
   caminhoDaCriticaDeVersos,
+  caminhoDaCriticaNaRenga,
+  caminhoDoComentario,
+  caminhoDosComentarios,
+  fimDasEstrofes,
+  textoDaRenga,
   lerVersosDaUrl,
   referenciaDosVersos,
   selecionarVerso,
@@ -133,4 +138,39 @@ test("?versos= inválido é ignorado (null)", () => {
 
 test("?versos= conta as linhas do texto sem marcas (o chamador tira as marcas)", () => {
   assert.deepEqual(lerVersosDaUrl("2", "**um**\n*dois*"), { inicio: 2, fim: 2 });
+});
+
+// Renga: as estrofes juntas, com a linha em branco entre elas (texto_de no backend).
+const ESTROFES = [{ texto: "na varanda\n  a chuva" }, { texto: "o caderno" }, { texto: "e a tinta\ncorre\n" }];
+
+test("o texto da renga junta as estrofes com uma linha em branco, como o backend", () => {
+  const texto = textoDaRenga(ESTROFES);
+  assert.deepEqual(versosDoPoema(texto), ["na varanda", "  a chuva", "", "o caderno", "", "e a tinta", "corre", ""]);
+  assert.equal(trechoDosVersos(texto, { inicio: 2, fim: 4 }), "  a chuva\n\no caderno");
+});
+
+test("o fim de cada estrofe no texto da renga, onde vai o autor", () => {
+  assert.deepEqual(fimDasEstrofes(ESTROFES), [2, 4, 8]);
+  assert.deepEqual(fimDasEstrofes([]), []);
+});
+
+test("a renga crescer não muda o número dos versos já escritos", () => {
+  const antes = versosDoPoema(textoDaRenga(ESTROFES.slice(0, 2)));
+  const depois = versosDoPoema(textoDaRenga(ESTROFES));
+  assert.deepEqual(depois.slice(0, antes.length), antes);
+  assert.deepEqual(fimDasEstrofes(ESTROFES).slice(0, 2), fimDasEstrofes(ESTROFES.slice(0, 2)));
+});
+
+test("comentar versos no card da renga leva à página dela com ?versos=", () => {
+  assert.equal(caminhoDaCriticaNaRenga(3, { inicio: 2, fim: 4 }), "/rengas/3?versos=2-4");
+  assert.equal(caminhoDaCriticaNaRenga(3, { inicio: 6, fim: 6 }), "/rengas/3?versos=6");
+  const valor = new URL(caminhoDaCriticaNaRenga(3, { inicio: 4, fim: 6 }), "http://x").searchParams.get("versos");
+  assert.deepEqual(lerVersosDaUrl(valor, textoDaRenga(ESTROFES)), { inicio: 4, fim: 6 });
+});
+
+test("as rotas dos comentários de poema não mudam; as da renga ficam dentro dela", () => {
+  assert.equal(caminhoDosComentarios({ tipo: "poema", id: 7 }), "/posts/7/comentarios");
+  assert.equal(caminhoDoComentario({ tipo: "poema", id: 7 }, 9), "/comentarios/9");
+  assert.equal(caminhoDosComentarios({ tipo: "renga", id: 3 }), "/rengas/3/comentarios");
+  assert.equal(caminhoDoComentario({ tipo: "renga", id: 3 }, 9), "/rengas/3/comentarios/9");
 });

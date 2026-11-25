@@ -6,10 +6,10 @@ import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 
 import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
+import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
 import { EnviarPorMensagem } from "@/components/EnviarPorMensagem";
 import { NomeAutor } from "@/components/NomeAutor";
 import { VersoFormatado } from "@/components/TextoFormatado";
-import { CLASSE_DA_ACAO_DE_VERSOS, CLASSE_DA_BARRA_DE_VERSOS } from "@/components/VersosComentaveis";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
@@ -26,19 +26,14 @@ import {
   mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
-  referenciaDosVersos,
   repostar,
   rotuloDoComentario,
   traduzirPoema,
   trechoDosVersos,
-  versosDaSelecao,
-  versosTocados,
   type Post,
-  type SelecaoDeVersos,
   type Traducao,
   type User,
 } from "@/lib/api";
-import { textoSemMarcas } from "@/lib/marcas";
 import {
   alternarTraducao,
   type EstadoDaTraducao,
@@ -318,45 +313,7 @@ function Corpo({
   const cortar = visiveis !== null;
   const mostrados = cortar ? versos.slice(0, visiveis) : versos;
   const elemento = useRef<HTMLParagraphElement>(null);
-  const barra = useRef<HTMLDivElement>(null);
-  const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
-
-  // Só a seleção que começa neste corpo conta: a de fora (ou a que começa noutro
-  // card) não mexe aqui. Seleção recolhida não apaga a barra: no toque, ela se
-  // desfaz no mesmo toque que vai à barra; quem apaga é o toque fora dela.
-  useEffect(() => {
-    if (!criticavel) return;
-    function aoMudarSelecao() {
-      const doc = document.getSelection();
-      const p = elemento.current;
-      if (!doc || !p || doc.isCollapsed || !doc.anchorNode || !p.contains(doc.anchorNode)) return;
-      const nova = versosDaSelecao(
-        textoSemMarcas(texto),
-        versosTocados(doc, p.querySelectorAll<HTMLElement>("[data-verso]")),
-      );
-      setSelecao((atual) => (nova && atual?.inicio === nova.inicio && atual.fim === nova.fim ? atual : nova));
-    }
-    document.addEventListener("selectionchange", aoMudarSelecao);
-    return () => document.removeEventListener("selectionchange", aoMudarSelecao);
-  }, [criticavel, texto]);
-
-  useEffect(() => {
-    if (!selecao) return;
-    function aoTocar(e: PointerEvent) {
-      if (!barra.current?.contains(e.target as Node)) setSelecao(null);
-    }
-    function aoTeclar(e: KeyboardEvent) {
-      if (e.key !== "Escape") return;
-      document.getSelection()?.removeAllRanges();
-      setSelecao(null);
-    }
-    document.addEventListener("pointerdown", aoTocar);
-    document.addEventListener("keydown", aoTeclar);
-    return () => {
-      document.removeEventListener("pointerdown", aoTocar);
-      document.removeEventListener("keydown", aoTeclar);
-    };
-  }, [selecao]);
+  const { selecao, limpar, barra } = useVersosSelecionados(elemento, texto, criticavel);
 
   return (
     <>
@@ -371,25 +328,13 @@ function Corpo({
         ))}
       </p>
       {criticavel && selecao && (
-        <div ref={barra} role="group" aria-label="versos selecionados" className={CLASSE_DA_BARRA_DE_VERSOS}>
-          <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
-          <Link href={caminhoDaCriticaDeVersos(id, selecao)} className={CLASSE_DA_ACAO_DE_VERSOS}>
-            comentar estes versos
-          </Link>
-          <Link href={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))} className={CLASSE_DA_ACAO_DE_VERSOS}>
-            citar estes versos
-          </Link>
-          <button
-            type="button"
-            onClick={() => {
-              document.getSelection()?.removeAllRanges();
-              setSelecao(null);
-            }}
-            className={`${CLASSE_DA_ACAO_DE_VERSOS} text-tinta-suave`}
-          >
-            limpar
-          </button>
-        </div>
+        <BarraDeVersos
+          selecao={selecao}
+          barra={barra}
+          caminhoDaCritica={caminhoDaCriticaDeVersos(id, selecao)}
+          caminhoDaCitacao={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))}
+          aoLimpar={limpar}
+        />
       )}
       {cortar && (
         <Link
