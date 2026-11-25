@@ -86,8 +86,9 @@ def das_saidas(db: Session, comentarios: list[Comentario]) -> dict[int, AncoraOu
     return {a.comentario_id: saida(a.verso_inicio, a.verso_fim, texto) for a in ancoras}
 
 
-def ids_no_verso(post: Post, verso: int):
-    """Subquery com os ids dos comentários do poema cuja âncora cobre `verso`."""
+def ids_no_verso(post: Post, verso: int, ocultos: set[int]):
+    """Subquery com os ids dos comentários do poema cuja âncora cobre `verso`, sem os
+    de `ocultos` (quem tem bloqueio com o autor do poema, services/comentarios.py)."""
     return (
         select(AncoraComentario.comentario_id)
         .join(Comentario, Comentario.id == AncoraComentario.comentario_id)
@@ -95,12 +96,13 @@ def ids_no_verso(post: Post, verso: int):
             Comentario.post_id == post.id,
             AncoraComentario.verso_inicio <= verso,
             AncoraComentario.verso_fim >= verso,
+            Comentario.autor_id.not_in(ocultos),
         )
     )
 
 
-def versos_comentados(db: Session, post: Post) -> VersosComentadosOut:
-    """Quantos comentários cobrem cada verso do poema.
+def versos_comentados(db: Session, post: Post, ocultos: set[int]) -> VersosComentadosOut:
+    """Quantos comentários cobrem cada verso do poema (sem os de `ocultos`).
 
     Um comentário sobre os versos 5 a 8 conta nos quatro. O(a + s), com a =
     âncoras do poema e s = soma dos tamanhos dos intervalos.
@@ -108,7 +110,7 @@ def versos_comentados(db: Session, post: Post) -> VersosComentadosOut:
     intervalos = db.execute(
         select(AncoraComentario.verso_inicio, AncoraComentario.verso_fim)
         .join(Comentario, Comentario.id == AncoraComentario.comentario_id)
-        .where(Comentario.post_id == post.id)
+        .where(Comentario.post_id == post.id, Comentario.autor_id.not_in(ocultos))
     )
     contagem: Counter[int] = Counter()
     for inicio, fim in intervalos:

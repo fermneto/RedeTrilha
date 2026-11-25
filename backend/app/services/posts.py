@@ -81,7 +81,9 @@ def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
     carregados = list(db.scalars(select(Post).where(Post.id.in_(faltando)))) if faltando else []
     ids = {post.id for post in posts} | originais
     contagens = contar(db, list(ids), usuario)
-    saidas = [para_saida(post, contagens=contagens) for post in posts]
+    # O original de quem bloqueou quem vê fica "indisponível" (services/bloqueios.py).
+    ocultos = frozenset(bloqueios.quem_bloqueou(db, usuario.id)) if originais else frozenset()
+    saidas = [para_saida(post, contagens=contagens, ocultos=ocultos) for post in posts]
     del carregados
     return saidas
 
@@ -92,7 +94,10 @@ def para_saida_de(db: Session, post: Post, usuario: User) -> PostOut:
 
 
 def para_saida(
-    post: Post, incluir_repost: bool = True, contagens: Contagens | None = None
+    post: Post,
+    incluir_repost: bool = True,
+    contagens: Contagens | None = None,
+    ocultos: frozenset[int] = frozenset(),
 ) -> PostOut:
     """Monta o PostOut. `repost_de` vem com um nível só.
 
@@ -101,6 +106,9 @@ def para_saida(
     """
     contagens = contagens or Contagens()
     original = post.repost_de if incluir_repost else None
+    indisponivel = original is not None and original.autor_id in ocultos
+    if indisponivel:
+        original = None
     return PostOut(
         id=post.id,
         autor_id=post.autor_id,
@@ -129,6 +137,7 @@ def para_saida(
             else None
         ),
         repost_removido=post.repost_removido,
+        repost_indisponivel=indisponivel,
         tags=sorted(tags_do_post(post)),
     )
 

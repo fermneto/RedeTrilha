@@ -129,3 +129,98 @@ def test_nao_manda_por_mensagem_poema_de_quem_tem_bloqueio(client, como):
     bloquear(client, como)
     r = client.post(f"/mensagens/conversas/{conversa}/mensagens", json={"post_id": da_bia}, headers=como("caio"))
     assert r.status_code == 404
+
+
+def comentar(client, como, quem: str, post_id: int, texto: str, **extra) -> dict:
+    r = client.post(f"/posts/{post_id}/comentarios", json={"texto": texto, **extra}, headers=como(quem))
+    assert r.status_code == 201, r.text
+    return r.json()
+
+
+def test_comentarios_de_quem_tem_bloqueio_somem_para_todos_e_voltam_ao_desbloquear(client, como):
+    da_bia = poema(client, como, "bia", "um\ndois\ntrês")
+    sozinho = comentar(client, como, "caio", da_bia, "sem resposta")
+    com_resposta = comentar(client, como, "caio", da_bia, "com resposta")
+    comentar(client, como, "ana", da_bia, "respondo", parent_id=com_resposta["id"])
+    critica = comentar(client, como, "caio", da_bia, "o verso 2", ancora={"verso_inicio": 2, "verso_fim": 2})
+    comentar(client, como, "ana", da_bia, "a do verso 2 é boa", ancora={"verso_inicio": 2, "verso_fim": 3})
+    bloquear(client, como)
+
+    for quem in ("ana", "bia"):
+        pagina = client.get(f"/posts/{da_bia}/comentarios", headers=como(quem)).json()
+        assert pagina["total"] == 2
+        marcador, da_ana = pagina["items"]
+        assert marcador["id"] == com_resposta["id"]
+        assert (marcador["removido"], marcador["texto"], marcador["autor"]) == (True, "", None)
+        assert [r["texto"] for r in marcador["respostas"]] == ["respondo"]
+        assert da_ana["autor"]["username"] == "ana"
+        versos = client.get(f"/posts/{da_bia}/comentarios/versos", headers=como(quem)).json()["items"]
+        assert versos == [{"verso": 2, "comentarios": 1}, {"verso": 3, "comentarios": 1}]
+        so_verso_2 = client.get(f"/posts/{da_bia}/comentarios?verso=2", headers=como(quem)).json()
+        assert [c["autor"]["username"] for c in so_verso_2["items"]] == ["ana"]
+    assert client.get(f"/comentarios/{sozinho['id']}/respostas", headers=como("ana")).status_code == 404
+    respostas = client.get(f"/comentarios/{com_resposta['id']}/respostas", headers=como("ana")).json()
+    assert [r["texto"] for r in respostas["items"]] == ["respondo"]
+
+    # Filtro na leitura: desbloquear traz tudo de volta.
+    client.delete("/usuarios/caio/bloqueio", headers=como("bia"))
+    pagina = client.get(f"/posts/{da_bia}/comentarios", headers=como("ana")).json()
+    assert pagina["total"] == 4
+    assert {c["id"] for c in pagina["items"]} >= {sozinho["id"], critica["id"]}
+
+
+def test_quem_foi_bloqueado_nao_le_os_comentarios_do_poema(client, como):
+    da_bia = poema(client, como, "bia")
+    comentario = comentar(client, como, "ana", da_bia, "oi")
+    bloquear(client, como)
+    for rota in [
+        f"/posts/{da_bia}/comentarios",
+        f"/posts/{da_bia}/comentarios/versos",
+        f"/comentarios/{comentario['id']}/respostas",
+    ]:
+        assert client.get(rota, headers=como("caio")).status_code == 404, rota
+
+
+def test_comentario_escondido_nao_sobe_o_poema_no_para_voce(client, como):
+    da_bia = poema(client, como, "bia")
+    comentar(client, como, "caio", da_bia, "subo?")
+    bloquear(client, como)
+    item = next(i for i in client.get("/feed/para-voce", headers=como("ana")).json()["items"] if i["id"] == da_bia)
+    assert item["comentado_por"] == []
+
+
+def test_citacao_de_terceiro_mostra_poema_indisponivel_para_o_bloqueado(client, como):
+    da_bia = poema(client, como, "bia")
+    citacao = client.post("/posts", json={"texto": "cito a bia", "repost_de_id": da_bia}, headers=como("ana")).json()
+    bloquear(client, como)
+    para_o_caio = client.get(f"/posts/{citacao['id']}", headers=como("caio")).json()
+    assert (para_o_caio["repost_de"], para_o_caio["repost_indisponivel"]) == (None, True)
+    para_a_ana = client.get(f"/posts/{citacao['id']}", headers=como("ana")).json()
+    assert para_a_ana["repost_de"]["id"] == da_bia and para_a_ana["repost_indisponivel"] is False
+
+
+def test_acervo_e_listas_de_seguidores_sem_o_outro(client, como):
+    for quem in ("bia", "caio"):
+        client.post("/usuarios/ana/follow", headers=como(quem))
+        client.post(f"/usuarios/{quem}/follow", headers=como("ana"))
+    bloquear(client, como)
+
+    acervo = lambda quem: {p["username"] for p in client.get("/acervo", headers=como(quem)).json()["items"]}  # noqa: E731
+    assert "caio" not in acervo("bia") and "bia" not in acervo("caio")
+    assert {"bia", "caio"} <= acervo("ana")
+    lista = lambda quem, rota: {u["username"] for u in client.get(rota, headers=como(quem)).json()["items"]}  # noqa: E731
+    for rota in ("/usuarios/ana/seguidores", "/usuarios/ana/seguindo"):
+        assert lista("bia", rota) == {"bia"}
+        assert lista("caio", rota) == {"caio"}
+        assert lista("ana", rota) == {"bia", "caio"}
+    assert client.get("/usuarios/bia/seguidores", headers=como("caio")).status_code == 404
+
+
+def test_nao_convida_para_renga_quem_tem_bloqueio(client, como):
+    bloquear(client, como)
+    corpo = {"titulo": "R", "primeira_estrofe": "um", "modo": "convidados"}
+    for quem, convidado in (("bia", "caio"), ("caio", "bia")):
+        r = client.post("/rengas", json={**corpo, "convidados": [convidado]}, headers=como(quem))
+        assert r.status_code == 422, r.text
+    renga = client.post("/rengas", json={**corpo, "convidados": ["ana"]}, headers=como("bia")).json()["id"]
+    assert client.post(f"/rengas/{renga}/convites", json={"usernames": ["caio"]}, headers=como("bia")).status_code == 422

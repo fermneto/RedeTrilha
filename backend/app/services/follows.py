@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from sqlalchemy import delete, func, select
+from sqlalchemy import and_, delete, func, select
 from sqlalchemy.orm import Session
 
 from app.models.follow import Follow
@@ -77,14 +77,31 @@ def ids_seguidos(db: Session, user_id: int) -> list[int]:
     return list(db.scalars(select(Follow.seguido_id).where(Follow.seguidor_id == user_id)))
 
 
-def listar_seguidores(db: Session, username: str, offset: int, limit: int) -> UserPage:
-    user = buscar_por_username(db, username)
-    return _pagina(db, Follow.seguido_id == user.id, Follow.seguidor_id, offset, limit)
+def listar_seguidores(
+    db: Session, usuario: User, username: str, offset: int, limit: int
+) -> UserPage:
+    user = _dono_da_lista(db, usuario, username)
+    filtro = _sem_bloqueados(db, usuario, Follow.seguido_id == user.id, Follow.seguidor_id)
+    return _pagina(db, filtro, Follow.seguidor_id, offset, limit)
 
 
-def listar_seguindo(db: Session, username: str, offset: int, limit: int) -> UserPage:
+def listar_seguindo(db: Session, usuario: User, username: str, offset: int, limit: int) -> UserPage:
+    user = _dono_da_lista(db, usuario, username)
+    filtro = _sem_bloqueados(db, usuario, Follow.seguidor_id == user.id, Follow.seguido_id)
+    return _pagina(db, filtro, Follow.seguido_id, offset, limit)
+
+
+def _dono_da_lista(db: Session, usuario: User, username: str) -> User:
+    """O dono da lista; 404 também se ele bloqueou quem vê."""
     user = buscar_por_username(db, username)
-    return _pagina(db, Follow.seguidor_id == user.id, Follow.seguido_id, offset, limit)
+    bloqueios.garantir_que_ve(db, usuario.id, user.id, "usuário não encontrado")
+    return user
+
+
+def _sem_bloqueados(db: Session, usuario: User, filtro, coluna_outro):
+    """Tira da lista quem tem bloqueio com quem vê."""
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
+    return and_(filtro, coluna_outro.not_in(bloqueados)) if bloqueados else filtro
 
 
 def _pagina(db: Session, filtro, coluna_outro, offset: int, limit: int) -> UserPage:

@@ -246,6 +246,13 @@ def _resolver_convidados(db: Session, criador: User, usernames: list[str]) -> li
             status_code=422,
             detail=f"consagrados não podem ser convidados (não têm login): {', '.join(consagrados)}",
         )
+    bloqueados = bloqueios.ids_com_bloqueio(db, criador.id)
+    com_bloqueio = [u for u in pedidos if encontrados[u].id in bloqueados]
+    if com_bloqueio:
+        raise HTTPException(
+            status_code=422,
+            detail=f"não dá para convidar quem tem bloqueio com você: {', '.join(com_bloqueio)}",
+        )
     return [encontrados[u] for u in pedidos]
 
 

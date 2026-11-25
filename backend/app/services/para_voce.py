@@ -212,7 +212,9 @@ def _comentarios(db: Session) -> list[Atividade]:
             AncoraComentario.comentario_id.is_not(None),
         )
         .outerjoin(AncoraComentario, AncoraComentario.comentario_id == Comentario.id)
-        .where(~Comentario.removido)
+        .join(Post, Post.id == Comentario.post_id)
+        # O comentário de quem tem bloqueio com o autor do poema está escondido para todos.
+        .where(~Comentario.removido, ~bloqueios.ha_bloqueio(Comentario.autor_id, Post.autor_id))
     )
     return [
         Atividade(

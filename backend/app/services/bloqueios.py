@@ -10,8 +10,13 @@ A regra mora aqui, para não se espalhar pelos services:
 - **Bloquear desfaz os follows** entre os dois, nos dois sentidos.
 - **Nenhum dos dois vê o outro** nos feeds (Seguindo e Para você), nas tags e no
   Explorar, nas rengas e nas sugestões (`ids_com_bloqueio`, `sem_bloqueados`).
-- Desbloquear desfaz o bloqueio (os follows não voltam). A conversa de mensagens
-  e os comentários que já existiam ficam.
+- **Comentários de um nos poemas do outro somem para todos** (services/comentarios.py),
+  como os apagados: com respostas, viram "comentário removido"; sem, somem. É um
+  filtro na leitura, então desbloquear os traz de volta.
+- **Citação de terceiros:** o original de quem bloqueou aparece para o bloqueado
+  como "poema indisponível" (services/posts.para_saidas).
+- **Acervo, seguidores/seguindo e convites de renga** também tiram o outro.
+- Desbloquear desfaz o bloqueio (os follows não voltam). A conversa de mensagens fica.
 
 Custo: `ids_com_bloqueio` são duas buscas nos índices de `bloqueios`, um em cada
 sentido; sem bloqueio nenhum (o caso comum), os feeds não fazem mais nada.
@@ -20,7 +25,7 @@ sentido; sem bloqueio nenhum (o caso comum), os feeds não fazem mais nada.
 from typing import Protocol, TypeVar
 
 from fastapi import HTTPException
-from sqlalchemy import delete, or_, select, union
+from sqlalchemy import ColumnElement, and_, delete, exists, or_, select, union
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -93,6 +98,21 @@ def ids_com_bloqueio(db: Session, user_id: int) -> set[int]:
                 select(Bloqueio.bloqueado_id).where(Bloqueio.bloqueador_id == user_id),
                 select(Bloqueio.bloqueador_id).where(Bloqueio.bloqueado_id == user_id),
             )
+        )
+    )
+
+
+def quem_bloqueou(db: Session, user_id: int) -> set[int]:
+    """Quem bloqueou `user_id` (o índice `(bloqueado_id, bloqueador_id)`)."""
+    return set(db.scalars(select(Bloqueio.bloqueador_id).where(Bloqueio.bloqueado_id == user_id)))
+
+
+def ha_bloqueio(a, b) -> ColumnElement[bool]:
+    """Expressão SQL: há bloqueio, em qualquer sentido, entre as colunas (ou ids) `a` e `b`."""
+    return exists().where(
+        or_(
+            and_(Bloqueio.bloqueador_id == a, Bloqueio.bloqueado_id == b),
+            and_(Bloqueio.bloqueador_id == b, Bloqueio.bloqueado_id == a),
         )
     )
 
