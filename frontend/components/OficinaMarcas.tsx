@@ -2,9 +2,10 @@
 // Oficina do compositor: sílabas poéticas e rimas ao lado de cada verso, mais um
 // aviso leve de forma (soneto, haicai). Só no compositor: o leitor nunca vê as
 // marcas e nada disso vai para o poema publicado. A análise vem de
-// POST /oficina/analise (backend/app/core/metrica.py).
+// POST /oficina/analise (backend/app/core/metrica.py), que mede o texto sem o
+// negrito, o itálico, o sublinhado e o tachado (core/marcas.py).
 
-import { type RefObject, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useLayoutEffect, useState } from "react";
 
 import {
   type AnaliseDoRascunho,
@@ -83,25 +84,10 @@ export function useOficina(texto: string, forma: string): Oficina {
   return { opcoes, alternar, analise, longoDemais };
 }
 
-// Estilos do textarea que mudam onde cada linha quebra.
-const ESTILOS_DO_TEXTO = [
-  "fontFamily",
-  "fontSize",
-  "fontWeight",
-  "fontStyle",
-  "letterSpacing",
-  "wordSpacing",
-  "lineHeight",
-  "tabSize",
-  "paddingTop",
-  "paddingRight",
-  "paddingBottom",
-  "paddingLeft",
-] as const;
-
-// A coluna de marcas ao lado do textarea. Um espelho invisível, com a mesma
-// fonte e largura, diz a altura de cada verso (com as quebras automáticas), e
-// cada marca fica na primeira linha do seu verso, rolando junto com o campo.
+// A coluna de marcas ao lado do editor (components/EditorDePoema.tsx). Cada verso
+// é um bloco do editor, então a altura de cada um (com as quebras automáticas)
+// se lê direto dele, e cada marca fica na primeira linha do seu verso. O editor
+// cresce com o poema, sem rolagem própria: a coluna rola junto com a página.
 export function OficinaMarcas({
   oficina,
   texto,
@@ -109,43 +95,29 @@ export function OficinaMarcas({
 }: {
   oficina: Oficina;
   texto: string;
-  campo: RefObject<HTMLTextAreaElement | null>;
+  campo: RefObject<HTMLElement | null>;
 }) {
-  const espelho = useRef<HTMLDivElement>(null);
   const [topos, setTopos] = useState<number[]>([]);
-  const [rolagem, setRolagem] = useState(0);
   const [alturaDaLinha, setAlturaDaLinha] = useState<string>("normal");
   const { opcoes, analise } = oficina;
   const linhas = texto.split("\n");
   const ligada = opcoes.silabas || opcoes.rimas;
 
   useLayoutEffect(() => {
-    const area = campo.current;
-    const div = espelho.current;
-    if (!ligada || !area || !div) return;
+    const editor = campo.current;
+    if (!ligada || !editor) return;
     function medir() {
-      if (!area || !div) return;
-      const estilo = getComputedStyle(area);
-      for (const prop of ESTILOS_DO_TEXTO) div.style[prop] = estilo[prop];
-      div.style.width = `${area.clientWidth}px`;
+      if (!editor) return;
+      const estilo = getComputedStyle(editor);
       const borda = parseFloat(estilo.borderTopWidth) || 0;
       setAlturaDaLinha(estilo.lineHeight);
-      setTopos(Array.from(div.children, (filho) => (filho as HTMLElement).offsetTop + borda));
+      setTopos(Array.from(editor.children, (verso) => (verso as HTMLElement).offsetTop + borda));
     }
     medir();
     const observador = new ResizeObserver(medir);
-    observador.observe(area);
+    observador.observe(editor);
     return () => observador.disconnect();
   }, [ligada, texto, campo]);
-
-  useEffect(() => {
-    const area = campo.current;
-    if (!ligada || !area) return;
-    const aoRolar = () => setRolagem(area.scrollTop);
-    aoRolar();
-    area.addEventListener("scroll", aoRolar);
-    return () => area.removeEventListener("scroll", aoRolar);
-  }, [ligada, campo]);
 
   if (!ligada) return null;
   // Análise de um texto com outro número de linhas: espera a próxima, para não
@@ -153,15 +125,7 @@ export function OficinaMarcas({
   const alinhada = analise !== null && analise.versos.length === linhas.length;
 
   return (
-    <div aria-hidden className="relative w-14 shrink-0 overflow-hidden">
-      <div
-        ref={espelho}
-        className="invisible absolute top-0 left-0 box-border whitespace-pre-wrap break-words"
-      >
-        {linhas.map((linha, i) => (
-          <div key={i}>{linha || "​"}</div>
-        ))}
-      </div>
+    <div aria-hidden className="relative w-14 shrink-0">
       {alinhada &&
         analise.versos.map((verso, i) => {
           const marca = marcaDoVerso(verso, opcoes);
@@ -172,7 +136,7 @@ export function OficinaMarcas({
               key={i}
               title={toante ? "rima toante" : undefined}
               className={`absolute left-0 text-xs whitespace-nowrap text-tinta-suave tabular-nums ${toante ? "italic" : ""}`}
-              style={{ top: topos[i] - rolagem, lineHeight: alturaDaLinha }}
+              style={{ top: topos[i], lineHeight: alturaDaLinha }}
             >
               {marca}
             </span>
