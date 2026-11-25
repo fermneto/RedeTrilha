@@ -8,6 +8,9 @@
 // estrofes contam na numeração, como no backend, mas não se selecionam sozinhas.
 // A numeração e a seleção usam o texto sem as marcas de formatação (mesmo número
 // de linhas); o verso aparece formatado, e "citar estes versos" leva as marcas.
+// Selecionar versos num card fora daqui (feed, perfil...) traz para esta página
+// com ?versos=2-4: a página passa a seleção pedida e ela chega já "fixa", com o
+// foco no campo de comentário, como depois de "comentar estes versos".
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -21,6 +24,7 @@ import {
   trechoDosVersos,
   versosDaSelecao,
   versosDoPoema,
+  versosTocados,
   type Post,
   type SelecaoDeVersos,
 } from "@/lib/api";
@@ -32,13 +36,30 @@ type Props = {
   marcas: Map<number, number>;
   selecao: SelecaoDeVersos | null;
   aoSelecionar: (selecao: SelecaoDeVersos | null) => void;
-  // "comentar estes versos": a página leva ao formulário de comentário.
-  aoComentar: () => void;
+  // "comentar estes versos": a página leva ao formulário de comentário (sem
+  // animação quando a página já abre com os versos pedidos).
+  aoComentar: (suave: boolean) => void;
   // Clique na marca: só os comentários daquele verso.
   aoFiltrar: (verso: number) => void;
+  // Versos pedidos pela URL (já validados): entram selecionados e com o campo de comentário focado.
+  selecaoPedida?: SelecaoDeVersos | null;
 };
 
-export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoComentar, aoFiltrar }: Props) {
+// A barra dos versos selecionados, aqui e no corpo do poema nos cards.
+export const CLASSE_DA_BARRA_DE_VERSOS =
+  "mt-2 flex flex-wrap items-center gap-x-1 rounded-xl border border-borda bg-papel-alto px-2 py-1";
+export const CLASSE_DA_ACAO_DE_VERSOS =
+  "inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm font-semibold text-destaque hover:bg-destaque/10";
+
+export function VersosComentaveis({
+  poema,
+  marcas,
+  selecao,
+  aoSelecionar,
+  aoComentar,
+  aoFiltrar,
+  selecaoPedida = null,
+}: Props) {
   const versos = versosDoPoema(poema.texto);
   const visiveis = versosDoPoema(textoSemMarcas(poema.texto));
   const lista = useRef<HTMLOListElement>(null);
@@ -56,11 +77,7 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
     function aoMudarSelecao() {
       const selecaoDeTexto = document.getSelection();
       if (!selecaoDeTexto || !lista.current) return;
-      const tocados = selecaoDeTexto.isCollapsed
-        ? []
-        : Array.from(lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"))
-            .filter((li) => selecaoDeTexto.containsNode(li, true))
-            .map((li) => Number(li.dataset.verso));
+      const tocados = versosTocados(selecaoDeTexto, lista.current.querySelectorAll<HTMLLIElement>("li[data-verso]"));
       const nova = versosDaSelecao(textoSemMarcas(poema.texto), tocados);
       if (nova) {
         origem.current = "texto";
@@ -72,6 +89,17 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
     document.addEventListener("selectionchange", aoMudarSelecao);
     return () => document.removeEventListener("selectionchange", aoMudarSelecao);
   }, [poema.texto, selecao, aoSelecionar]);
+
+  useEffect(() => {
+    if (!selecaoPedida) return;
+    origem.current = "fixa";
+    aoSelecionar(selecaoPedida);
+    // Um quadro depois, com o trecho citado já acima do campo: a rolagem feita
+    // na montagem da página se perdia. Sem cancelar na limpeza: a página apaga o
+    // pedido logo depois, e isso refaz este efeito antes do quadro.
+    requestAnimationFrame(() => aoComentar(false));
+    // Só quando o pedido chega; as funções da página mudam a cada render.
+  }, [selecaoPedida]);
 
   useEffect(() => {
     if (!selecao) return;
@@ -92,8 +120,7 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
   }, [selecao, aoSelecionar]);
 
   const selecionado = (n: number) => selecao !== null && selecao.inicio <= n && n <= selecao.fim;
-  const acao =
-    "inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm font-semibold text-destaque hover:bg-destaque/10";
+  const acao = CLASSE_DA_ACAO_DE_VERSOS;
 
   return (
     <div ref={corpo} className={poema.titulo ? "mt-2" : "mt-1"}>
@@ -159,14 +186,14 @@ export function VersosComentaveis({ poema, marcas, selecao, aoSelecionar, aoCome
           role="group"
           aria-label="versos selecionados"
           onMouseDown={(e) => e.preventDefault()}
-          className="mt-2 flex flex-wrap items-center gap-x-1 rounded-xl border border-borda bg-papel-alto px-2 py-1"
+          className={CLASSE_DA_BARRA_DE_VERSOS}
         >
           <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
           <button
             type="button"
             onClick={() => {
               origem.current = "fixa";
-              aoComentar();
+              aoComentar(true);
             }}
             className={acao}
           >

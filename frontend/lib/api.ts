@@ -1108,6 +1108,38 @@ export function versosDaSelecao(texto: string, tocados: number[]): SelecaoDeVers
   return { inicio: Math.min(...comTexto), fim: Math.max(...comTexto) };
 }
 
+// Os versos (o data-verso de cada linha) que a seleção do navegador toca, mesmo em
+// parte. Serve à página do poema e ao corpo do poema nos cards.
+export function versosTocados(
+  selecao: { isCollapsed: boolean; containsNode(no: Node, parcial: boolean): boolean },
+  linhas: Iterable<HTMLElement>,
+): number[] {
+  if (selecao.isCollapsed) return [];
+  return Array.from(linhas)
+    .filter((linha) => selecao.containsNode(linha, true))
+    .map((linha) => Number(linha.dataset.verso));
+}
+
+// "comentar estes versos" num card: a página do poema abre com eles selecionados
+// e o campo de comentário pronto (/poema/7?versos=2-4, ou ?versos=3 para um só).
+export function caminhoDaCriticaDeVersos(postId: number, { inicio, fim }: SelecaoDeVersos): string {
+  return `/poema/${postId}?versos=${inicio === fim ? inicio : `${inicio}-${fim}`}`;
+}
+
+// Lê o ?versos= da página do poema contra o texto dele (sem as marcas). Só vale um
+// intervalo dentro do poema que comece e termine em verso com texto, como os que a
+// seleção produz; qualquer outra coisa é null (a página ignora em silêncio).
+export function lerVersosDaUrl(valor: string | null, texto: string): SelecaoDeVersos | null {
+  const partes = /^(\d{1,6})(?:-(\d{1,6}))?$/.exec(valor ?? "");
+  if (!partes) return null;
+  const inicio = Number(partes[1]);
+  const fim = Number(partes[2] ?? partes[1]);
+  const versos = versosDoPoema(texto);
+  if (inicio < 1 || inicio > fim || fim > versos.length) return null;
+  if (versos[inicio - 1].trim() === "" || versos[fim - 1].trim() === "") return null;
+  return { inicio, fim };
+}
+
 // Pelo teclado, o número de cada verso é um botão: sem seleção, seleciona aquele
 // verso; com um verso só, ativá-lo de novo desfaz e ativar outro estende até ele;
 // com um intervalo, recomeça no verso ativado.

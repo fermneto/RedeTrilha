@@ -9,7 +9,18 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { ancoraCobreOVerso, caminhoDaCitacaoDeVersos, referenciaDosVersos, selecionarVerso, trechoDosVersos, versosDaSelecao, versosDoPoema } =
+const {
+  ancoraCobreOVerso,
+  caminhoDaCitacaoDeVersos,
+  caminhoDaCriticaDeVersos,
+  lerVersosDaUrl,
+  referenciaDosVersos,
+  selecionarVerso,
+  trechoDosVersos,
+  versosDaSelecao,
+  versosDoPoema,
+  versosTocados,
+} =
   await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
 
 const POEMA = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nAs aves, que aqui gorjeiam,\n  Não gorjeiam como lá.";
@@ -75,4 +86,51 @@ test("com marcas, a numeração não muda e a citação de versos leva as marcas
   assert.deepEqual(versosDaSelecao(FORMATADO, [2, 3]), { inicio: 2, fim: 2 });
   const caminho = caminhoDaCitacaoDeVersos(7, trechoDosVersos(FORMATADO, { inicio: 4, fim: 4 }));
   assert.equal(new URL(caminho, "http://x").searchParams.get("versos"), "++As aves++");
+});
+
+// Seleção do navegador de mentira: toca as linhas cujo data-verso está em `tocadas`.
+const linhas = (n) => Array.from({ length: n }, (_, i) => ({ dataset: { verso: String(i + 1) } }));
+const selecao = (tocadas, isCollapsed = false) => ({
+  isCollapsed,
+  containsNode: (linha, parcial) => parcial === true && tocadas.includes(Number(linha.dataset.verso)),
+});
+
+test("versos tocados pela seleção, mesmo em parte, e nenhum com a seleção recolhida", () => {
+  assert.deepEqual(versosTocados(selecao([2, 3, 4]), linhas(5)), [2, 3, 4]);
+  assert.deepEqual(versosTocados(selecao([2, 3], true), linhas(5)), []);
+  assert.deepEqual(versosTocados(selecao([]), linhas(5)), []);
+});
+
+test("no card cortado, os números são os do poema inteiro (o corte só esconde o fim)", () => {
+  const longo = Array.from({ length: 30 }, (_, i) => `verso ${i + 1}`).join("\n");
+  const tocados = versosTocados(selecao([19, 20]), linhas(20));
+  assert.deepEqual(versosDaSelecao(longo, tocados), { inicio: 19, fim: 20 });
+});
+
+test("a seleção que pega a linha em branco entre estrofes vira os versos com texto", () => {
+  assert.deepEqual(versosDaSelecao(POEMA, versosTocados(selecao([2, 3, 4]), linhas(5))), { inicio: 2, fim: 4 });
+  assert.equal(versosDaSelecao(POEMA, versosTocados(selecao([3]), linhas(5))), null);
+});
+
+test("o caminho da crítica leva os versos na URL", () => {
+  assert.equal(caminhoDaCriticaDeVersos(7, { inicio: 2, fim: 4 }), "/poema/7?versos=2-4");
+  assert.equal(caminhoDaCriticaDeVersos(7, { inicio: 3, fim: 3 }), "/poema/7?versos=3");
+});
+
+test("?versos= válido vira a seleção, e volta igual ao que o card gerou", () => {
+  assert.deepEqual(lerVersosDaUrl("2-4", POEMA), { inicio: 2, fim: 4 });
+  assert.deepEqual(lerVersosDaUrl("5", POEMA), { inicio: 5, fim: 5 });
+  assert.deepEqual(lerVersosDaUrl("1-5", POEMA), { inicio: 1, fim: 5 });
+  const caminho = caminhoDaCriticaDeVersos(1, { inicio: 4, fim: 5 });
+  assert.deepEqual(lerVersosDaUrl(new URL(caminho, "http://x").searchParams.get("versos"), POEMA), { inicio: 4, fim: 5 });
+});
+
+test("?versos= inválido é ignorado (null)", () => {
+  for (const valor of [null, "", "0", "0-2", "4-2", "2-6", "6", "3", "1-3", "3-4", "a", "2-", "-2", "2-3-4", " 2", "2.5", "1e1", "9999999"]) {
+    assert.equal(lerVersosDaUrl(valor, POEMA), null, `?versos=${valor}`);
+  }
+});
+
+test("?versos= conta as linhas do texto sem marcas (o chamador tira as marcas)", () => {
+  assert.deepEqual(lerVersosDaUrl("2", "**um**\n*dois*"), { inicio: 2, fim: 2 });
 });

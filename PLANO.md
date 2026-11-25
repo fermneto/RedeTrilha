@@ -321,6 +321,11 @@ poema publicado não se edita, então ele sai do texto do poema.
 - `GET /posts/{id}/comentarios/versos` 🔒 → `{"items": [{"verso", "comentarios"}]}`:
   quantos comentários cobrem cada verso (uma crítica de 5–8 conta nos quatro).
 - Apagar o comentário (sem respostas) ou o poema apaga a âncora junto.
+- Front: `/poema/{id}?versos=2-4` (ou `?versos=3`) abre o poema com esses
+  versos selecionados e o campo de comentário focado; é o destino de "comentar
+  estes versos" na barra que aparece ao selecionar o corpo de um poema em
+  qualquer card. Valor fora do poema, invertido ou que começa ou termina em
+  linha em branco é ignorado.
 
 ### Curtidas e reposts (dono: Henrique)
 
