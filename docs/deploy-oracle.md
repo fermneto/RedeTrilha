@@ -49,6 +49,7 @@ dela e pode ser feito em paralelo enquanto se espera.
 - [ ] Bucket `verso-backups`, namespace anotado e Customer Secret Key gerada (passo 11, itens 1 a 3)
 - [ ] Chave da Anthropic num workspace só da demo, com limite de gasto (passo 1)
 - [ ] Repo importado na Vercel com Root Directory `frontend`, ainda sem `NEXT_PUBLIC_API_URL` (passo 9; o primeiro build pode sair apontando para `localhost`, tudo bem)
+- [ ] Domínio `verso.net.br` ativo no Registro.br e ligado ao front na Vercel, com `www` (passo 6 e passo 9, parte A)
 - [ ] Contas criadas no UptimeRobot e no Sentry (passo 10; os monitores e o DSN entram depois)
 
 **B. Depende da VM**
@@ -56,10 +57,10 @@ dela e pode ser feito em paralelo enquanto se espera.
 - [ ] VM criada, com IP público, e SSH funcionando (passo 3)
 - [ ] Portas 80 e 443 abertas na Security List e no `iptables` (passo 4)
 - [ ] Docker instalado (passo 5)
-- [ ] Domínio apontando para o IP (passo 6)
+- [ ] Registro **A** de `api.verso.net.br` → IP da VM no Registro.br, e `nslookup` respondendo (passo 6)
 - [ ] `.env` preenchido (passo 7)
 - [ ] `docker compose up -d --build` e os testes com `curl` (passo 8)
-- [ ] `NEXT_PUBLIC_API_URL` na Vercel, Redeploy, e o `CORS_ORIGINS` com o domínio da Vercel (passo 9)
+- [ ] `NEXT_PUBLIC_API_URL=https://api.verso.net.br` na Vercel, Redeploy, e o `CORS_ORIGINS` com `verso.net.br`, `www` e o da Vercel (passo 9, parte B)
 - [ ] Monitores do UptimeRobot e `SENTRY_DSN` no `.env` (passo 10)
 - [ ] Primeiro backup enviado ao Object Storage e teste de restauração ok (passo 11 e "Restaurar um backup")
 - [ ] Avisar o time para rodar o teste de carga contra a URL pública (`backend/scripts/carga.py`, "Workers e pool")
@@ -76,7 +77,7 @@ Os itens da Anthropic e da Vercel do bloco A servem para os dois caminhos.
 3. [Criar a VM ARM](#passo-3-criar-a-vm-arm-ampere-a1)
 4. [Abrir as portas 80 e 443](#passo-4-abrir-as-portas-80-e-443)
 5. [Instalar o Docker](#passo-5-instalar-o-docker)
-6. [Domínio gratuito](#passo-6-domínio-gratuito)
+6. [Domínio `verso.net.br`](#passo-6-domínio-versonetbr)
 7. [Clonar e configurar o `.env`](#passo-7-clonar-e-configurar-o-env)
 8. [Subir com `docker compose up -d`](#passo-8-subir)
 9. [Vercel e CORS](#passo-9-vercel-e-cors)
@@ -285,24 +286,49 @@ docker compose version
 
 O Docker já liga sozinho no boot da VM.
 
-## Passo 6: domínio gratuito
+## Passo 6: domínio `verso.net.br`
 
-O Caddy pede o certificado HTTPS ao Let's Encrypt sozinho, mas precisa de um
-**nome** que aponte para o IP da VM. Escolha um:
+O Verso tem domínio próprio, **`verso.net.br`**, registrado no Registro.br:
 
-| Opção | Nome | O que fazer |
+| Endereço | Para onde aponta | Registro no DNS |
 |---|---|---|
-| **sslip.io** (mais simples) | `api.129-146-10-20.sslip.io` | Nada: o nome já resolve para o IP escrito nele (troque os pontos por traços) |
-| **DuckDNS** | `verso-api.duckdns.org` | Entre em [duckdns.org](https://www.duckdns.org) com o GitHub, crie o subdomínio e ponha o IP da VM |
-| Domínio seu | `api.seudominio.com.br` | Crie um registro **A** apontando para o IP da VM |
+| `verso.net.br` e `www.verso.net.br` | o **front**, na Vercel | os que a Vercel mostrar (passo 9) |
+| `api.verso.net.br` | a **API**, na VM (Caddy) | **A** → o IP público da VM |
 
-Confira antes de seguir (na sua máquina):
+O Caddy pede o certificado HTTPS de `api.verso.net.br` ao Let's Encrypt
+sozinho, mas só consegue depois que esse nome aponta para o IP da VM e as
+portas 80 e 443 estão abertas (passo 4). Por isso a ordem importa:
+**crie o registro da API depois de ter o IP da VM e antes do passo 8**.
 
-```bash
-nslookup api.129-146-10-20.sslip.io     # tem que responder o IP da VM
-```
+**Quando fazer cada parte:**
 
-Domínio da API: `______________________`   **<<< ANOTE AQUI**
+- **Já, antes da VM:** confira no [registro.br](https://registro.br) que o
+  domínio está ativo e que o DNS é o do próprio Registro.br ("Utilizar os
+  servidores DNS do Registro.br"). Domínio novo pode levar algumas horas para
+  ativar. O front pode ganhar o domínio já (passo 9, parte A).
+- **Com o IP da VM na mão (depois do passo 3):** crie o registro da API.
+- **Depois da API no ar (passo 8):** aponte o front para ela (passo 9, parte B).
+
+**Criar o registro da API no Registro.br:**
+
+1. Entre em [registro.br](https://registro.br) → **Meus domínios** → `verso.net.br`.
+2. Em **DNS** → **Configurar zona DNS** (ou "Editar zona", modo avançado).
+3. **Nova entrada**: tipo **A**, nome **`api`**, valor **o IP público da VM**,
+   TTL o padrão (ou 300 s, para poder trocar rápido). Salve.
+4. Confira na sua máquina (pode levar de minutos a algumas horas; com TTL
+   curto, costuma ser rápido):
+
+   ```bash
+   nslookup api.verso.net.br    # tem que responder o IP da VM
+   ```
+
+O `DOMINIO` do `.env` (passo 7) é `api.verso.net.br`.
+
+**Sem o domínio ainda resolvendo** (ou para testar antes): use
+`api.<IP-com-traços>.sslip.io` (ex.: `api.129-146-10-20.sslip.io`), que já
+resolve para o IP escrito nele, e troque depois: mude o `DOMINIO` no `.env`,
+`docker compose up -d` (o Caddy pede o certificado novo), e o
+`NEXT_PUBLIC_API_URL` na Vercel, com Redeploy.
 
 ## Passo 7: clonar e configurar o `.env`
 
@@ -321,7 +347,7 @@ Preencha cada linha marcada com **`<<< COLE AQUI`** (no `nano`: Ctrl+O, Enter
 para salvar; Ctrl+X para sair):
 
 ```text
-DOMINIO=api.129-146-10-20.sslip.io                 <<< o domínio do passo 6, sem https://
+DOMINIO=api.verso.net.br                           <<< o domínio do passo 6, sem https://
 ACME_EMAIL=seu-email@exemplo.com                   <<< seu e-mail (avisos do Let's Encrypt)
 POSTGRES_PASSWORD=3f9c...                          <<< a saída do openssl rand -hex 24
 SEED_ON_BOOT=true                                  (deixe true: só popula um banco sem usuários)
@@ -400,34 +426,50 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "X-User-Id: 1" https://<DOMINIO>/fee
 Os containers têm `restart: unless-stopped`: voltam sozinhos se a VM
 reiniciar, e os dados ficam no volume `pgdata`. Os logs giram em 5 arquivos de 10 MB por serviço.
 
-## Passo 9: Vercel e CORS
+## Passo 9: Vercel, domínio do front e CORS
 
 O front lê a URL da API de **`NEXT_PUBLIC_API_URL`** (ver
 `frontend/.env.local.example` e `frontend/lib/api.ts`).
 
-1. Siga o passo 4 do [`docs/deploy.md`](deploy.md#passo-4-front-na-vercel),
-   mas com:
+**Parte A: o domínio do front (pode ser feito já, antes da VM).**
+
+1. Na Vercel: projeto **verso** → **Settings → Domains** → **Add** →
+   `verso.net.br`. Aceite também `www.verso.net.br` (a Vercel sugere
+   redirecionar um para o outro: deixe o `www` redirecionando para
+   `verso.net.br`).
+2. A Vercel mostra os registros que faltam no DNS. No Registro.br (mesma
+   tela do passo 6), crie **exatamente os valores que a Vercel mostrar**.
+   Em geral são:
+   - tipo **A**, nome vazio (o próprio `verso.net.br`), valor o IP que a
+     Vercel indicar;
+   - tipo **CNAME**, nome **`www`**, valor o endereço que a Vercel indicar
+     (algo como `cname.vercel-dns.com`).
+3. Espere a Vercel mostrar **Valid Configuration** nos dois. Ela emite o
+   HTTPS sozinha. A URL `https://verso-blond.vercel.app` continua
+   funcionando.
+
+**Parte B: apontar o front para a API (depois do passo 8, com a API no ar).**
+
+1. Em **Settings → Environment Variables** (Production):
 
    ```text
-   NEXT_PUBLIC_API_URL = https://<DOMINIO>        <<< o domínio do passo 6, com https, sem barra no fim
+   NEXT_PUBLIC_API_URL = https://api.verso.net.br    <<< com https, sem barra no fim
    ```
 
-   Essa variável entra no JavaScript **no build**: se mudar, faça **Redeploy**
-   na Vercel.
+   Essa variável entra no JavaScript **no build**: depois de mudar, faça
+   **Redeploy** na Vercel.
 
-   Domínio da Vercel: `https://______________.vercel.app`   **<<< ANOTE AQUI**
-
-2. Volte à VM e troque o CORS pelo domínio exato da Vercel:
+2. Volte à VM e ponha no CORS os endereços exatos do front:
 
    ```bash
    cd ~/RedeTrilha/deploy/oracle
    nano .env
-   # CORS_ORIGINS=https://verso.vercel.app            <<< o domínio da Vercel, sem barra
+   # CORS_ORIGINS=https://verso.net.br,https://www.verso.net.br,https://verso-blond.vercel.app
    ./atualizar.sh --sem-pull                         # recria as réplicas com o .env novo, uma de cada vez
    ```
 
-   Para o dev local também falar com a produção:
-   `CORS_ORIGINS=https://verso.vercel.app,http://localhost:3000`.
+   Para o dev local também falar com a produção, acrescente
+   `,http://localhost:3000`.
 
 Depois disso, rode o [checklist da banca](deploy.md#checklist-de-verificação-o-que-a-banca-faz)
 trocando a URL do Render pela sua.
@@ -874,8 +916,8 @@ Como evitar:
 **Se a VM sumir** (recolhida e apagada, conta encerrada, disco perdido), os
 dados voltam do Object Storage numa VM nova:
 
-1. Refaça os passos 3 a 7 (o IP muda: atualize o DuckDNS ou o sslip.io no
-   `DOMINIO`, e o `NEXT_PUBLIC_API_URL` na Vercel, com Redeploy). Use o mesmo
+1. Refaça os passos 3 a 7 (o IP muda: atualize o registro **A** de
+   `api.verso.net.br` no Registro.br para o IP novo; o `DOMINIO` continua o mesmo, e o `NEXT_PUBLIC_API_URL` na Vercel, com Redeploy). Use o mesmo
    `.env`, com a mesma configuração do Object Storage.
 2. `docker compose up -d --build`. O `seed` popula o banco novo com o seed;
    tudo bem, o próximo passo substitui o banco inteiro.
@@ -1070,7 +1112,7 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | O front chama `localhost:8000` | `NEXT_PUBLIC_API_URL` não estava no build da Vercel: defina e faça Redeploy |
 | `curl https://<DOMINIO>` dá timeout | porta fechada: confira as **duas** barreiras do passo 4 (Security List e `iptables`) |
 | Caddy: `challenge failed` / `timeout during connect` | o Let's Encrypt não alcança a porta 80 da VM (passo 4) ou o domínio não aponta para o IP (`nslookup`) |
-| Caddy: `too many certificates` / `rateLimited` | limite do Let's Encrypt (comum em sslip.io, que é compartilhado). O Caddy tenta o ZeroSSL sozinho; se não der, use um subdomínio do DuckDNS. Não apague o volume `caddy_data` à toa: ele guarda o certificado |
+| Caddy: `too many certificates` / `rateLimited` | limite do Let's Encrypt (comum em sslip.io, que é compartilhado; com `api.verso.net.br` é raro). O Caddy tenta o ZeroSSL sozinho. Não apague o volume `caddy_data` à toa: ele guarda o certificado |
 | Navegador avisa "certificado inválido" | o Caddy ainda está pedindo o certificado (veja `docker compose logs caddy`) ou o `DOMINIO` do `.env` não é o mesmo da URL |
 | `Out of capacity` ao criar a VM | passo 3, lista de soluções |
 | `permission denied ... docker.sock` | faltou sair e entrar de novo depois do `usermod -aG docker ubuntu` |
