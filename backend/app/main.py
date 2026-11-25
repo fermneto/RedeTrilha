@@ -19,6 +19,7 @@ from app.routers import (
     auth,
     bloqueios,
     comentarios,
+    comentarios_renga,
     curtidas,
     feed,
     follows,
@@ -172,6 +173,7 @@ app.include_router(traducao.router)
 app.include_router(saude.router)
 app.include_router(acervo.router)
 app.include_router(rengas.router)
+app.include_router(comentarios_renga.router)
 app.include_router(oficina.router)
 app.include_router(rascunhos.router)
 app.include_router(sugestoes.router)

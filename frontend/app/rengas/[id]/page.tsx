@@ -3,31 +3,44 @@
 // Aberta, mostra o campo da próxima estrofe (ou o motivo de não poder escrever);
 // fechada, é lida como um poema só, de todos os autores. O criador encerra e,
 // no modo convidados, convida mais gente.
+// Aberta ou fechada, a renga recebe comentários e crítica ancorada no verso, como
+// a página do poema: o corpo é o VersosComentaveis sobre o texto da renga (as
+// estrofes juntas, uma linha em branco entre elas), com o autor de cada estrofe
+// embaixo do último verso dela, e a árvore de comentários vem no fim.
+// /rengas/3?versos=2-4 (do "comentar estes versos" no card) abre com os versos
+// selecionados e o campo de comentário focado.
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 
+import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
-import { TextoFormatado } from "@/components/TextoFormatado";
+import { VersosComentaveis } from "@/components/VersosComentaveis";
 import {
   acrescentarEstrofe,
   buscarEu,
   buscarRenga,
+  buscarVersosComentados,
   caminhoDoLogin,
   convidarParaRenga,
   encerrarRenga,
   ErroDaApi,
+  fimDasEstrofes,
   formatarData,
   lerUsernames,
+  lerVersosDaUrl,
   mensagemDeFalha,
   temToken,
+  textoDaRenga,
   type RengaDetalhe,
+  type SelecaoDeVersos,
   type User,
 } from "@/lib/api";
+import { textoSemMarcas } from "@/lib/marcas";
 
 const botaoPrincipal =
   "min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50";
@@ -43,6 +56,23 @@ export default function RengaPage() {
   const [eu, setEu] = useState<User | null>(null);
   const [naoExiste, setNaoExiste] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  // Crítica ancorada: versos selecionados, marcas por verso e o filtro da marca.
+  const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
+  const [marcas, setMarcas] = useState<Map<number, number>>(new Map());
+  const [verso, setVerso] = useState<number | null>(null);
+  // ?versos=2-4: lido uma vez, quando a renga chega, e passado uma vez aos versos.
+  const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
+  const leuAUrl = useRef(false);
+
+  // Também chamado pela árvore depois de comentar ou apagar. Sem as marcas, a
+  // renga continua legível: só não mostra os números.
+  const carregarMarcas = useCallback(
+    () =>
+      buscarVersosComentados({ tipo: "renga", id })
+        .then(({ items }) => setMarcas(new Map(items.map((m) => [m.verso, m.comentarios]))))
+        .catch(() => setMarcas(new Map())),
+    [id],
+  );
 
   useEffect(() => {
     if (!temToken()) {
@@ -53,7 +83,9 @@ export default function RengaPage() {
       setNaoExiste(true);
       return;
     }
-    Promise.all([buscarRenga(id), buscarEu()])
+    // As marcas chegam junto com a renga: entrando depois, elas quebram versos
+    // longos no celular e empurram o campo que o ?versos= acabou de focar.
+    Promise.all([buscarRenga(id), buscarEu(), carregarMarcas()])
       .then(([r, u]) => {
         setRenga(r);
         setEu(u);
@@ -62,7 +94,38 @@ export default function RengaPage() {
         if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
         else setErro(mensagemDeFalha(e, "não deu para carregar a renga"));
       });
-  }, [id, router]);
+  }, [id, router, carregarMarcas]);
+
+  useEffect(() => {
+    if (!renga || leuAUrl.current) return;
+    leuAUrl.current = true;
+    const versos = new URLSearchParams(window.location.search).get("versos");
+    setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoDaRenga(renga.estrofes))));
+  }, [renga]);
+
+  // Os versos aplicam o pedido no mesmo commit; depois ele se apaga.
+  useEffect(() => {
+    if (pedida) setPedida(null);
+  }, [pedida]);
+
+  const texto = renga ? textoDaRenga(renga.estrofes) : "";
+  // O autor de cada estrofe, embaixo do último verso dela.
+  const rodape = useMemo(() => {
+    const mapa = new Map<number, React.ReactNode>();
+    if (!renga) return mapa;
+    fimDasEstrofes(renga.estrofes).forEach((fim, i) => {
+      const e = renga.estrofes[i];
+      mapa.set(
+        fim,
+        <span className="mt-1 mb-2 block font-sans text-[0.8125rem] text-tinta-suave">
+          <span aria-hidden="true">— </span>
+          <span className="sr-only">estrofe de </span>
+          <NomeAutor usuario={e.autor} className="font-semibold" />
+        </span>,
+      );
+    });
+    return mapa;
+  }, [renga]);
 
   const cabecalho = <CabecalhoPagina titulo="Renga" comoTitulo={false} />;
   if (naoExiste)
@@ -119,22 +182,28 @@ export default function RengaPage() {
           )}
         </header>
 
-        {/* As estrofes leem como um poema só; o autor de cada uma fica logo abaixo dela,
-            discreto, e o respiro maior separa uma mão da outra. */}
-        <ol aria-label="estrofes" className="mt-7 space-y-8">
-          {renga.estrofes.map((e) => (
-            <li key={e.id}>
-              <p className="poema-corpo">
-                <TextoFormatado texto={e.texto} />
-              </p>
-              <p className="mt-2 text-[0.8125rem] text-tinta-suave">
-                <span aria-hidden="true">— </span>
-                <span className="sr-only">estrofe de </span>
-                <NomeAutor usuario={e.autor} className="font-semibold" />
-              </p>
-            </li>
-          ))}
-        </ol>
+        {/* As estrofes leem como um poema só, numeradas verso a verso (a linha em
+            branco entre elas conta); o autor de cada uma fica logo abaixo dela, discreto. */}
+        <div className="mt-5">
+          <VersosComentaveis
+            texto={texto}
+            citarPostId={null}
+            rodape={rodape}
+            marcas={marcas}
+            selecao={selecao}
+            aoSelecionar={setSelecao}
+            selecaoPedida={pedida}
+            aoComentar={(suave) => {
+              const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
+              campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
+              campo?.focus({ preventScroll: true });
+            }}
+            aoFiltrar={(n) => {
+              setVerso(n);
+              document.getElementById("comentarios")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
+        </div>
 
         <p className="mt-8 text-xs text-tinta-suave">
           começada em {formatarData(renga.created_at)}
@@ -165,6 +234,19 @@ export default function RengaPage() {
           <Encerrar rengaId={renga.id} aoEncerrar={setRenga} />
         </section>
       )}
+
+      <div className="px-4 py-6">
+        <ArvoreComentarios
+          alvo={{ tipo: "renga", id: renga.id }}
+          euId={eu?.id ?? null}
+          aoMudar={carregarMarcas}
+          textoDoPoema={texto}
+          selecao={selecao}
+          aoLimparSelecao={() => setSelecao(null)}
+          verso={verso}
+          aoLimparFiltro={() => setVerso(null)}
+        />
+      </div>
     </div>
   );
 }

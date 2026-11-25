@@ -267,6 +267,44 @@ Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
 - `RengaDetalhe`: `RengaOut` (`autores` em ordem, `qtd_estrofes`, `fechada`)
   mais `estrofes`, `convidados`, `posso_escrever` e `motivo`.
 - Qualquer pessoa logada lê qualquer renga; só os convidados escrevem nas de convidados.
+- `RengaOut` ganhou `comentarios` (opcional, `0` por padrão): comentários e
+  respostas da renga, marcadores incluídos, como o `comentarios` dos poemas.
+
+#### Comentários e crítica ancorada nas rengas
+
+Tabela **nova** `comentarios_renga` (nenhuma coluna em tabela existente: o
+`create_all` do deploy a cria no próximo boot): `id`, `renga_id` (FK
+`rengas.id`), `autor_id`, `texto`, `parent_id` (FK `comentarios_renga.id` \|
+None), `verso_inicio` e `verso_fim` (os dois ou nenhum, só no 1º nível),
+`removido`, `created_at`; índice (`renga_id`, `parent_id`, `created_at`, `id`).
+
+- Os versos são as linhas do **texto da renga**: as estrofes em ordem, unidas
+  por `"\n\n"` (uma linha em branco entre elas, que conta como verso), base 1
+  (`services/rengas.texto_de`, `textoDaRenga` no front). Estrofe só se
+  acrescenta no fim e não se edita, apaga nem reordena: o número de um verso já
+  escrito não muda quando a renga aberta cresce.
+- `POST /rengas/{id}/comentarios` 🔒, body `ComentarioCreate` (`texto`,
+  `parent_id`, `ancora`) → 201 `ComentarioRengaOut` (o `ComentarioOut` com
+  `renga_id` no lugar de `post_id`). Mesmas regras dos poemas: âncora só no 1º
+  nível, intervalo dentro do texto atual da renga e não só de linhas em branco
+  (senão 422); pai de outra renga, inexistente ou removido → 404. Vale para
+  rengas abertas e fechadas, e qualquer pessoa logada que lê a renga comenta
+  (também nas de convidados).
+- `GET /rengas/{id}/comentarios?limit=&cursor=&verso=` 🔒 →
+  `ComentarioRengaPage`; `GET /rengas/{id}/comentarios/versos` 🔒 →
+  `VersosComentadosOut`; `GET /rengas/{id}/comentarios/{cid}/respostas` 🔒.
+- `DELETE /rengas/{id}/comentarios/{cid}` 🔒 só o autor do comentário (nem o
+  criador da renga apaga o dos outros) → `ComentarioApagadoOut`, com o marcador
+  "comentário removido" quando há respostas.
+- Bloqueio: vale o criador da renga, como na leitura dela (404 para quem ele
+  bloqueou, 403 para comentar quem o bloqueou; os comentários de quem tem
+  bloqueio com o criador ficam escondidos para todos, como nos poemas).
+- A paginação em árvore, a prévia e o apagar são comuns aos dois alvos
+  (`services/arvore_de_comentarios.py`); as rotas dos comentários de poema não
+  mudaram.
+- Front: `/rengas/{id}?versos=2-4` abre a renga com os versos selecionados e o
+  campo de comentário focado, destino de "comentar estes versos" no `RengaCard`
+  (sem "citar estes versos": a citação cita poemas).
 
 ### `Follow` (dono: Neto)
 

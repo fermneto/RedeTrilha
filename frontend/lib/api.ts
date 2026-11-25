@@ -287,30 +287,47 @@ export type FeedPage = Omit<Page<ItemDoFeed>, "total"> & {
   proximo_cursor: string | null;
 };
 
-// Espelha ComentarioOut (backend/app/schemas/comentario.py). `respostas` é só a
-// prévia (até 3); `total_respostas` conta todas as respostas diretas.
+// Espelha ComentarioOut e ComentarioRengaOut (backend/app/schemas/comentario.py),
+// que só diferem no alvo (`post_id` ou `renga_id`). `respostas` é só a prévia
+// (até 3); `total_respostas` conta todas as respostas diretas.
 // Removido: texto vazio e autor null.
-export type Comentario = {
+export type ComentarioNaArvore = {
   id: number;
-  post_id: number;
   texto: string;
   autor: User | null;
   parent_id: number | null;
   created_at: string;
   removido: boolean;
   total_respostas: number;
-  respostas: Comentario[];
+  respostas: ComentarioNaArvore[];
   // Crítica ancorada em versos (só no 1º nível); ver a seção no fim do arquivo.
   ancora: Ancora | null;
 };
 
-// Espelha ComentarioPage: respostas diretas em ordem cronológica, por cursor.
+export type Comentario = ComentarioNaArvore & { post_id: number; respostas: Comentario[] };
+export type ComentarioDaRenga = ComentarioNaArvore & { renga_id: number; respostas: ComentarioDaRenga[] };
+
+// Espelha ComentarioPage e ComentarioRengaPage: respostas diretas em ordem cronológica, por cursor.
 export type ComentarioPage = {
-  items: Comentario[];
+  items: ComentarioNaArvore[];
   total: number;
   limit: number;
   proximo_cursor: string | null;
 };
+
+// O que recebe os comentários: um poema (/posts/{id}/comentarios) ou uma renga
+// (/rengas/{id}/comentarios). As regras e o formato são os mesmos.
+export type AlvoDosComentarios = { tipo: "poema" | "renga"; id: number };
+
+export function caminhoDosComentarios({ tipo, id }: AlvoDosComentarios): string {
+  return tipo === "poema" ? `/posts/${id}/comentarios` : `/rengas/${id}/comentarios`;
+}
+
+// Um comentário já criado: no poema, pelo id só (/comentarios/{id}); na renga,
+// dentro dela (/rengas/{renga}/comentarios/{id}).
+export function caminhoDoComentario(alvo: AlvoDosComentarios, comentarioId: number): string {
+  return alvo.tipo === "poema" ? `/comentarios/${comentarioId}` : `${caminhoDosComentarios(alvo)}/${comentarioId}`;
+}
 
 export type NovoPoema = {
   titulo: string | null;
@@ -489,18 +506,18 @@ function paginaDeComentarios(caminho: string, cursor: string | null, limit: numb
   return apiGet<ComentarioPage>(`${caminho}?${params}`);
 }
 
-// Comentários na raiz do poema, cada um com a prévia das respostas.
-export function buscarComentarios(postId: number, cursor: string | null, limit = 20) {
-  return paginaDeComentarios(`/posts/${postId}/comentarios`, cursor, limit);
+// Comentários na raiz do poema ou da renga, cada um com a prévia das respostas.
+export function buscarComentarios(alvo: AlvoDosComentarios, cursor: string | null, limit = 20) {
+  return paginaDeComentarios(caminhoDosComentarios(alvo), cursor, limit);
 }
 
 // Respostas diretas de um comentário ("ver mais respostas").
-export function buscarRespostas(comentarioId: number, cursor: string | null, limit = 20) {
-  return paginaDeComentarios(`/comentarios/${comentarioId}/respostas`, cursor, limit);
+export function buscarRespostas(alvo: AlvoDosComentarios, comentarioId: number, cursor: string | null, limit = 20) {
+  return paginaDeComentarios(`${caminhoDoComentario(alvo, comentarioId)}/respostas`, cursor, limit);
 }
 
-export function comentar(postId: number, texto: string, parentId: number | null): Promise<Comentario> {
-  return apiPost<Comentario>(`/posts/${postId}/comentarios`, { texto, parent_id: parentId });
+export function comentar(alvo: AlvoDosComentarios, texto: string, parentId: number | null): Promise<ComentarioNaArvore> {
+  return apiPost<ComentarioNaArvore>(caminhoDosComentarios(alvo), { texto, parent_id: parentId });
 }
 
 // Espelha ComentarioApagadoOut: "apagado" saiu do banco (não tinha respostas);
@@ -510,8 +527,8 @@ export type ComentarioApagado = {
   total_respostas: number;
 };
 
-export function apagarComentario(id: number): Promise<ComentarioApagado> {
-  return apiDelete<ComentarioApagado>(`/comentarios/${id}`);
+export function apagarComentario(alvo: AlvoDosComentarios, id: number): Promise<ComentarioApagado> {
+  return apiDelete<ComentarioApagado>(caminhoDoComentario(alvo, id));
 }
 
 // Usuário da sessão (o botão "apagar" só aparece para o autor do comentário).
@@ -934,6 +951,8 @@ export type Renga = {
   qtd_estrofes: number;
   // Cada autor uma vez, na ordem da primeira estrofe dele.
   autores: User[];
+  // Comentários e respostas na renga, como o `comentarios` do poema.
+  comentarios: number;
 };
 
 export type Estrofe = {
@@ -1122,11 +1141,11 @@ export function versosTocados(
 
 // "comentar estes versos" num card: a página do poema abre com eles selecionados
 // e o campo de comentário pronto (/poema/7?versos=2-4, ou ?versos=3 para um só).
-export function caminhoDaCriticaDeVersos(postId: number, { inicio, fim }: SelecaoDeVersos): string {
-  return `/poema/${postId}?versos=${inicio === fim ? inicio : `${inicio}-${fim}`}`;
+export function caminhoDaCriticaDeVersos(postId: number, selecao: SelecaoDeVersos): string {
+  return `/poema/${postId}?${parametroDosVersos(selecao)}`;
 }
 
-// Lê o ?versos= da página do poema contra o texto dele (sem as marcas). Só vale um
+// Lê o ?versos= da página do poema (ou da renga) contra o texto dele (sem as marcas). Só vale um
 // intervalo dentro do poema que comece e termine em verso com texto, como os que a
 // seleção produz; qualquer outra coisa é null (a página ignora em silêncio).
 export function lerVersosDaUrl(valor: string | null, texto: string): SelecaoDeVersos | null {
@@ -1159,8 +1178,12 @@ export function caminhoDaCitacaoDeVersos(postId: number, trecho: string): string
   return `/escrever?${new URLSearchParams({ citar: String(postId), versos: trecho })}`;
 }
 
-export function criticarVersos(postId: number, texto: string, selecao: SelecaoDeVersos): Promise<Comentario> {
-  return apiPost<Comentario>(`/posts/${postId}/comentarios`, {
+export function criticarVersos(
+  alvo: AlvoDosComentarios,
+  texto: string,
+  selecao: SelecaoDeVersos,
+): Promise<ComentarioNaArvore> {
+  return apiPost<ComentarioNaArvore>(caminhoDosComentarios(alvo), {
     texto,
     parent_id: null,
     ancora: { verso_inicio: selecao.inicio, verso_fim: selecao.fim },
@@ -1168,14 +1191,44 @@ export function criticarVersos(postId: number, texto: string, selecao: SelecaoDe
 }
 
 // As críticas cuja âncora cobre o verso, paginadas como as raízes.
-export function buscarComentariosDoVerso(postId: number, verso: number, cursor: string | null, limit = 20) {
+export function buscarComentariosDoVerso(alvo: AlvoDosComentarios, verso: number, cursor: string | null, limit = 20) {
   const params = new URLSearchParams({ limit: String(limit), verso: String(verso) });
   if (cursor) params.set("cursor", cursor);
-  return apiGet<ComentarioPage>(`/posts/${postId}/comentarios?${params}`);
+  return apiGet<ComentarioPage>(`${caminhoDosComentarios(alvo)}?${params}`);
 }
 
-export function buscarVersosComentados(postId: number): Promise<{ items: VersoComentado[] }> {
-  return apiGet<{ items: VersoComentado[] }>(`/posts/${postId}/comentarios/versos`);
+export function buscarVersosComentados(alvo: AlvoDosComentarios): Promise<{ items: VersoComentado[] }> {
+  return apiGet<{ items: VersoComentado[] }>(`${caminhoDosComentarios(alvo)}/versos`);
+}
+
+// ---- Crítica ancorada na renga: os versos contam as estrofes juntas, em ordem,
+// com uma linha em branco entre elas (texto_de em backend/app/services/rengas.py).
+// Estrofe só se acrescenta no fim: os números já comentados não mudam.
+
+export function textoDaRenga(estrofes: { texto: string }[]): string {
+  return estrofes.map((e) => e.texto).join("\n\n");
+}
+
+// O número do último verso de cada estrofe, na ordem, no texto da renga: é onde
+// a página põe o autor da estrofe.
+export function fimDasEstrofes(estrofes: { texto: string }[]): number[] {
+  const fins: number[] = [];
+  let inicio = 1;
+  for (const { texto } of estrofes) {
+    const fim = inicio + versosDoPoema(texto).length - 1;
+    fins.push(fim);
+    inicio = fim + 2;
+  }
+  return fins;
+}
+
+// "comentar estes versos" no card da renga: /rengas/3?versos=2-4, como no poema.
+export function caminhoDaCriticaNaRenga(rengaId: number, selecao: SelecaoDeVersos): string {
+  return `/rengas/${rengaId}?${parametroDosVersos(selecao)}`;
+}
+
+function parametroDosVersos({ inicio, fim }: SelecaoDeVersos): string {
+  return `versos=${inicio === fim ? inicio : `${inicio}-${fim}`}`;
 }
 
 // ---- Rascunhos: espelham backend/app/schemas/rascunho.py ----
