@@ -1,12 +1,11 @@
 // O cartão de compartilhamento (Open Graph e Twitter Card) no servidor: busca o
-// poema, o perfil, a renga ou a antologia na API pública, monta os metadados das
-// páginas (generateMetadata nos layout.tsx das rotas) e desenha a imagem de
-// 1200 × 630 (opengraph-image.tsx e twitter-image.tsx) com o next/og.
+// mínimo do poema, do perfil, da renga ou da antologia em GET /cartoes/... (sem
+// login, schemas/cartao.py no backend), monta os metadados das páginas
+// (generateMetadata nos layout.tsx das rotas) e desenha a imagem de 1200 × 630
+// (opengraph-image.tsx e twitter-image.tsx) com o next/og.
 //
-// Sem login: a busca vai sem token. Se a API pedir login, der erro, demorar ou
-// não achar (404, inclusive a antologia privada), sai o cartão padrão do Verso,
-// sem quebrar a página. Renga só para convidados também sai no padrão, sem o
-// conteúdo dela.
+// Se a API der erro, demorar ou não achar (404, inclusive a antologia privada),
+// sai o cartão padrão do Verso, sem quebrar a página.
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -15,12 +14,11 @@ import { ImageResponse } from "next/og";
 
 import {
   anosDeVida,
-  textoDaRenga,
-  type AntologiaDetalhe,
-  type Perfil,
-  type Post,
-  type RengaDetalhe,
-  type User,
+  type AutorDoCartao,
+  type CartaoAntologia,
+  type CartaoPoema,
+  type CartaoRenga,
+  type CartaoUsuario,
 } from "./api";
 import {
   DESCRICAO,
@@ -45,9 +43,9 @@ const TAMANHO = { width: 1200, height: 630 };
 
 // ---- Dados
 
-async function buscarPublico<T>(caminho: string): Promise<T | null> {
+async function buscarCartao<T>(caminho: string): Promise<T | null> {
   try {
-    const res = await fetch(`${API}${caminho}`, {
+    const res = await fetch(`${API}/cartoes/${caminho}`, {
       next: { revalidate: REVALIDAR },
       signal: AbortSignal.timeout(ESPERA_MS),
     });
@@ -59,32 +57,29 @@ async function buscarPublico<T>(caminho: string): Promise<T | null> {
 
 const numero = (id: string) => (/^\d+$/.test(id) ? id : null);
 
-export async function poemaPublico(id: string): Promise<Post | null> {
+function cartaoDoPoema(id: string): Promise<CartaoPoema | null> {
   const n = numero(id);
-  return n ? buscarPublico<Post>(`/posts/${n}`) : null;
+  return n ? buscarCartao<CartaoPoema>(`poema/${n}`) : Promise.resolve(null);
 }
 
-export async function perfilPublico(username: string): Promise<Perfil | null> {
-  return buscarPublico<Perfil>(`/usuarios/${encodeURIComponent(username)}`);
+function cartaoDoUsuario(username: string): Promise<CartaoUsuario | null> {
+  return buscarCartao<CartaoUsuario>(`usuario/${encodeURIComponent(username)}`);
 }
 
-// Renga de convidados não sai no cartão: só os convidados escrevem nela.
-export async function rengaPublica(id: string): Promise<RengaDetalhe | null> {
+function cartaoDaRenga(id: string): Promise<CartaoRenga | null> {
   const n = numero(id);
-  const renga = n ? await buscarPublico<RengaDetalhe>(`/rengas/${n}`) : null;
-  return renga && renga.modo === "aberta" ? renga : null;
+  return n ? buscarCartao<CartaoRenga>(`renga/${n}`) : Promise.resolve(null);
 }
 
-// O backend já devolve 404 para a privada de outra pessoa; a conferência aqui é
-// para o cartão nunca mostrar uma privada, venha a resposta de onde vier.
-export async function antologiaPublica(id: string): Promise<AntologiaDetalhe | null> {
+function cartaoDaAntologia(id: string): Promise<CartaoAntologia | null> {
   const n = numero(id);
-  const antologia = n ? await buscarPublico<AntologiaDetalhe>(`/antologias/${n}`) : null;
-  return antologia && antologia.publica ? antologia : null;
+  return n ? buscarCartao<CartaoAntologia>(`antologia/${n}`) : Promise.resolve(null);
 }
 
-// O poema de um repost puro é o original; a citação é o poema de quem citou.
-const poemaDoCartao = (poema: Post) => (poema.repost_de && !poema.texto.trim() ? poema.repost_de : poema);
+// Os versos chegam sem as marcas de formatação: o resumo não as tira de novo
+// (um "*" literal do poema viraria marca).
+const SEM_MARCAS = false;
+const textoDe = (cartao: { versos: string[] }) => cartao.versos.join("\n");
 
 // ---- Metadados
 
@@ -108,27 +103,28 @@ function metadados(titulo: string, descricao: string, caminho: string, extra?: M
   };
 }
 
-const nomeComAnos = (u: User) => {
+const nomeComAnos = (u: AutorDoCartao) => {
   const vida = anosDeVida(u);
   return vida ? `${u.name} (${vida})` : u.name;
 };
 
+const tituloDoCartao = (poema: CartaoPoema, largura?: number) =>
+  tituloDoPoema({ titulo: poema.titulo, texto: textoDe(poema) }, largura, SEM_MARCAS);
+
 export async function metadadosDoPoema(id: string): Promise<Metadata> {
   const caminho = `/poema/${id}`;
-  const lido = await poemaPublico(id);
-  if (!lido) return metadados("Poema", DESCRICAO, caminho);
-  const poema = poemaDoCartao(lido);
-  const titulo = `${tituloDoPoema(poema)}, de ${nomeComAnos(poema.autor)}`;
-  return metadados(titulo, descricaoDoPoema(poema.texto), caminho, {
+  const poema = await cartaoDoPoema(id);
+  if (!poema) return metadados("Poema", DESCRICAO, caminho);
+  const titulo = `${tituloDoCartao(poema)}, de ${nomeComAnos(poema.autor)}`;
+  return metadados(titulo, descricaoDoPoema(textoDe(poema), undefined, SEM_MARCAS), caminho, {
     type: "article",
     authors: [poema.autor.name],
-    publishedTime: poema.created_at,
   });
 }
 
 export async function metadadosDoPerfil(username: string): Promise<Metadata> {
   const caminho = `/u/${encodeURIComponent(username)}`;
-  const perfil = await perfilPublico(username);
+  const perfil = await cartaoDoUsuario(username);
   if (!perfil) return metadados(`@${username}`, DESCRICAO, caminho);
   const vida = anosDeVida(perfil);
   const descricao =
@@ -143,7 +139,7 @@ export async function metadadosDoPerfil(username: string): Promise<Metadata> {
 }
 
 // "Ana", "Ana e Bia", "Ana, Bia e Caio", "Ana, Bia, Caio e mais 2".
-export function listaDeNomes(nomes: string[], maximo = 3): string {
+function listaDeNomes(nomes: string[], maximo = 3): string {
   if (nomes.length <= 1) return nomes[0] ?? "";
   if (nomes.length > maximo) return `${nomes.slice(0, maximo).join(", ")} e mais ${nomes.length - maximo}`;
   return `${nomes.slice(0, -1).join(", ")} e ${nomes[nomes.length - 1]}`;
@@ -151,17 +147,20 @@ export function listaDeNomes(nomes: string[], maximo = 3): string {
 
 export async function metadadosDaRenga(id: string): Promise<Metadata> {
   const caminho = `/rengas/${id}`;
-  const renga = await rengaPublica(id);
+  const renga = await cartaoDaRenga(id);
   if (!renga) return metadados("Renga", DESCRICAO, caminho);
   const autores = listaDeNomes(renga.autores.map((a) => a.name));
-  return metadados(`${renga.titulo}, renga de ${autores}`, descricaoDoPoema(textoDaRenga(renga.estrofes)), caminho, {
-    type: "article",
-  });
+  return metadados(
+    `${renga.titulo}, renga de ${autores}`,
+    descricaoDoPoema(textoDe(renga), undefined, SEM_MARCAS),
+    caminho,
+    { type: "article" },
+  );
 }
 
 export async function metadadosDaAntologia(id: string): Promise<Metadata> {
   const caminho = `/antologias/${id}`;
-  const antologia = await antologiaPublica(id);
+  const antologia = await cartaoDaAntologia(id);
   if (!antologia) return metadados("Antologia", DESCRICAO, caminho);
   const descricao =
     antologia.descricao?.trim() ||
@@ -278,7 +277,7 @@ function Folha({ children, assinatura }: { children: React.ReactNode; assinatura
 }
 
 // Autor: o nome em tinta, o lacre do consagrado e os anos de vida em tinta suave.
-function Autor({ prefixo, usuario }: { prefixo?: string; usuario: User }) {
+function Autor({ prefixo, usuario }: { prefixo?: string; usuario: AutorDoCartao }) {
   const vida = anosDeVida(usuario);
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -361,23 +360,22 @@ export function imagemPadrao(): Promise<ImageResponse> {
 // Poema: título (quando tem), os primeiros versos e o autor. Sem título, só os
 // versos: o primeiro já é o título da página.
 export async function imagemDoPoema(id: string): Promise<ImageResponse> {
-  const lido = await poemaPublico(id);
-  if (!lido) return imagemPadrao();
-  const poema = poemaDoCartao(lido);
-  if (temEscritaDaDireita(poema.texto)) return imagemDaEscritaDaDireita(poema);
-  const titulo = poema.titulo ? tituloDoPoema(poema, LARGURA_DO_TITULO) : null;
+  const poema = await cartaoDoPoema(id);
+  if (!poema) return imagemPadrao();
+  if (temEscritaDaDireita(textoDe(poema))) return imagemDaEscritaDaDireita(poema);
+  const titulo = poema.titulo ? tituloDoCartao(poema, LARGURA_DO_TITULO) : null;
   const maximo = titulo ? 7 : 8;
   return desenhar(
     <Folha assinatura={<Autor usuario={poema.autor} />}>
       {titulo && <Titulo>{titulo}</Titulo>}
-      <Versos versos={primeirosVersos(poema.texto, maximo).versos} maximo={maximo} />
+      <Versos versos={primeirosVersos(textoDe(poema), maximo, undefined, SEM_MARCAS).versos} maximo={maximo} />
     </Folha>,
   );
 }
 
 // Poema em árabe, persa ou hebraico (ver temEscritaDaDireita): o título no que
 // tiver de legível, a língua do original e o autor, sem os versos.
-function imagemDaEscritaDaDireita(poema: Post): Promise<ImageResponse> {
+function imagemDaEscritaDaDireita(poema: CartaoPoema): Promise<ImageResponse> {
   const titulo = encurtar(semEscritaDaDireita(poema.titulo ?? ""), LARGURA_DO_TITULO);
   const lingua = poema.idioma ? new Intl.DisplayNames(["pt-BR"], { type: "language" }).of(poema.idioma) : null;
   return desenhar(
@@ -418,10 +416,10 @@ function iniciais(nome: string): string {
 
 const contagem = (n: number, um: string, varios: string) => `${n.toLocaleString("pt-BR")} ${n === 1 ? um : varios}`;
 
-// Perfil: avatar, nome, @, a linha de consagrado, a bio e as contagens. Sem a
+// Perfil: avatar, nome, @, a linha de consagrado, a bio e quantos poemas. Sem a
 // API, o @ da URL no lugar do nome.
 export async function imagemDoPerfil(username: string): Promise<ImageResponse> {
-  const perfil = await perfilPublico(username);
+  const perfil = await cartaoDoUsuario(username);
   if (!perfil) {
     return desenhar(
       <Folha assinatura={<span style={{ color: TINTA_SUAVE }}>{new URL(SITE).host}</span>}>
@@ -441,7 +439,7 @@ export async function imagemDoPerfil(username: string): Promise<ImageResponse> {
     <Folha
       assinatura={
         <span style={{ color: TINTA_SUAVE }}>
-          {`${contagem(perfil.poemas, "poema", "poemas")} · ${contagem(perfil.seguidores, "seguidor", "seguidores")}`}
+          {contagem(perfil.poemas, "poema", "poemas")}
         </span>
       }
     >
@@ -502,11 +500,11 @@ export async function imagemDoPerfil(username: string): Promise<ImageResponse> {
   );
 }
 
-// Renga aberta: o título, as primeiras estrofes e os autores.
+// Renga, aberta ou de convidados: o título, as primeiras estrofes e os autores.
 export async function imagemDaRenga(id: string): Promise<ImageResponse> {
-  const renga = await rengaPublica(id);
+  const renga = await cartaoDaRenga(id);
   if (!renga) return imagemPadrao();
-  const { versos } = primeirosVersos(textoDaRenga(renga.estrofes), 7);
+  const { versos } = primeirosVersos(textoDe(renga), 7, undefined, SEM_MARCAS);
   const autores = listaDeNomes(renga.autores.map((a) => a.name));
   return desenhar(
     <Folha
@@ -525,13 +523,14 @@ export async function imagemDaRenga(id: string): Promise<ImageResponse> {
 
 // Antologia pública: o nome, a descrição, os poetas que estão nela e quem reuniu.
 export async function imagemDaAntologia(id: string): Promise<ImageResponse> {
-  const antologia = await antologiaPublica(id);
+  const antologia = await cartaoDaAntologia(id);
   if (!antologia) return imagemPadrao();
-  const poetas = [...new Map(antologia.poemas.map((p) => [poemaDoCartao(p).autor.id, poemaDoCartao(p).autor.name])).values()];
-  const titulos = antologia.poemas
-    .map((p) => semEscritaDaDireita(tituloDoPoema(poemaDoCartao(p), 56)))
-    .filter(Boolean)
-    .slice(0, 4);
+  const poemas = antologia.poemas
+    .map((p) => ({
+      titulo: semEscritaDaDireita(tituloDoPoema({ titulo: p.titulo, texto: p.primeiro_verso }, 44, SEM_MARCAS)),
+      autor: p.autor.name,
+    }))
+    .filter((p) => p.titulo);
   return desenhar(
     <Folha
       assinatura={
@@ -547,19 +546,17 @@ export async function imagemDaAntologia(id: string): Promise<ImageResponse> {
           {encurtar(antologia.descricao.replace(/\s+/g, " "), 140)}
         </div>
       )}
-      {titulos.length > 0 && (
-        <div style={{ display: "flex", flexDirection: "column", fontFamily: SERIFADA, fontSize: 28, lineHeight: 1.5 }}>
-          {titulos.map((t, i) => (
+      {poemas.length > 0 && (
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 28, lineHeight: 1.5 }}>
+          {poemas.map((p, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 18 }}>
               <div style={{ width: 16, height: 2, backgroundColor: DESTAQUE }} />
-              <span style={{ fontStyle: "italic", fontWeight: 600 }}>{t}</span>
+              <span style={{ fontFamily: SERIFADA, fontStyle: "italic", fontWeight: 600 }}>{p.titulo}</span>
+              <span style={{ fontFamily: SANS, fontWeight: 500, fontSize: 24, color: TINTA_SUAVE }}>
+                {encurtar(p.autor, 30)}
+              </span>
             </div>
           ))}
-        </div>
-      )}
-      {poetas.length > 0 && (
-        <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: 26, color: TINTA_SUAVE, marginTop: 18 }}>
-          {`com poemas de ${listaDeNomes(poetas)}`}
         </div>
       )}
     </Folha>,

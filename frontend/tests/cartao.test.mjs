@@ -77,3 +77,9 @@ test("a escrita da direita fica de fora do cartão", async () => {
   assert.equal(semEscritaDaDireita("Shahnameh — Abertura (به نام خداوند جان و خرد)"), "Shahnameh — Abertura");
   assert.equal(semEscritaDaDireita("غزل ۱"), "");
 });
+
+test("texto que já vem sem marcas (/cartoes) não perde o * literal", () => {
+  assert.deepEqual(primeirosVersos("2 *3* 4", 8, 64, false).versos, ["2 *3* 4"]);
+  assert.equal(tituloDoPoema({ titulo: "*Já limpo*", texto: "" }, 80, false), "*Já limpo*");
+  assert.equal(descricaoDoPoema("um *dois*", 160, false), "um *dois*");
+});

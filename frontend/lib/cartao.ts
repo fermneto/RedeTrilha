@@ -37,12 +37,14 @@ export type Versos = { versos: string[]; cortado: boolean };
 // branco do começo, junta duas ou mais linhas em branco seguidas numa só (a
 // separação de estrofe) e não termina numa linha em branco. Verso longo demais
 // para a imagem leva "…" no fim. `cortado` diz se o poema continua.
+// `tirarMarcas` falso para o texto que já vem sem elas (os versos de /cartoes).
 export function primeirosVersos(
   texto: string,
   maximo = VERSOS_NO_CARTAO,
   largura = LARGURA_DO_VERSO,
+  tirarMarcas = true,
 ): Versos {
-  const linhas = textoSemMarcas(texto).replace(/\r\n?/g, "\n").split("\n");
+  const linhas = (tirarMarcas ? textoSemMarcas(texto) : texto).replace(/\r\n?/g, "\n").split("\n");
   const versos: string[] = [];
   let i = 0;
   while (i < linhas.length && linhas[i].trim() === "") i++;
@@ -57,18 +59,22 @@ export function primeirosVersos(
 }
 
 // O título do poema; sem título, o primeiro verso (como se cita um poema sem nome).
-export function tituloDoPoema(poema: { titulo: string | null; texto: string }, largura = 80): string {
-  const titulo = poema.titulo ? textoSemMarcas(poema.titulo).trim() : "";
+export function tituloDoPoema(
+  poema: { titulo: string | null; texto: string },
+  largura = 80,
+  tirarMarcas = true,
+): string {
+  const titulo = poema.titulo ? (tirarMarcas ? textoSemMarcas(poema.titulo) : poema.titulo).trim() : "";
   if (titulo) return encurtar(titulo, largura);
-  const [primeiro] = primeirosVersos(poema.texto, 1, largura).versos;
+  const [primeiro] = primeirosVersos(poema.texto, 1, largura, tirarMarcas).versos;
   // O verso vira título: sem a vírgula ou o travessão que o ligava ao seguinte.
   return primeiro ? primeiro.trim().replace(/(\S)[\s,;:—–-]+$/, "$1") : "Poema sem título";
 }
 
 // A description: o começo do poema numa linha só, com " / " entre os versos, como
 // se cita poesia em prosa, e " // " entre as estrofes.
-export function descricaoDoPoema(texto: string, largura = LARGURA_DA_DESCRICAO): string {
-  const { versos } = primeirosVersos(texto, 12, largura);
+export function descricaoDoPoema(texto: string, largura = LARGURA_DA_DESCRICAO, tirarMarcas = true): string {
+  const { versos } = primeirosVersos(texto, 12, largura, tirarMarcas);
   const corrido = versos
     .map((v) => v.trim())
     .join(" / ")
