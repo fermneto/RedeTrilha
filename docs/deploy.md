@@ -1,11 +1,17 @@
 # Deploy do Verso (Supabase + Render + Vercel)
 
-> **O caminho principal agora é a Oracle Cloud Always Free:
-> [`docs/deploy-oracle.md`](deploy-oracle.md).** A VM não hiberna e roda a API
-> com vários workers atrás do Caddy (HTTPS automático). Este guia, com o
-> Render, fica como **alternativa simples**: menos passos, mas o serviço dorme
-> depois de 15 minutos sem tráfego. Os passos do Supabase (1), da chave da
-> Anthropic (2) e da Vercel (4) valem para os dois caminhos.
+> **O caminho principal é a Oracle Cloud Always Free:
+> [`docs/deploy-oracle.md`](deploy-oracle.md).** Front na Vercel e uma VM da
+> Oracle com a API (vários workers, atrás do Caddy com HTTPS automático) **e o
+> Postgres** no mesmo Docker Compose, com backup diário para o Object Storage.
+> A VM não hiberna, e o banco ao lado da API não paga latência de rede nem tem
+> o teto de 15 conexões do Supabase free.
+>
+> Este guia, **Render + Supabase**, fica como **alternativa simples**: menos
+> passos e um banco gerenciado com painel, mas o serviço dorme depois de 15
+> minutos sem tráfego. Os passos da chave da Anthropic (2) e da Vercel (4)
+> valem para os dois caminhos; o do Supabase (1) vale também para quem usar o
+> Supabase com a VM da Oracle (`docs/deploy-oracle.md`, "Alternativa").
 
 Três peças, todas no plano free:
 

@@ -1,4 +1,4 @@
-"""Integração com Postgres (o banco do deploy, no Supabase). Opcional.
+"""Integração com Postgres (o banco do deploy). Opcional.
 
 Pulado sem TEST_POSTGRES_URL. Para rodar, num Postgres descartável:
     docker run -d --name verso-pg -e POSTGRES_PASSWORD=teste -p 54329:5432 postgres:16
