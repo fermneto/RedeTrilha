@@ -52,6 +52,8 @@ PRs, na seção "Decisões do Neto".
     várias mãos (decisão 10).
   - O Acervo reúne todos os poetas, com busca e filtros por língua e época
     (decisão 12).
+  - As mensagens diretas servem ao que é pessoal: combinar uma renga, trocar
+    poemas, conversar. A crítica do poema continua pública (decisão 13).
 - **Como saberíamos que funcionou:** alguém cita um verso de um consagrado ou
   de outro poeta da rede e recebe respostas de outra pessoa. Isso dá para
   contar no banco: citações (`repost_de_id` com texto) com comentários de outra
@@ -392,6 +394,52 @@ PRs, na seção "Decisões do Neto".
   (decisão 3): o Acervo é para achar um poeta pelo nome, pela língua e pela
   época. O cartão é o perfil, e o poema se lê no perfil.
 
+### 13. Mensagens diretas para o pessoal, crítica continua pública
+
+- **Contexto:** quem escreve junto precisa combinar as coisas: quem abre a
+  renga, quem convida quem, a leitura do sábado. Hoje isso sai do Verso para o
+  WhatsApp, e o poema vai junto, como print. Mas a crítica de um poema serve
+  também a quem a lê depois: o comentário sobre o verso 6 ensina a todos que
+  passam pelo poema.
+- **Opções:** nenhuma mensagem privada, com tudo na árvore de comentários (o
+  corte da primeira versão); mensagens diretas que levassem também a crítica
+  (citar e criticar versos numa DM); ou mensagens diretas só para o que é
+  pessoal, com a crítica ficando na árvore pública.
+- **Escolha:**
+  - **Conversas 1-para-1, como no X.** A mensagem de quem você segue cai
+    direto em "Conversas"; a de quem você não segue cai em **"Pedidos"**, e você
+    aceita (vai para a caixa) ou recusa (some da sua lista e não volta, e quem
+    mandou não é avisado). Responder um pedido também o aceita.
+  - **O texto é gravado como veio**, com as quebras de linha e os recuos, e
+    aparece em Literata: um verso mandado numa mensagem continua verso. Enter
+    quebra a linha; Ctrl+Enter envia.
+  - **Compartilhar um poema:** o botão "enviar por mensagem" do card manda o
+    poema para uma conversa, e ele aparece como na citação. Apagado pelo autor,
+    fica "poema removido pelo autor".
+  - **Bloquear e silenciar.** Com um bloqueio, nenhum dos dois manda mensagem,
+    e quem foi bloqueado não abre conversa; desbloquear desfaz. A conversa
+    silenciada não entra no contador.
+  - **Contador e visto.** "Mensagens" na navegação mostra as conversas com
+    mensagem não lida e os pedidos novos, e a conversa mostra "Visto" embaixo
+    da sua última mensagem quando o outro leu. Ler um pedido não dá "visto" a
+    quem mandou: só depois de aceitar.
+  - **Em tempo real:** a mensagem aparece na outra tela sem recarregar
+    (escolha técnica, abaixo).
+  - **Consagrados não mandam nem recebem:** são contas sem login.
+- **O que cortamos e por quê:**
+  - **A crítica na mensagem:** a DM não tem crítica ancorada no verso nem
+    citação de verso. A crítica de um poema serve também a quem a lê; numa DM,
+    ela sai do lugar onde os outros leitores aprendem com ela.
+  - **Grupos:** a conversa a várias mãos do Verso é a renga, que é pública.
+  - **Áudio e imagem:** o Verso é texto, para o poema poder ser citado,
+    copiado e traduzido; uma foto do caderno traria de volta o "poema em
+    print".
+  - **Apagar para todos:** como no comentário, mudar o que o outro já leu tira
+    o sentido da conversa.
+  - **Notificações push:** pediriam permissão do navegador e um serviço de
+    entrega, e a conversa já chega em tempo real com a aba aberta.
+  - **DM com consagrado:** não há quem responda.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo
@@ -409,17 +457,19 @@ sobre o produto:
   rascunho.
 - **Editar comentários** (decisão 4). Mudar uma crítica depois de respondida
   tira o sentido da conversa.
-- **Mensagens diretas.** A crítica de um poema serve também a quem a lê. Numa
-  DM, ela sai do lugar onde os outros leitores aprendem com ela; a conversa
-  fica na árvore de comentários, que é pública.
+- **A crítica em mensagem direta** (decisão 13). As mensagens diretas existem
+  para o que é pessoal; a crítica de um poema serve também a quem a lê, e fica
+  na árvore pública. Também ficaram de fora os grupos, o áudio e a imagem, o
+  apagar para todos e as notificações push.
 - **Stories.** Somem em 24 horas, e um poema é feito para ficar. Seria também
   o formato da imagem, que é o problema do Instagram.
 - **Upload de imagem.** O poema é texto para poder ser citado, copiado e
   traduzido; uma imagem no post traria de volta o "poema em print". O avatar é
   só uma URL.
-- **Notificações.** Custariam dias (eventos, não lidas, tela) e trariam de
-  volta a lógica do engajamento. Quem escreve volta para ler o feed, e as
-  respostas estão na página do poema.
+- **Notificações de curtida, comentário e seguidor.** Trariam de volta a
+  lógica do engajamento. Quem escreve volta para ler o feed, e as respostas
+  estão na página do poema. O único contador do Verso é o das mensagens
+  diretas (decisão 13), que é uma conversa com alguém, e não uma métrica.
 - **Busca por palavra.** Quem procura poesia costuma procurar por tema
   ("#chuva") ou por forma ("haicai"), e é isso que o Explorar faz, com o índice
   invertido. Texto livre em poemas sem limite pediria um índice de texto
@@ -464,6 +514,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Oficina: sílabas e rimas no compositor | Neto | Quem escreve vê o metro e as rimas enquanto escreve, e desliga se não usa. |
 | Rascunhos e poema publicado imutável | Neto | O poema amadurece em privado, e a conversa sobre um verso não perde o verso. |
 | Rengas | Neto | Várias pessoas escrevem um poema junto, estrofe por estrofe. |
+| Mensagens diretas | Neto | Combinar uma renga ou mandar um poema a alguém sem sair do Verso, com a crítica continuando pública. |
 | Deploy (Vercel + VM da Oracle com API e Postgres) | Neto | A banca usa a rede na URL pública, e os dados não somem: backup diário no Object Storage. |
 
 ## Uma escolha técnica
@@ -611,6 +662,95 @@ rede crescer.
   O(c log c). Memória O(c). Os testes trocam uma constante e conferem que a
   ordem se inverte.
 
+### Mensagens diretas: a caixa pelos ponteiros e o tempo real por LISTEN/NOTIFY
+
+As mensagens diretas (decisão 13) pedem duas coisas: abrir a caixa rápido (as
+conversas pela última atividade, com quantas faltam ler, e o contador da
+navegação, que é buscado a cada evento) e entregar a mensagem na outra tela sem
+recarregar, com a API rodando em vários workers e sem estado em memória.
+
+**A caixa pelos ponteiros.** Tabelas novas: `conversas` (uma por par),
+`participantes_conversa` (o lado de cada pessoa), `mensagens` e `bloqueios`.
+Montar a caixa varrendo as mensagens (agrupar por conversa, achar a última,
+contar as que vêm depois da última lida) custaria O(m) nas mensagens da pessoa
+a cada abertura e a cada evento. Em vez disso, cada linha de
+`participantes_conversa` guarda dois ponteiros: `ultima_mensagem_id` (copiado
+nas duas linhas a cada envio, na mesma transação) e `ultima_lida_id`. A caixa é
+uma faixa do índice `(user_id, situacao, ultima_mensagem_id)`; "tem não lidas"
+é `ultima_mensagem_id > ultima_lida_id`; o "visto" é o `ultima_lida_id` do
+outro lado. As regras (onde a conversa cai, a leitura que nunca anda para trás)
+ficam em `core/caixa_de_entrada.py`.
+
+**O tempo real.** `GET /mensagens/stream` é um stream SSE por aba. Ele não pode
+ocupar o que as outras rotas usam: é `async` (não prende thread), não passa
+pela fila do banco (`limite_do_banco.py`, que reserva uma conexão do pool por
+requisição em voo) e só usa uma conexão na consulta curta que confere o token;
+depois espera eventos no event loop. Num processo, os streams abertos ficam num
+dict pessoa → filas (`core/assinaturas.py`), cada fila com limite (o cliente
+lento recebe "ressincronizar" em vez de fazer a memória crescer). Entre os
+workers, o evento passa pelo Postgres: o service faz `pg_notify` na transação
+de quem envia (o Postgres só entrega no commit e descarta no rollback), e cada
+worker mantém uma conexão em `LISTEN`, fora do pool, que reconecta com espera
+crescente se cair e, ao voltar, pede aos seus streams para ressincronizar. O
+evento leva só o tipo e os ids; o cliente busca o conteúdo pelas rotas normais
+(`?depois=` a última que tem), que conferem quem pode ler, e é assim também que
+recupera o que perdeu se o stream caiu. No SQLite (dev e testes) não há
+LISTEN/NOTIFY: um canal em memória, atrás da mesma interface, entrega no commit
+aos streams do próprio processo. O `EventSource` do navegador não manda o
+header `Authorization`, e o token não vai na URL (ficaria em logs): o front lê o
+stream com `fetch` e `ReadableStream`, com reconexão de 1 s a 30 s. No Caddy, a
+rota do stream não comprime e faz flush a cada evento, e o limite de escrita
+saiu (derrubava o stream aos 60 s); uma batida a cada 20 s mantém a conexão.
+
+**Big O** (n = linhas da tabela, k = página, u = não lidas da página, d =
+streams dos destinatários, S = streams abertos no processo):
+
+| Operação | Custo | Quando roda |
+|---|---|---|
+| caixa (Conversas ou Pedidos) | O(log n + k) no índice da caixa + O(k log n + u) para as últimas mensagens e as não lidas | `/mensagens/conversas` |
+| contador da navegação | O(log n + c), c = conversas da pessoa, sem ler mensagens | `/mensagens/resumo`, a cada evento |
+| mensagens da conversa | O(log n + k) no índice `(conversa_id, id)` | abrir, `antes=`, `depois=` |
+| enviar | O(log n): a mensagem, os dois ponteiros, o limite por minuto `(autor_id, created_at)` e o NOTIFY | `POST .../mensagens` |
+| entregar um evento | O(destinatários + d) no dict; uma lista custaria O(S) | cada NOTIFY, em cada worker |
+
+**Medição.** O `make bench` roda também `backend/scripts/bench_mensagens.py`.
+A caixa usa as mesmas funções da API (`services/mensagens.caixa` e `resumo`)
+contra a varredura de todas as mensagens montando o dict conversa → (última,
+não lidas) em Python, e o script confere que dão o mesmo resultado. Mediana de
+7 rodadas, 500 pessoas, ~25 mensagens por conversa, a pessoa com mais conversas:
+
+```
+mensagens | conversas da pessoa | ponteiros (ms) | varredura (ms) |   ganho
+---------------------------------------------------------------------------
+     1000 |                   2 |          0.987 |          0.513 |    0.5x
+    10000 |                   7 |          1.088 |          4.317 |    4.0x
+   100000 |                  31 |          1.324 |         43.528 |   32.9x
+  1000000 |                 191 |          1.559 |        503.269 |  322.8x
+
+ streams |  dict (ms) | lista (ms) |    ganho
+---------------------------------------------
+     100 |     0.0005 |     0.0016 |       3x
+    1000 |     0.0005 |     0.0146 |      30x
+   10000 |     0.0006 |     0.2046 |     360x
+  100000 |     0.0006 |     2.3170 |    4184x
+```
+
+Com 1.000 mensagens a varredura ganha (são quatro consultas contra uma), mas
+os ponteiros quase não crescem com a rede (1 ms → 1,6 ms de mil para um milhão
+de mensagens), enquanto a varredura cresce junto com ela e passa de meio
+segundo. O fan-out pelo dict fica constante; a lista cresce com os streams.
+
+**Com carga, medido** (`backend/scripts/carga.py` contra o compose local, API
+com 2 workers × (4 + 2), Postgres e Caddy com HTTPS, 100 usuários, 30 s; com as
+mensagens, os 100 mantêm o stream aberto e 10 deles mandam mensagens em vez de
+navegar): 0 erro e 0 stream caído em todas as rodadas. Pausa média de 3 s: p95
+das rotas de leitura de 68 e 88 ms sem as mensagens, de 75 e 104 ms com elas;
+o evento chega ao outro stream 20 a 27 ms depois do envio. Sem pausa (100
+requisições sempre em voo): p95 de 817 e 1.404 ms sem as mensagens e de 845 e
+904 ms com elas (a variação é da máquina do teste, dividida com outros
+serviços). As mensagens não pioram as outras rotas de forma relevante: o stream
+parado não usa thread nem conexão.
+
 ## Uso de IA
 
 - **Ferramenta:** Claude Code (Claude), da Anthropic, no desenvolvimento.
@@ -636,8 +776,8 @@ rede crescer.
   `Post` e o CRUD de `/posts` (#24) foram feitos pelo Henrique.
   As decisões 7 a 10 (crítica ancorada, oficina, rascunhos e rengas, #75 a
   #78), o feed "Para você" (#87), as boas-vindas e as sugestões (#91) e a
-  escola e o país dos consagrados (#89) também foram implementadas por
-  subagents a pedido do Neto. Cada lacuna que eles encontraram (o equilíbrio dos
+  escola e o país dos consagrados (#89) e as mensagens diretas (#135) também
+  foram implementadas por subagents a pedido do Neto. Cada lacuna que eles encontraram (o equilíbrio dos
   consagrados, os reposts no "Para você", os pesos da nota, o vocabulário de
   escolas, os casos duvidosos de classificação) foi listada no PR e decidida
   pelo Neto antes do merge.

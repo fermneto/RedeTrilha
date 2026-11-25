@@ -406,6 +406,59 @@ feed, perfil, Explorar, tags, índice, Em alta, antologias nem nas contagens.
   o rascunho fica com `repost_de_id: null` e `repost_removido: true`, e
   publicado mostra "poema removido pelo autor".
 
+### Mensagens diretas (dono: Neto, #135)
+
+Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
+`maior_id`, unique no par: uma conversa por par), `participantes_conversa`
+(PK `conversa_id` + `user_id`; `situacao` `"caixa"` | `"pedido"` | `"recusada"`,
+`ultima_lida_id`, `ultima_mensagem_id`, `silenciada`; índice
+`(user_id, situacao, ultima_mensagem_id)`), `mensagens` (`conversa_id`,
+`autor_id`, `texto` como veio, `post_id` opcional, `post_removido`,
+`created_at`; índices `(conversa_id, id)` e `(autor_id, created_at)`) e
+`bloqueios` (unique `(bloqueador_id, bloqueado_id)`).
+
+- `POST /mensagens/conversas` 🔒 `{"username"}` → `ConversaDetalhe`: abre ou
+  acha a conversa. Para si mesmo ou para consagrado → 422; quem bloqueou você
+  → 403; inexistente → 404. Para o outro, a conversa cai em `"caixa"` se ele
+  segue quem abriu, senão em `"pedido"`. Abrir de novo uma recusada a traz de
+  volta para quem recusou.
+- `GET /mensagens/conversas?aba=conversas|pedidos&cursor=&limit=` 🔒 →
+  `CaixaPage` `{"items", "limit", "proximo_cursor"}` de `ConversaOut` (`id`,
+  `outro: UserOut`, `situacao`, `silenciada`, `ultima_mensagem: MensagemOut |
+  null`, `nao_lidas`), pela última mensagem, a mais recente primeiro. Conversa
+  sem mensagem não aparece; recusada não aparece em nenhuma aba.
+- `GET /mensagens/resumo` 🔒 → `{"nao_lidas", "pedidos"}`: conversas da caixa
+  com não lidas (sem as silenciadas) e pedidos com não lidas.
+- `GET /mensagens/conversas/{id}` 🔒 → `ConversaDetalhe` (`id`, `outro`,
+  `situacao`, `silenciada`, `bloqueei`, `pode_responder`, `motivo`,
+  `ultima_lida_id`, `visto_ate`; `visto_ate` é `null` enquanto a conversa é um
+  pedido para o outro).
+- `GET /mensagens/conversas/{id}/mensagens?antes=|depois=&limit=` 🔒 →
+  `MensagemPage` `{"items", "limit", "proximo_cursor"}`, sempre da mais antiga
+  para a mais nova. Sem `depois`, a janela mais recente (ou antes de `antes`), e
+  `proximo_cursor` é o próximo `antes`; com `depois`, as seguintes, e
+  `proximo_cursor` é o próximo `depois`. Os dois juntos → 422.
+- `POST /mensagens/conversas/{id}/mensagens` 🔒 `{"texto", "post_id"}` → 201
+  `MensagemOut` (`id`, `conversa_id`, `autor_id`, `texto`, `post: PostOut |
+  null`, `post_removido`, `created_at`). Texto em branco sem poema ou acima de
+  `LIMITE_TEXTO_MENSAGEM` (10.000) → 422; mais de `MENSAGENS_POR_MINUTO` (30)
+  da mesma pessoa no último minuto → 429; bloqueio em qualquer direção → 403.
+  Repost puro compartilha o original. Mandar marca como lido até ali e aceita
+  um pedido. Apagar o poema deixa a mensagem com `post_removido: true`.
+- `POST /mensagens/conversas/{id}/lida` 🔒 `{"ate"}` (opcional) → 204; nunca
+  volta para trás.
+- `POST /mensagens/conversas/{id}/aceitar` e `/recusar` 🔒 → 204 (recusar uma
+  conversa da caixa → 409); `POST`/`DELETE /mensagens/conversas/{id}/silenciar`
+  🔒 → 204.
+- `POST`/`DELETE /usuarios/{username}/bloqueio` 🔒 → 204, idempotentes.
+- Quem não participa recebe 404 em toda rota da conversa.
+- `GET /mensagens/stream` 🔒 → `text/event-stream`: `pronto` ao abrir; depois
+  `mensagem` e `pedido` (`conversa_id`, `mensagem_id`), `lida` (`conversa_id`,
+  `leitor_id`, `ultima_lida_id`), `conversa` (`conversa_id`: mudou a situação,
+  o silêncio) e `ressincronizar`; um comentário `: batida` a cada 20 s. Sem
+  gzip. O fan-out entre workers é por Postgres `LISTEN/NOTIFY`
+  (`app/tempo_real.py`).
+
 ### Auth e saúde
 
 - `POST /auth/registro` → 201 `UserOut`; `POST /auth/login` → `{"token"}`
@@ -443,6 +496,8 @@ consagrados e o seed também. Nada é reconstruído no startup.
   **Henrique**. Os outros reusam o card, sem copiá-lo.
 - `components/ColunaDireita.tsx` (Descobrir), `CartaoDoAcervo.tsx` e as
   páginas `explorar/` e `acervo/`: **Neto**.
+- `components/EnviarPorMensagem.tsx` (no `PoemaCard`), o item "Mensagens" do
+  `Nav` e as páginas `mensagens/`: **Neto** (#135).
 - `lib/api.ts`: dono **Pedro**. Cada um acrescenta os próprios tipos e
   chamadas numa seção com o nome da feature.
 
