@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
 import {
@@ -88,7 +89,7 @@ export default function PoemaPage() {
     return (
       <>
         {cabecalho}
-        <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>
+        <EsqueletoDaPaginaDoPoema />
       </>
     );
 

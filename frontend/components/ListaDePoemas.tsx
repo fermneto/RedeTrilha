@@ -6,6 +6,7 @@
 
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 
+import { EsqueletoDaLista } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
 import { chaveDoItem, ehRenga, mensagemDeFalha, temToken, type FeedPage, type ItemDoFeed } from "@/lib/api";
@@ -95,7 +96,8 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
       {fim && poemas.length > 0 && <p className="py-8 text-center text-sm text-tinta-suave">{textoDoFim}</p>}
 
       <div ref={sentinela} aria-hidden />
-      {carregando && <p className="py-8 text-center text-sm text-tinta-suave">carregando...</p>}
+      {/* A primeira página ocupa a tela; a seguinte, o pé da lista. */}
+      {carregando && <EsqueletoDaLista quantos={poemas.length === 0 ? 3 : 2} desde={poemas.length} />}
     </div>
   );
 }
