@@ -450,7 +450,19 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
 - `POST /mensagens/conversas/{id}/aceitar` e `/recusar` 🔒 → 204 (recusar uma
   conversa da caixa → 409); `POST`/`DELETE /mensagens/conversas/{id}/silenciar`
   🔒 → 204.
-- `POST`/`DELETE /usuarios/{username}/bloqueio` 🔒 → 204, idempotentes.
+- **Bloqueio na rede inteira** (`services/bloqueios.py`):
+  `POST`/`DELETE /usuarios/{username}/bloqueio` 🔒 → 204, idempotentes;
+  `GET /usuarios/{username}/bloqueio` 🔒 → `{"bloqueei"}` (404 se a pessoa me
+  bloqueou). Bloquear apaga os follows nos dois sentidos. Para quem foi
+  bloqueado, o perfil (`GET /usuarios/{u}` e `/posts`), os poemas
+  (`GET /posts/{id}`) e as rengas (`GET /rengas/{id}`) de quem bloqueou dão 404.
+  Curtir, comentar, repostar, citar, escrever estrofe, seguir e mandar o poema
+  por mensagem entre os dois: 404 para o bloqueado, 403 para quem bloqueou.
+  `GET /feed`, `/feed/para-voce`, `/tags/{tag}/posts`, `/explorar`, `/rengas` e
+  `/sugestoes` tiram, para os dois, os poemas, as rengas e as atividades
+  (reposts, estrofes, comentários) do outro. O `GET /rengas` agora usa o
+  usuário (a assinatura do service mudou). Índices: o par único
+  `(bloqueador_id, bloqueado_id)` e `(bloqueado_id, bloqueador_id)`.
 - Quem não participa recebe 404 em toda rota da conversa.
 - `GET /mensagens/stream` 🔒 → `text/event-stream`: `pronto` ao abrir; depois
   `mensagem` e `pedido` (`conversa_id`, `mensagem_id`), `lida` (`conversa_id`,

@@ -416,9 +416,15 @@ PRs, na seção "Decisões do Neto".
   - **Compartilhar um poema:** o botão "enviar por mensagem" do card manda o
     poema para uma conversa, e ele aparece como na citação. Apagado pelo autor,
     fica "poema removido pelo autor".
-  - **Bloquear e silenciar.** Com um bloqueio, nenhum dos dois manda mensagem,
-    e quem foi bloqueado não abre conversa; desbloquear desfaz. A conversa
-    silenciada não entra no contador.
+  - **Bloquear vale para a rede inteira, como no X.** Quem foi bloqueado não vê
+    os poemas, as rengas nem o perfil de quem o bloqueou (como se não
+    existissem), e nenhum dos dois segue, curte, comenta, reposta, cita, escreve
+    na renga ou manda mensagem ao outro. Bloquear desfaz os follows nos dois
+    sentidos, e um some do outro nos feeds, nas tags, no Explorar, nas rengas e
+    nas sugestões. Quem bloqueou ainda abre o perfil do bloqueado, para
+    desbloquear (pelo perfil ou pela conversa). O que já existia fica: a
+    conversa, com o histórico, e os comentários dele nos seus poemas.
+  - **Silenciar** uma conversa a tira do contador.
   - **Contador e visto.** "Mensagens" na navegação mostra as conversas com
     mensagem não lida e os pedidos novos, e a conversa mostra "Visto" embaixo
     da sua última mensagem quando o outro leu. Ler um pedido não dá "visto" a
@@ -750,6 +756,12 @@ requisições sempre em voo): p95 de 817 e 1.404 ms sem as mensagens e de 845 e
 904 ms com elas (a variação é da máquina do teste, dividida com outros
 serviços). As mensagens não pioram as outras rotas de forma relevante: o stream
 parado não usa thread nem conexão.
+Com o bloqueio na rede inteira, cada feed faz mais uma consulta (os bloqueios da
+pessoa, pelos dois índices de `bloqueios`) e, só para quem tem bloqueio, tira os
+poemas e as rengas do outro. Medido de novo, com 13 bloqueios entre as contas
+da carga: p95 de 63 ms com pausa de 3 s (57 a 94 ms sem bloqueios na mesma
+rodada) e de 1.080 ms sem pausa (876 a 1.083 ms sem bloqueios), 0 erro de
+servidor; os 404 são os perfis e poemas que o bloqueio esconde.
 
 ## Uso de IA
 
