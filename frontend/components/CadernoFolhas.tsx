@@ -327,7 +327,7 @@ export function CadernoFolhas({ folhas, aoChegar, anterior = "página anterior",
                 if (e.target === e.currentTarget && anima) terminar();
               }}
               style={{ zIndex: camada(papel, p.slot, p.lado) }}
-              className={`pagina pagina-${p.slot} focus-visible:outline-offset-[-2px] ${anima ? papel : ""}`}
+              className={`pagina pagina-${p.slot} outline-none ${anima ? papel : ""}`}
             >
               <div className="pagina-rolagem">{conteudo(p)}</div>
               {comPe && (

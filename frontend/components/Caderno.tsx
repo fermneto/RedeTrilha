@@ -31,7 +31,7 @@ export function Caderno({ children }: { children: React.ReactNode }) {
         {
           chave: caminho,
           rotulo: "página",
-          esquerda: <div className="pb-6 lg:px-6">{children}</div>,
+          esquerda: <div className="flex min-h-full flex-col pb-6 lg:px-6">{children}</div>,
           direita: <ColunaDireita />,
           direitaSoNoDuplo: true,
         },

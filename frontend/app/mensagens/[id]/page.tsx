@@ -61,6 +61,7 @@ export default function ConversaPage() {
   const euIdAtual = useRef<number | null>(null);
   euIdAtual.current = euId;
   const colarNoFim = useRef(true);
+  const raiz = useRef<HTMLDivElement>(null);
 
   const juntar = useCallback((novas: Mensagem[]) => {
     setMensagens((atuais) => {
@@ -155,28 +156,36 @@ export default function ConversaPage() {
     return () => document.removeEventListener("visibilitychange", marcar);
   }, [id, ultimaNaTela, lidaAte]);
 
+  // A conversa rola dentro da página do caderno, não na janela.
+  const rolagem = () => raiz.current?.closest<HTMLElement>(".pagina-rolagem") ?? null;
+
   // Fica no fim quando chega mensagem, se a pessoa já estava lá embaixo.
   useLayoutEffect(() => {
-    if (colarNoFim.current) window.scrollTo({ top: document.body.scrollHeight });
+    const r = rolagem();
+    if (r && colarNoFim.current) r.scrollTop = r.scrollHeight;
   }, [mensagens.length]);
+  const montada = conversa !== null;
   useEffect(() => {
+    const r = rolagem();
+    if (!r) return;
     function aoRolar() {
-      colarNoFim.current = window.innerHeight + window.scrollY >= document.body.scrollHeight - 120;
+      if (r) colarNoFim.current = r.clientHeight + r.scrollTop >= r.scrollHeight - 120;
     }
-    window.addEventListener("scroll", aoRolar, { passive: true });
-    return () => window.removeEventListener("scroll", aoRolar);
-  }, []);
+    r.addEventListener("scroll", aoRolar, { passive: true });
+    return () => r.removeEventListener("scroll", aoRolar);
+  }, [montada]);
 
   async function carregarAnteriores() {
     if (!antes) return;
-    const altura = document.body.scrollHeight;
+    const r = rolagem();
+    const altura = r?.scrollHeight ?? 0;
     colarNoFim.current = false;
     try {
       const pagina = await buscarMensagens(id, { antes: Number(antes) });
       setMensagens((atuais) => [...pagina.items, ...atuais]);
       setAntes(pagina.proximo_cursor);
       // Mantém na tela a mensagem que estava no topo.
-      requestAnimationFrame(() => window.scrollBy({ top: document.body.scrollHeight - altura }));
+      requestAnimationFrame(() => r?.scrollBy({ top: r.scrollHeight - altura }));
     } catch (e) {
       setErro(mensagemDeFalha(e, "não deu para carregar as mensagens anteriores"));
     }
@@ -204,7 +213,7 @@ export default function ConversaPage() {
   const minhaUltima = euId !== null && conversa ? situacaoDaMinhaUltima(mensagens, euId, conversa.visto_ate) : null;
 
   return (
-    <div className="flex min-h-[calc(100dvh-3.25rem)] flex-col sm:min-h-dvh">
+    <div ref={raiz} className="flex flex-1 flex-col">
       <Cabecalho conversa={conversa} carregando={!conversa && !erro} aoMudar={recarregarConversa} aoErro={setErro} />
 
       <div className="flex-1 px-4 pt-3 pb-4">
@@ -443,7 +452,7 @@ function Pe({
   const router = useRouter();
   const [erro, setErro] = useState<string | null>(null);
   const fixo =
-    "sticky bottom-[calc(3.25rem+env(safe-area-inset-bottom))] z-10 border-t border-borda bg-papel px-4 py-3 sm:bottom-0";
+    "sticky bottom-0 z-10 border-t border-borda bg-papel px-4 py-3";
 
   if (conversa.situacao === "pedido") {
     return (
