@@ -5,21 +5,19 @@
 {
 	email {$ACME_EMAIL}
 	servers {
-		# Tempo máximo para o visitante mandar a requisição e receber a resposta.
+		# Tempo máximo para o visitante mandar a requisição. Sem limite de escrita
+		# (o "write"): ele vale para a resposta inteira, e o stream das mensagens
+		# (SSE) fica aberto por minutos; com "write 60s", o Caddy o derrubava aos
+		# 60 s. As respostas comuns da API são pequenas e saem em milissegundos.
 		timeouts {
 			read_body 30s
 			read_header 10s
-			write 60s
 			idle 2m
 		}
 	}
 }
 
 {$DOMINIO} {
-	# Comprime JSON grande (feed, acervo). Se a API também comprimir
-	# (GZipMiddleware), o Caddy vê o Content-Encoding e não comprime de novo.
-	encode zstd gzip
-
 	# Poemas não têm limite de caracteres, mas 2 MB por requisição é folga enorme.
 	request_body {
 		max_size 2MB
@@ -34,12 +32,31 @@
 		-Server
 	}
 
-	reverse_proxy api:8000 {
-		health_uri /saude
-		health_interval 30s
-		transport http {
-			dial_timeout 5s
-			response_header_timeout 60s
+	# O stream das mensagens (Server-Sent Events) fica aberto por minutos: sem
+	# compressão (o encode seguraria os eventos em buffer) e com flush a cada
+	# evento. A API manda um comentário a cada 20 s, então a conexão nunca fica
+	# parada o bastante para o idle derrubar.
+	@stream path /mensagens/stream
+	handle @stream {
+		reverse_proxy api:8000 {
+			flush_interval -1
+			transport http {
+				dial_timeout 5s
+			}
+		}
+	}
+
+	handle {
+		# Comprime JSON grande (feed, acervo). Se a API também comprimir
+		# (GZipMiddleware), o Caddy vê o Content-Encoding e não comprime de novo.
+		encode zstd gzip
+		reverse_proxy api:8000 {
+			health_uri /saude
+			health_interval 30s
+			transport http {
+				dial_timeout 5s
+				response_header_timeout 60s
+			}
 		}
 	}
 

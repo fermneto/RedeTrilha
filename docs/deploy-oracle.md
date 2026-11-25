@@ -672,11 +672,17 @@ requisições em voo (`app/limite_do_banco.py`). A conta que precisa fechar é
 contra o `max_connections` do `db` (60, no `compose.yaml`):
 
 ```text
-WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ max_connections
-2 workers × (4 + 2) = 12   ← o padrão do .env.example (medido, abaixo)
-4 workers × (5 + 5) = 40   ← cabe sem mexer no max_connections
+WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW + 1) + folga ≤ max_connections
+2 workers × (4 + 2 + 1) = 14   ← o padrão do .env.example (medido, abaixo)
+4 workers × (5 + 5 + 1) = 44   ← cabe sem mexer no max_connections
 folga: backup (1), restauração (2), psql de manutenção, 3 reservadas ao superusuário
 ```
+
+O `+ 1` é a conexão do `LISTEN` das mensagens diretas: cada worker abre uma,
+fora do pool, para receber pelo Postgres `NOTIFY` os eventos das mensagens
+enviadas pelos outros workers (`backend/app/tempo_real.py`). O stream das
+mensagens (`GET /mensagens/stream`) não usa conexão do pool: ele autentica com
+uma consulta curta e depois só espera eventos.
 
 O padrão do `.env.example` é **2 workers com pool 4 + 2**, o que deu o menor
 p95 sem erro, e o mais estável, nas duas VMs. Medido com
@@ -713,6 +719,14 @@ no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
 Compressão: o Caddy comprime as respostas (`encode zstd gzip`). Se a API
 também tiver o `GZipMiddleware`, os dois convivem: o Caddy vê que a resposta
 já veio com `Content-Encoding` e não comprime de novo.
+
+O stream das mensagens (Server-Sent Events, `/mensagens/stream`) tem uma rota
+própria no `Caddyfile`: sem `encode` (a compressão seguraria os eventos em
+buffer) e com `flush_interval -1` (cada evento sai na hora). O Caddy também
+ficou sem o `write` nos `timeouts`: ele limita a resposta inteira e derrubava o
+stream aos 60 s. A API manda um comentário a cada 20 s, então o `idle 2m` não o
+fecha. Medido no compose local, pelo Caddy: o evento chega ao stream 20 a 27
+ms depois do `POST` da mensagem, e o stream segue aberto depois de 150 s.
 
 ## A Oracle pode recolher VMs ociosas
 
