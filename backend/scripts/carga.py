@@ -10,7 +10,10 @@ stream das mensagens (SSE) aberto o tempo todo, como uma aba aberta; com
 --mensageiros F, a fração F dos usuários, em vez de navegar, manda mensagens a
 outra conta do seed (pausa média de pelo menos 3 s, abaixo do limite por minuto).
 O resumo separa o tempo das rotas de leitura do envio das mensagens e conta os
-eventos que chegaram pelos streams e os streams que caíram.
+eventos que chegaram pelos streams e os streams que caíram. Com --reconectar, o
+stream que cai abre de novo como o front (lib/api.ts: 1 s, 2 s, 4 s...), e o
+resumo mostra quantas vezes ele voltou e quanto tempo ficou fora (da queda ao
+`pronto` do stream novo): é o teste de derrubar uma réplica da API no meio.
 
 Sem as mensagens, só lê: não publica, não curte, não traduz (não gasta a chave da
 Anthropic).
@@ -20,6 +23,8 @@ Anthropic).
     uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 0
     uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 3 \
         --streams 100 --mensageiros 0.1
+    uv run python scripts/carga.py --url https://localhost:8443 --usuarios 100 --pausa 3 \
+        --duracao 90 --streams 100 --reconectar   # e, no meio: docker compose stop api_1
 
 Contra o compose local (deploy/oracle/compose.local.yaml), o Caddy usa um
 certificado interno: o script não confere o certificado.
@@ -118,25 +123,43 @@ async def mensageiro(cliente, token, para, pausa, fim, tempos, status):
         await asyncio.sleep(random.uniform(0, 2 * pausa))
 
 
-async def stream(url, token, fim, eventos, quedas):
-    """Mantém o stream das mensagens aberto até o fim, contando eventos e quedas."""
+async def stream(url, token, fim, eventos, quedas, reconectar=False, fora=None):
+    """Mantém o stream das mensagens aberto até o fim, contando eventos e quedas.
+
+    Com `reconectar`, abre de novo depois de cada queda e guarda em `fora` os
+    segundos entre a queda e o `pronto` do stream seguinte.
+    """
     cab = {"Authorization": f"Bearer {token}"}
+    espera = 1.0
+    caiu_em = None
     async with httpx.AsyncClient(base_url=url, verify=False, timeout=None) as cliente:
-        try:
-            async with cliente.stream("GET", "/mensagens/stream", headers=cab) as r:
-                r.raise_for_status()
+        while time.monotonic() < fim:
+            try:
+                async with cliente.stream("GET", "/mensagens/stream", headers=cab) as r:
+                    r.raise_for_status()
 
-                async def ler():
-                    async for linha in r.aiter_lines():
-                        if linha.startswith("event: "):
-                            eventos[linha.removeprefix("event: ")] += 1
+                    async def ler():
+                        nonlocal caiu_em, espera
+                        async for linha in r.aiter_lines():
+                            if linha.startswith("event: "):
+                                tipo = linha.removeprefix("event: ")
+                                eventos[tipo] += 1
+                                if tipo == "pronto" and caiu_em is not None:
+                                    fora.append(time.monotonic() - caiu_em)
+                                    caiu_em, espera = None, 1.0
 
-                await asyncio.wait_for(ler(), max(0.0, fim - time.monotonic()))
-            quedas["terminou antes"] += 1
-        except TimeoutError:
-            return
-        except httpx.HTTPError as erro:
-            quedas[type(erro).__name__] += 1
+                    await asyncio.wait_for(ler(), max(0.0, fim - time.monotonic()))
+                quedas["terminou antes"] += 1
+            except TimeoutError:
+                return
+            except httpx.HTTPError as erro:
+                quedas[type(erro).__name__] += 1
+            if not reconectar:
+                return
+            if caiu_em is None:
+                caiu_em = time.monotonic()
+            await asyncio.sleep(min(espera, max(0.0, fim - time.monotonic())))
+            espera = min(espera * 2, 30.0)
 
 
 def resumir(nome: str, tempos: list[float], status: Counter, decorrido: float) -> None:
@@ -165,6 +188,7 @@ async def main() -> None:
     parser.add_argument("--duracao", type=float, default=30.0, help="segundos de carga")
     parser.add_argument("--streams", type=int, default=0, help="usuários com o stream das mensagens aberto")
     parser.add_argument("--mensageiros", type=float, default=0.0, help="fração dos usuários que manda mensagens")
+    parser.add_argument("--reconectar", action="store_true", help="o stream que cai abre de novo, como o front")
     args = parser.parse_args()
 
     limites = httpx.Limits(max_connections=args.usuarios, max_keepalive_connections=args.usuarios)
@@ -179,9 +203,10 @@ async def main() -> None:
         status_msg: Counter = Counter()
         eventos: Counter = Counter()
         quedas: Counter = Counter()
+        fora: list[float] = []
         inicio = time.monotonic()
         fim = inicio + args.duracao
-        tarefas = [stream(args.url, t, fim, eventos, quedas) for t in tokens[: args.streams]]
+        tarefas = [stream(args.url, t, fim, eventos, quedas, args.reconectar, fora) for t in tokens[: args.streams]]
         for i, token in enumerate(tokens):
             if i < n_mensageiros:
                 # Cada um escreve para a conta seguinte do seed (outra pessoa).
@@ -201,6 +226,11 @@ async def main() -> None:
         resumir("envio de mensagens", tempos_msg, status_msg, decorrido)
     if args.streams:
         print(f"streams: eventos recebidos {dict(eventos)}, quedas {sum(quedas.values())} {dict(quedas)}")
+    if args.reconectar and fora:
+        print(
+            f"reconexões: {len(fora)}, tempo fora: mediana {statistics.median(fora):.1f} s, "
+            f"máximo {max(fora):.1f} s"
+        )
 
 
 if __name__ == "__main__":
