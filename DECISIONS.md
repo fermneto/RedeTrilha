@@ -262,6 +262,12 @@ decisão 15.
     prévia do compositor de citação ela também não aparece, para o link não
     tirar o leitor do que está escrevendo. Antes, selecionar versos fora da
     página do poema não fazia nada, e parecia quebrado.
+  - **A renga também recebe crítica por verso**, aberta ou encerrada
+    (decisão do Neto; ver a decisão 10). Os versos contam as estrofes juntas,
+    em ordem, com a linha em branco entre elas contando, como no poema. No
+    card da renga a barra traz só "comentar estes versos / limpar": "citar"
+    fica de fora porque a citação cita poemas, e a renga não é um poema
+    publicado.
 - **O que cortamos e por quê:** guardar uma cópia do trecho em cada
   comentário. Como o poema publicado não muda (decisão 9), o trecho sai do
   próprio poema e nunca fica desatualizado.
@@ -339,6 +345,12 @@ decisão 15.
     primeiras estrofes. No perfil, conta como um poema de cada participante.
   - Duas pessoas escrevendo ao mesmo tempo não quebram as regras: quem perde a
     corrida recebe "outra pessoa acrescentou uma estrofe agora".
+  - **Rengas, abertas ou encerradas, recebem comentários e crítica por verso**
+    (decisão do Neto), com a mesma árvore, as mesmas marcas nos versos e o
+    mesmo `?versos=` da página do poema (decisão 7). Comentar não é escrever:
+    qualquer pessoa logada que lê a renga comenta, também nas de convidados.
+    Como as estrofes só se acrescentam no fim e não se editam, a crítica do
+    verso 6 continua no verso 6 quando a renga aberta cresce.
 - **O que cortamos e por quê:** a ordem fixa de turnos entre convidados,
   porque esperar a vez de quem sumiu trava a renga inteira. Também não dá para
   mudar o modo nem o limite, nem convidar alguém, depois de abrir: as regras
