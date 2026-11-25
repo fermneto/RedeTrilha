@@ -298,6 +298,19 @@ PRs, na seção "Decisões do Neto".
   - Só o 1º nível da árvore é ancorado; as respostas herdam o trecho do pai.
   - "Citar estes versos" abre a citação (decisão 4) com os versos preenchidos
     e uma linha em branco para o leitor escrever.
+  - **A crítica nasce em qualquer card e termina na página do poema.** No
+    feed, no perfil, nas antologias e no poema enviado por mensagem, selecionar
+    o texto do corpo do poema mostra a mesma barra, pequena, com "comentar
+    estes versos / citar estes versos" (some com Esc ou um toque fora dela).
+    "Comentar" abre a página do poema já com esses versos selecionados e o
+    campo de comentário focado, com o trecho citado acima
+    (`/poema/7?versos=2-4`); é lá que a crítica é escrita, ao lado das outras.
+    A numeração é a do poema inteiro, mesmo no card cortado ("ler poema
+    inteiro" só esconde o fim). Com a tradução na tela, a barra não aparece (a
+    seleção é de versos do original); no repost puro, ela leva ao original. Na
+    prévia do compositor de citação ela também não aparece, para o link não
+    tirar o leitor do que está escrevendo. Antes, selecionar versos fora da
+    página do poema não fazia nada, e parecia quebrado.
 - **O que cortamos e por quê:** guardar uma cópia do trecho em cada
   comentário. Como o poema publicado não muda (decisão 9), o trecho sai do
   próprio poema e nunca fica desatualizado.
