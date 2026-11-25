@@ -426,11 +426,13 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   `AcervoPage` de `PoetaDoAcervo` (`UserOut` + `seguidores`, `poemas`, `sigo`).
 - `GET /acervo/filtros` 🔒 → `{"linguas": [{"codigo", "poetas"}],
   "epocas": [{"chave", "rotulo", "inicio", "fim", "poetas"}]}`.
-- A tela do Acervo é a aba "Acervo" do Explorar (`components/Acervo.tsx`),
-  com os filtros na URL: `/explorar?aba=acervo&tipo=&q=&lingua=&epoca=&ordem=&pagina=`
-  (`lerFiltrosDoAcervo` e `caminhoDoAcervo` em `lib/api.ts`). A rota antiga
-  `/acervo` redireciona para a aba levando os filtros e a página, e a tela
-  Poetas (`/usuarios`) também leva à aba (decisões 12 e 17). `GET /usuarios`
+- A tela do Acervo é a aba "Poetas" do Explorar (`components/Acervo.tsx`),
+  com os filtros na URL: `/explorar?aba=poetas&tipo=&q=&lingua=&epoca=&ordem=&pagina=`
+  (`lerFiltrosDoAcervo` e `caminhoDoAcervo` em `lib/api.ts`). Nessa aba, o
+  campo do topo do Explorar (`BuscaDosPoetas`) é a busca pelo nome, o `q`. A
+  rota antiga `/acervo` e o `?aba=acervo` redirecionam para a aba levando os
+  filtros e a página, e a tela Poetas de antes (`/usuarios`) também leva a
+  ela (decisões 12 e 17). `GET /usuarios`
   (lista paginada, sem login) continua na API.
 
 ### Tradução (dono: Neto)
@@ -655,7 +657,7 @@ consagrados e o seed também. Nada é reconstruído no startup.
   **Pedro**.
 - `components/PoemaCard.tsx`, `Compositor.tsx` e `ArvoreComentarios.tsx`:
   **Henrique**. Os outros reusam o card, sem copiá-lo.
-- `components/ColunaDireita.tsx` (Descobrir), `Acervo.tsx` (a aba do
+- `components/ColunaDireita.tsx` (Descobrir), `Acervo.tsx` (a aba Poetas do
   Explorar), `CartaoDoAcervo.tsx` e as páginas `explorar/` e `acervo/` (só o
   redirecionamento): **Neto**.
 - `components/EnviarPorMensagem.tsx` (no `PoemaCard`), o item "Mensagens" do

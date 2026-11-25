@@ -444,10 +444,18 @@ decisão 15.
   - **O cartão é o perfil:** avatar, nome com selo, @, os anos de vida (no
     consagrado) ou a bio (no poeta da rede), poemas, seguidores e o botão
     seguir. O cartão inteiro leva ao perfil.
-  - **O Acervo mora no Explorar**, como a aba "Acervo" (decisão 17, a pedido
+  - **O Acervo mora no Explorar**, como a aba "Poetas" (decisão 17, a pedido
     do Neto): com os mesmos filtros, a mesma paginação e os mesmos cartões, e
-    os filtros na URL (`/explorar?aba=acervo&tipo=consagrados&lingua=pt`). A
-    rota `/acervo` só redireciona para a aba, levando os filtros e a página.
+    os filtros na URL (`/explorar?aba=poetas&tipo=consagrados&lingua=pt`).
+    "Acervo" continua o nome da coleção; a aba diz o que se acha nela.
+  - **Um campo de busca só** (decisão do Neto): na aba Poetas, o campo do topo
+    do Explorar vira a busca pelo nome ou @ ("Buscar poeta por nome ou @") e
+    filtra a lista enquanto se digita, sem a lista de sugestões; o campo
+    próprio do Acervo saiu. Nas outras abas, o campo continua buscando #tag ou
+    poeta. Dois campos empilhados, um em cima do outro, buscavam poetas de dois
+    jeitos diferentes.
+  - **Links antigos:** `/acervo` e `?aba=acervo` redirecionam para a aba
+    Poetas, levando os filtros e a página.
 - **O que cortamos e por quê:** os filtros por escola literária, forma e
   país, e o trecho de poema no cartão. A afinidade por escola e forma já
   orienta as sugestões de quem seguir (decisão 11), e a forma tem o Explorar
@@ -796,24 +804,28 @@ decisão 15.
     Visitantes não veem a aba, e `?aba=rascunhos` no perfil alheio abre Poemas.
     As antologias próprias, privadas inclusive, já eram a aba Antologias.
   - **Acervo, rengas e antologias no Explorar:** abaixo da busca, as abas
-    Poemas, Acervo, Rengas e Antologias, com a aba na URL
-    (`?aba=rengas&situacao=aberta`, `?aba=acervo&tipo=consagrados`). O Acervo
+    Poemas, Poetas (o Acervo), Rengas e Antologias, com a aba na URL
+    (`?aba=rengas&situacao=aberta`, `?aba=poetas&tipo=consagrados`). Poetas
     vem logo depois de Poemas: são os dois jeitos de achar o que ler, pelo
     poema ou pelo poeta, e as rengas e as antologias, que são poemas
     reunidos, ficam juntas no fim. Os filtros, a paginação e os cartões do
-    Acervo são os mesmos da tela antiga (decisão 12), num componente só.
-    O "ver todos no Acervo" da busca do topo abre a aba com o nome buscado.
-    As rengas filtram Todas, Abertas, Fechadas e Minhas (as que criei, em que
-    escrevi ou para as quais fui convidado; `GET /rengas?minhas=true`). Com uma tag
-    escolhida, a tela é o resultado dela e as abas somem, como na busca do X.
+    Acervo são os mesmos da tela antiga (decisão 12), num componente só, e a
+    busca pelo nome é o próprio campo do topo do Explorar. Trocar de aba
+    começa a outra sem filtro. O "ver todos no Acervo" da busca do topo abre
+    a aba Poetas com o nome buscado. As rengas filtram Todas, Abertas,
+    Fechadas e Minhas (as que criei, em que escrevi ou para as quais fui
+    convidado; `GET /rengas?minhas=true`). Com uma tag escolhida, a tela é o
+    resultado dela e as abas somem, como na busca do X.
   - **No celular**, a barra é Início, Explorar, Escrever, Avisos, Mensagens e o
     meu avatar, que leva ao perfil (decisão do Neto; antes era um "Mais"). O
-    Acervo é a aba do Explorar, como no computador (o atalho que havia no topo
-    do Explorar saiu); Preferências e "Sair" ficam no botão de ajustes do meu
+    Acervo é a aba Poetas do Explorar, como no computador (o atalho que havia
+    no topo do Explorar saiu); sem login, a barra é Início, Explorar,
+    Escrever e "Entrar"; Preferências e "Sair" ficam no botão de ajustes do meu
     perfil, ao lado de "Editar perfil" (no computador, também no menu da conta).
   - **Nenhum link quebra:** `/rascunhos` e `/antologias` levam às abas do
-    perfil, `/rengas` e `/acervo` às abas do Explorar (com os filtros e a
-    página; `/usuarios`, a tela Poetas de antes, também vai ao Acervo), e
+    perfil, `/rengas` e `/acervo` (e o `?aba=acervo`) às abas do Explorar,
+    com os filtros e a página (`/usuarios`, a tela Poetas de antes, também
+    vai à aba Poetas), e
     `/rengas/{id}` e `/antologias/{id}` continuam onde estavam, inclusive para
     os avisos.
   - **O nome no perfil, no celular, fica embaixo do avatar e dos botões**, na
@@ -823,11 +835,12 @@ decisão 15.
     No cabeçalho fixo do topo, o nome longo fica numa linha e termina em
     reticências.
 - **O que cortamos e por quê:** os itens Antologias, Rascunhos, Rengas e
-  Acervo da navegação, o atalho do Acervo no topo do Explorar no celular, o item "Escrever" repetido ao lado do botão, o "Mais" do celular,
-  e as páginas próprias "Minhas antologias", "Rengas" e "Acervo" (viraram
-  abas). A rota da lista de rengas, a das minhas antologias e a do Acervo só
-  redirecionam, para os
-  favoritos e links antigos.
+  Acervo da navegação, o atalho do Acervo no topo do Explorar no celular, o
+  item "Escrever" repetido ao lado do botão, o "Mais" do celular, o campo de
+  busca próprio do Acervo e as páginas próprias "Minhas antologias",
+  "Rengas" e "Acervo" (viraram abas). A rota da lista de rengas, a das
+  minhas antologias e a do Acervo só redirecionam, para os favoritos e links
+  antigos.
 
 ### O que ficou de fora e por quê
 

@@ -107,7 +107,7 @@ make dev-front   # Next em :3000
 - **Fluxo de uma feature:** model → schema → service → router → `lib/api.ts`
   → página. Imite uma feature pronta, como o Acervo (`schemas/acervo.py` →
   `services/acervo.py` → `routers/acervo.py` → `lib/api.ts` →
-  `components/Acervo.tsx`, a aba do Explorar).
+  `components/Acervo.tsx`, a aba Poetas do Explorar).
 - **Router fino**, regra de negócio no **service**, estruturas de dados em
   **`backend/app/core/`** em Python puro (sem SQLAlchemy/FastAPI), seguindo
   `core/README.md` e `core/indice_tags.py`.
