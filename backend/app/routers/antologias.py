@@ -40,6 +40,17 @@ def minhas_antologias(
     return service.listar_minhas(db, user, offset, limit)
 
 
+# Antes de /antologias/{antologia_id}, senão "publicas" seria lido como id.
+@router.get("/antologias/publicas", response_model=AntologiaPage)
+def antologias_publicas(
+    offset: Offset = 0,
+    limit: Limite = 20,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return service.listar_publicas(db, user, offset, limit)
+
+
 @router.get("/usuarios/{username}/antologias", response_model=AntologiaPage)
 def antologias_de(
     username: str,
