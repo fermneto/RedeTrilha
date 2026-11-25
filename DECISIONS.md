@@ -221,6 +221,18 @@ PRs, na seção "Decisões do Neto".
     tag, Poema do dia, Em alta e consagrados para seguir.
   - **Duas fontes:** Schibsted Grotesk na interface e Literata só no corpo dos
     poemas. Os ícones são SVG próprios.
+  - **Ícone e cartão de compartilhamento:** o ícone é o "V" do logo, em
+    Literata semibold itálica, tinta sobre papel (e papel sobre tinta no tema
+    escuro do navegador), engrossado nos 16 e 32 px da aba para o traço fino
+    não sumir. O link compartilhado no WhatsApp, no X ou no Telegram abre um
+    cartão de papel e tinta: o do poema traz o título, os primeiros versos com
+    as quebras e os recuos, o autor e o selo do consagrado; o do perfil, da
+    renga e da antologia trazem nome, autores e começo. Poema em árabe, persa
+    ou hebraico mostra só o título legível, a língua e o autor, porque o
+    gerador de imagem não junta as letras dessas escritas. Antologia privada e
+    renga de convidados ficam com o cartão padrão. Hoje a API pede login para
+    ler poema, perfil, renga e antologia, então o cartão que sai no ar é o
+    padrão (com o @ no perfil) até essas leituras ficarem públicas.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
   ações.
