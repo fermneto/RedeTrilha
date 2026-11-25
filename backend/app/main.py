@@ -37,7 +37,7 @@ from app.routers import (
     users,
 )
 from app.services import indice_tags
-from app.tempo_real import canal
+from app.tempo_real import canal, fechar_streams_ao_desligar
 
 # Número arbitrário e fixo do advisory lock do preparo do banco (ver _trava_do_preparo).
 _CHAVE_DO_PREPARO = 7_302_019
@@ -120,6 +120,8 @@ async def lifespan(app: FastAPI):
     preparar_banco()
     # O tempo real das mensagens: no Postgres, o LISTEN deste worker (app/tempo_real.py).
     await canal.iniciar()
+    # No SIGTERM, os streams abertos fecham logo e reconectam noutra réplica.
+    fechar_streams_ao_desligar()
     yield
     await canal.parar()
 

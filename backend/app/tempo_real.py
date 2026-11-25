@@ -23,13 +23,15 @@ o que se perdeu enquanto o stream esteve fora.
 import asyncio
 import json
 import logging
+import signal
+import threading
 from collections.abc import AsyncIterator, Iterable
 
 import psycopg
 from sqlalchemy import event, func, select
 from sqlalchemy.orm import Session
 
-from app.core.assinaturas import RESSINCRONIZAR, Assinaturas
+from app.core.assinaturas import ENCERRAR, RESSINCRONIZAR, Assinaturas
 from app.db import SessionLocal, engine
 
 logger = logging.getLogger(__name__)
@@ -66,16 +68,53 @@ async def eventos(user_id: int) -> AsyncIterator[str]:
     """O corpo do stream: `pronto`, depois cada evento da pessoa e uma batida no silêncio.
 
     Quando o cliente desconecta, o Starlette cancela o gerador e o `finally`
-    cancela a assinatura.
+    cancela a assinatura. Quando o processo vai desligar, o gerador termina
+    sozinho (`fechar_streams_ao_desligar`).
     """
     fila = assinaturas.assinar(user_id)
     try:
         yield formatar({"tipo": "pronto"})
         while True:
             evento = await fila.proximo(BATIDA_SEGUNDOS)
+            if evento is ENCERRAR:
+                return
             yield ": batida\n\n" if evento is None else formatar(evento)
     finally:
         assinaturas.cancelar(fila)
+
+
+SINAIS_DE_DESLIGAR = (signal.SIGTERM, signal.SIGINT)
+
+
+def fechar_streams_ao_desligar() -> None:
+    """No SIGTERM (docker stop, atualizar.sh), fecha os streams deste processo na hora.
+
+    Sem isto, o uvicorn espera as conexões abertas até o TIMEOUT_GRACEFUL_SHUTDOWN
+    (20 s), e um stream só fecha quando esse prazo acaba. Fechando no início, o
+    desligamento leva o tempo das requisições curtas em voo, e o cliente reconecta
+    noutra réplica, que o Caddy já escolhe (o uvicorn fecha a porta no mesmo sinal).
+
+    Roda no startup, depois de o uvicorn instalar o handler dele, e o encadeia: o
+    sinal segue para o uvicorn como antes. O handler só agenda o fechamento no
+    event loop (`call_soon_threadsafe`), que é o seguro dentro de um handler de
+    sinal. Fora da thread principal (o TestClient) não há sinais: não faz nada.
+    """
+    if threading.current_thread() is not threading.main_thread():
+        return
+    loop = asyncio.get_running_loop()
+    for sinal in SINAIS_DE_DESLIGAR:
+        anterior = signal.getsignal(sinal)
+
+        def ao_sinal(numero, quadro, anterior=anterior):
+            loop.call_soon_threadsafe(assinaturas.encerrar_todos)
+            if callable(anterior):
+                anterior(numero, quadro)
+            else:
+                # SIG_DFL ou SIG_IGN: devolve o comportamento original ao sinal.
+                signal.signal(numero, anterior)
+                signal.raise_signal(numero)
+
+        signal.signal(sinal, ao_sinal)
 
 
 def _entregar(texto: str) -> None:

@@ -22,7 +22,7 @@ import httpx
 import pytest
 import uvicorn
 
-from app.core.assinaturas import Assinaturas, Fila
+from app.core.assinaturas import ENCERRAR, Assinaturas, Fila
 from conftest import SENHA_PADRAO
 
 BACKEND = Path(__file__).resolve().parents[1]
@@ -125,6 +125,19 @@ def test_fila_cheia_descarta_e_pede_ressincronizar():
 
 
 # ---------- stream ----------
+
+
+def test_encerrar_todos_fecha_os_streams_abertos_e_os_que_abrirem_depois():
+    async def cenario():
+        assinaturas = Assinaturas()
+        aberta = assinaturas.assinar(1)
+        aberta.por({"tipo": "mensagem"})
+        assert assinaturas.encerrar_todos() == 1
+        # Encerrada, a fila não entrega mais o que guardava: o cliente busca pelas rotas.
+        assert await aberta.proximo(5) is ENCERRAR
+        assert await assinaturas.assinar(2).proximo(5) is ENCERRAR
+
+    asyncio.run(cenario())
 
 
 def test_stream_recebe_mensagem_nova_e_batida(servidor, monkeypatch):
@@ -249,3 +262,48 @@ def test_listen_que_cai_reconecta_e_pede_para_ressincronizar(servidor):
                 assert (await ler_eventos(linhas, "ressincronizar", prazo=10))[-1][0] == "ressincronizar"
 
     asyncio.run(cenario())
+
+
+def test_sigterm_fecha_o_stream_na_hora_e_o_processo_nao_espera_o_prazo(tmp_path):
+    """Com um stream aberto, o SIGTERM o fecha já, e o uvicorn sai bem antes dos 20 s do prazo.
+
+    É o que deixa o atualizar.sh trocar uma réplica em segundos: o stream reconecta
+    noutra (docs/deploy-oracle.md, "Balanceamento entre as réplicas").
+    """
+    porta = porta_livre()
+    processo = subprocess.Popen(
+        [
+            sys.executable, "-m", "uvicorn", "app.main:app", "--port", str(porta),
+            "--log-level", "warning", "--timeout-graceful-shutdown", "20",
+        ],
+        cwd=BACKEND,
+        env={**os.environ, "DATABASE_URL": f"sqlite:///{tmp_path / 'stream.db'}"},
+    )
+    url = f"http://127.0.0.1:{porta}"
+    try:
+        for _ in range(100):
+            try:
+                if httpx.get(f"{url}/saude").status_code == 200:
+                    break
+            except httpx.HTTPError:
+                time.sleep(0.1)
+        bia = entrar(url, "bia")
+
+        async def cenario() -> float:
+            async with httpx.AsyncClient(base_url=url, timeout=30) as c:
+                async with c.stream("GET", "/mensagens/stream", headers=bia) as r:
+                    linhas = r.aiter_lines()
+                    await ler_eventos(linhas, "pronto")
+                    inicio = time.monotonic()
+                    processo.terminate()
+                    # O stream termina limpo (fim da resposta), sem esperar o prazo.
+                    async for _ in linhas:
+                        pass
+                    return time.monotonic() - inicio
+
+        assert asyncio.run(cenario()) < 3
+        processo.wait(5)
+    finally:
+        if processo.poll() is None:
+            processo.kill()
+        processo.wait(10)
