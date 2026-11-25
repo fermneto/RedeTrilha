@@ -48,6 +48,8 @@ function PerfilDoPoeta() {
   const [perfil, setPerfil] = useState<Perfil | null>(null);
   const [meuId, setMeuId] = useState<number | null>(null);
   const [editando, setEditando] = useState(false);
+  // Eu bloqueei a pessoa: o perfil mostra só o cabeçalho, com o "Desbloquear".
+  const [bloqueei, setBloqueei] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
   // replace, e não push: trocar de aba não enche o histórico do "voltar".
@@ -63,6 +65,7 @@ function PerfilDoPoeta() {
     }
     setPerfil(null);
     setEditando(false);
+    setBloqueei(false);
     Promise.all([buscarPerfil(username), buscarEu()])
       .then(([p, eu]) => {
         setPerfil(p);
@@ -117,30 +120,33 @@ function PerfilDoPoeta() {
             proprio={perfil.id === meuId}
             aoMudar={setPerfil}
             aoEditar={() => setEditando(true)}
+            aoMudarBloqueio={setBloqueei}
           />
         )}
       </div>
 
-      <Abas key={username} abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="Conteúdo do perfil" bordaEmCima>
-        {(valor) =>
-          valor === "poemas" ? (
-            <ListaDePoemas
-              key={username}
-              buscar={buscarPoemas}
-              textoDoFim="fim dos poemas"
-              vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
-            />
-          ) : (
-            <AntologiaLista
-              key={username}
-              buscar={buscarAntologias}
-              vazio={
-                <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
-              }
-            />
-          )
-        }
-      </Abas>
+      {!bloqueei && (
+        <Abas key={username} abas={ABAS} atual={aba} aoMudar={trocarAba} rotulo="Conteúdo do perfil" bordaEmCima>
+          {(valor) =>
+            valor === "poemas" ? (
+              <ListaDePoemas
+                key={username}
+                buscar={buscarPoemas}
+                textoDoFim="fim dos poemas"
+                vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
+              />
+            ) : (
+              <AntologiaLista
+                key={username}
+                buscar={buscarAntologias}
+                vazio={
+                  <p className="px-4 py-10 text-center text-tinta-suave">Nenhuma antologia pública.</p>
+                }
+              />
+            )
+          }
+        </Abas>
+      )}
     </div>
   );
 }

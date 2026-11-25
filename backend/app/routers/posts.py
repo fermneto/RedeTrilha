@@ -25,7 +25,7 @@ def ler_post(
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.para_saida_de(db, service.buscar(db, post_id), user)
+    return service.para_saida_de(db, service.visivel(db, user, post_id), user)
 
 
 @router.delete("/{post_id}", status_code=204)

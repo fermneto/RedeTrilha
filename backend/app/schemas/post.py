@@ -67,6 +67,8 @@ class PostOut(BaseModel):
     repost_de: "PostOut | None" = None
     # Citação de um poema que o autor apagou: `repost_de` vem None.
     repost_removido: bool = False
+    # Citação de um poema de quem bloqueou quem vê: `repost_de` vem None ("poema indisponível").
+    repost_indisponivel: bool = False
     tags: list[str] = []
     # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
     repostado_por: list[UserOut] = []

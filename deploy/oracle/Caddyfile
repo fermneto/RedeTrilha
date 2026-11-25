@@ -10,11 +10,13 @@
 {
 	email {$ACME_EMAIL}
 	servers {
-		# Tempo máximo para o visitante mandar a requisição e receber a resposta.
+		# Tempo máximo para o visitante mandar a requisição. Sem limite de escrita
+		# (o "write"): ele vale para a resposta inteira, e o stream das mensagens
+		# (SSE) fica aberto por minutos; com "write 60s", o Caddy o derrubava aos
+		# 60 s. As respostas comuns da API são pequenas e saem em milissegundos.
 		timeouts {
 			read_body 30s
 			read_header 10s
-			write 60s
 			idle 2m
 		}
 	}
@@ -53,10 +55,6 @@
 }
 
 {$DOMINIO} {
-	# Comprime JSON grande (feed, acervo). Se a API também comprimir
-	# (GZipMiddleware), o Caddy vê o Content-Encoding e não comprime de novo.
-	encode zstd gzip
-
 	# Poemas não têm limite de caracteres, mas 2 MB por requisição é folga enorme.
 	request_body {
 		max_size 2MB
@@ -71,15 +69,39 @@
 		-Server
 	}
 
-	# Requisições curtas: round_robin, uma réplica de cada vez. O least_conn
-	# contaria os streams abertos como carga e mandaria tudo para a réplica que
-	# acabou de reiniciar (ela volta sem nenhum).
-	reverse_proxy {
-		import replicas
-		lb_policy round_robin
-		transport http {
-			dial_timeout 2s
-			response_header_timeout 60s
+	# O stream das mensagens (Server-Sent Events) fica aberto por minutos: sem
+	# compressão (o encode seguraria os eventos em buffer) e com flush a cada
+	# evento. A API manda um comentário a cada 20 s, então a conexão nunca fica
+	# parada o bastante para o idle derrubar. Balanceado como o resto: se a
+	# réplica do stream cair, o navegador reconecta e o Caddy o manda à outra.
+	# least_conn: cada stream novo vai para a réplica com menos conexões abertas,
+	# e os streams se espalham entre as duas.
+	@stream path /mensagens/stream
+	handle @stream {
+		reverse_proxy {
+			import replicas
+			lb_policy least_conn
+			flush_interval -1
+			transport http {
+				dial_timeout 2s
+			}
+		}
+	}
+
+	handle {
+		# Comprime JSON grande (feed, acervo). Se a API também comprimir
+		# (GZipMiddleware), o Caddy vê o Content-Encoding e não comprime de novo.
+		encode zstd gzip
+		# Requisições curtas: round_robin, uma réplica de cada vez. O least_conn
+		# contaria os streams abertos como carga e, depois de um deploy (os streams
+		# todos na réplica que ficou de pé), mandaria tudo para a outra.
+		reverse_proxy {
+			import replicas
+			lb_policy round_robin
+			transport http {
+				dial_timeout 2s
+				response_header_timeout 60s
+			}
 		}
 	}
 

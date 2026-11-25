@@ -15,6 +15,7 @@ from app.schemas.antologia import (
     AntologiaUpdate,
 )
 from app.schemas.user import UserOut
+from app.services import bloqueios
 from app.services import posts as posts_service
 from app.services.users import buscar_por_username
 
@@ -85,8 +86,12 @@ def listar_minhas_marcando(
 def listar_de(
     db: Session, usuario: User, username: str, offset: int, limit: int
 ) -> AntologiaPage:
-    """Antologias de alguém; as privadas só aparecem para o próprio dono."""
+    """Antologias de alguém; as privadas só aparecem para o próprio dono. Com bloqueio
+    (services/bloqueios.py): 404 para quem o dono bloqueou e vazio para quem bloqueou o dono."""
     dono = buscar_por_username(db, username)
+    bloqueios.garantir_que_ve(db, usuario.id, dono.id, "usuário não encontrado")
+    if bloqueios.bloqueou(db, usuario.id, dono.id):
+        return AntologiaPage(items=[], total=0, offset=offset, limit=limit)
     return _listar(db, dono, offset, limit, so_publicas=dono.id != usuario.id)
 
 

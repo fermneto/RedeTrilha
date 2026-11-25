@@ -843,6 +843,15 @@ Compressão: o Caddy comprime as respostas (`encode zstd gzip`). Se a API
 também tiver o `GZipMiddleware`, os dois convivem: o Caddy vê que a resposta
 já veio com `Content-Encoding` e não comprime de novo.
 
+O stream das mensagens (Server-Sent Events, `/mensagens/stream`) tem uma rota
+própria no `Caddyfile`: sem `encode` (a compressão seguraria os eventos em
+buffer) e com `flush_interval -1` (cada evento sai na hora), balanceada entre as
+réplicas como o resto. O Caddy também ficou sem o `write` nos `timeouts`: ele
+limita a resposta inteira e derrubava o stream aos 60 s. A API manda um
+comentário a cada 20 s, então o `idle 2m` não o fecha. Medido no compose local,
+pelo Caddy: o evento chega ao stream 20 a 27 ms depois do `POST` da mensagem, e
+o stream segue aberto depois de 150 s.
+
 ## A Oracle pode recolher VMs ociosas
 
 Em contas **Free Tier** (sem upgrade), a Oracle pode **parar** uma VM Always

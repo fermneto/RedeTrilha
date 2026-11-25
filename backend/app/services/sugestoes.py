@@ -31,6 +31,7 @@ from app.models.preferencia import Preferencia
 from app.models.user import User
 from app.schemas.sugestao import SugestaoOut, SugestaoPage
 from app.schemas.user import UserOut
+from app.services import bloqueios
 from app.services.acervo import lingua_de_quem_ve, lingua_por_autor
 from app.services.follows import seguidores_por_usuario
 from app.services.perfil import poemas_por_autor
@@ -75,6 +76,8 @@ def _candidatas(db: Session, usuario: User) -> dict[int, Perfil]:
         .subquery()
     )
     seguidos = select(Follow.seguido_id).where(Follow.seguidor_id == usuario.id)
+    # Nem quem eu bloqueei nem quem me bloqueou.
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
     linhas = db.execute(
         select(
             User.id,
@@ -87,7 +90,12 @@ def _candidatas(db: Session, usuario: User) -> dict[int, Perfil]:
         .outerjoin(seguidores, seguidores.c.user_id == User.id)
         .outerjoin(lingua, lingua.c.user_id == User.id)
         .outerjoin(ultimo, ultimo.c.user_id == User.id)
-        .where(poemas.c.n > 0, User.id != usuario.id, User.id.not_in(seguidos))
+        .where(
+            poemas.c.n > 0,
+            User.id != usuario.id,
+            User.id.not_in(seguidos),
+            User.id.not_in(bloqueados),
+        )
     ).all()
     ids = [linha[0] for linha in linhas]
     preferencias = {

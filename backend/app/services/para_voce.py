@@ -43,6 +43,7 @@ from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
+from app.services import bloqueios
 from app.services.acervo import lingua_de_quem_ve
 from app.services.cursor import utc_sem_fuso
 from app.services.feed import Linha, montar_pagina, recortar
@@ -65,14 +66,19 @@ def feed(
 ) -> FeedPage:
     lingua = lingua_de_quem_ve(db, usuario, lingua)
     segundos = int(JANELA_DO_CONSAGRADO.total_seconds())
+    # Sem o que tem a ver com quem tem bloqueio com o usuário (services/bloqueios.py).
     atividades = rarear_consagrados(
-        [
-            *_poemas(db),
-            *_candidatos_dos_consagrados(db, segundos, lingua),
-            *_reposts(db),
-            *_estrofes_abertas(db),
-            *_comentarios(db),
-        ],
+        bloqueios.sem_bloqueados(
+            db,
+            usuario.id,
+            [
+                *_poemas(db),
+                *_candidatos_dos_consagrados(db, segundos, lingua),
+                *_reposts(db),
+                *_estrofes_abertas(db),
+                *_comentarios(db),
+            ],
+        ),
         segundos,
         lingua,
     )
@@ -206,7 +212,9 @@ def _comentarios(db: Session) -> list[Atividade]:
             AncoraComentario.comentario_id.is_not(None),
         )
         .outerjoin(AncoraComentario, AncoraComentario.comentario_id == Comentario.id)
-        .where(~Comentario.removido)
+        .join(Post, Post.id == Comentario.post_id)
+        # O comentário de quem tem bloqueio com o autor do poema está escondido para todos.
+        .where(~Comentario.removido, ~bloqueios.ha_bloqueio(Comentario.autor_id, Post.autor_id))
     )
     return [
         Atividade(
