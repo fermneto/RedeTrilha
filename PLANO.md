@@ -257,7 +257,9 @@ Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
 `autor_id`, `posicao`, `texto`, unique (`renga_id`, `posicao`)) e
 `convites_renga` (unique (`renga_id`, `user_id`)).
 
-- `GET /rengas?situacao=aberta|fechada` 🔒 → `RengaPage`; `POST /rengas` 🔒
+- `GET /rengas?situacao=aberta|fechada&minhas=true` 🔒 → `RengaPage` (`minhas`:
+  só as que criei, em que escrevi ou para as quais fui convidado);
+  `POST /rengas` 🔒
   (`titulo`, `primeira_estrofe`, `modo`, `limite` de 3 a 40, padrão 12,
   `convidados`) → 201 `RengaDetalhe`; `GET /rengas/{id}` 🔒.
 - `POST /rengas/{id}/estrofes` 🔒: 403 para não convidado, 409 para renga
@@ -380,6 +382,9 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   `descricao`, `publica`, `created_at`, `qtd`).
 - `GET /antologias` 🔒 → as minhas; com `?post_id=`, cada item traz
   `contem: bool` (o poema está nela?).
+- `GET /antologias/publicas` 🔒 → as públicas de todo mundo com ao menos um
+  poema, a mais nova primeiro, sem as de quem tem bloqueio com o usuário: a aba
+  Antologias do Explorar.
 - `GET /usuarios/{username}/antologias` 🔒 → as públicas da pessoa (as
   privadas só aparecem para o próprio dono).
 - `GET /antologias/{id}` 🔒 → `AntologiaDetalhe` (`poemas: list[PostOut]` na
@@ -527,7 +532,8 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
   (`GET /posts/{id}`) e as rengas (`GET /rengas/{id}`) de quem bloqueou dão 404.
   Curtir, comentar, repostar, citar, escrever estrofe, seguir e mandar o poema
   por mensagem entre os dois: 404 para o bloqueado, 403 para quem bloqueou.
-  `GET /feed`, `/feed/para-voce`, `/tags/{tag}/posts`, `/explorar`, `/rengas` e
+  `GET /feed`, `/feed/para-voce`, `/tags/{tag}/posts`, `/explorar`, `/rengas`,
+  `/antologias/publicas` e
   Para quem bloqueou, `GET /usuarios/{u}/posts` e `/antologias` do bloqueado
   vêm vazios (o cabeçalho `GET /usuarios/{u}` continua, para desbloquear).
   `/sugestoes`, `/acervo` e `/usuarios/{u}/seguidores` e `/seguindo` tiram,

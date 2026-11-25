@@ -1,6 +1,6 @@
 "use client";
 // Formulário inline da antologia: nome, descrição e o switch Pública/Privada.
-// O mesmo serve para criar (em /antologias) e para editar (no detalhe).
+// O mesmo serve para criar (em /antologias/nova) e para editar (no detalhe).
 
 import { useEffect, useId, useRef, useState } from "react";
 

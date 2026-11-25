@@ -1,6 +1,7 @@
 "use client";
 // Cabeçalho do perfil: avatar, nome, selo de consagrado, bio, contadores e a ação
-// (Seguir/Deixar de seguir para os outros, Editar perfil para o próprio). Para
+// (Seguir/Deixar de seguir para os outros; Editar perfil e os ajustes da conta,
+// com Preferências e Sair, para o próprio). Para
 // quem não é consagrado (que não tem login), também "Mensagem", que abre a conversa,
 // e "Bloquear" (ou "Desbloquear"), que vale para a rede inteira, como no X.
 
@@ -10,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
+import { MenuDoPerfil } from "@/components/MenuDoPerfil";
 import { SeloConsagrado } from "@/components/SeloConsagrado";
 import {
   abrirConversa,
@@ -90,10 +92,15 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBlo
 
   return (
     <header className="space-y-4">
-      <div className="flex items-start gap-4">
+      {/* No celular, como no X: o avatar e os botões numa linha e o nome embaixo,
+          na largura toda, para não ficar espremido entre eles e partir a palavra
+          ("Albuqu/erque"). Do sm em diante, os três numa linha. */}
+      <div className="grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 sm:grid-cols-[auto_1fr_auto]">
         <Avatar usuario={perfil} tamanho="g" />
-        <div className="min-w-0 flex-1">
-          <h1 className="text-3xl break-words">
+        <div className="col-span-2 row-start-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+          {/* Quebra só entre palavras (break-word só parte uma palavra maior que a
+              linha inteira); o nome longo encolhe no celular. */}
+          <h1 className={`break-words text-balance sm:text-3xl ${perfil.name.length > 20 ? "text-2xl" : "text-3xl"}`}>
             {perfil.name} <SeloConsagrado usuario={perfil} className="h-[0.8em] w-[0.8em]" />
           </h1>
           <p className="text-sm text-tinta-suave">@{perfil.username}</p>
@@ -104,15 +111,18 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBlo
           )}
         </div>
         {proprio ? (
-          <button
-            type="button"
-            onClick={aoEditar}
-            className="shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
-          >
-            Editar perfil
-          </button>
+          <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-2 sm:col-start-3">
+            <button
+              type="button"
+              onClick={aoEditar}
+              className="shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
+            >
+              Editar perfil
+            </button>
+            <MenuDoPerfil username={perfil.username} />
+          </div>
         ) : (
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="col-start-2 row-start-1 flex items-center justify-self-end gap-2 sm:col-start-3">
             {!perfil.consagrado && (
               <button
                 type="button"

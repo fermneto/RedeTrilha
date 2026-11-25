@@ -9,27 +9,30 @@
 // "Avisos" e "Mensagens" levam um contador cada (linhas de aviso não lidas;
 // conversas não lidas e pedidos novos), atualizados pelo stream das mensagens
 // (ouvirMensagens, em lib/api.ts), que também traz o evento "aviso", sem recarregar.
-// A barra do celular tem só Início, Explorar, Escrever, Avisos e Mensagens, e o
-// "Mais" (MenuMais), com o resto, o Perfil, as Preferências e o "Sair": seis
-// botões de 60 px em 360 px (decisão do Neto).
+// A navegação é enxuta (decisão 17): Início, Explorar, Acervo, Avisos, Mensagens
+// e Perfil, mais o "Escrever", o único botão de criar, que abre direto o
+// compositor no poema (lá, um seletor troca para renga ou antologia). Rengas e
+// antologias se descobrem no Explorar; os rascunhos e as antologias próprias
+// ficam no perfil.
+// A barra do celular tem Início, Explorar, Escrever, Avisos, Mensagens e o meu
+// avatar, que leva ao perfil: seis botões de 60 px em 360 px. O Acervo, no
+// celular, fica num atalho do Explorar; Preferências e "Sair", no menu do meu
+// perfil (MenuDoPerfil).
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { Avatar } from "@/components/Avatar";
 import { IconeAcervo } from "@/components/icones/IconeAcervo";
-import { IconeAntologias } from "@/components/icones/IconeAntologias";
 import { IconeAvisos } from "@/components/icones/IconeAvisos";
 import { IconeEscrever } from "@/components/icones/IconeEscrever";
 import { IconeExplorar } from "@/components/icones/IconeExplorar";
 import { IconeInicio } from "@/components/icones/IconeInicio";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { IconePerfil } from "@/components/icones/IconePerfil";
-import { IconeRascunhos } from "@/components/icones/IconeRascunhos";
-import { IconeRenga } from "@/components/icones/IconeRenga";
 import type { PropsIcone } from "@/components/icones/Icone";
 import { MenuConta } from "@/components/MenuConta";
-import { MenuMais } from "@/components/MenuMais";
 import {
   buscarEu,
   buscarResumoDeAvisos,
@@ -47,21 +50,18 @@ type Item = {
   soLogado?: boolean;
 };
 
-// O que fica na barra do celular quando logado; o resto vai para o "Mais".
-const NA_BARRA_DO_CELULAR = ["/", "/explorar", "/escrever", "/avisos", "/mensagens"];
 
 const ITENS: Item[] = [
   { href: "/", rotulo: "Início", Icone: IconeInicio },
   { href: "/explorar", rotulo: "Explorar", Icone: IconeExplorar },
-  { href: "/escrever", rotulo: "Escrever", Icone: IconeEscrever },
-  { href: "/antologias", rotulo: "Antologias", Icone: IconeAntologias, soLogado: true },
-  { href: "/rascunhos", rotulo: "Rascunhos", Icone: IconeRascunhos, soLogado: true },
   { href: "/acervo", rotulo: "Acervo", Icone: IconeAcervo },
-  { href: "/rengas", rotulo: "Rengas", Icone: IconeRenga, soLogado: true },
   { href: "/avisos", rotulo: "Avisos", Icone: IconeAvisos, soLogado: true },
   { href: "/mensagens", rotulo: "Mensagens", Icone: IconeMensagens, soLogado: true },
   { href: "/perfil", rotulo: "Perfil", Icone: IconePerfil, soLogado: true },
 ];
+
+// O "Escrever" da barra do celular; na lateral, ele é o botão grande.
+const ESCREVER: Item = { href: "/escrever", rotulo: "Escrever", Icone: IconeEscrever };
 
 // Item ativo: traço mais grosso no ícone e rótulo em negrito.
 const TRACO_ATIVO = "[stroke-width:2.25]";
@@ -154,12 +154,12 @@ export function Nav() {
 
   const ativo = (href: string) => (href === "/" ? caminho === "/" : caminho.startsWith(href));
   const itens = ITENS.filter((item) => logado || !item.soLogado);
-  // No celular, logado: os cinco da barra e o "Mais" com o resto (o Perfil entra lá
-  // com o avatar). Sem login: os itens públicos e o "Entrar".
-  const itensDoCelular = logado ? itens.filter((item) => NA_BARRA_DO_CELULAR.includes(item.href)) : itens;
-  const itensDoMais = itens.filter((item) => !NA_BARRA_DO_CELULAR.includes(item.href) && item.href !== "/perfil");
-  const noMais =
-    itensDoMais.some((item) => ativo(item.href)) || ativo("/perfil") || (eu !== null && caminho === `/u/${eu.username}`);
+  // No celular: Início, Explorar e Escrever; logado, Avisos e Mensagens e, no fim,
+  // o avatar (o Perfil). Sem login, o Acervo (o Explorar pede login) e o "Entrar".
+  const naBarra = logado ? ["/", "/explorar", "/avisos", "/mensagens"] : ["/", "/explorar", "/acervo"];
+  const itensDoCelular = itens.filter((item) => naBarra.includes(item.href));
+  itensDoCelular.splice(2, 0, ESCREVER);
+  const noPerfil = ativo("/perfil") || (eu !== null && caminho.startsWith(`/u/${eu.username}`));
   const contador = (href: string) => (href === "/mensagens" ? aLer : href === "/avisos" ? avisos : 0);
 
   return (
@@ -211,7 +211,7 @@ export function Nav() {
             className="mt-4 flex h-13 w-13 items-center justify-center rounded-full bg-destaque font-semibold text-papel transition-[filter] duration-150 hover:brightness-110 xl:w-[90%] xl:text-[1.0625rem]"
           >
             <IconeEscrever className="h-6 w-6 xl:hidden" />
-            <span className="sr-only xl:not-sr-only">Escrever poema</span>
+            <span className="sr-only xl:not-sr-only">Escrever</span>
           </Link>
         </div>
 
@@ -254,7 +254,21 @@ export function Nav() {
           })}
           <li className="flex min-w-0 flex-1 justify-center">
             {logado ? (
-              eu && <MenuMais eu={eu} itens={itensDoMais} aoSair={sair} ativo={noMais} caminho={caminho} />
+              <Link
+                href={eu ? `/u/${encodeURIComponent(eu.username)}` : "/perfil"}
+                aria-label="Perfil"
+                aria-current={noPerfil ? "page" : undefined}
+                className="flex h-13 w-full max-w-14 items-center justify-center"
+              >
+                {/* No meu perfil, um anel na cor do texto marca o item ativo. */}
+                <span className={`rounded-full ring-offset-2 ring-offset-papel ${noPerfil ? "ring-2 ring-tinta" : ""}`}>
+                  {eu ? (
+                    <Avatar usuario={eu} tamanho="p" />
+                  ) : (
+                    <IconePerfil className="h-[26px] w-[26px] text-tinta-suave" />
+                  )}
+                </span>
+              </Link>
             ) : (
               <Link href="/login" className="flex h-13 items-center px-2 text-sm font-semibold">
                 Entrar

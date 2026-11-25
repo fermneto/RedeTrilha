@@ -83,6 +83,20 @@ def listar_minhas_marcando(
     return AntologiaMarcadaPage(items=items, total=total, offset=offset, limit=limit)
 
 
+def listar_publicas(db: Session, usuario: User, offset: int, limit: int) -> AntologiaPage:
+    """As antologias públicas de todo mundo com ao menos um poema, a mais nova primeiro,
+    para o Explorar. Uma antologia vazia não tem o que ler, e ficam fora as de quem tem
+    bloqueio, em qualquer sentido, com o usuário (services/bloqueios.py)."""
+    filtros = [
+        Antologia.publica.is_(True),
+        exists().where(AntologiaPoema.antologia_id == Antologia.id),
+    ]
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
+    if bloqueados:
+        filtros.append(Antologia.dono_id.not_in(bloqueados))
+    return _pagina(db, filtros, offset, limit)
+
+
 def listar_de(
     db: Session, usuario: User, username: str, offset: int, limit: int
 ) -> AntologiaPage:
@@ -178,8 +192,12 @@ def _filtros(dono: User, so_publicas: bool) -> list:
 def _listar(
     db: Session, dono: User, offset: int, limit: int, so_publicas: bool
 ) -> AntologiaPage:
-    """Antologias de um dono, a mais nova primeiro; `qtd` de todas numa query só."""
-    filtros = _filtros(dono, so_publicas)
+    """Antologias de um dono, a mais nova primeiro."""
+    return _pagina(db, _filtros(dono, so_publicas), offset, limit)
+
+
+def _pagina(db: Session, filtros: list, offset: int, limit: int) -> AntologiaPage:
+    """Uma página de antologias, a mais nova primeiro; `qtd` de todas numa query só."""
     total = db.scalar(select(func.count()).where(*filtros)) or 0
     antologias = list(
         db.scalars(select(Antologia).where(*filtros).order_by(*_ORDEM).offset(offset).limit(limit))
