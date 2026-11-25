@@ -17,6 +17,7 @@ from app.routers import (
     acervo,
     antologias,
     auth,
+    avisos,
     bloqueios,
     comentarios,
     comentarios_renga,
@@ -180,3 +181,4 @@ app.include_router(sugestoes.router)
 app.include_router(preferencias.router)
 app.include_router(mensagens.router)
 app.include_router(bloqueios.router)
+app.include_router(avisos.router)

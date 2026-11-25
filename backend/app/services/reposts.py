@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.models.post import Post
 from app.models.user import User
+from app.services import avisos
 from app.services.posts import original_de, original_para_interagir
 
 
@@ -22,6 +23,7 @@ def repostar(db: Session, usuario: User, post_id: int) -> None:
     original = original_para_interagir(db, usuario, post_id)
     if _repost_puro(db, usuario, original.id) is None:
         db.add(Post(autor_id=usuario.id, texto="", repost_de_id=original.id))
+        avisos.avisar(db, usuario, [(original.autor_id, "repost")], post_id=original.id)
         try:
             db.commit()
         except IntegrityError:
@@ -34,6 +36,7 @@ def desfazer(db: Session, usuario: User, post_id: int) -> None:
     repost = _repost_puro(db, usuario, original.id)
     if repost is not None:
         db.delete(repost)
+        avisos.desfazer(db, "repost", usuario.id, post_id=original.id)
         db.commit()
 
 

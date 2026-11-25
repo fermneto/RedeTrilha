@@ -30,7 +30,7 @@ from app.schemas.comentario import (
     VersosComentadosOut,
 )
 from app.schemas.user import UserOut
-from app.services import ancoras, bloqueios
+from app.services import ancoras, avisos, bloqueios
 from app.services import arvore_de_comentarios as arvore
 from app.services.posts import buscar, original_de, original_para_interagir
 
@@ -47,6 +47,7 @@ def comentar(
     post_id = poema.id
     if dados.ancora is not None:
         ancoras.validar(poema.texto, dados.parent_id, dados.ancora)
+    pai = None
     if dados.parent_id is not None:
         pai = db.get(Comentario, dados.parent_id)
         if pai is None or pai.post_id != post_id or pai.removido:
@@ -58,6 +59,14 @@ def comentar(
     db.flush()
     if dados.ancora is not None:
         ancoras.ancorar(db, comentario.id, dados.ancora)
+    avisos.avisar(
+        db,
+        autor,
+        avisos.do_comentario(pai.autor_id if pai else None, [poema.autor_id], dados.ancora is not None),
+        dono_id=poema.autor_id,
+        post_id=post_id,
+        comentario_id=comentario.id,
+    )
     db.commit()
     db.refresh(comentario)
     ancora = (
@@ -102,10 +111,16 @@ def respostas_do_comentario(
 
 
 def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoOut:
-    """Só o autor; ver `arvore_de_comentarios.apagar`. Sem respostas, a âncora sai junto."""
+    """Só o autor; ver `arvore_de_comentarios.apagar`. Sem respostas, a âncora sai junto;
+    nos dois casos, os avisos do comentário saem."""
     comentario = _buscar(db, comentario_id)
     return arvore.apagar(
-        db, Comentario, usuario, comentario, lambda id_: ancoras.apagar(db, [id_])
+        db,
+        Comentario,
+        usuario,
+        comentario,
+        lambda id_: ancoras.apagar(db, [id_]),
+        lambda id_: avisos.apagar_do_comentario(db, id_, em_renga=False),
     )
 
 

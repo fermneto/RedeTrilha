@@ -33,7 +33,8 @@ from app.schemas.comentario import (
     VersosComentadosOut,
 )
 from app.schemas.user import UserOut
-from app.services import ancoras, bloqueios
+from app.core.avisos import estrofes_tocadas
+from app.services import ancoras, avisos, bloqueios
 from app.services import arvore_de_comentarios as arvore
 from app.services.rengas import texto_de
 
@@ -50,6 +51,7 @@ def comentar(
     texto = _texto(db, renga.id) if dados.ancora is not None else None
     if dados.ancora is not None:
         ancoras.validar(texto, dados.parent_id, dados.ancora, alvo="texto da renga")
+    pai = None
     if dados.parent_id is not None:
         pai = db.get(ComentarioRenga, dados.parent_id)
         if pai is None or pai.renga_id != renga.id or pai.removido:
@@ -63,6 +65,17 @@ def comentar(
         verso_fim=dados.ancora.verso_fim if dados.ancora else None,
     )
     db.add(comentario)
+    db.flush()
+    avisos.avisar(
+        db,
+        autor,
+        avisos.do_comentario(
+            pai.autor_id if pai else None, _donos(db, renga, pai, dados), dados.ancora is not None
+        ),
+        dono_id=renga.criador_id,
+        renga_id=renga.id,
+        comentario_id=comentario.id,
+    )
     db.commit()
     db.refresh(comentario)
     ancora = (
@@ -124,7 +137,36 @@ def apagar(
 ) -> ComentarioApagadoOut:
     """Só o autor do comentário; ver `arvore_de_comentarios.apagar`."""
     comentario = _buscar(db, renga_id, comentario_id)
-    return arvore.apagar(db, ComentarioRenga, usuario, comentario)
+    return arvore.apagar(
+        db,
+        ComentarioRenga,
+        usuario,
+        comentario,
+        ao_tirar=lambda id_: avisos.apagar_do_comentario(db, id_, em_renga=True),
+    )
+
+
+def _donos(
+    db: Session, renga: Renga, pai: ComentarioRenga | None, dados: ComentarioCreate
+) -> list[int]:
+    """Quem, além do autor do comentário respondido, é avisado: o criador sempre; no
+    comentário geral, todos os autores de estrofe; na crítica, os autores das
+    estrofes que os versos tocam; na resposta, só o criador."""
+    if pai is not None:
+        return [renga.criador_id]
+    estrofes = list(
+        db.execute(
+            select(EstrofeRenga.texto, EstrofeRenga.autor_id)
+            .where(EstrofeRenga.renga_id == renga.id)
+            .order_by(EstrofeRenga.posicao)
+        )
+    )
+    if dados.ancora is None:
+        return [renga.criador_id, *(autor for _, autor in estrofes)]
+    tocadas = estrofes_tocadas(
+        [texto for texto, _ in estrofes], dados.ancora.verso_inicio, dados.ancora.verso_fim
+    )
+    return [renga.criador_id, *(estrofes[i].autor_id for i in tocadas)]
 
 
 def _buscar_renga(db: Session, renga_id: int) -> Renga:

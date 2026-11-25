@@ -15,7 +15,7 @@ from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
 from app.schemas.user import UserOut
-from app.services import bloqueios, indice_tags
+from app.services import avisos, bloqueios, indice_tags
 from app.services.indice_tags import tags_do_post
 
 
@@ -182,10 +182,14 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     antes da publicação (services/rascunhos.py).
     """
     post = Post(autor_id=autor.id, repost_removido=repost_removido, **dados.model_dump())
+    citado = None
     if dados.repost_de_id is not None:
-        post.repost_de_id = original_para_interagir(db, autor, dados.repost_de_id).id
+        citado = original_para_interagir(db, autor, dados.repost_de_id)
+        post.repost_de_id = citado.id
     db.add(post)
     db.flush()
+    if citado is not None:
+        avisos.avisar(db, autor, [(citado.autor_id, "citacao")], post_id=post.id)
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
     indice_tags.indexar(db, post)
     db.commit()
@@ -199,6 +203,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         db.scalars(select(Post.id).where(Post.repost_de_id == post_id, Post.texto == ""))
     )
     db.execute(delete(Curtida).where(Curtida.post_id.in_([post_id, *puros])))
+    avisos.apagar_do_poema(db, [post_id, *puros])
     db.execute(
         delete(AncoraComentario).where(
             AncoraComentario.comentario_id.in_(

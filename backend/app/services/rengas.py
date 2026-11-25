@@ -29,7 +29,7 @@ from app.schemas.renga import (
     RengaPage,
 )
 from app.schemas.user import UserOut
-from app.services import bloqueios
+from app.services import avisos, bloqueios
 
 MSG_FECHADA = "a renga está fechada: não aceita mais estrofes"
 MSG_NAO_CONVIDADO = "só os convidados escrevem nesta renga"
@@ -61,6 +61,7 @@ def criar(db: Session, criador: User, dados: RengaCreate) -> RengaDetalhe:
         )
     )
     db.add_all(ConviteRenga(renga_id=renga.id, user_id=u.id) for u in convidados)
+    avisos.avisar(db, criador, [(u.id, "convite") for u in convidados], renga_id=renga.id)
     db.commit()
     return detalhar(db, criador, renga.id)
 
@@ -201,10 +202,26 @@ def acrescentar(db: Session, usuario: User, renga_id: int, texto: str) -> RengaD
         raise HTTPException(status_code=impedimento[0], detail=impedimento[1])
 
     posicao = (ultima.posicao if ultima else 0) + 1
-    db.add(EstrofeRenga(renga_id=renga.id, autor_id=usuario.id, posicao=posicao, texto=texto))
+    estrofe = EstrofeRenga(renga_id=renga.id, autor_id=usuario.id, posicao=posicao, texto=texto)
+    db.add(estrofe)
     if posicao >= renga.limite:
         renga.fechada_em = datetime.now(UTC)
     try:
+        db.flush()
+        # O criador e quem já escreveu uma estrofe ficam sabendo da nova.
+        autores = db.scalars(
+            select(EstrofeRenga.autor_id)
+            .where(EstrofeRenga.renga_id == renga.id)
+            .order_by(EstrofeRenga.posicao)
+        )
+        avisos.avisar(
+            db,
+            usuario,
+            [(pessoa, "estrofe") for pessoa in [renga.criador_id, *autores]],
+            dono_id=renga.criador_id,
+            renga_id=renga.id,
+            estrofe_id=estrofe.id,
+        )
         db.commit()
     except IntegrityError:
         db.rollback()
@@ -240,9 +257,11 @@ def convidar(db: Session, usuario: User, renga_id: int, usernames: list[str]) ->
     if renga.fechada_em is not None:
         raise HTTPException(status_code=409, detail=MSG_FECHADA)
     ja_convidados = {u.id for u in _convidados(db, renga.id)}
-    for convidado in _resolver_convidados(db, usuario, usernames):
-        if convidado.id not in ja_convidados:
-            db.add(ConviteRenga(renga_id=renga.id, user_id=convidado.id))
+    novos = [
+        c for c in _resolver_convidados(db, usuario, usernames) if c.id not in ja_convidados
+    ]
+    db.add_all(ConviteRenga(renga_id=renga.id, user_id=c.id) for c in novos)
+    avisos.avisar(db, usuario, [(c.id, "convite") for c in novos], renga_id=renga.id)
     try:
         db.commit()
     except IntegrityError:

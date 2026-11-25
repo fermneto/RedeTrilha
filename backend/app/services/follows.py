@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.models.follow import Follow
 from app.models.user import User
 from app.schemas.user import UserPage
-from app.services import bloqueios
+from app.services import avisos, bloqueios
 from app.services.users import buscar_por_username
 
 
@@ -23,6 +23,7 @@ def seguir(db: Session, seguidor: User, username: str) -> None:
     )
     if ja_segue is None:
         db.add(Follow(seguidor_id=seguidor.id, seguido_id=seguido.id))
+        avisos.avisar(db, seguidor, [(seguido.id, "seguidor")])
         db.commit()
 
 
@@ -34,6 +35,7 @@ def deixar_de_seguir(db: Session, seguidor: User, username: str) -> None:
             Follow.seguidor_id == seguidor.id, Follow.seguido_id == seguido.id
         )
     )
+    avisos.desfazer(db, "seguidor", seguidor.id, destinatario_id=seguido.id)
     db.commit()
 
 
