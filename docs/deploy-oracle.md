@@ -50,7 +50,7 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 10. [Monitoramento](#passo-10-monitoramento-gratuito)
 11. [Backup no Object Storage](#passo-11-backup-no-object-storage)
 12. [Restaurar um backup](#restaurar-um-backup)
-13. [Disco da VM](#disco-da-vm)
+13. [Disco e memória da VM](#disco-e-memória-da-vm)
 14. [Atualizar o deploy](#atualizar-o-deploy)
 15. [Workers e pool](#workers-e-pool)
 16. [A Oracle pode recolher VMs ociosas](#a-oracle-pode-recolher-vms-ociosas)
@@ -90,8 +90,8 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
    Placement:            (o availability domain que vier; se faltar capacidade, troque, ver abaixo)
    Image:                Change image → Ubuntu → Canonical Ubuntu 24.04 (a versão aarch64 vem sozinha)
    Shape:                Change shape → Ampere → VM.Standard.A1.Flex
-     OCPUs:              2          (máximo grátis: 4 no total da conta)
-     Memory (GB):        12         (máximo grátis: 24 no total da conta)
+     OCPUs:              4          (o máximo grátis: 4 no total da conta)
+     Memory (GB):        24         (o máximo grátis: 24 no total da conta)
    Networking:           Create new virtual cloud network (padrão) + Create new public subnet
                          Assign a public IPv4 address: Yes
    Add SSH keys:         Generate a key pair for me → Download private key (e a pública)
@@ -101,8 +101,10 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
    O selo **"Always Free-eligible"** deve aparecer ao lado do shape e da
    imagem. Se não aparecer, algo saiu do gratuito.
 
-   2 OCPU e 12 GB sobram para a meta de 100 usuários, com a API e o Postgres juntos. Se quiser, use 4 e 24
-   (o total grátis), mas aí não sobra nada para outra VM.
+   4 OCPU e 24 GB é todo o gratuito A1 numa VM só (não sobra nada para outra
+   VM): com a API e o Postgres juntos, é o que fecha a meta de p95 abaixo de
+   1 s até sem pausa entre os cliques ([Workers e pool](#workers-e-pool)).
+   Com 2 OCPU e 12 GB a meta fecha com gente navegando, mas não sem pausa.
 3. **Create**. Em um ou dois minutos o estado fica **Running**. Anote o
    **Public IPv4 address** (ex.: `129.146.10.20`).
 
@@ -121,8 +123,11 @@ Ashburn e São Paulo. O que fazer, nesta ordem:
 
 1. Troque o **availability domain** (AD-1, AD-2, AD-3, quando a região tiver
    mais de um) e tente de novo.
-2. Peça menos: **1 OCPU e 6 GB** costuma achar vaga; depois dá para aumentar
-   (Instance → **Edit** → shape) quando houver capacidade.
+2. Peça menos: **1 OCPU e 6 GB** costuma achar vaga. Suba com ela e
+   redimensione depois, quando houver capacidade: Instance → **Edit** → **Edit
+   shape** → 4 OCPU e 24 GB → **Save changes** (a VM reinicia; o disco, o IP e
+   os volumes do Docker ficam). Enquanto a VM for menor, reduza a memória do
+   Postgres no `.env` ([Disco e memória](#disco-e-memória-da-vm)).
 3. Tente em outro horário (madrugada e fim de semana costumam ter vaga).
 4. Fazer o **upgrade para Pay As You Go** (Billing → Upgrade) quase sempre
    resolve a falta de capacidade e continua sem custo enquanto você ficar
@@ -378,11 +383,14 @@ O serviço `backup` faz, todo dia às `BACKUP_HORA` (03:30, no fuso `TZ`), um
 `pg_dump` em formato custom (comprimido) no volume `backups`:
 
 ```text
-/backups/diario/verso-AAAA-MM-DD.dump    os 7 mais novos (BACKUP_DIARIOS)
-/backups/semanal/verso-AAAA-Sss.dump     o de domingo, os 4 mais novos (BACKUP_SEMANAIS)
+/backups/diario/verso-AAAA-MM-DDTHHMMSSZ-<host>.dump    os das 7 datas mais novas (BACKUP_DIARIOS)
+/backups/semanal/verso-AAAA-MM-DDTHHMMSSZ-<host>.dump   os de domingo, das 4 semanas mais novas (BACKUP_SEMANAIS)
 ```
 
-O dump do seed tem uns 6 MB. Isso já funciona sem configurar nada. Mas o
+O nome leva a data e a hora em UTC e o hostname da VM, então nenhum backup
+sobrescreve outro: nem dois no mesmo dia (um manual e o agendado), nem os de
+uma VM nova no mesmo bucket. A retenção conta datas, não arquivos: dois
+backups do mesmo dia ficam ou saem juntos. O dump do seed tem uns 6 MB. Isso já funciona sem configurar nada. Mas o
 volume mora no disco da VM: se a Oracle recolher a VM ou o disco se perder, os
 backups vão junto. Por isso o `backup` também copia cada dump para um bucket do
 **Object Storage** da Oracle (Always Free: 20 GB no total da conta), pela API
@@ -421,7 +429,7 @@ compatível com S3 e com o `rclone`. O que fazer na conta, uma vez:
 
    ```bash
    docker compose exec backup backup.sh
-   # backup ok: /backups/diario/verso-2026-11-25.dump (6.1M)
+   # backup ok: /backups/diario/verso-2026-11-25T063000Z-verso-api.dump (6.1M)
    # enviado para o Object Storage: oci:verso-backups/verso
    ./restaurar.sh --listar          # o mesmo arquivo nos dois lados
    ```
@@ -442,8 +450,9 @@ o temporário. Faça uma vez depois de configurar o passo 11 e antes da banca:
 
 ```bash
 ./restaurar.sh --listar
-./restaurar.sh diario/verso-2026-11-25.dump             # do volume local
-./restaurar.sh remoto:diario/verso-2026-11-25.dump      # baixando do Object Storage
+./restaurar.sh ultimo              # o diário mais novo do volume local
+./restaurar.sh remoto:ultimo       # o mais novo do Object Storage (baixa antes)
+./restaurar.sh remoto:diario/verso-2026-11-25T063000Z-verso-api.dump   # um arquivo
 # no backup:   usuarios=184 poemas=11336
 # em produção: usuarios=184 poemas=11336
 # teste de restauração ok (o banco temporário foi apagado)
@@ -454,14 +463,14 @@ As contagens batem quando nada foi publicado depois do dump.
 **Restaurar de verdade** (substitui o banco `verso`):
 
 ```bash
-./restaurar.sh --producao diario/verso-2026-11-25.dump
+./restaurar.sh --producao diario/verso-2026-11-25T063000Z-verso-api.dump
 # pede para digitar "restaurar"; para a api, apaga e recria o banco, restaura e sobe a api
 ```
 
 O que foi publicado depois do dump se perde: faça antes um
 `docker compose exec backup backup.sh` se o banco atual ainda servir para algo.
 
-## Disco da VM
+## Disco e memória da VM
 
 O boot volume grátis tem uns 47 GB, e nele moram o sistema, as imagens do
 Docker, o banco (`pgdata`), os backups locais (`backups`) e os logs (no
@@ -479,6 +488,18 @@ passa de 80%. Para liberar: `docker image prune -f` e `docker builder prune -f`
 (imagens e cache de build antigos; não tocam nos volumes). Se faltar mesmo, o
 boot volume pode crescer até 200 GB sem custo (Instance → Boot volume →
 **Edit**, e depois `sudo growpart` na VM).
+
+A memória do Postgres vem dimensionada para a VM de 24 GB, que ele divide com
+a API e o Caddy. Numa VM menor (por exemplo, enquanto espera capacidade para
+redimensionar), reduza no `.env` e rode `docker compose up -d db`:
+
+| VM | `PG_SHARED_BUFFERS` | `PG_EFFECTIVE_CACHE_SIZE` | `PG_WORK_MEM` | `PG_MAINTENANCE_WORK_MEM` |
+|---|---|---|---|---|
+| 4 OCPU, 24 GB (padrão) | 2GB | 12GB | 16MB | 512MB |
+| 2 OCPU, 12 GB | 1GB | 6GB | 8MB | 256MB |
+| 1 OCPU, 6 GB | 512MB | 3GB | 4MB | 128MB |
+
+Com 1 OCPU, use também `WEB_CONCURRENCY=1`.
 
 ## Atualizar o deploy
 
@@ -530,26 +551,32 @@ folga: backup (1), restauração (2), psql de manutenção, 3 reservadas ao supe
 ```
 
 O padrão do `.env.example` é **2 workers com pool 4 + 2**, o que deu o menor
-p95 sem erro. Medido com `backend/scripts/carga.py` (100 usuários logados, mix
-de 14 rotas de leitura, 30 s, pelo Caddy com HTTPS) contra o compose local com
-o seed completo (184 usuários, 11.336 poemas), com `db`, `api` e `caddy` presos
-a 2 núcleos, como a VM de 2 OCPU. Duas rodadas por linha; 0 erro em todas:
+p95 sem erro, e o mais estável, nas duas VMs. Medido com
+`backend/scripts/carga.py` (100 usuários logados, mix de 14 rotas de leitura,
+30 s, pelo Caddy com HTTPS) contra o compose local com o seed completo (184
+usuários, 11.336 poemas), com `db`, `api` e `caddy` presos a 4 núcleos (a VM
+do guia) ou a 2. Cada célula traz as rodadas; 0 erro em todas.
+
+**4 núcleos (4 OCPU, 24 GB, a VM do guia):**
 
 | Workers × pool | Pausa média de 3 s | Sem pausa (100 requisições sempre em voo) |
 |---|---|---|
-| **2 × (4 + 2)** | 28 req/s, p50 18 a 20 ms, **p95 46 e 52 ms** | 109 a 112 req/s, p50 871 a 907 ms, **p95 1.133 e 1.163 ms** |
+| **2 × (4 + 2)** | 27 req/s, **p95 47 e 48 ms** | 146 a 156 req/s, **p95 924, 914, 899 e 804 ms** |
+| 4 × (4 + 2) | 26 a 28 req/s, p95 49 e 49 ms | 137 a 172 req/s, p95 1.914, 953, 839 e 2.177 ms |
+
+**2 núcleos (2 OCPU, 12 GB):**
+
+| Workers × pool | Pausa média de 3 s | Sem pausa |
+|---|---|---|
+| **2 × (4 + 2)** | 28 req/s, p95 46 e 52 ms | 109 a 112 req/s, p95 1.133 e 1.163 ms |
 | 2 × (5 + 5) | 27 a 28 req/s, p95 51 e 48 ms | 103 a 106 req/s, p95 1.250 e 1.313 ms |
 | 4 × (5 + 5) | 26 a 27 req/s, p95 49 e 50 ms | 102 req/s, p95 1.664 e 1.556 ms |
 
-Com a pausa (gente navegando), as três empatam bem abaixo da meta de 1 s. Sem
-pausa, a CPU é o limite: com 2 núcleos para a API, o Postgres e o Caddy, mais
-processos e mais requisições em voo só disputam os mesmos núcleos, e o p95
-sobe. Mais workers só valem com mais OCPUs.
-
-Com 4 núcleos (a VM de 4 OCPU e 24 GB, o total grátis da conta), sem pausa:
-2 × (4 + 2) deu 148 e 156 req/s, **p95 899 e 804 ms**, abaixo da meta mesmo
-sem pausa; 4 × (4 + 2) deu 166 e 137 req/s, p95 839 e 2.177 ms (instável).
-Também ali, 2 workers.
+Com a pausa (gente navegando), tudo empata bem abaixo da meta de 1 s. Sem
+pausa, a CPU é o limite: a API, o Postgres e o Caddy dividem os mesmos
+núcleos. Com 4 núcleos, 2 workers ficam abaixo de 1 s em todas as rodadas;
+4 workers às vezes empatam e às vezes passam de 1,9 s (mais processos
+disputando a CPU com o Postgres). Com 2 núcleos, ninguém fecha 1 s sem pausa.
 
 Mudou o número de workers ou o pool e passou de 60? Suba o `max_connections`
 no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
@@ -586,18 +613,20 @@ dados voltam do Object Storage numa VM nova:
    `.env`, com a mesma configuração do Object Storage.
 2. `docker compose up -d --build`. O `seed` popula o banco novo com o seed;
    tudo bem, o próximo passo substitui o banco inteiro.
-3. Veja os backups no bucket e restaure o mais novo:
+3. Veja os backups no bucket e restaure o mais novo **da VM antiga** (o
+   hostname dela está no nome). Não use `remoto:ultimo` aqui: se a VM nova já
+   fez um backup, o mais novo é o do banco recém-semeado.
 
    ```bash
    ./restaurar.sh --listar
-   ./restaurar.sh remoto:diario/verso-AAAA-MM-DD.dump      # teste primeiro
-   ./restaurar.sh --producao remoto:diario/verso-AAAA-MM-DD.dump
+   ./restaurar.sh remoto:diario/verso-AAAA-MM-DDTHHMMSSZ-<vm-antiga>.dump      # teste primeiro
+   ./restaurar.sh --producao remoto:diario/verso-AAAA-MM-DDTHHMMSSZ-<vm-antiga>.dump
    ```
 
-Perde-se o que foi publicado depois do último backup (no máximo um dia).
-Faça isso no mesmo dia: o `backup` da VM nova envia o dump dela às 03:30, e o
-nome do arquivo é a data, então o dump do banco recém-semeado substituiria o
-backup bom do mesmo dia no bucket.
+Perde-se o que foi publicado depois do último backup (no máximo um dia). Os
+backups da VM antiga não são sobrescritos (o hostname e a hora estão no
+nome); a retenção por idade do bucket os apaga depois de 8 dias (diários) e
+29 dias (semanais), então restaure antes disso.
 
 ## Migrar os dados do Supabase (opcional)
 
@@ -732,7 +761,7 @@ curl -k https://localhost:8443/auth/login -H 'content-type: application/json' \
   -d '{"username":"marina_letras","password":"verso123"}'
 docker compose exec backup backup.sh                     # backup + envio ao S3 falso
 ./restaurar.sh --listar
-./restaurar.sh remoto:diario/verso-$(date +%F).dump      # teste de restauração
+./restaurar.sh remoto:ultimo                             # teste de restauração
 cd ../../backend && uv run python scripts/carga.py --url https://localhost:8443 --pausa 3
 cd ../deploy/oracle && docker compose down -v && rm .env   # derruba e apaga o banco e os backups de teste
 ```
@@ -750,7 +779,7 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 |---|---|
 | `docker compose up` diz `defina POSTGRES_PASSWORD no .env` | a linha está vazia: passo 7 |
 | `seed` ou `api`: `password authentication failed for user "verso"` | a `POSTGRES_PASSWORD` mudou depois do primeiro `up` (o Postgres guarda a do volume). Volte a antiga, ou troque no banco: `docker compose exec db psql -U verso -c "alter user verso password '<nova>'"` |
-| `db` reinicia sem parar | `docker compose logs db`; com o disco cheio, ver [Disco da VM](#disco-da-vm) |
+| `db` reinicia sem parar | `docker compose logs db`; com o disco cheio, ver [Disco e memória da VM](#disco-e-memória-da-vm) |
 | `too many clients already` | workers × pool passou do `max_connections`: [Workers e pool](#workers-e-pool) |
 | `backup`: `ERRO: o envio para o Object Storage falhou` | endpoint, região ou chave erradas (passo 11), ou o bucket não existe. O dump local está no volume |
 | `backup`: `SignatureDoesNotMatch` / `InvalidAccessKeyId` | `OCI_ACCESS_KEY` e `OCI_SECRET_KEY` trocados, ou a região do endpoint diferente de `OCI_REGIAO` |
@@ -763,5 +792,5 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | Navegador avisa "certificado inválido" | o Caddy ainda está pedindo o certificado (veja `docker compose logs caddy`) ou o `DOMINIO` do `.env` não é o mesmo da URL |
 | `Out of capacity` ao criar a VM | passo 3, lista de soluções |
 | `permission denied ... docker.sock` | faltou sair e entrar de novo depois do `usermod -aG docker ubuntu` |
-| Disco cheio | [Disco da VM](#disco-da-vm) |
+| Disco cheio | [Disco e memória da VM](#disco-e-memória-da-vm) |
 | Com o Supabase: `Network is unreachable`, `prepared statement ... already exists`, 500 com `/saude` 200 | Direct connection (IPv6), Transaction pooler (6543) ou projeto pausado: ver [Alternativa](#alternativa-banco-gerenciado-no-supabase) e o `docs/deploy.md` |
