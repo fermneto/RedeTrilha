@@ -77,6 +77,8 @@ class RengaOut(BaseModel):
     qtd_estrofes: int
     # Cada autor uma vez, na ordem da primeira estrofe que escreveu.
     autores: list[UserOut]
+    # Comentários e respostas na renga, como o `comentarios` dos poemas.
+    comentarios: int = 0
 
 
 class RengaDetalhe(RengaOut):

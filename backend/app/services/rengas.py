@@ -18,6 +18,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.models.comentario_renga import ComentarioRenga
 from app.models.renga import ConviteRenga, EstrofeRenga, Renga
 from app.models.user import User
 from app.schemas.renga import (
@@ -34,6 +35,17 @@ MSG_FECHADA = "a renga está fechada: não aceita mais estrofes"
 MSG_NAO_CONVIDADO = "só os convidados escrevem nesta renga"
 MSG_NAO_E_A_VEZ = "não é a sua vez: ninguém escreve duas estrofes seguidas"
 MSG_CORRIDA = "outra pessoa acrescentou uma estrofe agora; recarregue a renga"
+
+
+def texto_de(estrofes: list[str]) -> str:
+    """O texto da renga, cujos versos os comentários contam: as estrofes em ordem,
+    separadas por uma linha em branco, cada uma como foi escrita.
+
+    Como estrofe só se acrescenta no fim (nunca se edita, apaga nem reordena), os
+    números dos versos já escritos não mudam quando a renga cresce. O front monta
+    o mesmo texto (`textoDaRenga` em lib/api.ts).
+    """
+    return "\n\n".join(estrofes)
 
 
 def criar(db: Session, criador: User, dados: RengaCreate) -> RengaDetalhe:
@@ -76,19 +88,29 @@ def listar(
             .limit(limit)
         )
     )
-    autores = _autores_por_renga(db, [r.id for r in rengas])
-    items = [_para_saida(r, *autores.get(r.id, (0, []))) for r in rengas]
+    ids = [r.id for r in rengas]
+    autores = _autores_por_renga(db, ids)
+    comentarios = contar_comentarios(db, ids)
+    items = [
+        _para_saida(r, *autores.get(r.id, (0, [])), comentarios.get(r.id, 0)) for r in rengas
+    ]
     return RengaPage(items=items, total=total, offset=offset, limit=limit)
 
 
 def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
     renga = _buscar(db, renga_id)
     bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
-    return _detalhe(renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario)
+    return _detalhe(
+        renga,
+        _estrofes(db, renga.id),
+        _convidados(db, renga.id),
+        usuario,
+        contar_comentarios(db, [renga.id]).get(renga.id, 0),
+    )
 
 
 def detalhar_varias(db: Session, usuario: User, renga_ids: list[int]) -> dict[int, RengaDetalhe]:
-    """O `detalhar` de várias rengas (as de uma página do feed) em três queries, sem N+1."""
+    """O `detalhar` de várias rengas (as de uma página do feed) em quatro queries, sem N+1."""
     if not renga_ids:
         return {}
     rengas = list(db.scalars(select(Renga).where(Renga.id.in_(renga_ids))))
@@ -107,19 +129,41 @@ def detalhar_varias(db: Session, usuario: User, renga_ids: list[int]) -> dict[in
         .order_by(ConviteRenga.id)
     ):
         convidados.setdefault(renga_id, []).append(convidado)
+    comentarios = contar_comentarios(db, renga_ids)
     return {
-        r.id: _detalhe(r, estrofes.get(r.id, []), convidados.get(r.id, []), usuario)
+        r.id: _detalhe(
+            r, estrofes.get(r.id, []), convidados.get(r.id, []), usuario, comentarios.get(r.id, 0)
+        )
         for r in rengas
     }
 
 
+def contar_comentarios(db: Session, renga_ids: list[int]) -> dict[int, int]:
+    """Comentários (e respostas, marcadores incluídos) de cada renga, numa query,
+    como o `comentarios` dos poemas (services/posts.py)."""
+    if not renga_ids:
+        return {}
+    linhas = db.execute(
+        select(ComentarioRenga.renga_id, func.count())
+        .where(ComentarioRenga.renga_id.in_(renga_ids))
+        .group_by(ComentarioRenga.renga_id)
+    )
+    return dict(linhas.all())
+
+
 def _detalhe(
-    renga: Renga, estrofes: list[EstrofeRenga], convidados: list[User], usuario: User
+    renga: Renga,
+    estrofes: list[EstrofeRenga],
+    convidados: list[User],
+    usuario: User,
+    comentarios: int,
 ) -> RengaDetalhe:
     ultimo_autor = estrofes[-1].autor_id if estrofes else None
     impedimento = _impedimento(renga, usuario, {u.id for u in convidados}, ultimo_autor)
     return RengaDetalhe(
-        **_para_saida(renga, len(estrofes), _autores_em_ordem(estrofes)).model_dump(),
+        **_para_saida(
+            renga, len(estrofes), _autores_em_ordem(estrofes), comentarios
+        ).model_dump(),
         estrofes=[
             EstrofeOut(
                 id=e.id,
@@ -313,7 +357,9 @@ def _autores_por_renga(
     return {rid: (len(lista), _autores_em_ordem(lista)) for rid, lista in por_renga.items()}
 
 
-def _para_saida(renga: Renga, qtd_estrofes: int, autores: list[User]) -> RengaOut:
+def _para_saida(
+    renga: Renga, qtd_estrofes: int, autores: list[User], comentarios: int
+) -> RengaOut:
     return RengaOut(
         id=renga.id,
         titulo=renga.titulo,
@@ -325,4 +371,5 @@ def _para_saida(renga: Renga, qtd_estrofes: int, autores: list[User]) -> RengaOu
         created_at=renga.created_at,
         qtd_estrofes=qtd_estrofes,
         autores=[UserOut.model_validate(u) for u in autores],
+        comentarios=comentarios,
     )
