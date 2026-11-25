@@ -759,6 +759,15 @@ decisão 15.
     O seletor some na citação e no rascunho aberto, que já têm formato. Uma
     primeira versão punha o seletor num menu do próprio botão, e o poema
     custava dois cliques.
+  - **O poema começado não se perde na troca** (decisão do Neto). Para a
+    renga, o corpo vira a 1ª estrofe e o título vira o da renga, os dois
+    editáveis; passam pelo `sessionStorage` da aba, lidos uma vez e apagados,
+    nunca pela URL, para o texto não ficar no histórico nem num link. Para a
+    antologia, que não tem onde pôr o poema, a pergunta aparece ali mesmo, no
+    padrão da confirmação inline: "Descartar o poema?", com "salvar como
+    rascunho" (salva e segue), "descartar" e "continuar escrevendo", que já
+    vem com o foco (Esc e clique fora também continuam). Sem poema, troca
+    direto.
   - **Rascunhos no perfil:** a aba "Rascunhos" do próprio perfil (decisão 9).
     Visitantes não veem a aba, e `?aba=rascunhos` no perfil alheio abre Poemas.
     As antologias próprias, privadas inclusive, já eram a aba Antologias.
@@ -780,13 +789,13 @@ decisão 15.
     largura toda, como no X, e quebra só entre palavras; com mais de 20
     caracteres, a fonte desce um passo. Espremido entre o avatar e os botões,
     "Albuquerque" partia no meio.
+    No cabeçalho fixo do topo, o nome longo fica numa linha e termina em
+    reticências.
 - **O que cortamos e por quê:** os itens Antologias, Rascunhos e Rengas da
   navegação, o item "Escrever" repetido ao lado do botão, o "Mais" do celular,
   e as páginas próprias "Minhas antologias" e "Rengas" (viraram abas). A rota
   da lista de rengas e a das minhas antologias só redirecionam, para os
-  favoritos e links antigos. O texto já escrito no compositor não passa para a
-  renga ao trocar de formato: são formulários diferentes, e a primeira estrofe
-  de uma renga raramente é o poema que se começou.
+  favoritos e links antigos.
 
 ### O que ficou de fora e por quê
 
