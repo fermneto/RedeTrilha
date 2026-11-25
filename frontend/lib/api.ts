@@ -1218,3 +1218,244 @@ export function previaDoRascunho(texto: string, quantos: number): { previa: stri
   while (mostradas.length > 0 && !mostradas[mostradas.length - 1].trim()) mostradas.pop();
   return { previa: mostradas.join("\n"), versos, cortado: mostradas.length < linhas.length };
 }
+
+// ---- Mensagens diretas: espelham backend/app/schemas/mensagem.py ----
+
+// LIMITE_TEXTO_MENSAGEM do backend.
+export const MENSAGEM_MAX_CARACTERES = 10_000;
+
+export type SituacaoDaConversa = "caixa" | "pedido" | "recusada";
+export type AbaDaCaixa = "conversas" | "pedidos";
+
+// O texto vem como foi escrito, com as quebras de linha. `post` é o poema
+// compartilhado; apagado pelo autor, vem null com `post_removido`.
+export type Mensagem = {
+  id: number;
+  conversa_id: number;
+  autor_id: number;
+  texto: string;
+  post: Post | null;
+  post_removido: boolean;
+  created_at: string;
+};
+
+// Da mais antiga para a mais nova. Sem `depois`, `proximo_cursor` é o `antes` das
+// mais antigas; com `depois`, é o próximo `depois`.
+export type MensagemPage = { items: Mensagem[]; limit: number; proximo_cursor: string | null };
+
+export type ConversaNaCaixa = {
+  id: number;
+  outro: User;
+  situacao: SituacaoDaConversa;
+  silenciada: boolean;
+  ultima_mensagem: Mensagem | null;
+  nao_lidas: number;
+};
+
+export type CaixaPage = { items: ConversaNaCaixa[]; limit: number; proximo_cursor: string | null };
+
+export type Conversa = {
+  id: number;
+  outro: User;
+  situacao: SituacaoDaConversa;
+  silenciada: boolean;
+  bloqueei: boolean;
+  pode_responder: boolean;
+  motivo: string | null;
+  ultima_lida_id: number;
+  // Até onde o outro leu; null enquanto a conversa é um pedido para ele.
+  visto_ate: number | null;
+};
+
+export type ResumoDeMensagens = { nao_lidas: number; pedidos: number };
+
+export function listarConversas(aba: AbaDaCaixa, cursor: string | null, limit = 20): Promise<CaixaPage> {
+  const params = new URLSearchParams({ aba, limit: String(limit) });
+  if (cursor) params.set("cursor", cursor);
+  return apiGet<CaixaPage>(`/mensagens/conversas?${params}`);
+}
+
+export function buscarResumoDeMensagens(): Promise<ResumoDeMensagens> {
+  return apiGet<ResumoDeMensagens>("/mensagens/resumo");
+}
+
+export function abrirConversa(username: string): Promise<Conversa> {
+  return apiPost<Conversa>("/mensagens/conversas", { username });
+}
+
+export function buscarConversa(id: number): Promise<Conversa> {
+  return apiGet<Conversa>(`/mensagens/conversas/${id}`);
+}
+
+export function buscarMensagens(
+  id: number,
+  posicao: { antes?: number; depois?: number } = {},
+  limit = 30,
+): Promise<MensagemPage> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (posicao.antes !== undefined) params.set("antes", String(posicao.antes));
+  if (posicao.depois !== undefined) params.set("depois", String(posicao.depois));
+  return apiGet<MensagemPage>(`/mensagens/conversas/${id}/mensagens?${params}`);
+}
+
+export function enviarMensagem(id: number, texto: string, postId: number | null = null): Promise<Mensagem> {
+  return apiPost<Mensagem>(`/mensagens/conversas/${id}/mensagens`, { texto, post_id: postId });
+}
+
+export function marcarLida(id: number, ate?: number): Promise<void> {
+  return apiPost(`/mensagens/conversas/${id}/lida`, ate === undefined ? {} : { ate });
+}
+
+export function aceitarPedido(id: number): Promise<void> {
+  return apiPost(`/mensagens/conversas/${id}/aceitar`);
+}
+
+export function recusarPedido(id: number): Promise<void> {
+  return apiPost(`/mensagens/conversas/${id}/recusar`);
+}
+
+export function silenciarConversa(id: number, silenciar: boolean): Promise<void> {
+  const caminho = `/mensagens/conversas/${id}/silenciar`;
+  return silenciar ? apiPost(caminho) : apiDelete(caminho);
+}
+
+export function bloquear(username: string, bloqueado: boolean): Promise<void> {
+  const caminho = `/usuarios/${encodeURIComponent(username)}/bloqueio`;
+  return bloqueado ? apiPost(caminho) : apiDelete(caminho);
+}
+
+// A linha da caixa: o começo da mensagem (primeira linha com texto) ou o poema
+// que ela leva, com "Você: " quando fui eu que mandei.
+export function previaDaMensagem(mensagem: Mensagem | null, euId: number | null): string {
+  if (!mensagem) return "";
+  const linha = mensagem.texto.split("\n").find((l) => l.trim()) ?? "";
+  const poema = mensagem.post
+    ? `poema${mensagem.post.titulo ? `: ${mensagem.post.titulo}` : ` de @${mensagem.post.autor.username}`}`
+    : mensagem.post_removido
+      ? "poema removido pelo autor"
+      : "";
+  const corpo = linha.trim() || poema;
+  return mensagem.autor_id === euId ? `Você: ${corpo}` : corpo;
+}
+
+// "Visto" ou "Enviada" embaixo da minha última mensagem, como no X: visto quando
+// o outro leu até ela. null quando a última mensagem da conversa não é minha.
+export function situacaoDaMinhaUltima(
+  mensagens: Mensagem[],
+  euId: number,
+  vistoAte: number | null,
+): { id: number; rotulo: "Visto" | "Enviada" } | null {
+  const ultima = mensagens[mensagens.length - 1];
+  if (!ultima || ultima.autor_id !== euId) return null;
+  return { id: ultima.id, rotulo: vistoAte !== null && vistoAte >= ultima.id ? "Visto" : "Enviada" };
+}
+
+// ---- Tempo real das mensagens (GET /mensagens/stream, Server-Sent Events) ----
+// O EventSource não manda o header Authorization, e o token nunca vai na URL (ficaria
+// nos logs do proxy e no histórico). Por isso o stream é um fetch com o token no
+// header, lido aos pedaços pelo ReadableStream, com a reconexão feita aqui.
+
+export type EventoDeMensagem =
+  // "conectou": o stream (re)abriu ou pediu para ressincronizar. Quem ouve busca o
+  // que pode ter perdido pelas rotas normais (`depois=`), como depois de uma queda.
+  | { tipo: "conectou" }
+  | { tipo: "mensagem" | "pedido"; conversa_id: number; mensagem_id: number }
+  | { tipo: "lida"; conversa_id: number; leitor_id: number; ultima_lida_id: number }
+  | { tipo: "conversa"; conversa_id: number };
+
+// Separa os eventos completos (terminados em linha em branco) do pedaço que ainda
+// não chegou inteiro. Linhas de comentário (": batida") não viram evento.
+export function lerEventosDoStream(buffer: string): { eventos: { tipo: string; dados: string }[]; resto: string } {
+  const blocos = buffer.replace(/\r\n/g, "\n").split("\n\n");
+  const resto = blocos.pop() ?? "";
+  const eventos = [];
+  for (const bloco of blocos) {
+    let tipo = "message";
+    const dados: string[] = [];
+    for (const linha of bloco.split("\n")) {
+      if (linha.startsWith("event:")) tipo = linha.slice(6).trim();
+      else if (linha.startsWith("data:")) dados.push(linha.slice(5).trimStart());
+    }
+    if (dados.length > 0) eventos.push({ tipo, dados: dados.join("\n") });
+  }
+  return { eventos, resto };
+}
+
+// Espera antes da tentativa `n` de reconectar: 1 s, 2 s, 4 s... até 30 s.
+export function esperaDaReconexao(tentativa: number): number {
+  return Math.min(30_000, 1000 * 2 ** tentativa);
+}
+
+const ouvintesDoStream = new Set<(evento: EventoDeMensagem) => void>();
+let streamAberto: AbortController | null = null;
+
+function avisarOuvintes(evento: EventoDeMensagem) {
+  for (const ouvinte of ouvintesDoStream) ouvinte(evento);
+}
+
+// Um stream por aba, dividido entre quem ouve (a navegação e a página aberta).
+async function manterStream(controle: AbortController): Promise<void> {
+  let tentativa = 0;
+  while (!controle.signal.aborted) {
+    try {
+      const res = await fetch(`${BASE}/mensagens/stream`, {
+        headers: headers(),
+        signal: controle.signal,
+        cache: "no-store",
+      });
+      // Sem sessão: não adianta tentar de novo (o request() comum leva ao login).
+      if (res.status === 401) return;
+      if (res.ok && res.body) {
+        const leitor = res.body.pipeThrough(new TextDecoderStream()).getReader();
+        let buffer = "";
+        for (;;) {
+          const { value, done } = await leitor.read();
+          if (done) break;
+          const lido = lerEventosDoStream(buffer + value);
+          buffer = lido.resto;
+          for (const { tipo, dados } of lido.eventos) {
+            if (tipo === "pronto" || tipo === "ressincronizar") {
+              tentativa = 0;
+              avisarOuvintes({ tipo: "conectou" });
+            } else {
+              avisarOuvintes({ tipo, ...JSON.parse(dados) } as EventoDeMensagem);
+            }
+          }
+        }
+      }
+    } catch {
+      // rede caiu, servidor reiniciou ou o stream foi fechado de propósito
+    }
+    if (controle.signal.aborted) return;
+    // Um pouco de sorteio: depois de um restart, as abas não voltam todas juntas.
+    const espera = esperaDaReconexao(tentativa++) * (0.75 + Math.random() * 0.5);
+    await new Promise((pronto) => setTimeout(pronto, espera));
+  }
+}
+
+// Assina os eventos de mensagem; devolve a função que cancela (para o useEffect).
+// O stream abre com o primeiro ouvinte e fecha quando o último sai.
+export function ouvirMensagens(aoEvento: (evento: EventoDeMensagem) => void): () => void {
+  ouvintesDoStream.add(aoEvento);
+  if (!streamAberto && temToken()) {
+    const controle = new AbortController();
+    streamAberto = controle;
+    void manterStream(controle).finally(() => {
+      if (streamAberto === controle) streamAberto = null;
+    });
+  }
+  return () => {
+    ouvintesDoStream.delete(aoEvento);
+    if (ouvintesDoStream.size === 0 && streamAberto) {
+      streamAberto.abort();
+      streamAberto = null;
+    }
+  };
+}
+
+// Para quem mandar um poema: poetas do Verso (consagrados não recebem mensagens),
+// quem eu sigo primeiro.
+export function buscarQuemRecebeMensagem(q: string): Promise<Page<PoetaDoAcervo>> {
+  const params = new URLSearchParams({ q, tipo: "do_verso", offset: "0", limit: "6", sigo_primeiro: "true" });
+  return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
+}
