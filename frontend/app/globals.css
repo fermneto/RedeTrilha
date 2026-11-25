@@ -142,8 +142,11 @@
     animation: esqueleto-brilho 1.4s ease-in-out infinite;
   }
 
+  /* Sem animation-fill-mode: uma animação de opacidade que fica aplicada depois
+     de terminar cria um contexto de empilhamento, e os menus (z-20) de um item
+     passariam a ficar por baixo do item seguinte. */
   .surgir {
-    animation: surgir 150ms ease-out both;
+    animation: surgir 150ms ease-out;
   }
 
   @media (prefers-color-scheme: dark) {
