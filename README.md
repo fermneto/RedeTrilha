@@ -46,9 +46,9 @@ Pedro (@CorreiaPedro208).
 ## Onde está no ar
 
 - **Site:** a URL de produção da Vercel (o Neto preenche aqui depois do deploy).
-- **API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose (API com
-  vários workers do uvicorn + Caddy com HTTPS automático) e o Postgres na mesma
-  VM, com backup diário para o Object Storage da Oracle. `GET /saude` responde
+- **API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose (duas
+  réplicas da API e o Caddy, com HTTPS automático, balanceando entre elas) e o
+  Postgres na mesma VM, com backup diário para o Object Storage da Oracle. `GET /saude` responde
   `{"ok":true}`.
 - **Conta de demonstração:** `marina_letras` / `verso123`.
 
@@ -111,7 +111,7 @@ backend/app/
              comentários, janela deslizante da tradução)
 backend/scripts/   seed, importador de consagrados, preparar_banco, check_setup, bench, carga
 backend/Dockerfile imagem da API (arm64 e amd64)
-deploy/oracle/     compose.yaml (API, Postgres, Caddy, backup), restaurar.sh e .env.example
+deploy/oracle/     compose.yaml (2 réplicas da API, Postgres, Caddy, backup), atualizar.sh, restaurar.sh e .env.example
 backend/data/consagrados/   um JSON por poeta consagrado
 frontend/
   app/         páginas (feed, explorar, escrever, acervo, antologias, perfil,

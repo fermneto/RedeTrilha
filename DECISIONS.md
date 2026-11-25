@@ -220,6 +220,12 @@ PRs, na seção "Decisões do Neto".
     workers × (4 + 2) deram p95 de 47 a 48 ms com pausa de 3 s e de 0,8 a
     0,92 s sem pausa, 0 erro; 4 workers empataram com pausa e oscilaram sem
     pausa (0,84 a 2,2 s). Com 2 núcleos, o p95 sem pausa passava de 1,1 s.
+    Na mesma VM, a API roda em **duas réplicas com o Caddy balanceando**
+    (`/saude` a cada 2 s e nova tentativa na outra réplica): um processo que
+    cai não derruba o site, e o `atualizar.sh` troca a versão uma réplica de
+    cada vez, sem queda. Com 100 usuários, derrubar uma réplica no meio da
+    carga e rodar o `atualizar.sh` deram 0 erro (p95 de 93 e 86 ms), e os
+    streams das mensagens voltaram na outra réplica em 1,3 a 1,4 s (mediana).
     Cada dump leva no nome a data e a hora (UTC) e o hostname da VM, então
     nenhum backup sobrescreve outro.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema

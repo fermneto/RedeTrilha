@@ -7,7 +7,7 @@ alternativa simples, com a desvantagem de hibernar.
 | Peça | Onde | O quê |
 |---|---|---|
 | Banco | a mesma VM da Oracle | Postgres 16 no Docker Compose (serviço `db`), sem porta pública, com backup diário para o Object Storage da Oracle |
-| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `db` + `seed` + `api` (uvicorn com vários workers) + `caddy` (HTTPS) + `backup` |
+| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `db` + `seed` + duas réplicas da API, `api_1` e `api_2` (uvicorn) + `caddy` (HTTPS e balanceador entre as réplicas) + `backup` |
 | Front | Vercel | Next.js, com root directory `frontend` |
 
 Meta: 100 usuários simultâneos com p95 abaixo de 1 s. A VM não hiberna (ao
@@ -25,7 +25,7 @@ Supabase](#alternativa-banco-gerenciado-no-supabase).
 
 Tudo o que está no repositório já vem pronto: `backend/Dockerfile`,
 `deploy/oracle/compose.yaml`, `deploy/oracle/Caddyfile`,
-`deploy/oracle/backup/`, `deploy/oracle/restaurar.sh` e
+`deploy/oracle/backup/`, `deploy/oracle/restaurar.sh`, `deploy/oracle/atualizar.sh` e
 `deploy/oracle/.env.example`. Você só cria as contas, segue os passos e cola as
 credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 
@@ -85,12 +85,13 @@ Os itens da Anthropic e da Vercel do bloco A servem para os dois caminhos.
 12. [Restaurar um backup](#restaurar-um-backup)
 13. [Disco e memória da VM](#disco-e-memória-da-vm)
 14. [Atualizar o deploy](#atualizar-o-deploy)
-15. [Workers e pool](#workers-e-pool)
-16. [A Oracle pode recolher VMs ociosas](#a-oracle-pode-recolher-vms-ociosas)
-17. [Migrar os dados do Supabase](#migrar-os-dados-do-supabase-opcional)
-18. [Alternativa: banco gerenciado no Supabase](#alternativa-banco-gerenciado-no-supabase)
-19. [Testar tudo localmente](#testar-tudo-localmente-antes)
-20. [O que fazer se...](#o-que-fazer-se)
+15. [Balanceamento entre as réplicas](#balanceamento-entre-as-réplicas)
+16. [Workers e pool](#workers-e-pool)
+17. [A Oracle pode recolher VMs ociosas](#a-oracle-pode-recolher-vms-ociosas)
+18. [Migrar os dados do Supabase](#migrar-os-dados-do-supabase-opcional)
+19. [Alternativa: banco gerenciado no Supabase](#alternativa-banco-gerenciado-no-supabase)
+20. [Testar tudo localmente](#testar-tudo-localmente-antes)
+21. [O que fazer se...](#o-que-fazer-se)
 
 ## Passo 1: chave da Anthropic e região
 
@@ -332,7 +333,7 @@ OCI_S3_ENDPOINT=, OCI_ACCESS_KEY=, OCI_SECRET_KEY=  <<< passo 11 (OCI_BUCKET e O
 ```
 
 Não há `DATABASE_URL` para colar: o `compose.yaml` monta
-`postgresql://verso:<POSTGRES_PASSWORD>@db:5432/verso` para a `api` e o
+`postgresql://verso:<POSTGRES_PASSWORD>@db:5432/verso` para as réplicas da API e o
 `seed`. O banco não tem porta pública: só os containers da rede interna do
 compose falam com ele.
 
@@ -360,22 +361,25 @@ VM). A ordem é automática:
    quando o `pg_isready` responde.
 2. **`seed`** cria as tabelas e, com o banco vazio, roda o seed (poetas do
    seed + consagrados, uns 30 s). Depois ele sai.
-3. **`api`** só sobe quando o `seed` termina bem, e só fica "healthy" quando
-   `/saude` responde.
-4. **`caddy`** só sobe quando a `api` está healthy, e então pede o certificado.
+3. **`api_1` e `api_2`**, as duas réplicas da API, só sobem quando o `seed`
+   termina bem, e cada uma só fica "healthy" quando o `/saude` dela responde.
+4. **`caddy`** só sobe quando as duas réplicas estão healthy, e então pede o
+   certificado. Ele divide as requisições entre elas ([Balanceamento entre as
+   réplicas](#balanceamento-entre-as-réplicas)).
 
 Acompanhe:
 
 ```bash
-docker compose ps -a            # db: Up (healthy); seed: Exited (0); api: Up (healthy); caddy e backup: Up
+docker compose ps -a            # db, api_1 e api_2: Up (healthy); seed: Exited (0); caddy e backup: Up
 docker compose logs -f seed     # "seed ok: ... usuarios ..." e "banco pronto"
 docker compose logs -f caddy    # "certificate obtained successfully"
 ```
 
-Por que um serviço `seed` separado: a API roda com vários workers, e cada
-worker executa o startup. Se todos rodassem o seed ao mesmo tempo, os dados
-duplicariam ou o boot travaria. O `seed` roda uma vez, antes; a `api` sempre
-sobe com `SEED_ON_BOOT=false` (forçado no `compose.yaml`). Como rede de
+Por que um serviço `seed` separado: a API roda em duas réplicas, cada uma com
+os seus workers, e cada worker executa o startup. Se todos rodassem o seed ao
+mesmo tempo, os dados duplicariam ou o boot travaria. O `seed` roda uma vez,
+antes; as réplicas sempre sobem com `SEED_ON_BOOT=false` (forçado no
+`compose.yaml`). Como rede de
 segurança, o preparo do banco também pega um *advisory lock* no Postgres, então
 dois preparos simultâneos fazem fila em vez de duplicar.
 
@@ -419,7 +423,7 @@ O front lê a URL da API de **`NEXT_PUBLIC_API_URL`** (ver
    cd ~/RedeTrilha/deploy/oracle
    nano .env
    # CORS_ORIGINS=https://verso.vercel.app            <<< o domínio da Vercel, sem barra
-   docker compose up -d                              # recria a api com o .env novo
+   ./atualizar.sh --sem-pull                         # recria as réplicas com o .env novo, uma de cada vez
    ```
 
    Para o dev local também falar com a produção:
@@ -477,8 +481,8 @@ Cada erro 500 vira **uma linha JSON** no log da API, com método, rota, tipo e
 mensagem do erro:
 
 ```bash
-docker compose logs api | grep erro_interno
-docker compose logs --since 1h caddy      # acessos, em JSON
+docker compose logs api_1 api_2 | grep erro_interno
+docker compose logs --since 1h caddy      # acessos, em JSON (o campo upstream diz qual réplica respondeu)
 docker compose logs backup                # "backup ok: ..." e "enviado para o Object Storage"
 ```
 
@@ -631,20 +635,34 @@ Com 1 OCPU, use também `WEB_CONCURRENCY=1`.
 
 ## Atualizar o deploy
 
-Depois de um merge na `main`:
+Depois de um merge na `main`, sem tirar a API do ar:
 
 ```bash
-cd ~/RedeTrilha && git pull
-cd deploy/oracle && docker compose up -d --build
+cd ~/RedeTrilha/deploy/oracle && ./atualizar.sh
 docker image prune -f        # apaga as imagens antigas (libera disco)
 ```
 
-O `seed` roda de novo, vê que o banco já tem usuários e só põe o banco em dia
-(`banco pronto`): cria os índices novos em tabelas que já existiam e, se a
-tabela `post_tags` estiver vazia, popula o índice de tags a partir dos posts.
-Num banco já em dia, isso é instantâneo. O `db` não é recriado (a imagem não
-mudou) e os dados ficam no volume `pgdata`. A API fica fora do ar por alguns
-segundos enquanto os workers reiniciam.
+O `atualizar.sh` faz, em ordem:
+
+1. `git pull` e `docker compose build`, com as duas réplicas ainda atendendo.
+2. O `seed` roda uma vez, antes das réplicas. Ele vê que o banco já tem
+   usuários e só põe o banco em dia (`banco pronto`): cria os índices novos em
+   tabelas que já existiam e, se a tabela `post_tags` estiver vazia, popula o
+   índice de tags a partir dos posts. Num banco já em dia, isso é instantâneo.
+   Se o `seed` falhar, o script para ali, com as réplicas antigas no ar.
+3. Recria a `api_1` com a imagem nova. Enquanto ela sobe, o Caddy manda tudo
+   para a `api_2`. O script espera a `api_1` ficar healthy (o `/saude` dela
+   responde, conferido a cada 2 s) e mais 5 s para o Caddy a pôr de volta na
+   roda, e só então faz o mesmo com a `api_2`.
+4. Se o `Caddyfile` mudou, reinicia o `caddy` (as conexões abertas caem por
+   cerca de 1 s e voltam; é o único passo com queda, e só quando o `Caddyfile`
+   muda). O `db` não é recriado (a imagem não mudou) e os dados ficam no volume
+   `pgdata`.
+
+`./atualizar.sh --sem-pull` faz o mesmo sem o `git pull` (por exemplo, depois
+de editar o `.env`); `--recriar` reinicia as réplicas mesmo sem nada novo. Não
+use `docker compose up -d --build` para atualizar: ele recria as duas réplicas
+ao mesmo tempo, e a API fica fora do ar por alguns segundos.
 
 Consagrados novos (JSON novo em `backend/data/consagrados/`) não entram pelo
 seed, porque o banco não está vazio. Rode o importador uma vez; as tags entram
@@ -658,13 +676,66 @@ docker compose run --rm --entrypoint python seed scripts/importar_consagrados.py
 Nunca rode `docker compose down -v` na VM: o `-v` apaga os volumes, ou seja, o
 banco e os backups locais. Para parar tudo, `docker compose down` (sem `-v`).
 
+## Balanceamento entre as réplicas
+
+A API roda em duas réplicas na mesma VM, `api_1` e `api_2`: a mesma imagem e a
+mesma configuração (a âncora `x-api` do `compose.yaml`), cada uma com os seus
+workers. O Caddy é o balanceador entre elas:
+
+```text
+visitante ── HTTPS ──> caddy ──┬──> api_1 (uvicorn, WEB_CONCURRENCY workers) ──┐
+                               └──> api_2 (uvicorn, WEB_CONCURRENCY workers) ──┴──> db
+```
+
+Por que duas réplicas numa VM só: se um processo da API trava, morre ou está
+sendo atualizado, a outra réplica atende, e o `atualizar.sh` troca a versão
+sem queda. Não protege contra a VM cair (as duas estão nela).
+
+O que o `Caddyfile` faz:
+
+- **Health check ativo:** `GET /saude` em cada réplica a cada 2 s, com 2 s de
+  timeout. Duas falhas seguidas tiram a réplica da roda; uma resposta boa a
+  devolve.
+- **Health check passivo:** uma requisição que não consegue conectar tira a
+  réplica por 10 s (`fail_duration`), sem esperar o próximo `/saude`. Um 500 da
+  API não conta: é erro da rota, não da réplica.
+- **Tentar a outra réplica:** até 2 vezes, por até 5 s (`lb_retries`,
+  `lb_try_duration`). Se a conexão falhou, a requisição não chegou à API e o
+  Caddy tenta de novo qualquer método. Se ela chegou e a resposta falhou no
+  meio, só `GET` e `HEAD` são repetidos (`lb_retry_match`): um `POST`
+  (publicar, curtir, mandar mensagem) nunca vai duas vezes; ele recebe 502 e o
+  front mostra o erro.
+- **Política:** `round_robin` nas rotas comuns (uma réplica de cada vez) e
+  `least_conn` no stream das mensagens (`/mensagens/stream`, sem compressão e
+  com `flush_interval -1`). O `least_conn` conta as conexões abertas: nos
+  streams, isso espalha os streams entre as duas réplicas. Nas rotas comuns,
+  contaria os streams como carga e, depois de um deploy (com os streams todos
+  na réplica que ficou de pé), mandaria todas as requisições para a outra.
+- **Stream que cai:** quando a réplica do stream para, a conexão fecha; o front
+  reconecta sozinho (1 s, 2 s, 4 s...) e o Caddy o manda para a réplica de pé.
+  Ao reabrir, o front busca o que chegou enquanto esteve fora.
+
+Qual réplica está fora:
+
+```bash
+docker compose ps api_1 api_2      # Up (healthy), Up (unhealthy) ou Exited
+docker compose logs --since 10m caddy | grep health_checker   # "HTTP request failed" (fora) e "host is up" (voltou)
+docker compose logs --since 1m caddy | grep -o '"upstream":"[^"]*"' | sort | uniq -c   # quem respondeu
+docker compose exec caddy wget -qO- 127.0.0.1:2019/reverse_proxy/upstreams   # requisições em voo e falhas
+```
+
+Cada linha de acesso do log do Caddy leva o campo `upstream` (`api_1:8000` ou
+`api_2:8000`). Uma réplica parada some dessa contagem; `docker compose up -d
+api_1` a sobe de novo, e o Caddy a põe na roda no primeiro `/saude` bom.
+
 ## Workers e pool
 
-A `api` roda o uvicorn com `WEB_CONCURRENCY` workers (processos). Vazio, o
-padrão é `2 × núcleos + 1`, limitado a `WEB_CONCURRENCY_MAX` (4). Vários
-workers não dão problema: o índice de tags (tabela `post_tags`) e o limite de
-traduções (contado em `traducoes`) moram no banco, então todo worker vê o mesmo
-Em alta e o mesmo limite.
+Cada réplica da API (`api_1` e `api_2`) roda o uvicorn com `WEB_CONCURRENCY`
+workers (processos). Vazio, o padrão é `2 × núcleos + 1`, limitado a
+`WEB_CONCURRENCY_MAX` (2). Várias réplicas e vários workers não dão problema: o
+índice de tags (tabela `post_tags`) e o limite de traduções (contado em
+`traducoes`) moram no banco, então todo processo vê o mesmo Em alta e o mesmo
+limite.
 
 Cada worker abre o próprio pool de conexões (`DB_POOL_*`, lidos pelo
 `backend/app/db.py`) e deixa no máximo `DB_POOL_SIZE + DB_MAX_OVERFLOW`
@@ -672,14 +743,76 @@ requisições em voo (`app/limite_do_banco.py`). A conta que precisa fechar é
 contra o `max_connections` do `db` (60, no `compose.yaml`):
 
 ```text
-WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW) + folga ≤ max_connections
-2 workers × (4 + 2) = 12   ← o padrão do .env.example (medido, abaixo)
-4 workers × (5 + 5) = 40   ← cabe sem mexer no max_connections
-folga: backup (1), restauração (2), psql de manutenção, 3 reservadas ao superusuário
+réplicas × WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW + 1) + folga ≤ max_connections
+2 réplicas × 1 worker  × (4 + 2 + 1) = 14   ← o padrão do .env.example (medido, abaixo)
+2 réplicas × 2 workers × (4 + 2 + 1) = 28   ← o teto WEB_CONCURRENCY_MAX=2
+folga (8): backup (1), restauração (2), seed (1), psql de manutenção (1), 3 reservadas ao superusuário
 ```
 
-O padrão do `.env.example` é **2 workers com pool 4 + 2**, o que deu o menor
-p95 sem erro, e o mais estável, nas duas VMs. Medido com
+Mudou o número de workers ou o pool e passou de 60? Suba o `max_connections`
+no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
+`too many clients already` sob carga.
+
+O `+ 1` é a conexão do `LISTEN` das mensagens diretas: cada worker abre uma,
+fora do pool, para receber pelo Postgres `NOTIFY` os eventos das mensagens
+enviadas pelos outros workers, inclusive os da outra réplica
+(`backend/app/tempo_real.py`). O stream das mensagens (`GET /mensagens/stream`)
+não usa conexão do pool: ele autentica com uma consulta curta e depois só
+espera eventos. Durante o `atualizar.sh` a conta não dobra: a réplica antiga
+para antes de a nova subir.
+
+O padrão do `.env.example` é **2 réplicas com 1 worker cada** (pool 4 + 2).
+Medido com `backend/scripts/carga.py` (100 usuários logados, mix de 14 rotas de
+leitura, 30 s, pelo Caddy com HTTPS) contra o compose local com o seed
+completo (184 usuários, 11.336 poemas), com `db`, as réplicas e o `caddy`
+presos a 4 núcleos (a VM do guia). Cada célula traz as rodadas; 0 erro em
+todas:
+
+| Réplicas × workers | Pausa média de 3 s | Sem pausa (100 requisições sempre em voo) |
+|---|---|---|
+| **2 × 1 (padrão)** | 26 a 27 req/s, **p95 92 e 80 ms** | 118 e 119 req/s, p95 1.175 e 1.118 ms |
+| 2 × 2 | 27 req/s, p95 86 e 65 ms | 154 e 155 req/s, p95 1.037 e 1.126 ms |
+| 1 × 1 (uma réplica fora) | 27 a 29 req/s, p95 102 e 104 ms | 66 e 71 req/s, p95 1.742 e 1.644 ms |
+| 1 × 2 (como era antes) | 27 req/s, p95 115 e 66 ms | 95 e 112 req/s, p95 1.528 e 1.137 ms |
+
+Esta máquina estava dividida com outros processos, então os números de agora
+saíram mais altos que os da tabela de antes, abaixo; compare as linhas entre
+si. Com a pausa (gente navegando), tudo fica bem abaixo da meta de 1 s, e
+com uma réplica fora o p95 sobe pouco (de 80 a 92 para 102 a 104 ms).
+
+**Por que 1 worker por réplica, e não 2.** Com 2 workers, o uvicorn tem um
+processo pai que guarda a porta 8000 aberta enquanto os workers desligam. Ao
+parar uma réplica, o sistema continua aceitando conexões nessa porta, mas
+ninguém as atende: as requisições que o Caddy manda nos primeiros segundos
+(antes de o `/saude` falhar duas vezes) ficam paradas até o fim do
+`TIMEOUT_GRACEFUL_SHUTDOWN` (20 s) e voltam com 502, tarde demais para tentar
+a outra réplica. Medido: derrubar uma réplica com 2 workers deu 39 erros nas
+leituras e 4 nos envios de mensagem (p99 de 18 s); com 1 worker, o processo
+único fecha a porta na hora, a conexão é recusada, o Caddy tenta a outra
+réplica e deu 0 erro. Os 2 workers dão mais vazão sem pausa (155 contra
+119 req/s), ao custo desses erros a cada parada.
+
+### Derrubar uma réplica e atualizar durante a carga
+
+100 usuários, pausa de 3 s, 120 s, com os 100 streams das mensagens abertos
+(`--streams 100 --reconectar`, que reconecta como o front) e 10 deles
+mandando mensagens (`--mensageiros 0.1`), 2 réplicas × 1 worker:
+
+| Cenário | Leituras | Envio de mensagens | Streams |
+|---|---|---|---|
+| `docker compose stop api_1` aos 20 s e `start` 50 s depois | 3.512 req, **0 erro**, p95 93 ms | 383 req, 0 erro, p95 77 ms | os 49 da `api_1` caíram e voltaram na `api_2` em 1,3 s (mediana; máximo 1,4 s) |
+| `./atualizar.sh --sem-pull --recriar` aos 20 s (levou 70 s) | 3.582 req, **0 erro**, p95 86 ms | 374 req, 0 erro, p95 77 ms | 150 quedas (os 50 da `api_1` e, depois, os 100 da `api_2`), todas de volta em 1,4 s (mediana; máximo 1,7 s) |
+
+Cada réplica leva uns 27 s no `atualizar.sh`: até 20 s esperando os streams
+abertos fecharem (o `TIMEOUT_GRACEFUL_SHUTDOWN`) e uns 5 s para subir. Se o
+`Caddyfile` muda, o restart do `caddy` deixa a API fora por cerca de 0,6 s
+(medido com um `curl` a cada 0,1 s).
+
+### Antes, com uma réplica só
+
+Antes do balanceamento, a API era um serviço só, e o padrão era **2 workers
+com pool 4 + 2**, o que deu o menor p95 sem erro, e o mais estável, nas duas
+VMs. Medido com
 `backend/scripts/carga.py` (100 usuários logados, mix de 14 rotas de leitura,
 30 s, pelo Caddy com HTTPS) contra o compose local com o seed completo (184
 usuários, 11.336 poemas), com `db`, `api` e `caddy` presos a 4 núcleos (a VM
@@ -705,10 +838,6 @@ pausa, a CPU é o limite: a API, o Postgres e o Caddy dividem os mesmos
 núcleos. Com 4 núcleos, 2 workers ficam abaixo de 1 s em todas as rodadas;
 4 workers às vezes empatam e às vezes passam de 1,9 s (mais processos
 disputando a CPU com o Postgres). Com 2 núcleos, ninguém fecha 1 s sem pausa.
-
-Mudou o número de workers ou o pool e passou de 60? Suba o `max_connections`
-no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
-`too many clients already` sob carga.
 
 Compressão: o Caddy comprime as respostas (`encode zstd gzip`). Se a API
 também tiver o `GZipMiddleware`, os dois convivem: o Caddy vê que a resposta
@@ -802,7 +931,7 @@ só dos dados do Supabase entra nelas.
 
    ```bash
    docker compose exec db psql -U verso -c "select count(*) from users" -c "select count(*) from posts"
-   docker compose up -d                      # api, caddy e backup
+   docker compose up -d                      # api_1, api_2, caddy e backup
    ```
 
    Volte `SEED_ON_BOOT=true` no `.env` se quiser (ele só age num banco sem
@@ -829,9 +958,9 @@ latência por consulta (o banco fica fora da VM) e de um teto de conexões.
    ```text
    DATABASE_URL=postgresql://postgres.<ref>:<senha>@aws-0-<regiao>.pooler.supabase.com:5432/postgres   <<< COLE AQUI
    POSTGRES_PASSWORD=qualquer-coisa          (não é usada, mas o compose.yaml exige)
-   WEB_CONCURRENCY=2
+   WEB_CONCURRENCY=1
    DB_POOL_SIZE=4
-   DB_MAX_OVERFLOW=2
+   DB_MAX_OVERFLOW=1
    ```
 
 3. Suba sem o `db` e sem o `backup`:
@@ -848,10 +977,12 @@ conexão no Supabase, e o **Pool Size** do plano free é 15 (Database → Settin
 → Connection pooling). A conta que precisa fechar:
 
 ```text
-WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
-2 workers: 2 × (4 + 2) = 12   (medido no PR #130: 130 req/s, 0 erro, p95 de 1,2 s sem pausa)
-4 workers: 4 × (2 + 1) = 12
+réplicas × WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW + 1)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
+2 réplicas × 1 worker × (4 + 1 + 1) = 12   (o + 1 é o LISTEN das mensagens; não medido com o Supabase)
 ```
+
+Por isso o `DB_MAX_OVERFLOW=1` do item 2. A medição do PR #130 (1 serviço com 2 workers × (4 + 2) = 12: 130 req/s, 0 erro,
+p95 de 1,2 s sem pausa) é de antes das réplicas.
 
 Passar disso dá `too many clients` / `max clients reached` sob carga.
 
@@ -871,12 +1002,12 @@ restaurar num banco vazio: `pg_restore --no-owner --no-privileges -d
 
 **Pausa.** Um projeto free sem uso por 7 dias é pausado: a API dá 500 no login
 e no feed (o `/saude` continua 200). Abra o projeto e clique em **Restore
-project**, e depois `docker compose restart api`.
+project**, e depois `docker compose restart api_1 api_2`.
 
 ## Testar tudo localmente antes
 
-Com Docker na sua máquina, dá para subir a mesma pilha (`db`, `seed`, `api`,
-`caddy` e `backup`), com o Caddy em portas altas e certificado interno e um
+Com Docker na sua máquina, dá para subir a mesma pilha (`db`, `seed`, `api_1`,
+`api_2`, `caddy` e `backup`), com o Caddy em portas altas e certificado interno e um
 Object Storage falso (`rclone serve s3`) no lugar do da Oracle:
 
 ```bash
@@ -894,6 +1025,19 @@ cd ../../backend && uv run python scripts/carga.py --url https://localhost:8443 
 cd ../deploy/oracle && docker compose down -v && rm .env   # derruba e apaga o banco e os backups de teste
 ```
 
+O balanceamento, com a pilha de pé: uma carga de 120 s com os streams das
+mensagens abertos e, noutro terminal, uma réplica derrubada e depois o
+`atualizar.sh` (os números de [Workers e pool](#derrubar-uma-réplica-e-atualizar-durante-a-carga)):
+
+```bash
+cd backend && uv run python scripts/carga.py --url https://localhost:8443 --pausa 3 \
+  --duracao 120 --streams 100 --mensageiros 0.1 --reconectar
+# noutro terminal, em deploy/oracle, uns 30 s depois de a carga começar:
+docker compose stop api_1; sleep 30; docker compose start api_1
+./atualizar.sh --sem-pull --recriar        # numa segunda rodada da carga
+docker compose logs --since 5m caddy | grep -o '"upstream":"[^"]*"' | sort | uniq -c
+```
+
 Para gerar a imagem ARM numa máquina x86 (opcional):
 
 ```bash
@@ -906,12 +1050,13 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | Sintoma | Causa provável e solução |
 |---|---|
 | `docker compose up` diz `defina POSTGRES_PASSWORD no .env` | a linha está vazia: passo 7 |
-| `seed` ou `api`: `password authentication failed for user "verso"` | a `POSTGRES_PASSWORD` mudou depois do primeiro `up` (o Postgres guarda a do volume). Volte a antiga, ou troque no banco: `docker compose exec db psql -U verso -c "alter user verso password '<nova>'"` |
+| `seed`, `api_1` ou `api_2`: `password authentication failed for user "verso"` | a `POSTGRES_PASSWORD` mudou depois do primeiro `up` (o Postgres guarda a do volume). Volte a antiga, ou troque no banco: `docker compose exec db psql -U verso -c "alter user verso password '<nova>'"` |
 | `db` reinicia sem parar | `docker compose logs db`; com o disco cheio, ver [Disco e memória da VM](#disco-e-memória-da-vm) |
 | `too many clients already` | workers × pool passou do `max_connections`: [Workers e pool](#workers-e-pool) |
 | `backup`: `ERRO: o envio para o Object Storage falhou` | endpoint, região ou chave erradas (passo 11), ou o bucket não existe. O dump local está no volume |
 | `backup`: `SignatureDoesNotMatch` / `InvalidAccessKeyId` | `OCI_ACCESS_KEY` e `OCI_SECRET_KEY` trocados, ou a região do endpoint diferente de `OCI_REGIAO` |
-| `api` não sobe e o `caddy` fica em `Created` | o `seed` falhou: `docker compose logs seed` |
+| `api_1` e `api_2` não sobem e o `caddy` fica em `Created` | o `seed` falhou: `docker compose logs seed` |
+| Uma réplica `unhealthy` ou `Exited` | o Caddy já a tirou da roda e a outra atende (veja [Balanceamento](#balanceamento-entre-as-réplicas)). `docker compose logs --tail 100 api_1` mostra o porquê; `docker compose up -d api_1` a sobe de novo |
 | `blocked by CORS policy` no console do navegador | `CORS_ORIGINS` sem o domínio **exato** da Vercel (`https://`, sem barra). Edite o `.env` e `docker compose up -d` |
 | O front chama `localhost:8000` | `NEXT_PUBLIC_API_URL` não estava no build da Vercel: defina e faça Redeploy |
 | `curl https://<DOMINIO>` dá timeout | porta fechada: confira as **duas** barreiras do passo 4 (Security List e `iptables`) |

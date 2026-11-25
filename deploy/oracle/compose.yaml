@@ -84,8 +84,9 @@ services:
       # VACUUM, CREATE INDEX e pg_restore: mais memória, menos tempo.
       - -c
       - maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM:-512MB}
-      # O padrão usa 2 workers x (pool 4 + overflow 2) = 12. 60 deixa ir até 4 x (5 + 5) = 40
-      # sem mexer aqui, + backup, restauração, psql e 3 reservadas ao superusuário.
+      # O padrão: 2 réplicas da API x 1 worker x (pool 4 + overflow 2) = 12; com o teto
+      # WEB_CONCURRENCY_MAX=2, 24. E mais backup, restauração, seed, psql e 3 reservadas
+      # ao superusuário (docs/deploy-oracle.md, "Workers e pool").
       - -c
       - max_connections=60
       # O disco da VM é um block volume em SSD: ler fora de ordem custa quase o mesmo.
