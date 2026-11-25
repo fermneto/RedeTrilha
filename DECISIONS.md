@@ -218,18 +218,31 @@ PRs, na seção "Decisões do Neto".
     de um `select 1` da API), e cada request faz várias consultas. O teto passa
     a ser o `max_connections` do próprio Postgres (60), e não as 15 conexões do
     Supabase free; sobra para o backup e para crescer com a VM. A VM usa todo
-    o gratuito A1 (4 OCPU, 24 GB). Medido nos 4 núcleos, 100 usuários: 2
+    o gratuito A1 (4 OCPU, 24 GB); a do deploy saiu com 2 OCPU e 12 GB (faltou
+    capacidade) e pode crescer depois. Medido nos 4 núcleos, 100 usuários: 2
     workers × (4 + 2) deram p95 de 47 a 48 ms com pausa de 3 s e de 0,8 a
     0,92 s sem pausa, 0 erro; 4 workers empataram com pausa e oscilaram sem
     pausa (0,84 a 2,2 s). Com 2 núcleos, o p95 sem pausa passava de 1,1 s.
-    Na mesma VM, a API roda em **duas réplicas com o Caddy balanceando**
-    (`/saude` a cada 2 s e nova tentativa na outra réplica): um processo que
-    cai não derruba o site, e o `atualizar.sh` troca a versão uma réplica de
-    cada vez, sem queda. Com 100 usuários, derrubar uma réplica no meio da
-    carga e rodar o `atualizar.sh` deram 0 erro (p95 de 93 e 86 ms), e os
-    streams das mensagens voltaram na outra réplica em 1,3 a 1,4 s (mediana).
     Cada dump leva no nome a data e a hora (UTC) e o hostname da VM, então
     nenhum backup sobrescreve outro.
+    Na mesma VM, a API roda em **várias réplicas com o Caddy balanceando**
+    (`/saude` a cada 2 s e nova tentativa noutra réplica): um processo que
+    cai não derruba o site, e o `atualizar.sh` troca a versão uma réplica de
+    cada vez, sem queda. O número de réplicas segue a VM, 1 worker cada
+    (100 usuários; req/s sem pausa e p95 com pausa de 3 s):
+
+    | Réplicas | 4 núcleos | 2 núcleos |
+    |---|---|---|
+    | 2 | 104–106 req/s, p95 73–80 ms | **92 req/s, p95 67 ms** |
+    | 3 | 127–132 req/s, p95 67–72 ms | 87–90 req/s, p95 65–69 ms |
+    | 4 | **153–154 req/s, p95 62–63 ms** | 82–86 req/s, p95 67–68 ms |
+
+    Em 4 núcleos, cada réplica a mais rende; em 2, além de duas elas só
+    disputam a CPU com o Postgres. Por isso 2 réplicas na VM de 2 OCPU (o
+    padrão) e 4 na de 4. Derrubar uma réplica no meio da carga e rodar o
+    `atualizar.sh` (28 s com 2 réplicas, 52 s com 4) deram 0 erro nas
+    leituras, e os streams das mensagens, fechados no SIGTERM, voltaram
+    noutra réplica em 1,0 a 1,4 s (mediana).
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
   ações. E o banco gerenciado: o Supabase dá painel e backup, mas paga a rede a

@@ -7,7 +7,7 @@ alternativa simples, com a desvantagem de hibernar.
 | Peça | Onde | O quê |
 |---|---|---|
 | Banco | a mesma VM da Oracle | Postgres 16 no Docker Compose (serviço `db`), sem porta pública, com backup diário para o Object Storage da Oracle |
-| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `db` + `seed` + duas réplicas da API, `api_1` e `api_2` (uvicorn) + `caddy` (HTTPS e balanceador entre as réplicas) + `backup` |
+| Backend | VM da Oracle Cloud, ARM (Ampere A1), Ubuntu | Docker Compose: `db` + `seed` + as réplicas da API (`api_1` e `api_2` em 2 OCPU; até `api_4` em 4 OCPU) + `caddy` (HTTPS e balanceador entre as réplicas) + `backup` |
 | Front | Vercel | Next.js, com root directory `frontend` |
 
 Meta: 100 usuários simultâneos com p95 abaixo de 1 s. A VM não hiberna (ao
@@ -366,6 +366,20 @@ compose falam com ele.
 Os outros valores (`WEB_CONCURRENCY`, `DB_POOL_*`, `BACKUP_*`) já vêm com
 padrões medidos; veja [Workers e pool](#workers-e-pool) antes de mexer.
 
+**O tamanho da VM muda duas coisas no `.env`:** quantas réplicas da API sobem e
+quanta memória o Postgres usa. O `.env.example` vem com 2 réplicas (o que rende
+mais em 2 OCPU) e com a memória do Postgres da VM de 24 GB:
+
+| VM | Réplicas da API | Memória do Postgres (`PG_*`) |
+|---|---|---|
+| **2 OCPU, 12 GB** | 2: deixe `COMPOSE_PROFILES=` vazio e `REPLICAS_DA_API=api_1:8000 api_2:8000` (o padrão) | **troque** pela linha de 12 GB: `PG_SHARED_BUFFERS=1GB`, `PG_EFFECTIVE_CACHE_SIZE=6GB`, `PG_WORK_MEM=8MB`, `PG_MAINTENANCE_WORK_MEM=256MB` |
+| 4 OCPU, 24 GB | 4: `COMPOSE_PROFILES=4-ocpu` e `REPLICAS_DA_API=api_1:8000 api_2:8000 api_3:8000 api_4:8000` | o padrão (`2GB`, `12GB`, `16MB`, `512MB`) |
+
+Os números estão em [Workers e pool](#workers-e-pool), e a tabela da memória,
+em [Disco e memória da VM](#disco-e-memória-da-vm). Aumentou a VM depois
+(passo 3)? Troque as duas linhas das réplicas e os `PG_*` e rode
+`docker compose up -d db` e `./atualizar.sh --sem-pull`.
+
 Cuidados com o `.env`: sem aspas, sem espaço em volta do `=`, e nada de
 comentário na mesma linha do valor. A `POSTGRES_PASSWORD` só com letras e
 números (ela entra na URL do banco): o `openssl rand -hex` já sai assim. Ela
@@ -387,9 +401,10 @@ VM). A ordem é automática:
    quando o `pg_isready` responde.
 2. **`seed`** cria as tabelas e, com o banco vazio, roda o seed (poetas do
    seed + consagrados, uns 30 s). Depois ele sai.
-3. **`api_1` e `api_2`**, as duas réplicas da API, só sobem quando o `seed`
-   termina bem, e cada uma só fica "healthy" quando o `/saude` dela responde.
-4. **`caddy`** só sobe quando as duas réplicas estão healthy, e então pede o
+3. **`api_1` e `api_2`** (e `api_3` e `api_4` com `COMPOSE_PROFILES=4-ocpu`),
+   as réplicas da API, só sobem quando o `seed` termina bem, e cada uma só fica
+   "healthy" quando o `/saude` dela responde.
+4. **`caddy`** só sobe quando as réplicas estão healthy, e então pede o
    certificado. Ele divide as requisições entre elas ([Balanceamento entre as
    réplicas](#balanceamento-entre-as-réplicas)).
 
@@ -401,8 +416,8 @@ docker compose logs -f seed     # "seed ok: ... usuarios ..." e "banco pronto"
 docker compose logs -f caddy    # "certificate obtained successfully"
 ```
 
-Por que um serviço `seed` separado: a API roda em duas réplicas, cada uma com
-os seus workers, e cada worker executa o startup. Se todos rodassem o seed ao
+Por que um serviço `seed` separado: a API roda em várias réplicas, e cada uma
+executa o startup. Se todos rodassem o seed ao
 mesmo tempo, os dados duplicariam ou o boot travaria. O `seed` roda uma vez,
 antes; as réplicas sempre sobem com `SEED_ON_BOOT=false` (forçado no
 `compose.yaml`). Como rede de
@@ -523,7 +538,7 @@ Cada erro 500 vira **uma linha JSON** no log da API, com método, rota, tipo e
 mensagem do erro:
 
 ```bash
-docker compose logs api_1 api_2 | grep erro_interno
+docker compose logs | grep erro_interno           # de todas as réplicas da API
 docker compose logs --since 1h caddy      # acessos, em JSON (o campo upstream diz qual réplica respondeu)
 docker compose logs backup                # "backup ok: ..." e "enviado para o Object Storage"
 ```
@@ -664,8 +679,8 @@ boot volume pode crescer até 200 GB sem custo (Instance → Boot volume →
 **Edit**, e depois `sudo growpart` na VM).
 
 A memória do Postgres vem dimensionada para a VM de 24 GB, que ele divide com
-a API e o Caddy. Numa VM menor (por exemplo, enquanto espera capacidade para
-redimensionar), reduza no `.env` e rode `docker compose up -d db`:
+a API e o Caddy. Numa VM menor, **como a de 2 OCPU e 12 GB**, reduza no `.env`
+e rode `docker compose up -d db`:
 
 | VM | `PG_SHARED_BUFFERS` | `PG_EFFECTIVE_CACHE_SIZE` | `PG_WORK_MEM` | `PG_MAINTENANCE_WORK_MEM` |
 |---|---|---|---|---|
@@ -673,7 +688,9 @@ redimensionar), reduza no `.env` e rode `docker compose up -d db`:
 | 2 OCPU, 12 GB | 1GB | 6GB | 8MB | 256MB |
 | 1 OCPU, 6 GB | 512MB | 3GB | 4MB | 128MB |
 
-Com 1 OCPU, use também `WEB_CONCURRENCY=1`.
+As réplicas da API também mudam com a VM: 2 em 2 OCPU, 4 em 4 OCPU (passo 7 e
+[Workers e pool](#workers-e-pool)). Com 1 OCPU, fique com as 2 do padrão (não
+medido).
 
 ## Atualizar o deploy
 
@@ -686,25 +703,41 @@ docker image prune -f        # apaga as imagens antigas (libera disco)
 
 O `atualizar.sh` faz, em ordem:
 
-1. `git pull` e `docker compose build`, com as duas réplicas ainda atendendo.
+1. Confere que as réplicas do compose e o `REPLICAS_DA_API` do `.env` batem
+   (senão para, sem tocar em nada). Depois, `git pull` e `docker compose build`,
+   com as réplicas ainda atendendo.
 2. O `seed` roda uma vez, antes das réplicas. Ele vê que o banco já tem
    usuários e só põe o banco em dia (`banco pronto`): cria os índices novos em
    tabelas que já existiam e, se a tabela `post_tags` estiver vazia, popula o
    índice de tags a partir dos posts. Num banco já em dia, isso é instantâneo.
    Se o `seed` falhar, o script para ali, com as réplicas antigas no ar.
-3. Recria a `api_1` com a imagem nova. Enquanto ela sobe, o Caddy manda tudo
-   para a `api_2`. O script espera a `api_1` ficar healthy (o `/saude` dela
-   responde, conferido a cada 2 s) e mais 5 s para o Caddy a pôr de volta na
-   roda, e só então faz o mesmo com a `api_2`.
-4. Se o `Caddyfile` mudou, reinicia o `caddy` (as conexões abertas caem por
-   cerca de 1 s e voltam; é o único passo com queda, e só quando o `Caddyfile`
-   muda). O `db` não é recriado (a imagem não mudou) e os dados ficam no volume
-   `pgdata`.
+3. Recria a `api_1` com a imagem nova. Ao receber o SIGTERM, ela fecha na hora
+   os streams das mensagens abertos (eles reconectam noutra réplica) e termina
+   as requisições em voo; enquanto isso, o Caddy manda tudo para as outras. O
+   script espera a `api_1` ficar healthy (o `/saude` dela responde, conferido a
+   cada 2 s) e mais 5 s para o Caddy a pôr de volta na roda, e só então faz o
+   mesmo com a `api_2`, e assim até a última. Cada réplica leva uns 11 s.
+4. `caddy reload`: um `Caddyfile` novo entra sem fechar nenhuma conexão (a
+   pasta `caddy/` está montada no container, então ele vê o arquivo novo do
+   `git pull`). Sem mudança, nada acontece. O `db` não é recriado (a imagem não
+   mudou) e os dados ficam no volume `pgdata`.
 
 `./atualizar.sh --sem-pull` faz o mesmo sem o `git pull` (por exemplo, depois
 de editar o `.env`); `--recriar` reinicia as réplicas mesmo sem nada novo. Não
-use `docker compose up -d --build` para atualizar: ele recria as duas réplicas
-ao mesmo tempo, e a API fica fora do ar por alguns segundos.
+use `docker compose up -d --build` para atualizar: ele recria as réplicas ao
+mesmo tempo, e a API fica fora do ar por alguns segundos.
+
+Medido durante a carga ([abaixo](#derrubar-uma-réplica-e-atualizar-durante-a-carga)):
+28 s com 2 réplicas e 52 s com 4, 0 erro nas leituras, e um `Caddyfile` novo
+aplicado com 0 falha em 300 `curl` (um a cada 0,1 s) e nenhum stream caído.
+Antes de fechar os streams no SIGTERM, cada réplica esperava os 20 s do
+`TIMEOUT_GRACEFUL_SHUTDOWN` (70 s com 2 réplicas), e antes de montar a pasta,
+o `Caddyfile` novo pedia um restart do `caddy`, com uns 0,6 s fora do ar.
+
+Ao mudar o número de réplicas (`COMPOSE_PROFILES` e `REPLICAS_DA_API`), o
+`caddy` é recriado uma vez, porque o ambiente dele muda (uns 0,6 s fora do ar).
+Ao voltar de 4 para 2, pare as que sobraram:
+`docker compose --profile 4-ocpu stop api_3 api_4`.
 
 Consagrados novos (JSON novo em `backend/data/consagrados/`) não entram pelo
 seed, porque o banco não está vazio. Rode o importador uma vez; as tags entram
@@ -720,20 +753,26 @@ banco e os backups locais. Para parar tudo, `docker compose down` (sem `-v`).
 
 ## Balanceamento entre as réplicas
 
-A API roda em duas réplicas na mesma VM, `api_1` e `api_2`: a mesma imagem e a
-mesma configuração (a âncora `x-api` do `compose.yaml`), cada uma com os seus
-workers. O Caddy é o balanceador entre elas:
+A API roda em várias réplicas na mesma VM: `api_1` e `api_2` na VM de 2 OCPU,
+e também `api_3` e `api_4` na de 4 OCPU. Todas usam a mesma imagem e a mesma
+configuração (a âncora `x-api` do `compose.yaml`), com 1 worker do uvicorn
+cada. O Caddy é o balanceador entre elas:
 
 ```text
-visitante ── HTTPS ──> caddy ──┬──> api_1 (uvicorn, WEB_CONCURRENCY workers) ──┐
-                               └──> api_2 (uvicorn, WEB_CONCURRENCY workers) ──┴──> db
+visitante ── HTTPS ──> caddy ──┬──> api_1 ──┐
+                               ├──> api_2 ──┤
+                               ├──> api_3 ──┼──> db     (api_3 e api_4: só em 4 OCPU)
+                               └──> api_4 ──┘
 ```
 
-Por que duas réplicas numa VM só: se um processo da API trava, morre ou está
-sendo atualizado, a outra réplica atende, e o `atualizar.sh` troca a versão
-sem queda. Não protege contra a VM cair (as duas estão nela).
+Por que várias réplicas numa VM só: se um processo da API trava, morre ou está
+sendo atualizado, as outras atendem, e o `atualizar.sh` troca a versão sem
+queda. Não protege contra a VM cair (todas estão nela).
 
-O que o `Caddyfile` faz:
+O Caddy recebe a lista das réplicas pelo `REPLICAS_DA_API` do `.env`
+(`to {$REPLICAS_DA_API}` no `caddy/Caddyfile`), e o compose sobe as réplicas
+pelo `COMPOSE_PROFILES`: as duas linhas andam juntas, e o `atualizar.sh` para
+se elas não baterem. O que o `Caddyfile` faz:
 
 - **Health check ativo:** `GET /saude` em cada réplica a cada 2 s, com 2 s de
   timeout. Duas falhas seguidas tiram a réplica da roda; uma resposta boa a
@@ -741,7 +780,7 @@ O que o `Caddyfile` faz:
 - **Health check passivo:** uma requisição que não consegue conectar tira a
   réplica por 10 s (`fail_duration`), sem esperar o próximo `/saude`. Um 500 da
   API não conta: é erro da rota, não da réplica.
-- **Tentar a outra réplica:** até 2 vezes, por até 5 s (`lb_retries`,
+- **Tentar outra réplica:** até 2 vezes, por até 5 s (`lb_retries`,
   `lb_try_duration`). Se a conexão falhou, a requisição não chegou à API e o
   Caddy tenta de novo qualquer método. Se ela chegou e a resposta falhou no
   meio, só `GET` e `HEAD` são repetidos (`lb_retry_match`): um `POST`
@@ -750,34 +789,36 @@ O que o `Caddyfile` faz:
 - **Política:** `round_robin` nas rotas comuns (uma réplica de cada vez) e
   `least_conn` no stream das mensagens (`/mensagens/stream`, sem compressão e
   com `flush_interval -1`). O `least_conn` conta as conexões abertas: nos
-  streams, isso espalha os streams entre as duas réplicas. Nas rotas comuns,
-  contaria os streams como carga e, depois de um deploy (com os streams todos
-  na réplica que ficou de pé), mandaria todas as requisições para a outra.
-- **Stream que cai:** quando a réplica do stream para, a conexão fecha; o front
-  reconecta sozinho (1 s, 2 s, 4 s...) e o Caddy o manda para a réplica de pé.
-  Ao reabrir, o front busca o que chegou enquanto esteve fora.
+  streams, isso os espalha entre as réplicas. Nas rotas comuns, contaria os
+  streams como carga e, depois de um deploy (com os streams nas réplicas que
+  ficaram de pé), mandaria todas as requisições para a última reiniciada.
+- **Stream que cai:** no SIGTERM (`docker compose stop`, `atualizar.sh`), a
+  réplica fecha na hora os streams que atende (`app/tempo_real.py`,
+  `fechar_streams_ao_desligar`), em vez de segurá-los até o fim do
+  `TIMEOUT_GRACEFUL_SHUTDOWN`. O front reconecta sozinho (1 s, 2 s, 4 s...), o
+  Caddy o manda para outra réplica, e ao reabrir o front busca o que chegou
+  enquanto esteve fora.
 
 Qual réplica está fora:
 
 ```bash
-docker compose ps api_1 api_2      # Up (healthy), Up (unhealthy) ou Exited
+docker compose ps                  # cada api_N: Up (healthy), Up (unhealthy) ou Exited
 docker compose logs --since 10m caddy | grep health_checker   # "HTTP request failed" (fora) e "host is up" (voltou)
 docker compose logs --since 1m caddy | grep -o '"upstream":"[^"]*"' | sort | uniq -c   # quem respondeu
 docker compose exec caddy wget -qO- 127.0.0.1:2019/reverse_proxy/upstreams   # requisições em voo e falhas
 ```
 
-Cada linha de acesso do log do Caddy leva o campo `upstream` (`api_1:8000` ou
-`api_2:8000`). Uma réplica parada some dessa contagem; `docker compose up -d
+Cada linha de acesso do log do Caddy leva o campo `upstream` (`api_1:8000`,
+`api_2:8000`...). Uma réplica parada some dessa contagem; `docker compose up -d
 api_1` a sobe de novo, e o Caddy a põe na roda no primeiro `/saude` bom.
 
 ## Workers e pool
 
-Cada réplica da API (`api_1` e `api_2`) roda o uvicorn com `WEB_CONCURRENCY`
-workers (processos). Vazio, o padrão é `2 × núcleos + 1`, limitado a
-`WEB_CONCURRENCY_MAX` (2). Várias réplicas e vários workers não dão problema: o
-índice de tags (tabela `post_tags`) e o limite de traduções (contado em
-`traducoes`) moram no banco, então todo processo vê o mesmo Em alta e o mesmo
-limite.
+Cada réplica roda o uvicorn com `WEB_CONCURRENCY` workers (processos), e o
+padrão é **1 por réplica** (`WEB_CONCURRENCY=1` e `WEB_CONCURRENCY_MAX=1`): a
+API escala pelo número de réplicas. Várias réplicas não dão problema: o índice
+de tags (tabela `post_tags`) e o limite de traduções (contado em `traducoes`)
+moram no banco, então todo processo vê o mesmo Em alta e o mesmo limite.
 
 Cada worker abre o próprio pool de conexões (`DB_POOL_*`, lidos pelo
 `backend/app/db.py`) e deixa no máximo `DB_POOL_SIZE + DB_MAX_OVERFLOW`
@@ -786,8 +827,8 @@ contra o `max_connections` do `db` (60, no `compose.yaml`):
 
 ```text
 réplicas × WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW + 1) + folga ≤ max_connections
-2 réplicas × 1 worker  × (4 + 2 + 1) = 14   ← o padrão do .env.example (medido, abaixo)
-2 réplicas × 2 workers × (4 + 2 + 1) = 28   ← o teto WEB_CONCURRENCY_MAX=2
+2 réplicas × 1 worker × (4 + 2 + 1) = 14  + 8 = 22   ← VM de 2 OCPU (o padrão)
+4 réplicas × 1 worker × (4 + 2 + 1) = 28  + 8 = 36   ← VM de 4 OCPU
 folga (8): backup (1), restauração (2), seed (1), psql de manutenção (1), 3 reservadas ao superusuário
 ```
 
@@ -797,30 +838,43 @@ no `compose.yaml` junto (cada conexão ociosa custa poucos MB). Passar disso dá
 
 O `+ 1` é a conexão do `LISTEN` das mensagens diretas: cada worker abre uma,
 fora do pool, para receber pelo Postgres `NOTIFY` os eventos das mensagens
-enviadas pelos outros workers, inclusive os da outra réplica
+enviadas pelos outros workers, inclusive os das outras réplicas
 (`backend/app/tempo_real.py`). O stream das mensagens (`GET /mensagens/stream`)
 não usa conexão do pool: ele autentica com uma consulta curta e depois só
-espera eventos. Durante o `atualizar.sh` a conta não dobra: a réplica antiga
+espera eventos. Durante o `atualizar.sh` a conta não cresce: a réplica antiga
 para antes de a nova subir.
 
-O padrão do `.env.example` é **2 réplicas com 1 worker cada** (pool 4 + 2).
-Medido com `backend/scripts/carga.py` (100 usuários logados, mix de 14 rotas de
-leitura, 30 s, pelo Caddy com HTTPS) contra o compose local com o seed
+### Quantas réplicas, por tamanho de VM
+
+Medido com `backend/scripts/carga.py` (100 usuários logados, mix de 14 rotas
+de leitura, 30 s, pelo Caddy com HTTPS) contra o compose local com o seed
 completo (184 usuários, 11.336 poemas), com `db`, as réplicas e o `caddy`
-presos a 4 núcleos (a VM do guia). Cada célula traz as rodadas; 0 erro em
-todas:
+presos a 4 núcleos ou a 2, 1 worker por réplica. Cada célula traz as duas
+rodadas; 0 erro em todas:
 
-| Réplicas × workers | Pausa média de 3 s | Sem pausa (100 requisições sempre em voo) |
+**4 núcleos (4 OCPU, 24 GB): 4 réplicas.**
+
+| Réplicas | Pausa média de 3 s | Sem pausa (100 requisições sempre em voo) |
 |---|---|---|
-| **2 × 1 (padrão)** | 26 a 27 req/s, **p95 92 e 80 ms** | 118 e 119 req/s, p95 1.175 e 1.118 ms |
-| 2 × 2 | 27 req/s, p95 86 e 65 ms | 154 e 155 req/s, p95 1.037 e 1.126 ms |
-| 1 × 1 (uma réplica fora) | 27 a 29 req/s, p95 102 e 104 ms | 66 e 71 req/s, p95 1.742 e 1.644 ms |
-| 1 × 2 (como era antes) | 27 req/s, p95 115 e 66 ms | 95 e 112 req/s, p95 1.528 e 1.137 ms |
+| **4** | 27 req/s, **p95 62 e 63 ms** | **153 e 154 req/s**, p95 1.447 e 1.542 ms |
+| 3 | 28 e 29 req/s, p95 72 e 67 ms | 127 e 132 req/s, p95 1.257 e 1.686 ms |
+| 2 | 27 req/s, p95 73 e 80 ms | 104 e 106 req/s, p95 1.409 e 1.437 ms |
 
-Esta máquina estava dividida com outros processos, então os números de agora
-saíram mais altos que os da tabela de antes, abaixo; compare as linhas entre
-si. Com a pausa (gente navegando), tudo fica bem abaixo da meta de 1 s, e
-com uma réplica fora o p95 sobe pouco (de 80 a 92 para 102 a 104 ms).
+**2 núcleos (2 OCPU, 12 GB): 2 réplicas.**
+
+| Réplicas | Pausa média de 3 s | Sem pausa |
+|---|---|---|
+| 4 | 27 req/s, p95 67 e 68 ms | 82 e 86 req/s, p95 1.991 e 2.266 ms |
+| 3 | 26 req/s, p95 69 e 65 ms | 87 e 90 req/s, p95 1.994 e 2.794 ms |
+| **2** | 26 a 28 req/s, p95 67 e 67 ms | **92 req/s, p95 1.426 e 1.702 ms** |
+
+Com a pausa (gente navegando), tudo fica bem abaixo da meta de 1 s, em
+qualquer VM. Sem pausa, a CPU é o limite, e a API, o Postgres e o Caddy
+dividem os mesmos núcleos: com 4, cada réplica a mais rende (154 contra
+104 req/s); com 2, réplicas além de duas só disputam a CPU com o Postgres, e a
+vazão cai e o p95 sobe. Esta máquina estava dividida com outros processos;
+compare as linhas entre si. Na VM, rode o `carga.py` contra a URL pública
+(checklist, item do teste de carga).
 
 **Por que 1 worker por réplica, e não 2.** Com 2 workers, o uvicorn tem um
 processo pai que guarda a porta 8000 aberta enquanto os workers desligam. Ao
@@ -828,27 +882,35 @@ parar uma réplica, o sistema continua aceitando conexões nessa porta, mas
 ninguém as atende: as requisições que o Caddy manda nos primeiros segundos
 (antes de o `/saude` falhar duas vezes) ficam paradas até o fim do
 `TIMEOUT_GRACEFUL_SHUTDOWN` (20 s) e voltam com 502, tarde demais para tentar
-a outra réplica. Medido: derrubar uma réplica com 2 workers deu 39 erros nas
-leituras e 4 nos envios de mensagem (p99 de 18 s); com 1 worker, o processo
-único fecha a porta na hora, a conexão é recusada, o Caddy tenta a outra
-réplica e deu 0 erro. Os 2 workers dão mais vazão sem pausa (155 contra
-119 req/s), ao custo desses erros a cada parada.
+outra réplica. Medido com 2 réplicas × 2 workers: derrubar uma deu 39 erros
+nas leituras e 4 nos envios de mensagem (p99 de 18 s). Com 1 worker, o
+processo único fecha a porta na hora, a conexão é recusada, o Caddy tenta
+outra réplica, e deu 0 erro.
 
 ### Derrubar uma réplica e atualizar durante a carga
 
 100 usuários, pausa de 3 s, 120 s, com os 100 streams das mensagens abertos
 (`--streams 100 --reconectar`, que reconecta como o front) e 10 deles
-mandando mensagens (`--mensageiros 0.1`), 2 réplicas × 1 worker:
+mandando mensagens (`--mensageiros 0.1`):
 
-| Cenário | Leituras | Envio de mensagens | Streams |
+| VM e cenário | Leituras | Envio de mensagens | Streams |
 |---|---|---|---|
-| `docker compose stop api_1` aos 20 s e `start` 50 s depois | 3.512 req, **0 erro**, p95 93 ms | 383 req, 0 erro, p95 77 ms | os 49 da `api_1` caíram e voltaram na `api_2` em 1,3 s (mediana; máximo 1,4 s) |
-| `./atualizar.sh --sem-pull --recriar` aos 20 s (levou 70 s) | 3.582 req, **0 erro**, p95 86 ms | 374 req, 0 erro, p95 77 ms | 150 quedas (os 50 da `api_1` e, depois, os 100 da `api_2`), todas de volta em 1,4 s (mediana; máximo 1,7 s) |
+| 2 núcleos, 2 réplicas: `stop api_1` aos 20 s e `start` 30 s depois | 3.512 req, **0 erro**, p95 92 ms | 402 req, 0 erro, p95 78 ms | os 50 da `api_1` fecharam e voltaram noutra em 1,1 s (mediana; máximo 1,3 s) |
+| 2 núcleos, 2 réplicas: `./atualizar.sh --sem-pull --recriar` (28 s) | 3.509 req, **0 erro**, p95 94 ms | 396 req, 0 erro, p95 81 ms | 150 fecharam (50 e depois 100) e voltaram em 1,4 s (mediana; máximo 1,6 s) |
+| 4 núcleos, 4 réplicas: `stop api_1` e `start` 30 s depois | 3.553 req, **0 erro**, p95 64 ms | 390 req, 0 erro, p95 47 ms | os 25 da `api_1` voltaram em 1,0 s (mediana; máximo 1,1 s) |
+| 4 núcleos, 4 réplicas: `./atualizar.sh --sem-pull --recriar` (52 s) | 3.482 req, **0 erro**, p95 68 ms | 391 req, **2 erros (502)**, p95 57 ms | 125 fecharam e voltaram em 1,1 s (mediana; máximo 1,2 s) |
 
-Cada réplica leva uns 27 s no `atualizar.sh`: até 20 s esperando os streams
-abertos fecharem (o `TIMEOUT_GRACEFUL_SHUTDOWN`) e uns 5 s para subir. Se o
-`Caddyfile` muda, o restart do `caddy` deixa a API fora por cerca de 0,6 s
-(medido com um `curl` a cada 0,1 s).
+Os 2 erros no envio: o Caddy mandou o `POST` numa conexão keep-alive que a
+réplica fechava ao desligar (`invalid Read on closed Body` no log). Um `GET`
+nesse caso é repetido noutra réplica; um `POST`, não, de propósito (ele pode
+já ter chegado à API). A conexão fechou enquanto o Caddy ainda mandava o
+corpo, então a API não chegou a processá-lo; o front mostra o erro e a pessoa
+reenvia.
+
+Um `Caddyfile` novo (um header a mais), aplicado pelo `atualizar.sh` durante
+a carga com os 100 streams abertos: 0 falha em 300 `curl` ao `/saude`, um a
+cada 0,1 s, 0 erro nas leituras e nenhum stream caído; o header novo já
+aparece na resposta seguinte.
 
 ### Antes, com uma réplica só
 
@@ -982,7 +1044,7 @@ só dos dados do Supabase entra nelas.
 
    ```bash
    docker compose exec db psql -U verso -c "select count(*) from users" -c "select count(*) from posts"
-   docker compose up -d                      # api_1, api_2, caddy e backup
+   docker compose up -d                      # as réplicas da API, caddy e backup
    ```
 
    Volte `SEED_ON_BOOT=true` no `.env` se quiser (ele só age num banco sem
@@ -1030,6 +1092,7 @@ conexão no Supabase, e o **Pool Size** do plano free é 15 (Database → Settin
 ```text
 réplicas × WEB_CONCURRENCY × (DB_POOL_SIZE + DB_MAX_OVERFLOW + 1)  ≤  Pool Size − 3 (folga para o seed e o SQL Editor)
 2 réplicas × 1 worker × (4 + 1 + 1) = 12   (o + 1 é o LISTEN das mensagens; não medido com o Supabase)
+4 réplicas × 1 worker × (1 + 1 + 1) = 12   (VM de 4 OCPU: DB_POOL_SIZE=1 e DB_MAX_OVERFLOW=1; não medido)
 ```
 
 Por isso o `DB_MAX_OVERFLOW=1` do item 2. A medição do PR #130 (1 serviço com 2 workers × (4 + 2) = 12: 130 req/s, 0 erro,
@@ -1053,7 +1116,8 @@ restaurar num banco vazio: `pg_restore --no-owner --no-privileges -d
 
 **Pausa.** Um projeto free sem uso por 7 dias é pausado: a API dá 500 no login
 e no feed (o `/saude` continua 200). Abra o projeto e clique em **Restore
-project**, e depois `docker compose restart api_1 api_2`.
+project**, e depois reinicie as réplicas:
+`docker compose restart $(docker compose config --services | grep '^api_')`.
 
 ## Testar tudo localmente antes
 
@@ -1107,7 +1171,8 @@ docker buildx build --platform linux/arm64 -t verso-api:arm64 --load backend
 | `backup`: `ERRO: o envio para o Object Storage falhou` | endpoint, região ou chave erradas (passo 11), ou o bucket não existe. O dump local está no volume |
 | `backup`: `SignatureDoesNotMatch` / `InvalidAccessKeyId` | `OCI_ACCESS_KEY` e `OCI_SECRET_KEY` trocados, ou a região do endpoint diferente de `OCI_REGIAO` |
 | `api_1` e `api_2` não sobem e o `caddy` fica em `Created` | o `seed` falhou: `docker compose logs seed` |
-| Uma réplica `unhealthy` ou `Exited` | o Caddy já a tirou da roda e a outra atende (veja [Balanceamento](#balanceamento-entre-as-réplicas)). `docker compose logs --tail 100 api_1` mostra o porquê; `docker compose up -d api_1` a sobe de novo |
+| `atualizar.sh`: `as réplicas do compose (...) e o REPLICAS_DA_API do .env (...) não batem` | o `COMPOSE_PROFILES` e o `REPLICAS_DA_API` do `.env` não falam das mesmas réplicas: ver o passo 7 (2 réplicas em 2 OCPU, 4 em 4 OCPU) |
+| Uma réplica `unhealthy` ou `Exited` | o Caddy já a tirou da roda e as outras atendem (veja [Balanceamento](#balanceamento-entre-as-réplicas)). `docker compose logs --tail 100 api_1` mostra o porquê; `docker compose up -d api_1` a sobe de novo |
 | `blocked by CORS policy` no console do navegador | `CORS_ORIGINS` sem o domínio **exato** da Vercel (`https://`, sem barra). Edite o `.env` e `docker compose up -d` |
 | O front chama `localhost:8000` | `NEXT_PUBLIC_API_URL` não estava no build da Vercel: defina e faça Redeploy |
 | `curl https://<DOMINIO>` dá timeout | porta fechada: confira as **duas** barreiras do passo 4 (Security List e `iptables`) |
