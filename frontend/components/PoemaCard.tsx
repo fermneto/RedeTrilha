@@ -30,6 +30,15 @@ import {
   type Traducao,
   type User,
 } from "@/lib/api";
+import {
+  alternarTraducao,
+  type EstadoDaTraducao,
+  rotuloDoBotao,
+  SEM_TRADUCAO,
+  textoExibido,
+  traducaoChegou,
+  traducaoFalhou,
+} from "@/lib/traducao";
 
 // Fora da página do poema, poema com mais linhas que isto aparece cortado, com link
 // para o inteiro. Linhas em branco entre estrofes contam.
@@ -79,20 +88,13 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
         <div className="min-w-0 flex-1">
           <Autor autor={poema.autor} criadoEm={poema.created_at} comAvatar={aninhado} />
 
-          {poema.titulo &&
-            (linkarTitulo ? (
-              <h2 className="poema-titulo mt-2">
-                <Link href={`/poema/${poema.id}`} className="hover:underline">
-                  {poema.titulo}
-                </Link>
-              </h2>
-            ) : (
-              <h1 className="poema-titulo mt-2">{poema.titulo}</h1>
-            ))}
-
-          {poema.texto && (corpo ? corpo(poema) : <Corpo poema={poema} inteiro={inteiro} />)}
-
-          {poema.texto && <Traduzir key={`traduzir-${poema.id}`} poema={poema} />}
+          <TextoDoPoema
+            key={`texto-${poema.id}`}
+            poema={poema}
+            linkarTitulo={linkarTitulo}
+            inteiro={inteiro}
+            corpo={corpo}
+          />
 
           {citacao && !aninhado && (
             <div className="mt-3">
@@ -127,100 +129,167 @@ function linhasVisiveis(versos: string[]): number | null {
   return VERSOS_NO_FEED;
 }
 
+// Título, corpo e "Traduzir" (decisão 2). A tradução toma o lugar do original no
+// mesmo ponto do card, com "Traduzido do {língua} por IA · ver original" logo
+// abaixo; a que já veio fica guardada e "ver tradução" a mostra sem chamar a API.
+// Na página do poema, a tradução aparece como texto corrido: a seleção de versos
+// e as marcas de crítica são do original e voltam com "ver original".
+function TextoDoPoema({
+  poema,
+  linkarTitulo,
+  inteiro,
+  corpo,
+}: {
+  poema: Post;
+  linkarTitulo: boolean;
+  inteiro: boolean;
+  corpo?: (poema: Post) => ReactNode;
+}) {
+  // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
+  // do servidor e o da hidratação baterem.
+  const [destino, setDestino] = useState<string | null>(null);
+  const [estado, setEstado] = useState<EstadoDaTraducao<Traducao>>(SEM_TRADUCAO);
+  // Só anuncia depois de um clique: o leitor de tela não ouve nada ao carregar a página.
+  const [aviso, setAviso] = useState("");
+
+  useEffect(() => setDestino(idiomaDoNavegador()), []);
+
+  const traduzivel = Boolean(poema.texto && poema.idioma && destino && poema.idioma !== destino);
+  const exibido = textoExibido({ titulo: poema.titulo, texto: poema.texto }, estado);
+  const lingua = poema.idioma ? nomeDoIdioma(poema.idioma) : "";
+
+  async function alternar() {
+    const { estado: proximo, buscar } = alternarTraducao(estado);
+    setEstado(proximo);
+    if (!buscar) {
+      setAviso(proximo.mostrando ? `mostrando a tradução do ${lingua}, feita por IA` : "mostrando o original");
+      return;
+    }
+    try {
+      const traducao = await traduzirPoema(poema.id, destino as string);
+      setEstado((atual) => traducaoChegou(atual, traducao));
+      setAviso(`mostrando a tradução do ${lingua}, feita por IA`);
+    } catch (e) {
+      let erro: string;
+      if (e instanceof ErroDaApi && e.status === 503) erro = "tradução indisponível agora";
+      else if (e instanceof ErroDaApi && e.status === 429) erro = "limite de traduções atingido, tente mais tarde";
+      else erro = mensagemDeFalha(e, "não deu para traduzir");
+      setEstado((atual) => traducaoFalhou(atual, erro));
+      setAviso(erro);
+    }
+  }
+
+  const lang = exibido.lang ?? undefined;
+  const titulo =
+    exibido.titulo &&
+    (linkarTitulo ? (
+      <h2 className="poema-titulo mt-2" lang={lang}>
+        <Link href={`/poema/${poema.id}`} className="hover:underline">
+          {exibido.titulo}
+        </Link>
+      </h2>
+    ) : (
+      <h1 className="poema-titulo mt-2" lang={lang}>
+        {exibido.titulo}
+      </h1>
+    ));
+
+  let texto: ReactNode = null;
+  if (poema.texto) {
+    texto =
+      corpo && !exibido.traduzido ? (
+        corpo(poema)
+      ) : (
+        <Corpo
+          id={poema.id}
+          texto={exibido.texto}
+          comTitulo={Boolean(exibido.titulo)}
+          inteiro={inteiro}
+          lang={lang}
+        />
+      );
+  }
+
+  const link =
+    "inline-flex min-h-11 cursor-pointer items-center text-sm font-semibold text-destaque hover:underline";
+
+  return (
+    <>
+      {titulo}
+      {texto}
+      {traduzivel && (
+        <div className="mt-1">
+          {/* Um botão só, que troca de texto: o foco fica nele ao alternar. */}
+          <p className="flex flex-wrap items-center gap-x-2 text-[0.8125rem] text-tinta-suave">
+            {exibido.traduzido && (
+              <>
+                <span>Traduzido do {lingua} por IA</span>
+                <span aria-hidden="true">·</span>
+              </>
+            )}
+            <button
+              type="button"
+              onClick={alternar}
+              // aria-disabled, não disabled: o botão desabilitado perde o foco, e o foco
+              // tem de continuar nele quando a tradução chega. O clique é ignorado ao carregar.
+              aria-disabled={estado.carregando}
+              aria-label={exibido.traduzido ? undefined : `${rotuloDoBotao(estado).replace("…", "")} do ${lingua}`}
+              className={`${link} ${exibido.traduzido ? "" : "-ml-3 gap-1 pr-2"} aria-disabled:cursor-wait aria-disabled:opacity-60`}
+            >
+              {!exibido.traduzido && (
+                <span className="flex h-11 w-11 items-center justify-center">
+                  <IconeTraduzir className="h-5 w-5" />
+                </span>
+              )}
+              {rotuloDoBotao(estado)}
+            </button>
+          </p>
+          {exibido.traduzido && corpo && (
+            <p className="text-xs text-tinta-suave">
+              Para comentar ou citar versos, ou ver as críticas de cada verso, volte ao original.
+            </p>
+          )}
+          {estado.erro && <p className="text-xs text-destaque">{estado.erro}</p>}
+          <p className="sr-only" aria-live="polite">
+            {aviso}
+          </p>
+        </div>
+      )}
+    </>
+  );
+}
+
 // Corta só a exibição: o texto do poema não muda, e o link leva à versão inteira.
-function Corpo({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
-  const versos = poema.texto.split("\n");
+function Corpo({
+  id,
+  texto,
+  comTitulo,
+  inteiro,
+  lang,
+}: {
+  id: number;
+  texto: string;
+  comTitulo: boolean;
+  inteiro: boolean;
+  lang?: string;
+}) {
+  const versos = texto.split("\n");
   const visiveis = inteiro ? null : linhasVisiveis(versos);
   const cortar = visiveis !== null;
   return (
     <>
-      <p className={`poema-corpo ${poema.titulo ? "mt-2" : "mt-1"}`}>
-        <TextoFormatado texto={cortar ? versos.slice(0, visiveis).join("\n") : poema.texto} />
+      <p lang={lang} className={`poema-corpo ${comTitulo ? "mt-2" : "mt-1"}`}>
+        <TextoFormatado texto={cortar ? versos.slice(0, visiveis).join("\n") : texto} />
       </p>
       {cortar && (
         <Link
-          href={`/poema/${poema.id}`}
+          href={`/poema/${id}`}
           className="mt-1 inline-flex min-h-11 items-center text-sm font-semibold text-destaque hover:underline"
         >
           ler poema inteiro
         </Link>
       )}
     </>
-  );
-}
-
-// "Traduzir", como no X: aparece quando a língua do poema é conhecida e diferente
-// da do navegador. A tradução vem do backend (IA, com cache por poema e língua) e
-// fica abaixo do original; "ver original" recolhe sem perder o que já veio.
-function Traduzir({ poema }: { poema: Post }) {
-  // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
-  // do servidor e o da hidratação baterem.
-  const [destino, setDestino] = useState<string | null>(null);
-  const [traducao, setTraducao] = useState<Traducao | null>(null);
-  const [aberta, setAberta] = useState(false);
-  const [carregando, setCarregando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
-
-  useEffect(() => setDestino(idiomaDoNavegador()), []);
-
-  if (!poema.idioma || !destino || poema.idioma === destino) return null;
-
-  async function abrir() {
-    setErro(null);
-    if (traducao) {
-      setAberta(true);
-      return;
-    }
-    setCarregando(true);
-    try {
-      setTraducao(await traduzirPoema(poema.id, destino as string));
-      setAberta(true);
-    } catch (e) {
-      if (e instanceof ErroDaApi && e.status === 503) setErro("tradução indisponível agora");
-      else if (e instanceof ErroDaApi && e.status === 429) setErro("limite de traduções atingido, tente mais tarde");
-      else setErro(mensagemDeFalha(e, "não deu para traduzir"));
-    } finally {
-      setCarregando(false);
-    }
-  }
-
-  const link =
-    "inline-flex min-h-11 cursor-pointer items-center text-sm font-semibold text-destaque hover:underline";
-
-  if (aberta && traducao) {
-    return (
-      <section aria-label="tradução" className="mt-2 border-t border-borda pt-2">
-        <p className="flex flex-wrap items-center gap-x-2 text-[0.8125rem] text-tinta-suave">
-          <span>Traduzido do {nomeDoIdioma(poema.idioma)} por IA</span>
-          <span aria-hidden="true">·</span>
-          <button type="button" onClick={() => setAberta(false)} className={link}>
-            ver original
-          </button>
-        </p>
-        {traducao.titulo && <p className="poema-titulo mt-1">{traducao.titulo}</p>}
-        <p lang={traducao.idioma_destino} className={`poema-corpo ${traducao.titulo ? "mt-2" : "mt-1"}`}>
-          <TextoFormatado texto={traducao.texto} />
-        </p>
-      </section>
-    );
-  }
-
-  return (
-    <div className="mt-1">
-      <button
-        type="button"
-        onClick={abrir}
-        disabled={carregando}
-        aria-label={`traduzir do ${nomeDoIdioma(poema.idioma)}`}
-        className={`${link} -ml-3 gap-1 pr-2 disabled:cursor-wait disabled:opacity-60`}
-      >
-        <span className="flex h-11 w-11 items-center justify-center">
-          <IconeTraduzir className="h-5 w-5" />
-        </span>
-        {carregando ? "Traduzindo…" : "Traduzir"}
-      </button>
-      {erro && <p className="text-xs text-destaque">{erro}</p>}
-    </div>
   );
 }
 
