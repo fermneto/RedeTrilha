@@ -297,7 +297,7 @@ function TextoDoPoema({
 // linhas em branco contam, como na página e no backend). Selecionar o texto
 // (mouse ou toque) mostra a barra "comentar estes versos / citar estes versos":
 // comentar abre a página do poema com eles selecionados (#71); a crítica é lá.
-// A barra some com Esc ou um toque fora dela.
+// A barra some com "limpar", Esc ou um toque fora dela.
 function Corpo({
   id,
   texto,
@@ -379,6 +379,16 @@ function Corpo({
           <Link href={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))} className={CLASSE_DA_ACAO_DE_VERSOS}>
             citar estes versos
           </Link>
+          <button
+            type="button"
+            onClick={() => {
+              document.getSelection()?.removeAllRanges();
+              setSelecao(null);
+            }}
+            className={`${CLASSE_DA_ACAO_DE_VERSOS} text-tinta-suave`}
+          >
+            limpar
+          </button>
         </div>
       )}
       {cortar && (

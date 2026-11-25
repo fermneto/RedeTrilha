@@ -301,7 +301,8 @@ PRs, na seção "Decisões do Neto".
   - **A crítica nasce em qualquer card e termina na página do poema.** No
     feed, no perfil, nas antologias e no poema enviado por mensagem, selecionar
     o texto do corpo do poema mostra a mesma barra, pequena, com "comentar
-    estes versos / citar estes versos" (some com Esc ou um toque fora dela).
+    estes versos / citar estes versos / limpar" (some também com Esc ou um
+    toque fora dela).
     "Comentar" abre a página do poema já com esses versos selecionados e o
     campo de comentário focado, com o trecho citado acima
     (`/poema/7?versos=2-4`); é lá que a crítica é escrita, ao lado das outras.
