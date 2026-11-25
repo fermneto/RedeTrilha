@@ -42,6 +42,9 @@ Pedro (@CorreiaPedro208).
   de vida e a fonte de cada poema.
 - **Tradução por IA** (Claude Haiku 5.5) para a língua do navegador, com cache
   por (poema, língua) e limite de 30 traduções novas por hora por usuário.
+- **Ícone e cartão de compartilhamento:** favicon, ícone do iPhone e do Android
+  (manifest) e cartão Open Graph/Twitter com os primeiros versos do poema, o
+  perfil, a renga ou a antologia (`frontend/lib/cartaoServidor.tsx`).
 
 ## Onde está no ar
 

@@ -19,6 +19,7 @@ from app.routers import (
     auth,
     avisos,
     bloqueios,
+    cartoes,
     comentarios,
     comentarios_renga,
     curtidas,
@@ -182,3 +183,4 @@ app.include_router(preferencias.router)
 app.include_router(mensagens.router)
 app.include_router(bloqueios.router)
 app.include_router(avisos.router)
+app.include_router(cartoes.router)

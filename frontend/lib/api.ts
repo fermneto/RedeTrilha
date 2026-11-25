@@ -550,7 +550,7 @@ export type Perfil = User & {
 // Anos de vida de um consagrado: "1861–1898", "m. 1898" ou null (sem a morte, ou
 // não consagrado). Ano negativo é antes de Cristo: "800–700 a.C." quando os dois
 // são, "70 a.C.–19" quando só o nascimento é, "m. 55 a.C." só com a morte.
-export function anosDeVida(user: User): string | null {
+export function anosDeVida(user: Pick<User, "consagrado" | "nascimento" | "morte">): string | null {
   const { nascimento, morte } = user;
   if (!user.consagrado || morte === null) return null;
   if (nascimento === null) return `m. ${ano(morte)}`;
@@ -1675,3 +1675,31 @@ export function tempoRelativo(iso: string, agora: Date = new Date()): string {
   if (segundos < 7 * 86_400) return `${Math.floor(segundos / 86_400)} d`;
   return formatarData(iso);
 }
+
+// ---- Cartão de compartilhamento: GET /cartoes/... sem login (schemas/cartao.py).
+// Só o servidor do Next lê, para a imagem e os metadados do link
+// (lib/cartaoServidor.tsx). Os versos já vêm sem as marcas de formatação.
+
+export type AutorDoCartao = Pick<User, "username" | "name" | "consagrado" | "nascimento" | "morte">;
+
+export type CartaoPoema = {
+  id: number;
+  titulo: string | null;
+  versos: string[];
+  continua: boolean;
+  idioma: string | null;
+  autor: AutorDoCartao;
+};
+
+export type CartaoUsuario = AutorDoCartao & { bio: string; avatar_url: string; poemas: number };
+
+export type CartaoRenga = { id: number; titulo: string; autores: AutorDoCartao[]; versos: string[]; continua: boolean };
+
+export type CartaoAntologia = {
+  id: number;
+  nome: string;
+  descricao: string | null;
+  dono: AutorDoCartao;
+  qtd: number;
+  poemas: { titulo: string | null; primeiro_verso: string; autor: AutorDoCartao }[];
+};
