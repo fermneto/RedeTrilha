@@ -170,12 +170,13 @@ export async function metadadosDaAntologia(id: string): Promise<Metadata> {
 
 // ---- Imagem
 
-// As cores de app/globals.css (o cartão é sempre o tema claro: papel e tinta).
-const PAPEL = "#faf7f0";
-const TINTA = "#1f1b16";
-const TINTA_SUAVE = "#6b6359";
-const BORDA = "#e4ddd0";
-const DESTAQUE = "#8a3b2e";
+// As cores do tema escuro de app/globals.css. Uma imagem de link só tem um tema
+// (o WhatsApp e o X não sabem o de quem vê), e o cartão é sempre o escuro.
+const PAPEL = "#17150f";
+const TINTA = "#ebe5d8";
+const TINTA_SUAVE = "#a39a8b";
+const BORDA = "#36312a";
+const DESTAQUE = "#e09a7f";
 
 // Literata e Schibsted Grotesk, as mesmas da interface, em TTF estático (o next/og
 // não lê woff2 nem fonte variável). Ficam em assets/fontes, fora do public/.
