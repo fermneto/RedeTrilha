@@ -60,6 +60,7 @@ from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 from app.services import rengas as rengas_service
 from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
+from app.services import bloqueios
 from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
@@ -146,13 +147,18 @@ def pagina_dos_autores(
     limit: int,
     cursor: str | None = None,
     com_encerramentos: bool = True,
+    sem_bloqueados: bool = True,
 ) -> FeedPage:
     """Poemas, citações, reposts puros e rengas dos `autores`, deduplicados e paginados
     como o feed. Público para o perfil (`GET /usuarios/{username}/posts`), que passa um
-    autor só e `com_encerramentos=False` (no perfil, vale a estrofe mais recente)."""
+    autor só e `com_encerramentos=False` (no perfil, vale a estrofe mais recente).
+    Fica fora o que tem a ver com quem tem bloqueio com o usuário (services/bloqueios.py),
+    menos no perfil (`sem_bloqueados=False`), que já confere o bloqueio antes."""
     ocorrencias = [*_ocorrencias_de_posts(db, autores), *_ocorrencias_de_estrofes(db, autores)]
     if com_encerramentos:
         ocorrencias += _ocorrencias_de_encerramentos(db, autores)
+    if sem_bloqueados:
+        ocorrencias = bloqueios.sem_bloqueados(db, usuario.id, ocorrencias)
     ocorrencias.sort(key=lambda o: o.posicao, reverse=True)
     recorte = recortar(
         _deduplicar(ocorrencias), lambda item: item.ocorrencia.posicao, offset, limit, cursor

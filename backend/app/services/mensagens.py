@@ -212,7 +212,9 @@ def enviar(db: Session, eu: User, conversa_id: int, dados: MensagemCreate) -> Me
         raise HTTPException(
             status_code=429, detail="você mandou muitas mensagens em pouco tempo; espere um minuto"
         )
-    post_id = posts_service.original_de(db, dados.post_id).id if dados.post_id is not None else None
+    post_id = (
+        posts_service.original_para_interagir(db, eu, dados.post_id).id if dados.post_id is not None else None
+    )
 
     mensagem = Mensagem(conversa_id=conversa_id, autor_id=eu.id, texto=dados.texto, post_id=post_id)
     db.add(mensagem)

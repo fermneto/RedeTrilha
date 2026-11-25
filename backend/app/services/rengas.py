@@ -28,6 +28,7 @@ from app.schemas.renga import (
     RengaPage,
 )
 from app.schemas.user import UserOut
+from app.services import bloqueios
 
 MSG_FECHADA = "a renga está fechada: não aceita mais estrofes"
 MSG_NAO_CONVIDADO = "só os convidados escrevem nesta renga"
@@ -53,10 +54,14 @@ def criar(db: Session, criador: User, dados: RengaCreate) -> RengaDetalhe:
 
 
 def listar(
-    db: Session, situacao: str | None, offset: int, limit: int
+    db: Session, usuario: User, situacao: str | None, offset: int, limit: int
 ) -> RengaPage:
-    """As rengas de todo mundo, a mais nova primeiro; `situacao` filtra aberta/fechada."""
+    """As rengas de todo mundo, a mais nova primeiro; `situacao` filtra aberta/fechada.
+    Ficam fora as criadas por quem tem bloqueio com o usuário."""
     filtros = []
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
+    if bloqueados:
+        filtros.append(Renga.criador_id.not_in(bloqueados))
     if situacao == "aberta":
         filtros.append(Renga.fechada_em.is_(None))
     elif situacao == "fechada":
@@ -78,6 +83,7 @@ def listar(
 
 def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
     renga = _buscar(db, renga_id)
+    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
     return _detalhe(renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario)
 
 
@@ -133,6 +139,11 @@ def _detalhe(
 def acrescentar(db: Session, usuario: User, renga_id: int, texto: str) -> RengaDetalhe:
     """A próxima estrofe. 409 se fechada ou se não é a vez; 403 se não pode escrever."""
     renga = _buscar(db, renga_id, travar=True)
+    try:
+        bloqueios.garantir_interacao(db, usuario.id, renga.criador_id, "renga não encontrada")
+    except HTTPException:
+        db.rollback()
+        raise
     ultima = db.scalar(
         select(EstrofeRenga)
         .where(EstrofeRenga.renga_id == renga.id)

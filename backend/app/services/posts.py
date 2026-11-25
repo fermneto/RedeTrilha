@@ -15,7 +15,7 @@ from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
 from app.schemas.user import UserOut
-from app.services import indice_tags
+from app.services import bloqueios, indice_tags
 from app.services.indice_tags import tags_do_post
 
 
@@ -140,6 +140,21 @@ def buscar(db: Session, post_id: int) -> Post:
     return post
 
 
+def visivel(db: Session, usuario: User, post_id: int) -> Post:
+    """O post, se quem pede pode vê-lo; 404 também se o autor bloqueou quem pede."""
+    post = buscar(db, post_id)
+    bloqueios.garantir_que_ve(db, usuario.id, post.autor_id, "poema não encontrado")
+    return post
+
+
+def original_para_interagir(db: Session, usuario: User, post_id: int) -> Post:
+    """O `original_de` para curtir, comentar, repostar, citar ou mandar por mensagem:
+    404 se o autor bloqueou quem age, 403 se quem age bloqueou o autor."""
+    original = original_de(db, post_id)
+    bloqueios.garantir_interacao(db, usuario.id, original.autor_id, "poema não encontrado")
+    return original
+
+
 def original_de(db: Session, post_id: int) -> Post:
     """O post que recebe a interação feita num repost puro: o original, como no X.
 
@@ -159,7 +174,7 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     """
     post = Post(autor_id=autor.id, repost_removido=repost_removido, **dados.model_dump())
     if dados.repost_de_id is not None:
-        post.repost_de_id = original_de(db, dados.repost_de_id).id
+        post.repost_de_id = original_para_interagir(db, autor, dados.repost_de_id).id
     db.add(post)
     db.flush()
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.

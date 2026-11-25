@@ -29,7 +29,7 @@ from app.schemas.comentario import (
 from app.schemas.user import UserOut
 from app.services import ancoras
 from app.services.cursor import codificar_cursor, ler_cursor
-from app.services.posts import original_de
+from app.services.posts import original_de, original_para_interagir
 
 PREVIA_RESPOSTAS = 3
 
@@ -42,7 +42,7 @@ def comentar(
     Pai inexistente, de outro poema ou removido dá 404. Com `ancora`, critica
     os versos escolhidos (ver `services/ancoras.py`); âncora inválida dá 422.
     """
-    poema = original_de(db, post_id)
+    poema = original_para_interagir(db, autor, post_id)
     post_id = poema.id
     if dados.ancora is not None:
         ancoras.validar(poema.texto, dados.parent_id, dados.ancora)

@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.models.follow import Follow
 from app.models.user import User
 from app.schemas.user import UserPage
+from app.services import bloqueios
 from app.services.users import buscar_por_username
 
 
@@ -13,6 +14,7 @@ def seguir(db: Session, seguidor: User, username: str) -> None:
     seguido = buscar_por_username(db, username)
     if seguido.id == seguidor.id:
         raise HTTPException(status_code=422, detail="não dá para seguir a si mesmo")
+    bloqueios.garantir_interacao(db, seguidor.id, seguido.id, "usuário não encontrado")
 
     ja_segue = db.scalar(
         select(Follow).where(
