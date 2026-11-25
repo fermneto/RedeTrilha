@@ -680,20 +680,36 @@ decisão 15.
     convite para renga.
   - **Na renga, o poema é de todos:** o comentário geral avisa o criador e todos
     os autores de estrofe; a crítica avisa o criador e só os autores das estrofes
-    que os versos tocam; a resposta avisa quem foi respondido e o criador.
+    que os versos tocam; a resposta avisa quem foi respondido e o criador
+    (decisão do Neto).
+  - **A resposta no poema avisa duas pessoas:** quem foi respondido ("respondeu
+    ao seu comentário") e o autor do poema ("comentou seu poema"), porque a
+    conversa é no poema dele (decisão do Neto).
   - **Quem não recebe:** quem fez a ação, os consagrados (não têm login) e quem
     tem bloqueio, em qualquer sentido, com quem agiu ou com o dono do poema ou da
     renga. Um bloqueio feito depois esconde os avisos antigos da outra pessoa.
   - **Desfazer apaga o aviso:** descurtir, desfazer o repost, deixar de seguir,
     apagar o comentário ou o poema. O aviso não fica dizendo que alguém curtiu o
     que já não curte.
-  - **Curtidas e reposts de um poema numa linha só:** "Ana e mais 3 curtiram seu
-    poema". O comentário e a crítica nunca se agrupam: cada um tem o seu texto, e
-    a linha mostra o começo dele.
+  - **Curtidas e reposts de um poema numa linha por dia:** "Ana e mais 3
+    curtiram seu poema" hoje, outra linha ontem (decisão do Neto). O dia é o de
+    Brasília. Sem o dia, a curtida de hoje entraria na linha das do mês passado. O
+    comentário e a crítica nunca se agrupam: cada um tem o seu texto, e a linha
+    mostra o começo dele.
+  - **O contador conta linhas da tela, não ações** (decisão do Neto): as 20
+    curtidas de hoje num poema contam 1, como a linha que a pessoa vai ler.
   - **Cada linha leva ao lugar certo:** o poema; a crítica abre o poema com os
     versos selecionados (`/poema/7?versos=5-8`); a renga; o perfil de quem seguiu.
   - **Em tempo real, pelo stream das mensagens:** o contador sobe sem recarregar
     e zera ao abrir a página, também nas outras abas.
+  - **Bloqueio feito depois esconde, não apaga** (decisão do Neto): os avisos
+    antigos de quem foi bloqueado somem da lista e do contador; desbloquear os
+    traz de volta, como os comentários (decisão 13).
+  - **No celular, a barra de baixo ficou com cinco itens** (decisão do Neto):
+    Início, Explorar, Escrever, Avisos e Mensagens, os dois com contador, e um
+    "Mais" que abre uma folha com Antologias, Rascunhos, Acervo, Rengas, Perfil,
+    Preferências e "Sair". Com os Avisos, seriam dez ícones de 36 px em 360 px.
+    O menu lateral do computador não muda.
   - **A ordem é cronológica**, como o feed (decisão 3): o aviso mais recente
     primeiro, nunca "os mais curtidos".
 - **O que cortamos e por quê:**
@@ -704,7 +720,7 @@ decisão 15.
   - **Escolher que avisos receber:** um painel de preferências por tipo é mais
     uma tela para manter; ficou para depois, se alguém pedir.
   - **"Renga encerrada" e "atingiu o limite":** quem escreveu vê a renga fechada
-    no feed (decisão 10).
+    no feed (decisão 10). Também não há aviso de desbloqueio.
 
 ### O que ficou de fora e por quê
 
@@ -1045,10 +1061,12 @@ há segundo stream nem estado na API.
 
 Uma linha por ação, e não uma por grupo, porque desfazer precisa apagar só a
 curtida de quem descurtiu. O agrupamento ("Ana e mais 3 curtiram") é um
-`GROUP BY (tipo, post_id, id se o tipo não agrupa)` nos avisos da pessoa,
+`GROUP BY (tipo, post_id, dia de Brasília, id se o tipo não agrupa)` nos avisos
+da pessoa (no Postgres, `timezone('America/Sao_Paulo', ...)`; no SQLite de dev,
+o deslocamento fixo de -3 h, já que o Brasil não tem horário de verão desde 2019),
 ordenado pelo aviso mais recente de cada grupo, com o cursor `(data, id)` desse
-aviso no `HAVING`. Os dois atores mais recentes de cada grupo saem de um
-`ROW_NUMBER` por grupo, e os alvos da página (poemas, rengas, comentários,
+aviso no `HAVING`. O contador agrupa do mesmo jeito, só os não lidos. Os dois
+atores mais recentes de cada grupo saem de um `ROW_NUMBER` por grupo, e os alvos da página (poemas, rengas, comentários,
 estrofes, âncoras) de uma consulta por tabela, sem N+1. As regras puras
 (quem recebe, sem repetir e sem o ator; que estrofes uma crítica de renga toca;
 o trecho da linha) ficam em `core/avisos.py`.
@@ -1061,9 +1079,10 @@ o trecho da linha) ficam em `core/avisos.py`.
 | marcar lidos | O(u) | abrir a página |
 
 O agrupamento custa O(a), com a = avisos da pessoa: para os poetas da demo,
-centenas. Se uma conta chegar a dezenas de milhares, o próximo passo é agrupar
-só uma janela recente (por exemplo, os últimos 30 dias) ou guardar o grupo numa
-tabela; não foi preciso.
+centenas. Se uma conta chegar a dezenas de milhares, o próximo passo é ler só
+uma janela recente (por exemplo, os últimos 30 dias) ou guardar o grupo numa
+tabela; não foi preciso. Os testes de avisos rodam também contra o Postgres 16
+(`TEST_POSTGRES_URL`), com o dia de Brasília e o NOTIFY.
 
 ## Uso de IA
 

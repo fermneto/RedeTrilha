@@ -580,11 +580,12 @@ apontam para ele e para os reposts puros dele).
   "proximo_cursor"}` de `AvisoOut` (`id`, `tipo`, `created_at`, `lido`,
   `atores: UserOut[]` (os 2 mais recentes), `total_atores`, `post_id`,
   `renga_id`, `comentario_id`, `titulo`, `trecho`, `verso_inicio`,
-  `verso_fim`). Curtidas do mesmo poema saem numa linha, e reposts também; a
-  linha vale pelo aviso mais recente (`id`, `created_at`), e `lido` só é `true`
+  `verso_fim`). Curtidas do mesmo poema no mesmo dia (de Brasília) saem numa
+  linha, e reposts também; a linha vale pelo aviso mais recente (`id`, `created_at`), e `lido` só é `true`
   se todos foram lidos. A mais recente primeiro. Os avisos de quem tem bloqueio
   com quem lê ficam fora (bloqueio feito depois). Cursor malformado → 422.
-- `GET /avisos/resumo` 🔒 → `{"nao_lidos"}`: linhas com aviso não lido.
+- `GET /avisos/resumo` 🔒 → `{"nao_lidos"}`: linhas da tela com aviso não lido
+  (as curtidas de hoje num poema contam 1).
 - `POST /avisos/lidos` 🔒 `{"ate"}` (opcional) → 204: marca como lidos os
   avisos até o id `ate` (sem ele, todos) e manda `aviso` às outras abas.
 
