@@ -620,7 +620,7 @@ export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
 }
 
-// "ver todos no Acervo": a aba Poetas do Explorar já abre com a busca pelo ?q=.
+// "ver todos os poetas": a aba Poetas do Explorar já abre com a busca pelo ?q=.
 export function caminhoDoAcervoComBusca(q: string): string {
   return caminhoDoAcervo({ ...FILTROS_PADRAO_DO_ACERVO, q }, 1);
 }

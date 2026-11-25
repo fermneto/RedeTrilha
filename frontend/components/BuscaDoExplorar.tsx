@@ -1,7 +1,7 @@
 "use client";
 // Busca do topo do Explorar e da coluna direita, como a do X: um campo só que acha
 // tags (GET /tags/busca) e poetas por nome ou @username (GET /acervo?q=, a mesma
-// busca da tela Quem seguir, com quem eu sigo primeiro), mais "ver todos no Acervo".
+// busca da tela Quem seguir, com quem eu sigo primeiro), mais "ver todos os poetas".
 // Os resultados vêm agrupados numa lista (combobox do WAI-ARIA): setas sobem e
 // descem, Enter escolhe, Esc fecha. Enter sem opção ativa filtra pela tag digitada,
 // como o campo de tag de antes; "@fulano" + Enter abre o primeiro poeta achado.
@@ -256,7 +256,7 @@ export function BuscaDoExplorar({
                 ativa={ativa === indiceDoAcervo}
                 aoEscolher={() => escolher({ tipo: "acervo", q: termoDoPoeta })}
               >
-                <span className="text-sm font-semibold text-destaque">ver todos no Acervo</span>
+                <span className="text-sm font-semibold text-destaque">ver todos os poetas</span>
               </OpcaoDaLista>
             </Grupo>
           </>

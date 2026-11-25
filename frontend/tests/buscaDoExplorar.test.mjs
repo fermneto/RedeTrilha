@@ -30,7 +30,7 @@ test("as setas dão a volta e começam pela ponta certa", () => {
   assert.equal(opcaoVizinha(0, 0, 1), -1);
 });
 
-test("ver todos no Acervo abre a aba do Acervo com a busca", () => {
+test("ver todos os poetas abre a aba Poetas com a busca", () => {
   assert.equal(caminhoDoAcervoComBusca(" Cecília "), "/explorar?aba=poetas&q=Cec%C3%ADlia");
   assert.equal(caminhoDoAcervoComBusca("ana_"), "/explorar?aba=poetas&q=ana_");
 });

@@ -811,7 +811,7 @@ decisão 15.
     reunidos, ficam juntas no fim. Os filtros, a paginação e os cartões do
     Acervo são os mesmos da tela antiga (decisão 12), num componente só, e a
     busca pelo nome é o próprio campo do topo do Explorar. Trocar de aba
-    começa a outra sem filtro. O "ver todos no Acervo" da busca do topo abre
+    começa a outra sem filtro. O "ver todos os poetas" da busca do topo abre
     a aba Poetas com o nome buscado. As rengas filtram Todas, Abertas,
     Fechadas e Minhas (as que criei, em que escrevi ou para as quais fui
     convidado; `GET /rengas?minhas=true`). Com uma tag escolhida, a tela é o
