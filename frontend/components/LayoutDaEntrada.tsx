@@ -3,8 +3,9 @@
 // em /login. Como a entrada do Instagram: a marca pequena no canto de cima e, no
 // meio da tela, a frase centralizada com a vitrine em leque embaixo
 // (LayoutDaEntradaVitrine.tsx) e, à direita, o cartão de entrar com o "Criar
-// conta", alinhado na vertical com o leque. Os dois blocos ficam juntos no centro
-// da largura, sem vão entre eles. Embaixo, o rodapé de largura total.
+// conta". No desktop a largura se divide em duas metades fixas (60% e 40% da
+// tela) e cada bloco fica no centro da sua, na horizontal e na vertical.
+// Embaixo, o rodapé de largura total.
 // Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
 // única parte interativa é o formulário, então o foco segue a mesma ordem).
 
@@ -33,16 +34,19 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
         <span aria-hidden="true">Verso</span>
       </Link>
 
-      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[auto_20rem] lg:content-center lg:justify-center lg:gap-x-10 lg:gap-y-10 lg:px-10 lg:pt-4 lg:[grid-template-areas:'frase_.''leque_entrar'] xl:grid-cols-[auto_22rem] xl:gap-x-20 2xl:gap-x-28">
-        <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
+      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[60%_40%] lg:content-center lg:gap-x-0 lg:gap-y-10 lg:px-0 lg:py-0 lg:[grid-template-areas:'frase_entrar''leque_entrar']">
+        <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:justify-self-center lg:px-6 lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
 
-        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:max-w-none lg:self-center lg:[grid-area:entrar]">
+        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[20rem] lg:max-w-none lg:self-center lg:justify-self-center lg:[grid-area:entrar] xl:w-[22rem]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
-        <div className="order-3 mt-14 flex justify-center lg:mt-0 lg:self-center lg:[grid-area:leque]">
+        {/* O pb-10 do desktop conta a sobra dos cartões de trás (mais baixos e
+            girados), para o leque inteiro, e não só o cartão do centro, ficar
+            no meio da altura. */}
+        <div className="order-3 mt-14 flex justify-center lg:mt-0 lg:justify-self-center lg:pb-10 lg:[grid-area:leque]">
           <Vitrine />
         </div>
       </main>
