@@ -1,5 +1,5 @@
 "use client";
-// O Acervo virou uma aba do Explorar (/explorar?aba=acervo, decisão 17). A rota fica
+// O Acervo virou a aba Poetas do Explorar (/explorar?aba=poetas, decisão 17). A rota fica
 // para os links antigos e redireciona para lá, levando os filtros e a página.
 
 import { useRouter, useSearchParams } from "next/navigation";

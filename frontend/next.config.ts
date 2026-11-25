@@ -7,11 +7,11 @@ const nextConfig: NextConfig = {
     "/**/opengraph-image": ["./assets/fontes/*.ttf"],
     "/**/twitter-image": ["./assets/fontes/*.ttf"],
   },
-  // A tela Poetas virou o Acervo, que hoje é a aba do Explorar: os links antigos
+  // A tela Poetas virou o Acervo, que hoje é a aba Poetas do Explorar: os links antigos
   // continuam funcionando.
   // Temporário (307), e não permanente: o navegador não guarda o desvio em cache.
   async redirects() {
-    return [{ source: "/usuarios", destination: "/explorar?aba=acervo", permanent: false }];
+    return [{ source: "/usuarios", destination: "/explorar?aba=poetas", permanent: false }];
   },
 };
 

@@ -6,6 +6,8 @@
 // descem, Enter escolhe, Esc fecha. Enter sem opção ativa filtra pela tag digitada,
 // como o campo de tag de antes; "@fulano" + Enter abre o primeiro poeta achado.
 // Fora do Explorar (variante "coluna"), escolher uma tag leva ao Explorar filtrado.
+// Na aba Poetas do Explorar, o mesmo campo (CampoDaBusca, com a mesma casca) filtra o
+// Acervo pelo nome: ver BuscaDosPoetas em components/Acervo.tsx.
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
@@ -23,6 +25,13 @@ import {
   type PoetaDoAcervo,
   type TagEncontrada,
 } from "@/lib/api";
+
+// A casca do campo, a mesma na busca geral e na dos poetas (CampoDaBusca).
+const CASCA =
+  "flex h-11 items-center gap-2 rounded-full border border-borda bg-painel pl-4 text-tinta-suave transition-colors duration-150 focus-within:border-destaque focus-within:bg-papel focus-within:text-destaque focus-within:ring-2 focus-within:ring-destaque/25";
+const ENTRADA = "h-full min-w-0 flex-1 bg-transparent text-[0.9375rem] text-tinta outline-none";
+const BOTAO_APAGAR =
+  "flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-tinta-suave hover:text-destaque focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-destaque";
 
 // Espera da digitação antes de buscar (as duas rotas de uma vez).
 const ESPERA_DA_BUSCA_MS = 250;
@@ -158,7 +167,7 @@ export function BuscaDoExplorar({
       <label htmlFor={idCampo} className="sr-only">
         Buscar tag ou poeta (nome ou @username)
       </label>
-      <div className="flex h-11 items-center gap-2 rounded-full border border-borda bg-painel pl-4 text-tinta-suave transition-colors duration-150 focus-within:border-destaque focus-within:bg-papel focus-within:text-destaque focus-within:ring-2 focus-within:ring-destaque/25">
+      <div className={CASCA}>
         <IconeBuscar className="h-5 w-5 shrink-0" />
         <input
           id={idCampo}
@@ -183,14 +192,14 @@ export function BuscaDoExplorar({
           autoCapitalize="none"
           autoComplete="off"
           spellCheck={false}
-          className="h-full min-w-0 flex-1 bg-transparent text-[0.9375rem] text-tinta outline-none"
+          className={ENTRADA}
         />
         {termo && (
           <button
             type="button"
             onClick={apagar}
             aria-label="Apagar a busca"
-            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-tinta-suave hover:text-destaque focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-destaque"
+            className={BOTAO_APAGAR}
           >
             <IconeFechar className="h-5 w-5" />
           </button>
@@ -251,6 +260,71 @@ export function BuscaDoExplorar({
               </OpcaoDaLista>
             </Grupo>
           </>
+        )}
+      </div>
+    </form>
+  );
+}
+
+// O campo do topo sem a lista de sugestões: quem o usa mostra o resultado na própria
+// tela (a aba Poetas do Explorar filtra o Acervo enquanto a pessoa digita).
+export function CampoDaBusca({
+  rotulo,
+  placeholder,
+  valor,
+  aoMudar,
+  aoEnviar,
+  aoApagar,
+}: {
+  rotulo: string;
+  placeholder: string;
+  valor: string;
+  aoMudar: (valor: string) => void;
+  aoEnviar: () => void;
+  aoApagar: () => void;
+}) {
+  const idCampo = useId();
+  return (
+    <form
+      role="search"
+      aria-label={rotulo}
+      onSubmit={(e) => {
+        e.preventDefault();
+        aoEnviar();
+      }}
+      className="px-4 py-2"
+    >
+      <label htmlFor={idCampo} className="sr-only">
+        {rotulo}
+      </label>
+      <div className={CASCA}>
+        <IconeBuscar className="h-5 w-5 shrink-0" />
+        <input
+          id={idCampo}
+          type="text"
+          inputMode="search"
+          enterKeyHint="search"
+          value={valor}
+          maxLength={80}
+          onChange={(e) => aoMudar(e.target.value)}
+          placeholder={placeholder}
+          autoCapitalize="none"
+          autoComplete="off"
+          spellCheck={false}
+          className={ENTRADA}
+        />
+        {valor && (
+          <button
+            type="button"
+            onClick={() => {
+              aoApagar();
+              document.getElementById(idCampo)?.focus();
+            }}
+            aria-label="Apagar a busca"
+            className={BOTAO_APAGAR}
+          >
+            <IconeFechar className="h-5 w-5" />
+          </button>
         )}
       </div>
     </form>

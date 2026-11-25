@@ -1,17 +1,20 @@
 "use client";
 // O Acervo: os perfis de todos os poetas, consagrados e poetas do Verso, em páginas
-// numeradas. É a aba "acervo" do Explorar (decisão 17), que o monta só com login.
-// Tudo mora na URL (/explorar?aba=acervo&tipo=&q=&lingua=&epoca=&ordem=&pagina=, ver
-// caminhoDoAcervo em lib/api.ts): o link abre a mesma vista. Os filtros trocam com
+// numeradas. É a aba "Poetas" do Explorar (decisões 12 e 17), que o monta só com
+// login. Tudo mora na URL (/explorar?aba=poetas&tipo=&q=&lingua=&epoca=&ordem=&pagina=,
+// ver caminhoDoAcervo em lib/api.ts): o link abre a mesma vista. Os filtros trocam com
 // router.replace e voltam à página 1; a página troca por link, para o voltar do
 // navegador voltar de página.
+//
+// A busca pelo nome não fica aqui: é o campo do topo do Explorar, que na aba Poetas
+// vira BuscaDosPoetas (abaixo) e escreve o ?q= do Acervo. Um campo só na tela.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import { Paginacao } from "@/components/Paginacao";
-import { IconeBuscar } from "@/components/icones/IconeBuscar";
+import { CampoDaBusca } from "@/components/BuscaDoExplorar";
 import {
   buscarAcervo,
   buscarEu,
@@ -31,9 +34,6 @@ import {
   type PoetaDoAcervo,
   type TipoDoAcervo,
 } from "@/lib/api";
-
-// Espera da digitação antes de buscar pelo nome.
-const ESPERA_DA_BUSCA_MS = 400;
 
 const ROTULOS_DOS_TIPOS: Record<TipoDoAcervo, string> = {
   todos: "todos",
@@ -61,12 +61,10 @@ export function Acervo() {
   const { filtros, pagina } = lerFiltrosDoAcervo(params);
   const { tipo, q, lingua, epoca, ordem } = filtros;
 
-  const idBusca = useId();
   const idTipo = useId();
   const idLingua = useId();
   const idEpoca = useId();
   const idOrdem = useId();
-  const [termo, setTermo] = useState(q);
   const [resultado, setResultado] = useState<Page<PoetaDoAcervo> | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
@@ -103,12 +101,6 @@ export function Acervo() {
     };
   }, [tipo, q, lingua, epoca, ordem, pagina]);
 
-  // O q também muda por fora (voltar do navegador, "limpar filtros"). Se o campo
-  // já equivale a ele (o que a pessoa digitou), fica como está.
-  useEffect(() => {
-    setTermo((atual) => (atual.trim() === q.trim() ? atual : q));
-  }, [q]);
-
   const filtrar = useCallback(
     (mudanca: Partial<FiltrosDoAcervo>) => {
       const novos = { tipo, q, lingua, epoca, ordem, ...mudanca };
@@ -122,26 +114,11 @@ export function Acervo() {
     [router, tipo, q, lingua, epoca, ordem],
   );
 
-  // Busca enquanto a pessoa digita, depois de uma pausa; o Enter aplica na hora.
-  useEffect(() => {
-    if (termo.trim() === q.trim()) return;
-    const espera = setTimeout(() => filtrar({ q: termo }), ESPERA_DA_BUSCA_MS);
-    return () => clearTimeout(espera);
-  }, [termo, q, filtrar]);
-
-  function aplicarBusca(e: React.FormEvent) {
-    e.preventDefault();
-    if (termo.trim() !== q.trim()) filtrar({ q: termo });
-  }
-
   const comFiltro = Boolean(q.trim() || lingua || epoca || tipo !== FILTROS_PADRAO_DO_ACERVO.tipo);
   const limpar = (
     <button
       type="button"
-      onClick={() => {
-        setTermo("");
-        filtrar({ tipo: FILTROS_PADRAO_DO_ACERVO.tipo, q: "", lingua: null, epoca: null });
-      }}
+      onClick={() => filtrar({ tipo: FILTROS_PADRAO_DO_ACERVO.tipo, q: "", lingua: null, epoca: null })}
       className="min-h-11 cursor-pointer text-sm font-semibold text-destaque hover:underline"
     >
       limpar filtros
@@ -160,25 +137,7 @@ export function Acervo() {
   return (
     <div className="overflow-x-clip">
       <div className="space-y-4 border-b border-borda px-4 py-4">
-        <p className="text-sm text-tinta-suave">Todos os poetas, os consagrados e os do Verso, por nome, língua e época.</p>
-        <form role="search" aria-label="Buscar poetas" onSubmit={aplicarBusca}>
-          <label htmlFor={idBusca} className="block text-sm">
-            nome ou @username
-          </label>
-          <div className="mt-1 flex min-h-11 items-center gap-2 rounded-xl border border-borda bg-papel-alto px-3 text-tinta-suave transition-colors duration-150 focus-within:border-destaque focus-within:ring-2 focus-within:ring-destaque/25">
-            <IconeBuscar className="h-5 w-5 shrink-0" />
-            <input
-              id={idBusca}
-              type="search"
-              value={termo}
-              onChange={(e) => setTermo(e.target.value)}
-              placeholder="Cruz e Sousa, @bocage..."
-              autoCapitalize="none"
-              className="min-h-11 w-full min-w-0 bg-transparent text-tinta outline-none"
-            />
-          </div>
-        </form>
-
+        <p className="text-sm text-tinta-suave">Todos os poetas do acervo, os consagrados e os do Verso.</p>
         <div>
           <p id={idTipo} className="text-sm">
             tipo
@@ -322,5 +281,56 @@ export function Acervo() {
         )}
       </div>
     </div>
+  );
+}
+
+// Espera da digitação antes de buscar pelo nome.
+const ESPERA_DA_BUSCA_MS = 400;
+
+// O campo do topo do Explorar na aba Poetas: filtra o Acervo pelo nome ou @username
+// enquanto a pessoa digita (depois de uma pausa; o Enter aplica na hora), sem a lista
+// de sugestões da busca geral, porque o resultado já é a lista logo abaixo.
+export function BuscaDosPoetas() {
+  const router = useRouter();
+  const params = useSearchParams();
+  const busca = params.toString();
+  const q = lerFiltrosDoAcervo(params).filtros.q;
+  const [termo, setTermo] = useState(q);
+
+  // O q também muda por fora (voltar do navegador, "limpar filtros"). Se o campo
+  // já equivale a ele (o que a pessoa digitou), fica como está.
+  useEffect(() => {
+    setTermo((atual) => (atual.trim() === q.trim() ? atual : q));
+  }, [q]);
+
+  // Filtro novo volta para a página 1; os outros filtros ficam.
+  const aplicar = useCallback(
+    (novo: string) => {
+      const { filtros } = lerFiltrosDoAcervo(new URLSearchParams(busca));
+      router.replace(caminhoDoAcervo({ ...filtros, q: novo }, 1), { scroll: false });
+    },
+    [router, busca],
+  );
+
+  useEffect(() => {
+    if (termo.trim() === q.trim()) return;
+    const espera = setTimeout(() => aplicar(termo), ESPERA_DA_BUSCA_MS);
+    return () => clearTimeout(espera);
+  }, [termo, q, aplicar]);
+
+  return (
+    <CampoDaBusca
+      rotulo="Buscar poeta por nome ou @username"
+      placeholder="Buscar poeta por nome ou @"
+      valor={termo}
+      aoMudar={setTermo}
+      aoEnviar={() => {
+        if (termo.trim() !== q.trim()) aplicar(termo);
+      }}
+      aoApagar={() => {
+        setTermo("");
+        if (q) aplicar("");
+      }}
+    />
   );
 }

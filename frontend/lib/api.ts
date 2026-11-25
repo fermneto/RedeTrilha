@@ -620,7 +620,7 @@ export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
 }
 
-// "ver todos no Acervo": a aba do Acervo no Explorar já abre com a busca pelo ?q=.
+// "ver todos no Acervo": a aba Poetas do Explorar já abre com a busca pelo ?q=.
 export function caminhoDoAcervoComBusca(q: string): string {
   return caminhoDoAcervo({ ...FILTROS_PADRAO_DO_ACERVO, q }, 1);
 }
@@ -933,9 +933,10 @@ export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
   return apiGet<OpcoesDoAcervo>("/acervo/filtros");
 }
 
-// O Acervo é a aba "acervo" do Explorar (decisão 17). Tudo mora na URL
-// (/explorar?aba=acervo&tipo=&q=&lingua=&epoca=&ordem=&pagina=): o link abre a mesma
-// vista, e a rota antiga /acervo redireciona para cá com os mesmos parâmetros.
+// O Acervo é a aba "Poetas" do Explorar (decisões 12 e 17). Tudo mora na URL
+// (/explorar?aba=poetas&tipo=&q=&lingua=&epoca=&ordem=&pagina=): o link abre a mesma
+// vista. A rota antiga /acervo e o ?aba=acervo de antes redirecionam para cá com os
+// mesmos parâmetros.
 export const FILTROS_PADRAO_DO_ACERVO: FiltrosDoAcervo = {
   tipo: "todos",
   q: "",
@@ -969,9 +970,9 @@ export function lerFiltrosDoAcervo(params: { get(nome: string): string | null })
   };
 }
 
-// A URL só leva o que difere do padrão: /explorar?aba=acervo é a vista inicial.
+// A URL só leva o que difere do padrão: /explorar?aba=poetas é a vista inicial.
 export function caminhoDoAcervo(filtros: FiltrosDoAcervo, pagina: number): string {
-  const busca = new URLSearchParams({ aba: "acervo" });
+  const busca = new URLSearchParams({ aba: "poetas" });
   if (filtros.tipo !== FILTROS_PADRAO_DO_ACERVO.tipo) busca.set("tipo", filtros.tipo);
   if (filtros.q.trim()) busca.set("q", filtros.q.trim());
   if (filtros.tipo !== "do_verso" && filtros.lingua) busca.set("lingua", filtros.lingua);
