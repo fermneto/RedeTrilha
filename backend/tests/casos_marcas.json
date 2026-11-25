@@ -1,0 +1,298 @@
+[
+ {
+  "texto": "Minha terra tem palmeiras,\nOnde canta o Sabiá;",
+  "sem_marcas": "Minha terra tem palmeiras,\nOnde canta o Sabiá;",
+  "linhas": [
+   [
+    [
+     "Minha terra tem palmeiras,",
+     []
+    ]
+   ],
+   [
+    [
+     "Onde canta o Sabiá;",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "**Amor** é fogo que *arde* sem se ver,",
+  "sem_marcas": "Amor é fogo que arde sem se ver,",
+  "linhas": [
+   [
+    [
+     "Amor",
+     [
+      "negrito"
+     ]
+    ],
+    [
+     " é fogo que ",
+     []
+    ],
+    [
+     "arde",
+     [
+      "italico"
+     ]
+    ],
+    [
+     " sem se ver,",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "  ++recuo++ e ~~risco~~\n\n\t**segunda estrofe**",
+  "sem_marcas": "  recuo e risco\n\n\tsegunda estrofe",
+  "linhas": [
+   [
+    [
+     "  ",
+     []
+    ],
+    [
+     "recuo",
+     [
+      "sublinhado"
+     ]
+    ],
+    [
+     " e ",
+     []
+    ],
+    [
+     "risco",
+     [
+      "tachado"
+     ]
+    ]
+   ],
+   [],
+   [
+    [
+     "\t",
+     []
+    ],
+    [
+     "segunda estrofe",
+     [
+      "negrito"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "***negrito e itálico*** e *só itálico* **e negrito**",
+  "sem_marcas": "negrito e itálico e só itálico e negrito",
+  "linhas": [
+   [
+    [
+     "negrito e itálico",
+     [
+      "italico",
+      "negrito"
+     ]
+    ],
+    [
+     " e ",
+     []
+    ],
+    [
+     "só itálico",
+     [
+      "italico"
+     ]
+    ],
+    [
+     " ",
+     []
+    ],
+    [
+     "e negrito",
+     [
+      "negrito"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "*italico***negrito**",
+  "sem_marcas": "italiconegrito",
+  "linhas": [
+   [
+    [
+     "italico",
+     [
+      "italico"
+     ]
+    ],
+    [
+     "negrito",
+     [
+      "negrito"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "* * *",
+  "sem_marcas": "* * *",
+  "linhas": [
+   [
+    [
+     "* * *",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "2 * 3 = 6 e 1+1 = 2 ~ quase",
+  "sem_marcas": "2 * 3 = 6 e 1+1 = 2 ~ quase",
+  "linhas": [
+   [
+    [
+     "2 * 3 = 6 e 1+1 = 2 ~ quase",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "shade*, e mais nada",
+  "sem_marcas": "shade*, e mais nada",
+  "linhas": [
+   [
+    [
+     "shade*, e mais nada",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "**sem fechar",
+  "sem_marcas": "**sem fechar",
+  "linhas": [
+   [
+    [
+     "**sem fechar",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "\\*\\*não é negrito\\*\\* e 1\\+1 e \\~ e \\\\",
+  "sem_marcas": "**não é negrito** e 1+1 e ~ e \\",
+  "linhas": [
+   [
+    [
+     "**não é negrito** e 1+1 e ~ e \\",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "caminho\\Quem, barra solta",
+  "sem_marcas": "caminho\\Quem, barra solta",
+  "linhas": [
+   [
+    [
+     "caminho\\Quem, barra solta",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "****",
+  "sem_marcas": "****",
+  "linhas": [
+   [
+    [
+     "****",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "** espaço **",
+  "sem_marcas": "** espaço **",
+  "linhas": [
+   [
+    [
+     "** espaço **",
+     []
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "**#mar** e *#céu*",
+  "sem_marcas": "#mar e #céu",
+  "linhas": [
+   [
+    [
+     "#mar",
+     [
+      "negrito"
+     ]
+    ],
+    [
+     " e ",
+     []
+    ],
+    [
+     "#céu",
+     [
+      "italico"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "<script>alert(1)</script> **<b>x</b>**",
+  "sem_marcas": "<script>alert(1)</script> <b>x</b>",
+  "linhas": [
+   [
+    [
+     "<script>alert(1)</script> ",
+     []
+    ],
+    [
+     "<b>x</b>",
+     [
+      "negrito"
+     ]
+    ]
+   ]
+  ]
+ },
+ {
+  "texto": "~~++**tudo**++~~",
+  "sem_marcas": "tudo",
+  "linhas": [
+   [
+    [
+     "tudo",
+     [
+      "negrito",
+      "sublinhado",
+      "tachado"
+     ]
+    ]
+   ]
+  ]
+ }
+]
