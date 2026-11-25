@@ -2,19 +2,22 @@
 // Client component: as ações (curtir, repostar) têm estado otimista.
 
 import Link from "next/link";
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 
 import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
 import { EnviarPorMensagem } from "@/components/EnviarPorMensagem";
 import { NomeAutor } from "@/components/NomeAutor";
-import { TextoFormatado } from "@/components/TextoFormatado";
+import { VersoFormatado } from "@/components/TextoFormatado";
+import { CLASSE_DA_ACAO_DE_VERSOS, CLASSE_DA_BARRA_DE_VERSOS } from "@/components/VersosComentaveis";
 import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { IconeTraduzir } from "@/components/icones/IconeTraduzir";
 import {
+  caminhoDaCitacaoDeVersos,
+  caminhoDaCriticaDeVersos,
   caminhoDaTag,
   curtir,
   ErroDaApi,
@@ -23,13 +26,19 @@ import {
   mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
+  referenciaDosVersos,
   repostar,
   rotuloDoComentario,
   traduzirPoema,
+  trechoDosVersos,
+  versosDaSelecao,
+  versosTocados,
   type Post,
+  type SelecaoDeVersos,
   type Traducao,
   type User,
 } from "@/lib/api";
+import { textoSemMarcas } from "@/lib/marcas";
 import {
   alternarTraducao,
   type EstadoDaTraducao,
@@ -58,9 +67,20 @@ type Props = {
   // A tradução entrou na tela: na página do poema, limpa a seleção de versos,
   // que é do original.
   aoTraduzir?: () => void;
+  // Sem a barra "comentar estes versos" ao selecionar o corpo (o original na
+  // prévia do compositor: o link tiraria o leitor da citação que ele escreve).
+  semCritica?: boolean;
 };
 
-export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false, corpo, aoTraduzir }: Props) {
+export function PoemaCard({
+  post,
+  aninhado = false,
+  linkarTitulo = true,
+  inteiro = false,
+  corpo,
+  aoTraduzir,
+  semCritica = false,
+}: Props) {
   // Repost puro (texto vazio) fora do feed: mostra o original com o aviso de quem repostou.
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
@@ -98,6 +118,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
             inteiro={inteiro}
             corpo={corpo}
             aoTraduzir={aoTraduzir}
+            semCritica={semCritica}
           />
 
           {citacao && !aninhado && (
@@ -144,12 +165,14 @@ function TextoDoPoema({
   inteiro,
   corpo,
   aoTraduzir,
+  semCritica,
 }: {
   poema: Post;
   linkarTitulo: boolean;
   inteiro: boolean;
   corpo?: (poema: Post) => ReactNode;
   aoTraduzir?: () => void;
+  semCritica: boolean;
 }) {
   // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
   // do servidor e o da hidratação baterem.
@@ -214,6 +237,8 @@ function TextoDoPoema({
           comTitulo={Boolean(exibido.titulo)}
           inteiro={inteiro}
           lang={lang}
+          // A seleção é de versos do original: com a tradução na tela, nada de barra.
+          criticavel={!semCritica && !exibido.traduzido}
         />
       );
   }
@@ -268,27 +293,94 @@ function TextoDoPoema({
 }
 
 // Corta só a exibição: o texto do poema não muda, e o link leva à versão inteira.
+// Cada linha leva o número dela no poema inteiro (o corte só esconde o fim; as
+// linhas em branco contam, como na página e no backend). Selecionar o texto
+// (mouse ou toque) mostra a barra "comentar estes versos / citar estes versos":
+// comentar abre a página do poema com eles selecionados (#71); a crítica é lá.
+// A barra some com Esc ou um toque fora dela.
 function Corpo({
   id,
   texto,
   comTitulo,
   inteiro,
   lang,
+  criticavel,
 }: {
   id: number;
   texto: string;
   comTitulo: boolean;
   inteiro: boolean;
   lang?: string;
+  criticavel: boolean;
 }) {
   const versos = texto.split("\n");
   const visiveis = inteiro ? null : linhasVisiveis(versos);
   const cortar = visiveis !== null;
+  const mostrados = cortar ? versos.slice(0, visiveis) : versos;
+  const elemento = useRef<HTMLParagraphElement>(null);
+  const barra = useRef<HTMLDivElement>(null);
+  const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
+
+  // Só a seleção que começa neste corpo conta: a de fora (ou a que começa noutro
+  // card) não mexe aqui. Seleção recolhida não apaga a barra: no toque, ela se
+  // desfaz no mesmo toque que vai à barra; quem apaga é o toque fora dela.
+  useEffect(() => {
+    if (!criticavel) return;
+    function aoMudarSelecao() {
+      const doc = document.getSelection();
+      const p = elemento.current;
+      if (!doc || !p || doc.isCollapsed || !doc.anchorNode || !p.contains(doc.anchorNode)) return;
+      const nova = versosDaSelecao(
+        textoSemMarcas(texto),
+        versosTocados(doc, p.querySelectorAll<HTMLElement>("[data-verso]")),
+      );
+      setSelecao((atual) => (nova && atual?.inicio === nova.inicio && atual.fim === nova.fim ? atual : nova));
+    }
+    document.addEventListener("selectionchange", aoMudarSelecao);
+    return () => document.removeEventListener("selectionchange", aoMudarSelecao);
+  }, [criticavel, texto]);
+
+  useEffect(() => {
+    if (!selecao) return;
+    function aoTocar(e: PointerEvent) {
+      if (!barra.current?.contains(e.target as Node)) setSelecao(null);
+    }
+    function aoTeclar(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      document.getSelection()?.removeAllRanges();
+      setSelecao(null);
+    }
+    document.addEventListener("pointerdown", aoTocar);
+    document.addEventListener("keydown", aoTeclar);
+    return () => {
+      document.removeEventListener("pointerdown", aoTocar);
+      document.removeEventListener("keydown", aoTeclar);
+    };
+  }, [selecao]);
+
   return (
     <>
-      <p lang={lang} className={`poema-corpo ${comTitulo ? "mt-2" : "mt-1"}`}>
-        <TextoFormatado texto={cortar ? versos.slice(0, visiveis).join("\n") : texto} />
+      <p ref={elemento} lang={lang} className={`poema-corpo ${comTitulo ? "mt-2" : "mt-1"}`}>
+        {mostrados.map((linha, i) => (
+          <Fragment key={i}>
+            {i > 0 && "\n"}
+            <span data-verso={i + 1}>
+              <VersoFormatado linha={linha} />
+            </span>
+          </Fragment>
+        ))}
       </p>
+      {criticavel && selecao && (
+        <div ref={barra} role="group" aria-label="versos selecionados" className={CLASSE_DA_BARRA_DE_VERSOS}>
+          <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
+          <Link href={caminhoDaCriticaDeVersos(id, selecao)} className={CLASSE_DA_ACAO_DE_VERSOS}>
+            comentar estes versos
+          </Link>
+          <Link href={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))} className={CLASSE_DA_ACAO_DE_VERSOS}>
+            citar estes versos
+          </Link>
+        </div>
+      )}
       {cortar && (
         <Link
           href={`/poema/${id}`}

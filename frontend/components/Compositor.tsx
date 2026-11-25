@@ -207,7 +207,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
         </select>
       </label>
 
-      {original && <PoemaCard post={original} aninhado />}
+      {original && <PoemaCard post={original} aninhado semCritica />}
       {citadoRemovido && (
         <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
           poema removido pelo autor

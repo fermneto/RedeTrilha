@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
@@ -13,11 +13,13 @@ import {
   buscarPoema,
   buscarVersosComentados,
   caminhoDoLogin,
+  lerVersosDaUrl,
   mensagemDeFalha,
   temToken,
   type Post,
   type SelecaoDeVersos,
 } from "@/lib/api";
+import { textoSemMarcas } from "@/lib/marcas";
 
 export default function PoemaPage() {
   const router = useRouter();
@@ -29,6 +31,10 @@ export default function PoemaPage() {
   const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
   const [marcas, setMarcas] = useState<Map<number, number>>(new Map());
   const [verso, setVerso] = useState<number | null>(null);
+  // Versos pedidos por ?versos=2-4 (vindo de "comentar estes versos" num card):
+  // lidos uma vez, quando o poema chega, e passados uma vez aos versos.
+  const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
+  const leuAUrl = useRef(false);
 
   // Também chamado pela árvore depois de comentar ou apagar: o contador de
   // comentários do card e as marcas nos versos vêm do poema. A árvore se carrega sozinha.
@@ -56,6 +62,19 @@ export default function PoemaPage() {
       .then((eu) => setEuId(eu.id))
       .catch(() => setEuId(null));
   }, [carregarPoema, router]);
+
+  useEffect(() => {
+    if (!poema || leuAUrl.current) return;
+    leuAUrl.current = true;
+    const versos = new URLSearchParams(window.location.search).get("versos");
+    setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoComentado(poema))));
+  }, [poema]);
+
+  // Os versos aplicam o pedido no mesmo commit (o efeito do filho roda antes);
+  // depois ele se apaga, para não voltar quando o original reaparece após a tradução.
+  useEffect(() => {
+    if (pedida) setPedida(null);
+  }, [pedida]);
 
   const cabecalho = <CabecalhoPagina titulo="Poema" comoTitulo={false} />;
   if (erro)
@@ -89,9 +108,10 @@ export default function PoemaPage() {
               marcas={marcas}
               selecao={selecao}
               aoSelecionar={setSelecao}
-              aoComentar={() => {
+              selecaoPedida={pedida}
+              aoComentar={(suave) => {
                 const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
-                campo?.scrollIntoView({ behavior: "smooth", block: "center" });
+                campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
                 campo?.focus({ preventScroll: true });
               }}
               aoFiltrar={(n) => {

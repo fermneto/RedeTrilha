@@ -109,9 +109,10 @@ test("mensagem direta: o texto é puro e o poema compartilhado sai formatado no 
   assert.ok(conversa.includes("<textarea"));
   const enviar = readFileSync(new URL("../components/EnviarPorMensagem.tsx", import.meta.url), "utf8");
   assert.ok(!enviar.includes("TextoFormatado") && !enviar.includes("EditorDePoema"));
-  // O poema compartilhado é o PoemaCard, cujo corpo passa pelo TextoFormatado.
+  // O poema compartilhado é o PoemaCard, cujo corpo passa verso a verso pelo
+  // VersoFormatado (cada linha com o número dela, para a seleção de versos).
   assert.ok(conversa.includes("<PoemaCard post={mensagem.post} aninhado />"));
   const card = readFileSync(new URL("../components/PoemaCard.tsx", import.meta.url), "utf8");
-  assert.ok(card.includes("<TextoFormatado texto={cortar ? versos.slice(0, visiveis).join"));
+  assert.ok(card.includes("<span data-verso={i + 1}>\n              <VersoFormatado linha={linha} />"));
   assert.equal(html("**olha** este"), '<strong class="font-bold">olha</strong> este');
 });
