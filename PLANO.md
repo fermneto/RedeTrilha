@@ -551,6 +551,42 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
   o silêncio) e `ressincronizar`; um comentário `: batida` a cada 20 s. Sem
   gzip. O fan-out entre workers é por Postgres `LISTEN/NOTIFY`
   (`app/tempo_real.py`).
+  O mesmo stream traz o evento `aviso` (sem dados), dos avisos abaixo.
+
+### Avisos (dono: Neto, decisão 16)
+
+Tabela nova (nenhuma coluna em tabela existente): `avisos` (`destinatario_id`,
+`tipo`, `ator_id`, `post_id`, `renga_id`, `comentario_id`, `estrofe_id`,
+`lido`, `created_at`; índices `(destinatario_id, created_at, id)` e
+`(destinatario_id, lido)`). Uma linha por ação, gravada na mesma transação da
+ação, para cada destinatário; nunca para quem agiu, para conta sem login
+(consagrado) ou para quem tem bloqueio com quem agiu ou com o dono do alvo.
+
+| `tipo` | Quem recebe | Alvo |
+|---|---|---|
+| `curtida`, `repost` | o autor do poema (repost puro: o do original) | `post_id` do poema |
+| `citacao` | o autor do citado | `post_id` da citação |
+| `seguidor` | quem foi seguido | (o ator) |
+| `comentario`, `critica` (com âncora) | o autor do poema; na renga, o criador e todos os autores de estrofe (`critica`: só os das estrofes que os versos tocam) | `post_id` ou `renga_id`, `comentario_id` |
+| `resposta` | o autor do comentário respondido (e `comentario` ao autor do poema ou ao criador da renga) | idem |
+| `estrofe` | o criador e quem já escreveu na renga | `renga_id`, `estrofe_id` |
+| `convite` | os convidados (ao criar e em `POST /rengas/{id}/convites`) | `renga_id` |
+
+Desfazer apaga o aviso: descurtir, desfazer o repost, deixar de seguir, apagar o
+comentário (também quando vira o marcador) e apagar o poema (os avisos que
+apontam para ele e para os reposts puros dele).
+
+- `GET /avisos?cursor=&limit=` 🔒 → `AvisoPage` `{"items", "limit",
+  "proximo_cursor"}` de `AvisoOut` (`id`, `tipo`, `created_at`, `lido`,
+  `atores: UserOut[]` (os 2 mais recentes), `total_atores`, `post_id`,
+  `renga_id`, `comentario_id`, `titulo`, `trecho`, `verso_inicio`,
+  `verso_fim`). Curtidas do mesmo poema saem numa linha, e reposts também; a
+  linha vale pelo aviso mais recente (`id`, `created_at`), e `lido` só é `true`
+  se todos foram lidos. A mais recente primeiro. Os avisos de quem tem bloqueio
+  com quem lê ficam fora (bloqueio feito depois). Cursor malformado → 422.
+- `GET /avisos/resumo` 🔒 → `{"nao_lidos"}`: linhas com aviso não lido.
+- `POST /avisos/lidos` 🔒 `{"ate"}` (opcional) → 204: marca como lidos os
+  avisos até o id `ate` (sem ele, todos) e manda `aviso` às outras abas.
 
 ### Auth e saúde
 
