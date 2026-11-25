@@ -1,10 +1,12 @@
 "use client";
 // A landing do Verso, a porta de entrada sem login: em "/" (quando não há token) e
-// em /login. Duas colunas no desktop: à esquerda a marca, a frase e a vitrine (o
-// Verso mostrado por ele mesmo, LayoutDaEntradaVitrine.tsx); à direita o formulário
-// de entrar e o "Criar conta", com o topo alinhado ao do cartão da frente (de
-// 1280 px em diante). Abaixo disso empilha na ordem do DOM
-// (marca, formulário, vitrine), para o formulário aparecer logo na primeira tela.
+// em /login. Como a entrada do Instagram: a marca pequena no canto de cima e, no
+// meio da tela, a frase centralizada com a vitrine em leque embaixo
+// (LayoutDaEntradaVitrine.tsx) e, à direita, o cartão de entrar com o "Criar
+// conta", alinhado na vertical com o leque. Os dois blocos ficam juntos no centro
+// da largura, sem vão entre eles. Embaixo, o rodapé de largura total.
+// Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
+// única parte interativa é o formulário, então o foco segue a mesma ordem).
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -23,30 +25,29 @@ type Props = {
 export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
   return (
     <div className="flex min-h-dvh flex-col overflow-x-clip">
-      <main className="mx-auto grid w-full max-w-[70rem] flex-1 grid-cols-[minmax(0,1fr)] content-center gap-y-10 px-4 pt-12 pb-16 sm:px-6 xl:grid-cols-[minmax(0,1fr)_22rem] xl:[grid-template-areas:'marca_.''vitrine_entrar'] xl:gap-x-14 xl:gap-y-12 xl:py-14 2xl:max-w-[74rem] 2xl:gap-x-20">
-        <div className="xl:self-end xl:[grid-area:marca]">
-          <Link
-            href="/"
-            aria-label="Verso, início"
-            className="-mx-1 inline-block rounded-lg px-1 font-serifada text-6xl leading-none font-semibold italic tracking-tight lg:text-7xl"
-          >
-            <span aria-hidden="true">Verso</span>
-          </Link>
-          <h1 className="mt-4 text-[1.75rem] leading-tight font-semibold lg:mt-5 lg:text-[2.25rem] 2xl:text-[2.5rem]">
-            Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
-          </h1>
-        </div>
+      <Link
+        href="/"
+        aria-label="Verso, início"
+        className="mx-6 mt-6 self-start rounded-lg px-1 font-serifada text-[2rem] leading-none font-semibold italic tracking-tight lg:mx-10 lg:mt-10"
+      >
+        <span aria-hidden="true">Verso</span>
+      </Link>
 
-        <section aria-labelledby="titulo-entrar" className="w-full max-w-sm xl:mt-5 xl:max-w-none xl:self-start xl:[grid-area:entrar]">
+      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[auto_20rem] lg:content-center lg:justify-center lg:gap-x-10 lg:gap-y-10 lg:px-10 lg:pt-4 lg:[grid-template-areas:'frase_.''leque_entrar'] xl:grid-cols-[auto_22rem] xl:gap-x-20 2xl:gap-x-28">
+        <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
+          Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
+        </h1>
+
+        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:max-w-none lg:self-center lg:[grid-area:entrar]">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
-        <div className="pt-4 xl:self-start xl:pt-0 xl:[grid-area:vitrine]">
+        <div className="order-3 mt-14 flex justify-center lg:mt-0 lg:self-center lg:[grid-area:leque]">
           <Vitrine />
         </div>
       </main>
 
-      <footer className="px-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
+      <footer className="border-t border-borda px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
         © 2026 Verso
       </footer>
     </div>

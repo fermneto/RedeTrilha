@@ -1,15 +1,14 @@
 "use client";
-// A vitrine da landing: o Verso mostrado por ele mesmo, como na entrada do
-// Instagram, com o foco nos poemas e nas rengas. Na frente, um cartão no estilo do
-// PoemaCard do feed (foto com anel, selo de consagrado, o poema e as ações com os
-// contadores), com um verso grifado, a marca de críticas daquele verso e a barra
-// "comentar estes versos", o diferencial da rede; a curtida fica presa ao canto
-// dele. Ao lado, uma renga fechada no visual do RengaCard, e atrás do poema um
-// cartão recolhido, só de profundidade. Só textos de domínio público de
-// backend/data/consagrados/; os números são de exemplo.
+// A vitrine da landing: o Verso mostrado por ele mesmo, em leque, como as fotos da
+// entrada do Instagram. No centro, um cartão no estilo do PoemaCard do feed (foto
+// com anel, selo de consagrado, o poema e as ações com os contadores), com um
+// verso grifado, a marca de críticas daquele verso e a barra "comentar estes
+// versos", o diferencial da rede. Atrás, à esquerda, uma renga fechada no visual
+// do RengaCard; à direita, em espelho, um poema da Emily Dickinson. Só textos de
+// domínio público de backend/data/consagrados/; os números são de exemplo.
 //
-// As peças abrem em leque na entrada (globals.css, .vitrine-*), a partir da
-// posição final já visível; com prefers-reduced-motion, ficam paradas.
+// As peças abrem em leque a partir do centro (globals.css, .vitrine-*), já
+// visíveis desde o começo; com prefers-reduced-motion, ficam paradas.
 
 import { Fragment, useEffect, useRef, useState } from "react";
 
@@ -54,11 +53,23 @@ const ACOES = [
   { nome: "comentar", Icone: IconeComentar, n: 14, ativa: false },
 ];
 
-// O cartão de trás, recolhido atrás do poema: só dá profundidade.
-const DE_TRAS = {
-  autor: "Emily Dickinson",
+// O cartão de trás à direita, espelho da renga: as duas primeiras estrofes de
+// "Hope is the thing with feathers", como no seed.
+const DICKINSON = {
+  autor: {
+    id: 0,
+    username: "emily_dickinson",
+    name: "Emily Dickinson",
+    bio: "",
+    avatar_url: "",
+    consagrado: true,
+    nascimento: 1830,
+    morte: 1886,
+    created_at: "",
+  } satisfies User,
   titulo: "Hope is the thing with feathers",
-  texto: "HOPE is the thing with feathers\nThat perches in the soul,",
+  texto:
+    "HOPE is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.",
 };
 
 // Uma renga fechada de consagrados: cada estrofe é o começo de um poema do seed,
@@ -97,36 +108,33 @@ const RENGA = {
 
 const CARTAO = "rounded-2xl border border-borda bg-papel-alto sombra-de-papel";
 
-// Do tablet em diante, um palco: o poema à esquerda, na frente, com o cartão de
-// trás espiando por cima; a renga à direita, um pouco abaixo e inclinada. No
-// celular, os dois empilhados.
+// O leque, como as fotos da entrada do Instagram: o poema no centro, reto e à
+// frente; a renga atrás à esquerda e a Dickinson atrás à direita, em espelho
+// (85% da escala, ±6°, cerca de 37% para fora do cartão do centro, um pouco
+// esmaecidas). A curtida encavala no canto de baixo do cartão do centro. Abaixo
+// de 640 px fica só o cartão do centro; abaixo de 1024 px o leque todo em 80%, e
+// de 1536 px em diante, em 115%.
+// As medidas dos de trás: caixa de 20rem; com a escala, 17rem visíveis, e a
+// borda visível fica 6.3rem para fora da do centro (caixa a -7.8rem).
+const DE_TRAS = `vitrine-leque absolute top-1/2 hidden h-[25rem] w-[20rem] opacity-80 sm:flex sm:flex-col [--escala:0.85] [--y:calc(-50%_+_1rem)] ${CARTAO}`;
+
 export function Vitrine() {
   return (
-    <div className="relative mx-auto grid w-full max-w-[26rem] gap-8 md:mx-0 md:block xl:mx-auto md:h-[29rem] md:max-w-[42rem] 2xl:h-[31rem] 2xl:max-w-[44rem]">
-      <div
-        aria-hidden="true"
-        className={`vitrine-leque absolute top-0 left-4 hidden w-[16rem] px-5 py-4 md:block [--giro:-4deg] [--de:2rem] ${CARTAO}`}
-      >
-        <p className="text-[0.8125rem] font-semibold text-tinta-suave">{DE_TRAS.autor}</p>
-        <p lang="en" className="poema-titulo mt-1 text-base">
-          {DE_TRAS.titulo}
-        </p>
-        <p lang="en" className="poema-corpo mt-1 text-[0.9375rem] leading-relaxed">
-          {DE_TRAS.texto}
-        </p>
-      </div>
+    <div className="max-lg:[zoom:0.8] 2xl:[zoom:1.15]">
+      <div className="relative mx-auto w-[22rem] max-w-full">
+        <CartaoDaRenga />
+        <CartaoDaDickinson />
 
-      <div className="relative z-20 md:absolute md:top-5 md:left-0 md:w-[21.5rem] 2xl:w-[22.5rem]">
-        <CartaoDaFrente />
-        <span
-          aria-hidden="true"
-          className="vitrine-flutua absolute -top-5 -right-1 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-destaque text-papel sombra-de-papel [--giro:12deg] [--atraso:380ms] sm:-right-5"
-        >
-          <IconeCurtir cheio className="h-7 w-7" />
-        </span>
+        <div className="relative z-30">
+          <CartaoDaFrente />
+          <span
+            aria-hidden="true"
+            className="vitrine-flutua absolute -bottom-5 -left-5 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-destaque text-papel sombra-de-papel [--giro:-12deg] [--atraso:420ms] max-sm:-left-2"
+          >
+            <IconeCurtir cheio className="h-7 w-7" />
+          </span>
+        </div>
       </div>
-
-      <CartaoDaRenga />
     </div>
   );
 }
@@ -135,9 +143,7 @@ export function Vitrine() {
 // as estrofes com o autor embaixo e o rodapé com as estrofes e os comentários.
 function CartaoDaRenga() {
   return (
-    <figure
-      className={`vitrine-leque relative z-10 px-5 pt-3 pb-1 [--giro:3deg] [--de:-3rem] md:absolute md:top-14 md:right-0 md:w-[20rem] 2xl:w-[21rem] ${CARTAO}`}
-    >
+    <figure className={`${DE_TRAS} -left-[7.8rem] px-5 pt-3 pb-1 [--giro:-6deg] [--de:7rem]`}>
       <p className="mb-1 flex items-center gap-2 text-[0.8125rem] font-semibold text-tinta-suave">
         <IconeRenga className="h-4 w-4 shrink-0" />
         renga
@@ -158,7 +164,7 @@ function CartaoDaRenga() {
         ))}
       </figcaption>
 
-      <ol aria-label="estrofes" className="mt-3 space-y-3">
+      <ol aria-label="estrofes" className="mt-3 space-y-2.5">
         {RENGA.estrofes.map(({ autor, texto }) => (
           <li key={autor.username}>
             <p className="poema-corpo text-[0.9375rem] leading-relaxed">{texto}</p>
@@ -171,7 +177,7 @@ function CartaoDaRenga() {
         ))}
       </ol>
 
-      <p aria-hidden="true" className="mt-1 flex items-center gap-x-3 text-sm">
+      <p aria-hidden="true" className="mt-auto flex items-center gap-x-3 text-sm">
         <span className="text-xs text-tinta-suave tabular-nums">
           {RENGA.estrofes.length} de {RENGA.limite} estrofes
         </span>
@@ -181,6 +187,37 @@ function CartaoDaRenga() {
         </span>
       </p>
     </figure>
+  );
+}
+
+// O espelho da renga, no visual do PoemaCard, sem números.
+function CartaoDaDickinson() {
+  return (
+    <div aria-hidden="true" className={`${DE_TRAS} -right-[7.8rem] px-5 pt-4 pb-1 [--giro:6deg] [--de:-7rem]`}>
+      <div className="flex items-center gap-3">
+        <Avatar usuario={DICKINSON.autor} tamanho="m" />
+        <div className="min-w-0 text-[0.9375rem] leading-5">
+          <p className="flex items-center gap-1 font-bold">
+            {DICKINSON.autor.name}
+            <SeloConsagrado usuario={DICKINSON.autor} />
+          </p>
+          <p className="truncate text-tinta-suave">@{DICKINSON.autor.username}</p>
+        </div>
+      </div>
+      <p lang="en" className="poema-titulo mt-3 text-lg">
+        {DICKINSON.titulo}
+      </p>
+      <p lang="en" className="poema-corpo mt-1 text-[0.9375rem] leading-relaxed">
+        {DICKINSON.texto}
+      </p>
+      <div className="-ml-3 mt-auto flex max-w-xs justify-between text-tinta-suave">
+        {[IconeCurtir, IconeRepostar, IconeCitar, IconeComentar].map((Icone, i) => (
+          <span key={i} className="flex h-11 w-11 items-center justify-center">
+            <Icone className="h-5 w-5" />
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
