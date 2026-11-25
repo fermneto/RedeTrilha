@@ -1,13 +1,10 @@
-"""Comentários em árvore, carregados como no X.
+"""Comentários em árvore nos poemas, carregados como no X.
 
 Uma página traz as respostas diretas (ao poema ou a um comentário) em ordem
-cronológica, paginadas por cursor, e abaixo de cada uma as primeiras
-`PREVIA_RESPOSTAS` respostas, recursivamente com o mesmo corte. O resto se
-carrega em `GET /comentarios/{id}/respostas`.
-
-Queries por página: uma para a página, uma para o total, uma por nível da
-prévia (ROW_NUMBER por pai, até 3 por pai) e uma para os totais de respostas
-de tudo o que foi carregado. Nenhuma por comentário (sem N+1).
+cronológica, paginadas por cursor, e abaixo de cada uma a prévia das primeiras
+respostas; o resto se carrega em `GET /comentarios/{id}/respostas`. A
+paginação, a prévia e o apagar são os mesmos dos comentários de renga e moram
+em services/arvore_de_comentarios.py (queries por página e sem N+1 lá).
 
 Bloqueio (services/bloqueios.py): os comentários de quem tem bloqueio com o autor
 do poema ficam escondidos para todos, como se tivessem sido apagados: com
@@ -17,11 +14,10 @@ na leitura (`ocultos`), sem mexer no banco: desbloquear os traz de volta.
 """
 
 from fastapi import HTTPException
-from sqlalchemy import and_, delete, exists, func, or_, select, true
-from sqlalchemy.orm import Session, aliased
+from sqlalchemy import and_
+from sqlalchemy.orm import Session
 from sqlalchemy.sql import ColumnElement
 
-from app.core import arvore_comentarios
 from app.models.comentario import Comentario
 from app.models.post import Post
 from app.models.user import User
@@ -35,10 +31,8 @@ from app.schemas.comentario import (
 )
 from app.schemas.user import UserOut
 from app.services import ancoras, bloqueios
-from app.services.cursor import codificar_cursor, ler_cursor
+from app.services import arvore_de_comentarios as arvore
 from app.services.posts import buscar, original_de, original_para_interagir
-
-PREVIA_RESPOSTAS = 3
 
 
 def comentar(
@@ -102,37 +96,17 @@ def respostas_do_comentario(
     _, ocultos = _poema_visivel(db, usuario, buscar(db, comentario.post_id))
     if comentario.autor_id in ocultos and not comentario.removido:
         # Escondido sem respostas não existe; com respostas, elas continuam.
-        _buscar_visivel(db, comentario_id, ocultos)
+        arvore.buscar_visivel(db, Comentario, comentario_id, ocultos)
     filtro = Comentario.parent_id == comentario_id
     return _pagina(db, filtro, comentario_id, limit, cursor, ocultos)
 
 
 def apagar(db: Session, usuario: User, comentario_id: int) -> ComentarioApagadoOut:
-    """Só o autor. Com respostas, vira marcador (texto vazio, `removido`).
-
-    Sem respostas, sai do banco. Devolve qual dos dois aconteceu e o total de
-    respostas, que pode ser maior que o da tela (alguém respondeu depois).
-    Um marcador já removido continua como marcador para sempre (decisão do
-    Neto): apagar de novo não faz nada.
-    """
+    """Só o autor; ver `arvore_de_comentarios.apagar`. Sem respostas, a âncora sai junto."""
     comentario = _buscar(db, comentario_id)
-    if comentario.autor_id != usuario.id:
-        raise HTTPException(status_code=403, detail="só o autor pode apagar o comentário")
-    total = db.scalar(
-        select(func.count()).select_from(Comentario).where(Comentario.parent_id == comentario_id)
+    return arvore.apagar(
+        db, Comentario, usuario, comentario, lambda id_: ancoras.apagar(db, [id_])
     )
-    if comentario.removido:
-        return ComentarioApagadoOut(resultado="removido", total_respostas=total)
-    if total == 0:
-        ancoras.apagar(db, [comentario_id])
-        db.execute(delete(Comentario).where(Comentario.id == comentario_id))
-        resultado = "apagado"
-    else:
-        comentario.texto = ""
-        comentario.removido = True
-        resultado = "removido"
-    db.commit()
-    return ComentarioApagadoOut(resultado=resultado, total_respostas=total)
 
 
 def _buscar(db: Session, comentario_id: int) -> Comentario:
@@ -148,24 +122,6 @@ def _poema_visivel(db: Session, usuario: User, poema: Post) -> tuple[Post, set[i
     return poema, bloqueios.ids_com_bloqueio(db, poema.autor_id)
 
 
-def _visivel(ocultos: set[int]) -> ColumnElement[bool]:
-    """O comentário aparece: não é de `ocultos` ou tem respostas (aí vira o marcador)."""
-    if not ocultos:
-        return true()
-    resposta = aliased(Comentario)
-    return or_(
-        Comentario.autor_id.not_in(ocultos),
-        exists().where(resposta.parent_id == Comentario.id),
-    )
-
-
-def _buscar_visivel(db: Session, comentario_id: int, ocultos: set[int]) -> Comentario:
-    comentario = db.scalar(select(Comentario).where(Comentario.id == comentario_id, _visivel(ocultos)))
-    if comentario is None:
-        raise HTTPException(status_code=404, detail="comentário não encontrado")
-    return comentario
-
-
 def _pagina(
     db: Session,
     filtro: ColumnElement[bool],
@@ -174,92 +130,17 @@ def _pagina(
     cursor: str | None,
     ocultos: set[int],
 ) -> ComentarioPage:
-    """Respostas diretas que casam com `filtro`, mais antigas primeiro, e as prévias."""
-    filtro = and_(filtro, _visivel(ocultos))
-    consulta = select(Comentario).where(filtro)
-    if cursor is not None:
-        data, id_ = ler_cursor(cursor)
-        consulta = consulta.where(
-            or_(
-                Comentario.created_at > data,
-                and_(Comentario.created_at == data, Comentario.id > id_),
-            )
-        )
-    linhas = list(
-        db.scalars(consulta.order_by(Comentario.created_at, Comentario.id).limit(limit + 1))
-    )
-    pagina, tem_mais = linhas[:limit], len(linhas) > limit
-    carregados = pagina + _previas(db, [c.id for c in pagina], ocultos)
-    totais = _totais_de_respostas(db, [c.id for c in carregados], ocultos)
-    ancoras_da_pagina = ancoras.das_saidas(db, carregados)
-    nos = arvore_comentarios.montar(
-        [(c.id, c.parent_id, c.created_at, c) for c in carregados], raiz=raiz
-    )
-    ultimo = pagina[-1] if pagina else None
-    return ComentarioPage(
-        items=[_saida_do_no(no, totais, ancoras_da_pagina, ocultos) for no in nos],
-        total=db.scalar(select(func.count()).select_from(Comentario).where(filtro)) or 0,
-        limit=limit,
-        proximo_cursor=(
-            codificar_cursor(ultimo.created_at, ultimo.id) if ultimo and tem_mais else None
-        ),
-    )
-
-
-def _previas(db: Session, pais: list[int], ocultos: set[int]) -> list[Comentario]:
-    """As primeiras PREVIA_RESPOSTAS respostas de cada pai, uma query por nível."""
-    carregados: list[Comentario] = []
-    while pais:
-        posicao = (
-            func.row_number()
-            .over(
-                partition_by=Comentario.parent_id,
-                order_by=(Comentario.created_at, Comentario.id),
-            )
-            .label("posicao")
-        )
-        primeiras = (
-            select(Comentario.id, posicao)
-            .where(Comentario.parent_id.in_(pais), _visivel(ocultos))
-            .subquery()
-        )
-        nivel = list(
-            db.scalars(
-                select(Comentario)
-                .join(primeiras, primeiras.c.id == Comentario.id)
-                .where(primeiras.c.posicao <= PREVIA_RESPOSTAS)
-            )
-        )
-        carregados += nivel
-        pais = [c.id for c in nivel]
-    return carregados
-
-
-def _totais_de_respostas(db: Session, ids: list[int], ocultos: set[int]) -> dict[int, int]:
-    if not ids:
-        return {}
-    linhas = db.execute(
-        select(Comentario.parent_id, func.count())
-        .where(Comentario.parent_id.in_(ids), _visivel(ocultos))
-        .group_by(Comentario.parent_id)
-    )
-    return dict(linhas.all())
-
-
-def _saida_do_no(
-    no: arvore_comentarios.No,
-    totais: dict[int, int],
-    ancoras_da_pagina: dict[int, AncoraOut],
-    ocultos: set[int],
-) -> ComentarioOut:
-    respostas = [_saida_do_no(filho, totais, ancoras_da_pagina, ocultos) for filho in no.respostas]
-    escondido = no.payload.autor_id in ocultos
-    return _para_saida(
-        no.payload,
-        totais.get(no.id, 0),
-        respostas,
-        None if escondido else ancoras_da_pagina.get(no.id),
-        escondido,
+    return arvore.pagina(
+        db,
+        Comentario,
+        filtro,
+        raiz,
+        limit,
+        cursor,
+        ocultos,
+        lambda carregados: ancoras.das_saidas(db, carregados),
+        _para_saida,
+        ComentarioPage,
     )
 
 

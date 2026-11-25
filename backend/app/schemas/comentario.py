@@ -8,7 +8,7 @@ from app.schemas.user import UserOut
 
 class AncoraCreate(BaseModel):
     """Os versos criticados, base 1, contando as linhas de `texto.split("\\n")`
-    do poema (linhas em branco incluídas). O service valida o intervalo."""
+    do poema ou da renga (linhas em branco incluídas). O service valida o intervalo."""
 
     verso_inicio: int
     verso_fim: int
@@ -37,24 +37,37 @@ class ComentarioCreate(BaseModel):
         return texto
 
 
-class ComentarioOut(BaseModel):
-    """Um comentário com a prévia das respostas.
+class _ComentarioBase(BaseModel):
+    """O comum aos comentários de poema e de renga.
 
-    `respostas` traz só as primeiras (ver `PREVIA_RESPOSTAS` no service);
-    `total_respostas` conta todas as respostas diretas. Removido: texto vazio
-    e `autor` null.
+    `respostas` (nas subclasses) traz só as primeiras (ver `PREVIA_RESPOSTAS`
+    em services/arvore_de_comentarios.py); `total_respostas` conta todas as
+    respostas diretas. Removido: texto vazio e `autor` null.
     """
 
     id: int
-    post_id: int
     texto: str
     autor: UserOut | None
     parent_id: int | None
     created_at: datetime
     removido: bool = False
     total_respostas: int = 0
-    respostas: list["ComentarioOut"] = []
     ancora: AncoraOut | None = None
+
+
+class ComentarioOut(_ComentarioBase):
+    """Um comentário num poema com a prévia das respostas."""
+
+    post_id: int
+    respostas: list["ComentarioOut"] = []
+
+
+class ComentarioRengaOut(_ComentarioBase):
+    """Um comentário numa renga, com a prévia das respostas; a âncora conta os
+    versos do texto da renga (services/rengas.texto_de)."""
+
+    renga_id: int
+    respostas: list["ComentarioRengaOut"] = []
 
 
 class ComentarioPage(BaseModel):
@@ -64,6 +77,15 @@ class ComentarioPage(BaseModel):
     """
 
     items: list[ComentarioOut]
+    total: int
+    limit: int
+    proximo_cursor: str | None = None
+
+
+class ComentarioRengaPage(BaseModel):
+    """A `ComentarioPage` dos comentários de uma renga."""
+
+    items: list[ComentarioRengaOut]
     total: int
     limit: int
     proximo_cursor: str | None = None

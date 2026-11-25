@@ -10,6 +10,7 @@ marcas dos versos citados.
 """
 
 from collections import Counter
+from collections.abc import Iterable
 
 from fastapi import HTTPException
 from sqlalchemy import delete, select
@@ -32,12 +33,14 @@ def trecho_de(texto: str, inicio: int, fim: int) -> str:
     return "\n".join(texto.split("\n")[inicio - 1 : fim])
 
 
-def validar(texto: str, parent_id: int | None, dados: AncoraCreate) -> None:
-    """422 se a âncora não vale neste poema."""
+def validar(
+    texto: str, parent_id: int | None, dados: AncoraCreate, alvo: str = "poema"
+) -> None:
+    """422 se a âncora não vale neste texto (o do poema ou o da renga, `alvo`)."""
     if parent_id is not None:
         raise HTTPException(
             status_code=422,
-            detail="só comentários direto no poema citam versos; a resposta herda o trecho do pai",
+            detail=f"só comentários direto no {alvo} citam versos; a resposta herda o trecho do pai",
         )
     total = len(texto.split("\n"))
     if dados.verso_inicio > dados.verso_fim:
@@ -46,7 +49,7 @@ def validar(texto: str, parent_id: int | None, dados: AncoraCreate) -> None:
         )
     if dados.verso_inicio < 1 or dados.verso_fim > total:
         raise HTTPException(
-            status_code=422, detail=f"o poema tem {total} versos; escolha entre o 1 e o {total}"
+            status_code=422, detail=f"o {alvo} tem {total} versos; escolha entre o 1 e o {total}"
         )
     if not texto_sem_marcas(trecho_de(texto, dados.verso_inicio, dados.verso_fim)).strip():
         raise HTTPException(status_code=422, detail="o trecho escolhido está em branco")
@@ -115,6 +118,11 @@ def versos_comentados(db: Session, post: Post, ocultos: set[int]) -> VersosComen
         .join(Comentario, Comentario.id == AncoraComentario.comentario_id)
         .where(Comentario.post_id == post.id, Comentario.autor_id.not_in(ocultos))
     )
+    return contar_versos(intervalos)
+
+
+def contar_versos(intervalos: Iterable[tuple[int, int]]) -> VersosComentadosOut:
+    """Quantos intervalos (início, fim) cobrem cada verso; serve a poemas e rengas."""
     contagem: Counter[int] = Counter()
     for inicio, fim in intervalos:
         contagem.update(range(inicio, fim + 1))
