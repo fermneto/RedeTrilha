@@ -589,6 +589,27 @@ apontam para ele e para os reposts puros dele).
 - `POST /avisos/lidos` 🔒 `{"ate"}` (opcional) → 204: marca como lidos os
   avisos até o id `ate` (sem ele, todos) e manda `aviso` às outras abas.
 
+### Cartão de compartilhamento (dono: Neto, #160)
+
+Leituras **sem login**, só com o mínimo do cartão do link (imagem Open Graph e
+metadados, `frontend/lib/cartaoServidor.tsx`). As rotas de sempre continuam 🔒.
+Todas com `Cache-Control: public, max-age=300` no 200; nada de curtidas,
+comentários, seguidores nem dado de quem pede. `versos` são as 12 primeiras
+linhas sem marcas de formatação, a partir do primeiro verso não vazio, e
+`continua` diz se o texto segue. `autor` = `{"username", "name", "consagrado",
+"nascimento", "morte"}`.
+
+- `GET /cartoes/poema/{id}` → `{"id", "titulo", "versos", "continua", "idioma",
+  "autor"}`. Repost puro → o original; poema apagado ou inexistente → 404
+  (rascunho não é post: nunca aparece).
+- `GET /cartoes/usuario/{username}` → `autor` + `{"bio", "avatar_url",
+  "poemas"}`; usuário inexistente → 404.
+- `GET /cartoes/renga/{id}` → `{"id", "titulo", "autores", "versos",
+  "continua"}`, aberta ou de convidados (o modo diz quem escreve, não quem lê).
+- `GET /cartoes/antologia/{id}` → `{"id", "nome", "descricao", "dono", "qtd",
+  "poemas": [{"titulo", "primeiro_verso", "autor"}]}` (os 4 primeiros);
+  privada → 404 para todo mundo.
+
 ### Auth e saúde
 
 - `POST /auth/registro` → 201 `UserOut`; `POST /auth/login` → `{"token"}`

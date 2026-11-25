@@ -229,10 +229,16 @@ PRs, na seção "Decisões do Neto".
     as quebras e os recuos, o autor e o selo do consagrado; o do perfil, da
     renga e da antologia trazem nome, autores e começo. Poema em árabe, persa
     ou hebraico mostra só o título legível, a língua e o autor, porque o
-    gerador de imagem não junta as letras dessas escritas. Antologia privada e
-    renga de convidados ficam com o cartão padrão. Hoje a API pede login para
-    ler poema, perfil, renga e antologia, então o cartão que sai no ar é o
-    padrão (com o @ no perfil) até essas leituras ficarem públicas.
+    gerador de imagem não junta as letras dessas escritas. A renga de
+    convidados tem cartão como as outras, porque o modo restringe quem
+    escreve, não quem lê; a antologia privada fica com o cartão padrão, sem
+    revelar que existe.
+  - **Uma rota pública só para o cartão** (decisão do Neto): as páginas do
+    poema, do perfil, da renga e da antologia continuam pedindo login, e o
+    cartão lê `GET /cartoes/...`, sem login, que devolve só o que ele mostra
+    (título, autor, os primeiros versos sem marcas, a bio e o número de
+    poemas), com cache público de 5 minutos. Nada de curtidas, comentários,
+    seguidores ou rascunhos; antologia privada e poema apagado dão 404.
 - **O que cortamos e por quê:** cartões, gradientes e imagens no feed. O poema
   fica sobre o papel, separado por filetes, e a cor de destaque aparece só nas
   ações.
@@ -809,6 +815,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Avisos | Neto | Quem escreve fica sabendo da crítica, da resposta e da estrofe nova, e volta para continuar a conversa. |
 | Mensagens diretas | Neto | Combinar uma renga ou mandar um poema a alguém sem sair do Verso, com a crítica continuando pública. |
 | Negrito, itálico, sublinhado e tachado no compositor | Neto | O poeta marca a palavra como no Google Docs, e o poema continua texto, com os mesmos versos. |
+| Ícone e cartão de compartilhamento | Neto | O link do poema no WhatsApp ou no X já mostra o título, os primeiros versos e o autor. |
 | Deploy (Vercel + VM da Oracle com API e Postgres) | Neto | A banca usa a rede na URL pública, e os dados não somem: backup diário no Object Storage. |
 
 ## Uma escolha técnica
