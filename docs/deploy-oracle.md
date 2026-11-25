@@ -36,6 +36,39 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 > `.gitignore`. Nunca cole a `POSTGRES_PASSWORD`, as chaves do Object Storage,
 > a `ANTHROPIC_API_KEY` ou o `SENTRY_DSN` em arquivo versionado, issue ou PR.
 
+## Checklist de progresso
+
+Marque conforme for fazendo. A conta da Oracle pode levar de minutos a um dia
+para liberar a VM (capacidade ou upgrade, passo 3): o bloco **A** não depende
+dela e pode ser feito em paralelo enquanto se espera.
+
+**A. Em paralelo, sem a VM**
+
+- [ ] Conta da Oracle criada, Home Region escolhida (passo 2)
+- [ ] (Se for fazer o upgrade) Budget de US$ 1 com alerta por e-mail, e o upgrade para Pay As You Go pedido (passo 3, "Out of capacity")
+- [ ] Bucket `verso-backups`, namespace anotado e Customer Secret Key gerada (passo 11, itens 1 a 3)
+- [ ] Chave da Anthropic num workspace só da demo, com limite de gasto (passo 1)
+- [ ] Repo importado na Vercel com Root Directory `frontend`, ainda sem `NEXT_PUBLIC_API_URL` (passo 9; o primeiro build pode sair apontando para `localhost`, tudo bem)
+- [ ] Contas criadas no UptimeRobot e no Sentry (passo 10; os monitores e o DSN entram depois)
+
+**B. Depende da VM**
+
+- [ ] VM criada, com IP público, e SSH funcionando (passo 3)
+- [ ] Portas 80 e 443 abertas na Security List e no `iptables` (passo 4)
+- [ ] Docker instalado (passo 5)
+- [ ] Domínio apontando para o IP (passo 6)
+- [ ] `.env` preenchido (passo 7)
+- [ ] `docker compose up -d --build` e os testes com `curl` (passo 8)
+- [ ] `NEXT_PUBLIC_API_URL` na Vercel, Redeploy, e o `CORS_ORIGINS` com o domínio da Vercel (passo 9)
+- [ ] Monitores do UptimeRobot e `SENTRY_DSN` no `.env` (passo 10)
+- [ ] Primeiro backup enviado ao Object Storage e teste de restauração ok (passo 11 e "Restaurar um backup")
+- [ ] Avisar o time para rodar o teste de carga contra a URL pública (`backend/scripts/carga.py`, "Workers e pool")
+
+**Plano B.** Se a VM não sair a tempo da entrega, o caminho Render + Supabase
+do [`docs/deploy.md`](deploy.md) continua valendo: menos passos, mas aguenta
+menos carga (0,1 CPU, 1 worker) e hiberna depois de 15 minutos sem tráfego.
+Os itens da Anthropic e da Vercel do bloco A servem para os dois caminhos.
+
 ## Sumário
 
 1. [Chave da Anthropic e região](#passo-1-chave-da-anthropic-e-região)
@@ -66,8 +99,11 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
   Sem ela, só a tradução fica fora (503).
 - A **região** da VM: como a API e o banco ficam juntos, o que pesa é a
   distância até quem usa a rede. Para a banca e os colegas no Brasil, **Brazil
-  East (São Paulo)**. O front na Vercel é servido pela CDN e chama a API direto
-  do navegador.
+  East (São Paulo)**, `sa-saopaulo-1`. O front na Vercel é servido pela CDN e
+  chama a API direto do navegador.
+- São Paulo tem **um único availability domain** (AD-1): quando falta
+  capacidade de ARM lá, não há outro AD para tentar (passo 3, "Out of
+  capacity").
 
 ## Passo 2: conta Always Free na Oracle
 
@@ -75,41 +111,72 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
 2. Preencha nome, e-mail e país. A Oracle pede um **cartão de crédito** só para
    verificar a identidade (faz uma pré-autorização pequena que é estornada). No
    plano Free Tier nada é cobrado: recursos pagos ficam bloqueados.
-3. **Home Region:** escolha com cuidado, porque **não dá para mudar depois** e
-   as VMs ARM gratuitas só podem ser criadas nela. Use a região do passo 1.
+3. **Home Region:** escolha com cuidado, porque ela é **permanente** (não dá
+   para mudar depois) e as VMs ARM gratuitas só podem ser criadas nela. Use a
+   região do passo 1 (Brazil East, São Paulo).
 4. Espere o e-mail "Your Oracle Cloud account is ready" (de minutos a algumas
    horas) e entre em [cloud.oracle.com](https://cloud.oracle.com).
 
 ## Passo 3: criar a VM ARM (Ampere A1)
+
+### 3a. Criar a rede antes (VCN Wizard)
+
+Criando a rede pela tela da VM ("Create new virtual cloud network" + "Create
+new public subnet"), a chave **"Automatically assign public IPv4 address"**
+fica desligada e travada, com o aviso *"You must select a public subnet"*. Sem
+IP público, a VM fica inalcançável. Por isso, crie a rede primeiro:
+
+1. Menu ☰ → **Networking** → **Virtual cloud networks** → **Actions** →
+   **Start VCN Wizard**.
+2. Escolha **Create VCN with Internet Connectivity** → **Start VCN Wizard**.
+3. **VCN name:** `verso-vcn`; o resto no padrão (ele cria a public subnet, a
+   private subnet, o Internet Gateway e as rotas) → **Next** → **Create**.
+
+### 3b. Criar a VM
 
 1. Menu ☰ → **Compute** → **Instances** → **Create instance**.
 2. Preencha:
 
    ```text
    Name:                 verso-api
-   Placement:            (o availability domain que vier; se faltar capacidade, troque, ver abaixo)
+   Placement:            AD-1 (São Paulo só tem este); sem fault domain
    Image:                Change image → Ubuntu → Canonical Ubuntu 24.04 (a versão aarch64 vem sozinha)
-   Shape:                Change shape → Ampere → VM.Standard.A1.Flex
-     OCPUs:              4          (o máximo grátis: 4 no total da conta)
-     Memory (GB):        24         (o máximo grátis: 24 no total da conta)
-   Networking:           Create new virtual cloud network (padrão) + Create new public subnet
-                         Assign a public IPv4 address: Yes
+   Shape:                Change shape → Ampere → marque a linha VM.Standard.A1.Flex
+     Number of OCPUs:            4     (o Always Free dá até 4 OCPU no total de A1)
+     Amount of memory (GB):      24    (e até 24 GB no total)
+                         → Select shape
+   Security:             Shielded instance e Confidential computing: pode deixar desligado
+   Networking:           Select existing virtual cloud network → verso-vcn
+                         Subnet: a public subnet (public subnet-verso-vcn)
+                         Automatically assign public IPv4 address: ligado (agora a chave libera)
+                         Network security groups: desmarcado (usamos a Security List, passo 4)
    Add SSH keys:         Generate a key pair for me → Download private key (e a pública)
-   Boot volume:          padrão (cerca de 47 GB; o grátis é até 200 GB no total)
+                         BAIXE A CHAVE PRIVADA ANTES DE CRIAR: ela não aparece de novo
+   Storage:              Boot volume → Specify a custom boot volume size → 100 GB
+                         VPU: 10 (Balanced)
+                         Use in-transit encryption: ligado
+                         Encryption: chaves gerenciadas pela Oracle
+                         Block volumes: nenhum
    ```
 
    O selo **"Always Free-eligible"** deve aparecer ao lado do shape e da
    imagem. Se não aparecer, algo saiu do gratuito.
 
-   4 OCPU e 24 GB é todo o gratuito A1 numa VM só (não sobra nada para outra
-   VM): com a API e o Postgres juntos, é o que fecha a meta de p95 abaixo de
-   1 s até sem pausa entre os cliques ([Workers e pool](#workers-e-pool)).
-   Com 2 OCPU e 12 GB a meta fecha com gente navegando, mas não sem pausa.
+   4 OCPU e 24 GB podem ser **uma VM só, gratuita**: é todo o A1 do Always
+   Free (não sobra nada para outra VM). Com a API e o Postgres juntos, é o que
+   fecha a meta de p95 abaixo de 1 s até sem pausa entre os cliques
+   ([Workers e pool](#workers-e-pool)). Se não houver capacidade, peça 2 OCPU
+   e 12 GB (a meta fecha com gente navegando, não sem pausa) ou 1 OCPU e 6 GB,
+   e aumente depois (abaixo). O boot volume de 100 GB cabe nos 200 GB grátis
+   e sobra espaço para os backups e as imagens do Docker.
 3. **Create**. Em um ou dois minutos o estado fica **Running**. Anote o
    **Public IPv4 address** (ex.: `129.146.10.20`).
 
    IP público da VM: `___.___.___.___`   **<<< ANOTE AQUI**
 
+   Se a VM saiu sem IP público (criada antes do passo 3a): Instance →
+   **Attached VNICs** → a VNIC → **IPv4 Addresses** → no IP privado, **⋮** →
+   **Edit** → **Public IP type: Ephemeral public IP** → **Update**.
 4. Guarde a chave privada (`ssh-key-AAAA-MM-DD.key`) fora do repositório e
    entre na VM:
 
@@ -118,21 +185,51 @@ credenciais nos lugares marcados com **`<<< COLE AQUI`**.
    ssh -i ~/Downloads/ssh-key-*.key ubuntu@<IP-PUBLICO>
    ```
 
-**"Out of capacity for shape VM.Standard.A1.Flex"** é comum, principalmente em
-Ashburn e São Paulo. O que fazer, nesta ordem:
+**Aumentar a VM depois** (criou com 1/6 ou 2/12): Instance → **Edit** →
+**Shape** → **Change shape** → 4 OCPU e 24 GB → **Save changes**. A VM
+reinicia e não perde nada: o disco, o IP e os volumes do Docker ficam.
+Enquanto a VM for menor, reduza a memória do Postgres no `.env` ([Disco e
+memória](#disco-e-memória-da-vm)).
 
-1. Troque o **availability domain** (AD-1, AD-2, AD-3, quando a região tiver
-   mais de um) e tente de novo.
-2. Peça menos: **1 OCPU e 6 GB** costuma achar vaga. Suba com ela e
-   redimensione depois, quando houver capacidade: Instance → **Edit** → **Edit
-   shape** → 4 OCPU e 24 GB → **Save changes** (a VM reinicia; o disco, o IP e
-   os volumes do Docker ficam). Enquanto a VM for menor, reduza a memória do
-   Postgres no `.env` ([Disco e memória](#disco-e-memória-da-vm)).
-3. Tente em outro horário (madrugada e fim de semana costumam ter vaga).
-4. Fazer o **upgrade para Pay As You Go** (Billing → Upgrade) quase sempre
-   resolve a falta de capacidade e continua sem custo enquanto você ficar
-   dentro dos limites Always Free. Ele exige cuidado: um recurso fora do
-   gratuito passa a ser cobrado. **Decisão sua.**
+### "Out of capacity for shape VM.Standard.A1.Flex in availability domain AD-1"
+
+É comum, principalmente em São Paulo (um AD só) e Ashburn. O que fazer:
+
+1. **Peça uma shape menor**: 2 OCPU / 12 GB, ou 1 OCPU / 6 GB, que costuma
+   achar vaga. Aumente depois (acima).
+2. **Tente em outros horários** (madrugada e fim de semana costumam ter vaga).
+   Não escolha fault domain: deixe a Oracle escolher.
+3. **O mais eficaz: upgrade para Pay As You Go.** Contas pagas têm prioridade
+   de capacidade, e o que está no Always Free continua sem custo: A1 até
+   4 OCPU / 24 GB, 200 GB de disco, 20 GB de Object Storage e 10 TB/mês de
+   tráfego de saída. O upgrade também tira a regra de recolher VMs ociosas
+   ([abaixo](#a-oracle-pode-recolher-vms-ociosas)).
+
+   **Antes do upgrade, crie um alerta de gasto:** Menu ☰ → **Billing & Cost
+   Management** → **Budgets** → **Create Budget**:
+
+   ```text
+   Name:              verso-alerta
+   Target:            Compartment (o root)
+   Budget amount:     1        (US$ 1 por mês)
+   Threshold metric:  Actual Spend
+   Threshold:         Percentage of budget: 1
+   Email recipients:  o seu e-mail
+   ```
+
+   Qualquer gasto real, de qualquer centavo, gera um e-mail.
+
+   Depois: **Billing & Cost Management** → **Upgrade and Manage Payment** →
+   **Pay As You Go**. O upgrade leva de minutos a horas (às vezes até 24 h).
+   Acompanhe na mesma página: o estado passa de **"Upgrade in progress"** para
+   **"Pay As You Go"**. Se passar de um dia, abra um chamado no suporte
+   (Help → **Create support request**). Enquanto espera, adiante o bloco A do
+   [checklist](#checklist-de-progresso).
+
+   **Com a conta paga, não crie** o que cobraria: outras shapes (qualquer coisa
+   além de VM.Standard.A1.Flex e das micro E2), discos que passem de 200 GB no
+   total ou com VPU acima de 10, e Object Storage acima de 20 GB. O selo
+   "Always Free-eligible" na tela de criação ajuda a conferir.
 
 ## Passo 4: abrir as portas 80 e 443
 
@@ -472,7 +569,7 @@ O que foi publicado depois do dump se perde: faça antes um
 
 ## Disco e memória da VM
 
-O boot volume grátis tem uns 47 GB, e nele moram o sistema, as imagens do
+O boot volume do passo 3 tem 100 GB (o padrão seria uns 47 GB), e nele moram o sistema, as imagens do
 Docker, o banco (`pgdata`), os backups locais (`backups`) e os logs (no
 máximo 50 MB por serviço). O banco e os backups do seed somam menos de 100 MB.
 
@@ -600,8 +697,8 @@ Como evitar:
 - O ping do UptimeRobot **não basta** para passar de 20%; ele só avisa se a
   API cair.
 - O jeito garantido é o **upgrade para Pay As You Go**: contas pagas não têm a
-  regra de ociosidade, e o que é Always Free continua grátis. **Decisão sua**
-  (ver o aviso no passo 3).
+  regra de ociosidade, e o que é Always Free continua grátis (passo 3, "Out of
+  capacity": crie o Budget antes).
 - Sem upgrade, confira o e-mail da Oracle e o painel da instância de tempos em
   tempos, e religue se ela parar.
 
