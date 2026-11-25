@@ -121,7 +121,7 @@ export default function ConversaPage() {
         if (ultimaId.current > 0) void buscarNovas().catch(() => undefined);
         return;
       }
-      if (evento.conversa_id !== id) return;
+      if (evento.tipo === "aviso" || evento.conversa_id !== id) return;
       if (evento.tipo === "mensagem" || evento.tipo === "pedido") {
         void buscarNovas()
           .then((novas) => {

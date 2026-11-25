@@ -62,7 +62,8 @@ function Caixa() {
       .then((eu) => setEuId(eu.id))
       .catch(() => undefined);
     recarregar();
-    const cancelar = ouvirMensagens(() => {
+    const cancelar = ouvirMensagens((evento) => {
+      if (evento.tipo === "aviso") return;
       if (espera.current) clearTimeout(espera.current);
       espera.current = setTimeout(recarregar, 250);
     });
