@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.models.post import Post
 from app.models.user import User
-from app.services.posts import original_de
+from app.services.posts import original_de, original_para_interagir
 
 
 def repostar(db: Session, usuario: User, post_id: int) -> None:
@@ -19,7 +19,7 @@ def repostar(db: Session, usuario: User, post_id: int) -> None:
     O índice único `uq_repost_puro` barra a corrida entre duas chamadas
     simultâneas; a que perde cai no IntegrityError e vale como já repostado.
     """
-    original = original_de(db, post_id)
+    original = original_para_interagir(db, usuario, post_id)
     if _repost_puro(db, usuario, original.id) is None:
         db.add(Post(autor_id=usuario.id, texto="", repost_de_id=original.id))
         try:

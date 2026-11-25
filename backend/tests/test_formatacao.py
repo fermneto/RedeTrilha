@@ -94,3 +94,15 @@ def test_estrofe_de_renga_com_marcas(client, como):
     r = client.post(f"/rengas/{renga_id}/estrofes", json={"texto": estrofe}, headers=como("bia"))
     assert r.status_code == 201
     assert r.json()["estrofes"][1]["texto"] == estrofe
+
+
+def test_mensagem_direta_nao_interpreta_marcas_e_o_poema_vai_como_foi(client, como):
+    from tests.test_mensagens import abrir, enviar
+
+    post_id = _poema(client, como, SONETO)
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+    client.post("/usuarios/ana/follow", headers=como("bia"))
+    conversa = abrir(client, como, "ana", "bia")
+    mensagem = enviar(client, como, "ana", conversa["id"], "**olha** este *aqui*", post_id=post_id)
+    assert mensagem["texto"] == "**olha** este *aqui*"
+    assert mensagem["post"]["texto"] == SONETO

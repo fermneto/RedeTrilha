@@ -26,6 +26,15 @@ Cada estrutura segue quatro regras:
    fica numa tabela, com o índice que a consulta precisa.
 4. O endpoint usa o core através do service (router → service → core).
 
+**A exceção: `assinaturas.py`.** É o dict pessoa → filas dos streams de
+mensagens abertos no processo. Ele guarda estado, mas só o que é do processo por
+natureza: uma conexão SSE existe só no worker que a atende. Nada ali precisa
+sobreviver a um restart (o cliente reconecta e busca o que perdeu pelas rotas)
+nem valer igual em dois workers: o que passa entre eles é o evento, pelo
+Postgres `LISTEN/NOTIFY` (`app/tempo_real.py`). A caixa de mensagens segue o
+padrão: os ponteiros moram em `participantes_conversa`, e
+`caixa_de_entrada.py` só tem as regras.
+
 ## Avisos
 
 - O Big O que vale é o da operação inteira: a consulta ao banco (com índice,

@@ -42,6 +42,7 @@ from app.schemas.acervo import (
 )
 from app.schemas.consagrado import ANO_LIMITE_DOMINIO_PUBLICO
 from app.schemas.user import UserOut
+from app.services import bloqueios
 from app.services.follows import seguidores_por_usuario, seguidos_entre
 from app.services.perfil import poemas_por_autor
 
@@ -84,6 +85,10 @@ def listar(
     db: Session, usuario: User, filtros: Filtros, offset: int, limit: int
 ) -> AcervoPage:
     linhas = _filtrar_por_nome(db.execute(_consulta(filtros)).all(), filtros.q)
+    # Quem tem bloqueio comigo não aparece (services/bloqueios.py).
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
+    if bloqueados:
+        linhas = [linha for linha in linhas if linha.id not in bloqueados]
     linhas.sort(key=_chave_de_ordem(filtros.ordem))
     if filtros.sigo_primeiro:
         sigo_todos = seguidos_entre(db, usuario.id, [linha.id for linha in linhas])

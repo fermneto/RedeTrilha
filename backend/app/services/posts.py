@@ -8,13 +8,14 @@ from app.models.ancora_comentario import AncoraComentario
 from app.models.antologia import AntologiaPoema
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
+from app.models.mensagem import Mensagem
 from app.models.post import Post
 from app.models.rascunho import Rascunho
 from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
 from app.schemas.user import UserOut
-from app.services import indice_tags
+from app.services import bloqueios, indice_tags
 from app.services.indice_tags import tags_do_post
 
 
@@ -80,7 +81,9 @@ def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
     carregados = list(db.scalars(select(Post).where(Post.id.in_(faltando)))) if faltando else []
     ids = {post.id for post in posts} | originais
     contagens = contar(db, list(ids), usuario)
-    saidas = [para_saida(post, contagens=contagens) for post in posts]
+    # O original de quem bloqueou quem vê fica "indisponível" (services/bloqueios.py).
+    ocultos = frozenset(bloqueios.quem_bloqueou(db, usuario.id)) if originais else frozenset()
+    saidas = [para_saida(post, contagens=contagens, ocultos=ocultos) for post in posts]
     del carregados
     return saidas
 
@@ -91,7 +94,10 @@ def para_saida_de(db: Session, post: Post, usuario: User) -> PostOut:
 
 
 def para_saida(
-    post: Post, incluir_repost: bool = True, contagens: Contagens | None = None
+    post: Post,
+    incluir_repost: bool = True,
+    contagens: Contagens | None = None,
+    ocultos: frozenset[int] = frozenset(),
 ) -> PostOut:
     """Monta o PostOut. `repost_de` vem com um nível só.
 
@@ -100,6 +106,9 @@ def para_saida(
     """
     contagens = contagens or Contagens()
     original = post.repost_de if incluir_repost else None
+    indisponivel = original is not None and original.autor_id in ocultos
+    if indisponivel:
+        original = None
     return PostOut(
         id=post.id,
         autor_id=post.autor_id,
@@ -128,6 +137,7 @@ def para_saida(
             else None
         ),
         repost_removido=post.repost_removido,
+        repost_indisponivel=indisponivel,
         tags=sorted(tags_do_post(post)),
     )
 
@@ -137,6 +147,21 @@ def buscar(db: Session, post_id: int) -> Post:
     if post is None:
         raise HTTPException(status_code=404, detail="poema não encontrado")
     return post
+
+
+def visivel(db: Session, usuario: User, post_id: int) -> Post:
+    """O post, se quem pede pode vê-lo; 404 também se o autor bloqueou quem pede."""
+    post = buscar(db, post_id)
+    bloqueios.garantir_que_ve(db, usuario.id, post.autor_id, "poema não encontrado")
+    return post
+
+
+def original_para_interagir(db: Session, usuario: User, post_id: int) -> Post:
+    """O `original_de` para curtir, comentar, repostar, citar ou mandar por mensagem:
+    404 se o autor bloqueou quem age, 403 se quem age bloqueou o autor."""
+    original = original_de(db, post_id)
+    bloqueios.garantir_interacao(db, usuario.id, original.autor_id, "poema não encontrado")
+    return original
 
 
 def original_de(db: Session, post_id: int) -> Post:
@@ -158,7 +183,7 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     """
     post = Post(autor_id=autor.id, repost_removido=repost_removido, **dados.model_dump())
     if dados.repost_de_id is not None:
-        post.repost_de_id = original_de(db, dados.repost_de_id).id
+        post.repost_de_id = original_para_interagir(db, autor, dados.repost_de_id).id
     db.add(post)
     db.flush()
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
@@ -196,6 +221,12 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
         update(Rascunho)
         .where(Rascunho.repost_de_id == post_id)
         .values(repost_de_id=None, repost_removido=True)
+    )
+    # A mensagem direta que compartilhou o poema fica, com "poema removido pelo autor".
+    db.execute(
+        update(Mensagem)
+        .where(Mensagem.post_id.in_([post_id, *puros]))
+        .values(post_id=None, post_removido=True)
     )
     db.delete(post)
     db.commit()

@@ -33,10 +33,10 @@ def listar_seguidores(
     username: str,
     offset: Offset = 0,
     limit: Limite = 20,
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.listar_seguidores(db, username, offset, limit)
+    return service.listar_seguidores(db, user, username, offset, limit)
 
 
 @router.get("/{username}/seguindo", response_model=UserPage)
@@ -44,7 +44,7 @@ def listar_seguindo(
     username: str,
     offset: Offset = 0,
     limit: Limite = 20,
-    _: User = Depends(get_current_user),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    return service.listar_seguindo(db, username, offset, limit)
+    return service.listar_seguindo(db, user, username, offset, limit)

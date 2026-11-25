@@ -18,7 +18,7 @@ from app.models.post_tag import PostTag
 from app.models.user import User
 from app.schemas.post import FORMAS, PostPage
 from app.schemas.tags import BuscaDeTags, TagContagem, TagEncontrada, Trending
-from app.services import indice_tags
+from app.services import bloqueios, indice_tags
 from app.services.posts import para_saidas
 
 JANELA_TRENDING = timedelta(hours=24)
@@ -32,6 +32,11 @@ _MAIS_NOVO_PRIMEIRO = (Post.created_at.desc(), Post.id.desc())
 def posts_da_tag(
     db: Session, usuario: User, tag: str, offset: int, limit: int
 ) -> PostPage:
+    """Pelo índice de tags; com bloqueios, pela consulta do Explorar, que tira os
+    poemas de quem tem bloqueio com o usuário."""
+    bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
+    if bloqueados:
+        return _consultar(db, usuario, tag, None, bloqueados, offset, limit)
     ids, total = indice_tags.posts_da_tag(db, tag, offset, limit)
     return _pagina(db, usuario, _buscar_por_ids(db, ids), total, offset, limit)
 
@@ -96,9 +101,23 @@ def explorar(
         )
     if tag and forma is None:
         return posts_da_tag(db, usuario, tag, offset, limit)
+    return _consultar(db, usuario, tag, forma, bloqueios.ids_com_bloqueio(db, usuario.id), offset, limit)
 
+
+def _consultar(
+    db: Session,
+    usuario: User,
+    tag: str | None,
+    forma: str | None,
+    bloqueados: set[int],
+    offset: int,
+    limit: int,
+) -> PostPage:
+    """Poemas pela forma e pela tag, sem os de quem tem bloqueio com o usuário."""
     # Repost puro (texto vazio) só faz sentido no feed.
     filtros = [~Post.repost_puro]
+    if bloqueados:
+        filtros.append(Post.autor_id.not_in(bloqueados))
     if forma is not None:
         filtros.append(Post.forma == forma)
     contagem = select(func.count()).select_from(Post)

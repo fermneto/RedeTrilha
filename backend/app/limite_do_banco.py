@@ -20,6 +20,7 @@ import weakref
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 SEM_BANCO = frozenset({"/saude"})
+STREAMS = frozenset({"/mensagens/stream"})
 
 
 class LimiteDeConexoes:
@@ -40,6 +41,10 @@ class LimiteDeConexoes:
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         if scope["type"] != "http" or scope["path"] in SEM_BANCO:
+            await self.app(scope, receive, send)
+            return
+        if scope["path"] in STREAMS:
+            scope.setdefault("state", {})["vaga_do_banco"] = self._semaforo()
             await self.app(scope, receive, send)
             return
         async with self._semaforo():

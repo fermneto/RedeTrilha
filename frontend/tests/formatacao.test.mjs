@@ -100,3 +100,18 @@ test("o verso do Em alta aparece formatado, sem ** vazando", () => {
     '  a <strong class="font-bold">casa</strong> <em>vazia</em>',
   );
 });
+
+test("mensagem direta: o texto é puro e o poema compartilhado sai formatado no card", () => {
+  const conversa = readFileSync(new URL("../app/mensagens/[id]/page.tsx", import.meta.url), "utf8");
+  // O balão mostra o texto como foi escrito; o campo é um textarea, sem a barra B I U S.
+  assert.ok(/\n\s*\{mensagem\.texto\}\n/.test(conversa));
+  assert.ok(!conversa.includes("TextoFormatado") && !conversa.includes("EditorDePoema"));
+  assert.ok(conversa.includes("<textarea"));
+  const enviar = readFileSync(new URL("../components/EnviarPorMensagem.tsx", import.meta.url), "utf8");
+  assert.ok(!enviar.includes("TextoFormatado") && !enviar.includes("EditorDePoema"));
+  // O poema compartilhado é o PoemaCard, cujo corpo passa pelo TextoFormatado.
+  assert.ok(conversa.includes("<PoemaCard post={mensagem.post} aninhado />"));
+  const card = readFileSync(new URL("../components/PoemaCard.tsx", import.meta.url), "utf8");
+  assert.ok(card.includes("<TextoFormatado texto={cortar ? versos.slice(0, visiveis).join"));
+  assert.equal(html("**olha** este"), '<strong class="font-bold">olha</strong> este');
+});

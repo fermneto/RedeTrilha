@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from app.models.curtida import Curtida
 from app.models.user import User
-from app.services.posts import original_de
+from app.services.posts import original_de, original_para_interagir
 
 
 def curtir(db: Session, usuario: User, post_id: int) -> None:
@@ -13,7 +13,7 @@ def curtir(db: Session, usuario: User, post_id: int) -> None:
     A constraint única (user_id, post_id) barra a corrida do clique duplo; a
     chamada que perde cai no IntegrityError e vale como já curtido.
     """
-    post_id = original_de(db, post_id).id
+    post_id = original_para_interagir(db, usuario, post_id).id
     ja_curtiu = db.scalar(
         select(Curtida).where(Curtida.user_id == usuario.id, Curtida.post_id == post_id)
     )
