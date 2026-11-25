@@ -394,7 +394,8 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - Tela (`PoemaCard`, lógica em `lib/traducao.ts`): a tradução toma o lugar do
   título e do corpo, com "Traduzido do {língua} por IA · ver original"; "ver
   tradução" reaproveita a que já veio. Na página do poema, sem seleção de
-  versos nem marcas de crítica enquanto a tradução está na tela.
+  versos nem marcas de crítica enquanto a tradução está na tela, e a seleção
+  feita antes de traduzir é limpa.
 - 30 traduções novas por usuário por hora, contadas na tabela `traducoes`; as do
   cache não contam. Passou → 429. Já está na língua → 422. Sem
   `ANTHROPIC_API_KEY` → 503.

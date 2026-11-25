@@ -55,9 +55,12 @@ type Props = {
   inteiro?: boolean;
   // Troca o corpo do poema (na página dele, os versos que se selecionam, #71).
   corpo?: (poema: Post) => ReactNode;
+  // A tradução entrou na tela: na página do poema, limpa a seleção de versos,
+  // que é do original.
+  aoTraduzir?: () => void;
 };
 
-export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false, corpo }: Props) {
+export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro = false, corpo, aoTraduzir }: Props) {
   // Repost puro (texto vazio) fora do feed: mostra o original com o aviso de quem repostou.
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
@@ -94,6 +97,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
             linkarTitulo={linkarTitulo}
             inteiro={inteiro}
             corpo={corpo}
+            aoTraduzir={aoTraduzir}
           />
 
           {citacao && !aninhado && (
@@ -139,11 +143,13 @@ function TextoDoPoema({
   linkarTitulo,
   inteiro,
   corpo,
+  aoTraduzir,
 }: {
   poema: Post;
   linkarTitulo: boolean;
   inteiro: boolean;
   corpo?: (poema: Post) => ReactNode;
+  aoTraduzir?: () => void;
 }) {
   // A língua do navegador só existe no cliente: lida depois de montar, para o HTML
   // do servidor e o da hidratação baterem.
@@ -162,12 +168,14 @@ function TextoDoPoema({
     const { estado: proximo, buscar } = alternarTraducao(estado);
     setEstado(proximo);
     if (!buscar) {
+      if (proximo.mostrando) aoTraduzir?.();
       setAviso(proximo.mostrando ? `mostrando a tradução do ${lingua}, feita por IA` : "mostrando o original");
       return;
     }
     try {
       const traducao = await traduzirPoema(poema.id, destino as string);
       setEstado((atual) => traducaoChegou(atual, traducao));
+      aoTraduzir?.();
       setAviso(`mostrando a tradução do ${lingua}, feita por IA`);
     } catch (e) {
       let erro: string;

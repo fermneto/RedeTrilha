@@ -117,8 +117,9 @@ PRs, na seção "Decisões do Neto".
     "Traduzido do {língua} por IA · ver original" logo abaixo, e "ver
     original" volta ao texto do poeta; "ver tradução" a mostra de novo sem
     chamar a IA. Na página do poema, a seleção de versos e as marcas de
-    crítica são do original: com a tradução na tela, elas somem e voltam com
-    "ver original". Cada tradução fica em cache por poema e língua, e cada usuário
+    crítica são do original: com a tradução na tela, as marcas somem e
+    voltam com "ver original", e a seleção feita antes de traduzir é
+    desfeita. Cada tradução fica em cache por poema e língua, e cada usuário
     pede até 30 traduções novas por hora (as do cache não contam).
 - **O que cortamos e por quê:**
   - **Os modernos que o público mais conhece** (Drummond, Bandeira, Cecília,

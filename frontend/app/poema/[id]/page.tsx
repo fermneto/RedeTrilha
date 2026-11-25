@@ -81,6 +81,8 @@ export default function PoemaPage() {
           post={poema}
           linkarTitulo={false}
           inteiro
+          // A seleção é de versos do original: some quando a tradução entra na tela.
+          aoTraduzir={() => setSelecao(null)}
           corpo={(exibido) => (
             <VersosComentaveis
               poema={exibido}
