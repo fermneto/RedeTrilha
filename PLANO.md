@@ -148,7 +148,8 @@ teste (`backend/tests/casos_marcas.json`). Valem no `texto` do poema, da
 citação, do rascunho e da estrofe de renga; comentários (e mensagens diretas)
 são texto puro, sem interpretação. A oficina mede, as `#tags` se extraem e o
 "verso em branco" da âncora se testa no texto sem as marcas; o `trecho` da
-âncora e a tradução trazem as marcas, e o `trecho` do Em alta sai sem elas.
+âncora, a tradução e o `trecho` do Em alta trazem as marcas (o verso do Em alta
+é escolhido no texto sem marcas e exibido formatado).
 
 `FORMAS = ["soneto", "haicai", "trova", "quadra", "cordel", "verso_livre", "prosa_poetica", "outro"]`
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
@@ -353,7 +354,8 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - `GET /tags/trending?limit=` 🔒 → `{"items": [{"tag", "contagem", "trecho"}]}`:
   top `limit` (1 a 10, padrão 5) das últimas 24 h (contagem de poemas, sem
   curtidas). `trecho` (opcional, pode ser `null`) é o primeiro verso com texto
-  que não seja só `#tags`, sem `strip()`, de um poema diferente por tag: o mais
+  que não seja só `#tags` (olhando o texto sem as marcas de formatação; a linha
+  volta com elas), sem `strip()`, de um poema diferente por tag: o mais
   novo da tag que ainda não apareceu numa tag acima (se todos já apareceram, o
   mais novo mesmo).
 - `GET /tags/busca?q=` 🔒 → `{"items": [{"tag", "poemas"}]}`: até 5 tags que

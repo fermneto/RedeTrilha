@@ -415,8 +415,9 @@ PRs, na seção "Decisões do Neto".
     não mudam: um `*` solto, como a nota de rodapé de Thomas Moore, continua
     um asterisco.
   - **Onde vale:** no poema, na citação, no rascunho e nas estrofes da renga.
-    A tela formata o poema no feed, na página dele, nos versos citados e na
-    tradução, sem interpretar HTML; copiar o poema dá o texto limpo.
+    A tela formata o poema no feed, na página dele, no Em alta, nos versos
+    citados e na tradução, sem interpretar HTML; copiar o poema dá o texto
+    limpo.
 - **O que cortamos e por quê:**
   - **Outras formatações** (títulos, listas, links, cores, tamanhos): o poema
     é verso, e cada uma dessas pediria regras de exibição no feed.
