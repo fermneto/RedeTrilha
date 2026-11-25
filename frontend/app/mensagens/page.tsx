@@ -177,7 +177,7 @@ function LinhaDaConversa({ conversa, euId }: { conversa: ConversaNaCaixa; euId: 
           <span aria-hidden="true" className="text-tinta-suave">
             ·
           </span>
-          <span className="shrink-0 text-tinta-suave tabular-nums">{quando}</span>
+          <span className="shrink-0 text-tinta-suave">{quando}</span>
           {conversa.silenciada && <span className="shrink-0 text-xs text-tinta-suave italic">silenciada</span>}
         </span>
         <span

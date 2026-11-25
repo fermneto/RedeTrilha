@@ -237,7 +237,7 @@ export default function ConversaPage() {
               >
                 <BalaoDaMensagem mensagem={m} minha={minha} />
                 {(comHora || minhaUltima?.id === m.id) && (
-                  <p className="mt-1 px-1 text-xs text-tinta-suave tabular-nums">
+                  <p className="mt-1 px-1 text-xs text-tinta-suave">
                     {comHora && <time dateTime={m.created_at}>{quandoEditado(m.created_at)}</time>}
                     {minhaUltima?.id === m.id && (
                       <>
