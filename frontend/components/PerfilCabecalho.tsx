@@ -1,12 +1,15 @@
 "use client";
 // Cabeçalho do perfil: avatar, nome, selo de consagrado, bio, contadores e a ação
-// (Seguir/Deixar de seguir para os outros, Editar perfil para o próprio).
+// (Seguir/Deixar de seguir para os outros, Editar perfil para o próprio). Para
+// quem não é consagrado (que não tem login), também "Mensagem", que abre a conversa.
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { SeloConsagrado } from "@/components/SeloConsagrado";
-import { anosDeVida, mensagemDeFalha, seguir, type Perfil } from "@/lib/api";
+import { abrirConversa, anosDeVida, mensagemDeFalha, seguir, type Perfil } from "@/lib/api";
 
 type Props = {
   perfil: Perfil;
@@ -18,7 +21,18 @@ type Props = {
 export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  const router = useRouter();
   const vida = anosDeVida(perfil);
+
+  async function abrirMensagem() {
+    setErro(null);
+    try {
+      const conversa = await abrirConversa(perfil.username);
+      router.push(`/mensagens/${conversa.id}`);
+    } catch (e) {
+      setErro(mensagemDeFalha(e, "não deu para abrir a conversa"));
+    }
+  }
 
   // Otimista: muda o botão e o contador antes da resposta e volta atrás se falhar.
   async function alternarSeguir() {
@@ -61,19 +75,32 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar }: Props) {
             Editar perfil
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={alternarSeguir}
-            disabled={enviando}
-            aria-pressed={perfil.sigo}
-            className={
-              perfil.sigo
-                ? "shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
-                : "shrink-0 cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel"
-            }
-          >
-            {perfil.sigo ? "Deixar de seguir" : "Seguir"}
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            {!perfil.consagrado && (
+              <button
+                type="button"
+                onClick={abrirMensagem}
+                aria-label={`Mensagem para @${perfil.username}`}
+                title="Mensagem"
+                className="realce flex h-[2.375rem] w-[2.375rem] cursor-pointer items-center justify-center rounded border border-borda"
+              >
+                <IconeMensagens className="h-5 w-5" />
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={alternarSeguir}
+              disabled={enviando}
+              aria-pressed={perfil.sigo}
+              className={
+                perfil.sigo
+                  ? "shrink-0 cursor-pointer rounded border border-borda px-4 py-2 text-sm"
+                  : "shrink-0 cursor-pointer rounded bg-tinta px-4 py-2 text-sm text-papel"
+              }
+            >
+              {perfil.sigo ? "Deixar de seguir" : "Seguir"}
+            </button>
+          </div>
         )}
       </div>
 
