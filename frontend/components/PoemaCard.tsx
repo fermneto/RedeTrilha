@@ -52,7 +52,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
   const reposters = repostPuro ? [post.autor] : (post.repostado_por ?? []);
-  const citacao = !repostPuro && (post.repost_de !== null || post.repost_removido);
+  const citacao = !repostPuro && (post.repost_de !== null || post.repost_removido || post.repost_indisponivel);
 
   // Fora de uma citação: avatar numa coluna à esquerda e tudo o mais alinhado ao
   // texto, à direita. Na citação, o avatar pequeno vai na linha do nome.
@@ -99,7 +99,7 @@ export function PoemaCard({ post, aninhado = false, linkarTitulo = true, inteiro
                 <PoemaCard post={poema.repost_de} aninhado inteiro={inteiro} />
               ) : (
                 <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
-                  poema removido pelo autor
+                  {poema.repost_indisponivel ? "poema indisponível" : "poema removido pelo autor"}
                 </p>
               )}
             </div>

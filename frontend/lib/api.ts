@@ -269,6 +269,8 @@ export type Post = {
   repostei: boolean;
   repost_de: Post | null;
   repost_removido: boolean;
+  // Citação de um poema de quem bloqueou quem vê: repost_de vem null ("poema indisponível").
+  repost_indisponivel?: boolean;
   tags: string[];
   // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
   repostado_por: User[];
