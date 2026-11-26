@@ -29,16 +29,25 @@ Entregue na `main` (issue → PR):
 | N6 | `DECISIONS.md` final | #20 | #26, #28, #63 |
 
 Além do plano: tradução por IA (#51), preparação do deploy no Render, na
-Vercel e no Supabase (#50, #55), limpeza para o critério de código e
-`make bench` (#64), o Acervo de poetas com filtros no lugar da tela Poetas
+Vercel e no Supabase (#50, #55, hoje a alternativa ao deploy na Oracle),
+limpeza para o critério de código e `make bench` (#64), o Acervo de poetas com filtros no lugar da tela Poetas
 (#65) e as correções do teste de ponta a ponta (#66).
 
-**Ficou com o Neto:**
+**Deploy público (N5, issue #19, fechada):** no ar numa VM da Oracle Cloud
+em São Paulo, e não no Render, com a `main` até o #184. A API está em
+https://api.verso.net.br (Caddy com HTTPS na frente de 2 réplicas, Postgres 16
+na mesma VM e backup diário às 03:30 enviado ao Object Storage da Oracle); o
+front está na Vercel, em https://verso.net.br (também
+https://verso-blond.vercel.app). As atualizações saem com
+`deploy/oracle/atualizar.sh`, uma réplica de cada vez, sem tirar o site do ar.
+O envio do backup ao Object Storage funciona desde o #184 (faltavam as
+autoridades certificadoras na imagem), e o teste de restauração a partir do
+bucket deu os mesmos números nas duas pontas (189 usuários e 11.340 poemas,
+em 26/11). Passo a passo em [`docs/deploy-oracle.md`](docs/deploy-oracle.md);
+o Render com o Supabase ([`docs/deploy.md`](docs/deploy.md)) fica como
+alternativa.
 
-- **Deploy público (N5, issue #19, aberta).** O repositório está pronto
-  (`render.yaml`, `GET /saude`, Postgres no Supabase); falta criar os serviços
-  e ligar as URLs, seguindo o [`docs/deploy.md`](docs/deploy.md).
-- **O vídeo** da entrega.
+**Ficou com o Neto:** **o vídeo** da entrega, em andamento.
 
 As validações do Henrique e do Pedro ficam nas issues #57 a #62.
 
@@ -752,7 +761,7 @@ nessa ordem.
   `GET /auth/eu` 🔒; `POST /auth/logout` 🔒 → 204. Conta nova só nasce no
   registro: `POST /usuarios` e `GET /usuarios/stats` saíram (#64).
 - `GET /saude` → `{"ok": true}`, sem login e sem tocar no banco (health check
-  do Render).
+  das réplicas no Compose e do Caddy; no Render, o `healthCheckPath`).
 
 ### Gancho do índice de tags (Neto ↔ Henrique)
 
@@ -830,7 +839,7 @@ Os IDs são usados nas issues e nos PRs (`[H1] posts CRUD`).
 | N2 | **Consagrados**: scraping (fora do repositório) → JSON no formato de `docs/consagrados.md` → `scripts/importar_consagrados.py` idempotente (cria o user sem senha e os poemas) | P1 (campos do User), H1 | N4, N5 | concluída |
 | N3 | **Formas/temas**: índice invertido real em `core/indice_tags.py`, `GET /tags/{tag}/posts`, `GET /tags/trending`, `GET /explorar?tag=&forma=`; tela Explorar com chips de forma e tags clicáveis | H1, H6 (card) | — | concluída |
 | N4 | Seed fake do nicho: mais de 20 poetas fictícios de vários lugares e idades (alguns universitários), mais de 50 poemas originais, follows (inclusive a consagrados), curtidas, comentários em árvore, reposts e citações; `seed_fake(db)` e `make seed` também importa os consagrados | todos os models (H1, H3, H4, H5, N1, P5) | N5 | concluída |
-| N5 | Deploy: Render (backend, `SEED_ON_BOOT=true`, **sem DEBUG**) + Vercel (front) + Supabase (Postgres), CORS com a URL pública | N4 | bônus +10 | pendente, com o Neto (#19) |
+| N5 | Deploy: VM da Oracle (Caddy, réplicas da API **sem DEBUG**, Postgres 16 e backup) + Vercel (front), CORS com a URL pública. O plano era Render + Vercel + Supabase, que ficou como alternativa (`docs/deploy.md`) | N4 | bônus +10 | concluída (#19) |
 | N6 | Consolidar o `DECISIONS.md` (produto, decisões, escolha técnica e, opcional, `make bench` do índice invertido contra varredura) | — | entrega | concluída |
 
 ---
@@ -873,9 +882,11 @@ Caminho crítico: **P0 → P1 → H1 → H2/H5 → H6 → N4 → N5.**
 - **Conflitos.** Os pontos quentes são `main.py`, `api.ts` e `models/user.py`.
   Só o Pedro mexe no `User`; os outros pedem campo novo no PR dele.
 - **Deploy no free tier.** O plano era SQLite recriado pelo `SEED_ON_BOOT` a
-  cada restart; no fim, o banco é Postgres no Supabase (#55), os dados
-  persistem e o seed só roda num banco sem usuários. A primeira request depois
-  da hibernação do Render leva cerca de 1 minuto.
+  cada restart no Render; no fim, a API e o Postgres rodam numa VM Always Free
+  da Oracle, que não hiberna, os dados persistem (com backup diário no Object
+  Storage) e o seed só roda num banco sem usuários. O risco que fica é a VM
+  inteira cair: o backup volta numa VM nova, com no máximo um dia de perda
+  (decisão 15 do `DECISIONS.md`).
 - **Direitos autorais.** Só autores mortos até 1955; o importador recusa
   `morte > 1955`.
 - **Sem estado em memória.** O índice de tags (tabela `post_tags`) e o limite
