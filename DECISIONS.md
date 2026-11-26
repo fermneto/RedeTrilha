@@ -874,12 +874,20 @@ decisão 15.
 - **Opções:** nenhuma ajuda; um tour de várias telas logo depois do
   onboarding; ou dicas curtas no contexto de cada coisa, ao longo do uso.
 - **Escolha (decisão do Neto):**
-  - **Quatro dicas, uma de cada vez, no contexto delas:** virar a página (ao
-    chegar no Início, depois das boas-vindas), as ações e os comentários, a
-    lombada e escrever (poema e renga). Depois da primeira, cada uma espera a
-    pessoa folhear 2 páginas, e a de escrever também aparece ao abrir o
-    compositor. Cada nota aponta o que explica, sai com "entendi", o X, Esc
-    ou virando a página, e tem "dispensar todas".
+  - **Quatro dicas, uma de cada vez, no contexto delas, em qualquer página do
+    livro:** virar a página (na primeira página com mais de uma folha: o feed,
+    um perfil), as ações e os comentários (no primeiro poema ou renga com a
+    conversa à vista), a lombada (em qualquer página) e escrever, poema e renga
+    (ao abrir o compositor e, no Início, apontando o botão de escrever). Depois
+    de uma dica, a seguinte espera a pessoa folhear 2 páginas ou chegar a outra
+    página; a do compositor vem sempre ao abri-lo. Cada nota aponta o que
+    explica, só conta como vista com "entendi", o X ou Esc, e tem "dispensar
+    todas".
+  - **Virar ou sair da página só tira a nota da frente** (revisão de 27/11):
+    antes, isso contava como vista, e quem folheava rápido via as quatro
+    piscarem e sumirem; chegava ao compositor sem saber o que é renga. Agora a
+    nota volta no próximo lugar em que couber. A exceção é a de folhear: virar
+    a página com ela aberta já é tê-la aprendido.
   - **O que foi visto fica na conta** (`GET`/`PUT`/`DELETE /dicas`), e não no
     navegador: a dica vista no computador não volta no celular. As contas que
     já existiam também veem as dicas; quem não tem conta não vê.

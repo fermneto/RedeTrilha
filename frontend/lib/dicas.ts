@@ -1,10 +1,13 @@
 // Quando cada dica do livro aparece (components/DicasDoLivro.tsx). Um tour aos
-// poucos, nunca de uma vez: uma dica por vez, no contexto dela, e a que foi vista
-// não volta (a lista fica na conta, GET /dicas). No Início, a primeira (virar a
-// página) vem logo ao chegar; as outras, na ordem, só depois de a pessoa folhear
-// VIRADAS_ENTRE_DICAS páginas desde a última, e só com o lugar delas à vista (no
-// celular, as ações estão na página da conversa). No compositor, a de escrever
-// vem ao chegar, se ainda não foi vista. Funções puras: tests/dicas.test.mjs.
+// poucos, nunca de uma vez: uma dica por vez, no contexto dela, em qualquer
+// página do livro, e a dispensada não volta (a lista fica na conta, GET /dicas).
+// Cada uma aparece onde o lugar dela está à vista: folhear, na primeira página
+// com mais de uma folha (o feed, um perfil, um poema no celular); as ações, no
+// primeiro poema ou renga com a conversa à vista; a lombada, em qualquer página;
+// escrever (poema e renga), ao abrir o compositor e, no Início, apontando o
+// botão de escrever. Fora do compositor, depois de uma dica, a seguinte espera a
+// pessoa folhear VIRADAS_ENTRE_DICAS páginas ou chegar a outra página. Funções
+// puras: tests/dicas.test.mjs.
 
 import type { Dica } from "@/lib/api";
 
@@ -12,29 +15,30 @@ export const ORDEM_DAS_DICAS: readonly Dica[] = ["virar_pagina", "acoes", "lomba
 
 export const VIRADAS_ENTRE_DICAS = 2;
 
-// Onde a pessoa está: o Início (o feed), o compositor ou outra página (sem dicas).
-export type LugarDasDicas = "inicio" | "escrever" | null;
+// Onde a pessoa está: o Início (o feed), o compositor ou outra página do livro.
+export type LugarDasDicas = "inicio" | "escrever" | "livro";
 
 export function lugarDasDicas(caminho: string): LugarDasDicas {
   if (caminho === "/") return "inicio";
   if (caminho === "/escrever") return "escrever";
-  return null;
+  return "livro";
 }
 
-// A dica que cabe agora, ou nenhuma. `aVista` diz se o lugar da dica está na tela.
+// A dica que cabe agora, ou nenhuma. `viradas` são as páginas folheadas desde a
+// última dica (ao chegar numa página, já conta como intervalo cumprido); `aVista`
+// diz se o lugar da dica está na tela.
 export function proximaDica(
   vistas: readonly Dica[],
   lugar: LugarDasDicas,
   viradas: number,
   aVista: (dica: Dica) => boolean,
 ): Dica | null {
+  // No compositor, a de escrever vem ao chegar, sem esperar o intervalo.
   if (lugar === "escrever") return !vistas.includes("escrever") && aVista("escrever") ? "escrever" : null;
-  if (lugar !== "inicio") return null;
-  const proxima = ORDEM_DAS_DICAS.find((d) => !vistas.includes(d));
-  if (!proxima) return null;
-  // A primeira vem ao chegar; as outras esperam a pessoa folhear um pouco.
-  if (proxima !== ORDEM_DAS_DICAS[0] && viradas < VIRADAS_ENTRE_DICAS) return null;
-  return aVista(proxima) ? proxima : null;
+  if (viradas < VIRADAS_ENTRE_DICAS) return null;
+  // Fora do Início e do compositor, o botão de escrever fica sem dica: ela vem ao abri-lo.
+  const cabem = ORDEM_DAS_DICAS.filter((d) => !vistas.includes(d) && (d !== "escrever" || lugar === "inicio"));
+  return cabem.find(aVista) ?? null;
 }
 
 export type Lado = "acima" | "abaixo" | "direita";

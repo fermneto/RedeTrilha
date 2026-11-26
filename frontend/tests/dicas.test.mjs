@@ -15,38 +15,45 @@ const { lugarDasDicas, posicionarNota, proximaDica, VIRADAS_ENTRE_DICAS } = awai
 
 const tudoAVista = () => true;
 
-test("as dicas só aparecem no Início e no compositor", () => {
+const V = VIRADAS_ENTRE_DICAS;
+
+test("as dicas aparecem em qualquer página do livro", () => {
   assert.equal(lugarDasDicas("/"), "inicio");
   assert.equal(lugarDasDicas("/escrever"), "escrever");
-  assert.equal(lugarDasDicas("/explorar"), null);
-  assert.equal(proximaDica([], null, 10, tudoAVista), null);
+  assert.equal(lugarDasDicas("/explorar"), "livro");
+  assert.equal(lugarDasDicas("/u/ana"), "livro");
+  assert.equal(proximaDica([], "livro", V, tudoAVista), "virar_pagina");
 });
 
-test("no Início, virar a página vem logo ao chegar", () => {
-  assert.equal(proximaDica([], "inicio", 0, tudoAVista), "virar_pagina");
-});
-
-test("as outras esperam a pessoa folhear e vêm uma de cada vez, na ordem", () => {
+test("ao chegar, a primeira que cabe vem logo; depois dela, espera folhear", () => {
+  assert.equal(proximaDica([], "inicio", V, tudoAVista), "virar_pagina");
   const vistas = ["virar_pagina"];
-  assert.equal(proximaDica(vistas, "inicio", VIRADAS_ENTRE_DICAS - 1, tudoAVista), null);
-  assert.equal(proximaDica(vistas, "inicio", VIRADAS_ENTRE_DICAS, tudoAVista), "acoes");
-  assert.equal(proximaDica(["virar_pagina", "acoes"], "inicio", VIRADAS_ENTRE_DICAS, tudoAVista), "lombada");
-  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada"], "inicio", 5, tudoAVista), "escrever");
-  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada", "escrever"], "inicio", 5, tudoAVista), null);
+  assert.equal(proximaDica(vistas, "inicio", V - 1, tudoAVista), null);
+  assert.equal(proximaDica(vistas, "inicio", V, tudoAVista), "acoes");
+  assert.equal(proximaDica(["virar_pagina", "acoes"], "inicio", V, tudoAVista), "lombada");
+  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada"], "inicio", V, tudoAVista), "escrever");
+  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada", "escrever"], "inicio", V, tudoAVista), null);
 });
 
-test("sem o lugar da dica à vista, espera (não pula para a seguinte)", () => {
-  const semAcoes = (d) => d !== "acoes";
-  assert.equal(proximaDica(["virar_pagina"], "inicio", 3, semAcoes), null);
+test("no contexto: sem o lugar de uma à vista, vem a seguinte que cabe ali", () => {
+  // Um perfil sem a conversa à vista e sem mais de uma folha: só a lombada cabe.
+  const soALombada = (d) => d === "lombada";
+  assert.equal(proximaDica([], "livro", V, soALombada), "lombada");
+  assert.equal(proximaDica([], "livro", V, () => false), null);
 });
 
-test("no compositor, só a de escrever, mesmo antes das outras", () => {
+test("fora do Início e do compositor, o botão de escrever fica sem dica", () => {
+  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada"], "livro", V, tudoAVista), null);
+});
+
+test("no compositor, a de escrever vem ao chegar, mesmo antes das outras e sem intervalo", () => {
   assert.equal(proximaDica([], "escrever", 0, tudoAVista), "escrever");
-  assert.equal(proximaDica(["escrever"], "escrever", 0, tudoAVista), null);
+  assert.equal(proximaDica(["escrever"], "escrever", V, tudoAVista), null);
 });
 
 test("vista em qualquer lugar, não volta no outro", () => {
   assert.equal(proximaDica(["virar_pagina", "acoes", "lombada", "escrever"], "escrever", 0, tudoAVista), null);
+  assert.equal(proximaDica(["virar_pagina", "acoes", "lombada", "escrever"], "livro", V, tudoAVista), null);
 });
 
 const tela = { width: 1280, height: 800 };

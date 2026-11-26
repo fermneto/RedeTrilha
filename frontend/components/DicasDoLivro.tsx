@@ -4,10 +4,12 @@
 // uma no contexto dela e uma de cada vez (a regra de quando está em
 // lib/dicas.ts): virar a página, as ações e os comentários, a lombada e
 // escrever (poema e renga). Cada nota é um papel apoiado sobre o livro, com uma
-// ponta para o que ela explica e um fio em volta dele; "entendi", o X, Esc,
-// virar a página ou sair da página a dispensam, e a dispensada não volta (fica
-// na conta, PUT /dicas/{dica}); "dispensar todas" marca as quatro. "Rever as
-// dicas", nas Preferências, zera a lista.
+// ponta para o que ela explica e um fio em volta dele; "entendi", o X ou Esc a
+// dispensam, e a dispensada não volta (fica na conta, PUT /dicas/{dica});
+// "dispensar todas" marca as quatro. Virar a página ou sair dela só tira a nota
+// da frente: sem ter sido dispensada, ela volta no próximo lugar em que couber.
+// A exceção é a de folhear: virar a página com ela aberta já é tê-la aprendido.
+// "Rever as dicas", nas Preferências, zera a lista.
 //
 // As notas não mexem nos componentes que explicam: acham o lugar deles pelo que
 // já está na página (o botão de virar, a barra de ações presa no topo da
@@ -42,6 +44,7 @@ import {
   ORDEM_DAS_DICAS,
   posicionarNota,
   proximaDica,
+  VIRADAS_ENTRE_DICAS,
 } from "@/lib/dicas";
 
 // "Rever as dicas" (nas Preferências) avisa o provedor, que já está montado.
@@ -103,8 +106,9 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
   // null = ainda não sei (sem conta ou sem resposta): nenhuma dica aparece.
   const [vistas, setVistas] = useState<Dica[] | null>(null);
   const [aberta, setAberta] = useState<Dica | null>(null);
-  // Páginas folheadas desde a última dica dispensada.
-  const [viradas, setViradas] = useState(0);
+  // Páginas folheadas desde a última dica; ao chegar numa página, o intervalo
+  // já está cumprido (a primeira dica vem logo).
+  const [viradas, setViradas] = useState(VIRADAS_ENTRE_DICAS);
   const abertaRef = useRef<Dica | null>(null);
   const ultimaPosicao = useRef<string | null>(null);
   abertaRef.current = aberta;
@@ -128,7 +132,7 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
   useEffect(() => {
     const aoZerar = () => {
       setVistas([]);
-      setViradas(0);
+      setViradas(VIRADAS_ENTRE_DICAS);
     };
     window.addEventListener(EVENTO_DICAS_ZERADAS, aoZerar);
     return () => window.removeEventListener(EVENTO_DICAS_ZERADAS, aoZerar);
@@ -150,20 +154,32 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
     Promise.all(ORDEM_DAS_DICAS.map((d) => marcarDicaVista(d))).catch(() => undefined);
   }, []);
 
-  // Sair da página com uma dica aberta conta como vista; a posição recomeça.
+  // Outra página: a nota aberta sai sem contar como vista, a posição recomeça e
+  // a próxima dica (ou a mesma) pode vir logo, se o lugar dela estiver ali.
   useEffect(() => {
     ultimaPosicao.current = null;
-    if (abertaRef.current) dispensar(abertaRef.current);
-  }, [caminho, dispensar]);
+    setAberta(null);
+    setViradas(VIRADAS_ENTRE_DICAS);
+  }, [caminho]);
 
   const virou = useCallback(
     (posicao: string) => {
       const antes = ultimaPosicao.current;
       ultimaPosicao.current = posicao;
       if (antes === null || antes === posicao) return;
-      // Virar a página com a nota aberta é seguir adiante: ela foi vista.
-      if (abertaRef.current) dispensar(abertaRef.current);
-      else setViradas((n) => n + 1);
+      const aberta = abertaRef.current;
+      if (!aberta) {
+        setViradas((n) => n + 1);
+        return;
+      }
+      // Virar com a dica de folhear aberta é fazer o que ela ensina: foi vista.
+      // As outras só saem da frente e voltam depois do intervalo, para não
+      // reaparecerem a cada página.
+      if (aberta === "virar_pagina") dispensar(aberta);
+      else {
+        setAberta(null);
+        setViradas(0);
+      }
     },
     [dispensar],
   );
@@ -171,7 +187,7 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
   // Uma de cada vez: com nenhuma aberta, olha de tempos em tempos se a próxima
   // cabe (o feed pode ainda estar carregando, a capa ainda abrindo).
   useEffect(() => {
-    if (aberta || vistas === null || lugar === null) return;
+    if (aberta || vistas === null) return;
     const relogio = setInterval(() => {
       if (capaNaFrente() || document.visibilityState !== "visible") return;
       const dica = proximaDica(vistas, lugar, viradas, (d) => ancoraDa(d, lugar) !== null);
@@ -183,7 +199,7 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
   return (
     <ContextoDasDicas.Provider value={{ virou }}>
       {children}
-      {aberta && lugar && (
+      {aberta && (
         <Nota
           key={aberta}
           dica={aberta}
