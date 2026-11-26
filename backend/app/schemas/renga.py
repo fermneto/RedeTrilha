@@ -79,6 +79,12 @@ class RengaOut(BaseModel):
     autores: list[UserOut]
     # Comentários e respostas na renga, como o `comentarios` dos poemas.
     comentarios: int = 0
+    # Como no PostOut: curtidas, reposts (os puros e os poemas que citam a renga) e
+    # se o usuário atual curtiu ou repostou.
+    curtidas: int = 0
+    reposts: int = 0
+    curti: bool = False
+    repostei: bool = False
 
 
 class RengaDetalhe(RengaOut):

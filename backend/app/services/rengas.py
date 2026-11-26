@@ -11,6 +11,7 @@ tempo, só uma grava a posição, e a outra recebe 409. Assim o limite não esto
 e a regra da vez não quebra.
 """
 
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
 from fastapi import HTTPException
@@ -18,8 +19,11 @@ from sqlalchemy import exists, func, or_, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.models.citacao_renga import CitacaoRenga
 from app.models.comentario_renga import ComentarioRenga
+from app.models.curtida_renga import CurtidaRenga
 from app.models.renga import ConviteRenga, EstrofeRenga, Renga
+from app.models.repost_renga import RepostRenga
 from app.models.user import User
 from app.schemas.renga import (
     EstrofeOut,
@@ -105,10 +109,8 @@ def listar(
     )
     ids = [r.id for r in rengas]
     autores = _autores_por_renga(db, ids)
-    comentarios = contar_comentarios(db, ids)
-    items = [
-        _para_saida(r, *autores.get(r.id, (0, [])), comentarios.get(r.id, 0)) for r in rengas
-    ]
+    contagens = contar(db, ids, usuario)
+    items = [_para_saida(r, *autores.get(r.id, (0, [])), contagens) for r in rengas]
     return RengaPage(items=items, total=total, offset=offset, limit=limit)
 
 
@@ -116,16 +118,12 @@ def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
     renga = _buscar(db, renga_id)
     bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
     return _detalhe(
-        renga,
-        _estrofes(db, renga.id),
-        _convidados(db, renga.id),
-        usuario,
-        contar_comentarios(db, [renga.id]).get(renga.id, 0),
+        renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario, contar(db, [renga.id], usuario)
     )
 
 
 def detalhar_varias(db: Session, usuario: User, renga_ids: list[int]) -> dict[int, RengaDetalhe]:
-    """O `detalhar` de várias rengas (as de uma página do feed) em quatro queries, sem N+1."""
+    """O `detalhar` de várias rengas (as de uma página do feed) em oito queries, sem N+1."""
     if not renga_ids:
         return {}
     rengas = list(db.scalars(select(Renga).where(Renga.id.in_(renga_ids))))
@@ -144,13 +142,57 @@ def detalhar_varias(db: Session, usuario: User, renga_ids: list[int]) -> dict[in
         .order_by(ConviteRenga.id)
     ):
         convidados.setdefault(renga_id, []).append(convidado)
-    comentarios = contar_comentarios(db, renga_ids)
+    contagens = contar(db, renga_ids, usuario)
     return {
-        r.id: _detalhe(
-            r, estrofes.get(r.id, []), convidados.get(r.id, []), usuario, comentarios.get(r.id, 0)
-        )
+        r.id: _detalhe(r, estrofes.get(r.id, []), convidados.get(r.id, []), usuario, contagens)
         for r in rengas
     }
+
+
+@dataclass
+class Contagens:
+    """As contagens de uma página de rengas, como as dos poemas (services/posts.py)."""
+
+    comentarios: dict[int, int] = field(default_factory=dict)
+    curtidas: dict[int, int] = field(default_factory=dict)
+    curtidas_minhas: set[int] = field(default_factory=set)
+    reposts: dict[int, int] = field(default_factory=dict)
+    repostadas: set[int] = field(default_factory=set)
+
+
+def contar(db: Session, renga_ids: list[int], usuario: User) -> Contagens:
+    """Seis queries para a página toda: comentários, curtidas e reposts por renga
+    (os reposts puros mais os poemas que citam a renga, como nos poemas) e quais o
+    usuário curtiu e repostou."""
+    if not renga_ids:
+        return Contagens()
+
+    def por_renga(coluna) -> dict[int, int]:
+        return dict(
+            db.execute(
+                select(coluna, func.count()).where(coluna.in_(renga_ids)).group_by(coluna)
+            ).all()
+        )
+
+    def do_usuario(modelo) -> set[int]:
+        return set(
+            db.scalars(
+                select(modelo.renga_id).where(
+                    modelo.renga_id.in_(renga_ids), modelo.user_id == usuario.id
+                )
+            )
+        )
+
+    reposts = por_renga(RepostRenga.renga_id)
+    for renga_id, citacoes in por_renga(CitacaoRenga.renga_id).items():
+        reposts[renga_id] = reposts.get(renga_id, 0) + citacoes
+    return Contagens(
+        comentarios=contar_comentarios(db, renga_ids),
+        curtidas=por_renga(CurtidaRenga.renga_id),
+        curtidas_minhas=do_usuario(CurtidaRenga),
+        reposts=reposts,
+        repostadas=do_usuario(RepostRenga),
+    )
 
 
 def contar_comentarios(db: Session, renga_ids: list[int]) -> dict[int, int]:
@@ -171,14 +213,12 @@ def _detalhe(
     estrofes: list[EstrofeRenga],
     convidados: list[User],
     usuario: User,
-    comentarios: int,
+    contagens: Contagens,
 ) -> RengaDetalhe:
     ultimo_autor = estrofes[-1].autor_id if estrofes else None
     impedimento = _impedimento(renga, usuario, {u.id for u in convidados}, ultimo_autor)
     return RengaDetalhe(
-        **_para_saida(
-            renga, len(estrofes), _autores_em_ordem(estrofes), comentarios
-        ).model_dump(),
+        **_para_saida(renga, len(estrofes), _autores_em_ordem(estrofes), contagens).model_dump(),
         estrofes=[
             EstrofeOut(
                 id=e.id,
@@ -282,6 +322,31 @@ def convidar(db: Session, usuario: User, renga_id: int, usernames: list[str]) ->
         # Dois convites iguais ao mesmo tempo: o outro já gravou, dá no mesmo.
         db.rollback()
     return detalhar(db, usuario, renga.id)
+
+
+def buscar(db: Session, renga_id: int) -> Renga:
+    """A renga; 404 se não existe. Público para as antologias."""
+    return _buscar(db, renga_id)
+
+
+def para_interagir(db: Session, usuario: User, renga_id: int) -> Renga:
+    """A renga para curtir, repostar, citar ou mandar por mensagem, como o
+    `posts.original_para_interagir`: vale o criador, como na leitura (404 se ele
+    bloqueou quem age, 403 se quem age o bloqueou)."""
+    renga = _buscar(db, renga_id)
+    bloqueios.garantir_interacao(db, usuario.id, renga.criador_id, "renga não encontrada")
+    return renga
+
+
+def ids_dos_autores(db: Session, renga_id: int) -> list[int]:
+    """Quem escreveu ao menos uma estrofe (o criador escreveu a 1ª), cada um uma vez,
+    na ordem da primeira estrofe: os autores que a curtida, o repost e a citação avisam."""
+    autores = db.scalars(
+        select(EstrofeRenga.autor_id)
+        .where(EstrofeRenga.renga_id == renga_id)
+        .order_by(EstrofeRenga.posicao)
+    )
+    return list(dict.fromkeys(autores))
 
 
 def _impedimento(
@@ -391,7 +456,7 @@ def _autores_por_renga(
 
 
 def _para_saida(
-    renga: Renga, qtd_estrofes: int, autores: list[User], comentarios: int
+    renga: Renga, qtd_estrofes: int, autores: list[User], contagens: Contagens
 ) -> RengaOut:
     return RengaOut(
         id=renga.id,
@@ -404,5 +469,9 @@ def _para_saida(
         created_at=renga.created_at,
         qtd_estrofes=qtd_estrofes,
         autores=[UserOut.model_validate(u) for u in autores],
-        comentarios=comentarios,
+        comentarios=contagens.comentarios.get(renga.id, 0),
+        curtidas=contagens.curtidas.get(renga.id, 0),
+        reposts=contagens.reposts.get(renga.id, 0),
+        curti=renga.id in contagens.curtidas_minhas,
+        repostei=renga.id in contagens.repostadas,
     )

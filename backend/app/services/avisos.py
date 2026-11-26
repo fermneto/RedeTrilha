@@ -15,9 +15,10 @@ apontam para ele (`apagar_do_poema`, `apagar_do_comentario`). O stream avisa de
 novo, e o contador desce.
 
 **Ler.** Uma linha por ação no banco; na tela, as curtidas de um mesmo poema
-num mesmo dia viram uma linha só ("Ana e mais 3 curtiram"), e os reposts
-também (decisão do Neto). O dia é o de Brasília. O agrupamento é um GROUP BY
-nos avisos da pessoa (tipo, poema e dia; o id para os tipos que não agrupam),
+(ou de uma mesma renga) num mesmo dia viram uma linha só ("Ana e mais 3
+curtiram"), e os reposts também (decisão do Neto). O dia é o de Brasília. O
+agrupamento é um GROUP BY nos avisos da pessoa (tipo, poema, renga e dia; o id
+para os tipos que não agrupam),
 ordenado pelo aviso mais recente de cada grupo e
 paginado por cursor nesse mesmo par (data, id). Um bloqueio feito depois do
 aviso o esconde na leitura (como nos comentários), sem apagar.
@@ -193,21 +194,22 @@ def _dia(db: Session):
 
 
 def _chave_do_grupo(db: Session) -> tuple:
-    """(tipo, poema, id, dia): curtidas e reposts do mesmo poema no mesmo dia caem
-    na mesma linha (o id vira 0); os outros tipos ficam uma linha por aviso (o dia
-    vira nulo)."""
+    """(tipo, poema, renga, id, dia): curtidas e reposts do mesmo poema (ou da mesma
+    renga) no mesmo dia caem na mesma linha (o id vira 0); os outros tipos ficam uma
+    linha por aviso (o dia vira nulo)."""
     agrupa = Aviso.tipo.in_(AGRUPADOS)
     return (
         Aviso.tipo,
         Aviso.post_id,
+        Aviso.renga_id,
         case((agrupa, 0), else_=Aviso.id),
         case((agrupa, _dia(db)), else_=None),
     )
 
 
 def _grupos(db: Session, eu: User, cursor: str | None, limit: int) -> list:
-    """As linhas da página: (tipo, post_id, dia, quando, ultimo, atores, lido), mais
-    uma para saber se há próxima página."""
+    """As linhas da página: (tipo, post_id, renga_id, dia, quando, ultimo, atores,
+    lido), mais uma para saber se há próxima página."""
     quando = func.max(Aviso.created_at)
     ultimo = func.max(Aviso.id)
     chave = _chave_do_grupo(db)
@@ -215,7 +217,8 @@ def _grupos(db: Session, eu: User, cursor: str | None, limit: int) -> list:
         select(
             Aviso.tipo,
             Aviso.post_id,
-            chave[3].label("dia"),
+            Aviso.renga_id,
+            chave[4].label("dia"),
             quando.label("quando"),
             ultimo.label("ultimo"),
             func.count(distinct(Aviso.ator_id)).label("atores"),
@@ -241,7 +244,9 @@ def _montar(db: Session, eu: User, grupos: list) -> list[AvisoOut]:
     for grupo in grupos:
         aviso = principais[grupo.ultimo]
         if grupo.tipo in AGRUPADOS:
-            de_quem = atores.get((grupo.tipo, grupo.post_id, grupo.dia), [aviso.ator])
+            de_quem = atores.get(
+                (grupo.tipo, grupo.post_id, grupo.renga_id, grupo.dia), [aviso.ator]
+            )
         else:
             de_quem = [aviso.ator]
         itens.append(
@@ -263,25 +268,27 @@ def _montar(db: Session, eu: User, grupos: list) -> list[AvisoOut]:
 
 def _atores_dos_agrupados(db: Session, eu: User, grupos: list) -> dict[tuple, list[User]]:
     """Os ATORES_NA_LINHA atores mais recentes de cada linha agrupada, numa consulta
-    (ROW_NUMBER por tipo, poema e dia), sem carregar as mil curtidas de um poema."""
-    chaves = {(g.tipo, g.post_id, g.dia) for g in grupos if g.tipo in AGRUPADOS}
+    (ROW_NUMBER por tipo, poema, renga e dia), sem carregar as mil curtidas de um poema."""
+    chaves = {(g.tipo, g.post_id, g.renga_id, g.dia) for g in grupos if g.tipo in AGRUPADOS}
     if not chaves:
         return {}
     dia = _dia(db).label("dia")
     posicao = (
         func.row_number()
         .over(
-            partition_by=(Aviso.tipo, Aviso.post_id, dia),
+            partition_by=(Aviso.tipo, Aviso.post_id, Aviso.renga_id, dia),
             order_by=(Aviso.created_at.desc(), Aviso.id.desc()),
         )
         .label("posicao")
     )
+    posts = {post_id for _, post_id, _, _ in chaves if post_id is not None}
+    rengas = {renga_id for _, _, renga_id, _ in chaves if renga_id is not None}
     recentes = (
         select(Aviso.id, dia, posicao)
         .where(
             *_meus(db, eu),
             Aviso.tipo.in_(AGRUPADOS),
-            Aviso.post_id.in_({post_id for _, post_id, _ in chaves}),
+            or_(Aviso.post_id.in_(posts), Aviso.renga_id.in_(rengas)),
         )
         .subquery()
     )
@@ -290,13 +297,14 @@ def _atores_dos_agrupados(db: Session, eu: User, grupos: list) -> dict[tuple, li
         .join(recentes, recentes.c.id == Aviso.id)
         .where(
             recentes.c.posicao <= ATORES_NA_LINHA,
-            recentes.c.dia.in_({d for _, _, d in chaves}),
+            recentes.c.dia.in_({d for _, _, _, d in chaves}),
         )
         .order_by(recentes.c.posicao)
     )
     por_chave: dict[tuple, list[User]] = {}
     for aviso, dia_do_aviso in linhas:
-        por_chave.setdefault((aviso.tipo, aviso.post_id, dia_do_aviso), []).append(aviso.ator)
+        chave = (aviso.tipo, aviso.post_id, aviso.renga_id, dia_do_aviso)
+        por_chave.setdefault(chave, []).append(aviso.ator)
     return por_chave
 
 
@@ -325,6 +333,7 @@ class _Alvos:
         post = self.posts.get(aviso.post_id)
         renga = self.rengas.get(aviso.renga_id)
         if renga is not None:
+            # A renga curtida, repostada, citada ou comentada.
             titulo = renga.titulo
         elif aviso.tipo == "citacao" and post is not None and post.repost_de_id:
             # A citação mostra o título do poema citado, que é o de quem recebe.
