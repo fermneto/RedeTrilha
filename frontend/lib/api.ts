@@ -249,6 +249,19 @@ function ehForma(tag: string): boolean {
   return (FORMAS as readonly string[]).includes(tag);
 }
 
+// Como uma tag aparece na tela, com o "#": sem o "_", as palavras juntas
+// (#versolivre, #noitefria). O valor e o link continuam com o "_" (verso_livre),
+// e a busca do backend ignora o "_" (core/indice_tags.chave_da_tag), então
+// digitar o que a tela mostra acha a tag.
+export function hashtag(tag: string): string {
+  return `#${semSublinhado(tag)}`;
+}
+
+// A tag como a busca a compara: duas grafias que só diferem pelo "_" são a mesma.
+export function semSublinhado(tag: string): string {
+  return tag.replace(/_/g, "");
+}
+
 // Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
 export function caminhoDaTag(tag: string): string {
   return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;

@@ -5,6 +5,7 @@ O índice invertido em si (tag -> poemas) mora no banco, na tabela `post_tags`
 Aqui fica o que é regra e estrutura de dados, sem banco:
 
 - `normalizar` / `termo_de_tag` / `extrair_tags`: que tags um poema tem.
+- `chave_da_tag`: a tag como a busca a compara, sem o "_" (#versolivre acha verso_livre).
 - `top_k`: as k tags mais contadas, com um heap de tamanho k.
 - `representantes`: um poema diferente por tag, para o trecho do "Em alta".
 
@@ -35,6 +36,16 @@ def normalizar(texto: str) -> str:
 def termo_de_tag(texto: str) -> str:
     """O que a pessoa digitou na busca, como tag: '#Saudade!' vira 'saudade'."""
     return _FORA_DA_TAG.sub("", normalizar(texto))
+
+
+def chave_da_tag(texto: str) -> str:
+    """A tag como a busca a compara: o termo sem o "_".
+
+    A tela mostra #verso_livre como #versolivre, então digitar uma ou outra
+    acha a mesma tag. O valor guardado continua com o "_"; tags que só diferem
+    pelo "_" (noite_fria e noitefria) viram a mesma chave e a busca traz as duas.
+    """
+    return termo_de_tag(texto).replace("_", "")
 
 
 def extrair_tags(texto: str, forma: str | None) -> set[str]:
