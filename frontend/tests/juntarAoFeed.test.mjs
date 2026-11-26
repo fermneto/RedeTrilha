@@ -76,3 +76,9 @@ test("não muda a lista de antes", () => {
   juntarAoFeed(atuais, [poema(1, { repostado_por: [caio] })]);
   assert.deepEqual(atuais[0].repostado_por, [bia]);
 });
+
+test("o mais curtido da continuação repete, como folha nova no fim", () => {
+  const atuais = [poema(1), poema(2)];
+  const novos = [poema(3), poema(1, { subiu_por: "curtidas" }), poema(1, { subiu_por: "curtidas" })];
+  assert.deepEqual(ids(juntarAoFeed(atuais, novos)), ["poema-1", "poema-2", "poema-3", "poema-1", "poema-1"]);
+});

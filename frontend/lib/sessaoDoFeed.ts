@@ -9,7 +9,9 @@
 // viu primeiro (chegou na folha dele), e a outra aba o pula. O filtro é do front
 // porque o "visto" é do front (o backend só sabe o que entregou, e o que uma aba
 // carregou adiantado a pessoa ainda não viu: pular isso esvaziaria o Para você).
-// O cursor de cada aba segue sendo o do backend, que já não repete na aba.
+// O cursor de cada aba segue sendo o do backend, que já não repete na aba. O
+// mais curtido da continuação do feed infinito (`subiu_por: "curtidas"`) pode
+// repetir por desenho, e por isso passa pelo filtro sempre.
 //
 // Sem import de valor (só de tipo): os testes transpilam este arquivo sozinho.
 
@@ -21,8 +23,12 @@ export type PosicaoNoCaderno = { folha: number; lado: "e" | "d" };
 export type EstadoDaAba = {
   itens: ItemDoFeed[];
   cursor: string | null;
+  // Só com a rede sem poemas: o feed não acaba.
   fim: boolean;
   posicao: PosicaoNoCaderno;
+  // Quantos dos `itens` vieram antes da virada (`fim_em` do FeedPage): no
+  // Seguindo, o que é de quem a pessoa segue. null antes de chegar lá.
+  fimEm?: number | null;
 };
 
 export type Sessao = {
@@ -45,7 +51,7 @@ export function sessaoVazia(dono: string): Sessao {
 }
 
 export function abaVazia(): EstadoDaAba {
-  return { itens: [], cursor: null, fim: false, posicao: INICIO_DO_CADERNO };
+  return { itens: [], cursor: null, fim: false, posicao: INICIO_DO_CADERNO, fimEm: null };
 }
 
 // Os itens que a aba mostra: os que ninguém viu ainda e os que foram vistos nela.
@@ -55,7 +61,9 @@ export function visiveis(
   vistos: Record<string, Aba>,
   aba: Aba,
 ): ItemDoFeed[] {
-  return itens.filter((item) => (vistos[chave(item)] ?? aba) === aba);
+  return itens.filter(
+    (item) => (item.tipo !== "renga" && item.subiu_por === "curtidas") || (vistos[chave(item)] ?? aba) === aba,
+  );
 }
 
 // Marca o item como visto na aba, se ainda não foi visto em nenhuma. Devolve o

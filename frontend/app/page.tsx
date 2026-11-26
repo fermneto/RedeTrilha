@@ -6,6 +6,10 @@
 // o padrão, para o caderno nunca começar vazio) e "Seguindo" (quem você segue e
 // os seus); a troca fica no alto da página da esquerda.
 //
+// Como no X, o feed não acaba: quando o Para você não tem mais nada inédito,
+// segue com consagrados e os mais curtidos; no Seguindo, quando acaba o que é de
+// quem você segue, uma folha avisa e o caderno segue com o Para você.
+//
 // Como no X, a leitura continua de onde parou (lib/sessaoDoFeed.ts): trocar de
 // aba, ir a outra página e voltar, seguir alguém ou recarregar reabre cada aba na
 // mesma folha, com o que já tinha carregado. Um poema visto numa aba não aparece
@@ -103,9 +107,35 @@ function Caderno({
   topo: React.ReactNode;
   vazio: React.ReactNode;
 }) {
-  const { itens, fim, erro, posicao, aoMudar, tentarDeNovo } = useFeedPorCursor(aba, BUSCAR[aba], FOLHAS_DE_FOLGA);
+  const { itens, avisoEm, fim, erro, posicao, aoMudar, tentarDeNovo } = useFeedPorCursor(
+    aba,
+    BUSCAR[aba],
+    FOLHAS_DE_FOLGA,
+    aba === "seguindo",
+  );
 
-  const folhas: Folha[] = itens.map((item) => folhaDoItem(item, euId, topo));
+  // O mais curtido da continuação pode repetir: a folha repetida ganha chave própria.
+  const vezes = new Map<string, number>();
+  const folhas: Folha[] = itens.map((item) => {
+    const folha = folhaDoItem(item, euId, topo);
+    const n = vezes.get(folha.chave) ?? 0;
+    vezes.set(folha.chave, n + 1);
+    return n === 0 ? folha : { ...folha, chave: `${folha.chave}-${n}` };
+  });
+  if (avisoEm !== null && !(fim && itens.length === 0)) {
+    folhas.splice(avisoEm, 0, {
+      chave: "fim-dos-seguidos",
+      rotulo: avisoEm === 0 ? "ainda não há poemas de quem você segue" : "você leu tudo de quem segue",
+      esquerda: (
+        <div className="pb-4">
+          {topo}
+          <div className={`${MARGEM_DA_PAGINA} text-tinta-suave`}>
+            <FimDosSeguidos nada={avisoEm === 0} />
+          </div>
+        </div>
+      ),
+    });
+  }
   if (!fim || erro) {
     folhas.push({
       chave: "carregando",
@@ -128,16 +158,15 @@ function Caderno({
         </div>
       ),
     });
-  } else {
+  } else if (itens.length === 0) {
+    // O feed só acaba com a rede sem poemas.
     folhas.push({
-      chave: "fim",
-      rotulo: itens.length === 0 ? "o caderno está vazio" : "fim do feed",
+      chave: "vazio",
+      rotulo: "o caderno está vazio",
       esquerda: (
         <div className="pb-4">
           {topo}
-          <div className={`${MARGEM_DA_PAGINA} text-tinta-suave`}>
-            {itens.length === 0 ? vazio : <FimDoFeed />}
-          </div>
+          <div className={`${MARGEM_DA_PAGINA} text-tinta-suave`}>{vazio}</div>
         </div>
       ),
     });
@@ -178,12 +207,22 @@ function TrocaDeFeed({ atual, aoMudar }: { atual: Aba; aoMudar: (feed: Aba) => v
   );
 }
 
-function FimDoFeed() {
+// A folha da virada no Seguindo: acabou o que é de quem a pessoa segue (ou nem
+// havia), e o caderno segue com o Para você.
+function FimDosSeguidos({ nada }: { nada: boolean }) {
   return (
     <div className="pt-16 text-center">
-      <p className="font-serifada text-lg text-tinta italic">fim do feed</p>
+      <p className="font-serifada text-lg text-tinta italic">
+        {nada ? "ainda não há poemas de quem você segue" : "você leu tudo de quem segue"}
+      </p>
       <p className="mt-2 text-sm">
-        Volte as páginas, ou <Link href="/escrever" className="underline">escreva a próxima</Link>.
+        {nada ? (
+          <>
+            <Link href="/sugestoes" className="underline">Encontre poetas para seguir</Link> ou{" "}
+            <Link href="/escrever" className="underline">escreva um poema</Link>.{" "}
+          </>
+        ) : null}
+        Passe a página: daqui em diante, o caderno segue com o Para você.
       </p>
     </div>
   );
@@ -200,7 +239,7 @@ function VazioDaRede() {
 function VazioDoSeguindo() {
   return (
     <p className="pt-16 text-center">
-      Seu feed está vazio. <Link href="/escrever" className="underline">Escreva um poema</Link> ou{" "}
+      Ainda não há poemas na rede. <Link href="/escrever" className="underline">Escreva o primeiro</Link> ou{" "}
       <Link href="/sugestoes" className="underline">encontre poetas para seguir</Link>.
     </p>
   );
