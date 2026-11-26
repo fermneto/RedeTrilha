@@ -4,7 +4,7 @@
 // Os rótulos das escolas e das UFs vêm de /preferencias/opcoes; os das formas, de
 // nomeDaForma; o país, do Intl. Cada forma leva aos poemas dela no Explorar; a
 // forma "outro" fica de fora. O lugar some para os outros se a pessoa desligou
-// "mostrar meu lugar no perfil". Nada a mostrar (ou consagrado, que não tem
+// "mostrar meu lugar no perfil" (o backend já tira). Nada a mostrar (ou consagrado, que não tem
 // preferências): o bloco não aparece; no próprio perfil, fica o convite para
 // marcar os gostos. No próprio perfil com gostos, o link para editar.
 
@@ -25,8 +25,6 @@ type Gostos = {
   escolas: string[];
   formas: string[];
   lugar: string | null;
-  // O dono desligou "mostrar meu lugar no perfil": só ele vê o lugar.
-  lugarSoMeu: boolean;
 };
 
 type Props = { username: string; proprio: boolean };
@@ -42,17 +40,15 @@ export function PerfilGostos({ username, proprio }: Props) {
     Promise.all([buscarGostosDe(username), buscarOpcoesDePreferencias()])
       .then(([g, opcoes]) => {
         const escola = new Map(opcoes.escolas.map((o) => [o.codigo, o.rotulo]));
-        const lugar = lugarDosGostos(g, opcoes.ufs);
         return {
           escolas: g.escolas.map((c) => escola.get(c) ?? c),
           formas: formasDoPerfil(g.formas),
-          lugar,
-          lugarSoMeu: Boolean(lugar) && !g.mostrar_lugar,
+          lugar: lugarDosGostos(g, opcoes.ufs),
         };
       })
       .then((g) => vivo && setGostos(g))
       // Os gostos são um extra do perfil: se falharem, o bloco só não aparece.
-      .catch(() => vivo && setGostos({ escolas: [], formas: [], lugar: null, lugarSoMeu: false }));
+      .catch(() => vivo && setGostos({ escolas: [], formas: [], lugar: null }));
     return () => {
       vivo = false;
     };
@@ -114,12 +110,7 @@ export function PerfilGostos({ username, proprio }: Props) {
         {gostos.lugar && (
           <>
             <dt className="text-sm text-tinta-suave">de</dt>
-            <dd className="font-serifada break-words">
-              {gostos.lugar}
-              {gostos.lugarSoMeu && (
-                <span className="ml-2 font-sans text-sm text-tinta-suave">· só você vê</span>
-              )}
-            </dd>
+            <dd className="font-serifada break-words">{gostos.lugar}</dd>
           </>
         )}
       </dl>
