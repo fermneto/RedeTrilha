@@ -24,6 +24,7 @@ import {
   temToken,
   type Post,
   type SelecaoDeVersos,
+  type User,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
 
@@ -41,7 +42,8 @@ export default function PoemaPage() {
   const router = useRouter();
   const id = Number(useParams<{ id: string }>().id);
   const [poema, setPoema] = useState<Post | null>(null);
-  const [euId, setEuId] = useState<number | null>(null);
+  const [eu, setEu] = useState<User | null>(null);
+  const euId = eu?.id ?? null;
   const [erro, setErro] = useState<string | null>(null);
   // Crítica ancorada (#71): versos selecionados, marcas por verso e o filtro da marca.
   const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
@@ -75,8 +77,8 @@ export default function PoemaPage() {
     }
     carregarPoema();
     buscarEu()
-      .then((eu) => setEuId(eu.id))
-      .catch(() => setEuId(null));
+      .then(setEu)
+      .catch(() => setEu(null));
   }, [carregarPoema, router]);
 
   useEffect(() => {
@@ -160,7 +162,7 @@ export default function PoemaPage() {
             <div className="surgir min-h-full">
               <VersoDoPoema
                 poema={original}
-                repercussao={<Repercussao alvo={{ tipo: "poema", id: original.id }} />}
+                repercussao={<Repercussao alvo={{ tipo: "poema", id: original.id }} eu={eu} />}
                 comentarios={
                   <ArvoreComentarios
                     campoNoPe
