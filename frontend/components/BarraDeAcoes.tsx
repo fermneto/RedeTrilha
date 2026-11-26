@@ -13,6 +13,7 @@ import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { caminhoDaCitacao, curtir, mensagemDeFalha, repostar, type Alvo, type Renga } from "@/lib/api";
+import { avisarAcao } from "@/lib/repercussao";
 import { lembrarAcao } from "@/lib/sessaoDoFeed";
 
 // As ações da renga, como as do poema; a conversa é a da página da renga.
@@ -33,7 +34,8 @@ type EstadoDasAcoes = { curti: boolean; curtidas: number; repostei: boolean; rep
 
 // Curtir e repostar mudam a tela antes da resposta e voltam atrás se o backend falhar.
 // Dando certo, o feed guardado (lib/sessaoDoFeed.ts) fica sabendo: ao voltar ao
-// Início, o botão mostra o estado novo.
+// Início, o botão mostra o estado novo; e a repercussão da página (quem curtiu,
+// quem repostou) põe ou tira a pessoa sem pedir nada ao backend (lib/repercussao.ts).
 // Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
 // pedidos simultâneos podem ser processados fora de ordem e deixar a tela
 // diferente do servidor.
@@ -71,6 +73,7 @@ export function BarraDeAcoes({
     try {
       await curtir(alvo, novo);
       lembrarAcao(alvo, { curti: novo, curtidas: curtidas + (novo ? 1 : -1), repostei, reposts });
+      avisarAcao({ alvo, acao: "curtidas", ativo: novo });
     } catch (e) {
       setCurti(!novo);
       setCurtidas((n) => n + (novo ? -1 : 1));
@@ -90,6 +93,7 @@ export function BarraDeAcoes({
     try {
       await repostar(alvo, novo);
       lembrarAcao(alvo, { curti, curtidas, repostei: novo, reposts: reposts + (novo ? 1 : -1) });
+      avisarAcao({ alvo, acao: "reposts", ativo: novo });
     } catch (e) {
       setRepostei(!novo);
       setReposts((n) => n + (novo ? -1 : 1));

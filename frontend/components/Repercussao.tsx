@@ -3,7 +3,9 @@
 // das ações: quem curtiu, quem repostou e onde foi citado, uma linha para cada
 // (só as que têm alguém), com os rostos de quem chegou por último. Tocar na
 // linha abre a lista inteira ali mesmo, embaixo dela (uma aberta por vez); sem
-// modal, para a conversa continuar à vista.
+// modal, para a conversa continuar à vista. Curtir ou repostar ali mesmo põe
+// (ou tira) a própria pessoa da linha e da lista aberta na hora, sem nova
+// requisição (lib/repercussao.ts).
 
 import Link from "next/link";
 import { type ReactNode, useEffect, useId, useState } from "react";
@@ -22,6 +24,7 @@ import {
   type Post,
   type User,
 } from "@/lib/api";
+import { comAPessoa, ouvirAcoes } from "@/lib/repercussao";
 
 // Quantos rostos a linha mostra.
 const ROSTOS = 3;
@@ -30,7 +33,9 @@ const POR_PAGINA = 20;
 type Qual = "curtidas" | "reposts" | "citacoes";
 type Previas = { curtidas: Page<User>; reposts: Page<User>; citacoes: Page<Post> };
 
-export function Repercussao({ alvo }: { alvo: Alvo }) {
+// `eu`: quem está lendo, que a página já buscou; sem ele, a linha não acompanha
+// as ações (e espera a próxima visita).
+export function Repercussao({ alvo, eu }: { alvo: Alvo; eu: User | null }) {
   const [previas, setPrevias] = useState<Previas | null>(null);
   const [aberta, setAberta] = useState<Qual | null>(null);
   const idDoPainel = useId();
@@ -52,6 +57,14 @@ export function Repercussao({ alvo }: { alvo: Alvo }) {
     };
   }, [alvo.tipo, alvo.id]);
 
+  useEffect(() => {
+    if (!eu) return;
+    return ouvirAcoes(({ alvo: daAcao, acao, ativo }) => {
+      if (daAcao.tipo !== alvo.tipo || daAcao.id !== alvo.id) return;
+      setPrevias((antes) => antes && { ...antes, [acao]: comAPessoa(antes[acao], eu, ativo, ROSTOS) });
+    });
+  }, [alvo.tipo, alvo.id, eu]);
+
   if (!previas) return null;
   // Poema é "curtido", renga é "curtida".
   const a = alvo.tipo === "renga" ? "a" : "o";
@@ -61,15 +74,29 @@ export function Repercussao({ alvo }: { alvo: Alvo }) {
       qual: "curtidas",
       total: previas.curtidas.total,
       rostos: previas.curtidas.items,
-      frase: <Nomes antes={`curtid${a} por`} pagina={previas.curtidas} />,
-      lista: <ListaDePessoas buscar={(offset) => buscarQuemCurtiu(alvo, offset, POR_PAGINA)} />,
+      frase: <Nomes antes={`curtid${a} por`} pagina={previas.curtidas} euId={eu?.id ?? null} />,
+      lista: (
+        <ListaDePessoas
+          alvo={alvo}
+          qual="curtidas"
+          eu={eu}
+          buscar={(offset) => buscarQuemCurtiu(alvo, offset, POR_PAGINA)}
+        />
+      ),
     },
     {
       qual: "reposts",
       total: previas.reposts.total,
       rostos: previas.reposts.items,
-      frase: <Nomes antes={`repostad${a} por`} pagina={previas.reposts} />,
-      lista: <ListaDePessoas buscar={(offset) => buscarQuemRepostou(alvo, offset, POR_PAGINA)} />,
+      frase: <Nomes antes={`repostad${a} por`} pagina={previas.reposts} euId={eu?.id ?? null} />,
+      lista: (
+        <ListaDePessoas
+          alvo={alvo}
+          qual="reposts"
+          eu={eu}
+          buscar={(offset) => buscarQuemRepostou(alvo, offset, POR_PAGINA)}
+        />
+      ),
     },
     {
       qual: "citacoes",
@@ -136,8 +163,9 @@ function Rostos({ usuarios }: { usuarios: User[] }) {
 }
 
 // "curtido por Ana, Bia e mais 3": os nomes sem link (a linha inteira é o botão).
-function Nomes({ antes, pagina }: { antes: string; pagina: Page<User> }) {
-  const nomes = pagina.items.slice(0, 2).map((u) => u.name);
+// A própria pessoa aparece como "você" ("curtido por você, Ana e mais 3").
+function Nomes({ antes, pagina, euId }: { antes: string; pagina: Page<User>; euId: number | null }) {
+  const nomes = pagina.items.slice(0, 2).map((u) => (u.id === euId ? "você" : u.name));
   const resto = pagina.total - nomes.length;
   return (
     <>
@@ -216,11 +244,41 @@ function usePaginas<T>(buscar: (offset: number) => Promise<Page<T>>) {
       )}
     </>
   );
-  return { items, rodape };
+  // Muda a lista já carregada sem pedir de novo (curtir ou repostar com ela
+  // aberta). O "ver mais" segue de items.length, que continua certo: no servidor,
+  // quem acabou de curtir também entrou no começo (ou saiu).
+  function ajustar(mudar: (pagina: Page<T>) => Page<T>) {
+    if (total === null) return;
+    const mudada = mudar({ items, total, offset: 0, limit: items.length });
+    setItems(mudada.items);
+    setTotal(mudada.total);
+  }
+
+  return { items, rodape, ajustar };
 }
 
-function ListaDePessoas({ buscar }: { buscar: (offset: number) => Promise<Page<User>> }) {
-  const { items, rodape } = usePaginas(buscar);
+function ListaDePessoas({
+  alvo,
+  qual,
+  eu,
+  buscar,
+}: {
+  alvo: Alvo;
+  qual: "curtidas" | "reposts";
+  eu: User | null;
+  buscar: (offset: number) => Promise<Page<User>>;
+}) {
+  const { items, rodape, ajustar } = usePaginas(buscar);
+
+  // Sem dependências: o ajustar de cada render enxerga a lista daquele render.
+  useEffect(() => {
+    if (!eu) return;
+    return ouvirAcoes(({ alvo: daAcao, acao, ativo }) => {
+      if (daAcao.tipo === alvo.tipo && daAcao.id === alvo.id && acao === qual) {
+        ajustar((pagina) => comAPessoa(pagina, eu, ativo));
+      }
+    });
+  });
   return (
     <>
       <ul>
