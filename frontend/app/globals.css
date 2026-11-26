@@ -64,7 +64,9 @@
   /* O livro aberto (components/Caderno.tsx) ocupa a janela inteira e quem rola é
      cada página dele. A janela não rola: sem isso, as folhas que giram, as
      sombras e o foco movendo a rolagem deixavam uma faixa de fundo liso embaixo
-     do livro. As telas sem o livro (landing, cadastro) continuam rolando. */
+     do livro. É a camada extra: a causa (o absoluto que escapava da página)
+     está na .pagina-rolagem. As telas sem o livro (landing, cadastro)
+     continuam rolando. */
   html:has(.livro-aberto) {
     overflow: hidden;
   }
@@ -336,7 +338,12 @@
     background-image: var(--grao);
   }
 
+  /* `relative`: o que é absoluto dentro da página (os textos sr-only, por
+     exemplo) fica preso à área que rola. Sem isso, o ancestral posicionado é a
+     .pagina, o elemento escapa do recorte e estica a janela abaixo do livro
+     quando o poema é longo. */
   .pagina-rolagem {
+    position: relative;
     min-height: 0;
     flex: 1;
     overflow-y: auto;
