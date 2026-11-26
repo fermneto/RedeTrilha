@@ -1,7 +1,7 @@
 "use client";
 // Ajustes da conta no meu perfil, ao lado de "Editar perfil": "Preferências" (os
 // passos de gostos e região do onboarding, que voltam para o perfil) e "Sair". É
-// por aqui que se chega a esses dois: o marcador "Perfil" do caderno leva a ele.
+// por aqui que se chega a esses dois: o "Perfil" da lombada do livro leva a ele.
 // Botão com aria-expanded, foco no primeiro item ao abrir, Esc fecha e devolve o
 // foco ao botão, clique fora ou Tab para fora fecham.
 

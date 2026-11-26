@@ -13,10 +13,14 @@
   --color-tinta-suave: #6b6359;
   --color-borda: #e4ddd0;
   --color-destaque: #8a3b2e;
-  /* O caderno (components/Caderno*.tsx): a mesa onde ele está aberto, um tom
-     abaixo do papel, e os marcadores guardados, entre a mesa e a folha. */
-  --color-mesa: #eee8dc;
-  --color-marcador: #f3eee3;
+  /* O livro (components/Caderno*.tsx): o tecido da capa, um castanho tirado do
+     destaque com a tinta, e o que vem gravado nele (os ícones da lombada).
+     Contraste da gravura na capa: 11:1 (claro) e 11:1 (escuro); a gravura
+     apagada (60%) passa de 4,5:1 nos dois. */
+  --color-capa: #42261f;
+  --color-gravura: #f3e8d8;
+  /* A borda das folhas: o fio entre uma folha e outra, na lateral do bloco. */
+  --color-fio-das-folhas: #ddd4c4;
 }
 
 /* Fontes carregadas pelo next/font em app/layout.tsx, com fallback de sistema
@@ -36,8 +40,9 @@
     --color-tinta-suave: #a39a8b;
     --color-borda: #36312a;
     --color-destaque: #e09a7f;
-    --color-mesa: #100e0a;
-    --color-marcador: #13110c;
+    --color-capa: #3c251f;
+    --color-gravura: #eadcc8;
+    --color-fio-das-folhas: #2b2720;
   }
 }
 
@@ -283,6 +288,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--color-papel);
+    background-image: var(--grao);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform-style: preserve-3d;
@@ -290,7 +296,7 @@
 
   .pagina-u {
     inset-inline: 0;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
   }
 
   .pagina-e,
@@ -298,16 +304,21 @@
     width: 50%;
   }
 
+  /* A dobra: as duas páginas descem para a costura, mais escuras junto dela. */
   .pagina-e {
     left: 0;
-    border-radius: 0.375rem 0 0 0.375rem;
-    background-image: linear-gradient(to left, rgb(31 27 22 / 0.04), transparent 2rem);
+    border-radius: 0.1875rem 0 0 0.1875rem;
+    background-image:
+      linear-gradient(to left, rgb(31 27 22 / 0.11), rgb(31 27 22 / 0.035) 0.9rem, transparent 3.5rem),
+      var(--grao);
   }
 
   .pagina-d {
     left: 50%;
-    border-radius: 0 0.375rem 0.375rem 0;
-    background-image: linear-gradient(to right, rgb(31 27 22 / 0.04), transparent 2rem);
+    border-radius: 0 0.1875rem 0.1875rem 0;
+    background-image:
+      linear-gradient(to right, rgb(31 27 22 / 0.11), rgb(31 27 22 / 0.035) 0.9rem, transparent 3.5rem),
+      var(--grao);
   }
 
   .pagina-rolagem {
@@ -354,11 +365,15 @@
 
   @media (prefers-color-scheme: dark) {
     .pagina-e {
-      background-image: linear-gradient(to left, rgb(0 0 0 / 0.28), transparent 2.5rem);
+      background-image:
+        linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+        var(--grao);
     }
 
     .pagina-d {
-      background-image: linear-gradient(to right, rgb(0 0 0 / 0.28), transparent 2.5rem);
+      background-image:
+        linear-gradient(to right, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+        var(--grao);
     }
 
     .vira-frente,
@@ -378,6 +393,123 @@
     .vira-verso,
     .volta-verso {
       animation: folha-surge 180ms ease-out both;
+    }
+  }
+
+  /* A página nova (o compositor): ao abrir, a folha da direita vira e deita em
+     branco na esquerda, como quem passa para a próxima página em branco do livro. */
+  .folha-nova {
+    transform-origin: right center;
+    animation: folha-nova var(--virada) var(--curva-da-virada) both;
+  }
+
+  .folha-em-branco {
+    transform-origin: left center;
+    animation: folha-em-branco var(--virada) var(--curva-da-virada) both;
+  }
+
+  /* No celular, sem a página da esquerda: a folha nova assenta por cima. */
+  .folha-nova-u {
+    animation: folha-nova-u 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .folha-nova,
+    .folha-nova-u {
+      animation: folha-surge 180ms ease-out both;
+    }
+
+    .folha-em-branco {
+      animation: folha-some 180ms ease-out both;
+    }
+  }
+}
+
+/* O livro fechado em volta das folhas (components/Caderno.tsx): a capa de pano,
+   um pouco maior que o miolo (as "sobras" da capa dura) e, à esquerda (no
+   celular, embaixo), a lombada com a navegação gravada. O miolo mostra a borda
+   das folhas nas laterais e no pé: fios finos, um por folha. O grão do papel é
+   um ruído fractal de 4 a 5% de opacidade; sem fundo nenhum atrás do livro. */
+:root {
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .14 0 0 0 0 .11 0 0 0 0 .08 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --tecido: repeating-linear-gradient(45deg, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(-45deg, rgb(0 0 0 / 0.06) 0 1px, transparent 1px 3px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .89 0 0 0 0 .84 0 0 0 .045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .capa {
+    background-color: var(--color-capa);
+    background-image: var(--tecido);
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.04),
+      0 1px 2px rgb(31 27 22 / 0.18),
+      0 22px 44px -22px rgb(31 27 22 / 0.45);
+  }
+
+  /* O miolo: as folhas por cima e, por baixo, a borda delas aparecendo. */
+  .miolo {
+    background-color: var(--color-papel);
+    background-image:
+      repeating-linear-gradient(to right, var(--color-fio-das-folhas) 0 1px, var(--color-papel) 1px 2px),
+      repeating-linear-gradient(to left, var(--color-fio-das-folhas) 0 1px, var(--color-papel) 1px 2px),
+      repeating-linear-gradient(to top, var(--color-fio-das-folhas) 0 1px, var(--color-papel) 1px 2px);
+    background-size: 5px 100%, 5px 100%, 100% 4px;
+    background-position: left top, right top, left bottom;
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 3px rgb(31 27 22 / 0.25);
+  }
+
+  /* Cada ícone gravado na lombada: apagado em repouso, inteiro ao passar e no
+     atual, que fica rebaixado no pano (a sombra de dentro). */
+  .gravado {
+    color: color-mix(in srgb, var(--color-gravura) 62%, transparent);
+    transition: color 150ms ease-out, background-color 150ms ease-out;
+  }
+
+  .gravado:hover {
+    color: var(--color-gravura);
+    background-color: rgb(255 255 255 / 0.05);
+  }
+
+  .gravado[aria-current="page"] {
+    color: var(--color-gravura);
+    background-color: rgb(0 0 0 / 0.22);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.45), 0 1px 0 rgb(255 255 255 / 0.06);
+  }
+
+  /* O pé da conversa (o campo de comentar preso no fim da página): o mesmo papel
+     com o mesmo grão, que some num degradê curto por cima, onde a conversa passa
+     por trás. */
+  .pe-da-conversa::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-papel);
+    background-image: var(--grao);
+    mask-image: linear-gradient(to bottom, transparent, #000 1.25rem);
+  }
+
+  .capa :focus-visible {
+    outline-color: var(--color-gravura);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .capa {
+      box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 0.05),
+        0 1px 2px rgb(0 0 0 / 0.5),
+        0 22px 44px -22px rgb(0 0 0 / 0.8);
+    }
+
+    .miolo {
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.6);
     }
   }
 }
@@ -408,6 +540,33 @@
 @keyframes volta-verso {
   from {
     transform: rotateY(-180deg);
+  }
+}
+
+@keyframes folha-nova {
+  from {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 2rem rgb(31 27 22 / 0.14);
+  }
+  to {
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes folha-em-branco {
+  from {
+    box-shadow: 0 0 2rem rgb(31 27 22 / 0.14);
+  }
+  to {
+    transform: rotateY(-180deg);
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes folha-nova-u {
+  from {
+    opacity: 0;
+    transform: translateX(2.5rem) rotate(0.6deg);
   }
 }
 
