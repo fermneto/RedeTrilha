@@ -155,7 +155,8 @@ são texto puro, sem interpretação. A oficina mede, as `#tags` se extraem e o
 fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
 - `PostCreate`: `titulo`, `texto` (não pode ficar em branco), `forma`, `idioma`
-  e `repost_de_id` (com texto, é citação). Só o autor apaga (403).
+  e `repost_de_id` (com texto, é citação), ou `renga_citada_id` (citação de uma
+  renga, #171; os dois juntos → 422). Só o autor apaga (403).
 - **Poema publicado é imutável** (decisão do Neto, #73): não há `PATCH /posts/{id}`
   (405). Para corrigir, o autor apaga e publica de novo, perdendo curtidas e
   comentários. O que se edita é o rascunho (abaixo). O importador de
@@ -164,7 +165,13 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
   `curtidas`, `comentarios`, `reposts`, `curti`, `repostei`,
   `repost_de: PostOut | None` (um nível), `repost_removido`, `tags: list[str]`
   (`#hashtags` + forma + `tags_extras`, normalizadas) e
-  `repostado_por: list[UserOut]` (só no feed; vazio fora dele).
+  `repostado_por: list[UserOut]` (só no feed; vazio fora dele). Desde #171,
+  também `renga_citada_id` e `renga_citada: RengaDetalhe | None` (a renga que o
+  poema cita, com as estrofes, um nível); a renga de quem bloqueou quem vê vem
+  `null` com `repost_indisponivel: true`.
+- **Citação de renga (#171):** tabela nova `citacoes_renga` (`post_id` PK e FK
+  `posts.id`, `renga_id`), nenhuma coluna em `posts`. O poema que cita é um
+  poema comum (entra no feed, no perfil, no Explorar); apagá-lo apaga o vínculo.
 - **Apagar um poema com reposts:** os reposts puros são apagados junto; as
   citações continuam, com `repost_de: null` e `repost_removido: true`, e a tela
   mostra "poema removido pelo autor", como no X.
@@ -179,9 +186,9 @@ fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
 
 - `PoemaNoFeed` (`tipo: "poema"`): o `PostOut` de sempre, com o campo `tipo`.
 - `RengaNoFeed` (`tipo: "renga"`): `renga: RengaDetalhe`, `atividade`
-  (`"abriu"` | `"escreveu"` | `"encerrou"`) e `por: list[UserOut]`, o rótulo
-  "fulano abriu uma renga" / "fulano escreveu uma estrofe" / "fulano encerrou
-  a renga" (ver abaixo).
+  (`"abriu"` | `"escreveu"` | `"encerrou"` | `"repostou"`) e `por: list[UserOut]`,
+  o rótulo "fulano abriu uma renga" / "fulano escreveu uma estrofe" / "fulano
+  encerrou a renga" / "fulano repostou" (ver abaixo).
 
 O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo`.
 
@@ -203,9 +210,14 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   criador), quem escreveu por último primeiro, e encerramento → `"encerrou"`.
   Fechada, continua no feed. No perfil, a renga aparece na estrofe mais
   recente da pessoa (o encerramento não conta).
-- Desempate do cursor: a posição é (data, chave), com chave = 3·id + 2 para
-  post, 3·id + 1 para estrofe e 3·id (id da renga) para encerramento; o cursor
-  continua opaco.
+- **Repost de renga (#171):** o repost de um seguido (ou do próprio usuário) é
+  mais uma atividade da renga, `"repostou"`, com `por` = todos os seguidos que
+  repostaram, quem repostou por último primeiro (como o `repostado_por`). Também
+  no perfil de quem repostou. O "Para você" não mudou (não traz repost de renga).
+- Desempate do cursor: a posição é (data, chave), com chave = 4·id + 3 para
+  repost de renga, 4·id + 2 para post, 4·id + 1 para estrofe e 4·id (id da
+  renga) para encerramento; o cursor continua opaco (os de antes de #171 deixam
+  de valer).
 
 ### Feed "Para você", onboarding e sugestões (dono: Neto)
 
@@ -271,6 +283,15 @@ Tabelas `rengas` (`criador_id`, `titulo`, `modo` `"aberta"` | `"convidados"`,
 - Qualquer pessoa logada lê qualquer renga; só os convidados escrevem nas de convidados.
 - `RengaOut` ganhou `comentarios` (opcional, `0` por padrão): comentários e
   respostas da renga, marcadores incluídos, como o `comentarios` dos poemas.
+- **Ações do poema na renga (#171), abertas ou fechadas:** `RengaOut` (e então
+  `RengaDetalhe` e `RengaNoFeed.renga`) ganhou `curtidas`, `reposts` (reposts
+  puros + poemas que citam a renga, como no `PostOut`), `curti` e `repostei`
+  (opcionais, `0`/`false`). `POST`/`DELETE /rengas/{id}/curtir` 🔒 e
+  `POST`/`DELETE /rengas/{id}/repostar` 🔒 → 204, idempotentes, nas tabelas
+  novas `curtidas_renga` e `reposts_renga` (`user_id`, `renga_id`, `created_at`,
+  unique no par). Bloqueio com o criador: 404 para quem ele bloqueou, 403 para
+  quem o bloqueou (como no poema). Pode repostar a própria renga, como o poema.
+  Citar, guardar e enviar: ver Post, Antologias e Mensagens.
 
 #### Comentários e crítica ancorada nas rengas
 
@@ -305,8 +326,8 @@ None), `verso_inicio` e `verso_fim` (os dois ou nenhum, só no 1º nível),
   (`services/arvore_de_comentarios.py`); as rotas dos comentários de poema não
   mudaram.
 - Front: `/rengas/{id}?versos=2-4` abre a renga com os versos selecionados e o
-  campo de comentário focado, destino de "comentar estes versos" no `RengaCard`
-  (sem "citar estes versos": a citação cita poemas).
+  campo de comentário focado, destino de "comentar estes versos" no `RengaCard`;
+  "citar estes versos" abre `/escrever?citar_renga={id}&versos=` (#171).
 
 ### `Follow` (dono: Neto)
 
@@ -370,7 +391,7 @@ poema publicado não se edita, então ele sai do texto do poema.
 ### Curtidas e reposts (dono: Henrique)
 
 `POST`/`DELETE /posts/{id}/curtir` 🔒 e `POST`/`DELETE /posts/{id}/repostar` 🔒
-→ 204, idempotentes.
+→ 204, idempotentes. As da renga (#171) estão em Rengas.
 
 ### Antologias (dono: Pedro)
 
@@ -392,6 +413,14 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
 - `POST /antologias/{id}/poemas`, body `{"post_id"}`, e
   `DELETE /antologias/{id}/poemas/{post_id}` 🔒 → 204; adicionar de novo não
   duplica.
+- **Rengas nas antologias (#171):** tabela nova `antologia_rengas`
+  (`antologia_id`, `renga_id`, `posicao`, `created_at`, unique no par; a
+  `posicao` continua a numeração dos poemas). `POST /antologias/{id}/rengas`,
+  body `{"renga_id"}`, e `DELETE /antologias/{id}/rengas/{renga_id}` 🔒 → 204,
+  idempotentes; `GET /antologias?renga_id=` marca `contem` (com `post_id` junto →
+  422). `AntologiaDetalhe` ganhou `rengas: list[RengaDetalhe]` (ordem de
+  inserção), `qtd` conta poemas e rengas, e `GET /antologias/publicas` aceita a
+  antologia só com rengas. O cartão de compartilhamento continua só com os poemas.
 - Privada de outra pessoa → 404 (não revela que existe); escrita de quem não é
   o dono → 403.
 
@@ -525,6 +554,10 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
   da mesma pessoa no último minuto → 429; bloqueio em qualquer direção → 403.
   Repost puro compartilha o original. Mandar marca como lido até ali e aceita
   um pedido. Apagar o poema deixa a mensagem com `post_removido: true`.
+- **Renga na mensagem (#171):** `MensagemCreate` aceita `renga_id` (com
+  `post_id` junto → 422; só a renga, sem texto, vale), na tabela nova
+  `mensagens_renga` (`mensagem_id` PK, `renga_id`). `MensagemOut` ganhou
+  `renga: RengaDetalhe | None`. Bloqueio com o criador como em curtir.
 - `POST /mensagens/conversas/{id}/lida` 🔒 `{"ate"}` (opcional) → 204; nunca
   volta para trás.
 - `POST /mensagens/conversas/{id}/aceitar` e `/recusar` 🔒 → 204 (recusar uma
@@ -576,8 +609,8 @@ ação, para cada destinatário; nunca para quem agiu, para conta sem login
 
 | `tipo` | Quem recebe | Alvo |
 |---|---|---|
-| `curtida`, `repost` | o autor do poema (repost puro: o do original) | `post_id` do poema |
-| `citacao` | o autor do citado | `post_id` da citação |
+| `curtida`, `repost` | o autor do poema (repost puro: o do original); na renga (#171), todos os autores de estrofe | `post_id` do poema ou `renga_id` |
+| `citacao` | o autor do citado; na renga (#171), todos os autores de estrofe | `post_id` da citação (e `renga_id` da renga citada) |
 | `seguidor` | quem foi seguido | (o ator) |
 | `comentario`, `critica` (com âncora) | o autor do poema; na renga, o criador e todos os autores de estrofe (`critica`: só os das estrofes que os versos tocam) | `post_id` ou `renga_id`, `comentario_id` |
 | `resposta` | o autor do comentário respondido (e `comentario` ao autor do poema ou ao criador da renga) | idem |
@@ -592,8 +625,8 @@ apontam para ele e para os reposts puros dele).
   "proximo_cursor"}` de `AvisoOut` (`id`, `tipo`, `created_at`, `lido`,
   `atores: UserOut[]` (os 2 mais recentes), `total_atores`, `post_id`,
   `renga_id`, `comentario_id`, `titulo`, `trecho`, `verso_inicio`,
-  `verso_fim`). Curtidas do mesmo poema no mesmo dia (de Brasília) saem numa
-  linha, e reposts também; a linha vale pelo aviso mais recente (`id`, `created_at`), e `lido` só é `true`
+  `verso_fim`). Curtidas do mesmo poema (ou da mesma renga) no mesmo dia (de
+  Brasília) saem numa linha, e reposts também; a linha vale pelo aviso mais recente (`id`, `created_at`), e `lido` só é `true`
   se todos foram lidos. A mais recente primeiro. Os avisos de quem tem bloqueio
   com quem lê ficam fora (bloqueio feito depois). Cursor malformado → 422.
 - `GET /avisos/resumo` 🔒 → `{"nao_lidos"}`: linhas da tela com aviso não lido
