@@ -212,3 +212,22 @@ def test_main_liga_os_poetas_do_seed_aos_consagrados_reais(client):
         assert contar(db, Curtida, Curtida.post_id.in_(classicos)) >= len(POETAS)
         assert contar(db, Post, Post.repost_de_id.in_(classicos), Post.texto == "") == 1
         assert contar(db, Post, Post.repost_de_id.in_(classicos), Post.texto != "") == 1
+
+
+def test_seed_sem_poema_repetido(client):
+    """Nem nos consagrados reais (o importador deixa os trechos de fora) nem nos
+    poetas do seed: nenhum autor tem o mesmo poema duas vezes."""
+    from app.core.duplicados import grupos_de_duplicados
+
+    seed.main()
+    with SessionLocal() as db:
+        poemas_por_autor: dict[int, list[tuple[int, str]]] = {}
+        autorais = select(Post.autor_id, Post.id, Post.texto).where(~Post.repost_puro)
+        for autor_id, post_id, texto in db.execute(autorais.order_by(Post.id)):
+            poemas_por_autor.setdefault(autor_id, []).append((post_id, texto))
+        repetidos = {
+            autor_id: grupos
+            for autor_id, poemas in poemas_por_autor.items()
+            if (grupos := grupos_de_duplicados(poemas))
+        }
+    assert repetidos == {}
