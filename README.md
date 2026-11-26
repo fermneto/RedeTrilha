@@ -24,13 +24,29 @@ Pedro (@CorreiaPedro208).
   ou outro. A forma vira tag (`#soneto`).
 - **Feed cronológico com reposts como no X:** cada poema aparece uma vez, na
   posição do repost mais recente, com "repostado por"; paginação por cursor.
+- **Feed infinito:** o Seguindo e o Para você não têm última folha. Depois do
+  inédito vem a continuação, com 3 consagrados (pelas formas, escolas e língua
+  de quem lê) para 1 dos mais curtidos da comunidade; o que a pessoa já viu
+  fica guardado entre sessões e não volta no inédito.
+- **O Verso como livro:** página dupla com a navegação na lombada (página
+  única no celular). A folha vira pelas setas, arrastando, com Shift + roda ou
+  deslizando dois dedos para o lado no touchpad, uma folha por gesto.
+- **Dicas do livro no primeiro uso:** quatro notas curtas, uma de cada vez e
+  no contexto (virar a página, ações e comentários, a lombada, escrever e
+  rengas); as vistas ficam na conta e dá para revê-las nas Preferências.
+- **Página da publicação** (poema, renga e antologia): voltar para onde se
+  estava, as ações e os comentários, a repercussão ("curtido por", "repostado
+  por", "citado em") e "Mais de" quem escreveu; na antologia, a ficha e as
+  outras antologias da mesma pessoa.
 - **Repost e citação:** repostar puro ou citar com um texto seu. Se o original
   for apagado, a citação mostra "poema removido pelo autor".
 - **Comentários em árvore**, com respostas paginadas e o marcador "comentário
   removido" quando um comentário com respostas é apagado.
 - **Curtidas** idempotentes.
 - **Perfil** com seguidores, seguindo, poemas, seguir/deixar de seguir e edição
-  de nome, bio e URL da foto.
+  de nome, bio e URL da foto. Os **gostos** da pessoa (escolas, formas e de
+  onde é, com o lugar opcional) aparecem no perfil, e cada forma leva ao
+  Explorar filtrado.
 - **Acervo:** todos os poetas, consagrados e poetas do Verso, com busca e filtros por
   tipo, língua e época, e ordenação.
 - **Explorar:** chips de forma e busca por tag (`#Solidão` acha `#solidao`).
@@ -51,10 +67,13 @@ Pedro (@CorreiaPedro208).
 - **Site:** https://verso.net.br (front na Vercel; também em https://verso-blond.vercel.app).
 - **API:** https://api.verso.net.br.
 - **Onde roda a API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose
-  (2 a 4 réplicas da API, conforme a VM, e o Caddy, com HTTPS automático, balanceando entre
-  elas) e o Postgres na mesma VM, com backup diário para o Object Storage da
-  Oracle. `GET /saude` responde
-  `{"ok":true}`.
+  (2 a 4 réplicas da API, conforme a VM; hoje 2, numa VM de 2 OCPU em São
+  Paulo; e o Caddy, com HTTPS automático, balanceando entre
+  elas) e o Postgres 16 na mesma VM, com backup diário às 03:30 para o Object
+  Storage da Oracle (restauração a partir do bucket testada). `GET /saude`
+  responde `{"ok":true}`.
+- **Atualizar a produção:** `deploy/oracle/atualizar.sh` na VM, que troca uma
+  réplica de cada vez, sem tirar o site do ar.
 - **Conta de demonstração:** `marina_letras` / `verso123`.
 
 Passo a passo do deploy em [docs/deploy-oracle.md](docs/deploy-oracle.md). O
