@@ -6,9 +6,10 @@
 // direita, a não ser que a folha peça para juntar as duas numa só.
 //
 // Passar a página: o botão no canto da página, as setas ← → do teclado (fora
-// dos campos de texto) ou arrastar a folha para o lado (no toque, em qualquer
+// dos campos de texto), arrastar a folha para o lado (no toque, em qualquer
 // lugar da página; com o mouse, pelo pé da página, para não brigar com a
-// seleção de versos). A animação de virada está em globals.css (.vira-frente,
+// seleção de versos) ou deslizar dois dedos para o lado no touchpad (e Shift +
+// roda do mouse; a lógica do gesto está em lib/rodaDaFolha.ts). A animação de virada está em globals.css (.vira-frente,
 // .vira-verso...); com prefers-reduced-motion, vira um fade curto.
 //
 // Só montam as páginas da folha atual (e as da próxima, durante a virada): a
@@ -26,6 +27,7 @@ import {
 } from "react";
 
 import { IconeSeta } from "@/components/icones/IconeSeta";
+import { deslocamentoLateral, type EstadoDaRoda, lerRoda, RODA_PARADA } from "@/lib/rodaDaFolha";
 
 export type Folha = {
   chave: string;
@@ -87,6 +89,17 @@ function ehCampo(alvo: EventTarget | null): boolean {
   return false;
 }
 
+// Algum elemento entre o alvo e o caderno rola para o lado (as fileiras de
+// chips): o deslizar lateral é dele.
+function rolaParaOLado(alvo: EventTarget | null, ate: HTMLElement): boolean {
+  for (let el = alvo instanceof Element ? alvo : null; el && el !== ate; el = el.parentElement) {
+    if (el.scrollWidth <= el.clientWidth) continue;
+    const { overflowX } = getComputedStyle(el);
+    if (overflowX === "auto" || overflowX === "scroll") return true;
+  }
+  return false;
+}
+
 function temSelecao(): boolean {
   const s = window.getSelection();
   return Boolean(s && !s.isCollapsed && s.toString().trim());
@@ -125,6 +138,7 @@ export function CadernoFolhas({
   // O foco estava numa página quando ela virou: ao fim, ele passa à página nova.
   const focoNaPagina = useRef(false);
   const toque = useRef<{ x: number; y: number; id: number } | null>(null);
+  const roda = useRef<EstadoDaRoda>(RODA_PARADA);
   const raiz = useRef<HTMLDivElement>(null);
 
   // As páginas do celular, em ordem: [folha 0 esquerda, folha 0 direita, folha 1...].
@@ -226,6 +240,29 @@ export function CadernoFolhas({
     }
     window.addEventListener("keydown", aoTeclar);
     return () => window.removeEventListener("keydown", aoTeclar);
+  }, [passo, total]);
+
+  // O deslizar lateral de dois dedos no touchpad. O ouvinte não é passivo para
+  // poder segurar o evento: dentro do caderno, o deslizar para o lado vira a
+  // página e não aciona o "voltar" do navegador. Ctrl + roda é o zoom (a pinça).
+  useEffect(() => {
+    const caderno = raiz.current;
+    if (!caderno || total < 2) return;
+    const el: HTMLElement = caderno;
+    function aoRolar(e: WheelEvent) {
+      if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (deslocamentoLateral(e) === null) {
+        roda.current = lerRoda(roda.current, e).estado;
+        return;
+      }
+      if (ehCampo(e.target) || temSelecao() || rolaParaOLado(e.target, el)) return;
+      e.preventDefault();
+      const lido = lerRoda(roda.current, e);
+      roda.current = lido.estado;
+      if (lido.passo !== 0) passo(lido.passo);
+    }
+    el.addEventListener("wheel", aoRolar, { passive: false });
+    return () => el.removeEventListener("wheel", aoRolar);
   }, [passo, total]);
 
   function aoApertar(e: React.PointerEvent) {
