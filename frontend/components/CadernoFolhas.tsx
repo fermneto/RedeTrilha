@@ -26,6 +26,7 @@ import {
   useSyncExternalStore,
 } from "react";
 
+import { useDicasDoLivro } from "@/components/DicasDoLivro";
 import { IconeSeta } from "@/components/icones/IconeSeta";
 import { deslocamentoLateral, type EstadoDaRoda, lerRoda, RODA_PARADA } from "@/lib/rodaDaFolha";
 
@@ -158,9 +159,12 @@ export function CadernoFolhas({
     aoChegar?.(atual.folha);
   }, [atual.folha, aoChegar]);
 
+  // Cada página folheada também conta para as dicas do livro (DicasDoLivro.tsx).
+  const { virou } = useDicasDoLivro();
   useEffect(() => {
     aoMudar?.({ folha: atual.folha, lado: atual.lado });
-  }, [atual.folha, atual.lado, aoMudar]);
+    virou(`${atual.folha}:${atual.lado}`);
+  }, [atual.folha, atual.lado, aoMudar, virou]);
 
   const virar = useCallback(
     (para: Posicao, depois?: () => void) => {
