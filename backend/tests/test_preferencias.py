@@ -59,3 +59,27 @@ def test_opcoes_trazem_o_vocabulario(client, como):
 
 def test_preferencias_exigem_login(client):
     assert client.get("/preferencias").status_code == 401
+
+
+def test_gostos_sao_publicos_no_perfil(client, como):
+    corpo = {"escolas": ["romantismo"], "formas": ["soneto", "haicai"], "pais": "BR", "uf": "PB"}
+    client.put("/preferencias", json=corpo, headers=como("ana"))
+    r = client.get("/usuarios/ana/gostos", headers=como("bia"))
+    assert (r.status_code, r.json()) == (200, corpo)
+    assert client.get("/usuarios/ana/gostos", headers=como("ana")).json() == corpo
+    # Sem nada marcado, tudo vazio; username que não existe, 404.
+    assert client.get("/usuarios/bia/gostos", headers=como("ana")).json() == {
+        "escolas": [], "formas": [], "pais": None, "uf": None
+    }
+    assert client.get("/usuarios/ninguem/gostos", headers=como("ana")).status_code == 404
+    assert client.get("/usuarios/ana/gostos").status_code == 401
+
+
+def test_gostos_respeitam_o_bloqueio(client, como):
+    client.put("/preferencias", json={"formas": ["soneto"]}, headers=como("bia"))
+    client.put("/preferencias", json={"formas": ["trova"]}, headers=como("caio"))
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+    # O bloqueado não vê o perfil de quem o bloqueou; quem bloqueou vê vazio.
+    assert client.get("/usuarios/bia/gostos", headers=como("caio")).status_code == 404
+    assert client.get("/usuarios/caio/gostos", headers=como("bia")).json()["formas"] == []
+    assert client.get("/usuarios/bia/gostos", headers=como("ana")).json()["formas"] == ["soneto"]
