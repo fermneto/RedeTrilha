@@ -132,11 +132,13 @@ export default function PoemaPage() {
             </div>
           ),
           direita: (
-            <div className="surgir">
+            <div className="surgir min-h-full">
               <VersoDoPoema
                 poema={poemaDe(poema)}
                 comentarios={
                   <ArvoreComentarios
+                    campoNoPe
+                    total={poemaDe(poema).comentarios}
                     alvo={{ tipo: "poema", id: poema.id }}
                     euId={euId}
                     aoMudar={carregarPoema}

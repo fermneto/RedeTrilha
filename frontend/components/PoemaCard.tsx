@@ -7,7 +7,9 @@ import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
 import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
+import { useFolhas } from "@/components/CadernoFolhas";
 import { EnviarPorMensagem } from "@/components/EnviarPorMensagem";
+import { FaixaDoAutor } from "@/components/FaixaDoAutor";
 import { NomeAutor } from "@/components/NomeAutor";
 import { VersoFormatado } from "@/components/TextoFormatado";
 import { IconeCitar } from "@/components/icones/IconeCitar";
@@ -108,16 +110,7 @@ export function PoemaCard({
           aoTraduzir={aoTraduzir}
           semCritica={semCritica}
           folha
-          autor={
-            <p className="mt-2 mb-8 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-              <NomeAutor usuario={poema.autor} className="font-semibold text-tinta-suave hover:text-tinta" />
-              {!poema.autor.consagrado && (
-                <time dateTime={poema.created_at} className="tabular-nums">
-                  · {formatarData(poema.created_at)}
-                </time>
-              )}
-            </p>
-          }
+          autor={<FaixaDoAutor autor={poema.autor} criadoEm={poema.created_at} />}
         />
         {citacao && (
           <div className="mt-6">
@@ -130,6 +123,10 @@ export function PoemaCard({
             )}
           </div>
         )}
+        <div className="mt-8 border-t border-borda/70 pt-3 empty:hidden">
+          <Detalhes poema={poema} solto />
+        </div>
+        <ResumoDaConversa poema={poema} />
       </article>
     );
   }
@@ -186,6 +183,30 @@ export function PoemaCard({
         </div>
       </div>
     </article>
+  );
+}
+
+// No celular, a conversa fica na página seguinte: o pé do poema conta quantas
+// curtidas e comentários ele tem e leva até ela. Na página dupla ela já está à vista.
+function ResumoDaConversa({ poema }: { poema: Post }) {
+  const { duplo, mostrar } = useFolhas();
+  if (duplo) return null;
+  const partes = [
+    poema.curtidas > 0 && `${poema.curtidas} ${poema.curtidas === 1 ? "curtida" : "curtidas"}`,
+    `${poema.comentarios} ${poema.comentarios === 1 ? "comentário" : "comentários"}`,
+  ].filter(Boolean);
+  return (
+    <button
+      type="button"
+      onClick={() => mostrar("d")}
+      className="mt-6 flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-borda px-4 text-left text-sm transition-colors duration-150 hover:border-tinta-suave"
+    >
+      <span className="flex items-center gap-2 text-tinta-suave tabular-nums">
+        <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
+        {partes.join(" · ")}
+      </span>
+      <span className="font-semibold text-destaque">{poema.comentarios > 0 ? "ver a conversa" : "comentar"}</span>
+    </button>
   );
 }
 
@@ -301,8 +322,8 @@ function TextoDoPoema({
 
   return (
     <>
-      {titulo}
       {autor}
+      {titulo}
       {texto}
       {traduzivel && (
         <div className="mt-1">
@@ -482,11 +503,12 @@ function Autor({ autor, criadoEm, comAvatar }: { autor: User; criadoEm: string; 
   );
 }
 
-export function Detalhes({ poema }: { poema: Post }) {
+// `solto`: na folha, sem a margem de cima (a página já separa a ficha do poema).
+export function Detalhes({ poema, solto = false }: { poema: Post; solto?: boolean }) {
   const origem = [poema.obra, poema.ano].filter(Boolean).join(", ");
   if (!poema.forma && !origem && !poema.fonte && poema.tags.length === 0) return null;
   return (
-    <div className="mt-3 space-y-1 text-[0.8125rem] text-tinta-suave">
+    <div className={`${solto ? "" : "mt-3"} space-y-1 text-[0.8125rem] text-tinta-suave`}>
       {(poema.forma || origem || poema.fonte) && (
         <p className="flex flex-wrap gap-x-3">
           {poema.forma && <span className="italic">{nomeDaForma(poema.forma)}</span>}
@@ -520,7 +542,9 @@ export function Detalhes({ poema }: { poema: Post }) {
 // Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
 // pedidos simultâneos podem ser processados fora de ordem e deixar a tela
 // diferente do servidor.
-export function Acoes({ poema }: { poema: Post }) {
+// `contadores`: na página da conversa, a linha "12 curtidas · 2 reposts" acima
+// dos botões, com os números por extenso (e otimistas, como os botões).
+export function Acoes({ poema, contadores = false }: { poema: Post; contadores?: boolean }) {
   const [curti, setCurti] = useState(poema.curti);
   const [curtidas, setCurtidas] = useState(poema.curtidas);
   const [repostei, setRepostei] = useState(poema.repostei);
@@ -575,8 +599,22 @@ export function Acoes({ poema }: { poema: Post }) {
   const circulo =
     "flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-150 group-hover:bg-destaque/10";
   const rotulo = (acao: string, n?: number) => (n ? `${acao} (${n})` : acao);
+  const linha = [
+    [curtidas, "curtida", "curtidas"],
+    [reposts, "repost", "reposts"],
+    [poema.comentarios, "comentário", "comentários"],
+  ] as const;
   return (
     <div className="mt-1">
+      {contadores && (
+        <p className="mb-1 flex flex-wrap gap-x-4 text-sm text-tinta-suave tabular-nums" aria-live="polite">
+          {linha.map(([n, um, varios]) => (
+            <span key={um}>
+              <strong className="font-semibold text-tinta">{n}</strong> {n === 1 ? um : varios}
+            </span>
+          ))}
+        </p>
+      )}
       <div className="-ml-3 flex max-w-sm justify-between text-[0.8125rem] text-tinta-suave">
         <button
           type="button"
@@ -589,7 +627,7 @@ export function Acoes({ poema }: { poema: Post }) {
           <span className={circulo}>
             <IconeCurtir cheio={curti} className={icone} />
           </span>
-          <Contador n={curtidas} />
+          {!contadores && <Contador n={curtidas} />}
         </button>
         <button
           type="button"
@@ -602,7 +640,7 @@ export function Acoes({ poema }: { poema: Post }) {
           <span className={circulo}>
             <IconeRepostar className={icone} />
           </span>
-          <Contador n={reposts} />
+          {!contadores && <Contador n={reposts} />}
         </button>
         <Link href={`/escrever?citar=${poema.id}`} aria-label="citar" title="citar" className={botao}>
           <span className={circulo}>
@@ -618,7 +656,7 @@ export function Acoes({ poema }: { poema: Post }) {
           <span className={circulo}>
             <IconeComentar className={icone} />
           </span>
-          <Contador n={poema.comentarios} />
+          {!contadores && <Contador n={poema.comentarios} />}
         </Link>
         <AntologiaSeletor postId={poema.id} classeBotao={botao} classeCirculo={circulo} classeIcone={icone} />
         <EnviarPorMensagem postId={poema.id} classeBotao={botao} classeCirculo={circulo} classeIcone={icone} />

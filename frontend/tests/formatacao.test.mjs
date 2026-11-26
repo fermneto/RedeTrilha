@@ -88,7 +88,7 @@ test("copiar do editor dá o texto limpo, sem os delimitadores", () => {
 
 test("comentários continuam texto puro: a árvore não formata o corpo do comentário", () => {
   const fonte = readFileSync(new URL("../components/ArvoreComentarios.tsx", import.meta.url), "utf8");
-  assert.ok(fonte.includes('<p className="mt-1 text-sm whitespace-pre-wrap">{comentario.texto}</p>'));
+  assert.ok(/whitespace-pre-wrap">\s*\{comentario\.texto\}\s*<\/p>/.test(fonte));
   assert.ok(!/TextoFormatado texto=\{comentario/.test(fonte));
 });
 

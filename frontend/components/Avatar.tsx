@@ -13,10 +13,12 @@ function iniciais(nome: string): string {
 export const TAMANHOS_DO_AVATAR = {
   p: "h-8 w-8",
   m: "h-10 w-10",
+  // A faixa do autor na página do poema (components/FaixaDoAutor.tsx).
+  l: "h-12 w-12",
   g: "h-20 w-20",
 } as const;
 
-const LETRAS = { p: "text-xs", m: "text-sm", g: "text-2xl" } as const;
+const LETRAS = { p: "text-xs", m: "text-sm", l: "text-base", g: "text-2xl" } as const;
 
 // Decorativo: o nome do usuário sempre aparece ao lado, então o avatar não tem alt.
 export function Avatar({ usuario, tamanho = "m" }: { usuario: User; tamanho?: keyof typeof TAMANHOS_DO_AVATAR }) {

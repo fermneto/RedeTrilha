@@ -1,14 +1,15 @@
 "use client";
-// O poema no caderno, em página dupla: na esquerda, só o poema (título, autor
-// discreto e versos); na direita, o que se faz com ele (curtir, repostar, citar,
-// guardar numa antologia, enviar), a ficha (forma, obra, tags) e os comentários.
+// O poema no livro, em página dupla: na esquerda, quem escreveu (a faixa do
+// autor, com o "Seguir"), o poema e a ficha (forma, obra, tags); na direita, a
+// conversa: os contadores, as ações (curtir, repostar, citar, comentar, guardar
+// numa antologia, enviar), os comentários em fio e o campo de comentar no pé.
 // Usado pelo feed, uma folha por item, e pela página do poema.
 
 import type { ReactNode } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
 import type { Folha } from "@/components/CadernoFolhas";
-import { Acoes, Detalhes, PoemaCard } from "@/components/PoemaCard";
+import { Acoes, PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
 import { chaveDoItem, ehRenga, textoDaRenga, type ItemDoFeed, type Post } from "@/lib/api";
 
@@ -25,13 +26,18 @@ export function rotuloDoPoema(post: Post): string {
   return `${poema.titulo ?? "poema sem título"}, de ${poema.autor.name}`;
 }
 
-// A página da direita: as ações e a ficha no alto, os comentários embaixo.
+// A página da conversa: as margens do livro, mas sem a de baixo, para o campo
+// de comentar encostar no pé da página.
+export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-6 pt-8 sm:px-10 lg:px-14 lg:pt-12";
+
+// A página da direita: os contadores e as ações no alto, a conversa embaixo.
 export function VersoDoPoema({ poema, comentarios }: { poema: Post; comentarios: ReactNode }) {
   return (
-    <div className={MARGEM_DA_PAGINA}>
-      <Acoes key={poema.id} poema={poema} />
-      <Detalhes poema={poema} />
-      <div className="mt-10">{comentarios}</div>
+    <div className={MARGEM_DA_CONVERSA}>
+      <div className="border-b border-borda/70 pb-3">
+        <Acoes key={poema.id} poema={poema} contadores />
+      </div>
+      <div className="mt-6 flex flex-1 flex-col">{comentarios}</div>
     </div>
   );
 }
@@ -57,8 +63,9 @@ export function folhaDoItem(item: ItemDoFeed, euId: number | null, topo: ReactNo
         </div>
       ),
       direita: (
-        <div className={MARGEM_DA_PAGINA}>
+        <div className={MARGEM_DA_CONVERSA}>
           <ArvoreComentarios
+            campoNoPe
             alvo={{ tipo: "renga", id: renga.id }}
             euId={euId}
             aoMudar={nada}
@@ -90,6 +97,8 @@ export function folhaDoItem(item: ItemDoFeed, euId: number | null, topo: ReactNo
         poema={poema}
         comentarios={
           <ArvoreComentarios
+            campoNoPe
+            total={poema.comentarios}
             alvo={{ tipo: "poema", id: poema.id }}
             euId={euId}
             aoMudar={nada}
