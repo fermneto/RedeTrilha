@@ -7,7 +7,8 @@ from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.feed import FeedPage
-from app.services import feed_infinito
+from app.schemas.visto_no_feed import VistosIn
+from app.services import feed_infinito, vistos_no_feed
 
 router = APIRouter(tags=["feed"])
 
@@ -38,3 +39,14 @@ def para_voce_feed(
     db: Session = Depends(get_db),
 ):
     return feed_infinito.para_voce_infinito(db, user, offset, limit, cursor, lingua)
+
+
+@router.post("/feed/vistos", status_code=204)
+def marcar_vistos(
+    dados: VistosIn,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """As folhas que apareceram na tela: o "Para você" e a continuação as pulam
+    nas próximas sessões."""
+    vistos_no_feed.marcar(db, user.id, dados)

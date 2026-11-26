@@ -49,7 +49,7 @@ from app.models.user import User
 from app.schemas.feed import PoemaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
-from app.services import bloqueios
+from app.services import bloqueios, vistos_no_feed
 from app.services.acervo import lingua_de_quem_ve
 from app.services.cursor import CursorDoFeed, utc_sem_fuso
 from app.services.feed import Linha, Parte, recortar
@@ -73,9 +73,16 @@ def parte(
 ) -> Parte:
     """Uma página do "Para você" cronológico, o trecho inédito do feed infinito
     (`services/feed_infinito.py`): do `offset`, ou de depois do `inicio`. Fica
-    fora o que a sessão já viu (`inicio.vistos`)."""
+    fora o que a sessão já viu (`inicio.vistos`) e o que a pessoa viu em sessões
+    anteriores (`services/vistos_no_feed.py`)."""
+    ja_vistos = vistos_no_feed.do_usuario(db, usuario.id)
+    itens = [
+        item
+        for item in _itens(db, usuario, lingua)
+        if (item.atividade.tipo, item.atividade.alvo_id) not in ja_vistos
+    ]
     recorte = recortar(
-        _itens(db, usuario, lingua),
+        itens,
         lambda item: item.atividade.posicao,
         lambda item: (item.atividade.tipo, item.atividade.alvo_id),
         offset,
