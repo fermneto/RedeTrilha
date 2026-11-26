@@ -11,10 +11,11 @@
 // Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
 // única parte interativa é o formulário, então o foco segue a mesma ordem).
 //
-// Abaixo do formulário, a capa do livro fechado (components/CapaDoLivro.tsx): no
-// desktop solta embaixo dele (absoluta, sem empurrá-lo); no celular, entre o
-// formulário e a vitrine. Ao entrar, o formulário some, a frase e a vitrine
-// deslizam para a esquerda ([data-sai]) e a capa cresce até o livro e abre.
+// Por trás do formulário, a capa do livro fechado (components/CapaDoLivro.tsx),
+// um pouco maior que ele: o cartão de entrar é a etiqueta de papel colada na
+// capa, e o "ou" e o "Criar conta" ficam gravados no pano. Ao entrar, o
+// formulário some (a capa fica limpa, com o nome), a frase e a vitrine deslizam
+// para a esquerda ([data-sai]) e a capa cresce até o livro e abre.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -48,9 +49,9 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
 
-        <section aria-labelledby="titulo-entrar" className="relative order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
+        <section aria-labelledby="titulo-entrar" className="relative order-2 mt-14 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
+          <CapaDaEntrada className="absolute -inset-x-4 -inset-y-5 lg:-inset-x-5 lg:-inset-y-8 xl:-inset-x-8" />
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
-          <CapaDaEntrada className="relative z-10 mx-auto mt-10 lg:absolute lg:top-full lg:left-1/2 lg:mt-[clamp(1.5rem,4dvh,2.5rem)] lg:-translate-x-1/2" />
         </section>
 
         {/* O pb-10 do desktop conta a sobra dos cartões de trás (mais baixos e
@@ -122,8 +123,11 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
   // Enquanto confere o token, o formulário ocupa o lugar dele, invisível: a
   // página não pula quando ele aparece.
   return (
-    <div data-sai="sumir" aria-busy={conferindo} className={conferindo ? "invisible" : undefined}>
-      <form onSubmit={aoEntrar} className="space-y-4 rounded-2xl border border-borda bg-painel p-6 lg:space-y-5 lg:p-8">
+    <div data-sai="sumir" aria-busy={conferindo} className={`relative ${conferindo ? "invisible" : ""}`}>
+      <form
+        onSubmit={aoEntrar}
+        className="space-y-4 rounded-2xl border border-borda bg-painel p-6 shadow-[0_1px_2px_rgb(0_0_0/0.3),0_6px_16px_-8px_rgb(0_0_0/0.45)] lg:space-y-5 lg:p-8"
+      >
         <h2 id="titulo-entrar" className="text-xl lg:pb-2 lg:text-2xl">
           Entrar no Verso
         </h2>
@@ -174,15 +178,16 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
         </button>
       </form>
 
-      <div className="my-5 flex items-center gap-3 text-xs lg:my-8 text-tinta-suave" role="separator" aria-label="ou">
-        <span aria-hidden="true" className="h-px flex-1 bg-borda" />
+      {/* Gravados no pano da capa: a cor da gravura (11:1; a 80%, acima de 7:1). */}
+      <div className="my-5 flex items-center gap-3 text-xs text-gravura/80 lg:my-8" role="separator" aria-label="ou">
+        <span aria-hidden="true" className="h-px flex-1 bg-gravura/25" />
         <span aria-hidden="true">ou</span>
-        <span aria-hidden="true" className="h-px flex-1 bg-borda" />
+        <span aria-hidden="true" className="h-px flex-1 bg-gravura/25" />
       </div>
 
       <Link
         href="/cadastro"
-        className="realce flex min-h-11 w-full items-center lg:min-h-12 justify-center rounded-full border border-borda px-5 text-sm font-bold text-tinta"
+        className="flex min-h-11 w-full items-center justify-center rounded-full border border-gravura/45 px-5 text-sm font-bold text-gravura transition-colors duration-150 hover:bg-white/6 focus-visible:outline-gravura lg:min-h-12"
       >
         Criar conta
       </Link>
