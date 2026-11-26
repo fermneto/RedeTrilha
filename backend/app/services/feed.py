@@ -32,6 +32,14 @@ núcleo usa os dois); se vier `cursor`, ele tem precedência sobre o `offset` e 
 `total` vem None (a API do X não tem total); o `offset` devolvido é a posição
 real do primeiro item na lista deduplicada.
 
+O cursor também carrega o que a sessão de leitura já viu (`core/vistos.py`),
+e esses itens ficam de fora das páginas seguintes. Sem isso, um poema que saiu
+numa página voltaria noutra quando a atividade que o subiu some no meio da
+leitura (quem repostou desfaz o repost, quem comentou apaga o comentário, a
+renga do "Para você" fecha) e ele cai para uma atividade mais antiga, abaixo
+do cursor. Atividade nova num item ainda não visto o sobe para cima do cursor:
+ele não sai nesta sessão, só na próxima (como na timeline do X).
+
 Desempate. Post, estrofe, encerramento (a própria renga) e repost de renga vêm
 de tabelas diferentes e podem ter o mesmo id e a mesma data. A posição é (data,
 chave), com chave = 4·id + 3 para repost de renga, 4·id + 2 para post, 4·id + 1
@@ -56,6 +64,7 @@ from typing import Generic, Literal, NamedTuple, TypeVar
 from sqlalchemy import select
 from sqlalchemy.orm import Session, aliased
 
+from app.core import vistos as vistos_core
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.repost_renga import RepostRenga
@@ -64,13 +73,15 @@ from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 from app.services import rengas as rengas_service
-from app.services.cursor import codificar_cursor, ler_cursor, utc_sem_fuso
+from app.services.cursor import codificar_cursor_do_feed, ler_cursor_do_feed, utc_sem_fuso
 from app.services import bloqueios
 from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
 Acao = Literal["poema", "repost", "abriu", "escreveu", "encerrou", "repostou"]
 Posicao = tuple[datetime, int]
+# O poema ou a renga mostrados: ("poema", id) ou ("renga", id).
+Chave = tuple[str, int]
 T = TypeVar("T")
 
 # Desempate entre os quatro tipos de origem com a mesma data (ver o docstring).
@@ -126,6 +137,8 @@ class Recorte(Generic[T]):
     offset: int
     total: int | None
     tem_mais: bool
+    # O que a sessão já viu, com esta página: vai no próximo cursor.
+    vistos: frozenset[Chave]
 
 
 class Linha(NamedTuple):
@@ -173,7 +186,12 @@ def pagina_dos_autores(
     ocorrencias = bloqueios.sem_bloqueados(db, usuario.id, ocorrencias)
     ocorrencias.sort(key=lambda o: o.posicao, reverse=True)
     recorte = recortar(
-        _deduplicar(ocorrencias), lambda item: item.ocorrencia.posicao, offset, limit, cursor
+        _deduplicar(ocorrencias),
+        lambda item: item.ocorrencia.posicao,
+        lambda item: (item.ocorrencia.tipo, item.ocorrencia.alvo_id),
+        offset,
+        limit,
+        cursor,
     )
     return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
 
@@ -294,21 +312,37 @@ def _deduplicar(ocorrencias: list[Ocorrencia]) -> list[Item]:
 def recortar(
     itens: list[T],
     posicao: Callable[[T], Posicao],
+    chave: Callable[[T], Chave],
     offset: int,
     limit: int,
     cursor: str | None,
 ) -> Recorte[T]:
     """A página de `limit` itens (do mais novo para o mais antigo) a partir do `offset`,
     ou de depois do `cursor`, que tem precedência (o `total` vira None e o `offset`
-    é a posição real do primeiro item). Público para o feed "Para você". O(n)."""
+    é a posição real do primeiro item). Público para o feed "Para você". O(n).
+
+    Com cursor, ficam de fora também os itens que a sessão já viu (o cursor os
+    carrega, ver `core/vistos.py`): um poema cuja atividade mais recente sumiu
+    (repost desfeito, comentário apagado) cai abaixo do cursor e não sai de novo.
+    """
+    vistos: frozenset[Chave] = frozenset()
     if cursor is not None:
-        depois = ler_cursor(cursor)
-        offset = next((i for i, item in enumerate(itens) if posicao(item) < depois), len(itens))
+        depois, vistos = ler_cursor_do_feed(cursor)
+        restantes = [
+            (i, item)
+            for i, item in enumerate(itens)
+            if posicao(item) < depois and chave(item) not in vistos
+        ]
+        offset = restantes[0][0] if restantes else len(itens)
+    else:
+        restantes = list(enumerate(itens))[offset:]
+    pagina = [item for _, item in restantes[:limit]]
     return Recorte(
-        pagina=itens[offset : offset + limit],
+        pagina=pagina,
         offset=offset,
         total=None if cursor is not None else len(itens),
-        tem_mais=offset + limit < len(itens),
+        tem_mais=len(restantes) > limit,
+        vistos=vistos | {chave(item) for item in pagina},
     )
 
 
@@ -356,6 +390,8 @@ def montar_pagina(
         offset=recorte.offset,
         limit=limit,
         proximo_cursor=(
-            codificar_cursor(*pagina[-1].posicao) if pagina and recorte.tem_mais else None
+            codificar_cursor_do_feed(*pagina[-1].posicao, vistos_core.codificar(recorte.vistos))
+            if pagina and recorte.tem_mais
+            else None
         ),
     )
