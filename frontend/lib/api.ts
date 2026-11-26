@@ -264,6 +264,16 @@ export function formatarData(iso: string): string {
   return lerData(iso).toLocaleDateString("pt-BR");
 }
 
+// Na página da publicação, por extenso: "26 de nov. de 2026", e com a hora,
+// "26 de nov. de 2026, 14:32" (no fuso de quem lê).
+export function formatarDataPorExtenso(iso: string): string {
+  return lerData(iso).toLocaleDateString("pt-BR", { dateStyle: "medium" });
+}
+
+export function formatarDataEHora(iso: string): string {
+  return lerData(iso).toLocaleString("pt-BR", { dateStyle: "medium", timeStyle: "short" });
+}
+
 export type Post = {
   id: number;
   autor_id: number;
@@ -352,6 +362,36 @@ export function caminhoDoAlvo({ tipo, id }: Alvo): string {
 // O compositor citando o poema (?citar=) ou a renga (?citar_renga=).
 export function caminhoDaCitacao({ tipo, id }: Alvo): string {
   return tipo === "poema" ? `/escrever?citar=${id}` : `/escrever?citar_renga=${id}`;
+}
+
+// A repercussão na página da publicação: quem curtiu, quem repostou (repost
+// puro) e as publicações que citaram, da mais recente para a mais antiga.
+export function buscarQuemCurtiu(alvo: Alvo, offset = 0, limit = 20): Promise<Page<User>> {
+  return apiGet<Page<User>>(`${caminhoDoAlvo(alvo)}/curtidas?offset=${offset}&limit=${limit}`);
+}
+
+export function buscarQuemRepostou(alvo: Alvo, offset = 0, limit = 20): Promise<Page<User>> {
+  return apiGet<Page<User>>(`${caminhoDoAlvo(alvo)}/reposts?offset=${offset}&limit=${limit}`);
+}
+
+export function buscarCitacoes(alvo: Alvo, offset = 0, limit = 20): Promise<Page<Post>> {
+  return apiGet<Page<Post>>(`${caminhoDoAlvo(alvo)}/citacoes?offset=${offset}&limit=${limit}`);
+}
+
+// "Mais do autor": os poemas da pessoa numa página do perfil dela, sem o que
+// está aberto. O perfil traz junto rengas, citações e os reposts (como o
+// original, de outro autor), que ficam de fora.
+export function outrosPoemas(itens: ItemDoFeed[], autorId: number, tirar: Alvo, quantos: number): Post[] {
+  const poemas = itens.filter(
+    (item): item is Post & { tipo?: "poema" } =>
+      item.tipo !== "renga" &&
+      item.autor_id === autorId &&
+      item.repost_de_id === null &&
+      !item.renga_citada_id &&
+      !item.repost_removido &&
+      !(tirar.tipo === "poema" && item.id === tirar.id),
+  );
+  return poemas.filter((poema, i) => poemas.findIndex((p) => p.id === poema.id) === i).slice(0, quantos);
 }
 
 export function caminhoDosComentarios({ tipo, id }: AlvoDosComentarios): string {
