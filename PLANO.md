@@ -213,7 +213,7 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - **Repost de renga (#171):** o repost de um seguido (ou do próprio usuário) é
   mais uma atividade da renga, `"repostou"`, com `por` = todos os seguidos que
   repostaram, quem repostou por último primeiro (como o `repostado_por`). Também
-  no perfil de quem repostou. O "Para você" não mudou (não traz repost de renga).
+  no perfil de quem repostou e no "Para você".
 - Desempate do cursor: a posição é (data, chave), com chave = 4·id + 3 para
   repost de renga, 4·id + 2 para post, 4·id + 1 para estrofe e 4·id (id da
   renga) para encerramento; o cursor continua opaco (os de antes de #171 deixam
@@ -225,8 +225,9 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   offset com `total`) e os mesmos itens tipados do `GET /feed`, mas da rede
   inteira (seguidos ou não, inclusive os próprios): poemas e citações; reposts
   puros, como no X (o poema aparece uma vez, na data do repost mais recente, com
-  `repostado_por`); rengas que não fecharam (na estrofe mais recente, com o
-  rótulo `"abriu"`/`"escreveu"`); poemas de consagrados rareados (um por
+  `repostado_por`); reposts de renga, abertas ou fechadas, do mesmo jeito (#171:
+  a renga na data do repost mais recente, rótulo `"repostou"`); rengas que não
+  fecharam (na estrofe mais recente, com o rótulo `"abriu"`/`"escreveu"`); poemas de consagrados rareados (um por
   janela de 3 h: o mais recente na língua de quem vê, se a janela tiver algum,
   senão o mais recente de qualquer língua); e poemas que receberam comentário,
   que sobem na data do comentário mais recente. Cronológico pela atividade, sem ranking por
@@ -242,8 +243,9 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
   nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último
   primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
-- Desempate do cursor do "Para você": 3·id + 2 para post (poema ou repost
-  puro), 3·id + 1 para estrofe e 3·id para comentário.
+- Desempate do cursor do "Para você": 4·id + 3 para repost de renga, 4·id + 2
+  para post (poema ou repost puro), 4·id + 1 para estrofe e 4·id para
+  comentário (#171; os cursores de antes deixam de valer).
 - O bloco "Quem seguir" no meio do "Para você" é só do front (a cada 10 itens,
   3 perfis de `GET /sugestoes`): não é item do `FeedPage` e não mexe no cursor.
 - Tabela `preferencias` (`user_id` PK, `escolas` JSON, `formas` JSON, `pais`,
@@ -418,9 +420,13 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   `posicao` continua a numeração dos poemas). `POST /antologias/{id}/rengas`,
   body `{"renga_id"}`, e `DELETE /antologias/{id}/rengas/{renga_id}` 🔒 → 204,
   idempotentes; `GET /antologias?renga_id=` marca `contem` (com `post_id` junto →
-  422). `AntologiaDetalhe` ganhou `rengas: list[RengaDetalhe]` (ordem de
-  inserção), `qtd` conta poemas e rengas, e `GET /antologias/publicas` aceita a
-  antologia só com rengas. O cartão de compartilhamento continua só com os poemas.
+  422). `AntologiaDetalhe` ganhou `rengas: list[RengaDetalhe]` e `ordem:
+  [{"tipo": "poema" | "renga", "id"}]`, os dois juntos na ordem em que foram
+  guardados (a tela e o índice intercalam por ela); `qtd` conta poemas e rengas,
+  e `GET /antologias/publicas` aceita a antologia só com rengas. No cartão
+  (`GET /cartoes/antologia/{id}`), `qtd` conta os dois e `poemas` traz as rengas
+  na mesma ordem, como `{"titulo": <título da renga>, "primeiro_verso": "",
+  "autor": <criador>}`.
 - Privada de outra pessoa → 404 (não revela que existe); escrita de quem não é
   o dono → 403.
 
