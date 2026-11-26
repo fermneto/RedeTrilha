@@ -1,6 +1,8 @@
 "use client";
 // Compositor de poema: título opcional, corpo e forma. Com `citarId`, vira
-// citação (POST /posts com repost_de_id) e mostra o original embaixo. Com
+// citação (POST /posts com repost_de_id) e mostra o original embaixo; com
+// `citarRengaId`, cita a renga (renga_citada_id, #171), sem rascunho (o rascunho
+// só guarda a citação de um poema). Com
 // `rascunhoId`, abre o rascunho (de poema ou de citação); "salvar rascunho"
 // guarda sem publicar. O corpo é o editor de poemas (negrito, itálico,
 // sublinhado e tachado, #137); o texto guardado é o de lib/marcas.ts.
@@ -17,9 +19,11 @@ import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { PoemaCard } from "@/components/PoemaCard";
+import { RengaCard } from "@/components/RengaCard";
 import {
   buscarPoema,
   buscarRascunho,
+  buscarRenga,
   criarRascunho,
   editarRascunho,
   FORMAS,
@@ -31,6 +35,7 @@ import {
   publicarRascunho,
   type NovoRascunho,
   type Post,
+  type RengaDetalhe,
 } from "@/lib/api";
 
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
@@ -41,6 +46,7 @@ export type PoemaEmAndamento = { dados: NovoRascunho; rascunhoId: number | null 
 
 type Props = {
   citarId: number | null;
+  citarRengaId?: number | null;
   // Na citação de versos (#71), o corpo já começa com eles.
   textoInicial?: string;
   rascunhoId?: number | null;
@@ -50,7 +56,7 @@ type Props = {
   dispor?: (partes: { escrita: ReactNode; ficha: ReactNode }) => ReactNode;
 };
 
-export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAbrirCitacao, aoMudar, dispor }: Props) {
+export function Compositor({ citarId, citarRengaId = null, textoInicial = "", rascunhoId = null, aoAbrirCitacao, aoMudar, dispor }: Props) {
   const router = useRouter();
   const [titulo, setTitulo] = useState("");
   const [texto, setTexto] = useState(textoInicial);
@@ -66,7 +72,9 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
   // original foi apagado enquanto a citação era rascunho.
   const [citado, setCitado] = useState<number | null>(citarId);
   const [citadoRemovido, setCitadoRemovido] = useState(false);
-  const citacao = citado !== null || citadoRemovido;
+  const [rengaCitada, setRengaCitada] = useState<RengaDetalhe | null>(null);
+  const citaRenga = citarRengaId !== null;
+  const citacao = citado !== null || citadoRemovido || citaRenga;
   const corpo = useRef<HTMLElement | null>(null);
   const id = useId();
   const oficina = useOficina(texto, forma);
@@ -77,6 +85,13 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       .then(setOriginal)
       .catch((e) => setErro(mensagemDeFalha(e, "não achei o poema citado")));
   }, [citado]);
+
+  useEffect(() => {
+    if (citarRengaId === null) return;
+    buscarRenga(citarRengaId)
+      .then(setRengaCitada)
+      .catch((e) => setErro(mensagemDeFalha(e, "não achei a renga citada")));
+  }, [citarRengaId]);
 
   useEffect(() => {
     if (rascunhoId === null) return;
@@ -149,6 +164,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
         forma: forma || null,
         idioma: idioma === OUTRA ? null : idioma,
         ...(citado !== null && { repost_de_id: citado }),
+        ...(citarRengaId !== null && { renga_citada_id: citarRengaId }),
       });
       router.push(`/poema/${novo.id}`);
     } catch (err) {
@@ -178,7 +194,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
             setTexto(novo);
             setSalvo(false);
           }}
-          rotulo={citacao ? "seu comentário sobre o poema" : "poema"}
+          rotulo={citaRenga ? "seu comentário sobre a renga" : citacao ? "seu comentário sobre o poema" : "poema"}
           idRotulo={`${id}-rotulo`}
           idAjuda={`${id}-ajuda`}
           classe={campo}
@@ -226,6 +242,7 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       </label>
 
       {original && <PoemaCard post={original} aninhado semCritica />}
+      {rengaCitada && <RengaCard renga={rengaCitada} aninhado />}
       {citadoRemovido && (
         <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
           poema removido pelo autor
@@ -242,14 +259,16 @@ export function Compositor({ citarId, textoInicial = "", rascunhoId = null, aoAb
       >
         {enviando ? "publicando..." : citacao ? "publicar citação" : "publicar"}
       </button>
-      <button
-        type="button"
-        onClick={salvarRascunho}
-        disabled={enviando}
-        className="ml-3 min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold transition-colors duration-150 hover:border-destaque disabled:cursor-wait disabled:opacity-50"
-      >
-        salvar rascunho
-      </button>
+      {!citaRenga && (
+        <button
+          type="button"
+          onClick={salvarRascunho}
+          disabled={enviando}
+          className="ml-3 min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm font-bold transition-colors duration-150 hover:border-destaque disabled:cursor-wait disabled:opacity-50"
+        >
+          salvar rascunho
+        </button>
+      )}
       {salvo && (
         <p role="status" className="text-sm text-tinta-suave">
           rascunho salvo. Só você vê; ele fica nos <Link href="/rascunhos" className="underline">Rascunhos</Link> do seu perfil.

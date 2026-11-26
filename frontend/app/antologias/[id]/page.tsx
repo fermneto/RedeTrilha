@@ -1,6 +1,7 @@
 "use client";
 // Detalhe da antologia: nome, descrição, dono e os poemas na ordem em que
-// entraram. O dono edita (inline), apaga (com confirmação) e tira poemas.
+// entraram, e depois as rengas (#171). O dono edita (inline), apaga (com
+// confirmação) e tira poemas e rengas.
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -14,6 +15,7 @@ import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDaPaginaDaAntologia } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
+import { RengaCard } from "@/components/RengaCard";
 import {
   apagarAntologia,
   buscarAntologia,
@@ -24,6 +26,7 @@ import {
   marcarNaAntologia,
   mensagemDeFalha,
   temToken,
+  type Alvo,
   type AntologiaDetalhe,
   type Post,
 } from "@/lib/api";
@@ -60,12 +63,12 @@ export default function AntologiaPage() {
       });
   }, [id, router]);
 
-  // Desmarcar esta antologia no popover de um card aqui dentro tira o poema da
-  // lista na hora (o popover manda o id do original; repost puro conta como ele).
+  // Desmarcar esta antologia no popover de um card aqui dentro tira o poema (ou a
+  // renga) da lista na hora (o popover manda o id do original; repost puro conta como ele).
   useEffect(
     () =>
-      ouvirMudancas(({ antologiaId, postId, contem }) => {
-        if (antologiaId === id && !contem) setAntologia((a) => a && semOPoema(a, postId));
+      ouvirMudancas(({ antologiaId, alvo, contem }) => {
+        if (antologiaId === id && !contem) setAntologia((a) => a && semOAlvo(a, alvo));
       }),
     [id],
   );
@@ -101,10 +104,11 @@ export default function AntologiaPage() {
 
   const dono = antologia.dono_id === meuId;
 
-  async function tirar(postId: number) {
-    await marcarNaAntologia(antologia!.id, postId, false);
-    setAntologia((a) => a && semOPoema(a, postId));
+  async function tirar(alvo: Alvo) {
+    await marcarNaAntologia(antologia!.id, alvo, false);
+    setAntologia((a) => a && semOAlvo(a, alvo));
   }
+  const rengas = antologia.rengas ?? [];
 
   return (
     <div>
@@ -134,7 +138,7 @@ export default function AntologiaPage() {
         )}
       </div>
 
-      {antologia.poemas.length === 0 ? (
+      {antologia.poemas.length === 0 && rengas.length === 0 ? (
         <div className="px-4 py-12 text-center">
           <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
           {dono && (
@@ -154,30 +158,65 @@ export default function AntologiaPage() {
       ) : (
         <>
           {antologia.poemas.length > 1 && <Indice poemas={antologia.poemas} />}
-          <h2 className="sr-only">Poemas</h2>
-          <ol className="divide-y divide-borda border-b border-borda">
-            {antologia.poemas.map((p) => (
-              <li
-                key={p.id}
-                id={ancora(p)}
-                className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
-              >
-                <PoemaCard post={p} />
-                {dono && <TirarDaAntologia poema={p} aoTirar={() => tirar(p.id)} />}
-              </li>
-            ))}
-          </ol>
+          {antologia.poemas.length > 0 && (
+            <>
+              <h2 className="sr-only">Poemas</h2>
+              <ol className="divide-y divide-borda border-b border-borda">
+                {antologia.poemas.map((p) => (
+                  <li
+                    key={p.id}
+                    id={ancora(p)}
+                    className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
+                  >
+                    <PoemaCard post={p} />
+                    {dono && (
+                      <TirarDaAntologia qual={qualPoema(p)} aoTirar={() => tirar({ tipo: "poema", id: p.id })} />
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+          {rengas.length > 0 && (
+            <>
+              <h2 className="px-4 pt-6 pb-1 text-sm font-bold">Rengas</h2>
+              <ol className="divide-y divide-borda border-b border-borda">
+                {rengas.map((r) => (
+                  <li key={r.id}>
+                    <RengaCard renga={r} />
+                    {dono && (
+                      <TirarDaAntologia
+                        qual={`a renga “${r.titulo}”`}
+                        aoTirar={() => tirar({ tipo: "renga", id: r.id })}
+                        recuo={false}
+                      />
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
         </>
       )}
     </div>
   );
 }
 
-// A antologia sem o poema `postId` (ele mesmo, ou um repost puro dele).
-function semOPoema(antologia: AntologiaDetalhe, postId: number): AntologiaDetalhe {
-  const fica = (p: Post) => p.id !== postId && !(p.texto === "" && p.repost_de?.id === postId);
+// A antologia sem o poema (ele mesmo, ou um repost puro dele) ou sem a renga.
+function semOAlvo(antologia: AntologiaDetalhe, alvo: Alvo): AntologiaDetalhe {
+  if (alvo.tipo === "renga") {
+    const rengas = (antologia.rengas ?? []).filter((r) => r.id !== alvo.id);
+    return { ...antologia, rengas, qtd: antologia.qtd - ((antologia.rengas ?? []).length - rengas.length) };
+  }
+  const fica = (p: Post) => p.id !== alvo.id && !(p.texto === "" && p.repost_de?.id === alvo.id);
   const poemas = antologia.poemas.filter(fica);
   return { ...antologia, poemas, qtd: antologia.qtd - (antologia.poemas.length - poemas.length) };
+}
+
+// O nome do poema no botão de tirar (repost puro mostra o original).
+function qualPoema(poema: Post): string {
+  const original = poema.repost_de && poema.texto === "" ? poema.repost_de : poema;
+  return original.titulo ? `“${original.titulo}”` : `o poema de @${original.autor.username}`;
 }
 
 // O poema que o leitor vê no card: num repost puro, o original.
@@ -354,8 +393,17 @@ function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: (
   );
 }
 
-// Alinhado ao texto do poema (depois da coluna do avatar, como as ações do card).
-function TirarDaAntologia({ poema, aoTirar }: { poema: Post; aoTirar: () => Promise<void> }) {
+// Alinhado ao texto do poema (depois da coluna do avatar, como as ações do card);
+// na renga, que não tem avatar, ao texto dela (`recuo` falso).
+function TirarDaAntologia({
+  qual,
+  aoTirar,
+  recuo = true,
+}: {
+  qual: string;
+  aoTirar: () => Promise<void>;
+  recuo?: boolean;
+}) {
   const [tirando, setTirando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
@@ -365,16 +413,14 @@ function TirarDaAntologia({ poema, aoTirar }: { poema: Post; aoTirar: () => Prom
     try {
       await aoTirar();
     } catch (e) {
-      setErro(mensagemDeFalha(e, "não deu para tirar o poema"));
+      setErro(mensagemDeFalha(e, "não deu para tirar da antologia"));
       setTirando(false);
     }
   }
 
-  // Um botão por poema: o rótulo diz qual (repost puro mostra o original).
-  const original = poema.repost_de && poema.texto === "" ? poema.repost_de : poema;
-  const qual = original.titulo ? `“${original.titulo}”` : `o poema de @${original.autor.username}`;
+  // Um botão por poema ou renga: o rótulo diz qual.
   return (
-    <div className="pb-2 pl-[4.25rem]">
+    <div className={`pb-2 ${recuo ? "pl-[4.25rem]" : "px-4"}`}>
       <button
         type="button"
         onClick={tirar}

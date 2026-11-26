@@ -18,6 +18,7 @@ import { EsqueletoDeMensagens, EsqueletoDoTopoDaConversa } from "@/components/Es
 import { IconeEnviar } from "@/components/icones/IconeEnviar";
 import { IconeMais } from "@/components/icones/IconeMais";
 import { PoemaCard } from "@/components/PoemaCard";
+import { RengaCard } from "@/components/RengaCard";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
   aceitarPedido,
@@ -273,7 +274,7 @@ export default function ConversaPage() {
   );
 }
 
-// Uma mensagem: o poema compartilhado (como o original de uma citação) e o texto
+// Uma mensagem: o poema ou a renga compartilhados (como o original de uma citação) e o texto
 // num balão, à direita quando é minha. O poema fica fora do balão: um quadro dentro
 // de outro seria um cartão dentro de um cartão.
 function BalaoDaMensagem({ mensagem, minha }: { mensagem: Mensagem; minha: boolean }) {
@@ -282,6 +283,11 @@ function BalaoDaMensagem({ mensagem, minha }: { mensagem: Mensagem; minha: boole
       {mensagem.post && (
         <div className="w-full min-w-[16rem]">
           <PoemaCard post={mensagem.post} aninhado />
+        </div>
+      )}
+      {mensagem.renga && (
+        <div className="w-full min-w-[16rem]">
+          <RengaCard renga={mensagem.renga} aninhado />
         </div>
       )}
       {mensagem.post_removido && (
