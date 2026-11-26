@@ -368,6 +368,33 @@ def test_guardar_renga_na_antologia(client, eu):
     assert marcadas["items"][0]["contem"] is False
 
 
+def test_antologia_intercala_poemas_e_rengas_na_ordem_em_que_entraram(client, eu):
+    renga_id = _renga(client, eu)
+    um = client.post("/posts", json={"titulo": "Um", "texto": "um"}, headers=eu("caio")).json()["id"]
+    dois = client.post("/posts", json={"texto": "dois\nverso"}, headers=eu("caio")).json()["id"]
+    antologia = _antologia(client, eu)
+    client.post(f"/antologias/{antologia}/poemas", json={"post_id": um}, headers=eu("bia"))
+    client.post(f"/antologias/{antologia}/rengas", json={"renga_id": renga_id}, headers=eu("bia"))
+    client.post(f"/antologias/{antologia}/poemas", json={"post_id": dois}, headers=eu("bia"))
+
+    detalhe = client.get(f"/antologias/{antologia}", headers=eu("caio")).json()
+    assert detalhe["ordem"] == [
+        {"tipo": "poema", "id": um},
+        {"tipo": "renga", "id": renga_id},
+        {"tipo": "poema", "id": dois},
+    ]
+
+    # O cartão de compartilhamento conta e lista os dois, na mesma ordem.
+    client.headers.pop("X-Teste-Usuario", None)
+    cartao = client.get(f"/cartoes/antologia/{antologia}").json()
+    assert cartao["qtd"] == 3
+    assert [(p["titulo"], p["primeiro_verso"], p["autor"]["username"]) for p in cartao["poemas"]] == [
+        ("Um", "um", "caio"),
+        ("Renga do RU", "", "ana"),
+        (None, "dois", "caio"),
+    ]
+
+
 def test_antologia_so_com_renga_aparece_nas_publicas(client, eu):
     renga_id = _renga(client, eu)
     antologia = _antologia(client, eu)

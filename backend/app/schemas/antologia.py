@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -60,11 +61,20 @@ class AntologiaOut(BaseModel):
     qtd: int = 0
 
 
+class ItemDaOrdem(BaseModel):
+    """Um poema (`post_id`) ou uma renga (`renga_id`) na ordem da antologia."""
+
+    tipo: Literal["poema", "renga"]
+    id: int
+
+
 class AntologiaDetalhe(AntologiaOut):
-    """A antologia com os poemas e as rengas, cada lista na ordem de inserção."""
+    """A antologia com os poemas e as rengas, cada lista na ordem de inserção, e a
+    `ordem` dos dois juntos, como foram guardados (a tela intercala por ela)."""
 
     poemas: list[PostOut] = []
     rengas: list[RengaDetalhe] = []
+    ordem: list[ItemDaOrdem] = []
 
 
 class AntologiaPage(Pagina[AntologiaOut]):

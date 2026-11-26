@@ -13,6 +13,7 @@ from app.schemas.antologia import (
     AntologiaOut,
     AntologiaPage,
     AntologiaUpdate,
+    ItemDaOrdem,
 )
 from app.schemas.user import UserOut
 from app.services import bloqueios
@@ -126,7 +127,7 @@ def listar_de(
 
 def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
     """Dados da antologia + poemas (como PostOut) e rengas (como RengaDetalhe), cada
-    lista na ordem de inserção."""
+    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela)."""
     antologia = _buscar_visivel(db, usuario, antologia_id)
     posts = list(
         db.scalars(
@@ -150,7 +151,34 @@ def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
         **_para_saida(antologia, qtd=len(poemas) + len(rengas)).model_dump(),
         poemas=poemas,
         rengas=rengas,
+        ordem=[ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id)],
     )
+
+
+def ordem(db: Session, antologia_id: int, limite: int | None = None) -> list[tuple[str, int]]:
+    """("poema", post_id) e ("renga", renga_id) na ordem em que entraram na antologia:
+    a `posicao` é uma numeração só para os dois (`_proxima_posicao`). Público para o
+    cartão de compartilhamento. Duas queries; `limite` corta cada uma."""
+    linhas = [
+        (posicao, "poema", item_id, linha_id)
+        for posicao, item_id, linha_id in db.execute(
+            select(AntologiaPoema.posicao, AntologiaPoema.post_id, AntologiaPoema.id)
+            .where(AntologiaPoema.antologia_id == antologia_id)
+            .order_by(AntologiaPoema.posicao, AntologiaPoema.id)
+            .limit(limite)
+        )
+    ]
+    linhas += [
+        (posicao, "renga", item_id, linha_id)
+        for posicao, item_id, linha_id in db.execute(
+            select(AntologiaRenga.posicao, AntologiaRenga.renga_id, AntologiaRenga.id)
+            .where(AntologiaRenga.antologia_id == antologia_id)
+            .order_by(AntologiaRenga.posicao, AntologiaRenga.id)
+            .limit(limite)
+        )
+    ]
+    linhas.sort()
+    return [(tipo, item_id) for _, tipo, item_id, _ in linhas[:limite]]
 
 
 def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
