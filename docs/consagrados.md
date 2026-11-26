@@ -29,6 +29,24 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    importação. Com o servidor de pé, aparecem no `/tags/...` na hora.
 8. Reimportar atualiza o perfil e os poemas, mas não muda o `created_at` (a
    data do poema no feed) nem apaga poemas que saíram do JSON.
+9. **Sem poema repetido.** O scraper às vezes traz, no mesmo JSON, o poema
+   inteiro e um trecho dele ("estrofes iniciais", uma estrofe solta), ou o
+   mesmo texto em duas edições ou grafias ("Allucinação" e "Alucinação"). O
+   importador deixa de fora o que é trecho ou cópia de outro poema do mesmo
+   autor e fica com a versão mais completa (`app/core/duplicados.py`: o texto
+   sem marcas, acentos e pontuação do menor cabe no maior, ao menos 90% dele em
+   trechos de 12 caracteres seguidos). Os bancos importados antes disso se
+   consertam com `scripts/fundir_poemas_repetidos.py` (`--simular`, o padrão,
+   só lista; `--aplicar` funde as curtidas, comentários, reposts, citações,
+   antologias, mensagens e avisos no poema que fica e apaga as cópias). Faça
+   backup antes de `--aplicar`; o script não roda no boot.
+   Versões diferentes de um poema que o autor reescreveu passam nessa regra e
+   não são repetição: os pares decididos à mão ficam em
+   `backend/data/consagrados/_versoes_distintas.json` (por `autor`, o username,
+   e os dois `titulos`, que valem em qualquer banco), e o importador, o seed e
+   o script mantêm os dois. Hoje: o "Prometheus" de Goethe (frühe e späte
+   Fassung) e "Freygeisterey der Leidenschaft" / "Der Kampf" de Schiller. Com
+   eles, os JSONs dão 160 grupos e 283 poemas de fora.
 
 ## Schema
 

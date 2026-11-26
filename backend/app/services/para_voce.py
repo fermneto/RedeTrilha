@@ -21,8 +21,9 @@ nunca entram.
 
 A ordem é cronológica pela atividade, sem ranking por engajamento (decisão 3);
 a mistura e o desempate ficam em `core/mistura.py`. A paginação é a do feed
-Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave) que
-tem precedência sobre o offset e devolve `total` None.
+Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave e o
+que a sessão já viu, `core/vistos.py`) que tem precedência sobre o offset e
+devolve `total` None. O que saiu numa página não volta nas seguintes.
 
 Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + um poema de
 consagrado por janela + estrofes das rengas abertas + comentários, carregados só
@@ -87,7 +88,12 @@ def feed(
         lingua,
     )
     recorte = recortar(
-        misturar(atividades), lambda item: item.atividade.posicao, offset, limit, cursor
+        misturar(atividades),
+        lambda item: item.atividade.posicao,
+        lambda item: (item.atividade.tipo, item.atividade.alvo_id),
+        offset,
+        limit,
+        cursor,
     )
     return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
 

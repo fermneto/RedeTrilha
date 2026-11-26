@@ -775,14 +775,9 @@ export function alternarNaLista(lista: string[], codigo: string): string[] {
   return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
 }
 
-// Evento de window disparado depois de seguir ou deixar de seguir alguém: o feed
-// Seguindo, que fica montado na home, recarrega a lista quando o recebe.
-export const EVENTO_SEGUIR_MUDOU = "verso:seguir-mudou";
-
 export async function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
   await (seguindo ? apiPost<void>(caminho) : apiDelete(caminho));
-  window.dispatchEvent(new Event(EVENTO_SEGUIR_MUDOU));
 }
 
 // ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
@@ -1145,6 +1140,61 @@ export function ehRenga(item: ItemDoFeed): item is RengaNoFeed {
 // Chave única entre os dois tipos (um poema e uma renga podem ter o mesmo id).
 export function chaveDoItem(item: ItemDoFeed): string {
   return ehRenga(item) ? `renga-${item.renga.id}` : `poema-${item.id}`;
+}
+
+// O poema ou a renga que o item mostra: um repost puro (texto vazio) conta como o
+// original, e a citação é um poema próprio.
+export function chaveDoAlvo(item: ItemDoFeed): string {
+  if (ehRenga(item)) return `renga-${item.renga.id}`;
+  const original = item.texto === "" ? item.repost_de : null;
+  return `poema-${original ? original.id : item.id}`;
+}
+
+function semRepetir(primeiros: User[], depois: User[]): User[] {
+  const ids = new Set(primeiros.map((u) => u.id));
+  return [...primeiros, ...depois.filter((u) => !ids.has(u.id))];
+}
+
+// Quem fez a mesma atividade no item repetido entra no rótulo do primeiro, depois
+// dos que já estavam (o feed vem do mais novo para o mais antigo).
+function juntarRotulos(primeiro: ItemDoFeed, repetido: ItemDoFeed): ItemDoFeed {
+  if (ehRenga(primeiro)) {
+    const mesmaAtividade = ehRenga(repetido) && repetido.atividade === primeiro.atividade;
+    return mesmaAtividade && primeiro.atividade !== "abriu" && primeiro.atividade !== "encerrou"
+      ? { ...primeiro, por: semRepetir(primeiro.por, repetido.por) }
+      : primeiro;
+  }
+  if (ehRenga(repetido)) return primeiro;
+  const reposts = repetido.texto === "" && repetido.repost_de ? [repetido.autor] : repetido.repostado_por;
+  return {
+    ...primeiro,
+    repostado_por:
+      primeiro.repostado_por.length > 0 ? semRepetir(primeiro.repostado_por, reposts) : primeiro.repostado_por,
+    comentado_por:
+      primeiro.subiu_por && repetido.subiu_por
+        ? semRepetir(primeiro.comentado_por ?? [], repetido.comentado_por ?? [])
+        : primeiro.comentado_por,
+  };
+}
+
+// Junta a página nova ao que já veio, um item por poema ou renga: fica a primeira
+// ocorrência (a mais recente) e o rótulo dela soma quem repostou na repetida. O
+// backend já não repete na mesma sessão (o cursor leva o que já saiu); isto é a
+// defesa do front. O(n) com n = itens.
+export function juntarAoFeed(atuais: ItemDoFeed[], novos: ItemDoFeed[]): ItemDoFeed[] {
+  const itens = [...atuais];
+  const posicao = new Map(itens.map((item, i) => [chaveDoAlvo(item), i]));
+  for (const item of novos) {
+    const chave = chaveDoAlvo(item);
+    const i = posicao.get(chave);
+    if (i === undefined) {
+      posicao.set(chave, itens.length);
+      itens.push(item);
+    } else {
+      itens[i] = juntarRotulos(itens[i], item);
+    }
+  }
+  return itens;
 }
 
 // "@ana, bia  @caio" → ["ana", "bia", "caio"]: separa por vírgula ou espaço, tira o "@" e repetidos.
