@@ -198,7 +198,26 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - Paginação como na timeline do X: `limit` de 1 a 100 (padrão 20) e um
   `cursor` opaco. Com `cursor`, ele tem precedência sobre o `offset` e o
   `total` vem `null`; sem cursor, `offset` e `total` valem (teste do núcleo).
-  `proximo_cursor` é `null` no fim.
+  `proximo_cursor` é `null` no fim (no perfil; o feed não tem fim, ver abaixo).
+- **Feed infinito, como no X** (`services/feed_infinito.py`, `core/continuacao.py`):
+  o `GET /feed` e o `GET /feed/para-voce` nunca têm última página; o
+  `proximo_cursor` só vem `null` com o banco sem poemas. Cada aba é uma corrente
+  de trechos: Seguindo = quem a pessoa segue → o "Para você" do topo (sem o que a
+  sessão já viu) → a continuação; "Para você" = o cronológico (o inédito) → a
+  continuação. A continuação mistura poemas de consagrados que a sessão não
+  recebeu (primeiro os das formas e escolas de `preferencias`, depois os mais
+  recentes; não repetem) com os 50 mais curtidos da comunidade (um a cada 4
+  itens, em volta, podendo repetir; sem poema da comunidade, os de qualquer
+  conta). **`FeedPage` ganhou `fim_em: int | None`** (aditivo): a posição, nesta
+  página, onde acabou o primeiro trecho (no Seguindo, o de quem segue: o front
+  põe ali a folha "você leu tudo de quem segue"); só na página da virada, `null`
+  nas outras e no perfil. **`subiu_por` ganhou `"curtidas"`**: o mais curtido da
+  continuação, o único item que pode repetir na sessão. Com cursor, a página
+  enche passando de um trecho para o seguinte; por offset, vale só o primeiro
+  trecho (com o `total` dele), e no fim o `proximo_cursor` já aponta o seguinte.
+  O cursor leva o trecho (marca `pv` ou `mais` na frente; sem marca, o primeiro
+  trecho da aba, e os cursores de antes continuam valendo). O `GET /feed` aceita
+  também `?lingua=` para o "Para você" que vem depois.
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
 - Rengas como reposts: uma renga entra no feed de quem segue o criador ou
   alguém que escreveu estrofe (e no de quem participou), uma vez só, na
@@ -259,9 +278,10 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   A escolha depende só da janela e da língua da requisição, então o cursor é
   estável.
 - `PoemaNoFeed` ganhou dois campos opcionais, só preenchidos no "Para você":
-  `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
+  `subiu_por: "comentario" | "critica" | "curtidas" | None` ("curtidas" só na
+  continuação do feed infinito, nas duas abas) (crítica = comentário ancorado
   nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último
-  primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
+  primeiro). No perfil e no trecho do Seguindo de quem a pessoa segue, vêm `null` e `[]`.
 - Desempate do cursor do "Para você": 4·id + 3 para repost de renga, 4·id + 2
   para post (poema ou repost puro), 4·id + 1 para estrofe e 4·id para
   comentário (#171; os cursores de antes deixam de valer). O cursor também

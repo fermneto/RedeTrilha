@@ -169,10 +169,19 @@ PRs, na seção "Decisões do Neto".
   - **"Em alta"** mostra as tags com mais poemas nas últimas 24 horas: sobre o
     que a rede está escrevendo, não quem tem mais curtidas.
   - **Poema do dia:** um poema de consagrado, o mesmo para todos no mesmo dia.
+  - **O feed não acaba, como no X.** Quando o "Para você" não tem mais nada
+    inédito para a pessoa, ele continua com os poemas de consagrados que ela
+    ainda não viu nesta leitura (primeiro os das formas e escolas que ela marcou
+    nas preferências), intercalados com os mais curtidos da comunidade (um a
+    cada quatro; esses podem repetir). No Seguindo, quando acabam os poemas de
+    quem a pessoa segue, uma folha avisa "você leu tudo de quem segue" e a aba
+    continua com o "Para você". Só falta conteúdo com a rede sem nenhum poema.
 - **O que cortamos e por quê:** qualquer ranking por engajamento ("mais
-  curtidos da semana"), também no "Para você". Quem procura algo novo procura
-  "um haicai sobre chuva", não o post mais curtido, e ordenar por curtidas
-  traria de volta o problema que o Verso quer resolver.
+  curtidos da semana") no que é novo, também no "Para você". Quem procura algo
+  novo procura "um haicai sobre chuva", não o post mais curtido, e ordenar por
+  curtidas traria de volta o problema que o Verso quer resolver. Os mais
+  curtidos só aparecem depois do inédito, na continuação, quando a ordem
+  cronológica já não tem o que mostrar.
 
 ### 4. Citar um verso e conversar sobre o poema
 
