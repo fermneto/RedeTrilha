@@ -4,10 +4,10 @@
 //
 // A lombada do livro: a navegação gravada no pano da capa. No desktop (de
 // 1024 px), uma faixa estreita à esquerda do miolo, com o nome do Verso no alto,
-// os ícones (Início, Explorar, Avisos, Mensagens e o meu perfil, com o meu
-// avatar) e, no pé, "Escrever" em destaque, um botão cor da gravura sobre o pano. No
-// celular, a mesma faixa vira a borda de baixo da capa, só com os ícones (o nome
-// vai no aria-label) e o "Escrever" no fim. O item da seção atual fica rebaixado
+// os ícones grandes, sem texto (Início, Explorar, Avisos, Mensagens e o meu
+// perfil, com o meu avatar) e, no pé, "Escrever" em destaque, um botão cor da
+// gravura sobre o pano. No celular, a mesma faixa vira a borda de baixo da capa.
+// Nos dois, o nome de cada item vai no aria-label e, no desktop, também no title. O item da seção atual fica rebaixado
 // no pano (.gravado, em globals.css).
 //
 // "Avisos" e "Mensagens" levam um contador cada (linhas de aviso não lidas;
@@ -146,19 +146,19 @@ function Contador({ n }: { n: number }) {
   return (
     <span
       aria-hidden="true"
-      className="absolute -top-1 left-[calc(50%+0.375rem)] min-w-[1.125rem] rounded-full bg-destaque px-1 py-0.5 text-center text-[0.625rem] leading-none font-bold text-papel tabular-nums"
+      className="absolute top-1 left-[calc(50%+0.5rem)] min-w-[1.125rem] rounded-full bg-destaque px-1 py-0.5 text-center text-[0.625rem] leading-none font-bold text-papel tabular-nums"
     >
       {n > 99 ? "99+" : n}
     </span>
   );
 }
 
-function Simbolo({ m, classe }: { m: Marcador; classe: string }) {
+function Simbolo({ m, classe, avatar = "p" }: { m: Marcador; classe: string; avatar?: "p" | "m" }) {
   if (m.eu)
     return (
       <span className={`flex items-center justify-center ${classe}`}>
         <span className={`rounded-full ring-1 ${m.atual ? "ring-gravura" : "ring-gravura/30"}`}>
-          <Avatar usuario={m.eu} tamanho="p" />
+          <Avatar usuario={m.eu} tamanho={avatar} />
         </span>
       </span>
     );
@@ -178,19 +178,17 @@ export function Lombada() {
         <span aria-hidden="true">Verso</span>
       </Link>
       <span aria-hidden="true" className="mt-4 h-px w-8 bg-gravura/20" />
-      <ul className="mt-4 flex flex-col items-center gap-1">
+      <ul className="mt-5 flex flex-col items-center gap-2">
         {marcadores.map((m) => (
           <li key={m.href}>
             <Link
               href={m.href}
               aria-current={m.atual ? "page" : undefined}
               aria-label={rotuloComContador(m.rotulo, m.contador)}
-              className="gravado relative flex w-[4.25rem] flex-col items-center gap-1 rounded-lg pt-2.5 pb-2"
+              title={m.rotulo}
+              className="gravado relative flex h-14 w-14 items-center justify-center rounded-xl"
             >
-              <Simbolo m={m} classe="h-[1.375rem] w-[1.375rem]" />
-              <span aria-hidden="true" className="text-[0.6875rem] leading-none font-medium tracking-[0.01em]">
-                {m.rotulo}
-              </span>
+              <Simbolo m={m} classe="h-7 w-7" avatar="m" />
               <Contador n={m.contador} />
             </Link>
           </li>
@@ -207,16 +205,17 @@ function Escrever({ atual }: { atual: boolean }) {
     <Link
       href="/escrever"
       aria-current={atual ? "page" : undefined}
-      className="group mt-auto flex flex-col items-center gap-1.5 rounded-lg px-1 pt-1 pb-1 text-[0.6875rem] leading-none font-semibold text-gravura"
+      aria-label="Escrever"
+      title="Escrever"
+      className="group mt-auto flex items-center justify-center rounded-full p-1"
     >
       <span
-        className={`flex h-12 w-12 items-center justify-center rounded-full bg-gravura text-capa shadow-[0_1px_0_rgb(255_255_255/0.15)_inset,0_2px_6px_rgb(0_0_0/0.35)] transition-transform duration-200 ease-out group-hover:-translate-y-0.5 motion-reduce:transition-none ${
+        className={`flex h-14 w-14 items-center justify-center rounded-full bg-gravura text-capa shadow-[0_1px_0_rgb(255_255_255/0.15)_inset,0_2px_6px_rgb(0_0_0/0.35)] transition-transform duration-200 ease-out group-hover:-translate-y-0.5 motion-reduce:transition-none ${
           atual ? "ring-2 ring-gravura/60 ring-offset-2 ring-offset-capa" : ""
         }`}
       >
-        <IconeEscrever className="h-[1.375rem] w-[1.375rem] [stroke-width:1.8]" />
+        <IconeEscrever className="h-7 w-7 [stroke-width:1.8]" />
       </span>
-      Escrever
     </Link>
   );
 }
