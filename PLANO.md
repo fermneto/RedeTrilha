@@ -229,6 +229,14 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   `FeedPage` não mudou. No front, `juntarAoFeed` (`lib/api.ts`) deduplica pelo
   poema ou renga mostrados (repost puro = o original), fica a primeira
   ocorrência e soma quem repostou no rótulo dela.
+- **Sessão de leitura do Início (só no front, `lib/sessaoDoFeed.ts`):** cada
+  aba guarda os itens, o cursor e a folha onde a pessoa parou, num módulo
+  espelhado no `sessionStorage` (por conta). Trocar de aba, ir a outra página e
+  voltar, seguir alguém ou recarregar reabre na mesma folha; tocar em Início
+  estando no Início recomeça as duas abas do topo. Uma vez só entre as abas:
+  o poema ou renga fica com a aba em que a pessoa chegou na folha dele, e a
+  outra aba o pula (o que só foi carregado adiantado não conta, para não
+  esvaziar o "Para você"); página que vem toda filtrada puxa a próxima.
 
 ### Feed "Para você", onboarding e sugestões (dono: Neto)
 
