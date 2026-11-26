@@ -757,6 +757,23 @@ export function salvarPreferencias(dados: Preferencias): Promise<Preferencias> {
   return apiPut<Preferencias>("/preferencias", dados);
 }
 
+// Os gostos de alguém, públicos no perfil: o mesmo formato, só com os códigos.
+export function buscarGostosDe(username: string): Promise<Preferencias> {
+  return apiGet<Preferencias>(`/usuarios/${encodeURIComponent(username)}/gostos`);
+}
+
+// Nada marcado: o perfil não mostra o bloco dos gostos.
+export function semGostos(g: Preferencias): boolean {
+  return g.escolas.length === 0 && g.formas.length === 0 && !g.pais;
+}
+
+// "Paraíba, Brasil", "Portugal"; null sem país. O nome da UF vem das opções.
+export function lugarDosGostos(g: Preferencias, ufs: Opcao[]): string | null {
+  if (!g.pais) return null;
+  const uf = g.uf ? (ufs.find((o) => o.codigo === g.uf)?.rotulo ?? g.uf) : null;
+  return [uf, nomeDoPais(g.pais)].filter(Boolean).join(", ");
+}
+
 export function buscarOpcoesDePreferencias(): Promise<OpcoesDePreferencias> {
   return apiGet<OpcoesDePreferencias>("/preferencias/opcoes");
 }

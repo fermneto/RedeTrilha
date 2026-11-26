@@ -72,3 +72,15 @@ test("cancelar: aberta direto nas preferências não tem página do Verso antes"
   assert.equal(abertaDireto("http://x/sugestoes"), false);
   assert.equal(abertaDireto("http://x/"), false);
 });
+
+test("gostos: vazio sem nada marcado, e o lugar com a UF por extenso", async () => {
+  const { semGostos, lugarDosGostos } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+  const vazio = { escolas: [], formas: [], pais: null, uf: null };
+  assert.equal(semGostos(vazio), true);
+  assert.equal(semGostos({ ...vazio, formas: ["soneto"] }), false);
+  assert.equal(semGostos({ ...vazio, pais: "PT" }), false);
+  const ufs = [{ codigo: "PB", rotulo: "Paraíba" }];
+  assert.equal(lugarDosGostos(vazio, ufs), null);
+  assert.equal(lugarDosGostos({ ...vazio, pais: "BR", uf: "PB" }, ufs), "Paraíba, Brasil");
+  assert.equal(lugarDosGostos({ ...vazio, pais: "PT" }, ufs), "Portugal");
+});
