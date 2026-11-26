@@ -30,6 +30,7 @@ import {
   criticarVersos,
   formatarData,
   mensagemDeFalha,
+  numeroDoVerso,
   referenciaDosVersos,
   trechoDosVersos,
   type AlvoDosComentarios,
@@ -127,6 +128,7 @@ export function ArvoreComentarios({
       alvo={alvo}
       parentId={null}
       selecao={selecao}
+      textoDoPoema={textoDoPoema}
       trecho={selecao && trechoDosVersos(textoDoPoema, selecao)}
       aoLimparSelecao={aoLimparSelecao}
       aoComentar={(novo) => {
@@ -149,7 +151,7 @@ export function ArvoreComentarios({
       <div className={campoNoPe ? "mt-5 flex-1 space-y-4" : "space-y-4"}>
         {verso !== null && (
           <p className="flex flex-wrap items-center gap-x-2 text-sm text-tinta-suave">
-            <span>Comentários sobre o verso {verso}</span>
+            <span>Comentários sobre o verso {numeroDoVerso(textoDoPoema, verso)}</span>
             <span aria-hidden="true">·</span>
             <button type="button" onClick={aoLimparFiltro} className="cursor-pointer underline hover:text-tinta">
               ver todos os comentários
@@ -168,6 +170,7 @@ export function ArvoreComentarios({
             alvo={alvo}
             comentarios={visiveis}
             destacados={idsNovos}
+            textoDoPoema={textoDoPoema}
             nivel={0}
             euId={euId}
             aoMudar={aoMudar}
@@ -200,6 +203,8 @@ export function ArvoreComentarios({
 type PropsLista = {
   alvo: AlvoDosComentarios;
   comentarios: Comentario[];
+  // O texto em que as âncoras contam as linhas, para mostrar os números de verso.
+  textoDoPoema: string;
   // Nível na árvore: 0 = comentário direto no poema.
   nivel: number;
   // Autor do comentário pai (null se o pai foi removido; undefined na raiz).
@@ -229,6 +234,7 @@ function ItemComentario({
   alvo,
   comentario,
   novo,
+  textoDoPoema,
   nivel,
   autorDoPai,
   euId,
@@ -333,7 +339,7 @@ function ItemComentario({
                 </time>
                 {novo && <span className="font-semibold text-destaque">· seu comentário</span>}
               </p>
-              {comentario.ancora && <TrechoCitado ancora={comentario.ancora} />}
+              {comentario.ancora && <TrechoCitado ancora={comentario.ancora} textoDoPoema={textoDoPoema} />}
               <p className="mt-0.5 text-[0.9375rem] leading-relaxed break-words whitespace-pre-wrap">
                 {comentario.texto}
               </p>
@@ -384,6 +390,7 @@ function ItemComentario({
           <ListaComentarios
             alvo={alvo}
             comentarios={respostas}
+            textoDoPoema={textoDoPoema}
             nivel={nivel + 1}
             autorDoPai={autor}
             euId={euId}
@@ -402,11 +409,11 @@ function ItemComentario({
 }
 
 // O trecho que a crítica comenta, acima do texto dela, com as quebras do poema.
-function TrechoCitado({ ancora }: { ancora: Ancora }) {
+function TrechoCitado({ ancora, textoDoPoema }: { ancora: Ancora; textoDoPoema: string }) {
   return (
     <figure className="my-1.5 border-l-2 border-destaque/50 pl-3">
       <figcaption className="text-xs text-tinta-suave">
-        {referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim })}
+        {referenciaDosVersos(textoDoPoema, { inicio: ancora.verso_inicio, fim: ancora.verso_fim })}
       </figcaption>
       <blockquote className="poema-corpo mt-0.5 text-[0.9375rem]">
         <TextoFormatado texto={ancora.trecho} />
@@ -420,6 +427,7 @@ function FormComentario({
   parentId,
   aoComentar,
   selecao = null,
+  textoDoPoema = "",
   trecho = null,
   aoLimparSelecao,
   paraQuem,
@@ -429,6 +437,7 @@ function FormComentario({
   aoComentar: (novo: Comentario) => void;
   // Só no comentário de 1º nível: os versos selecionados no poema e o texto deles.
   selecao?: SelecaoDeVersos | null;
+  textoDoPoema?: string;
   trecho?: string | null;
   aoLimparSelecao?: () => void;
   // Na resposta: o @ de quem é respondido, no placeholder.
@@ -462,7 +471,7 @@ function FormComentario({
         ? `Responder a @${paraQuem}`
         : "Sua resposta"
       : selecao
-        ? `Comente ${selecao.inicio === selecao.fim ? "o" : "os"} ${referenciaDosVersos(selecao)}`
+        ? `Comente ${selecao.inicio === selecao.fim ? "o" : "os"} ${referenciaDosVersos(textoDoPoema, selecao)}`
         : alvo.tipo === "poema"
           ? "Comente o poema"
           : "Comente a renga";
@@ -471,7 +480,10 @@ function FormComentario({
     <form onSubmit={enviar} className="space-y-2">
       {selecao && trecho !== null && (
         <div className="rounded-lg border border-borda bg-papel-alto p-3">
-          <TrechoCitado ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho }} />
+          <TrechoCitado
+            ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho }}
+            textoDoPoema={textoDoPoema}
+          />
           <button
             type="button"
             onClick={aoLimparSelecao}

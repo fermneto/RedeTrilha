@@ -417,9 +417,10 @@ function Corpo({
       </p>
       {criticavel && selecao && (
         <BarraDeVersos
+          texto={texto}
           selecao={selecao}
           barra={barra}
-          caminhoDaCritica={caminhoDaCriticaDeVersos(id, selecao)}
+          caminhoDaCritica={caminhoDaCriticaDeVersos(id, texto, selecao)}
           caminhoDaCitacao={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))}
           aoLimpar={limpar}
         />
