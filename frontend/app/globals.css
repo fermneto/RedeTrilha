@@ -646,3 +646,51 @@
     }
   }
 }
+
+/* As dicas do livro (components/DicasDoLivro.tsx): a nota assenta sobre o
+   livro vinda do lado da âncora, e o fio em volta do que ela explica respira
+   devagar duas vezes. Com prefers-reduced-motion, só um fade curto e o fio parado. */
+@layer components {
+  .nota-da-dica {
+    --nota-de: translateY(6px);
+    animation: nota-assenta 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .nota-abaixo {
+    --nota-de: translateY(-6px);
+  }
+  .nota-direita {
+    --nota-de: translateX(-6px);
+  }
+  .fio-da-dica {
+    animation: fio-respira 1800ms ease-in-out 2 both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nota-da-dica {
+      animation: nota-aparece 160ms ease-out both;
+    }
+    .fio-da-dica {
+      animation: none;
+    }
+  }
+}
+
+@keyframes nota-assenta {
+  from {
+    opacity: 0;
+    transform: var(--nota-de);
+    filter: blur(2px);
+  }
+}
+
+@keyframes nota-aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fio-respira {
+  50% {
+    opacity: 0.35;
+  }
+}

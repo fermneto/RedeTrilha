@@ -5,23 +5,44 @@
 // página dupla com a lombada (a navegação) à esquerda; abaixo disso, uma página
 // por vez, e a lombada vira a borda de baixo da capa.
 //
-// As rotas que desenham as próprias folhas (o feed, o poema, o perfil e o
-// compositor) usam o CadernoFolhas direto. As outras ficam na página da
-// esquerda, e a da direita traz a coluna Descobrir (só na página dupla).
+// As rotas que desenham as próprias folhas (o feed, o perfil, o compositor e as
+// páginas de publicação: o poema, a renga e a antologia) usam o CadernoFolhas
+// direto. As outras ficam na página da esquerda, e a da direita traz a coluna
+// Descobrir (só na página dupla).
+//
+// O caderno também anota o caminho feito no Verso (lib/historico.ts), para o
+// "voltar" das páginas de publicação saber se há uma página do Verso antes.
+//
+// Por cima de tudo, as dicas do livro (components/DicasDoLivro.tsx).
 
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 import { CadernoFolhas, useDuplo } from "@/components/CadernoFolhas";
 import { Lombada, LombadaDoCelular } from "@/components/CadernoLombada";
 import { ColunaDireita } from "@/components/ColunaDireita";
+import { DicasDoLivro } from "@/components/DicasDoLivro";
+import { anotarRota, anotarVoltaDoNavegador } from "@/lib/historico";
+
+// /rengas/nova e /antologias/nova são formulários, não publicações.
+const PUBLICACAO = /^\/(poema|rengas|antologias)\/(?!nova$)[^/]+$/;
 
 function desenhaAsFolhas(caminho: string): boolean {
-  return caminho === "/" || caminho === "/escrever" || caminho.startsWith("/poema/") || caminho.startsWith("/u/");
+  return caminho === "/" || caminho === "/escrever" || caminho.startsWith("/u/") || PUBLICACAO.test(caminho);
 }
 
 export function Caderno({ children }: { children: React.ReactNode }) {
   const caminho = usePathname();
   const duplo = useDuplo();
+
+  useEffect(() => {
+    window.addEventListener("popstate", anotarVoltaDoNavegador);
+    return () => window.removeEventListener("popstate", anotarVoltaDoNavegador);
+  }, []);
+
+  useEffect(() => {
+    anotarRota(caminho);
+  }, [caminho]);
 
   const folhas = desenhaAsFolhas(caminho) ? (
     children
@@ -48,19 +69,23 @@ export function Caderno({ children }: { children: React.ReactNode }) {
 
   if (duplo) {
     return (
-      <div className="flex h-dvh items-center justify-center px-6 py-5">
-        <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
-          <Lombada />
-          {miolo}
+      <DicasDoLivro>
+        <div className="flex h-dvh items-center justify-center px-6 py-5">
+          <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
+            <Lombada />
+            {miolo}
+          </div>
         </div>
-      </div>
+      </DicasDoLivro>
     );
   }
 
   return (
-    <div className="capa flex h-dvh flex-col px-[5px] pt-[5px]">
-      {miolo}
-      <LombadaDoCelular />
-    </div>
+    <DicasDoLivro>
+      <div className="capa flex h-dvh flex-col px-[5px] pt-[5px]">
+        {miolo}
+        <LombadaDoCelular />
+      </div>
+    </DicasDoLivro>
   );
 }

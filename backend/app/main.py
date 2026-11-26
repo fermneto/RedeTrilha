@@ -24,6 +24,7 @@ from app.routers import (
     comentarios_renga,
     curtidas,
     curtidas_renga,
+    dicas,
     feed,
     follows,
     mensagens,
@@ -33,6 +34,7 @@ from app.routers import (
     preferencias,
     rascunhos,
     rengas,
+    repercussao,
     reposts,
     reposts_renga,
     saude,
@@ -184,7 +186,9 @@ app.include_router(oficina.router)
 app.include_router(rascunhos.router)
 app.include_router(sugestoes.router)
 app.include_router(preferencias.router)
+app.include_router(dicas.router)
 app.include_router(mensagens.router)
 app.include_router(bloqueios.router)
 app.include_router(avisos.router)
 app.include_router(cartoes.router)
+app.include_router(repercussao.router)

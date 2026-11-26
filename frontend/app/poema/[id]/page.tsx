@@ -5,16 +5,20 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
+import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
-import { MARGEM_DA_PAGINA, poemaDe, rotuloDoPoema, VersoDoPoema } from "@/components/CadernoPoema";
+import { poemaDe, rotuloDoPoema, VersoDoPoema } from "@/components/CadernoPoema";
 import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
+import { MaisDoAutor } from "@/components/MaisDoAutor";
 import { PoemaCard } from "@/components/PoemaCard";
+import { Repercussao } from "@/components/Repercussao";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
 import {
   buscarEu,
   buscarPoema,
   buscarVersosComentados,
   caminhoDoLogin,
+  formatarDataEHora,
   lerVersosDaUrl,
   mensagemDeFalha,
   temToken,
@@ -22,6 +26,16 @@ import {
   type SelecaoDeVersos,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
+
+// Abaixo do título da página ("← Poema"), as margens do livro (MARGEM_DA_PAGINA)
+// com menos espaço em cima.
+const MARGEM_DO_POEMA = "px-6 pt-2 pb-4 sm:px-10 lg:px-14 lg:pt-4";
+// O título alinhado ao poema: com o px-4 do cabeçalho, a margem lateral do livro.
+const topo = (
+  <div className="px-2 sm:px-6 lg:px-10">
+    <CabecalhoPagina titulo="Poema" comoTitulo={false} voltar />
+  </div>
+);
 
 export default function PoemaPage() {
   const router = useRouter();
@@ -88,21 +102,27 @@ export default function PoemaPage() {
             chave: "carregando",
             rotulo: erro ?? "carregando o poema",
             esquerda: (
-              <div className={MARGEM_DA_PAGINA}>
-                {erro ? (
-                  <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
-                ) : (
-                  <EsqueletoDaPaginaDoPoema />
-                )}
-              </div>
+              <>
+                {topo}
+                <div className={MARGEM_DO_POEMA}>
+                  {erro ? (
+                    <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+                  ) : (
+                    <EsqueletoDaPaginaDoPoema />
+                  )}
+                </div>
+              </>
             ),
           },
         ]}
       />
     );
 
-  // Na página dupla, o poema na esquerda e os comentários na direita; no
-  // celular, duas páginas, e "comentar estes versos" vira até a dos comentários.
+  const original = poemaDe(poema);
+  // Na página dupla, o poema na esquerda (com a data inteira e, no pé, mais do
+  // autor) e, na direita, as ações, quem curtiu, repostou e citou, e os
+  // comentários; no celular, duas páginas, e "comentar estes versos" vira até a
+  // dos comentários.
   return (
     <CadernoFolhas
       key={poema.id}
@@ -114,31 +134,37 @@ export default function PoemaPage() {
           rotulo: rotuloDoPoema(poema),
           rotuloDaDireita: "ações e comentários",
           esquerda: (
-            <div className={`surgir ${MARGEM_DA_PAGINA}`}>
-              <PaginaDoPoema
-                poema={poema}
-                marcas={marcas}
-                selecao={selecao}
-                aoSelecionar={setSelecao}
-                pedida={pedida}
-                aoFiltrar={setVerso}
-              />
-              {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar". */}
-              {euId === poema.autor_id && !repostPuro(poema) && (
-                <div className="mt-8">
-                  <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
-                </div>
-              )}
+            <div className="surgir">
+              {topo}
+              <div className={MARGEM_DO_POEMA}>
+                <PaginaDoPoema
+                  poema={poema}
+                  marcas={marcas}
+                  selecao={selecao}
+                  aoSelecionar={setSelecao}
+                  pedida={pedida}
+                  aoFiltrar={setVerso}
+                />
+                <DataDoPoema poema={original} />
+                {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar". */}
+                {euId === poema.autor_id && !repostPuro(poema) && (
+                  <div className="mt-8">
+                    <ApagarPoema postId={poema.id} aoApagar={() => router.replace(`/u/${poema.autor.username}`)} />
+                  </div>
+                )}
+                <MaisDoAutor autor={original.autor} aberto={{ tipo: "poema", id: original.id }} />
+              </div>
             </div>
           ),
           direita: (
             <div className="surgir min-h-full">
               <VersoDoPoema
-                poema={poemaDe(poema)}
+                poema={original}
+                repercussao={<Repercussao alvo={{ tipo: "poema", id: original.id }} />}
                 comentarios={
                   <ArvoreComentarios
                     campoNoPe
-                    total={poemaDe(poema).comentarios}
+                    total={original.comentarios}
                     alvo={{ tipo: "poema", id: poema.id }}
                     euId={euId}
                     aoMudar={carregarPoema}
@@ -210,6 +236,22 @@ function PaginaDoPoema({
         />
       )}
     />
+  );
+}
+
+// Quando o poema saiu: a data e a hora da publicação. No consagrado, a data é a
+// da importação, não a da obra: no lugar dela, o ano e a obra ("1912 · Eu"),
+// quando houver.
+function DataDoPoema({ poema }: { poema: Post }) {
+  const classe = "mt-3 text-[0.8125rem] text-tinta-suave";
+  if (poema.autor.consagrado) {
+    const origem = [poema.ano, poema.obra].filter(Boolean).join(" · ");
+    return origem ? <p className={classe}>{origem}</p> : null;
+  }
+  return (
+    <p className={classe}>
+      publicado em <time dateTime={poema.created_at}>{formatarDataEHora(poema.created_at)}</time>
+    </p>
   );
 }
 

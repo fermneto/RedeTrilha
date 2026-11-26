@@ -17,10 +17,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 
-import { CadernoFolhas, type Folha } from "@/components/CadernoFolhas";
+import { CadernoFolhas, type Folha, type Posicao } from "@/components/CadernoFolhas";
 import { folhaDoItem, MARGEM_DA_PAGINA } from "@/components/CadernoPoema";
+import { useDicasDoLivro } from "@/components/DicasDoLivro";
 import { EsqueletoDePoema } from "@/components/Esqueleto";
 import { useFeedPorCursor } from "@/hooks/useFeedPorCursor";
 import { buscarEu, buscarFeed, buscarParaVoce, caminhoDoLogin, temToken, type FeedPage } from "@/lib/api";
@@ -113,6 +114,15 @@ function Caderno({
     FOLHAS_DE_FOLGA,
     aba === "seguindo",
   );
+  // Cada página folheada conta para as dicas do livro (components/DicasDoLivro.tsx).
+  const { virou } = useDicasDoLivro();
+  const aoMudarDePagina = useCallback(
+    (p: Posicao) => {
+      aoMudar(p);
+      virou(`${p.folha}:${p.lado}`);
+    },
+    [aoMudar, virou],
+  );
 
   // O mais curtido da continuação pode repetir: a folha repetida ganha chave própria.
   const vezes = new Map<string, number>();
@@ -176,7 +186,7 @@ function Caderno({
     <CadernoFolhas
       folhas={folhas}
       abrirEm={posicao}
-      aoMudar={aoMudar}
+      aoMudar={aoMudarDePagina}
       anterior="poema anterior"
       proxima="próximo poema"
     />

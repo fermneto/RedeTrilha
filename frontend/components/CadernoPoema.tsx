@@ -35,13 +35,23 @@ export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-6 pt-5 sm:px-10 l
 
 // A página da direita: os contadores e as ações no alto, a conversa embaixo.
 // As ações ficam presas no topo da página enquanto a conversa rola, para curtir,
-// repostar e comentar estarem sempre à mão.
-export function VersoDoPoema({ poema, comentarios }: { poema: Post; comentarios: ReactNode }) {
+// repostar e comentar estarem sempre à mão. Na página do poema, `repercussao`
+// (quem curtiu, repostou e citou) vem entre as ações e a conversa.
+export function VersoDoPoema({
+  poema,
+  comentarios,
+  repercussao,
+}: {
+  poema: Post;
+  comentarios: ReactNode;
+  repercussao?: ReactNode;
+}) {
   return (
     <div className={MARGEM_DA_CONVERSA}>
       <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
         <Acoes key={poema.id} poema={poema} contadores />
       </div>
+      {repercussao && <div className="mt-4">{repercussao}</div>}
       <div className="mt-6 flex flex-1 flex-col">{comentarios}</div>
     </div>
   );
@@ -49,13 +59,24 @@ export function VersoDoPoema({ poema, comentarios }: { poema: Post; comentarios:
 
 // A página da direita de uma renga: as mesmas ações do poema presas no topo
 // (#171), com "escrever a próxima estrofe" embaixo delas enquanto couber, e a
-// conversa embaixo.
-function ConversaDaRenga({ renga, comentarios }: { renga: RengaDetalhe; comentarios: ReactNode }) {
+// conversa embaixo. Na página da renga, o campo da estrofe já está na página da
+// esquerda (sem o link, `naPropriaPagina`), e a `repercussao` vem como no poema.
+export function ConversaDaRenga({
+  renga,
+  comentarios,
+  repercussao,
+  naPropriaPagina = false,
+}: {
+  renga: RengaDetalhe;
+  comentarios: ReactNode;
+  repercussao?: ReactNode;
+  naPropriaPagina?: boolean;
+}) {
   return (
     <div className={MARGEM_DA_CONVERSA}>
       <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
         <AcoesDaRenga key={renga.id} renga={renga} contadores />
-        {!renga.fechada && renga.posso_escrever && (
+        {!naPropriaPagina && !renga.fechada && renga.posso_escrever && (
           <Link
             href={`/rengas/${renga.id}`}
             className="-ml-3 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-3 text-sm font-semibold text-destaque transition-colors duration-150 hover:bg-tinta/5"
@@ -68,6 +89,7 @@ function ConversaDaRenga({ renga, comentarios }: { renga: RengaDetalhe; comentar
           </Link>
         )}
       </div>
+      {repercussao && <div className="mt-4">{repercussao}</div>}
       <div className="mt-6 flex flex-1 flex-col">{comentarios}</div>
     </div>
   );

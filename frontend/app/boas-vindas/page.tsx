@@ -12,10 +12,12 @@
 // /boas-vindas?so=gostos, em tela cheia, pelo link da grade do onboarding. Nesse modo nada é salvo até o "salvar" do último passo ("continuar"
 // só avança), "pular" vira "cancelar" (descarta tudo e usa o voltar do navegador,
 // ou vai ao perfil se a página foi aberta direto) e o fim volta para ?voltar=.
+// Nas /preferencias, embaixo dos passos, o "rever as dicas" do livro (ReverAsDicas).
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
+import { ReverAsDicas } from "@/components/DicasDoLivro";
 import { EsqueletoDasOpcoes } from "@/components/Esqueleto";
 import {
   AberturaDoPasso,
@@ -149,61 +151,64 @@ function BoasVindas() {
   const Moldura = telaCheia ? TelaDeBoasVindas : PassosNoSite;
 
   return (
-    <Moldura
-      passo={indice + 1}
-      total={totalDePassos}
-      acoes={
-        <>
-          {indice > 0 ? (
-            <button type="button" onClick={() => setIndice(indice - 1)} className={`${BOTAO_SECUNDARIO} -ml-4`}>
-              voltar
-            </button>
-          ) : (
-            <span />
-          )}
-          <div className="flex items-center gap-1 sm:gap-3">
-            <button type="button" onClick={ajuste ? cancelar : avancar} className={BOTAO_SECUNDARIO}>
-              {ajuste ? "cancelar" : "pular"}
-            </button>
-            <button type="button" onClick={continuar} disabled={!opcoes || salvando} className={BOTAO_PRIMARIO}>
-              {textoDoBotao}
-            </button>
+    <>
+      <Moldura
+        passo={indice + 1}
+        total={totalDePassos}
+        acoes={
+          <>
+            {indice > 0 ? (
+              <button type="button" onClick={() => setIndice(indice - 1)} className={`${BOTAO_SECUNDARIO} -ml-4`}>
+                voltar
+              </button>
+            ) : (
+              <span />
+            )}
+            <div className="flex items-center gap-1 sm:gap-3">
+              <button type="button" onClick={ajuste ? cancelar : avancar} className={BOTAO_SECUNDARIO}>
+                {ajuste ? "cancelar" : "pular"}
+              </button>
+              <button type="button" onClick={continuar} disabled={!opcoes || salvando} className={BOTAO_PRIMARIO}>
+                {textoDoBotao}
+              </button>
+            </div>
+          </>
+        }
+      >
+        <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
+        <AberturaDoPasso titulo={TITULOS[passo]} refTitulo={refTitulo} compacta={!telaCheia}>
+          {abertura(passo, ajuste, nome)}
+        </AberturaDoPasso>
+
+        {!opcoes && !erro && <EsqueletoDasOpcoes passo={passo} />}
+
+        {opcoes && passo === "gostos" && (
+          <div className="space-y-10">
+            <Chips
+              titulo="Escolas e períodos"
+              opcoes={opcoes.escolas}
+              marcadas={prefs.escolas}
+              aoAlternar={(c) => setPrefs({ ...prefs, escolas: alternarNaLista(prefs.escolas, c) })}
+            />
+            <Chips
+              titulo="Formas"
+              opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
+              marcadas={prefs.formas}
+              aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
+            />
           </div>
-        </>
-      }
-    >
-      <title>{`${ajuste ? "Preferências" : "Boas-vindas"} · Verso`}</title>
-      <AberturaDoPasso titulo={TITULOS[passo]} refTitulo={refTitulo} compacta={!telaCheia}>
-        {abertura(passo, ajuste, nome)}
-      </AberturaDoPasso>
+        )}
 
-      {!opcoes && !erro && <EsqueletoDasOpcoes passo={passo} />}
+        {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
 
-      {opcoes && passo === "gostos" && (
-        <div className="space-y-10">
-          <Chips
-            titulo="Escolas e períodos"
-            opcoes={opcoes.escolas}
-            marcadas={prefs.escolas}
-            aoAlternar={(c) => setPrefs({ ...prefs, escolas: alternarNaLista(prefs.escolas, c) })}
-          />
-          <Chips
-            titulo="Formas"
-            opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
-            marcadas={prefs.formas}
-            aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
-          />
-        </div>
-      )}
-
-      {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
-
-      {erro && (
-        <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">
-          {erro}
-        </p>
-      )}
-    </Moldura>
+        {erro && (
+          <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">
+            {erro}
+          </p>
+        )}
+      </Moldura>
+      {!telaCheia && <ReverAsDicas />}
+    </>
   );
 }
 
