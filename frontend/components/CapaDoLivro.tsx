@@ -17,9 +17,10 @@
 //      desmonta entre as rotas) cresce do lugar dela até a metade direita do
 //      livro aberto (no celular, até a tela inteira). Ao assentar, o token é
 //      gravado e a navegação acontece por baixo do papel;
-//   3. quando a rota de destino montou, o papel some, mostrando a metade
-//      esquerda do livro, e a capa gira na dobra como a capa de um livro,
-//      revelando a primeira página do feed (ou as boas-vindas, no cadastro).
+//   3. quando a rota de destino montou, a capa gira na dobra como a capa de um
+//      livro: descobre a página da direita por baixo dela e o verso dela deita
+//      à esquerda como a página da esquerda lisa, que só então ganha o
+//      conteúdo e a lombada (o feed, ou as boas-vindas no cadastro).
 // No fim, o foco vai para a página de destino. A capa é decorativa: aria-hidden,
 // inert e sem receber clique nem foco. Com prefers-reduced-motion, sem deslizes
 // nem giro: tudo some num fade curto, a capa aparece e some em fade.
@@ -379,26 +380,37 @@ function CapaQueAbre({
     return () => clearTimeout(relogio);
   }, [fase, chegou, aoChegar]);
 
-  // 3. Abrir: o papel some e mostra a metade esquerda do livro; a capa levanta na
-  // dobra, deixando a sombra na página da direita, e deita à esquerda.
+  // 3. Abrir, como um livro: nada do livro aparece antes do giro. O papel cobre
+  // tudo fora da capa; a capa levanta na dobra e descobre a página da direita
+  // por baixo dela (com a sombra que projeta diminuindo); o verso dela, a guarda,
+  // deita à esquerda como a página da esquerda ainda lisa. Só então a guarda e o
+  // papel se desfazem num crossfade curto, e a página da esquerda e a lombada
+  // ganham o conteúdo (ou o esqueleto, se o feed ainda estiver chegando).
   useEffect(() => {
     if (fase !== "abrindo") return;
-    let anim: (Animation | undefined)[];
-    if (reduzido) {
-      anim = [raiz.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" })];
-    } else {
-      const tempo = { duration: GIRO, delay: 160, easing: CURVA_DA_CAPA, fill: "both" as const };
-      anim = [
-        veu.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 280, easing: "ease-out", fill: "forwards" }),
-        folha.current?.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(-180deg)" }], tempo),
-        guarda.current?.animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0, offset: 0.85 }, { opacity: 0 }], tempo),
-        sombra.current?.animate([{ opacity: 0 }, { opacity: 1, offset: 0.18 }, { opacity: 0, offset: 0.8 }, { opacity: 0 }], tempo),
-      ];
-    }
     let vivo = true;
-    terminar(anim, reduzido ? 600 : GIRO + 900).then(() => {
-      if (vivo) aoAbrir();
-    });
+    if (reduzido) {
+      const some = raiz.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
+      terminar([some], 600).then(() => {
+        if (vivo) aoAbrir();
+      });
+    } else {
+      const tempo = { duration: GIRO, delay: 80, easing: CURVA_DA_CAPA, fill: "both" as const };
+      const giro = [
+        folha.current?.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(-180deg)" }], tempo),
+        sombra.current?.animate([{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 0, offset: 0.75 }, { opacity: 0 }], tempo),
+      ];
+      // O crossfade começa quando a capa já está quase deitada (a cauda da curva
+      // é só assentar), para a página lisa não ficar esperando.
+      const crossfade = { duration: 280, delay: 80 + GIRO * 0.8, easing: "ease-out", fill: "both" as const };
+      const revelar = [
+        veu.current?.animate([{ opacity: 1 }, { opacity: 0 }], crossfade),
+        guarda.current?.animate([{ opacity: 1 }, { opacity: 0 }], crossfade),
+      ];
+      terminar([...giro, ...revelar], GIRO + 900).then(() => {
+        if (vivo) aoAbrir();
+      });
+    }
     return () => {
       vivo = false;
     };
@@ -406,12 +418,16 @@ function CapaQueAbre({
 
   const caixa = (c: Caixa) => ({ left: c.x, top: c.y, width: c.w, height: c.h });
   const crescendo = fase === "crescendo";
+  const [x1, y1, x2, y2] = [para.x, para.y, para.x + para.w, para.y + para.h].map((n) => `${n}px`);
+  const furo = `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1} ${y1}, ${x2} ${y1}, ${x2} ${y2}, ${x1} ${y2}, ${x1} ${y1})`;
 
   return (
     <div ref={raiz} aria-hidden="true" inert className="pointer-events-none fixed inset-0 z-[100]">
       {/* A página já está vazia (o formulário sumiu, a vitrine saiu): o papel
-          entra inteiro e a navegação acontece por baixo dele. */}
-      <div ref={veu} className="absolute inset-0 bg-papel" />
+          entra inteiro e a navegação acontece por baixo dele. Ao abrir, ele
+          ganha um furo onde está a capa, para o giro dela descobrir a página da
+          direita; o resto do livro continua coberto até a capa deitar. */}
+      <div ref={veu} className="absolute inset-0 bg-papel" style={{ clipPath: fase === "abrindo" && !reduzido ? furo : undefined }} />
       <div ref={sombra} className="sombra-da-capa absolute" style={{ ...caixa(para), opacity: 0, borderRadius: px(fim) }} />
       <div className={`absolute inset-0 ${crescendo && !reduzido ? "sombra-da-capa-fechada" : ""}`}>
         <div
