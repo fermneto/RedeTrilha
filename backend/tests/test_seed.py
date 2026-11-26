@@ -216,18 +216,34 @@ def test_main_liga_os_poetas_do_seed_aos_consagrados_reais(client):
 
 def test_seed_sem_poema_repetido(client):
     """Nem nos consagrados reais (o importador deixa os trechos de fora) nem nos
-    poetas do seed: nenhum autor tem o mesmo poema duas vezes."""
+    poetas do seed: nenhum autor tem o mesmo poema duas vezes, fora os pares de
+    versões diferentes de `_versoes_distintas.json`, que ficam os dois."""
     from app.core.duplicados import grupos_de_duplicados
 
+    distintos = importar_consagrados.ler_versoes_distintas()
     seed.main()
     with SessionLocal() as db:
-        poemas_por_autor: dict[int, list[tuple[int, str]]] = {}
-        autorais = select(Post.autor_id, Post.id, Post.texto).where(~Post.repost_puro)
-        for autor_id, post_id, texto in db.execute(autorais.order_by(Post.id)):
-            poemas_por_autor.setdefault(autor_id, []).append((post_id, texto))
+        poemas_por_autor: dict[str, list[tuple[int, str, str | None]]] = {}
+        autorais = (
+            select(User.username, Post.id, Post.texto, Post.titulo)
+            .join(User, User.id == Post.autor_id)
+            .where(~Post.repost_puro)
+        )
+        for username, post_id, texto, titulo in db.execute(autorais.order_by(Post.id)):
+            poemas_por_autor.setdefault(username, []).append((post_id, texto, titulo))
         repetidos = {
-            autor_id: grupos
-            for autor_id, poemas in poemas_por_autor.items()
-            if (grupos := grupos_de_duplicados(poemas))
+            username: grupos
+            for username, poemas in poemas_por_autor.items()
+            if (
+                grupos := grupos_de_duplicados(
+                    [(i, texto) for i, texto, _ in poemas],
+                    [titulo for _, _, titulo in poemas],
+                    distintos.get(username, set()),
+                )
+            )
         }
+        titulos = set(db.scalars(select(Post.titulo)))
     assert repetidos == {}
+    for pares in distintos.values():
+        for par in pares:
+            assert par <= titulos, par

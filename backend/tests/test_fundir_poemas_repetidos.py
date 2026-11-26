@@ -196,3 +196,42 @@ def test_importador_deixa_o_trecho_de_fora_e_nao_o_cria_ao_reimportar(client, tm
         assert (resumo.poemas_criados, resumo.poemas_atualizados) == (0, 2)
         assert sorted(db.scalars(select(Post.titulo))) == ["Canção do exílio", "Outro"]
         assert fundir.encontrar_grupos(db) == []
+
+
+def test_versoes_distintas_do_json_nao_se_fundem(client):
+    """Os pares de `_versoes_distintas.json` ficam os dois, no banco e na importação."""
+    from scripts.importar_consagrados import ler_versoes_distintas, sem_repetidos
+
+    distintos = ler_versoes_distintas()
+    assert frozenset(
+        {"Prometheus (Gedicht, frühe Fassung)", "Prometheus (Gedicht, späte Fassung)"}
+    ) in distintos["goethe"]
+    assert frozenset(
+        {"Freygeisterey der Leidenschaft", "Der Kampf (Friedrich Schiller)"}
+    ) in distintos["schiller"]
+
+    revista = INTEIRO.replace("amores", "amoras")
+    with SessionLocal() as db:
+        autor = _consagrado(db, "goethe")
+        cedo = _post(db, autor.id, INTEIRO, "Prometheus (Gedicht, frühe Fassung)")
+        tarde = _post(db, autor.id, revista, "Prometheus (Gedicht, späte Fassung)")
+        trecho = _post(db, autor.id, TRECHO, "Prometheus (estrofes)")
+        db.commit()
+        [grupo] = fundir.encontrar_grupos(db)
+        assert (grupo.mantido, grupo.removidos) == (cedo, [trecho])
+        assert db.get(Post, tarde) is not None
+
+    from app.schemas.consagrado import PoemaConsagrado
+
+    def poema(titulo, texto):
+        return PoemaConsagrado(titulo=titulo, texto=texto, fonte="https://de.wikisource.org/wiki/P")
+
+    json_ = [
+        poema("Prometheus (Gedicht, frühe Fassung)", INTEIRO),
+        poema("Prometheus (Gedicht, späte Fassung)", revista),
+        poema("Prometheus (estrofes)", TRECHO),
+    ]
+    assert [p.titulo for p in sem_repetidos(json_, distintos["goethe"])] == [
+        "Prometheus (Gedicht, frühe Fassung)",
+        "Prometheus (Gedicht, späte Fassung)",
+    ]

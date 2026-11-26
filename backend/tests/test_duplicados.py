@@ -60,3 +60,16 @@ def test_cadeia_de_trechos_vai_para_a_raiz():
 def test_lista_vazia_e_poema_vazio():
     assert _resumo([]) == []
     assert _resumo(["", INTEIRO]) == []
+
+
+def test_par_de_versoes_distintas_fica_separado_e_o_resto_se_funde():
+    revista = INTEIRO.replace("amores", "amoras")
+    titulos = ["Canção (primeira versão)", "Canção (versão revista)", "Canção (estrofes)"]
+    poemas = list(enumerate([INTEIRO, revista, TRECHO]))
+    sem_excecao = grupos_de_duplicados(poemas, titulos)
+    assert [(g.mantido, g.removidos) for g in sem_excecao] == [(0, [1, 2])]
+
+    par = frozenset(titulos[:2])
+    com_excecao = grupos_de_duplicados(poemas, titulos, {par})
+    # As duas versões ficam; o trecho continua saindo, para a mais completa.
+    assert [(g.mantido, g.removidos) for g in com_excecao] == [(0, [2])]
