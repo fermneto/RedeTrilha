@@ -210,7 +210,7 @@ export default function RengaPage() {
               <ConversaDaRenga
                 renga={renga}
                 naPropriaPagina
-                repercussao={<Repercussao alvo={{ tipo: "renga", id: renga.id }} />}
+                repercussao={<Repercussao alvo={{ tipo: "renga", id: renga.id }} eu={eu} />}
                 comentarios={
                   <ArvoreComentarios
                     campoNoPe
