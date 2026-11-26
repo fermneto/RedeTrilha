@@ -5,6 +5,11 @@ coisa: um arquivo inválido, como `morte > 1955`, aborta a importação inteira.
 Depois grava numa transação só, de forma idempotente: o user é achado pelo
 `username` e o poema por (autor, titulo, obra).
 
+O mesmo poema não entra duas vezes: o JSON às vezes traz o inteiro e um trecho
+dele, ou o mesmo texto em outra edição ou grafia, e só a versão mais completa
+fica (a regra está em `app/core/duplicados.py`; o banco importado antes disso
+se conserta com `scripts/fundir_poemas_repetidos.py`).
+
 As tags de cada poema vão para o índice (`post_tags`) na mesma transação,
 reindexadas a cada importação: com a API de pé, aparecem na hora, sem restart.
 
@@ -24,6 +29,7 @@ from pydantic import ValidationError
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
+from app.core.duplicados import grupos_de_duplicados
 from app.db import Base, SessionLocal, engine
 from app.models.atributos_consagrado import AtributosConsagrado
 from app.models.post import Post
@@ -58,6 +64,8 @@ class ResumoImportacao:
     poetas_atualizados: int = 0
     poemas_criados: int = 0
     poemas_atualizados: int = 0
+    # Trechos e cópias de outro poema do mesmo JSON, que ficaram de fora.
+    poemas_repetidos: int = 0
 
 
 def _ler_arquivo(arquivo: Path) -> Consagrado:
@@ -102,14 +110,23 @@ def importar(
     try:
         for consagrado in consagrados:
             autor = _gravar_poeta(db, consagrado, resumo)
-            datas = datas_dos_poemas(consagrado.username, len(consagrado.poemas), agora)
-            for poema, data in zip(consagrado.poemas, datas, strict=True):
+            poemas = sem_repetidos(consagrado.poemas)
+            resumo.poemas_repetidos += len(consagrado.poemas) - len(poemas)
+            datas = datas_dos_poemas(consagrado.username, len(poemas), agora)
+            for poema, data in zip(poemas, datas, strict=True):
                 _gravar_poema(db, autor, poema, data, resumo)
         db.commit()
     except Exception:
         db.rollback()
         raise
     return resumo
+
+
+def sem_repetidos(poemas: list[PoemaConsagrado]) -> list[PoemaConsagrado]:
+    """Os poemas do JSON menos os trechos e as cópias de outro, na ordem do JSON."""
+    grupos = grupos_de_duplicados([(i, poema.texto) for i, poema in enumerate(poemas)])
+    fora = {i for grupo in grupos for i in grupo.removidos}
+    return [poema for i, poema in enumerate(poemas) if i not in fora]
 
 
 def _gravar_poeta(db: Session, consagrado: Consagrado, resumo: ResumoImportacao) -> User:
@@ -187,7 +204,8 @@ def main() -> None:
     print(
         f"consagrados: {resumo.poetas_criados} poetas criados, "
         f"{resumo.poetas_atualizados} atualizados; "
-        f"{resumo.poemas_criados} poemas criados, {resumo.poemas_atualizados} atualizados"
+        f"{resumo.poemas_criados} poemas criados, {resumo.poemas_atualizados} atualizados, "
+        f"{resumo.poemas_repetidos} repetidos de fora"
     )
 
 
