@@ -61,6 +61,14 @@
     caret-color: var(--color-destaque);
   }
 
+  /* O livro aberto (components/Caderno.tsx) ocupa a janela inteira e quem rola é
+     cada página dele. A janela não rola: sem isso, as folhas que giram, as
+     sombras e o foco movendo a rolagem deixavam uma faixa de fundo liso embaixo
+     do livro. As telas sem o livro (landing, cadastro) continuam rolando. */
+  html:has(.livro-aberto) {
+    overflow: hidden;
+  }
+
   /* Títulos da interface ficam na fonte da interface; a serifada é dos poemas. */
   h1,
   h2,

@@ -70,7 +70,7 @@ export function Caderno({ children }: { children: React.ReactNode }) {
   if (duplo) {
     return (
       <DicasDoLivro>
-        <div className="flex h-dvh items-center justify-center px-6 py-5">
+        <div className="livro-aberto flex h-dvh items-center justify-center px-6 py-5">
           <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
             <Lombada />
             {miolo}
@@ -82,7 +82,7 @@ export function Caderno({ children }: { children: React.ReactNode }) {
 
   return (
     <DicasDoLivro>
-      <div className="capa flex h-dvh flex-col px-[5px] pt-[5px]">
+      <div className="livro-aberto capa flex h-dvh flex-col px-[5px] pt-[5px]">
         {miolo}
         <LombadaDoCelular />
       </div>
