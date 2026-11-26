@@ -15,10 +15,14 @@ class PoemaNoFeed(PostOut):
     subiu por um comentário ("comentario") ou por uma crítica ancorada nos versos
     ("critica"), e `comentado_por` lista quem comentou ou criticou, quem fez por
     último primeiro. No feed Seguindo e no perfil, ficam None e vazio.
+
+    Na continuação do feed infinito (`services/feed_infinito.py`, nas duas abas),
+    `subiu_por` "curtidas" marca um dos mais curtidos da comunidade: o único item
+    que pode repetir o que a sessão já recebeu.
     """
 
     tipo: Literal["poema"] = "poema"
-    subiu_por: Literal["comentario", "critica"] | None = None
+    subiu_por: Literal["comentario", "critica", "curtidas"] | None = None
     comentado_por: list[UserOut] = []
 
 
@@ -50,7 +54,14 @@ class FeedPage(Pagina[ItemDoFeed]):
     """Página do feed: poemas e rengas, mais o cursor da próxima página (None no fim).
 
     Com `cursor`, o `total` vem None, como na timeline do X; por offset, é o real.
+
+    O Seguindo e o "Para você" não têm fim (`services/feed_infinito.py`): o
+    `proximo_cursor` só vem None com o banco sem poemas. `fim_em` é a posição,
+    nesta página, onde acabou o que é do feed (no Seguindo, o de quem a pessoa
+    segue; no "Para você", o inédito): dali em diante, e nas páginas seguintes,
+    vem a continuação. Só na página da virada; nas outras, e no perfil, None.
     """
 
     total: int | None
     proximo_cursor: str | None = None
+    fim_em: int | None = None
