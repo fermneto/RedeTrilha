@@ -9,7 +9,7 @@ const fonte = readFileSync(new URL("../lib/dicas.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { lugarDasDicas, numeroDaDica, posicionarNota, proximaDica, VIRADAS_ENTRE_DICAS } = await import(
+const { lugarDasDicas, posicionarNota, proximaDica, VIRADAS_ENTRE_DICAS } = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
 );
 
@@ -47,11 +47,6 @@ test("no compositor, só a de escrever, mesmo antes das outras", () => {
 
 test("vista em qualquer lugar, não volta no outro", () => {
   assert.equal(proximaDica(["virar_pagina", "acoes", "lombada", "escrever"], "escrever", 0, tudoAVista), null);
-});
-
-test("o número da dica na ordem", () => {
-  assert.equal(numeroDaDica("virar_pagina"), 1);
-  assert.equal(numeroDaDica("escrever"), 4);
 });
 
 const tela = { width: 1280, height: 800 };

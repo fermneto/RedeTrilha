@@ -37,11 +37,6 @@ export function proximaDica(
   return aVista(proxima) ? proxima : null;
 }
 
-// "1 de 4": a posição da dica na ordem.
-export function numeroDaDica(dica: Dica): number {
-  return ORDEM_DAS_DICAS.indexOf(dica) + 1;
-}
-
 export type Lado = "acima" | "abaixo" | "direita";
 export type Retangulo = { top: number; left: number; width: number; height: number };
 
