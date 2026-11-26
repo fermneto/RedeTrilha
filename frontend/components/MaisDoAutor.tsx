@@ -7,9 +7,8 @@
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 
-import { VersoFormatado } from "@/components/TextoFormatado";
+import { ItemDoIndice } from "@/components/ItemDoIndice";
 import { buscarPoemasDoPerfil, outrosPoemas, type Alvo, type Post, type User } from "@/lib/api";
-import { textoSemMarcas } from "@/lib/marcas";
 
 const QUANTOS = 3;
 // A página do perfil de onde saem: folga para os reposts e as rengas que ficam de fora.
@@ -38,27 +37,9 @@ export function MaisDoAutor({ autor, aberto }: { autor: User; aberto: Alvo }) {
         Mais de {autor.name}
       </h2>
       <ul className="mt-2">
-        {poemas.map((poema) => {
-          const primeiro = primeiroVerso(poema.texto);
-          return (
-            <li key={poema.id}>
-              <Link href={`/poema/${poema.id}`} className="group realce -mx-2 block rounded-lg px-2 py-2.5">
-                {poema.titulo && (
-                  <span className="block font-serifada font-semibold break-words group-hover:underline">
-                    {poema.titulo}
-                  </span>
-                )}
-                <span
-                  className={`block truncate font-serifada text-[0.9375rem] whitespace-pre ${
-                    poema.titulo ? "text-tinta-suave" : "italic group-hover:underline"
-                  }`}
-                >
-                  {primeiro ? <VersoFormatado linha={primeiro} /> : "poema sem título"}
-                </span>
-              </Link>
-            </li>
-          );
-        })}
+        {poemas.map((poema) => (
+          <ItemDoIndice key={poema.id} poema={poema} />
+        ))}
       </ul>
       <Link
         href={`/u/${autor.username}`}
@@ -68,9 +49,4 @@ export function MaisDoAutor({ autor, aberto }: { autor: User; aberto: Alvo }) {
       </Link>
     </section>
   );
-}
-
-// O primeiro verso com texto, com as marcas de formatação e os recuos dele.
-function primeiroVerso(texto: string): string {
-  return texto.split("\n").find((linha) => textoSemMarcas(linha).trim() !== "") ?? "";
 }
