@@ -57,12 +57,13 @@ def gostos(db: Session, username: str, usuario: User) -> Preferencias:
     """As preferências do onboarding da pessoa, públicas no perfil (mesmo formato do
     `GET /preferencias`, só os códigos: os rótulos vêm de `/preferencias/opcoes`).
     Mesma regra de bloqueio dos poemas: quem me bloqueou dá 404; quem eu bloqueei
-    vem vazio. Consagrado não tem linha nas preferências: vem vazio."""
+    vem vazio. Consagrado não tem linha nas preferências: vem vazio. Sem o lugar
+    se a pessoa desligou "mostrar meu lugar no perfil"."""
     pessoa = buscar_por_username(db, username)
     bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
     if bloqueios.bloqueou(db, usuario.id, pessoa.id):
         return Preferencias()
-    return preferencias.ler(db, pessoa)
+    return preferencias.publicas(db, pessoa, usuario)
 
 
 def poemas_por_autor():
