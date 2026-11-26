@@ -63,9 +63,19 @@ def codificar_cursor_do_feed(cursor: CursorDoFeed) -> str:
     vistos = codificar_vistos(cursor.vistos)
     if cursor.trecho == "continuacao":
         estado = cursor.continuacao or continuacao_core.Estado()
-        prioridade, data, id_ = estado.ultimo_consagrado or ("", None, "")
+        prioridade, lingua, data, id_ = estado.ultimo_consagrado or ("", "", None, "")
         data_iso = utc_sem_fuso(data).isoformat() if data else ""
-        partes = ["mais", estado.entregues, estado.curtidos, prioridade, data_iso, id_, vistos]
+        partes = [
+            "mais",
+            estado.entregues,
+            estado.curtidos,
+            estado.rodada,
+            prioridade,
+            lingua,
+            data_iso,
+            id_,
+            vistos,
+        ]
     else:
         data_iso, chave = (
             (utc_sem_fuso(cursor.posicao[0]).isoformat(), cursor.posicao[1])
@@ -88,13 +98,18 @@ def ler_cursor_do_feed(cursor: str) -> CursorDoFeed:
         partes = base64.urlsafe_b64decode(cursor.encode()).decode().split("|")
         trecho: Trecho = _TRECHO_DA_MARCA.get(partes[0], "proprio")
         if trecho == "continuacao":
-            _, entregues, curtidos, prioridade, data, id_, vistos = partes
+            _, entregues, curtidos, rodada, prioridade, lingua, data, id_, vistos = partes
             ultimo = (
-                (int(prioridade), utc_sem_fuso(datetime.fromisoformat(data)), int(id_))
+                (
+                    int(prioridade),
+                    int(lingua),
+                    utc_sem_fuso(datetime.fromisoformat(data)),
+                    int(id_),
+                )
                 if data
                 else None
             )
-            estado = continuacao_core.Estado(int(entregues), int(curtidos), ultimo)
+            estado = continuacao_core.Estado(int(entregues), int(curtidos), int(rodada), ultimo)
             return CursorDoFeed(trecho, None, decodificar_vistos(vistos), estado)
         if trecho != "proprio":
             partes = partes[1:]

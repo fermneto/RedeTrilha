@@ -17,12 +17,13 @@ class PoemaNoFeed(PostOut):
     último primeiro. No feed Seguindo e no perfil, ficam None e vazio.
 
     Na continuação do feed infinito (`services/feed_infinito.py`, nas duas abas),
-    `subiu_por` "curtidas" marca um dos mais curtidos da comunidade: o único item
-    que pode repetir o que a sessão já recebeu.
+    `subiu_por` "curtidas" marca um dos mais curtidos da comunidade, e
+    "releitura", um consagrado de uma rodada reciclada: os únicos itens que podem
+    repetir o que a pessoa já viu.
     """
 
     tipo: Literal["poema"] = "poema"
-    subiu_por: Literal["comentario", "critica", "curtidas"] | None = None
+    subiu_por: Literal["comentario", "critica", "curtidas", "releitura"] | None = None
     comentado_por: list[UserOut] = []
 
 

@@ -31,7 +31,7 @@ de `montar_itens`.
 
 from collections.abc import Callable
 
-from sqlalchemy import func, select
+from sqlalchemy import DateTime, case, func, literal, select, tuple_
 from sqlalchemy.orm import Session
 
 from app.core import continuacao as continuacao_core
@@ -43,7 +43,8 @@ from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
-from app.services import bloqueios, para_voce
+from app.services import bloqueios, para_voce, vistos_no_feed
+from app.services.acervo import lingua_de_quem_ve
 from app.services.cursor import (
     CursorDoFeed,
     Trecho,
@@ -98,7 +99,7 @@ def seguindo(
         ("proprio", seguidos),
         ("para_voce", _ler_para_voce(db, usuario, lingua)),
     ]
-    return _pagina(db, usuario, offset, limit, cursor, trechos)
+    return _pagina(db, usuario, offset, limit, cursor, lingua, trechos)
 
 
 def para_voce_infinito(
@@ -113,7 +114,7 @@ def para_voce_infinito(
     trechos: list[tuple[Trecho, LerTrecho]] = [
         ("para_voce", _ler_para_voce(db, usuario, lingua)),
     ]
-    return _pagina(db, usuario, offset, limit, cursor, trechos)
+    return _pagina(db, usuario, offset, limit, cursor, lingua, trechos)
 
 
 def _ler_para_voce(db: Session, usuario: User, lingua: str | None) -> LerTrecho:
@@ -129,6 +130,7 @@ def _pagina(
     offset: int,
     limit: int,
     cursor: str | None,
+    lingua: str | None,
     trechos: list[tuple[Trecho, LerTrecho]],
 ) -> FeedPage:
     """A página da corrente de `trechos`, mais a continuação no fim (ver o docstring)."""
@@ -151,7 +153,7 @@ def _pagina(
         if indice < len(trechos):
             lida = trechos[indice][1](inicio, offset, limit - len(itens))
         else:
-            lida = _continuacao(db, usuario, inicio, limit - len(itens))
+            lida = _continuacao(db, usuario, lingua, inicio, limit - len(itens))
         if primeira:
             total, offset_da_pagina, primeira = lida.total, lida.offset, False
         itens += lida.itens
@@ -179,17 +181,18 @@ def _pagina(
     )
 
 
-def _continuacao(db: Session, usuario: User, inicio: CursorDoFeed, quantos: int) -> Parte:
+def _continuacao(
+    db: Session, usuario: User, lingua: str | None, inicio: CursorDoFeed, quantos: int
+) -> Parte:
     """Os próximos `quantos` da continuação. O cursor seguinte só vem None quando
     ela não tem mais o que dar (o banco sem poemas)."""
     bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
-    ja_vistos = {id_ for tipo, id_ in inicio.vistos if tipo == "poema"}
-    escolhidos, estado = continuacao_core.proximos(
-        _consagrados(db, usuario, bloqueados),
-        _mais_curtidos(db, bloqueados),
-        ja_vistos,
-        inicio.continuacao or continuacao_core.Estado(),
-        quantos,
+    estado = inicio.continuacao or continuacao_core.Estado()
+    fila = _fila_de_consagrados(
+        db, usuario, lingua_de_quem_ve(db, usuario, lingua), bloqueados, inicio.vistos, estado, quantos
+    )
+    escolhidos, estado = continuacao_core.intercalar(
+        estado, quantos, fila, _mais_curtidos(db, bloqueados)
     )
     linhas = [Linha("poema", post_id, fonte, []) for fonte, post_id in escolhidos]
     return Parte(
@@ -205,34 +208,95 @@ def _continuacao(db: Session, usuario: User, inicio: CursorDoFeed, quantos: int)
     )
 
 
-def _consagrados(
-    db: Session, usuario: User, bloqueados: set[int]
-) -> list[continuacao_core.Consagrado]:
-    """Os poemas de consagrados (sem o texto), com a prioridade pelas preferências."""
+def _fila_de_consagrados(
+    db: Session,
+    usuario: User,
+    lingua: str | None,
+    bloqueados: set[int],
+    vistos_na_sessao: frozenset[tuple[str, int]],
+    estado: continuacao_core.Estado,
+    quantos: int,
+) -> list[continuacao_core.Candidato]:
+    """Os próximos `quantos` consagrados da fila, a partir do `estado`, ordenados e
+    cortados no banco (`_proximos_consagrados`). Quando a rodada acaba, começa a
+    seguinte do topo (a reciclagem); para se não houver consagrado nenhum."""
+    ordem = _ordem_dos_consagrados(db, usuario, lingua)
+    sessao = [id_ for tipo, id_ in vistos_na_sessao if tipo == "poema"]
+    fila: list[continuacao_core.Candidato] = []
+    rodada, depois = estado.rodada, estado.ultimo_consagrado
+    while len(fila) < quantos:
+        falta = quantos - len(fila)
+        lote = _proximos_consagrados(
+            db, usuario.id, ordem, bloqueados, sessao, rodada == 0, depois, falta
+        )
+        fila += [continuacao_core.Candidato(post_id, rodada, posicao) for post_id, posicao in lote]
+        if len(lote) == falta:
+            break
+        if rodada > 0 and depois is None and not lote:
+            break  # nenhum consagrado no banco
+        rodada, depois = rodada + 1, None
+    return fila
+
+
+def _ordem_dos_consagrados(db: Session, usuario: User, lingua: str | None) -> list:
+    """As colunas da ordem da fila, em SQL: prioridade pelas preferências (1 pela
+    forma, 1 pelas escolas do poeta), a língua de quem lê, a data e o id."""
     preferencia = db.get(Preferencia, usuario.id)
-    formas = set(preferencia.formas or []) if preferencia else set()
+    formas = sorted(set(preferencia.formas or [])) if preferencia else []
     escolas = set(preferencia.escolas or []) if preferencia else set()
-    escolas_do_poeta: dict[int, list[str]] = {
-        user_id: lista or []
+    poetas_das_escolas = sorted(
+        user_id
         for user_id, lista in db.execute(
             select(AtributosConsagrado.user_id, AtributosConsagrado.escolas)
         )
-    }
-    linhas = db.execute(
-        select(Post.id, Post.autor_id, Post.forma, Post.created_at)
+        if escolas & set(lista or [])
+    )
+    pela_forma = case((Post.forma.in_(formas), 1), else_=0) if formas else literal(0)
+    pelas_escolas = (
+        case((Post.autor_id.in_(poetas_das_escolas), 1), else_=0)
+        if poetas_das_escolas
+        else literal(0)
+    )
+    pela_lingua = case((Post.idioma == lingua, 1), else_=0) if lingua else literal(0)
+    return [pela_forma + pelas_escolas, pela_lingua, Post.created_at, Post.id]
+
+
+def _proximos_consagrados(
+    db: Session,
+    user_id: int,
+    ordem: list,
+    bloqueados: set[int],
+    vistos_na_sessao: list[int],
+    so_ineditos: bool,
+    depois: continuacao_core.PosicaoNaFila | None,
+    quantos: int,
+) -> list[tuple[int, continuacao_core.PosicaoNaFila]]:
+    """Até `quantos` consagrados depois de `depois`, na ordem da fila, com
+    `ORDER BY ... LIMIT` no banco (sem carregar os milhares de poemas). Na rodada
+    inédita, fora o que a pessoa já viu, nesta sessão ou em outra."""
+    prioridade, lingua, data, post_id = ordem
+    consulta = (
+        select(Post.id, prioridade, lingua, Post.created_at)
         .join(User, User.id == Post.autor_id)
-        .where(~Post.repost_puro, User.consagrado)
+        .where(~Post.repost_puro, User.consagrado, Post.autor_id.not_in(bloqueados))
+    )
+    if depois is not None:
+        p, l_, d, i = depois
+        consulta = consulta.where(
+            tuple_(prioridade, lingua, data, post_id)
+            < tuple_(literal(p), literal(l_), literal(d, DateTime()), literal(i))
+        )
+    if so_ineditos:
+        consulta = consulta.where(
+            Post.id.not_in(vistos_na_sessao), vistos_no_feed.nao_visto(user_id, "poema", Post.id)
+        )
+    linhas = db.execute(
+        consulta.order_by(
+            prioridade.desc(), lingua.desc(), data.desc(), post_id.desc()
+        ).limit(quantos)
     )
     return [
-        continuacao_core.Consagrado(
-            post_id,
-            utc_sem_fuso(criado),
-            continuacao_core.prioridade(
-                forma, escolas_do_poeta.get(autor_id, []), formas, escolas
-            ),
-        )
-        for post_id, autor_id, forma, criado in linhas
-        if autor_id not in bloqueados
+        (id_, (int(p), int(l_), utc_sem_fuso(criado), id_)) for id_, p, l_, criado in linhas
     ]
 
 
@@ -258,9 +322,14 @@ def _mais_curtidos(db: Session, bloqueados: set[int]) -> list[int]:
     return list(db.scalars(consulta(True))) or list(db.scalars(consulta(False)))
 
 
+# A fonte do item da continuação → o `subiu_por`; o que pode repetir vem marcado.
+_SUBIU_POR = {"curtido": "curtidas", "releitura": "releitura"}
+
+
 def _poema_da_continuacao(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
-    """Sem rótulo de repost nem de comentário; o mais curtido vem com "curtidas"."""
+    """Sem rótulo de repost nem de comentário. O mais curtido vem com "curtidas" e
+    o consagrado reciclado com "releitura": os dois podem repetir na sessão."""
     return PoemaNoFeed(
         **{**saida.model_dump(), "repostado_por": []},
-        subiu_por="curtidas" if acao == "curtido" else None,
+        subiu_por=_SUBIU_POR.get(acao),
     )

@@ -4,24 +4,24 @@ Quando a pessoa lê tudo o que a rede tem de inédito para ela no "Para você"
 (e, no Seguindo, tudo de quem segue e depois o "Para você"), o feed continua
 com uma mistura de duas fontes:
 
-- **consagrados** que a sessão ainda não viu, primeiro os que batem com as
-  preferências da pessoa (`prioridade`: a forma do poema entre as formas
-  marcadas, as escolas do poeta entre as escolas marcadas), depois os mais
-  recentes. Não repetem: a fila anda por posição (`Estado.ultimo_consagrado`)
-  e pula o que a sessão já recebeu no trecho inédito;
-- **os mais curtidos** da comunidade, que podem repetir o que a pessoa já viu:
-  a lista roda em volta (`Estado.curtidos` conta quantos já saíram).
+- **consagrados**, numa fila ordenada pelo service no banco: primeiro os que
+  batem com as preferências da pessoa (forma e escolas), depois os da língua de
+  quem lê, depois os mais recentes. A fila anda por posição
+  (`Estado.ultimo_consagrado`), então não repete. Na primeira rodada, só os que
+  a pessoa nunca viu; quando eles acabam, a fila **recicla**: começa outra rodada
+  do topo, com todos os consagrados ("releitura", que pode repetir o já visto);
+- **os mais curtidos** da comunidade, que podem repetir: a lista roda em volta
+  (`Estado.curtidos` conta quantos já saíram).
 
-Intercalados: a cada `PASSO` itens, um é dos mais curtidos. Quando uma fonte
-acaba, a outra ocupa a vez dela; só para quando as duas estão vazias (banco
-sem poema nenhum).
+Intercalados: a cada `PASSO` itens, um é dos mais curtidos. Sem consagrados, os
+mais curtidos ocupam todas as vezes; sem mais curtidos, os consagrados. Como a
+fila recicla, um poema só se repete em toda folha se o banco tiver um poema só.
 
-Python puro e sem estado entre requests: o `Estado` viaja no cursor. Com m
-consagrados carregados e k pedidos, `proximos` é O(m log m) pela ordenação da
-fila mais O(k) para montar a página.
+Python puro e sem estado entre requests: o `Estado` viaja no cursor. Com k
+pedidos, `intercalar` é O(k).
 """
 
-from collections.abc import Collection, Sequence
+from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Literal, NamedTuple
@@ -29,84 +29,61 @@ from typing import Literal, NamedTuple
 # A cada PASSO itens da continuação, um é dos mais curtidos (3 consagrados : 1 curtido).
 PASSO = 4
 
-Fonte = Literal["consagrado", "curtido"]
-# A posição de um consagrado na fila: (prioridade, data, id), maior primeiro.
-PosicaoNaFila = tuple[int, datetime, int]
+# "consagrado": inédito para a pessoa; "releitura": de uma rodada reciclada;
+# "curtido": um dos mais curtidos da comunidade.
+Fonte = Literal["consagrado", "releitura", "curtido"]
+# A posição na fila: (prioridade pelas preferências, mesma língua, data, id), maior primeiro.
+PosicaoNaFila = tuple[int, int, datetime, int]
 
 
-class Consagrado(NamedTuple):
-    """Um poema de consagrado candidato à continuação."""
+class Candidato(NamedTuple):
+    """Um poema de consagrado na fila, na ordem em que deve sair."""
 
     post_id: int
-    data: datetime
-    prioridade: int
-
-    @property
-    def posicao(self) -> PosicaoNaFila:
-        return (self.prioridade, self.data, self.post_id)
+    rodada: int
+    posicao: PosicaoNaFila
 
 
 @dataclass(frozen=True)
 class Estado:
     """Onde a continuação parou: quantos itens saíram (marca a vez de cada fonte),
-    quantos dos mais curtidos saíram (a volta na lista) e a posição do último
-    consagrado entregue (None antes do primeiro)."""
+    quantos dos mais curtidos saíram (a volta na lista), a rodada da fila de
+    consagrados (0 = só os nunca vistos) e a posição do último entregue nela
+    (None no começo da rodada)."""
 
     entregues: int = 0
     curtidos: int = 0
+    rodada: int = 0
     ultimo_consagrado: PosicaoNaFila | None = None
 
 
-def prioridade(
-    forma: str | None,
-    escolas_do_poeta: Collection[str],
-    formas_preferidas: Collection[str],
-    escolas_preferidas: Collection[str],
-) -> int:
-    """Quanto o poema bate com as preferências: 1 pela forma, 1 pelas escolas. O(e)."""
-    pela_forma = forma is not None and forma in formas_preferidas
-    pelas_escolas = any(escola in escolas_preferidas for escola in escolas_do_poeta)
-    return int(pela_forma) + int(pelas_escolas)
-
-
-def proximos(
-    consagrados: Sequence[Consagrado],
-    curtidos: Sequence[int],
-    ja_vistos: Collection[int],
+def intercalar(
     estado: Estado,
     quantos: int,
+    fila: Sequence[Candidato],
+    curtidos: Sequence[int],
 ) -> tuple[list[tuple[Fonte, int]], Estado]:
-    """Os próximos `quantos` poemas da continuação, como (fonte, post_id), e o
-    estado para a página seguinte. Devolve menos só quando as duas fontes estão
-    vazias.
+    """Os próximos `quantos` poemas, como (fonte, post_id), e o estado seguinte.
 
-    `curtidos` vem na ordem (o mais curtido primeiro); `ja_vistos` são os poemas
-    que a sessão já recebeu, que ficam fora dos consagrados.
+    `fila` são os próximos consagrados a partir do estado (o service traz até
+    `quantos`, já reciclando); `curtidos`, os mais curtidos, o primeiro na
+    frente. Devolve menos só quando as duas fontes estão vazias.
     """
-    fila = sorted(
-        (
-            c
-            for c in consagrados
-            if c.post_id not in ja_vistos
-            and (estado.ultimo_consagrado is None or c.posicao < estado.ultimo_consagrado)
-        ),
-        key=lambda c: c.posicao,
-        reverse=True,
-    )
     saida: list[tuple[Fonte, int]] = []
-    entregues, voltas, ultimo = estado.entregues, estado.curtidos, estado.ultimo_consagrado
+    entregues, voltas = estado.entregues, estado.curtidos
+    rodada, ultimo = estado.rodada, estado.ultimo_consagrado
     restantes = iter(fila)
-    proximo_consagrado = next(restantes, None)
+    proximo = next(restantes, None)
     while len(saida) < quantos:
         vez_do_curtido = entregues % PASSO == PASSO - 1
-        if curtidos and (vez_do_curtido or proximo_consagrado is None):
+        if curtidos and (vez_do_curtido or proximo is None):
             saida.append(("curtido", curtidos[voltas % len(curtidos)]))
             voltas += 1
-        elif proximo_consagrado is not None:
-            saida.append(("consagrado", proximo_consagrado.post_id))
-            ultimo = proximo_consagrado.posicao
-            proximo_consagrado = next(restantes, None)
+        elif proximo is not None:
+            saida.append(("consagrado" if proximo.rodada == 0 else "releitura", proximo.post_id))
+            rodada, ultimo = proximo.rodada, proximo.posicao
+            proximo = next(restantes, None)
         else:
             break
         entregues += 1
-    return saida, Estado(entregues, voltas, ultimo)
+    return saida, Estado(entregues, voltas, rodada, ultimo)
