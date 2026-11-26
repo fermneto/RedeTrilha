@@ -3,7 +3,8 @@
 // Aberta, mostra o campo da próxima estrofe (ou o motivo de não poder escrever);
 // fechada, é lida como um poema só, de todos os autores. O criador encerra e,
 // no modo convidados, convida mais gente.
-// Aberta ou fechada, a renga recebe comentários e crítica ancorada no verso, como
+// Aberta ou fechada, a renga tem as ações do poema (curtir, repostar, citar,
+// guardar, enviar, #171) e recebe comentários e crítica ancorada no verso, como
 // a página do poema: o corpo é o VersosComentaveis sobre o texto da renga (as
 // estrofes juntas, uma linha em branco entre elas), com o autor de cada estrofe
 // embaixo do último verso dela, e a árvore de comentários vem no fim.
@@ -15,6 +16,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
+import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { EsqueletoDaPaginaDaRenga } from "@/components/Esqueleto";
@@ -161,34 +163,40 @@ export default function RengaPage() {
   return (
     <div>
       {cabecalho}
-      <article className="surgir border-b border-borda px-4 pt-6 pb-6">
-        <header>
-          <h1 className="poema-titulo break-words">{renga.titulo}</h1>
-          <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-            <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-            <ListaDeAutores autores={renga.autores} />
+      <header className="surgir px-4 pt-6 pb-3">
+        <h1 id="titulo-da-renga" className="poema-titulo break-words">{renga.titulo}</h1>
+        <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
+          <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
+          <ListaDeAutores autores={renga.autores} />
+        </p>
+        <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
+          <SeloDaRenga fechada={renga.fechada} />{" "}
+          <span className="tabular-nums">
+            {renga.qtd_estrofes} de {renga.limite} estrofes
+          </span>
+          , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}
+        </p>
+        {renga.modo === "convidados" && renga.convidados.length > 0 && (
+          <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[0.8125rem] text-tinta-suave">
+            <span>convidados:</span>
+            <ListaDeAutores autores={renga.convidados} />
           </p>
-          <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
-            <SeloDaRenga fechada={renga.fechada} />{" "}
-            <span className="tabular-nums">
-              {renga.qtd_estrofes} de {renga.limite} estrofes
-            </span>
-            , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}
-          </p>
-          {renga.modo === "convidados" && renga.convidados.length > 0 && (
-            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[0.8125rem] text-tinta-suave">
-              <span>convidados:</span>
-              <ListaDeAutores autores={renga.convidados} />
-            </p>
-          )}
-        </header>
+        )}
+      </header>
 
+      {/* As ações do poema (#171) presas no topo, como no livro: curtir, repostar,
+          citar, comentar, guardar e enviar ficam à vista enquanto a renga rola. */}
+      <div className="acoes-presas sticky top-0 z-10 border-y border-borda/70 px-4 pt-3 pb-2">
+        <AcoesDaRenga key={renga.id} renga={renga} contadores />
+      </div>
+
+      <article aria-labelledby="titulo-da-renga" className="border-b border-borda px-4 pt-2 pb-6">
         {/* As estrofes leem como um poema só, numeradas verso a verso (a linha em
             branco entre elas conta); o autor de cada uma fica logo abaixo dela, discreto. */}
         <div className="mt-5">
           <VersosComentaveis
             texto={texto}
-            citarPostId={null}
+            citar={{ tipo: "renga", id: renga.id }}
             rodape={rodape}
             marcas={marcas}
             selecao={selecao}

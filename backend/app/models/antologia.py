@@ -38,3 +38,21 @@ class AntologiaPoema(Base):
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"), index=True)
     posicao: Mapped[int]
     created_at: Mapped[datetime] = mapped_column(default=agora_utc)
+
+
+class AntologiaRenga(Base):
+    """renga_id está na antologia_id, como o `AntologiaPoema` de um poema.
+
+    Tabela nova, sem coluna a mais em `antologia_poemas`. `posicao` segue a mesma
+    numeração dos poemas da antologia (a próxima depois do maior dos dois), então a
+    ordem de inserção vale para poemas e rengas juntos.
+    """
+
+    __tablename__ = "antologia_rengas"
+    __table_args__ = (UniqueConstraint("antologia_id", "renga_id"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    antologia_id: Mapped[int] = mapped_column(ForeignKey("antologias.id"), index=True)
+    renga_id: Mapped[int] = mapped_column(ForeignKey("rengas.id"), index=True)
+    posicao: Mapped[int]
+    created_at: Mapped[datetime] = mapped_column(default=agora_utc)

@@ -1,7 +1,7 @@
 """A mistura do feed "Para você", em Python puro.
 
 O "Para você" junta atividades de toda a rede (poemas publicados, reposts
-puros, estrofes de rengas abertas, comentários e críticas) numa linha do tempo só, cronológica
+puros, reposts de renga, estrofes de rengas abertas, comentários e críticas) numa linha do tempo só, cronológica
 pela atividade, sem ranking por engajamento (decisão 3). Três passos:
 
 1. `rarear_consagrados`: os consagrados têm milhares de poemas espalhados pelos
@@ -18,8 +18,9 @@ pela atividade, sem ranking por engajamento (decisão 3). Três passos:
 3. O service pagina a lista com o cursor (data, chave), como o feed Seguindo.
 
 Desempate: atividades de tabelas diferentes podem ter o mesmo id e a mesma
-data; a `chave` (3·id + 2 para post, poema ou repost puro, 3·id + 1 para
-estrofe, 3·id para comentário) é única entre as três e crescente com o id dentro de cada uma.
+data; a `chave` (4·id + 3 para repost de renga, 4·id + 2 para post, poema ou
+repost puro, 4·id + 1 para estrofe, 4·id para comentário) é única entre as
+quatro e crescente com o id dentro de cada uma.
 
 Montada por request, como `arvore_comentarios.py`: não é singleton. Com n =
 atividades carregadas:
@@ -37,11 +38,15 @@ from typing import Literal
 from app.core.datas import para_utc
 
 TipoDoItem = Literal["poema", "renga"]
-# "publicou": o poema em si. "repostou": um repost puro dele. "comentou" / "criticou": um comentário (com âncora
+# "publicou": o poema em si. "repostou": um repost puro dele (ou, numa renga, o repost dela). "comentou" / "criticou": um comentário (com âncora
 # nos versos, é crítica). "abriu" / "escreveu": uma estrofe do criador da renga
 # ou de outra pessoa.
 Acao = Literal["publicou", "repostou", "comentou", "criticou", "abriu", "escreveu"]
 
+# Quantas tabelas de origem a chave do desempate separa (ver o docstring).
+_ORIGENS = 4
+# O repost de renga vem de uma tabela própria: a chave dele não cruza a dos posts.
+_DESEMPATE_DO_REPOST_DE_RENGA = 3
 _DESEMPATE: dict[Acao, int] = {
     "publicou": 2,
     "repostou": 2,
@@ -80,7 +85,11 @@ class Atividade:
 
     @property
     def posicao(self) -> tuple[datetime, int]:
-        return (self.data, 3 * self.origem_id + _DESEMPATE[self.acao])
+        if self.tipo == "renga" and self.acao == "repostou":
+            desempate = _DESEMPATE_DO_REPOST_DE_RENGA
+        else:
+            desempate = _DESEMPATE[self.acao]
+        return (self.data, _ORIGENS * self.origem_id + desempate)
 
 
 @dataclass

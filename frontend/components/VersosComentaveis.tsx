@@ -22,23 +22,31 @@ import { IconeComentar } from "@/components/icones/IconeComentar";
 import { VersoFormatado } from "@/components/TextoFormatado";
 import {
   caminhoDaCitacaoDeVersos,
+  caminhoDaCitacaoDeVersosDaRenga,
   referenciaDosVersos,
   selecionarVerso,
   trechoDosVersos,
   versosDaSelecao,
   versosDoPoema,
   versosTocados,
+  type Alvo,
   type SelecaoDeVersos,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
+
+function caminhoDeCitarVersos(alvo: Alvo, trecho: string): string {
+  return alvo.tipo === "poema"
+    ? caminhoDaCitacaoDeVersos(alvo.id, trecho)
+    : caminhoDaCitacaoDeVersosDaRenga(alvo.id, trecho);
+}
 
 type Props = {
   // O texto cujos versos se numeram (o do poema ou o da renga).
   texto: string;
   // Com título acima, o corpo respira um pouco mais.
   comTitulo?: boolean;
-  // Id do poema para "citar estes versos"; null tira o botão (renga).
-  citarPostId: number | null;
+  // O poema ou a renga de "citar estes versos"; null tira o botão.
+  citar: Alvo | null;
   // Embaixo de um verso, fora da seleção (o autor da estrofe na renga).
   rodape?: Map<number, ReactNode>;
   // verso -> quantas críticas o cobrem.
@@ -63,7 +71,7 @@ export const CLASSE_DA_ACAO_DE_VERSOS =
 export function VersosComentaveis({
   texto,
   comTitulo = false,
-  citarPostId,
+  citar,
   rodape,
   marcas,
   selecao,
@@ -137,7 +145,7 @@ export function VersosComentaveis({
   return (
     <div ref={corpo} className={comTitulo ? "mt-2" : "mt-1"}>
       <p className="sr-only">
-        Para {citarPostId === null ? "comentar" : "comentar ou citar"} versos, selecione o texto deles, ou ative o número do primeiro verso e
+        Para {citar === null ? "comentar" : "comentar ou citar"} versos, selecione o texto deles, ou ative o número do primeiro verso e
         depois o do último.
       </p>
       <ol ref={lista} className="poema-corpo">
@@ -212,8 +220,8 @@ export function VersosComentaveis({
           >
             comentar estes versos
           </button>
-          {citarPostId !== null && (
-            <Link href={caminhoDaCitacaoDeVersos(citarPostId, trechoDosVersos(texto, selecao))} className={acao}>
+          {citar !== null && (
+            <Link href={caminhoDeCitarVersos(citar, trechoDosVersos(texto, selecao))} className={acao}>
               citar estes versos
             </Link>
           )}

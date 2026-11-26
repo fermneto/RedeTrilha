@@ -25,10 +25,13 @@ function Escrever() {
   const router = useRouter();
   const params = useSearchParams();
   const citarId = idDoParametro(params.get("citar"));
-  // "citar estes versos", na página do poema: os versos vêm no parâmetro `versos`.
-  const versos = citarId === null ? null : params.get("versos");
+  // /escrever?citar_renga=5: a citação de uma renga (#171).
+  const citarRengaId = citarId === null ? idDoParametro(params.get("citar_renga")) : null;
+  const citando = citarId !== null || citarRengaId !== null;
+  // "citar estes versos", na página do poema ou da renga: os versos vêm no parâmetro `versos`.
+  const versos = citando ? params.get("versos") : null;
   // /escrever?rascunho=3 abre o rascunho no compositor (vindo da aba Rascunhos do perfil).
-  const rascunhoId = citarId === null ? idDoParametro(params.get("rascunho")) : null;
+  const rascunhoId = citando ? null : idDoParametro(params.get("rascunho"));
   // Rascunho de citação: o compositor avisa ao carregar, e o título vira "Citar poema".
   const [rascunhoDeCitacao, setRascunhoDeCitacao] = useState(false);
 
@@ -38,7 +41,7 @@ function Escrever() {
 
   // O seletor Poema · Renga · Antologia só num poema novo: citação e rascunho já
   // têm formato.
-  const poemaNovo = citarId === null && rascunhoId === null;
+  const poemaNovo = !citando && rascunhoId === null;
   // O poema em andamento (o compositor conta a cada mudança) e a pergunta da antologia.
   const poema = useRef<PoemaEmAndamento | null>(null);
   const [perguntando, setPerguntando] = useState(false);
@@ -72,13 +75,17 @@ function Escrever() {
     if (comTeclado) requestAnimationFrame(() => linkDaAntologia.current?.focus());
   }
 
-  const titulo = citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema";
+  const titulo = citarRengaId !== null ? "Citar renga" : citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema";
   // Na página dupla, a escrita na esquerda e a ficha (oficina, forma, publicar)
   // na direita; no celular, as duas numa página só, para publicar sem virar.
   return (
     <Compositor
-      key={citarId ?? (rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")}
+      key={
+        citarId ??
+        (citarRengaId !== null ? `renga-${citarRengaId}` : rascunhoId !== null ? `rascunho-${rascunhoId}` : "novo")
+      }
       citarId={citarId}
+      citarRengaId={citarRengaId}
       textoInicial={versos ? textoDaCitacaoDeVersos(versos) : undefined}
       rascunhoId={rascunhoId}
       aoAbrirCitacao={() => setRascunhoDeCitacao(true)}

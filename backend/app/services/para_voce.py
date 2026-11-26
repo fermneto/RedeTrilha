@@ -5,6 +5,8 @@ Mistura, de todos os poetas (seguidos ou não, inclusive a própria pessoa):
 - poemas publicados (e citações) de quem não é consagrado;
 - reposts puros, como no X: o poema sobe na data do repost mais recente, com
   "repostado por" (todos que repostaram, por último primeiro), uma vez só;
+- reposts de renga (#171), abertas ou fechadas, do mesmo jeito: a renga sobe na
+  data do repost mais recente, com "fulano repostou" (todos, por último primeiro);
 - rengas abertas, na estrofe mais recente ("fulano abriu uma renga" /
   "fulano escreveu uma estrofe", como no feed Seguindo);
 - poemas de consagrados, rareados, com os da língua de quem vê na frente (ver
@@ -39,6 +41,7 @@ from app.models.ancora_comentario import AncoraComentario
 from app.models.comentario import Comentario
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
+from app.models.repost_renga import RepostRenga
 from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed
 from app.schemas.post import PostOut
@@ -75,6 +78,7 @@ def feed(
                 *_poemas(db),
                 *_candidatos_dos_consagrados(db, segundos, lingua),
                 *_reposts(db),
+                *_reposts_de_renga(db),
                 *_estrofes_abertas(db),
                 *_comentarios(db),
             ],
@@ -172,6 +176,17 @@ def _reposts(db: Session) -> list[Atividade]:
     return [
         Atividade("poema", "repostou", post_id, original_id, autor_id, utc_sem_fuso(criado))
         for post_id, autor_id, original_id, criado in linhas
+    ]
+
+
+def _reposts_de_renga(db: Session) -> list[Atividade]:
+    """Reposts de renga, como os reposts puros: o alvo é a renga."""
+    linhas = db.execute(
+        select(RepostRenga.id, RepostRenga.user_id, RepostRenga.renga_id, RepostRenga.created_at)
+    )
+    return [
+        Atividade("renga", "repostou", repost_id, renga_id, user_id, utc_sem_fuso(criado))
+        for repost_id, user_id, renga_id, criado in linhas
     ]
 
 

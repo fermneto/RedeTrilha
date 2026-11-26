@@ -12,7 +12,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.marcas import texto_sem_marcas
-from app.models.antologia import Antologia, AntologiaPoema
+from app.models.antologia import Antologia, AntologiaPoema, AntologiaRenga
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.user import User
@@ -24,6 +24,7 @@ from app.schemas.cartao import (
     CartaoUsuario,
     PoemaDaAntologia,
 )
+from app.services import antologias as antologias_service
 from app.services import posts as posts_service
 from app.services.perfil import poemas_por_autor
 from app.services.rengas import texto_de
@@ -108,18 +109,23 @@ def antologia(db: Session, antologia_id: int) -> CartaoAntologia:
     achada = db.get(Antologia, antologia_id)
     if achada is None or not achada.publica:
         raise HTTPException(status_code=404, detail="antologia não encontrada")
-    qtd = db.scalar(
-        select(func.count()).where(AntologiaPoema.antologia_id == antologia_id)
-    ) or 0
-    posts = db.scalars(
-        select(Post)
-        .join(AntologiaPoema, AntologiaPoema.post_id == Post.id)
-        .where(AntologiaPoema.antologia_id == antologia_id)
-        .order_by(AntologiaPoema.posicao, AntologiaPoema.id)
-        .limit(POEMAS_DA_ANTOLOGIA)
+    qtd = sum(
+        db.scalar(select(func.count()).where(modelo.antologia_id == antologia_id)) or 0
+        for modelo in (AntologiaPoema, AntologiaRenga)
     )
+    # Poemas e rengas na ordem da antologia; a renga entra pelo título, com o criador.
+    primeiros = antologias_service.ordem(db, antologia_id, POEMAS_DA_ANTOLOGIA)
+    posts = _por_id(db, Post, [i for tipo, i in primeiros if tipo == "poema"])
+    rengas = _por_id(db, Renga, [i for tipo, i in primeiros if tipo == "renga"])
     poemas = []
-    for post in posts:
+    for tipo, item_id in primeiros:
+        if tipo == "renga":
+            renga = rengas[item_id]
+            poemas.append(
+                PoemaDaAntologia(titulo=renga.titulo, primeiro_verso="", autor=_autor(renga.criador))
+            )
+            continue
+        post = posts[item_id]
         original = post.repost_de if post.repost_puro and post.repost_de else post
         versos, _ = primeiros_versos(original.texto, 1)
         titulo = texto_sem_marcas(original.titulo).strip() if original.titulo else ""
@@ -138,3 +144,9 @@ def antologia(db: Session, antologia_id: int) -> CartaoAntologia:
         qtd=qtd,
         poemas=poemas,
     )
+
+
+def _por_id(db: Session, modelo: type, ids: list[int]) -> dict:
+    if not ids:
+        return {}
+    return {linha.id: linha for linha in db.scalars(select(modelo).where(modelo.id.in_(ids)))}

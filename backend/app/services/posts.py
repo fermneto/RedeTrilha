@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.models.ancora_comentario import AncoraComentario
 from app.models.antologia import AntologiaPoema
+from app.models.citacao_renga import CitacaoRenga
 from app.models.comentario import Comentario
 from app.models.curtida import Curtida
 from app.models.mensagem import Mensagem
@@ -14,8 +15,9 @@ from app.models.rascunho import Rascunho
 from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
+from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
-from app.services import avisos, bloqueios, indice_tags
+from app.services import avisos, bloqueios, indice_tags, rengas
 from app.services.indice_tags import tags_do_post
 
 
@@ -74,6 +76,7 @@ def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
 
     Os originais dos reposts e citações que faltam vêm numa query só: no identity map,
     o `post.repost_de` do `para_saida` não vai ao banco (era uma query por citação).
+    As rengas citadas vêm em lote também (`rengas.detalhar_varias`).
     """
     originais = {post.repost_de_id for post in posts if post.repost_de_id is not None}
     faltando = [i for i in originais if db.identity_map.get(db.identity_key(Post, i)) is None]
@@ -81,11 +84,34 @@ def para_saidas(db: Session, posts: list[Post], usuario: User) -> list[PostOut]:
     carregados = list(db.scalars(select(Post).where(Post.id.in_(faltando)))) if faltando else []
     ids = {post.id for post in posts} | originais
     contagens = contar(db, list(ids), usuario)
+    citadas = rengas_citadas(db, list(ids), usuario)
     # O original de quem bloqueou quem vê fica "indisponível" (services/bloqueios.py).
-    ocultos = frozenset(bloqueios.quem_bloqueou(db, usuario.id)) if originais else frozenset()
-    saidas = [para_saida(post, contagens=contagens, ocultos=ocultos) for post in posts]
+    ocultos = (
+        frozenset(bloqueios.quem_bloqueou(db, usuario.id)) if originais or citadas else frozenset()
+    )
+    saidas = [
+        para_saida(post, contagens=contagens, ocultos=ocultos, citadas=citadas) for post in posts
+    ]
     del carregados
     return saidas
+
+
+def rengas_citadas(
+    db: Session, post_ids: list[int], usuario: User
+) -> dict[int, tuple[int, RengaDetalhe | None]]:
+    """Post → (id da renga que ele cita, a renga), para os posts que citam uma renga.
+    Duas queries e o lote do `rengas.detalhar_varias`."""
+    if not post_ids:
+        return {}
+    pares = dict(
+        db.execute(
+            select(CitacaoRenga.post_id, CitacaoRenga.renga_id).where(
+                CitacaoRenga.post_id.in_(post_ids)
+            )
+        ).all()
+    )
+    detalhes = rengas.detalhar_varias(db, usuario, list(set(pares.values())))
+    return {post_id: (renga_id, detalhes.get(renga_id)) for post_id, renga_id in pares.items()}
 
 
 def para_saida_de(db: Session, post: Post, usuario: User) -> PostOut:
@@ -98,8 +124,9 @@ def para_saida(
     incluir_repost: bool = True,
     contagens: Contagens | None = None,
     ocultos: frozenset[int] = frozenset(),
+    citadas: dict[int, tuple[int, RengaDetalhe | None]] | None = None,
 ) -> PostOut:
-    """Monta o PostOut. `repost_de` vem com um nível só.
+    """Monta o PostOut. `repost_de` (ou a `renga_citada`) vem com um nível só.
 
     Sem `contagens`, as contagens, `curti` e `repostei` saem zerados: use `para_saidas` ou
     `para_saida_de` quando houver usuário atual.
@@ -109,6 +136,9 @@ def para_saida(
     indisponivel = original is not None and original.autor_id in ocultos
     if indisponivel:
         original = None
+    renga_citada_id, renga_citada = (citadas or {}).get(post.id, (None, None))
+    if renga_citada is not None and renga_citada.criador.id in ocultos:
+        renga_citada, indisponivel = None, True
     return PostOut(
         id=post.id,
         autor_id=post.autor_id,
@@ -138,6 +168,8 @@ def para_saida(
         ),
         repost_removido=post.repost_removido,
         repost_indisponivel=indisponivel,
+        renga_citada_id=renga_citada_id,
+        renga_citada=renga_citada,
         tags=sorted(tags_do_post(post)),
     )
 
@@ -181,15 +213,33 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     `repost_removido` só vem do rascunho de uma citação cujo original foi apagado
     antes da publicação (services/rascunhos.py).
     """
-    post = Post(autor_id=autor.id, repost_removido=repost_removido, **dados.model_dump())
+    post = Post(
+        autor_id=autor.id,
+        repost_removido=repost_removido,
+        **dados.model_dump(exclude={"renga_citada_id"}),
+    )
     citado = None
     if dados.repost_de_id is not None:
         citado = original_para_interagir(db, autor, dados.repost_de_id)
         post.repost_de_id = citado.id
+    renga = None
+    if dados.renga_citada_id is not None:
+        renga = rengas.para_interagir(db, autor, dados.renga_citada_id)
     db.add(post)
     db.flush()
     if citado is not None:
         avisos.avisar(db, autor, [(citado.autor_id, "citacao")], post_id=post.id)
+    if renga is not None:
+        # A renga é de todos: a citação avisa cada autor, como a curtida e o repost dela.
+        db.add(CitacaoRenga(post_id=post.id, renga_id=renga.id))
+        avisos.avisar(
+            db,
+            autor,
+            [(pessoa, "citacao") for pessoa in rengas.ids_dos_autores(db, renga.id)],
+            dono_id=renga.criador_id,
+            post_id=post.id,
+            renga_id=renga.id,
+        )
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
     indice_tags.indexar(db, post)
     db.commit()
@@ -213,6 +263,7 @@ def apagar(db: Session, usuario: User, post_id: int) -> None:
     )
     db.execute(delete(Comentario).where(Comentario.post_id.in_([post_id, *puros])))
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.post_id.in_([post_id, *puros])))
+    db.execute(delete(CitacaoRenga).where(CitacaoRenga.post_id == post_id))
     db.execute(delete(Traducao).where(Traducao.post_id.in_([post_id, *puros])))
     indice_tags.remover(db, [post_id, *puros])
     db.execute(delete(Post).where(Post.id.in_(puros)))

@@ -1,8 +1,8 @@
 from fastapi import HTTPException
-from sqlalchemy import delete, exists, func, select
+from sqlalchemy import delete, exists, func, or_, select
 from sqlalchemy.orm import Session
 
-from app.models.antologia import Antologia, AntologiaPoema
+from app.models.antologia import Antologia, AntologiaPoema, AntologiaRenga
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.antologia import (
@@ -13,10 +13,12 @@ from app.schemas.antologia import (
     AntologiaOut,
     AntologiaPage,
     AntologiaUpdate,
+    ItemDaOrdem,
 )
 from app.schemas.user import UserOut
 from app.services import bloqueios
 from app.services import posts as posts_service
+from app.services import rengas as rengas_service
 from app.services.users import buscar_por_username
 
 
@@ -40,9 +42,10 @@ def editar(
 
 
 def apagar(db: Session, usuario: User, antologia_id: int) -> None:
-    """Apaga a antologia e os vínculos com os poemas (os poemas continuam)."""
+    """Apaga a antologia e os vínculos com os poemas e as rengas (eles continuam)."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
     db.execute(delete(AntologiaPoema).where(AntologiaPoema.antologia_id == antologia.id))
+    db.execute(delete(AntologiaRenga).where(AntologiaRenga.antologia_id == antologia.id))
     db.delete(antologia)
     db.commit()
 
@@ -53,23 +56,33 @@ def listar_minhas(db: Session, usuario: User, offset: int, limit: int) -> Antolo
 
 
 def listar_minhas_marcando(
-    db: Session, usuario: User, post_id: int, offset: int, limit: int
+    db: Session,
+    usuario: User,
+    post_id: int | None,
+    renga_id: int | None,
+    offset: int,
+    limit: int,
 ) -> AntologiaMarcadaPage:
-    """As minhas antologias, cada uma dizendo se o poema está nela (`contem`).
+    """As minhas antologias, cada uma dizendo se o poema (`post_id`) ou a renga
+    (`renga_id`) está nela (`contem`); os dois juntos → 422.
 
     O `contem` vem na mesma query da página (EXISTS correlacionado), sem um
     pedido por antologia. Repost puro conta como o original, como em curtir e
-    comentar; 404 se o post não existe.
+    comentar; 404 se o post ou a renga não existe.
     """
-    original_id = posts_service.original_de(db, post_id).id
-    contem = (
-        exists()
-        .where(
-            AntologiaPoema.antologia_id == Antologia.id,
-            AntologiaPoema.post_id == original_id,
+    if post_id is not None and renga_id is not None:
+        raise HTTPException(status_code=422, detail="peça post_id ou renga_id, não os dois")
+    if renga_id is not None:
+        renga = rengas_service.buscar(db, renga_id)
+        contem = exists().where(
+            AntologiaRenga.antologia_id == Antologia.id, AntologiaRenga.renga_id == renga.id
         )
-        .label("contem")
-    )
+    else:
+        original_id = posts_service.original_de(db, post_id).id
+        contem = exists().where(
+            AntologiaPoema.antologia_id == Antologia.id, AntologiaPoema.post_id == original_id
+        )
+    contem = contem.label("contem")
     filtros = _filtros(usuario, so_publicas=False)
     total = db.scalar(select(func.count()).where(*filtros)) or 0
     linhas = db.execute(
@@ -84,12 +97,15 @@ def listar_minhas_marcando(
 
 
 def listar_publicas(db: Session, usuario: User, offset: int, limit: int) -> AntologiaPage:
-    """As antologias públicas de todo mundo com ao menos um poema, a mais nova primeiro,
-    para o Explorar. Uma antologia vazia não tem o que ler, e ficam fora as de quem tem
-    bloqueio, em qualquer sentido, com o usuário (services/bloqueios.py)."""
+    """As antologias públicas de todo mundo com ao menos um poema ou uma renga, a mais
+    nova primeiro, para o Explorar. Uma antologia vazia não tem o que ler, e ficam fora
+    as de quem tem bloqueio, em qualquer sentido, com o usuário (services/bloqueios.py)."""
     filtros = [
         Antologia.publica.is_(True),
-        exists().where(AntologiaPoema.antologia_id == Antologia.id),
+        or_(
+            exists().where(AntologiaPoema.antologia_id == Antologia.id),
+            exists().where(AntologiaRenga.antologia_id == Antologia.id),
+        ),
     ]
     bloqueados = bloqueios.ids_com_bloqueio(db, usuario.id)
     if bloqueados:
@@ -110,7 +126,8 @@ def listar_de(
 
 
 def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
-    """Dados da antologia + poemas na ordem de inserção, como PostOut."""
+    """Dados da antologia + poemas (como PostOut) e rengas (como RengaDetalhe), cada
+    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela)."""
     antologia = _buscar_visivel(db, usuario, antologia_id)
     posts = list(
         db.scalars(
@@ -121,9 +138,47 @@ def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
         )
     )
     poemas = posts_service.para_saidas(db, posts, usuario)
-    return AntologiaDetalhe(
-        **_para_saida(antologia, qtd=len(poemas)).model_dump(), poemas=poemas
+    renga_ids = list(
+        db.scalars(
+            select(AntologiaRenga.renga_id)
+            .where(AntologiaRenga.antologia_id == antologia_id)
+            .order_by(AntologiaRenga.posicao, AntologiaRenga.id)
+        )
     )
+    detalhes = rengas_service.detalhar_varias(db, usuario, renga_ids)
+    rengas = [detalhes[i] for i in renga_ids if i in detalhes]
+    return AntologiaDetalhe(
+        **_para_saida(antologia, qtd=len(poemas) + len(rengas)).model_dump(),
+        poemas=poemas,
+        rengas=rengas,
+        ordem=[ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id)],
+    )
+
+
+def ordem(db: Session, antologia_id: int, limite: int | None = None) -> list[tuple[str, int]]:
+    """("poema", post_id) e ("renga", renga_id) na ordem em que entraram na antologia:
+    a `posicao` é uma numeração só para os dois (`_proxima_posicao`). Público para o
+    cartão de compartilhamento. Duas queries; `limite` corta cada uma."""
+    linhas = [
+        (posicao, "poema", item_id, linha_id)
+        for posicao, item_id, linha_id in db.execute(
+            select(AntologiaPoema.posicao, AntologiaPoema.post_id, AntologiaPoema.id)
+            .where(AntologiaPoema.antologia_id == antologia_id)
+            .order_by(AntologiaPoema.posicao, AntologiaPoema.id)
+            .limit(limite)
+        )
+    ]
+    linhas += [
+        (posicao, "renga", item_id, linha_id)
+        for posicao, item_id, linha_id in db.execute(
+            select(AntologiaRenga.posicao, AntologiaRenga.renga_id, AntologiaRenga.id)
+            .where(AntologiaRenga.antologia_id == antologia_id)
+            .order_by(AntologiaRenga.posicao, AntologiaRenga.id)
+            .limit(limite)
+        )
+    ]
+    linhas.sort()
+    return [(tipo, item_id) for _, tipo, item_id, _ in linhas[:limite]]
 
 
 def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
@@ -138,14 +193,9 @@ def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int)
     )
     if ja_esta is not None:
         return
-    ultima = db.scalar(
-        select(func.max(AntologiaPoema.posicao)).where(
-            AntologiaPoema.antologia_id == antologia.id
-        )
-    )
     db.add(
         AntologiaPoema(
-            antologia_id=antologia.id, post_id=post_id, posicao=(ultima or 0) + 1
+            antologia_id=antologia.id, post_id=post_id, posicao=_proxima_posicao(db, antologia.id)
         )
     )
     db.commit()
@@ -161,6 +211,47 @@ def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -
         )
     )
     db.commit()
+
+
+def adicionar_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
+    """Idempotente: adicionar uma renga que já está na antologia não faz nada."""
+    antologia = _buscar_do_dono(db, usuario, antologia_id)
+    rengas_service.buscar(db, renga_id)
+    ja_esta = db.scalar(
+        select(AntologiaRenga).where(
+            AntologiaRenga.antologia_id == antologia.id, AntologiaRenga.renga_id == renga_id
+        )
+    )
+    if ja_esta is not None:
+        return
+    db.add(
+        AntologiaRenga(
+            antologia_id=antologia.id, renga_id=renga_id, posicao=_proxima_posicao(db, antologia.id)
+        )
+    )
+    db.commit()
+
+
+def remover_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
+    """Idempotente: tirar uma renga que não está na antologia não faz nada."""
+    antologia = _buscar_do_dono(db, usuario, antologia_id)
+    db.execute(
+        delete(AntologiaRenga).where(
+            AntologiaRenga.antologia_id == antologia.id, AntologiaRenga.renga_id == renga_id
+        )
+    )
+    db.commit()
+
+
+def _proxima_posicao(db: Session, antologia_id: int) -> int:
+    """A posição depois da maior entre os poemas e as rengas: uma ordem de inserção só."""
+    poemas = db.scalar(
+        select(func.max(AntologiaPoema.posicao)).where(AntologiaPoema.antologia_id == antologia_id)
+    )
+    rengas = db.scalar(
+        select(func.max(AntologiaRenga.posicao)).where(AntologiaRenga.antologia_id == antologia_id)
+    )
+    return max(poemas or 0, rengas or 0) + 1
 
 
 def _buscar_visivel(db: Session, usuario: User, antologia_id: int) -> Antologia:
@@ -208,14 +299,19 @@ def _pagina(db: Session, filtros: list, offset: int, limit: int) -> AntologiaPag
 
 
 def _contar_poemas(db: Session, antologia_ids: list[int]) -> dict[int, int]:
+    """Poemas mais rengas de cada antologia (a renga conta como um poema, como no perfil)."""
     if not antologia_ids:
         return {}
-    linhas = db.execute(
-        select(AntologiaPoema.antologia_id, func.count())
-        .where(AntologiaPoema.antologia_id.in_(antologia_ids))
-        .group_by(AntologiaPoema.antologia_id)
-    )
-    return dict(linhas.all())
+    qtds: dict[int, int] = {}
+    for modelo in (AntologiaPoema, AntologiaRenga):
+        linhas = db.execute(
+            select(modelo.antologia_id, func.count())
+            .where(modelo.antologia_id.in_(antologia_ids))
+            .group_by(modelo.antologia_id)
+        )
+        for antologia_id, n in linhas:
+            qtds[antologia_id] = qtds.get(antologia_id, 0) + n
+    return qtds
 
 
 def _para_saida(antologia: Antologia, qtd: int) -> AntologiaOut:

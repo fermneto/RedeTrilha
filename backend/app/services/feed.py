@@ -15,7 +15,10 @@ rótulo é a atividade dessa ocorrência (ver `RengaNoFeed`):
 - "escreveu": estrofe de outra pessoa; o rótulo lista todos os seguidos que
   escreveram (menos o criador), quem escreveu por último primeiro;
 - "encerrou": o criador encerrou. Fechar pelo limite não é encerramento (a
-  última estrofe já sobe a renga).
+  última estrofe já sobe a renga);
+- "repostou": um seguido (ou o usuário) repostou a renga; o rótulo lista todos
+  os seguidos que repostaram, quem repostou por último primeiro, como o
+  `repostado_por` de um poema.
 
 Fechada, a renga continua no feed, na mesma regra.
 
@@ -29,16 +32,17 @@ núcleo usa os dois); se vier `cursor`, ele tem precedência sobre o `offset` e 
 `total` vem None (a API do X não tem total); o `offset` devolvido é a posição
 real do primeiro item na lista deduplicada.
 
-Desempate. Post, estrofe e encerramento (a própria renga) vêm de tabelas
-diferentes e podem ter o mesmo id e a mesma data. A posição é (data, chave),
-com chave = 3·id + 2 para post, 3·id + 1 para estrofe e 3·id para
-encerramento: única entre os três e crescente com o id dentro de cada um,
-então o cursor (data, chave) continua estável e determinístico.
+Desempate. Post, estrofe, encerramento (a própria renga) e repost de renga vêm
+de tabelas diferentes e podem ter o mesmo id e a mesma data. A posição é (data,
+chave), com chave = 4·id + 3 para repost de renga, 4·id + 2 para post, 4·id + 1
+para estrofe e 4·id para encerramento: única entre os quatro e crescente com o
+id dentro de cada um, então o cursor (data, chave) continua estável e
+determinístico.
 
 Custo: a deduplicação é feita em Python sobre a lista ordenada de ocorrências,
 que só traz ids e datas (sem o texto dos poemas). Tempo O(n log n) pela
-ordenação que intercala os tipos, memória O(n), com n = posts, estrofes e
-encerramentos dos seguidos + os do usuário, porque o `total` exato e a posição
+ordenação que intercala os tipos, memória O(n), com n = posts, estrofes,
+encerramentos e reposts de renga dos seguidos + os do usuário, porque o `total` exato e a posição
 de cada item dependem da lista inteira. Depois, uma query para os posts da
 página, uma para os usuários dos rótulos e duas para as curtidas, todas
 O(limit), mais três para as rengas da página.
@@ -54,6 +58,7 @@ from sqlalchemy.orm import Session, aliased
 
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
+from app.models.repost_renga import RepostRenga
 from app.models.user import User
 from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
 from app.schemas.post import PostOut
@@ -64,12 +69,14 @@ from app.services import bloqueios
 from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
-Acao = Literal["poema", "repost", "abriu", "escreveu", "encerrou"]
+Acao = Literal["poema", "repost", "abriu", "escreveu", "encerrou", "repostou"]
 Posicao = tuple[datetime, int]
 T = TypeVar("T")
 
-# Desempate entre os três tipos de origem com a mesma data (ver o docstring).
+# Desempate entre os quatro tipos de origem com a mesma data (ver o docstring).
+_TIPOS_DE_ORIGEM = 4
 _DESEMPATE: dict[str, int] = {
+    "repostou": 3,
     "poema": 2,
     "repost": 2,
     "abriu": 1,
@@ -82,8 +89,8 @@ class Ocorrencia(NamedTuple):
     """Uma linha do feed antes de deduplicar.
 
     Poema: `origem_id` é o post (o poema ou um repost puro) e `alvo_id` o poema
-    mostrado. Renga: `origem_id` é a estrofe (ou a renga, no encerramento) e
-    `alvo_id` a renga.
+    mostrado. Renga: `origem_id` é a estrofe (a renga, no encerramento, ou o
+    repost dela) e `alvo_id` a renga.
     """
 
     tipo: Literal["poema", "renga"]
@@ -95,7 +102,10 @@ class Ocorrencia(NamedTuple):
 
     @property
     def posicao(self) -> Posicao:
-        return (utc_sem_fuso(self.created_at), 3 * self.origem_id + _DESEMPATE[self.acao])
+        return (
+            utc_sem_fuso(self.created_at),
+            _TIPOS_DE_ORIGEM * self.origem_id + _DESEMPATE[self.acao],
+        )
 
 
 class Item(NamedTuple):
@@ -148,11 +158,16 @@ def pagina_dos_autores(
     cursor: str | None = None,
     com_encerramentos: bool = True,
 ) -> FeedPage:
-    """Poemas, citações, reposts puros e rengas dos `autores`, deduplicados e paginados
+    """Poemas, citações, reposts puros, rengas e reposts de renga dos `autores`,
+    deduplicados e paginados
     como o feed. Público para o perfil (`GET /usuarios/{username}/posts`), que passa um
     autor só e `com_encerramentos=False` (no perfil, vale a estrofe mais recente).
     Fica fora o que tem a ver com quem tem bloqueio com o usuário (services/bloqueios.py)."""
-    ocorrencias = [*_ocorrencias_de_posts(db, autores), *_ocorrencias_de_estrofes(db, autores)]
+    ocorrencias = [
+        *_ocorrencias_de_posts(db, autores),
+        *_ocorrencias_de_estrofes(db, autores),
+        *_ocorrencias_de_reposts_de_renga(db, autores),
+    ]
     if com_encerramentos:
         ocorrencias += _ocorrencias_de_encerramentos(db, autores)
     ocorrencias = bloqueios.sem_bloqueados(db, usuario.id, ocorrencias)
@@ -235,22 +250,41 @@ def _ocorrencias_de_encerramentos(db: Session, autores: list[int]) -> list[Ocorr
     ]
 
 
+def _ocorrencias_de_reposts_de_renga(db: Session, autores: list[int]) -> list[Ocorrencia]:
+    """Rengas que os autores repostaram ("repostou")."""
+    linhas = db.execute(
+        select(
+            RepostRenga.id, RepostRenga.user_id, RepostRenga.renga_id, RepostRenga.created_at
+        ).where(RepostRenga.user_id.in_(autores))
+    )
+    return [
+        Ocorrencia("renga", "repostou", repost_id, user_id, renga_id, criado)
+        for repost_id, user_id, renga_id, criado in linhas
+    ]
+
+
+# As ações cujo rótulo lista todos os que fizeram, não só o da ocorrência mais recente.
+_ROTULO_DE_VARIOS = ("repost", "escreveu", "repostou")
+
+
 def _deduplicar(ocorrencias: list[Ocorrencia]) -> list[Item]:
     """Um item por poema ou renga, na ocorrência mais recente, com os autores do
     rótulo. O(n)."""
     primeiras: dict[tuple[str, int], Ocorrencia] = {}
-    por: dict[tuple[str, int], list[int]] = {}
+    por: dict[tuple[str, int, str], list[int]] = {}
     for ocorrencia in ocorrencias:
         chave = (ocorrencia.tipo, ocorrencia.alvo_id)
         primeiras.setdefault(chave, ocorrencia)
-        if ocorrencia.acao in ("repost", "escreveu"):
-            autores = por.setdefault(chave, [])
+        if ocorrencia.acao in _ROTULO_DE_VARIOS:
+            autores = por.setdefault((*chave, ocorrencia.acao), [])
             if ocorrencia.autor_id not in autores:
                 autores.append(ocorrencia.autor_id)
     itens = []
     for chave, ocorrencia in primeiras.items():
-        if ocorrencia.tipo == "poema" or ocorrencia.acao == "escreveu":
-            rotulo = por.get(chave, [])
+        if ocorrencia.tipo == "poema":
+            rotulo = por.get((*chave, "repost"), [])
+        elif ocorrencia.acao in _ROTULO_DE_VARIOS:
+            rotulo = por.get((*chave, ocorrencia.acao), [])
         else:
             rotulo = [ocorrencia.autor_id]
         itens.append(Item(ocorrencia, rotulo))

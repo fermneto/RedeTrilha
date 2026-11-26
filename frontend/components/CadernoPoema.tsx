@@ -6,13 +6,13 @@
 // Usado pelo feed, uma folha por item, e pela página do poema.
 
 import Link from "next/link";
-import { useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
+import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import type { Folha } from "@/components/CadernoFolhas";
 import { Acoes, PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
-import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeRenga } from "@/components/icones/IconeRenga";
 import { chaveDoItem, ehRenga, textoDaRenga, type ItemDoFeed, type Post, type RengaDetalhe } from "@/lib/api";
 
@@ -47,45 +47,26 @@ export function VersoDoPoema({ poema, comentarios }: { poema: Post; comentarios:
   );
 }
 
-const BOTAO_DA_RENGA =
-  "inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-3 -ml-3 font-semibold transition-colors duration-150 hover:bg-tinta/5 hover:text-destaque";
-
-// A página da direita de uma renga. Renga não se curte nem se reposta (o backend
-// só tem comentários para ela), então a barra presa no topo traz o que existe:
-// estrofes e comentários contados, escrever a próxima estrofe e comentar.
+// A página da direita de uma renga: as mesmas ações do poema presas no topo
+// (#171), com "escrever a próxima estrofe" embaixo delas enquanto couber, e a
+// conversa embaixo.
 function ConversaDaRenga({ renga, comentarios }: { renga: RengaDetalhe; comentarios: ReactNode }) {
-  const pagina = useRef<HTMLDivElement>(null);
-  const link = `/rengas/${renga.id}`;
-  function comentar() {
-    pagina.current?.querySelector<HTMLTextAreaElement>("#comentarios textarea")?.focus();
-  }
   return (
-    <div ref={pagina} className={MARGEM_DA_CONVERSA}>
-      <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-2">
-        <p className="mb-1 flex flex-wrap gap-x-4 text-sm text-tinta-suave tabular-nums">
-          <span>
-            <strong className="font-semibold text-tinta">{renga.qtd_estrofes}</strong> de {renga.limite} estrofes
-          </span>
-          <span>
-            <strong className="font-semibold text-tinta">{renga.comentarios}</strong>{" "}
-            {renga.comentarios === 1 ? "comentário" : "comentários"}
-          </span>
-        </p>
-        <div className="flex flex-wrap items-center gap-x-4 text-sm">
-          {!renga.fechada && renga.posso_escrever && (
-            <Link href={link} className={`${BOTAO_DA_RENGA} text-destaque`}>
-              <IconeRenga className="h-[1.125rem] w-[1.125rem]" />
-              escrever a próxima estrofe
-            </Link>
-          )}
-          <button type="button" onClick={comentar} className={`${BOTAO_DA_RENGA} text-tinta-suave`}>
-            <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
-            comentar
-          </button>
-          <Link href={link} className={`${BOTAO_DA_RENGA} text-tinta-suave`}>
-            abrir a renga
+    <div className={MARGEM_DA_CONVERSA}>
+      <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
+        <AcoesDaRenga key={renga.id} renga={renga} contadores />
+        {!renga.fechada && renga.posso_escrever && (
+          <Link
+            href={`/rengas/${renga.id}`}
+            className="-ml-3 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full px-3 text-sm font-semibold text-destaque transition-colors duration-150 hover:bg-tinta/5"
+          >
+            <IconeRenga className="h-[1.125rem] w-[1.125rem]" />
+            escrever a próxima estrofe
+            <span className="font-normal text-tinta-suave tabular-nums">
+              · {renga.qtd_estrofes + 1}ª de {renga.limite}
+            </span>
           </Link>
-        </div>
+        )}
       </div>
       <div className="mt-6 flex flex-1 flex-col">{comentarios}</div>
     </div>
@@ -103,12 +84,12 @@ export function folhaDoItem(item: ItemDoFeed, euId: number | null, topo: ReactNo
     return {
       chave,
       rotulo: `renga ${renga.titulo}`,
-      rotuloDaDireita: `comentários da renga ${renga.titulo}`,
+      rotuloDaDireita: `ações e comentários da renga ${renga.titulo}`,
       esquerda: (
         <div className="pb-4">
           {topo}
           <div className="px-2 pt-4 sm:px-6 lg:px-10 lg:pt-8">
-            <RengaCard item={item} />
+            <RengaCard renga={renga} atividade={item.atividade} por={item.por} folha />
           </div>
         </div>
       ),

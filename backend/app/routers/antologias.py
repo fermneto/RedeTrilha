@@ -11,6 +11,7 @@ from app.schemas.antologia import (
     AntologiaOut,
     AntologiaPage,
     AntologiaPoemaCreate,
+    AntologiaRengaCreate,
     AntologiaUpdate,
 )
 from app.services import antologias as service
@@ -32,11 +33,12 @@ def minhas_antologias(
     offset: Offset = 0,
     limit: Limite = 20,
     post_id: int | None = Query(default=None, description="marca `contem` em cada antologia"),
+    renga_id: int | None = Query(default=None, description="marca `contem` com a renga"),
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    if post_id is not None:
-        return service.listar_minhas_marcando(db, user, post_id, offset, limit)
+    if post_id is not None or renga_id is not None:
+        return service.listar_minhas_marcando(db, user, post_id, renga_id, offset, limit)
     return service.listar_minhas(db, user, offset, limit)
 
 
@@ -108,3 +110,23 @@ def remover_poema(
     db: Session = Depends(get_db),
 ):
     service.remover_poema(db, user, antologia_id, post_id)
+
+
+@router.post("/antologias/{antologia_id}/rengas", status_code=204)
+def adicionar_renga(
+    antologia_id: int,
+    dados: AntologiaRengaCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    service.adicionar_renga(db, user, antologia_id, dados.renga_id)
+
+
+@router.delete("/antologias/{antologia_id}/rengas/{renga_id}", status_code=204)
+def remover_renga(
+    antologia_id: int,
+    renga_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    service.remover_renga(db, user, antologia_id, renga_id)

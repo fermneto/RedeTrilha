@@ -1,9 +1,11 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
 from app.schemas.pagina import Pagina
 from app.schemas.post import PostOut
+from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 
 
@@ -43,6 +45,10 @@ class AntologiaPoemaCreate(BaseModel):
     post_id: int
 
 
+class AntologiaRengaCreate(BaseModel):
+    renga_id: int
+
+
 class AntologiaOut(BaseModel):
     id: int
     dono_id: int
@@ -51,13 +57,24 @@ class AntologiaOut(BaseModel):
     descricao: str | None
     publica: bool
     created_at: datetime
+    # Poemas e rengas (a renga conta como um poema).
     qtd: int = 0
 
 
+class ItemDaOrdem(BaseModel):
+    """Um poema (`post_id`) ou uma renga (`renga_id`) na ordem da antologia."""
+
+    tipo: Literal["poema", "renga"]
+    id: int
+
+
 class AntologiaDetalhe(AntologiaOut):
-    """A antologia com os poemas na ordem de inserção."""
+    """A antologia com os poemas e as rengas, cada lista na ordem de inserção, e a
+    `ordem` dos dois juntos, como foram guardados (a tela intercala por ela)."""
 
     poemas: list[PostOut] = []
+    rengas: list[RengaDetalhe] = []
+    ordem: list[ItemDaOrdem] = []
 
 
 class AntologiaPage(Pagina[AntologiaOut]):
@@ -65,10 +82,11 @@ class AntologiaPage(Pagina[AntologiaOut]):
 
 
 class AntologiaMarcada(AntologiaOut):
-    """Uma das minhas antologias, dizendo se um poema (o `post_id` pedido) está nela."""
+    """Uma das minhas antologias, dizendo se um poema (o `post_id` pedido) ou uma renga
+    (o `renga_id`) está nela."""
 
     contem: bool
 
 
 class AntologiaMarcadaPage(Pagina[AntologiaMarcada]):
-    """GET /antologias?post_id=: a página de sempre, com `contem` em cada item."""
+    """GET /antologias?post_id= (ou ?renga_id=): a página de sempre, com `contem` em cada item."""

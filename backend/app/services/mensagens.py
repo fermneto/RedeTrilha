@@ -33,6 +33,7 @@ from app.core.caixa_de_entrada import (
 )
 from app.models.conversa import Conversa, ParticipanteConversa
 from app.models.mensagem import Mensagem
+from app.models.mensagem_renga import MensagemRenga
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.mensagem import (
@@ -46,9 +47,11 @@ from app.schemas.mensagem import (
     MensagemPage,
     ResumoDeMensagens,
 )
+from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 from app.services import bloqueios, follows
 from app.services import posts as posts_service
+from app.services import rengas as rengas_service
 from app.services.cursor import utc_sem_fuso
 from app.services.users import buscar_por_username
 
@@ -215,10 +218,15 @@ def enviar(db: Session, eu: User, conversa_id: int, dados: MensagemCreate) -> Me
     post_id = (
         posts_service.original_para_interagir(db, eu, dados.post_id).id if dados.post_id is not None else None
     )
+    renga_id = (
+        rengas_service.para_interagir(db, eu, dados.renga_id).id if dados.renga_id is not None else None
+    )
 
     mensagem = Mensagem(conversa_id=conversa_id, autor_id=eu.id, texto=dados.texto, post_id=post_id)
     db.add(mensagem)
     db.flush()
+    if renga_id is not None:
+        db.add(MensagemRenga(mensagem_id=mensagem.id, renga_id=renga_id))
     # Quem manda leu tudo até aqui; responder um pedido (ou uma recusada) o aceita.
     minha.ultima_mensagem_id = minha.ultima_lida_id = mensagem.id
     minha.situacao = CAIXA
@@ -374,10 +382,11 @@ def _enviadas_no_ultimo_minuto(db: Session, autor_id: int) -> int:
 
 
 def _saidas(db: Session, eu: User, lista: list[Mensagem]) -> list[MensagemOut]:
-    """MensagemOut de uma lista, com os poemas compartilhados numa consulta só."""
+    """MensagemOut de uma lista, com os poemas e as rengas compartilhados em lote."""
     ids = {m.post_id for m in lista if m.post_id is not None}
     poemas = list(db.scalars(select(Post).where(Post.id.in_(ids)))) if ids else []
     saidas = {p.id: p for p in posts_service.para_saidas(db, poemas, eu)}
+    rengas = _rengas_das_mensagens(db, eu, [m.id for m in lista])
     return [
         MensagemOut(
             id=m.id,
@@ -386,10 +395,28 @@ def _saidas(db: Session, eu: User, lista: list[Mensagem]) -> list[MensagemOut]:
             texto=m.texto,
             post=saidas.get(m.post_id) if m.post_id is not None else None,
             post_removido=m.post_removido,
+            renga=rengas.get(m.id),
             created_at=m.created_at,
         )
         for m in lista
     ]
+
+
+def _rengas_das_mensagens(db: Session, eu: User, mensagem_ids: list[int]) -> dict[int, RengaDetalhe]:
+    """Mensagem → a renga que ela leva, como o poema compartilhado."""
+    if not mensagem_ids:
+        return {}
+    pares = dict(
+        db.execute(
+            select(MensagemRenga.mensagem_id, MensagemRenga.renga_id).where(
+                MensagemRenga.mensagem_id.in_(mensagem_ids)
+            )
+        ).all()
+    )
+    if not pares:
+        return {}
+    detalhes = rengas_service.detalhar_varias(db, eu, list(set(pares.values())))
+    return {mensagem_id: detalhes[renga_id] for mensagem_id, renga_id in pares.items()}
 
 
 def _ler_cursor(cursor: str) -> int:

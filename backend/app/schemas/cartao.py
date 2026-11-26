@@ -56,6 +56,6 @@ class CartaoAntologia(BaseModel):
     nome: str
     descricao: str | None
     dono: AutorDoCartao
-    qtd: int
-    # Os primeiros poemas, na ordem da antologia.
+    qtd: int  # poemas e rengas
+    # Os primeiros poemas e rengas, na ordem da antologia (a renga com o título e o criador).
     poemas: list[PoemaDaAntologia]

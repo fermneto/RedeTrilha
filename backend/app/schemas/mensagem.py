@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, model_validator
 
 from app.schemas.post import PostOut
+from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 
 # Uma mensagem pode ser um poema colado inteiro, mas não um livro.
@@ -22,16 +23,20 @@ class ConversaCreate(BaseModel):
 
 
 class MensagemCreate(BaseModel):
-    """Texto, um poema (`post_id`) ou os dois. O texto é gravado como veio."""
+    """Texto, um poema (`post_id`) ou uma renga (`renga_id`), com ou sem texto. O
+    texto é gravado como veio. Uma mensagem leva um poema ou uma renga, não os dois."""
 
     texto: str = ""
     post_id: int | None = None
+    renga_id: int | None = None
 
     @model_validator(mode="after")
     def _texto_ou_poema(self) -> "MensagemCreate":
         if len(self.texto) > LIMITE_TEXTO_MENSAGEM:
             raise ValueError(f"a mensagem tem até {LIMITE_TEXTO_MENSAGEM} caracteres")
-        if not self.texto.strip() and self.post_id is None:
+        if self.post_id is not None and self.renga_id is not None:
+            raise ValueError("a mensagem leva um poema ou uma renga, não os dois")
+        if not self.texto.strip() and self.post_id is None and self.renga_id is None:
             raise ValueError("a mensagem não pode ficar vazia")
         return self
 
@@ -51,6 +56,8 @@ class MensagemOut(BaseModel):
     post: PostOut | None
     # O poema compartilhado foi apagado pelo autor ("poema removido pelo autor").
     post_removido: bool
+    # A renga compartilhada; null se a mensagem não leva renga.
+    renga: RengaDetalhe | None = None
     created_at: datetime
 
 

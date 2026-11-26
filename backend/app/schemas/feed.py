@@ -31,12 +31,15 @@ class RengaNoFeed(BaseModel):
     - "escreveu": "fulano escreveu uma estrofe" (`por` = os seguidos, ou a
       própria pessoa, que escreveram estrofes, menos o criador, quem escreveu
       por último primeiro);
-    - "encerrou": "fulano encerrou a renga" (`por` = [o criador]).
+    - "encerrou": "fulano encerrou a renga" (`por` = [o criador]);
+    - "repostou": "fulano repostou a renga" (`por` = os seguidos, ou a própria
+      pessoa, que repostaram, quem repostou por último primeiro), como o
+      `repostado_por` de um poema.
     """
 
     tipo: Literal["renga"] = "renga"
     renga: RengaDetalhe
-    atividade: Literal["abriu", "escreveu", "encerrou"]
+    atividade: Literal["abriu", "escreveu", "encerrou", "repostou"]
     por: list[UserOut]
 
 
