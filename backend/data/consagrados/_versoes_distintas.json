@@ -1,7 +1,8 @@
 {
-  "_sobre": "Pares de poemas do mesmo autor que a regra de app/core/duplicados.py tomaria pelo mesmo poema, mas são versões diferentes, decididas à mão: o importador, o seed e scripts/fundir_poemas_repetidos.py mantêm os dois. Identificados por username e título, que valem em qualquer banco.",
+  "_sobre": "Pares de poemas do mesmo autor que a regra de app/core/duplicados.py tomaria pelo mesmo poema, mas são versões diferentes, decididas à mão: o importador, o seed e scripts/fundir_poemas_repetidos.py mantêm os dois. Identificados por username e título, que valem em qualquer banco: um par aparece duas vezes quando o título muda com app/core/titulos.py (o JSON traz o original, o banco consertado o normalizado).",
   "pares": [
     {"autor": "goethe", "titulos": ["Prometheus (Gedicht, frühe Fassung)", "Prometheus (Gedicht, späte Fassung)"]},
-    {"autor": "schiller", "titulos": ["Freygeisterey der Leidenschaft", "Der Kampf (Friedrich Schiller)"]}
+    {"autor": "schiller", "titulos": ["Freygeisterey der Leidenschaft", "Der Kampf (Friedrich Schiller)"]},
+    {"autor": "schiller", "titulos": ["Freygeisterey der Leidenschaft", "Der Kampf"]}
   ]
 }

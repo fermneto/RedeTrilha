@@ -10,6 +10,12 @@ dele, ou o mesmo texto em outra edição ou grafia, e só a versão mais complet
 fica (a regra está em `app/core/duplicados.py`; o banco importado antes disso
 se conserta com `scripts/fundir_poemas_repetidos.py`).
 
+O título do Wikisource traz o caminho até o poema ("Eu (Augusto dos Anjos,
+1912)/Vozes de um Tumulo") e às vezes o autor ("O Mar (Augusto dos Anjos)"): o
+poema entra só com o nome dele, e a obra e o ano do caminho preenchem os que
+faltam (`app/core/titulos.py`; o banco importado antes disso se conserta com
+`scripts/corrigir_titulos_consagrados.py`).
+
 As tags de cada poema vão para o índice (`post_tags`) na mesma transação,
 reindexadas a cada importação: com a API de pé, aparecem na hora, sem restart.
 
@@ -31,6 +37,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from app.core.duplicados import grupos_de_duplicados
+from app.core.titulos import Poema, normalizar_poemas
 from app.db import Base, SessionLocal, engine
 from app.models.atributos_consagrado import AtributosConsagrado
 from app.models.post import Post
@@ -136,7 +143,7 @@ def importar(
     try:
         for consagrado in consagrados:
             autor = _gravar_poeta(db, consagrado, resumo)
-            poemas = sem_repetidos(consagrado.poemas, distintos.get(consagrado.username, set()))
+            poemas = poemas_a_importar(consagrado, distintos.get(consagrado.username, set()))
             resumo.poemas_repetidos += len(consagrado.poemas) - len(poemas)
             datas = datas_dos_poemas(consagrado.username, len(poemas), agora)
             for poema, data in zip(poemas, datas, strict=True):
@@ -146,6 +153,35 @@ def importar(
         db.rollback()
         raise
     return resumo
+
+
+def poemas_a_importar(
+    consagrado: Consagrado, distintos: set[frozenset[str]] = frozenset()
+) -> list[PoemaConsagrado]:
+    """Os poemas que entram no banco: sem os repetidos e com o título sem o caminho
+    do Wikisource (`app/core/titulos.py`), a obra e o ano do caminho onde faltavam."""
+    return [
+        poema.model_copy(update={"titulo": n.titulo, "obra": n.obra, "ano": n.ano})
+        for poema, n in titulos_normalizados(consagrado, distintos)
+    ]
+
+
+def titulos_normalizados(
+    consagrado: Consagrado, distintos: set[frozenset[str]] = frozenset()
+) -> list[tuple[PoemaConsagrado, Poema]]:
+    """Cada poema que fica (sem os repetidos), como está no JSON, e o (titulo, obra, ano)
+    com que entra no banco.
+
+    A ordem importa: os repetidos saem antes, pelos títulos originais (os de
+    `_versoes_distintas.json`), e a normalização olha só os que ficam, para a
+    chave (titulo, obra) seguir única. `scripts/corrigir_titulos_consagrados.py`
+    usa esta função para levar os bancos já importados ao mesmo resultado.
+    """
+    poemas = sem_repetidos(consagrado.poemas, distintos)
+    normalizados = normalizar_poemas(
+        [Poema(p.titulo, p.obra, p.ano) for p in poemas], consagrado.name
+    )
+    return list(zip(poemas, normalizados, strict=True))
 
 
 def sem_repetidos(
