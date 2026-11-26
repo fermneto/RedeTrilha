@@ -17,6 +17,7 @@ Rode com: make seed (ou cd backend && uv run python scripts/importar_consagrados
 """
 
 import hashlib
+import json
 import random
 import sys
 from dataclasses import dataclass
@@ -39,6 +40,9 @@ from app.schemas.consagrado import Consagrado, PoemaConsagrado, idioma_da_fonte
 from app.services import indice_tags
 
 PASTA_CONSAGRADOS = Path(__file__).resolve().parents[1] / "data" / "consagrados"
+# Os pares de versões diferentes que a regra de repetidos não pode fundir.
+ARQUIVO_VERSOES_DISTINTAS = "_versoes_distintas.json"
+VersoesDistintas = dict[str, set[frozenset[str]]]
 JANELA_DO_FEED = timedelta(days=30)
 # O scraper marca cada poema com a língua do original. A língua não é tema: essas tags
 # ficam fora do índice (os JSONs não mudam). Lista conferida nos JSONs de data/consagrados.
@@ -84,6 +88,24 @@ def ler_consagrados(pasta: Path) -> list[Consagrado]:
     return [_ler_arquivo(arquivo) for arquivo in arquivos]
 
 
+def ler_versoes_distintas(pasta: Path = PASTA_CONSAGRADOS) -> VersoesDistintas:
+    """username → pares de títulos que são versões diferentes (`_versoes_distintas.json`).
+
+    Vale para o importador, o seed e `scripts/fundir_poemas_repetidos.py`.
+    Sem o arquivo, nenhum par.
+    """
+    arquivo = pasta / ARQUIVO_VERSOES_DISTINTAS
+    if not arquivo.exists():
+        return {}
+    pares: VersoesDistintas = {}
+    for par in json.loads(arquivo.read_text(encoding="utf-8"))["pares"]:
+        titulos = frozenset(par["titulos"])
+        if len(titulos) != 2:
+            raise ArquivoConsagradoInvalido(f"{arquivo.name}: cada par tem dois títulos diferentes")
+        pares.setdefault(par["autor"], set()).add(titulos)
+    return pares
+
+
 def _semente(username: str) -> int:
     """Semente estável entre execuções (o hash() do Python muda a cada processo)."""
     return int.from_bytes(hashlib.sha256(username.encode("utf-8")).digest()[:8], "big")
@@ -98,7 +120,10 @@ def datas_dos_poemas(username: str, n: int, agora: datetime) -> list[datetime]:
 
 
 def importar(
-    db: Session, consagrados: list[Consagrado], agora: datetime | None = None
+    db: Session,
+    consagrados: list[Consagrado],
+    agora: datetime | None = None,
+    distintos: VersoesDistintas | None = None,
 ) -> ResumoImportacao:
     """Grava os consagrados já validados numa transação só (tudo ou nada).
 
@@ -106,11 +131,12 @@ def importar(
     só na criação: reimportar não muda a data do poema no feed.
     """
     agora = agora or datetime.now(UTC)
+    distintos = ler_versoes_distintas() if distintos is None else distintos
     resumo = ResumoImportacao()
     try:
         for consagrado in consagrados:
             autor = _gravar_poeta(db, consagrado, resumo)
-            poemas = sem_repetidos(consagrado.poemas)
+            poemas = sem_repetidos(consagrado.poemas, distintos.get(consagrado.username, set()))
             resumo.poemas_repetidos += len(consagrado.poemas) - len(poemas)
             datas = datas_dos_poemas(consagrado.username, len(poemas), agora)
             for poema, data in zip(poemas, datas, strict=True):
@@ -122,9 +148,16 @@ def importar(
     return resumo
 
 
-def sem_repetidos(poemas: list[PoemaConsagrado]) -> list[PoemaConsagrado]:
-    """Os poemas do JSON menos os trechos e as cópias de outro, na ordem do JSON."""
-    grupos = grupos_de_duplicados([(i, poema.texto) for i, poema in enumerate(poemas)])
+def sem_repetidos(
+    poemas: list[PoemaConsagrado], distintos: set[frozenset[str]] = frozenset()
+) -> list[PoemaConsagrado]:
+    """Os poemas do JSON menos os trechos e as cópias de outro, na ordem do JSON;
+    os pares de `distintos` (títulos) ficam os dois."""
+    grupos = grupos_de_duplicados(
+        [(i, poema.texto) for i, poema in enumerate(poemas)],
+        [poema.titulo for poema in poemas],
+        distintos,
+    )
     fora = {i for grupo in grupos for i in grupo.removidos}
     return [poema for i, poema in enumerate(poemas) if i not in fora]
 
@@ -193,12 +226,13 @@ def _gravar_poema(
 def main() -> None:
     try:
         consagrados = ler_consagrados(PASTA_CONSAGRADOS)
+        distintos = ler_versoes_distintas(PASTA_CONSAGRADOS)
     except ArquivoConsagradoInvalido as erro:
         sys.exit(f"erro: {erro}")
     Base.metadata.create_all(engine)
     with SessionLocal() as db:
         try:
-            resumo = importar(db, consagrados)
+            resumo = importar(db, consagrados, distintos=distintos)
         except UsernameDeUsuarioComum as erro:
             sys.exit(f"erro: {erro}")
     print(

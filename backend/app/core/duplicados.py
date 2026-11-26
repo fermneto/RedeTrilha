@@ -14,6 +14,10 @@ reescritos, ficam bem abaixo). Fica a versão mais completa: o texto
 normalizado mais longo; no empate, o texto mais longo; depois, o que veio
 primeiro (no JSON ou, no banco, o de menor id, que é a mesma ordem).
 
+Duas versões de um poema que o autor reescreveu (o "Prometheus" de Goethe, cedo
+e tarde) passam na regra, mas são poemas diferentes: os pares decididos à mão
+vêm em `distintos` e nunca se fundem.
+
 Cada poema que tem uma versão mais completa aponta para a melhor delas, e o
 grupo é a raiz dessas setas. Assim, um trecho que cabe em dois poemas
 diferentes vai para um só, e os dois poemas não viram um grupo.
@@ -27,7 +31,7 @@ texto, linear nos dois textos. Os 11 mil poemas dos JSONs levam uns 2 s.
 import re
 import unicodedata
 from collections import defaultdict
-from collections.abc import Hashable, Sequence
+from collections.abc import Collection, Hashable, Sequence
 from dataclasses import dataclass, field
 from typing import Generic, TypeVar
 
@@ -89,11 +93,22 @@ class Grupo(Generic[K]):
     removidos: list[K] = field(default_factory=list)
 
 
-def grupos_de_duplicados(poemas: Sequence[tuple[K, str]]) -> list[Grupo[K]]:
+def grupos_de_duplicados(
+    poemas: Sequence[tuple[K, str]],
+    titulos: Sequence[str | None] = (),
+    distintos: Collection[frozenset[str]] = frozenset(),
+) -> list[Grupo[K]]:
     """Os grupos de poemas repetidos de UM autor, dados (chave, texto) em ordem.
 
+    `distintos` são os pares de títulos (do mesmo autor, `titulos[i]` é o do
+    poema i) que parecem o mesmo poema mas são versões diferentes, decididas à
+    mão: nunca se fundem (ver `data/consagrados/_versoes_distintas.json`).
     Só os grupos com repetição, na ordem do poema mantido.
     """
+
+    def separados(i: int, j: int) -> bool:
+        return bool(distintos) and frozenset((titulos[i], titulos[j])) in distintos
+
     normalizados = [normalizar(texto) for _, texto in poemas]
     # Maior = mais completo: (tamanho normalizado, tamanho bruto, quem veio antes).
     peso = [(len(n), len(t), -i) for i, (n, (_, t)) in enumerate(zip(normalizados, poemas))]
@@ -116,7 +131,7 @@ def grupos_de_duplicados(poemas: Sequence[tuple[K, str]]) -> list[Grupo[K]]:
             reverse=True,
         )
         for j in candidatos:
-            if mesmo_poema(normalizados[i], normalizados[j]):
+            if not separados(i, j) and mesmo_poema(normalizados[i], normalizados[j]):
                 pai[i] = j
                 break
 

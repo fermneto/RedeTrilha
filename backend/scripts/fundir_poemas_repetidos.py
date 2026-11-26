@@ -14,6 +14,9 @@ que fica (o mais completo), e funde cada grupo nele:
 - citações, rascunhos de citação e mensagens diretas apontam para ele;
 - a tradução em cache, as tags do índice e o poema repetido saem.
 
+Os pares de versões diferentes de `data/consagrados/_versoes_distintas.json`
+(por autor e título) não se fundem, como no importador.
+
 Idempotente: depois de aplicado, não acha mais grupo nenhum. Tudo numa
 transação: ou funde tudo, ou nada.
 
@@ -50,6 +53,7 @@ from app.models.rascunho import Rascunho
 from app.models.traducao import Traducao
 from app.models.user import User
 from app.services import indice_tags
+from scripts.importar_consagrados import VersoesDistintas, ler_versoes_distintas
 
 
 @dataclass
@@ -59,23 +63,30 @@ class GrupoDoBanco:
     removidos: list[int]
 
 
-def encontrar_grupos(db: Session) -> list[GrupoDoBanco]:
+def encontrar_grupos(db: Session, distintos: VersoesDistintas | None = None) -> list[GrupoDoBanco]:
     """Os grupos de poemas repetidos de cada consagrado, pelo `core/duplicados.py`.
 
     Os poemas vão em ordem de id, que é a ordem do JSON na importação: o
-    desempate escolhe o mesmo poema que o importador manteria.
+    desempate escolhe o mesmo poema que o importador manteria. Os pares de
+    versões diferentes (`data/consagrados/_versoes_distintas.json`) ficam os dois.
     """
+    distintos = ler_versoes_distintas() if distintos is None else distintos
     grupos = []
     consagrados = db.execute(
         select(User.id, User.username).where(User.consagrado).order_by(User.username)
     ).all()
     for autor_id, username in consagrados:
         poemas = db.execute(
-            select(Post.id, Post.texto)
+            select(Post.id, Post.texto, Post.titulo)
             .where(Post.autor_id == autor_id, ~Post.repost_puro)
             .order_by(Post.id)
         ).all()
-        for grupo in grupos_de_duplicados([(id_, texto) for id_, texto in poemas]):
+        pares = grupos_de_duplicados(
+            [(id_, texto) for id_, texto, _ in poemas],
+            [titulo for _, _, titulo in poemas],
+            distintos.get(username, set()),
+        )
+        for grupo in pares:
             grupos.append(GrupoDoBanco(username, grupo.mantido, grupo.removidos))
     return grupos
 

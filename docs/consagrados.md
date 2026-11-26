@@ -40,6 +40,13 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    só lista; `--aplicar` funde as curtidas, comentários, reposts, citações,
    antologias, mensagens e avisos no poema que fica e apaga as cópias). Faça
    backup antes de `--aplicar`; o script não roda no boot.
+   Versões diferentes de um poema que o autor reescreveu passam nessa regra e
+   não são repetição: os pares decididos à mão ficam em
+   `backend/data/consagrados/_versoes_distintas.json` (por `autor`, o username,
+   e os dois `titulos`, que valem em qualquer banco), e o importador, o seed e
+   o script mantêm os dois. Hoje: o "Prometheus" de Goethe (frühe e späte
+   Fassung) e "Freygeisterey der Leidenschaft" / "Der Kampf" de Schiller. Com
+   eles, os JSONs dão 160 grupos e 283 poemas de fora.
 
 ## Schema
 
