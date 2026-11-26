@@ -72,3 +72,8 @@ test("o mais curtido da continuação aparece mesmo visto na outra aba", () => {
 test("a aba vazia começa sem virada", () => {
   assert.equal(abaVazia().fimEm, null);
 });
+
+test("a releitura da continuação aparece mesmo vista na outra aba", () => {
+  const itens = [poema(1, { subiu_por: "releitura" })];
+  assert.equal(visiveis(itens, chave, { "poema-1": "seguindo" }, "para-voce").length, 1);
+});

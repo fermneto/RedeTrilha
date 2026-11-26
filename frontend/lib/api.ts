@@ -307,9 +307,10 @@ export type Post = {
   repostado_por: User[];
   // Só no "Para você": o poema subiu por um comentário ou por uma crítica nos
   // versos, e quem comentou, por último primeiro (PoemaNoFeed em schemas/feed.py).
-  // "curtidas": um dos mais curtidos da continuação do feed infinito (nas duas
-  // abas), o único item que pode repetir na sessão.
-  subiu_por?: "comentario" | "critica" | "curtidas" | null;
+  // Na continuação do feed infinito (nas duas abas): "curtidas", um dos mais
+  // curtidos, e "releitura", um consagrado de uma rodada reciclada. Os únicos
+  // itens que podem repetir o que a pessoa já viu.
+  subiu_por?: "comentario" | "critica" | "curtidas" | "releitura" | null;
   comentado_por?: User[];
 };
 
@@ -1247,9 +1248,25 @@ function juntarRotulos(primeiro: ItemDoFeed, repetido: ItemDoFeed): ItemDoFeed {
   };
 }
 
-// O mais curtido da continuação do feed: pode repetir o que já saiu na sessão.
+// O mais curtido e a releitura da continuação do feed: podem repetir o que já saiu.
 export function podeRepetir(item: ItemDoFeed): boolean {
-  return !ehRenga(item) && item.subiu_por === "curtidas";
+  return !ehRenga(item) && (item.subiu_por === "curtidas" || item.subiu_por === "releitura");
+}
+
+// O poema ou a renga que a folha mostra, como o backend guarda o "já visto"
+// (o mesmo alvo de `chaveDoAlvo`: um repost puro conta como o original).
+export type ItemVisto = { tipo: "poema" | "renga"; id: number };
+
+export function alvoDoItem(item: ItemDoFeed): ItemVisto {
+  if (ehRenga(item)) return { tipo: "renga", id: item.renga.id };
+  const original = item.texto === "" ? item.repost_de : null;
+  return { tipo: "poema", id: original ? original.id : item.id };
+}
+
+// As folhas que apareceram na tela: o Para você e a continuação as pulam nas
+// próximas sessões (backend/app/services/vistos_no_feed.py). Até 100 por vez.
+export function marcarVistosNoFeed(itens: ItemVisto[]): Promise<void> {
+  return apiPost<void>("/feed/vistos", { itens });
 }
 
 // Junta a página nova ao que já veio, um item por poema ou renga: fica a primeira

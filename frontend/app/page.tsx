@@ -6,9 +6,10 @@
 // o padrão, para o caderno nunca começar vazio) e "Seguindo" (quem você segue e
 // os seus); a troca fica no alto da página da esquerda.
 //
-// Como no X, o feed não acaba: quando o Para você não tem mais nada inédito,
-// segue com consagrados e os mais curtidos; no Seguindo, quando acaba o que é de
-// quem você segue, uma folha avisa e o caderno segue com o Para você.
+// Como no X, o feed não acaba: quando o Para você não tem mais nada inédito, uma
+// folha avisa ("você está em dia") e ele segue com consagrados e os mais
+// curtidos; no Seguindo, quando acaba o que é de quem você segue, uma folha
+// avisa e o caderno segue com o Para você.
 //
 // Como no X, a leitura continua de onde parou (lib/sessaoDoFeed.ts): trocar de
 // aba, ir a outra página e voltar, seguir alguém ou recarregar reabre cada aba na
@@ -112,7 +113,6 @@ function Caderno({
     aba,
     BUSCAR[aba],
     FOLHAS_DE_FOLGA,
-    aba === "seguindo",
   );
   // Cada página folheada conta para as dicas do livro (components/DicasDoLivro.tsx).
   const { virou } = useDicasDoLivro();
@@ -133,14 +133,19 @@ function Caderno({
     return n === 0 ? folha : { ...folha, chave: `${folha.chave}-${n}` };
   });
   if (avisoEm !== null && !(fim && itens.length === 0)) {
+    const seguindo = aba === "seguindo";
     folhas.splice(avisoEm, 0, {
-      chave: "fim-dos-seguidos",
-      rotulo: avisoEm === 0 ? "ainda não há poemas de quem você segue" : "você leu tudo de quem segue",
+      chave: seguindo ? "fim-dos-seguidos" : "em-dia",
+      rotulo: !seguindo
+        ? "você está em dia"
+        : avisoEm === 0
+          ? "ainda não há poemas de quem você segue"
+          : "você leu tudo de quem segue",
       esquerda: (
         <div className="pb-4">
           {topo}
           <div className={`${MARGEM_DA_PAGINA} text-tinta-suave`}>
-            <FimDosSeguidos nada={avisoEm === 0} />
+            {seguindo ? <FimDosSeguidos nada={avisoEm === 0} /> : <EmDia />}
           </div>
         </div>
       ),
@@ -233,6 +238,19 @@ function FimDosSeguidos({ nada }: { nada: boolean }) {
           </>
         ) : null}
         Passe a página: daqui em diante, o caderno segue com o Para você.
+      </p>
+    </div>
+  );
+}
+
+// A folha da virada no Para você: acabou o inédito, e o caderno segue com os
+// consagrados e os mais curtidos.
+function EmDia() {
+  return (
+    <div className="pt-16 text-center">
+      <p className="font-serifada text-lg text-tinta italic">você está em dia</p>
+      <p className="mt-2 text-sm">
+        Passe a página: daqui em diante, o caderno segue com os consagrados e os mais curtidos.
       </p>
     </div>
   );

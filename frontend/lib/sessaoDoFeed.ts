@@ -10,8 +10,8 @@
 // porque o "visto" é do front (o backend só sabe o que entregou, e o que uma aba
 // carregou adiantado a pessoa ainda não viu: pular isso esvaziaria o Para você).
 // O cursor de cada aba segue sendo o do backend, que já não repete na aba. O
-// mais curtido da continuação do feed infinito (`subiu_por: "curtidas"`) pode
-// repetir por desenho, e por isso passa pelo filtro sempre.
+// mais curtido e a releitura da continuação do feed infinito (`subiu_por`
+// "curtidas" e "releitura") podem repetir por desenho, e passam pelo filtro sempre.
 //
 // Sem import de valor (só de tipo): os testes transpilam este arquivo sozinho.
 
@@ -62,7 +62,9 @@ export function visiveis(
   aba: Aba,
 ): ItemDoFeed[] {
   return itens.filter(
-    (item) => (item.tipo !== "renga" && item.subiu_por === "curtidas") || (vistos[chave(item)] ?? aba) === aba,
+    (item) =>
+      (item.tipo !== "renga" && (item.subiu_por === "curtidas" || item.subiu_por === "releitura")) ||
+      (vistos[chave(item)] ?? aba) === aba,
   );
 }
 

@@ -10,7 +10,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { chaveDoAlvo, juntarAoFeed } = await import(
+const { alvoDoItem, chaveDoAlvo, juntarAoFeed } = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
 );
 
@@ -81,4 +81,16 @@ test("o mais curtido da continuação repete, como folha nova no fim", () => {
   const atuais = [poema(1), poema(2)];
   const novos = [poema(3), poema(1, { subiu_por: "curtidas" }), poema(1, { subiu_por: "curtidas" })];
   assert.deepEqual(ids(juntarAoFeed(atuais, novos)), ["poema-1", "poema-2", "poema-3", "poema-1", "poema-1"]);
+});
+
+test("a releitura da continuação também repete", () => {
+  const novos = [poema(1, { subiu_por: "releitura" })];
+  assert.deepEqual(ids(juntarAoFeed([poema(1)], novos)), ["poema-1", "poema-1"]);
+});
+
+test("o já visto vai ao backend como o alvo da folha", () => {
+  const original = poema(7);
+  assert.deepEqual(alvoDoItem(poema(9, { texto: "", repost_de: original })), { tipo: "poema", id: 7 });
+  assert.deepEqual(alvoDoItem(poema(10, { texto: "cito", repost_de: original })), { tipo: "poema", id: 10 });
+  assert.deepEqual(alvoDoItem(renga(3, "abriu", [ana])), { tipo: "renga", id: 3 });
 });

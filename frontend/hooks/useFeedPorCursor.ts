@@ -12,14 +12,25 @@
 // vier toda filtrada, o fim continua perto e pede outra, até achar itens. O feed
 // não acaba (só com a rede sem poemas).
 //
-// Com `comAviso` (o Seguindo), `avisoEm` é a folha, entre os `itens`, onde entra
-// o aviso de que acabou o que é de quem a pessoa segue (o `fim_em` do backend):
-// a folha do aviso fica antes de `itens[avisoEm]`, e as posições do caderno
-// contam com ela.
+// `avisoEm` é a folha, entre os `itens`, onde entra o aviso da virada (o
+// `fim_em` do backend: no Seguindo, acabou o que é de quem a pessoa segue; no
+// Para você, o inédito): a folha do aviso fica antes de `itens[avisoEm]`, e as
+// posições do caderno contam com ela.
+//
+// Cada folha que aparece na tela vai para o backend como "já vista"
+// (`marcarVistosNoFeed`), em lotes, para as próximas sessões a pularem.
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { chaveDoAlvo, juntarAoFeed, mensagemDeFalha, type FeedPage } from "@/lib/api";
+import {
+  alvoDoItem,
+  chaveDoAlvo,
+  juntarAoFeed,
+  marcarVistosNoFeed,
+  mensagemDeFalha,
+  type FeedPage,
+  type ItemVisto,
+} from "@/lib/api";
 import {
   abaVazia,
   guardarSessao,
@@ -31,12 +42,32 @@ import {
   type PosicaoNoCaderno,
 } from "@/lib/sessaoDoFeed";
 
-export function useFeedPorCursor(
-  aba: Aba,
-  buscar: (cursor: string | null) => Promise<FeedPage>,
-  folga: number,
-  comAviso: boolean,
-) {
+// O lote de folhas vistas ainda não enviado: sai depois de uma pausa na leitura
+// ou quando enche. Falhar não atrapalha a leitura (o cursor já evita repetir na
+// sessão); o lote só se perde.
+const PAUSA_PARA_ENVIAR_MS = 2000;
+const LOTE_MAXIMO = 100;
+let lote: ItemVisto[] = [];
+let envio: ReturnType<typeof setTimeout> | null = null;
+
+function enviarVistos() {
+  if (envio) clearTimeout(envio);
+  envio = null;
+  const itens = lote;
+  lote = [];
+  if (itens.length > 0) marcarVistosNoFeed(itens).catch(() => {});
+}
+
+function lembrarVisto(item: ItemVisto) {
+  lote.push(item);
+  if (lote.length >= LOTE_MAXIMO) enviarVistos();
+  else {
+    if (envio) clearTimeout(envio);
+    envio = setTimeout(enviarVistos, PAUSA_PARA_ENVIAR_MS);
+  }
+}
+
+export function useFeedPorCursor(aba: Aba, buscar: (cursor: string | null) => Promise<FeedPage>, folga: number) {
   const [estado, setEstado] = useState<EstadoDaAba>(() => sessaoAtual().abas[aba] ?? abaVazia());
   const [vistos, setVistos] = useState(() => sessaoAtual().vistos);
   const [erro, setErro] = useState<string | null>(null);
@@ -47,10 +78,19 @@ export function useFeedPorCursor(
   const itens = useMemo(() => visiveis(estado.itens, chaveDoAlvo, vistos, aba), [estado.itens, vistos, aba]);
   const fimEm = estado.fimEm ?? null;
   const avisoEm = useMemo(
-    () => (comAviso && fimEm !== null ? visiveis(estado.itens.slice(0, fimEm), chaveDoAlvo, vistos, aba).length : null),
-    [comAviso, fimEm, estado.itens, vistos, aba],
+    () => (fimEm !== null ? visiveis(estado.itens.slice(0, fimEm), chaveDoAlvo, vistos, aba).length : null),
+    [fimEm, estado.itens, vistos, aba],
   );
   const folhas = itens.length + (avisoEm === null ? 0 : 1);
+
+  // Ao sair do Início (ou fechar a aba do navegador), manda o lote que faltava.
+  useEffect(() => {
+    window.addEventListener("pagehide", enviarVistos);
+    return () => {
+      window.removeEventListener("pagehide", enviarVistos);
+      enviarVistos();
+    };
+  }, []);
 
   useEffect(() => {
     guardarSessao((sessao) => ({ ...sessao, abas: { ...sessao.abas, [aba]: estado }, vistos }));
@@ -101,7 +141,10 @@ export function useFeedPorCursor(
       );
       const indice = avisoEm === null || posicao.folha < avisoEm ? posicao.folha : posicao.folha - 1;
       const item = posicao.folha === avisoEm ? undefined : itens[indice];
-      if (item) setVistos((atuais) => marcarVisto(atuais, chaveDoAlvo(item), aba));
+      if (item) {
+        setVistos((atuais) => marcarVisto(atuais, chaveDoAlvo(item), aba));
+        lembrarVisto(alvoDoItem(item));
+      }
     },
     [itens, avisoEm, aba],
   );
