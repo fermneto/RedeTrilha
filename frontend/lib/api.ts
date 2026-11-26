@@ -775,14 +775,9 @@ export function alternarNaLista(lista: string[], codigo: string): string[] {
   return lista.includes(codigo) ? lista.filter((c) => c !== codigo) : [...lista, codigo];
 }
 
-// Evento de window disparado depois de seguir ou deixar de seguir alguém: o feed
-// Seguindo, que fica montado na home, recarrega a lista quando o recebe.
-export const EVENTO_SEGUIR_MUDOU = "verso:seguir-mudou";
-
 export async function seguir(username: string, seguindo: boolean): Promise<void> {
   const caminho = `/usuarios/${encodeURIComponent(username)}/follow`;
   await (seguindo ? apiPost<void>(caminho) : apiDelete(caminho));
-  window.dispatchEvent(new Event(EVENTO_SEGUIR_MUDOU));
 }
 
 // ---- Tradução: espelha TraducaoOut (backend/app/schemas/traducao.py) ----
