@@ -3,6 +3,7 @@ import { Literata, Schibsted_Grotesk } from "next/font/google";
 
 import { Layout } from "@/components/Layout";
 import { DESCRICAO, NOME, SITE } from "@/lib/cartao";
+import { SCRIPT_DO_TEMA } from "@/lib/tema";
 import "./globals.css";
 
 // Literata para os poemas: serifada de leitura longa, com eixo de tamanho óptico
@@ -47,7 +48,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${serifada.variable} ${sans.variable}`}>
+    // O data-tema do <html> vem do script, antes da hidratação (lib/tema.ts).
+    <html lang="pt-BR" className={`${serifada.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_DO_TEMA }} />
+      </head>
       <body>
         <Layout>{children}</Layout>
       </body>

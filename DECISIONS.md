@@ -914,6 +914,17 @@ decisão 15.
   nas páginas de publicação (#182). O feed continua sem fim (decisão 3), mas
   se folheia, uma página por vez.
 
+### 20. Modo claro, escuro ou o do sistema
+
+- **Contexto:** o Verso seguia só o tema do sistema; quem tem o sistema escuro
+  não tinha como ler no papel claro, que é o do vídeo de entrega.
+- **Escolha (decisão do Neto):** nas Preferências, "Aparência" com Sistema (o
+  padrão, como antes), Claro e Escuro. As cores são as mesmas de sempre (a
+  paleta clara é a do vídeo); só a escolha passou a ser da pessoa.
+- **Fica no navegador, não na conta:** um script no `<head>` aplica o tema
+  antes da primeira pintura, sem piscar o tema errado, e vale também na tela de
+  entrada. O custo é cada aparelho ter a sua escolha.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo

@@ -3,12 +3,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 import { Caderno } from "@/components/Caderno";
 import { ProvedorDaCapa } from "@/components/CapaDoLivro";
 import { TelaDeEntrada } from "@/components/LayoutDaEntrada";
 import { assinarSessao, ehTelaDeBoasVindas, temToken } from "@/lib/api";
+import { acompanharTema } from "@/lib/tema";
 
 // O cadastro fica limpo e centrado, sem as barras (decisão do Neto). Checagem pelo
 // pathname, e não por um route group app/(auth)/, para nada mudar de pasta.
@@ -21,6 +22,7 @@ const semSessaoNoServidor = () => null;
 // A capa do livro que abre ao entrar (components/CapaDoLivro.tsx) mora aqui, por
 // fora das rotas: ela continua na tela enquanto o login dá lugar ao Caderno.
 export function Layout({ children }: { children: React.ReactNode }) {
+  useEffect(acompanharTema, []);
   return (
     <ProvedorDaCapa>
       <Moldura>{children}</Moldura>
