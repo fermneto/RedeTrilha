@@ -27,7 +27,7 @@ type Props = {
 
 export function FormatoDeEscrita({ atual, aoEscolher, children }: Props) {
   return (
-    <nav aria-label="O que escrever" className="border-b border-borda px-4 py-3">
+    <nav aria-label="O que escrever" className="px-4 py-3">
       <ul className="inline-flex rounded-full border border-borda p-1">
         {FORMATOS.map(({ valor, rotulo, href }) => {
           const ativo = valor === atual;

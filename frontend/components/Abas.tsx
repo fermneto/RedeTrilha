@@ -11,14 +11,12 @@ export function Abas<V extends string>({
   atual,
   aoMudar,
   rotulo,
-  bordaEmCima = false,
   children,
 }: {
   abas: readonly DefinicaoDeAba<V>[];
   atual: V;
   aoMudar: (aba: V) => void;
   rotulo: string;
-  bordaEmCima?: boolean;
   children: (aba: V) => React.ReactNode;
 }) {
   const id = useId();
@@ -45,7 +43,7 @@ export function Abas<V extends string>({
         role="tablist"
         aria-label={rotulo}
         onKeyDown={aoTeclar}
-        className={`flex border-borda ${bordaEmCima ? "border-y" : "border-b"}`}
+        className="flex border-b border-borda"
       >
         {abas.map(({ valor, rotulo }) => {
           const ativa = valor === atual;

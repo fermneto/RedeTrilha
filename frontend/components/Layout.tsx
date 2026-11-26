@@ -5,8 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
-import { ColunaDireita } from "@/components/ColunaDireita";
-import { Nav } from "@/components/Nav";
+import { Caderno } from "@/components/Caderno";
 import { TelaDeEntrada } from "@/components/LayoutDaEntrada";
 import { assinarSessao, ehTelaDeBoasVindas, temToken } from "@/lib/api";
 
@@ -50,15 +49,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Três colunas: navegação à esquerda (só ícones até xl; barra inferior no celular),
-  // a coluna de leitura com ~600 px no meio e a coluna "Descobrir" à direita (de 1100 px).
-  return (
-    <div className="mx-auto flex min-h-dvh max-w-[1265px] justify-center">
-      <Nav />
-      <main className="min-h-dvh w-full min-w-0 max-w-[600px] border-borda pb-[calc(3.25rem+env(safe-area-inset-bottom))] sm:border-x sm:pb-0">
-        {children}
-      </main>
-      <ColunaDireita />
-    </div>
-  );
+  // O caderno: as rotas com navegação são páginas dele (components/Caderno.tsx).
+  return <Caderno>{children}</Caderno>;
 }

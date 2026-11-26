@@ -1,8 +1,10 @@
 "use client";
-// Coluna direita (telas largas): a busca (tags e poetas, a mesma do Explorar),
-// poema do dia, tags em alta e consagrados para seguir. No Explorar, a busca e o
-// "Em alta" já estão no corpo da tela (como no X), então a coluna fica só com os
-// outros dois; abaixo de 1100 px, esses dois vão para o Explorar (DescobrirNoTopo).
+// A página da direita do caderno nas rotas que não desenham as próprias folhas
+// (só na página dupla, de 1024 px): a busca (tags e poetas, a mesma do Explorar),
+// o poema do dia e consagrados para seguir. Pouca coisa por página: as tags em
+// alta ficam no Explorar. No Explorar, a busca já está no corpo da tela, então a
+// página fica só com os outros dois; na página única, esses dois vão para o
+// Explorar (DescobrirNoTopo).
 // Todas as rotas, a da busca inclusive, são protegidas: sem login, a coluna fica vazia.
 // Enquanto carrega, cada bloco mostra o título e o esqueleto do conteúdo; depois,
 // some quando não tem o que mostrar (ou quando a rota falha).
@@ -13,8 +15,7 @@ import { useEffect, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { BuscaDoExplorar } from "@/components/BuscaDoExplorar";
-import { ListaEmAlta, useEmAlta } from "@/components/EmAlta";
-import { EsqueletoDeEmAlta, EsqueletoDePessoas, EsqueletoDoPoemaDoDia } from "@/components/Esqueleto";
+import { EsqueletoDePessoas, EsqueletoDoPoemaDoDia } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Icone } from "@/components/icones/Icone";
 import { TextoFormatado } from "@/components/TextoFormatado";
@@ -43,25 +44,19 @@ export function ColunaDireita() {
   }, [caminho]);
 
   return (
-    <aside
-      aria-label="Descobrir"
-      className="hidden w-[350px] shrink-0 pl-7 min-[1100px]:block"
-    >
-      <div className="sticky top-0 max-h-dvh space-y-4 overflow-y-auto pb-6 [scrollbar-width:thin]">
-        {logado && (
-          <>
-            {noExplorar ? <div aria-hidden="true" className="h-2" /> : <BuscaDoExplorar variante="coluna" />}
-            <PoemaDoDia />
-            {!noExplorar && <EmAlta />}
-            <ConsagradosParaSeguir />
-          </>
-        )}
-      </div>
+    <aside aria-label="Descobrir" className="space-y-8 px-6 pt-10 pb-6 lg:px-10">
+      {logado && (
+        <>
+          {!noExplorar && <BuscaDoExplorar variante="coluna" />}
+          <PoemaDoDia />
+          <ConsagradosParaSeguir />
+        </>
+      )}
     </aside>
   );
 }
 
-// Explorar abaixo de 1100 px, onde esta coluna some. A busca e o "Em alta" ficam
+// Explorar na página única, onde esta página some. A busca e o "Em alta" ficam
 // de fora: o Explorar já tem os dele. Para os poemas não descerem demais, os
 // blocos vêm recolhíveis e fechados.
 export function DescobrirNoTopo() {
@@ -87,10 +82,11 @@ function Bloco({
   children: React.ReactNode;
 }) {
   const caixa = "rounded-2xl border border-borda bg-painel";
+  // Na página do caderno, sem caixa: o título e o conteúdo, separados pelo espaço.
   if (!recolhivel) {
     return (
-      <section className={caixa}>
-        <h2 className="px-4 pt-3 pb-1 text-xl">{titulo}</h2>
+      <section>
+        <h2 className="px-4 pb-1 text-base">{titulo}</h2>
         {children}
       </section>
     );
@@ -164,26 +160,6 @@ function linhasDaPrevia(versos: string[]): number | null {
     if (vazia(fim) && !vazia(fim - 1)) return fim;
   }
   return VERSOS_DO_DIA;
-}
-
-function EmAlta() {
-  const tags = useEmAlta();
-  if (!tags)
-    return (
-      <Bloco titulo="Em alta">
-        <div className="pb-2">
-          <EsqueletoDeEmAlta quantos={5} />
-        </div>
-      </Bloco>
-    );
-  if (tags.length === 0) return null;
-  return (
-    <Bloco titulo="Em alta">
-      <div className="surgir pb-2">
-        <ListaEmAlta tags={tags} />
-      </div>
-    </Bloco>
-  );
 }
 
 // Consagrados que o usuário ainda não segue. /usuarios não filtra por consagrado,

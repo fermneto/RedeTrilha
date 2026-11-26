@@ -7,10 +7,15 @@
 // nível vai sobre eles e mostra o trecho citado; com `verso`, só aparecem as
 // críticas daquele verso.
 // O alvo é um poema ou uma renga (aberta ou fechada): as rotas mudam, as regras não.
+// Como uma conversa de rede social: avatar, nome e @ em cada comentário, as
+// respostas penduradas no fio que desce do avatar de quem foi respondido. Com
+// `campoNoPe` (a página da conversa no livro), o campo de comentar fica preso no
+// pé da página, sempre à vista; sem ele, no alto, antes dos comentários.
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import { Avatar } from "@/components/Avatar";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDeComentarios } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
@@ -50,6 +55,10 @@ type Props = {
   // Filtro da marca no verso: null mostra todos os comentários.
   verso: number | null;
   aoLimparFiltro: () => void;
+  // O campo de comentar preso no pé da página (ver o topo do arquivo).
+  campoNoPe?: boolean;
+  // Quantos comentários o alvo tem, para o título ("Comentários · 12").
+  total?: number;
 };
 
 // Junta listas sem repetir comentário (a primeira página de respostas repete a prévia).
@@ -71,6 +80,8 @@ export function ArvoreComentarios({
   aoLimparSelecao,
   verso,
   aoLimparFiltro,
+  campoNoPe = false,
+  total,
 }: Props) {
   const [raizes, setRaizes] = useState<Comentario[]>([]);
   // Comentários que o usuário acabou de publicar: no topo, mais novo primeiro,
@@ -111,58 +122,76 @@ export function ArvoreComentarios({
     ...raizes.filter((c) => !idsNovos.has(c.id)),
   ];
 
+  const campo = (
+    <FormComentario
+      alvo={alvo}
+      parentId={null}
+      selecao={selecao}
+      trecho={selecao && trechoDosVersos(textoDoPoema, selecao)}
+      aoLimparSelecao={aoLimparSelecao}
+      aoComentar={(novo) => {
+        setMeusNovos((atuais) => [novo, ...atuais]);
+        aoLimparSelecao();
+        aoMudar();
+      }}
+    />
+  );
+
   return (
-    <section id="comentarios" className="space-y-4">
-      <h2 className="text-xl">Comentários</h2>
-      <FormComentario
-        alvo={alvo}
-        parentId={null}
-        selecao={selecao}
-        trecho={selecao && trechoDosVersos(textoDoPoema, selecao)}
-        aoLimparSelecao={aoLimparSelecao}
-        aoComentar={(novo) => {
-          setMeusNovos((atuais) => [novo, ...atuais]);
-          aoLimparSelecao();
-          aoMudar();
-        }}
-      />
-      {verso !== null && (
-        <p className="flex flex-wrap items-center gap-x-2 text-sm text-tinta-suave">
-          <span>Comentários sobre o verso {verso}</span>
-          <span aria-hidden="true">·</span>
-          <button type="button" onClick={aoLimparFiltro} className="cursor-pointer underline hover:text-tinta">
-            ver todos os comentários
+    <section id="comentarios" className={campoNoPe ? "flex flex-1 flex-col" : "space-y-4"}>
+      <h2 className="flex items-baseline gap-2 text-base">
+        Comentários
+        {total !== undefined && total > 0 && (
+          <span className="text-sm font-normal text-tinta-suave tabular-nums">{total}</span>
+        )}
+      </h2>
+      {!campoNoPe && campo}
+      <div className={campoNoPe ? "mt-5 flex-1 space-y-4" : "space-y-4"}>
+        {verso !== null && (
+          <p className="flex flex-wrap items-center gap-x-2 text-sm text-tinta-suave">
+            <span>Comentários sobre o verso {verso}</span>
+            <span aria-hidden="true">·</span>
+            <button type="button" onClick={aoLimparFiltro} className="cursor-pointer underline hover:text-tinta">
+              ver todos os comentários
+            </button>
+          </p>
+        )}
+        {erro && <p className="text-sm text-destaque">{erro}</p>}
+        {visiveis.length === 0 && carregando ? (
+          <EsqueletoDeComentarios />
+        ) : visiveis.length === 0 && !erro ? (
+          <p className="py-6 text-sm text-tinta-suave">
+            Ninguém comentou ainda. Diga o que este poema fez com você, ou selecione versos para comentar um trecho.
+          </p>
+        ) : (
+          <ListaComentarios
+            alvo={alvo}
+            comentarios={visiveis}
+            destacados={idsNovos}
+            nivel={0}
+            euId={euId}
+            aoMudar={aoMudar}
+            aoSumir={(id) => {
+              setMeusNovos((atuais) => atuais.filter((c) => c.id !== id));
+              setRaizes((atuais) => atuais.filter((c) => c.id !== id));
+            }}
+          />
+        )}
+        {cursor && (
+          <button
+            type="button"
+            onClick={() => carregar(cursor)}
+            disabled={carregando}
+            className="min-h-11 cursor-pointer text-sm font-semibold text-destaque hover:underline disabled:opacity-50"
+          >
+            {carregando ? "carregando..." : "carregar mais comentários"}
           </button>
-        </p>
-      )}
-      {erro && <p className="text-sm text-destaque">{erro}</p>}
-      {visiveis.length === 0 && carregando ? (
-        <EsqueletoDeComentarios />
-      ) : visiveis.length === 0 && !erro ? (
-        <p className="text-sm text-tinta-suave">Ainda não há comentários.</p>
-      ) : (
-        <ListaComentarios
-          alvo={alvo}
-          comentarios={visiveis}
-          destacados={idsNovos}
-          nivel={0}
-          euId={euId}
-          aoMudar={aoMudar}
-          aoSumir={(id) => {
-            setMeusNovos((atuais) => atuais.filter((c) => c.id !== id));
-            setRaizes((atuais) => atuais.filter((c) => c.id !== id));
-          }}
-        />
-      )}
-      {cursor && (
-        <button
-          type="button"
-          onClick={() => carregar(cursor)}
-          disabled={carregando}
-          className="cursor-pointer text-sm text-tinta-suave underline hover:text-tinta disabled:opacity-50"
-        >
-          {carregando ? "carregando..." : "carregar mais comentários"}
-        </button>
+        )}
+      </div>
+      {campoNoPe && (
+        // Preso no pé da página que rola: o papel por baixo esconde a conversa
+        // que passa atrás dele, com um degradê curto no alto.
+        <div className="pe-da-conversa sticky bottom-0 z-10 mt-6 pt-5 pb-1">{campo}</div>
       )}
     </section>
   );
@@ -186,7 +215,7 @@ type PropsLista = {
 
 function ListaComentarios({ comentarios, destacados, ...resto }: PropsLista) {
   return (
-    <ul className="space-y-3">
+    <ul className="space-y-5">
       {comentarios.map((c) => (
         <li key={c.id}>
           <ItemComentario comentario={c} novo={destacados?.has(c.id) ?? false} {...resto} />
@@ -259,70 +288,88 @@ function ItemComentario({
     setTotal((n) => n - 1);
   }
 
-  const acao = "cursor-pointer text-xs text-tinta-suave hover:text-tinta disabled:opacity-50";
-  // Até NIVEL_MAXIMO_DE_RECUO cada nível recua; depois, o recuo negativo anula o
-  // da linha e as respostas alinham no 4º nível, com a linha sobre a do pai.
-  const recuo =
-    nivel + 1 <= NIVEL_MAXIMO_DE_RECUO ? "ml-4" : "-ml-[calc(0.75rem+1px)]";
+  const acao = "-my-2 min-h-9 cursor-pointer text-xs font-semibold text-tinta-suave hover:text-tinta disabled:opacity-50";
+  // Até NIVEL_MAXIMO_DE_RECUO cada nível recua para baixo do texto do pai; depois,
+  // as respostas alinham com o pai (o "respondendo a @fulano" diz a quem).
+  const recua = nivel + 1 <= NIVEL_MAXIMO_DE_RECUO;
+  const temFio = respostas.length > 0 || faltam > 0 || (respondendo && !removido);
   return (
-    <div>
-      <div
-        className={
-          novo
-            ? "rounded-md border border-destaque/40 bg-destaque/5 p-3"
-            : "rounded-md border border-borda bg-papel-alto p-3"
-        }
-      >
-        {novo && <p className="mb-1 text-xs text-destaque">seu comentário</p>}
-        {comentario.ancora && <TrechoCitado ancora={comentario.ancora} />}
-        {nivel > NIVEL_MAXIMO_DE_RECUO && autorDoPai !== undefined && (
-          <p className="mb-1 text-xs text-tinta-suave">
-            ↳ respondendo a{" "}
-            {autorDoPai ? (
-              <Link href={`/u/${autorDoPai.username}`} className="hover:underline">
-                @{autorDoPai.username}
-              </Link>
-            ) : (
-              "um comentário removido"
-            )}
-          </p>
-        )}
+    <div className="relative">
+      {/* O fio da conversa: desce do avatar até as respostas. */}
+      {temFio && recua && (
+        <span aria-hidden="true" className="absolute top-10 bottom-0 left-4 w-px -translate-x-1/2 bg-borda" />
+      )}
+      <div className={`flex gap-3 ${novo ? "-mx-2 rounded-lg bg-destaque/6 px-2 py-2" : ""}`}>
         {removido || !autor ? (
-          <p className="text-sm text-tinta-suave italic">comentário removido</p>
+          <span aria-hidden="true" className="h-8 w-8 shrink-0 rounded-full border border-dashed border-borda" />
         ) : (
-          <>
-            <p className="text-xs text-tinta-suave">
-              <NomeAutor usuario={autor} className="font-medium text-tinta" />{" "}
-              @{autor.username} ·{" "}
-              <time dateTime={comentario.created_at}>{formatarData(comentario.created_at)}</time>
-            </p>
-            <p className="mt-1 text-sm whitespace-pre-wrap">{comentario.texto}</p>
-            <div className="mt-1 flex gap-4">
-              <button type="button" onClick={() => setRespondendo((r) => !r)} className={acao}>
-                {respondendo ? "cancelar" : "responder"}
-              </button>
-              {euId === autor.id && (
-                // "apagar" pede confirmação ali mesmo: vira "apagar? sim / não".
-                <ConfirmacaoInline
-                  pergunta="apagar?"
-                  rotulo="apagar"
-                  classeDoBotao={acao}
-                  aoConfirmar={apagar}
-                  desabilitado={ocupado}
-                  compacta
-                  devolverFoco={false}
-                />
-              )}
-            </div>
-          </>
+          <Link href={`/u/${autor.username}`} tabIndex={-1} aria-hidden="true" className="relative shrink-0">
+            <Avatar usuario={autor} tamanho="p" />
+          </Link>
         )}
-        {erro && <p className="mt-1 text-xs text-destaque">{erro}</p>}
+        <div className="min-w-0 flex-1">
+          {nivel > NIVEL_MAXIMO_DE_RECUO && autorDoPai !== undefined && (
+            <p className="mb-0.5 text-xs text-tinta-suave">
+              respondendo a{" "}
+              {autorDoPai ? (
+                <Link href={`/u/${autorDoPai.username}`} className="hover:underline">
+                  @{autorDoPai.username}
+                </Link>
+              ) : (
+                "um comentário removido"
+              )}
+            </p>
+          )}
+          {removido || !autor ? (
+            <p className="pt-1.5 text-sm text-tinta-suave italic">comentário removido</p>
+          ) : (
+            <>
+              <p className="flex min-w-0 flex-wrap items-baseline gap-x-1.5 text-[0.8125rem] leading-5 text-tinta-suave">
+                <NomeAutor usuario={autor} className="font-semibold text-tinta" />
+                <span className="hidden truncate sm:inline">@{autor.username}</span>
+                <span aria-hidden="true">·</span>
+                <time dateTime={comentario.created_at} className="tabular-nums">
+                  {formatarData(comentario.created_at)}
+                </time>
+                {novo && <span className="font-semibold text-destaque">· seu comentário</span>}
+              </p>
+              {comentario.ancora && <TrechoCitado ancora={comentario.ancora} />}
+              <p className="mt-0.5 text-[0.9375rem] leading-relaxed break-words whitespace-pre-wrap">
+                {comentario.texto}
+              </p>
+              <div className="mt-1.5 flex gap-5">
+                <button type="button" onClick={() => setRespondendo((r) => !r)} className={acao}>
+                  {respondendo ? "cancelar" : "responder"}
+                </button>
+                {total > 0 && !respondendo && respostas.length === 0 && (
+                  <span className="text-xs text-tinta-suave">
+                    {total} {total === 1 ? "resposta" : "respostas"}
+                  </span>
+                )}
+                {euId === autor.id && (
+                  // "apagar" pede confirmação ali mesmo: vira "apagar? sim / não".
+                  <ConfirmacaoInline
+                    pergunta="apagar?"
+                    rotulo="apagar"
+                    classeDoBotao={acao}
+                    aoConfirmar={apagar}
+                    desabilitado={ocupado}
+                    compacta
+                    devolverFoco={false}
+                  />
+                )}
+              </div>
+            </>
+          )}
+          {erro && <p className="mt-1 text-xs text-destaque">{erro}</p>}
+        </div>
       </div>
       {respondendo && !removido && (
-        <div className="mt-2 ml-4">
+        <div className={`mt-3 ${recua ? "pl-11" : ""}`}>
           <FormComentario
             alvo={alvo}
             parentId={comentario.id}
+            paraQuem={autor?.username}
             aoComentar={(novo) => {
               setRespostas((atuais) => semRepetir(atuais, [novo]));
               setTotal((n) => n + 1);
@@ -333,7 +380,7 @@ function ItemComentario({
         </div>
       )}
       {(respostas.length > 0 || faltam > 0) && (
-        <div className={`mt-3 ${recuo} space-y-2 border-l border-borda pl-3`}>
+        <div className={`mt-4 space-y-4 ${recua ? "pl-11" : ""}`}>
           <ListaComentarios
             alvo={alvo}
             comentarios={respostas}
@@ -344,8 +391,8 @@ function ItemComentario({
             aoSumir={removerResposta}
           />
           {faltam > 0 && cursor !== null && (
-            <button type="button" onClick={verMais} disabled={ocupado} className={acao}>
-              {ocupado ? "carregando..." : `ver mais respostas (${faltam})`}
+            <button type="button" onClick={verMais} disabled={ocupado} className={`${acao} text-destaque`}>
+              {ocupado ? "carregando..." : `ver mais ${faltam === 1 ? "1 resposta" : `${faltam} respostas`}`}
             </button>
           )}
         </div>
@@ -357,7 +404,7 @@ function ItemComentario({
 // O trecho que a crítica comenta, acima do texto dela, com as quebras do poema.
 function TrechoCitado({ ancora }: { ancora: Ancora }) {
   return (
-    <figure className="mb-2 border-l-2 border-destaque/50 pl-3">
+    <figure className="my-1.5 border-l-2 border-destaque/50 pl-3">
       <figcaption className="text-xs text-tinta-suave">
         {referenciaDosVersos({ inicio: ancora.verso_inicio, fim: ancora.verso_fim })}
       </figcaption>
@@ -375,6 +422,7 @@ function FormComentario({
   selecao = null,
   trecho = null,
   aoLimparSelecao,
+  paraQuem,
 }: {
   alvo: AlvoDosComentarios;
   parentId: number | null;
@@ -383,6 +431,8 @@ function FormComentario({
   selecao?: SelecaoDeVersos | null;
   trecho?: string | null;
   aoLimparSelecao?: () => void;
+  // Na resposta: o @ de quem é respondido, no placeholder.
+  paraQuem?: string;
 }) {
   const [texto, setTexto] = useState("");
   const [enviando, setEnviando] = useState(false);
@@ -406,10 +456,21 @@ function FormComentario({
     }
   }
 
+  const rotulo =
+    parentId !== null
+      ? paraQuem
+        ? `Responder a @${paraQuem}`
+        : "Sua resposta"
+      : selecao
+        ? `Comente ${selecao.inicio === selecao.fim ? "o" : "os"} ${referenciaDosVersos(selecao)}`
+        : alvo.tipo === "poema"
+          ? "Comente o poema"
+          : "Comente a renga";
+
   return (
     <form onSubmit={enviar} className="space-y-2">
       {selecao && trecho !== null && (
-        <div className="rounded-md border border-borda bg-papel-alto p-3">
+        <div className="rounded-lg border border-borda bg-papel-alto p-3">
           <TrechoCitado ancora={{ verso_inicio: selecao.inicio, verso_fim: selecao.fim, trecho }} />
           <button
             type="button"
@@ -420,31 +481,27 @@ function FormComentario({
           </button>
         </div>
       )}
-      <textarea
-        id={parentId === null ? ID_DO_CAMPO_DE_COMENTARIO : undefined}
-        value={texto}
-        onChange={(e) => setTexto(e.target.value)}
-        required
-        rows={parentId === null ? 3 : 2}
-        placeholder={
-          parentId !== null
-            ? "Sua resposta"
-            : selecao
-              ? `Comente ${selecao.inicio === selecao.fim ? "o" : "os"} ${referenciaDosVersos(selecao)}`
-              : alvo.tipo === "poema"
-                ? "Comente o poema"
-                : "Comente a renga"
-        }
-        className="w-full rounded border border-borda bg-papel px-3 py-2 text-sm text-tinta"
-      />
+      {/* O campo cresce com o texto (field-sizing), do tamanho de uma linha até seis. */}
+      <div className="flex items-end gap-2 rounded-2xl border border-borda bg-papel-alto py-1 pr-1 pl-4 transition-colors duration-150 focus-within:border-destaque">
+        <textarea
+          id={parentId === null ? ID_DO_CAMPO_DE_COMENTARIO : undefined}
+          value={texto}
+          onChange={(e) => setTexto(e.target.value)}
+          required
+          rows={1}
+          aria-label={rotulo}
+          placeholder={rotulo}
+          className="max-h-40 min-h-10 flex-1 resize-none bg-transparent py-2 text-[0.9375rem] text-tinta outline-none [field-sizing:content]"
+        />
+        <button
+          type="submit"
+          disabled={enviando || !texto.trim()}
+          className="h-9 shrink-0 cursor-pointer rounded-full bg-tinta px-4 text-sm font-semibold text-papel transition-opacity duration-150 disabled:cursor-default disabled:opacity-35"
+        >
+          {enviando ? "enviando..." : parentId === null ? "Comentar" : "Responder"}
+        </button>
+      </div>
       {erro && <p className="text-xs text-destaque">{erro}</p>}
-      <button
-        type="submit"
-        disabled={enviando}
-        className="cursor-pointer rounded bg-tinta px-3 py-1.5 text-sm text-papel disabled:opacity-50"
-      >
-        {enviando ? "enviando..." : parentId === null ? "comentar" : "responder"}
-      </button>
     </form>
   );
 }

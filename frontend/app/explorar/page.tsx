@@ -139,9 +139,9 @@ function Explorar() {
         logado && <EmAltaDoExplorar />
       )}
 
-      {/* O resto da coluna direita, quando ela some (abaixo de 1100 px). */}
+      {/* O resto da página Descobrir, quando ela some (na página única). */}
       {logado && !tag && (
-        <div className="space-y-3 border-b border-borda px-4 py-4 empty:hidden min-[1100px]:hidden">
+        <div className="space-y-3 border-b border-borda px-4 py-4 empty:hidden lg:hidden">
           <DescobrirNoTopo />
         </div>
       )}
