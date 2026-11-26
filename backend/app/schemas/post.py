@@ -1,9 +1,10 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.pagina import Pagina
+from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 
 FORMAS = [
@@ -39,10 +40,18 @@ class PostCreate(BaseModel):
     idioma: str | None = IDIOMA_PADRAO
     # Com texto, é citação do poema `repost_de_id` (repost puro é POST /posts/{id}/repostar).
     repost_de_id: int | None = None
+    # Com texto, é citação da renga `renga_citada_id`. Um poema cita um poema ou uma renga.
+    renga_citada_id: int | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)
     _idioma = field_validator("idioma")(validar_idioma)
+
+    @model_validator(mode="after")
+    def _cita_uma_coisa_so(self) -> "PostCreate":
+        if self.repost_de_id is not None and self.renga_citada_id is not None:
+            raise ValueError("o poema cita um poema ou uma renga, não os dois")
+        return self
 
 
 class PostOut(BaseModel):
@@ -67,8 +76,12 @@ class PostOut(BaseModel):
     repost_de: "PostOut | None" = None
     # Citação de um poema que o autor apagou: `repost_de` vem None.
     repost_removido: bool = False
-    # Citação de um poema de quem bloqueou quem vê: `repost_de` vem None ("poema indisponível").
+    # Citação de um poema (ou de uma renga) de quem bloqueou quem vê: `repost_de`
+    # (ou `renga_citada`) vem None ("poema indisponível").
     repost_indisponivel: bool = False
+    # Citação de uma renga: o id e a renga, com as estrofes (um nível, como o `repost_de`).
+    renga_citada_id: int | None = None
+    renga_citada: RengaDetalhe | None = None
     tags: list[str] = []
     # Só no feed: quem repostou o poema (repost puro), quem repostou por último primeiro.
     repostado_por: list[UserOut] = []
