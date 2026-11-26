@@ -12,10 +12,12 @@ from app.models.post import Post
 from app.models.renga import EstrofeRenga
 from app.models.user import User
 from app.schemas.feed import FeedPage
+from app.schemas.preferencia import Preferencias
 from app.schemas.user import PerfilOut, PerfilUpdate, UserOut
 from app.services.feed import pagina_dos_autores
 from app.services.follows import contar_seguidores, contar_seguindo
 from app.services import bloqueios
+from app.services import preferencias
 from app.services.users import buscar_por_username
 
 
@@ -49,6 +51,19 @@ def poemas(
     return pagina_dos_autores(
         db, [pessoa.id], usuario, offset, limit, cursor, com_encerramentos=False
     )
+
+
+def gostos(db: Session, username: str, usuario: User) -> Preferencias:
+    """As preferências do onboarding da pessoa, públicas no perfil (mesmo formato do
+    `GET /preferencias`, só os códigos: os rótulos vêm de `/preferencias/opcoes`).
+    Mesma regra de bloqueio dos poemas: quem me bloqueou dá 404; quem eu bloqueei
+    vem vazio. Consagrado não tem linha nas preferências: vem vazio. Sem o lugar
+    se a pessoa desligou "mostrar meu lugar no perfil"."""
+    pessoa = buscar_por_username(db, username)
+    bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
+    if bloqueios.bloqueou(db, usuario.id, pessoa.id):
+        return Preferencias()
+    return preferencias.publicas(db, pessoa, usuario)
 
 
 def poemas_por_autor():
