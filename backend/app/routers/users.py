@@ -8,6 +8,7 @@ from app.db import get_db
 from app.deps import Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.feed import FeedPage
+from app.schemas.preferencia import Preferencias
 from app.schemas.user import PerfilOut, PerfilUpdate, UserPage
 from app.services import perfil
 from app.services import users as service
@@ -55,3 +56,13 @@ def poemas_do_perfil(
     db: Session = Depends(get_db),
 ):
     return perfil.poemas(db, username, user, offset, limit, cursor)
+
+
+# Os gostos (preferências do onboarding) são públicos no perfil.
+@router.get("/{username}/gostos", response_model=Preferencias)
+def gostos_do_perfil(
+    username: str,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return perfil.gostos(db, username, user)

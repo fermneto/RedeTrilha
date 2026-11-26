@@ -1,5 +1,6 @@
 "use client";
-// Cabeçalho do perfil: avatar, nome, selo de consagrado, bio, contadores e a ação
+// Cabeçalho do perfil: avatar, nome, selo de consagrado, bio, contadores, os gostos
+// (PerfilGostos) e a ação
 // (Seguir/Deixar de seguir para os outros; Editar perfil e os ajustes da conta,
 // com Preferências e Sair, para o próprio). Para
 // quem não é consagrado (que não tem login), também "Mensagem", que abre a conversa,
@@ -12,6 +13,7 @@ import { Avatar } from "@/components/Avatar";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { MenuDoPerfil } from "@/components/MenuDoPerfil";
+import { PerfilGostos } from "@/components/PerfilGostos";
 import { SeloConsagrado } from "@/components/SeloConsagrado";
 import {
   abrirConversa,
@@ -160,6 +162,9 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBlo
         <Contador n={perfil.seguidores} singular="seguidor" plural="seguidores" />
         <Contador n={perfil.seguindo} singular="seguindo" plural="seguindo" />
       </ul>
+
+      {/* Consagrado não tem preferências (não tem login); quem eu bloqueei, também não. */}
+      {!perfil.consagrado && !bloqueei && <PerfilGostos username={perfil.username} proprio={proprio} />}
 
       {podeBloquear &&
         (bloqueei ? (

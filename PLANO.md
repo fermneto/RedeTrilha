@@ -274,6 +274,14 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   `GET /preferencias/opcoes` 🔒 devolve o vocabulário (escolas com rótulo,
   formas, países e UFs). `ESCOLAS` (15 códigos) fica em `schemas/escola.py`;
   países (ISO 3166-1 alfa-2) e UFs em `schemas/regiao.py`.
+- Os gostos são públicos (#181): `GET /usuarios/{username}/gostos` 🔒 devolve
+  as preferências da pessoa no mesmo formato de `GET /preferencias` (só
+  códigos; rótulos de `/preferencias/opcoes`), com o bloqueio dos poemas do
+  perfil (404 para o bloqueado, vazio para quem bloqueou). O campo
+  `mostrar_lugar` (padrão `true`) entra no `GET`/`PUT /preferencias` e fica na
+  tabela nova `privacidade_dos_gostos` (`user_id` PK, `mostrar_lugar`; sem
+  linha = `true`), sem coluna nova em `preferencias`. Com `false`, a rota dos
+  gostos sai com `pais` e `uf` nulos para os outros; a própria pessoa vê tudo.
 - Tabela `atributos_consagrado` (`user_id` PK, `escolas` JSON, `pais`): o
   importador grava os campos opcionais `escolas` e `pais` do JSON do consagrado
   (`docs/consagrados.md`).

@@ -77,7 +77,13 @@ function BoasVindas() {
   const [indice, setIndice] = useState(() => passoInicial(passos, params.get("passo")));
   const passo = passos[indice];
   const [opcoes, setOpcoes] = useState<OpcoesDePreferencias | null>(null);
-  const [prefs, setPrefs] = useState<Preferencias>({ escolas: [], formas: [], pais: null, uf: null });
+  const [prefs, setPrefs] = useState<Preferencias>({
+    escolas: [],
+    formas: [],
+    pais: null,
+    uf: null,
+    mostrar_lugar: true,
+  });
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const ultimo = indice === passos.length - 1;
@@ -320,6 +326,23 @@ function Regiao({
               </option>
             ))}
           </select>
+        </label>
+      )}
+      {/* Os gostos são públicos no perfil; o lugar pode ficar só para a pessoa. */}
+      {prefs.pais && (
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm">
+          <input
+            type="checkbox"
+            checked={prefs.mostrar_lugar}
+            onChange={(e) => aoMudar({ ...prefs, mostrar_lugar: e.target.checked })}
+            className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[var(--color-destaque)]"
+          />
+          <span>
+            <span className="font-semibold">mostrar meu lugar no perfil</span>
+            <span className="block text-tinta-suave">
+              Desligado, o país e o estado não aparecem nos seus gostos para quem visita o perfil.
+            </span>
+          </span>
         </label>
       )}
     </div>

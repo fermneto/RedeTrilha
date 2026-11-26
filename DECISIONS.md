@@ -413,6 +413,12 @@ decisão 15.
   - **No "Para você", um bloco "Quem seguir"** com 3 perfis aparece a cada 10
     itens, com "ver mais". A tela "Quem seguir" tem no topo uma busca por nome
     ou @, a mesma do Acervo (decisão 12).
+  - **Os gostos são públicos no perfil** (#181): escolas, formas e lugar
+    aparecem na página da esquerda, para todos, como uma apresentação de quem
+    escreve. A forma "outro" fica de fora, e cada forma leva aos poemas dela
+    no Explorar. O lugar é o dado mais pessoal: o ajuste "mostrar meu lugar no
+    perfil" (ligado por padrão) esconde o país e o estado dos outros. No
+    próprio perfil sem gostos, um convite discreto para marcar.
 - **O que cortamos e por quê:**
   - **A recomendação pelo histórico de leitura e de curtidas:** seria um
     ranking por engajamento com outro nome, e pediria guardar o que cada pessoa

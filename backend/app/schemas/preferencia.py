@@ -17,6 +17,8 @@ class Preferencias(BaseModel):
     formas: list[str] = []
     pais: str | None = None
     uf: str | None = None
+    # O país e a UF aparecem nos gostos públicos do perfil? Padrão: sim.
+    mostrar_lugar: bool = True
 
     _escolas = field_validator("escolas")(validar_escolas)
     _pais = field_validator("pais")(validar_pais)
