@@ -229,6 +229,40 @@ def test_feed_pagina_por_cursor_com_reposts_de_renga(client, eu):
     assert len(vistos) == 6
 
 
+def test_repost_de_renga_no_para_voce_tambem_de_quem_nao_segue(client, eu):
+    renga_id = _renga(client, eu)
+    client.post(f"/rengas/{renga_id}/encerrar", headers=eu("ana"))
+    # Fechada, a renga não sobe pelas estrofes no "Para você": só pelo repost.
+    assert ("renga", renga_id) not in [
+        (i["tipo"], i.get("renga", {}).get("id")) for i in client.get("/feed/para-voce", headers=eu("caio")).json()["items"]
+    ]
+    client.post(f"/rengas/{renga_id}/repostar", headers=eu("dani"))
+    client.post(f"/rengas/{renga_id}/repostar", headers=eu("bia"))
+
+    corpo = client.get("/feed/para-voce", headers=eu("caio")).json()
+    assert _resumo_do_feed(corpo)[0] == ("renga", renga_id, "repostou", ["bia", "dani"])
+    assert [i for i in corpo["items"] if i["tipo"] == "renga"] == corpo["items"][:1]
+
+
+def test_para_voce_pagina_por_cursor_com_reposts_de_renga(client, eu):
+    for _ in range(3):
+        renga_id = _renga(client, eu)
+        client.post(f"/rengas/{renga_id}/repostar", headers=eu("dani"))
+        client.post("/posts", json={"texto": f"poema {renga_id}"}, headers=eu("dani"))
+
+    vistos, cursor = [], None
+    while True:
+        params = {"limit": 2, **({"cursor": cursor} if cursor else {})}
+        corpo = client.get("/feed/para-voce", params=params, headers=eu("caio")).json()
+        vistos += _resumo_do_feed(corpo)
+        cursor = corpo["proximo_cursor"]
+        if cursor is None:
+            break
+    todos = client.get("/feed/para-voce", params={"limit": 100}, headers=eu("caio")).json()
+    assert vistos == _resumo_do_feed(todos)
+    assert len(vistos) == 6
+
+
 # ---------- citar ----------
 
 
