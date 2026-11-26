@@ -286,8 +286,12 @@ export type Post = {
   repostei: boolean;
   repost_de: Post | null;
   repost_removido: boolean;
-  // Citação de um poema de quem bloqueou quem vê: repost_de vem null ("poema indisponível").
+  // Citação de um poema (ou renga) de quem bloqueou quem vê: repost_de (ou
+  // renga_citada) vem null ("poema indisponível").
   repost_indisponivel?: boolean;
+  // Citação de uma renga: o id e a renga com as estrofes (um nível, como o repost_de).
+  renga_citada_id?: number | null;
+  renga_citada?: RengaDetalhe | null;
   tags: string[];
   // Só no feed: quem repostou (repost puro), quem repostou por último primeiro.
   repostado_por: User[];
@@ -336,6 +340,20 @@ export type ComentarioPage = {
 // (/rengas/{id}/comentarios). As regras e o formato são os mesmos.
 export type AlvoDosComentarios = { tipo: "poema" | "renga"; id: number };
 
+// O que recebe as ações (curtir, repostar, citar, guardar, enviar): um poema ou
+// uma renga, que desde #171 têm as mesmas.
+export type Alvo = AlvoDosComentarios;
+
+// /posts/{id} ou /rengas/{id}: a base das rotas de curtir e repostar.
+export function caminhoDoAlvo({ tipo, id }: Alvo): string {
+  return tipo === "poema" ? `/posts/${id}` : `/rengas/${id}`;
+}
+
+// O compositor citando o poema (?citar=) ou a renga (?citar_renga=).
+export function caminhoDaCitacao({ tipo, id }: Alvo): string {
+  return tipo === "poema" ? `/escrever?citar=${id}` : `/escrever?citar_renga=${id}`;
+}
+
 export function caminhoDosComentarios({ tipo, id }: AlvoDosComentarios): string {
   return tipo === "poema" ? `/posts/${id}/comentarios` : `/rengas/${id}/comentarios`;
 }
@@ -353,6 +371,8 @@ export type NovoPoema = {
   // ISO 639-1; null = outra língua (desconhecida). Sem o campo, o backend usa "pt".
   idioma?: string | null;
   repost_de_id?: number;
+  // Citação de uma renga; um poema cita um poema ou uma renga, não os dois.
+  renga_citada_id?: number;
 };
 
 // Línguas do seletor do compositor, português primeiro (o padrão). "outra" manda null.
@@ -509,12 +529,14 @@ export function apagarPoema(id: number): Promise<void> {
   return apiDelete(`/posts/${id}`);
 }
 
-export function curtir(id: number, curtido: boolean): Promise<void> {
-  return curtido ? apiPost<void>(`/posts/${id}/curtir`) : apiDelete(`/posts/${id}/curtir`);
+export function curtir(alvo: Alvo, curtido: boolean): Promise<void> {
+  const caminho = `${caminhoDoAlvo(alvo)}/curtir`;
+  return curtido ? apiPost<void>(caminho) : apiDelete(caminho);
 }
 
-export function repostar(id: number, repostado: boolean): Promise<void> {
-  return repostado ? apiPost<void>(`/posts/${id}/repostar`) : apiDelete(`/posts/${id}/repostar`);
+export function repostar(alvo: Alvo, repostado: boolean): Promise<void> {
+  const caminho = `${caminhoDoAlvo(alvo)}/repostar`;
+  return repostado ? apiPost<void>(caminho) : apiDelete(caminho);
 }
 
 function paginaDeComentarios(caminho: string, cursor: string | null, limit: number) {
@@ -817,12 +839,12 @@ export type Antologia = {
   // Privada só existe para o dono: para os outros, o backend devolve 404.
   publica: boolean;
   created_at: string;
-  // Quantos poemas a antologia tem.
+  // Quantos poemas a antologia tem (a renga conta como um).
   qtd: number;
 };
 
-// Os poemas vêm na ordem em que foram adicionados.
-export type AntologiaDetalhe = Antologia & { poemas: Post[] };
+// Os poemas e as rengas vêm na ordem em que foram adicionados, cada um na sua lista.
+export type AntologiaDetalhe = Antologia & { poemas: Post[]; rengas: RengaDetalhe[] };
 
 export type NovaAntologia = { nome: string; descricao?: string | null; publica?: boolean };
 
@@ -834,16 +856,18 @@ export function listarMinhasAntologias(offset = 0, limit = 100): Promise<Page<An
   return apiGet<Page<Antologia>>(`/antologias?offset=${offset}&limit=${limit}`);
 }
 
-// As minhas, cada uma dizendo se o poema está nela (repost puro conta como o original).
+// As minhas, cada uma dizendo se o poema (ou a renga) está nela (repost puro
+// conta como o original).
 export type AntologiaMarcada = Antologia & { contem: boolean };
 
 export function listarMinhasAntologiasMarcando(
-  postId: number,
+  alvo: Alvo,
   offset = 0,
   limit = 100,
 ): Promise<Page<AntologiaMarcada>> {
+  const campo = alvo.tipo === "poema" ? "post_id" : "renga_id";
   return apiGet<Page<AntologiaMarcada>>(
-    `/antologias?post_id=${postId}&offset=${offset}&limit=${limit}`,
+    `/antologias?${campo}=${alvo.id}&offset=${offset}&limit=${limit}`,
   );
 }
 
@@ -881,10 +905,11 @@ export function apagarAntologia(id: number): Promise<void> {
 }
 
 // Idempotente nos dois sentidos: adicionar de novo não duplica, tirar o que não está não falha.
-export function marcarNaAntologia(antologiaId: number, postId: number, dentro: boolean): Promise<void> {
-  return dentro
-    ? apiPost<void>(`/antologias/${antologiaId}/poemas`, { post_id: postId })
-    : apiDelete(`/antologias/${antologiaId}/poemas/${postId}`);
+export function marcarNaAntologia(antologiaId: number, alvo: Alvo, dentro: boolean): Promise<void> {
+  const lista = alvo.tipo === "poema" ? "poemas" : "rengas";
+  if (!dentro) return apiDelete(`/antologias/${antologiaId}/${lista}/${alvo.id}`);
+  const corpo = alvo.tipo === "poema" ? { post_id: alvo.id } : { renga_id: alvo.id };
+  return apiPost<void>(`/antologias/${antologiaId}/${lista}`, corpo);
 }
 
 // ---- Acervo: espelha backend/app/schemas/acervo.py ----
@@ -1024,6 +1049,12 @@ export type Renga = {
   autores: User[];
   // Comentários e respostas na renga, como o `comentarios` do poema.
   comentarios: number;
+  // Como no Post: curtidas, reposts (os puros e os poemas que citam a renga) e se
+  // você curtiu ou repostou.
+  curtidas: number;
+  reposts: number;
+  curti: boolean;
+  repostei: boolean;
 };
 
 export type Estrofe = {
@@ -1088,11 +1119,13 @@ export function convidarParaRenga(id: number, usernames: string[]): Promise<Reng
 
 // Renga no feed e no perfil (RengaNoFeed em backend/app/schemas/feed.py), como um
 // repost no X: o rótulo é "fulano abriu uma renga" (o criador, sempre), "fulano
-// escreveu uma estrofe" ou "fulano encerrou a renga".
+// escreveu uma estrofe", "fulano encerrou a renga" ou "fulano repostou".
+export type AtividadeDaRenga = "abriu" | "escreveu" | "encerrou" | "repostou";
+
 export type RengaNoFeed = {
   tipo: "renga";
   renga: RengaDetalhe;
-  atividade: "abriu" | "escreveu" | "encerrou";
+  atividade: AtividadeDaRenga;
   // Os seguidos (ou você) do rótulo, quem fez por último primeiro.
   por: User[];
 };
@@ -1301,6 +1334,11 @@ export function caminhoDaCriticaNaRenga(rengaId: number, selecao: SelecaoDeVerso
   return `/rengas/${rengaId}?${parametroDosVersos(selecao)}`;
 }
 
+// "citar estes versos" da renga: o compositor citando a renga, com os versos no texto.
+export function caminhoDaCitacaoDeVersosDaRenga(rengaId: number, trecho: string): string {
+  return `/escrever?${new URLSearchParams({ citar_renga: String(rengaId), versos: trecho })}`;
+}
+
 function parametroDosVersos({ inicio, fim }: SelecaoDeVersos): string {
   return `versos=${inicio === fim ? inicio : `${inicio}-${fim}`}`;
 }
@@ -1397,6 +1435,8 @@ export type Mensagem = {
   texto: string;
   post: Post | null;
   post_removido: boolean;
+  // A renga compartilhada, com as estrofes.
+  renga?: RengaDetalhe | null;
   created_at: string;
 };
 
@@ -1459,8 +1499,10 @@ export function buscarMensagens(
   return apiGet<MensagemPage>(`/mensagens/conversas/${id}/mensagens?${params}`);
 }
 
-export function enviarMensagem(id: number, texto: string, postId: number | null = null): Promise<Mensagem> {
-  return apiPost<Mensagem>(`/mensagens/conversas/${id}/mensagens`, { texto, post_id: postId });
+// Com `alvo`, a mensagem leva o poema (post_id) ou a renga (renga_id).
+export function enviarMensagem(id: number, texto: string, alvo: Alvo | null = null): Promise<Mensagem> {
+  const anexo = alvo === null ? {} : alvo.tipo === "poema" ? { post_id: alvo.id } : { renga_id: alvo.id };
+  return apiPost<Mensagem>(`/mensagens/conversas/${id}/mensagens`, { texto, ...anexo });
 }
 
 export function marcarLida(id: number, ate?: number): Promise<void> {
@@ -1498,9 +1540,11 @@ export function previaDaMensagem(mensagem: Mensagem | null, euId: number | null)
   const linha = mensagem.texto.split("\n").find((l) => l.trim()) ?? "";
   const poema = mensagem.post
     ? `poema${mensagem.post.titulo ? `: ${mensagem.post.titulo}` : ` de @${mensagem.post.autor.username}`}`
-    : mensagem.post_removido
-      ? "poema removido pelo autor"
-      : "";
+    : mensagem.renga
+      ? `renga: ${mensagem.renga.titulo}`
+      : mensagem.post_removido
+        ? "poema removido pelo autor"
+        : "";
   const corpo = linha.trim() || poema;
   return mensagem.autor_id === euId ? `Você: ${corpo}` : corpo;
 }
@@ -1702,13 +1746,15 @@ export function acaoDoAviso(aviso: Aviso): string {
   const naRenga = aviso.renga_id !== null;
   switch (aviso.tipo) {
     case "curtida":
+      if (naRenga) return varios ? "curtiram a renga" : "curtiu a renga";
       return varios ? "curtiram seu poema" : "curtiu seu poema";
     case "repost":
+      if (naRenga) return varios ? "repostaram a renga" : "repostou a renga";
       return varios ? "repostaram seu poema" : "repostou seu poema";
     case "seguidor":
       return "começou a seguir você";
     case "citacao":
-      return "citou seu poema";
+      return naRenga ? "citou a renga" : "citou seu poema";
     case "comentario":
       return naRenga ? "comentou na renga" : "comentou seu poema";
     case "critica":
@@ -1723,9 +1769,11 @@ export function acaoDoAviso(aviso: Aviso): string {
 }
 
 // Para onde a linha leva: o poema (com ?versos= na crítica), a renga ou o perfil.
+// A citação leva ao poema de quem citou, também a de uma renga.
 export function linkDoAviso(aviso: Aviso): string {
   if (aviso.tipo === "seguidor") return `/u/${encodeURIComponent(aviso.atores[0]?.username ?? "")}`;
-  const base = aviso.renga_id !== null ? `/rengas/${aviso.renga_id}` : `/poema/${aviso.post_id}`;
+  const naRenga = aviso.renga_id !== null && aviso.tipo !== "citacao";
+  const base = naRenga ? `/rengas/${aviso.renga_id}` : `/poema/${aviso.post_id}`;
   if (aviso.tipo === "critica" && aviso.verso_inicio !== null) {
     return `${base}?versos=${aviso.verso_inicio}-${aviso.verso_fim}`;
   }
