@@ -5,7 +5,7 @@
 // POST /oficina/analise (backend/app/core/metrica.py), que mede o texto sem o
 // negrito, o itálico, o sublinhado e o tachado (core/marcas.py).
 
-import { type RefObject, useEffect, useLayoutEffect, useState } from "react";
+import { type RefObject, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 import {
   type AnaliseDoRascunho,
@@ -146,12 +146,73 @@ export function OficinaMarcas({
   );
 }
 
+// "?" ao lado de "oficina": abre uma explicação curta, sem ocupar espaço na tela
+// (fica sobreposta). Abre por clique ou toque, fecha com Esc, de novo no "?" ou
+// clicando fora; o foco volta para o botão.
+function AjudaDaOficina() {
+  const [aberta, setAberta] = useState(false);
+  const raiz = useRef<HTMLSpanElement>(null);
+  const botao = useRef<HTMLButtonElement>(null);
+  const idPopover = useId();
+
+  useEffect(() => {
+    if (!aberta) return;
+    function fora(e: PointerEvent) {
+      if (!raiz.current?.contains(e.target as Node)) setAberta(false);
+    }
+    function tecla(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      setAberta(false);
+      botao.current?.focus();
+    }
+    document.addEventListener("pointerdown", fora);
+    document.addEventListener("keydown", tecla);
+    return () => {
+      document.removeEventListener("pointerdown", fora);
+      document.removeEventListener("keydown", tecla);
+    };
+  }, [aberta]);
+
+  return (
+    <span ref={raiz} className="relative inline-flex">
+      <button
+        ref={botao}
+        type="button"
+        aria-label="o que é a oficina"
+        aria-expanded={aberta}
+        aria-controls={idPopover}
+        onClick={() => setAberta((a) => !a)}
+        className="inline-flex size-6 cursor-pointer items-center justify-center rounded-full border border-borda font-serifada text-xs text-tinta-suave transition-colors duration-150 hover:border-destaque hover:text-tinta"
+      >
+        ?
+      </button>
+      {aberta && (
+        <div
+          id={idPopover}
+          role="note"
+          className="absolute top-full left-0 z-20 mt-2 w-72 max-w-[85vw] space-y-1.5 rounded-lg border border-borda bg-papel-alto p-3 font-serifada text-sm leading-snug text-tinta shadow-lg"
+        >
+          <p>
+            Ajuda de escrita, só para você: não vai para o poema publicado. Conta as sílabas
+            poéticas (escansão) de cada verso e marca o esquema de rimas ao lado do texto.
+          </p>
+          <p className="text-tinta-suave">
+            Ex.: <span className="tabular-nums">7 A · 7 B · 7 A · 7 B</span> (sete sílabas por
+            verso, rimas ABAB).
+          </p>
+        </div>
+      )}
+    </span>
+  );
+}
+
 // Toggles, esquema de rimas e aviso de forma, logo abaixo do corpo do poema.
 export function OficinaPainel({ oficina }: { oficina: Oficina }) {
   const { opcoes, alternar, analise, longoDemais } = oficina;
-  const botao = (opcao: Opcao, rotulo: string) => (
+  const botao = (opcao: Opcao, rotulo: string, dica: string) => (
     <button
       type="button"
+      title={dica}
       aria-pressed={opcoes[opcao]}
       onClick={() => alternar(opcao)}
       className={`min-h-9 cursor-pointer rounded-full border px-3 text-xs transition-colors duration-150 ${
@@ -165,8 +226,9 @@ export function OficinaPainel({ oficina }: { oficina: Oficina }) {
     <div className="space-y-2 text-xs text-tinta-suave">
       <div className="flex flex-wrap items-center gap-2">
         oficina
-        {botao("silabas", "sílabas")}
-        {botao("rimas", "rimas")}
+        <AjudaDaOficina />
+        {botao("silabas", "sílabas", "contar as sílabas poéticas de cada verso")}
+        {botao("rimas", "rimas", "marcar o esquema de rimas (ABAB)")}
         {opcoes.rimas && analise?.esquema && (
           <span className="tabular-nums" title="esquema de rimas">
             {analise.esquema}
