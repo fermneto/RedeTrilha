@@ -10,11 +10,18 @@
 // Embaixo, o rodapé de largura total.
 // Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
 // única parte interativa é o formulário, então o foco segue a mesma ordem).
+//
+// Por trás do formulário, a capa do livro fechado (components/CapaDoLivro.tsx),
+// um pouco maior que ele: o cartão de entrar é a etiqueta de papel colada na
+// capa, e o "ou" e o "Criar conta" ficam gravados no pano. Ao entrar, o
+// formulário some (a capa fica limpa, com o nome), a frase e a vitrine deslizam
+// para a esquerda ([data-sai]) e a capa cresce até o livro e abre.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { CapaDaEntrada, useAbrirCapa } from "@/components/CapaDoLivro";
 import { Vitrine } from "@/components/LayoutDaEntradaVitrine";
 import { buscarEu, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
 
@@ -31,29 +38,31 @@ export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
       <Link
         href="/"
         aria-label="Verso, início"
+        data-sai="sumir"
         className="mx-6 mt-6 self-start rounded-lg px-1 font-serifada text-[2rem] leading-none font-semibold italic tracking-tight lg:mx-10 lg:mt-10"
       >
         <span aria-hidden="true">Verso</span>
       </Link>
 
       <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[55%_45%] lg:content-center lg:gap-x-0 lg:gap-y-10 lg:px-0 lg:py-0 lg:[grid-template-areas:'frase_entrar''leque_entrar']">
-        <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:justify-self-center lg:px-6 lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
+        <h1 data-sai="deslizar" className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:justify-self-center lg:px-6 lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
 
-        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
+        <section aria-labelledby="titulo-entrar" className="relative order-2 mt-14 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
+          <CapaDaEntrada className="absolute -inset-x-4 -inset-y-5 lg:-inset-x-5 lg:-inset-y-8 xl:-inset-x-8" />
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
 
         {/* O pb-10 do desktop conta a sobra dos cartões de trás (mais baixos e
             girados), para o leque inteiro, e não só o cartão do centro, ficar
             no meio da altura. */}
-        <div className="order-3 mt-14 flex justify-center lg:mt-0 lg:justify-self-center lg:pb-10 lg:[grid-area:leque]">
+        <div data-sai="deslizar" className="order-3 mt-14 flex justify-center lg:mt-0 lg:justify-self-center lg:pb-10 lg:[grid-area:leque]">
           <Vitrine />
         </div>
       </main>
 
-      <footer className="border-t border-borda px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
+      <footer data-sai="sumir" className="border-t border-borda px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
         © 2026 Verso
       </footer>
     </div>
@@ -69,6 +78,7 @@ const CAMPO =
 // mostrar o formulário (em /login; em "/" o Layout só mostra a landing sem token).
 function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
   const router = useRouter();
+  const abrirCapa = useAbrirCapa();
   const [username, setUsername] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState<string | null>(null);
@@ -92,8 +102,17 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
     setErro(null);
     try {
       const { token } = await entrar(username, senha);
-      salvarToken(token);
-      router.replace(destino);
+      // Só com o login certo: o formulário some, a vitrine sai, a capa cresce até
+      // o livro (o token é gravado e a navegação acontece por baixo dela) e abre.
+      // A rota de destino já vai carregando enquanto a capa se move.
+      router.prefetch(destino);
+      abrirCapa({
+        destino,
+        navegar: () => {
+          salvarToken(token);
+          router.replace(destino);
+        },
+      });
     } catch (err) {
       if (err instanceof ErroDaApi && err.status === 401) setErro("username ou senha incorretos");
       else setErro(mensagemDeFalha(err, "não deu para entrar"));
@@ -104,8 +123,11 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
   // Enquanto confere o token, o formulário ocupa o lugar dele, invisível: a
   // página não pula quando ele aparece.
   return (
-    <div aria-busy={conferindo} className={conferindo ? "invisible" : undefined}>
-      <form onSubmit={aoEntrar} className="space-y-4 rounded-2xl border border-borda bg-painel p-6 lg:space-y-5 lg:p-8">
+    <div data-sai="sumir" aria-busy={conferindo} className={`relative ${conferindo ? "invisible" : ""}`}>
+      <form
+        onSubmit={aoEntrar}
+        className="space-y-4 rounded-2xl border border-borda bg-painel p-6 shadow-[0_1px_2px_rgb(0_0_0/0.3),0_6px_16px_-8px_rgb(0_0_0/0.45)] lg:space-y-5 lg:p-8"
+      >
         <h2 id="titulo-entrar" className="text-xl lg:pb-2 lg:text-2xl">
           Entrar no Verso
         </h2>
@@ -156,15 +178,16 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
         </button>
       </form>
 
-      <div className="my-5 flex items-center gap-3 text-xs lg:my-8 text-tinta-suave" role="separator" aria-label="ou">
-        <span aria-hidden="true" className="h-px flex-1 bg-borda" />
+      {/* Gravados no pano da capa: a cor da gravura (11:1; a 80%, acima de 7:1). */}
+      <div className="my-5 flex items-center gap-3 text-xs text-gravura/80 lg:my-8" role="separator" aria-label="ou">
+        <span aria-hidden="true" className="h-px flex-1 bg-gravura/25" />
         <span aria-hidden="true">ou</span>
-        <span aria-hidden="true" className="h-px flex-1 bg-borda" />
+        <span aria-hidden="true" className="h-px flex-1 bg-gravura/25" />
       </div>
 
       <Link
         href="/cadastro"
-        className="realce flex min-h-11 w-full items-center lg:min-h-12 justify-center rounded-full border border-borda px-5 text-sm font-bold text-tinta"
+        className="flex min-h-11 w-full items-center justify-center rounded-full border border-gravura/45 px-5 text-sm font-bold text-gravura transition-colors duration-150 hover:bg-white/6 focus-visible:outline-gravura lg:min-h-12"
       >
         Criar conta
       </Link>
