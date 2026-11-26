@@ -4,31 +4,27 @@
 import Link from "next/link";
 import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 
-import { AntologiaSeletor } from "@/components/AntologiaSeletor";
 import { Avatar } from "@/components/Avatar";
+import { BarraDeAcoes } from "@/components/BarraDeAcoes";
 import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
 import { useFolhas } from "@/components/CadernoFolhas";
-import { EnviarPorMensagem } from "@/components/EnviarPorMensagem";
 import { FaixaDoAutor } from "@/components/FaixaDoAutor";
 import { NomeAutor } from "@/components/NomeAutor";
+import { RengaCard } from "@/components/RengaCard";
 import { VersoFormatado } from "@/components/TextoFormatado";
-import { IconeCitar } from "@/components/icones/IconeCitar";
 import { IconeComentar } from "@/components/icones/IconeComentar";
-import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { IconeTraduzir } from "@/components/icones/IconeTraduzir";
 import {
   caminhoDaCitacaoDeVersos,
   caminhoDaCriticaDeVersos,
   caminhoDaTag,
-  curtir,
   ErroDaApi,
   formatarData,
   idiomaDoNavegador,
   mensagemDeFalha,
   nomeDaForma,
   nomeDoIdioma,
-  repostar,
   rotuloDoComentario,
   traduzirPoema,
   trechoDosVersos,
@@ -87,7 +83,9 @@ export function PoemaCard({
   const repostPuro = post.repost_de !== null && post.texto === "";
   const poema = repostPuro && post.repost_de ? post.repost_de : post;
   const reposters = repostPuro ? [post.autor] : (post.repostado_por ?? []);
-  const citacao = !repostPuro && (post.repost_de !== null || post.repost_removido || post.repost_indisponivel);
+  const citacao =
+    !repostPuro &&
+    (post.repost_de !== null || post.repost_removido || post.repost_indisponivel || Boolean(post.renga_citada_id));
 
   if (folha) {
     return (
@@ -114,13 +112,7 @@ export function PoemaCard({
         />
         {citacao && (
           <div className="mt-6">
-            {poema.repost_de ? (
-              <PoemaCard post={poema.repost_de} aninhado inteiro />
-            ) : (
-              <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
-                {poema.repost_indisponivel ? "poema indisponível" : "poema removido pelo autor"}
-              </p>
-            )}
+            <Citado poema={poema} inteiro />
           </div>
         )}
         <div className="mt-8 border-t border-borda/70 pt-3 empty:hidden">
@@ -167,13 +159,7 @@ export function PoemaCard({
 
           {citacao && !aninhado && (
             <div className="mt-3">
-              {poema.repost_de ? (
-                <PoemaCard post={poema.repost_de} aninhado inteiro={inteiro} />
-              ) : (
-                <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
-                  {poema.repost_indisponivel ? "poema indisponível" : "poema removido pelo autor"}
-                </p>
-              )}
+              <Citado poema={poema} inteiro={inteiro} />
             </div>
           )}
 
@@ -183,6 +169,22 @@ export function PoemaCard({
         </div>
       </div>
     </article>
+  );
+}
+
+// O que a citação cita: o poema, a renga (#171) ou o aviso de que não está mais lá.
+function Citado({ poema, inteiro }: { poema: Post; inteiro: boolean }) {
+  if (poema.repost_de) return <PoemaCard post={poema.repost_de} aninhado inteiro={inteiro} />;
+  if (poema.renga_citada) return <RengaCard renga={poema.renga_citada} aninhado />;
+  const renga = Boolean(poema.renga_citada_id);
+  return (
+    <p className="rounded-2xl border border-dashed border-borda p-4 text-sm text-tinta-suave italic">
+      {poema.repost_indisponivel
+        ? renga
+          ? "renga indisponível"
+          : "poema indisponível"
+        : "poema removido pelo autor"}
+    </p>
   );
 }
 
@@ -544,134 +546,15 @@ export function Detalhes({ poema, solto = false }: { poema: Post; solto?: boolea
   );
 }
 
-// Curtir e repostar mudam a tela antes da resposta e voltam atrás se o backend falhar.
-// Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
-// pedidos simultâneos podem ser processados fora de ordem e deixar a tela
-// diferente do servidor.
-// `contadores`: na página da conversa, a linha "12 curtidas · 2 reposts" acima
-// dos botões, com os números por extenso (e otimistas, como os botões).
+// As ações do poema na barra do card e na página da conversa (BarraDeAcoes).
 export function Acoes({ poema, contadores = false }: { poema: Post; contadores?: boolean }) {
-  const [curti, setCurti] = useState(poema.curti);
-  const [curtidas, setCurtidas] = useState(poema.curtidas);
-  const [repostei, setRepostei] = useState(poema.repostei);
-  const [reposts, setReposts] = useState(poema.reposts);
-  const [erro, setErro] = useState<string | null>(null);
-  const curtindo = useRef(false);
-  const repostando = useRef(false);
-
-  async function alternarCurtida() {
-    if (curtindo.current) return;
-    curtindo.current = true;
-    const novo = !curti;
-    setCurti(novo);
-    setCurtidas((n) => n + (novo ? 1 : -1));
-    setErro(null);
-    try {
-      await curtir(poema.id, novo);
-    } catch (e) {
-      setCurti(!novo);
-      setCurtidas((n) => n + (novo ? -1 : 1));
-      setErro(mensagemDeFalha(e, "não deu para curtir"));
-    } finally {
-      curtindo.current = false;
-    }
-  }
-
-  async function alternarRepost() {
-    if (repostando.current) return;
-    repostando.current = true;
-    const novo = !repostei;
-    setRepostei(novo);
-    setReposts((n) => n + (novo ? 1 : -1));
-    setErro(null);
-    try {
-      await repostar(poema.id, novo);
-    } catch (e) {
-      setRepostei(!novo);
-      setReposts((n) => n + (novo ? -1 : 1));
-      setErro(mensagemDeFalha(e, "não deu para repostar"));
-    } finally {
-      repostando.current = false;
-    }
-  }
-
-  // Como no X: só ícone (20 px) e número, e o número some quando é zero. O nome
-  // da ação vai no aria-label (com o número, que o aria-label esconderia) e no
-  // title. Cada botão tem área de toque de 44×44 px; o -ml-3 da linha alinha o
-  // primeiro ícone com o texto do poema. No hover, o círculo atrás do ícone tinge.
-  const botao =
-    "group inline-flex min-h-11 min-w-11 cursor-pointer items-center gap-1 pr-2 tabular-nums transition-colors duration-150 hover:text-destaque";
-  const icone = "h-5 w-5";
-  const circulo =
-    "flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-150 group-hover:bg-destaque/10";
-  const rotulo = (acao: string, n?: number) => (n ? `${acao} (${n})` : acao);
-  const linha = [
-    [curtidas, "curtida", "curtidas"],
-    [reposts, "repost", "reposts"],
-    [poema.comentarios, "comentário", "comentários"],
-  ] as const;
   return (
-    <div className="mt-1">
-      {contadores && (
-        <p className="mb-1 flex flex-wrap gap-x-4 text-sm text-tinta-suave tabular-nums" aria-live="polite">
-          {linha.map(([n, um, varios]) => (
-            <span key={um}>
-              <strong className="font-semibold text-tinta">{n}</strong> {n === 1 ? um : varios}
-            </span>
-          ))}
-        </p>
-      )}
-      <div className="-ml-3 flex max-w-sm justify-between text-[0.8125rem] text-tinta-suave">
-        <button
-          type="button"
-          onClick={alternarCurtida}
-          aria-pressed={curti}
-          aria-label={rotulo("curtir", curtidas)}
-          title="curtir"
-          className={`${botao} ${curti ? "text-destaque" : ""}`}
-        >
-          <span className={circulo}>
-            <IconeCurtir cheio={curti} className={icone} />
-          </span>
-          {!contadores && <Contador n={curtidas} />}
-        </button>
-        <button
-          type="button"
-          onClick={alternarRepost}
-          aria-pressed={repostei}
-          aria-label={rotulo("repostar", reposts)}
-          title="repostar"
-          className={`${botao} ${repostei ? "text-destaque" : ""}`}
-        >
-          <span className={circulo}>
-            <IconeRepostar className={icone} />
-          </span>
-          {!contadores && <Contador n={reposts} />}
-        </button>
-        <Link href={`/escrever?citar=${poema.id}`} aria-label="citar" title="citar" className={botao}>
-          <span className={circulo}>
-            <IconeCitar className={icone} />
-          </span>
-        </Link>
-        <Link
-          href={`/poema/${poema.id}#comentarios`}
-          aria-label={rotulo("comentar", poema.comentarios)}
-          title="comentar"
-          className={botao}
-        >
-          <span className={circulo}>
-            <IconeComentar className={icone} />
-          </span>
-          {!contadores && <Contador n={poema.comentarios} />}
-        </Link>
-        <AntologiaSeletor postId={poema.id} classeBotao={botao} classeCirculo={circulo} classeIcone={icone} />
-        <EnviarPorMensagem postId={poema.id} classeBotao={botao} classeCirculo={circulo} classeIcone={icone} />
-      </div>
-      {erro && <p className="mt-2 text-xs text-destaque">{erro}</p>}
-    </div>
+    <BarraDeAcoes
+      alvo={{ tipo: "poema", id: poema.id }}
+      inicial={poema}
+      comentarios={poema.comentarios}
+      caminhoDaConversa={`/poema/${poema.id}#comentarios`}
+      contadores={contadores}
+    />
   );
-}
-
-function Contador({ n }: { n: number }) {
-  return n > 0 ? <span aria-hidden="true">{n}</span> : null;
 }

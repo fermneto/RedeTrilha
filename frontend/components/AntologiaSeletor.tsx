@@ -1,6 +1,7 @@
 "use client";
-// Ação "Adicionar à antologia" do PoemaCard: o botão abre um popover com as
-// minhas antologias (marcar/desmarcar põe e tira o poema) e "+ nova antologia".
+// Ação "Adicionar à antologia" do poema e da renga (BarraDeAcoes): o botão abre um
+// popover com as minhas antologias (marcar/desmarcar põe e tira o poema ou a
+// renga) e "+ nova antologia".
 // Fecha com Esc (o foco volta ao botão), clique fora ou quando o foco sai dele.
 
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
@@ -16,15 +17,16 @@ import {
   listarMinhasAntologiasMarcando,
   marcarNaAntologia,
   mensagemDeFalha,
+  type Alvo,
   type AntologiaMarcada,
 } from "@/lib/api";
 
-// Avisa a página aberta que um poema entrou ou saiu de uma antologia pelo
-// popover (o detalhe da antologia tira o poema da lista na hora). Evento de
-// window para não passar callbacks por dentro do PoemaCard.
+// Avisa a página aberta que um poema (ou uma renga) entrou ou saiu de uma
+// antologia pelo popover (o detalhe da antologia o tira da lista na hora). Evento
+// de window para não passar callbacks por dentro do PoemaCard.
 const EVENTO = "verso:antologia-mudou";
 
-export type MudancaNaAntologia = { antologiaId: number; postId: number; contem: boolean };
+export type MudancaNaAntologia = { antologiaId: number; alvo: Alvo; contem: boolean };
 
 function avisarMudanca(mudanca: MudancaNaAntologia) {
   window.dispatchEvent(new CustomEvent<MudancaNaAntologia>(EVENTO, { detail: mudanca }));
@@ -38,14 +40,14 @@ export function ouvirMudancas(aoMudar: (mudanca: MudancaNaAntologia) => void): (
 }
 
 type Props = {
-  postId: number;
+  alvo: Alvo;
   // Classes da barra de ações do card, para o botão ficar igual aos outros.
   classeBotao: string;
   classeCirculo: string;
   classeIcone: string;
 };
 
-export function AntologiaSeletor({ postId, classeBotao, classeCirculo, classeIcone }: Props) {
+export function AntologiaSeletor({ alvo, classeBotao, classeCirculo, classeIcone }: Props) {
   const [aberto, setAberto] = useState(false);
   const caixa = useRef<HTMLDivElement>(null);
   const botao = useRef<HTMLButtonElement>(null);
@@ -87,7 +89,7 @@ export function AntologiaSeletor({ postId, classeBotao, classeCirculo, classeIco
           <IconeAdicionarAntologia className={classeIcone} />
         </span>
       </button>
-      {aberto && <Popover id={idPopover} postId={postId} />}
+      {aberto && <Popover id={idPopover} alvo={alvo} />}
     </div>
   );
 }
@@ -103,7 +105,7 @@ function fimDaTela(): number {
   return topo > 0 ? topo : window.innerHeight;
 }
 
-function Popover({ id, postId }: { id: string; postId: number }) {
+function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
   const [linhas, setLinhas] = useState<Linha[] | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [criando, setCriando] = useState(false);
@@ -127,16 +129,17 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     setParaCima(altura + 8 > abaixo && acima > abaixo);
   }, [linhas, criando, erro]);
 
-  // Uma requisição por abertura: o backend já diz em quais o poema está.
+  // Uma requisição por abertura: o backend já diz em quais o poema (ou a renga) está.
+  const { tipo, id: alvoId } = alvo;
   useEffect(() => {
     let vivo = true;
-    listarMinhasAntologiasMarcando(postId)
+    listarMinhasAntologiasMarcando({ tipo, id: alvoId })
       .then((pagina) => vivo && setLinhas(pagina.items))
       .catch((e) => vivo && setErro(mensagemDeFalha(e, "não deu para carregar as antologias")));
     return () => {
       vivo = false;
     };
-  }, [postId]);
+  }, [tipo, alvoId]);
 
   // Foco gerenciado: ao abrir vai para o painel; depois de carregar, para a primeira
   // antologia (ou para "+ nova antologia", se não houver nenhuma).
@@ -177,15 +180,15 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     trocar(novo);
     setErro(null);
     try {
-      await marcarNaAntologia(linha.id, postId, novo);
-      avisarMudanca({ antologiaId: linha.id, postId, contem: novo });
+      await marcarNaAntologia(linha.id, alvo, novo);
+      avisarMudanca({ antologiaId: linha.id, alvo, contem: novo });
     } catch (e) {
       trocar(!novo);
       setErro(mensagemDeFalha(e, "não deu para mudar a antologia"));
     }
   }
 
-  // Cria a antologia (pública por padrão) e já põe o poema nela.
+  // Cria a antologia (pública por padrão) e já põe o poema (ou a renga) nela.
   async function criar(e: React.FormEvent) {
     e.preventDefault();
     if (!nome.trim()) {
@@ -197,7 +200,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     setErro(null);
     try {
       const nova = await criarAntologia({ nome, publica });
-      await marcarNaAntologia(nova.id, postId, true);
+      await marcarNaAntologia(nova.id, alvo, true);
       setLinhas((atuais) => [{ ...nova, qtd: 1, contem: true }, ...(atuais ?? [])]);
       setNome("");
       setPublica(true);

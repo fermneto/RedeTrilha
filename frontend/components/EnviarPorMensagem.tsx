@@ -1,8 +1,8 @@
 "use client";
-// Ação "enviar por mensagem" do PoemaCard: o botão abre um popover para escolher a
+// Ação "enviar por mensagem" do poema e da renga (BarraDeAcoes): o botão abre um popover para escolher a
 // pessoa (as conversas recentes ou a busca por nome ou @, só poetas do Verso, que
-// consagrados não recebem mensagens), escrever algo se quiser e enviar. O poema vai
-// na mensagem como um card. Fecha com Esc (o foco volta ao botão) ou clique fora.
+// consagrados não recebem mensagens), escrever algo se quiser e enviar. O poema (ou
+// a renga) vai na mensagem como um card. Fecha com Esc (o foco volta ao botão) ou clique fora.
 
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
@@ -18,17 +18,18 @@ import {
   listarConversas,
   MENSAGEM_MAX_CARACTERES,
   mensagemDeFalha,
+  type Alvo,
   type User,
 } from "@/lib/api";
 
 type Props = {
-  postId: number;
+  alvo: Alvo;
   classeBotao: string;
   classeCirculo: string;
   classeIcone: string;
 };
 
-export function EnviarPorMensagem({ postId, classeBotao, classeCirculo, classeIcone }: Props) {
+export function EnviarPorMensagem({ alvo, classeBotao, classeCirculo, classeIcone }: Props) {
   const [aberto, setAberto] = useState(false);
   const caixa = useRef<HTMLDivElement>(null);
   const botao = useRef<HTMLButtonElement>(null);
@@ -68,12 +69,12 @@ export function EnviarPorMensagem({ postId, classeBotao, classeCirculo, classeIc
           <IconeEnviar className={classeIcone} />
         </span>
       </button>
-      {aberto && <Popover id={idPopover} postId={postId} />}
+      {aberto && <Popover id={idPopover} alvo={alvo} />}
     </div>
   );
 }
 
-function Popover({ id, postId }: { id: string; postId: number }) {
+function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
   const [recentes, setRecentes] = useState<User[] | null>(null);
   const [busca, setBusca] = useState("");
   const [achados, setAchados] = useState<User[] | null>(null);
@@ -125,7 +126,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
     setErro(null);
     try {
       const conversa = await abrirConversa(para.username);
-      await enviarMensagem(conversa.id, texto, postId);
+      await enviarMensagem(conversa.id, texto, alvo);
       setEnviado({ conversaId: conversa.id, username: para.username });
     } catch (err) {
       setErro(mensagemDeFalha(err, "não deu para enviar"));
@@ -180,7 +181,7 @@ function Popover({ id, postId }: { id: string; postId: number }) {
             disabled={enviando}
             className="min-h-10 cursor-pointer rounded-full bg-destaque px-4 text-xs font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
           >
-            {enviando ? "enviando..." : "enviar o poema"}
+            {enviando ? "enviando..." : alvo.tipo === "poema" ? "enviar o poema" : "enviar a renga"}
           </button>
         </form>
       ) : (
@@ -202,7 +203,9 @@ function Popover({ id, postId }: { id: string; postId: number }) {
           {pessoas === null && <EsqueletoDoMenu quantos={3} com="avatar" />}
           {pessoas !== null && pessoas.length === 0 && (
             <p className="px-2 py-2 text-tinta-suave">
-              {achados ? "Ninguém com esse nome." : "Busque alguém para mandar o poema."}
+              {achados
+                ? "Ninguém com esse nome."
+                : `Busque alguém para mandar ${alvo.tipo === "poema" ? "o poema" : "a renga"}.`}
             </p>
           )}
           {pessoas && pessoas.length > 0 && (
