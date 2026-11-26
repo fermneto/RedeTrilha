@@ -690,6 +690,20 @@ linhas sem marcas de formatação, a partir do primeiro verso não vazio, e
   "poemas": [{"titulo", "primeiro_verso", "autor"}]}` (os 4 primeiros);
   privada → 404 para todo mundo.
 
+### Dicas do livro (tour aos poucos)
+
+Tabela `dicas_vistas` (`user_id`, `dica`, PK composta, `created_at`): as dicas
+do primeiro uso que a pessoa já viu, na conta (valem em qualquer aparelho).
+`DICAS` (`schemas/dica.py`): `virar_pagina`, `acoes`, `lombada`, `escrever`,
+nessa ordem.
+
+- `GET /dicas` 🔒 → `{"vistas": [...]}`, na ordem de `DICAS`.
+- `PUT /dicas/{dica}` 🔒 → `{"vistas"}`: marca como vista, idempotente; dica
+  fora de `DICAS` → 422.
+- `DELETE /dicas` 🔒 → `{"vistas": []}`: o "rever as dicas" das Preferências.
+- Quando cada uma aparece é só do front (`lib/dicas.ts`,
+  `components/DicasDoLivro.tsx`).
+
 ### Auth e saúde
 
 - `POST /auth/registro` → 201 `UserOut`; `POST /auth/login` → `{"token"}`

@@ -24,6 +24,7 @@ from app.routers import (
     comentarios_renga,
     curtidas,
     curtidas_renga,
+    dicas,
     feed,
     follows,
     mensagens,
@@ -185,6 +186,7 @@ app.include_router(oficina.router)
 app.include_router(rascunhos.router)
 app.include_router(sugestoes.router)
 app.include_router(preferencias.router)
+app.include_router(dicas.router)
 app.include_router(mensagens.router)
 app.include_router(bloqueios.router)
 app.include_router(avisos.router)

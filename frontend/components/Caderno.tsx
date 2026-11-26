@@ -12,6 +12,8 @@
 //
 // O caderno também anota o caminho feito no Verso (lib/historico.ts), para o
 // "voltar" das páginas de publicação saber se há uma página do Verso antes.
+//
+// Por cima de tudo, as dicas do livro (components/DicasDoLivro.tsx).
 
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -19,6 +21,7 @@ import { useEffect } from "react";
 import { CadernoFolhas, useDuplo } from "@/components/CadernoFolhas";
 import { Lombada, LombadaDoCelular } from "@/components/CadernoLombada";
 import { ColunaDireita } from "@/components/ColunaDireita";
+import { DicasDoLivro } from "@/components/DicasDoLivro";
 import { anotarRota, anotarVoltaDoNavegador } from "@/lib/historico";
 
 // /rengas/nova e /antologias/nova são formulários, não publicações.
@@ -66,19 +69,23 @@ export function Caderno({ children }: { children: React.ReactNode }) {
 
   if (duplo) {
     return (
-      <div className="flex h-dvh items-center justify-center px-6 py-5">
-        <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
-          <Lombada />
-          {miolo}
+      <DicasDoLivro>
+        <div className="flex h-dvh items-center justify-center px-6 py-5">
+          <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
+            <Lombada />
+            {miolo}
+          </div>
         </div>
-      </div>
+      </DicasDoLivro>
     );
   }
 
   return (
-    <div className="capa flex h-dvh flex-col px-[5px] pt-[5px]">
-      {miolo}
-      <LombadaDoCelular />
-    </div>
+    <DicasDoLivro>
+      <div className="capa flex h-dvh flex-col px-[5px] pt-[5px]">
+        {miolo}
+        <LombadaDoCelular />
+      </div>
+    </DicasDoLivro>
   );
 }
