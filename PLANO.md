@@ -423,6 +423,15 @@ poema publicado não se edita, então ele sai do texto do poema.
 `POST`/`DELETE /posts/{id}/curtir` 🔒 e `POST`/`DELETE /posts/{id}/repostar` 🔒
 → 204, idempotentes. As da renga (#171) estão em Rengas.
 
+**Repercussão na página da publicação** (`services/repercussao.py`):
+`GET /posts/{id}/curtidas` 🔒 e `GET /posts/{id}/reposts` 🔒 → página de
+`UserOut` (quem curtiu; quem fez repost puro), e `GET /posts/{id}/citacoes` 🔒
+→ `PostPage` das citações; as mesmas três em `/rengas/{id}` (as citações da
+renga são os poemas de `citacoes_renga`). Tudo da ação mais recente para a mais
+antiga, com `offset`/`limit`. Repost puro mostra a do original; 404 se o autor
+(na renga, o criador) bloqueou quem vê; quem tem bloqueio com quem vê fica fora
+das listas, como nos seguidores.
+
 ### Antologias (dono: Pedro)
 
 Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
@@ -688,6 +697,20 @@ linhas sem marcas de formatação, a partir do primeiro verso não vazio, e
 - `GET /cartoes/antologia/{id}` → `{"id", "nome", "descricao", "dono", "qtd",
   "poemas": [{"titulo", "primeiro_verso", "autor"}]}` (os 4 primeiros);
   privada → 404 para todo mundo.
+
+### Dicas do livro (tour aos poucos)
+
+Tabela `dicas_vistas` (`user_id`, `dica`, PK composta, `created_at`): as dicas
+do primeiro uso que a pessoa já viu, na conta (valem em qualquer aparelho).
+`DICAS` (`schemas/dica.py`): `virar_pagina`, `acoes`, `lombada`, `escrever`,
+nessa ordem.
+
+- `GET /dicas` 🔒 → `{"vistas": [...]}`, na ordem de `DICAS`.
+- `PUT /dicas/{dica}` 🔒 → `{"vistas"}`: marca como vista, idempotente; dica
+  fora de `DICAS` → 422.
+- `DELETE /dicas` 🔒 → `{"vistas": []}`: o "rever as dicas" das Preferências.
+- Quando cada uma aparece é só do front (`lib/dicas.ts`,
+  `components/DicasDoLivro.tsx`).
 
 ### Auth e saúde
 

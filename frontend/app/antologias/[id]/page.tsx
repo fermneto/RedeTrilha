@@ -1,7 +1,9 @@
 "use client";
 // Detalhe da antologia: nome, descrição, dono e os poemas e as rengas (#171)
 // numa lista só, na ordem em que foram guardados. O dono edita (inline), apaga
-// (com confirmação) e tira poemas e rengas.
+// (com confirmação) e tira poemas e rengas. No livro, a antologia fica na página
+// da esquerda e a ficha dela (quem reuniu, quando, quantos poemas, as outras da
+// mesma pessoa) na da direita; no celular, a ficha é a página seguinte.
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -11,8 +13,10 @@ import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { ouvirMudancas } from "@/components/AntologiaSeletor";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDaPaginaDaAntologia } from "@/components/Esqueleto";
+import { FichaDaAntologia } from "@/components/FichaDaAntologia";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
@@ -32,6 +36,37 @@ import {
   type RengaDetalhe,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
+
+// A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
+const MOLDURA = "flex min-h-full flex-col pb-6 lg:px-6";
+
+// Uma folha do livro: a página da esquerda e, se houver, a da direita.
+function Folha({
+  rotulo,
+  esquerda,
+  direita,
+}: {
+  rotulo: string;
+  esquerda: React.ReactNode;
+  direita?: React.ReactNode;
+}) {
+  return (
+    <CadernoFolhas
+      key={rotulo}
+      anterior="voltar à antologia"
+      proxima="ver a ficha da antologia"
+      folhas={[
+        {
+          chave: "antologia",
+          rotulo,
+          rotuloDaDireita: "ficha da antologia",
+          esquerda: <div className={MOLDURA}>{esquerda}</div>,
+          direita,
+        },
+      ]}
+    />
+  );
+}
 
 export default function AntologiaPage() {
   const router = useRouter();
@@ -74,33 +109,51 @@ export default function AntologiaPage() {
     [id],
   );
 
-  const cabecalho = <CabecalhoPagina titulo="Antologia" comoTitulo={false} />;
+  const cabecalho = <CabecalhoPagina titulo="Antologia" comoTitulo={false} voltar />;
   if (naoExiste)
     return (
-      <>
-        {cabecalho}
-        <div className="px-4 py-10 text-center">
-          <h1 className="font-serifada text-xl">Antologia não encontrada</h1>
-          <p className="mt-1 text-sm text-tinta-suave">Ela pode ter sido apagada ou ser privada.</p>
-          <Link href="/antologias" className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline">
-            ver minhas antologias
-          </Link>
-        </div>
-      </>
+      <Folha
+        rotulo="antologia não encontrada"
+        esquerda={
+          <>
+            {cabecalho}
+            <div className="px-4 py-10 text-center">
+              <h1 className="font-serifada text-xl">Antologia não encontrada</h1>
+              <p className="mt-1 text-sm text-tinta-suave">Ela pode ter sido apagada ou ser privada.</p>
+              <Link
+                href="/antologias"
+                className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline"
+              >
+                ver minhas antologias
+              </Link>
+            </div>
+          </>
+        }
+      />
     );
   if (erro)
     return (
-      <>
-        {cabecalho}
-        <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
-      </>
+      <Folha
+        rotulo={erro}
+        esquerda={
+          <>
+            {cabecalho}
+            <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+          </>
+        }
+      />
     );
   if (!antologia)
     return (
-      <>
-        {cabecalho}
-        <EsqueletoDaPaginaDaAntologia />
-      </>
+      <Folha
+        rotulo="carregando a antologia"
+        esquerda={
+          <>
+            {cabecalho}
+            <EsqueletoDaPaginaDaAntologia />
+          </>
+        }
+      />
     );
 
   const dono = antologia.dono_id === meuId;
@@ -112,89 +165,99 @@ export default function AntologiaPage() {
   const itens = itensDaAntologia(antologia);
 
   return (
-    <div>
-      {cabecalho}
-      <div className="surgir border-b border-borda px-4 pt-8 pb-6">
-        {editando ? (
-          <AntologiaFormulario
-            inicial={antologia}
-            textoDoBotao="Salvar"
-            aoEnviar={async (dados) => {
-              const nova = await editarAntologia(antologia.id, dados);
-              setAntologia((a) => a && { ...a, ...nova });
-              setEditando(false);
-            }}
-            aoCancelar={() => setEditando(false)}
-          />
-        ) : (
-          <Cabecalho
-            antologia={antologia}
-            dono={dono}
-            aoEditar={() => setEditando(true)}
-            aoApagar={async () => {
-              await apagarAntologia(antologia.id);
-              router.push("/antologias");
-            }}
-          />
-        )}
-      </div>
+    <Folha
+      rotulo={`antologia ${antologia.nome}`}
+      direita={
+        <div className="surgir">
+          <FichaDaAntologia antologia={antologia} />
+        </div>
+      }
+      esquerda={
+        <div className="surgir">
+          {cabecalho}
+          <div className="border-b border-borda px-4 pt-8 pb-6">
+            {editando ? (
+              <AntologiaFormulario
+                inicial={antologia}
+                textoDoBotao="Salvar"
+                aoEnviar={async (dados) => {
+                  const nova = await editarAntologia(antologia.id, dados);
+                  setAntologia((a) => a && { ...a, ...nova });
+                  setEditando(false);
+                }}
+                aoCancelar={() => setEditando(false)}
+              />
+            ) : (
+              <Cabecalho
+                antologia={antologia}
+                dono={dono}
+                aoEditar={() => setEditando(true)}
+                aoApagar={async () => {
+                  await apagarAntologia(antologia.id);
+                  router.push("/antologias");
+                }}
+              />
+            )}
+          </div>
 
-      {itens.length === 0 ? (
-        <div className="px-4 py-12 text-center">
-          <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
-          {dono && (
-            <p className="mx-auto mt-1 max-w-sm text-sm text-tinta-suave">
-              Nos poemas do feed, use o botão “adicionar à antologia” para trazê-los para cá.
-            </p>
-          )}
-          {dono && (
-            <Link
-              href="/"
-              className="mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold realce"
-            >
-              Ir para o feed
-            </Link>
+          {itens.length === 0 ? (
+            <div className="px-4 py-12 text-center">
+              <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
+              {dono && (
+                <p className="mx-auto mt-1 max-w-sm text-sm text-tinta-suave">
+                  Nos poemas do feed, use o botão “adicionar à antologia” para trazê-los para cá.
+                </p>
+              )}
+              {dono && (
+                <Link
+                  href="/"
+                  className="mt-4 inline-flex min-h-11 items-center rounded-full border border-borda px-5 text-sm font-semibold realce"
+                >
+                  Ir para o feed
+                </Link>
+              )}
+            </div>
+          ) : (
+            <>
+              {itens.length > 1 && <Indice itens={itens} />}
+              <h2 className="sr-only">Poemas</h2>
+              <ol className="divide-y divide-borda border-b border-borda">
+                {itens.map((item) => (
+                  <li
+                    key={ancora(item)}
+                    id={ancora(item)}
+                    className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
+                  >
+                    {item.tipo === "poema" ? (
+                      <>
+                        <PoemaCard post={item.poema} />
+                        {dono && (
+                          <TirarDaAntologia
+                            qual={qualPoema(item.poema)}
+                            aoTirar={() => tirar({ tipo: "poema", id: item.poema.id })}
+                          />
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <RengaCard renga={item.renga} />
+                        {dono && (
+                          <TirarDaAntologia
+                            qual={`a renga “${item.renga.titulo}”`}
+                            aoTirar={() => tirar({ tipo: "renga", id: item.renga.id })}
+                            recuo={false}
+                          />
+                        )}
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </>
           )}
         </div>
-      ) : (
-        <>
-          {itens.length > 1 && <Indice itens={itens} />}
-          <h2 className="sr-only">Poemas</h2>
-          <ol className="divide-y divide-borda border-b border-borda">
-            {itens.map((item) => (
-              <li
-                key={ancora(item)}
-                id={ancora(item)}
-                className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
-              >
-                {item.tipo === "poema" ? (
-                  <>
-                    <PoemaCard post={item.poema} />
-                    {dono && (
-                      <TirarDaAntologia
-                        qual={qualPoema(item.poema)}
-                        aoTirar={() => tirar({ tipo: "poema", id: item.poema.id })}
-                      />
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <RengaCard renga={item.renga} />
-                    {dono && (
-                      <TirarDaAntologia
-                        qual={`a renga “${item.renga.titulo}”`}
-                        aoTirar={() => tirar({ tipo: "renga", id: item.renga.id })}
-                        recuo={false}
-                      />
-                    )}
-                  </>
-                )}
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
-    </div>
+      }
+    />
   );
 }
 
@@ -343,6 +406,7 @@ function Cabecalho({
   aoEditar: () => void;
   aoApagar: () => Promise<void>;
 }) {
+  const { duplo } = useFolhas();
   return (
     <header>
       <h1 className="font-serifada text-[2rem] leading-tight font-semibold tracking-[-0.02em] break-words">
@@ -353,20 +417,23 @@ function Cabecalho({
           {antologia.descricao}
         </p>
       )}
-      <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-tinta-suave">
-        <span>reunida por</span>
-        <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
-        <span aria-hidden="true">·</span>
-        <span className="tabular-nums">
-          {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
-        </span>
-        {!antologia.publica && (
-          <span className="inline-flex items-center gap-x-1.5">
-            <span aria-hidden="true">·</span>
-            <SeloPrivada />
+      {/* Na página dupla, quem reuniu e quantos poemas ficam na ficha, à direita. */}
+      {!duplo && (
+        <p className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-tinta-suave">
+          <span>reunida por</span>
+          <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
+          <span aria-hidden="true">·</span>
+          <span className="tabular-nums">
+            {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
           </span>
-        )}
-      </p>
+          {!antologia.publica && (
+            <span className="inline-flex items-center gap-x-1.5">
+              <span aria-hidden="true">·</span>
+              <SeloPrivada />
+            </span>
+          )}
+        </p>
+      )}
       {dono && (
         <div className="mt-3">
           <AcoesDoDono aoEditar={aoEditar} aoApagar={aoApagar} />

@@ -848,6 +848,30 @@ decisão 15.
   minhas antologias e a do Acervo só redirecionam, para os favoritos e links
   antigos.
 
+### 18. Dicas do livro: um tour aos poucos, não de uma vez
+
+- **Contexto:** quem chega não sabe que o Verso se folheia, que a conversa
+  fica na página ao lado nem o que são os ícones sem texto da lombada
+  (decisão 17).
+- **Opções:** nenhuma ajuda; um tour de várias telas logo depois do
+  onboarding; ou dicas curtas no contexto de cada coisa, ao longo do uso.
+- **Escolha (decisão do Neto):**
+  - **Quatro dicas, uma de cada vez, no contexto delas:** virar a página (ao
+    chegar no Início, depois das boas-vindas), as ações e os comentários, a
+    lombada e escrever (poema e renga). Depois da primeira, cada uma espera a
+    pessoa folhear 2 páginas, e a de escrever também aparece ao abrir o
+    compositor. Cada nota aponta o que explica, sai com "entendi", o X, Esc
+    ou virando a página, e tem "dispensar todas".
+  - **O que foi visto fica na conta** (`GET`/`PUT`/`DELETE /dicas`), e não no
+    navegador: a dica vista no computador não volta no celular. As contas que
+    já existiam também veem as dicas; quem não tem conta não vê.
+  - **"Rever as dicas", nas Preferências,** zera a lista, e elas voltam aos
+    poucos.
+- **O que cortamos e por quê:** o tour de uma vez só (ninguém lembra de dez
+  telas antes de ler o primeiro poema), a numeração "dica 1 de 4" (o tour não
+  é uma tarefa a cumprir) e uma biblioteca de tour (as notas são um componente
+  só, sem dependência).
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo
