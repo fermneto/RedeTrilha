@@ -145,12 +145,7 @@ export default function PoemaPage() {
                   pedida={pedida}
                   aoFiltrar={setVerso}
                 />
-                {/* A data do consagrado é a da importação, não a da obra: fica de fora, como no card. */}
-                {!original.autor.consagrado && (
-                  <p className="mt-3 text-[0.8125rem] text-tinta-suave">
-                    publicado em <time dateTime={original.created_at}>{formatarDataEHora(original.created_at)}</time>
-                  </p>
-                )}
+                <DataDoPoema poema={original} />
                 {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar". */}
                 {euId === poema.autor_id && !repostPuro(poema) && (
                   <div className="mt-8">
@@ -241,6 +236,22 @@ function PaginaDoPoema({
         />
       )}
     />
+  );
+}
+
+// Quando o poema saiu: a data e a hora da publicação. No consagrado, a data é a
+// da importação, não a da obra: no lugar dela, o ano e a obra ("1912 · Eu"),
+// quando houver.
+function DataDoPoema({ poema }: { poema: Post }) {
+  const classe = "mt-3 text-[0.8125rem] text-tinta-suave";
+  if (poema.autor.consagrado) {
+    const origem = [poema.ano, poema.obra].filter(Boolean).join(" · ");
+    return origem ? <p className={classe}>{origem}</p> : null;
+  }
+  return (
+    <p className={classe}>
+      publicado em <time dateTime={poema.created_at}>{formatarDataEHora(poema.created_at)}</time>
+    </p>
   );
 }
 
