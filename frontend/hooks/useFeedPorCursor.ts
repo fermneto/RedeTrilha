@@ -2,11 +2,13 @@
 // As páginas de uma lista paginada por cursor (o feed), sem rolagem: quem usa
 // pede a próxima com `carregarMais` (o caderno pede quando a folha à vista chega
 // perto do fim do que já veio). Mesma regra da ListaDePoemas: um pedido por vez,
-// sem repetir item, e o erro para os pedidos até "tentar de novo".
+// sem repetir poema nem renga (`juntarAoFeed`: um repost conta como o original e
+// soma quem repostou no rótulo da primeira ocorrência), e o erro para os pedidos
+// até "tentar de novo".
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { chaveDoItem, mensagemDeFalha, type FeedPage, type ItemDoFeed } from "@/lib/api";
+import { juntarAoFeed, mensagemDeFalha, type FeedPage, type ItemDoFeed } from "@/lib/api";
 
 export function useFeedPorCursor(buscar: (cursor: string | null) => Promise<FeedPage>) {
   const [itens, setItens] = useState<ItemDoFeed[]>([]);
@@ -21,10 +23,7 @@ export function useFeedPorCursor(buscar: (cursor: string | null) => Promise<Feed
     pedindo.current = true;
     try {
       const pagina = await buscar(cursor);
-      setItens((atuais) => {
-        const vistos = new Set(atuais.map(chaveDoItem));
-        return [...atuais, ...pagina.items.filter((p) => !vistos.has(chaveDoItem(p)))];
-      });
+      setItens((atuais) => juntarAoFeed(atuais, pagina.items));
       setCursor(pagina.proximo_cursor);
       setFim(pagina.proximo_cursor === null);
     } catch (e) {
