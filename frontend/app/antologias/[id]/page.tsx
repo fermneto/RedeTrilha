@@ -1,7 +1,7 @@
 "use client";
-// Detalhe da antologia: nome, descrição, dono e os poemas na ordem em que
-// entraram, e depois as rengas (#171). O dono edita (inline), apaga (com
-// confirmação) e tira poemas e rengas.
+// Detalhe da antologia: nome, descrição, dono e os poemas e as rengas (#171)
+// numa lista só, na ordem em que foram guardados. O dono edita (inline), apaga
+// (com confirmação) e tira poemas e rengas.
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -29,6 +29,7 @@ import {
   type Alvo,
   type AntologiaDetalhe,
   type Post,
+  type RengaDetalhe,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
 
@@ -108,7 +109,7 @@ export default function AntologiaPage() {
     await marcarNaAntologia(antologia!.id, alvo, false);
     setAntologia((a) => a && semOAlvo(a, alvo));
   }
-  const rengas = antologia.rengas ?? [];
+  const itens = itensDaAntologia(antologia);
 
   return (
     <div>
@@ -138,7 +139,7 @@ export default function AntologiaPage() {
         )}
       </div>
 
-      {antologia.poemas.length === 0 && rengas.length === 0 ? (
+      {itens.length === 0 ? (
         <div className="px-4 py-12 text-center">
           <p className="font-serifada text-lg">Nenhum poema nesta antologia ainda.</p>
           {dono && (
@@ -157,45 +158,40 @@ export default function AntologiaPage() {
         </div>
       ) : (
         <>
-          {antologia.poemas.length > 1 && <Indice poemas={antologia.poemas} />}
-          {antologia.poemas.length > 0 && (
-            <>
-              <h2 className="sr-only">Poemas</h2>
-              <ol className="divide-y divide-borda border-b border-borda">
-                {antologia.poemas.map((p) => (
-                  <li
-                    key={p.id}
-                    id={ancora(p)}
-                    className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
-                  >
-                    <PoemaCard post={p} />
-                    {dono && (
-                      <TirarDaAntologia qual={qualPoema(p)} aoTirar={() => tirar({ tipo: "poema", id: p.id })} />
-                    )}
-                  </li>
-                ))}
-              </ol>
-            </>
-          )}
-          {rengas.length > 0 && (
-            <>
-              <h2 className="px-4 pt-6 pb-1 text-sm font-bold">Rengas</h2>
-              <ol className="divide-y divide-borda border-b border-borda">
-                {rengas.map((r) => (
-                  <li key={r.id}>
-                    <RengaCard renga={r} />
+          {itens.length > 1 && <Indice itens={itens} />}
+          <h2 className="sr-only">Poemas</h2>
+          <ol className="divide-y divide-borda border-b border-borda">
+            {itens.map((item) => (
+              <li
+                key={ancora(item)}
+                id={ancora(item)}
+                className="scroll-mt-14 transition-colors duration-700 ease-out target:bg-painel"
+              >
+                {item.tipo === "poema" ? (
+                  <>
+                    <PoemaCard post={item.poema} />
                     {dono && (
                       <TirarDaAntologia
-                        qual={`a renga “${r.titulo}”`}
-                        aoTirar={() => tirar({ tipo: "renga", id: r.id })}
+                        qual={qualPoema(item.poema)}
+                        aoTirar={() => tirar({ tipo: "poema", id: item.poema.id })}
+                      />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <RengaCard renga={item.renga} />
+                    {dono && (
+                      <TirarDaAntologia
+                        qual={`a renga “${item.renga.titulo}”`}
+                        aoTirar={() => tirar({ tipo: "renga", id: item.renga.id })}
                         recuo={false}
                       />
                     )}
-                  </li>
-                ))}
-              </ol>
-            </>
-          )}
+                  </>
+                )}
+              </li>
+            ))}
+          </ol>
         </>
       )}
     </div>
@@ -219,18 +215,45 @@ function qualPoema(poema: Post): string {
   return original.titulo ? `“${original.titulo}”` : `o poema de @${original.autor.username}`;
 }
 
+// Um poema ou uma renga da antologia.
+type Item = { tipo: "poema"; poema: Post } | { tipo: "renga"; renga: RengaDetalhe };
+
+// Poemas e rengas numa lista só, na `ordem` em que foram guardados. Sem a ordem
+// (resposta antiga), os poemas e depois as rengas.
+function itensDaAntologia(antologia: AntologiaDetalhe): Item[] {
+  const poemas = antologia.poemas.map((poema): Item => ({ tipo: "poema", poema }));
+  const rengas = (antologia.rengas ?? []).map((renga): Item => ({ tipo: "renga", renga }));
+  if (!antologia.ordem) return [...poemas, ...rengas];
+  const porChave = new Map([...poemas, ...rengas].map((item) => [ancora(item), item]));
+  return antologia.ordem.flatMap(({ tipo, id }) => porChave.get(`${tipo}-${id}`) ?? []);
+}
+
 // O poema que o leitor vê no card: num repost puro, o original.
 function poemaVisivel(p: Post): Post {
   return p.repost_de && p.texto === "" ? p.repost_de : p;
 }
 
-function ancora(p: Post): string {
-  return `poema-${p.id}`;
+function ancora(item: Item): string {
+  return item.tipo === "poema" ? `poema-${item.poema.id}` : `renga-${item.renga.id}`;
 }
 
 // Como nos livros de poemas: o poema sem título entra no índice pelo primeiro verso.
 function primeiroVerso(texto: string): string {
   return textoSemMarcas(texto).split("\n").find((linha) => linha.trim() !== "")?.trim() ?? "";
+}
+
+// O que o índice mostra de cada item: a renga pelo título, com os autores dela.
+function linhaDoIndice(item: Item): { titulo: string | null; primeiro: string; autor: string } {
+  if (item.tipo === "renga") {
+    const { renga } = item;
+    return { titulo: renga.titulo, primeiro: "", autor: `renga de ${renga.autores.map((a) => a.name).join(", ")}` };
+  }
+  const poema = poemaVisivel(item.poema);
+  return {
+    titulo: poema.titulo,
+    primeiro: primeiroVerso(poema.texto),
+    autor: poema.autor.name || `@${poema.autor.username}`,
+  };
 }
 
 // Antologia com mais poemas que isto é "longa": o índice abre recolhido, para os
@@ -239,8 +262,8 @@ const POEMAS_NO_INDICE_ABERTO = 8;
 
 // O índice da antologia, na ordem em que os poemas entraram: cada linha leva
 // ao poema mais abaixo na página.
-function Indice({ poemas }: { poemas: Post[] }) {
-  const longa = poemas.length > POEMAS_NO_INDICE_ABERTO;
+function Indice({ itens }: { itens: Item[] }) {
+  const longa = itens.length > POEMAS_NO_INDICE_ABERTO;
   const [aberto, setAberto] = useState(!longa);
   const idLista = useId();
 
@@ -256,7 +279,7 @@ function Indice({ poemas }: { poemas: Post[] }) {
             className="-mx-2 -my-3 flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-2 realce"
           >
             Índice
-            <span className="font-normal text-tinta-suave tabular-nums">{poemas.length} poemas</span>
+            <span className="font-normal text-tinta-suave tabular-nums">{itens.length} poemas</span>
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -277,30 +300,28 @@ function Indice({ poemas }: { poemas: Post[] }) {
         </h2>
       )}
       <ol id={idLista} hidden={longa && !aberto} className="mt-2">
-        {poemas.map((p, i) => {
-          const poema = poemaVisivel(p);
+        {itens.map((item, i) => {
+          const { titulo, primeiro, autor } = linhaDoIndice(item);
           return (
-            <li key={p.id}>
+            <li key={ancora(item)}>
               <a
-                href={`#${ancora(p)}`}
+                href={`#${ancora(item)}`}
                 className="group -mx-2 flex min-h-11 items-baseline gap-3 rounded-lg px-2 py-2 realce"
               >
                 <span className="w-5 shrink-0 text-right text-[0.8125rem] text-tinta-suave tabular-nums">
                   {i + 1}
                 </span>
                 <span className="min-w-0 flex-1">
-                  {poema.titulo ? (
+                  {titulo ? (
                     <span className="block font-serifada font-semibold break-words group-hover:underline">
-                      {poema.titulo}
+                      {titulo}
                     </span>
                   ) : (
                     <span className="block truncate font-serifada italic group-hover:underline">
-                      {primeiroVerso(poema.texto) || "poema sem título"}
+                      {primeiro || "poema sem título"}
                     </span>
                   )}
-                  <span className="block truncate text-[0.8125rem] text-tinta-suave">
-                    {poema.autor.name || `@${poema.autor.username}`}
-                  </span>
+                  <span className="block truncate text-[0.8125rem] text-tinta-suave">{autor}</span>
                 </span>
               </a>
             </li>

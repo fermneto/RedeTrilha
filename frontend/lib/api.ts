@@ -843,8 +843,13 @@ export type Antologia = {
   qtd: number;
 };
 
-// Os poemas e as rengas vêm na ordem em que foram adicionados, cada um na sua lista.
-export type AntologiaDetalhe = Antologia & { poemas: Post[]; rengas: RengaDetalhe[] };
+// Os poemas e as rengas vêm na ordem em que foram adicionados, cada um na sua
+// lista; `ordem` diz como os dois se intercalam (a lista da tela).
+export type AntologiaDetalhe = Antologia & {
+  poemas: Post[];
+  rengas: RengaDetalhe[];
+  ordem?: { tipo: "poema" | "renga"; id: number }[];
+};
 
 export type NovaAntologia = { nome: string; descricao?: string | null; publica?: boolean };
 
