@@ -5,7 +5,9 @@ preferências primeiro) com os mais curtidos da comunidade, que podem repetir.""
 
 from datetime import UTC, datetime, timedelta
 
-from app.core.continuacao import PASSO, Consagrado, Estado, prioridade, proximos
+import pytest
+
+from app.core.continuacao import PASSO, Candidato, Estado, intercalar
 from app.db import SessionLocal
 from app.models.atributos_consagrado import AtributosConsagrado
 from app.models.post import Post
@@ -13,48 +15,44 @@ from app.models.user import User
 
 BASE = datetime(2026, 11, 20, tzinfo=UTC)
 DIA = datetime(2026, 11, 20)
+# Os únicos itens que podem repetir: os mais curtidos e os consagrados reciclados.
+REPETEM = ("curtidas", "releitura")
 
 
 # ---- core/continuacao.py ----
 
 
-def _fila(*ids_e_prioridades: tuple[int, int]) -> list[Consagrado]:
-    return [Consagrado(i, DIA + timedelta(minutes=i), p) for i, p in ids_e_prioridades]
-
-
-def test_prioridade_soma_forma_e_escolas():
-    assert prioridade("soneto", ["barroco"], {"soneto"}, {"barroco"}) == 2
-    assert prioridade("soneto", ["romantismo"], {"soneto"}, {"barroco"}) == 1
-    assert prioridade(None, ["barroco"], set(), {"barroco"}) == 1
-    assert prioridade(None, [], {"soneto"}, {"barroco"}) == 0
+def _fila(*ids: int, rodada: int = 0) -> list[Candidato]:
+    return [Candidato(i, rodada, (0, 0, DIA + timedelta(minutes=i), i)) for i in ids]
 
 
 def test_intercala_um_curtido_a_cada_passo():
-    consagrados = _fila(*((i, 0) for i in range(1, 20)))
-    saida, _ = proximos(consagrados, [100, 101], set(), Estado(), 2 * PASSO)
+    saida, _ = intercalar(Estado(), 2 * PASSO, _fila(*range(19, 0, -1)), [100, 101])
     fontes = [fonte for fonte, _ in saida]
     assert fontes == (["consagrado"] * (PASSO - 1) + ["curtido"]) * 2
     assert [i for f, i in saida if f == "curtido"] == [100, 101]
 
 
-def test_preferencias_primeiro_depois_os_mais_recentes_sem_os_vistos():
-    consagrados = _fila((1, 0), (2, 2), (3, 1), (4, 2), (5, 0))
-    saida, _ = proximos(consagrados, [], {4}, Estado(), 10)
-    assert saida == [("consagrado", i) for i in (2, 3, 5, 1)]
+def test_o_estado_guarda_a_rodada_e_a_posicao_do_ultimo_consagrado_usado():
+    fila = [*_fila(3, 2), *_fila(9, rodada=1)]
+    saida, estado = intercalar(Estado(), 3, fila, [])
+    assert saida == [("consagrado", 3), ("consagrado", 2), ("releitura", 9)]
+    assert (estado.rodada, estado.ultimo_consagrado[3], estado.entregues) == (1, 9, 3)
 
 
-def test_a_fila_anda_pelo_estado_e_os_curtidos_dao_a_volta():
-    consagrados = _fila((1, 0), (2, 0), (3, 0))
-    primeira, estado = proximos(consagrados, [9], set(), Estado(), 3)
-    segunda, estado = proximos(consagrados, [9], set(), estado, 4)
-    assert [i for _, i in primeira] == [3, 2, 1]
-    # Os consagrados acabaram: os mais curtidos ocupam todas as vezes, repetindo.
-    assert segunda == [("curtido", 9)] * 4
+def test_sem_consagrados_os_curtidos_dao_a_volta():
+    saida, estado = intercalar(Estado(entregues=3), 4, [], [9, 8])
+    assert saida == [("curtido", 9), ("curtido", 8), ("curtido", 9), ("curtido", 8)]
     assert (estado.entregues, estado.curtidos) == (7, 4)
 
 
+def test_sem_curtidos_os_consagrados_ocupam_a_vez():
+    saida, _ = intercalar(Estado(), PASSO, _fila(4, 3, 2, 1), [])
+    assert [i for _, i in saida] == [4, 3, 2, 1]
+
+
 def test_so_acaba_sem_nenhuma_das_fontes():
-    assert proximos([], [], set(), Estado(), 5) == ([], Estado())
+    assert intercalar(Estado(), 5, [], []) == ([], Estado())
 
 
 # ---- as rotas ----
@@ -77,7 +75,9 @@ def _consagrado(username: str, escolas: list[str] | None = None) -> int:
         return user.id
 
 
-def _poemas_de_consagrado(autor_id: int, quantos: int, forma: str | None = None) -> list[int]:
+def _poemas_de_consagrado(
+    autor_id: int, quantos: int, forma: str | None = None, idioma: str | None = None
+) -> list[int]:
     """Poemas de hora em hora, para cada um cair numa janela de 3 h diferente só às vezes."""
     with SessionLocal() as db:
         posts = [
@@ -85,6 +85,7 @@ def _poemas_de_consagrado(autor_id: int, quantos: int, forma: str | None = None)
                 autor_id=autor_id,
                 texto=f"{autor_id}-{i}\nverso",
                 forma=forma,
+                idioma=idioma,
                 created_at=BASE - timedelta(hours=i),
             )
             for i in range(quantos)
@@ -94,8 +95,10 @@ def _poemas_de_consagrado(autor_id: int, quantos: int, forma: str | None = None)
         return [p.id for p in posts]
 
 
-def _get(client, como, rota: str, cursor: str | None = None, limit: int = 5) -> dict:
-    params = {"limit": limit, **({"cursor": cursor} if cursor else {})}
+def _get(
+    client, como, rota: str, cursor: str | None = None, limit: int = 5, **extra
+) -> dict:
+    params = {"limit": limit, **extra, **({"cursor": cursor} if cursor else {})}
     r = client.get(rota, params=params, headers=como("ana"))
     assert r.status_code == 200, r.text
     return r.json()
@@ -136,10 +139,12 @@ def test_sem_repetidos_fora_dos_mais_curtidos(client, como):
 
     itens = _ler(client, como, "/feed/para-voce", paginas=10, limit=3)
 
-    unicos = [_chave(i) for i in itens if i.get("subiu_por") != "curtidas"]
+    unicos = [_chave(i) for i in itens if i.get("subiu_por") not in REPETEM]
     assert len(unicos) == len(set(unicos))
-    # Todos os consagrados saem, no inédito (rareados) ou na continuação, uma vez só.
-    assert consagrados <= {id_ for _, id_ in unicos}
+    # Todos os consagrados saem, no inédito (rareados) ou na continuação, uma vez
+    # só, antes de a fila reciclar ("releitura").
+    primeira_releitura = next(n for n, i in enumerate(itens) if i.get("subiu_por") == "releitura")
+    assert consagrados <= {i["id"] for i in itens[:primeira_releitura]}
 
 
 def test_continuacao_traz_primeiro_as_formas_e_escolas_preferidas(client, como):
@@ -157,7 +162,7 @@ def test_continuacao_traz_primeiro_as_formas_e_escolas_preferidas(client, como):
     assert primeira["fim_em"] == len(primeira["items"])
     inedito = {_chave(i) for i in primeira["items"]}
     segunda = _get(client, como, "/feed/para-voce", primeira["proximo_cursor"], limit=20)
-    continuacao = [i["id"] for i in segunda["items"] if i.get("subiu_por") != "curtidas"]
+    continuacao = [i["id"] for i in segunda["items"] if i.get("subiu_por") not in REPETEM]
 
     esperados = [i for i in sonetos if ("poema", i) not in inedito]
     assert continuacao[: len(esperados)] == esperados
@@ -214,3 +219,146 @@ def test_cursor_da_continuacao_no_perfil_da_422(client, como):
     cursor = _get(client, como, "/feed/para-voce", limit=5)["proximo_cursor"]
     r = client.get("/usuarios/ana/posts", params={"cursor": cursor}, headers=como("ana"))
     assert r.status_code == 422
+
+
+def _continuacao(client, como, limit: int = 20, **extra) -> list[dict]:
+    """A primeira página da continuação do "Para você" (a seguinte à virada)."""
+    primeira = _get(client, como, "/feed/para-voce", limit=100, **extra)
+    assert primeira["fim_em"] == len(primeira["items"])
+    return _get(client, como, "/feed/para-voce", primeira["proximo_cursor"], limit, **extra)["items"]
+
+
+def _marcar(client, como, *ids: int, tipo: str = "poema") -> None:
+    corpo = {"itens": [{"tipo": tipo, "id": i} for i in ids]}
+    r = client.post("/feed/vistos", json=corpo, headers=como("ana"))
+    assert r.status_code == 204, r.text
+
+
+# ---- a virada do "Para você" (a folha "você está em dia" do front) ----
+
+
+def test_para_voce_marca_a_virada_e_enche_a_pagina_com_a_continuacao(client, como):
+    _poema(client, como, "bia", "bia 0")
+    _poema(client, como, "bia", "bia 1")
+    _poemas_de_consagrado(_consagrado("bilac"), 6)
+
+    primeira = _get(client, como, "/feed/para-voce", limit=1)
+    corpo = primeira
+    while corpo["fim_em"] is None:
+        corpo = _get(client, como, "/feed/para-voce", corpo["proximo_cursor"], limit=3)
+    # Com cursor, a página da virada continua depois dela, já na continuação.
+    assert len(corpo["items"]) == 3 and corpo["fim_em"] < 3
+    assert corpo["proximo_cursor"]
+
+
+def test_para_voce_sem_nada_inedito_vira_na_primeira_folha(client, como):
+    ids = _poemas_de_consagrado(_consagrado("bilac"), 2)
+    _marcar(client, como, *ids)
+    corpo = _get(client, como, "/feed/para-voce")
+    assert (corpo["items"], corpo["fim_em"]) == ([], 0)
+
+
+# ---- a fila recicla os consagrados ----
+
+
+def test_consagrados_reciclam_em_vez_de_repetir_o_mesmo_poema(client, como):
+    consagrados = _poemas_de_consagrado(_consagrado("bilac"), 3)
+    _poema(client, como, "bia", "o único da comunidade")
+
+    itens = _ler(client, como, "/feed/para-voce", paginas=8, limit=4)
+
+    # Nunca o mesmo poema em duas folhas seguidas, e o da comunidade só na vez dele.
+    ids = [i["id"] for i in itens]
+    assert all(a != b for a, b in zip(ids, ids[1:]))
+    assert sum(i["texto"] == "o único da comunidade" for i in itens) <= len(itens) // 3
+    releituras = [i["id"] for i in itens if i.get("subiu_por") == "releitura"]
+    assert releituras and set(releituras) <= set(consagrados)
+
+
+def test_releitura_volta_ao_topo_da_ordem(client, como):
+    consagrados = _poemas_de_consagrado(_consagrado("bilac"), 4)
+    _marcar(client, como, *consagrados)
+
+    itens = _continuacao(client, como, limit=6)
+
+    # Tudo já visto: a fila recicla na ordem (o mais recente primeiro) e, no fim,
+    # volta ao topo. A 4ª folha é a vez do mais curtido.
+    fila = [i["id"] for i in itens if i.get("subiu_por") == "releitura"]
+    assert fila == [*consagrados, consagrados[0]]
+
+
+# ---- a língua de quem lê, 3º critério ----
+
+
+def test_lingua_de_quem_le_vem_depois_das_preferencias(client, como):
+    bilac = _consagrado("bilac")
+    em_ingles = _poemas_de_consagrado(bilac, 2, idioma="en")
+    em_portugues = _poemas_de_consagrado(bilac, 2, idioma="pt")
+    soneto_em_ingles = _poemas_de_consagrado(bilac, 1, forma="soneto", idioma="en")
+    client.put("/preferencias", json={"formas": ["soneto"]}, headers=como("ana"))
+    _marcar(client, como, *em_ingles, *em_portugues, *soneto_em_ingles)
+
+    # Tudo visto: a releitura mostra a ordem inteira da fila.
+    itens = _continuacao(client, como, limit=3, lingua="pt")
+
+    assert [i["id"] for i in itens] == [*soneto_em_ingles, *em_portugues]
+
+
+# ---- o que a pessoa já viu, entre sessões ----
+
+
+def test_o_ja_visto_fica_fora_do_inedito_numa_sessao_nova(client, como):
+    visto = _poema(client, como, "bia", "já visto")
+    novo = _poema(client, como, "bia", "novo")
+    _marcar(client, como, visto)
+
+    corpo = _get(client, como, "/feed/para-voce", limit=10)
+
+    assert [i["id"] for i in corpo["items"][: corpo["fim_em"]]] == [novo]
+
+
+def test_o_ja_visto_fica_fora_dos_consagrados_ineditos(client, como):
+    consagrados = _poemas_de_consagrado(_consagrado("bilac"), 30)
+    _marcar(client, como, *consagrados[:20])
+
+    itens = _continuacao(client, como, limit=12)
+
+    ineditos = [i["id"] for i in itens if i.get("subiu_por") is None]
+    assert ineditos and not set(ineditos) & set(consagrados[:20])
+
+
+def test_marcar_de_novo_nao_duplica_e_vale_para_renga(client, como):
+    _marcar(client, como, 1, 1, 2)
+    _marcar(client, como, 1)
+    _marcar(client, como, 7, tipo="renga")
+    with SessionLocal() as db:
+        from app.services.vistos_no_feed import do_usuario
+
+        ana = db.query(User).filter_by(username="ana").one()
+        assert do_usuario(db, ana.id) == {("poema", 1), ("poema", 2), ("renga", 7)}
+
+
+@pytest.mark.parametrize(
+    "corpo",
+    [
+        {"itens": []},
+        {"itens": [{"tipo": "conto", "id": 1}]},
+        {"itens": [{"tipo": "poema", "id": 0}]},
+        {"itens": [{"tipo": "poema", "id": i} for i in range(1, 102)]},
+    ],
+)
+def test_vistos_invalidos_dao_422(client, como, corpo):
+    assert client.post("/feed/vistos", json=corpo, headers=como("ana")).status_code == 422
+
+
+def test_vistos_exigem_login(client):
+    assert client.post("/feed/vistos", json={"itens": [{"tipo": "poema", "id": 1}]}).status_code == 401
+
+
+def test_seguindo_continua_cronologico_com_o_ja_visto(client, como):
+    """O trecho de quem a pessoa segue não pula o já visto (lacuna de produto)."""
+    client.post("/usuarios/bia/follow", headers=como("ana"))
+    visto = _poema(client, como, "bia", "já visto")
+    _marcar(client, como, visto)
+    corpo = _get(client, como, "/feed", limit=10)
+    assert corpo["items"][0]["id"] == visto
