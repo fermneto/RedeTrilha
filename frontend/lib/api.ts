@@ -741,6 +741,8 @@ export type Preferencias = {
   // ISO 3166-1 alfa-2; a UF só com "BR".
   pais: string | null;
   uf: string | null;
+  // País e UF nos gostos públicos do perfil; desligado, só a própria pessoa os vê.
+  mostrar_lugar: boolean;
 };
 
 export type Opcao = { codigo: string; rotulo: string };
@@ -762,9 +764,14 @@ export function buscarGostosDe(username: string): Promise<Preferencias> {
   return apiGet<Preferencias>(`/usuarios/${encodeURIComponent(username)}/gostos`);
 }
 
-// Nada marcado: o perfil não mostra o bloco dos gostos.
-export function semGostos(g: Preferencias): boolean {
-  return g.escolas.length === 0 && g.formas.length === 0 && !g.pais;
+// As formas que o perfil mostra: "outro" não diz nada a quem lê, fica de fora.
+export function formasDoPerfil(formas: string[]): string[] {
+  return formas.filter((f) => f !== "outro");
+}
+
+// A forma no perfil leva aos poemas dela no Explorar.
+export function caminhoDaForma(forma: string): string {
+  return `/explorar?forma=${encodeURIComponent(forma)}`;
 }
 
 // "Paraíba, Brasil", "Portugal"; null sem país. O nome da UF vem das opções.
