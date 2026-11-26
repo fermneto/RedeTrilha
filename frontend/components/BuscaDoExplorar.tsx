@@ -22,6 +22,7 @@ import {
   caminhoDoAcervoComBusca,
   hashtag,
   opcaoVizinha,
+  semSublinhado,
   termosDaBusca,
   type PoetaDoAcervo,
   type TagEncontrada,
@@ -64,7 +65,7 @@ export function BuscaDoExplorar({
   };
   const idCampo = useId();
   const idLista = useId();
-  const [termo, setTermo] = useState(tagAtual ? `#${tagAtual}` : "");
+  const [termo, setTermo] = useState(tagAtual ? hashtag(tagAtual) : "");
   const [resultados, setResultados] = useState<Resultados>(VAZIO);
   // O termo que os resultados respondem: "" = nada buscado ainda.
   const [respondido, setRespondido] = useState("");
@@ -73,9 +74,12 @@ export function BuscaDoExplorar({
   const pedido = useRef(0);
 
   // A tag também muda por fora (um link de #tag, "limpar filtros"): o campo mostra
-  // a tag atual, a não ser que o que já está escrito equivalha a ela.
+  // a tag atual, a não ser que o que já está escrito equivalha a ela (o "_" não
+  // conta: #versolivre equivale a verso_livre).
   useEffect(() => {
-    setTermo((atual) => (termosDaBusca(atual).tag === tagAtual ? atual : tagAtual ? `#${tagAtual}` : ""));
+    setTermo((atual) =>
+      semSublinhado(termosDaBusca(atual).tag) === semSublinhado(tagAtual) ? atual : tagAtual ? hashtag(tagAtual) : "",
+    );
   }, [tagAtual]);
 
   const limpo = termo.trim();
@@ -115,7 +119,7 @@ export function BuscaDoExplorar({
     setAberta(false);
     setAtiva(-1);
     if (opcao.tipo === "tag") {
-      setTermo(`#${opcao.tag.tag}`);
+      setTermo(hashtag(opcao.tag.tag));
       irParaTag(opcao.tag.tag);
     } else if (opcao.tipo === "poeta") {
       router.push(`/u/${opcao.poeta.username}`);
