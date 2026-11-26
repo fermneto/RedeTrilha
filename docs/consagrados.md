@@ -48,6 +48,23 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    Fassung) e "Freygeisterey der Leidenschaft" / "Der Kampf" de Schiller. Com
    eles, os JSONs dão 160 grupos e 283 poemas de fora.
 
+10. **Título sem o caminho do Wikisource.** O scraper guardou como título o
+   nome da página do Wikisource: o caminho até o poema ("Eu (Augusto dos
+   Anjos, 1912)/Vozes de um Tumulo", "Leaves of Grass (1882)/Calamus/...") ou
+   o poema com o autor entre parênteses ("O Mar (Augusto dos Anjos)", "Vida
+   (Álvares de Azevedo) — E as páginas..."). O JSON não muda: o importador
+   grava só o nome do poema, e a obra e o ano do caminho preenchem os que
+   faltam (o ano só se a obra do poema é o livro do caminho). Quando dois
+   poemas do autor ficariam com o mesmo (`titulo`, `obra`), cada um leva a
+   seção do caminho entre parênteses ("Carmen I (Liber II)"); se nem assim,
+   fica o título original. A regra é `app/core/titulos.py`, aplicada depois de
+   tirar os repetidos. Os bancos importados antes se consertam com
+   `scripts/corrigir_titulos_consagrados.py` (`--dry-run` lista antes → depois;
+   sem ele, aplica), que leva cada poema ao mesmo resultado do importador, para
+   a próxima importação achá-lo. A ordem com `fundir_poemas_repetidos.py` não
+   importa: os pares de `_versoes_distintas.json` trazem o título antigo e o
+   novo ("Der Kampf (Friedrich Schiller)" e "Der Kampf").
+
 ## Schema
 
 ```jsonc
