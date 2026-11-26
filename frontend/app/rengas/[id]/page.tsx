@@ -7,7 +7,9 @@
 // guardar, enviar, #171) e recebe comentários e crítica ancorada no verso, como
 // a página do poema: o corpo é o VersosComentaveis sobre o texto da renga (as
 // estrofes juntas, uma linha em branco entre elas), com o autor de cada estrofe
-// embaixo do último verso dela, e a árvore de comentários vem no fim.
+// embaixo do último verso dela. No livro, como o poema: a renga na página da
+// esquerda e, na da direita, as ações, quem curtiu, repostou e citou, e os
+// comentários (no celular, a página seguinte).
 // /rengas/3?versos=2-4 (do "comentar estes versos" no card) abre com os versos
 // selecionados e o campo de comentário focado.
 
@@ -18,9 +20,14 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
+import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
+import { ConversaDaRenga } from "@/components/CadernoPoema";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { EsqueletoDaPaginaDaRenga } from "@/components/Esqueleto";
+import { IconeComentar } from "@/components/icones/IconeComentar";
+import { MaisDoAutor } from "@/components/MaisDoAutor";
 import { NomeAutor } from "@/components/NomeAutor";
+import { Repercussao } from "@/components/Repercussao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
 import {
@@ -33,7 +40,7 @@ import {
   encerrarRenga,
   ErroDaApi,
   fimDasEstrofes,
-  formatarData,
+  formatarDataEHora,
   lerUsernames,
   lerVersosDaUrl,
   mensagemDeFalha,
@@ -49,6 +56,8 @@ const botaoPrincipal =
   "min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50";
 const botaoSecundario =
   "realce min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm disabled:opacity-50";
+// A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
+const MOLDURA = "flex min-h-full flex-col pb-6 lg:px-6";
 const campo =
   "w-full rounded-xl border border-borda bg-papel px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
 
@@ -130,41 +139,139 @@ export default function RengaPage() {
     return mapa;
   }, [renga]);
 
-  const cabecalho = <CabecalhoPagina titulo="Renga" comoTitulo={false} />;
+  const cabecalho = <CabecalhoPagina titulo="Renga" comoTitulo={false} voltar />;
+  // Sem a renga (ou com erro), uma folha só, com o aviso ou o esqueleto.
+  const umaFolha = (rotulo: string, conteudo: React.ReactNode) => (
+    <CadernoFolhas
+      key="estado"
+      folhas={[
+        {
+          chave: "estado",
+          rotulo,
+          esquerda: (
+            <div className={MOLDURA}>
+              {cabecalho}
+              {conteudo}
+            </div>
+          ),
+        },
+      ]}
+    />
+  );
   if (naoExiste)
-    return (
-      <>
-        {cabecalho}
-        <div className="px-4 py-10 text-center">
-          <h1 className="font-serifada text-xl">Renga não encontrada</h1>
-          <Link href="/explorar?aba=rengas" className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline">
-            ver as rengas
-          </Link>
-        </div>
-      </>
+    return umaFolha(
+      "renga não encontrada",
+      <div className="px-4 py-10 text-center">
+        <h1 className="font-serifada text-xl">Renga não encontrada</h1>
+        <Link
+          href="/explorar?aba=rengas"
+          className="mt-4 inline-flex min-h-11 items-center text-sm text-destaque hover:underline"
+        >
+          ver as rengas
+        </Link>
+      </div>,
     );
   if (erro)
-    return (
-      <>
-        {cabecalho}
-        <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
-      </>
-    );
-  if (!renga)
-    return (
-      <>
-        {cabecalho}
-        <EsqueletoDaPaginaDaRenga />
-      </>
-    );
+    return umaFolha(erro, <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>);
+  if (!renga) return umaFolha("carregando a renga", <EsqueletoDaPaginaDaRenga />);
 
-  const souCriador = eu?.id === renga.criador.id;
+  // Como o poema: na página dupla, a renga na esquerda e, na direita, as ações,
+  // quem curtiu, repostou e citou, e os comentários; no celular, duas páginas, e
+  // "comentar estes versos" vira até a dos comentários.
+  return (
+    <CadernoFolhas
+      key={renga.id}
+      anterior="voltar à renga"
+      proxima="ver ações e comentários"
+      folhas={[
+        {
+          chave: `renga-${renga.id}`,
+          rotulo: `renga ${renga.titulo}`,
+          rotuloDaDireita: "ações e comentários",
+          esquerda: (
+            <div className={`surgir ${MOLDURA}`}>
+              {cabecalho}
+              <PaginaDaRenga
+                renga={renga}
+                souCriador={eu?.id === renga.criador.id}
+                aoMudar={setRenga}
+                texto={texto}
+                rodape={rodape}
+                marcas={marcas}
+                selecao={selecao}
+                aoSelecionar={setSelecao}
+                pedida={pedida}
+                aoFiltrar={setVerso}
+              />
+            </div>
+          ),
+          direita: (
+            <div className="surgir min-h-full">
+              <ConversaDaRenga
+                renga={renga}
+                naPropriaPagina
+                repercussao={<Repercussao alvo={{ tipo: "renga", id: renga.id }} />}
+                comentarios={
+                  <ArvoreComentarios
+                    campoNoPe
+                    alvo={{ tipo: "renga", id: renga.id }}
+                    euId={eu?.id ?? null}
+                    aoMudar={carregarMarcas}
+                    textoDoPoema={texto}
+                    selecao={selecao}
+                    aoLimparSelecao={() => setSelecao(null)}
+                    verso={verso}
+                    aoLimparFiltro={() => setVerso(null)}
+                  />
+                }
+              />
+            </div>
+          ),
+        },
+      ]}
+    />
+  );
+}
+
+// A renga na página da esquerda: os autores, as estrofes (que se selecionam para
+// comentar ou citar), as datas, a próxima estrofe, o que o criador faz e, no pé,
+// mais de quem abriu a renga. No celular, as ações vêm aqui também, com o
+// caminho para a página da conversa.
+function PaginaDaRenga({
+  renga,
+  souCriador,
+  aoMudar,
+  texto,
+  rodape,
+  marcas,
+  selecao,
+  aoSelecionar,
+  pedida,
+  aoFiltrar,
+}: {
+  renga: RengaDetalhe;
+  souCriador: boolean;
+  aoMudar: (renga: RengaDetalhe) => void;
+  texto: string;
+  rodape: Map<number, React.ReactNode>;
+  marcas: Map<number, number>;
+  selecao: SelecaoDeVersos | null;
+  aoSelecionar: (s: SelecaoDeVersos | null) => void;
+  pedida: SelecaoDeVersos | null;
+  aoFiltrar: (verso: number) => void;
+}) {
+  const { duplo, mostrar } = useFolhas();
+  // "comentar", no card do feed, abre /rengas/{id}#comentarios: no celular, já na página deles.
+  useEffect(() => {
+    if (window.location.hash === "#comentarios") mostrar("d");
+  }, []);
 
   return (
-    <div>
-      {cabecalho}
-      <header className="surgir px-4 pt-6 pb-3">
-        <h1 id="titulo-da-renga" className="poema-titulo break-words">{renga.titulo}</h1>
+    <>
+      <header className="px-4 pt-2 pb-3">
+        <h1 id="titulo-da-renga" className="poema-titulo break-words">
+          {renga.titulo}
+        </h1>
         <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
           <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
           <ListaDeAutores autores={renga.autores} />
@@ -184,12 +291,6 @@ export default function RengaPage() {
         )}
       </header>
 
-      {/* As ações do poema (#171) presas no topo, como no livro: curtir, repostar,
-          citar, comentar, guardar e enviar ficam à vista enquanto a renga rola. */}
-      <div className="acoes-presas sticky top-0 z-10 border-y border-borda/70 px-4 pt-3 pb-2">
-        <AcoesDaRenga key={renga.id} renga={renga} contadores />
-      </div>
-
       <article aria-labelledby="titulo-da-renga" className="border-b border-borda px-4 pt-2 pb-6">
         {/* As estrofes leem como um poema só, numeradas verso a verso (a linha em
             branco entre elas conta); o autor de cada uma fica logo abaixo dela, discreto. */}
@@ -200,24 +301,41 @@ export default function RengaPage() {
             rodape={rodape}
             marcas={marcas}
             selecao={selecao}
-            aoSelecionar={setSelecao}
+            aoSelecionar={aoSelecionar}
             selecaoPedida={pedida}
-            aoComentar={(suave) => {
-              const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
-              campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
-              campo?.focus({ preventScroll: true });
-            }}
+            aoComentar={(suave) =>
+              mostrar("d", () => {
+                const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
+                campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
+                campo?.focus({ preventScroll: true });
+              })
+            }
             aoFiltrar={(n) => {
-              setVerso(n);
-              document.getElementById("comentarios")?.scrollIntoView({ behavior: "smooth" });
+              aoFiltrar(n);
+              mostrar("d", () => document.getElementById("comentarios")?.scrollIntoView({ behavior: "smooth" }));
             }}
           />
         </div>
 
         <p className="mt-8 text-xs text-tinta-suave">
-          começada em {formatarData(renga.created_at)}
-          {renga.fechada_em && <> · fechada em {formatarData(renga.fechada_em)}</>}
+          começada em <time dateTime={renga.created_at}>{formatarDataEHora(renga.created_at)}</time>
+          {renga.fechada_em && (
+            <>
+              {" "}
+              · fechada em <time dateTime={renga.fechada_em}>{formatarDataEHora(renga.fechada_em)}</time>
+            </>
+          )}
         </p>
+
+        {/* Na página dupla, as ações ficam na página da direita, presas no topo. */}
+        {!duplo && (
+          <>
+            <div className="mt-6">
+              <AcoesDaRenga key={renga.id} renga={renga} />
+            </div>
+            <IrParaAConversa comentarios={renga.comentarios} aoIr={() => mostrar("d")} />
+          </>
+        )}
       </article>
 
       {!renga.fechada && (
@@ -230,7 +348,7 @@ export default function RengaPage() {
             </span>
           </h2>
           {renga.posso_escrever ? (
-            <ProximaEstrofe renga={renga} aoAcrescentar={setRenga} />
+            <ProximaEstrofe renga={renga} aoAcrescentar={aoMudar} />
           ) : (
             <p className="mt-2 text-sm text-tinta-suave">{renga.motivo}</p>
           )}
@@ -239,24 +357,32 @@ export default function RengaPage() {
 
       {souCriador && !renga.fechada && (
         <section aria-label="ações de quem criou" className="space-y-5 border-b border-borda px-4 py-5">
-          {renga.modo === "convidados" && <Convidar rengaId={renga.id} aoConvidar={setRenga} />}
-          <Encerrar rengaId={renga.id} aoEncerrar={setRenga} />
+          {renga.modo === "convidados" && <Convidar rengaId={renga.id} aoConvidar={aoMudar} />}
+          <Encerrar rengaId={renga.id} aoEncerrar={aoMudar} />
         </section>
       )}
 
-      <div className="px-4 py-6">
-        <ArvoreComentarios
-          alvo={{ tipo: "renga", id: renga.id }}
-          euId={eu?.id ?? null}
-          aoMudar={carregarMarcas}
-          textoDoPoema={texto}
-          selecao={selecao}
-          aoLimparSelecao={() => setSelecao(null)}
-          verso={verso}
-          aoLimparFiltro={() => setVerso(null)}
-        />
+      <div className="px-4">
+        <MaisDoAutor autor={renga.criador} aberto={{ tipo: "renga", id: renga.id }} />
       </div>
-    </div>
+    </>
+  );
+}
+
+// No celular, o caminho da renga para a página da conversa, como no poema.
+function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={aoIr}
+      className="mt-4 flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-borda px-4 text-left text-sm transition-colors duration-150 hover:border-tinta-suave"
+    >
+      <span className="flex items-center gap-2 text-tinta-suave tabular-nums">
+        <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
+        {comentarios} {comentarios === 1 ? "comentário" : "comentários"}
+      </span>
+      <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
+    </button>
   );
 }
 
