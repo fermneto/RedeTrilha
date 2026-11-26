@@ -249,6 +249,13 @@ function ehForma(tag: string): boolean {
   return (FORMAS as readonly string[]).includes(tag);
 }
 
+// Como uma tag aparece na tela, com o "#". A de forma composta junta as palavras
+// (#versolivre, #prosapoetica); o valor e o link continuam com o "_" (verso_livre).
+// As outras tags aparecem como são.
+export function hashtag(tag: string): string {
+  return `#${ehForma(tag) ? tag.replace(/_/g, "") : tag}`;
+}
+
 // Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
 export function caminhoDaTag(tag: string): string {
   return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;

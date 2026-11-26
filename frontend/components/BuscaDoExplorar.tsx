@@ -20,6 +20,7 @@ import {
   buscarPoetas,
   buscarTags,
   caminhoDoAcervoComBusca,
+  hashtag,
   opcaoVizinha,
   termosDaBusca,
   type PoetaDoAcervo,
@@ -226,7 +227,7 @@ export function BuscaDoExplorar({
             <Grupo titulo="Tags" mostrar={resultados.tags.length > 0}>
               {resultados.tags.map((t, i) => (
                 <OpcaoDaLista key={t.tag} id={idDaOpcao(i)} ativa={ativa === i} aoEscolher={() => escolher(opcoes[i])}>
-                  <span className="block font-bold break-words">#{t.tag}</span>
+                  <span className="block font-bold break-words">{hashtag(t.tag)}</span>
                   <span className="block text-[0.8125rem] text-tinta-suave tabular-nums">
                     {t.poemas} {t.poemas === 1 ? "poema" : "poemas"}
                   </span>
