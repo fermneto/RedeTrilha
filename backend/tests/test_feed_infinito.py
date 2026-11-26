@@ -317,6 +317,46 @@ def test_o_ja_visto_fica_fora_do_inedito_numa_sessao_nova(client, como):
     assert [i["id"] for i in corpo["items"][: corpo["fim_em"]]] == [novo]
 
 
+def _ineditos(client, como) -> list[int]:
+    corpo = _get(client, como, "/feed/para-voce", limit=20)
+    return [i["id"] for i in corpo["items"][: corpo["fim_em"]] if i["tipo"] == "poema"]
+
+
+@pytest.mark.parametrize("atividade", ["comentario", "repost"])
+def test_o_ja_visto_volta_com_atividade_nova(client, como, atividade):
+    visto = _poema(client, como, "bia", "já visto")
+    _marcar(client, como, visto)
+    assert visto not in _ineditos(client, como)
+
+    if atividade == "comentario":
+        r = client.post(f"/posts/{visto}/comentarios", json={"texto": "bonito"}, headers=como("caio"))
+    else:
+        r = client.post(f"/posts/{visto}/repostar", headers=como("caio"))
+    assert r.status_code in (200, 201, 204), r.text
+
+    assert visto in _ineditos(client, como)
+
+
+def test_o_ja_visto_sem_atividade_nova_nao_volta(client, como):
+    visto = _poema(client, como, "bia", "já visto")
+    client.post(f"/posts/{visto}/comentarios", json={"texto": "antes"}, headers=como("caio"))
+    _marcar(client, como, visto)
+
+    # A atividade de antes de ver não conta.
+    assert visto not in _ineditos(client, como)
+
+
+def test_visto_de_novo_depois_de_voltar_nao_volta_mais(client, como):
+    visto = _poema(client, como, "bia", "já visto")
+    _marcar(client, como, visto)
+    client.post(f"/posts/{visto}/repostar", headers=como("caio"))
+    assert visto in _ineditos(client, como)
+
+    _marcar(client, como, visto)
+
+    assert visto not in _ineditos(client, como)
+
+
 def test_o_ja_visto_fica_fora_dos_consagrados_ineditos(client, como):
     consagrados = _poemas_de_consagrado(_consagrado("bilac"), 30)
     _marcar(client, como, *consagrados[:20])
@@ -332,10 +372,10 @@ def test_marcar_de_novo_nao_duplica_e_vale_para_renga(client, como):
     _marcar(client, como, 1)
     _marcar(client, como, 7, tipo="renga")
     with SessionLocal() as db:
-        from app.services.vistos_no_feed import do_usuario
+        from app.services.vistos_no_feed import vistos_em
 
         ana = db.query(User).filter_by(username="ana").one()
-        assert do_usuario(db, ana.id) == {("poema", 1), ("poema", 2), ("renga", 7)}
+        assert set(vistos_em(db, ana.id)) == {("poema", 1), ("poema", 2), ("renga", 7)}
 
 
 @pytest.mark.parametrize(

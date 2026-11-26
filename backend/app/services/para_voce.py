@@ -34,7 +34,7 @@ no banco, com `row_number()` por janela sobre o índice `ix_posts_autorais`; dep
 mesma montagem O(limit) do feed Seguindo (`montar_itens`, em `services/feed.py`).
 """
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from sqlalchemy import Integer, case, cast, func, literal, select
 from sqlalchemy.orm import Session, aliased
@@ -74,12 +74,13 @@ def parte(
     """Uma página do "Para você" cronológico, o trecho inédito do feed infinito
     (`services/feed_infinito.py`): do `offset`, ou de depois do `inicio`. Fica
     fora o que a sessão já viu (`inicio.vistos`) e o que a pessoa viu em sessões
-    anteriores (`services/vistos_no_feed.py`)."""
-    ja_vistos = vistos_no_feed.do_usuario(db, usuario.id)
+    anteriores (`services/vistos_no_feed.py`), a não ser que a atividade que o
+    subiu (repost, comentário, estrofe) seja depois da última vez que ela o viu."""
+    vistos_em = vistos_no_feed.vistos_em(db, usuario.id)
     itens = [
         item
         for item in _itens(db, usuario, lingua)
-        if (item.atividade.tipo, item.atividade.alvo_id) not in ja_vistos
+        if not _ja_visto(item, vistos_em)
     ]
     recorte = recortar(
         itens,
@@ -90,6 +91,12 @@ def parte(
         inicio,
     )
     return parte_do_recorte(db, usuario, recorte, "para_voce", _linha, poema_do_feed)
+
+
+def _ja_visto(item: ItemMisturado, vistos_em: dict[tuple[str, int], datetime]) -> bool:
+    """Visto numa sessão anterior e sem atividade nova desde então."""
+    visto_em = vistos_em.get((item.atividade.tipo, item.atividade.alvo_id))
+    return visto_em is not None and item.atividade.data <= visto_em
 
 
 def _itens(db: Session, usuario: User, lingua: str | None) -> list[ItemMisturado]:

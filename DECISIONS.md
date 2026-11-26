@@ -180,7 +180,9 @@ PRs, na seção "Decisões do Neto".
     continua com o "Para você". Só falta conteúdo com a rede sem nenhum poema.
   - **O que já foi visto não volta em outra sessão.** O Verso guarda as folhas
     que apareceram na tela de cada pessoa; o "Para você" e os consagrados da
-    continuação as pulam nas próximas vezes. O Seguindo continua cronológico.
+    continuação as pulam nas próximas vezes, a não ser que o poema tenha
+    conversa nova depois disso (um repost, um comentário, uma estrofe): aí ele
+    volta, como sobe no feed. O Seguindo continua cronológico.
 - **O que cortamos e por quê:** qualquer ranking por engajamento ("mais
   curtidos da semana") no que é novo, também no "Para você". Quem procura algo
   novo procura "um haicai sobre chuva", não o post mais curtido, e ordenar por

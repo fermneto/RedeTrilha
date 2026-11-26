@@ -226,9 +226,11 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   `vistos_no_feed` (`user_id`, `tipo` "poema"|"renga", `alvo_id`, `visto_em`;
   chave primária nos três primeiros, o único índice). `POST /feed/vistos` 🔒
   `{"itens": [{"tipo": "poema", "id": 12}, ...]}` (1 a 100; 204; repetido não
-  duplica) recebe as folhas que apareceram na tela; o front manda em lotes. O
-  "Para você" inédito e a primeira rodada dos consagrados pulam esses itens; o
-  trecho de quem a pessoa segue, não.
+  duplica, só atualiza o `visto_em`) recebe as folhas que apareceram na tela; o
+  front manda em lotes. O "Para você" inédito e a primeira rodada dos
+  consagrados pulam esses itens; o trecho de quem a pessoa segue, não. No "Para
+  você", o item já visto volta quando a atividade que o sobe (repost, comentário,
+  estrofe) é posterior ao `visto_em`.
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
 - Rengas como reposts: uma renga entra no feed de quem segue o criador ou
   alguém que escreveu estrofe (e no de quem participou), uma vez só, na
