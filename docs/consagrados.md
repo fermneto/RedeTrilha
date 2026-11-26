@@ -53,11 +53,14 @@ curtidos, comentados e repostados), mas **não têm login**: `password_hash` é
    Anjos, 1912)/Vozes de um Tumulo", "Leaves of Grass (1882)/Calamus/...") ou
    o poema com o autor entre parênteses ("O Mar (Augusto dos Anjos)", "Vida
    (Álvares de Azevedo) — E as páginas..."). O JSON não muda: o importador
-   grava só o nome do poema, e a obra e o ano do caminho preenchem os que
-   faltam (o ano só se a obra do poema é o livro do caminho). Quando dois
+   grava só o nome do poema, e o ano do caminho preenche o que falta, se a
+   obra do poema está vazia ou é o livro do caminho ("Eu (Augusto dos Anjos,
+   1912)" dá 1912; costuma ser o ano da edição do Wikisource, e isso foi
+   aceito). A `obra` fica a do JSON: o livro do caminho não vira obra. Quando dois
    poemas do autor ficariam com o mesmo (`titulo`, `obra`), cada um leva a
-   seção do caminho entre parênteses ("Carmen I (Liber II)"); se nem assim,
-   fica o título original. A regra é `app/core/titulos.py`, aplicada depois de
+   seção do caminho entre parênteses ("Carmen I (Liber II)") ou, sem seção, o
+   livro ("Stéphane Mallarmé (Nos maîtres)"); se nem assim, fica o título
+   original. A regra é `app/core/titulos.py`, aplicada depois de
    tirar os repetidos. Os bancos importados antes se consertam com
    `scripts/corrigir_titulos_consagrados.py` (`--dry-run` lista antes → depois;
    sem ele, aplica), que leva cada poema ao mesmo resultado do importador, para

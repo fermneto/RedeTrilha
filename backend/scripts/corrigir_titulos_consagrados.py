@@ -2,8 +2,8 @@
 
 O importador (`importar_consagrados.py`) passou a gravar só o nome do poema
 ("Vozes de um Tumulo", não "Eu (Augusto dos Anjos, 1912)/Vozes de um Tumulo";
-"O Mar", não "O Mar (Augusto dos Anjos)") e a preencher a obra e o ano que o
-caminho trazia, quando faltavam (`app/core/titulos.py`). Os bancos importados
+"O Mar", não "O Mar (Augusto dos Anjos)") e a preencher o ano que o caminho
+trazia, quando faltava (`app/core/titulos.py`; a obra não muda). Os bancos importados
 antes ainda têm os títulos antigos, e o importador não os acharia mais pela
 chave (autor, titulo, obra). Este script leva cada poema ao mesmo (titulo, obra,
 ano) que o importador gravaria hoje:

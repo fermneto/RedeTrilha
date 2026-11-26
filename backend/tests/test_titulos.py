@@ -11,9 +11,9 @@ from scripts.importar_consagrados import (
 AUGUSTO = "Augusto dos Anjos"
 
 
-def test_caminho_do_livro_vira_obra_e_ano():
+def test_caminho_do_livro_da_o_livro_e_o_ano():
     assert normalizar_titulo("Eu (Augusto dos Anjos, 1912)/Vozes de um Tumulo", AUGUSTO) == (
-        TituloNormalizado("Vozes de um Tumulo", obra="Eu", ano=1912)
+        TituloNormalizado("Vozes de um Tumulo", obra="Eu", ano=1912, secao="Eu")
     )
 
 
@@ -26,9 +26,8 @@ def test_autor_entre_parenteses_sai():
 
 def test_autor_pelo_ultimo_nome_por_outro_do_meio_e_no_meio_do_titulo():
     assert normalizar_titulo("Lied (Eichendorff)", "Joseph von Eichendorff").titulo == "Lied"
-    assert normalizar_titulo("Na fonte está Leonor (Luís Vaz de Camões)", "Luís de Camões").titulo == (
-        "Na fonte está Leonor"
-    )
+    leonor = normalizar_titulo("Na fonte está Leonor (Luís Vaz de Camões)", "Luís de Camões")
+    assert leonor.titulo == "Na fonte está Leonor"
     vida = "Vida (Álvares de Azevedo) — E as páginas do amor sobre meu peito"
     assert normalizar_titulo(vida, "Álvares de Azevedo").titulo == (
         "Vida — E as páginas do amor sobre meu peito"
@@ -64,7 +63,13 @@ def test_obra_e_ano_do_poema_ficam():
     assert poema == Poema("Au lecteur", "Les Fleurs du mal", 1857)
 
 
-def test_ano_do_caminho_so_entra_se_a_obra_e_o_livro_do_caminho():
+def test_obra_nao_e_preenchida_e_o_ano_do_livro_entra_com_a_obra_vazia():
+    morcego = Poema("Eu (Augusto dos Anjos, 1912)/O Morcego", None, None)
+    [poema] = normalizar_poemas([morcego], AUGUSTO)
+    assert poema == Poema("O Morcego", None, 1912)
+
+
+def test_ano_do_caminho_so_entra_se_a_obra_e_vazia_ou_o_livro_do_caminho():
     lamartine = "Œuvres complètes de Lamartine (1860)/Tome 1/Le Lac"
     [poema] = normalizar_poemas([Poema(lamartine, "Méditations poétiques", None)], "Lamartine")
     assert poema == Poema("Le Lac", "Méditations poétiques", None)
@@ -86,6 +91,19 @@ def test_mesma_chave_leva_a_secao_e_se_nem_assim_volta_ao_original():
         "Joseph von Eichendorff",
     )
     assert [p.titulo for p in eichendorff] == ["Abendlandschaft", "Abendlandschaft (Eichendorff)"]
+
+    # A obra não é preenchida: o mesmo título em dois livros do caminho leva o livro.
+    sem_obra = normalizar_poemas(
+        [
+            Poema("Nos maîtres/Stéphane Mallarmé", None, None),
+            Poema("Vus du dehors/Stéphane Mallarmé", None, None),
+        ],
+        "Stéphane Mallarmé",
+    )
+    assert [p.titulo for p in sem_obra] == [
+        "Stéphane Mallarmé (Nos maîtres)",
+        "Stéphane Mallarmé (Vus du dehors)",
+    ]
 
 
 def test_jsons_dos_consagrados_ficam_com_chave_unica_e_sem_caminho():

@@ -50,7 +50,7 @@ def _titulos(db) -> list[tuple]:
     return sorted(db.execute(select(Post.titulo, Post.obra, Post.ano)).all(), key=str)
 
 
-ESPERADO = [("O Mar", None, None), ("Versos Íntimos", None, None), ("Vozes de um Tumulo", "Eu", 1912)]
+ESPERADO = [("O Mar", None, None), ("Versos Íntimos", None, None), ("Vozes de um Tumulo", None, 1912)]
 
 
 def test_importador_grava_o_titulo_sem_o_caminho(client, tmp_path):
@@ -70,7 +70,7 @@ def test_dry_run_lista_e_nao_muda_nada(client, tmp_path, monkeypatch, capsys):
     corrigir.main()
 
     saida = capsys.readouterr().out
-    assert f"{VOZES!r} (obra=None, ano=None) → 'Vozes de um Tumulo' (obra='Eu', ano=1912)" in saida
+    assert f"{VOZES!r} (obra=None, ano=None) → 'Vozes de um Tumulo' (obra=None, ano=1912)" in saida
     assert "2 poemas mudariam" in saida
     with SessionLocal() as db:
         assert sorted(db.scalars(select(Post.titulo))) == sorted(TEXTOS)
@@ -112,6 +112,6 @@ def test_poema_fora_do_json_tambem_muda_e_o_que_colide_fica(client, tmp_path):
         plano = corrigir.planejar(db, ler_consagrados(tmp_path))
 
         depois = {m.post_id: m.depois for m in plano.mudancas}
-        assert depois[fora.id] == corrigir.Poema("Solitario", "Eu", 1912)
+        assert depois[fora.id] == corrigir.Poema("Solitario", None, 1912)
         assert set(depois) == {fora.id, ids[MAR], ids[VOZES]}
         assert [c.post_id for c in plano.conflitos] == [copia.id]

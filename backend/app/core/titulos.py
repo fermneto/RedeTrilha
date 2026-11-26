@@ -9,10 +9,11 @@ caminho até o poema e, às vezes, o nome do autor para desambiguar:
 - "Vida (Álvares de Azevedo) — E as páginas do amor": poema (autor) — parte.
 
 `normalizar_titulo` devolve só o nome do poema (o último trecho do caminho,
-sem o autor entre parênteses) e a obra e o ano que o caminho trazia,
-para quem não os tem preenchidos. O importador (`scripts/importar_consagrados.py`)
-e o conserto dos bancos já importados (`scripts/corrigir_titulos_consagrados.py`)
-usam a mesma função, então os dois chegam ao mesmo (titulo, obra, ano).
+sem o autor entre parênteses) e o ano que o caminho trazia, para quem não o
+tem preenchido. A obra não muda: fica a dos dados. O importador
+(`scripts/importar_consagrados.py`) e o conserto dos bancos já importados
+(`scripts/corrigir_titulos_consagrados.py`) usam a mesma função, então os dois
+chegam ao mesmo (titulo, obra, ano).
 
 Os parênteses que não são o autor ficam: "(estrofes iniciais)", "(2)",
 "(Gedicht, frühe Fassung)" distinguem poemas diferentes. Uma barra dentro de
@@ -35,11 +36,12 @@ _PARENTESE_NO_FIM = re.compile(r"^(?P<antes>.*\S)\s*\((?P<dentro>[^()]*)\)$")
 @dataclass(frozen=True)
 class TituloNormalizado:
     titulo: str | None
-    # A obra e o ano que o caminho trazia (None se não trazia).
+    # O livro e o ano que o caminho trazia (None se não trazia). O livro só serve
+    # para decidir se o ano vale para o poema: não vira a obra.
     obra: str | None = None
     ano: int | None = None
-    # O trecho do caminho logo antes do poema, quando há um entre ele e o livro
-    # ("Liber II" em "Carmina (Horatius)/Liber II/Carmen I").
+    # O trecho do caminho logo antes do poema ("Liber II" em "Carmina
+    # (Horatius)/Liber II/Carmen I"); sem seção, o livro, sem o parêntese.
     secao: str | None = None
 
 
@@ -120,10 +122,10 @@ def _sem_autor(titulo: str, autor: str) -> tuple[str, int | None]:
 
 
 def normalizar_titulo(titulo: str | None, autor: str) -> TituloNormalizado:
-    """O nome do poema sem o caminho do Wikisource, e a obra e o ano do caminho.
+    """O nome do poema sem o caminho do Wikisource, e o livro e o ano do caminho.
 
     `autor` é o nome do consagrado (`name`). Um título sem caminho nem autor entre
-    parênteses volta igual. A obra é o primeiro trecho do caminho (o livro), sem o
+    parênteses volta igual. O livro é o primeiro trecho do caminho, sem o
     parêntese; o ano é o do parêntese do livro ou, sem ele, o do autor
     ("(Machado de Assis, 1864)").
     """
@@ -134,7 +136,7 @@ def normalizar_titulo(titulo: str | None, autor: str) -> TituloNormalizado:
     if len(trechos) > 1 and trechos[-1]:
         obra, ano_do_livro = _livro(trechos[0], autor)
         poema = trechos[-1]
-        secao = trechos[-2] if len(trechos) > 2 else None
+        secao = trechos[-2] if len(trechos) > 2 else obra
     else:
         poema = titulo
     poema, ano_do_autor = _sem_autor(poema, autor)
@@ -142,15 +144,16 @@ def normalizar_titulo(titulo: str | None, autor: str) -> TituloNormalizado:
 
 
 def _aplicar(poema: Poema, normalizado: TituloNormalizado, titulo: str | None) -> Poema:
-    """O poema com o título novo; obra e ano do caminho só onde estavam vazios.
+    """O poema com o título novo e a mesma obra; o ano do caminho só se faltava.
 
-    O ano do caminho é o do livro do caminho: só entra se a obra do poema é esse livro.
+    O ano do parêntese do livro só entra se a obra do poema está vazia ou é esse
+    livro (o de "(Machado de Assis, 1864)", no próprio título, sempre entra).
     """
-    obra = poema.obra or normalizado.obra
     ano = poema.ano
-    if ano is None and normalizado.ano and (normalizado.obra is None or obra == normalizado.obra):
+    livro = normalizado.obra
+    if ano is None and normalizado.ano and (livro is None or poema.obra in (None, livro)):
         ano = normalizado.ano
-    return Poema(titulo, obra, ano)
+    return Poema(titulo, poema.obra, ano)
 
 
 def normalizar_poemas(poemas: Sequence[Poema], autor: str) -> list[Poema]:
@@ -159,7 +162,8 @@ def normalizar_poemas(poemas: Sequence[Poema], autor: str) -> list[Poema]:
     (titulo, obra) continua único entre eles, porque é a chave da importação:
     quando dois poemas chegariam à mesma chave ("Carmen I" nos quatro livros
     das Odes de Horácio), cada um leva a seção entre parênteses ("Carmen I
-    (Liber II)"); o que nem assim fica único volta ao título original. Um
+    (Liber II)") ou, sem seção, o livro ("Stéphane Mallarmé (Nos maîtres)",
+    já que a obra não é preenchida); o que nem assim fica único volta ao título original. Um
     título original não se repete (o schema garante), e nenhum título
     normalizado tem barra ou o autor entre parênteses, então os originais
     não colidem com os novos.

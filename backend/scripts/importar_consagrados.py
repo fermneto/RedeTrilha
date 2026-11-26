@@ -12,8 +12,8 @@ se conserta com `scripts/fundir_poemas_repetidos.py`).
 
 O título do Wikisource traz o caminho até o poema ("Eu (Augusto dos Anjos,
 1912)/Vozes de um Tumulo") e às vezes o autor ("O Mar (Augusto dos Anjos)"): o
-poema entra só com o nome dele, e a obra e o ano do caminho preenchem os que
-faltam (`app/core/titulos.py`; o banco importado antes disso se conserta com
+poema entra só com o nome dele, e o ano do caminho preenche o que falta; a
+obra fica a do JSON (`app/core/titulos.py`; o banco importado antes disso se conserta com
 `scripts/corrigir_titulos_consagrados.py`).
 
 As tags de cada poema vão para o índice (`post_tags`) na mesma transação,
@@ -159,7 +159,7 @@ def poemas_a_importar(
     consagrado: Consagrado, distintos: set[frozenset[str]] = frozenset()
 ) -> list[PoemaConsagrado]:
     """Os poemas que entram no banco: sem os repetidos e com o título sem o caminho
-    do Wikisource (`app/core/titulos.py`), a obra e o ano do caminho onde faltavam."""
+    do Wikisource (`app/core/titulos.py`), o ano do caminho onde faltava."""
     return [
         poema.model_copy(update={"titulo": n.titulo, "obra": n.obra, "ano": n.ano})
         for poema, n in titulos_normalizados(consagrado, distintos)
