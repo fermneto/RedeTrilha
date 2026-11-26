@@ -66,6 +66,7 @@ Pedro (@CorreiaPedro208).
 
 - **Site:** https://verso.net.br (front na Vercel; também em https://verso-blond.vercel.app).
 - **API:** https://api.verso.net.br.
+- **Vídeo de entrega (3:53):** [verso-entrega.mp4](https://github.com/fermneto/RedeTrilha/releases/download/entrega/verso-entrega.mp4), na release [entrega](https://github.com/fermneto/RedeTrilha/releases/tag/entrega).
 - **Onde roda a API:** uma VM ARM da Oracle Cloud Always Free, com Docker Compose
   (2 a 4 réplicas da API, conforme a VM; hoje 2, numa VM de 2 OCPU em São
   Paulo; e o Caddy, com HTTPS automático, balanceando entre
