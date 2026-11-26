@@ -1066,8 +1066,15 @@ export function buscarAcervo(filtros: FiltrosDoAcervo, pagina: number): Promise<
   return apiGet<Page<PoetaDoAcervo>>(`/acervo?${params}`);
 }
 
-export function buscarOpcoesDoAcervo(): Promise<OpcoesDoAcervo> {
-  return apiGet<OpcoesDoAcervo>("/acervo/filtros");
+// Busca facetada: cada opção conta com os outros filtros da tela (a língua, com o tipo
+// e a época; a época, com o tipo e a língua). A busca por nome não entra na conta.
+export function buscarOpcoesDoAcervo(
+  filtros: Pick<FiltrosDoAcervo, "tipo" | "lingua" | "epoca">,
+): Promise<OpcoesDoAcervo> {
+  const params = new URLSearchParams({ tipo: filtros.tipo });
+  if (filtros.lingua) params.set("lingua", filtros.lingua);
+  if (filtros.epoca) params.set("epoca", filtros.epoca);
+  return apiGet<OpcoesDoAcervo>(`/acervo/filtros?${params}`);
 }
 
 // O Acervo é a aba "Poetas" do Explorar (decisões 12 e 17). Tudo mora na URL
