@@ -59,12 +59,15 @@ export function useVersosSelecionados(corpo: RefObject<HTMLElement | null>, text
 }
 
 export function BarraDeVersos({
+  texto,
   selecao,
   barra,
   caminhoDaCritica,
   caminhoDaCitacao,
   aoLimpar,
 }: {
+  // O texto do corpo, para mostrar os números de verso (a seleção é de linhas).
+  texto: string;
   selecao: SelecaoDeVersos;
   barra: RefObject<HTMLDivElement | null>;
   caminhoDaCritica: string;
@@ -74,7 +77,7 @@ export function BarraDeVersos({
 }) {
   return (
     <div ref={barra} role="group" aria-label="versos selecionados" className={CLASSE_DA_BARRA_DE_VERSOS}>
-      <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
+      <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(texto, selecao)}</span>
       <Link href={caminhoDaCritica} className={CLASSE_DA_ACAO_DE_VERSOS}>
         comentar estes versos
       </Link>

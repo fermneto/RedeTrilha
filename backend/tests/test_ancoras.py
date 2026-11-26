@@ -1,10 +1,12 @@
 """Crítica ancorada no verso (issue #71), sem depender da auth (fixture `como`).
 
-Os versos são as linhas de `texto.split("\\n")`, base 1, com as linhas em branco
-entre estrofes contadas.
+A âncora guarda as linhas de `texto.split("\\n")`, base 1, com as linhas em branco
+entre estrofes contadas; o número que o leitor vê conta só os versos (core/versos.py).
 """
 
 import pytest
+
+EM_BRANCO = "o trecho precisa começar e terminar num verso, não numa linha em branco"
 
 POEMA = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nAs aves, que aqui gorjeiam,\n  Não gorjeiam como lá."
 
@@ -48,7 +50,7 @@ def test_critica_guarda_o_trecho_com_recuos_e_quebras(client, como):
     }
 
 
-def test_linha_em_branco_conta_como_verso(client, como):
+def test_a_ancora_conta_a_linha_em_branco_entre_estrofes(client, como):
     post_id = _poema(client, como)
     ancora = _criticar(client, como, post_id, 4, 5).json()["ancora"]
     assert ancora["trecho"] == "As aves, que aqui gorjeiam,\n  Não gorjeiam como lá."
@@ -85,9 +87,11 @@ def test_listagem_traz_a_ancora_e_o_comentario_sem_ancora_continua_igual(client,
     ("inicio", "fim", "mensagem"),
     [
         (3, 2, "o verso inicial não pode vir depois do verso final"),
-        (0, 1, "o poema tem 5 versos; escolha entre o 1 e o 5"),
-        (4, 6, "o poema tem 5 versos; escolha entre o 1 e o 5"),
-        (3, 3, "o trecho escolhido está em branco"),
+        (0, 1, "o poema tem 5 linhas; a âncora conta as linhas de 1 a 5"),
+        (4, 6, "o poema tem 5 linhas; a âncora conta as linhas de 1 a 5"),
+        (3, 3, EM_BRANCO),
+        (2, 3, EM_BRANCO),
+        (3, 4, EM_BRANCO),
     ],
 )
 def test_intervalo_invalido_da_422(client, como, inicio, fim, mensagem):
@@ -169,3 +173,34 @@ def test_apagar_critica_e_poema_leva_as_ancoras(client, como):
 
     with SessionLocal() as db:
         assert db.query(AncoraComentario).count() == 0
+
+
+# Gregório de Matos separa as estrofes com linhas só de espaços.
+SO_ESPACOS = "Triste Bahia!\nEstás, e estou\n  \nA ti tocou-te\nQue em tua barra"
+
+
+def test_linha_so_com_espacos_e_linha_em_branco_e_nao_verso(client, como):
+    post_id = _poema(client, como, SO_ESPACOS)
+    for inicio, fim in [(3, 3), (2, 3), (3, 4)]:
+        r = _criticar(client, como, post_id, inicio, fim)
+        assert (r.status_code, r.json()["detail"]) == (422, EM_BRANCO)
+    # Atravessar a linha só com espaços vale, e o trecho a guarda como está.
+    r = _criticar(client, como, post_id, 2, 4)
+    assert (r.status_code, r.json()["ancora"]["trecho"]) == (201, "Estás, e estou\n  \nA ti tocou-te")
+    assert _marcas(client, como, post_id) == [(2, 1), (3, 1), (4, 1)]
+
+
+def test_varias_linhas_em_branco_seguidas(client, como):
+    post_id = _poema(client, como, "um\n\n \n\t\ndois")
+    for inicio in (2, 3, 4):
+        assert _criticar(client, como, post_id, inicio, inicio).status_code == 422
+    r = _criticar(client, como, post_id, 1, 5)
+    assert (r.status_code, r.json()["ancora"]["trecho"]) == (201, "um\n\n \n\t\ndois")
+    assert _criticar(client, como, post_id, 5, 5).json()["ancora"]["trecho"] == "dois"
+
+
+def test_poema_sem_linhas_em_branco_linha_e_verso_coincidem(client, como):
+    post_id = _poema(client, como, "um\ndois\ntrês")
+    assert _criticar(client, como, post_id, 1, 3).json()["ancora"]["trecho"] == "um\ndois\ntrês"
+    r = _criticar(client, como, post_id, 4, 4)
+    assert r.json()["detail"] == "o poema tem 3 linhas; a âncora conta as linhas de 1 a 3"

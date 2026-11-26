@@ -21,6 +21,7 @@ import {
   caminhoDaTag,
   ErroDaApi,
   formatarData,
+  hashtag,
   idiomaDoNavegador,
   mensagemDeFalha,
   nomeDaForma,
@@ -417,9 +418,10 @@ function Corpo({
       </p>
       {criticavel && selecao && (
         <BarraDeVersos
+          texto={texto}
           selecao={selecao}
           barra={barra}
-          caminhoDaCritica={caminhoDaCriticaDeVersos(id, selecao)}
+          caminhoDaCritica={caminhoDaCriticaDeVersos(id, texto, selecao)}
           caminhoDaCitacao={caminhoDaCitacaoDeVersos(id, trechoDosVersos(texto, selecao))}
           aoLimpar={limpar}
         />
@@ -536,7 +538,7 @@ export function Detalhes({ poema, solto = false }: { poema: Post; solto?: boolea
                 href={caminhoDaTag(tag)}
                 className="text-destaque hover:underline"
               >
-                #{tag}
+                {hashtag(tag)}
               </Link>
             </li>
           ))}

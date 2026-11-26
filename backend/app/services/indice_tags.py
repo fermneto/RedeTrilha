@@ -13,7 +13,7 @@ workers ou instâncias, todos leem e escrevem o mesmo índice.
 from collections import defaultdict
 from datetime import datetime
 
-from sqlalchemy import delete, func, insert, select
+from sqlalchemy import ColumnElement, delete, func, insert, select
 from sqlalchemy.orm import Session
 
 from app.core import indice_tags as core
@@ -87,22 +87,42 @@ def popular_se_vazio(db: Session) -> int:
     return popular(db)
 
 
+def _sem_sublinhado() -> ColumnElement[str]:
+    """A coluna `tag` sem o "_", para comparar com core.chave_da_tag."""
+    return func.replace(PostTag.tag, "_", "")
+
+
+def tags_equivalentes(db: Session, tag: str) -> list[str]:
+    """As tags guardadas que a busca por `tag` acha: as de mesma chave, sem o "_".
+
+    'versolivre' e 'verso_livre' acham verso_livre; se existirem noite_fria e
+    noitefria, as duas. Uma consulta pelas tags distintas, O(R) (a expressão não
+    usa o índice de `tag`); a página e o total, depois, vão pelo índice.
+    """
+    chave = core.chave_da_tag(tag)
+    if not chave:
+        return []
+    return sorted(db.scalars(select(PostTag.tag).distinct().where(_sem_sublinhado() == chave)))
+
+
 def posts_da_tag(db: Session, tag: str, offset: int, limit: int) -> tuple[list[int], int]:
     """(ids da página, total) dos poemas da tag, mais novo primeiro; empate: maior id.
 
-    A tag passa por `normalizar` ('Solidão' acha 'solidao'). Pelo índice
-    (tag, criado_em, post_id): O(log R + offset + limit) a página e O(log R + p)
-    o total, p = poemas da tag.
+    A tag passa por `chave_da_tag` ('Solidão' acha 'solidao', 'versolivre' acha
+    'verso_livre'; ver tags_equivalentes). Pelo índice (tag, criado_em, post_id):
+    O(log R + offset + limit) a página e O(log R + p) o total, p = poemas da tag.
+    Com mais de uma tag equivalente, um poema que tem as duas conta uma vez.
     """
-    alvo = PostTag.tag == core.normalizar(tag)
+    alvo = PostTag.tag.in_(tags_equivalentes(db, tag))
     ids = db.scalars(
         select(PostTag.post_id)
         .where(alvo)
+        .group_by(PostTag.post_id, PostTag.criado_em)
         .order_by(PostTag.criado_em.desc(), PostTag.post_id.desc())
         .offset(offset)
         .limit(limit)
     )
-    total = db.scalar(select(func.count()).select_from(PostTag).where(alvo)) or 0
+    total = db.scalar(select(func.count(PostTag.post_id.distinct())).where(alvo)) or 0
     return list(ids), total
 
 
@@ -154,17 +174,18 @@ def representantes(db: Session, tags: list[str]) -> dict[str, int | None]:
 def buscar(db: Session, prefixo: str, k: int = 5) -> list[tuple[str, int]]:
     """Até k tags que começam por `prefixo`, com quantos poemas cada uma tem.
 
-    Mais poemas primeiro, empate alfabético; prefixo vazio (ou só com caracteres
-    fora de uma tag) não acha nada. O LIKE 'prefixo%' conta as R' linhas das
-    tags que casam, e o heap do core escolhe as k: O(R + T' log k) no pior caso,
-    porque o LIKE não usa o índice em todo banco (depende da collation).
+    O "_" não conta ('versol' acha verso_livre; ver core.chave_da_tag). Mais
+    poemas primeiro, empate alfabético; prefixo vazio (ou só com caracteres fora
+    de uma tag) não acha nada. O LIKE 'prefixo%' conta as R' linhas das tags que
+    casam, e o heap do core escolhe as k: O(R + T' log k), porque o LIKE sobre a
+    tag sem o "_" não usa o índice.
     """
-    termo = core.termo_de_tag(prefixo)
+    termo = core.chave_da_tag(prefixo)
     if not termo:
         return []
     contagens = db.execute(
         select(PostTag.tag, func.count())
-        .where(PostTag.tag.startswith(termo, autoescape=True))
+        .where(_sem_sublinhado().startswith(termo, autoescape=True))
         .group_by(PostTag.tag)
     )
     return core.top_k(((tag, n) for tag, n in contagens), k)

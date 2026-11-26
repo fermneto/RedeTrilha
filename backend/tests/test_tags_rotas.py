@@ -211,6 +211,30 @@ def test_explorar_filtros(client, como, publicar):
     assert r.json()["total"] == 1
 
 
+def test_tag_sem_o_sublinhado_acha_a_forma_e_a_tag_livre(client, como, publicar):
+    # A tela mostra #versolivre e #noitefria; digitar assim acha o valor com "_".
+    livre = publicar("versos soltos", forma="verso_livre")
+    fria = publicar("na #noite_fria", autor="bia")
+    junto = publicar("#noitefria e #noite_fria", forma="verso_livre")
+
+    r = client.get("/explorar?tag=versolivre", headers=como("ana"))
+    assert ids(r) == [junto, livre]
+
+    r = client.get("/tags/noitefria/posts", headers=como("ana"))
+    assert ids(r) == [junto, fria]
+    assert r.json()["total"] == 2
+
+    # tag + forma vai pela consulta do Explorar: o poema com as duas tags vem uma vez.
+    r = client.get("/explorar?tag=noitefria&forma=verso_livre", headers=como("ana"))
+    assert ids(r) == [junto]
+    assert r.json()["total"] == 1
+
+    r = client.get("/tags/busca?q=%23versolivre", headers=como("ana"))
+    assert r.json() == {"items": [{"tag": "verso_livre", "poemas": 2}]}
+    r = client.get("/tags/busca?q=noitef", headers=como("ana"))
+    assert [item["tag"] for item in r.json()["items"]] == ["noite_fria", "noitefria"]
+
+
 def test_explorar_forma_invalida_da_422(client, como):
     assert client.get("/explorar?forma=epopeia", headers=como("ana")).status_code == 422
 

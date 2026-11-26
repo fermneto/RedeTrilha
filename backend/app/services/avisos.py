@@ -40,6 +40,7 @@ from sqlalchemy.orm import Session
 from app import tempo_real
 from app.core import avisos as regras
 from app.core.marcas import texto_sem_marcas
+from app.core.versos import intervalo_exibido
 from app.models.ancora_comentario import AncoraComentario
 from app.models.aviso import Aviso
 from app.models.comentario import Comentario
@@ -328,6 +329,12 @@ class _Alvos:
             db, ComentarioRenga, ids("comentario_id", lambda a: a.renga_id is not None)
         )
         self.ancoras = _por_id(db, AncoraComentario, dos_poemas, AncoraComentario.comentario_id)
+        # O texto em que cada crítica conta as linhas, para dizer os números de verso.
+        criticados = {c.post_id for c in self.comentarios.values()} - self.posts.keys()
+        self.posts |= _por_id(db, Post, criticados)
+        self.textos_das_rengas = _textos_das_rengas(
+            db, {c.renga_id for c in self.comentarios_renga.values() if c.verso_inicio is not None}
+        )
 
     def de(self, aviso: Aviso) -> dict:
         post = self.posts.get(aviso.post_id)
@@ -350,17 +357,41 @@ class _Alvos:
     def _do_comentario(self, aviso: Aviso) -> dict:
         if aviso.renga_id is not None:
             comentario = self.comentarios_renga.get(aviso.comentario_id)
-            inicio = comentario.verso_inicio if comentario else None
-            fim = comentario.verso_fim if comentario else None
+            linhas = (comentario.verso_inicio, comentario.verso_fim) if comentario else (None, None)
+            texto = self.textos_das_rengas.get(comentario.renga_id) if comentario else None
         else:
             comentario = self.comentarios.get(aviso.comentario_id)
             ancora = self.ancoras.get(aviso.comentario_id)
-            inicio, fim = (ancora.verso_inicio, ancora.verso_fim) if ancora else (None, None)
+            linhas = (ancora.verso_inicio, ancora.verso_fim) if ancora else (None, None)
+            post = self.posts.get(comentario.post_id) if comentario else None
+            texto = post.texto if post else None
+        # A âncora guarda linhas; o aviso diz os números de verso que o leitor vê.
+        exibido = None
+        if linhas[0] is not None and texto is not None:
+            exibido = intervalo_exibido(texto_sem_marcas(texto), linhas[0], linhas[1])
+        inicio, fim = exibido or (None, None)
         return {
             "trecho": _trecho(comentario.texto) if comentario else "",
             "verso_inicio": inicio,
             "verso_fim": fim,
         }
+
+
+def _textos_das_rengas(db: Session, renga_ids: set[int]) -> dict[int, str]:
+    """O texto de cada renga (rengas.texto_de), numa consulta só."""
+    # Import aqui: services/rengas importa este módulo para gravar os avisos.
+    from app.services.rengas import texto_de
+
+    if not renga_ids:
+        return {}
+    estrofes: dict[int, list[str]] = {}
+    for renga_id, texto in db.execute(
+        select(EstrofeRenga.renga_id, EstrofeRenga.texto)
+        .where(EstrofeRenga.renga_id.in_(renga_ids))
+        .order_by(EstrofeRenga.renga_id, EstrofeRenga.posicao)
+    ):
+        estrofes.setdefault(renga_id, []).append(texto)
+    return {renga_id: texto_de(textos) for renga_id, textos in estrofes.items()}
 
 
 def _por_id(db: Session, modelo: type, ids: set[int], coluna=None) -> dict:

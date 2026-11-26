@@ -1,13 +1,14 @@
 """Comentários e crítica ancorada no verso nas rengas, abertas ou fechadas
 (services/comentarios_renga.py), sem depender da auth (fixture `como`).
 
-Os versos contam as linhas do texto da renga: as estrofes em ordem, separadas
-por uma linha em branco, que conta como verso (como nos poemas).
+A âncora conta as linhas do texto da renga: as estrofes em ordem, separadas
+por uma linha em branco, que conta na linha (como nos poemas; o número que o
+leitor vê conta só os versos, core/versos.py).
 """
 
 from app.services.rengas import texto_de
 
-# Versos 1 a 3 (com o 2 recuado); o 4 é a linha em branco; a 2ª estrofe é o 5 e o 6.
+# Linhas 1 a 3 (com a 2 recuada); a 4 é a linha em branco; a 2ª estrofe é a 5 e a 6.
 PRIMEIRA = "na varanda do CCHLA\n    a chuva escreve primeiro\n— e a gente copia"
 SEGUNDA = "o caderno molhado\naprende a ler"
 TERCEIRA = "e a tinta corre"

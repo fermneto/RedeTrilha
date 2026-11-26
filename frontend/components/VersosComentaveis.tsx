@@ -4,12 +4,15 @@
 // seleção vira os versos inteiros que ela toca, com a barra "comentar estes
 // versos / citar estes versos". Pelo teclado, o número de cada verso é um botão
 // que faz a mesma seleção. Os versos com críticas ganham uma marca com quantas
-// são, que filtra os comentários por aquele verso. As linhas em branco entre
-// estrofes contam na numeração, como no backend, mas não se selecionam sozinhas.
+// são, que filtra os comentários por aquele verso. O número mostrado conta só os
+// versos (1 a 6 num poema de seis versos em duas estrofes): a linha em branco,
+// vazia ou só com espaços, separa estrofes, não se numera nem se seleciona
+// sozinha. Por dentro (data-verso, seleção, marcas, âncora) continua a linha do
+// texto, como no backend; numerosDosVersos (lib/api.ts) traduz uma na outra.
 // A numeração e a seleção usam o texto sem as marcas de formatação (mesmo número
 // de linhas); o verso aparece formatado, e "citar estes versos" leva as marcas.
 // Selecionar versos num card fora daqui (feed, perfil...) traz para esta página
-// com ?versos=2-4: a página passa a seleção pedida e ela chega já "fixa", com o
+// com ?versos=2-4 (os números que o leitor vê): a página passa a seleção pedida e ela chega já "fixa", com o
 // foco no campo de comentário, como depois de "comentar estes versos".
 // A página da renga usa o mesmo corpo: o texto é o das estrofes juntas (uma linha
 // em branco entre elas), o autor de cada estrofe vem embaixo do último verso dela
@@ -23,6 +26,7 @@ import { VersoFormatado } from "@/components/TextoFormatado";
 import {
   caminhoDaCitacaoDeVersos,
   caminhoDaCitacaoDeVersosDaRenga,
+  numerosDosVersos,
   referenciaDosVersos,
   selecionarVerso,
   trechoDosVersos,
@@ -81,7 +85,7 @@ export function VersosComentaveis({
   selecaoPedida = null,
 }: Props) {
   const versos = versosDoPoema(texto);
-  const visiveis = versosDoPoema(textoSemMarcas(texto));
+  const numeros = numerosDosVersos(textoSemMarcas(texto));
   const lista = useRef<HTMLOListElement>(null);
   // O poema e a barra: um clique aqui dentro não desfaz a seleção feita pelos números.
   const corpo = useRef<HTMLDivElement>(null);
@@ -150,8 +154,10 @@ export function VersosComentaveis({
       </p>
       <ol ref={lista} className="poema-corpo">
         {versos.map((linha, i) => {
+          // n: a linha (data-verso, seleção, marcas); numero: o que o leitor vê.
           const n = i + 1;
-          const vazia = visiveis[i].trim() === "";
+          const numero = numeros[i];
+          const vazia = numero === null;
           const marca = vazia ? 0 : (marcas.get(n) ?? 0);
           return (
             <li
@@ -171,12 +177,12 @@ export function VersosComentaveis({
                       aoSelecionar(selecionarVerso(selecao, n));
                     }}
                     aria-pressed={selecionado(n)}
-                    aria-label={`verso ${n}`}
+                    aria-label={`verso ${numero}`}
                     className={`min-w-8 cursor-pointer rounded px-1 font-sans text-xs tabular-nums hover:text-destaque ${
                       selecionado(n) ? "font-semibold text-destaque" : "text-tinta-suave/60"
                     }`}
                   >
-                    {n}
+                    {numero}
                   </button>
                 )}
               </span>
@@ -188,8 +194,8 @@ export function VersosComentaveis({
                 <button
                   type="button"
                   onClick={() => aoFiltrar(n)}
-                  aria-label={`ver ${marca === 1 ? "o comentário" : `os ${marca} comentários`} sobre o verso ${n}`}
-                  title={`comentários sobre o verso ${n}`}
+                  aria-label={`ver ${marca === 1 ? "o comentário" : `os ${marca} comentários`} sobre o verso ${numero}`}
+                  title={`comentários sobre o verso ${numero}`}
                   className="inline-flex shrink-0 cursor-pointer items-center gap-0.5 rounded-full select-none px-1.5 font-sans text-xs text-tinta-suave tabular-nums hover:bg-destaque/10 hover:text-destaque"
                 >
                   <IconeComentar className="h-3.5 w-3.5" />
@@ -209,7 +215,7 @@ export function VersosComentaveis({
           onMouseDown={(e) => e.preventDefault()}
           className={CLASSE_DA_BARRA_DE_VERSOS}
         >
-          <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(selecao)}</span>
+          <span className="px-1 text-sm text-tinta-suave">{referenciaDosVersos(texto, selecao)}</span>
           <button
             type="button"
             onClick={() => {

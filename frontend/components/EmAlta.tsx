@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { VersoFormatado } from "@/components/TextoFormatado";
-import { buscarTrending, caminhoDaTag, type TagContagem } from "@/lib/api";
+import { buscarTrending, caminhoDaTag, hashtag, type TagContagem } from "@/lib/api";
 
 // null enquanto carrega; [] quando não há tags (ou a rota falhou).
 // `quantas`: 10 no Explorar, 5 na coluna direita.
@@ -46,7 +46,7 @@ export function ListaEmAlta({ tags }: { tags: TagContagem[] }) {
               <span aria-hidden="true">{i + 1} · </span>
               {poemasNas24h(contagem)}
             </span>
-            <span className="block font-bold break-words">#{tag}</span>
+            <span className="block font-bold break-words">{hashtag(tag)}</span>
             {trecho && (
               <span className="mt-0.5 block overflow-hidden font-serifada text-[0.9375rem] text-ellipsis whitespace-pre text-tinta-suave">
                 <VersoFormatado linha={trecho} />

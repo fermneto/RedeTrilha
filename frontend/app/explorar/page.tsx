@@ -34,6 +34,7 @@ import {
   caminhoDoAcervo,
   caminhoDoLogin,
   FORMAS,
+  hashtag,
   lerFiltrosDoAcervo,
   listarAntologiasPublicas,
   nomeDaForma,
@@ -132,7 +133,7 @@ function Explorar() {
       {/* Com uma tag escolhida, a tela vira o resultado dela, como a busca do X. */}
       {tag ? (
         <div className="flex items-center justify-between gap-3 border-b border-borda px-4 py-3">
-          <h2 className="min-w-0 text-xl font-bold break-words">#{tag}</h2>
+          <h2 className="min-w-0 text-xl font-bold break-words">{hashtag(tag)}</h2>
           {limpar}
         </div>
       ) : (
@@ -280,7 +281,7 @@ function nomeDoChip(forma: string): string {
 }
 
 function textoDoVazio(tag: string, forma: string | null): string {
-  if (!forma) return tag ? `Nenhum poema com #${tag}.` : "Ainda não há poemas.";
+  if (!forma) return tag ? `Nenhum poema com ${hashtag(tag)}.` : "Ainda não há poemas.";
   const naForma = forma === "outro" ? "em outras formas" : `na forma ${nomeDaForma(forma)}`;
-  return tag ? `Nenhum poema com #${tag} ${naForma}.` : `Nenhum poema ${naForma}.`;
+  return tag ? `Nenhum poema com ${hashtag(tag)} ${naForma}.` : `Nenhum poema ${naForma}.`;
 }

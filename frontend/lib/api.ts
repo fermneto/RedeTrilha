@@ -249,6 +249,19 @@ function ehForma(tag: string): boolean {
   return (FORMAS as readonly string[]).includes(tag);
 }
 
+// Como uma tag aparece na tela, com o "#": sem o "_", as palavras juntas
+// (#versolivre, #noitefria). O valor e o link continuam com o "_" (verso_livre),
+// e a busca do backend ignora o "_" (core/indice_tags.chave_da_tag), então
+// digitar o que a tela mostra acha a tag.
+export function hashtag(tag: string): string {
+  return `#${semSublinhado(tag)}`;
+}
+
+// A tag como a busca a compara: duas grafias que só diferem pelo "_" são a mesma.
+export function semSublinhado(tag: string): string {
+  return tag.replace(/_/g, "");
+}
+
 // Link de uma #tag (card, "Em alta"): a de forma liga o chip da forma no Explorar.
 export function caminhoDaTag(tag: string): string {
   return ehForma(tag) ? `/explorar?forma=${tag}` : `/explorar?tag=${encodeURIComponent(tag)}`;
@@ -1374,8 +1387,14 @@ export function marcaDoVerso(
 
 // ---- Crítica ancorada no verso (#71): espelha AncoraOut e VersosComentadosOut
 // de backend/app/schemas/comentario.py ----
-// Os versos são as linhas de texto.split("\n"), contadas a partir de 1, com as
-// linhas em branco entre estrofes incluídas (igual ao backend).
+// A âncora, a seleção, as marcas e o filtro ?verso= da API contam as linhas de
+// texto.split("\n"), a partir de 1, com as linhas em branco incluídas (igual ao
+// backend, e assim as âncoras já gravadas continuam valendo). O número que o
+// leitor vê ("versos 2–4", o botão de cada verso, o ?versos= da URL) conta só os
+// versos, sem as linhas em branco: numerosDosVersos traduz uma contagem na outra,
+// como backend/app/core/versos.py. Linha em branco é a vazia ou só com espaços
+// (Gregório de Matos separa estrofes com "  "): separa estrofes, não é verso. As
+// marcas de formatação não mudam isso, então tanto faz o texto com ou sem elas.
 
 export type Ancora = {
   verso_inicio: number;
@@ -1396,8 +1415,36 @@ export function trechoDosVersos(texto: string, { inicio, fim }: SelecaoDeVersos)
   return versosDoPoema(texto).slice(inicio - 1, fim).join("\n");
 }
 
-// "verso 5" ou "versos 5–8".
-export function referenciaDosVersos({ inicio, fim }: SelecaoDeVersos): string {
+export function linhaEmBranco(linha: string): boolean {
+  return linha.trim() === "";
+}
+
+// Para cada linha do texto, o número do verso dela; null na linha em branco.
+export function numerosDosVersos(texto: string): (number | null)[] {
+  let n = 0;
+  return versosDoPoema(texto).map((linha) => (linhaEmBranco(linha) ? null : ++n));
+}
+
+// As linhas (como na âncora) viram os números de verso que o leitor vê, sem as
+// linhas em branco das pontas; null se não há verso entre elas.
+export function versosExibidos(texto: string, { inicio, fim }: SelecaoDeVersos): SelecaoDeVersos | null {
+  const numeros = numerosDosVersos(texto)
+    .slice(Math.max(inicio, 1) - 1, fim)
+    .filter((n): n is number => n !== null);
+  if (numeros.length === 0) return null;
+  return { inicio: numeros[0], fim: numeros[numeros.length - 1] };
+}
+
+// O número de verso que o leitor vê na linha `linha` (a anterior, se ela está em branco).
+export function numeroDoVerso(texto: string, linha: number): number {
+  return numerosDosVersos(texto)
+    .slice(0, linha)
+    .reduce<number>((ultimo, n) => n ?? ultimo, 0);
+}
+
+// "verso 5" ou "versos 5–8", nos números que o leitor vê (a seleção é de linhas).
+export function referenciaDosVersos(texto: string, selecao: SelecaoDeVersos): string {
+  const { inicio, fim } = versosExibidos(texto, selecao) ?? selecao;
   return inicio === fim ? `verso ${inicio}` : `versos ${inicio}–${fim}`;
 }
 
@@ -1412,7 +1459,7 @@ export function ancoraCobreOVerso(ancora: Ancora | null, verso: number | null): 
 // ao último que ela toca, sem as linhas em branco das pontas. null: nada a comentar.
 export function versosDaSelecao(texto: string, tocados: number[]): SelecaoDeVersos | null {
   const versos = versosDoPoema(texto);
-  const comTexto = tocados.filter((n) => n >= 1 && n <= versos.length && versos[n - 1].trim() !== "");
+  const comTexto = tocados.filter((n) => n >= 1 && n <= versos.length && !linhaEmBranco(versos[n - 1]));
   if (comTexto.length === 0) return null;
   return { inicio: Math.min(...comTexto), fim: Math.max(...comTexto) };
 }
@@ -1431,22 +1478,23 @@ export function versosTocados(
 
 // "comentar estes versos" num card: a página do poema abre com eles selecionados
 // e o campo de comentário pronto (/poema/7?versos=2-4, ou ?versos=3 para um só).
-export function caminhoDaCriticaDeVersos(postId: number, selecao: SelecaoDeVersos): string {
-  return `/poema/${postId}?${parametroDosVersos(selecao)}`;
+export function caminhoDaCriticaDeVersos(postId: number, texto: string, selecao: SelecaoDeVersos): string {
+  return `/poema/${postId}?${parametroDosVersos(texto, selecao)}`;
 }
 
-// Lê o ?versos= da página do poema (ou da renga) contra o texto dele (sem as marcas). Só vale um
-// intervalo dentro do poema que comece e termine em verso com texto, como os que a
-// seleção produz; qualquer outra coisa é null (a página ignora em silêncio).
+// Lê o ?versos= da página do poema (ou da renga) contra o texto dele. A URL traz os
+// números que o leitor vê (?versos=2-4 são os versos 2 a 4, sem contar as linhas em
+// branco); a volta é a seleção em linhas, como a âncora. Número fora do poema, ao
+// contrário ou malformado é null (a página ignora em silêncio).
 export function lerVersosDaUrl(valor: string | null, texto: string): SelecaoDeVersos | null {
   const partes = /^(\d{1,6})(?:-(\d{1,6}))?$/.exec(valor ?? "");
   if (!partes) return null;
   const inicio = Number(partes[1]);
   const fim = Number(partes[2] ?? partes[1]);
-  const versos = versosDoPoema(texto);
-  if (inicio < 1 || inicio > fim || fim > versos.length) return null;
-  if (versos[inicio - 1].trim() === "" || versos[fim - 1].trim() === "") return null;
-  return { inicio, fim };
+  const numeros = numerosDosVersos(texto);
+  const linhaDe = (verso: number) => numeros.indexOf(verso) + 1;
+  if (inicio < 1 || inicio > fim || linhaDe(fim) === 0) return null;
+  return { inicio: linhaDe(inicio), fim: linhaDe(fim) };
 }
 
 // Pelo teclado, o número de cada verso é um botão: sem seleção, seleciona aquele
@@ -1513,8 +1561,8 @@ export function fimDasEstrofes(estrofes: { texto: string }[]): number[] {
 }
 
 // "comentar estes versos" no card da renga: /rengas/3?versos=2-4, como no poema.
-export function caminhoDaCriticaNaRenga(rengaId: number, selecao: SelecaoDeVersos): string {
-  return `/rengas/${rengaId}?${parametroDosVersos(selecao)}`;
+export function caminhoDaCriticaNaRenga(rengaId: number, texto: string, selecao: SelecaoDeVersos): string {
+  return `/rengas/${rengaId}?${parametroDosVersos(texto, selecao)}`;
 }
 
 // "citar estes versos" da renga: o compositor citando a renga, com os versos no texto.
@@ -1522,7 +1570,9 @@ export function caminhoDaCitacaoDeVersosDaRenga(rengaId: number, trecho: string)
   return `/escrever?${new URLSearchParams({ citar_renga: String(rengaId), versos: trecho })}`;
 }
 
-function parametroDosVersos({ inicio, fim }: SelecaoDeVersos): string {
+// ?versos= com os números que o leitor vê (a seleção é de linhas).
+function parametroDosVersos(texto: string, selecao: SelecaoDeVersos): string {
+  const { inicio, fim } = versosExibidos(texto, selecao) ?? selecao;
   return `versos=${inicio === fim ? inicio : `${inicio}-${fim}`}`;
 }
 
@@ -1952,6 +2002,7 @@ export function acaoDoAviso(aviso: Aviso): string {
 }
 
 // Para onde a linha leva: o poema (com ?versos= na crítica), a renga ou o perfil.
+// Os versos do aviso já vêm nos números que o leitor vê (schemas/aviso.py).
 // A citação leva ao poema de quem citou, também a de uma renga.
 export function linkDoAviso(aviso: Aviso): string {
   if (aviso.tipo === "seguidor") return `/u/${encodeURIComponent(aviso.atores[0]?.username ?? "")}`;
