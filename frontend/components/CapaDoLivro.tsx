@@ -21,7 +21,16 @@
 //      livro: descobre a página da direita por baixo dela e o verso dela deita
 //      à esquerda como a página da esquerda lisa, que só então ganha o
 //      conteúdo e a lombada (o feed, ou as boas-vindas no cadastro).
-// No fim, o foco vai para a página de destino. A capa é decorativa: aria-hidden,
+// No fim, o foco vai para a página de destino.
+//
+// Ao sair (useFecharCapa, no "Sair" do MenuDoPerfil), o caminho inverso: o papel
+// e a guarda voltam sobre a página da esquerda, a capa gira de volta na dobra e
+// fecha sobre a da direita; com o livro fechado, o token sai e o login monta por
+// baixo; a capa encolhe até o lugar do formulário, a vitrine volta deslizando
+// e o formulário aparece sobre ela, com o foco no primeiro campo. Quem cai no
+// login por sessão expirada (401) ou sem token vai direto, sem animação.
+//
+// A capa é decorativa: aria-hidden,
 // inert e sem receber clique nem foco. Com prefers-reduced-motion, sem deslizes
 // nem giro: tudo some num fade curto, a capa aparece e some em fade.
 //
@@ -189,11 +198,37 @@ type Abertura = {
   alvo: string;
 };
 
+type PedidoDeSaida = {
+  // Apaga o token e navega para o login: roda quando a capa já fechou o livro.
+  navegar: () => void | Promise<void>;
+};
+
+type Fechamento = {
+  fase: "cobrindo" | "esperando" | "encolhendo";
+  reduzido: boolean;
+  janela: { largura: number; altura: number };
+  // A capa fechada sobre o livro e, já no login, a capa da entrada.
+  para: Caixa;
+  de: Caixa | null;
+};
+
+type Contexto = { abrir: (pedido: Pedido) => void; fechar: (pedido: PedidoDeSaida) => void };
+
 // Sem o provedor (ou sem a capa na tela), só navega.
-const ContextoDaCapa = createContext<(pedido: Pedido) => void>((pedido) => pedido.navegar());
+const ContextoDaCapa = createContext<Contexto>({
+  abrir: (pedido) => pedido.navegar(),
+  fechar: (pedido) => void pedido.navegar(),
+});
 
 export function useAbrirCapa(): (pedido: Pedido) => void {
-  return useContext(ContextoDaCapa);
+  return useContext(ContextoDaCapa).abrir;
+}
+
+// O inverso da entrada, no "Sair": a capa volta da esquerda e fecha o livro,
+// o token sai e o login monta por baixo dela; ela encolhe até o lugar do
+// formulário, a vitrine volta deslizando e o formulário aparece sobre a capa.
+export function useFecharCapa(): (pedido: PedidoDeSaida) => void {
+  return useContext(ContextoDaCapa).fechar;
 }
 
 // Sair acelera (a vitrine vai embora); chegar desacelera (a capa assenta).
@@ -202,6 +237,7 @@ const CURVA_DE_MUDANCA = "cubic-bezier(0.65, 0, 0.35, 1)";
 // A capa é mais pesada que uma folha: começa devagar, como quem a levanta, e deita
 // sem quicar.
 const CURVA_DA_CAPA = "cubic-bezier(0.55, 0.05, 0.2, 1)";
+const CURVA_DE_FECHAR = "cubic-bezier(0.3, 0, 0.2, 1)";
 const SAIDA = 520;
 const CRESCER = 680;
 const GIRO = 1000;
@@ -234,11 +270,79 @@ function esvaziarAPagina(reduzido: boolean): Promise<void> {
   return terminar(animacoes, reduzido ? 400 : SAIDA + 500);
 }
 
+// O inverso do passo 1, na tela de login recém-montada: a vitrine volta
+// deslizando da esquerda e o formulário aparece depois de a capa assentar. As
+// animações já nascem no estado de partida (fill both), antes do papel sair.
+function encherAPagina(atrasoDoFormulario: number): Animation[] {
+  const animacoes: Animation[] = [];
+  document.querySelectorAll<HTMLElement>("[data-sai]").forEach((el) => {
+    if (el.dataset.sai === "sumir") {
+      animacoes.push(
+        el.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 260,
+          delay: atrasoDoFormulario,
+          easing: "ease-out",
+          fill: "both",
+        }),
+      );
+      return;
+    }
+    animacoes.push(
+      el.animate([{ transform: "translateX(calc(-100vw - 100%))" }, { transform: "translateX(0)" }], {
+        duration: 640,
+        delay: 240,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+        fill: "both",
+      }),
+    );
+  });
+  return animacoes;
+}
+
 const semSessaoNoServidor = () => null;
 
 export function ProvedorDaCapa({ children }: { children: ReactNode }) {
   const [abertura, setAbertura] = useState<Abertura | null>(null);
+  const [fechamento, setFechamento] = useState<Fechamento | null>(null);
   const navegar = useRef<(() => void) | null>(null);
+  const sair = useRef<(() => void | Promise<void>) | null>(null);
+
+  const fechar = useCallback((pedido: PedidoDeSaida) => {
+    // Só fecha o livro que está aberto na tela (o Caderno).
+    if (!document.querySelector(".miolo")) {
+      void pedido.navegar();
+      return;
+    }
+    const janela = { largura: window.innerWidth, altura: window.innerHeight };
+    sair.current = pedido.navegar;
+    setFechamento({
+      fase: "cobrindo",
+      reduzido: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      janela,
+      para: capaDoLivro(janela.largura, janela.altura),
+      de: null,
+    });
+  }, []);
+
+  // O livro está fechado: apaga o token e vai para o login por baixo da capa.
+  const fechouOLivro = useCallback(() => {
+    const ir = sair.current;
+    sair.current = null;
+    setFechamento((f) => (f ? { ...f, fase: "esperando" } : f));
+    void ir?.();
+  }, []);
+
+  const chegouAoLogin = useCallback((de: Caixa | null) => {
+    setFechamento((f) => (f ? { ...f, de, fase: "encolhendo" } : f));
+  }, []);
+
+  // A capa assentou no lugar do formulário: o foco vai para o primeiro campo.
+  const fechou = useCallback(() => {
+    setFechamento(null);
+    requestAnimationFrame(() => {
+      document.querySelector<HTMLElement>("main input, main textarea")?.focus({ preventScroll: true });
+    });
+  }, []);
 
   const abrir = useCallback((pedido: Pedido) => {
     const capa = document.querySelector<HTMLElement>("[data-capa-da-entrada]");
@@ -290,8 +394,11 @@ export function ProvedorDaCapa({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ContextoDaCapa.Provider value={abrir}>
+    <ContextoDaCapa.Provider value={{ abrir, fechar }}>
       {children}
+      {fechamento && (
+        <CapaQueFecha fechamento={fechamento} aoFechar={fechouOLivro} aoChegar={chegouAoLogin} aoTerminar={fechou} />
+      )}
       {abertura && (
         <CapaQueAbre
           abertura={abertura}
@@ -416,46 +523,240 @@ function CapaQueAbre({
     };
   }, [fase]);
 
-  const caixa = (c: Caixa) => ({ left: c.x, top: c.y, width: c.w, height: c.h });
   const crescendo = fase === "crescendo";
-  const [x1, y1, x2, y2] = [para.x, para.y, para.x + para.w, para.y + para.h].map((n) => `${n}px`);
-  const furo = `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1} ${y1}, ${x2} ${y1}, ${x2} ${y2}, ${x1} ${y2}, ${x1} ${y1})`;
-
   return (
-    <div ref={raiz} aria-hidden="true" inert className="pointer-events-none fixed inset-0 z-[100]">
-      {/* A página já está vazia (o formulário sumiu, a vitrine saiu): o papel
-          entra inteiro e a navegação acontece por baixo dele. Ao abrir, ele
-          ganha um furo onde está a capa, para o giro dela descobrir a página da
-          direita; o resto do livro continua coberto até a capa deitar. */}
-      <div ref={veu} className="absolute inset-0 bg-papel" style={{ clipPath: fase === "abrindo" && !reduzido ? furo : undefined }} />
-      <div ref={sombra} className="sombra-da-capa absolute" style={{ ...caixa(para), opacity: 0, borderRadius: px(fim) }} />
-      <div className={`absolute inset-0 ${crescendo && !reduzido ? "sombra-da-capa-fechada" : ""}`}>
+    <CamadaDoLivro
+      partes={{ raiz, veu, sombra, capa, folha, frente, guarda }}
+      janela={janela}
+      para={para}
+      sombraFechada={crescendo && !reduzido}
+      veuEstilo={{ clipPath: fase === "abrindo" && !reduzido ? furoNoPapel(para) : undefined }}
+      capaEstilo={{
+        transform: crescendo && !reduzido ? inicio : undefined,
+        opacity: crescendo && reduzido ? 0 : undefined,
+      }}
+      frenteEstilo={{
+        clipPath: crescendo && !reduzido ? recortePequeno : undefined,
+        boxShadow: crescendo && !reduzido ? "none" : undefined,
+      }}
+    />
+  );
+}
+
+// O papel com um furo onde está a capa: cobre o livro todo, menos o que a capa
+// cobre, para o giro dela descobrir (ou cobrir) só a página da direita.
+function furoNoPapel(para: Caixa): string {
+  const [x1, y1, x2, y2] = [para.x, para.y, para.x + para.w, para.y + para.h].map((n) => `${n}px`);
+  return `polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, ${x1} ${y1}, ${x2} ${y1}, ${x2} ${y2}, ${x1} ${y2}, ${x1} ${y1})`;
+}
+
+// A geometria de crescer e encolher: o recorte da capa grande no formato da
+// capa da entrada, em escala, sobre ela.
+function caminhoDaCapa(para: Caixa, de: Caixa, largura: number) {
+  const r = recorteDaCapa(para, de);
+  const fim = cantos(largura);
+  return {
+    pequena: `translate(${de.x - para.x - r.x * r.escala}px, ${de.y - para.y - r.y * r.escala}px) scale(${r.escala})`,
+    recortePequeno: `inset(${r.y}px ${r.x}px ${r.y}px ${r.x}px round ${CANTO_PEQUENO / r.escala}px)`,
+    recorteGrande: `inset(0px 0px 0px 0px round ${px(fim)})`,
+  };
+}
+
+type Partes = Record<
+  "raiz" | "veu" | "sombra" | "capa" | "folha" | "frente" | "guarda",
+  React.RefObject<HTMLDivElement | null>
+>;
+
+function usePartes(): Partes {
+  return {
+    raiz: useRef<HTMLDivElement>(null),
+    veu: useRef<HTMLDivElement>(null),
+    sombra: useRef<HTMLDivElement>(null),
+    capa: useRef<HTMLDivElement>(null),
+    folha: useRef<HTMLDivElement>(null),
+    frente: useRef<HTMLDivElement>(null),
+    guarda: useRef<HTMLDivElement>(null),
+  };
+}
+
+// A camada por cima de tudo, a mesma na entrada e na saída: o papel (que
+// esconde a página enquanto ela troca), a sombra que a capa deixa na página da
+// direita e a capa, com a frente de pano e o verso de papel (a guarda).
+function CamadaDoLivro({
+  partes,
+  janela,
+  para,
+  sombraFechada,
+  veuEstilo,
+  capaEstilo,
+  folhaEstilo,
+  frenteEstilo,
+  guardaEstilo,
+}: {
+  partes: Partes;
+  janela: { largura: number; altura: number };
+  para: Caixa;
+  sombraFechada: boolean;
+  veuEstilo?: React.CSSProperties;
+  capaEstilo?: React.CSSProperties;
+  folhaEstilo?: React.CSSProperties;
+  frenteEstilo?: React.CSSProperties;
+  guardaEstilo?: React.CSSProperties;
+}) {
+  const caixa = (c: Caixa) => ({ left: c.x, top: c.y, width: c.w, height: c.h });
+  const fim = px(cantos(janela.largura));
+  return (
+    <div ref={partes.raiz} aria-hidden="true" inert className="pointer-events-none fixed inset-0 z-[100]">
+      <div ref={partes.veu} className="absolute inset-0 bg-papel" style={veuEstilo} />
+      <div ref={partes.sombra} className="sombra-da-capa absolute" style={{ ...caixa(para), opacity: 0, borderRadius: fim }} />
+      <div className={`absolute inset-0 ${sombraFechada ? "sombra-da-capa-fechada" : ""}`}>
         <div
-          ref={capa}
+          ref={partes.capa}
           className="absolute origin-top-left"
           style={{
             ...caixa(para),
-            transform: crescendo && !reduzido ? inicio : undefined,
-            opacity: crescendo && reduzido ? 0 : undefined,
             perspective: 2600,
             perspectiveOrigin: `${janela.largura / 2 - para.x}px ${janela.altura / 2 - para.y}px`,
+            ...capaEstilo,
           }}
         >
-          <div ref={folha} className="absolute inset-0 origin-left [transform-style:preserve-3d]">
+          <div ref={partes.folha} className="absolute inset-0 origin-left [transform-style:preserve-3d]" style={folhaEstilo}>
             <Pano
-              ref={frente}
+              ref={partes.frente}
               capa={{ ...para, x: 0, y: 0 }}
               className="face-da-capa absolute inset-0"
-              estilo={{
-                borderRadius: px(fim),
-                clipPath: crescendo && !reduzido ? recortePequeno : undefined,
-                boxShadow: crescendo && !reduzido ? "none" : undefined,
-              }}
+              estilo={{ borderRadius: fim, ...frenteEstilo }}
             />
-            <div ref={guarda} className="guarda-da-capa face-da-capa absolute inset-0" style={{ borderRadius: px(fim) }} />
+            <div
+              ref={partes.guarda}
+              className="guarda-da-capa face-da-capa absolute inset-0"
+              style={{ borderRadius: fim, ...guardaEstilo }}
+            />
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+const DEITADA = "rotateY(-180deg)";
+
+function CapaQueFecha({
+  fechamento,
+  aoFechar,
+  aoChegar,
+  aoTerminar,
+}: {
+  fechamento: Fechamento;
+  aoFechar: () => void;
+  aoChegar: (de: Caixa | null) => void;
+  aoTerminar: () => void;
+}) {
+  const { fase, reduzido, janela, para, de } = fechamento;
+  const partes = usePartes();
+  const { raiz, veu, sombra, capa, folha, frente, guarda } = partes;
+
+  const caminho = usePathname();
+  const logado = useSyncExternalStore<boolean | null>(assinarSessao, temToken, semSessaoNoServidor);
+  const noLogin = caminho === "/login" && logado === false;
+
+  // 1. Cobrir e fechar. O papel volta sobre tudo fora da capa e a guarda volta
+  // a ser a página da esquerda lisa (um crossfade curto, o inverso do fim da
+  // abertura); depois a capa levanta da esquerda, gira na dobra e desce sobre a
+  // página da direita, com a sombra crescendo por baixo dela.
+  useEffect(() => {
+    if (fase !== "cobrindo") return;
+    let vivo = true;
+    let anim: (Animation | undefined)[];
+    if (reduzido) {
+      anim = [raiz.current?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 160, easing: "ease-out", fill: "forwards" })];
+    } else {
+      // No celular a capa está fora da tela, à esquerda: não há o que cobrir antes.
+      const duplo = janela.largura >= LARGURA_DUPLA;
+      const cobrir = { duration: 280, easing: "ease-out", fill: "both" as const };
+      // Ao fechar, a capa sai logo do lugar (a mão já está nela) e desce assentando.
+      const tempo = { duration: GIRO, delay: duplo ? 200 : 0, easing: CURVA_DE_FECHAR, fill: "both" as const };
+      anim = [
+        veu.current?.animate([{ opacity: 0 }, { opacity: 1 }], cobrir),
+        guarda.current?.animate([{ opacity: 0 }, { opacity: 1 }], cobrir),
+        folha.current?.animate([{ transform: DEITADA }, { transform: "rotateY(0deg)" }], tempo),
+        sombra.current?.animate([{ opacity: 0 }, { opacity: 0, offset: 0.3 }, { opacity: 1, offset: 0.85 }, { opacity: 0 }], tempo),
+      ];
+    }
+    terminar(anim, reduzido ? 500 : GIRO + 1000).then(() => {
+      if (vivo) aoFechar();
+    });
+    return () => {
+      vivo = false;
+    };
+    // Uma vez por fase: as medidas e os avisos não mudam enquanto o fechamento dura.
+  }, [fase]);
+
+  // 2. Esperar o login montar por baixo (dois quadros para pintar) e medir a
+  // capa da entrada. Se ele não chegar, a capa sai assim mesmo.
+  useEffect(() => {
+    if (fase !== "esperando") return;
+    const medir = () => {
+      const alvo = document.querySelector<HTMLElement>("[data-capa-da-entrada]");
+      const r = alvo?.getBoundingClientRect();
+      aoChegar(r && r.width > 0 ? { x: r.left, y: r.top, w: r.width, h: r.height } : null);
+    };
+    if (noLogin) {
+      let quadro = requestAnimationFrame(() => {
+        quadro = requestAnimationFrame(medir);
+      });
+      return () => cancelAnimationFrame(quadro);
+    }
+    const relogio = setTimeout(medir, 3000);
+    return () => clearTimeout(relogio);
+  }, [fase, noLogin, aoChegar]);
+
+  // 3. Encolher: a capa desliza do livro até o lugar do formulário, a vitrine
+  // volta pela esquerda e, com a capa assentada, o formulário aparece sobre ela.
+  useEffect(() => {
+    if (fase !== "encolhendo") return;
+    let vivo = true;
+    const capaDaEntrada = document.querySelector<HTMLElement>("[data-capa-da-entrada]");
+    if (reduzido || !de) {
+      const some = raiz.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: "ease-out", fill: "forwards" });
+      terminar([some], 600).then(() => {
+        if (vivo) aoTerminar();
+      });
+      return () => {
+        vivo = false;
+      };
+    }
+    const { pequena, recortePequeno, recorteGrande } = caminhoDaCapa(para, de, janela.largura);
+    // A capa da entrada fica escondida até a que encolhe pousar sobre ela.
+    if (capaDaEntrada) capaDaEntrada.style.visibility = "hidden";
+    encherAPagina(CRESCER - 40);
+    const tempo = { duration: CRESCER, easing: CURVA_DE_MUDANCA, fill: "forwards" as const };
+    const anim = [
+      veu.current?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 120, easing: "linear", fill: "forwards" }),
+      capa.current?.animate([{ transform: "none" }, { transform: pequena }], tempo),
+      frente.current?.animate([{ clipPath: recorteGrande }, { clipPath: recortePequeno }], tempo),
+    ];
+    terminar(anim, CRESCER + 600).then(() => {
+      if (capaDaEntrada) capaDaEntrada.style.visibility = "";
+      if (vivo) aoTerminar();
+    });
+    return () => {
+      vivo = false;
+    };
+  }, [fase]);
+
+  const cobrindo = fase === "cobrindo";
+  const encolhendo = fase === "encolhendo";
+  return (
+    <CamadaDoLivro
+      partes={partes}
+      janela={janela}
+      para={para}
+      sombraFechada={encolhendo && !reduzido}
+      veuEstilo={{ clipPath: cobrindo && !reduzido ? furoNoPapel(para) : undefined, opacity: cobrindo && !reduzido ? 0 : undefined }}
+      folhaEstilo={{ transform: cobrindo && !reduzido ? DEITADA : undefined }}
+      frenteEstilo={{ boxShadow: encolhendo && !reduzido ? "none" : undefined }}
+      guardaEstilo={{ opacity: cobrindo && !reduzido ? 0 : undefined }}
+    />
   );
 }
