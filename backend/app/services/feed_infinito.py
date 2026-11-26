@@ -8,10 +8,13 @@ Cada aba é uma corrente de trechos, lidos em ordem:
 - **Para você:** o "Para você" cronológico (`services/para_voce.py`), o trecho
   inédito; depois, a continuação.
 
-A continuação (`core/continuacao.py`) mistura os poemas de consagrados que a
-sessão ainda não recebeu, primeiro os das formas e escolas das preferências da
-pessoa, com os mais curtidos da comunidade (estes podem repetir, e vêm com
-`subiu_por` "curtidas"). Ela só acaba com o banco sem poemas.
+A continuação (`core/continuacao.py`) mistura os poemas de consagrados (primeiro
+os nunca vistos, numa fila pelas formas e escolas das preferências, depois a
+língua de quem lê, depois os mais recentes; quando acabam, a fila recicla do topo,
+com `subiu_por` "releitura") com os mais curtidos da comunidade (estes podem
+repetir, e vêm com `subiu_por` "curtidas"). Ela só acaba com o banco sem poemas.
+"Nunca visto" é o que não saiu nesta sessão (o cursor) nem em sessões anteriores
+(`services/vistos_no_feed.py`).
 
 O cursor diz em que trecho a leitura está (`services/cursor.py`): o de cada
 trecho cronológico é o de sempre (posição e o que a sessão já viu, então o
@@ -19,14 +22,16 @@ inédito continua sem repetidos); o da continuação leva onde ela parou. O curs
 de antes, sem trecho, é o do primeiro trecho da aba e continua valendo.
 
 Paginação: com cursor, a página enche passando de um trecho para o seguinte, e
-`fim_em` marca onde acabou o primeiro (no Seguindo, a folha "você leu tudo de
-quem segue" do front). Por offset (sem cursor), vale só o primeiro trecho, com o
+`fim_em` marca onde acabou o primeiro (no front, a folha "você leu tudo de quem
+segue" no Seguindo e "você está em dia" no "Para você"). Por offset (sem cursor), vale só o primeiro trecho, com o
 `total` dele, como antes; no fim dele, o `proximo_cursor` já aponta o seguinte.
 
-Custo da continuação: uma consulta com os poemas de consagrados (só ids, datas,
-autor e forma, sem o texto), a fila de `core/continuacao.proximos` em
-O(m log m), uma consulta agregada para os `MAIS_CURTIDOS` e a montagem O(limit)
-de `montar_itens`.
+Custo da continuação, por página: a fila dos consagrados vem do banco já
+ordenada e cortada (`ORDER BY ... LIMIT`, com o `NOT EXISTS` do já visto na chave
+primária de `vistos_no_feed`), então só `limit` poemas saem do banco, e não os
+11 mil; mais uma consulta agregada para os `MAIS_CURTIDOS` e a montagem O(limit)
+de `montar_itens`. No banco do seed, a página da continuação caiu de 50 ms para
+25 ms de mediana (a fila, de 35 ms para 6 ms).
 """
 
 from collections.abc import Callable
