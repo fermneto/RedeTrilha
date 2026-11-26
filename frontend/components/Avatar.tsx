@@ -11,6 +11,8 @@ function iniciais(nome: string): string {
 
 // Também a medida do avatar no esqueleto do carregamento (components/Esqueleto.tsx).
 export const TAMANHOS_DO_AVATAR = {
+  // Os rostos empilhados de quem curtiu ou repostou (components/Repercussao.tsx).
+  mi: "h-6 w-6",
   p: "h-8 w-8",
   m: "h-10 w-10",
   // A faixa do autor na página do poema (components/FaixaDoAutor.tsx).
@@ -18,7 +20,7 @@ export const TAMANHOS_DO_AVATAR = {
   g: "h-20 w-20",
 } as const;
 
-const LETRAS = { p: "text-xs", m: "text-sm", l: "text-base", g: "text-2xl" } as const;
+const LETRAS = { mi: "text-[0.5625rem]", p: "text-xs", m: "text-sm", l: "text-base", g: "text-2xl" } as const;
 
 // Decorativo: o nome do usuário sempre aparece ao lado, então o avatar não tem alt.
 export function Avatar({ usuario, tamanho = "m" }: { usuario: User; tamanho?: keyof typeof TAMANHOS_DO_AVATAR }) {
