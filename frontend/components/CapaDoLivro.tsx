@@ -2,15 +2,17 @@
 // A capa do livro fechado: o mesmo pano da capa do Caderno (.capa, em
 // globals.css), com o nome do Verso gravado e o fio da lombada embaixo, nada mais.
 //
-// Na entrada (login e cadastro), a CapaDaEntrada fica pequena, abaixo do
-// formulário. Ela é a própria capa do livro aberto em escala: a metade direita do
-// Caderno no desktop (de 1024 px) e a tela inteira no celular, recortada no
-// formato de um livro (3:4). Assim, ao crescer, nada muda de proporção.
+// Na entrada (login e cadastro), a CapaDaEntrada fica por trás do formulário,
+// como um livro fechado com o formulário apoiado nele. Ela é a própria capa do
+// livro aberto em escala (a metade direita do Caderno no desktop, de 1024 px, e
+// a tela inteira no celular), recortada no tamanho do bloco do formulário.
+// Assim, ao crescer, o nome e o pano não mudam de proporção.
 //
 // Ao entrar (só depois de o login dar certo), o formulário chama useAbrirCapa(),
 // e a sequência é:
-//   1. o formulário (e a marca) somem num fade e os blocos de poemas da vitrine
-//      deslizam para fora da tela, para a esquerda ([data-sai] na página);
+//   1. o formulário (e a marca) somem num fade, deixando a capa limpa com o
+//      nome gravado, e os blocos de poemas da vitrine deslizam para fora da
+//      tela, para a esquerda ([data-sai] na página);
 //   2. uma cópia da capa por cima de tudo (fixa, aqui no Layout, que não
 //      desmonta entre as rotas) cresce do lugar dela até a metade direita do
 //      livro aberto (no celular, até a tela inteira). Ao assentar, o token é
@@ -47,9 +49,6 @@ type Caixa = { x: number; y: number; w: number; h: number };
 
 // A partir daqui, a página dupla do Caderno (CadernoFolhas.tsx, DUPLO).
 const LARGURA_DUPLA = 1024;
-// O formato da capa pequena: um livro em pé.
-const RAZAO = 3 / 4;
-
 // Onde fica a capa fechada sobre o livro: no desktop, a metade direita do
 // Caderno (h-dvh com px-6 py-5, até 1400 px; a lombada de 5.25rem à esquerda,
 // a sobra de 7 px à direita e a dobra no meio do miolo); no celular, a tela.
@@ -61,25 +60,18 @@ function capaDoLivro(largura: number, altura: number): Caixa {
   return { x: dobra, y: 20, w: inicio + livro - dobra, h: altura - 40 };
 }
 
-// O recorte 3:4 no meio da capa grande e a escala que o põe no tamanho da pequena.
-function recorteDaCapa(capa: Caixa, alturaPequena: number) {
-  const larga = capa.w / capa.h > RAZAO;
-  const w = larga ? capa.h * RAZAO : capa.w;
-  const h = larga ? capa.h : capa.w / RAZAO;
-  return { x: (capa.w - w) / 2, y: (capa.h - h) / 2, w, h, escala: alturaPequena / h };
-}
-
-// A altura da capa pequena. No celular, do tamanho de um livro na mão. No
-// desktop, ela fica solta abaixo do formulário e ocupa a sobra até o pé da tela
-// (sem passar dele nem criar rolagem), de 88 a 150 px.
-function alturaPequena(largura: number, altura: number, topo: number | null): number {
-  if (largura < LARGURA_DUPLA) return Math.round(Math.min(196, Math.max(150, altura * 0.22)));
-  const sobra = topo === null ? altura * 0.16 : altura - topo - 20;
-  return Math.round(Math.min(150, Math.max(88, sobra)));
+// O recorte da capa grande no formato da capa da entrada (o meio dela) e a escala
+// que põe esse recorte no tamanho da capa da entrada.
+function recorteDaCapa(capa: Caixa, entrada: { w: number; h: number }) {
+  const razao = entrada.w / entrada.h;
+  const larga = capa.w / capa.h > razao;
+  const w = larga ? capa.h * razao : capa.w;
+  const h = larga ? capa.h : capa.w / razao;
+  return { x: (capa.w - w) / 2, y: (capa.h - h) / 2, w, h, escala: entrada.h / h };
 }
 
 const CANTOS_DO_LIVRO = [2, 10, 10, 2];
-const CANTO_PEQUENO = 6;
+const CANTO_PEQUENO = 12;
 
 function cantos(largura: number): number[] {
   return largura >= LARGURA_DUPLA ? CANTOS_DO_LIVRO : [0, 0, 0, 0];
@@ -139,44 +131,41 @@ function useJanela(): { largura: number; altura: number } | null {
   return { largura, altura };
 }
 
-// A capa pequena da entrada: a capa do livro inteira, em escala, recortada em 3:4.
+// A capa da entrada, por trás do formulário: a capa do livro inteira, em escala,
+// recortada no tamanho do bloco do formulário (que mede a caixa dela). Antes da
+// medida, só o pano; o nome, por trás do formulário, aparece quando ele sai.
 export function CapaDaEntrada({ className = "" }: { className?: string }) {
   const janela = useJanela();
   const caixa = useRef<HTMLDivElement>(null);
-  // Onde começa a capa na página (o topo dela não depende da altura).
-  const [topo, setTopo] = useState<number | null>(null);
+  const [tamanho, setTamanho] = useState<{ w: number; h: number } | null>(null);
   useLayoutEffect(() => {
-    if (!caixa.current) return;
-    setTopo(caixa.current.getBoundingClientRect().top + window.scrollY);
-  }, [janela?.largura, janela?.altura]);
+    const el = caixa.current;
+    if (!el) return;
+    const medir = () => setTamanho({ w: el.offsetWidth, h: el.offsetHeight });
+    medir();
+    const observador = new ResizeObserver(medir);
+    observador.observe(el);
+    return () => observador.disconnect();
+  }, []);
 
-  if (!janela) {
-    return (
-      <div
-        aria-hidden="true"
-        className={`invisible aspect-[3/4] h-[clamp(9.375rem,22dvh,12.25rem)] lg:h-[clamp(5.5rem,16dvh,9.375rem)] ${className}`}
-      />
-    );
-  }
-  const capa = capaDoLivro(janela.largura, janela.altura);
-  const altura = alturaPequena(janela.largura, janela.altura, topo);
-  const r = recorteDaCapa(capa, altura);
+  const capa = janela && capaDoLivro(janela.largura, janela.altura);
+  const r = capa && tamanho && tamanho.h > 0 ? recorteDaCapa(capa, tamanho) : null;
   return (
     <div
       ref={caixa}
       aria-hidden="true"
       data-capa-da-entrada=""
-      className={`sombra-da-capa-fechada ${topo === null ? "invisible" : ""} ${className}`}
-      style={{ width: Math.round(altura * RAZAO), height: altura }}
+      className={`capa overflow-hidden ${className}`}
+      style={{ borderRadius: CANTO_PEQUENO }}
     >
-      <div className="relative h-full w-full overflow-hidden" style={{ borderRadius: CANTO_PEQUENO }}>
+      {capa && r && (
         <div
           className="absolute top-0 left-0 origin-top-left"
           style={{ transform: `translate(${-r.x * r.escala}px, ${-r.y * r.escala}px) scale(${r.escala})` }}
         >
           <Pano capa={capa} estilo={{ boxShadow: "none" }} />
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -342,7 +331,7 @@ function CapaQueAbre({
   const chegou = caminho === alvo && logado === true;
 
   // De onde a capa cresce: o recorte 3:4, em escala, sobre a capa pequena.
-  const r = recorteDaCapa(para, de.h);
+  const r = recorteDaCapa(para, de);
   const inicio = `translate(${de.x - para.x - r.x * r.escala}px, ${de.y - para.y - r.y * r.escala}px) scale(${r.escala})`;
   const fim = cantos(janela.largura);
   const recortePequeno = `inset(${r.y}px ${r.x}px ${r.y}px ${r.x}px round ${CANTO_PEQUENO / r.escala}px)`;
