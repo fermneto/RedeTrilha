@@ -415,6 +415,15 @@ poema publicado não se edita, então ele sai do texto do poema.
 `POST`/`DELETE /posts/{id}/curtir` 🔒 e `POST`/`DELETE /posts/{id}/repostar` 🔒
 → 204, idempotentes. As da renga (#171) estão em Rengas.
 
+**Repercussão na página da publicação** (`services/repercussao.py`):
+`GET /posts/{id}/curtidas` 🔒 e `GET /posts/{id}/reposts` 🔒 → página de
+`UserOut` (quem curtiu; quem fez repost puro), e `GET /posts/{id}/citacoes` 🔒
+→ `PostPage` das citações; as mesmas três em `/rengas/{id}` (as citações da
+renga são os poemas de `citacoes_renga`). Tudo da ação mais recente para a mais
+antiga, com `offset`/`limit`. Repost puro mostra a do original; 404 se o autor
+(na renga, o criador) bloqueou quem vê; quem tem bloqueio com quem vê fica fora
+das listas, como nos seguidores.
+
 ### Antologias (dono: Pedro)
 
 Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
