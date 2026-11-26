@@ -5,7 +5,7 @@ direto no banco, com poemas na língua do original, como faz o importador.
 """
 
 import typing
-from itertools import pairwise
+from itertools import pairwise, product
 
 import pytest
 
@@ -210,3 +210,64 @@ def test_faixas_de_epoca_sao_contiguas():
 
     for anterior, seguinte in pairwise(FAIXAS_DE_EPOCA):
         assert seguinte.inicio == anterior.fim + 1
+
+
+def _opcoes(client, como, consulta: str = "") -> tuple[dict[str, int], dict[str, int]]:
+    r = client.get(f"/acervo/filtros?{consulta}", headers=como("ana"))
+    assert r.status_code == 200, r.text
+    corpo = r.json()
+    return (
+        {lingua["codigo"]: lingua["poetas"] for lingua in corpo["linguas"]},
+        {epoca["chave"]: epoca["poetas"] for epoca in corpo["epocas"]},
+    )
+
+
+def _total(client, como, consulta: str) -> int:
+    return client.get(f"/acervo?{consulta}&limit=1", headers=como("ana")).json()["total"]
+
+
+def test_contagens_das_linguas_seguem_a_epoca(client, acervo):
+    linguas, epocas = _opcoes(client, acervo, "epoca=xix")
+    # Álvares (pt) e Baudelaire (fr) morreram no XIX; a lista e a ordem não mudam
+    assert linguas == {"pt": 1, "el": 0, "fr": 1}
+    assert list(linguas) == ["pt", "el", "fr"]
+    # a própria época não se filtra: as outras opções continuam com o total delas
+    assert epocas == _opcoes(client, acervo)[1]
+
+
+def test_contagens_das_epocas_seguem_a_lingua(client, acervo):
+    linguas, epocas = _opcoes(client, acervo, "lingua=pt")
+    assert (epocas["xvi"], epocas["xix"], epocas["xx"], epocas["antiguidade"]) == (1, 1, 1, 0)
+    assert linguas == {"pt": 3, "el": 1, "fr": 1}
+
+
+def test_contagens_com_lingua_e_epoca_juntas(client, acervo):
+    linguas, epocas = _opcoes(client, acervo, "tipo=consagrados&lingua=fr&epoca=xx")
+    # línguas contam com a época XX; épocas, com a língua fr
+    assert linguas == {"pt": 1, "el": 0, "fr": 0}
+    assert sum(epocas.values()) == epocas["xix"] == 1
+
+
+def test_poetas_do_verso_zeram_as_contagens(client, acervo):
+    linguas, epocas = _opcoes(client, acervo, "tipo=do_verso")
+    assert set(linguas.values()) == set(epocas.values()) == {0}
+    assert list(linguas) == ["pt", "el", "fr"]
+
+
+def test_cada_contagem_bate_com_o_total_da_listagem(client, acervo):
+    """A contagem de uma opção é o total que o /acervo dá ao escolhê-la, em toda combinação."""
+    for tipo, lingua, epoca in product(
+        ("todos", "consagrados"), (None, "pt", "fr", "el", "es"), (None, "antiguidade", "xix", "xx")
+    ):
+        com_lingua = f"tipo={tipo}" + (f"&lingua={lingua}" if lingua else "")
+        com_epoca = f"tipo={tipo}" + (f"&epoca={epoca}" if epoca else "")
+        linguas, epocas = _opcoes(client, acervo, com_lingua + (f"&epoca={epoca}" if epoca else ""))
+        for codigo, n in linguas.items():
+            assert n == _total(client, acervo, f"{com_epoca}&lingua={codigo}"), (tipo, lingua, epoca)
+        for chave, n in epocas.items():
+            assert n == _total(client, acervo, f"{com_lingua}&epoca={chave}"), (tipo, lingua, epoca)
+
+
+def test_opcoes_com_parametro_invalido_dao_422(client, acervo):
+    for consulta in ("tipo=vivos", "epoca=xxi", "lingua=portugues"):
+        assert client.get(f"/acervo/filtros?{consulta}", headers=acervo("ana")).status_code == 422

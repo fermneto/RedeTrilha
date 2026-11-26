@@ -11,7 +11,6 @@ from fastapi import HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import normalizar
 from app.core.marcas import texto_sem_marcas
 from app.models.post import Post
 from app.models.post_tag import PostTag
@@ -120,13 +119,12 @@ def _consultar(
         filtros.append(Post.autor_id.not_in(bloqueados))
     if forma is not None:
         filtros.append(Post.forma == forma)
+    if tag:
+        # Os poemas das tags equivalentes (sem o "_"), cada um uma vez.
+        tags = indice_tags.tags_equivalentes(db, tag)
+        filtros.append(Post.id.in_(select(PostTag.post_id).where(PostTag.tag.in_(tags))))
     contagem = select(func.count()).select_from(Post)
     consulta = select(Post)
-    if tag:
-        # tag + forma: JOIN com o índice, uma linha por (poema, tag).
-        filtros.append(PostTag.tag == normalizar(tag))
-        contagem = contagem.join(PostTag, PostTag.post_id == Post.id)
-        consulta = consulta.join(PostTag, PostTag.post_id == Post.id)
     total = db.scalar(contagem.where(*filtros)) or 0
     posts = db.scalars(
         consulta.where(*filtros).order_by(*_MAIS_NOVO_PRIMEIRO).offset(offset).limit(limit)

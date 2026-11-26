@@ -21,6 +21,7 @@ import {
   caminhoDaTag,
   ErroDaApi,
   formatarData,
+  hashtag,
   idiomaDoNavegador,
   mensagemDeFalha,
   nomeDaForma,
@@ -537,7 +538,7 @@ export function Detalhes({ poema, solto = false }: { poema: Post; solto?: boolea
                 href={caminhoDaTag(tag)}
                 className="text-destaque hover:underline"
               >
-                #{tag}
+                {hashtag(tag)}
               </Link>
             </li>
           ))}

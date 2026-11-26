@@ -39,6 +39,9 @@ def indice(client, criar_usuario):
             def posts_da_tag(self, tag: str) -> list[int]:
                 return indice_tags.posts_da_tag(db, tag, 0, 100)[0]
 
+            def total_da_tag(self, tag: str) -> int:
+                return indice_tags.posts_da_tag(db, tag, 0, 100)[1]
+
             def trending(self, desde: datetime, k: int = 5) -> list[tuple[str, int]]:
                 return indice_tags.trending(db, desde, k)
 
@@ -179,10 +182,37 @@ def test_buscar_por_prefixo_mais_usada_primeiro(indice):
     assert indice.buscar("dade") == []
 
 
-def test_buscar_trata_o_sublinhado_como_letra(indice):
+def test_buscar_ignora_o_sublinhado(indice):
+    # A tela mostra #versolivre; digitar com ou sem o "_" acha a mesma tag.
     indice.indexar(1, {"verso_livre"}, dias_atras(1))
     indice.indexar(2, {"versoxlivre"}, dias_atras(1))
-    assert indice.buscar("verso_") == [("verso_livre", 1)]
+    assert indice.buscar("#versolivre") == [("verso_livre", 1)]
+    assert indice.buscar("verso_l") == [("verso_livre", 1)]
+    assert indice.buscar("verso_") == [("verso_livre", 1), ("versoxlivre", 1)]
+
+
+def test_buscar_o_sublinhado_nao_e_curinga(indice):
+    indice.indexar(1, {"verso_livre"}, dias_atras(1))
+    indice.indexar(2, {"versoxlivre"}, dias_atras(1))
+    assert indice.buscar("versoxl") == [("versoxlivre", 1)]
+
+
+def test_posts_da_tag_ignora_o_sublinhado(indice):
+    indice.indexar(1, {"noite_fria"}, dias_atras(2))
+    indice.indexar(2, {"noite_fria"}, dias_atras(1))
+    assert indice.posts_da_tag("noitefria") == [2, 1]
+    assert indice.posts_da_tag("#NoiteFria") == [2, 1]
+    assert indice.posts_da_tag("noite_fria") == [2, 1]
+    assert indice.posts_da_tag("noite") == []
+
+
+def test_tags_que_so_diferem_pelo_sublinhado_vem_juntas_e_o_poema_uma_vez(indice):
+    indice.indexar(1, {"noite_fria"}, dias_atras(3))
+    indice.indexar(2, {"noitefria"}, dias_atras(2))
+    indice.indexar(3, {"noite_fria", "noitefria"}, dias_atras(1))
+    assert indice.posts_da_tag("noitefria") == [3, 2, 1]
+    assert indice.total_da_tag("noite_fria") == 3
+    assert indice.buscar("noitef") == [("noite_fria", 2), ("noitefria", 2)]
 
 
 def test_buscar_vazio_ou_so_simbolos_nao_acha_nada(indice):
