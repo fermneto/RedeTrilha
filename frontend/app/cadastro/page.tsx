@@ -1,12 +1,16 @@
 "use client";
 // Cadastro: cria a conta (POST /auth/registro) e já entra com as mesmas
 // credenciais (POST /auth/login) e leva ao onboarding (/boas-vindas: gostos, região
-// e quem seguir); quem pula tudo cai no Início, na aba "Para você".
+// e quem seguir); quem pula tudo cai no Início, na aba "Para você". A tela é a
+// mesma moldura do login (o formulário e a capa do livro); ao entrar, a capa abre
+// para as boas-vindas.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { useAbrirCapa } from "@/components/CapaDoLivro";
+import { MolduraDaEntrada } from "@/components/LayoutDaEntrada";
 import {
   buscarEu,
   cadastrar,
@@ -50,6 +54,7 @@ function validar(name: string, username: string, senha: string): Erros {
 
 export default function CadastroPage() {
   const router = useRouter();
+  const abrirCapa = useAbrirCapa();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [senha, setSenha] = useState("");
@@ -122,8 +127,13 @@ export default function CadastroPage() {
 
     try {
       const { token } = await entrar(username, senha);
-      salvarToken(token);
-      router.replace("/boas-vindas");
+      abrirCapa({
+        destino: "/boas-vindas",
+        navegar: () => {
+          salvarToken(token);
+          router.replace("/boas-vindas");
+        },
+      });
     } catch {
       setEnviando(false);
       setErroGeral(
@@ -138,7 +148,12 @@ export default function CadastroPage() {
     }
   }
 
-  if (conferindo) return <p className="text-center text-sm text-tinta-suave">carregando...</p>;
+  if (conferindo)
+    return (
+      <MolduraDaEntrada>
+        <p className="text-center text-sm text-tinta-suave">carregando...</p>
+      </MolduraDaEntrada>
+    );
 
   // Mesmos estilos do Compositor (input arredondado, foco na cor de destaque).
   const campo =
@@ -158,99 +173,101 @@ export default function CadastroPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <title>Criar conta · Verso</title>
-      <h1 className="text-center text-2xl">Criar conta</h1>
+    <MolduraDaEntrada>
+      <div className="w-full max-w-sm space-y-6 lg:max-w-[24rem] 2xl:max-w-[26rem]">
+        <title>Criar conta · Verso</title>
+        <h1 className="text-center text-2xl">Criar conta</h1>
 
-      <form
-        onSubmit={aoCadastrar}
-        noValidate
-        className="space-y-4 rounded-2xl border border-borda bg-painel p-6"
-      >
-        <label className="block text-sm font-semibold">
-          nome
-          <input
-            ref={refs.name}
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            autoFocus
-            maxLength={80}
-            autoComplete="name"
-            aria-invalid={Boolean(erros.name)}
-            aria-describedby={descricao("name")}
-            className={`${campo} mt-1 font-normal`}
-          />
-          {erroDoCampo("name")}
-        </label>
-
-        <label className="block text-sm font-semibold">
-          username
-          <input
-            ref={refs.username}
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            maxLength={USERNAME_MAX}
-            autoComplete="username"
-            autoCapitalize="none"
-            autoCorrect="off"
-            spellCheck={false}
-            aria-invalid={Boolean(erros.username)}
-            aria-describedby={descricao("username", "dica-username")}
-            className={`${campo} mt-1 font-normal`}
-          />
-          <span id="dica-username" className="mt-1 block text-xs font-normal text-tinta-suave">
-            Letras minúsculas, números e _, de {USERNAME_MIN} a {USERNAME_MAX} caracteres.
-          </span>
-          {erroDoCampo("username")}
-        </label>
-
-        <label className="block text-sm font-semibold">
-          senha
-          <input
-            ref={refs.password}
-            name="password"
-            type="password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-            autoComplete="new-password"
-            aria-invalid={Boolean(erros.password)}
-            aria-describedby={descricao("password", "dica-senha")}
-            className={`${campo} mt-1 font-normal`}
-          />
-          <span id="dica-senha" className="mt-1 block text-xs font-normal text-tinta-suave">
-            De {SENHA_MIN} a {SENHA_MAX} caracteres.
-          </span>
-          {erroDoCampo("password")}
-        </label>
-
-        {/* Só o erro geral: o de cada campo fica ao lado dele (aria-describedby) e o
-            foco vai para o primeiro campo com erro, que o leitor de tela lê junto. */}
-        <div aria-live="polite">
-          {erroGeral && (
-            <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          disabled={enviando}
-          className="min-h-11 w-full cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
+        <form
+          onSubmit={aoCadastrar}
+          noValidate
+          className="space-y-4 rounded-2xl border border-borda bg-painel p-6"
         >
-          {enviando ? "criando conta..." : "Criar conta"}
-        </button>
-      </form>
+          <label className="block text-sm font-semibold">
+            nome
+            <input
+              ref={refs.name}
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              autoFocus
+              maxLength={80}
+              autoComplete="name"
+              aria-invalid={Boolean(erros.name)}
+              aria-describedby={descricao("name")}
+              className={`${campo} mt-1 font-normal`}
+            />
+            {erroDoCampo("name")}
+          </label>
 
-      <p className="text-center text-sm text-tinta-suave">
-        Já tem conta?{" "}
-        <Link href="/login" className="font-semibold text-destaque hover:underline">
-          Entre
-        </Link>
-      </p>
-    </div>
+          <label className="block text-sm font-semibold">
+            username
+            <input
+              ref={refs.username}
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              maxLength={USERNAME_MAX}
+              autoComplete="username"
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellCheck={false}
+              aria-invalid={Boolean(erros.username)}
+              aria-describedby={descricao("username", "dica-username")}
+              className={`${campo} mt-1 font-normal`}
+            />
+            <span id="dica-username" className="mt-1 block text-xs font-normal text-tinta-suave">
+              Letras minúsculas, números e _, de {USERNAME_MIN} a {USERNAME_MAX} caracteres.
+            </span>
+            {erroDoCampo("username")}
+          </label>
+
+          <label className="block text-sm font-semibold">
+            senha
+            <input
+              ref={refs.password}
+              name="password"
+              type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+              autoComplete="new-password"
+              aria-invalid={Boolean(erros.password)}
+              aria-describedby={descricao("password", "dica-senha")}
+              className={`${campo} mt-1 font-normal`}
+            />
+            <span id="dica-senha" className="mt-1 block text-xs font-normal text-tinta-suave">
+              De {SENHA_MIN} a {SENHA_MAX} caracteres.
+            </span>
+            {erroDoCampo("password")}
+          </label>
+
+          {/* Só o erro geral: o de cada campo fica ao lado dele (aria-describedby) e o
+              foco vai para o primeiro campo com erro, que o leitor de tela lê junto. */}
+          <div aria-live="polite">
+            {erroGeral && (
+              <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={enviando}
+            className="min-h-11 w-full cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
+          >
+            {enviando ? "criando conta..." : "Criar conta"}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-tinta-suave">
+          Já tem conta?{" "}
+          <Link href="/login" className="font-semibold text-destaque hover:underline">
+            Entre
+          </Link>
+        </p>
+      </div>
+    </MolduraDaEntrada>
   );
 }
