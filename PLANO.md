@@ -374,15 +374,16 @@ None), `verso_inicio` e `verso_fim` (os dois ou nenhum, só no 1º nível),
 `removido`, `created_at`; índice (`renga_id`, `parent_id`, `created_at`, `id`).
 
 - Os versos são as linhas do **texto da renga**: as estrofes em ordem, unidas
-  por `"\n\n"` (uma linha em branco entre elas, que conta como verso), base 1
-  (`services/rengas.texto_de`, `textoDaRenga` no front). Estrofe só se
+  por `"\n\n"` (uma linha em branco entre elas, que conta na linha da âncora mas
+  não no número que o leitor vê), base 1 (`services/rengas.texto_de`,
+  `textoDaRenga` no front), como nos poemas (ver Crítica ancorada). Estrofe só se
   acrescenta no fim e não se edita, apaga nem reordena: o número de um verso já
   escrito não muda quando a renga aberta cresce.
 - `POST /rengas/{id}/comentarios` 🔒, body `ComentarioCreate` (`texto`,
   `parent_id`, `ancora`) → 201 `ComentarioRengaOut` (o `ComentarioOut` com
   `renga_id` no lugar de `post_id`). Mesmas regras dos poemas: âncora só no 1º
-  nível, intervalo dentro do texto atual da renga e não só de linhas em branco
-  (senão 422); pai de outra renga, inexistente ou removido → 404. Vale para
+  nível, intervalo dentro do texto atual da renga, começando e terminando em
+  linha com texto (senão 422); pai de outra renga, inexistente ou removido → 404. Vale para
   rengas abertas e fechadas, e qualquer pessoa logada que lê a renga comenta
   (também nas de convidados).
 - `GET /rengas/{id}/comentarios?limit=&cursor=&verso=` 🔒 →
@@ -442,9 +443,18 @@ Tabela `ancoras_comentario`: `comentario_id` (PK e FK `comentarios.id`),
 do poema, base 1, **com as linhas em branco contadas**. O trecho não é gravado:
 poema publicado não se edita, então ele sai do texto do poema.
 
+**Linha e número do verso.** A API (âncora, `?verso=`, `comentarios/versos`)
+conta linhas, como o banco. O número que o leitor vê conta **só os versos**,
+em sequência (1 a 6 num poema de seis versos em duas estrofes): linha em branco,
+vazia ou só com espaços, separa estrofes e não se numera. A tradução de uma
+contagem na outra é `core/versos.py` no backend e `numerosDosVersos` em
+`lib/api.ts`; vale na tela, no `?versos=` das URLs e no aviso de crítica
+(`AvisoOut.verso_inicio`/`verso_fim` já vêm nos números exibidos). As âncoras
+gravadas antes disso não mudam (não há migração).
+
 - `ComentarioCreate` ganhou `ancora: {"verso_inicio", "verso_fim"} | null`
   (opcional). Só no 1º nível: com `parent_id` → 422. Início depois do fim, fora
-  do poema ou trecho só de linhas em branco → 422. Num repost puro, vale o texto
+  do poema, ou início ou fim numa linha em branco (vazia ou só com espaços) → 422. Num repost puro, vale o texto
   do original.
 - `ComentarioOut` ganhou `ancora: {"verso_inicio", "verso_fim", "trecho"} | null`
   (opcional; `null` nos comentários sem âncora e nas respostas). O marcador
@@ -454,11 +464,10 @@ poema publicado não se edita, então ele sai do texto do poema.
 - `GET /posts/{id}/comentarios/versos` 🔒 → `{"items": [{"verso", "comentarios"}]}`:
   quantos comentários cobrem cada verso (uma crítica de 5–8 conta nos quatro).
 - Apagar o comentário (sem respostas) ou o poema apaga a âncora junto.
-- Front: `/poema/{id}?versos=2-4` (ou `?versos=3`) abre o poema com esses
-  versos selecionados e o campo de comentário focado; é o destino de "comentar
+- Front: `/poema/{id}?versos=2-4` (ou `?versos=3`), nos números que o leitor
+  vê, abre o poema com esses versos selecionados e o campo de comentário focado; é o destino de "comentar
   estes versos" na barra que aparece ao selecionar o corpo de um poema em
-  qualquer card. Valor fora do poema, invertido ou que começa ou termina em
-  linha em branco é ignorado.
+  qualquer card. Valor fora do poema, invertido ou malformado é ignorado.
 
 ### Curtidas e reposts (dono: Henrique)
 

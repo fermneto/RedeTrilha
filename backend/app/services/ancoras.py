@@ -1,8 +1,10 @@
 """Crítica ancorada no verso: um comentário de 1º nível sobre um trecho do poema.
 
-Os versos são as linhas de `texto.split("\\n")`, contadas a partir de 1, com as
-linhas em branco entre estrofes incluídas: o número de um verso é a posição da
-linha no texto gravado, sem `strip()` nem normalização. Poema publicado não se
+A âncora guarda linhas de `texto.split("\\n")`, contadas a partir de 1, com as
+linhas em branco entre estrofes incluídas: a posição da linha no texto gravado,
+sem `strip()` nem normalização. O número que o leitor vê ("versos 2–4") conta
+só os versos, sem as linhas em branco, e sai dessa linha (core/versos.py): as
+âncoras gravadas antes dessa numeração continuam valendo. Poema publicado não se
 edita (decisão do Neto), então a âncora guarda só o intervalo e o trecho sai
 do texto do poema. As marcas de formatação (core/marcas.py) nunca atravessam a
 quebra de linha: a numeração é a mesma com ou sem elas, e o trecho sai com as
@@ -17,6 +19,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
 from app.core.marcas import texto_sem_marcas
+from app.core.versos import em_branco
 from app.models.ancora_comentario import AncoraComentario
 from app.models.comentario import Comentario
 from app.models.post import Post
@@ -42,17 +45,22 @@ def validar(
             status_code=422,
             detail=f"só comentários direto no {alvo} citam versos; a resposta herda o trecho do pai",
         )
-    total = len(texto.split("\n"))
+    linhas = texto_sem_marcas(texto).split("\n")
+    total = len(linhas)
     if dados.verso_inicio > dados.verso_fim:
         raise HTTPException(
             status_code=422, detail="o verso inicial não pode vir depois do verso final"
         )
     if dados.verso_inicio < 1 or dados.verso_fim > total:
         raise HTTPException(
-            status_code=422, detail=f"o {alvo} tem {total} versos; escolha entre o 1 e o {total}"
+            status_code=422,
+            detail=f"o {alvo} tem {total} linhas; a âncora conta as linhas de 1 a {total}",
         )
-    if not texto_sem_marcas(trecho_de(texto, dados.verso_inicio, dados.verso_fim)).strip():
-        raise HTTPException(status_code=422, detail="o trecho escolhido está em branco")
+    if em_branco(linhas[dados.verso_inicio - 1]) or em_branco(linhas[dados.verso_fim - 1]):
+        # Linha vazia ou só com espaços separa estrofes: o trecho começa e termina em verso.
+        raise HTTPException(
+            status_code=422, detail="o trecho precisa começar e terminar num verso, não numa linha em branco"
+        )
 
 
 def ancorar(db: Session, comentario_id: int, dados: AncoraCreate) -> None:
