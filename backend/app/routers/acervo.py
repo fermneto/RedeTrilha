@@ -37,7 +37,14 @@ def listar(
     return service.listar(db, user, filtros, offset, limit)
 
 
-# Línguas e épocas dos consagrados: só mudam quando o importador roda.
+# Línguas e épocas dos consagrados, contadas com os outros filtros da tela (busca
+# facetada): só mudam quando o importador roda.
 @router.get("/filtros", response_model=FiltrosDoAcervo, dependencies=[cache(300)])
-def filtros(_: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    return service.opcoes_de_filtro(db)
+def filtros(
+    tipo: Tipo = "todos",
+    lingua: Annotated[str | None, Query(pattern=r"^[a-z]{2}$")] = None,
+    epoca: ChaveEpoca | None = None,
+    _: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return service.opcoes_de_filtro(db, service.Filtros(tipo=tipo, lingua=lingua, epoca=epoca))
