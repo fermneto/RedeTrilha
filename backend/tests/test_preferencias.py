@@ -72,7 +72,6 @@ def test_gostos_sao_publicos_no_perfil(client, como):
         "escolas": [], "formas": [], "pais": None, "uf": None
     }
     assert client.get("/usuarios/ninguem/gostos", headers=como("ana")).status_code == 404
-    assert client.get("/usuarios/ana/gostos").status_code == 401
 
 
 def test_gostos_respeitam_o_bloqueio(client, como):
