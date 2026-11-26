@@ -42,7 +42,7 @@ export type Folha = {
 };
 
 type Lado = "e" | "d";
-type Posicao = { folha: number; lado: Lado };
+export type Posicao = { folha: number; lado: Lado };
 type Virada = { de: Posicao; para: Posicao; sentido: 1 | -1 };
 
 // O papel de cada página na tela: à vista, por baixo da folha que gira, a folha
@@ -102,6 +102,10 @@ type Props = {
   // Abre como uma página nova do livro (o compositor): a primeira folha chega
   // virando, sobre a página da esquerda (no celular, assentando por cima).
   abrirComoNova?: boolean;
+  // Onde o caderno abre (o feed volta à folha em que a pessoa parou) e o aviso de
+  // cada página nova à vista, para quem guarda a posição.
+  abrirEm?: Posicao;
+  aoMudar?: (posicao: Posicao) => void;
 };
 
 export function CadernoFolhas({
@@ -110,9 +114,11 @@ export function CadernoFolhas({
   anterior = "página anterior",
   proxima = "próxima página",
   abrirComoNova = false,
+  abrirEm,
+  aoMudar,
 }: Props) {
   const duplo = useDuplo();
-  const [pos, setPos] = useState<Posicao>({ folha: 0, lado: "e" });
+  const [pos, setPos] = useState<Posicao>(abrirEm ?? { folha: 0, lado: "e" });
   const [virada, setVirada] = useState<Virada | null>(null);
   const [aviso, setAviso] = useState("");
   const depoisDaVirada = useRef<(() => void) | null>(null);
@@ -137,6 +143,10 @@ export function CadernoFolhas({
   useEffect(() => {
     aoChegar?.(atual.folha);
   }, [atual.folha, aoChegar]);
+
+  useEffect(() => {
+    aoMudar?.({ folha: atual.folha, lado: atual.lado });
+  }, [atual.folha, atual.lado, aoMudar]);
 
   const virar = useCallback(
     (para: Posicao, depois?: () => void) => {
