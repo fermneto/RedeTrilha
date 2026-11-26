@@ -33,6 +33,7 @@ from app.routers import (
     preferencias,
     rascunhos,
     rengas,
+    repercussao,
     reposts,
     reposts_renga,
     saude,
@@ -188,3 +189,4 @@ app.include_router(mensagens.router)
 app.include_router(bloqueios.router)
 app.include_router(avisos.router)
 app.include_router(cartoes.router)
+app.include_router(repercussao.router)
