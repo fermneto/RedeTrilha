@@ -18,6 +18,7 @@ import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
+import { IconePena } from "@/components/icones/IconePena";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
 import {
@@ -37,6 +38,27 @@ import {
   type Post,
   type RengaDetalhe,
 } from "@/lib/api";
+
+// As fases do botão "publicar" (data-fase, globals.css) e quanto cada uma dura
+// no mínimo: o círculo, a pena que entra, a escrita e a pena que se desfaz em partículas.
+type FaseDaPena = "morph" | "entrada" | "escrevendo" | "explodindo";
+const FASES_DA_PENA: [FaseDaPena, number][] = [
+  ["morph", 350],
+  ["entrada", 300],
+  ["escrevendo", 750],
+  ["explodindo", 1010],
+];
+
+// Para onde cada partícula vai (px, a partir do fim do voo): um leque irregular.
+// e o atraso (ms) de cada uma, para não saírem como um bloco só.
+const PARTICULAS: [number, number, number][] = [
+  [36, 0, 0], [39, -21, 40], [14, -26, 20], [0, -40, 60], [-18, -29, 10], [-38, -22, 50],
+  [-30, 0, 30], [-35, 19, 0], [-16, 30, 45], [0, 44, 15], [14, 24, 55], [34, 18, 25],
+];
+
+function esperar(ms: number) {
+  return new Promise<void>((ok) => setTimeout(ok, ms));
+}
 
 // Valor do <select> para "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
@@ -65,6 +87,7 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
   const [original, setOriginal] = useState<Post | null>(null);
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
+  const [fase, setFase] = useState<FaseDaPena | null>(null);
   // O rascunho aberto ou o criado no primeiro "salvar rascunho" (null: nenhum).
   const [rascunho, setRascunho] = useState<number | null>(rascunhoId);
   const [salvo, setSalvo] = useState(false);
@@ -151,26 +174,49 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
     }
     setEnviando(true);
     setErro(null);
-    try {
-      if (rascunho !== null) {
-        await editarRascunho(rascunho, dadosDoRascunho());
-        const publicado = await publicarRascunho(rascunho);
-        router.push(`/poema/${publicado.id}`);
-        return;
+    const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let falhou = false;
+    // A coreografia da pena roda junto com a requisição; se a resposta demora, a
+    // pena segue escrevendo (CSS) até ela chegar: a decolagem espera a resposta.
+    // Só se navega quando as duas acabam.
+    const envio = enviarPoema();
+    envio.catch(() => {
+      falhou = true;
+    });
+    const coreografia = (async () => {
+      if (reduzido) return;
+      for (const [proxima, ms] of FASES_DA_PENA) {
+        if (proxima === "explodindo") await envio.catch(() => undefined);
+        if (falhou) return;
+        setFase(proxima);
+        await esperar(ms);
       }
-      const novo = await publicarPoema({
-        titulo: titulo.trim() ? titulo : null,
-        texto,
-        forma: forma || null,
-        idioma: idioma === OUTRA ? null : idioma,
-        ...(citado !== null && { repost_de_id: citado }),
-        ...(citarRengaId !== null && { renga_citada_id: citarRengaId }),
-      });
-      router.push(`/poema/${novo.id}`);
+    })();
+    try {
+      const { id: idNovo } = await envio;
+      await coreografia;
+      router.push(`/poema/${idNovo}`);
     } catch (err) {
       setErro(mensagemDeFalha(err, "não deu para publicar"));
+      setFase(null);
       setEnviando(false);
     }
+  }
+
+  // Publica o rascunho aberto ou cria o poema; devolve o que a tela precisa.
+  async function enviarPoema(): Promise<{ id: number }> {
+    if (rascunho !== null) {
+      await editarRascunho(rascunho, dadosDoRascunho());
+      return publicarRascunho(rascunho);
+    }
+    return publicarPoema({
+      titulo: titulo.trim() ? titulo : null,
+      texto,
+      forma: forma || null,
+      idioma: idioma === OUTRA ? null : idioma,
+      ...(citado !== null && { repost_de_id: citado }),
+      ...(citarRengaId !== null && { renga_citada_id: citarRengaId }),
+    });
   }
 
   const campo =
@@ -255,9 +301,32 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
         type="submit"
         form={`${id}-form`}
         disabled={enviando}
-        className="min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50"
+        data-fase={fase ?? undefined}
+        className={`publicar-pena relative min-h-11 cursor-pointer rounded-full px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait ${fase ? "" : "disabled:opacity-50"}`}
       >
-        {enviando ? "publicando..." : citacao ? "publicar citação" : "publicar"}
+        <span aria-hidden="true" className="publicar-fundo absolute inset-0 rounded-full bg-destaque" />
+        <span className="publicar-rotulo relative">
+          {enviando ? "publicando..." : citacao ? "publicar citação" : "publicar"}
+        </span>
+        <span aria-hidden="true" className="publicar-palco text-destaque">
+          <svg viewBox="-40 -12 80 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="publicar-tinta">
+            <path className="publicar-traco" pathLength={1} d="M-35 8C-30 0 -26 0 -26 7S-20 15 -16 8S-9 1 -5 8S2 15 7 8S14 2 19 8S27 13 35 6" />
+          </svg>
+          {PARTICULAS.map(([dx, dy, atraso]) => (
+            <span
+              key={`${dx},${dy}`}
+              className="publicar-particula"
+              style={{ "--dx": `${dx}px`, "--dy": `${dy}px`, "--atraso": `${atraso}ms` } as React.CSSProperties}
+            />
+          ))}
+          <span className="publicar-pena-andar">
+            <span className="publicar-pena-balanca">
+              <span className="publicar-pena-inclina">
+                <IconePena className="h-7 w-7" />
+              </span>
+            </span>
+          </span>
+        </span>
       </button>
       {!citaRenga && (
         <button

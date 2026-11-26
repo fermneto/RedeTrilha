@@ -702,3 +702,292 @@
     opacity: 0.35;
   }
 }
+
+/* O botão "publicar" do compositor vira pena que escreve e se desfaz
+   (components/Compositor.tsx, que troca data-fase e espera cada fase):
+   morph 350ms (fundo vira círculo, rótulo some), entrada 300ms (pena com
+   overshoot, inclinada como quem escreve), escrevendo 750ms no mínimo (a pena
+   anda pelo trilho e o traço de tinta nasce na ponta dela; se a resposta
+   demora, ela fica parada no fim do traço, só com um balanço leve) e explodindo
+   1010ms (a pena some em 120ms; 12 partículas abrem em leque por 950ms, com
+   atraso de até 60ms; a tinta apaga em 600ms).
+   O trilho da pena (offset-path) e o traço são o mesmo path, no mesmo sistema de
+   coordenadas: a origem é o centro do botão (.publicar-palco) e o svg usa
+   viewBox "-40 -12 80 24" em 80x24px, sem escala. A âncora da pena é a ponta do
+   bico (5,19 no viewBox 24 do ícone; 5.83px 22.17px na caixa de 28px) e os giros
+   pivotam nela. Só transform, opacity, offset-distance e stroke-dashoffset. Com
+   prefers-reduced-motion, nada disso roda. */
+.publicar-pena[data-fase] {
+  z-index: 20;
+}
+
+.publicar-pena[data-fase] .publicar-rotulo {
+  opacity: 0;
+}
+
+.publicar-pena[data-fase="morph"] .publicar-rotulo {
+  animation: publicar-rotulo 250ms ease-out;
+}
+
+.publicar-pena[data-fase="morph"] .publicar-fundo {
+  animation: publicar-circulo 350ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.publicar-pena[data-fase="entrada"] .publicar-fundo,
+.publicar-pena[data-fase="escrevendo"] .publicar-fundo,
+.publicar-pena[data-fase="explodindo"] .publicar-fundo {
+  clip-path: inset(0 calc(50% - 22px) 0 calc(50% - 22px) round 9999px);
+  opacity: 0;
+}
+
+.publicar-pena[data-fase="entrada"] .publicar-fundo {
+  animation: publicar-circulo-some 250ms ease-out;
+}
+
+.publicar-palco {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.publicar-tinta {
+  position: absolute;
+  left: -40px;
+  top: -12px;
+  width: 80px;
+  height: 24px;
+  overflow: visible;
+  opacity: 0;
+}
+
+.publicar-traco {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+}
+
+.publicar-pena-andar,
+.publicar-pena-balanca,
+.publicar-pena-inclina {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  transform-origin: 5.83px 22.17px;
+}
+
+.publicar-pena-andar {
+  opacity: 0;
+  offset-path: path("M-35 8C-30 0 -26 0 -26 7S-20 15 -16 8S-9 1 -5 8S2 15 7 8S14 2 19 8S27 13 35 6");
+  offset-rotate: 0deg;
+  offset-anchor: 5.83px 22.17px;
+  offset-distance: 0%;
+}
+
+.publicar-pena-inclina {
+  transform: rotate(-40deg);
+}
+
+/* Partículas: nascem na ponta da pena, o fim do traço, e abrem em leque. */
+.publicar-particula {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(35px, 6px);
+}
+
+.publicar-particula:nth-child(even) {
+  width: 4px;
+  height: 4px;
+}
+
+/* Entrada: a pena nasce do círculo com overshoot, no começo do trilho. */
+.publicar-pena[data-fase="entrada"] .publicar-pena-andar {
+  opacity: 1;
+}
+
+.publicar-pena[data-fase="entrada"] .publicar-pena-inclina {
+  animation: publicar-entra 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Escrita: pena e traço partem juntos, com a mesma duração e curva. */
+.publicar-pena[data-fase="escrevendo"] .publicar-pena-andar {
+  opacity: 1;
+  animation: publicar-avanca 750ms linear forwards;
+}
+
+.publicar-pena[data-fase="escrevendo"] .publicar-pena-balanca {
+  animation:
+    publicar-balanca 375ms ease-in-out 2,
+    publicar-balanca-leve 900ms ease-in-out 750ms infinite;
+}
+
+.publicar-pena[data-fase="escrevendo"] .publicar-tinta {
+  opacity: 1;
+}
+
+.publicar-pena[data-fase="escrevendo"] .publicar-traco {
+  animation: publicar-escreve 750ms linear forwards;
+}
+
+/* Fim: a pena se desfaz onde está, em partículas, e a tinta apaga. */
+.publicar-pena[data-fase="explodindo"] .publicar-pena-andar {
+  opacity: 1;
+  offset-distance: 100%;
+}
+
+.publicar-pena[data-fase="explodindo"] .publicar-pena-inclina {
+  animation: publicar-some 120ms ease-out forwards;
+}
+
+.publicar-pena[data-fase="explodindo"] .publicar-tinta {
+  opacity: 1;
+  animation: publicar-tinta-some 600ms ease-out forwards;
+}
+
+.publicar-pena[data-fase="explodindo"] .publicar-traco {
+  stroke-dashoffset: 0;
+}
+
+.publicar-pena[data-fase="explodindo"] .publicar-particula {
+  animation:
+    publicar-estilhaca 950ms cubic-bezier(0.1, 0.8, 0.2, 1) var(--atraso) both,
+    publicar-estilhaca-some 950ms linear var(--atraso) both;
+}
+
+@keyframes publicar-rotulo {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes publicar-circulo {
+  from {
+    clip-path: inset(0 0 0 0 round 9999px);
+  }
+  to {
+    clip-path: inset(0 calc(50% - 22px) 0 calc(50% - 22px) round 9999px);
+  }
+}
+
+@keyframes publicar-circulo-some {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes publicar-entra {
+  0% {
+    opacity: 0;
+    transform: rotate(-40deg) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-40deg) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-40deg) scale(1);
+  }
+}
+
+@keyframes publicar-some {
+  from {
+    opacity: 1;
+    transform: rotate(-40deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(-40deg) scale(0.4);
+  }
+}
+
+@keyframes publicar-avanca {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes publicar-escreve {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes publicar-tinta-some {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Oscilação irregular, como a mão que escreve; pivota na ponta da pena. */
+@keyframes publicar-balanca {
+  0% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(-8deg);
+  }
+  36% {
+    transform: rotate(5deg);
+  }
+  55% {
+    transform: rotate(-6deg);
+  }
+  78% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes publicar-balanca-leve {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes publicar-estilhaca {
+  from {
+    transform: translate(35px, 6px) scale(1);
+  }
+  to {
+    transform: translate(calc(35px + var(--dx)), calc(6px + var(--dy))) scale(0.5);
+  }
+}
+
+/* A opacidade fica em 1 até a metade do voo e só então apaga. */
+@keyframes publicar-estilhaca-some {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publicar-pena[data-fase] * {
+    animation: none !important;
+  }
+}
