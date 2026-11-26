@@ -761,6 +761,26 @@ export function buscarOpcoesDePreferencias(): Promise<OpcoesDePreferencias> {
   return apiGet<OpcoesDePreferencias>("/preferencias/opcoes");
 }
 
+// ---- Dicas do livro já vistas: espelham backend/app/schemas/dica.py ----
+
+export type Dica = "virar_pagina" | "acoes" | "lombada" | "escrever";
+
+export type DicasVistas = { vistas: Dica[] };
+
+export function buscarDicasVistas(): Promise<DicasVistas> {
+  return apiGet<DicasVistas>("/dicas");
+}
+
+// Idempotente: marcar de novo não muda nada.
+export function marcarDicaVista(dica: Dica): Promise<DicasVistas> {
+  return apiPut<DicasVistas>(`/dicas/${dica}`, undefined);
+}
+
+// "Rever as dicas", nas Preferências: todas voltam a aparecer, uma de cada vez.
+export function zerarDicas(): Promise<DicasVistas> {
+  return apiDelete<DicasVistas>("/dicas");
+}
+
 // Nome do país em português ("PT" → "Portugal"); o próprio código se o navegador não souber.
 export function nomeDoPais(codigo: string): string {
   try {
