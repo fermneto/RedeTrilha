@@ -12,12 +12,14 @@
 // /boas-vindas?so=gostos, em tela cheia, pelo link da grade do onboarding. Nesse modo nada é salvo até o "salvar" do último passo ("continuar"
 // só avança), "pular" vira "cancelar" (descarta tudo e usa o voltar do navegador,
 // ou vai ao perfil se a página foi aberta direto) e o fim volta para ?voltar=.
-// Nas /preferencias, embaixo dos passos, o "rever as dicas" do livro (ReverAsDicas).
+// Nas /preferencias, embaixo dos passos, a aparência (EscolhaDoTema: claro,
+// escuro ou o do sistema) e o "rever as dicas" do livro (ReverAsDicas).
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
 import { ReverAsDicas } from "@/components/DicasDoLivro";
+import { EscolhaDoTema } from "@/components/EscolhaDoTema";
 import { EsqueletoDasOpcoes } from "@/components/Esqueleto";
 import {
   AberturaDoPasso,
@@ -213,7 +215,12 @@ function BoasVindas() {
           </p>
         )}
       </Moldura>
-      {!telaCheia && <ReverAsDicas />}
+      {!telaCheia && (
+        <>
+          <EscolhaDoTema />
+          <ReverAsDicas />
+        </>
+      )}
     </>
   );
 }

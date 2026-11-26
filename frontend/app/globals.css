@@ -31,25 +31,29 @@
 }
 
 /* Modo escuro: só trocamos os valores; os utilitários continuam os mesmos. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-papel: #17150f;
-    --color-papel-alto: #201d16;
-    --color-painel: #1d1a14;
-    --color-tinta: #ebe5d8;
-    --color-tinta-suave: #a39a8b;
-    --color-borda: #36312a;
-    --color-destaque: #e09a7f;
-    --color-capa: #3c251f;
-    --color-gravura: #eadcc8;
-    --color-fio-das-folhas: #2b2720;
-  }
+:root[data-tema="escuro"] {
+  --color-papel: #17150f;
+  --color-papel-alto: #201d16;
+  --color-painel: #1d1a14;
+  --color-tinta: #ebe5d8;
+  --color-tinta-suave: #a39a8b;
+  --color-borda: #36312a;
+  --color-destaque: #e09a7f;
+  --color-capa: #3c251f;
+  --color-gravura: #eadcc8;
+  --color-fio-das-folhas: #2b2720;
 }
 
 @layer base {
+  /* O tema vem do data-tema do <html> (lib/tema.ts): o script do <head> o põe
+     antes da primeira pintura, conforme a escolha nas Preferências ou o sistema. */
   :root {
-    color-scheme: light dark;
+    color-scheme: light;
     scrollbar-color: var(--color-borda) transparent;
+  }
+
+  :root[data-tema="escuro"] {
+    color-scheme: dark;
   }
 
   body {
@@ -188,10 +192,8 @@
     animation: surgir 150ms ease-out;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .esqueleto {
-      --brilho: rgb(235 229 216 / 0.08);
-    }
+  :root[data-tema="escuro"] .esqueleto {
+    --brilho: rgb(235 229 216 / 0.08);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -246,10 +248,8 @@
     animation: vitrine-flutua 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--atraso, 0ms) both;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .sombra-de-papel {
-      box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -16px rgb(0 0 0 / 0.7);
-    }
+  :root[data-tema="escuro"] .sombra-de-papel {
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -16px rgb(0 0 0 / 0.7);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -385,25 +385,23 @@
     box-shadow: 0 0 2rem rgb(31 27 22 / 0.12);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .pagina-e {
-      background-image:
-        linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
-        var(--grao);
-    }
+  :root[data-tema="escuro"] .pagina-e {
+    background-image:
+      linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+      var(--grao);
+  }
 
-    .pagina-d {
-      background-image:
-        linear-gradient(to right, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
-        var(--grao);
-    }
+  :root[data-tema="escuro"] .pagina-d {
+    background-image:
+      linear-gradient(to right, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+      var(--grao);
+  }
 
-    .vira-frente,
-    .vira-verso,
-    .volta-frente,
-    .volta-verso {
-      box-shadow: 0 0 2rem rgb(0 0 0 / 0.5);
-    }
+  :root[data-tema="escuro"] .vira-frente,
+  :root[data-tema="escuro"] .vira-verso,
+  :root[data-tema="escuro"] .volta-frente,
+  :root[data-tema="escuro"] .volta-verso {
+    box-shadow: 0 0 2rem rgb(0 0 0 / 0.5);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -458,10 +456,8 @@
     repeating-linear-gradient(-45deg, rgb(0 0 0 / 0.06) 0 1px, transparent 1px 3px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .89 0 0 0 0 .84 0 0 0 .045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  }
+:root[data-tema="escuro"] {
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .92 0 0 0 0 .89 0 0 0 0 .84 0 0 0 .045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 @layer components {
@@ -522,17 +518,15 @@
     outline-color: var(--color-gravura);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .capa {
-      box-shadow:
-        inset 0 0 0 1px rgb(255 255 255 / 0.05),
-        0 1px 2px rgb(0 0 0 / 0.5),
-        0 22px 44px -22px rgb(0 0 0 / 0.8);
-    }
+  :root[data-tema="escuro"] .capa {
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.05),
+      0 1px 2px rgb(0 0 0 / 0.5),
+      0 22px 44px -22px rgb(0 0 0 / 0.8);
+  }
 
-    .miolo {
-      box-shadow: 0 1px 3px rgb(0 0 0 / 0.6);
-    }
+  :root[data-tema="escuro"] .miolo {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.6);
   }
 }
 
@@ -645,20 +639,18 @@
     background-image: linear-gradient(to right, rgb(31 27 22 / 0.28), rgb(31 27 22 / 0.08) 40%, transparent 75%);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .sombra-da-capa-fechada {
-      filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5)) drop-shadow(0 10px 14px rgb(0 0 0 / 0.6));
-    }
+  :root[data-tema="escuro"] .sombra-da-capa-fechada {
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5)) drop-shadow(0 10px 14px rgb(0 0 0 / 0.6));
+  }
 
-    .guarda-da-capa {
-      background-image:
-        linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
-        var(--grao);
-    }
+  :root[data-tema="escuro"] .guarda-da-capa {
+    background-image:
+      linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+      var(--grao);
+  }
 
-    .sombra-da-capa {
-      background-image: linear-gradient(to right, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.2) 40%, transparent 75%);
-    }
+  :root[data-tema="escuro"] .sombra-da-capa {
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.2) 40%, transparent 75%);
   }
 }
 
