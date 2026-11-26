@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
 import { Caderno } from "@/components/Caderno";
+import { ProvedorDaCapa } from "@/components/CapaDoLivro";
 import { TelaDeEntrada } from "@/components/LayoutDaEntrada";
 import { assinarSessao, ehTelaDeBoasVindas, temToken } from "@/lib/api";
 
@@ -17,7 +18,17 @@ const ROTAS_SEM_BARRAS = ["/cadastro"];
 // "ainda não sei"; no cliente, true ou false, e muda junto com o login e o logout.
 const semSessaoNoServidor = () => null;
 
+// A capa do livro que abre ao entrar (components/CapaDoLivro.tsx) mora aqui, por
+// fora das rotas: ela continua na tela enquanto o login dá lugar ao Caderno.
 export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ProvedorDaCapa>
+      <Moldura>{children}</Moldura>
+    </ProvedorDaCapa>
+  );
+}
+
+function Moldura({ children }: { children: React.ReactNode }) {
   const caminho = usePathname();
   const logado = useSyncExternalStore<boolean | null>(assinarSessao, temToken, semSessaoNoServidor);
 
@@ -40,6 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Link
           href="/"
           aria-label="Verso, início"
+          data-sai="sumir"
           className="mb-8 rounded-lg font-serifada text-5xl leading-none font-semibold italic tracking-tight"
         >
           <span aria-hidden="true">Verso</span>

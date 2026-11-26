@@ -588,3 +588,61 @@
     opacity: 0;
   }
 }
+
+/* A capa do livro fechado (components/CapaDoLivro.tsx): o mesmo pano da .capa,
+   com o nome do Verso gravado (a cor da gravura, rebaixada no pano por uma
+   sombra de 1 px em cima e uma luz de 1 px embaixo) e o fio da lombada. Na
+   entrada ela fica pequena, abaixo do formulário: é a própria capa do livro
+   aberto, em escala. Ao entrar, uma cópia dela por cima de tudo
+   (.capa-que-abre) cresce até a metade direita do livro, espera a página de
+   destino montar por baixo e gira na dobra até deitar à esquerda; o verso da
+   capa é a guarda, papel com o grão das páginas, que se desfaz ao deitar. Com
+   prefers-reduced-motion, sem deslizes nem giro: só fades curtos. */
+@layer components {
+  .gravura-da-capa {
+    color: var(--color-gravura);
+    text-shadow:
+      0 -1px 0 rgb(0 0 0 / 0.55),
+      0 1px 0 rgb(255 255 255 / 0.07);
+  }
+
+  /* A sombra da capa enquanto ela é pequena ou cresce: segue o recorte dela. */
+  .sombra-da-capa-fechada {
+    filter: drop-shadow(0 1px 1px rgb(31 27 22 / 0.2)) drop-shadow(0 10px 14px rgb(31 27 22 / 0.28));
+  }
+
+  .face-da-capa {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* A guarda: a página da esquerda em branco, com a dobra à direita. */
+  .guarda-da-capa {
+    transform: rotateY(180deg);
+    background-color: var(--color-papel);
+    background-image:
+      linear-gradient(to left, rgb(31 27 22 / 0.11), rgb(31 27 22 / 0.035) 0.9rem, transparent 3.5rem),
+      var(--grao);
+  }
+
+  /* A sombra que a capa deixa na página da direita enquanto levanta. */
+  .sombra-da-capa {
+    background-image: linear-gradient(to right, rgb(31 27 22 / 0.28), rgb(31 27 22 / 0.08) 40%, transparent 75%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .sombra-da-capa-fechada {
+      filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5)) drop-shadow(0 10px 14px rgb(0 0 0 / 0.6));
+    }
+
+    .guarda-da-capa {
+      background-image:
+        linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+        var(--grao);
+    }
+
+    .sombra-da-capa {
+      background-image: linear-gradient(to right, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.2) 40%, transparent 75%);
+    }
+  }
+}
