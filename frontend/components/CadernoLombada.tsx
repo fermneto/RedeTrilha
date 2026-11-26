@@ -29,6 +29,7 @@ import { IconeInicio } from "@/components/icones/IconeInicio";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { IconePerfil } from "@/components/icones/IconePerfil";
 import type { PropsIcone } from "@/components/icones/Icone";
+import { recomecarFeed } from "@/lib/sessaoDoFeed";
 import {
   buscarEu,
   buscarResumoDeAvisos,
@@ -55,7 +56,7 @@ function rotuloComContador(rotulo: string, n: number): string {
   return `${rotulo}, ${n} ${n === 1 ? "não lida" : "não lidas"}`;
 }
 
-function useLombada(): { marcadores: Marcador[]; escrevendo: boolean } {
+function useLombada(): { marcadores: Marcador[]; escrevendo: boolean; aoTocar: (href: string) => void } {
   const caminho = usePathname();
   const [logado, setLogado] = useState(false);
   const [eu, setEu] = useState<User | null>(null);
@@ -136,7 +137,12 @@ function useLombada(): { marcadores: Marcador[]; escrevendo: boolean } {
         }
       : { href: "/login", rotulo: "Entrar", Icone: IconePerfil, atual: false, contador: 0 },
   );
-  return { marcadores, escrevendo: ativo("/escrever") };
+  // Como no X: tocar em Início estando no Início traz o feed do topo, com o que
+  // há de novo; vindo de outra página, ele reabre onde a pessoa parou.
+  const aoTocar = (href: string) => {
+    if (href === "/" && caminho === "/") recomecarFeed();
+  };
+  return { marcadores, escrevendo: ativo("/escrever"), aoTocar };
 }
 
 // O número a ler, sobre o ícone. Acima de 99, "99+". Um selo de papel em
@@ -167,11 +173,12 @@ function Simbolo({ m, classe, avatar = "p" }: { m: Marcador; classe: string; ava
 
 // Desktop: a faixa da lombada, à esquerda do miolo.
 export function Lombada() {
-  const { marcadores, escrevendo } = useLombada();
+  const { marcadores, escrevendo, aoTocar } = useLombada();
   return (
     <nav aria-label="Principal" className="flex w-[5.25rem] shrink-0 flex-col items-center pt-5 pb-5">
       <Link
         href="/"
+        onClick={() => aoTocar("/")}
         aria-label="Verso, início"
         className="rounded font-serifada text-[1.375rem] leading-none font-semibold italic tracking-tight text-gravura"
       >
@@ -183,6 +190,7 @@ export function Lombada() {
           <li key={m.href}>
             <Link
               href={m.href}
+              onClick={() => aoTocar(m.href)}
               aria-current={m.atual ? "page" : undefined}
               aria-label={rotuloComContador(m.rotulo, m.contador)}
               title={m.rotulo}
@@ -222,7 +230,7 @@ function Escrever({ atual }: { atual: boolean }) {
 
 // Celular: a borda de baixo da capa, os ícones numa fileira e o Escrever no fim.
 export function LombadaDoCelular() {
-  const { marcadores, escrevendo } = useLombada();
+  const { marcadores, escrevendo, aoTocar } = useLombada();
   return (
     <nav aria-label="Principal" className="pb-[env(safe-area-inset-bottom)]">
       <ul className="flex h-14 items-center gap-0.5 px-1">
@@ -230,6 +238,7 @@ export function LombadaDoCelular() {
           <li key={m.href} className="flex flex-1 justify-center">
             <Link
               href={m.href}
+              onClick={() => aoTocar(m.href)}
               aria-current={m.atual ? "page" : undefined}
               aria-label={rotuloComContador(m.rotulo, m.contador)}
               className="gravado relative flex h-11 w-full max-w-14 items-center justify-center rounded-lg"
