@@ -13,6 +13,7 @@ import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { caminhoDaCitacao, curtir, mensagemDeFalha, repostar, type Alvo, type Renga } from "@/lib/api";
+import { lembrarAcao } from "@/lib/sessaoDoFeed";
 
 // As ações da renga, como as do poema; a conversa é a da página da renga.
 export function AcoesDaRenga({ renga, contadores = false }: { renga: Renga; contadores?: boolean }) {
@@ -31,6 +32,8 @@ export function AcoesDaRenga({ renga, contadores = false }: { renga: Renga; cont
 type EstadoDasAcoes = { curti: boolean; curtidas: number; repostei: boolean; reposts: number };
 
 // Curtir e repostar mudam a tela antes da resposta e voltam atrás se o backend falhar.
+// Dando certo, o feed guardado (lib/sessaoDoFeed.ts) fica sabendo: ao voltar ao
+// Início, o botão mostra o estado novo.
 // Enquanto um pedido da ação está em voo, novos cliques nela são ignorados: dois
 // pedidos simultâneos podem ser processados fora de ordem e deixar a tela
 // diferente do servidor.
@@ -67,6 +70,7 @@ export function BarraDeAcoes({
     setErro(null);
     try {
       await curtir(alvo, novo);
+      lembrarAcao(alvo, { curti: novo, curtidas: curtidas + (novo ? 1 : -1), repostei, reposts });
     } catch (e) {
       setCurti(!novo);
       setCurtidas((n) => n + (novo ? -1 : 1));
@@ -85,6 +89,7 @@ export function BarraDeAcoes({
     setErro(null);
     try {
       await repostar(alvo, novo);
+      lembrarAcao(alvo, { curti, curtidas, repostei: novo, reposts: reposts + (novo ? 1 : -1) });
     } catch (e) {
       setRepostei(!novo);
       setReposts((n) => n + (novo ? -1 : 1));
