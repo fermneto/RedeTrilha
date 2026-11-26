@@ -280,8 +280,10 @@ decisão 15.
   - O leitor **seleciona os versos com o mouse**, como seleciona texto comum,
     e aparece a barra "comentar estes versos / citar estes versos". Os números
     dos versos ficam visíveis, em cinza claro, e são botões: é o caminho de
-    quem usa só o teclado. As linhas em branco entre estrofes contam na
-    numeração.
+    quem usa só o teclado. A numeração é contínua, só dos versos: a linha em
+    branco entre estrofes (ou só com espaços) não recebe número (#190). A
+    âncora continua guardada em linhas do texto, então as críticas antigas
+    seguem no mesmo trecho.
   - O comentário mostra o trecho acima do texto, com a referência ("versos
     5–8"). Cada verso comentado ganha uma marca com quantas críticas o cobrem,
     e clicar nela filtra a conversa por aquele verso. Com o filtro de um verso
@@ -306,7 +308,7 @@ decisão 15.
     página do poema não fazia nada, e parecia quebrado.
   - **A renga também recebe crítica por verso**, aberta ou encerrada
     (decisão do Neto; ver a decisão 10). Os versos contam as estrofes juntas,
-    em ordem, com a linha em branco entre elas contando, como no poema. No
+    em ordem, numerados só os versos, como no poema. No
     card da renga a barra traz só "comentar estes versos / limpar": "citar"
     fica de fora porque a citação cita poemas, e a renga não é um poema
     publicado.
