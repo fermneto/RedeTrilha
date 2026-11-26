@@ -1,46 +1,65 @@
 "use client";
-// Renga no feed e no perfil, como um repost no X: o rótulo diz quem abriu ou
-// escreveu, e o card mostra o começo da renga. Aberta, convida a escrever (ou diz
-// por que não dá); fechada, é um poema de todos os autores.
-// Selecionar versos das estrofes mostra a barra "comentar estes versos / limpar",
-// como no PoemaCard (sem "citar": a citação cita poemas), e leva à página da
-// renga com ?versos=. Os números contam a renga inteira (textoDaRenga), mesmo com
-// só as primeiras estrofes no card.
+// Renga no feed e no perfil, como um repost no X: o rótulo diz quem abriu,
+// escreveu, encerrou ou repostou, e o card mostra o começo da renga. Aberta,
+// convida a escrever (ou diz por que não dá); fechada, é um poema de todos os
+// autores. Embaixo, as mesmas ações do poema (#171): curtir, repostar, citar,
+// comentar, guardar numa antologia e enviar.
+// Selecionar versos das estrofes mostra a barra "comentar estes versos / citar
+// estes versos / limpar", como no PoemaCard: comentar leva à página da renga com
+// ?versos=, citar abre o compositor citando a renga. Os números contam a renga
+// inteira (textoDaRenga), mesmo com só as primeiras estrofes no card.
+// `aninhado`: a renga citada num poema ou mandada por mensagem, com borda, sem
+// rótulo, sem ações e sem a barra dos versos, como o poema dentro de uma citação.
 
 import Link from "next/link";
 import { Fragment, useRef } from "react";
 
+import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
+import { useFolhas } from "@/components/CadernoFolhas";
 import { NomeAutor } from "@/components/NomeAutor";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import { VersoFormatado } from "@/components/TextoFormatado";
-import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeRenga } from "@/components/icones/IconeRenga";
+import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import {
+  caminhoDaCitacaoDeVersosDaRenga,
   caminhoDaCriticaNaRenga,
   fimDasEstrofes,
   textoDaRenga,
+  trechoDosVersos,
   versosDoPoema,
-  type RengaNoFeed,
+  type AtividadeDaRenga,
+  type RengaDetalhe,
   type User,
 } from "@/lib/api";
 
 // Fora da página da renga, só as primeiras estrofes, com link para o resto.
 const ESTROFES_NO_FEED = 4;
 
-export function RengaCard({ item }: { item: RengaNoFeed }) {
-  const { renga } = item;
+type Props = {
+  renga: RengaDetalhe;
+  // O rótulo do feed e do perfil ("ana repostou"); sem ele, nada acima do título.
+  atividade?: AtividadeDaRenga;
+  por?: User[];
+  aninhado?: boolean;
+  // Na folha do livro (CadernoPoema): as ações ficam na página da direita; aqui,
+  // só no celular, onde a direita é outra página.
+  folha?: boolean;
+};
+
+export function RengaCard({ renga, atividade, por = [], aninhado = false, folha = false }: Props) {
   const estrofes = renga.estrofes.slice(0, ESTROFES_NO_FEED);
   const faltam = renga.estrofes.length - estrofes.length;
   const link = `/rengas/${renga.id}`;
   const texto = textoDaRenga(renga.estrofes);
   const fins = fimDasEstrofes(renga.estrofes);
   const lista = useRef<HTMLOListElement>(null);
-  const { selecao, limpar, barra } = useVersosSelecionados(lista, texto, true);
+  const { selecao, limpar, barra } = useVersosSelecionados(lista, texto, !aninhado);
 
   return (
-    <article className="px-4 pt-3 pb-4">
-      <Rotulo atividade={item.atividade} por={item.por} />
+    <article className={aninhado ? "rounded-2xl border border-borda p-3" : "px-4 pt-3 pb-4"}>
+      {atividade && !aninhado && <Rotulo atividade={atividade} por={por} />}
 
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <Link href={link} className="poema-titulo break-words hover:underline">
@@ -84,7 +103,7 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
           selecao={selecao}
           barra={barra}
           caminhoDaCritica={caminhoDaCriticaNaRenga(renga.id, selecao)}
-          caminhoDaCitacao={null}
+          caminhoDaCitacao={caminhoDaCitacaoDeVersosDaRenga(renga.id, trechoDosVersos(texto, selecao))}
           aoLimpar={limpar}
         />
       )}
@@ -96,6 +115,7 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
           </Link>
         )}
         {!renga.fechada &&
+          !aninhado &&
           (renga.posso_escrever ? (
             <Link href={link} className="inline-flex min-h-11 items-center font-semibold text-destaque hover:underline">
               escrever a próxima estrofe
@@ -106,36 +126,36 @@ export function RengaCard({ item }: { item: RengaNoFeed }) {
         <span className="text-xs text-tinta-suave tabular-nums">
           {renga.qtd_estrofes} de {renga.limite} estrofes
         </span>
-        <Link
-          href={`${link}#comentarios`}
-          aria-label={renga.comentarios ? `comentar (${renga.comentarios})` : "comentar"}
-          title="comentar"
-          className="inline-flex min-h-11 min-w-11 items-center gap-1 text-[0.8125rem] text-tinta-suave tabular-nums transition-colors duration-150 hover:text-destaque"
-        >
-          <IconeComentar className="h-5 w-5" />
-          {renga.comentarios > 0 && <span aria-hidden="true">{renga.comentarios}</span>}
-        </Link>
       </p>
+      {!aninhado && (folha ? <AcoesNoCelular renga={renga} /> : <AcoesDaRenga key={renga.id} renga={renga} />)}
     </article>
   );
 }
 
-const VERBOS: Record<RengaNoFeed["atividade"], [string, string]> = {
+// Na folha, a página da direita já tem as ações quando o livro está aberto em dois.
+function AcoesNoCelular({ renga }: { renga: RengaDetalhe }) {
+  const { duplo } = useFolhas();
+  return duplo ? null : <AcoesDaRenga key={renga.id} renga={renga} />;
+}
+
+const VERBOS: Record<AtividadeDaRenga, [string, string]> = {
   abriu: ["abriu uma renga", "abriram uma renga"],
   escreveu: ["escreveu uma estrofe", "escreveram estrofes"],
   encerrou: ["encerrou a renga", "encerraram a renga"],
+  repostou: ["repostou", "repostaram"],
 };
 
 // "ana escreveu uma estrofe", "ana e bia escreveram estrofes", "bia abriu uma renga",
-// "bia encerrou a renga".
-function Rotulo({ atividade, por }: { atividade: RengaNoFeed["atividade"]; por: User[] }) {
+// "bia encerrou a renga", "caio e dani repostaram" (com o ícone do repost, como no poema).
+function Rotulo({ atividade, por }: { atividade: AtividadeDaRenga; por: User[] }) {
   const [a, b] = por;
   const resto = por.length - 2;
   const [singular, plural] = VERBOS[atividade];
   const verbo = por.length > 1 ? plural : singular;
+  const Icone = atividade === "repostou" ? IconeRepostar : IconeRenga;
   return (
     <p className="mb-1 flex items-center gap-2 text-[0.8125rem] font-semibold text-tinta-suave">
-      <IconeRenga className="h-4 w-4 shrink-0" />
+      <Icone className="h-4 w-4 shrink-0" />
       <span className="min-w-0">
         {a && <NomeLink usuario={a} />}
         {b && (resto > 0 ? ", " : " e ")}

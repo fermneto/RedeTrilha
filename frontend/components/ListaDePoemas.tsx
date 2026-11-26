@@ -74,7 +74,7 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
       <ul className="divide-y divide-borda border-b border-borda">
         {poemas.map((p, i) => (
           <Fragment key={chaveDoItem(p)}>
-            <li className="surgir">{ehRenga(p) ? <RengaCard item={p} /> : <PoemaCard post={p} />}</li>
+            <li className="surgir">{ehRenga(p) ? <RengaCard renga={p.renga} atividade={p.atividade} por={p.por} /> : <PoemaCard post={p} />}</li>
             {intercalar && (i + 1) % intercalar.cada === 0 && (
               <li className="surgir">{intercalar.bloco((i + 1) / intercalar.cada - 1)}</li>
             )}

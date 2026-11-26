@@ -3,7 +3,8 @@
 // Aberta, mostra o campo da próxima estrofe (ou o motivo de não poder escrever);
 // fechada, é lida como um poema só, de todos os autores. O criador encerra e,
 // no modo convidados, convida mais gente.
-// Aberta ou fechada, a renga recebe comentários e crítica ancorada no verso, como
+// Aberta ou fechada, a renga tem as ações do poema (curtir, repostar, citar,
+// guardar, enviar, #171) e recebe comentários e crítica ancorada no verso, como
 // a página do poema: o corpo é o VersosComentaveis sobre o texto da renga (as
 // estrofes juntas, uma linha em branco entre elas), com o autor de cada estrofe
 // embaixo do último verso dela, e a árvore de comentários vem no fim.
@@ -15,6 +16,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 
 import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
+import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { EsqueletoDaPaginaDaRenga } from "@/components/Esqueleto";
@@ -188,7 +190,7 @@ export default function RengaPage() {
         <div className="mt-5">
           <VersosComentaveis
             texto={texto}
-            citarPostId={null}
+            citar={{ tipo: "renga", id: renga.id }}
             rodape={rodape}
             marcas={marcas}
             selecao={selecao}
@@ -210,6 +212,10 @@ export default function RengaPage() {
           começada em {formatarData(renga.created_at)}
           {renga.fechada_em && <> · fechada em {formatarData(renga.fechada_em)}</>}
         </p>
+        {/* As ações do poema (#171): curtir, repostar, citar, comentar, guardar, enviar. */}
+        <div className="mt-4 border-t border-borda/70 pt-3">
+          <AcoesDaRenga key={renga.id} renga={renga} contadores />
+        </div>
       </article>
 
       {!renga.fechada && (

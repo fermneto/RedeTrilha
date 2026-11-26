@@ -191,7 +191,7 @@ function PaginaDoPoema({
         <VersosComentaveis
           texto={exibido.texto}
           comTitulo={Boolean(exibido.titulo)}
-          citarPostId={exibido.id}
+          citar={{ tipo: "poema", id: exibido.id }}
           marcas={marcas}
           selecao={selecao}
           aoSelecionar={aoSelecionar}

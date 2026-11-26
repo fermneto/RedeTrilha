@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { EsqueletoDeRengas } from "@/components/Esqueleto";
 import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
@@ -177,6 +178,10 @@ function CartaoDaRenga({ renga }: { renga: Renga }) {
           ? `fechada em ${formatarData(renga.fechada_em)}`
           : `começada em ${formatarData(renga.created_at)}`}
       </p>
+      {/* Por cima do link do cartão, como os nomes: as ações do poema (#171). */}
+      <div className="relative">
+        <AcoesDaRenga key={renga.id} renga={renga} />
+      </div>
     </article>
   );
 }
