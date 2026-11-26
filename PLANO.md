@@ -218,6 +218,17 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   repost de renga, 4·id + 2 para post, 4·id + 1 para estrofe e 4·id (id da
   renga) para encerramento; o cursor continua opaco (os de antes de #171 deixam
   de valer).
+- **Sem repetidos na sessão de leitura:** o cursor do feed (Seguindo, "Para
+  você" e posts do perfil) carrega, além da posição, o conjunto dos poemas e
+  rengas que a sessão já recebeu (`core/vistos.py`: ids por tipo, em diferenças,
+  zlib e base64 de URL; umas 25 páginas cabem em poucas centenas de
+  caracteres). As páginas seguintes pulam esses itens, então o que saiu numa
+  página não volta, nem quando a atividade que o subiu some no meio da leitura
+  (repost desfeito, comentário apagado, renga do "Para você" que fecha). O
+  cursor de antes, só com a posição, continua aceito (sem nada visto). O
+  `FeedPage` não mudou. No front, `juntarAoFeed` (`lib/api.ts`) deduplica pelo
+  poema ou renga mostrados (repost puro = o original), fica a primeira
+  ocorrência e soma quem repostou no rótulo dela.
 
 ### Feed "Para você", onboarding e sugestões (dono: Neto)
 
@@ -245,7 +256,8 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
 - Desempate do cursor do "Para você": 4·id + 3 para repost de renga, 4·id + 2
   para post (poema ou repost puro), 4·id + 1 para estrofe e 4·id para
-  comentário (#171; os cursores de antes deixam de valer).
+  comentário (#171; os cursores de antes deixam de valer). O cursor também
+  leva o que a sessão já viu, como no `GET /feed`.
 - O bloco "Quem seguir" no meio do "Para você" é só do front (a cada 10 itens,
   3 perfis de `GET /sugestoes`): não é item do `FeedPage` e não mexe no cursor.
 - Tabela `preferencias` (`user_id` PK, `escolas` JSON, `formas` JSON, `pais`,
