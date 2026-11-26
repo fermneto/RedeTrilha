@@ -23,16 +23,18 @@ A ordem é cronológica pela atividade, sem ranking por engajamento (decisão 3)
 a mistura e o desempate ficam em `core/mistura.py`. A paginação é a do feed
 Seguindo: `limit`, `offset` com `total`, ou um `cursor` opaco (data, chave e o
 que a sessão já viu, `core/vistos.py`) que tem precedência sobre o offset e
-devolve `total` None. O que saiu numa página não volta nas seguintes.
+devolve `total` None. O que saiu numa página não volta nas seguintes. Quando
+acaba, o feed continua com consagrados e os mais curtidos
+(`services/feed_infinito.py`, que também traz este trecho para o fim do Seguindo).
 
 Custo: O(n log n) com n = posts da rede (poemas e reposts puros) + um poema de
 consagrado por janela + estrofes das rengas abertas + comentários, carregados só
 com ids e datas (sem o texto). Os milhares de poemas de consagrados são cortados
 no banco, com `row_number()` por janela sobre o índice `ix_posts_autorais`; depois a
-mesma montagem O(limit) do feed Seguindo (`montar_pagina`, em `services/feed.py`).
+mesma montagem O(limit) do feed Seguindo (`montar_itens`, em `services/feed.py`).
 """
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from sqlalchemy import Integer, case, cast, func, literal, select
 from sqlalchemy.orm import Session, aliased
@@ -44,13 +46,14 @@ from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.repost_renga import RepostRenga
 from app.models.user import User
-from app.schemas.feed import FeedPage, PoemaNoFeed
+from app.schemas.feed import PoemaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
-from app.services import bloqueios
+from app.services import bloqueios, vistos_no_feed
 from app.services.acervo import lingua_de_quem_ve
-from app.services.cursor import utc_sem_fuso
-from app.services.feed import Linha, montar_pagina, recortar
+from app.services.cursor import CursorDoFeed, utc_sem_fuso
+from app.services.feed import Linha, Parte, recortar
+from app.services.feed import parte as parte_do_recorte
 
 # Dos poemas de consagrados, entra só um de cada janela de 3 horas, uns 8 por
 # dia, para os milhares de poemas do acervo não afogarem os poetas da rede: o
@@ -60,14 +63,44 @@ from app.services.feed import Linha, montar_pagina, recortar
 JANELA_DO_CONSAGRADO = timedelta(hours=3)
 
 
-def feed(
+def parte(
     db: Session,
     usuario: User,
+    lingua: str | None,
+    inicio: CursorDoFeed | None,
     offset: int,
     limit: int,
-    cursor: str | None = None,
-    lingua: str | None = None,
-) -> FeedPage:
+) -> Parte:
+    """Uma página do "Para você" cronológico, o trecho inédito do feed infinito
+    (`services/feed_infinito.py`): do `offset`, ou de depois do `inicio`. Fica
+    fora o que a sessão já viu (`inicio.vistos`) e o que a pessoa viu em sessões
+    anteriores (`services/vistos_no_feed.py`), a não ser que a atividade que o
+    subiu (repost, comentário, estrofe) seja depois da última vez que ela o viu."""
+    vistos_em = vistos_no_feed.vistos_em(db, usuario.id)
+    itens = [
+        item
+        for item in _itens(db, usuario, lingua)
+        if not _ja_visto(item, vistos_em)
+    ]
+    recorte = recortar(
+        itens,
+        lambda item: item.atividade.posicao,
+        lambda item: (item.atividade.tipo, item.atividade.alvo_id),
+        offset,
+        limit,
+        inicio,
+    )
+    return parte_do_recorte(db, usuario, recorte, "para_voce", _linha, poema_do_feed)
+
+
+def _ja_visto(item: ItemMisturado, vistos_em: dict[tuple[str, int], datetime]) -> bool:
+    """Visto numa sessão anterior e sem atividade nova desde então."""
+    visto_em = vistos_em.get((item.atividade.tipo, item.atividade.alvo_id))
+    return visto_em is not None and item.atividade.data <= visto_em
+
+
+def _itens(db: Session, usuario: User, lingua: str | None) -> list[ItemMisturado]:
+    """A rede inteira, um item por poema ou renga, do mais novo para o mais antigo."""
     lingua = lingua_de_quem_ve(db, usuario, lingua)
     segundos = int(JANELA_DO_CONSAGRADO.total_seconds())
     # Sem o que tem a ver com quem tem bloqueio com o usuário (services/bloqueios.py).
@@ -87,20 +120,12 @@ def feed(
         segundos,
         lingua,
     )
-    recorte = recortar(
-        misturar(atividades),
-        lambda item: item.atividade.posicao,
-        lambda item: (item.atividade.tipo, item.atividade.alvo_id),
-        offset,
-        limit,
-        cursor,
-    )
-    return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
+    return misturar(atividades)
 
 
 def _linha(item: ItemMisturado) -> Linha:
     atividade = item.atividade
-    return Linha(atividade.tipo, atividade.alvo_id, atividade.acao, item.por, atividade.posicao)
+    return Linha(atividade.tipo, atividade.alvo_id, atividade.acao, item.por)
 
 
 def _poemas(db: Session) -> list[Atividade]:
@@ -254,7 +279,7 @@ def _comentarios(db: Session) -> list[Atividade]:
 _SUBIU_POR = {"comentou": "comentario", "criticou": "critica"}
 
 
-def _poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
+def poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
     return PoemaNoFeed(
         **{**saida.model_dump(), "repostado_por": rotulo if acao == "repostou" else []},
         subiu_por=_SUBIU_POR.get(acao),

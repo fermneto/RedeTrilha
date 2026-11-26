@@ -307,15 +307,23 @@ export type Post = {
   repostado_por: User[];
   // Só no "Para você": o poema subiu por um comentário ou por uma crítica nos
   // versos, e quem comentou, por último primeiro (PoemaNoFeed em schemas/feed.py).
-  subiu_por?: "comentario" | "critica" | null;
+  // Na continuação do feed infinito (nas duas abas): "curtidas", um dos mais
+  // curtidos, e "releitura", um consagrado de uma rodada reciclada. Os únicos
+  // itens que podem repetir o que a pessoa já viu.
+  subiu_por?: "comentario" | "critica" | "curtidas" | "releitura" | null;
   comentado_por?: User[];
 };
 
 // Com cursor, o total vem null (como na timeline do X).
 // O feed e o perfil misturam poemas e rengas (ItemDoFeed, na seção das Rengas).
+// O feed não acaba (services/feed_infinito.py): `proximo_cursor` só vem null com
+// a rede sem poemas. `fim_em` é a posição, nesta página, onde acabou o que é do
+// feed (no Seguindo, o de quem a pessoa segue; dali em diante, o Para você); só
+// na página da virada.
 export type FeedPage = Omit<Page<ItemDoFeed>, "total"> & {
   total: number | null;
   proximo_cursor: string | null;
+  fim_em?: number | null;
 };
 
 // Espelha ComentarioOut e ComentarioRengaOut (backend/app/schemas/comentario.py),
@@ -524,9 +532,12 @@ export function passoInicial(passos: PassoDasPreferencias[], passo: string | nul
   return Math.max(0, passos.indexOf(passo as PassoDasPreferencias));
 }
 
+// Aba "Seguindo": quem você segue e os seus; quando acaba, continua com o Para
+// você, por isso também manda a língua do navegador.
 export function buscarFeed(cursor: string | null, limit = 20): Promise<FeedPage> {
   const params = new URLSearchParams({ limit: String(limit) });
   if (cursor) params.set("cursor", cursor);
+  comLinguaDoNavegador(params);
   return apiGet<FeedPage>(`/feed?${params}`);
 }
 
@@ -1261,14 +1272,40 @@ function juntarRotulos(primeiro: ItemDoFeed, repetido: ItemDoFeed): ItemDoFeed {
   };
 }
 
+// O mais curtido e a releitura da continuação do feed: podem repetir o que já saiu.
+export function podeRepetir(item: ItemDoFeed): boolean {
+  return !ehRenga(item) && (item.subiu_por === "curtidas" || item.subiu_por === "releitura");
+}
+
+// O poema ou a renga que a folha mostra, como o backend guarda o "já visto"
+// (o mesmo alvo de `chaveDoAlvo`: um repost puro conta como o original).
+export type ItemVisto = { tipo: "poema" | "renga"; id: number };
+
+export function alvoDoItem(item: ItemDoFeed): ItemVisto {
+  if (ehRenga(item)) return { tipo: "renga", id: item.renga.id };
+  const original = item.texto === "" ? item.repost_de : null;
+  return { tipo: "poema", id: original ? original.id : item.id };
+}
+
+// As folhas que apareceram na tela: o Para você e a continuação as pulam nas
+// próximas sessões (backend/app/services/vistos_no_feed.py). Até 100 por vez.
+export function marcarVistosNoFeed(itens: ItemVisto[]): Promise<void> {
+  return apiPost<void>("/feed/vistos", { itens });
+}
+
 // Junta a página nova ao que já veio, um item por poema ou renga: fica a primeira
 // ocorrência (a mais recente) e o rótulo dela soma quem repostou na repetida. O
 // backend já não repete na mesma sessão (o cursor leva o que já saiu); isto é a
-// defesa do front. O(n) com n = itens.
+// defesa do front. A exceção é o mais curtido da continuação (`podeRepetir`),
+// que entra de novo no fim, como folha nova. O(n) com n = itens.
 export function juntarAoFeed(atuais: ItemDoFeed[], novos: ItemDoFeed[]): ItemDoFeed[] {
   const itens = [...atuais];
   const posicao = new Map(itens.map((item, i) => [chaveDoAlvo(item), i]));
   for (const item of novos) {
+    if (podeRepetir(item)) {
+      itens.push(item);
+      continue;
+    }
     const chave = chaveDoAlvo(item);
     const i = posicao.get(chave);
     if (i === undefined) {

@@ -1,5 +1,10 @@
 """Feed cronológico, como no X: poemas, reposts e rengas de quem o usuário segue, mais os dele.
 
+Este é o primeiro trecho do Seguindo, e o perfil (`pagina_dos_autores`, finito).
+Quando ele acaba, o Seguindo continua com o "Para você" e a continuação
+(`services/feed_infinito.py`); `recortar`, `parte` e `montar_itens` servem aos
+dois feeds.
+
 Cada poema aparece uma vez só, na posição da ocorrência mais recente: o próprio
 poema ou um repost puro dele (texto vazio). O item é sempre o poema original, e
 `repostado_por` lista quem o repostou (seguidos e o próprio usuário), quem
@@ -61,10 +66,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Generic, Literal, NamedTuple, TypeVar
 
+from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session, aliased
 
-from app.core import vistos as vistos_core
 from app.models.post import Post
 from app.models.renga import EstrofeRenga, Renga
 from app.models.repost_renga import RepostRenga
@@ -73,9 +78,14 @@ from app.schemas.feed import FeedPage, PoemaNoFeed, RengaNoFeed
 from app.schemas.post import PostOut
 from app.schemas.user import UserOut
 from app.services import rengas as rengas_service
-from app.services.cursor import codificar_cursor_do_feed, ler_cursor_do_feed, utc_sem_fuso
+from app.services.cursor import (
+    CursorDoFeed,
+    Trecho,
+    codificar_cursor_do_feed,
+    ler_cursor_do_feed,
+    utc_sem_fuso,
+)
 from app.services import bloqueios
-from app.services.follows import ids_seguidos
 from app.services.posts import para_saidas
 
 Acao = Literal["poema", "repost", "abriu", "escreveu", "encerrou", "repostou"]
@@ -139,10 +149,12 @@ class Recorte(Generic[T]):
     tem_mais: bool
     # O que a sessão já viu, com esta página: vai no próximo cursor.
     vistos: frozenset[Chave]
+    # A posição do último item da página (None se veio vazia).
+    ultima: Posicao | None
 
 
 class Linha(NamedTuple):
-    """O que `montar_pagina` precisa de um item do feed, seja de que feed for.
+    """O que `montar_itens` precisa de um item do feed, seja de que feed for.
 
     `por` são os ids do rótulo (quem repostou, comentou, escreveu estrofe).
     """
@@ -151,15 +163,6 @@ class Linha(NamedTuple):
     alvo_id: int
     acao: str
     por: list[int]
-    posicao: Posicao
-
-
-def feed(
-    db: Session, usuario: User, offset: int, limit: int, cursor: str | None = None
-) -> FeedPage:
-    return pagina_dos_autores(
-        db, [*ids_seguidos(db, usuario.id), usuario.id], usuario, offset, limit, cursor
-    )
 
 
 def pagina_dos_autores(
@@ -171,11 +174,29 @@ def pagina_dos_autores(
     cursor: str | None = None,
     com_encerramentos: bool = True,
 ) -> FeedPage:
+    """A página dos `autores` como o feed, mas finita (`proximo_cursor` None no fim).
+    Público para o perfil (`GET /usuarios/{username}/posts`), que passa um autor só e
+    `com_encerramentos=False` (no perfil, vale a estrofe mais recente)."""
+    inicio = ler_cursor_do_feed(cursor) if cursor is not None else None
+    if inicio is not None and inicio.trecho != "proprio":
+        raise HTTPException(status_code=422, detail="cursor inválido")
+    recorte = recortar(
+        itens_dos_autores(db, autores, usuario, com_encerramentos),
+        posicao_do_item,
+        chave_do_item,
+        offset,
+        limit,
+        inicio,
+    )
+    return montar_pagina(db, usuario, recorte, limit, linha_do_item, poema_do_feed)
+
+
+def itens_dos_autores(
+    db: Session, autores: list[int], usuario: User, com_encerramentos: bool = True
+) -> list[Item]:
     """Poemas, citações, reposts puros, rengas e reposts de renga dos `autores`,
-    deduplicados e paginados
-    como o feed. Público para o perfil (`GET /usuarios/{username}/posts`), que passa um
-    autor só e `com_encerramentos=False` (no perfil, vale a estrofe mais recente).
-    Fica fora o que tem a ver com quem tem bloqueio com o usuário (services/bloqueios.py)."""
+    deduplicados e do mais novo para o mais antigo. Fica fora o que tem a ver com
+    quem tem bloqueio com o usuário (services/bloqueios.py)."""
     ocorrencias = [
         *_ocorrencias_de_posts(db, autores),
         *_ocorrencias_de_estrofes(db, autores),
@@ -185,25 +206,23 @@ def pagina_dos_autores(
         ocorrencias += _ocorrencias_de_encerramentos(db, autores)
     ocorrencias = bloqueios.sem_bloqueados(db, usuario.id, ocorrencias)
     ocorrencias.sort(key=lambda o: o.posicao, reverse=True)
-    recorte = recortar(
-        _deduplicar(ocorrencias),
-        lambda item: item.ocorrencia.posicao,
-        lambda item: (item.ocorrencia.tipo, item.ocorrencia.alvo_id),
-        offset,
-        limit,
-        cursor,
-    )
-    return montar_pagina(db, usuario, recorte, limit, _linha, _poema_do_feed)
+    return _deduplicar(ocorrencias)
 
 
-def _linha(item: Item) -> Linha:
+def posicao_do_item(item: Item) -> Posicao:
+    return item.ocorrencia.posicao
+
+
+def chave_do_item(item: Item) -> Chave:
+    return (item.ocorrencia.tipo, item.ocorrencia.alvo_id)
+
+
+def linha_do_item(item: Item) -> Linha:
     ocorrencia = item.ocorrencia
-    return Linha(
-        ocorrencia.tipo, ocorrencia.alvo_id, ocorrencia.acao, item.por, ocorrencia.posicao
-    )
+    return Linha(ocorrencia.tipo, ocorrencia.alvo_id, ocorrencia.acao, item.por)
 
 
-def _poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
+def poema_do_feed(saida: PostOut, rotulo: list[UserOut], acao: str) -> PoemaNoFeed:
     return PoemaNoFeed(**{**saida.model_dump(), "repostado_por": rotulo})
 
 
@@ -315,11 +334,12 @@ def recortar(
     chave: Callable[[T], Chave],
     offset: int,
     limit: int,
-    cursor: str | None,
+    cursor: CursorDoFeed | None,
 ) -> Recorte[T]:
     """A página de `limit` itens (do mais novo para o mais antigo) a partir do `offset`,
     ou de depois do `cursor`, que tem precedência (o `total` vira None e o `offset`
-    é a posição real do primeiro item). Público para o feed "Para você". O(n).
+    é a posição real do primeiro item). Um cursor sem posição começa do topo (é
+    assim que o Seguindo entra no "Para você"). Público para o "Para você". O(n).
 
     Com cursor, ficam de fora também os itens que a sessão já viu (o cursor os
     carrega, ver `core/vistos.py`): um poema cuja atividade mais recente sumiu
@@ -327,11 +347,11 @@ def recortar(
     """
     vistos: frozenset[Chave] = frozenset()
     if cursor is not None:
-        depois, vistos = ler_cursor_do_feed(cursor)
+        depois, vistos = cursor.posicao, cursor.vistos
         restantes = [
             (i, item)
             for i, item in enumerate(itens)
-            if posicao(item) < depois and chave(item) not in vistos
+            if (depois is None or posicao(item) < depois) and chave(item) not in vistos
         ]
         offset = restantes[0][0] if restantes else len(itens)
     else:
@@ -343,6 +363,40 @@ def recortar(
         total=None if cursor is not None else len(itens),
         tem_mais=len(restantes) > limit,
         vistos=vistos | {chave(item) for item in pagina},
+        ultima=posicao(pagina[-1]) if pagina else None,
+    )
+
+
+@dataclass
+class Parte:
+    """O que um trecho do feed infinito entregou numa página: os itens já
+    montados, a paginação e o cursor para continuar nele (None = o trecho acabou;
+    `vistos` passa para o trecho seguinte)."""
+
+    itens: list[PoemaNoFeed | RengaNoFeed]
+    offset: int
+    total: int | None
+    proximo: CursorDoFeed | None
+    vistos: frozenset[Chave]
+
+
+def parte(
+    db: Session,
+    usuario: User,
+    recorte: Recorte[T],
+    trecho: Trecho,
+    para_linha: Callable[[T], Linha],
+    para_poema: Callable[[PostOut, list[UserOut], str], PoemaNoFeed],
+) -> Parte:
+    """O recorte de um trecho cronológico (Seguindo ou "Para você") como `Parte`."""
+    return Parte(
+        itens=montar_itens(db, usuario, [para_linha(item) for item in recorte.pagina], para_poema),
+        offset=recorte.offset,
+        total=recorte.total,
+        proximo=(
+            CursorDoFeed(trecho, recorte.ultima, recorte.vistos) if recorte.tem_mais else None
+        ),
+        vistos=recorte.vistos,
     )
 
 
@@ -354,10 +408,29 @@ def montar_pagina(
     para_linha: Callable[[T], Linha],
     para_poema: Callable[[PostOut, list[UserOut], str], PoemaNoFeed],
 ) -> FeedPage:
-    """Monta o FeedPage de um recorte: os posts da página numa query, os usuários dos
-    rótulos noutra, as rengas em três. `para_poema` recebe o poema, o rótulo e
-    a ação, e devolve o `PoemaNoFeed` do feed em questão. Público para o "Para você"."""
-    pagina = [para_linha(item) for item in recorte.pagina]
+    """O FeedPage de um recorte que acaba (o perfil): `proximo_cursor` None no fim."""
+    return FeedPage(
+        items=montar_itens(db, usuario, [para_linha(item) for item in recorte.pagina], para_poema),
+        total=recorte.total,
+        offset=recorte.offset,
+        limit=limit,
+        proximo_cursor=(
+            codificar_cursor_do_feed(CursorDoFeed("proprio", recorte.ultima, recorte.vistos))
+            if recorte.tem_mais
+            else None
+        ),
+    )
+
+
+def montar_itens(
+    db: Session,
+    usuario: User,
+    pagina: list[Linha],
+    para_poema: Callable[[PostOut, list[UserOut], str], PoemaNoFeed],
+) -> list[PoemaNoFeed | RengaNoFeed]:
+    """Os itens de uma página: os posts numa query, os usuários dos rótulos noutra,
+    as rengas em três. `para_poema` recebe o poema, o rótulo e a ação, e devolve o
+    `PoemaNoFeed` do feed em questão. Público para o "Para você" e a continuação."""
     poemas = [linha for linha in pagina if linha.tipo == "poema"]
     ids = {linha.alvo_id for linha in poemas}
     por_id = {post.id: post for post in db.scalars(select(Post).where(Post.id.in_(ids)))}
@@ -384,14 +457,4 @@ def montar_pagina(
                     por=rotulo,
                 )
             )
-    return FeedPage(
-        items=itens,
-        total=recorte.total,
-        offset=recorte.offset,
-        limit=limit,
-        proximo_cursor=(
-            codificar_cursor_do_feed(*pagina[-1].posicao, vistos_core.codificar(recorte.vistos))
-            if pagina and recorte.tem_mais
-            else None
-        ),
-    )
+    return itens

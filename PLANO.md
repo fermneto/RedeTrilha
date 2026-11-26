@@ -198,7 +198,39 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - Paginação como na timeline do X: `limit` de 1 a 100 (padrão 20) e um
   `cursor` opaco. Com `cursor`, ele tem precedência sobre o `offset` e o
   `total` vem `null`; sem cursor, `offset` e `total` valem (teste do núcleo).
-  `proximo_cursor` é `null` no fim.
+  `proximo_cursor` é `null` no fim (no perfil; o feed não tem fim, ver abaixo).
+- **Feed infinito, como no X** (`services/feed_infinito.py`, `core/continuacao.py`):
+  o `GET /feed` e o `GET /feed/para-voce` nunca têm última página; o
+  `proximo_cursor` só vem `null` com o banco sem poemas. Cada aba é uma corrente
+  de trechos: Seguindo = quem a pessoa segue → o "Para você" do topo (sem o que a
+  sessão já viu) → a continuação; "Para você" = o cronológico (o inédito, sem o
+  que a pessoa já viu em qualquer sessão) → a continuação. A continuação
+  intercala, 3 para 1, poemas de consagrados e os 50 mais curtidos da comunidade
+  (em volta, podendo repetir; sem poema da comunidade, os de qualquer conta). Os
+  consagrados saem numa fila ordenada e cortada no banco (`ORDER BY ... LIMIT`):
+  prioridade pelas formas e escolas de `preferencias`, depois a língua de quem lê
+  (`?lingua=` ou a dos poemas da pessoa), depois os mais recentes. Na primeira
+  rodada, só os que a pessoa nunca viu (nem nesta sessão, nem em outra); quando
+  acabam, a fila recicla do topo, com todos. **`FeedPage` ganhou `fim_em: int |
+  None`** (aditivo): a posição, nesta página, onde acabou o primeiro trecho; o
+  front põe ali a folha "você leu tudo de quem segue" (Seguindo) ou "você está em
+  dia" (Para você). Só na página da virada; `null` nas outras e no perfil.
+  **`subiu_por` ganhou `"curtidas"` e `"releitura"`**: o mais curtido e o
+  consagrado reciclado, os únicos itens que podem repetir. Com cursor, a página
+  enche passando de um trecho para o seguinte; por offset, vale só o primeiro
+  trecho (com o `total` dele), e no fim o `proximo_cursor` já aponta o seguinte.
+  O cursor leva o trecho (marca `pv` ou `mais` na frente; sem marca, o primeiro
+  trecho da aba, e os cursores de antes continuam valendo). O `GET /feed` aceita
+  também `?lingua=` para o "Para você" que vem depois.
+- **Já visto entre sessões** (`services/vistos_no_feed.py`): tabela nova
+  `vistos_no_feed` (`user_id`, `tipo` "poema"|"renga", `alvo_id`, `visto_em`;
+  chave primária nos três primeiros, o único índice). `POST /feed/vistos` 🔒
+  `{"itens": [{"tipo": "poema", "id": 12}, ...]}` (1 a 100; 204; repetido não
+  duplica, só atualiza o `visto_em`) recebe as folhas que apareceram na tela; o
+  front manda em lotes. O "Para você" inédito e a primeira rodada dos
+  consagrados pulam esses itens; o trecho de quem a pessoa segue, não. No "Para
+  você", o item já visto volta quando a atividade que o sobe (repost, comentário,
+  estrofe) é posterior ao `visto_em`.
 - O feed inclui os próprios poemas. Pode curtir o próprio poema.
 - Rengas como reposts: uma renga entra no feed de quem segue o criador ou
   alguém que escreveu estrofe (e no de quem participou), uma vez só, na
@@ -259,9 +291,10 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
   A escolha depende só da janela e da língua da requisição, então o cursor é
   estável.
 - `PoemaNoFeed` ganhou dois campos opcionais, só preenchidos no "Para você":
-  `subiu_por: "comentario" | "critica" | None` (crítica = comentário ancorado
+  `subiu_por: "comentario" | "critica" | "curtidas" | None` ("curtidas" só na
+  continuação do feed infinito, nas duas abas) (crítica = comentário ancorado
   nos versos) e `comentado_por: list[UserOut]` (quem comentou, por último
-  primeiro). No `GET /feed` e no perfil, vêm `null` e `[]`.
+  primeiro). No perfil e no trecho do Seguindo de quem a pessoa segue, vêm `null` e `[]`.
 - Desempate do cursor do "Para você": 4·id + 3 para repost de renga, 4·id + 2
   para post (poema ou repost puro), 4·id + 1 para estrofe e 4·id para
   comentário (#171; os cursores de antes deixam de valer). O cursor também

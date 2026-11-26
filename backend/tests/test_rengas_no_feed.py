@@ -245,9 +245,9 @@ def test_cursor_estavel_com_poema_e_estrofe_na_mesma_data(client, como):
     while True:
         url = "/feed?limit=1" + (f"&cursor={cursor}" if cursor else "")
         corpo = client.get(url, headers=como("ana")).json()
-        vistos += _resumo(corpo)
+        vistos += _resumo(corpo)[: corpo["fim_em"]]
         cursor = corpo["proximo_cursor"]
-        if cursor is None:
+        if corpo["fim_em"] is not None:
             break
 
     # No empate, o post vem antes da estrofe; a ordem é sempre a mesma.

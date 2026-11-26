@@ -59,3 +59,21 @@ test("o dono é um resumo estável do token, sem copiá-lo", () => {
   assert.notEqual(donoDoToken("abc"), donoDoToken("abd"));
   assert.ok(!donoDoToken("um-token-secreto").includes("secreto"));
 });
+
+test("o mais curtido da continuação aparece mesmo visto na outra aba", () => {
+  const itens = [poema(1), poema(1, { subiu_por: "curtidas" })];
+  const vistos = { "poema-1": "seguindo" };
+  assert.deepEqual(
+    visiveis(itens, chave, vistos, "para-voce").map((i) => i.subiu_por ?? null),
+    ["curtidas"],
+  );
+});
+
+test("a aba vazia começa sem virada", () => {
+  assert.equal(abaVazia().fimEm, null);
+});
+
+test("a releitura da continuação aparece mesmo vista na outra aba", () => {
+  const itens = [poema(1, { subiu_por: "releitura" })];
+  assert.equal(visiveis(itens, chave, { "poema-1": "seguindo" }, "para-voce").length, 1);
+});

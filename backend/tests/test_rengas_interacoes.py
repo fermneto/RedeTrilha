@@ -221,9 +221,9 @@ def test_feed_pagina_por_cursor_com_reposts_de_renga(client, eu):
     while True:
         params = {"limit": 2, **({"cursor": cursor} if cursor else {})}
         corpo = client.get("/feed", params=params, headers=eu("caio")).json()
-        vistos += _resumo_do_feed(corpo)
+        vistos += _resumo_do_feed(corpo)[: corpo["fim_em"]]
         cursor = corpo["proximo_cursor"]
-        if cursor is None:
+        if corpo["fim_em"] is not None:
             break
     assert vistos == _resumo_do_feed(client.get("/feed", params={"limit": 100}, headers=eu("caio")).json())
     assert len(vistos) == 6
@@ -254,9 +254,9 @@ def test_para_voce_pagina_por_cursor_com_reposts_de_renga(client, eu):
     while True:
         params = {"limit": 2, **({"cursor": cursor} if cursor else {})}
         corpo = client.get("/feed/para-voce", params=params, headers=eu("caio")).json()
-        vistos += _resumo_do_feed(corpo)
+        vistos += _resumo_do_feed(corpo)[: corpo["fim_em"]]
         cursor = corpo["proximo_cursor"]
-        if cursor is None:
+        if corpo["fim_em"] is not None:
             break
     todos = client.get("/feed/para-voce", params={"limit": 100}, headers=eu("caio")).json()
     assert vistos == _resumo_do_feed(todos)

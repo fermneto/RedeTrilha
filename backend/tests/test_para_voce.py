@@ -135,9 +135,9 @@ def test_cursor_estavel_com_tipos_misturados_e_mesma_data(client, como):
     while True:
         params = {"limit": 2, **({"cursor": cursor} if cursor else {})}
         corpo = _para_voce(client, como, **params)
-        paginas += _resumo(corpo)
+        paginas += _resumo(corpo)[: corpo["fim_em"]]
         cursor = corpo["proximo_cursor"]
-        if cursor is None:
+        if corpo["fim_em"] is not None:
             break
         # Um poema novo no topo não desloca a rolagem.
         _poema(client, como, "caio", f"novo {len(paginas)}", BASE + timedelta(days=1))
@@ -281,9 +281,9 @@ def test_cursor_estavel_com_preferencia_pela_lingua(client, como):
     _poema(client, como, "bia", "outro da bia", BASE + timedelta(hours=5))
     pagina = _para_voce(client, como, limit=1, lingua="en")
     textos = _textos(pagina)
-    while pagina["proximo_cursor"]:
+    while pagina["fim_em"] is None:
         pagina = _para_voce(client, como, limit=1, lingua="en", cursor=pagina["proximo_cursor"])
-        textos += _textos(pagina)
+        textos += _textos(pagina)[: pagina["fim_em"]]
     assert textos == ["outro da bia", "da bia", "sonnet"]
     assert textos == _textos(_para_voce(client, como, lingua="en"))
 
