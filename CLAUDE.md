@@ -9,7 +9,8 @@ Base: template do Mini-projeto 3 da Trilha UFPB. **Entrega: sexta, 27/11/2026.**
 
 Leia antes de qualquer tarefa: [`PLANO.md`](PLANO.md) (status final, donos,
 contratos de dados e rotas reais; as tasks do plano estão todas concluídas,
-menos o deploy, N5, que ficou com o Neto). Decisões de produto:
+e o Verso está no ar em https://verso.net.br, ver `docs/deploy-oracle.md`).
+Decisões de produto:
 [`DECISIONS.md`](DECISIONS.md). Avaliação: [`RUBRICA.md`](RUBRICA.md).
 
 ## Regras de Git (obrigatórias)
