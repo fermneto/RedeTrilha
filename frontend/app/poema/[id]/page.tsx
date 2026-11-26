@@ -8,6 +8,7 @@ import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/Arvor
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
 import { poemaDe, rotuloDoPoema, VersoDoPoema } from "@/components/CadernoPoema";
+import { DaMesmaForma } from "@/components/DaMesmaForma";
 import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
 import { MaisDoAutor } from "@/components/MaisDoAutor";
 import { PoemaCard } from "@/components/PoemaCard";
@@ -155,6 +156,7 @@ export default function PoemaPage() {
                   </div>
                 )}
                 <MaisDoAutor autor={original.autor} aberto={{ tipo: "poema", id: original.id }} />
+                <DaMesmaForma poema={original} />
               </div>
             </div>
           ),

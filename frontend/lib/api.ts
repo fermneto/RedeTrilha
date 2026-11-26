@@ -415,6 +415,16 @@ export function outrosPoemas(itens: ItemDoFeed[], autorId: number, tirar: Alvo, 
   return poemas.filter((poema, i) => poemas.findIndex((p) => p.id === poema.id) === i).slice(0, quantos);
 }
 
+// "Da mesma forma": poemas de outras pessoas numa lista do Explorar, sem o que
+// está aberto nem os de quem escreveu (esses ficam no "Mais do autor").
+export function poemasDeOutraPessoa(itens: ItemDoFeed[], autorId: number, tirarId: number, quantos: number): Post[] {
+  const outros = itens.filter(
+    (p): p is Post & { tipo?: "poema" } =>
+      p.tipo !== "renga" && p.autor_id !== autorId && p.id !== tirarId && p.repost_de_id === null,
+  );
+  return outros.filter((p, i) => outros.findIndex((o) => o.id === p.id) === i).slice(0, quantos);
+}
+
 export function caminhoDosComentarios({ tipo, id }: AlvoDosComentarios): string {
   return tipo === "poema" ? `/posts/${id}/comentarios` : `/rengas/${id}/comentarios`;
 }

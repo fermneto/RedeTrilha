@@ -12,7 +12,7 @@ const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { formatarDataEHora, formatarDataPorExtenso, outrosPoemas } = await import(
+const { formatarDataEHora, formatarDataPorExtenso, outrosPoemas, poemasDeOutraPessoa } = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
 );
 
@@ -49,4 +49,16 @@ test("mais do autor: só os poemas dele, sem o aberto, até a quantidade pedida"
   assert.deepEqual(outrosPoemas(itens, ana, { tipo: "poema", id: 9 }, 2).map((p) => p.id), [5, 3]);
   // Na renga, nada a tirar pelo id.
   assert.deepEqual(outrosPoemas(itens, ana, { tipo: "renga", id: 9 }, 3).map((p) => p.id), [9, 5, 3]);
+});
+
+test("da mesma forma: só de outras pessoas, sem o aberto, sem reposts e sem repetir", () => {
+  const itens = [
+    poema(1, { autor_id: 2 }),
+    poema(2),
+    poema(3, { autor_id: 2, repost_de_id: 7 }),
+    poema(4, { autor_id: 3 }),
+    poema(1, { autor_id: 2 }),
+    poema(5, { autor_id: 3 }),
+  ];
+  assert.deepEqual(poemasDeOutraPessoa(itens, ana, 4, 3).map((p) => p.id), [1, 5]);
 });
