@@ -46,12 +46,15 @@ def _pagina(client, como, rota: str, cursor: str | None, limit: int = 2) -> dict
 
 
 def _ler_tudo(client, como, rota: str, cursor: str | None = None, limit: int = 2) -> list[dict]:
+    """Lê o trecho próprio da aba (no Seguindo, o de quem segue; no "Para você", o
+    inédito), até a página com `fim_em`: o feed não acaba, continua depois dele."""
     itens = []
     while True:
         corpo = _pagina(client, como, rota, cursor, limit)
-        itens += corpo["items"]
+        itens += corpo["items"][: corpo["fim_em"]]
         cursor = corpo["proximo_cursor"]
-        if cursor is None:
+        assert cursor is not None
+        if corpo["fim_em"] is not None:
             return itens
 
 

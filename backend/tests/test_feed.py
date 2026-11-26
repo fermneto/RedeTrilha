@@ -145,9 +145,12 @@ def test_cursor_percorre_o_feed_sem_repetir(client, como):
     while True:
         params = {"limit": 2} | ({"cursor": cursor} if cursor else {})
         r = client.get("/feed", params=params, headers=como("ana"))
-        vistos += _textos(r)
+        fim_em = r.json()["fim_em"]
+        vistos += _textos(r)[:fim_em]
         cursor = r.json()["proximo_cursor"]
-        if cursor is None:
+        # O feed não acaba: depois de quem ana segue, continua com o "Para você".
+        assert cursor is not None
+        if fim_em is not None:
             break
     assert vistos == [f"bia {i}" for i in range(4, -1, -1)]
 
@@ -163,8 +166,8 @@ def test_poema_novo_nao_desloca_a_rolagem_com_cursor(client, como):
     r = client.get(
         "/feed", params={"limit": 2, "cursor": r.json()["proximo_cursor"]}, headers=como("ana")
     )
-    assert _textos(r) == ["bia 1", "bia 0"]
-    assert r.json()["proximo_cursor"] is None
+    assert _textos(r)[:2] == ["bia 1", "bia 0"]
+    assert r.json()["fim_em"] == 2
 
 
 def test_total_vem_null_com_cursor_e_real_por_offset(client, como):
@@ -197,8 +200,12 @@ def test_offset_tambem_devolve_proximo_cursor(client, como):
     _postar(client, como, "bia", "bia 1")
     client.post("/usuarios/bia/follow", headers=como("ana"))
 
-    assert client.get("/feed?limit=1", headers=como("ana")).json()["proximo_cursor"]
-    assert client.get("/feed?limit=2", headers=como("ana")).json()["proximo_cursor"] is None
+    primeira = client.get("/feed?limit=1", headers=como("ana")).json()
+    assert (bool(primeira["proximo_cursor"]), primeira["fim_em"]) == (True, None)
+    # Por offset, a página não passa do Seguindo, mas o cursor já aponta o "Para você".
+    inteira = client.get("/feed?limit=2", headers=como("ana")).json()
+    assert (len(inteira["items"]), inteira["fim_em"]) == (2, 2)
+    assert inteira["proximo_cursor"]
 
 
 @pytest.mark.parametrize(
