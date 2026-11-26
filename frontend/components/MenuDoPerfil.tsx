@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
+import { useFecharCapa } from "@/components/CapaDoLivro";
 import { IconeAjustes } from "@/components/icones/IconeAjustes";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import { caminhoDasPreferencias, limparToken } from "@/lib/api";
@@ -18,6 +19,7 @@ const ITEM =
 
 export function MenuDoPerfil({ username }: { username: string }) {
   const router = useRouter();
+  const fecharCapa = useFecharCapa();
   const [aberto, setAberto] = useState(false);
   const caixa = useRef<HTMLDivElement>(null);
   const botao = useRef<HTMLButtonElement>(null);
@@ -37,10 +39,17 @@ export function MenuDoPerfil({ username }: { username: string }) {
     if (!caixa.current?.contains(e.relatedTarget as Node | null)) setAberto(false);
   }
 
-  // limparToken apaga a sessão no backend e o token local, mesmo sem rede.
-  async function sair() {
-    await limparToken();
-    router.push("/login");
+  // limparToken apaga a sessão no backend e o token local, mesmo sem rede. Antes,
+  // o livro fecha (components/CapaDoLivro.tsx): o token sai e o login monta por
+  // baixo da capa fechada, que depois encolhe até o lugar do formulário.
+  function sair() {
+    setAberto(false);
+    fecharCapa({
+      navegar: async () => {
+        await limparToken();
+        router.push("/login");
+      },
+    });
   }
 
   return (
