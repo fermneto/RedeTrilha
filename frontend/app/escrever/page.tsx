@@ -87,6 +87,7 @@ function Escrever() {
       }}
       dispor={({ escrita, ficha }) => (
         <CadernoFolhas
+          abrirComoNova
           folhas={[
             {
               chave: "escrever",

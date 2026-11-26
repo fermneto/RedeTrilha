@@ -99,9 +99,18 @@ type Props = {
   // Os rótulos dos botões de virar ("poema anterior", "próximo poema").
   anterior?: string;
   proxima?: string;
+  // Abre como uma página nova do livro (o compositor): a primeira folha chega
+  // virando, sobre a página da esquerda (no celular, assentando por cima).
+  abrirComoNova?: boolean;
 };
 
-export function CadernoFolhas({ folhas, aoChegar, anterior = "página anterior", proxima = "próxima página" }: Props) {
+export function CadernoFolhas({
+  folhas,
+  aoChegar,
+  anterior = "página anterior",
+  proxima = "próxima página",
+  abrirComoNova = false,
+}: Props) {
   const duplo = useDuplo();
   const [pos, setPos] = useState<Posicao>({ folha: 0, lado: "e" });
   const [virada, setVirada] = useState<Virada | null>(null);
@@ -312,6 +321,8 @@ export function CadernoFolhas({ folhas, aoChegar, anterior = "página anterior",
           const papel = p.papel;
           const vista = papel === "ver";
           const anima = papel !== "ver" && papel !== "sob" && papel !== "guardada";
+          // A página nova: só a da esquerda (ou a única) da primeira folha, ao montar.
+          const nova = abrirComoNova && vista && p.folha === 0 && p.lado === "e" ? `folha-nova${p.slot === "u" ? "-u" : ""}` : "";
           const f = folhas[p.folha];
           const comPe = total > 1;
           const rotulo = p.lado === "d" ? (f.rotuloDaDireita ?? `continuação de ${f.rotulo}`) : f.rotulo;
@@ -327,7 +338,7 @@ export function CadernoFolhas({ folhas, aoChegar, anterior = "página anterior",
                 if (e.target === e.currentTarget && anima) terminar();
               }}
               style={{ zIndex: camada(papel, p.slot, p.lado) }}
-              className={`pagina pagina-${p.slot} outline-none ${anima ? papel : ""}`}
+              className={`pagina pagina-${p.slot} outline-none ${anima ? papel : nova}`}
             >
               <div className="pagina-rolagem">{conteudo(p)}</div>
               {comPe && (
@@ -344,6 +355,11 @@ export function CadernoFolhas({ folhas, aoChegar, anterior = "página anterior",
           );
         })}
         {pecas.length === 0 && <div className="pagina pagina-u" />}
+        {/* A página nova, no desktop: a folha em branco da direita levanta e vira,
+            e o verso dela é a página da esquerda que chega (.folha-nova). */}
+        {abrirComoNova && duplo && (
+          <div aria-hidden="true" className="pagina pagina-d folha-em-branco pointer-events-none" style={{ zIndex: 3 }} />
+        )}
         <p className="sr-only" aria-live="polite">
           {aviso}
         </p>
