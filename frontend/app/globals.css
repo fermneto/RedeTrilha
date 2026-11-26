@@ -211,64 +211,6 @@
   }
 }
 
-/* A vitrine da landing (components/LayoutDaEntradaVitrine.tsx). As peças já
-   nascem na posição final, visíveis; na entrada, os cartões de trás abrem em leque
-   de trás do cartão do centro (partem de --de, rentes a ele, sem giro) e a barra
-   "comentar estes versos" surge depois (--atraso). Cada cartão de trás guarda a posição em variáveis:
-   --y (deslocamento vertical), --giro e --escala. Com prefers-reduced-motion,
-   nada se mexe. */
-@layer components {
-  .sombra-de-papel {
-    box-shadow: 0 1px 2px rgb(31 27 22 / 0.05), 0 16px 36px -16px rgb(31 27 22 / 0.22);
-  }
-
-  .vitrine-leque {
-    transform: translateY(var(--y, 0)) rotate(var(--giro, 0deg)) scale(var(--escala, 1));
-    animation: vitrine-leque 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
-  }
-
-  .vitrine-frente {
-    animation: vitrine-frente 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .vitrine-flutua {
-    transform: rotate(var(--giro, 0deg));
-    animation: vitrine-flutua 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--atraso, 0ms) both;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .sombra-de-papel {
-      box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -16px rgb(0 0 0 / 0.7);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .vitrine-leque,
-    .vitrine-frente,
-    .vitrine-flutua {
-      animation: none;
-    }
-  }
-}
-
-@keyframes vitrine-leque {
-  from {
-    transform: translateX(var(--de, 0)) translateY(var(--y, 0)) rotate(0deg) scale(var(--escala, 1));
-  }
-}
-
-@keyframes vitrine-frente {
-  from {
-    transform: translateY(0.75rem);
-  }
-}
-
-@keyframes vitrine-flutua {
-  from {
-    transform: scale(0.5) rotate(0deg);
-  }
-}
-
 /* O caderno aberto (components/CadernoFolhas.tsx). Cada página é uma camada
    absoluta: no desktop, a esquerda e a direita da página dupla; no celular, uma
    só. Virar a página é girar a folha em torno da lombada: a página da direita
@@ -586,5 +528,58 @@
 @keyframes folha-surge {
   from {
     opacity: 0;
+  }
+}
+
+/* A capa do livro fechado (components/CapaDoLivro.tsx): o mesmo pano da .capa,
+   com o nome do Verso gravado (a cor da gravura, rebaixada no pano por uma
+   sombra de 1 px em cima e uma luz de 1 px embaixo) e, abaixo, o mesmo fio da
+   lombada. Na tela de entrada ela fica à direita (no desktop, exatamente onde
+   fica a metade direita do livro aberto; no celular, uma faixa no alto). Ao
+   entrar, uma cópia dela por cima de tudo (.capa-que-abre) fecha o livro sobre a
+   tela, espera a página de destino montar por baixo e gira na dobra até deitar
+   à esquerda; o verso da capa é a guarda, papel com o grão das páginas, que se
+   desfaz ao deitar. Com prefers-reduced-motion, sem giro: só um fade curto. */
+@layer components {
+  .gravura-da-capa {
+    color: var(--color-gravura);
+    text-shadow:
+      0 -1px 0 rgb(0 0 0 / 0.55),
+      0 1px 0 rgb(255 255 255 / 0.07);
+  }
+
+  .capa-que-abre {
+    perspective: 2600px;
+  }
+
+  .face-da-capa {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* A guarda: a página da esquerda em branco, com a dobra à direita. */
+  .guarda-da-capa {
+    transform: rotateY(180deg);
+    background-color: var(--color-papel);
+    background-image:
+      linear-gradient(to left, rgb(31 27 22 / 0.11), rgb(31 27 22 / 0.035) 0.9rem, transparent 3.5rem),
+      var(--grao);
+  }
+
+  /* A sombra que a capa deixa na página da direita enquanto levanta. */
+  .sombra-da-capa {
+    background-image: linear-gradient(to right, rgb(31 27 22 / 0.28), rgb(31 27 22 / 0.08) 40%, transparent 75%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .guarda-da-capa {
+      background-image:
+        linear-gradient(to left, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.14) 0.9rem, transparent 3.5rem),
+        var(--grao);
+    }
+
+    .sombra-da-capa {
+      background-image: linear-gradient(to right, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.2) 40%, transparent 75%);
+    }
   }
 }

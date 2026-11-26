@@ -1,22 +1,39 @@
 "use client";
-// A landing do Verso, a porta de entrada sem login: em "/" (quando não há token) e
-// em /login. Como a entrada do Instagram: a marca pequena no canto de cima e, no
-// meio da tela, a frase centralizada com a vitrine em leque embaixo
-// (LayoutDaEntradaVitrine.tsx) e, à direita, o cartão de entrar com o "Criar
-// conta". No desktop a largura se divide em duas metades fixas (55% e 45% da
-// tela): a frase e o leque ficam no centro da metade esquerda, e o cartão de
-// entrar fica a 5.5vw do começo da metade direita, mais perto do leque. Os dois
-// ficam centrados na vertical.
-// Embaixo, o rodapé de largura total.
-// Abaixo de 1024 px empilha: marca, frase, formulário e vitrine (pelo `order`; a
-// única parte interativa é o formulário, então o foco segue a mesma ordem).
+// A porta de entrada do Verso, sem login: em "/" (quando não há token), em /login e
+// em /cadastro. À esquerda, a frase e o formulário; à direita, a capa do livro
+// fechado (components/CapaDoLivro.tsx), o mesmo pano do Caderno. No desktop (de
+// 1024 px) a moldura repete as medidas do livro aberto, e a capa fica exatamente
+// sobre a metade direita dele: ao entrar, ela gira na dobra e revela o livro já
+// aberto, sem nada mudar de lugar. No celular, a capa é uma faixa no alto e o
+// formulário vem embaixo; ao entrar, ela desce sobre a tela e abre.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Vitrine } from "@/components/LayoutDaEntradaVitrine";
+import { CapaDaEntrada, useAbrirCapa } from "@/components/CapaDoLivro";
 import { buscarEu, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
+
+// A moldura da entrada: a mesma caixa da capa do Caderno no desktop (h-dvh com
+// px-6 py-5, até 1400 px), com a dobra (--dobra) no meio do miolo, depois da
+// lombada (5.25rem) e antes da sobra da capa (7 px).
+export function MolduraDaEntrada({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex min-h-dvh flex-col lg:h-dvh lg:min-h-0 lg:items-center lg:justify-center lg:px-6 lg:py-5">
+      <div className="relative flex flex-1 flex-col lg:h-full lg:w-full lg:max-w-[1400px] lg:flex-none lg:[--dobra:calc(5.25rem+(100%-5.25rem-7px)/2)]">
+        <CapaDaEntrada />
+        <div className="flex flex-1 flex-col lg:absolute lg:inset-y-0 lg:left-0 lg:w-[var(--dobra)] lg:overflow-y-auto">
+          <main className="flex flex-1 flex-col items-center justify-center px-6 pt-10 pb-10 lg:px-10 lg:py-12">
+            {children}
+          </main>
+          <footer className="px-4 pt-2 pb-[calc(1rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave lg:pb-3">
+            © 2026 Verso
+          </footer>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 type Props = {
   // Para onde ir depois de entrar (já passado pelo destinoSeguro).
@@ -27,36 +44,16 @@ type Props = {
 
 export function TelaDeEntrada({ destino = "/", focarAoAbrir = false }: Props) {
   return (
-    <div className="flex min-h-dvh flex-col overflow-x-clip">
-      <Link
-        href="/"
-        aria-label="Verso, início"
-        className="mx-6 mt-6 self-start rounded-lg px-1 font-serifada text-[2rem] leading-none font-semibold italic tracking-tight lg:mx-10 lg:mt-10"
-      >
-        <span aria-hidden="true">Verso</span>
-      </Link>
-
-      <main className="flex flex-1 flex-col items-center px-6 pt-10 pb-16 lg:grid lg:grid-cols-[55%_45%] lg:content-center lg:gap-x-0 lg:gap-y-10 lg:px-0 lg:py-0 lg:[grid-template-areas:'frase_entrar''leque_entrar']">
-        <h1 className="order-1 text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:justify-self-center lg:px-6 lg:text-[2.75rem] lg:[grid-area:frase] xl:text-[3.25rem]">
+    <MolduraDaEntrada>
+      <div className="w-full max-w-sm lg:max-w-[24rem] 2xl:max-w-[26rem]">
+        <h1 className="text-center text-[2.25rem] leading-[1.1] font-semibold text-balance lg:text-[2.75rem] xl:text-[3.25rem]">
           Onde a <em className="font-serifada font-medium text-destaque">poesia</em> acontece.
         </h1>
-
-        <section aria-labelledby="titulo-entrar" className="order-2 mt-10 w-full max-w-sm lg:mt-0 lg:w-[24rem] lg:max-w-none lg:ml-[5.5vw] lg:self-center lg:justify-self-start lg:[grid-area:entrar] 2xl:w-[26rem]">
+        <section aria-labelledby="titulo-entrar" className="mt-10 lg:mt-12">
           <FormularioDeEntrada destino={destino} focarAoAbrir={focarAoAbrir} />
         </section>
-
-        {/* O pb-10 do desktop conta a sobra dos cartões de trás (mais baixos e
-            girados), para o leque inteiro, e não só o cartão do centro, ficar
-            no meio da altura. */}
-        <div className="order-3 mt-14 flex justify-center lg:mt-0 lg:justify-self-center lg:pb-10 lg:[grid-area:leque]">
-          <Vitrine />
-        </div>
-      </main>
-
-      <footer className="border-t border-borda px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] text-center text-xs text-tinta-suave">
-        © 2026 Verso
-      </footer>
-    </div>
+      </div>
+    </MolduraDaEntrada>
   );
 }
 
@@ -69,6 +66,7 @@ const CAMPO =
 // mostrar o formulário (em /login; em "/" o Layout só mostra a landing sem token).
 function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
   const router = useRouter();
+  const abrirCapa = useAbrirCapa();
   const [username, setUsername] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState<string | null>(null);
@@ -92,8 +90,15 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
     setErro(null);
     try {
       const { token } = await entrar(username, senha);
-      salvarToken(token);
-      router.replace(destino);
+      // Só com o login certo: a capa fecha sobre a tela, o token é gravado, a
+      // navegação acontece por baixo dela e ela abre já no destino.
+      abrirCapa({
+        destino,
+        navegar: () => {
+          salvarToken(token);
+          router.replace(destino);
+        },
+      });
     } catch (err) {
       if (err instanceof ErroDaApi && err.status === 401) setErro("username ou senha incorretos");
       else setErro(mensagemDeFalha(err, "não deu para entrar"));

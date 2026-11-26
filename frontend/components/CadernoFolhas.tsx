@@ -49,7 +49,7 @@ type Virada = { de: Posicao; para: Posicao; sentido: 1 | -1 };
 // que gira (frente e verso, indo ou voltando) ou guardada (montada e escondida).
 type Papel = "ver" | "sob" | "vira-frente" | "vira-verso" | "volta-frente" | "volta-verso" | "guardada";
 
-const DUPLO = "(min-width: 1024px)";
+export const DUPLO = "(min-width: 1024px)";
 
 function assinarDuplo(avisar: () => void) {
   const consulta = window.matchMedia(DUPLO);
