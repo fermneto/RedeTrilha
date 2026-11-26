@@ -186,8 +186,9 @@ export function PoemaCard({
   );
 }
 
-// No celular, a conversa fica na página seguinte: o pé do poema conta quantas
-// curtidas e comentários ele tem e leva até ela. Na página dupla ela já está à vista.
+// No celular, a conversa fica na página seguinte: o pé do poema traz as ações,
+// para interagir sem virar a página, e um atalho que conta os comentários e leva
+// até ela. Na página dupla tudo isso já está à vista na página da direita.
 function ResumoDaConversa({ poema }: { poema: Post }) {
   const { duplo, mostrar } = useFolhas();
   if (duplo) return null;
@@ -196,17 +197,22 @@ function ResumoDaConversa({ poema }: { poema: Post }) {
     `${poema.comentarios} ${poema.comentarios === 1 ? "comentário" : "comentários"}`,
   ].filter(Boolean);
   return (
-    <button
-      type="button"
-      onClick={() => mostrar("d")}
-      className="mt-6 flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-borda px-4 text-left text-sm transition-colors duration-150 hover:border-tinta-suave"
-    >
-      <span className="flex items-center gap-2 text-tinta-suave tabular-nums">
-        <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
-        {partes.join(" · ")}
-      </span>
-      <span className="font-semibold text-destaque">{poema.comentarios > 0 ? "ver a conversa" : "comentar"}</span>
-    </button>
+    <>
+      <div className="mt-6">
+        <Acoes key={poema.id} poema={poema} />
+      </div>
+      <button
+        type="button"
+        onClick={() => mostrar("d")}
+        className="mt-4 flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-borda px-4 text-left text-sm transition-colors duration-150 hover:border-tinta-suave"
+      >
+        <span className="flex items-center gap-2 text-tinta-suave tabular-nums">
+          <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
+          {partes.join(" · ")}
+        </span>
+        <span className="font-semibold text-destaque">{poema.comentarios > 0 ? "ver a conversa" : "comentar"}</span>
+      </button>
+    </>
   );
 }
 

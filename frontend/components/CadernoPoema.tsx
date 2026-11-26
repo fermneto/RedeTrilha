@@ -28,13 +28,15 @@ export function rotuloDoPoema(post: Post): string {
 
 // A página da conversa: as margens do livro, mas sem a de baixo, para o campo
 // de comentar encostar no pé da página.
-export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-6 pt-8 sm:px-10 lg:px-14 lg:pt-12";
+export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-6 pt-5 sm:px-10 lg:px-14 lg:pt-9";
 
 // A página da direita: os contadores e as ações no alto, a conversa embaixo.
+// As ações ficam presas no topo da página enquanto a conversa rola, para curtir,
+// repostar e comentar estarem sempre à mão.
 export function VersoDoPoema({ poema, comentarios }: { poema: Post; comentarios: ReactNode }) {
   return (
     <div className={MARGEM_DA_CONVERSA}>
-      <div className="border-b border-borda/70 pb-3">
+      <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
         <Acoes key={poema.id} poema={poema} contadores />
       </div>
       <div className="mt-6 flex flex-1 flex-col">{comentarios}</div>

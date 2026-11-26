@@ -321,6 +321,13 @@
       var(--grao);
   }
 
+  /* As ações presas no topo da página da conversa: o mesmo papel com grão da
+     página, para a conversa sumir por baixo delas sem marcar uma caixa. */
+  .acoes-presas {
+    background-color: var(--color-papel);
+    background-image: var(--grao);
+  }
+
   .pagina-rolagem {
     min-height: 0;
     flex: 1;
