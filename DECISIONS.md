@@ -888,6 +888,30 @@ decisão 15.
   é uma tarefa a cumprir) e uma biblioteca de tour (as notas são um componente
   só, sem dependência).
 
+### 19. O livro, não a timeline
+
+- **Contexto:** o visual interno imitava o X: uma coluna de cards rolando, com
+  a navegação de um lado e a coluna Descobrir do outro. Um poema longo virava
+  um card cortado, e a conversa ficava longe dele. Nas três rodadas de
+  propostas (#169), as versões com mais informação na tela foram reprovadas
+  por "poluídas, informações dispersas" (decisão do Neto).
+- **Opções:** manter a timeline do X e só limpar; uma grade de cards; ou o
+  livro aberto em página dupla.
+- **Escolha (decisão do Neto, validada em 25/11, #170):**
+  - **Um poema por página:** o feed é uma sequência de folhas. O próximo vem
+    virando a página (a seta no pé, ← →, arrastar ou o deslizar de dois dedos
+    no touchpad, #179), e o poema aparece inteiro, sem corte.
+  - **A conversa na página ao lado:** na esquerda, quem escreveu e o poema; na
+    direita, os contadores, as ações e os comentários, com as ações sempre à
+    vista (decisão do Neto). No celular, uma página por vez.
+  - **A navegação na lombada,** com ícones sem texto (decisão 17).
+  - **Continua uma rede social:** pessoas, conversa e o botão de escrever
+    ficam à vista; a paleta e as fontes aprovadas não mudaram.
+- **O que cortamos e por quê:** a coluna de cards rolando (corta o poema longo
+  e põe dez poemas disputando a atenção ao mesmo tempo) e a coluna Descobrir
+  nas páginas de publicação (#182). O feed continua sem fim (decisão 3), mas
+  se folheia, uma página por vez.
+
 ### O que ficou de fora e por quê
 
 Cada corte foi pensado para quem lê e escreve poesia, em 12 dias de prazo
