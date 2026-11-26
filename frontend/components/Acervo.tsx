@@ -77,10 +77,20 @@ export function Acervo() {
     buscarEu()
       .then((eu) => setMeuId(eu.id))
       .catch(() => setMeuId(null));
-    buscarOpcoesDoAcervo()
-      .then(setOpcoes)
-      .catch(() => setOpcoes(null));
   }, []);
+
+  // As contagens das opções seguem os outros filtros. Na falha, ficam as de antes.
+  useEffect(() => {
+    let vivo = true;
+    buscarOpcoesDoAcervo({ tipo, lingua, epoca })
+      .then((o) => {
+        if (vivo) setOpcoes(o);
+      })
+      .catch(() => {});
+    return () => {
+      vivo = false;
+    };
+  }, [tipo, lingua, epoca]);
 
   useEffect(() => {
     let vivo = true;

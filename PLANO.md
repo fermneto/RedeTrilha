@@ -538,8 +538,13 @@ Tabelas `antologias` (`dono_id`, `nome` (100), `descricao`, `publica`,
   (`alfabetica` \| `seguidos` \| `poemas`), `sigo_primeiro` (opcional: quem eu
   sigo vem antes, na ordem escolhida), `offset` e `limit` (padrão 24) →
   `AcervoPage` de `PoetaDoAcervo` (`UserOut` + `seguidores`, `poemas`, `sigo`).
-- `GET /acervo/filtros` 🔒 → `{"linguas": [{"codigo", "poetas"}],
-  "epocas": [{"chave", "rotulo", "inicio", "fim", "poetas"}]}`.
+- `GET /acervo/filtros` 🔒, com `tipo`, `lingua` e `epoca` opcionais (os mesmos do
+  `GET /acervo`) → `{"linguas": [{"codigo", "poetas"}],
+  "epocas": [{"chave", "rotulo", "inicio", "fim", "poetas"}]}`. Busca facetada:
+  cada opção conta os consagrados que passam pelos outros filtros, menos o dela
+  (as línguas contam com o tipo e a época; as épocas, com o tipo e a língua), e
+  `tipo=do_verso` zera tudo. A lista de línguas é sempre a mesma, na ordem do
+  acervo inteiro, com 0 onde não há poeta. O `q` não entra na conta.
 - A tela do Acervo é a aba "Poetas" do Explorar (`components/Acervo.tsx`),
   com os filtros na URL: `/explorar?aba=poetas&tipo=&q=&lingua=&epoca=&ordem=&pagina=`
   (`lerFiltrosDoAcervo` e `caminhoDoAcervo` em `lib/api.ts`). Nessa aba, o

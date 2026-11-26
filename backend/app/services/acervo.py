@@ -24,7 +24,7 @@ subquery com row_number(), que o SQLite (3.25+) e o Postgres têm.
 
 from dataclasses import dataclass
 
-from sqlalchemy import Row, case, func, select
+from sqlalchemy import Row, and_, case, false, func, select
 from sqlalchemy.orm import Session
 
 from app.core.indice_tags import normalizar
@@ -111,11 +111,25 @@ def listar(
     return AcervoPage(items=items, total=len(linhas), offset=offset, limit=limit)
 
 
-def opcoes_de_filtro(db: Session) -> FiltrosDoAcervo:
-    """As línguas que algum consagrado tem e todas as faixas de época, com contagem."""
+def opcoes_de_filtro(db: Session, filtros: Filtros) -> FiltrosDoAcervo:
+    """As línguas que algum consagrado tem e todas as faixas de época, com contagem.
+
+    Busca facetada: cada opção conta os consagrados que passam pelos outros filtros
+    (`tipo` e a época, para as línguas; `tipo` e a língua, para as épocas), sem o
+    filtro dela mesma, para a pessoa ver quantos vai achar ao trocar só aquele select.
+    A lista de línguas não muda com os filtros: uma língua sem poeta nos outros
+    filtros aparece com 0, e a ordem é a do acervo inteiro (mais poetas primeiro,
+    empate pelo código), para o select não se reordenar a cada clique.
+    A busca por nome (`q`) não entra: ela é feita em Python (ver o topo do módulo).
+    """
+    # Língua e época só existem para consagrados: em "do_verso", tudo conta 0.
+    tipo_ok = User.consagrado if filtros.tipo != "do_verso" else false()
+
     lingua = lingua_por_autor()
+    na_epoca = _na_epoca(filtros.epoca)
+    passa = and_(tipo_ok, na_epoca) if na_epoca is not None else tipo_ok
     linguas = db.execute(
-        select(lingua.c.idioma, func.count())
+        select(lingua.c.idioma, func.sum(case((passa, 1), else_=0)))
         .join(User, User.id == lingua.c.user_id)
         .where(User.consagrado)
         .group_by(lingua.c.idioma)
@@ -123,13 +137,15 @@ def opcoes_de_filtro(db: Session) -> FiltrosDoAcervo:
     ).all()
 
     epoca = _epoca_sql().label("epoca")
-    por_epoca = dict(
-        db.execute(
-            select(epoca, func.count()).where(User.consagrado).group_by(epoca)
-        ).all()
-    )
+    consulta = select(epoca, func.count()).where(User.consagrado, tipo_ok).group_by(epoca)
+    if filtros.lingua:
+        da_lingua = lingua_por_autor()
+        consulta = consulta.join(da_lingua, da_lingua.c.user_id == User.id).where(
+            da_lingua.c.idioma == filtros.lingua
+        )
+    por_epoca = dict(db.execute(consulta).all())
     return FiltrosDoAcervo(
-        linguas=[LinguaDoAcervo(codigo=codigo, poetas=n) for codigo, n in linguas],
+        linguas=[LinguaDoAcervo(codigo=codigo, poetas=n or 0) for codigo, n in linguas],
         epocas=[
             EpocaDoAcervo(
                 chave=faixa.chave,
@@ -167,12 +183,20 @@ def _consulta(filtros: Filtros):
         consulta = consulta.join(lingua, lingua.c.user_id == User.id).where(
             User.consagrado, lingua.c.idioma == filtros.lingua
         )
-    if filtros.epoca:
-        faixa = _FAIXA_POR_CHAVE[filtros.epoca]
-        consulta = consulta.where(User.consagrado, User.morte <= faixa.fim)
-        if faixa.inicio is not None:
-            consulta = consulta.where(User.morte >= faixa.inicio)
+    na_epoca = _na_epoca(filtros.epoca)
+    if na_epoca is not None:
+        consulta = consulta.where(User.consagrado, na_epoca)
     return consulta
+
+
+def _na_epoca(chave: ChaveEpoca | None):
+    """A condição SQL de morte dentro da faixa; None sem filtro de época."""
+    if chave is None:
+        return None
+    faixa = _FAIXA_POR_CHAVE[chave]
+    if faixa.inicio is None:
+        return User.morte <= faixa.fim
+    return User.morte.between(faixa.inicio, faixa.fim)
 
 
 def lingua_por_autor():
