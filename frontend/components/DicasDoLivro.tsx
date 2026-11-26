@@ -6,7 +6,8 @@
 // escrever (poema e renga). Cada nota é um papel apoiado sobre o livro, com uma
 // ponta para o que ela explica e um fio em volta dele; "entendi", o X, Esc,
 // virar a página ou sair da página a dispensam, e a dispensada não volta (fica
-// na conta, PUT /dicas/{dica}). "Rever as dicas", nas Preferências, zera a lista.
+// na conta, PUT /dicas/{dica}); "dispensar todas" marca as quatro. "Rever as
+// dicas", nas Preferências, zera a lista.
 //
 // As notas não mexem nos componentes que explicam: acham o lugar deles pelo que
 // já está na página (o botão de virar, a barra de ações presa no topo da
@@ -38,7 +39,6 @@ import {
   type Lado,
   lugarDasDicas,
   type LugarDasDicas,
-  numeroDaDica,
   ORDEM_DAS_DICAS,
   posicionarNota,
   proximaDica,
@@ -142,6 +142,14 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
     marcarDicaVista(dica).catch(() => undefined);
   }, []);
 
+  // "Dispensar todas": as quatro como vistas, um PUT por dica (idempotente).
+  const dispensarTodas = useCallback(() => {
+    setAberta(null);
+    setViradas(0);
+    setVistas([...ORDEM_DAS_DICAS]);
+    Promise.all(ORDEM_DAS_DICAS.map((d) => marcarDicaVista(d))).catch(() => undefined);
+  }, []);
+
   // Sair da página com uma dica aberta conta como vista; a posição recomeça.
   useEffect(() => {
     ultimaPosicao.current = null;
@@ -176,7 +184,14 @@ export function DicasDoLivro({ children }: { children: ReactNode }) {
     <ContextoDasDicas.Provider value={{ virou }}>
       {children}
       {aberta && lugar && (
-        <Nota key={aberta} dica={aberta} lugar={lugar} duplo={duplo} aoDispensar={() => dispensar(aberta)} />
+        <Nota
+          key={aberta}
+          dica={aberta}
+          lugar={lugar}
+          duplo={duplo}
+          aoDispensar={() => dispensar(aberta)}
+          aoDispensarTodas={dispensarTodas}
+        />
       )}
     </ContextoDasDicas.Provider>
   );
@@ -190,11 +205,13 @@ function Nota({
   lugar,
   duplo,
   aoDispensar,
+  aoDispensarTodas,
 }: {
   dica: Dica;
   lugar: LugarDasDicas;
   duplo: boolean;
   aoDispensar: () => void;
+  aoDispensarTodas: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<Posicionada | null>(null);
@@ -335,9 +352,13 @@ function Nota({
           {texto.corpo}
         </div>
         <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-tinta-suave tabular-nums">
-            dica {numeroDaDica(dica)} de {ORDEM_DAS_DICAS.length}
-          </span>
+          <button
+            type="button"
+            onClick={aoDispensarTodas}
+            className="-ml-3 inline-flex min-h-11 cursor-pointer items-center rounded-full px-3 text-sm text-tinta-suave transition-colors duration-150 hover:bg-tinta/7 hover:text-tinta"
+          >
+            dispensar todas
+          </button>
           <button
             type="button"
             onClick={aoDispensar}
