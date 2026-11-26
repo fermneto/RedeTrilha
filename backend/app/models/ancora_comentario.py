@@ -11,7 +11,9 @@ class AncoraComentario(Base):
     `create_all`, que cria tabelas novas mas não acrescenta colunas.
 
     Os versos contam as linhas de `texto.split("\\n")` do poema, a partir de 1,
-    com as linhas em branco entre estrofes incluídas. O trecho não é gravado:
+    com as linhas em branco entre estrofes incluídas. O número que o leitor vê
+    conta só os versos e sai daqui (core/versos.py), sem mudar o que está gravado.
+    O trecho não é gravado:
     poema publicado não se edita, então ele sai sempre do texto do poema.
     """
 

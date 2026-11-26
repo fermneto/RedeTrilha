@@ -8,7 +8,9 @@ from app.schemas.user import UserOut
 
 class AncoraCreate(BaseModel):
     """Os versos criticados, base 1, contando as linhas de `texto.split("\\n")`
-    do poema ou da renga (linhas em branco incluídas). O service valida o intervalo."""
+    do poema ou da renga (linhas em branco incluídas): a linha, não o número que o
+    leitor vê, que conta só os versos (core/versos.py). O intervalo começa e
+    termina em linha com texto; o service valida."""
 
     verso_inicio: int
     verso_fim: int
@@ -97,7 +99,9 @@ class VersoComentado(BaseModel):
 
 
 class VersosComentadosOut(BaseModel):
-    """Os versos do poema com críticas ancoradas, em ordem de verso."""
+    """Os versos do poema com críticas ancoradas, em ordem. `verso` é a linha, como
+    na âncora; a linha em branco que um intervalo atravessa também conta, e o
+    front não mostra marca nela."""
 
     items: list[VersoComentado]
 

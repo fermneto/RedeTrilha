@@ -27,7 +27,9 @@ class AvisoOut(BaseModel):
 
     `titulo` é o do poema ou da renga; `trecho`, a primeira linha do que o aviso
     mostra (o poema, a citação, o comentário ou a estrofe). Na crítica,
-    `verso_inicio` e `verso_fim` dão o `?versos=` do link.
+    `verso_inicio` e `verso_fim` dão o `?versos=` do link e a frase ("criticou os
+    versos 2–3"): são os números que o leitor vê, contando só os versos, sem as
+    linhas em branco (core/versos.py), e não as linhas que a âncora guarda.
     """
 
     id: int

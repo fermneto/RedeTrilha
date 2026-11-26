@@ -100,9 +100,10 @@ export function RengaCard({ renga, atividade, por = [], aninhado = false, folha 
       </ol>
       {selecao && (
         <BarraDeVersos
+          texto={texto}
           selecao={selecao}
           barra={barra}
-          caminhoDaCritica={caminhoDaCriticaNaRenga(renga.id, selecao)}
+          caminhoDaCritica={caminhoDaCriticaNaRenga(renga.id, texto, selecao)}
           caminhoDaCitacao={caminhoDaCitacaoDeVersosDaRenga(renga.id, trechoDosVersos(texto, selecao))}
           aoLimpar={limpar}
         />

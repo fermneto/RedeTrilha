@@ -19,7 +19,7 @@ class ComentarioRenga(Base):
     `verso_inicio`/`verso_fim` (os dois ou nenhum, só no 1º nível) contam as
     linhas do texto da renga, as estrofes em ordem separadas por uma linha em
     branco (`services/rengas.texto_de`), com as linhas em branco incluídas, como
-    nos poemas. Estrofe só se acrescenta no fim e nunca se edita, então o número
+    nos poemas (o número que o leitor vê conta só os versos, core/versos.py). Estrofe só se acrescenta no fim e nunca se edita, então o número
     de um verso não muda quando a renga cresce.
     """
 

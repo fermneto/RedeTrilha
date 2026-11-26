@@ -185,7 +185,8 @@ def test_comentario_critica_e_resposta_no_poema(client, eu):
         ("comentario", ["ana"]),
     ]
     critica = _avisos(client, eu)["items"][1]
-    assert (critica["verso_inicio"], critica["verso_fim"], critica["trecho"]) == (2, 4, "o 2 manca")
+    # A âncora guarda as linhas 2 a 4; o aviso diz os versos que o leitor vê, sem a linha em branco.
+    assert (critica["verso_inicio"], critica["verso_fim"], critica["trecho"]) == (2, 3, "o 2 manca")
     resposta = _avisos(client, eu, "ana")["items"]
     assert [(a["tipo"], a["comentario_id"], a["trecho"]) for a in resposta] == [
         ("resposta", resposta[0]["comentario_id"], "discordo")
@@ -270,8 +271,8 @@ def test_convite_para_renga(client, eu):
 
 def test_comentario_na_renga_avisa_criador_e_autores_e_a_critica_so_os_tocados(client, eu):
     renga_id = _renga(client, eu)
-    _estrofe(client, eu, renga_id, "ana", "d\ne")  # versos 5 e 6
-    _estrofe(client, eu, renga_id, "caio", "f")  # verso 8
+    _estrofe(client, eu, renga_id, "ana", "d\ne")  # linhas 5 e 6 (versos 4 e 5)
+    _estrofe(client, eu, renga_id, "caio", "f")  # linha 8 (verso 6)
     url = f"/rengas/{renga_id}/comentarios"
 
     geral = client.post(url, json={"texto": "que renga"}, headers=eu("dani")).json()
@@ -284,7 +285,7 @@ def test_comentario_na_renga_avisa_criador_e_autores_e_a_critica_so_os_tocados(c
     assert _tipos(client, eu, "bia")[0] == ("critica", ["dani"])
     assert _tipos(client, eu, "caio")[0] == ("comentario", ["dani"])
     critica = _avisos(client, eu, "ana")["items"][0]
-    assert (critica["verso_inicio"], critica["verso_fim"]) == (5, 6)
+    assert (critica["verso_inicio"], critica["verso_fim"]) == (4, 5)
 
     client.post(url, json={"texto": "concordo", "parent_id": geral["id"]}, headers=eu("ana"))
     assert _tipos(client, eu, "dani") == [("resposta", ["ana"])]
