@@ -163,28 +163,34 @@ export default function RengaPage() {
   return (
     <div>
       {cabecalho}
-      <article className="surgir border-b border-borda px-4 pt-6 pb-6">
-        <header>
-          <h1 className="poema-titulo break-words">{renga.titulo}</h1>
-          <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-            <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-            <ListaDeAutores autores={renga.autores} />
+      <header className="surgir px-4 pt-6 pb-3">
+        <h1 id="titulo-da-renga" className="poema-titulo break-words">{renga.titulo}</h1>
+        <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
+          <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
+          <ListaDeAutores autores={renga.autores} />
+        </p>
+        <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
+          <SeloDaRenga fechada={renga.fechada} />{" "}
+          <span className="tabular-nums">
+            {renga.qtd_estrofes} de {renga.limite} estrofes
+          </span>
+          , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}
+        </p>
+        {renga.modo === "convidados" && renga.convidados.length > 0 && (
+          <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[0.8125rem] text-tinta-suave">
+            <span>convidados:</span>
+            <ListaDeAutores autores={renga.convidados} />
           </p>
-          <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
-            <SeloDaRenga fechada={renga.fechada} />{" "}
-            <span className="tabular-nums">
-              {renga.qtd_estrofes} de {renga.limite} estrofes
-            </span>
-            , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"}
-          </p>
-          {renga.modo === "convidados" && renga.convidados.length > 0 && (
-            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[0.8125rem] text-tinta-suave">
-              <span>convidados:</span>
-              <ListaDeAutores autores={renga.convidados} />
-            </p>
-          )}
-        </header>
+        )}
+      </header>
 
+      {/* As ações do poema (#171) presas no topo, como no livro: curtir, repostar,
+          citar, comentar, guardar e enviar ficam à vista enquanto a renga rola. */}
+      <div className="acoes-presas sticky top-0 z-10 border-y border-borda/70 px-4 pt-3 pb-2">
+        <AcoesDaRenga key={renga.id} renga={renga} contadores />
+      </div>
+
+      <article aria-labelledby="titulo-da-renga" className="border-b border-borda px-4 pt-2 pb-6">
         {/* As estrofes leem como um poema só, numeradas verso a verso (a linha em
             branco entre elas conta); o autor de cada uma fica logo abaixo dela, discreto. */}
         <div className="mt-5">
@@ -212,10 +218,6 @@ export default function RengaPage() {
           começada em {formatarData(renga.created_at)}
           {renga.fechada_em && <> · fechada em {formatarData(renga.fechada_em)}</>}
         </p>
-        {/* As ações do poema (#171): curtir, repostar, citar, comentar, guardar, enviar. */}
-        <div className="mt-4 border-t border-borda/70 pt-3">
-          <AcoesDaRenga key={renga.id} renga={renga} contadores />
-        </div>
       </article>
 
       {!renga.fechada && (
