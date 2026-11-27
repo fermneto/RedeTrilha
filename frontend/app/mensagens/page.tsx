@@ -29,6 +29,7 @@ import { noPlural } from "@/lib/numeros";
 
 const buscarConversas = (cursor: string | null) => listarConversas("conversas", cursor);
 const buscarPedidos = (cursor: string | null) => listarConversas("pedidos", cursor);
+const idDaConversa = (conversa: ConversaNaCaixa) => conversa.id;
 // Todo evento de mensagem (o "aviso" é da página de Avisos) recarrega a caixa.
 const ouvirMensagensDaCaixa = (evento: EventoDeMensagem) => evento.tipo !== "aviso";
 
@@ -46,8 +47,8 @@ function Caixa() {
   // A aba fica na URL (?aba=pedidos), como no perfil.
   const aba: AbaDaCaixa = useSearchParams().get("aba") === "pedidos" ? "pedidos" : "conversas";
   const euId = useSessaoObrigatoria()?.id ?? null;
-  const conversas = useListaPorCursor(buscarConversas);
-  const pedidos = useListaPorCursor(buscarPedidos);
+  const conversas = useListaPorCursor(buscarConversas, idDaConversa);
+  const pedidos = useListaPorCursor(buscarPedidos, idDaConversa);
   const caixa = { conversas, pedidos };
   const [erro, setErro] = useState<string | null>(null);
 

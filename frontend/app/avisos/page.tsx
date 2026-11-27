@@ -55,7 +55,7 @@ const ouvirAvisos = (evento: EventoDeMensagem) => evento.tipo === "aviso" || eve
 
 export default function AvisosPage() {
   useLoginObrigatorio();
-  const { lista, recarregar: recarregarLista, carregarMais: carregarMaisAvisos } = useListaPorCursor(listarAvisos);
+  const { lista, recarregar: recarregarLista, carregarMais: carregarMaisAvisos } = useListaPorCursor(listarAvisos, chaveDoAviso);
   const [erro, setErro] = useState<string | null>(null);
   // Os que chegaram não lidos nesta visita: continuam destacados depois de marcados.
   const [novos, setNovos] = useState<ReadonlySet<string>>(new Set());
