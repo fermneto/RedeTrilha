@@ -19,6 +19,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
 import { ReverAsDicas } from "@/components/DicasDoLivro";
+import { EscolhaComBusca } from "@/components/EscolhaComBusca";
 import { EscolhaDoTema } from "@/components/EscolhaDoTema";
 import { EsqueletoDasOpcoes } from "@/components/Esqueleto";
 import {
@@ -292,48 +293,29 @@ function Regiao({
   // Brasil primeiro; o resto em ordem alfabética do nome em português.
   const paises = opcoes.paises
     .filter((c) => c !== BRASIL)
-    .map((codigo) => ({ codigo, nome: nomeDoPais(codigo) }))
-    .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
-  const campo =
-    "mt-1 min-h-11 w-full rounded-xl border border-borda bg-papel-alto px-3 font-normal text-tinta focus:border-destaque focus:outline-none";
+    .map((codigo) => ({ valor: codigo, rotulo: nomeDoPais(codigo) }))
+    .sort((a, b) => a.rotulo.localeCompare(b.rotulo, "pt-BR"));
+  const naoDizer = { valor: null, rotulo: "prefiro não dizer" };
 
   return (
     <div className="space-y-6">
-      <label className="block text-sm font-semibold">
-        país
-        <select
-          value={prefs.pais ?? ""}
-          onChange={(e) => {
-            const pais = e.target.value || null;
-            aoMudar({ ...prefs, pais, uf: pais === BRASIL ? prefs.uf : null });
-          }}
-          className={campo}
-        >
-          <option value="">prefiro não dizer</option>
-          <option value={BRASIL}>{nomeDoPais(BRASIL)}</option>
-          {paises.map(({ codigo, nome }) => (
-            <option key={codigo} value={codigo}>
-              {nome}
-            </option>
-          ))}
-        </select>
-      </label>
+      <EscolhaComBusca
+        rotulo="país"
+        singular="país"
+        plural="países"
+        opcoes={[naoDizer, { valor: BRASIL, rotulo: nomeDoPais(BRASIL) }, ...paises]}
+        valor={prefs.pais}
+        aoEscolher={(pais) => aoMudar({ ...prefs, pais, uf: pais === BRASIL ? prefs.uf : null })}
+      />
       {prefs.pais === BRASIL && (
-        <label className="block text-sm font-semibold">
-          estado
-          <select
-            value={prefs.uf ?? ""}
-            onChange={(e) => aoMudar({ ...prefs, uf: e.target.value || null })}
-            className={campo}
-          >
-            <option value="">prefiro não dizer</option>
-            {opcoes.ufs.map(({ codigo, rotulo }) => (
-              <option key={codigo} value={codigo}>
-                {rotulo}
-              </option>
-            ))}
-          </select>
-        </label>
+        <EscolhaComBusca
+          rotulo="estado"
+          singular="estado"
+          plural="estados"
+          opcoes={[naoDizer, ...opcoes.ufs.map(({ codigo, rotulo }) => ({ valor: codigo, rotulo }))]}
+          valor={prefs.uf}
+          aoEscolher={(uf) => aoMudar({ ...prefs, uf })}
+        />
       )}
       {/* Os gostos são públicos no perfil; o lugar pode ficar só para a pessoa. */}
       {prefs.pais && (
