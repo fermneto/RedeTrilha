@@ -494,7 +494,7 @@ function FormComentario({
         </div>
       )}
       {/* O campo cresce com o texto (field-sizing), do tamanho de uma linha até seis. */}
-      <div className="flex items-end gap-2 rounded-2xl border border-borda bg-papel-alto py-1 pr-1 pl-4 transition-colors duration-150 focus-within:border-destaque">
+      <div className="flex items-end gap-2 rounded-2xl border border-borda bg-papel-alto py-1 pr-1.5 pl-4 transition-colors duration-150 focus-within:border-destaque">
         <textarea
           id={parentId === null ? ID_DO_CAMPO_DE_COMENTARIO : undefined}
           value={texto}
@@ -508,7 +508,7 @@ function FormComentario({
         <button
           type="submit"
           disabled={enviando || !texto.trim()}
-          className="h-9 shrink-0 cursor-pointer rounded-full bg-tinta px-4 text-sm font-semibold text-papel transition-opacity duration-150 disabled:cursor-default disabled:opacity-35"
+          className="mb-0.5 h-9 shrink-0 cursor-pointer rounded-full bg-tinta px-4 text-sm font-semibold text-papel transition-opacity duration-150 disabled:cursor-default disabled:opacity-35"
         >
           {enviando ? "enviando..." : parentId === null ? "Comentar" : "Responder"}
         </button>
