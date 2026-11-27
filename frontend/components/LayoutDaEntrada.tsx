@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CapaDaEntrada, useAbrirCapa } from "@/components/CapaDoLivro";
 import { Vitrine } from "@/components/LayoutDaEntradaVitrine";
 import { buscarEu, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
@@ -166,7 +167,7 @@ function FormularioDeEntrada({ destino, focarAoAbrir }: Required<Props>) {
         </label>
 
         <div id="erro-login" aria-live="polite">
-          {erro && <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+          {erro && <AvisoDeErro>{erro}</AvisoDeErro>}
         </div>
 
         <button

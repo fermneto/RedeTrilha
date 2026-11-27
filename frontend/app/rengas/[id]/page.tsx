@@ -19,6 +19,7 @@ import { useEffect, useId, useMemo, useState } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
 import { AutoresDaRenga, ListaDeAutores } from "@/components/AutoresDaRenga";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
@@ -145,7 +146,7 @@ export default function RengaPage() {
       </div>,
     );
   if (erro)
-    return umaFolha(erro, <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>);
+    return umaFolha(erro, <AvisoDeErro className="m-4">{erro}</AvisoDeErro>);
   if (!renga) return umaFolha("carregando a renga", <EsqueletoDaPaginaDaRenga />);
 
   // Como o poema: na página dupla, a renga na esquerda e, na direita, as ações,

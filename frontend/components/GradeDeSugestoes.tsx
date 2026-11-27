@@ -10,6 +10,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import { EsqueletoDeCartoes } from "@/components/Esqueleto";
 import {
@@ -132,7 +133,7 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
       </ul>
 
       {erro && (
-        <div role="alert" className="mt-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <AvisoDeErro className="mt-4" role="alert" como="div">
           <p>{erro}</p>
           <button
             type="button"
@@ -141,7 +142,7 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
           >
             tentar de novo
           </button>
-        </div>
+        </AvisoDeErro>
       )}
       {carregando && (
         <div className={contas.length > 0 ? "mt-3" : ""}>

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CapaDaEntrada, useAbrirCapa } from "@/components/CapaDoLivro";
 import {
   buscarEu,
@@ -246,7 +247,7 @@ export default function CadastroPage() {
               foco vai para o primeiro campo com erro, que o leitor de tela lê junto. */}
           <div aria-live="polite">
             {erroGeral && (
-              <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
+              <AvisoDeErro>{erroGeral}</AvisoDeErro>
             )}
           </div>
 

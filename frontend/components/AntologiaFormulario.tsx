@@ -4,6 +4,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import {
   ANTOLOGIA_DESCRICAO_MAX,
   ANTOLOGIA_NOME_MAX,
@@ -121,9 +122,9 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
       </div>
 
       {erro && (
-        <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <AvisoDeErro role="alert">
           {erro}
-        </p>
+        </AvisoDeErro>
       )}
 
       <div className="flex flex-wrap gap-2">

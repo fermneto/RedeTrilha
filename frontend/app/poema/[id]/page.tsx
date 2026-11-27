@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { ApagarPoema } from "@/components/ApagarPoema";
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas } from "@/components/CadernoFolhas";
 import { poemaDe, rotuloDoPoema, VersoDoPoema } from "@/components/CadernoPoema";
@@ -85,7 +86,7 @@ export default function PoemaPage() {
                 {topo}
                 <div className={MARGEM_DO_POEMA}>
                   {erro ? (
-                    <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+                    <AvisoDeErro>{erro}</AvisoDeErro>
                   ) : (
                     <EsqueletoDaPaginaDoPoema />
                   )}

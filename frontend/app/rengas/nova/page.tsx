@@ -8,6 +8,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
@@ -204,9 +205,9 @@ export default function NovaRengaPage() {
         </div>
 
         {erro && (
-          <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+          <AvisoDeErro role="alert">
             {erro}
-          </p>
+          </AvisoDeErro>
         )}
 
         <button

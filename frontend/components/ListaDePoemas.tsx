@@ -6,6 +6,7 @@
 
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EsqueletoDaLista } from "@/components/Esqueleto";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
@@ -83,12 +84,12 @@ export function ListaDePoemas({ buscar, vazio, textoDoFim, intercalar }: Props) 
       </ul>
 
       {erro && (
-        <div className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <AvisoDeErro className="m-4" como="div">
           <p>{erro}</p>
           <button type="button" onClick={() => setErro(null)} className="mt-1 cursor-pointer underline">
             tentar de novo
           </button>
-        </div>
+        </AvisoDeErro>
       )}
 
       {fim && poemas.length === 0 && vazio}

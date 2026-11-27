@@ -18,6 +18,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { ReverAsDicas } from "@/components/DicasDoLivro";
 import { EscolhaComBusca } from "@/components/EscolhaComBusca";
 import { EscolhaDoTema } from "@/components/EscolhaDoTema";
@@ -211,9 +212,9 @@ function BoasVindas() {
         {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
 
         {erro && (
-          <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">
+          <AvisoDeErro className="mt-8" role="alert">
             {erro}
-          </p>
+          </AvisoDeErro>
         )}
       </Moldura>
       {!telaCheia && (

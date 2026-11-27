@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
 import { EsqueletoDeRascunhos } from "@/components/Esqueleto";
 import { IconeCitar } from "@/components/icones/IconeCitar";
@@ -69,7 +70,7 @@ export function ListaDeRascunhos() {
       <p className="linha-da-folha border-b border-borda py-3 text-sm text-tinta-suave">
         Poemas guardados e ainda não publicados. Só você vê.
       </p>
-      {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro className="m-4">{erro}</AvisoDeErro>}
       {rascunhos === null && !erro && <EsqueletoDeRascunhos quantos={3} />}
       {rascunhos?.length === 0 && <GavetaVazia />}
       {rascunhos && rascunhos.length > 0 && (

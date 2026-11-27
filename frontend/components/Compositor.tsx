@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { IconePena } from "@/components/icones/IconePena";
@@ -295,7 +296,7 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
         </p>
       )}
 
-      {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro cantos="pequenos">{erro}</AvisoDeErro>}
 
       <button
         type="submit"

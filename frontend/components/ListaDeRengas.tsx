@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { AutoresDaRenga } from "@/components/AutoresDaRenga";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { EsqueletoDeRengas } from "@/components/Esqueleto";
 import { Paginacao } from "@/components/Paginacao";
@@ -112,7 +113,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
         </nav>
       </div>
 
-      {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro className="m-4">{erro}</AvisoDeErro>}
       {!erro && !resultado && <EsqueletoDeRengas quantos={6} />}
       {resultado && resultado.items.length === 0 && (
         <div className="px-4 py-10 text-center">
