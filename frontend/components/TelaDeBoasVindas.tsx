@@ -28,7 +28,9 @@ export function TelaDeBoasVindas({ passo = 1, total = 1, largura = "estreita", a
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="relative border-b border-borda">
-        <div className={`${coluna} flex h-14 items-center justify-between gap-4`}>
+        {/* O nome e o "passo 2 de 3" na mesma linha de base; o pt-3.5 centra o
+            nome (28 px) na faixa de 56 px, onde ele já ficava. */}
+        <div className={`${coluna} flex h-14 items-baseline justify-between gap-4 pt-3.5`}>
           <Link
             href="/"
             aria-label="Verso, início"
