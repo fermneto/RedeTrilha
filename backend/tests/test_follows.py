@@ -40,6 +40,28 @@ def test_listas_paginadas_mais_recente_primeiro(client, como):
     assert [u["username"] for u in r.json()["items"]] == ["bia"]
 
 
+def test_seguir_na_corrida_e_idempotente(client, como, monkeypatch):
+    """Outra requisição grava o mesmo follow entre o SELECT e o commit: a
+    constraint única barra, e a que perde vale como já seguindo (não 500)."""
+    from app.db import SessionLocal
+    from app.models.follow import Follow
+    from app.services import follows
+    from app.services.users import buscar_por_username
+
+    original = follows.avisos.avisar
+
+    def avisar_e_concorrer(db, ator, *args, **kwargs):
+        with SessionLocal() as outra:
+            bia = buscar_por_username(outra, "bia")
+            outra.add(Follow(seguidor_id=ator.id, seguido_id=bia.id))
+            outra.commit()
+        return original(db, ator, *args, **kwargs)
+
+    monkeypatch.setattr(follows.avisos, "avisar", avisar_e_concorrer)
+    assert client.post("/usuarios/bia/follow", headers=como("ana")).status_code == 204
+    assert _contagens("bia") == (1, 0)
+
+
 def test_seguir_a_si_mesmo_e_inexistente(client, como):
     assert client.post("/usuarios/ana/follow", headers=como("ana")).status_code == 422
     assert client.post("/usuarios/ninguem/follow", headers=como("ana")).status_code == 404
