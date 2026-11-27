@@ -4,7 +4,11 @@ As chaves são INTEGER (int4) no Postgres: um id acima de 2**31 - 1 estourava l�
 (e acima de 2**63 - 1 também no SQLite) e respondia 500.
 """
 
+import base64
+
 import pytest
+
+from app.core.vistos import codificar as codificar_vistos
 
 FORA_DO_INT4 = 2**31
 FORA_DO_INT8 = 2**63
@@ -89,6 +93,36 @@ def test_ids_do_corpo_presos_a_um_poema_dao_422(client, como):
     assert r.status_code == 422
     r = client.post(f"/mensagens/conversas/{conversa}/lida", json={"ate": FORA_DO_INT8}, headers=ana)
     assert r.status_code == 422
+
+
+def _cursor(bruto: str) -> str:
+    return base64.urlsafe_b64encode(bruto.encode()).decode()
+
+
+@pytest.mark.parametrize(
+    "rota, bruto",
+    [
+        ("/posts/{pid}/comentarios", f"2026-01-01T00:00:00|{FORA_DO_INT4}"),
+        ("/posts/{pid}/comentarios", f"2026-01-01T00:00:00|{FORA_DO_INT8}"),
+        ("/posts/{pid}/comentarios", "0001-01-01T00:00:00+03:00|1"),
+        ("/avisos", f"2026-01-01T00:00:00|{FORA_DO_INT8}"),
+        ("/feed", "9999-12-31T23:59:59-03:00|1|"),
+        ("/feed", "0001-01-01T00:00:00+03:00|1|"),
+        ("/feed", f"mais|0|0|0|0|0|2026-01-01T00:00:00|{FORA_DO_INT8}|"),
+        ("/feed", f"mais|0|0|0|0|0|2026-01-01T00:00:00|{FORA_DO_INT4}|"),
+        ("/feed", f"2026-01-01T00:00:00|1|{codificar_vistos({('poema', FORA_DO_INT8)})}"),
+        ("/feed/para-voce", f"pv|2026-01-01T00:00:00|1|{codificar_vistos({('poema', FORA_DO_INT4)})}"),
+        ("/mensagens/conversas", str(FORA_DO_INT8)),
+    ],
+)
+def test_cursor_fora_do_banco_e_cursor_invalido(client, como, rota, bruto):
+    """O cursor é opaco, mas vem do cliente: um id ou uma data que o banco não
+    aceita dá o 422 "cursor inválido" de sempre, não 500."""
+    pid = _poema(client, como)
+    cursor = bruto if rota.startswith("/mensagens") else _cursor(bruto)
+    r = client.get(rota.format(pid=pid), params={"cursor": cursor}, headers=como("ana"))
+    assert r.status_code == 422, r.text
+    assert r.json()["detail"] == "cursor inválido"
 
 
 def test_id_no_teto_do_int4_continua_404(client, como):

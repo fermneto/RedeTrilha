@@ -31,6 +31,7 @@ from app.core.caixa_de_entrada import (
     avancar_leitura,
     situacao_de_quem_recebe,
 )
+from app.core.limites import INT4_MAX
 from app.models.conversa import Conversa, ParticipanteConversa
 from app.models.mensagem import Mensagem
 from app.models.mensagem_renga import MensagemRenga
@@ -430,6 +431,7 @@ def _rengas_das_mensagens(db: Session, eu: User, mensagem_ids: list[int]) -> dic
 
 
 def _ler_cursor(cursor: str) -> int:
-    if not cursor.isascii() or not cursor.isdigit():
+    """O id da última mensagem da página; fora do int4 das chaves, cursor inválido."""
+    if not cursor.isascii() or not cursor.isdigit() or int(cursor) > INT4_MAX:
         raise HTTPException(status_code=422, detail="cursor inválido")
     return int(cursor)
