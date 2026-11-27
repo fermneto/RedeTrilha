@@ -28,13 +28,7 @@ def curtir(db: Session, usuario: User, renga_id: int) -> None:
     )
     if ja_curtiu is None:
         db.add(CurtidaRenga(user_id=usuario.id, renga_id=renga.id))
-        avisos.avisar(
-            db,
-            usuario,
-            [(autor, "curtida") for autor in rengas.ids_dos_autores(db, renga.id)],
-            dono_id=renga.criador_id,
-            renga_id=renga.id,
-        )
+        rengas.avisar_autores(db, usuario, renga, "curtida")
         try:
             db.commit()
         except IntegrityError:

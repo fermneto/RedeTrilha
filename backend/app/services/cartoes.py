@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from app.core.marcas import texto_sem_marcas
 from app.models.antologia import Antologia, AntologiaPoema, AntologiaRenga
 from app.models.post import Post
-from app.models.renga import EstrofeRenga, Renga
+from app.models.renga import Renga
 from app.models.user import User
 from app.schemas.cartao import (
     AutorDoCartao,
@@ -84,13 +84,7 @@ def usuario(db: Session, username: str) -> CartaoUsuario:
 def renga(db: Session, renga_id: int) -> CartaoRenga:
     """Aberta ou de convidados: o modo diz quem escreve, não quem lê."""
     achada = rengas_service.buscar(db, renga_id)
-    estrofes = list(
-        db.scalars(
-            select(EstrofeRenga)
-            .where(EstrofeRenga.renga_id == renga_id)
-            .order_by(EstrofeRenga.posicao)
-        )
-    )
+    estrofes = rengas_service.estrofes(db, renga_id)
     autores: dict[int, User] = {}
     for estrofe in estrofes:
         autores.setdefault(estrofe.autor_id, estrofe.autor)

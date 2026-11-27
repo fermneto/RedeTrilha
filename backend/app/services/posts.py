@@ -240,14 +240,7 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     if renga is not None:
         # A renga é de todos: a citação avisa cada autor, como a curtida e o repost dela.
         db.add(CitacaoRenga(post_id=post.id, renga_id=renga.id))
-        avisos.avisar(
-            db,
-            autor,
-            [(pessoa, "citacao") for pessoa in rengas.ids_dos_autores(db, renga.id)],
-            dono_id=renga.criador_id,
-            post_id=post.id,
-            renga_id=renga.id,
-        )
+        rengas.avisar_autores(db, autor, renga, "citacao", post_id=post.id)
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
     indice_tags.indexar(db, post)
     db.commit()

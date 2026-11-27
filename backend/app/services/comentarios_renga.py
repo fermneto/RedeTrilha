@@ -22,7 +22,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.sql import ColumnElement
 
 from app.models.comentario_renga import ComentarioRenga
-from app.models.renga import EstrofeRenga, Renga
+from app.models.renga import Renga
 from app.models.user import User
 from app.schemas.comentario import (
     AncoraOut,
@@ -37,7 +37,6 @@ from app.core.avisos import estrofes_tocadas
 from app.services import ancoras, avisos, bloqueios
 from app.services import arvore_de_comentarios as arvore
 from app.services import rengas
-from app.services.rengas import texto_de
 
 NAO_ENCONTRADA = "renga não encontrada"
 
@@ -49,7 +48,7 @@ def comentar(
     dá 404; âncora inválida (ou em resposta) dá 422."""
     renga = rengas.buscar(db, renga_id)
     bloqueios.garantir_interacao(db, autor.id, renga.criador_id, NAO_ENCONTRADA)
-    texto = _texto(db, renga.id) if dados.ancora is not None else None
+    texto = rengas.texto(db, renga.id) if dados.ancora is not None else None
     if dados.ancora is not None:
         ancoras.validar(texto, dados.parent_id, dados.ancora, alvo="texto da renga")
     pai = None
@@ -155,17 +154,11 @@ def _donos(
     estrofes que os versos tocam; na resposta, só o criador."""
     if pai is not None:
         return [renga.criador_id]
-    estrofes = list(
-        db.execute(
-            select(EstrofeRenga.texto, EstrofeRenga.autor_id)
-            .where(EstrofeRenga.renga_id == renga.id)
-            .order_by(EstrofeRenga.posicao)
-        )
-    )
+    estrofes = rengas.estrofes(db, renga.id)
     if dados.ancora is None:
-        return [renga.criador_id, *(autor for _, autor in estrofes)]
+        return [renga.criador_id, *(e.autor_id for e in estrofes)]
     tocadas = estrofes_tocadas(
-        [texto for texto, _ in estrofes], dados.ancora.verso_inicio, dados.ancora.verso_fim
+        [e.texto for e in estrofes], dados.ancora.verso_inicio, dados.ancora.verso_fim
     )
     return [renga.criador_id, *(estrofes[i].autor_id for i in tocadas)]
 
@@ -184,18 +177,6 @@ def _buscar(db: Session, renga_id: int, comentario_id: int) -> ComentarioRenga:
     return comentario
 
 
-def _texto(db: Session, renga_id: int) -> str:
-    return texto_de(
-        list(
-            db.scalars(
-                select(EstrofeRenga.texto)
-                .where(EstrofeRenga.renga_id == renga_id)
-                .order_by(EstrofeRenga.posicao)
-            )
-        )
-    )
-
-
 def _pagina(
     db: Session,
     renga_id: int,
@@ -210,7 +191,7 @@ def _pagina(
         if not com_ancora:
             return {}
         # O texto só é lido quando a página tem crítica ancorada.
-        texto = _texto(db, renga_id)
+        texto = rengas.texto(db, renga_id)
         return {c.id: ancoras.saida(c.verso_inicio, c.verso_fim, texto) for c in com_ancora}
 
     return arvore.pagina(
