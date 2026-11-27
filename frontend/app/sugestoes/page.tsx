@@ -19,7 +19,7 @@ export default function SugestoesPage() {
     <div>
       <title>Quem seguir · Verso</title>
       <CabecalhoPagina titulo="Quem seguir" />
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-borda px-4 py-3">
+      <div className="linha-da-folha flex flex-wrap items-center justify-between gap-3 border-b border-borda py-3">
         <p className="text-sm text-tinta-suave">
           Siga poetas para ver os poemas deles na aba Seguindo.{" "}
           <Link href={caminhoDosGostos("/sugestoes")} className="underline">

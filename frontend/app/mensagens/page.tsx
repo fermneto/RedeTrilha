@@ -125,7 +125,7 @@ function ListaDaCaixa({
   return (
     <>
       {aba === "pedidos" && (
-        <p className="border-b border-borda px-4 py-3 text-sm text-tinta-suave">
+        <p className="linha-da-folha border-b border-borda py-3 text-sm text-tinta-suave">
           Mensagens de quem você não segue. Quem mandou só fica sabendo que você leu se você aceitar.
         </p>
       )}
@@ -168,7 +168,7 @@ function LinhaDaConversa({ conversa, euId }: { conversa: ConversaNaCaixa; euId: 
   return (
     <Link
       href={`/mensagens/${conversa.id}`}
-      className="realce flex gap-3 border-b border-borda px-4 py-3 focus-visible:outline-offset-[-2px]"
+      className="realce linha-da-folha flex gap-3 border-b border-borda py-3 focus-visible:outline-offset-[-2px]"
     >
       <Avatar usuario={conversa.outro} />
       <span className="min-w-0 flex-1">

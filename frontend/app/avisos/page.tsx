@@ -144,7 +144,7 @@ function LinhaDoAviso({ aviso, novo }: { aviso: Aviso; novo: boolean }) {
   return (
     <Link
       href={linkDoAviso(aviso)}
-      className={`realce flex gap-3 border-b border-borda px-4 py-3 focus-visible:outline-offset-[-2px] ${
+      className={`realce linha-da-folha flex gap-3 border-b border-borda py-3 focus-visible:outline-offset-[-2px] ${
         novo ? "bg-painel" : ""
       }`}
     >

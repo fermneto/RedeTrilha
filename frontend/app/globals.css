@@ -126,6 +126,30 @@
   }
 }
 
+/* As divisórias das listas vão de ponta a ponta da folha, como as barras
+   presas; o texto continua na --margem-da-folha. As três desfazem o recuo da
+   folha (o padding de quem as contém):
+   - linha-da-folha: uma linha com borda e o próprio texto (no lugar do px-4);
+   - faixa-da-folha: um bloco com borda cujos filhos trazem o px-4;
+   - lista-da-folha: uma lista (divide-y) cujos itens trazem o px-4. */
+@utility linha-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+  padding-inline: var(--margem-da-folha);
+}
+
+@utility faixa-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+  padding-inline: var(--recuo-da-folha);
+}
+
+@utility lista-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+
+  & > * {
+    padding-inline: var(--recuo-da-folha);
+  }
+}
+
 @layer components {
   /* Superfície de hover dos itens clicáveis (menu, ações, linhas da coluna direita). */
   .realce {

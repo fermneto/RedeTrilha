@@ -132,7 +132,7 @@ function Explorar() {
     <>
       {/* Com uma tag escolhida, a tela vira o resultado dela, como a busca do X. */}
       {tag ? (
-        <div className="flex items-center justify-between gap-3 border-b border-borda px-4 py-3">
+        <div className="linha-da-folha flex items-center justify-between gap-3 border-b border-borda py-3">
           <h2 className="min-w-0 text-xl font-bold break-words">{hashtag(tag)}</h2>
           {limpar}
         </div>
@@ -142,12 +142,12 @@ function Explorar() {
 
       {/* O resto da página Descobrir, quando ela some (na página única). */}
       {logado && !tag && (
-        <div className="space-y-3 border-b border-borda px-4 py-4 empty:hidden lg:hidden">
+        <div className="linha-da-folha space-y-3 border-b border-borda py-4 empty:hidden lg:hidden">
           <DescobrirNoTopo />
         </div>
       )}
 
-      <section aria-labelledby={idDasFormas} className="border-b border-borda py-3">
+      <section aria-labelledby={idDasFormas} className="faixa-da-folha border-b border-borda py-3">
         <div className="flex items-center justify-between gap-3 px-4">
           <h2 id={idDasFormas} className="text-xl font-bold">
             {tag ? "Por forma" : "Poemas recentes"}
@@ -236,7 +236,7 @@ function Explorar() {
 function AntologiasDoExplorar() {
   return (
     <div>
-      <p className="border-b border-borda px-4 py-4 text-sm text-tinta-suave">
+      <p className="linha-da-folha border-b border-borda py-4 text-sm text-tinta-suave">
         Coleções de poemas reunidas por quem lê, como uma antologia de verdade.
       </p>
       <AntologiaLista
@@ -267,7 +267,7 @@ function EmAltaDoExplorar() {
   const tags = useEmAlta(TAGS_EM_ALTA);
   if (tags?.length === 0) return null;
   return (
-    <section aria-labelledby="em-alta" className="border-b border-borda pt-3 pb-1">
+    <section aria-labelledby="em-alta" className="faixa-da-folha border-b border-borda pt-3 pb-1">
       <h2 id="em-alta" className="px-4 text-xl font-bold">
         Em alta
       </h2>

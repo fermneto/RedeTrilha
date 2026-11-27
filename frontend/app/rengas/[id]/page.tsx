@@ -291,7 +291,7 @@ function PaginaDaRenga({
         )}
       </header>
 
-      <article aria-labelledby="titulo-da-renga" className="border-b border-borda px-4 pt-2 pb-6">
+      <article aria-labelledby="titulo-da-renga" className="linha-da-folha border-b border-borda pt-2 pb-6">
         {/* As estrofes leem como um poema só, numeradas verso a verso (a linha em
             branco entre elas conta); o autor de cada uma fica logo abaixo dela, discreto. */}
         <div className="mt-5">
@@ -339,7 +339,7 @@ function PaginaDaRenga({
       </article>
 
       {!renga.fechada && (
-        <section aria-labelledby="titulo-proxima-estrofe" className="border-b border-borda px-4 py-5">
+        <section aria-labelledby="titulo-proxima-estrofe" className="linha-da-folha border-b border-borda py-5">
           <h2 id="titulo-proxima-estrofe" className="text-sm font-semibold tracking-normal">
             Próxima estrofe
             <span className="font-normal text-tinta-suave tabular-nums">
@@ -356,7 +356,7 @@ function PaginaDaRenga({
       )}
 
       {souCriador && !renga.fechada && (
-        <section aria-label="ações de quem criou" className="space-y-5 border-b border-borda px-4 py-5">
+        <section aria-label="ações de quem criou" className="linha-da-folha space-y-5 border-b border-borda py-5">
           {renga.modo === "convidados" && <Convidar rengaId={renga.id} aoConvidar={aoMudar} />}
           <Encerrar rengaId={renga.id} aoEncerrar={aoMudar} />
         </section>

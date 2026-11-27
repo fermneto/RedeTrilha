@@ -147,7 +147,7 @@ export function Acervo() {
   // direita passaria da tela e daria rolagem horizontal no celular.
   return (
     <div className="overflow-x-clip">
-      <div className="space-y-4 border-b border-borda px-4 py-4">
+      <div className="linha-da-folha space-y-4 border-b border-borda py-4">
         <p className="text-sm text-tinta-suave">Todos os poetas do acervo, os consagrados e os do Verso.</p>
         <div>
           <p id={idTipo} className="text-sm">

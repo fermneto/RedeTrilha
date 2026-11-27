@@ -43,7 +43,7 @@ export function Abas<V extends string>({
         role="tablist"
         aria-label={rotulo}
         onKeyDown={aoTeclar}
-        className="flex border-b border-borda"
+        className="faixa-da-folha flex border-b border-borda"
       >
         {abas.map(({ valor, rotulo }) => {
           const ativa = valor === atual;
