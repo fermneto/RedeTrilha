@@ -392,6 +392,57 @@ def test_marcando_repost_puro_conta_como_o_original(client, ana, bia):
     assert r.json()["items"][0]["contem"] is True
 
 
+def test_adicionar_e_tirar_repost_puro_age_no_original(client, ana, bia):
+    """Como curtir e comentar: o repost puro vai para a antologia como o original."""
+    from app.db import SessionLocal
+    from app.models.post import Post
+
+    original = _poema(client, bia)
+    assert client.post(f"/posts/{original}/repostar", headers=ana).status_code == 204
+    with SessionLocal() as db:
+        repost_id = db.scalar(select(Post.id).where(Post.repost_de_id == original))
+    antologia_id = _antologia(client, ana)
+    client.post(f"/antologias/{antologia_id}/poemas", json={"post_id": repost_id}, headers=ana)
+
+    det = client.get(f"/antologias/{antologia_id}", headers=ana).json()
+    assert [p["id"] for p in det["poemas"]] == [original]
+    assert client.get(f"/antologias?post_id={original}", headers=ana).json()["items"][0]["contem"] is True
+
+    r = client.delete(f"/antologias/{antologia_id}/poemas/{repost_id}", headers=ana)
+    assert r.status_code == 204
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).json()["poemas"] == []
+
+
+@pytest.mark.parametrize("lista", ["poemas", "rengas"])
+def test_adicionar_na_corrida_e_idempotente(client, como, monkeypatch, lista):
+    """Outra requisição grava o mesmo vínculo entre o SELECT e o commit: a
+    constraint única barra, e a que perde vale como já adicionado (não 500)."""
+    from app.db import SessionLocal
+    from app.models.antologia import AntologiaPoema, AntologiaRenga
+    from app.services import antologias
+
+    if lista == "poemas":
+        alvo, corpo = _poema(client, como("bia")), "post_id"
+        vinculo = lambda a: AntologiaPoema(antologia_id=a, post_id=alvo, posicao=1)  # noqa: E731
+    else:
+        alvo, corpo = _renga_de(client, como, "bia"), "renga_id"
+        vinculo = lambda a: AntologiaRenga(antologia_id=a, renga_id=alvo, posicao=1)  # noqa: E731
+    antologia_id = _antologia(client, como("ana"))
+    original = antologias._proxima_posicao
+
+    def concorrer(db, antologia_id):
+        with SessionLocal() as outra:
+            outra.add(vinculo(antologia_id))
+            outra.commit()
+        return original(db, antologia_id)
+
+    monkeypatch.setattr(antologias, "_proxima_posicao", concorrer)
+    r = client.post(f"/antologias/{antologia_id}/{lista}", json={corpo: alvo}, headers=como("ana"))
+
+    assert r.status_code == 204
+    assert client.get(f"/antologias/{antologia_id}", headers=como("ana")).json()["qtd"] == 1
+
+
 def test_marcando_post_inexistente_da_404(client, ana):
     _antologia(client, ana)
     assert client.get("/antologias?post_id=999", headers=ana).status_code == 404
@@ -458,3 +509,54 @@ def test_publicas_sem_as_de_quem_tem_bloqueio(client, ana, bia):
 
 def test_publicas_exige_login(client):
     assert client.get("/antologias/publicas").status_code == 401
+
+
+def _renga_de(client, como, quem: str) -> int:
+    corpo = {"titulo": "Renga do RU", "primeira_estrofe": "fila do RU\n  às onze"}
+    r = client.post("/rengas", json=corpo, headers=como(quem))
+    assert r.status_code == 201, r.text
+    return r.json()["id"]
+
+
+def test_antologia_de_quem_me_bloqueou_da_404_pelo_id(client, como):
+    poema = _poema(client, como("bia"))
+    mar = _antologia(client, como("bia"), "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": poema}, headers=como("bia"))
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    r = client.get(f"/antologias/{mar}", headers=como("caio"))
+    assert r.status_code == 404
+    assert r.json()["detail"] == "antologia não encontrada"
+    assert client.get(f"/antologias/{mar}", headers=como("ana")).status_code == 200
+
+
+def test_antologia_de_terceiro_sem_o_que_e_de_quem_me_bloqueou(client, como):
+    da_bia = _poema(client, como("bia"))
+    da_ana = _poema(client, como("ana"), "sol\n\nno muro")
+    renga_da_bia = _renga_de(client, como, "bia")
+    mar = _antologia(client, como("ana"), "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": da_bia}, headers=como("ana"))
+    client.post(f"/antologias/{mar}/rengas", json={"renga_id": renga_da_bia}, headers=como("ana"))
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": da_ana}, headers=como("ana"))
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    det = client.get(f"/antologias/{mar}", headers=como("caio")).json()
+    assert [p["id"] for p in det["poemas"]] == [da_ana]
+    assert det["rengas"] == []
+    assert det["ordem"] == [{"tipo": "poema", "id": da_ana}]
+    assert det["qtd"] == 1
+    assert len(client.get(f"/antologias/{mar}", headers=como("ana")).json()["ordem"]) == 3
+
+
+def test_nao_guarda_o_poema_nem_a_renga_de_quem_tem_bloqueio(client, como):
+    da_bia = _poema(client, como("bia"))
+    renga_da_bia = _renga_de(client, como, "bia")
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+    assert client.post("/usuarios/bia/bloqueio", headers=como("ana")).status_code == 204
+    for quem, status in (("caio", 404), ("ana", 403)):
+        minha = _antologia(client, como(quem))
+        r = client.post(f"/antologias/{minha}/poemas", json={"post_id": da_bia}, headers=como(quem))
+        assert r.status_code == status
+        r = client.post(f"/antologias/{minha}/rengas", json={"renga_id": renga_da_bia}, headers=como(quem))
+        assert r.status_code == status
+        assert client.get(f"/antologias/{minha}", headers=como(quem)).json()["qtd"] == 0

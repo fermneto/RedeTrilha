@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import Limite, Offset, get_current_user
+from app.deps import Id, Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.renga import (
     ConvitesCreate,
@@ -41,7 +41,7 @@ def listar_rengas(
 
 @router.get("/rengas/{renga_id}", response_model=RengaDetalhe)
 def ler_renga(
-    renga_id: int,
+    renga_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -50,7 +50,7 @@ def ler_renga(
 
 @router.post("/rengas/{renga_id}/estrofes", response_model=RengaDetalhe, status_code=201)
 def acrescentar_estrofe(
-    renga_id: int,
+    renga_id: Id,
     dados: EstrofeCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -60,7 +60,7 @@ def acrescentar_estrofe(
 
 @router.post("/rengas/{renga_id}/encerrar", response_model=RengaDetalhe)
 def encerrar_renga(
-    renga_id: int,
+    renga_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -69,7 +69,7 @@ def encerrar_renga(
 
 @router.post("/rengas/{renga_id}/convites", response_model=RengaDetalhe)
 def convidar_para_renga(
-    renga_id: int,
+    renga_id: Id,
     dados: ConvitesCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),

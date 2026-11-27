@@ -5,8 +5,9 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 
 from app import tempo_real
+from app.core.limites import INT4_MAX
 from app.db import get_db
-from app.deps import Limite, get_current_user, id_de_quem_abre_o_stream
+from app.deps import Id, Limite, get_current_user, id_de_quem_abre_o_stream
 from app.models.user import User
 from app.schemas.mensagem import (
     Aba,
@@ -23,7 +24,7 @@ from app.services import mensagens as service
 
 router = APIRouter(prefix="/mensagens", tags=["mensagens"])
 
-IdDeMensagem = Annotated[int | None, Query(ge=0)]
+IdDeMensagem = Annotated[int | None, Query(ge=0, le=INT4_MAX)]
 
 
 @router.get("/stream")
@@ -66,7 +67,7 @@ def abrir_conversa(
 
 @router.get("/conversas/{conversa_id}", response_model=ConversaDetalhe)
 def ler_conversa(
-    conversa_id: int,
+    conversa_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -75,7 +76,7 @@ def ler_conversa(
 
 @router.get("/conversas/{conversa_id}/mensagens", response_model=MensagemPage)
 def listar_mensagens(
-    conversa_id: int,
+    conversa_id: Id,
     antes: IdDeMensagem = None,
     depois: IdDeMensagem = None,
     limit: Limite = 30,
@@ -87,7 +88,7 @@ def listar_mensagens(
 
 @router.post("/conversas/{conversa_id}/mensagens", response_model=MensagemOut, status_code=201)
 def enviar(
-    conversa_id: int,
+    conversa_id: Id,
     dados: MensagemCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -97,7 +98,7 @@ def enviar(
 
 @router.post("/conversas/{conversa_id}/lida", status_code=204)
 def marcar_lida(
-    conversa_id: int,
+    conversa_id: Id,
     dados: LeituraIn,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -106,22 +107,22 @@ def marcar_lida(
 
 
 @router.post("/conversas/{conversa_id}/aceitar", status_code=204)
-def aceitar(conversa_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def aceitar(conversa_id: Id, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     service.aceitar(db, user, conversa_id)
 
 
 @router.post("/conversas/{conversa_id}/recusar", status_code=204)
-def recusar(conversa_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def recusar(conversa_id: Id, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     service.recusar(db, user, conversa_id)
 
 
 @router.post("/conversas/{conversa_id}/silenciar", status_code=204)
-def silenciar(conversa_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def silenciar(conversa_id: Id, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     service.silenciar(db, user, conversa_id, True)
 
 
 @router.delete("/conversas/{conversa_id}/silenciar", status_code=204)
 def tirar_do_silencio(
-    conversa_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)
+    conversa_id: Id, user: User = Depends(get_current_user), db: Session = Depends(get_db)
 ):
     service.silenciar(db, user, conversa_id, False)

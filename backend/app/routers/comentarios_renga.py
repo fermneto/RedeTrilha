@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import Limite, get_current_user
+from app.deps import Id, Limite, Verso, get_current_user
 from app.models.user import User
 from app.schemas.comentario import (
     ComentarioApagadoOut,
@@ -20,7 +20,7 @@ router = APIRouter(tags=["comentarios"])
     "/rengas/{renga_id}/comentarios", response_model=ComentarioRengaOut, status_code=201
 )
 def comentar_renga(
-    renga_id: int,
+    renga_id: Id,
     dados: ComentarioCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -30,10 +30,10 @@ def comentar_renga(
 
 @router.get("/rengas/{renga_id}/comentarios", response_model=ComentarioRengaPage)
 def listar_comentarios_da_renga(
-    renga_id: int,
+    renga_id: Id,
     limit: Limite = 20,
     cursor: str | None = None,
-    verso: int | None = None,
+    verso: Verso = None,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -42,7 +42,7 @@ def listar_comentarios_da_renga(
 
 @router.get("/rengas/{renga_id}/comentarios/versos", response_model=VersosComentadosOut)
 def versos_comentados_da_renga(
-    renga_id: int,
+    renga_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -54,8 +54,8 @@ def versos_comentados_da_renga(
     response_model=ComentarioRengaPage,
 )
 def listar_respostas_na_renga(
-    renga_id: int,
-    comentario_id: int,
+    renga_id: Id,
+    comentario_id: Id,
     limit: Limite = 20,
     cursor: str | None = None,
     user: User = Depends(get_current_user),
@@ -68,8 +68,8 @@ def listar_respostas_na_renga(
     "/rengas/{renga_id}/comentarios/{comentario_id}", response_model=ComentarioApagadoOut
 )
 def apagar_comentario_da_renga(
-    renga_id: int,
-    comentario_id: int,
+    renga_id: Id,
+    comentario_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):

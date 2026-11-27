@@ -31,6 +31,7 @@ from app.core.caixa_de_entrada import (
     avancar_leitura,
     situacao_de_quem_recebe,
 )
+from app.core.limites import INT4_MAX
 from app.models.conversa import Conversa, ParticipanteConversa
 from app.models.mensagem import Mensagem
 from app.models.mensagem_renga import MensagemRenga
@@ -382,11 +383,21 @@ def _enviadas_no_ultimo_minuto(db: Session, autor_id: int) -> int:
 
 
 def _saidas(db: Session, eu: User, lista: list[Mensagem]) -> list[MensagemOut]:
-    """MensagemOut de uma lista, com os poemas e as rengas compartilhados em lote."""
+    """MensagemOut de uma lista, com os poemas e as rengas compartilhados em lote.
+
+    O poema (ou a renga) de quem bloqueou quem lê vem `null`, como no GET de cada
+    um (404): a mensagem chega só com o texto."""
     ids = {m.post_id for m in lista if m.post_id is not None}
-    poemas = list(db.scalars(select(Post).where(Post.id.in_(ids)))) if ids else []
+    ocultos = bloqueios.quem_bloqueou(db, eu.id) if lista else set()
+    poemas = (
+        list(db.scalars(select(Post).where(Post.id.in_(ids), Post.autor_id.not_in(ocultos)))) if ids else []
+    )
     saidas = {p.id: p for p in posts_service.para_saidas(db, poemas, eu)}
-    rengas = _rengas_das_mensagens(db, eu, [m.id for m in lista])
+    rengas = {
+        mensagem_id: renga
+        for mensagem_id, renga in _rengas_das_mensagens(db, eu, [m.id for m in lista]).items()
+        if renga.criador.id not in ocultos
+    }
     return [
         MensagemOut(
             id=m.id,
@@ -420,6 +431,7 @@ def _rengas_das_mensagens(db: Session, eu: User, mensagem_ids: list[int]) -> dic
 
 
 def _ler_cursor(cursor: str) -> int:
-    if not cursor.isascii() or not cursor.isdigit():
+    """O id da última mensagem da página; fora do int4 das chaves, cursor inválido."""
+    if not cursor.isascii() or not cursor.isdigit() or int(cursor) > INT4_MAX:
         raise HTTPException(status_code=422, detail="cursor inválido")
     return int(cursor)

@@ -2,12 +2,14 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from app.schemas.entrada import IdDeEntrada
+
 
 class ItemVisto(BaseModel):
     """Um poema ou uma renga que apareceu na tela, no feed."""
 
     tipo: Literal["poema", "renga"]
-    id: int = Field(gt=0)
+    id: IdDeEntrada
 
 
 class VistosIn(BaseModel):

@@ -7,9 +7,10 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from sqlalchemy import inspect, select, text
+from sqlalchemy.exc import DataError
 
 from app.db import POOL, Base, SessionLocal, engine
-from app.erros import erro_de_validacao
+from app.erros import dado_recusado_pelo_banco, erro_de_validacao
 from app.limite_do_banco import LimiteDeConexoes
 from app.models.user import User
 from app.observabilidade import erro_interno, iniciar_sentry
@@ -145,6 +146,8 @@ iniciar_sentry()
 app = FastAPI(title="Rede Social da Trilha", lifespan=lifespan)
 # 422 em português em toda a API (ver app/erros.py).
 app.add_exception_handler(RequestValidationError, erro_de_validacao)
+# 422 também para o valor que o banco recusa (rede de segurança, ver app/erros.py).
+app.add_exception_handler(DataError, dado_recusado_pelo_banco)
 # 500: uma linha JSON no log por erro não tratado (ver app/observabilidade.py).
 app.add_exception_handler(Exception, erro_interno)
 

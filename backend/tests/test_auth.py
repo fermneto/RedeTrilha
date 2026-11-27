@@ -112,6 +112,28 @@ def test_logout_exige_login(client):
     assert client.post("/auth/logout").status_code == 401
 
 
+def test_cadastro_na_corrida_da_409_e_nao_500(client, monkeypatch):
+    """Dois cadastros do mesmo username passam juntos pela checagem: o índice
+    único barra o segundo, que recebe o 409 de sempre."""
+    from app.db import SessionLocal
+    from app.models.user import User
+    from app.services import auth
+
+    original = auth.garantir_username_livre
+
+    def checar_e_concorrer(db, username):
+        original(db, username)
+        with SessionLocal() as outra:
+            outra.add(User(username=username, name="Outra"))
+            outra.commit()
+
+    monkeypatch.setattr(auth, "garantir_username_livre", checar_e_concorrer)
+    r = client.post("/auth/registro", json={"username": "ana", "name": "Ana", "password": SENHA})
+
+    assert r.status_code == 409
+    assert r.json()["detail"] == "username já existe"
+
+
 def test_senha_acima_de_72_caracteres_da_422(client):
     r = client.post(
         "/auth/registro", json={"username": "ana", "name": "Ana", "password": "a" * 73}

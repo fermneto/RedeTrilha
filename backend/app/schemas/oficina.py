@@ -5,10 +5,11 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.core.limites import OFICINA_MAX_CARACTERES
+from app.schemas.entrada import Entrada
 from app.schemas.post import FORMAS
 
 
-class AnalisePedido(BaseModel):
+class AnalisePedido(Entrada):
     model_config = ConfigDict(extra="forbid")
 
     # Analisado como veio: nada de strip, as quebras de linha alinham as marcas.

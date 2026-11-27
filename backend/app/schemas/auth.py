@@ -1,10 +1,11 @@
 from pydantic import BaseModel, field_validator
 
 from app.core.limites import SENHA_MAX, SENHA_MIN
+from app.schemas.entrada import Entrada
 from app.schemas.user import Nome, Username
 
 
-class RegistroIn(BaseModel):
+class RegistroIn(Entrada):
     username: Username
     name: Nome
     password: str
@@ -23,7 +24,7 @@ class RegistroIn(BaseModel):
         return senha
 
 
-class LoginIn(BaseModel):
+class LoginIn(Entrada):
     username: str
     password: str
 

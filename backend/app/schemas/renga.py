@@ -10,6 +10,7 @@ from app.core.limites import (
     RENGA_LIMITE_PADRAO,
     RENGA_TITULO_MAX,
 )
+from app.schemas.entrada import Entrada
 from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
@@ -29,7 +30,7 @@ def _validar_titulo(titulo: str) -> str:
     return titulo
 
 
-class RengaCreate(BaseModel):
+class RengaCreate(Entrada):
     titulo: str = Field(max_length=RENGA_TITULO_MAX)
     primeira_estrofe: str
     modo: Modo = "aberta"
@@ -47,13 +48,13 @@ class RengaCreate(BaseModel):
         return self
 
 
-class EstrofeCreate(BaseModel):
+class EstrofeCreate(Entrada):
     texto: str
 
     _texto = field_validator("texto")(_validar_estrofe)
 
 
-class ConvitesCreate(BaseModel):
+class ConvitesCreate(Entrada):
     usernames: list[str] = Field(min_length=1, max_length=RENGA_CONVIDADOS_MAX)
 
 

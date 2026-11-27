@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, model_validator
 
 from app.core.limites import MENSAGEM_MAX_CARACTERES
+from app.schemas.entrada import Entrada, IdDeEntrada, Int4
 from app.schemas.post import PostOut
 from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
@@ -15,19 +16,19 @@ Situacao = Literal["caixa", "pedido", "recusada"]
 Aba = Literal["conversas", "pedidos"]
 
 
-class ConversaCreate(BaseModel):
+class ConversaCreate(Entrada):
     """Abrir (ou achar) a conversa com alguém."""
 
     username: str
 
 
-class MensagemCreate(BaseModel):
+class MensagemCreate(Entrada):
     """Texto, um poema (`post_id`) ou uma renga (`renga_id`), com ou sem texto. O
     texto é gravado como veio. Uma mensagem leva um poema ou uma renga, não os dois."""
 
     texto: str = ""
-    post_id: int | None = None
-    renga_id: int | None = None
+    post_id: IdDeEntrada | None = None
+    renga_id: IdDeEntrada | None = None
 
     @model_validator(mode="after")
     def _texto_ou_poema(self) -> "MensagemCreate":
@@ -43,7 +44,7 @@ class MensagemCreate(BaseModel):
 class LeituraIn(BaseModel):
     """Até que mensagem a pessoa leu; sem `ate`, até a última."""
 
-    ate: int | None = None
+    ate: Int4 | None = None
 
 
 class MensagemOut(BaseModel):
