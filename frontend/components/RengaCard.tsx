@@ -34,7 +34,8 @@ import {
   type User,
 } from "@/lib/api";
 
-// Fora da página da renga, só as primeiras estrofes, com link para o resto.
+// Fora da página da renga e da folha do caderno, só as primeiras estrofes, com
+// link para o resto; a última delas esmaece (.poema-cortado), como no poema.
 const ESTROFES_NO_FEED = 4;
 
 type Props = {
@@ -49,7 +50,8 @@ type Props = {
 };
 
 export function RengaCard({ renga, atividade, por = [], aninhado = false, folha = false }: Props) {
-  const estrofes = renga.estrofes.slice(0, ESTROFES_NO_FEED);
+  // Na folha a renga vem inteira, com a rolagem da página, como os poemas.
+  const estrofes = folha ? renga.estrofes : renga.estrofes.slice(0, ESTROFES_NO_FEED);
   const faltam = renga.estrofes.length - estrofes.length;
   const link = `/rengas/${renga.id}`;
   const texto = textoDaRenga(renga.estrofes);
@@ -80,7 +82,7 @@ export function RengaCard({ renga, atividade, por = [], aninhado = false, folha 
       <ol ref={lista} aria-label="estrofes" className="mt-3 space-y-5">
         {estrofes.map((e, i) => (
           <li key={e.id}>
-            <p className="poema-corpo">
+            <p className={`poema-corpo${faltam > 0 && i === estrofes.length - 1 ? " poema-cortado" : ""}`}>
               {versosDoPoema(e.texto).map((linha, j, linhas) => (
                 <Fragment key={j}>
                   {j > 0 && "\n"}
