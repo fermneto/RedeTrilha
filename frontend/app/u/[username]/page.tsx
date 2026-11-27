@@ -23,6 +23,7 @@ import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { ListaDeRascunhos } from "@/components/ListaDeRascunhos";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
+import { Voltar } from "@/components/Voltar";
 import {
   buscarEu,
   buscarPerfil,
@@ -126,6 +127,12 @@ function PerfilDoPoeta() {
 
   const pessoa = (
     <div className={`surgir ${MARGEM_DA_PAGINA}`}>
+      {/* O próprio perfil é uma aba da lombada: só o de outra pessoa tem o voltar. */}
+      {!proprio && (
+        <div className="-mt-3 mb-2">
+          <Voltar />
+        </div>
+      )}
       {editando ? (
         <PerfilEdicao
           perfil={perfil}
@@ -164,7 +171,22 @@ function PerfilDoPoeta() {
               key={username}
               buscar={buscarPoemas}
               textoDoFim="fim dos poemas"
-              vazio={<p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>}
+              vazio={
+                proprio ? (
+                  <div className="px-4 py-10 text-center">
+                    <p className="font-serifada text-lg">Nenhum poema ainda.</p>
+                    <p className="mt-1 text-sm text-tinta-suave">Seus poemas publicados aparecem aqui.</p>
+                    <Link
+                      href="/escrever"
+                      className="mt-4 inline-flex min-h-11 items-center rounded-full bg-destaque px-5 text-sm font-semibold text-papel transition-[filter] duration-150 hover:brightness-110"
+                    >
+                      Começar a escrever
+                    </Link>
+                  </div>
+                ) : (
+                  <p className="px-4 py-10 text-center text-tinta-suave">Nenhum poema ainda.</p>
+                )
+              }
             />
           ) : (
             <AntologiaLista

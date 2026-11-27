@@ -1,9 +1,12 @@
 "use client";
 // Um campo de escolha com busca (combobox do WAI-ARIA com listbox), no lugar do
-// <select> de país e de estado das Preferências: o campo mostra a opção escolhida;
-// tocar nele (ou na seta) abre a lista, e o que se digita filtra, sem acento nem
-// caixa ("sao" acha "São Paulo"), também pela sigla ("PB", "PT"); o "prefiro não
-// dizer" fica sempre no topo. Teclado: setas sobem e descem, Home e End vão às
+// <select> de todo o site (país e estado das Preferências, filtros do Acervo, forma
+// e língua do Compositor): o campo mostra a opção escolhida; tocar nele (ou na
+// seta) abre a lista, e o que se digita filtra, sem acento nem caixa ("sao" acha
+// "São Paulo"), também pela sigla ("PB", "PT"); o "prefiro não dizer" fica sempre
+// no topo. Com `comBusca={false}` (listas curtas) o campo é só de leitura: não se
+// digita, e a lista abre ao clicar, e também com Enter, Espaço ou seta para baixo.
+// Teclado: setas sobem e descem, Home e End vão às
 // pontas, Enter e Tab escolhem a opção ativa (o Tab segue adiante), Esc fecha sem
 // mudar nada. Fechar (também ao
 // tocar fora) volta o campo ao valor escolhido. A lista abre para baixo ou, sem
@@ -33,12 +36,14 @@ type Props = {
   // Como chamar uma e várias opções, no aviso do leitor de tela e na busca vazia.
   singular: string;
   plural: string;
+  // false: sem digitar nem filtrar, só abre e escolhe (listas curtas).
+  comBusca?: boolean;
 };
 
 // Folga entre a lista e a borda da tela (ou do teclado).
 const FOLGA = 12;
 
-export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, plural }: Props) {
+export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, plural, comBusca = true }: Props) {
   const idCampo = useId();
   const idLista = useId();
   const raiz = useRef<HTMLDivElement>(null);
@@ -142,8 +147,20 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
         e.preventDefault();
         setAtiva(e.key === "Home" ? 0 : total - 1);
         break;
+      case " ":
+        // Sem busca o campo não recebe texto: o Espaço abre a lista, como o Enter.
+        if (comBusca) return;
+        e.preventDefault();
+        if (!aberta) abrir();
+        else if (ativa >= 0 && visiveis[ativa]) escolher(visiveis[ativa]);
+        break;
       case "Enter":
-        if (!aberta) return;
+        if (!aberta) {
+          if (comBusca) return;
+          e.preventDefault();
+          abrir();
+          return;
+        }
         e.preventDefault();
         if (ativa >= 0 && visiveis[ativa]) escolher(visiveis[ativa]);
         break;
@@ -172,7 +189,7 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
 
   return (
     <div ref={raiz} className="relative">
-      <label htmlFor={idCampo} className="block text-sm font-semibold">
+      <label htmlFor={idCampo} className="block text-sm">
         {rotulo}
       </label>
       <div className="relative mt-1">
@@ -194,15 +211,18 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
             const novas = filtrarOpcoes(opcoes, texto);
             setAtiva(texto.trim() ? novas.findIndex((o) => o.valor !== null) : -1);
           }}
-          onFocus={(e) => e.target.select()}
+          readOnly={!comBusca}
+          onFocus={(e) => comBusca && e.target.select()}
           onClick={() => !aberta && abrir()}
           onBlur={fechar}
           onKeyDown={teclar}
-          placeholder={`procurar ${singular}`}
+          placeholder={comBusca ? `procurar ${singular}` : undefined}
           autoComplete="off"
           autoCapitalize="none"
           spellCheck={false}
-          className="min-h-11 w-full rounded-xl border border-borda bg-papel-alto pr-11 pl-3 text-base font-normal text-tinta transition-colors duration-150 placeholder:text-tinta-suave focus:border-destaque focus:outline-none sm:text-[0.9375rem]"
+          className={`min-h-11 w-full rounded-xl border border-borda bg-papel-alto pr-11 pl-3 text-base font-normal text-tinta transition-colors duration-150 placeholder:text-tinta-suave focus:border-destaque focus:outline-none sm:text-[0.9375rem] ${
+            comBusca ? "" : "cursor-pointer"
+          }`}
         />
         <button
           type="button"
