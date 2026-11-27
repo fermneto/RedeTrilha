@@ -239,18 +239,6 @@ def _toante(som: str) -> str:
     return vogais[0] + vogais[-1] if len(vogais) > 1 else "".join(vogais)
 
 
-def silabas_poeticas(verso: str) -> int | None:
-    """Sílabas poéticas do verso, contadas até a última tônica. None se não há palavras."""
-    medida = _medir(verso)
-    return medida[0] if medida else None
-
-
-def terminacao_rimica(verso: str) -> str | None:
-    """Terminação do verso a partir da vogal tônica da última palavra, normalizada pelo som."""
-    medida = _medir(verso)
-    return _pelo_som(medida[1]) if medida else None
-
-
 def _letra(indice: int) -> str:
     """A, B, ..., Z, AA, AB...: como as colunas de uma planilha."""
     letra = ""
@@ -292,11 +280,6 @@ def analisar(texto: str) -> tuple[list[Verso], str]:
         versos.append(Verso(medida[0], letra, tipo))
     esquema = " ".join("".join(estrofe) for estrofe in estrofes if estrofe)
     return versos, esquema
-
-
-def esquema_de_rimas(texto: str) -> str:
-    """Só o esquema: uma letra por verso, estrofes separadas por espaço."""
-    return analisar(texto)[1]
 
 
 def aviso_de_forma(forma: str | None, versos: list[Verso]) -> str | None:

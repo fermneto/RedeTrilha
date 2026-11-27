@@ -7,13 +7,7 @@ heurística, explicados em cada caso.
 
 import pytest
 
-from app.core.metrica import (
-    analisar,
-    aviso_de_forma,
-    esquema_de_rimas,
-    silabas_poeticas,
-    terminacao_rimica,
-)
+from app.core.metrica import analisar, aviso_de_forma
 
 AMOR_E_FOGO = """Amor é fogo que arde sem se ver;
 É ferida que dói, e não se sente;
@@ -89,6 +83,15 @@ DECASSILABOS = [
     "Saudade! gosto amargo de infelizes,",
 ]
 
+def silabas(verso):
+    return analisar(verso)[0][0].silabas
+
+
+def rimam(a, b):
+    """Os dois versos ganham a mesma letra no esquema."""
+    return analisar(f"{a}\n{b}")[1] == "AA"
+
+
 REDONDILHAS_MAIORES = [
     *CANCAO_DO_EXILIO.replace("\n\n", "\n").split("\n"),
     "Em cismar, sozinho, à noite,",
@@ -98,12 +101,12 @@ REDONDILHAS_MAIORES = [
 
 @pytest.mark.parametrize("verso", DECASSILABOS)
 def test_decassilabos_classicos(verso):
-    assert silabas_poeticas(verso) == 10
+    assert silabas(verso) == 10
 
 
 @pytest.mark.parametrize("verso", REDONDILHAS_MAIORES)
 def test_redondilhas_de_goncalves_dias(verso):
-    assert silabas_poeticas(verso) == 7
+    assert silabas(verso) == 7
 
 
 @pytest.mark.xfail(
@@ -111,7 +114,7 @@ def test_redondilhas_de_goncalves_dias(verso):
     strict=True,
 )
 def test_lusiadas_ainda_com_sinerese():
-    assert silabas_poeticas("Passaram ainda além da Taprobana") == 10
+    assert silabas("Passaram ainda além da Taprobana") == 10
 
 
 @pytest.mark.xfail(
@@ -119,39 +122,37 @@ def test_lusiadas_ainda_com_sinerese():
     strict=True,
 )
 def test_sinerese_pretonica_de_augusto():
-    assert silabas_poeticas("A influência má dos signos do zodíaco.") == 10
+    assert silabas("A influência má dos signos do zodíaco.") == 10
 
 
 def test_ditongo_hiato_e_q_mudo():
-    assert silabas_poeticas("muito") == 1  # mui-to: conta até a tônica
-    assert silabas_poeticas("saúde") == 2  # sa-ú
-    assert silabas_poeticas("rainha") == 2  # ra-i
-    assert silabas_poeticas("quando") == 1  # o u de "qu" não conta
-    assert silabas_poeticas("coração") == 3
+    assert silabas("muito") == 1  # mui-to: conta até a tônica
+    assert silabas("saúde") == 2  # sa-ú
+    assert silabas("rainha") == 2  # ra-i
+    assert silabas("quando") == 1  # o u de "qu" não conta
+    assert silabas("coração") == 3
 
 
 def test_enclitico_depois_do_hifen_nao_leva_a_tonica():
-    assert silabas_poeticas("ouvi-los") == 2
-    assert terminacao_rimica("ouvi-los") == "ilos"
+    assert silabas("ouvi-los") == 2
 
 
 def test_linha_sem_palavras():
-    assert silabas_poeticas("") is None
-    assert silabas_poeticas("* * *") is None
-    assert terminacao_rimica("—") is None
+    assert silabas("") is None
+    assert silabas("* * *") is None
+    assert analisar("—")[0][0].rima is None
 
 
-def test_terminacao_pelo_som():
-    assert terminacao_rimica("Amor é fogo que arde sem se ver,") == "er"
-    assert terminacao_rimica("Onde canta o Sabiá;") == terminacao_rimica("Não gorjeiam como lá.")
-    assert terminacao_rimica("nasce") == terminacao_rimica("passe")
-    assert terminacao_rimica("paz") == terminacao_rimica("atrás")
+def test_rima_pelo_som():
+    assert rimam("Onde canta o Sabiá;", "Não gorjeiam como lá.")
+    assert rimam("nasce", "passe")
+    assert rimam("paz", "atrás")
     # O til fica: "lã" não rima com "lá".
-    assert terminacao_rimica("lã") != terminacao_rimica("lá")
+    assert not rimam("lã", "lá")
 
 
 def test_esquema_do_soneto_de_camoes():
-    assert esquema_de_rimas(AMOR_E_FOGO) == "ABBA ABBA CDC DCD"
+    assert analisar(AMOR_E_FOGO)[1] == "ABBA ABBA CDC DCD"
 
 
 def test_um_verso_por_linha_com_as_linhas_em_branco():
