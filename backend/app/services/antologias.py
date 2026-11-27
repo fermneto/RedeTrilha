@@ -187,9 +187,10 @@ def ordem(db: Session, antologia_id: int, limite: int | None = None) -> list[tup
 
 
 def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
-    """Idempotente: adicionar um poema que já está na antologia não faz nada."""
+    """Idempotente: adicionar um poema que já está na antologia não faz nada.
+    Repost puro adiciona o original, como curtir e comentar."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
-    posts_service.original_para_interagir(db, usuario, post_id)
+    post_id = posts_service.original_para_interagir(db, usuario, post_id).id
     ja_esta = db.scalar(
         select(AntologiaPoema).where(
             AntologiaPoema.antologia_id == antologia.id,
@@ -207,8 +208,12 @@ def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int)
 
 
 def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
-    """Idempotente: tirar um poema que não está na antologia não faz nada."""
+    """Idempotente: tirar um poema que não está na antologia não faz nada.
+    Repost puro tira o original, que é o que o adicionar guardou."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
+    post = db.get(Post, post_id)
+    if post is not None and post.repost_puro and post.repost_de_id is not None:
+        post_id = post.repost_de_id
     db.execute(
         delete(AntologiaPoema).where(
             AntologiaPoema.antologia_id == antologia.id,

@@ -392,6 +392,27 @@ def test_marcando_repost_puro_conta_como_o_original(client, ana, bia):
     assert r.json()["items"][0]["contem"] is True
 
 
+def test_adicionar_e_tirar_repost_puro_age_no_original(client, ana, bia):
+    """Como curtir e comentar: o repost puro vai para a antologia como o original."""
+    from app.db import SessionLocal
+    from app.models.post import Post
+
+    original = _poema(client, bia)
+    assert client.post(f"/posts/{original}/repostar", headers=ana).status_code == 204
+    with SessionLocal() as db:
+        repost_id = db.scalar(select(Post.id).where(Post.repost_de_id == original))
+    antologia_id = _antologia(client, ana)
+    client.post(f"/antologias/{antologia_id}/poemas", json={"post_id": repost_id}, headers=ana)
+
+    det = client.get(f"/antologias/{antologia_id}", headers=ana).json()
+    assert [p["id"] for p in det["poemas"]] == [original]
+    assert client.get(f"/antologias?post_id={original}", headers=ana).json()["items"][0]["contem"] is True
+
+    r = client.delete(f"/antologias/{antologia_id}/poemas/{repost_id}", headers=ana)
+    assert r.status_code == 204
+    assert client.get(f"/antologias/{antologia_id}", headers=ana).json()["poemas"] == []
+
+
 def test_marcando_post_inexistente_da_404(client, ana):
     _antologia(client, ana)
     assert client.get("/antologias?post_id=999", headers=ana).status_code == 404
