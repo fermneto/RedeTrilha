@@ -534,6 +534,12 @@ Não resolvi estes casos. Onde a escola não cabia na tabela, o JSON ficou com `
 | Akiko Yosano | Poema longo. そぞろごと tem 191 versos e 3210 caracteres, tanka numa página só. Não parti. |
 | Ono no Komachi, Izumi Shikibu, Mirabai, Lal Ded | Morte. O ano tradicional é incerto e não há poema transcrito na língua original. Não fixei um ano. |
 
+### Decidido pelo Neto
+
+- Escolas novas na tabela: `decadentismo_esteticismo` (Wilde, Dowson, Swinburne, Charles Cros), `vitorianos_prerrafaelitas` (Christina Rossetti, Hopkins, Swinburne) e `guerra_georgiana` (Owen, Brooke, Edward Thomas). Teasdale, Wylie e Mew em `modernismo_vanguardas`; Noailles em `simbolismo`; Bradstreet em `barroco`; Lesya Ukrainka em `romantismo`.
+- País da obra para quem nasceu fora dela: Södergran `FI`, Storni `AR`, Słowacki `PL`.
+- Gibran, Lautréamont e Akiko Yosano ficam de fora por ora (obras longas numa página só).
+
 ### Contagem
 
 JSON novo neste bloco: 51 poetas, 1469 poemas. Com o que já estava na pasta: 206 poetas, 12705 poemas.

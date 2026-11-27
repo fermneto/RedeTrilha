@@ -51,7 +51,7 @@ def test_valores_invalidos_dao_422(client, como, corpo):
 def test_opcoes_trazem_o_vocabulario(client, como):
     opcoes = client.get("/preferencias/opcoes", headers=como("ana")).json()
     assert {"codigo": "popular_cordel", "rotulo": "poesia popular e cordel"} in opcoes["escolas"]
-    assert len(opcoes["escolas"]) == 15
+    assert len(opcoes["escolas"]) == 18
     assert {"codigo": "modernismo_hispanico", "rotulo": "modernismo hispânico"} in opcoes["escolas"]
     assert {"codigo": "realismo", "rotulo": "realismo"} in opcoes["escolas"]
     assert "soneto" in opcoes["formas"]

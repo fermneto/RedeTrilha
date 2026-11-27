@@ -419,7 +419,7 @@ decisão 15.
   gosta e sugerir por afinidade.
 - **Escolha:**
   - **Boas-vindas em três passos, todos com "pular":** "Que poesia você
-    gosta?" (as 15 escolas da decisão 2 e as formas), "De onde você é?" (país
+    gosta?" (as escolas da decisão 2, 18 desde o bloco de cults de 27/11, e as formas), "De onde você é?" (país
     e, no Brasil, estado, ou "prefiro não dizer") e a grade "Quem seguir". As
     preferências se reajustam depois pelo menu da conta.
   - **A ordem das sugestões é uma nota com pesos fixos:** seguidores em escala
