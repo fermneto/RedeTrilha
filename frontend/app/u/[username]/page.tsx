@@ -23,6 +23,7 @@ import { ListaDePoemas } from "@/components/ListaDePoemas";
 import { ListaDeRascunhos } from "@/components/ListaDeRascunhos";
 import { PerfilCabecalho } from "@/components/PerfilCabecalho";
 import { PerfilEdicao } from "@/components/PerfilEdicao";
+import { Voltar } from "@/components/Voltar";
 import {
   buscarEu,
   buscarPerfil,
@@ -130,6 +131,12 @@ function PerfilDoPoeta() {
 
   const pessoa = (
     <div className={`surgir ${MARGEM_DA_PAGINA}`}>
+      {/* O próprio perfil é uma aba da lombada: só o de outra pessoa tem o voltar. */}
+      {!proprio && (
+        <div className="-mt-3 mb-2">
+          <Voltar />
+        </div>
+      )}
       {editando ? (
         <PerfilEdicao
           perfil={perfil}

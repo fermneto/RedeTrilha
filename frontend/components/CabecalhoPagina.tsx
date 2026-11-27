@@ -4,8 +4,8 @@ import { Voltar } from "@/components/Voltar";
 // já é o recipiente. `comoTitulo={false}` quando a página já tem o próprio h1.
 // Numa linha só: um título longo (o nome comprido no perfil) termina em
 // reticências, e o título inteiro continua no `title` e no conteúdo da página.
-// `voltar`: as páginas de publicação (poema, renga, antologia) têm a seta de
-// voltar antes do título.
+// `voltar`: as páginas que não são abas da lombada (poema, renga, antologia,
+// escrever, sugestões, preferências) têm a seta de voltar antes do título.
 export function CabecalhoPagina({
   titulo,
   comoTitulo = true,

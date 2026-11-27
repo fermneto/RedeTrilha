@@ -87,7 +87,7 @@ export default function NovaRengaPage() {
 
   return (
     <div>
-      <CabecalhoPagina titulo="Escrever" />
+      <CabecalhoPagina titulo="Escrever" voltar />
       <FormatoDeEscrita atual="renga" />
       <form onSubmit={enviar} noValidate className="space-y-6 px-4 py-5">
         <div>

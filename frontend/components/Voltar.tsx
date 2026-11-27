@@ -1,6 +1,7 @@
 "use client";
-// O "voltar" das páginas de publicação (poema, renga, antologia), no canto do
-// título da página. Com uma página do Verso antes, volta no histórico: do feed,
+// O "voltar" das páginas que não são abas da lombada (Início, Explorar, Mensagens,
+// Avisos): poema, renga, antologia, escrever, sugestões, preferências e o perfil
+// de outra pessoa, no canto do título da página. Com uma página do Verso antes, volta no histórico: do feed,
 // o Início reabre na mesma aba e na mesma folha (lib/sessaoDoFeed.ts). Quem
 // chegou por um link direto vai para o Início (lib/historico.ts).
 

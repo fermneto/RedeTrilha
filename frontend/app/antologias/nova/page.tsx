@@ -20,7 +20,7 @@ export default function NovaAntologiaPage() {
 
   return (
     <div>
-      <CabecalhoPagina titulo="Escrever" />
+      <CabecalhoPagina titulo="Escrever" voltar />
       <FormatoDeEscrita atual="antologia" />
       <div className="px-4 py-5">
         <p className="mb-5 text-sm text-tinta-suave">
