@@ -9,7 +9,7 @@
 // `aoMudar` conta à página o poema em andamento, para o seletor de formato
 // (FormatoDeEscrita) levá-lo à renga ou guardá-lo antes da antologia.
 // `dispor` reparte o compositor entre as páginas do caderno: a escrita (título e
-// corpo, dentro do <form>) e a ficha (oficina, forma, língua, o original citado
+// corpo, mais a oficina, dentro do <form>) e a ficha (forma, língua, o original citado
 // e os botões, ligados ao form pelo atributo `form`).
 
 import Link from "next/link";
@@ -252,12 +252,13 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
           Tab sai do campo. Para formatar, selecione o trecho.
         </span>
       </div>
+
+      {/* A oficina logo abaixo do poema que ela mede. */}
+      <OficinaPainel oficina={oficina} />
     </form>
   );
   const ficha = (
     <div className="space-y-4">
-      <OficinaPainel oficina={oficina} />
-
       <EscolhaComBusca
         comBusca={false}
         rotulo="forma (opcional)"

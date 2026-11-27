@@ -75,7 +75,7 @@ function Escrever() {
   }
 
   const titulo = citarRengaId !== null ? "Citar renga" : citarId === null && !rascunhoDeCitacao ? "Escrever" : "Citar poema";
-  // Na página dupla, a escrita na esquerda e a ficha (oficina, forma, publicar)
+  // Na página dupla, a escrita (com a oficina) na esquerda e a ficha (forma, publicar)
   // na direita; no celular, as duas numa página só, para publicar sem virar.
   return (
     <Compositor
