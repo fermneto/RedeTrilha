@@ -393,3 +393,162 @@ consagrados: 155 poetas criados, 0 atualizados; 11236 poemas criados, 0 atualiza
 ```
 
 Wheatley, Nelligan e Fréchette estão neste total. Nova tentativa ao Gutenberg e ao gutendex, no fim: Gutenberg 503, gutendex sem resposta. Eugénio de Castro e os portugueses sem coleção no pt.wikisource continuam sem texto de fonte aceite.
+
+## Bloco: Cults de nicho e lacunas
+
+Até 40 poemas por poeta. Dentro de cada um, entram primeiro os títulos que aparecem na Wikipédia do autor; o resto completa pela ordem do livro, no Wikisource da língua original. O texto é o da página: verso com `\n`, estrofe com `\n\n`, sem número de página, nota nem cabeçalho. Sem tradução. O Gutenberg respondeu 503 e o Domínio Público 403, como no bloco anterior, e não serviram de fonte.
+
+### Poetas acrescentados
+
+| username | nome | morte | idioma | poemas | fonte principal |
+|---|---|---:|---|---:|---|
+| `sara_teasdale` | Sara Teasdale | 1933 | en | 40 | Flame and Shadow |
+| `edith_sodergran` | Edith Södergran | 1923 | sv | 40 | Dikter (Södergran) |
+| `oscar_wilde` | Oscar Wilde | 1900 | en | 40 | The Poems of Oscar Wilde |
+| `ernest_dowson` | Ernest Dowson | 1900 | en | 5 | páginas avulsas no en.wikisource |
+| `hart_crane` | Hart Crane | 1932 | en | 1 | páginas avulsas no en.wikisource |
+| `antonin_artaud` | Antonin Artaud | 1948 | fr | 21 | L’Ombilic des limbes |
+| `jules_laforgue` | Jules Laforgue | 1887 | fr | 40 | Poésies complètes de Jules Laforgue |
+| `charles_cros` | Charles Cros | 1888 | fr | 40 | Le Coffret de santal (éd. 1879) |
+| `renee_vivien` | Renée Vivien | 1909 | fr | 40 | Poèmes (Vivien) |
+| `max_jacob` | Max Jacob | 1944 | fr | 5 | páginas avulsas no fr.wikisource |
+| `paul_eluard` | Paul Éluard | 1952 | fr | 22 | Poésie et vérité 1942 |
+| `wilfred_owen` | Wilfred Owen | 1918 | en | 40 | Poems by Wilfred Owen |
+| `rupert_brooke` | Rupert Brooke | 1915 | en | 40 | The Collected poems of Rupert Brooke |
+| `edward_thomas` | Edward Thomas | 1917 | en | 8 | Poems (Edward Thomas, 1917) |
+| `gerard_hopkins` | Gerard Manley Hopkins | 1889 | en | 40 | Poems of Gerard Manley Hopkins |
+| `edgar_lee_masters` | Edgar Lee Masters | 1950 | en | 5 | páginas avulsas no en.wikisource |
+| `stephen_crane` | Stephen Crane | 1900 | en | 38 | páginas avulsas no en.wikisource |
+| `robert_burns` | Robert Burns | 1796 | en | 37 | The Poetical Works of Robert Burns |
+| `swinburne` | Algernon Charles Swinburne | 1909 | en | 40 | Tristram of Lyonesse and Other Poems |
+| `miguel_hernandez` | Miguel Hernández | 1942 | es | 30 | El rayo que no cesa |
+| `vicente_huidobro` | Vicente Huidobro | 1948 | es | 35 | páginas avulsas no es.wikisource |
+| `christina_rossetti` | Christina Rossetti | 1894 | en | 40 | Goblin Market and Other Poems (1862) |
+| `elizabeth_barrett` | Elizabeth Barrett Browning | 1861 | en | 39 | Prometheus Bound, and other poems |
+| `emily_bronte` | Emily Brontë | 1848 | en | 40 | The Complete Poems of Emily Brontë |
+| `anne_bradstreet` | Anne Bradstreet | 1672 | en | 6 | páginas avulsas no en.wikisource |
+| `charlotte_mew` | Charlotte Mew | 1928 | en | 39 | The Rambling Sailor |
+| `elinor_wylie` | Elinor Wylie | 1928 | en | 40 | Angels and Earthly Creatures |
+| `louise_labe` | Louise Labé | 1566 | fr | 38 | Élégies et Sonnets |
+| `desbordes_valmore` | Marceline Desbordes-Valmore | 1859 | fr | 37 | Poésies (Desbordes-Valmore, 1822) |
+| `anna_de_noailles` | Anna de Noailles | 1933 | fr | 27 | Les Climats |
+| `gaspara_stampa` | Gaspara Stampa | 1554 | it | 38 | Rime (Stampa) |
+| `vittoria_colonna` | Vittoria Colonna | 1547 | it | 39 | Rime (Vittoria Colonna) |
+| `karin_boye` | Karin Boye | 1941 | sv | 40 | Moln (diktsamling) |
+| `sor_juana` | Sor Juana Inés de la Cruz | 1695 | es | 25 | páginas avulsas no es.wikisource |
+| `delmira_agustini` | Delmira Agustini | 1914 | es | 38 | páginas avulsas no es.wikisource |
+| `alfonsina_storni` | Alfonsina Storni | 1938 | es | 40 | páginas avulsas no es.wikisource |
+| `jose_asuncion_silva` | José Asunción Silva | 1896 | es | 40 | páginas avulsas no es.wikisource |
+| `amado_nervo` | Amado Nervo | 1919 | es | 32 | páginas avulsas no es.wikisource |
+| `lopez_velarde` | Ramón López Velarde | 1921 | es | 40 | páginas avulsas no es.wikisource |
+| `herrera_reissig` | Julio Herrera y Reissig | 1910 | es | 40 | páginas avulsas no es.wikisource |
+| `gertrudis_avellaneda` | Gertrudis Gómez de Avellaneda | 1873 | es | 25 | páginas avulsas no es.wikisource |
+| `juliusz_slowacki` | Juliusz Słowacki | 1849 | pl | 40 | Anhelli (Słowacki, 1894) |
+| `cyprian_norwid` | Cyprian Norwid | 1883 | pl | 40 | páginas avulsas no pl.wikisource |
+| `boleslaw_lesmian` | Bolesław Leśmian | 1937 | pl | 40 | páginas avulsas no pl.wikisource |
+| `karel_macha` | Karel Hynek Mácha | 1836 | cs | 15 | Máj (Mácha) |
+| `taras_shevchenko` | Taras Shevchenko | 1861 | uk | 6 | Kobzar’ |
+| `lesya_ukrainka` | Lesya Ukrainka | 1913 | uk | 1 | páginas avulsas no uk.wikisource |
+| `oswald_de_andrade` | Oswald de Andrade | 1954 | pt | 4 | Pau Brasil |
+| `maria_firmina` | Maria Firmina dos Reis | 1917 | pt | 11 | páginas avulsas no pt.wikisource |
+| `goncalves_crespo` | Gonçalves Crespo | 1883 | pt | 1 | páginas avulsas no pt.wikisource |
+| `da_costa_e_silva` | Da Costa e Silva | 1950 | pt | 1 | páginas avulsas no pt.wikisource |
+
+51 poetas, 1469 poemas.
+
+### Poetas da lista que ficaram de fora
+
+| nome | motivo |
+|---|---|
+| Dylan Thomas | A página de autor no en.wikisource lista os livros e não tem o texto. As edições são de 1934 em diante e o Wikisource inglês não as transcreve. |
+| Khalil Gibran | The Prophet, Sand and Foam, The Forerunner e The Madman estão cada um numa página só, longo demais para uma tela. Os trechos avulsos eram curtos demais. |
+| Friedrich Nietzsche | O de.wikisource só tem o índice dos Dionysos-Dithyramben e a linha de título das Idyllen aus Messina, não os poemas. |
+| Novalis | A página no de.wikisource aponta verbetes (ADB, Schlegel, Haym). Os Hymnen an die Nacht não estão transcritos. |
+| Lautréamont | Poésies I e II estão transcritas e passam de 25 mil caracteres cada uma. Não entrou o livro inteiro. O resto era antologia e crítica. |
+| Tristan Corbière | Les Amours jaunes no fr.wikisource está como folha de rosto, sem os poemas separados. |
+| Robert Desnos | Sem poema transcrito aproveitável no fr.wikisource (páginas sem o autor no cabeçalho, antologia). |
+| Georg Heym | As páginas achadas no de.wikisource estavam marcadas como tradução. Não incluí. |
+| Else Lasker-Schüler | As páginas achadas no de.wikisource estavam marcadas como tradução, ou sem o nome dela no cabeçalho. |
+| Kabir | Sem o original em hindi. O que apareceu era dístico curto demais ou página sem o autor. |
+| Annette von Droste-Hülshoff | O de.wikisource não deu poema original aproveitável (páginas marcadas como tradução, verbetes). |
+| Akiko Yosano | そぞろごと está numa página de 191 versos. Não parti o livro. Não havia tanka avulso com o nome dela no cabeçalho. |
+| Ono no Komachi | Sem poemas transcritos no ja.wikisource. |
+| Izumi Shikibu | Sem poema isolado dela; o que apareceu era antologia ou tradução. |
+| Mirabai | Sem poemas transcritos no Wikisource da língua. |
+| Lal Ded | Sem poemas transcritos no Wikisource da língua. |
+| Julia de Burgos | Sem poemas transcritos no es.wikisource. |
+| Salomé Ureña | Sem poemas transcritos no es.wikisource. |
+| Mikhail Lermontov | O ru.wikisource não tem o poema: verbete, índice e página de outra pessoa. |
+| Alexander Blok | Só o índice do almanaque Северные цветы (1903), com poemas de vários autores. |
+| Sergei Yesenin | Índice de títulos e índice de cartas, sem o texto dos poemas. |
+| Osip Mandelstam | Desambiguação, revista e verbete. Sem o poema. |
+| Velimir Khlebnikov | Páginas sem texto aproveitável ou fragmentos curtos. |
+| Fyodor Tyutchev | As páginas são a ficha bibliográfica (onde o poema saiu), não o poema. |
+| Afanasy Fet | Verbete e nota de edição, sem o texto do poema. |
+| Innokenty Annensky | Índice de títulos e um texto sobre Heine, não a lírica dele. |
+| Nikolai Gumilev | Índice, prefácio de tradução e memórias de guerra, não o poema. |
+| Marina Tsvetaeva | Epígrafe, prosa, verbete e lista da Wikisource. O livro de poemas não está transcrito como peça. |
+| Luiz Gama | Sem poema transcrito no pt.wikisource. |
+| Narcisa Amália | Sem poema transcrito no pt.wikisource. |
+| Raul de Leoni | Sem poema transcrito no pt.wikisource. |
+| B. Lopes | A busca no Wikidata (B. Lopes e Bernardo da Costa Lopes) não devolveu ficha de poeta. Sem poema no pt.wikisource. |
+| Emílio de Menezes | Wikidata Q10272640 (grafia Meneses), morte 1918. Sem poema no pt.wikisource. |
+| Augusto de Lima | Sem poema transcrito no pt.wikisource. |
+| Hermes Fontes | Sem poema transcrito no pt.wikisource. |
+| Martins Fontes | Wikidata Q10326974, morte 1937. Sem poema no pt.wikisource. |
+| Guimarães Passos | Sem poema transcrito no pt.wikisource. |
+| Tobias Barreto | Sem poema transcrito no pt.wikisource. |
+| Laurindo Rabelo | Sem poema transcrito no pt.wikisource. |
+| Juvenal Galeno | Sem poema transcrito no pt.wikisource. |
+| Catulo da Paixão Cearense | Sem poema transcrito no pt.wikisource. |
+
+### Para o Neto decidir
+
+Não resolvi estes casos. Onde a escola não cabia na tabela, o JSON ficou com `escolas: []`. Onde o país de nascimento não fechava, o JSON ficou sem `pais`.
+
+| nome | porquê |
+|---|---|
+| Sara Teasdale | Escola: lírica norte-americana sem escola da tabela |
+| Oscar Wilde | Escola: esteticismo, fora da tabela |
+| Ernest Dowson | Escola: decadentismo; simbolismo é próximo, mas não é o mesmo código |
+| Charles Cros | Escola: sem escola da tabela que feche |
+| Wilfred Owen | Escola: poesia de guerra, sem código na tabela |
+| Rupert Brooke | Escola: poesia georgiana, sem código na tabela |
+| Edward Thomas | Escola: poesia georgiana, sem código na tabela |
+| Gerard Manley Hopkins | Escola: vitoriano, sem código na tabela |
+| Algernon Charles Swinburne | Escola: pré-rafaelitismo e decadentismo, fora da tabela |
+| Christina Rossetti | Escola: pré-rafaelitismo, fora da tabela |
+| Anne Bradstreet | Escola: poesia puritana colonial, sem código na tabela |
+| Charlotte Mew | Escola: sem código da tabela que feche |
+| Elinor Wylie | Escola: sem código da tabela que feche |
+| Anna de Noailles | Escola: sem código da tabela que feche |
+| Lesya Ukrainka | Escola: manuais falam em romantismo tardio e em modernismo; não escolhi um código |
+| Edith Södergran | País. O Wikidata localiza o nascimento em São Petersburgo. A obra é finlandesa, de língua sueca. Não gravei `pais`. |
+| Alfonsina Storni | País. Nasceu na Suíça e a obra é argentina. Não gravei `pais`. |
+| Juliusz Słowacki | País. Nasceu em Krzemieniec, hoje na Ucrânia, e a obra é polonesa. Não gravei `pais`. |
+| Marina Tsvetaeva | País, se entrar depois. O Wikidata devolveu SU (União Soviética) para Moscou. Nas fronteiras de hoje seria RU. Ela não entrou neste bloco, por falta de poema transcrito. |
+| Georg Heym | País, se entrar depois. Nasceu em Hirschberg, hoje Jelenia Góra (PL); a obra é alemã. Não entrou: as páginas achadas estavam marcadas como tradução. |
+| B. Lopes | O Wikidata não devolveu ficha de poeta. A lista diz morte em 1916. Sem poema no pt.wikisource, de todo modo. |
+| Khalil Gibran | Poema longo. The Prophet (818 versos), Sand and Foam (471), The Forerunner (326) e The Madman (345) estão cada um numa página. Não parti. |
+| Lautréamont | Poema longo. Poésies I (cerca de 25 mil caracteres) e Poésies II (cerca de 38 mil). Não entrou. |
+| Akiko Yosano | Poema longo. そぞろごと tem 191 versos e 3210 caracteres, tanka numa página só. Não parti. |
+| Ono no Komachi, Izumi Shikibu, Mirabai, Lal Ded | Morte. O ano tradicional é incerto e não há poema transcrito na língua original. Não fixei um ano. |
+
+### Decidido pelo Neto
+
+- Escolas novas na tabela: `decadentismo_esteticismo` (Wilde, Dowson, Swinburne, Charles Cros), `vitorianos_prerrafaelitas` (Christina Rossetti, Hopkins, Swinburne) e `guerra_georgiana` (Owen, Brooke, Edward Thomas). Teasdale, Wylie e Mew em `modernismo_vanguardas`; Noailles em `simbolismo`; Bradstreet em `barroco`; Lesya Ukrainka em `romantismo`.
+- País da obra para quem nasceu fora dela: Södergran `FI`, Storni `AR`, Słowacki `PL`.
+- Gibran, Lautréamont e Akiko Yosano ficam de fora por ora (obras longas numa página só).
+
+### Contagem
+
+JSON novo neste bloco: 51 poetas, 1469 poemas. Com o que já estava na pasta: 206 poetas, 12705 poemas.
+
+Num banco vazio de teste (`importar_consagrados.py`):
+
+```
+consagrados: 206 poetas criados, 0 atualizados; 12395 poemas criados, 0 atualizados, 310 repetidos de fora
+```
+
+Os 310 são a regra de poema repetido do importador, no acervo inteiro.
+

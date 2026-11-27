@@ -112,11 +112,14 @@ Códigos de `escolas` (`backend/app/schemas/escola.py`):
 | `barroco` | barroco |
 | `arcadismo_neoclassicismo` | arcadismo e neoclassicismo |
 | `romantismo` | romantismo |
+| `vitorianos_prerrafaelitas` | vitorianos e pré-rafaelitas |
 | `realismo` | realismo |
 | `parnasianismo` | parnasianismo |
 | `simbolismo` | simbolismo |
+| `decadentismo_esteticismo` | decadentismo e esteticismo |
 | `modernismo_hispanico` | modernismo hispânico |
 | `pre_modernismo` | pré-modernismo |
+| `guerra_georgiana` | poesia de guerra e georgiana |
 | `modernismo_vanguardas` | modernismo e vanguardas |
 | `popular_cordel` | poesia popular e cordel |
 | `classica_oriental` | clássica oriental |

@@ -1,0 +1,390 @@
+{
+  "username": "cyprian_norwid",
+  "name": "Cyprian Norwid",
+  "bio": "Poeta polonês. «Fortepian Szopena» e Vade-mecum são o que mais se lê.",
+  "avatar_url": "",
+  "nascimento": 1821,
+  "morte": 1883,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "PL",
+  "poemas": [
+    {
+      "titulo": "Historyk",
+      "texto": "Wiele jest, gdy kto pomierzył stary cmentarz,\nAlbo i genealogiczny dąb —\nWiele, jeśli inwentarz\nSkreślił, zajrzał epokom w głąb\nI upostaciował opis...\n\nAle, jeśli on w starca, w męża, w kobietę\nPowrócił strach ów, z jakim dziad ich drżał,\nPatrząc na pierwszego kometę,\nGdy po piewszy raz nad globem stał:\n........ to — dziejopis!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Historyk",
+      "tags": []
+    },
+    {
+      "titulo": "Śmierć",
+      "texto": "Skoro usłyszysz, jak czerw gałąź wierci,\nPiosenkę zanuć lub zadzwoń w tymbały!!\nNie myśl, że formy gdzieś podojrzewały,\nNie myśl o śmierci!\n\nPrzedchrześcijański to i błogi sposób\nTworzenia sobie lekkich rekreacyj,\nLecz ciężkiej wiary, że śmierć tyka osób,\nNie sytuacyj.\n\nA jednak ona, gdziekolwiek dotknęła,\nTło, nie istotę, co na tle, rozdarłszy.\nPrócz chwili, w której wzięła, nic nie wzięła;\nCzłek od niej starszy!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/%C5%9Amier%C4%87_(Norwid)",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Źródło",
+      "texto": "Kiedy błądziłem w piekle, o którem nie śpiewam\nDlatego, że mi klątwy pierw się w usta kleją,\nJak muchy brzydkie, które ze skwarów szaleją —\nI nie śpiewam dlatego, że, nim pocznę, ziewam;\nKiedy, błądząc, przeszedłem kolumnadę nudów,\nDługą i prostą, tudzież kaprysów przedsienia\nI niedogasłych w piasku cmentarz wielkoludów,\nRuszających się sennie pod brukiem z kamienia —\nGdy pomierzyłem kroki memi przedpokoje\nNerwów głupich, co ciągle przymierzają stroje,\nA nie są nigdy na czas ubrane weselny —\nGdy przestąpiłem nędzy próg, kłamstwa podwoje\nI mijałem już zbrodni labirynt bezczelny,\nPooklejany zewsząd wyrokami prawa —\nZnalazłem się na miejscu, gdzie pod stopą lawa\nStygła, i szedłem dalej w powietrzu i porze\nI świetle, które były rzetelnie bezboże!...\nNa podobieństwo łanów zwęglonych wulkanem,\nLub morza, co zatęchło postępem wstrzymanym,\nMorza fal, które stając poglądały wzajem,\nZadziwione niezwykłym głębi obyczajem,\nJak sfinksy — zaś nad niemi pelikanów nieco —\nZ otwartemi gardłami, co schły od pragnienia,\nI gwiazd parę czerwonych,które w otchłań lecą\nGasnąc...\n ...Tam szedłem (spomnieć trudno bez wytchnienia!...)\n\nSzedłem tam, kędy, wątpiąc, gdy roślinka drobna,\nBlada i do niewprawnie wyszytej podobna,\nSzepnęła mi: «...Jest źródło...», a dalej w parowie\nPoczułem coś, jak wilgoć.\nZ tejże samej strony\nŚmiech mię doleciał gorzki i szmer przytłumiony,\nI obaczyłem męża z rękoma na głowie,\nJak kiedy kto przenosi całą swoją siłę\nW stopy własne...\nDeptał on modrą źródła żyłę,\nJakoby wstęgę, która mu sandał oplotła,\nLub szargała się w prochu, gdzie ją stopa wgniotła.\n\nŚmiech człowieka był wściekły, wymowa odrębna,\nCoś, jak tętno za trumną noszonego bębna,\nKtórem wybrzmiewał sarkazm, chrypnąc z nienawiści:\n«Patrzcie, jak duch stworzenia obuwie mi czyści!...»",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/%C5%B9r%C3%B3d%C5%82o_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "A la ksiądz Praniewicz",
+      "texto": " Kraszewski romansem twierdzi,\n Jakby się uchwycił żerdzi,\n Tego Wanda w płochym pomyśle\n Nie zrobiła i leży w Wiśle.\n\n Pol Wincenty mężnie stawa,\n Z boku rymem coś dodawa;\n Był też sławnym Rej z Nagłowic:\n Jeśliś łaskaw, więcej powiédz.\n\n Siemieński z Wawelu czasem\n Pięknie się ozwie z hałasem,\n Lecz smok, którego zabił Krakus,\n Z Wawelu się odzywał takoż*.\n\n * Czytaj: takus.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/A_la_ksi%C4%85dz_Praniewicz",
+      "tags": []
+    },
+    {
+      "titulo": "Ad leones",
+      "texto": "Drżyjcie, tyrany świata.\nLud podniósł sądny głos,\nStraszny uderzy cios...\nPiorun już z chmury zlata...\n— — taramta tata rata...\nDrżyjcie, tyrany świata...\n\n—\tramta tarata tata!...\nDrżyjcie, tyrany świata...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Ad_leones",
+      "tags": []
+    },
+    {
+      "titulo": "Adam Kraft",
+      "texto": "I ty w szpitalu zakończyłeś życie,\nOd nieudolnych zrozumiany głazów,\nCo ludzi jeszcze nauczają skrycie,\nZaledwo echem twoich brzmiąc wyrazów,\nTwojego serca powtarzając bicie —\nI ty w szpitalu z trosk umarłeś! Smutno!\nJakgdyby głazom tylko wierzyć można,\nJeśli je dłuta w kształt szlachetny utną\nI zaopatrzy jaka myśl pobożna\nW kamienny pacierz...\n\nTyś ów pacierz zmówił,\nA jeszcze sięgasz, kędy zenit jego\nKolumnę gmachu przeszedł gotyckiego\nI pod stopami Pana wieniec uwił.\nZ twoich to ramion latoroślą wzbity,\nZaowocował w grona świętych twarzy,\nNie jako rzeźba, lecz jak hymn lewity,\nTrzymającego przednią straż ołtarzy,\nWylany z duszy, nie zaś stalą ryty.\nKto go nie widział, komu nie padł cieniem\nNa całe życie, jako wątek marzeń,\nI z tajemniczem nie ochmurzył drżeniem\nLazurowego tła doczesnych zdarzeń,\nTen ani może błędną widzów drogę,\nOpuszczających próg kościelny, cenić;\nGdziekolwiek bowiem zrazu stawisz nogę,\nZdaje się jeszcze łuk za łukiem cienić —\nI jako prorok, obudzony świtem,\nNie mogąc rychło zbyć drabiny sennej,\nOczarowanem zbłąkasz się korytem\nI jeszcze wrócisz hołd powtórzyć lenny.\nO wielki mistrzu! Słusznie zginasz barki\nI na ramionach własne pieścisz dzieło,\nGdy oto widzę wedle błahej miarki\nNie ocenili, co ich prześcignęło:\nSamemu tobie zostawując brzemię\nZniesienia siebie — boś opuścił ziemię.\nO wielki mistrzu! Tyś dał innym przykład,\nKu jakim szlakom mają zdążać sami,\nNiech tylko pojmą, biorąc czyn za wykład,\nCherubowemi wznosząc się skrzydłami\nNad liść wawrzynu, łzę i szyderstw węża.\nNiechaj się ku nim oglądają zgóry\nZ ewangeliczną łagodnością męża.\nTy nawet przebacz, jeśli z widzów który,\nJerozolimskie naśladując córy,\nGdy w grobie Pana oglądały płótno,\nWestchnie — a puste zawtórują mury:\n«I ty w szpitalu z trosk umarłeś!\nSmutno!...”\n\nNorymberga, d. 20 października 1842.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Adam_Kraft",
+      "tags": []
+    },
+    {
+      "titulo": "Addio!",
+      "texto": "«Jeśli ty mnie szukasz» — Prawda woła —\n«To z namiętnościami czasowemi\nWęzeł swój roztargnij, synu ziemi,\nBo nie dojrzysz i cieniu mego zgoła!»\n\nSilna na to zakrzyknie Popularność:\n«Chodź, z namiętnościami czasowemi\nZłącz się, opieszały synu ziemi!\nJa nazywam się «czynność», prawda — «marność!»\n\nBądźcież zdrowe, obiedwie — dowidzenia!\nMnie wołają sny na mech cmentarny;\nAni widzieć chcę tej prawdy marnéj,\nNi tej popularności bez sumienia.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Addio%21",
+      "tags": []
+    },
+    {
+      "titulo": "Aerumnarum plenus",
+      "texto": "Czemu mi smutno i czemu najsmutniéj,\nMamże ci śpiewać ja, czy świat i czas?...\nOh, bo mi widnym strój tej wielkiej lutni,\nW którą wplątany duch każdego z nas.\n\nI wiem, że każda radość tu ma drugę,\nPoniżej siebie, przeciwradą łzę,\nI wiem, że każdy byt ma swego sługę,\nI wiem, że nieraz, błogosławiąc, klnę.\n\nCzemu mi smutno? — Bo nieradbym smucić,\nAni przed sobą kłamstwa rzucać cień,\nBy skryć, jak czego nie można odrzucić,\nBy uczcić, czego wyciąć trudno w pień.\n\nWięc to mi smutno, aż do kości smutno,\nI to, że nie wiem, czy ten ludzi stek\nMa już tak zostać komedją okrutną,\nI spać, i nucić, śpiąc: «To taki wiek!»\n\nWięc to mi smutno, i tak coraz gorzéj,\nAż odczłowiecza się i pierś i byt,\nI nie wiem, czy już w akord się ułoży,\nI nie wiem, czy już kiedy będę syt!...\n\nI nie wiem, czy już będę mógł nie wiedzieć,\nŻe coraz żywot mniej uczczony tu,\nŻe coraz łatwiej przychodzi powiedzieć,\nZe snu się budząc: «Wróćmyż znów do snu!»\n1850.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Aerumnarum_plenus",
+      "tags": []
+    },
+    {
+      "titulo": "Amen",
+      "texto": "Skrwawione ciało haki żelaznemi\nImperatorscy ludzie wzięli z ziemi\nI za arenę wynieśli, rzucili...\n\nA aniołowie w niebie hymn nucili,\nPalmami wiejąc rozkwitającemi,\nI tę nawiali woń, o której święci,\nGdzieś w katakumbach modłami zajęci,\nJak o szczególnej rzeczy rozmyślali,\nTabliczki nagle wypuściwszy z dłoni\nI papirusy, na których czytali,\n«Czy słowo — mówiąc — tyle zlało woni?» —\n\nWięc się męczennik przeniósł do serafów,\nA do robactwa ciało podziemnego,\nTak, iż poganin rzekł: «Ha! — i cóż z tego?!\nAzali prawda nie jest sługą trafów?\nAlbo czy tygrys wąską kłów szczeliną\nWycedził prawdę oną z krwawą śliną?»\n\nLecz umarłego szata pozostała;\nTej trędowaty dotknął się przechodzień\nI oczyszczony jest — i odtąd: «Chwała!»\nŚpiewają, chromi doń się wleką codzień,\nI ślepych dziatwa wiedzie, nucąc: «Chwała!»\n\nStrędowaciały hańbą, albo ślepy\nNieszczęściem, czarne nawodzącém krepy,\nI paraliżem tknięty przerażenia,\nNiechaj się szaty dotknie, pozostałej\nNa Europy piersiach, szaty małej,\nJak szkaplerz, krwawem naznaczonej słowem,\nA z tłumu naród wstanie zleczonego,\nPod roztopionym w chmurach wielogłowem,\nNa znak onemu, co rzekł:\n«I cóż z tego?»\nW Rzymie 1847.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1934,
+      "fonte": "https://pl.wikisource.org/wiki/Amen_(Norwid%2C_1934)",
+      "tags": []
+    },
+    {
+      "titulo": "Auto - da - fé",
+      "texto": "PROTAZY, poeta.\nGERWAZY, poufny Protazego.\nCHÓRY POGRZEBOWE osoby zmarłej.\nCZYTELNICY.\nDWA KOMINKI, — i t. d.\n\nPROTAZY. (od zrobionego ognia usuwając się) Patrz, co to się z książkami na tym świecie robi!\nRedaktor mi co miesiąc zapałki przyséła,\n\nMyśląc, iż zbiór tych kartek mój księgozbiór zdobi —\nI, że to jest oprawne, więc zowie się «Dzieła!»\nLecz grzeczność każe... czekaj... oto mój tom nowy...\n\n«Od autora». Wyślij, proszę, przez człowieka,\nAlbo tu obok oddaj na urząd pocztowy!\nNiechże przynajmniej wzamian za grzeczność nie czeka!\n\nDziwny świat! Każdy pisarz dziś gotówby żonie\nPióro kłaść w usta; mówiąc nawet z przyjacielem,\nMyśli: «To nowa kartka!!» i pisze na stronie —\nI człowiek atramentu środkiem, a nie celem!...\nA celem? To jak kuli, co iskrami zionie...\nGERWAZY. (wracając) Wysłałem...\nPROTAZY. Właśnie palę egzemplarz ostatni.\nGERWAZY. Trzeba było dołączyć z książką uścisk bratni...\nPROTAZY. Tak dalece fałszywym być nie mam przyczyny.\nGERWAZY. Czyny są myśli nieme, myśli — mówne czyny...\nPROTAZY. Jużci, musiałem posłać — byłoby niegrzecznie...\n\nPROTAZY. (przeczytawszy) List właśnie-że od niego! — Jak to niebezpiecznie\nŚpieszyć się!... Coś mu przyszło do głowy i prosi,\nAby, gdy się co wzamian mojego ogłosi,\nNie przysyłać mu próżno... Szczupłe ma mieszkanie\nI właśnie się na zimę bliżej mnie przenosi...\nSiądźże i napisz, proszę, natychmiast:\n\n «Posłanie\nNowego tomu zaszło przed otwarciem listu;\nProszę o zwrot na koszt mój». I koniec — do trzystu!...\nA niech posłaniec zaraz odpowiedź przynosi.\nGERWAZY. (wychodząc z listem) Otóż to tak zawdzięcza się wzajem i znosi!\nPROTAZY. (sam) Radbym, aby list przyszedł nie później od tomu —\nLecz gdzież Gerwazy?\n\n Mówią, iż druk, nakształt gromu\nPędząc, zażega, światło roznosi. Druk... może...\nAle czytelnik, książkę przyniósłszy do domu,\nKładzie się z nią w fotelu, kładzie się na łoże,\nStosownym nożem kartek przecina niewiele,\nŚledząc, do ila autor też same ma cele.\nI jeśli myśli własne znalazł, to szczęśliwy:\nI tylko własnych szuka mniemań... skąd wynika,\nŻe to jest także pisarz, lecz pisarz leniwy\nI wyręczony... Słowem, niema czytelnika!\n\nInny zato swych nie zna celów, ni kierunku,\nI tylko czyta, usta schylając ku kartom,\nJak gdy z pełnego dzbana próbuje kto trunku,\nŁzom, jak śmiechowi, rad jest — a jako łzom, żartom.\nTemu, że nie ma celów, bezdeń się otwiera,\nTemu wciąż lej, bo pragnie — pragnąc, nie przebiera,\nAż straci smak...\n\n Obadwa... umarli!... Ratunku!\nGerwazy gdzież jest?...\n\nGERWAZY. Chciałem uprzedzić posłanie,\nChciałem, by grzeczność twoja niewczesną nie była,\nChciałem i sam poszedłem, lecz nadspodziewanie\nPogrzeb mi drogę przeciął. Ludu było siła!\nSzli a szli... księży różnych zakony sędziwe,\nGromnic las — potem ciało na marach nieżywe,\nPowozów dalej czarnych szereg nieskończony.\n\nJa stałem, we framugę po bożku wciśniony,\n(Bo szczęściem był tam niegdyś Apollin z marmuru),\nA oni szli — aż przeszli. Nie bywszy zgnieciony\n(Dzięki Apollinowi), wystąpiłem z muru\nI bardzo śpiesznie dążę — przebiegam cel drogi —\nWracam — nie pytam stróża — i wstępuję w progi...\n\nPROTAZY. (dopowiadając Gerwazemu)\nI nie zastajesz, bowiem przeniósł się!!...\nGERWAZY.  Nie — wcale —\nWcale się nie przenosi!... Zastałem go, owszém,\nI każe ci się kłaniać... ma się doskonale...\nMyślę, że nigdy nie był weselszym i zdrowszym;\nTylko — — wybiegłem, zda się, w feralnej godzinie,\nJakoż, nim list przyniosłem, tom doszedł bezpieczniéj...\nA widzę, że ma zwyczaj palić sam w kominie!\nPROTAZY. (z westchnieniem, patrząc w komin) Jeśli nie równie mądrzy, to równieśmy grzeczni.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Auto_-_da_-_f%C3%A9",
+      "tags": []
+    },
+    {
+      "titulo": "Bajka",
+      "texto": "«Najlepsza rzecz żyć w zgodzie, bez twierdzeń, bez sprzeczki.\nPocóż bo gwar ustawny dla kropki lub linji\n\nI urabianie ciągle publicznej opinji?»\nSiennik dziurawy mówił tak do torby sieczki,\nTymczasem osły, najmniej nie myśląc o szkodzie,\nSiano i sieczkę w cichej pożywały zgodzie.\nA stąd zdaje się prawda ta być oczywistą,\nŻe i człowiek zyskałby, będąc legumistą.\n(1861).",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bajka_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "Beatrix",
+      "texto": " „Utwory pana czytałam starannie,\n Lecz nie ma słówka w nich do Beatricze:\n Jak byś pan nigdy żadnej pięknej pannie\n Nic nie napisał... a ja na to liczę!\"\n\n „Pani! twą naprzód niech mi wolno będzie\n Uścisnąć rękę za tak wiele trudu...\"\n\n „Trudu?...\"\n\n „Zapewne — bo nigdzie i wszędzie\n Utwory moje. — Jam nie śpiewak ludu,\n Którego piosnkę kiedyś kmieć powtórzy,\n Obejmie tęcza, wicher poda burzy;\n Ni śpiewak ludzi nie znanych ludowi...\n — Tomów in quarto — tomów in octavo\n Nie wyśpiewałem... jak poeci owi.\n Pieśń ma tam — ówdzie. Krakowie, Warszawo,\n Poznaniu, Wilno i ty, Carów miasto!\n Wiecie, żem sercem rzucał bez rachuby...\n — A pani mówisz: że mię znasz? ... Niewiasto!\n Niewiasto!... tom ci napisałem gruby...\n Jak grób człowieka —\n Tu — pozwól mi, pani, Że ci zaśpiewam Odę do kobiety —\"\n\n „Słucham.\"\n\n „...Myśl sama już serce mi rani...\n Nie będę śpiewał — — O ty! — ty — a nie ty...\n (Początek znany i który zużyto) Zacznę inaczej...\"\n\n „Zacznij pan: kobieto!...\"\n\n „Pani! — tak kończy się, nie zaś zaczyna,\n I w tym jest cała trudności przyczyna...\"\n\n „Zacznij pan, jak się zdawać panu będzie...\"\n „Pani! — tak zacznę, jak kończą łabędzie...\"\n\n „Eurydyce! — miałbym mówić prawo — Pozdrów mię, proszę...\" I Andromacy rzec: „Ksieni! łaskawo Patrz, ile znoszę...\"\n Nie jak Eneasz ja piekielne groty Przeszedłem — o nie! Bo żałowaliście mi rózgi-złotej I ziół na skronie.\n Gdym nogę bosą stawił z dumą wielką Na zamieć czasów,\n A nie splamiłem ci łzy mej kropelką Wstążek, atłasów!...\n Ani-m gazowy oberwał ci welon,\n By otrzeć skronie,\n Choć nie duch jestem, ale jestem wcielon,\n Pomny o zgonie...\n Dlatego znam cię, Realności-wdowo! I znam twą śliczność, I powiem tobie tylko jedno słowo: „Tyś... jak... publiczność.\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Beatrix",
+      "tags": []
+    },
+    {
+      "titulo": "Bema pamięci żałobny rapsod",
+      "texto": "— Czemu, cieniu, odjeżdżasz, ręce złamawszy na pancerz,\nPrzy pochodniach, co skrami grają około twych kolan?\nMiecz wawrzynem zielony, gromnic płakaniem dziś polan,\nRwie się sokół i koń twój podrywa stopę, jak tancerz.\nWieją, wieją proporce i zawiewają na siebie,\nJak namioty ruchome wojsk, koczujących po niebie.\nTrąby długie we łkaniu aż się zanoszą i znaki\nPokłaniają się zgóry opuszczonemi skrzydłami,\nJak włóczniami przebite smoki, jaszczury i ptaki,\nJako wiele pomysłów, któreś dościgał włóczniami...\n\n— Idą panny żałobne, jedne, podnosząc ramiona\nZe snopami wonnemi, które wiatr wgórze rozrywa,\nDrugie, w konchy zbierając łzę, co się z twarzy odrywa,\nInne, drogi szukając, choć przed wiekami zrobiona...\nInne, tłukąc o ziemię wielkie gliniane naczynia,\nCzego klekot w pękaniu jeszcze smętności przyczynia.\n\nChłopcy biją w topory, pobłękitniałe od nieba,\nW tarcze, rude od świateł, biją pachołki służebne,\nPrzeogromna chorągiew, co się wśród dymów koleba,\nWłóczni ostrzem o łuki, rzekłbyś, oparta podniebne...\n\nWchodzą w wąwóz i toną... wychodzą w światło księżyca\nI czernieją na niebie, a blask ich zimny omusnął\nI po ostrzach, jak gwiazda, spaść nie mogąca, przeświéca.\nChorał ucichł był nagle i znów, jak fala, wyplusnął...\n\nDalej — dalej — aż kiedy stoczyć się przyjdzie do grobu\nI czeluście zobaczym czarne, co czyha za drogą,\nKtóre aby przesadzić, ludzkość nie znajdzie sposobu,\nWłócznią twego rumaka zeprzem, jak starą ostrogą...\n\nI powleczem korowód, smęcąc ujęte snem grody,\nW bramy bijąc urnami, gwizdając w szczerby toporów,\nAż się mury Jerycha porozwalają jak kłody,\nSerca zmdlałe ocucą, pleśń z oczu zgarną narody.\nDalej — dalej...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bema_pami%C4%99ci_%C5%BCa%C5%82obny_rapsod",
+      "tags": []
+    },
+    {
+      "titulo": "Bezimienni",
+      "texto": " 1.\n\nTeleskopowa oj! kometo\nPrzelatująca w dzień słoneczny,\nGmin cię nie witał niestateczny;\nAstronom ledwo z baszt, lunetą!\n— Ty, na padół nie trzęsiesz złotem\nNi groźbami — cóż ludziom potem? —\n\n 2.\n\nCiche zasługi są tak samo\nBez wczesnego gdy schodzą żalu;\n— Dziecię woła za piersią: «mamo!»\nLecz ona w mieście jest na balu:\nPierś zapiętą wsparłszy o ramię,\nTanecznika, co uśmiech kłamie.\n\n 3.\n\nO! z jakimże wołałem żalem\nNa smętarzach twoich, Narodzie:\n«Jeruzalem! o Jeruzalem!\nBez strażników i wierzyc grodzie,\nZawsze nie w czas, lub zawsze nie ty\nTeleskopowe znasz komety.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Poezye_Cypriana_Norwida/Bezimienni",
+      "tags": []
+    },
+    {
+      "titulo": "Bliscy",
+      "texto": "Tu, gdzie, im krótszy czas, tem lepiej skrywa\nSzybkość swą, ważność i miarę,\nA człowiek ledwo rzec może, że bywa\nZdrowych lat kilka lub parę —\n\nLudzie znikomość tę czy mieli siły\nWziąć za coś więcej, niż plagę,\nChoć krzyż sam, waląc się na grobie, zgniły,\nRazem traci kształt i wagę?\n\nJakby się nieme rzeczy też siliły\nNieustannemi jękami\nPrzedłużać nicość swą i zlepiać pyły\nŁzą aż i łza się wyplami.\n\nWięc, gdy na chustki ostatniej już brzegu\nŁzy ślad spełznie swym ostatkiem, —\nWięc, gdy ostatni z przyjaciół szeregu\nWspomni się już, już, przypadkiem —\n\nWtedy — o, wtedy myśl, i życia wątek,\nI ślad dramatyczny bytu\nTwego, w swój wtóry wnikłszy odpoczątek,\nZbudzi się tobą do sytu.\n\nBo teraz wszędzie jeszcze twoje «nie ja»\nObejmać musisz sumieniem\nI nie twój jesteś rozum i nadzieja,\nI jesteś twojem zwątpieniem.\n\nLecz i tu ludzi trzy widziałem sfery,\nTrzy obcowania ich strony:\nJedni, co znają cię, jak się litery\nZna, pókiś ku nim zwrócony\n\nI póki twarzą w twarz przestajesz z niemi,\nZaś ani chwilę już potem;\nTak kły pszeniczne ruszają się z ziemi,\nWyzieleniając, za grzmotem...\n\nDrudzy, mniej żądni oblicza i gestu,\nMniej osobistej poręki,\nBo życie całe pamiętni, jak chrzęstu,\nTych, których dotknęli ręki.\n\nI trzeci wreszcie, rzadcy niesłychanie,\nCo, choćbyś umarł od wieku,\nWeszli w poufne z tobą obcowanie,\nJak siedzący człek przy człeku,\n\nA którzy znikną z Elektrą twej siły,\nLub znajdą się w życia składni,\nA których czekać u swojej mogiły\nBędziesz? —\nJa nie chcę... Sam zgadnij!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bliscy",
+      "tags": []
+    },
+    {
+      "titulo": "Bogowie i człowiek",
+      "texto": "Dziś autorowie są jak Bóg:\nDość jest, że tchną, wnet arcydzieło wstawa,\nW skrzydlany lot posuwa ciężki pług,\nTrud jest jakoby zabawa.\n\nNie samo już słońce rzuca cień.\nWawrzynów, skłania je i wiatr życzliwy,\nDwadzieścia lat sławy za jeden dzień\nDając, za jeden dzień szczęśliwy!\n\nI od Wirgiljusza kształtnych pień\nZalatują jeszcze ludzkie natchnienia.\nOn dwadzieścia lat pracy dał za dzień,\nZa jeden dzień stworzenia!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bogowie_i_cz%C5%82owiek",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Bohater",
+      "texto": "Czy już nie wróci czas siły zupełnéj,\nAni ma jeszcze zasłynąć\nWiek, gdy po runo ważono się płynąć\nZe złotej uwite wełny?...\n\nLec na kolchidzkiej tkaniny kobierce\nNiktże już więcej nie pragnie?\nLub bohaterów czulsi spadkobiercę\nWoląż się ująć za jagnię...?\n\nSmoka czy wielki łeb dziś wyzwie kogo,\nBykiem otrębując turniej?\nLub jestże, ktoby rad go potrzeć nogą\nI wynieść się nadeń górniej?...\n\nCzy ramion marmur, czy muskułów granie\nI całostrojność budowy\n\nNie ma już więcej nic za powołanie\nNad strawność dobrą, byt zdrowy?\n\nBohaterowie wszak od wieków w wieki\nKraj zdobywają zaklęty\nI od Achilla mniej bywa kaleki,\nKto nie wyzuł z ostróg pięty!...\n\nMiałażby słodycz chrześcijańska nowa\nZawistnym być męstwa druhem?\nGdy ona raczej, jako białogłowa\nWierna, współzwycięża duchem!\n\nMiałażby włosów srebrność księżycowa\nWyzwalać z dziejów zaciągu?\nLecz starość, w czas swój, bywa więcej zdrowa\nOd bark greckiego posągu.\n\nMojżesz, wiek blisko przeżywszy, powstawa\nWyswobodzicielem ludu;\nHeroizm czysty wcześnie nie dostawa,\nI nie dostawa bez cudu!\n\nOwszem, śmierć sama i jej piekieł krater\nCóż są?... Rzecz wielka, lub licha:\nW miarę do tego, jak, jaki bohater\nDopełnił swego kielicha.\n\nNiechże więc Kolchów wiek sobie nie wraca,\nWspółczesność w równej mam cenie:\nHeroizm będzie trwał, dopóki praca,\nPraca, dopóki stworzenie!...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bohater_(Norwid)",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Bransoletka, legenda dziewiętnastego wieku",
+      "texto": " Ileż to razy? dobry mój Antoni\nZ mężem poważnym chodziłem pod ramię,\nW mieście, którego lew i lilja broni,\nA Danta szukasz czy nie spotkasz w bramie:\nSztuka tam, pomnisz od Religii idzie,\nJako posłane na przechadzkę dziecko,\nA pospolita rzecz — o! czasów wstydzie —\nZ murów wygląda święcie i szlachecko!\n\n Ileż to razy więc, w Florencyi onej\nPamiętasz, szliśmy, rzeczy mówiąc pewne,\nKtóre nie mają treści naznaczonej,\nA jednak cale są i długo rzewne.\nNie zapodziewa ich wola człowieka\nNi czas — lecz owszem odpomnień są skłonne\nI myśl dosnuwa je, lub dosnuć czeka,\nI brzmią w powietrzu jak znane podzwonne.\n\n Takim to treściom na pamiątkę szlę ci\nDziewiętnastego wieku tę legendę;\nStarszych niech zbudzi, ukołysze dzieci,\nA szczęśliw będę — — — — — — —\n C. N.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1863,
+      "fonte": "https://pl.wikisource.org/wiki/Bransoletka%2C_legenda_dziewi%C4%99tnastego_wieku_(Norwid%2C_1863)",
+      "tags": []
+    },
+    {
+      "titulo": "Bronisławowi Z. z piórem",
+      "texto": "Niech nie uwodzi ubóstwem powabu\nPióro ze skrzydeł sępa Senegalu.\nZwą go pustelnik i mędrzec («Marabu»),\nWażyć się lubi w obłokach z opalu,\nSpieczoną gardząc ziemią, woła «Abu!»\n(«Ojcze!») — i pióro zwykł tracić bez żalu,\nBo z wysokości je tych wielkich rzuca,\nGdzie już nie wzdycha się!...\nTam, niebo — — płuca!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Bronis%C5%82awowi_Z._z_pi%C3%B3rem",
+      "tags": []
+    },
+    {
+      "titulo": "Buntowniki czyli stronnictwo wywrotu",
+      "texto": "Oni nie przyszli lutu po łup bojowy,\nNiemowlęta biorąc na piki,\nOżałobione tłukąc kolbą wdowy:\nTo — buntowniki!\n\nOni sprawują rząd, bezosobiście\nMiastem nieraz władną młodziki —\nA tłum, groźny, ich słucha uroczyście:\nTo — buntowniki!...\n\nNa cherubinach Bóg już zbliża — zbliża\nEzechjelowej tór kwadryki;\nTam i owdzie grzmi, wielkie znamię krzyża;\nTo — buntowniki!\n\nCzemuż raczej nie wierzą kancelarji\nOjczyznę woląc, niż rubryki,\nA ufać śmią w Jezusa moc i Marji\nTe buntowniki!?\n1863.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Buntowniki_czyli_stronnictwo_wywrotu",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Buntowniki, czyli stronnictwo wyroku",
+      "texto": "Oni nie przyszli tu po łup bojowy,\nNiemowlęta biorąc na piki\nOżałobione, tłukąc kolbą wdowy:\nTo — buntowniki! —\n\nOni sprawują rząd, bez-osobiście,\nMiastem nieraz władna młodziki — !\nA tłum, groźny, ich słucha uroczyście!\nTo — buntowniki — !\n\nNa cherubinach Bóg, już zbliża — zbliża\nEzechjelowe tór kwadryki;\nTam i owdzie grzmi, wielkie znamię krzyża;\nTo — buntowniki!\n\nCzemuż raczej nie wierzą kancelarji,\nOjczyznę woląc, niż rubryki —\nA ufać śmią w Jezusa moc i Marji:\n Te, buntowniki!? —\n\n1863. C. Norwid.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Buntowniki%2C_czyli_stronnictwo_wyroku",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Cacka",
+      "texto": "Myśliłem ja, że lira i że styl,\nChoć fala je nosi, jak łabędzia,\nNieobliczającego dróg i chwil.\nChoć cel mają w sobie, są narzędzia.\n\nMyśliłem, że, gdy lud nie ma bytu,\nŻe słowu jeżeli brak powietrza,\nDotyka wieszcz kluczem u zenitu,\nSkąd aura na świat płynie letsza.\n\nJa myśliłem, że każda ze strun wie,\nW jaką porę wydzwonić co i gdzie\nI myśliłem, że przez ich balsamy\nUpowinowacone różności\nCzynią, iż spóźnionych prawd nie mamy,\nSpóźnionych dla miękkiej drażliwości.\n\nMyśliłem, że wieszczów było tyle,\nIle jest blizn dotkliwych, a które\nPrzez form czary, przez stosowną chwilę,\nOpatrują się i leczą wporę.\n\nOh, ja byłem błędny i sam chory!\nPonętniejsze jest lir przeznaczenie:\nSą one dla prawd, czem w oknach story,\nNa których wstrzymują się promienie,\nWyświecając płótno malowane\nZ malachitowemi krajobrazy,\nZe źródłami ametystowemi,\nPasterkami, owianemi w gazy,\nZ ziemią tą, co nie dotknęła ziemi!\n\nOne śnią, że szyba, to posadzka!\nOne nucą: «Stąpaj bez poręczy\nW objęcia fantazji, co się wdzięczy...\n— — — — — — — Cacka — cacka!!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Cacka_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "Centaury",
+      "texto": "Dla cnót, dla zasług, dla czynów powszednich\nNiebo ma nagród mnóstwo odpowiednich,\nA innym każda dyjademem świeci;\nNawet i cacka różne są dla dzieci!\nLecz pokolenia, na wyspach zdziczałe.\nGdzie umysł twardym skamieniał odłogiem,\nWszystko, co nie jest, jak poziom ich, małe,\nUmieją tylko zwać panem, zwać Bogiem.\nRóżnic tam niema, zaś ludzi się ceni,\nCzy doścignieni albo prześcignieni?",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Centaury",
+      "tags": []
+    },
+    {
+      "titulo": "Cenzor-Krytyk",
+      "texto": "Noszą pióra na głowach dzicy;\nTakie też jest i twoje pióro,\nSkoro nie wiesz nawet różnicy\nMiędzy krytyką a cenzurą.\n\nDrugiej niwa, czy złą, czy żyzną,\nNigdy własną, lecz pierwszej siły\nSą jej własne, są jej spuścizną\nPo tych, co dzieła ich przeżyły!\n\nSkądże zaś moc twoja się wzięła,\nRajco efemerycznych sporów?\nAutorów sądzą ich dzieła,\nNie autorzy autorów.\n\nBo i różnicaby zginęła,\nCo gościnny druh, a co szynkarz;\nPamfletami byłyby dzieła,\nKrytykiem byłby pojedynkarz!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Cenzor-Krytyk",
+      "tags": []
+    },
+    {
+      "titulo": "Ciemność",
+      "texto": "On skarży się na ciemność mej mowy —\nCzyż choć świecę raz zapalił sam?\nSługa mu ją wnosił pokojowy.\n(Wielość przyczyn tak ukryto nam!)\n\nNić objąwszy iskrą, zrazu płonie,\nZalewa wosk, który górą wstawa,\nGwiazda jaśni powoli tonie,\nModra światłość jej i bladawa.\n\nJuż, już myślisz, że zgaśnie, że zdołu\nCiecz rozgrzewa, wszystko pochłonie...\nWiary trzeba, nie dość iskry i popiołu!\nDałeś wiarę — patrz, patrz, jak płonie!\n\nPodobnież są i pieśni me. O człowieku,\nKtóry im chwili skąpisz marnéj,\nNim, rozgrzawszy zimnotę wieku,\nPłomień błyśnie ofiarny!\n1877.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Ciemno%C5%9B%C4%87_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "Cnót oblicze",
+      "texto": "Cnoty spotkałem trzy różne oblicza:\nJak światło, cień i złudzenie;\nLecz głosić nie chcę, która z nich zwodnicza\nStrona — całość trzech ocenię.\n\nCnotę tragiczną widziałem, od wieków\nJako zwyciężała opór,\nOd hardych mieczów do krzyżowych ćwieków,\nOd więzień pod sznur i topór,\n\nOd łez połkniętych do pogody czoła,\nWszechkrólującej wielmożnie,\n\nJako, gdy posąg wwodzą do kościoła,\nNie chylą się on ostrożnie,\n\nLecz owszem, w górne świątyni sklepienia\nPoglądać zda się, jak w domu,\nLub twarde członki na łoże z kamienia\nIdzie wyciągnąć bez sromu.\n\nTragicznej cnoty widziałem to ijście\nW kościół tryumfu wysoki,\nA wieńce za nią padały, jak liście,\nA drżały przed nią obłoki.\n\nWidziałem potem dramatyczną cnotę,\nPełną giętkości, jak fala,\nCo łan użyźnia pod pszenice złote,\nSkały przybrzeżne obala.\n\nPrzez jej zawistnych im samym zakryta,\nJak w masce nieobmyślonéj,\nDzieł dokonywa, których hipokryta\nSam nie dociekłby zasłony!...\n (Końca brak).",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Cn%C3%B3t_oblicze",
+      "tags": []
+    },
+    {
+      "titulo": "Co jej powiedzieć?",
+      "texto": "Co jej powiedzieć?... Ach, co się podoba\nBez rozmawiania sposobu;\nCoś z prawd ogólnych: naprzykład, że doba,\nTo całego obrót globu.\n\nŻe świat obiega mil mnóstwo ogromne\nNa jedno pulsu zadrżenie —\nBieguny osi skrzypią wiekopomne:\nCzas niepokoi przestrzenie —\n\nŻe rok, to całej wstrząśnienie przyrody,\nŻe pory roku nietylko\nSą zamarzaniem i tajeniem wody\nI że bicie serca... chwilką!\n\nTo jej powiedzieć... i przejść do pogody,\nGdzie jest zimniej, gdzie goręcej,\nI dodać, jakie są na ten rok mody...\nI nic nie powiedzieć więcej.\n1868.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Co_jej_powiedzie%C4%87%3F",
+      "tags": []
+    },
+    {
+      "titulo": "Co robić?",
+      "texto": "Śród Europy, nie dla obyczaju\nChrzczonej, co począć w rozebranym kraju?\nCo robić, pyta ten, tamten i owy,\nRozłamanego narodu trzy głowy.\nPojrzeć ku górze, pod ołtarz narodów,\nGdzie z całej armji został strażnik schodów,\nZ korony blaski odleciały święte,\nBerła nie widać, chorągwie zwinięte\nI usunięta kraina z pod stopy.\nA czy się wdarł kto na ducha okopy?\nA czy i gwałcić kto śmiał nieostrożnie,\nGdy cierpią czujni i milczą wielmożnie?\nJeżeli przeto ta ojczyzna twoja\nJest historyczna (a nie jest, jak Troja)\nNiech jak Rzym będzie i mszy dziejów słucha,\nTak, jak on, perląc różaniec łańcucha,\nMilcząc, jak milczą, trwając, jak tam trwają,\nPokąd się harfy nie ponastrajają...\nLub, jeśli, wzory przenosząc realne,\nOjczyzna jest to bagno lakustralne, —\nA ludów prawem są koście mamuta,\nTo niech ją depczą — i zgnije zepsuta!",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1934,
+      "fonte": "https://pl.wikisource.org/wiki/Co_robi%C4%87%3F_(Norwid%2C_1934)",
+      "tags": [
+        "patria"
+      ]
+    },
+    {
+      "titulo": "Confregit in die irae suae...",
+      "texto": "Zarazy wszystkie przez tę Polskę wchodzą\nDo Słowiańszczyzny naszej prawosławnéj.\nFrancuzi siebie, a potem ją zwodzą.\nSiad konwulsyjny ruch — i tak już dawny!\nGdyby skończyli tę dziecinną kłótnię,\nTo ten lub przyszły może imperator,\nJak drugi Nero, nastroiwszy lutnię,\nW Warszawie bawiłby się, jak amator.\nKtóż-bo rad rządzić krwawo i okrutnie,\nIlekroć boża tego nie chce sprawa,\nZłamanie przysiąg lub herezje nowe,\nCo chrześcijaństwa obrażają głowę,\nAlbo ustawny dzieci bunt — Warszawa!\n\nElement Polski nie jest elementem,\nAle kończącym się czasów odmętem,\nA Słowiańszczyzna to Geist jeszcze młody.\nCo za obrębem wielkiej konwersacji\nDuchowej leży, jak cedrowe kłody,\nGeologicznej godne dysertacji.\nGdyby Polacy zamiast tej rozsypki.\nCo nawiązuje rwany wciąż rynsztunek\nI na dziecinne niszczy się zaczépki,\nCzas obrócili swój na sztudirunek,\nTo — z ministerstwa zmianą — a następnie\nZ ideą, jasno skreśloną przedwstępnie,\nMożeby zczasem zyskali epitet\nNarodu, mając swój uniwersytet!\nPolacy dawno stradali pozycję\nI polityczną sprawę opuścili,\nNie wchodzą szczerze w państwa kompozycję,\nMogliby wiele robić — ale czyli\nPojmują, jakie we wszechgrawitacji\nKonstytucyjnej jest ich stanowisko?\nStąd lud nie słucha swej arystokracji\nI już na drogę wszedł niezmiernie śliską,\nI jedno rządu ojcostwo jest w sianie\nPodtrzymać ciągłe zdołu podrywanie.\n\nPolacy wprawdzie króla nie zabili\nI mają kilku niezłych męczenników,\nAle kacerstwa sobie potworzyli,\nCoś od Kabalah i od Platończyków.\nW ojczyznę duszę całą utopili,\nSkąd niedość czynnych mają zakonników,\nDo Chin na misję żaden się nie kwapi;\nKobiety ledwo że pojmują sprawę.\nTylko odporny duch je czasem trapi,\nI niedość mężów biorą w rękę prawę.\nBy w pojednaniu z świętą polityką\nPoznali, ile świat ten jest ateusz,\nI zatrudnili się cichą praktyką,\nCzekając, nowy co da jubileusz...\nPisałem w Europie 1850.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Confregit_in_die_irae_suae...",
+      "tags": []
+    },
+    {
+      "titulo": "Coś",
+      "texto": "Z intencji rodzi się wszelki uczynek;\nTy, będąc czynu człowiekiem,\nGardzisz intencją? Uwielb pojedynek\nI głoś, żeś narówni z wiekiem!\n\nMniejsza, czy senat pobłądził, czy rynek,\nBo, czyjakolwiekbądź wina,\n\nNajlepszym sędzią zawsze pojedynek:\nGarść prochu, butelka wina.\n\nAni kłopoczmy się, cedr czy barwinek\nNa grobie urośnie;... poco?\nWszelaką trudność kończy pojedynek\n(Zwłaszcza nie w dziejach i nocą!)\n\nW Azji częstokroć lichy mandarynek,\nGdy okradł kasę, podpala —\nPożar się szerzy... on wpada na rynek —\nWołają: «Miasto ocala!»\n\nTak hałas strzałów, tak gorzałki kminek\nKroków odmierzanie żwawsze\nCzynią, że, końcem końców, pojedynek\nJest to coś... i o coś zawsze.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Co%C5%9B_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "Coś ty Atenom zrobił, Sokratesie...",
+      "texto": "Że ci ze złota statuę lud niesie,\nOtruwszy pierwej?\n\nCoś ty Italji zrobił, Alighieri,\nŻe ci dwa groby stawi lud nieszczery,\nWygnawszy pierwej?\n\nCoś ty, Kolumbie, zrobił Europie,\nŻe ci trzy groby we trzech miejscach\nkopie,\nOkuwszy pierwej?\n\nCoś ty uczynił swoim, Camoensie,\nŻe po raz drugi grób twój grabarz trzęsie,\nZgłodziwszy pierwej?\n\nCoś ty, Kościuszko, zawinił na świecie,\nŻe dwa cię głazy we dwu stronach gniecie\nBez miejsca pierwej?\n\nCoś ty uczynił światu, Napoljonie,\nŻe cię w dwa groby zamknięto po zgonie,\nZamknąwszy pierwej?\n\nCoś ty uczynił ludziom Mickiewiczu?\n\nWięc mniejsza o to, w jakiej spoczniesz urnie,\nGdzie, kiedy, w jakim sensie i obliczu,\nBo grób twój jeszcze odemkną powtórnie,\nInaczej będą głosić twe zasługi\nI łez, wylanych dziś, będą się wstydzić,\nA lać ci będą łzy potęgi drugiéj\nCi, co człowiekiem nie mogli cię widziéć.\n\nKażdego z takich, jak ty, świat nie może\nOdrazu przyjąć na spokojne łoże,\nI nie przyjmował nigdy, jak wiek wiekiem.\nBo glina w glinę wtapia się bez przerwy,\nGdy sprzeczne ciała zbija się aż ćwiekiem\nPóźniej... lub pierwéj...\nPisałem w Paryżu 1856 w styczniu.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Co%C5%9B_ty_Atenom_zrobi%C5%82%2C_Sokratesie...",
+      "tags": []
+    },
+    {
+      "titulo": "Cywilizacja",
+      "texto": "— Co dzień woda w okręt ciecze,\nNogą z łoża ani stąp;\nCo wieczora — o! człowiecze\nW górę rękaw! — i do pomp.\n\nPożegnałem, co kochałem,\nUpominek złączy nas;\nRęką jedną, przestrzeń dałem,\nDrugą ręką dałem czas. —\n\nCo dzień woda w okręt ciecze\nNogą z łoża ani stąp;\nCo wieczora — o! człowiecze\nRękaw w górę — i do pomp! —\n\nPożegnałem, co kochałem —\nUpominek złączy nas:\nJedną ręką przestrzeń dałem,\nRęką drugą dałem czas.",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1863,
+      "fonte": "https://pl.wikisource.org/wiki/Cywilizacja_(Norwid%2C_1863)",
+      "tags": []
+    },
+    {
+      "titulo": "Czarne kwiaty",
+      "texto": "«Je tremble!... Car ce que je vais dire\nRessemble à un systeme».\n (Voltaire).",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czarne_kwiaty",
+      "tags": []
+    },
+    {
+      "titulo": "Czas i prawda",
+      "texto": "Iluż ja świeżych książek widziałem skonanie\nW samej wiośnie ich życia! A nie były tanie,\nI, kiedy je składano, czekał świat, by wyszły,\nPrzewidując wzruszenie albo oklask przyszły,\nI, kiedy je sznurówką zejmano w poszyty.\nŚwiat szeptał, jak w alkowach przed balem kobiéty.\n\nA gdy wyszły? Zostały porwane — a potem\nChwila cieniu i ciszy, jak bywa przed grzmotem,\nLecz czułeś, że znienacka światło się rozpostrze,\nI wiew kart i, jak po nich biegło noża ostrze,\nCzułeś — a w dni niewiele słyszałeś co chwila\nW rozmowach sąd, i, w którą się stronę przechyla,\nI, jak przerwany bywa wniesieniem herbaty,\nNa wsi przejażdżką, w mieście kupnem nowej szaty,\nA w tydzień już się same okładki tych książek\nOdchylają, jak krańce używanych wstążek,\nGdzieniegdzie i pył leci, jak w popielną środę,\nNa niebotyczny ustęp, na skrzydlatą odę,\nI słychać, że ktoś chyłkiem wzmiankował niechcący\nO pewnej innej książce, wyjść wkrótce mającej.\n\nTak jest dziś tu i ówdzie... Lecz u nas wychodzą\nKsiążki za późno, czyny za wcześnie się rodzą,\nCo jeśli potrwa, męże będą mieli siły\nNienarodzonych wnuków, a rozum mogiły!\n\nTowarzystwo uczonych niebawem w tej mierze\nGdzieś kiedyś się zgromadzi, skoro składki zbierze,\nI dnia tego feljeton zaświta w Poznaniu.\nPoświęcony onemu rzeczy sprawozdaniu,\nA który czytać będzie dobry obywatel\nTakże przez poświęcenie... (nie dla czczych bagatel!)\nWtedy sam Długosz wyjdzie. «Kurjerek» zamieści:\n«Z Berlina. Słychać... Krążą niewątpliwe wieści...\nJakkolwiek owym wieściom męże zaufania\nPrzeczą i rozdzielone są krążące zdania...»\nLecz nie śpi korespondent «Czasu»... Ten wymaca\nGrunt prawdy i firmament przekreśli, jak raca,\nPo obłokach tłumaczeń pozłoci rzęsisto,\nBy wszystkiemi orzeknąć języki myśl czystą!\n\nW każdym kraju inaczej prawda się udziela,\nLubo wszędzie jednego ma nieprzyjaciela,\nA tym jest kłamstwo, tudzież lenistwo i pycha,\nI nerwów wstręt, co, aby mieć spokój, ucicha,\nMało dbając (choć prawie to wiedzy zarodkiem).\nŻe bywa słowo pierwej celem, niźli środkiem,\nI że dziś, język kształcąc, nie zgadujem wcale,\nJakie głosić nim będą wesela lub żale\nZa lat sto... że więc radość, że boleść, że modła\nDlatego się w lakonizm zawrzeć nie umieją,\nIż wzdychają za przyszłych, łkając jako źródła,\nDo których inni przyjdą, w dzbany swe naleją\nI będą pić, ochłodę wyczerpując z dzbana,\nLub, gdy nie znajdą źródeł, pójdzie im z ust piana!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czas_i_prawda",
+      "tags": []
+    },
+    {
+      "titulo": "Czasy",
+      "texto": "— Czasy skończone! — Historji już niema,\nTworzenie tylko w bezbrzeżnej otchłani.\nWiwat!... Lecz czemuż to ogromne tema\nLudzie, kształtami ras napiętnowani,\nI usta, mową zaprawne rozliczną,\nI serca głoszą, w kraj cieknące styczną?\n\n— O, nieskończona dziejów jeszcze praca,\nJak bryły w górę ciągniecie ramieniem:\nUmknij, a już ci znów na piersi wraca —\nPrzysiądź, a głowę zetrze ci brzemieniem...\n\nO, nieskończona dziejów jeszcze praca,\nNieprzepalony jeszcze glob sumieniem...",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czasy",
+      "tags": []
+    },
+    {
+      "titulo": "Czemu",
+      "texto": "Próżno się będziesz przeklinał i zwodził\nI wiarołomił zawzięciu własnemu —\nPowrócisz do niej, będziesz w progi wchodził\nI drżał, że może nie zastaniesz... Czemu?\n\nSam sobie będziesz lada słówkiem szkodził,\nNiezrozumialnem prócz tobie jednemu.\nBędziesz się bez niej z nią kłócił i godził\nI wrócisz, wątpiąc, czy zastaniesz. Czemu?...\n\nSzczęśliwi przyjdą, jak nadomiar złemu,\nKołem osiędą ją — chwilki nie będzie,\nBy westchnąć szczerze... — Ah, czemu i czemu?\nPrzyszli szczęśliwi, rozparli się wszędzie.\nWszędzie usiedli z czołem rozjaśnionem,\nDom napełnili, stali się legjonem!\n\nPrzeczekasz wszystkich, to dwóch ci zostanie,\nA trzeci jeszcze ma w progu pytanie\nI choć, na zegar pojrzawszy, się sroży,\nTy nawyknąłeś już nie ufać jemu...\nWróci i znowu kapelusz położy\nI rękawiczki jeszcze zdejmie... Czemu?\n\nAż chwila przyjdzie, gdy wyjść lepiej znaczy,\nNiżeli zostać po obojętnemu;\nWstaniesz i pójdziesz, kamienny z rozpaczy,\nI nie zatrzymasz się, precz idąc... Czemu?\n\nA księżyc będzie, jak od wieków, niemy,\nGwiazda się żadna z miejsca nie poruszy,\nI patrzeć będą oczyma szklistemi,\nJakby nie było w niebie żywej duszy.\nJakby nie mówił nikt Niewidzialnemu.\nŻe trochę niżej tak wiele katuszy\nI nikt się jego nie zapytał: «Czemu?»",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czemu_(Norwid)",
+      "tags": []
+    },
+    {
+      "titulo": "Czemu nie w chórze?",
+      "texto": "Śpiewają wciąż wybrani\nU żłobu, gdzie jest Bóg,\nLecz milczą zadyszani,\nWbiegając w próg...\n\nA cóż dopiero owi,\nCo ledwo wbiegli w wieś,\nGdzie jeszcze ucho łowi\nNiewiniąt rzeź!...\n\nŚpiewajcież, o wybrani,\nU żłobu, gdzie jest Bóg!\nMnie jeszcze ucho rani\nPogoni róg...\n\nŚpiewajcież, w chór zebrani!\nJa zmieszać mógłbym śpiew\nTryumfującej litanji:\nJam widział krew!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czemu_nie_w_ch%C3%B3rze%3F",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Czułość",
+      "texto": "Czułość bywa, jak pełny wojen krzyk,\nI jak szemrzących źródeł prąd,\nI jako wtór pogrzebny...\n\nI jak plecionka długa z włosów blond,\nNa której wdowiec nosić zwykł\nZegarek srebrny.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czu%C5%82o%C5%9B%C4%87",
+      "tags": []
+    },
+    {
+      "titulo": "Czynowniki",
+      "texto": "Czynowników, o, czynowników\nNaspotykalem w życiu dużo;\nNie pomnę liczby ich guzików,\nAni ku czemu wszystkie służą —\n\nTo wiem tylko, że świat się zmienia,\nWojen bronie i natarć szyki,\nChorągwie ludów i natchnienia —\nA oni zawsze czynowniki!\n\nZrywa się morze, jak slup solny,\nI huragan niem miota dziki,\nI sądnych trąb zabrzmiał hymn wolny,\nA oni?... Jeszcze czynowniki!\n\nZielenią strojne dawniej góry\nZmienia nawałność w step Afryki,\nWarownie nikną... i mundury...\n— Oni?... Z dymisją czynowniki.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Czynowniki",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Daj mi wstążkę błękitną!",
+      "texto": "Daj mi wstążkę błękitną! Oddam Ci ją\nBez opóźnienia...\nAlbo daj mi cień twój z giętką Twą szyją!\nNie, nie chcę cienia.\n\nCień zmieni się, gdy ku mnie skiniesz ręką,\nBo on nie kłamie!\nNic od ciebie nie chcę, śliczna panienko,\nUsuwam ramię...\n\nBywałem ja od Boga nagrodzonym\nRzeczą mniej wielką:\nSpadłym listkiem, do szyby przyklejonym.\nDeszczu kropelką. —",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pl.wikisource.org/wiki/Daj_mi_wst%C4%85%C5%BCk%C4%99_b%C5%82%C4%99kitn%C4%85%21",
+      "tags": []
+    }
+  ]
+}

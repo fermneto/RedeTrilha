@@ -1,0 +1,23 @@
+{
+  "username": "goncalves_crespo",
+  "name": "Gonçalves Crespo",
+  "bio": "Poeta nascido no Rio de Janeiro e radicado em Portugal. Miniaturas e Noturnos são os livros.",
+  "avatar_url": "",
+  "nascimento": 1846,
+  "morte": 1883,
+  "escolas": [
+    "parnasianismo"
+  ],
+  "pais": "BR",
+  "poemas": [
+    {
+      "titulo": "Transfiguração",
+      "texto": "Ao Dr. José Falcão\nI\nEra a voz de Jesus, benigna e tão suave\nComo um perdão de mãe ou como um trino de ave.\n\nII\nA turba, que o cercava, ouvia-o respeitosa,\nOlhando aquella fronte eburnea e luminosa.\n\nIII\nElle chamava a si, com falas de esperanças,\nO simples, o afflicto e as timidas creanças.\n\nIV\nE fallava do céo, das cousas transparentes\nE de um culto ideal, ás almas innocentes.\n\nV\nAos humildes dizia, erguendo o olhar profundo:\n«O reino do Senhor não é o d’este mundo.»\n\nVI\nOuviu-se então no povo, em extasi embebido,\nUm grito suffocado, um chôro dolorido.\n\nVII\nJesus baixara a vista affavel e serena :\n«Feliz, disse, o que chóra, oh doce Magdalena!»\n\nVIII\nE ella, que em vida solta, alegre e descuidosa,\nPassara os dias seus, triste mulher formosa!\nSentindo aquelle olhar, que entre ella e o céo fluctua,\nNas trancas occultou a espadua semi-nua...",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1913,
+      "fonte": "https://pt.wikisource.org/wiki/Obras_completas_de_Gon%C3%A7alves_Crespo_(1913)/Miniaturas/Transfigura%C3%A7%C3%A3o",
+      "tags": []
+    }
+  ]
+}

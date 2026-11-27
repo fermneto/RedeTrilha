@@ -1,0 +1,424 @@
+{
+  "username": "delmira_agustini",
+  "name": "Delmira Agustini",
+  "bio": "Poetisa uruguaia. Los cálices vacíos (1913) é o último livro publicado em vida.",
+  "avatar_url": "",
+  "nascimento": 1886,
+  "morte": 1914,
+  "escolas": [
+    "modernismo_hispanico"
+  ],
+  "pais": "UY",
+  "poemas": [
+    {
+      "titulo": "Amor",
+      "texto": "Lo soñé impetuoso, formidable y ardiente;\nhablaba el impreciso lenguaje del torrente;\nEra un amor desbordado de locura y de fuego,\nRodando por la vida como en eterno riego.\n\nLuego soñélo triste, como un gran sol poniente\nque dobla ante la noche su cabeza de fuego:\ndespues rió, y en su boca tan tierna como un ruego,\nsonaba sus cristales el alma de la fuente.\n\nY hoy sueño que es vibrante, y suave, y riente y triste,\nque todas las tinieblass y todo el iris viste,\nque frágil como un ídolo y eterno como un Dios\n\nSobre la vida toda su majestad levanta:\ny el beso cae ardiendo a perfumar su planta\nen una flor de fuego deshojada por dos...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Amor_(Agustini)",
+      "tags": [
+        "amor",
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Añoranza",
+      "texto": " Íbamos en la tarde que caía\n rápidamente sobre los caminos.\n Su belleza, algo exótica, ponía\n aspavientos en ojos campesinos.\n\n -Gozaremos el libro- me decía\n de tus epigramáticos y finos\n versos. En el crepúsculo moría\n un desfile de pájaros marinos...\n\n Debajo de nosotros, la espesura\n aprisionaba en forma de herradura\n la población. Y de un charco amarillo\n\n surgió la luna de color de argento,\n y a lo lejos, con un recogimiento\n sentimental, lloraba un caramillo...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/A%C3%B1oranza",
+      "tags": [
+        "saudade"
+      ]
+    },
+    {
+      "titulo": "Ceguera",
+      "texto": "Me abismo en una rara ceguera luminosa,\nun astro, casi un alma, me ha velado la Vida.\n¿Se ha prendido en mí como brillante mariposa,\no en su disco de luz he quedado prendida?\n\nNo sé...\nRara ceguera que me borras el mundo,\nestrella, casi alma, con que asciendo o me hundo.\n¡Dame tu luz y vélame eternamente el mundo!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Ceguera",
+      "tags": []
+    },
+    {
+      "titulo": "Desde lejos",
+      "texto": " En el silencio siento pasar hora tras hora,\n como un cortejo lento, acompasado y frío...\n ¡Ah! Cuando tú estás lejos, mi vida toda llora,\n y al rumor de tus pasos hasta en sueños sonrío.\n\n Yo sé que volverás. que brillará otra aurora\n en mi horizonte, grave como un ceño sombrío;\n revivirá en mis bosques tu gran risa sonora\n que los cruzaba alegre como el cristal de un río.\n\n Un día, al encontrarnos tristes en el camino,\n yo puse entre tus manos pálidas mi destino\n ¡y nada de más grande jamás han de ofrecerte!\n\n Mi alma es frente a tu alma como el mar frente al cielo:\n pasarán entre ellas, tal la sombra de un vuelo,\n ¡la Tormenta y el Tiempo y la Vida y la Muerte!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Desde_lejos_(Agustini)",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "El anillo",
+      "texto": "Raro anillo que clarea,\nRaro anillo que sombrea\nUna profunda amatista,\n\nCrepúsculo vespertino\nQue en tu matinal platino\nEngarzó espléndido artista.\n\nEl porvenir es de miedo...\n¿Será tu destino un dedo\nDe tempestad o de calma?\n\nPara clararte y sombrearte,\n¡Si yo pudiera glisarte\nEn un dedo de mi alma!...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_anillo_(Agustini)",
+      "tags": []
+    },
+    {
+      "titulo": "El arroyo",
+      "texto": " ¿Te acuerdas? El arroyo fue la serpiente buena...\n Fluía triste y triste como un llanto de ciego,\n cuando en las piedras grises donde arraiga la pena,\n como un inmenso lirio se levantó tu ruego.\n\n Mi corazón, la piedra más gris y más serena,\n despertó en la caricia de la corriente y luego\n sintió como la tarde, con manos de agarena,\n prendía sobre él una rosa de fuego.\n\n Y mientras la serpiente del arroyo blandía\n el veneno divino de la melancolía,\n tocada de crepúsculo me abrumó tu cabeza,\n\n la coroné de un beso fatal, en la corriente\n vi pasar un cadáver de fuego... Y locamente\n me derrumbó en tu abrazo profundo la tristeza.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_arroyo_(Delmira_Agustini)",
+      "tags": []
+    },
+    {
+      "titulo": "El intruso",
+      "texto": " Amor, la noche estaba trágica y sollozante\n cuando tu llave de oro cantó en mi cerradura;\n luego, la puerta abierta sobre la sombra helante,\n tu sombra fue una mancha de luz y de blancura.\n\n Todo aquí lo alumbraron tus ojos de diamante;\n bebieron en mi copa tus labios de frescura,\n y descansó en mi almohada tu cabeza fragante;\n me encantó tu descaro y adoré tu locura.\n\n Y hoy río si tu ríes, y canto si tú cantas;\n y si tú duermes, duermo como un perro a tus plantas.\n Hoy llevo hasta en mi sombra tu olor de primavera;\n\n y tiemblo si tu mano toca la cerradura,\n ¡y bendigo la noche sollozante y oscura\n que floreció en mi vida tu boca tempranera!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_intruso",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El nudo",
+      "texto": " Su idilio fue una larga sonrisa a cuatro labios.\n En el regazo cálido de rubia primavera.\n Amáronse talmente que entre sus dedos sabios\n palpitó la divina forma de la Quimera.\n\n En los palacios fúlgidos de las tardes en calma\n hablábanse un lenguaje sentido como un lloro,\n y se besaban hondo hasta morderse el alma!\n Las horas deshojáronse como flores de oro.\n\n Y el Destino interpuso sus dos manos heladas...\n ¡Ah! los cuerpos cedieron, mas las almas trenzadas\n son el más intrincado nudo que nunca fue.\n\n En lucha con sus locos enredos sobrehumanos\n las Furias de la vida se rompieron las manos\n y fatigó sus dedos supremos Ananké...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_nudo",
+      "tags": []
+    },
+    {
+      "titulo": "El surtidor de oro",
+      "texto": "Vibre, mi musa, el surtidor de oro,\nla taza rosa de tu boca en besos;\nde las espumas armoniosoas surja\nvivo, supremo, misterioso, eterno,\nel amante ideal, el esculpido\nen prodigios de almas y de cuerpos;\ndebe ser vivo a fuerza de soñado,\nque sangre y alma se me va en los sueños;\nha de nacer a deslumbrar la Vida,\n¡y ha de ser ser un dios nuevo!\nLas culebras azules en sus venas\nse nutren del milagro en mi cerebro...\nSelle, mi musa, el sutidor de oro,\nla taza rosa de tu boca en besos;\nel amante ideal, el esculpido\nen prodigios de almas y de cuerpos,\narraigando las uñas extrahumanas\nen mi carne, solloza en mis ensueños:\n-Yo no quiero más vida que tu vida,\nson en ti los supremos elementos;\n¡déjame bajo el cielo de tu alma,\nen la cálida tierra de tu cuerpo!-\n-¡Selle, mi musa, el surtidor de oro,\nla taza rosa de tu boca en besos!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_surtidor_de_oro",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "El vampiro",
+      "texto": "En el regazo de la tarde triste\nyo invoqué tu dolor... Sentirlo era\n¡Sentirte el corazón! Palideciste\nhasta la voz, tus párpados de cera.\n\nBajaron...y callaste...Pareciste\noír pasar la muerte...Yo que abriera\ntu herida mordí en ella -¿Me sentiste?-\n¡Como en el oro de un panal mordiera!\n\nY exprimí más, traidora, dulcemente\ntu corazón herido mortalmente;\npor la cruel daga rara y exquisita\nde un mal sin nombre, ¡Hasta sangrarlo en llanto!\ny las mil bocas de mi sed maldita\ntendí a esa fuente abierta en tu quebranto\n\n¿Por qué fui tu vampiro de amargura?\n¿Soy flor o estirpe de una especie oscura\nque come llagas y que bebe el llanto?",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_vampiro_(Agustini)",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Elegías dulces",
+      "texto": " Hoy desde el gran camino, bajo el sol claro y fuerte,\n muda como una lágrima he mirado hacia atrás.\n Y tu voz, de mi lejos, con un olor de muerte,\n vino a aullarme al oído un triste «¡Nunca más!»\n\n Tan triste, que he llorado hasta quedar inerte...\n ¡Yo sé que estás tan lejos que nunca volverás!\n No hay lágrimas que laven los besos de la Muerte...\n Almas, hermanas mías, nunca miréis atrás!\n\n Los pasados se cierran como los ataúdes;\n al otoño las hojas en dorados aludes\n ruedan... y arde en los troncos la nueva floración...\n\n Las noches son caminos negros de las auroras...\n Oyendo deshojarse tristemente las horas\n dulces, hablemos de otras flores al corazón.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Eleg%C3%ADas_dulces",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Explosión",
+      "texto": "¡Si la vida es amor, bendita sea!\n¡Quiero más vida para amar! Hoy siento\nque no valen mil años de la idea\nlo que un minuto azul del sentimiento.\n\nMi corazón moría triste y lento...\nHoy abre en luz como una flor febea;\n¡la vida brota como un mar violento\ndonde la mano del amor golpea!\n\nHoy, partió hacia la noche, triste, fría,\nrotas las alas mi melancolía;\ncomo una vieja mancha del dolor\n\nen la sombra lejana se deslíe...\n¡Mi vida toda canta, besa, ríe!\n¡Mi vida toda es una boca en flor!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Explosi%C3%B3n",
+      "tags": [
+        "amor",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Florecimiento",
+      "texto": " La noche entró en la sala adormecida\n arrastrando el silencio a pasos lentos...\n Los sueños son tan quedos, que una herida\n sangrar se oiría. Rueda en los momentos\n\n una palabra insólita, caída\n como una hoja de otoño... Pensamientos\n suaves tocan mi frente dolorida\n tal manos frescas, ¡ah!... ¿por qué tormentos\n\n misteriosos los rostros palidecen\n dulcemente?... Tus ojos me parecen\n dos semillas de luz entre las sombra,\n\n y hay en mi alma un gran florecimiento\n si en mí los fijas; si los bajas, siento\n como si fuera a florecer la alfombra.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Florecimiento",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Fue al pasar",
+      "texto": "Yo creí que tus ojos anegaban el mundo...\nAbiertos como bocas en clamor... Tan dolientes\nque un corazón partido en dos trozos ardientes\nparecieron... Fluían de tu rostro profundo\n\ncomo dos manantiales graves y venenosos...\nfraguas a fuego y sombra, ¡tus pupilas!... tan hondas\nque no sé desde dónde me miraban, redondas\ny oscuras como mundos lontanos y medrosos.\n\n¡Ah, tus ojos tristísimos como dos galerías\nabiertas al Poniente!... ¡Y las sendas sombrías\nde tus ojeras donde reconocí mis rastros!...\n\n¡Yo envolví en un gran gesto mi horror como en un velo,\ny me alejé creyendo que cuajaba en el cielo\nla medianoche húmeda de tu mirar sin astros!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Fue_al_pasar",
+      "tags": []
+    },
+    {
+      "titulo": "Inextinguibles",
+      "texto": "¡Oh tú que duermes tan hondo que no despiertas!\nMilagrosas de vivas, milagrosas de muertas,\ny por muertas y vivas eternamente abiertas,\nalguna noche en duelo yo encuentro tus pupilas\nbajo un trapo de sombra o una blonda de luna.\nBebo en ellas la Calma como en una laguna.\nPor hondas, por calladas, por buenas, por tranquilas\nun lecho o una tumba parece cada una.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Inextinguibles",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Íntima",
+      "texto": "Yo te diré los sueños de mi vida\nen lo más hondo de la noche azul...\nMi alma desnuda temblará en tus manos,\nsobre tus hombros pesará mi cruz.\n\nLas cumbres de la vida son tan solas,\n¡tan solas y tan frías! Yo encerré\nmis ansias en mi misma, y toda entera\ncomo una torre de marfil me alcé.\n\nHoy abriré a tu alma el gran misterio;\nella es capaz de penetrar en mí.\nEn el silencio hay vértigos de abismos:\nyo vacilaba, me sostengo en ti.\n\nMuero de ensueños; beberé en tus fuentes\npuras y frescas la verdad; yo sé\nque está en el fondo magno de tu pecho\nel manantial que vencerá mi sed.\n\nY sé que en nuestras vidas se produjo\nel milagro inefable del reflejo...\nEn el silencio de la noche mi alma\nllega a la tuya como un gran espejo.\n\n¡Imagina el amor que habré soñado\nen la tumba glacial de mi silencio!\nMás grande que la vida, más que el sueño,\nbajo el azur sin fin se sintió preso.\n\nImagina mi amor, mi amor que quiere\nvida imposible, vida sobrehumana,\ntú sabes que si pesan, si consumen\nalma y sueños de olimpo en carne humana.\n\nY cuando frente al alma que sentía\npoco el azur para bañar sus alas\ncomo un gran horizonte aurisolado\no una playa de luz, se abrió tu alma:\n\n¡Imagina! ¡Estrechar, vivo, radiante\nel imposible! ¡La ilusión vivida!\nBendije a dios, al sol, la flor, el aire\n¡la vida toda porque tu eras vida!\n\nSi con angustia yo compre esta dicha,\n¡bendito el llanto que manchó mis ojos!\n¡Todas las llagas del pasado ríen\nal sol naciente por sus labios rojos!\n\n¡Ah! tú sabrás mi amor; mas vamos lejos,\na través de la noche florecida;\nacá lo humano asusta, acá se oye,\nse ve, se siente sin cesar la vida.\n\nVamos más lejos en la noche, vamos\ndonde ni un eco repercuta en mí,\ncomo una flor nocturna allá en la sombra\nme abriré dulcemente para ti.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/%C3%8Dntima_(Agustini)",
+      "tags": [
+        "amor",
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "La barca milagrosa",
+      "texto": "Preparadme una barca como un gran pensamiento...\nLa llamarán \"La Sombra\" unos; otros, \"La Estrella\".\nNo ha de estar al capricho de una mano o de un viento;\nYo la quiero consciente, indomable y bella.\n\nLa moverá en gran ritmo de tu corazón sangriento\nDe vida sobrehumana; he de sentirme en ella\nFuerte como en los brazos de Dios. ¡En todo viento,\nEn todo mar templadme su ropa de centella!\n\nLa cargaré de toda mi tristeza, y, sin rumbo,\nIré como la rota corola de un nelumbo\nPor sobre el horizonte líquido de la mar...\n\nBarca, alma hermana: ¿Hacia qué tierras nunca vistas,\nde hondas revelaciones, de cosas imprevistas\nIrémos?...Yo ya muero de vivir y soñar...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_barca_milagrosa",
+      "tags": [
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "La cita",
+      "texto": "En tu alcoba techada de ensueños, haz derroche\nde flores y de luces de espíritu; mi alma\ncalzada de silencio y vestida de calma,\nirá a tí por la senda más negra esta noche.\n\nApaga las bujías para ver cosas bellas;\ncierra todas las puertas para entrar la ilusión;\narranca del misterio un manojo de estrellas\nY enflora como un vaso triunfal tu corazón.\n\n¡Y esperarás sonriendo, y esperarás llorando!...\ncuando llegue mi alma, tal ves reces pensando\nque el cielo dulcemente se derrama en tu pecho...\n\nPara él, amor divino, ten un diván de calma\no con el lirio místico que es su arma, mi alma\nApagará una a una las rosas de tu lecho!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_cita_(Agustini)",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "La estatua",
+      "texto": "Miradla, así, sobre el follaje oscuro\nrecortar la silueta soberana...\n¡No parece el retoño prematuro\nde una gran raza que será mañana?\n\n¡Así una raza inconmovible, sana,\ntallada a golpes sobre mármol duro,\nde las vastas campañas del futuro\ndesalojará a la familia humana.\n\n¡Miradla así -¡de hinojos!- en augusta\ncalma imponer la desnudez que asusta!...\n¡Dios!... ¡Moved ese cuerpo, dadle un alma!\n\nved la grandeza que en su forma duerme...\n¡Vedlo allá arriba, miserable, inerme.\nMás pobre que un gusano, siempre en calma!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_estatua_(Agustini)",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "La musa",
+      "texto": "Yo la quiero cambiante, misteriosa y compleja;\ncon dos ojos de abismos que se vuelven fanales;\nen su boca, una fruta perfumada y bermeja\nque destile más miel que los rubios panales.\n\nA veces nos asalte un aguijón de abeja;\nuna raptos feroces a gestos imperiales\ny sorprenda en su risa el dolor de una queja;\n¡En sus manos asombren caricias y pañales!\n\nY que vibre, y desmaye, y llore, y ruja, y cante,\ny sea águila libre, tugre, paloma en un instante.\n\nQue el universo quepa en sus ansias divinas;\ntenga una voz que hiele, que suspenda, que inflame,\ny una frente que erguida su corona reclame\nde rosas, de diamantes, de estrellas o de espina!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_musa",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "La sed",
+      "texto": " -Tengo sed, sed ardiente- dije a la maga, y ella\n me ofreció de sus néctares-. Eso no: ¡me empalaga!-\n Luego una rara fruta, con sus dedos de maga\n exprimió en una copa, clara como una estrella;\n\n y un brillo de rubíes hubo en la copa bella.\n Yo probé.- ¡Es dulce, dulce! Hay días que me halaga\n tanta miel, pero hoy me repugna, me estraga-.\n Vi pasar por los ojos del hada una centella.\n\n Y por un verde valle perfumado y brillante,\n llevóme hasta una clara corriente de diamantes.\n -¡Bebe!- dijo. Yo ardía; mi pecho era un fragua.\n\n Bebí, bebí, bebí la linfa cristalina...\n ¡Oh frescura!, ¡oh pureza!, ¡oh sensación divina!\n -Gracias, maga; y bendita la limpieza del agua.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_sed",
+      "tags": []
+    },
+    {
+      "titulo": "Las alas",
+      "texto": "Yo tenía... ¡dos alas!...\nDos alas,\nque del azur vivían como dos siderales\n¡raíces!...\nDos alas,\ncon todos los milagros de la vida, la Muerte\ny la ilusión. Dos alas.\nfulmíneas\ncomo el velamen de una estrella en fuga;\ndos alas\ncomo dos firmamentos\ncomo tormentas, con calmas y con astros...\n\n¿Te acuerdas de la gloria de mis alas?...\nel áureo campaneo\ndel ritmo; el inefable\nmatiz atesorando\nel Iris todo, más un Iris nuevo\nofuscante y divino.\nque adorarán las plenas pupilas del futuro\n(¡Las pupilas maduras a toda luz!)... el vuelo...\n\nEl vuelo ardiente, adorante y único,\nque tanto tiempo atormentó los cielos,\ndespertó soles, bólidos, tormentas,\nabrillantó los rayos y los astros;\ny la amplitud: tenían\ncalor y sombra para todo el mundo,\ny hasta incubar más allá pudieron.\n\nUn día, raramente\ndesmayados a la tierra,\nyo me adormí en las felpas profundas de este bosque...\n¡Soñe divinas cosas!...\nUna sonrisa tuya me despertó, paréceme...\n¡Y no siento mis alas!\n¿Mis alas?...\n\n-Yo las vi deshacerse entre mis brazos...\n¡Era como un deshielo!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Las_alas",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Lo inefable",
+      "texto": "Yo muero extrañamente...No me mata la vida\nno me mata la muerte, no me mata el amor;\nmuero de un pensamiento mudo como una herida...\n¿No habeis sentido nunca el extraño dolor?\n\nDe un pensamiento inmenso que se arraiga en la vida\ndevorando alma y carne, y no alcanza a dar flor?\n¿Nunca llevasteis dentro una estrella dormida\nque os abrazaba enteros y no daba un fulgor?...\n\n¡Cumbre de los martirios!...llevar eterrnamente\ndesgarradora y árida, la trágica simiente\nclavada en las entrañas como un diente feroz!\n\nPero arrancarla un día en una flor que abriera\nmilagrosa, inviolable...¡Ah más grande no fuera\ntener entre las manos la cabeza de Dios!...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Lo_inefable",
+      "tags": [
+        "amor",
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Los relicarios dulces",
+      "texto": "Hace tiempo, algún alma ya borrada fue mía.\nSe nutrió de mi sombra... Siempre que yo quería\nel abanico de oro de su risa se abría,\no su llanto sangraba una corriente más;\n\nalma que yo ondulaba, tal una cabellera\nderramada en mis manos... Flor del fuego y la cera,\nmurió de una tristeza mía... Tan dúctil era,\ntan fiel, que a veces dudo si pudo ser jamás...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Los_relicarios_dulces",
+      "tags": []
+    },
+    {
+      "titulo": "Luz púrpura con tu retrato",
+      "texto": " Yo no sé si mis ojos o mis manos\n encendieron la vida en tu retrato;\n nubes humanas, rayos sobrehumanos,\n todo tu Yo de emperador innato.\n\n ¡Amanece a mis ojos, en mis manos!\n Por eso, toda en llamas, yo desato\n cabellos y alma para tu retrato,\n y me abro en flor. Entonces, soberanos\n\n de la sombra y la luz, tus ojos graves\n dicen grandezas que yo sé y tú sabes.\n Y te dejo morir. Queda en mis manos\n\n una gran mancha lívida i sombría.\n Y renaces en mí melancolía\n formado de astros fríos y lejanos.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Luz_p%C3%BArpura_con_tu_retrato",
+      "tags": []
+    },
+    {
+      "titulo": "Mi aurora",
+      "texto": " Como un gran sol naciente iluminó mi vida\n y mi alma abrió a beberlo como una flor de aurora;\n ¡Amor! ¡Amor! bendita la noche salvadora\n en que llamó a mi puerta tu mamita florida.\n\n Mi alma vibro en la sombra como arpa sorprendida,\n las aguas del silencio ya abiertas, en la aurora\n cantó su voz potente misteriosa y sonora.\n ¡Mi alma lóbrega era una estrella dormida!\n\n Hoy toda la esperanza que yo llorara muerta\n surge a la vida alada del ave que despierta\n ebria de una alegría fuerte como el dolor;\n\n y todo luce y vibra, todo despierta y canta,\n como si el palio rosa de su luz viva y santa\n abriera sobre el mundo la aurora de mi amor.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Mi_aurora",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Mi musa",
+      "texto": " Mi musa tomó un día la placentera ruta\n de los campos fragantes; ornada de alboholes,\n perfumando sus labios en la miel de la fruta\n y dorando su cuerpo al fuego de los soles.\n\n Vivió como una ninfa: desnuda, en fresca gruta,\n engalanando espejos de lagos tornasoles.\n La gran garza rosada de su forma impoluta.\n Volvió a mí como el oro de luz de los crisoles.\n\n Más pura; los cabellos emperlados de gotas\n lucientes y prendidos de abrojos; trajo notas\n de pájaro silvestre y en los labios más fuego.\n\n Yo peinela y vestila sus parisinas galas,\n y ella hoy grave pasea por mis lujosas salas\n un gran aire salvaje y un perfume de espliego.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Mi_musa",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Mis amores",
+      "texto": " Hoy han vuelto.\nPor todos los senderos de la noche han venido\na llorar en mi lecho.\n¡Fueron tantos, son tantos!\nYo no sé cuáles viven, yo no sé cuál ha muerto.\nMe lloraré yo misma para llorarlos todos.\nLa noche bebe el llanto como un pañuelo negro.\n Hay cabezas doradas a sol, como maduras...\nHay cabezas tocadas de sombra y de misterio,\ncabezas coronadas de una espina invisible,\ncabezas que sonrosa la rosa del ensueño,\ncabezas que se doblan a cojines de abismo,\ncabezas que quisieran descansar en el cielo,\nalgunas que no alcanzan a oler a primavera,\ny muchas que trascienden a las flores de invierno.\nTodas esas cabezas me duelen como llagas...\nMe duelen como muertos...\n¡Ah!... y los ojos... los ojos me duelen más: ¡son dobles...!\nIndefinidos, verdes, grises, azules, negros,\nabrasan si fulguran,\nson caricias, dolor, constelación, infierno.\nSobre toda su luz, sobre todas sus llamas,\nse iluminó mi alma y se templó mi cuerpo.\nEllos me dieron sed de todas esas bocas...\nde todas estas bocas que florecen mi lecho:\nvasos rojos o pálidos de miel o de amargura\ncon lises de armonía o rosas de silencio,\nde todos estos vasos donde bebí la vida,\nDe todos estos vasos donde la muerte bebo...\nEl jardín de sus bocas venenoso, embriagante,\nen donde respiraba sus almas y sus cuerpos,\nHumedecido en lágrimas\nha rodeado mi lecho...\n Y las manos, las manos colmadas de destinos\nsecretos y alhajadas de anillos de misterio...\nHay manos que nacieron con guantes de caricia;\nmanos que están colmadas de la flor del deseo,\nmanos en que se siente un puñal nunca visto,\nmanos en que se ve un intangible cetro;\npálidas o morenas, voluptuosas o fuertes,\nen todas, todas ellas, puede engarzar un sueño.\n                        Con tristeza de alma,\n                       se doblegan los cuerpos\n                       sin velos, santamente\n                       vestidos de deseo.\nImanes de mis brazos, panales de mi entraña\ncomo a invisible abismo se inclinan a mi lecho...\n¡Ah, entre todas las manos yo he buscado tus manos!\nTu boca entre las bocas, tu cuerpo entre los cuerpos,\nde todas las cabezas yo quiero tu cabeza,\nde todos esos ojos, ¡tus ojos solos quiero!\nTú eres el más triste, por ser el más querido,\ntú has llegado el primero por venir de más lejos...\n¡Ah, la cabeza oscura que no he tocado nunca\ny las pupilas claras que miré tanto tiempo!\nLas ojeras que ahondamos la tarde y yo inconscientes,\nla palidez extraña que doblé sin saberlo,\n                      ven a mí: mente a mente;\n                      ven a mí: ¡cuerpo a cuerpo!\nTú me dirás qué has hecho de mi primer suspiro,\nTú me dirás qué has hecho del sueño de aquel beso...\nMe dirás si lloraste cuando te dejé solo...\n                   ¡Y me dirás si has muerto...!\n                          Si has muerto,\nmi pena enlutará la alcoba lentamente,\ny estrecharé tu sombra hasta apagar mi cuerpo,\nY en el silencio ahondado de tiniebla,\ny en la tiniebla ahondada de silencio,\nnos velará llorando, llorando hasta morirse\n                   nuestro hijo: el recuerdo.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Mis_amores",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Nocturno",
+      "texto": "Engarzado en la noche el lago de tu alma,\ndiríase una tela de cristal y de calma\ntramada por las grandes arañas del desvelo.\n\nNata de agua lustral en vaso de alabastros;\nespejo de pureza que abrillantas los astros\ny reflejas la cima de la Vida en un cielo...\nYo soy el cisne errante de los sangrientos rastros,\nvoy manchando los lagos y remontando el vuelo.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Nocturno_(Agustini)",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Ofrendando el libro",
+      "texto": "Porque haces tu can de la leona\nmás fuerte de la Vida, y la aprisiona\nla cadena de rosas de tu brazo.\n\nPorque tu cuerpo es la raíz, el lazo\nesencial de los troncos discordantes\ndel placer y el dolor, plantas gigantes.\n\nPorque emerge en tu mano bella y fuerte,\ncomo en broche de míticos diamantes\nel más embriagador lis de la Muerte.\n\nPorque sobre el espacio te diviso,\npueste de luz, perfume y melodía,\ncomunicando infierno y paraíso\n-con alma fúlgida y carne sombría...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Ofrendando_el_libro",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Otra estirpe",
+      "texto": "Eros, yo quiero guiarte, Padre ciego...\npido a tus manos todopoderosas\n¡su cuerpo excelso derramado en fuego\nsobre mi cuerpo desmayado en rosas!\n\nLa eléctrica corola que hoy despliego\nbrinda el nectario de un jardín de Esposas;\npara sus buitres en mi carne entrego\ntodo un enjambre de palomas rosas.\n\nDa a las dos sierpes de su abrazo, crueles,\nmi gran tallo febril... Absintio, mieles,\nviérteme de sus venas, de su boca...\n\n¡Así tendida, soy un surco ardiente\ndonde puede nutrirse la simiente\nde otra estirpe sublimemente loca!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Otra_estirpe",
+      "tags": []
+    },
+    {
+      "titulo": "Por campos de ensueño",
+      "texto": " Pasó humeante el tropel de los potros salvajes,\n feroces los hocicos, hirsutos de pelajes,\n las crines extendidas, bravías, tal bordones,\n pasaron como 'pasan pamperos y aquilones.\n\n Y luego fueron águilas de esplendidos plumajes\n trayendo de sus cumbres magníficas visiones,\n con el sereno vuelo de las inspiraciones\n augustas, con soberbias de olímpicos linajes.\n\n Cruzaron hacia Oriente la limpidez del cielo,\n tras ellas como cándida hostia que alzara el vuelo,\n una paloma blanca como la nieve asoma.\n\n Yo olvido el ave egregia y el bruto que foguea\n pensando que en los cielos solemnes de la Idea\n a veces es muy bella, muy bella una paloma.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Por_campos_de_ensue%C3%B1o",
+      "tags": []
+    },
+    {
+      "titulo": "Por tu musa",
+      "texto": " Cuando derrama en los hombros puros\n de tu musa la túnica de nieve,\n yo concentro mis pétalos oscuros\n y soy el lirio de alabastro leve.\n\n Para tu musa en rosa, me abro en rosa;\n mi corazón es miel, perfume y fuego,\n y vivo y muero de una sed gloriosa:\n tu sangre viva debe ser mi riego.\n\n Cuando velada con un tul de luna\n bebe calma y azur en la laguna,\n yo soy el cisne que soñando vuela;\n\n y si en luto magnífico la vistes\n para vagar por los senderos tristes,\n soy la luz o la sombra de una estela.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Por_tu_musa",
+      "tags": []
+    },
+    {
+      "titulo": "Serpentina",
+      "texto": "En mis suenos de amor ¡yo soy serpiente!\ngliso y ondulo como una corriente;\ndos pildoras de insommnio y de hipnotismo\nson mis ojos; la punta del encanto\nes mi lengua...¡y atraigo como el llanto!\nsoy un pomo de abismo.\n\nMi cuerpo es una cinta de delicia,\nglisa y ondula como una caricia...\n\nY en mis suenos de odio ¡soy serpiente!\nmi lengua es una venenosa fuente;\nmi testa es la luzbélica diadema,\nhaz de la muerte en un fatal soslayo\ncon mis pupillas; y mi cuerpo en gema\n¡es la vaina del rayo!\n\nSi asi sueno mi carne, así es mi mente:\nun cuerpo largo, largo, de serpiente,\nvibrando eterna, ¡voluptuosamente!\n\nTu amor, esclavo, es como un sol muy fuerte:\njardinero de oro de la vida,\njardinero de fuego de la muerte\nen el carmen fecundo de mi vida.\n\nPico de cuervo con olor de rosas,\naguijón enmelado de delicias\ntu lengua es. Tus manos misteriosas\nson garras enguantadas de caricias.\n\nTus ojos son mis medianoches crueles,\npanales negros de malditas mieles\nque se desangran en la acerbidad;\n\ncrisálida de un vuelo del futuro,\nes tu brazo magnífico y oscuro,\ntorre embrujada de mi soledad.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Serpentina",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Toque de oración",
+      "texto": " Un pedazo de luna que no brilla\n sino con timidez. Canta un marino,\n y su triste canción, tosca y sencilla,\n tartamudea con sabor de vino...\n\n El mar, que el bíceps de la playa humilla,\n tiene sinuosidades de felino,\n y se deja caer sobre la orilla\n con la cadencia de un alejandrino.\n\n Pienso en ti, pienso que te quiero mucho\n porque me encuentro triste, porque escucho\n la esquila del pequeño campanario\n\n que se queja con un sollozo tierno,\n mientras los sapos cantan el invierno\n con una letra del abecedario...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Toque_de_oraci%C3%B3n",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Tu amor",
+      "texto": " Tu amor, esclavo, es como un sol muy fuerte:\n jardinero de oro de la vida,\n jardinero de fuego de la muerte,\n en el carmen fecundo de mi vida.\n\n Pico de cuervo con olor de rosas,\n aguijón enmelado de delicias\n tu lengua es. Tus manos misteriosas\n son garras enguantadas de caricias.\n\n Tus ojos son mis medias noches crueles,\n panales negros de malditas mieles\n que se desangran en mi acerbidad;\n\n crisálida de un vuelo del futuro\n es tu abrazo magnífico y oscuro\n torre embrujada de mi soledad.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Tu_amor",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Tu dormías",
+      "texto": " Engastada en mis manos fulguraba\n como oscura presea, tu cabeza;\n yo la ideaba estuches, y preciaba\n luz a luz, sombra a sombra su belleza.\n\n En tus ojos tal vez se concentraba\n la vida, como un filtro de tristeza\n en dos vasos profundos... Yo soñaba\n que era una flor del mármol tu cabeza;\n\n cuando en tu frente nacarada a luna,\n como un monstruo en la paz de una laguna\n surgió un enorme ensueño taciturno.\n\n ¡Ah! tu cabeza me asustó. Fluía\n de ella una ignota vida. Parecía\n no sé qué mundo anónimo y nocturno.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Tu_dorm%C3%ADas",
+      "tags": []
+    },
+    {
+      "titulo": "Una viñeta",
+      "texto": " Tarde sucia de invierno. El caserío,\n como si fuera un croquis al creyón,\n se hunde en la noche. El humo de un bohío,\n que sube en forma de tirabuzón;\n\n mancha el paisaje que produce frío,\n y debajo de la genuflexión\n de la arboleda, somormuja el río\n su canción, su somnífera canción.\n\n Los labradores, camellón abajo,\n retornan fatigosos del trabajo,\n como un problema sin definición.\n\n Y el dueño del terruño, indiferente,\n rápidamente, muy rápidamente,\n baja en su coche por el camellón.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Una_vi%C3%B1eta",
+      "tags": [
+        "noite"
+      ]
+    }
+  ]
+}
