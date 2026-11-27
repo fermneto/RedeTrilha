@@ -144,7 +144,8 @@ export function Acervo() {
       onClick={() => filtrar({ tipo: FILTROS_PADRAO_DO_ACERVO.tipo, q: "", lingua: null, epoca: null })}
       className="min-h-11 cursor-pointer text-sm font-semibold text-destaque hover:underline"
     >
-      limpar filtros
+      {/* No celular, "limpar" cabe na linha do botão de filtros e do total. */}
+      limpar<span className="hidden sm:inline"> filtros</span>
     </button>
   );
 
