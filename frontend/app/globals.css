@@ -173,15 +173,21 @@
      então o degradê cai sobre texto. 5.25em é o fallback de 3lh com a altura
      de linha do card (1.75). A seleção continua. */
   .poema-cortado {
-    --esmaecer: 5.25em;
+    --linhas-esmaecidas: 3;
+    --esmaecer: calc(var(--linhas-esmaecidas) * 1.75em);
     -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--esmaecer)), rgb(0 0 0 / 0.15));
     mask-image: linear-gradient(to bottom, #000 calc(100% - var(--esmaecer)), rgb(0 0 0 / 0.15));
   }
 
   @supports (height: 1lh) {
     .poema-cortado {
-      --esmaecer: 3lh;
+      --esmaecer: calc(var(--linhas-esmaecidas) * 1lh);
     }
+  }
+
+  /* A prévia do rascunho tem só 4 versos: esmaecem os 2 últimos. */
+  .poema-cortado.poema-cortado-curto {
+    --linhas-esmaecidas: 2;
   }
 }
 
