@@ -41,7 +41,7 @@ export function PerfilGostos({ username, proprio }: Props) {
     Promise.all([buscarGostosDe(username), buscarOpcoesDePreferencias()])
       .then(([g, opcoes]) => {
         const escola = new Map(opcoes.escolas.map((o) => [o.codigo, o.rotulo]));
-        const forma = new Map(opcoes.formas.map((o) => [o.codigo, o.rotulo]));
+        const forma = new Map(opcoes.formas_com_rotulo.map((o) => [o.codigo, o.rotulo]));
         return {
           escolas: g.escolas.map((c) => escola.get(c) ?? c),
           formas: formasDoPerfil(g.formas).map((c) => ({ codigo: c, rotulo: forma.get(c) ?? nomeDaForma(c) })),

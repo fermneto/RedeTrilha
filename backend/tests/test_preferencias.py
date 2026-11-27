@@ -57,9 +57,10 @@ def test_opcoes_trazem_o_vocabulario(client, como):
     assert len(opcoes["escolas"]) == 18
     assert {"codigo": "modernismo_hispanico", "rotulo": "modernismo hispânico"} in opcoes["escolas"]
     assert {"codigo": "realismo", "rotulo": "realismo"} in opcoes["escolas"]
-    assert opcoes["formas"][0] == {"codigo": "soneto", "rotulo": "soneto"}
-    assert {"codigo": "prosa_poetica", "rotulo": "prosa poética"} in opcoes["formas"]
-    assert [f["codigo"] for f in opcoes["formas"]] == FORMAS
+    assert opcoes["formas"] == FORMAS
+    assert opcoes["formas_com_rotulo"][0] == {"codigo": "soneto", "rotulo": "soneto"}
+    assert {"codigo": "prosa_poetica", "rotulo": "prosa poética"} in opcoes["formas_com_rotulo"]
+    assert [f["codigo"] for f in opcoes["formas_com_rotulo"]] == FORMAS
     assert "BR" in opcoes["paises"] and len(opcoes["paises"]) == 249
     assert {"codigo": "PB", "rotulo": "Paraíba"} in opcoes["ufs"]
     assert len(opcoes["ufs"]) == 27
