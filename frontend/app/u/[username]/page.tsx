@@ -115,7 +115,7 @@ function PerfilDoPoeta() {
                 <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
               </div>
             ) : (
-              <div className="pt-4 lg:px-10 lg:pt-8">
+              <div className="px-(--recuo-da-folha) pt-4 lg:pt-8">
                 <EsqueletoDePerfil />
               </div>
             ),
@@ -151,7 +151,7 @@ function PerfilDoPoeta() {
   );
 
   const conteudo = (
-    <div className="pt-4 pb-6 lg:px-6 lg:pt-8">
+    <div className="px-(--recuo-da-folha) pt-4 pb-6 lg:pt-8">
       <Abas
         key={username}
         abas={proprio ? ABAS_DO_DONO : ABAS}

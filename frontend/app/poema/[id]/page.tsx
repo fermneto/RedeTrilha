@@ -31,10 +31,10 @@ import { textoSemMarcas } from "@/lib/marcas";
 
 // Abaixo do título da página ("← Poema"), as margens do livro (MARGEM_DA_PAGINA)
 // com menos espaço em cima.
-const MARGEM_DO_POEMA = "px-6 pt-2 pb-4 sm:px-10 lg:px-14 lg:pt-4";
+const MARGEM_DO_POEMA = "px-(--margem-da-folha) pt-2 pb-4 lg:pt-4";
 // O título alinhado ao poema: com o px-4 do cabeçalho, a margem lateral do livro.
 const topo = (
-  <div className="px-2 sm:px-6 lg:px-10">
+  <div className="px-(--recuo-da-folha)">
     <CabecalhoPagina titulo="Poema" comoTitulo={false} voltar />
   </div>
 );

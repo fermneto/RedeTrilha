@@ -214,10 +214,12 @@ export default function ConversaPage() {
   const minhaUltima = euId !== null && conversa ? situacaoDaMinhaUltima(mensagens, euId, conversa.visto_ate) : null;
 
   return (
-    <div ref={raiz} className="flex flex-1 flex-col">
+    // As barras presas (o cabeçalho e o campo) vão de ponta a ponta da folha: a
+    // conversa desfaz o recuo da folha e põe a margem dela por dentro.
+    <div ref={raiz} className="-mx-(--recuo-da-folha) flex flex-1 flex-col">
       <Cabecalho conversa={conversa} carregando={!conversa && !erro} aoMudar={recarregarConversa} aoErro={setErro} />
 
-      <div className="flex-1 px-4 pt-3 pb-4">
+      <div className="flex-1 px-(--margem-da-folha) pt-3 pb-4">
         {antes && (
           <div className="flex justify-center pb-2">
             <button
@@ -320,7 +322,7 @@ function Cabecalho({
   aoErro: (erro: string) => void;
 }) {
   return (
-    <header className="sticky top-0 z-10 flex min-h-13 items-center gap-3 border-b border-borda bg-papel px-2">
+    <header className="sticky top-0 z-10 flex min-h-13 items-center gap-3 border-b border-borda bg-papel px-[calc(var(--recuo-da-folha)+0.5rem)]">
       <Link
         href="/mensagens"
         aria-label="Voltar para as mensagens"
@@ -458,7 +460,7 @@ function Pe({
   const router = useRouter();
   const [erro, setErro] = useState<string | null>(null);
   const fixo =
-    "sticky bottom-0 z-10 border-t border-borda bg-papel px-4 py-3";
+    "sticky bottom-0 z-10 border-t border-borda bg-papel px-(--margem-da-folha) py-3";
 
   if (conversa.situacao === "pedido") {
     return (

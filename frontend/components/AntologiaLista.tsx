@@ -66,7 +66,7 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
       )}
 
       {antologias.length > 0 && (
-        <ul className="divide-y divide-borda border-b border-borda">
+        <ul className="lista-da-folha divide-y divide-borda border-b border-borda">
           {antologias.map((a) => (
             <li key={a.id} className="surgir">
               <AntologiaItem antologia={a} comDono={comDono} />

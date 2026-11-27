@@ -85,9 +85,9 @@ export function EsqueletoDePoema({ indice = 0, inteiro = false }: { indice?: num
           </div>
           <Linha largura={TITULOS[indice % TITULOS.length]} className="poema-titulo mt-2" />
           <Versos larguras={versos} className={inteiro ? "mt-2 pl-9" : "mt-2"} />
-          <div className="mt-1 -ml-3 flex max-w-sm justify-between">
+          <div className="mt-1 -ml-[0.4375rem] grid max-w-sm grid-cols-6 justify-items-start">
             {Array.from({ length: 6 }, (_, i) => (
-              <span key={i} aria-hidden="true" className="flex h-11 w-11 items-center justify-center">
+              <span key={i} aria-hidden="true" className="flex h-11 w-[2.125rem] items-center justify-center">
                 <Peca className="h-5 w-5 rounded-full" />
               </span>
             ))}
@@ -279,9 +279,9 @@ export function EsqueletoDeCartoes({ quantos, className }: { quantos: number; cl
 export function EsqueletoDeRengas({ quantos }: { quantos: number }) {
   return (
     <Carregando>
-      <ul className="divide-y divide-borda border-b border-borda">
+      <ul className="-mx-(--recuo-da-folha) divide-y divide-borda border-b border-borda">
         {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="px-4 py-4">
+          <li key={i} className="px-(--margem-da-folha) py-4">
             <Linha largura={["52%", "38%", "60%"][i % 3]} className="font-serifada text-xl leading-snug" />
             <Linha largura={["14rem", "10rem", "17rem"][i % 3]} className="mt-1 text-sm" />
             <Linha largura="70%" className="mt-2 text-[0.8125rem] leading-relaxed" />
@@ -296,7 +296,7 @@ export function EsqueletoDeRengas({ quantos }: { quantos: number }) {
 export function EsqueletoDaPaginaDaRenga() {
   return (
     <Carregando>
-      <div className="border-b border-borda px-4 pt-6 pb-6">
+      <div className="linha-da-folha border-b border-borda pt-6 pb-6">
         <Linha largura="50%" className="poema-titulo" />
         <Linha largura="14rem" className="mt-1.5 text-sm" />
         <Linha largura="65%" className="mt-3 text-[0.8125rem] leading-relaxed" />
@@ -321,9 +321,9 @@ export function EsqueletoDaPaginaDaRenga() {
 export function EsqueletoDeAntologias({ quantos, comDono = false }: { quantos: number; comDono?: boolean }) {
   return (
     <Carregando>
-      <ul className="divide-y divide-borda border-b border-borda">
+      <ul className="-mx-(--recuo-da-folha) divide-y divide-borda border-b border-borda">
         {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="px-4 py-4">
+          <li key={i} className="px-(--margem-da-folha) py-4">
             <span className="flex items-baseline gap-3">
               <Linha largura={["48%", "36%", "58%"][i % 3]} className="flex-1 font-serifada text-[1.1875rem] leading-snug" />
               <Linha largura="4rem" className="text-[0.8125rem]" />
@@ -341,7 +341,7 @@ export function EsqueletoDeAntologias({ quantos, comDono = false }: { quantos: n
 export function EsqueletoDaPaginaDaAntologia() {
   return (
     <Carregando>
-      <div className="border-b border-borda px-4 pt-8 pb-6">
+      <div className="linha-da-folha border-b border-borda pt-8 pb-6">
         <Linha largura="58%" className="font-serifada text-[2rem] leading-tight" />
         <div className="mt-3 max-w-[60ch] font-serifada text-[1.0625rem] leading-relaxed">
           <Linha largura="92%" />
@@ -366,7 +366,7 @@ export function EsqueletoDeAvisos({ quantos }: { quantos: number }) {
     <Carregando>
       <ul>
         {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="flex gap-3 border-b border-borda px-4 py-3">
+          <li key={i} className="linha-da-folha flex gap-3 border-b border-borda py-3">
             <span aria-hidden="true" className="flex w-8 shrink-0 justify-end pt-1">
               <Peca className="h-6 w-6 rounded-md" />
             </span>
@@ -388,7 +388,7 @@ export function EsqueletoDeConversas({ quantos }: { quantos: number }) {
     <Carregando>
       <ul>
         {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="flex gap-3 border-b border-borda px-4 py-3">
+          <li key={i} className="linha-da-folha flex gap-3 border-b border-borda py-3">
             <Circulo />
             <div className="min-w-0 flex-1">
               <Linha largura={["52%", "44%", "60%"][i % 3]} className="text-[0.9375rem] leading-5" />
@@ -478,7 +478,7 @@ export function EsqueletoDeRascunhos({ quantos }: { quantos: number }) {
     <Carregando>
       <ul>
         {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="border-b border-borda px-4 pt-4 pb-2">
+          <li key={i} className="linha-da-folha border-b border-borda pt-4 pb-2">
             <Linha largura="12rem" className="text-[0.8125rem]" />
             <Linha largura={TITULOS[i % TITULOS.length]} className="poema-titulo mt-3" />
             <Versos larguras={estrofe(i)} className="mt-2" />

@@ -89,7 +89,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
 
   return (
     <div>
-      <div className="space-y-3 border-b border-borda px-4 py-4">
+      <div className="linha-da-folha space-y-3 border-b border-borda py-4">
         <p className="text-sm text-tinta-suave">Poemas escritos a várias mãos, uma estrofe por vez.</p>
         {/* Como os chips de forma do Explorar: no celular, uma fila que rola de lado. */}
         <nav
@@ -130,7 +130,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
       )}
       {resultado && resultado.items.length > 0 && (
         <>
-          <ul className="surgir divide-y divide-borda border-b border-borda">
+          <ul className="surgir lista-da-folha divide-y divide-borda border-b border-borda">
             {resultado.items.map((r) => (
               <li key={r.id}>
                 <CartaoDaRenga renga={r} />

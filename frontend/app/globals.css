@@ -56,6 +56,28 @@
     color-scheme: dark;
   }
 
+  /* A margem de toda folha do livro: o x onde começa o texto, contado da borda
+     da página (24 px no celular, 40 px a partir de 640 e 56 px na página dupla).
+     As folhas usam px-(--margem-da-folha); as que trazem um px-4 por dentro
+     (cabeçalho, abas, listas com divisória de ponta a ponta) usam o recuo, que
+     já desconta esse 1rem e deixa o texto na mesma margem. */
+  :root {
+    --margem-da-folha: 1.5rem;
+    --recuo-da-folha: calc(var(--margem-da-folha) - 1rem);
+  }
+
+  @media (min-width: 40rem) {
+    :root {
+      --margem-da-folha: 2.5rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --margem-da-folha: 3.5rem;
+    }
+  }
+
   body {
     background-color: var(--color-papel);
     color: var(--color-tinta);
@@ -101,6 +123,30 @@
   ::placeholder {
     color: var(--color-tinta-suave);
     opacity: 1;
+  }
+}
+
+/* As divisórias das listas vão de ponta a ponta da folha, como as barras
+   presas; o texto continua na --margem-da-folha. As três desfazem o recuo da
+   folha (o padding de quem as contém):
+   - linha-da-folha: uma linha com borda e o próprio texto (no lugar do px-4);
+   - faixa-da-folha: um bloco com borda cujos filhos trazem o px-4;
+   - lista-da-folha: uma lista (divide-y) cujos itens trazem o px-4. */
+@utility linha-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+  padding-inline: var(--margem-da-folha);
+}
+
+@utility faixa-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+  padding-inline: var(--recuo-da-folha);
+}
+
+@utility lista-da-folha {
+  margin-inline: calc(-1 * var(--recuo-da-folha));
+
+  & > * {
+    padding-inline: var(--recuo-da-folha);
   }
 }
 

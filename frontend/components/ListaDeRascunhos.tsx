@@ -66,7 +66,7 @@ export function ListaDeRascunhos() {
 
   return (
     <div>
-      <p className="border-b border-borda px-4 py-3 text-sm text-tinta-suave">
+      <p className="linha-da-folha border-b border-borda py-3 text-sm text-tinta-suave">
         Poemas guardados e ainda não publicados. Só você vê.
       </p>
       {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
@@ -124,7 +124,7 @@ function ItemDoRascunho({ rascunho, citado, aoApagar, aoPublicar }: PropsDoItem)
   const nome = rascunho.titulo ?? previa.split("\n")[0];
 
   return (
-    <li className="border-b border-borda px-4 pt-4 pb-2">
+    <li className="linha-da-folha border-b border-borda pt-4 pb-2">
       <p className="flex flex-wrap gap-x-2 text-[0.8125rem] text-tinta-suave">
         <span>
           editado <time dateTime={rascunho.updated_at}>{quandoEditado(rascunho.updated_at)}</time>

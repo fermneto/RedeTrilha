@@ -17,7 +17,8 @@ import { IconeRenga } from "@/components/icones/IconeRenga";
 import { chaveDoItem, ehRenga, textoDaRenga, type ItemDoFeed, type Post, type RengaDetalhe } from "@/lib/api";
 
 // As margens de cada página: largas como as de um caderno, menores no celular.
-export const MARGEM_DA_PAGINA = "px-6 pt-8 pb-4 sm:px-10 lg:px-14 lg:pt-12";
+// A lateral é a --margem-da-folha (globals.css), a mesma de todas as folhas.
+export const MARGEM_DA_PAGINA = "px-(--margem-da-folha) pt-8 pb-4 lg:pt-12";
 
 // O que um repost puro mostra e recebe: o original.
 export function poemaDe(post: Post): Post {
@@ -31,7 +32,7 @@ export function rotuloDoPoema(post: Post): string {
 
 // A página da conversa: as margens do livro, mas sem a de baixo, para o campo
 // de comentar encostar no pé da página.
-export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-6 pt-5 sm:px-10 lg:px-14 lg:pt-9";
+export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-(--margem-da-folha) pt-5 lg:pt-9";
 
 // A página da direita: os contadores e as ações no alto, a conversa embaixo.
 // As ações ficam presas no topo da página enquanto a conversa rola, para curtir,
@@ -110,7 +111,7 @@ export function folhaDoItem(item: ItemDoFeed, euId: number | null, topo: ReactNo
       esquerda: (
         <div className="pb-4">
           {topo}
-          <div className="px-2 pt-4 sm:px-6 lg:px-10 lg:pt-8">
+          <div className="px-(--recuo-da-folha) pt-4 lg:pt-8">
             <RengaCard renga={renga} atividade={item.atividade} por={item.por} folha />
           </div>
         </div>

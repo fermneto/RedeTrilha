@@ -101,7 +101,7 @@ function Escrever() {
               rotulo: titulo,
               juntarNoCelular: true,
               esquerda: (
-                <div className="pb-4 lg:px-10">
+                <div className="px-(--recuo-da-folha) pb-4">
                   <CabecalhoPagina titulo={titulo} />
                   {poemaNovo && (
                     <FormatoDeEscrita atual="poema" aoEscolher={aoEscolher}>

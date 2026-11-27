@@ -38,7 +38,7 @@ import {
 import { textoSemMarcas } from "@/lib/marcas";
 
 // A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
-const MOLDURA = "flex min-h-full flex-col pb-6 lg:px-6";
+const MOLDURA = "flex min-h-full flex-col px-(--recuo-da-folha) pb-6";
 
 // Uma folha do livro: a página da esquerda e, se houver, a da direita.
 function Folha({
@@ -175,7 +175,7 @@ export default function AntologiaPage() {
       esquerda={
         <div className="surgir">
           {cabecalho}
-          <div className="border-b border-borda px-4 pt-8 pb-6">
+          <div className="linha-da-folha border-b border-borda pt-8 pb-6">
             {editando ? (
               <AntologiaFormulario
                 inicial={antologia}
@@ -221,7 +221,7 @@ export default function AntologiaPage() {
             <>
               {itens.length > 1 && <Indice itens={itens} />}
               <h2 className="sr-only">Poemas</h2>
-              <ol className="divide-y divide-borda border-b border-borda">
+              <ol className="lista-da-folha divide-y divide-borda border-b border-borda">
                 {itens.map((item) => (
                   <li
                     key={ancora(item)}
@@ -331,7 +331,7 @@ function Indice({ itens }: { itens: Item[] }) {
   const idLista = useId();
 
   return (
-    <nav aria-labelledby="indice-da-antologia" className="border-b border-borda px-4 pt-5 pb-4">
+    <nav aria-labelledby="indice-da-antologia" className="linha-da-folha border-b border-borda pt-5 pb-4">
       {longa ? (
         <h2 id="indice-da-antologia" className="text-sm font-bold">
           <button
