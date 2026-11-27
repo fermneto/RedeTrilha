@@ -1372,5 +1372,13 @@ tabela; não foi preciso. Os testes de avisos rodam também contra o Postgres 16
   subagents do Claude Code, com medições e telas de antes e depois. Cada
   detalhe que mudava a aparência (texto do botão, formato dos contadores,
   intensidade do fade) foi perguntado ao Neto antes de entrar.
+- **Revisão de código e validação da reta final (#203 a #213):** com o Neto
+  ausente e a pedido dele, subagents do Claude Code fizeram uma varredura de
+  código sem uso (vulture e knip), duas rodadas contra a duplicação (#206, #207
+  e #212), uma auditoria de bugs com uma reprodução para cada um (11
+  corrigidos no #209, entre eles ids fora do int4, caractere nulo e o bloqueio
+  na tradução, nas antologias e nas mensagens) e a validação das 14 issues de
+  teste com Playwright, cujos 3 bugs foram corrigidos no #211. Cada correção
+  entrou com um teste e sem mudar a interface, que já estava aprovada.
 - **Henrique:** _(completar com a ferramenta e o uso próprio)_
 - **Pedro:** _(completar com a ferramenta e o uso próprio)_
