@@ -105,13 +105,18 @@ export function BarraDeAcoes({
 
   // Como no X: só ícone (20 px) e número, e o número some quando é zero. O nome
   // da ação vai no aria-label (com o número, que o aria-label esconderia) e no
-  // title. Cada botão tem área de toque de 44×44 px; o -ml-3 da linha alinha o
-  // primeiro ícone com o texto do poema. No hover, o círculo atrás do ícone tinge.
+  // title. As seis ações ficam em casas iguais (grid-cols-6), com o ícone no
+  // mesmo ponto de cada casa e o número logo depois, como no X: os ícones ficam
+  // à mesma distância uns dos outros, tenham número ou não. O círculo do hover
+  // tem 34 px e o número vem colado nele (Contador), para um número de três
+  // algarismos caber antes do ícone seguinte numa tela de 390 px. Cada botão
+  // ainda tem área de toque de 44×44 px; o -ml-[0.4375rem] da linha alinha o
+  // primeiro ícone com o texto do poema.
   const botao =
-    "group inline-flex min-h-11 min-w-11 cursor-pointer items-center gap-1 pr-2 tabular-nums transition-colors duration-150 hover:text-destaque";
+    "group inline-flex min-h-11 min-w-11 cursor-pointer items-center tabular-nums transition-colors duration-150 hover:text-destaque";
   const icone = "h-5 w-5";
   const circulo =
-    "flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-150 group-hover:bg-destaque/10";
+    "flex h-[2.125rem] w-[2.125rem] shrink-0 items-center justify-center rounded-full transition-colors duration-150 group-hover:bg-destaque/10";
   const rotulo = (acao: string, n?: number) => (n ? `${acao} (${n})` : acao);
   const linha = [
     [curtidas, "curtida", "curtidas"],
@@ -129,7 +134,7 @@ export function BarraDeAcoes({
           ))}
         </p>
       )}
-      <div className="-ml-3 flex max-w-sm justify-between text-[0.8125rem] text-tinta-suave">
+      <div className="-ml-[0.4375rem] grid max-w-sm grid-cols-6 justify-items-start text-[0.8125rem] text-tinta-suave">
         <button
           type="button"
           onClick={alternarCurtida}
@@ -180,6 +185,8 @@ export function BarraDeAcoes({
   );
 }
 
+// O número entra 3 px por cima da borda do círculo: fica a 4 px do ícone, e
+// "999" ainda termina a 4 px do ícone da casa seguinte numa tela de 390 px.
 function Contador({ n }: { n: number }) {
-  return n > 0 ? <span aria-hidden="true">{n}</span> : null;
+  return n > 0 ? <span aria-hidden="true" className="-ml-[0.1875rem]">{n}</span> : null;
 }

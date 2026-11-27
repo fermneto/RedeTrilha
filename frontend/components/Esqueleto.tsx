@@ -85,9 +85,9 @@ export function EsqueletoDePoema({ indice = 0, inteiro = false }: { indice?: num
           </div>
           <Linha largura={TITULOS[indice % TITULOS.length]} className="poema-titulo mt-2" />
           <Versos larguras={versos} className={inteiro ? "mt-2 pl-9" : "mt-2"} />
-          <div className="mt-1 -ml-3 flex max-w-sm justify-between">
+          <div className="mt-1 -ml-[0.4375rem] grid max-w-sm grid-cols-6 justify-items-start">
             {Array.from({ length: 6 }, (_, i) => (
-              <span key={i} aria-hidden="true" className="flex h-11 w-11 items-center justify-center">
+              <span key={i} aria-hidden="true" className="flex h-11 w-[2.125rem] items-center justify-center">
                 <Peca className="h-5 w-5 rounded-full" />
               </span>
             ))}
