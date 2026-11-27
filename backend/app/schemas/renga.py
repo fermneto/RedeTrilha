@@ -6,7 +6,6 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
-MODOS_RENGA = ("aberta", "convidados")
 Modo = Literal["aberta", "convidados"]
 
 # Quantas estrofes a renga pode ter, contando a do criador.
