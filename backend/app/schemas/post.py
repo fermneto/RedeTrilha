@@ -24,14 +24,14 @@ ROTULOS_DAS_FORMAS = {
 FORMAS = list(ROTULOS_DAS_FORMAS)
 
 
-def _validar_texto(texto: str | None) -> str:
+def validar_texto(texto: str | None) -> str:
     """Recusa poema em branco sem alterar o texto: as quebras de linha são sagradas."""
     if texto is None or not texto.strip():
         raise ValueError("o poema não pode ficar vazio")
     return texto
 
 
-def _validar_forma(forma: str | None) -> str | None:
+def validar_forma(forma: str | None) -> str | None:
     if forma is not None and forma not in FORMAS:
         raise ValueError(f"forma deve ser uma de: {', '.join(FORMAS)}")
     return forma
@@ -48,8 +48,8 @@ class PostCreate(Entrada):
     # Com texto, é citação da renga `renga_citada_id`. Um poema cita um poema ou uma renga.
     renga_citada_id: IdDeEntrada | None = None
 
-    _texto = field_validator("texto")(_validar_texto)
-    _forma = field_validator("forma")(_validar_forma)
+    _texto = field_validator("texto")(validar_texto)
+    _forma = field_validator("forma")(validar_forma)
     _idioma = field_validator("idioma")(validar_idioma)
 
     @model_validator(mode="after")
