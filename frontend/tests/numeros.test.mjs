@@ -18,17 +18,17 @@ test("até 999 o número vem inteiro", () => {
   assert.equal(contagemCurta(999), "999");
 });
 
-test("de mil em diante, em mil, com uma casa abaixo de 10", () => {
-  assert.equal(contagemCurta(1000), "1 mil");
-  assert.equal(contagemCurta(1234), "1,2 mil");
-  assert.equal(contagemCurta(1250), "1,2 mil");
-  assert.equal(contagemCurta(9999), "9,9 mil");
-  assert.equal(contagemCurta(12_345), "12 mil");
-  assert.equal(contagemCurta(999_999), "999 mil");
+test("de mil em diante, em k, com uma casa abaixo de 10", () => {
+  assert.equal(contagemCurta(1000), "1k");
+  assert.equal(contagemCurta(1234), "1,2k");
+  assert.equal(contagemCurta(1250), "1,2k");
+  assert.equal(contagemCurta(9999), "9,9k");
+  assert.equal(contagemCurta(12_345), "12k");
+  assert.equal(contagemCurta(999_999), "999k");
 });
 
-test("de um milhão em diante, em mi", () => {
-  assert.equal(contagemCurta(1_000_000), "1 mi");
-  assert.equal(contagemCurta(1_234_567), "1,2 mi");
-  assert.equal(contagemCurta(12_000_000), "12 mi");
+test("de um milhão em diante, em M", () => {
+  assert.equal(contagemCurta(1_000_000), "1M");
+  assert.equal(contagemCurta(1_234_567), "1,2M");
+  assert.equal(contagemCurta(12_000_000), "12M");
 });
