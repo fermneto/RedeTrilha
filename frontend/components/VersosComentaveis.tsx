@@ -127,6 +127,9 @@ export function VersosComentaveis({
 
   useEffect(() => {
     if (!selecao) return;
+    // No clique, não no mousedown: desfeita ao apertar, a barra some e o que vem
+    // abaixo dela (o "Traduzir") sobe antes de o botão ser solto, e o clique cai
+    // fora dele (#156). No click, o botão de fora já recebeu o dele.
     function aoClicar(e: MouseEvent) {
       if (origem.current === "numero" && !corpo.current?.contains(e.target as Node)) aoSelecionar(null);
     }
@@ -135,10 +138,10 @@ export function VersosComentaveis({
       document.getSelection()?.removeAllRanges();
       aoSelecionar(null);
     }
-    document.addEventListener("mousedown", aoClicar);
+    document.addEventListener("click", aoClicar);
     document.addEventListener("keydown", aoTeclar);
     return () => {
-      document.removeEventListener("mousedown", aoClicar);
+      document.removeEventListener("click", aoClicar);
       document.removeEventListener("keydown", aoTeclar);
     };
   }, [selecao, aoSelecionar]);
