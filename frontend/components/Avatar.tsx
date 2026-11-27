@@ -9,6 +9,17 @@ function iniciais(nome: string): string {
   return (primeira + ultima).toUpperCase();
 }
 
+// Fundos claros para quem não tem foto; o texto é sempre escuro, nos dois temas.
+const FUNDOS = ["#e6c3b3", "#c9d6bf", "#ecd9a0", "#bfd0dc", "#d6c9e0", "#ecc6cf", "#b9d9d3", "#e0d2b8"];
+
+// A mesma pessoa tem sempre a mesma cor: um hash simples do username (ou do nome).
+function fundoDoAvatar(usuario: User): string {
+  const chave = usuario.username || usuario.name;
+  let hash = 0;
+  for (const letra of chave) hash = (hash * 31 + letra.charCodeAt(0)) >>> 0;
+  return FUNDOS[hash % FUNDOS.length];
+}
+
 // Também a medida do avatar no esqueleto do carregamento (components/Esqueleto.tsx).
 export const TAMANHOS_DO_AVATAR = {
   // Os rostos empilhados de quem curtiu ou repostou (components/Repercussao.tsx).
@@ -32,7 +43,8 @@ export function Avatar({ usuario, tamanho = "m" }: { usuario: User; tamanho?: ke
   return (
     <span
       aria-hidden="true"
-      className={`${classe} flex items-center justify-center bg-borda font-semibold tracking-wide text-tinta select-none`}
+      style={{ backgroundColor: fundoDoAvatar(usuario), color: "#2a211a" }}
+      className={`${classe} flex items-center justify-center font-semibold tracking-wide select-none`}
     >
       {iniciais(usuario.name)}
     </span>
