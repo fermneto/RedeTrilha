@@ -4,7 +4,8 @@
 import { useState } from "react";
 
 import { AvisoDeErro } from "@/components/AvisoDeErro";
-import { editarPerfil, mensagemDeFalha, type Perfil } from "@/lib/api";
+import { useAcaoAssincrona } from "@/hooks/useAcaoAssincrona";
+import { editarPerfil, type Perfil } from "@/lib/api";
 
 type Props = {
   perfil: Perfil;
@@ -16,20 +17,12 @@ export function PerfilEdicao({ perfil, aoSalvar, aoCancelar }: Props) {
   const [name, setName] = useState(perfil.name);
   const [bio, setBio] = useState(perfil.bio);
   const [avatarUrl, setAvatarUrl] = useState(perfil.avatar_url);
-  const [salvando, setSalvando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
+  const { ocupado: salvando, erro, executar } = useAcaoAssincrona("não deu para salvar o perfil");
 
   async function salvar(e: React.FormEvent) {
     e.preventDefault();
-    setSalvando(true);
-    setErro(null);
-    try {
-      // A bio vai como foi digitada: as quebras de linha ficam.
-      aoSalvar(await editarPerfil({ name, bio, avatar_url: avatarUrl.trim() }));
-    } catch (err) {
-      setErro(mensagemDeFalha(err, "não deu para salvar o perfil"));
-      setSalvando(false);
-    }
+    // A bio vai como foi digitada: as quebras de linha ficam.
+    await executar(async () => aoSalvar(await editarPerfil({ name, bio, avatar_url: avatarUrl.trim() })));
   }
 
   const campo = "w-full rounded border border-borda bg-papel px-3 py-2 text-tinta";

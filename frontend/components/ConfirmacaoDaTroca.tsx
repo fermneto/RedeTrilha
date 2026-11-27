@@ -5,10 +5,10 @@
 // "continuar escrevendo" (Enter sem querer não perde nada); Esc ou clique fora
 // também continuam escrevendo e devolvem o foco a quem abriu a pergunta.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
+import { useAcaoAssincrona } from "@/hooks/useAcaoAssincrona";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
-import { mensagemDeFalha } from "@/lib/api";
 
 type Props = {
   aoSalvar: () => Promise<void>;
@@ -19,8 +19,7 @@ type Props = {
 export function ConfirmacaoDaTroca({ aoSalvar, aoDescartar, aoContinuar }: Props) {
   const caixa = useRef<HTMLDivElement>(null);
   const continuar = useRef<HTMLButtonElement>(null);
-  const [salvando, setSalvando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
+  const { ocupado: salvando, erro, executar } = useAcaoAssincrona("não deu para salvar o rascunho");
 
   useEffect(() => {
     continuar.current?.focus();
@@ -28,16 +27,7 @@ export function ConfirmacaoDaTroca({ aoSalvar, aoDescartar, aoContinuar }: Props
 
   useFecharAoSair(!salvando, caixa, (e) => aoContinuar(e.type === "keydown"));
 
-  async function salvar() {
-    setSalvando(true);
-    setErro(null);
-    try {
-      await aoSalvar();
-    } catch (e) {
-      setErro(mensagemDeFalha(e, "não deu para salvar o rascunho"));
-      setSalvando(false);
-    }
-  }
+  const salvar = () => executar(aoSalvar);
 
   const acao = "min-h-11 cursor-pointer disabled:cursor-default disabled:opacity-50";
   return (
