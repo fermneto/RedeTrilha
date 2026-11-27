@@ -7,7 +7,7 @@ import type { User } from "@/lib/api";
 // Usado no feed, nas citações, nos comentários e na coluna direita.
 export function NomeAutor({ usuario, className = "font-bold" }: { usuario: User; className?: string }) {
   return (
-    <span className="inline-flex min-w-0 items-center gap-1">
+    <span className="inline-flex max-w-full min-w-0 items-center gap-1">
       <Link href={`/u/${usuario.username}`} className={`truncate hover:underline ${className}`}>
         {usuario.name}
       </Link>
