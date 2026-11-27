@@ -39,6 +39,7 @@ import {
   type SelecaoDeVersos,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // Id do campo de comentário no poema: "comentar estes versos" leva o foco até ele.
 export const ID_DO_CAMPO_DE_COMENTARIO = "comentar-poema";
@@ -349,7 +350,7 @@ function ItemComentario({
                 </button>
                 {total > 0 && !respondendo && respostas.length === 0 && (
                   <span className="text-xs text-tinta-suave">
-                    {total} {total === 1 ? "resposta" : "respostas"}
+                    {total} {noPlural(total, "resposta", "respostas")}
                   </span>
                 )}
                 {euId === autor.id && (
@@ -399,7 +400,7 @@ function ItemComentario({
           />
           {faltam > 0 && cursor !== null && (
             <button type="button" onClick={verMais} disabled={ocupado} className={`${acao} text-destaque`}>
-              {ocupado ? "carregando..." : `ver mais ${faltam === 1 ? "1 resposta" : `${faltam} respostas`}`}
+              {ocupado ? "carregando..." : `ver mais ${faltam} ${noPlural(faltam, "resposta", "respostas")}`}
             </button>
           )}
         </div>

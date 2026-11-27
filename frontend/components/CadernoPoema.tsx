@@ -34,6 +34,13 @@ export function rotuloDoPoema(post: Post): string {
 // de comentar encostar no pé da página.
 const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-(--margem-da-folha) pt-5 lg:pt-9";
 
+// As ações presas no topo da página da conversa. Com um popover delas aberto
+// ("adicionar à antologia"), sobem acima do pé da conversa (o campo de comentar,
+// também z-10 e depois no DOM), que senão cobre a lista quando ela não cabe para
+// cima (#62).
+const ACOES_PRESAS =
+  "acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3 has-[[role=dialog]]:z-20";
+
 // A página da direita: os contadores e as ações no alto, a conversa embaixo.
 // As ações ficam presas no topo da página enquanto a conversa rola, para curtir,
 // repostar e comentar estarem sempre à mão. Na página do poema, `repercussao`
@@ -49,7 +56,7 @@ export function VersoDoPoema({
 }) {
   return (
     <div className={MARGEM_DA_CONVERSA}>
-      <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
+      <div className={ACOES_PRESAS}>
         <Acoes key={poema.id} poema={poema} contadores />
       </div>
       {repercussao && <div className="mt-4">{repercussao}</div>}
@@ -75,7 +82,7 @@ export function ConversaDaRenga({
 }) {
   return (
     <div className={MARGEM_DA_CONVERSA}>
-      <div className="acoes-presas sticky top-0 z-10 border-b border-borda/70 pt-3 pb-3">
+      <div className={ACOES_PRESAS}>
         <AcoesDaRenga key={renga.id} renga={renga} contadores />
         {!naPropriaPagina && !renga.fechada && renga.posso_escrever && (
           <Link

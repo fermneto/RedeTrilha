@@ -18,10 +18,9 @@ import {
   buscarEu,
   buscarOpcoesDePreferencias,
   buscarSugestoes,
-  caminhoDoLogin,
+  exigirLogin,
   mensagemDeFalha,
   POR_PAGINA_DO_ACERVO,
-  temToken,
   type PoetaDoAcervo,
 } from "@/lib/api";
 
@@ -77,10 +76,7 @@ export function GradeDeSugestoes({ colunas, aoSeguir }: Props) {
   }, []);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
+    if (!exigirLogin(router)) return;
     carregar(0, "");
     buscarEu()
       .then((eu) => setMeuId(eu.id))

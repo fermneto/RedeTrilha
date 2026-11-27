@@ -20,6 +20,9 @@ import { textoSemMarcas } from "@/lib/marcas";
 export function useVersosSelecionados(corpo: RefObject<HTMLElement | null>, texto: string, ativo: boolean) {
   const barra = useRef<HTMLDivElement>(null);
   const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
+  // Se a seleção de versos mudou desde que o dedo (ou o botão) desceu: o clique
+  // que fecha um arrasto pelos versos não é um toque fora.
+  const selecionouNoGesto = useRef(false);
 
   useEffect(() => {
     if (!ativo) return;
@@ -31,6 +34,7 @@ export function useVersosSelecionados(corpo: RefObject<HTMLElement | null>, text
         textoSemMarcas(texto),
         versosTocados(doc, elemento.querySelectorAll<HTMLElement>("[data-verso]")),
       );
+      selecionouNoGesto.current = true;
       setSelecao((atual) => (nova && atual?.inicio === nova.inicio && atual.fim === nova.fim ? atual : nova));
     }
     document.addEventListener("selectionchange", aoMudarSelecao);
@@ -39,18 +43,28 @@ export function useVersosSelecionados(corpo: RefObject<HTMLElement | null>, text
 
   useEffect(() => {
     if (!selecao) return;
-    function aoTocar(e: PointerEvent) {
-      if (!barra.current?.contains(e.target as Node)) setSelecao(null);
+    // No clique, não no pointerdown: desfeita ao apertar, a barra some e o que vem
+    // abaixo dela (o "Traduzir") sobe antes de o botão ser solto, e o clique cai
+    // fora dele (#156). O clique que fecha um arrasto selecionando outros versos
+    // aqui não apaga a seleção nova.
+    function aoApertar() {
+      selecionouNoGesto.current = false;
+    }
+    function aoTocar(e: MouseEvent) {
+      if (barra.current?.contains(e.target as Node) || selecionouNoGesto.current) return;
+      setSelecao(null);
     }
     function aoTeclar(e: KeyboardEvent) {
       if (e.key !== "Escape") return;
       document.getSelection()?.removeAllRanges();
       setSelecao(null);
     }
-    document.addEventListener("pointerdown", aoTocar);
+    document.addEventListener("pointerdown", aoApertar);
+    document.addEventListener("click", aoTocar);
     document.addEventListener("keydown", aoTeclar);
     return () => {
-      document.removeEventListener("pointerdown", aoTocar);
+      document.removeEventListener("pointerdown", aoApertar);
+      document.removeEventListener("click", aoTocar);
       document.removeEventListener("keydown", aoTeclar);
     };
   }, [selecao]);

@@ -27,6 +27,7 @@ import {
   type PoetaDoAcervo,
   type TagEncontrada,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // A casca do campo, a mesma na busca geral e na dos poetas (CampoDaBusca).
 const CASCA =
@@ -233,7 +234,7 @@ export function BuscaDoExplorar({
                 <OpcaoDaLista key={t.tag} id={idDaOpcao(i)} ativa={ativa === i} aoEscolher={() => escolher(opcoes[i])}>
                   <span className="block font-bold break-words">{hashtag(t.tag)}</span>
                   <span className="block text-[0.8125rem] text-tinta-suave tabular-nums">
-                    {t.poemas} {t.poemas === 1 ? "poema" : "poemas"}
+                    {t.poemas} {noPlural(t.poemas, "poema", "poemas")}
                   </span>
                 </OpcaoDaLista>
               ))}
@@ -338,7 +339,7 @@ export function CampoDaBusca({
 
 function contar(n: number, um: string, varios: string): string {
   if (n === 0) return "";
-  return `${n} ${n === 1 ? um : varios}`;
+  return `${n} ${noPlural(n, um, varios)}`;
 }
 
 function Grupo({ titulo, mostrar, children }: { titulo: string; mostrar: boolean; children: React.ReactNode }) {

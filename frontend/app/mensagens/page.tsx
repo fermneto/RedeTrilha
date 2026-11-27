@@ -6,27 +6,32 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 
 import { Abas } from "@/components/Abas";
 import { Avatar } from "@/components/Avatar";
 import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDeConversas } from "@/components/Esqueleto";
+import { useListaPorCursor, type ListaPorCursor } from "@/hooks/useListaPorCursor";
+import { useRecarregarAoOuvir } from "@/hooks/useRecarregarAoOuvir";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
 import {
-  buscarEu,
-  caminhoDoLogin,
   listarConversas,
   mensagemDeFalha,
-  ouvirMensagens,
   previaDaMensagem,
   quandoEditado,
-  temToken,
   type AbaDaCaixa,
   type ConversaNaCaixa,
+  type EventoDeMensagem,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
-type Lista = { itens: ConversaNaCaixa[]; cursor: string | null };
+const buscarConversas = (cursor: string | null) => listarConversas("conversas", cursor);
+const buscarPedidos = (cursor: string | null) => listarConversas("pedidos", cursor);
+const idDaConversa = (conversa: ConversaNaCaixa) => conversa.id;
+// Todo evento de mensagem (o "aviso" é da página de Avisos) recarrega a caixa.
+const ouvirMensagensDaCaixa = (evento: EventoDeMensagem) => evento.tipo !== "aviso";
 
 // useSearchParams precisa de Suspense no build do Next.
 export default function MensagensPage() {
@@ -41,52 +46,31 @@ function Caixa() {
   const router = useRouter();
   // A aba fica na URL (?aba=pedidos), como no perfil.
   const aba: AbaDaCaixa = useSearchParams().get("aba") === "pedidos" ? "pedidos" : "conversas";
-  const [euId, setEuId] = useState<number | null>(null);
-  const [listas, setListas] = useState<Partial<Record<AbaDaCaixa, Lista>>>({});
+  const euId = useSessaoObrigatoria()?.id ?? null;
+  const conversas = useListaPorCursor(buscarConversas, idDaConversa);
+  const pedidos = useListaPorCursor(buscarPedidos, idDaConversa);
+  const caixa = { conversas, pedidos };
   const [erro, setErro] = useState<string | null>(null);
-  const espera = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Recarrega a primeira página das duas abas (o contador dos pedidos aparece na aba).
+  const recarregarConversas = conversas.recarregar;
+  const recarregarPedidos = pedidos.recarregar;
   const recarregar = useCallback(() => {
-    for (const qual of ["conversas", "pedidos"] as const) {
-      listarConversas(qual, null)
-        .then((p) => setListas((atuais) => ({ ...atuais, [qual]: { itens: p.items, cursor: p.proximo_cursor } })))
-        .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as mensagens")));
+    for (const recarregarAba of [recarregarConversas, recarregarPedidos]) {
+      recarregarAba().catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as mensagens")));
     }
-  }, []);
-
-  useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    buscarEu()
-      .then((eu) => setEuId(eu.id))
-      .catch(() => undefined);
-    recarregar();
-    const cancelar = ouvirMensagens((evento) => {
-      if (evento.tipo === "aviso") return;
-      if (espera.current) clearTimeout(espera.current);
-      espera.current = setTimeout(recarregar, 250);
-    });
-    return () => {
-      cancelar();
-      if (espera.current) clearTimeout(espera.current);
-    };
-  }, [router, recarregar]);
+  }, [recarregarConversas, recarregarPedidos]);
+  useRecarregarAoOuvir(recarregar, ouvirMensagensDaCaixa);
 
   async function carregarMais(qual: AbaDaCaixa) {
-    const atual = listas[qual];
-    if (!atual?.cursor) return;
     try {
-      const p = await listarConversas(qual, atual.cursor);
-      setListas((l) => ({ ...l, [qual]: { itens: [...atual.itens, ...p.items], cursor: p.proximo_cursor } }));
+      await caixa[qual].carregarMais();
     } catch (e) {
       setErro(mensagemDeFalha(e, "não deu para carregar mais conversas"));
     }
   }
 
-  const pedidosNovos = (listas.pedidos?.itens ?? []).filter((c) => c.nao_lidas > 0).length;
+  const pedidosNovos = (pedidos.lista?.itens ?? []).filter((c) => c.nao_lidas > 0).length;
   const abas = [
     { valor: "conversas", rotulo: "Conversas" },
     { valor: "pedidos", rotulo: pedidosNovos > 0 ? `Pedidos (${pedidosNovos})` : "Pedidos" },
@@ -103,7 +87,7 @@ function Caixa() {
         rotulo="Caixa de mensagens"
       >
         {(qual) => (
-          <ListaDaCaixa aba={qual} lista={listas[qual]} euId={euId} aoCarregarMais={() => carregarMais(qual)} />
+          <ListaDaCaixa aba={qual} lista={caixa[qual].lista} euId={euId} aoCarregarMais={() => carregarMais(qual)} />
         )}
       </Abas>
     </div>
@@ -117,7 +101,7 @@ function ListaDaCaixa({
   aoCarregarMais,
 }: {
   aba: AbaDaCaixa;
-  lista: Lista | undefined;
+  lista: ListaPorCursor<ConversaNaCaixa> | null;
   euId: number | null;
   aoCarregarMais: () => void;
 }) {
@@ -196,7 +180,7 @@ function LinhaDaConversa({ conversa, euId }: { conversa: ConversaNaCaixa; euId: 
           <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-destaque px-1.5 text-[0.6875rem] font-bold text-papel tabular-nums">
             {conversa.nao_lidas}
           </span>
-          <span className="sr-only">{conversa.nao_lidas === 1 ? "mensagem não lida" : "mensagens não lidas"}</span>
+          <span className="sr-only">{noPlural(conversa.nao_lidas, "mensagem não lida", "mensagens não lidas")}</span>
         </span>
       )}
     </Link>

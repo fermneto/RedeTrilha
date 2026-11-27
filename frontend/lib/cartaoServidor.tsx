@@ -31,6 +31,7 @@ import {
   temEscritaDaDireita,
   tituloDoPoema,
 } from "./cartao";
+import { noPlural } from "./numeros";
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 const APRESENTACAO = "Para quem lê e escreve poesia: o poema inteiro, a conversa sobre ele e os clássicos no mesmo feed.";
@@ -39,7 +40,7 @@ const APRESENTACAO = "Para quem lê e escreve poesia: o poema inteiro, a convers
 const REVALIDAR = 3600;
 const ESPERA_MS = 3000;
 
-const TAMANHO = { width: 1200, height: 630 };
+export const TAMANHO = { width: 1200, height: 630 };
 
 // ---- Dados
 
@@ -164,7 +165,7 @@ export async function metadadosDaAntologia(id: string): Promise<Metadata> {
   if (!antologia) return metadados("Antologia", DESCRICAO, caminho);
   const descricao =
     antologia.descricao?.trim() ||
-    `${antologia.qtd} ${antologia.qtd === 1 ? "poema reunido" : "poemas reunidos"} por ${antologia.dono.name}.`;
+    `${antologia.qtd} ${noPlural(antologia.qtd, "poema reunido", "poemas reunidos")} por ${antologia.dono.name}.`;
   return metadados(`${antologia.nome}, antologia de ${antologia.dono.name}`, encurtar(descricao, 200), caminho);
 }
 
@@ -415,7 +416,7 @@ function iniciais(nome: string): string {
   return (partes[0][0] + (partes.length > 1 ? partes[partes.length - 1][0] : "")).toUpperCase();
 }
 
-const contagem = (n: number, um: string, varios: string) => `${n.toLocaleString("pt-BR")} ${n === 1 ? um : varios}`;
+const contagem = (n: number, um: string, varios: string) => `${n.toLocaleString("pt-BR")} ${noPlural(n, um, varios)}`;
 
 // Perfil: avatar, nome, @, a linha de consagrado, a bio e quantos poemas. Sem a
 // API, o @ da URL no lugar do nome.

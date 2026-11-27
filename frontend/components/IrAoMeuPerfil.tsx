@@ -8,17 +8,14 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { AvisoDeErro } from "@/components/AvisoDeErro";
-import { buscarEu, caminhoDoLogin, mensagemDeFalha, temToken } from "@/lib/api";
+import { buscarEu, exigirLogin, mensagemDeFalha } from "@/lib/api";
 
 export function IrAoMeuPerfil({ aba }: { aba?: "rascunhos" | "antologias" }) {
   const router = useRouter();
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
+    if (!exigirLogin(router)) return;
     buscarEu()
       .then((eu) => router.replace(`/u/${encodeURIComponent(eu.username)}${aba ? `?aba=${aba}` : ""}`))
       .catch((e) => setErro(mensagemDeFalha(e, "não deu para abrir o perfil")));

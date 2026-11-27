@@ -28,10 +28,9 @@ import {
   buscarEu,
   buscarPerfil,
   buscarPoemasDoPerfil,
-  caminhoDoLogin,
+  exigirLogin,
   listarAntologiasDe,
   mensagemDeFalha,
-  temToken,
   type Perfil,
 } from "@/lib/api";
 
@@ -78,10 +77,7 @@ function PerfilDoPoeta() {
   }
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
+    if (!exigirLogin(router)) return;
     setPerfil(null);
     setEditando(false);
     setBloqueei(false);

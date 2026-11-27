@@ -25,6 +25,7 @@ import {
   type Post,
   type Rascunho,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 import { nomeDaForma } from "@/lib/vocabulario";
 
 // Quantos versos do começo aparecem na lista (linhas em branco entre estrofes contam).
@@ -131,7 +132,7 @@ function ItemDoRascunho({ rascunho, citado, aoApagar, aoPublicar }: PropsDoItem)
           editado <time dateTime={rascunho.updated_at}>{quandoEditado(rascunho.updated_at)}</time>
         </span>
         <span aria-hidden="true">·</span>
-        <span>{versos === 1 ? "1 verso" : `${versos} versos`}</span>
+        <span>{`${versos} ${noPlural(versos, "verso", "versos")}`}</span>
         {rascunho.forma && (
           <>
             <span aria-hidden="true">·</span>

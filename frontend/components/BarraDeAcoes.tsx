@@ -13,7 +13,7 @@ import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { caminhoDaCitacao, curtir, mensagemDeFalha, repostar, type Alvo, type Renga } from "@/lib/api";
-import { contagemCurta } from "@/lib/numeros";
+import { contagemCurta, noPlural } from "@/lib/numeros";
 import { avisarAcao } from "@/lib/repercussao";
 import { lembrarAcao } from "@/lib/sessaoDoFeed";
 
@@ -130,7 +130,7 @@ export function BarraDeAcoes({
         <p className="mb-1 flex flex-wrap gap-x-4 text-sm text-tinta-suave tabular-nums" aria-live="polite">
           {linha.map(([n, um, varios]) => (
             <span key={um}>
-              <strong className="font-semibold text-tinta">{n}</strong> {n === 1 ? um : varios}
+              <strong className="font-semibold text-tinta">{n}</strong> {noPlural(n, um, varios)}
             </span>
           ))}
         </p>

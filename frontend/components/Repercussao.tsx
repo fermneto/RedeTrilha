@@ -24,6 +24,7 @@ import {
   type Post,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 import { comAPessoa, ouvirAcoes } from "@/lib/repercussao";
 
 // Quantos rostos a linha mostra.
@@ -106,7 +107,7 @@ export function Repercussao({ alvo, eu }: { alvo: Alvo; eu: User | null }) {
         <>
           citad{a} em{" "}
           <span className="font-semibold text-tinta tabular-nums">
-            {previas.citacoes.total} {previas.citacoes.total === 1 ? "publicação" : "publicações"}
+            {previas.citacoes.total} {noPlural(previas.citacoes.total, "publicação", "publicações")}
           </span>
         </>
       ),

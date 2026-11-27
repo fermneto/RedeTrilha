@@ -103,14 +103,21 @@ export function EsqueletoDePoema({ indice = 0, inteiro = false }: { indice?: num
 export function EsqueletoDaLista({ quantos, desde = 0 }: { quantos: number; desde?: number }) {
   return (
     <Carregando>
-      <ul className="divide-y divide-borda">
-        {Array.from({ length: quantos }, (_, i) => (
-          <li key={i}>
-            <EsqueletoDePoema indice={desde + i} />
-          </li>
-        ))}
-      </ul>
+      <PoemasDaLista quantos={quantos} desde={desde} />
     </Carregando>
+  );
+}
+
+// Os poemas da lista, um embaixo do outro; também os primeiros do perfil e da antologia.
+function PoemasDaLista({ quantos, desde = 0 }: { quantos: number; desde?: number }) {
+  return (
+    <ul className="divide-y divide-borda">
+      {Array.from({ length: quantos }, (_, i) => (
+        <li key={i}>
+          <EsqueletoDePoema indice={desde + i} />
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -174,13 +181,7 @@ export function EsqueletoDePerfil() {
           </span>
         ))}
       </div>
-      <ul className="divide-y divide-borda">
-        {[0, 1].map((i) => (
-          <li key={i}>
-            <EsqueletoDePoema indice={i} />
-          </li>
-        ))}
-      </ul>
+      <PoemasDaLista quantos={2} />
     </Carregando>
   );
 }
@@ -349,14 +350,21 @@ export function EsqueletoDaPaginaDaAntologia() {
         </div>
         <Linha largura="13rem" className="mt-4 text-sm" />
       </div>
-      <ul className="divide-y divide-borda">
-        {[0, 1].map((i) => (
-          <li key={i}>
-            <EsqueletoDePoema indice={i} />
-          </li>
-        ))}
-      </ul>
+      <PoemasDaLista quantos={2} />
     </Carregando>
+  );
+}
+
+// As linhas dos avisos e da caixa de mensagens, com o desenho de cada uma.
+function LinhasDaCaixa({ quantos, children }: { quantos: number; children: (i: number) => React.ReactNode }) {
+  return (
+    <ul>
+      {Array.from({ length: quantos }, (_, i) => (
+        <li key={i} className="linha-da-folha flex gap-3 border-b border-borda py-3">
+          {children(i)}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -364,9 +372,9 @@ export function EsqueletoDaPaginaDaAntologia() {
 export function EsqueletoDeAvisos({ quantos }: { quantos: number }) {
   return (
     <Carregando>
-      <ul>
-        {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="linha-da-folha flex gap-3 border-b border-borda py-3">
+      <LinhasDaCaixa quantos={quantos}>
+        {(i) => (
+          <>
             <span aria-hidden="true" className="flex w-8 shrink-0 justify-end pt-1">
               <Peca className="h-6 w-6 rounded-md" />
             </span>
@@ -375,9 +383,9 @@ export function EsqueletoDeAvisos({ quantos }: { quantos: number }) {
               <Linha largura={["78%", "62%", "70%"][i % 3]} className="mt-1.5 text-[0.9375rem] leading-5" />
               <Linha largura={["54%", "46%", "60%"][i % 3]} className="mt-1 font-serifada text-[0.9375rem]" />
             </div>
-          </li>
-        ))}
-      </ul>
+          </>
+        )}
+      </LinhasDaCaixa>
     </Carregando>
   );
 }
@@ -386,17 +394,17 @@ export function EsqueletoDeAvisos({ quantos }: { quantos: number }) {
 export function EsqueletoDeConversas({ quantos }: { quantos: number }) {
   return (
     <Carregando>
-      <ul>
-        {Array.from({ length: quantos }, (_, i) => (
-          <li key={i} className="linha-da-folha flex gap-3 border-b border-borda py-3">
+      <LinhasDaCaixa quantos={quantos}>
+        {(i) => (
+          <>
             <Circulo />
             <div className="min-w-0 flex-1">
               <Linha largura={["52%", "44%", "60%"][i % 3]} className="text-[0.9375rem] leading-5" />
               <Linha largura={["74%", "58%", "66%"][i % 3]} className="mt-1 font-serifada text-[0.9375rem]" />
             </div>
-          </li>
-        ))}
-      </ul>
+          </>
+        )}
+      </LinhasDaCaixa>
     </Carregando>
   );
 }

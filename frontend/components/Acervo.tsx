@@ -44,6 +44,7 @@ import {
   type TipoDoAcervo,
 } from "@/lib/api";
 import type { OpcaoDeEscolha } from "@/lib/escolhaComBusca";
+import { noPlural } from "@/lib/numeros";
 
 const ROTULOS_DOS_TIPOS: Record<TipoDoAcervo, string> = {
   todos: "todos",
@@ -252,7 +253,7 @@ export function Acervo() {
             </button>
             <p role="status" className="text-sm text-tinta-suave tabular-nums">
               {resultado && !erro
-                ? `${resultado.total} ${resultado.total === 1 ? "poeta" : "poetas"}`
+                ? `${resultado.total} ${noPlural(resultado.total, "poeta", "poetas")}`
                 : ""}
             </p>
           </div>

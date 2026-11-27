@@ -20,15 +20,15 @@ import { IconeMais } from "@/components/icones/IconeMais";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
 import {
   aceitarPedido,
   bloquear,
   buscarConversa,
-  buscarEu,
   buscarMensagens,
-  caminhoDoLogin,
+  ehIdValido,
+  ehNaoEncontrado,
   enviarMensagem,
-  ErroDaApi,
   marcarLida,
   mensagemDeFalha,
   ouvirMensagens,
@@ -48,9 +48,8 @@ const INTERVALO_DA_HORA_MS = 5 * 60_000;
 const AVISO_DE_CARACTERES = LIMITES.mensagem_max_caracteres - 1000;
 
 export default function ConversaPage() {
-  const router = useRouter();
   const id = Number(useParams<{ id: string }>().id);
-  const [euId, setEuId] = useState<number | null>(null);
+  const euId = useSessaoObrigatoria()?.id ?? null;
   const [conversa, setConversa] = useState<Conversa | null>(null);
   const [mensagens, setMensagens] = useState<Mensagem[]>([]);
   const [antes, setAntes] = useState<string | null>(null);
@@ -78,7 +77,7 @@ export default function ConversaPage() {
       buscarConversa(id)
         .then(setConversa)
         .catch((e) => {
-          if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
+          if (ehNaoEncontrado(e)) setNaoExiste(true);
           else setErro(mensagemDeFalha(e, "não deu para abrir a conversa"));
         }),
     [id],
@@ -96,17 +95,11 @@ export default function ConversaPage() {
   }, [id, juntar]);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    if (!Number.isInteger(id)) {
+    if (!temToken()) return;
+    if (!ehIdValido(id)) {
       setNaoExiste(true);
       return;
     }
-    buscarEu()
-      .then((eu) => setEuId(eu.id))
-      .catch(() => undefined);
     recarregarConversa();
     buscarMensagens(id)
       .then((pagina) => {
@@ -114,7 +107,7 @@ export default function ConversaPage() {
         setAntes(pagina.proximo_cursor);
       })
       .catch(() => undefined);
-  }, [id, router, juntar, recarregarConversa]);
+  }, [id, juntar, recarregarConversa]);
 
   // Eventos desta conversa. A mensagem do outro é anunciada pelo aria-live.
   useEffect(() => {

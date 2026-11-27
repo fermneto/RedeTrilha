@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Avatar } from "@/components/Avatar";
 import { NomeAutor } from "@/components/NomeAutor";
 import { anosDeVida, seguir, type PoetaDoAcervo } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 type Props = {
   poeta: PoetaDoAcervo;
@@ -107,7 +108,7 @@ export function CartaoDoAcervo({ poeta: inicial, proprio, escolas = [], aoSeguir
 function Numero({ n, singular, plural }: { n: number; singular: string; plural: string }) {
   return (
     <>
-      <span className="font-medium text-tinta tabular-nums">{n}</span> {n === 1 ? singular : plural}
+      <span className="font-medium text-tinta tabular-nums">{n}</span> {noPlural(n, singular, plural)}
     </>
   );
 }

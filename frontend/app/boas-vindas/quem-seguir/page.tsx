@@ -10,6 +10,7 @@ import { useState } from "react";
 import { GradeDeSugestoes } from "@/components/GradeDeSugestoes";
 import { AberturaDoPasso, BOTAO_PRIMARIO, BOTAO_SECUNDARIO, TelaDeBoasVindas } from "@/components/TelaDeBoasVindas";
 import { caminhoDosGostos, QUEM_SEGUIR_NO_ONBOARDING } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // Os dois passos de /boas-vindas mais este.
 const PASSOS_DO_ONBOARDING = 3;
@@ -34,7 +35,7 @@ export default function QuemSeguirNoOnboardingPage() {
               aria-live="polite"
               className={`text-sm text-tinta-suave tabular-nums ${seguidas > 0 ? "" : "hidden sm:block"}`}
             >
-              {seguidas > 0 ? `você segue ${seguidas} ${seguidas === 1 ? "poeta" : "poetas"}` : "siga quantos quiser"}
+              {seguidas > 0 ? `você segue ${seguidas} ${noPlural(seguidas, "poeta", "poetas")}` : "siga quantos quiser"}
             </p>
             <Link href="/" className={seguidas > 0 ? BOTAO_PRIMARIO : `${BOTAO_SECUNDARIO} -mr-4`}>
               {seguidas > 0 ? "continuar" : "pular"}

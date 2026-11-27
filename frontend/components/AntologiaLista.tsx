@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EsqueletoDeAntologias } from "@/components/Esqueleto";
 import { mensagemDeFalha, type Antologia, type Page } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 type Props = {
   // Busca uma página a partir do offset. Para trocar de lista, remonte com outra `key`.
@@ -112,7 +113,7 @@ function AntologiaItem({ antologia, comDono }: { antologia: Antologia; comDono: 
           )}
         </span>
         <span className="shrink-0 text-[0.8125rem] text-tinta-suave tabular-nums">
-          {antologia.qtd === 0 ? "vazia" : `${antologia.qtd} ${antologia.qtd === 1 ? "poema" : "poemas"}`}
+          {antologia.qtd === 0 ? "vazia" : `${antologia.qtd} ${noPlural(antologia.qtd, "poema", "poemas")}`}
         </span>
       </span>
       {comDono && (
