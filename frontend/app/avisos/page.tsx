@@ -9,8 +9,7 @@
 // a página aberta, um aviso novo chega pelo stream e entra no topo.
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
 import { AvisoDeErro } from "@/components/AvisoDeErro";
@@ -23,21 +22,21 @@ import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconePerfil } from "@/components/icones/IconePerfil";
 import { IconeRenga } from "@/components/icones/IconeRenga";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
+import { useListaPorCursor } from "@/hooks/useListaPorCursor";
+import { useRecarregarAoOuvir } from "@/hooks/useRecarregarAoOuvir";
+import { useLoginObrigatorio } from "@/hooks/useSessaoObrigatoria";
 import {
   acaoDoAviso,
-  exigirLogin,
   linkDoAviso,
   listarAvisos,
   marcarAvisosLidos,
   mensagemDeFalha,
-  ouvirMensagens,
   quemNoAviso,
   tempoRelativo,
   type Aviso,
+  type EventoDeMensagem,
   type TipoDeAviso,
 } from "@/lib/api";
-
-type Lista = { itens: Aviso[]; cursor: string | null };
 
 const ICONES: Record<TipoDeAviso, (props: { className?: string }) => React.ReactNode> = {
   curtida: (props) => <IconeCurtir cheio {...props} />,
@@ -51,19 +50,20 @@ const ICONES: Record<TipoDeAviso, (props: { className?: string }) => React.React
   convite: IconeRenga,
 };
 
+// Os avisos e a reconexão (que pode ter perdido algum) recarregam a lista.
+const ouvirAvisos = (evento: EventoDeMensagem) => evento.tipo === "aviso" || evento.tipo === "conectou";
+
 export default function AvisosPage() {
-  const router = useRouter();
-  const [lista, setLista] = useState<Lista | null>(null);
+  useLoginObrigatorio();
+  const { lista, recarregar: recarregarLista, carregarMais: carregarMaisAvisos } = useListaPorCursor(listarAvisos);
   const [erro, setErro] = useState<string | null>(null);
   // Os que chegaram não lidos nesta visita: continuam destacados depois de marcados.
   const [novos, setNovos] = useState<ReadonlySet<string>>(new Set());
-  const espera = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // A primeira página, marcando como lido até o aviso mais recente dela.
   const recarregar = useCallback(() => {
-    listarAvisos(null)
+    recarregarLista()
       .then((p) => {
-        setLista({ itens: p.items, cursor: p.proximo_cursor });
         const chegaram = p.items.filter((a) => !a.lido).map(chaveDoAviso);
         if (chegaram.length > 0) setNovos((atuais) => new Set([...atuais, ...chegaram]));
         const maisRecente = Math.max(0, ...p.items.map((a) => a.id));
@@ -72,27 +72,12 @@ export default function AvisosPage() {
         }
       })
       .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar os avisos")));
-  }, []);
-
-  useEffect(() => {
-    if (!exigirLogin(router)) return;
-    recarregar();
-    const cancelar = ouvirMensagens((evento) => {
-      if (evento.tipo !== "aviso" && evento.tipo !== "conectou") return;
-      if (espera.current) clearTimeout(espera.current);
-      espera.current = setTimeout(recarregar, 250);
-    });
-    return () => {
-      cancelar();
-      if (espera.current) clearTimeout(espera.current);
-    };
-  }, [router, recarregar]);
+  }, [recarregarLista]);
+  useRecarregarAoOuvir(recarregar, ouvirAvisos);
 
   async function carregarMais() {
-    if (!lista?.cursor) return;
     try {
-      const p = await listarAvisos(lista.cursor);
-      setLista({ itens: [...lista.itens, ...p.items], cursor: p.proximo_cursor });
+      await carregarMaisAvisos();
     } catch (e) {
       setErro(mensagemDeFalha(e, "não deu para carregar mais avisos"));
     }
