@@ -6,7 +6,7 @@ Como funciona uma página (3 consultas, sem N+1):
    poetas que passam pelos filtros de tipo, língua e época. As contagens vêm das
    subqueries de services/follows.py e services/perfil.py, juntadas por GROUP BY.
 2. A busca por nome, a ordem e o corte da página são feitos em Python sobre essas
-   linhas, com core/indice_tags.normalizar (casefold e sem acento), a mesma das tags.
+   linhas, com casefold e core/texto.sem_acento, a mesma regra das tags.
    Motivo: o SQLite não tem como ignorar acento (não há `unaccent`, e o lower() dele
    só conhece ASCII), e no Postgres o `unaccent` é uma extensão a instalar. Uma
    coluna normalizada no User exigiria migração no Postgres do deploy, que o
@@ -27,7 +27,7 @@ from dataclasses import dataclass
 from sqlalchemy import Row, and_, case, false, func, select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import normalizar
+from app.core.texto import sem_acento
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.acervo import (
@@ -247,21 +247,26 @@ def _epoca_sql():
 
 def _filtrar_por_nome(linhas: list[Row], q: str | None) -> list[Row]:
     """Nome ou @username que contenha o termo, sem diferença de acento e maiúscula."""
-    termo = normalizar((q or "").strip().removeprefix("@"))
+    termo = _normalizar((q or "").strip().removeprefix("@"))
     if not termo:
         return list(linhas)
     return [
         linha
         for linha in linhas
-        if termo in normalizar(linha.name) or termo in normalizar(linha.username)
+        if termo in _normalizar(linha.name) or termo in _normalizar(linha.username)
     ]
+
+
+def _normalizar(texto: str) -> str:
+    """casefold e sem acento, como as tags: "Álvares" e "alvares" se acham."""
+    return sem_acento(texto.casefold())
 
 
 def _chave_de_ordem(ordem: Ordem):
     """Alfabética pelo nome normalizado; nas contagens, maior primeiro e empate pelo nome."""
 
     def por_nome(linha: Row) -> tuple[str, str]:
-        return normalizar(linha.name), linha.username
+        return _normalizar(linha.name), linha.username
 
     if ordem == "seguidos":
         return lambda linha: (-linha.seguidores, *por_nome(linha))
