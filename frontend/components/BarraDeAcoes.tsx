@@ -13,6 +13,7 @@ import { IconeComentar } from "@/components/icones/IconeComentar";
 import { IconeCurtir } from "@/components/icones/IconeCurtir";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import { caminhoDaCitacao, curtir, mensagemDeFalha, repostar, type Alvo, type Renga } from "@/lib/api";
+import { contagemCurta } from "@/lib/numeros";
 import { avisarAcao } from "@/lib/repercussao";
 import { lembrarAcao } from "@/lib/sessaoDoFeed";
 
@@ -186,7 +187,12 @@ export function BarraDeAcoes({
 }
 
 // O número entra 3 px por cima da borda do círculo: fica a 4 px do ícone, e
-// "999" ainda termina a 4 px do ícone da casa seguinte numa tela de 390 px.
+// "999" ainda termina a 4 px do ícone da casa seguinte numa tela de 390 px. De
+// mil em diante ele vem abreviado (lib/numeros.ts).
 function Contador({ n }: { n: number }) {
-  return n > 0 ? <span aria-hidden="true" className="-ml-[0.1875rem]">{n}</span> : null;
+  return n > 0 ? (
+    <span aria-hidden="true" className="-ml-[0.1875rem] whitespace-nowrap">
+      {contagemCurta(n)}
+    </span>
+  ) : null;
 }
