@@ -183,23 +183,23 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
   return res.json();
 }
 
-export function apiGet<T>(path: string): Promise<T> {
+function apiGet<T>(path: string): Promise<T> {
   return request<T>("GET", path);
 }
 
-export function apiPost<T>(path: string, body?: unknown): Promise<T> {
+function apiPost<T>(path: string, body?: unknown): Promise<T> {
   return request<T>("POST", path, body);
 }
 
-export function apiPatch<T>(path: string, body: unknown): Promise<T> {
+function apiPatch<T>(path: string, body: unknown): Promise<T> {
   return request<T>("PATCH", path, body);
 }
 
-export function apiPut<T>(path: string, body: unknown): Promise<T> {
+function apiPut<T>(path: string, body: unknown): Promise<T> {
   return request<T>("PUT", path, body);
 }
 
-export function apiDelete<T = void>(path: string): Promise<T> {
+function apiDelete<T = void>(path: string): Promise<T> {
   return request<T>("DELETE", path);
 }
 
@@ -338,8 +338,6 @@ export type ComentarioNaArvore = {
   ancora: Ancora | null;
 };
 
-export type Comentario = ComentarioNaArvore & { post_id: number; respostas: Comentario[] };
-export type ComentarioDaRenga = ComentarioNaArvore & { renga_id: number; respostas: ComentarioDaRenga[] };
 
 // Espelha ComentarioPage e ComentarioRengaPage: respostas diretas em ordem cronológica, por cursor.
 export type ComentarioPage = {
@@ -466,7 +464,7 @@ export function destinoSeguro(proximo: unknown): string {
 }
 
 // "/login?proximo=<página atual>", para voltar a ela depois de entrar.
-export function caminhoDoLogin(): string {
+function caminhoDoLogin(): string {
   if (typeof window === "undefined") return "/login";
   const atual = window.location.pathname + window.location.search;
   return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
@@ -485,7 +483,7 @@ export const QUEM_SEGUIR_NO_ONBOARDING = "/boas-vindas/quem-seguir";
 
 // As preferências fora do onboarding: a mesma página de /boas-vindas, mas dentro do
 // layout do site (com a navegação e a coluna Descobrir).
-export const PREFERENCIAS = "/preferencias";
+const PREFERENCIAS = "/preferencias";
 
 // As telas do onboarding ocupam a tela toda, sem a navegação nem a coluna
 // Descobrir: o Layout confere com isto. As /preferencias ficam com o layout do site.
@@ -707,7 +705,7 @@ export function buscarTags(q: string): Promise<{ items: TagEncontrada[] }> {
 // Poetas da busca do Explorar: a mesma busca do Acervo (GET /acervo?q=, nome ou
 // @username, sem acento), como na tela Quem seguir, só com menos resultados e
 // quem eu sigo primeiro (sigo_primeiro), depois em ordem alfabética.
-export const POETAS_NA_BUSCA = 5;
+const POETAS_NA_BUSCA = 5;
 
 export function buscarPoetas(q: string): Promise<Page<PoetaDoAcervo>> {
   const params = new URLSearchParams({ q, offset: "0", limit: String(POETAS_NA_BUSCA), sigo_primeiro: "true" });
@@ -955,10 +953,6 @@ export type NovaAntologia = { nome: string; descricao?: string | null; publica?:
 export type EdicaoDaAntologia = Partial<Pick<Antologia, "nome" | "descricao" | "publica">>;
 
 // Todas as minhas, privadas inclusive, a mais nova primeiro.
-export function listarMinhasAntologias(offset = 0, limit = 100): Promise<Page<Antologia>> {
-  return apiGet<Page<Antologia>>(`/antologias?offset=${offset}&limit=${limit}`);
-}
-
 // As minhas, cada uma dizendo se o poema (ou a renga) está nela (repost puro
 // conta como o original).
 export type AntologiaMarcada = Antologia & { contem: boolean };
@@ -1045,7 +1039,7 @@ export type FiltrosDoAcervo = {
 
 // As faixas de época vêm do backend (FAIXAS_DE_EPOCA em services/acervo.py), não
 // são repetidas aqui.
-export type EpocaDoAcervo = {
+type EpocaDoAcervo = {
   chave: string;
   rotulo: string;
   // Anos de morte, inclusive; null = sem início (a Antiguidade).
@@ -1161,7 +1155,7 @@ export type Renga = {
   repostei: boolean;
 };
 
-export type Estrofe = {
+type Estrofe = {
   id: number;
   posicao: number;
   texto: string;
@@ -1282,7 +1276,7 @@ function juntarRotulos(primeiro: ItemDoFeed, repetido: ItemDoFeed): ItemDoFeed {
 }
 
 // O mais curtido e a releitura da continuação do feed: podem repetir o que já saiu.
-export function podeRepetir(item: ItemDoFeed): boolean {
+function podeRepetir(item: ItemDoFeed): boolean {
   return !ehRenga(item) && (item.subiu_por === "curtidas" || item.subiu_por === "releitura");
 }
 
@@ -1400,7 +1394,7 @@ export function trechoDosVersos(texto: string, { inicio, fim }: SelecaoDeVersos)
   return versosDoPoema(texto).slice(inicio - 1, fim).join("\n");
 }
 
-export function linhaEmBranco(linha: string): boolean {
+function linhaEmBranco(linha: string): boolean {
   return linha.trim() === "";
 }
 
@@ -1638,7 +1632,7 @@ export function previaDoRascunho(texto: string, quantos: number): { previa: stri
 
 // ---- Mensagens diretas: espelham backend/app/schemas/mensagem.py ----
 
-export type SituacaoDaConversa = "caixa" | "pedido" | "recusada";
+type SituacaoDaConversa = "caixa" | "pedido" | "recusada";
 export type AbaDaCaixa = "conversas" | "pedidos";
 
 // O texto vem como foi escrito, com as quebras de linha. `post` é o poema
