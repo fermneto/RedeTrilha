@@ -34,6 +34,7 @@ import {
   type RengaDetalhe,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // Fora da página da renga e da folha do caderno, só as primeiras estrofes, com
 // link para o resto; a última delas esmaece (.poema-cortado), como no poema.
@@ -109,7 +110,7 @@ export function RengaCard({ renga, atividade, por = [], aninhado = false, folha 
       <p className="mt-3 flex flex-wrap items-center gap-x-3 text-sm">
         {faltam > 0 && (
           <Link href={link} className="inline-flex min-h-11 items-center font-semibold text-destaque hover:underline">
-            ver as outras {faltam} {faltam === 1 ? "estrofe" : "estrofes"}
+            ver as outras {faltam} {noPlural(faltam, "estrofe", "estrofes")}
           </Link>
         )}
         {!renga.fechada &&

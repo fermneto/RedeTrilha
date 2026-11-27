@@ -30,13 +30,13 @@ import {
   PassosNoSite,
   TelaDeBoasVindas,
 } from "@/components/TelaDeBoasVindas";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
 import {
   abertaDireto,
   alternarNaLista,
   buscarEu,
   buscarOpcoesDePreferencias,
   buscarPreferencias,
-  caminhoDoLogin,
   destinoSeguro,
   ehTelaDeBoasVindas,
   mensagemDeFalha,
@@ -50,6 +50,7 @@ import {
   type PassoDasPreferencias,
   type Preferencias,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const BRASIL = "BR";
 const TITULOS: Record<PassoDasPreferencias, string> = {
@@ -90,26 +91,21 @@ function BoasVindas() {
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const ultimo = indice === passos.length - 1;
-  const [nome, setNome] = useState<string | null>(null);
   const refTitulo = useRef<HTMLHeadingElement>(null);
   const primeiraVez = useRef(true);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
+    if (!temToken()) return;
     Promise.all([buscarOpcoesDePreferencias(), buscarPreferencias()])
       .then(([o, p]) => {
         setOpcoes(o);
         setPrefs(p);
       })
       .catch((e) => setErro(mensagemDeFalha(e, "não deu para carregar as opções")));
-    // Só para a saudação do primeiro passo; sem o nome, ela fica sem ele.
-    buscarEu()
-      .then((eu) => setNome(eu.name))
-      .catch(() => setNome(null));
-  }, [router]);
+  }, []);
+  // Sem token, manda ao login. O nome é só para a saudação do primeiro passo;
+  // sem ele, ela fica sem o nome.
+  const nome = useSessaoObrigatoria()?.name ?? null;
 
   // O passo muda na mesma página: leva o foco à nova pergunta (não no primeiro).
   useEffect(() => {
@@ -252,7 +248,7 @@ function Chips({
         {titulo}
         {marcadas.length > 0 && (
           <span className="font-normal text-tinta-suave tabular-nums">
-            · {marcadas.length} {marcadas.length === 1 ? "marcada" : "marcadas"}
+            · {marcadas.length} {noPlural(marcadas.length, "marcada", "marcadas")}
           </span>
         )}
       </legend>

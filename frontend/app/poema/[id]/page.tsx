@@ -17,16 +17,8 @@ import { Repercussao } from "@/components/Repercussao";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
 import { useCriticaAncorada, type CriticaAncorada } from "@/hooks/useCriticaAncorada";
 import { useIrParaComentarios } from "@/hooks/useIrParaComentarios";
-import {
-  buscarEu,
-  buscarPoema,
-  caminhoDoLogin,
-  formatarDataEHora,
-  mensagemDeFalha,
-  temToken,
-  type Post,
-  type User,
-} from "@/lib/api";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
+import { buscarPoema, formatarDataEHora, mensagemDeFalha, temToken, type Post } from "@/lib/api";
 
 // Abaixo do título da página ("← Poema"), as margens do livro (MARGEM_DA_PAGINA)
 // com menos espaço em cima.
@@ -42,8 +34,6 @@ export default function PoemaPage() {
   const router = useRouter();
   const id = Number(useParams<{ id: string }>().id);
   const [poema, setPoema] = useState<Post | null>(null);
-  const [eu, setEu] = useState<User | null>(null);
-  const euId = eu?.id ?? null;
   const [erro, setErro] = useState<string | null>(null);
   const critica = useCriticaAncorada({ tipo: "poema", id }, poema ? textoComentado(poema) : null);
   const { carregarMarcas } = critica;
@@ -61,16 +51,12 @@ export default function PoemaPage() {
     carregarMarcas();
   }, [id, carregarMarcas]);
 
+  // Sem token, a sessão abaixo manda ao login; o poema vem antes de quem lê.
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    carregarPoema();
-    buscarEu()
-      .then(setEu)
-      .catch(() => setEu(null));
-  }, [carregarPoema, router]);
+    if (temToken()) carregarPoema();
+  }, [carregarPoema]);
+  const eu = useSessaoObrigatoria();
+  const euId = eu?.id ?? null;
 
   // Sem o poema ainda (ou com erro), uma folha só, com o aviso ou o esqueleto.
   if (erro || !poema)

@@ -71,6 +71,17 @@ export function mensagemDeFalha(e: unknown, padrao: string): string {
   return e instanceof Error ? e.message : padrao;
 }
 
+// 404: o que a página abriu não existe (ou, se privado de outra pessoa, não se mostra).
+export function ehNaoEncontrado(e: unknown): boolean {
+  return e instanceof ErroDaApi && e.status === 404;
+}
+
+// O id da rota (`/rengas/[id]`) só vale inteiro e positivo; "abc" ou "0" já é
+// "não existe", sem perguntar ao backend.
+export function ehIdValido(id: number): boolean {
+  return Number.isInteger(id) && id > 0;
+}
+
 type ErroDoPydantic = { msg?: unknown; loc?: unknown };
 
 // O `msg` já vem em português (backend/app/erros.py).
@@ -459,6 +470,14 @@ export function caminhoDoLogin(): string {
   if (typeof window === "undefined") return "/login";
   const atual = window.location.pathname + window.location.search;
   return atual === "/" ? "/login" : `/login?proximo=${encodeURIComponent(atual)}`;
+}
+
+// Nas páginas que pedem login: sem token, vai ao login (e volta depois) e
+// devolve false, para a página não buscar nada.
+export function exigirLogin(router: { replace(caminho: string): void }): boolean {
+  if (temToken()) return true;
+  router.replace(caminhoDoLogin());
+  return false;
 }
 
 // A grade de quem seguir como último passo do onboarding, em tela cheia.

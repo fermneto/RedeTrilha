@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 import { VersoFormatado } from "@/components/TextoFormatado";
 import { buscarTrending, caminhoDaTag, hashtag, type TagContagem } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // null enquanto carrega; [] quando não há tags (ou a rota falhou).
 // `quantas`: 10 no Explorar, 5 na coluna direita.
@@ -29,7 +30,7 @@ export function useEmAlta(quantas = 5): TagContagem[] | null {
 }
 
 function poemasNas24h(contagem: number): string {
-  return `${contagem} ${contagem === 1 ? "poema" : "poemas"} nas últimas 24 h`;
+  return `${contagem} ${noPlural(contagem, "poema", "poemas")} nas últimas 24 h`;
 }
 
 // Uma <ol>: o leitor de tela já anuncia a posição, então o número visível é decorativo.

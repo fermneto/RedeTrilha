@@ -24,6 +24,7 @@ import {
   seguir,
   type Perfil,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 type Props = {
   perfil: Perfil;
@@ -195,7 +196,7 @@ export function PerfilCabecalho({ perfil, proprio, aoMudar, aoEditar, aoMudarBlo
 function Contador({ n, singular, plural }: { n: number; singular: string; plural: string }) {
   return (
     <li>
-      <span className="font-medium text-tinta tabular-nums">{n}</span> {n === 1 ? singular : plural}
+      <span className="font-medium text-tinta tabular-nums">{n}</span> {noPlural(n, singular, plural)}
     </li>
   );
 }

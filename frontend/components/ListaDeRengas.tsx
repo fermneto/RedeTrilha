@@ -21,6 +21,7 @@ import {
   type Renga,
   type SituacaoDaRenga,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const POR_PAGINA = 20;
 
@@ -165,7 +166,7 @@ function CartaoDaRenga({ renga }: { renga: Renga }) {
         <SeloDaRenga fechada={renga.fechada} />{" "}
         <span className="tabular-nums">
           {renga.fechada
-            ? `${renga.qtd_estrofes} ${renga.qtd_estrofes === 1 ? "estrofe" : "estrofes"}`
+            ? `${renga.qtd_estrofes} ${noPlural(renga.qtd_estrofes, "estrofe", "estrofes")}`
             : `${renga.qtd_estrofes} de ${renga.limite} estrofes`}
         </span>
         , {renga.modo === "aberta" ? "qualquer pessoa escreve" : "só convidados"},{" "}

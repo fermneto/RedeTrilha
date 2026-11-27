@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.core.limites import OFICINA_MAX_CARACTERES
 from app.schemas.entrada import Entrada
-from app.schemas.post import FORMAS
+from app.schemas.post import validar_forma
 
 
 class AnalisePedido(Entrada):
@@ -17,12 +17,7 @@ class AnalisePedido(Entrada):
     # Só para o aviso de forma (soneto, haicai); as outras formas não avisam.
     forma: str | None = None
 
-    @field_validator("forma")
-    @classmethod
-    def _forma_conhecida(cls, forma: str | None) -> str | None:
-        if forma is not None and forma not in FORMAS:
-            raise ValueError(f"forma deve ser uma de: {', '.join(FORMAS)}")
-        return forma
+    _forma = field_validator("forma")(validar_forma)
 
 
 class VersoAnalisado(BaseModel):

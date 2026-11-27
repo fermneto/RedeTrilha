@@ -3,10 +3,9 @@
 // (ConfirmacaoInline): vira "apagar o poema? sim / não". O aviso do que se perde
 // aparece só na confirmação.
 
-import { useState } from "react";
-
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
-import { apagarPoema, mensagemDeFalha } from "@/lib/api";
+import { useAcaoAssincrona } from "@/hooks/useAcaoAssincrona";
+import { apagarPoema } from "@/lib/api";
 
 type Props = {
   postId: number;
@@ -15,20 +14,13 @@ type Props = {
 };
 
 export function ApagarPoema({ postId, aoApagar }: Props) {
-  const [apagando, setApagando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
+  const { ocupado: apagando, erro, executar } = useAcaoAssincrona("não deu para apagar o poema");
 
-  async function apagar() {
-    setApagando(true);
-    setErro(null);
-    try {
+  const apagar = () =>
+    executar(async () => {
       await apagarPoema(postId);
       aoApagar();
-    } catch (e) {
-      setErro(mensagemDeFalha(e, "não deu para apagar o poema"));
-      setApagando(false);
-    }
-  }
+    });
 
   return (
     // Sem recuo próprio: o rótulo fica na margem da folha, no eixo da data acima.

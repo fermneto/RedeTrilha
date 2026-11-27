@@ -12,6 +12,7 @@ import { SeloPrivada } from "@/components/AntologiaLista";
 import { Avatar } from "@/components/Avatar";
 import { NomeAutor } from "@/components/NomeAutor";
 import { formatarDataPorExtenso, listarAntologiasDe, type Antologia } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 // Quantas outras antologias a ficha lista antes do "ver todas".
 const OUTRAS = 5;
@@ -60,7 +61,7 @@ export function FichaDaAntologia({ antologia }: { antologia: Antologia }) {
           <div>
             <dt className={termo}>reúne</dt>
             <dd className="mt-1 text-sm tabular-nums">
-              {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
+              {antologia.qtd} {noPlural(antologia.qtd, "poema", "poemas")}
             </dd>
           </div>
         </div>
@@ -85,7 +86,7 @@ export function FichaDaAntologia({ antologia }: { antologia: Antologia }) {
                 <Link href={`/antologias/${a.id}`} className="group realce -mx-2 block rounded-lg px-2 py-2.5">
                   <span className="block font-serifada font-semibold break-words group-hover:underline">{a.nome}</span>
                   <span className="block text-[0.8125rem] text-tinta-suave tabular-nums">
-                    {a.qtd} {a.qtd === 1 ? "poema" : "poemas"}
+                    {a.qtd} {noPlural(a.qtd, "poema", "poemas")}
                     {!a.publica && " · privada"}
                   </span>
                 </Link>

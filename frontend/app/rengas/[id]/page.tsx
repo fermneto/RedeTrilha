@@ -38,19 +38,21 @@ import {
   acrescentarEstrofe,
   buscarEu,
   buscarRenga,
-  caminhoDoLogin,
   convidarParaRenga,
+  ehIdValido,
+  ehNaoEncontrado,
   encerrarRenga,
   ErroDaApi,
+  exigirLogin,
   fimDasEstrofes,
   formatarDataEHora,
   lerUsernames,
   mensagemDeFalha,
-  temToken,
   textoDaRenga,
   type RengaDetalhe,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const botaoPrincipal =
   "min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50";
@@ -84,11 +86,8 @@ export default function RengaPage() {
   }, [id, carregarMarcas]);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    if (!Number.isInteger(id) || id <= 0) {
+    if (!exigirLogin(router)) return;
+    if (!ehIdValido(id)) {
       setNaoExiste(true);
       return;
     }
@@ -100,7 +99,7 @@ export default function RengaPage() {
         setEu(u);
       })
       .catch((e) => {
-        if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
+        if (ehNaoEncontrado(e)) setNaoExiste(true);
         else setErro(mensagemDeFalha(e, "não deu para carregar a renga"));
       });
   }, [id, router, carregarMarcas]);
@@ -341,7 +340,7 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
         <span className="text-tinta-suave tabular-nums">
           {comentarios === 0
             ? "nenhum comentário"
-            : `${comentarios} ${comentarios === 1 ? "comentário" : "comentários"}`}
+            : `${comentarios} ${noPlural(comentarios, "comentário", "comentários")}`}
         </span>
         <span className="text-tinta-suave"> · </span>
         <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>

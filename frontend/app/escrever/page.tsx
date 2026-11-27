@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas } from "@/components/CadernoFolhas";
@@ -9,7 +9,8 @@ import { MARGEM_DA_PAGINA } from "@/components/CadernoPoema";
 import { Compositor, type PoemaEmAndamento } from "@/components/Compositor";
 import { ConfirmacaoDaTroca } from "@/components/ConfirmacaoDaTroca";
 import { FormatoDeEscrita, type Formato } from "@/components/FormatoDeEscrita";
-import { caminhoDoLogin, criarRascunho, editarRascunho, temToken, textoDaCitacaoDeVersos } from "@/lib/api";
+import { useLoginObrigatorio } from "@/hooks/useSessaoObrigatoria";
+import { criarRascunho, editarRascunho, textoDaCitacaoDeVersos } from "@/lib/api";
 import { guardarPoemaParaRenga, temPoema } from "@/lib/trocaDeFormato";
 
 // useSearchParams precisa de Suspense no build estático do Next.
@@ -35,9 +36,7 @@ function Escrever() {
   // Rascunho de citação: o compositor avisa ao carregar, e o título vira "Citar poema".
   const [rascunhoDeCitacao, setRascunhoDeCitacao] = useState(false);
 
-  useEffect(() => {
-    if (!temToken()) router.replace(caminhoDoLogin());
-  }, [router]);
+  useLoginObrigatorio();
 
   // O seletor Poema · Renga · Antologia só num poema novo: citação e rascunho já
   // têm formato.

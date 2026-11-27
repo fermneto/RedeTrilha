@@ -17,3 +17,8 @@ export function contagemCurta(n: number): string {
   }
   return String(n);
 }
+
+// A palavra no singular só para 1: "1 poema", mas "0 poemas" e "3 poemas".
+export function noPlural(n: number, um: string, varios: string): string {
+  return n === 1 ? um : varios;
+}

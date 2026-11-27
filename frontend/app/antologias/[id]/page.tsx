@@ -21,22 +21,24 @@ import { FichaDaAntologia } from "@/components/FichaDaAntologia";
 import { NomeAutor } from "@/components/NomeAutor";
 import { PoemaCard } from "@/components/PoemaCard";
 import { RengaCard } from "@/components/RengaCard";
+import { useAcaoAssincrona } from "@/hooks/useAcaoAssincrona";
 import {
   apagarAntologia,
   buscarAntologia,
   buscarEu,
-  caminhoDoLogin,
   editarAntologia,
-  ErroDaApi,
+  ehIdValido,
+  ehNaoEncontrado,
+  exigirLogin,
   marcarNaAntologia,
   mensagemDeFalha,
-  temToken,
   type Alvo,
   type AntologiaDetalhe,
   type Post,
   type RengaDetalhe,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
+import { noPlural } from "@/lib/numeros";
 
 // A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
 const MOLDURA = "flex min-h-full flex-col px-(--recuo-da-folha) pb-6";
@@ -79,11 +81,8 @@ export default function AntologiaPage() {
   const [editando, setEditando] = useState(false);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    if (!Number.isInteger(id) || id <= 0) {
+    if (!exigirLogin(router)) return;
+    if (!ehIdValido(id)) {
       setNaoExiste(true);
       return;
     }
@@ -95,7 +94,7 @@ export default function AntologiaPage() {
       })
       .catch((e) => {
         // Privada de outra pessoa também dá 404: a tela não revela que ela existe.
-        if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
+        if (ehNaoEncontrado(e)) setNaoExiste(true);
         else setErro(mensagemDeFalha(e, "não deu para carregar a antologia"));
       });
   }, [id, router]);
@@ -425,7 +424,7 @@ function Cabecalho({
           <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
           <span aria-hidden="true">·</span>
           <span className="tabular-nums">
-            {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
+            {antologia.qtd} {noPlural(antologia.qtd, "poema", "poemas")}
           </span>
           {!antologia.publica && (
             <span className="inline-flex items-center gap-x-1.5">
@@ -447,19 +446,8 @@ function Cabecalho({
 // "apagar" pede confirmação ali mesmo (ConfirmacaoInline): vira
 // "apagar a antologia? sim / não"; Esc ou clique fora cancelam.
 function AcoesDoDono({ aoEditar, aoApagar }: { aoEditar: () => void; aoApagar: () => Promise<void> }) {
-  const [apagando, setApagando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
-
-  async function apagar() {
-    setApagando(true);
-    setErro(null);
-    try {
-      await aoApagar();
-    } catch (e) {
-      setErro(mensagemDeFalha(e, "não deu para apagar a antologia"));
-      setApagando(false);
-    }
-  }
+  const { ocupado: apagando, erro, executar } = useAcaoAssincrona("não deu para apagar a antologia");
+  const apagar = () => executar(aoApagar);
 
   const acao = "min-h-11 cursor-pointer text-sm text-tinta-suave hover:text-tinta disabled:opacity-50";
   return (
@@ -493,19 +481,8 @@ function TirarDaAntologia({
   aoTirar: () => Promise<void>;
   recuo?: boolean;
 }) {
-  const [tirando, setTirando] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
-
-  async function tirar() {
-    setTirando(true);
-    setErro(null);
-    try {
-      await aoTirar();
-    } catch (e) {
-      setErro(mensagemDeFalha(e, "não deu para tirar da antologia"));
-      setTirando(false);
-    }
-  }
+  const { ocupado: tirando, erro, executar } = useAcaoAssincrona("não deu para tirar da antologia");
+  const tirar = () => executar(aoTirar);
 
   // Um botão por poema ou renga: o rótulo diz qual.
   return (

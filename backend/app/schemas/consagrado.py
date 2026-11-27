@@ -9,9 +9,10 @@ from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.core.limites import POEMA_TITULO_MAX
 from app.schemas.escola import validar_escolas
 from app.schemas.idioma import IDIOMAS
-from app.schemas.post import _validar_forma, _validar_texto
+from app.schemas.post import validar_forma, validar_texto
 from app.schemas.regiao import validar_pais
 from app.schemas.user import AvatarUrl, Bio, Nome, Username
 
@@ -64,7 +65,7 @@ def idioma_da_fonte(fonte: str | None) -> str | None:
 class PoemaConsagrado(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    titulo: str | None = Field(default=None, max_length=200)
+    titulo: str | None = Field(default=None, max_length=POEMA_TITULO_MAX)
     texto: str
     forma: str | None = None
     obra: str | None = None
@@ -72,8 +73,8 @@ class PoemaConsagrado(BaseModel):
     fonte: str = Field(min_length=1)
     tags: list[str] = []
 
-    _texto = field_validator("texto")(_validar_texto)
-    _forma = field_validator("forma")(_validar_forma)
+    _texto = field_validator("texto")(validar_texto)
+    _forma = field_validator("forma")(validar_forma)
 
     @field_validator("tags")
     @classmethod
