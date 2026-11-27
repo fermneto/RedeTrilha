@@ -80,7 +80,7 @@ export function useOficina(texto: string, forma: string): Oficina {
   return { opcoes, alternar, analise, longoDemais };
 }
 
-// A coluna de marcas ao lado do editor (components/EditorDePoema.tsx). Cada verso
+// A coluna de marcas na margem direita do editor (components/EditorDePoema.tsx). Cada verso
 // é um bloco do editor, então a altura de cada um (com as quebras automáticas)
 // se lê direto dele, e cada marca fica na primeira linha do seu verso. O editor
 // cresce com o poema, sem rolagem própria: a coluna rola junto com a página.
@@ -121,7 +121,7 @@ export function OficinaMarcas({
   const alinhada = analise !== null && analise.versos.length === linhas.length;
 
   return (
-    <div aria-hidden className="relative w-14 shrink-0">
+    <div aria-hidden className="oficina-marcas pointer-events-none absolute inset-y-0 right-3 w-14">
       {alinhada &&
         analise.versos.map((verso, i) => {
           const marca = marcaDoVerso(verso, opcoes);
@@ -131,7 +131,7 @@ export function OficinaMarcas({
             <span
               key={i}
               title={toante ? "rima toante" : undefined}
-              className={`absolute left-0 text-xs whitespace-nowrap text-tinta-suave tabular-nums ${toante ? "italic" : ""}`}
+              className={`absolute right-0 text-xs whitespace-nowrap text-tinta-suave tabular-nums ${toante ? "italic" : ""}`}
               style={{ top: topos[i], lineHeight: alturaDaLinha }}
             >
               {marca}

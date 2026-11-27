@@ -266,8 +266,10 @@ export function EditorDePoema({
           })}
         </div>
       </div>
-      <div className="mt-1 flex gap-2">
-        <div ref={montagem} className="min-w-0 flex-1" />
+      {/* O que vai ao lado (as marcas da oficina) fica dentro da caixa, na margem
+          direita do editor: a caixa vai até onde a barra B I U S termina. */}
+      <div className="relative mt-1 [&:has(.oficina-marcas)_.editor-poema]:pr-18">
+        <div ref={montagem} />
         {aoLado}
       </div>
     </div>
