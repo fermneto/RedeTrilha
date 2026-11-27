@@ -1,6 +1,6 @@
 """POST /oficina/analise: sem login, sem banco, um item por linha."""
 
-from app.schemas.oficina import MAX_CARACTERES
+from app.core.limites import OFICINA_MAX_CARACTERES
 
 QUADRA = "Minha terra tem palmeiras,\nOnde canta o Sabiá;\nAs aves, que aqui gorjeiam,\nNão gorjeiam como lá."
 
@@ -34,9 +34,9 @@ def test_nao_grava_nada(auth_client, client):
 
 
 def test_limite_de_tamanho(client):
-    r = client.post("/oficina/analise", json={"texto": "a" * (MAX_CARACTERES + 1)})
+    r = client.post("/oficina/analise", json={"texto": "a" * (OFICINA_MAX_CARACTERES + 1)})
     assert r.status_code == 422
-    assert client.post("/oficina/analise", json={"texto": "a" * MAX_CARACTERES}).status_code == 200
+    assert client.post("/oficina/analise", json={"texto": "a" * OFICINA_MAX_CARACTERES}).status_code == 200
 
 
 def test_forma_desconhecida(client):

@@ -2,21 +2,25 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from app.core.limites import POEMA_TITULO_MAX
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.pagina import Pagina
 from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 
-FORMAS = [
-    "soneto",
-    "haicai",
-    "trova",
-    "quadra",
-    "cordel",
-    "verso_livre",
-    "prosa_poetica",
-    "outro",
-]
+# As formas, na ordem dos seletores, com o rótulo de cada uma (o código guardado
+# não tem acento). GET /preferencias/opcoes entrega os dois ao front.
+ROTULOS_DAS_FORMAS = {
+    "soneto": "soneto",
+    "haicai": "haicai",
+    "trova": "trova",
+    "quadra": "quadra",
+    "cordel": "cordel",
+    "verso_livre": "verso livre",
+    "prosa_poetica": "prosa poética",
+    "outro": "outro",
+}
+FORMAS = list(ROTULOS_DAS_FORMAS)
 
 
 def _validar_texto(texto: str | None) -> str:
@@ -33,7 +37,7 @@ def _validar_forma(forma: str | None) -> str | None:
 
 
 class PostCreate(BaseModel):
-    titulo: str | None = Field(default=None, max_length=200)
+    titulo: str | None = Field(default=None, max_length=POEMA_TITULO_MAX)
     texto: str
     forma: str | None = None
     # ISO 639-1; null = língua desconhecida (o "outra" do compositor).

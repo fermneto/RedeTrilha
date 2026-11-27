@@ -3,6 +3,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
+from app.core.limites import ANTOLOGIA_DESCRICAO_MAX, ANTOLOGIA_NOME_MAX
 from app.schemas.pagina import Pagina
 from app.schemas.post import PostOut
 from app.schemas.renga import RengaDetalhe
@@ -23,8 +24,8 @@ def _validar_publica(publica: bool | None) -> bool:
 
 
 class AntologiaCreate(BaseModel):
-    nome: str = Field(max_length=100)
-    descricao: str | None = Field(default=None, max_length=1000)
+    nome: str = Field(max_length=ANTOLOGIA_NOME_MAX)
+    descricao: str | None = Field(default=None, max_length=ANTOLOGIA_DESCRICAO_MAX)
     publica: bool = True
 
     _nome = field_validator("nome")(_validar_nome)
@@ -33,8 +34,8 @@ class AntologiaCreate(BaseModel):
 class AntologiaUpdate(BaseModel):
     """PATCH parcial: só os campos enviados mudam; `descricao` aceita null."""
 
-    nome: str | None = Field(default=None, max_length=100)
-    descricao: str | None = Field(default=None, max_length=1000)
+    nome: str | None = Field(default=None, max_length=ANTOLOGIA_NOME_MAX)
+    descricao: str | None = Field(default=None, max_length=ANTOLOGIA_DESCRICAO_MAX)
     publica: bool | None = None
 
     _nome = field_validator("nome")(_validar_nome)
