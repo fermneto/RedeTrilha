@@ -79,3 +79,18 @@ test("no celular, a nota à direita que não cabe vai para cima, dentro da tela"
   assert.equal(p.top, 740 - 14 - 160);
   assert.ok(p.seta <= nota.width - 18);
 });
+
+test("acima da seta, a nota sobe até não cobrir o campo de comentar nem os botões", () => {
+  const desktop = { width: 1440, height: 900 };
+  const seta = { top: 816, left: 1338, width: 48, height: 48 };
+  const campo = { top: 759, left: 815, width: 535, height: 50 };
+  const comentar = { top: 700, left: 1250, width: 90, height: 44 };
+  const longe = { top: 100, left: 100, width: 90, height: 44 };
+  const p = posicionarNota(seta, nota, desktop, "acima", [campo, comentar, longe]);
+  assert.equal(p.lado, "acima");
+  assert.equal(p.top, 700 - 14 - 160);
+  // A ponta continua apontando a seta de folhear.
+  assert.equal(p.left + p.seta, seta.left + seta.width / 2);
+  // Sem obstáculo no caminho, fica colada na âncora.
+  assert.equal(posicionarNota(seta, nota, desktop, "acima", [longe]).top, 816 - 14 - 160);
+});

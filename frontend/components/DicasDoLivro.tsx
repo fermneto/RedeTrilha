@@ -89,6 +89,15 @@ function ladoDa(dica: Dica, lugar: LugarDasDicas, duplo: boolean): Lado {
   return duplo ? "direita" : "acima";
 }
 
+// Os controles da página à vista, menos a âncora: na página dupla, a nota não
+// os cobre (a de folhear, sobre a seta do pé, tapava o campo de comentar).
+function controlesAVista(ancora: HTMLElement): DOMRect[] {
+  return [...document.querySelectorAll<HTMLElement>("[data-a-vista] :is(a, button, input, select, textarea)")]
+    .filter((el) => !el.contains(ancora) && !ancora.contains(el))
+    .map((el) => el.getBoundingClientRect())
+    .filter((r) => r.width > 0 && r.height > 0);
+}
+
 // A capa que abre ao entrar (CapaDoLivro) cobre a tela: a dica espera ela sair.
 function capaNaFrente(): boolean {
   return document.querySelector("div.fixed.inset-0[inert][aria-hidden]") !== null;
@@ -251,6 +260,7 @@ function Nota({
           { width: nota.offsetWidth, height: nota.offsetHeight },
           { width: window.innerWidth, height: window.innerHeight },
           ladoDa(dica, lugar, duplo),
+          duplo ? controlesAVista(ancora) : [],
         );
         setPos((atual) =>
           atual &&

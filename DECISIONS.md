@@ -5,7 +5,7 @@
 > **O Verso é uma rede social para quem lê e escreve poesia.** Aqui o post é o
 > poema inteiro, sem limite de caracteres e com as quebras de linha como foram
 > escritas. A conversa é sobre o poema: citar um verso, criticar os versos 5 a 8,
-> responder em árvore. E os 155 poetas clássicos em domínio público estão no
+> responder em árvore. E os 206 poetas clássicos em domínio público estão no
 > mesmo feed que os poetas de hoje, no original e com tradução por IA.
 
 As decisões abaixo foram tomadas pelo time. O registro de cada uma está nos
@@ -100,15 +100,18 @@ PRs, na seção "Decisões do Neto".
   - **Só domínio público:** autores **mortos até 1955** (domínio público no
     Brasil em 2026, 70 anos após a morte). O importador recusa quem morreu
     depois, e cada poema guarda a `fonte` (Wikisource ou Wikiquote).
-  - **No original:** 155 poetas e 11.236 poemas em 20 línguas. Bilac e Florbela
+  - **No original:** 206 poetas e 12.391 poemas em 22 línguas. Bilac e Florbela
     em português, Baudelaire em francês, Li Bai em chinês, Hafez em persa, Bashō
     em japonês. Os textos não foram editados: saíram só os poemas com defeito,
     e a limpeza foi mecânica (caracteres invisíveis e TAB no início dos versos,
     #49).
   - **Escola e país:** cada consagrado tem 1 ou 2 escolas literárias, de um
-    vocabulário de 15 (da antiguidade clássica ao modernismo, mais poesia
-    popular e cordel, clássica oriental e clássica árabe e persa), e o país de
-    nascimento, vazio quando é desconhecido ou disputado, como o de Homero. É o
+    vocabulário de 18 (da antiguidade clássica ao modernismo, mais poesia
+    popular e cordel, clássica oriental e clássica árabe e persa; decadentismo
+    e esteticismo, vitorianos e pré-rafaelitas e poesia de guerra e georgiana
+    entraram com o bloco de cults, #199), e o país de nascimento, vazio quando
+    é desconhecido ou disputado, como o de Homero. Quem nasceu fora do país da
+    obra fica com o país da obra (Södergran, Storni e Słowacki). É o
     que liga o poeta às sugestões por afinidade (decisão 11).
   - **Acervo:** os perfis de todos os poetas numa tela, com filtros
     (decisão 12).
@@ -412,7 +415,7 @@ decisão 15.
 ### 11. Boas-vindas e sugestões por afinidade
 
 - **Contexto:** quem acabou de criar a conta não segue ninguém, e não sabe
-  quem seguir entre 155 consagrados e os poetas da rede. Quem gosta de
+  quem seguir entre 206 consagrados e os poetas da rede. Quem gosta de
   parnasianos e de sonetos chega mais rápido a quem lê se a rede souber disso.
 - **Opções:** nenhuma ajuda depois do cadastro; uma lista fixa de perfis
   populares; recomendação pelo que a pessoa lê e curte; ou perguntar do que ela
@@ -450,7 +453,7 @@ decisão 15.
 ### 12. O Acervo: todos os poetas numa tela, com filtros
 
 - **Contexto:** a tela Poetas do template era uma lista única de perfis. Com
-  os 155 consagrados, de 20 línguas e da antiguidade a 1955, e os poetas da
+  os 206 consagrados, de 22 línguas e da antiguidade a 1955, e os poetas da
   rede, achar quem ler pedia outra tela.
 - **Opções:** manter a lista única da tela Poetas, ou um acervo com busca,
   filtros, ordem e páginas (#65).
@@ -997,7 +1000,7 @@ implementação foi feita por um subagent a pedido do Neto (ver "Uso de IA").
 | Antologias | Pedro | O leitor monta coleções ("Poemas de chuva"), como uma antologia de verdade. |
 | Follow (núcleo) | Neto | Seguir um consagrado traz os clássicos para o feed. |
 | Seed fake (núcleo) | Neto | A demo abre com 29 poetas fictícios de vários lugares e idades (alguns universitários) e 78 poemas em todas as formas. |
-| Consagrados (importador e dados) | Neto | 155 poetas de domínio público, no original, convivem com os poetas da rede. |
+| Consagrados (importador e dados) | Neto | 206 poetas de domínio público, no original, convivem com os poetas da rede. |
 | Acervo | Neto | Todos os poetas, consagrados e da rede, para achar quem ler por língua e época. |
 | Formas/temas, Em alta e Explorar | Neto | Descobrir sonetos, haicais e temas, e ver sobre o que a rede escreve. |
 | Tradução por IA | Neto | Lê-se Li Bai e Baudelaire no original, com a tradução a um clique. |
@@ -1355,5 +1358,19 @@ tabela; não foi preciso. Os testes de avisos rodam também contra o Postgres 16
     domínio público. O relatório está em
     `backend/data/consagrados/_relatorio_expansao.md`. O scraper continua fora
     do repositório.
+  - O bloco de cults e lacunas (#199), de 155 para 206 poetas e para 12.391
+    poemas, também veio do agente scraper, a partir de uma lista de candidatos
+    que o Neto aprovou: poetas cult que circulam nas redes, mulheres, América
+    Latina, russos e eslavos e brasileiros que faltavam, sempre mortos até
+    1955 e no original. Poetas famosos nas redes que ainda têm direito autoral
+    (Bukowski, Leminski, Rupi Kaur) ficaram de fora. As lacunas que o scraper
+    listou (escolas, país, obras longas) foram decididas pelo Neto antes do
+    merge.
+- **Visual e polimento da reta final (#197, #198, #200 e #201):** o campo de
+  busca de país e estado, o fade no fim do poema cortado, a auditoria de
+  alinhamento das 23 telas e a margem única das folhas foram feitos por
+  subagents do Claude Code, com medições e telas de antes e depois. Cada
+  detalhe que mudava a aparência (texto do botão, formato dos contadores,
+  intensidade do fade) foi perguntado ao Neto antes de entrar.
 - **Henrique:** _(completar com a ferramenta e o uso próprio)_
 - **Pedro:** _(completar com a ferramenta e o uso próprio)_

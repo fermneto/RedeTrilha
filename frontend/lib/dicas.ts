@@ -47,14 +47,20 @@ export type Retangulo = { top: number; left: number; width: number; height: numb
 const MARGEM = 12;
 const DISTANCIA = 14;
 
+const sobrepoe = (a: Retangulo, b: Retangulo) =>
+  a.left < b.left + b.width && b.left < a.left + a.width && a.top < b.top + b.height && b.top < a.top + a.height;
+
 // Onde a nota fica: do lado pedido da âncora, ou do oposto se não couber, sempre
 // dentro da tela. `seta` é a distância da ponta da seta à borda da nota (o centro
-// da âncora, preso às bordas arredondadas).
+// da âncora, preso às bordas arredondadas). Acima da âncora, a nota sobe até
+// ficar acima dos `obstaculos` que cobriria (no desktop, o campo de comentar e
+// os botões do pé da página ao lado da seta de folhear); a ponta segue na âncora.
 export function posicionarNota(
   ancora: Retangulo,
   nota: { width: number; height: number },
   tela: { width: number; height: number },
   lado: Lado,
+  obstaculos: readonly Retangulo[] = [],
 ): { top: number; left: number; lado: Lado; seta: number } {
   const prender = (v: number, min: number, max: number) => Math.min(Math.max(v, min), Math.max(min, max));
   let final = lado;
@@ -68,7 +74,18 @@ export function posicionarNota(
     return { top, left: ancora.left + ancora.width + DISTANCIA, lado: final, seta };
   }
   const left = prender(ancora.left + ancora.width / 2 - nota.width / 2, MARGEM, tela.width - MARGEM - nota.width);
-  const top = final === "acima" ? ancora.top - DISTANCIA - nota.height : ancora.top + ancora.height + DISTANCIA;
+  let top = final === "acima" ? ancora.top - DISTANCIA - nota.height : ancora.top + ancora.height + DISTANCIA;
+  if (final === "acima") {
+    // Cada obstáculo empurrado pode trazer o de cima: sobe até não cobrir nenhum.
+    for (let vez = 0; vez < obstaculos.length; vez++) {
+      const aqui = { top, left, width: nota.width, height: nota.height };
+      const cobertos = obstaculos.filter((o) => sobrepoe(aqui, o));
+      if (cobertos.length === 0) break;
+      const novo = Math.min(...cobertos.map((o) => o.top)) - DISTANCIA - nota.height;
+      if (novo < MARGEM) break;
+      top = novo;
+    }
+  }
   const seta = prender(ancora.left + ancora.width / 2 - left, 18, nota.width - 18);
   return { top: prender(top, MARGEM, tela.height - MARGEM - nota.height), left, lado: final, seta };
 }
