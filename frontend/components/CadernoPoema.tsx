@@ -32,7 +32,7 @@ export function rotuloDoPoema(post: Post): string {
 
 // A página da conversa: as margens do livro, mas sem a de baixo, para o campo
 // de comentar encostar no pé da página.
-export const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-(--margem-da-folha) pt-5 lg:pt-9";
+const MARGEM_DA_CONVERSA = "flex min-h-full flex-col px-(--margem-da-folha) pt-5 lg:pt-9";
 
 // A página da direita: os contadores e as ações no alto, a conversa embaixo.
 // As ações ficam presas no topo da página enquanto a conversa rola, para curtir,

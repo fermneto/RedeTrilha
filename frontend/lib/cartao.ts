@@ -14,10 +14,10 @@ export const DESCRICAO =
   "Rede social de poemas para quem lê e escreve poesia: publique o poema inteiro, converse sobre cada verso e leia os clássicos no mesmo feed.";
 
 // Quantos versos cabem na imagem de 1200 × 630 e até onde vai um verso antes do "…".
-export const VERSOS_NO_CARTAO = 8;
-export const LARGURA_DO_VERSO = 64;
+const VERSOS_NO_CARTAO = 8;
+const LARGURA_DO_VERSO = 64;
 // A description do Open Graph: o WhatsApp e o X mostram umas duas linhas.
-export const LARGURA_DA_DESCRICAO = 160;
+const LARGURA_DA_DESCRICAO = 160;
 
 const RETICENCIAS = "…";
 
@@ -31,7 +31,7 @@ export function encurtar(texto: string, limite: number): string {
   return base.trimEnd().replace(/[\s,;:./—–-]+$/, "") + RETICENCIAS;
 }
 
-export type Versos = { versos: string[]; cortado: boolean };
+type Versos = { versos: string[]; cortado: boolean };
 
 // Os primeiros versos, com as quebras e os recuos do poema. Pula as linhas em
 // branco do começo, junta duas ou mais linhas em branco seguidas numa só (a
