@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-export type DefinicaoDeAba<V extends string> = { valor: V; rotulo: string };
+type DefinicaoDeAba<V extends string> = { valor: V; rotulo: string };
 
 // Abas no padrão do WAI-ARIA: as setas trocam de aba, e cada painel só monta na
 // primeira vez que abre (depois fica escondido, sem perder a rolagem já carregada).

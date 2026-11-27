@@ -24,8 +24,6 @@ import {
   type OpcaoDeEscolha,
 } from "@/lib/escolhaComBusca";
 
-export type { OpcaoDeEscolha };
-
 type Props = {
   rotulo: string;
   opcoes: OpcaoDeEscolha[];

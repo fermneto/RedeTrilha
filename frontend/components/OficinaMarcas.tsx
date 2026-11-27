@@ -10,7 +10,7 @@ import { type RefObject, useEffect, useId, useLayoutEffect, useRef, useState } f
 import { type AnaliseDoRascunho, analisarRascunho, marcaDoVerso } from "@/lib/api";
 import { LIMITES } from "@/lib/vocabulario";
 
-export type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
+type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
 type Opcao = keyof OpcoesDaOficina;
 
 // Para quem nunca mexeu, os dois toggles vêm ligados; quem desliga fica
@@ -32,7 +32,7 @@ function lerOpcoes(): OpcoesDaOficina {
   }
 }
 
-export type Oficina = {
+type Oficina = {
   opcoes: OpcoesDaOficina;
   alternar: (opcao: Opcao) => void;
   analise: AnaliseDoRascunho | null;

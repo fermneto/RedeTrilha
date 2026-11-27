@@ -13,7 +13,6 @@ from app.core.limites import (
 from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
-MODOS_RENGA = ("aberta", "convidados")
 Modo = Literal["aberta", "convidados"]
 
 

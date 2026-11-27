@@ -1128,12 +1128,12 @@ rede crescer.
   (`core/janela_deslizante.py`), reconstruído no startup; saiu pelo mesmo
   motivo do índice de tags.
 - **Métrica e rima (`core/metrica.py`).** São funções puras, sem estado, por
-  isso sem singleton. `silabas_poeticas` divide o verso em núcleos vocálicos e
-  aplica sinalefa na fronteira das palavras e sinérese depois da tônica.
-  `terminacao_rimica` normaliza a terminação pelo som (ç, ss e c antes de e/i
-  viram "s"), e `esquema_de_rimas` agrupa os versos da estrofe por terminação
-  num dict: a rima é consoante quando as terminações são iguais a partir da
-  vogal tônica, e toante (mesmas vogais) só para o verso sem par consoante.
+  isso sem singleton. `analisar` divide cada verso em núcleos vocálicos e
+  aplica sinalefa na fronteira das palavras e sinérese depois da tônica,
+  normaliza a terminação pelo som (ç, ss e c antes de e/i viram "s") e agrupa
+  os versos da estrofe por terminação num dict: a rima é consoante quando as
+  terminações são iguais a partir da vogal tônica, e toante (mesmas vogais) só
+  para o verso sem par consoante.
   Tudo é O(L) no tamanho do texto. A rota `POST /oficina/analise` não usa o
   banco e aceita até 10.000 caracteres; o poema em si continua sem limite.
 - **Marcas de formatação (`core/marcas.py`).** Lê o negrito, o itálico, o

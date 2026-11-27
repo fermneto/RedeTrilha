@@ -215,7 +215,7 @@ function ConsagradosParaSeguir({ recolhivel }: { recolhivel?: Recolhivel }) {
 }
 
 // Também no bloco "Quem seguir" do feed Para você (QuemSeguirNoFeed).
-export function LinhaPoeta({ poeta }: { poeta: User }) {
+function LinhaPoeta({ poeta }: { poeta: User }) {
   const [sigo, setSigo] = useState(false);
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState(false);

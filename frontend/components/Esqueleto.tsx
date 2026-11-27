@@ -12,7 +12,7 @@ type Largura = string;
 
 // Uma linha de texto: a barra fica no meio da altura de linha herdada.
 // Largura "0" é a linha em branco entre estrofes.
-export function Linha({ largura, className = "" }: { largura: Largura; className?: string }) {
+function Linha({ largura, className = "" }: { largura: Largura; className?: string }) {
   return (
     <span aria-hidden="true" className={`block ${className}`}>
       <span className="esqueleto inline-block h-[0.6em] max-w-full rounded-full align-middle" style={{ width: largura }} />
@@ -21,15 +21,15 @@ export function Linha({ largura, className = "" }: { largura: Largura; className
 }
 
 // Um retângulo qualquer (botão, chip, campo): o tamanho e o raio vêm em className.
-export function Peca({ className, style }: { className: string; style?: React.CSSProperties }) {
+function Peca({ className, style }: { className: string; style?: React.CSSProperties }) {
   return <span aria-hidden="true" className={`esqueleto block shrink-0 ${className}`} style={style} />;
 }
 
-export function Circulo({ tamanho = "m" }: { tamanho?: keyof typeof TAMANHOS_DO_AVATAR }) {
+function Circulo({ tamanho = "m" }: { tamanho?: keyof typeof TAMANHOS_DO_AVATAR }) {
   return <Peca className={`${TAMANHOS_DO_AVATAR[tamanho]} rounded-full`} />;
 }
 
-export function Carregando({ children, className }: { children: React.ReactNode; className?: string }) {
+function Carregando({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div aria-busy="true" className={className}>
       <span role="status" className="sr-only">
@@ -60,7 +60,7 @@ function estrofe(indice: number): Largura[] {
 }
 
 // Os versos de um poema, na fonte e na altura de linha do poema.
-export function Versos({ larguras, className = "" }: { larguras: Largura[]; className?: string }) {
+function Versos({ larguras, className = "" }: { larguras: Largura[]; className?: string }) {
   return (
     <div className={`poema-corpo ${className}`}>
       {larguras.map((largura, i) => (
