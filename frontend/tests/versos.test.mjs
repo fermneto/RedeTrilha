@@ -1,14 +1,10 @@
 // Testa as funções da crítica ancorada no verso (#71) de lib/api.ts, transpilando
 // o arquivo como em anosDeVida.test.mjs. Rode com `npm test`.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import ts from "typescript";
 
-const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
-const js = ts.transpileModule(fonte, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
+import { importarLib } from "./importarLib.mjs";
+
 const {
   ancoraCobreOVerso,
   caminhoDaCitacaoDeVersos,
@@ -28,8 +24,7 @@ const {
   versosDoPoema,
   versosExibidos,
   versosTocados,
-} =
-  await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+} = await importarLib("api");
 
 const POEMA = "  Minha terra tem palmeiras,\nOnde canta o Sabiá;\n\nAs aves, que aqui gorjeiam,\n  Não gorjeiam como lá.";
 

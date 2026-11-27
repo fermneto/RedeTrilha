@@ -2,17 +2,11 @@
 // a espera da reconexão, a prévia da caixa e o "Visto"), transpilando o arquivo como
 // em rascunhos.test.mjs. Rode com `npm test`.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import ts from "typescript";
 
-const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
-const js = ts.transpileModule(fonte, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const { lerEventosDoStream, esperaDaReconexao, previaDaMensagem, situacaoDaMinhaUltima } = await import(
-  `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
-);
+import { importarLib } from "./importarLib.mjs";
+
+const { lerEventosDoStream, esperaDaReconexao, previaDaMensagem, situacaoDaMinhaUltima } = await importarLib("api");
 
 test("o leitor do stream separa os eventos completos e guarda o pedaço que falta", () => {
   const { eventos, resto } = lerEventosDoStream(

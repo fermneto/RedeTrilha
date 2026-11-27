@@ -2,17 +2,11 @@
 // renga repetidos no feed, transpilando o arquivo como em avisos.test.mjs. Rode
 // com `npm test`.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import ts from "typescript";
 
-const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
-const js = ts.transpileModule(fonte, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const { alvoDoItem, chaveDoAlvo, juntarAoFeed } = await import(
-  `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
-);
+import { importarLib } from "./importarLib.mjs";
+
+const { alvoDoItem, chaveDoAlvo, juntarAoFeed } = await importarLib("api");
 
 const ana = { id: 1, username: "ana" };
 const bia = { id: 2, username: "bia" };

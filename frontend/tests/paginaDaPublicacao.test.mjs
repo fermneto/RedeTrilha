@@ -2,19 +2,13 @@
 // extenso, com a hora, e o "mais do autor" tirado da página do perfil,
 // transpilando o arquivo como em avisos.test.mjs. Rode com `npm test`.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import ts from "typescript";
+
+import { importarLib } from "./importarLib.mjs";
 
 process.env.TZ = "America/Sao_Paulo";
 
-const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
-const js = ts.transpileModule(fonte, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const { formatarDataEHora, formatarDataPorExtenso, outrosPoemas, poemasDeOutraPessoa } = await import(
-  `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
-);
+const { formatarDataEHora, formatarDataPorExtenso, outrosPoemas, poemasDeOutraPessoa } = await importarLib("api");
 
 test("a data da publicação vem por extenso, com a hora no fuso de quem lê", () => {
   // O SQLite devolve sem o "Z": é UTC mesmo assim.
