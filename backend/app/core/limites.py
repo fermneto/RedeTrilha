@@ -39,3 +39,8 @@ OFICINA_MAX_CARACTERES = 10_000
 # Mensagem (schemas/mensagem.py): pode ser um poema colado inteiro, mas não um livro.
 MENSAGEM_MAX_CARACTERES = 10_000
 
+# Inteiros que vão para o banco (ids, offsets, versos): as colunas são INTEGER,
+# int4 no Postgres. Fora disto o banco recusa e a rota daria 500; o schema dá 422.
+INT4_MIN = -(2**31)
+INT4_MAX = 2**31 - 1
+

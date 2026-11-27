@@ -2,6 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from app.schemas.entrada import IdDeEntrada
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.pagina import Pagina
 from app.schemas.post import _validar_forma, _validar_texto
@@ -14,7 +15,7 @@ class RascunhoCreate(BaseModel):
     texto: str
     forma: str | None = None
     idioma: str | None = IDIOMA_PADRAO
-    repost_de_id: int | None = None
+    repost_de_id: IdDeEntrada | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)

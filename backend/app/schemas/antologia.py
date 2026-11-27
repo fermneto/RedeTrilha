@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, Field, field_validator
 
 from app.core.limites import ANTOLOGIA_DESCRICAO_MAX, ANTOLOGIA_NOME_MAX
+from app.schemas.entrada import IdDeEntrada
 from app.schemas.pagina import Pagina
 from app.schemas.post import PostOut
 from app.schemas.renga import RengaDetalhe
@@ -43,11 +44,11 @@ class AntologiaUpdate(BaseModel):
 
 
 class AntologiaPoemaCreate(BaseModel):
-    post_id: int
+    post_id: IdDeEntrada
 
 
 class AntologiaRengaCreate(BaseModel):
-    renga_id: int
+    renga_id: IdDeEntrada
 
 
 class AntologiaOut(BaseModel):
