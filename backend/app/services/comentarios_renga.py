@@ -36,6 +36,7 @@ from app.schemas.user import UserOut
 from app.core.avisos import estrofes_tocadas
 from app.services import ancoras, avisos, bloqueios
 from app.services import arvore_de_comentarios as arvore
+from app.services import rengas
 from app.services.rengas import texto_de
 
 NAO_ENCONTRADA = "renga não encontrada"
@@ -46,7 +47,7 @@ def comentar(
 ) -> ComentarioRengaOut:
     """Comentário na renga ou resposta. Pai inexistente, de outra renga ou removido
     dá 404; âncora inválida (ou em resposta) dá 422."""
-    renga = _buscar_renga(db, renga_id)
+    renga = rengas.buscar(db, renga_id)
     bloqueios.garantir_interacao(db, autor.id, renga.criador_id, NAO_ENCONTRADA)
     texto = _texto(db, renga.id) if dados.ancora is not None else None
     if dados.ancora is not None:
@@ -169,17 +170,10 @@ def _donos(
     return [renga.criador_id, *(estrofes[i].autor_id for i in tocadas)]
 
 
-def _buscar_renga(db: Session, renga_id: int) -> Renga:
-    renga = db.get(Renga, renga_id)
-    if renga is None:
-        raise HTTPException(status_code=404, detail=NAO_ENCONTRADA)
-    return renga
-
-
 def _renga_visivel(db: Session, usuario: User, renga_id: int) -> tuple[Renga, set[int]]:
-    """A renga (404 se o criador bloqueou quem vê) e quem tem os comentários escondidos nela."""
-    renga = _buscar_renga(db, renga_id)
-    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, NAO_ENCONTRADA)
+    """A renga (`rengas.visivel`: 404 se o criador bloqueou quem vê) e quem tem os
+    comentários escondidos nela."""
+    renga = rengas.visivel(db, usuario, renga_id)
     return renga, bloqueios.ids_com_bloqueio(db, renga.criador_id)
 
 

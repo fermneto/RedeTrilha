@@ -26,6 +26,7 @@ from app.schemas.cartao import (
 )
 from app.services import antologias as antologias_service
 from app.services import posts as posts_service
+from app.services import rengas as rengas_service
 from app.services.perfil import poemas_por_autor
 from app.services.rengas import texto_de
 from app.services.users import buscar_por_username
@@ -82,9 +83,7 @@ def usuario(db: Session, username: str) -> CartaoUsuario:
 
 def renga(db: Session, renga_id: int) -> CartaoRenga:
     """Aberta ou de convidados: o modo diz quem escreve, não quem lê."""
-    achada = db.get(Renga, renga_id)
-    if achada is None:
-        raise HTTPException(status_code=404, detail="renga não encontrada")
+    achada = rengas_service.buscar(db, renga_id)
     estrofes = list(
         db.scalars(
             select(EstrofeRenga)

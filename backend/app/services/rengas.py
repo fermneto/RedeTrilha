@@ -115,8 +115,7 @@ def listar(
 
 
 def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
-    renga = _buscar(db, renga_id)
-    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
+    renga = visivel(db, usuario, renga_id)
     return _detalhe(
         renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario, contar(db, [renga.id], usuario)
     )
@@ -325,8 +324,16 @@ def convidar(db: Session, usuario: User, renga_id: int, usernames: list[str]) ->
 
 
 def buscar(db: Session, renga_id: int) -> Renga:
-    """A renga; 404 se não existe. Público para as antologias."""
+    """A renga; 404 se não existe. Público para as antologias, o cartão e os comentários."""
     return _buscar(db, renga_id)
+
+
+def visivel(db: Session, usuario: User, renga_id: int) -> Renga:
+    """A renga, se quem pede pode vê-la, como o `posts.visivel`: vale o criador (404
+    também se ele bloqueou quem pede)."""
+    renga = _buscar(db, renga_id)
+    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
+    return renga
 
 
 def para_interagir(db: Session, usuario: User, renga_id: int) -> Renga:
