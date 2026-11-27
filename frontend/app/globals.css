@@ -515,6 +515,58 @@
   }
 }
 
+/* O folhear entre seções (components/Folhear.tsx): uma camada sobre as folhas,
+   do tamanho delas (o miolo tem 5 px de cada lado e 4 px no pé), onde giram
+   cópias paradas das páginas. As folhas do meio são páginas impressas vistas
+   de passagem: o título e as estrofes só como linhas de tinta bem clara. */
+@layer components {
+  .folhear {
+    position: absolute;
+    inset: 0 5px 4px;
+    z-index: 20;
+    perspective: 3200px;
+  }
+
+  .folhear[hidden] {
+    display: none;
+  }
+
+  .folhear * {
+    pointer-events: none;
+  }
+
+  .folhear-copia,
+  .folhear-copia * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .folhear-versos {
+    flex: 1;
+    overflow: hidden;
+    padding: 5.25rem var(--margem-da-folha) 0;
+  }
+
+  .folhear-versos > span {
+    display: block;
+    height: 0.4rem;
+    margin-block: 0.95rem;
+    border-radius: 999px;
+    background-color: color-mix(in oklab, var(--color-tinta) 7%, transparent);
+  }
+
+  .folhear-versos > .folhear-titulo {
+    height: 0.6rem;
+    margin-bottom: 1.6rem;
+    background-color: color-mix(in oklab, var(--color-tinta) 11%, transparent);
+  }
+
+  .folhear-versos > i {
+    display: block;
+    height: 0.9rem;
+  }
+}
+
 /* O livro fechado em volta das folhas (components/Caderno.tsx): a capa de pano,
    um pouco maior que o miolo (as "sobras" da capa dura) e, à esquerda (no
    celular, embaixo), a lombada com a navegação gravada. O miolo mostra a borda

@@ -13,15 +13,17 @@
 // O caderno também anota o caminho feito no Verso (lib/historico.ts), para o
 // "voltar" das páginas de publicação saber se há uma página do Verso antes.
 //
-// Por cima de tudo, as dicas do livro (components/DicasDoLivro.tsx).
+// Por cima das folhas, o folhear entre seções (components/Folhear.tsx); por cima
+// de tudo, as dicas do livro (components/DicasDoLivro.tsx).
 
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { CadernoFolhas, useDuplo } from "@/components/CadernoFolhas";
 import { Lombada, LombadaDoCelular } from "@/components/CadernoLombada";
 import { ColunaDireita } from "@/components/ColunaDireita";
 import { DicasDoLivro } from "@/components/DicasDoLivro";
+import { Folhear } from "@/components/Folhear";
 import { anotarRota, anotarVoltaDoNavegador } from "@/lib/historico";
 
 // /rengas/nova e /antologias/nova são formulários, não publicações.
@@ -34,6 +36,7 @@ function desenhaAsFolhas(caminho: string): boolean {
 export function Caderno({ children }: { children: React.ReactNode }) {
   const caminho = usePathname();
   const duplo = useDuplo();
+  const miolo = useRef<HTMLElement>(null);
 
   useEffect(() => {
     window.addEventListener("popstate", anotarVoltaDoNavegador);
@@ -64,8 +67,11 @@ export function Caderno({ children }: { children: React.ReactNode }) {
 
   // O miolo: as folhas por cima, com a borda das folhas por baixo, 5 px de cada
   // lado e 4 px no pé (.miolo, em globals.css).
-  const miolo = (
-    <main className="miolo relative min-h-0 min-w-0 flex-1 rounded-[0.25rem] px-[5px] pb-[4px]">{folhas}</main>
+  const pecaDoMiolo = (
+    <main ref={miolo} className="miolo relative min-h-0 min-w-0 flex-1 rounded-[0.25rem] px-[5px] pb-[4px]">
+      {folhas}
+      <Folhear miolo={miolo} caminho={caminho} duplo={duplo} />
+    </main>
   );
 
   if (duplo) {
@@ -74,7 +80,7 @@ export function Caderno({ children }: { children: React.ReactNode }) {
         <div className="livro-aberto flex h-dvh items-center justify-center px-6 py-5">
           <div className="capa flex h-full w-full max-w-[1400px] rounded-[0.625rem] py-[7px] pr-[7px]">
             <Lombada />
-            {miolo}
+            {pecaDoMiolo}
           </div>
         </div>
       </DicasDoLivro>
@@ -84,7 +90,7 @@ export function Caderno({ children }: { children: React.ReactNode }) {
   return (
     <DicasDoLivro>
       <div className="livro-aberto capa flex h-dvh flex-col px-[5px] pt-[5px]">
-        {miolo}
+        {pecaDoMiolo}
         <LombadaDoCelular />
       </div>
     </DicasDoLivro>
