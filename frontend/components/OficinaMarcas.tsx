@@ -14,7 +14,7 @@ import {
   OFICINA_MAX_CARACTERES,
 } from "@/lib/api";
 
-export type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
+type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
 type Opcao = keyof OpcoesDaOficina;
 
 // Para quem nunca mexeu, os dois toggles vêm ligados; quem desliga fica
@@ -36,7 +36,7 @@ function lerOpcoes(): OpcoesDaOficina {
   }
 }
 
-export type Oficina = {
+type Oficina = {
   opcoes: OpcoesDaOficina;
   alternar: (opcao: Opcao) => void;
   analise: AnaliseDoRascunho | null;

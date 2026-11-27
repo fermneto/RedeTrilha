@@ -45,7 +45,7 @@ export type Folha = {
 };
 
 type Lado = "e" | "d";
-export type Posicao = { folha: number; lado: Lado };
+type Posicao = { folha: number; lado: Lado };
 type Virada = { de: Posicao; para: Posicao; sentido: 1 | -1 };
 
 // O papel de cada página na tela: à vista, por baixo da folha que gira, a folha

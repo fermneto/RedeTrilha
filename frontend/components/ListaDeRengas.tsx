@@ -24,7 +24,7 @@ import {
 const POR_PAGINA = 20;
 
 // "minhas" só existe no front: vira `minhas=true` na API.
-export type FiltroDasRengas = SituacaoDaRenga | "minhas";
+type FiltroDasRengas = SituacaoDaRenga | "minhas";
 
 const FILTROS: { valor: FiltroDasRengas | null; rotulo: string }[] = [
   { valor: null, rotulo: "Todas" },

@@ -26,7 +26,7 @@ import {
 // de window para não passar callbacks por dentro do PoemaCard.
 const EVENTO = "verso:antologia-mudou";
 
-export type MudancaNaAntologia = { antologiaId: number; alvo: Alvo; contem: boolean };
+type MudancaNaAntologia = { antologiaId: number; alvo: Alvo; contem: boolean };
 
 function avisarMudanca(mudanca: MudancaNaAntologia) {
   window.dispatchEvent(new CustomEvent<MudancaNaAntologia>(EVENTO, { detail: mudanca }));
