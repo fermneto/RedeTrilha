@@ -299,3 +299,18 @@ def test_poema_sem_marcas_nao_ganha_marcas_na_traducao(client, logar, falso):
     post_id = _poema_em_ingles()
     r = client.post(f"/posts/{post_id}/traduzir", json={"para": "pt"}, headers=ana)
     assert r.json()["texto"] == "Porque eu não pude parar"
+
+
+def test_quem_o_autor_bloqueou_nao_traduz_o_poema(client, como, falso):
+    """Como o GET /posts/{id}: 404, nem pela tradução já em cache, nem por um repost."""
+    da_bia = client.post("/posts", json={"texto": "a maré\nsobe"}, headers=como("bia")).json()["id"]
+    assert client.post(f"/posts/{da_bia}/repostar", headers=como("ana")).status_code == 204
+    assert client.post(f"/posts/{da_bia}/traduzir", json={"para": "en"}, headers=como("ana")).status_code == 200
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    r = client.post(f"/posts/{da_bia}/traduzir", json={"para": "en"}, headers=como("caio"))
+    assert r.status_code == 404
+    assert r.json()["detail"] == "poema não encontrado"
+    repost = client.get("/usuarios/ana/posts", headers=como("ana")).json()["items"][0]["id"]
+    r = client.post(f"/posts/{repost}/traduzir", json={"para": "en"}, headers=como("caio"))
+    assert r.status_code == 404
