@@ -73,3 +73,22 @@ def test_indice_parcial_do_repost_puro_existe_e_vale_no_postgres(client):
         with pytest.raises(IntegrityError):
             db.execute(insert(Post), [repost])
             db.commit()
+
+
+@pytest.mark.parametrize(
+    "rota",
+    [
+        "/usuarios/%00",
+        "/usuarios/%00/posts",
+        "/tags/%00/posts",
+        "/explorar?q=%00",
+        "/acervo?q=%00",
+        "/tags/busca?q=%00",
+        f"/posts/{2**31}",
+        f"/usuarios/ana/seguidores?offset={2**31}",
+    ],
+)
+def test_o_que_o_postgres_recusa_nao_da_500(client, como, rota):
+    """No Postgres, o NUL num texto e o número fora do int4 estouravam no banco (500)."""
+    r = TestClient(client.app, raise_server_exceptions=False).get(rota, headers=como("ana"))
+    assert r.status_code in (200, 404, 422), r.text

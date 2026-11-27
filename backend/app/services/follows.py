@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy import and_, delete, func, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.follow import Follow
@@ -10,7 +11,13 @@ from app.services.users import buscar_por_username, visivel_por_username
 
 
 def seguir(db: Session, seguidor: User, username: str) -> None:
-    """Idempotente: seguir quem já segue não faz nada."""
+    """Idempotente: seguir quem já segue não faz nada.
+
+    A constraint única (seguidor_id, seguido_id) barra a corrida do clique duplo;
+    a chamada que perde cai no IntegrityError e vale como já seguindo, como em
+    curtidas.py. O aviso pode descarregar o follow antes do commit (autoflush),
+    por isso os dois ficam dentro do try.
+    """
     seguido = buscar_por_username(db, username)
     if seguido.id == seguidor.id:
         raise HTTPException(status_code=422, detail="não dá para seguir a si mesmo")
@@ -23,8 +30,11 @@ def seguir(db: Session, seguidor: User, username: str) -> None:
     )
     if ja_segue is None:
         db.add(Follow(seguidor_id=seguidor.id, seguido_id=seguido.id))
-        avisos.avisar(db, seguidor, [(seguido.id, "seguidor")])
-        db.commit()
+        try:
+            avisos.avisar(db, seguidor, [(seguido.id, "seguidor")])
+            db.commit()
+        except IntegrityError:
+            db.rollback()
 
 
 def deixar_de_seguir(db: Session, seguidor: User, username: str) -> None:

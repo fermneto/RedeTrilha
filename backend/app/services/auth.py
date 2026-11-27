@@ -3,12 +3,13 @@ import secrets
 import bcrypt
 from fastapi import HTTPException
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session as DbSession
 
 from app.models.session import Session
 from app.models.user import User
 from app.schemas.auth import LoginIn, RegistroIn
-from app.services.users import garantir_username_livre
+from app.services.users import USERNAME_EXISTE, garantir_username_livre
 
 
 def gerar_hash(senha: str) -> str:
@@ -17,12 +18,18 @@ def gerar_hash(senha: str) -> str:
 
 
 def registrar(db: DbSession, dados: RegistroIn) -> User:
+    """409 se o username já existe. Dois cadastros do mesmo username ao mesmo tempo
+    passam juntos pela checagem; o índice único barra o segundo no commit."""
     garantir_username_livre(db, dados.username)
     user = User(
         username=dados.username, name=dados.name, password_hash=gerar_hash(dados.password)
     )
     db.add(user)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=409, detail=USERNAME_EXISTE) from None
     db.refresh(user)
     return user
 

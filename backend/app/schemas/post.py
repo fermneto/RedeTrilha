@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.core.limites import POEMA_TITULO_MAX
+from app.schemas.entrada import Entrada, IdDeEntrada
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.pagina import Pagina
 from app.schemas.renga import RengaDetalhe
@@ -36,16 +37,16 @@ def _validar_forma(forma: str | None) -> str | None:
     return forma
 
 
-class PostCreate(BaseModel):
+class PostCreate(Entrada):
     titulo: str | None = Field(default=None, max_length=POEMA_TITULO_MAX)
     texto: str
     forma: str | None = None
     # ISO 639-1; null = língua desconhecida (o "outra" do compositor).
     idioma: str | None = IDIOMA_PADRAO
     # Com texto, é citação do poema `repost_de_id` (repost puro é POST /posts/{id}/repostar).
-    repost_de_id: int | None = None
+    repost_de_id: IdDeEntrada | None = None
     # Com texto, é citação da renga `renga_citada_id`. Um poema cita um poema ou uma renga.
-    renga_citada_id: int | None = None
+    renga_citada_id: IdDeEntrada | None = None
 
     _texto = field_validator("texto")(_validar_texto)
     _forma = field_validator("forma")(_validar_forma)

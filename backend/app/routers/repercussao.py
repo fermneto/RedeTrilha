@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import Limite, Offset, get_current_user
+from app.deps import Id, Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.post import PostPage
 from app.schemas.user import UserPage
@@ -13,7 +13,7 @@ router = APIRouter(tags=["repercussao"])
 
 @router.get("/posts/{post_id}/curtidas", response_model=UserPage)
 def curtidas_do_poema(
-    post_id: int,
+    post_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),
@@ -24,7 +24,7 @@ def curtidas_do_poema(
 
 @router.get("/posts/{post_id}/reposts", response_model=UserPage)
 def reposts_do_poema(
-    post_id: int,
+    post_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),
@@ -35,7 +35,7 @@ def reposts_do_poema(
 
 @router.get("/posts/{post_id}/citacoes", response_model=PostPage)
 def citacoes_do_poema(
-    post_id: int,
+    post_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),
@@ -46,7 +46,7 @@ def citacoes_do_poema(
 
 @router.get("/rengas/{renga_id}/curtidas", response_model=UserPage)
 def curtidas_da_renga(
-    renga_id: int,
+    renga_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),
@@ -57,7 +57,7 @@ def curtidas_da_renga(
 
 @router.get("/rengas/{renga_id}/reposts", response_model=UserPage)
 def reposts_da_renga(
-    renga_id: int,
+    renga_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),
@@ -68,7 +68,7 @@ def reposts_da_renga(
 
 @router.get("/rengas/{renga_id}/citacoes", response_model=PostPage)
 def citacoes_da_renga(
-    renga_id: int,
+    renga_id: Id,
     offset: Offset = 0,
     limit: Limite = 20,
     user: User = Depends(get_current_user),

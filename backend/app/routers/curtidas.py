@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import get_current_user
+from app.deps import Id, get_current_user
 from app.models.user import User
 from app.services import curtidas as service
 
@@ -11,7 +11,7 @@ router = APIRouter(prefix="/posts", tags=["curtidas"])
 
 @router.post("/{post_id}/curtir", status_code=204)
 def curtir(
-    post_id: int,
+    post_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -20,7 +20,7 @@ def curtir(
 
 @router.delete("/{post_id}/curtir", status_code=204)
 def descurtir(
-    post_id: int,
+    post_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):

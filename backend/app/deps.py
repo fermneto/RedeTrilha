@@ -7,17 +7,24 @@ declara `user: User = Depends(get_current_user)` (guia 01).
 import os
 from typing import Annotated
 
-from fastapi import Depends, Header, HTTPException, Query, Request
+from fastapi import Depends, Header, HTTPException, Path, Query, Request
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.limites import INT4_MAX, INT4_MIN
 from app.db import SessionLocal, get_db
 from app.models.user import User
 from app.services.auth import token_do_header, usuario_do_token
 
 # Paginação das listagens, igual em todas as rotas: `offset: Offset = 0, limit: Limite = 20`.
-Offset = Annotated[int, Query(ge=0)]
+Offset = Annotated[int, Query(ge=0, le=INT4_MAX)]
 Limite = Annotated[int, Query(ge=1, le=100)]
+
+# Todo id de rota (`/posts/{post_id}`): positivo e dentro do int4 das chaves do
+# Postgres. Fora disso é 422, e não o 500 do banco recusando o número.
+Id = Annotated[int, Path(ge=1, le=INT4_MAX)]
+# `?verso=` dos comentários: comparado às colunas da âncora, também cabe no int4.
+Verso = Annotated[int | None, Query(ge=INT4_MIN, le=INT4_MAX)]
 
 
 def get_current_user(

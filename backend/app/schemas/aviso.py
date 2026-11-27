@@ -3,6 +3,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
+from app.schemas.entrada import Int4
 from app.schemas.user import UserOut
 
 TipoDeAviso = Literal[
@@ -65,4 +66,4 @@ class LeituraDeAvisos(BaseModel):
     """Marca como lidos os avisos até `ate` (o id mais recente que a tela mostrou);
     sem `ate`, todos até agora."""
 
-    ate: int | None = None
+    ate: Int4 | None = None

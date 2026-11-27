@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from app.cache_http import cache
 from app.db import get_db
+from app.deps import Id
 from app.schemas.cartao import CartaoAntologia, CartaoPoema, CartaoRenga, CartaoUsuario
 from app.services import cartoes as service
 
@@ -18,7 +19,7 @@ router = APIRouter(prefix="/cartoes", tags=["cartões"])
 
 
 @router.get("/poema/{post_id}", response_model=CartaoPoema, dependencies=CACHE)
-def cartao_do_poema(post_id: int, db: Session = Depends(get_db)):
+def cartao_do_poema(post_id: Id, db: Session = Depends(get_db)):
     return service.poema(db, post_id)
 
 
@@ -28,10 +29,10 @@ def cartao_do_usuario(username: str, db: Session = Depends(get_db)):
 
 
 @router.get("/renga/{renga_id}", response_model=CartaoRenga, dependencies=CACHE)
-def cartao_da_renga(renga_id: int, db: Session = Depends(get_db)):
+def cartao_da_renga(renga_id: Id, db: Session = Depends(get_db)):
     return service.renga(db, renga_id)
 
 
 @router.get("/antologia/{antologia_id}", response_model=CartaoAntologia, dependencies=CACHE)
-def cartao_da_antologia(antologia_id: int, db: Session = Depends(get_db)):
+def cartao_da_antologia(antologia_id: Id, db: Session = Depends(get_db)):
     return service.antologia(db, antologia_id)

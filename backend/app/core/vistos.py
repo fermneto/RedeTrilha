@@ -24,6 +24,8 @@ import binascii
 import zlib
 from collections.abc import Iterable
 
+from app.core.limites import INT4_MAX
+
 Chave = tuple[str, int]
 
 
@@ -59,6 +61,9 @@ def decodificar(texto: str) -> frozenset[Chave]:
             id_ = 0
             for diferenca in diferencas.split(","):
                 id_ += int(diferenca)
+                # Um id fora do int4 das chaves não veio de `codificar`.
+                if not 0 < id_ <= INT4_MAX:
+                    raise ValueError(id_)
                 vistos.add((tipo, id_))
         return frozenset(vistos)
     except (binascii.Error, zlib.error, UnicodeDecodeError, ValueError) as erro:

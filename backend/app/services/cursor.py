@@ -12,6 +12,7 @@ from typing import Literal
 from fastapi import HTTPException
 
 from app.core.datas import para_utc
+from app.core.limites import INT4_MAX, INT4_MIN
 from app.core import continuacao as continuacao_core
 from app.core.vistos import codificar as codificar_vistos
 from app.core.vistos import decodificar as decodificar_vistos
@@ -26,9 +27,24 @@ def ler_cursor(cursor: str) -> tuple[datetime, int]:
     """Posição (data em UTC sem fuso, id) do cursor; cursor malformado dá 422."""
     try:
         data, id_ = base64.urlsafe_b64decode(cursor.encode()).decode().split("|")
-        return (utc_sem_fuso(datetime.fromisoformat(data)), int(id_))
-    except (binascii.Error, UnicodeDecodeError, ValueError):
+        return (_data(data), _inteiro(id_))
+    except (binascii.Error, UnicodeDecodeError, ValueError, OverflowError):
         raise HTTPException(status_code=422, detail="cursor inválido") from None
+
+
+def _data(texto: str) -> datetime:
+    """A data do cursor em UTC sem fuso. Uma data na beira do calendário (9999-12-31
+    com fuso) estoura ao passar para UTC: OverflowError, que o leitor trata."""
+    return utc_sem_fuso(datetime.fromisoformat(texto))
+
+
+def _inteiro(texto: str) -> int:
+    """Um número do cursor que vai para o banco: fora do int4 das colunas, o
+    Postgres recusaria e a rota daria 500; aqui é cursor inválido."""
+    numero = int(texto)
+    if not INT4_MIN <= numero <= INT4_MAX:
+        raise ValueError(texto)
+    return numero
 
 
 def utc_sem_fuso(data: datetime) -> datetime:
@@ -100,16 +116,13 @@ def ler_cursor_do_feed(cursor: str) -> CursorDoFeed:
         if trecho == "continuacao":
             _, entregues, curtidos, rodada, prioridade, lingua, data, id_, vistos = partes
             ultimo = (
-                (
-                    int(prioridade),
-                    int(lingua),
-                    utc_sem_fuso(datetime.fromisoformat(data)),
-                    int(id_),
-                )
+                (_inteiro(prioridade), _inteiro(lingua), _data(data), _inteiro(id_))
                 if data
                 else None
             )
-            estado = continuacao_core.Estado(int(entregues), int(curtidos), int(rodada), ultimo)
+            estado = continuacao_core.Estado(
+                _inteiro(entregues), _inteiro(curtidos), _inteiro(rodada), ultimo
+            )
             return CursorDoFeed(trecho, None, decodificar_vistos(vistos), estado)
         if trecho != "proprio":
             partes = partes[1:]
@@ -118,7 +131,8 @@ def ler_cursor_do_feed(cursor: str) -> CursorDoFeed:
         data, chave, vistos = partes
         if data == "" and trecho == "proprio":
             raise ValueError(cursor)
-        posicao = (utc_sem_fuso(datetime.fromisoformat(data)), int(chave)) if data else None
+        # A chave (4·id + tipo, services/feed.py) só se compara em Python: sem teto.
+        posicao = (_data(data), int(chave)) if data else None
         return CursorDoFeed(trecho, posicao, decodificar_vistos(vistos))
-    except (binascii.Error, UnicodeDecodeError, ValueError):
+    except (binascii.Error, UnicodeDecodeError, ValueError, OverflowError):
         raise HTTPException(status_code=422, detail="cursor inválido") from None

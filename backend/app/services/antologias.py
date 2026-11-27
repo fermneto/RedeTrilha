@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy import delete, exists, func, or_, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.antologia import Antologia, AntologiaPoema, AntologiaRenga
@@ -126,13 +127,16 @@ def listar_de(
 
 def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
     """Dados da antologia + poemas (como PostOut) e rengas (como RengaDetalhe), cada
-    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela)."""
+    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela).
+
+    Ficam fora os poemas e as rengas de quem bloqueou quem lê, como no GET de cada um."""
     antologia = _buscar_visivel(db, usuario, antologia_id)
+    ocultos = bloqueios.quem_bloqueou(db, usuario.id)
     posts = list(
         db.scalars(
             select(Post)
             .join(AntologiaPoema, AntologiaPoema.post_id == Post.id)
-            .where(AntologiaPoema.antologia_id == antologia_id)
+            .where(AntologiaPoema.antologia_id == antologia_id, Post.autor_id.not_in(ocultos))
             .order_by(AntologiaPoema.posicao, AntologiaPoema.id)
         )
     )
@@ -145,12 +149,15 @@ def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
         )
     )
     detalhes = rengas_service.detalhar_varias(db, usuario, renga_ids)
-    rengas = [detalhes[i] for i in renga_ids if i in detalhes]
+    rengas = [detalhes[i] for i in renga_ids if i in detalhes and detalhes[i].criador.id not in ocultos]
+    visiveis = {("poema", p.id) for p in poemas} | {("renga", r.id) for r in rengas}
     return AntologiaDetalhe(
         **_para_saida(antologia, qtd=len(poemas) + len(rengas)).model_dump(),
         poemas=poemas,
         rengas=rengas,
-        ordem=[ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id)],
+        ordem=[
+            ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id) if (tipo, i) in visiveis
+        ],
     )
 
 
@@ -181,9 +188,10 @@ def ordem(db: Session, antologia_id: int, limite: int | None = None) -> list[tup
 
 
 def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
-    """Idempotente: adicionar um poema que já está na antologia não faz nada."""
+    """Idempotente: adicionar um poema que já está na antologia não faz nada.
+    Repost puro adiciona o original, como curtir e comentar."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
-    posts_service.buscar(db, post_id)
+    post_id = posts_service.original_para_interagir(db, usuario, post_id).id
     ja_esta = db.scalar(
         select(AntologiaPoema).where(
             AntologiaPoema.antologia_id == antologia.id,
@@ -192,17 +200,21 @@ def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int)
     )
     if ja_esta is not None:
         return
-    db.add(
+    _gravar_vinculo(
+        db,
         AntologiaPoema(
             antologia_id=antologia.id, post_id=post_id, posicao=_proxima_posicao(db, antologia.id)
-        )
+        ),
     )
-    db.commit()
 
 
 def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
-    """Idempotente: tirar um poema que não está na antologia não faz nada."""
+    """Idempotente: tirar um poema que não está na antologia não faz nada.
+    Repost puro tira o original, que é o que o adicionar guardou."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
+    post = db.get(Post, post_id)
+    if post is not None and post.repost_puro and post.repost_de_id is not None:
+        post_id = post.repost_de_id
     db.execute(
         delete(AntologiaPoema).where(
             AntologiaPoema.antologia_id == antologia.id,
@@ -215,7 +227,7 @@ def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -
 def adicionar_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
     """Idempotente: adicionar uma renga que já está na antologia não faz nada."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
-    rengas_service.buscar(db, renga_id)
+    rengas_service.para_interagir(db, usuario, renga_id)
     ja_esta = db.scalar(
         select(AntologiaRenga).where(
             AntologiaRenga.antologia_id == antologia.id, AntologiaRenga.renga_id == renga_id
@@ -223,12 +235,12 @@ def adicionar_renga(db: Session, usuario: User, antologia_id: int, renga_id: int
     )
     if ja_esta is not None:
         return
-    db.add(
+    _gravar_vinculo(
+        db,
         AntologiaRenga(
             antologia_id=antologia.id, renga_id=renga_id, posicao=_proxima_posicao(db, antologia.id)
-        )
+        ),
     )
-    db.commit()
 
 
 def remover_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
@@ -240,6 +252,17 @@ def remover_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) 
         )
     )
     db.commit()
+
+
+def _gravar_vinculo(db: Session, vinculo: AntologiaPoema | AntologiaRenga) -> None:
+    """Grava o poema (ou a renga) na antologia. A constraint única barra a corrida
+    do clique duplo; a chamada que perde cai no IntegrityError e vale como já
+    adicionado, como em curtidas.py."""
+    db.add(vinculo)
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
 
 
 def _proxima_posicao(db: Session, antologia_id: int) -> int:
@@ -254,10 +277,12 @@ def _proxima_posicao(db: Session, antologia_id: int) -> int:
 
 
 def _buscar_visivel(db: Session, usuario: User, antologia_id: int) -> Antologia:
-    """404 se não existe ou se é privada de outra pessoa (não revela que existe)."""
+    """404 se não existe, se é privada de outra pessoa (não revela que existe) ou se o
+    dono bloqueou quem pede, como no perfil dele (`listar_de`)."""
     antologia = db.get(Antologia, antologia_id)
     if antologia is None or (not antologia.publica and antologia.dono_id != usuario.id):
         raise HTTPException(status_code=404, detail="antologia não encontrada")
+    bloqueios.garantir_que_ve(db, usuario.id, antologia.dono_id, "antologia não encontrada")
     return antologia
 
 

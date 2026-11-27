@@ -31,7 +31,7 @@ from app.models.traducao import Traducao
 from app.models.user import User
 from app.schemas.traducao import TraducaoOut
 from app.services.cursor import utc_sem_fuso
-from app.services.posts import original_de
+from app.services.posts import original_visivel
 
 logger = logging.getLogger(__name__)
 
@@ -85,10 +85,11 @@ def cliente() -> anthropic.Anthropic:
 
 def traduzir(db: Session, usuario: User, post_id: int, para: str) -> TraducaoOut:
     """Tradução do poema `post_id` para `para`; repost puro traduz o original.
+    404 também se o autor bloqueou quem pede, como no GET do poema.
 
     Só a tradução nova conta no limite do usuário (30 por hora); a do cache é livre.
     """
-    post = original_de(db, post_id)
+    post = original_visivel(db, usuario, post_id)
     if post.idioma == para:
         raise HTTPException(status_code=422, detail="o poema já está nessa língua")
 

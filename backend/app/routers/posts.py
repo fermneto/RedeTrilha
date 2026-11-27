@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.deps import get_current_user
+from app.deps import Id, get_current_user
 from app.models.user import User
 from app.schemas.post import PostCreate, PostOut
 from app.services import posts as service
@@ -21,7 +21,7 @@ def criar_post(
 
 @router.get("/{post_id}", response_model=PostOut)
 def ler_post(
-    post_id: int,
+    post_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -30,7 +30,7 @@ def ler_post(
 
 @router.delete("/{post_id}", status_code=204)
 def apagar_post(
-    post_id: int,
+    post_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):

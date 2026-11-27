@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
+from app.core.limites import INT4_MAX
 from app.db import get_db
-from app.deps import Limite, Offset, get_current_user
+from app.deps import Id, Limite, Offset, get_current_user
 from app.models.user import User
 from app.schemas.antologia import (
     AntologiaCreate,
@@ -32,8 +33,8 @@ def criar_antologia(
 def minhas_antologias(
     offset: Offset = 0,
     limit: Limite = 20,
-    post_id: int | None = Query(default=None, description="marca `contem` em cada antologia"),
-    renga_id: int | None = Query(default=None, description="marca `contem` com a renga"),
+    post_id: int | None = Query(default=None, ge=1, le=INT4_MAX, description="marca `contem` em cada antologia"),
+    renga_id: int | None = Query(default=None, ge=1, le=INT4_MAX, description="marca `contem` com a renga"),
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -66,7 +67,7 @@ def antologias_de(
 
 @router.get("/antologias/{antologia_id}", response_model=AntologiaDetalhe)
 def ler_antologia(
-    antologia_id: int,
+    antologia_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -75,7 +76,7 @@ def ler_antologia(
 
 @router.patch("/antologias/{antologia_id}", response_model=AntologiaOut)
 def editar_antologia(
-    antologia_id: int,
+    antologia_id: Id,
     dados: AntologiaUpdate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -85,7 +86,7 @@ def editar_antologia(
 
 @router.delete("/antologias/{antologia_id}", status_code=204)
 def apagar_antologia(
-    antologia_id: int,
+    antologia_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -94,7 +95,7 @@ def apagar_antologia(
 
 @router.post("/antologias/{antologia_id}/poemas", status_code=204)
 def adicionar_poema(
-    antologia_id: int,
+    antologia_id: Id,
     dados: AntologiaPoemaCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -104,8 +105,8 @@ def adicionar_poema(
 
 @router.delete("/antologias/{antologia_id}/poemas/{post_id}", status_code=204)
 def remover_poema(
-    antologia_id: int,
-    post_id: int,
+    antologia_id: Id,
+    post_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
@@ -114,7 +115,7 @@ def remover_poema(
 
 @router.post("/antologias/{antologia_id}/rengas", status_code=204)
 def adicionar_renga(
-    antologia_id: int,
+    antologia_id: Id,
     dados: AntologiaRengaCreate,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -124,8 +125,8 @@ def adicionar_renga(
 
 @router.delete("/antologias/{antologia_id}/rengas/{renga_id}", status_code=204)
 def remover_renga(
-    antologia_id: int,
-    renga_id: int,
+    antologia_id: Id,
+    renga_id: Id,
     user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
