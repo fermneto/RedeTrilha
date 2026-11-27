@@ -18,6 +18,7 @@ import { useCallback, useEffect, useId, useState } from "react";
 
 import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
+import { EscolhaComBusca } from "@/components/EscolhaComBusca";
 import { EsqueletoDeCartoes } from "@/components/Esqueleto";
 import { IconeAbrirLista } from "@/components/icones/IconeAbrirLista";
 import { IconeAjustes } from "@/components/icones/IconeAjustes";
@@ -42,6 +43,7 @@ import {
   type PoetaDoAcervo,
   type TipoDoAcervo,
 } from "@/lib/api";
+import type { OpcaoDeEscolha } from "@/lib/escolhaComBusca";
 import { noPlural } from "@/lib/numeros";
 
 const ROTULOS_DOS_TIPOS: Record<TipoDoAcervo, string> = {
@@ -61,8 +63,6 @@ const chip =
   "min-h-11 cursor-pointer rounded-full px-4 text-sm font-bold transition-colors duration-150";
 const chipLigado = "bg-tinta text-papel hover:bg-tinta/85";
 const chipDesligado = "border border-borda text-tinta hover:border-destaque hover:text-destaque";
-const campo =
-  "min-h-11 w-full min-w-0 cursor-pointer rounded-xl border border-borda bg-papel-alto px-3 text-sm text-tinta transition-colors duration-150 focus:border-destaque";
 
 export function Acervo() {
   const router = useRouter();
@@ -71,9 +71,6 @@ export function Acervo() {
   const { tipo, q, lingua, epoca, ordem } = filtros;
 
   const idTipo = useId();
-  const idLingua = useId();
-  const idEpoca = useId();
-  const idOrdem = useId();
   const idDoPainel = useId();
   // Só vale no celular: a partir de sm, o painel fica sempre aberto.
   const [filtrosAbertos, setFiltrosAbertos] = useState(false);
@@ -156,7 +153,17 @@ export function Acervo() {
   const vista = caminhoDoAcervo(filtros, pagina);
   const totalDePaginas = resultado ? Math.ceil(resultado.total / POR_PAGINA_DO_ACERVO) : 0;
   const linguas = opcoes?.linguas ?? [];
-  const epocas = opcoes?.epocas ?? [];
+  // A língua da URL fica na lista mesmo que as contagens atuais não a tragam.
+  const opcoesDeLingua: OpcaoDeEscolha[] = [
+    { valor: null, rotulo: "todas" },
+    ...(lingua && !linguas.some((l) => l.codigo === lingua) ? [{ valor: lingua, rotulo: nomeDoIdioma(lingua) }] : []),
+    ...linguas.map((l) => ({ valor: l.codigo, rotulo: `${nomeDoIdioma(l.codigo)} (${l.poetas})` })),
+  ];
+  const opcoesDeEpoca: OpcaoDeEscolha[] = [
+    { valor: null, rotulo: "todas" },
+    ...(opcoes?.epocas ?? []).map((ep) => ({ valor: ep.chave, rotulo: `${ep.rotulo} (${ep.poetas})` })),
+  ];
+  const opcoesDeOrdem: OpcaoDeEscolha[] = ORDENS_DO_ACERVO.map((o) => ({ valor: o, rotulo: ROTULOS_DAS_ORDENS[o] }));
 
   // overflow-x-clip: o tooltip (invisível) do SeloConsagrado de um cartão na borda
   // direita passaria da tela e daria rolagem horizontal no celular.
@@ -192,62 +199,39 @@ export function Acervo() {
             {tipo !== "do_verso" && (
               <>
                 <div className="min-w-0">
-                  <label htmlFor={idLingua} className="block text-sm">
-                    língua
-                  </label>
-                  <select
-                    id={idLingua}
-                    value={lingua ?? ""}
-                    onChange={(e) => filtrar({ lingua: e.target.value || null })}
-                    className={`${campo} mt-1`}
-                  >
-                    <option value="">todas</option>
-                    {lingua && !linguas.some((l) => l.codigo === lingua) && (
-                      <option value={lingua}>{nomeDoIdioma(lingua)}</option>
-                    )}
-                    {linguas.map((l) => (
-                      <option key={l.codigo} value={l.codigo}>
-                        {nomeDoIdioma(l.codigo)} ({l.poetas})
-                      </option>
-                    ))}
-                  </select>
+                  <EscolhaComBusca
+                    comBusca={false}
+                    rotulo="língua"
+                    opcoes={opcoesDeLingua}
+                    valor={lingua}
+                    aoEscolher={(v) => filtrar({ lingua: v })}
+                    singular="língua"
+                    plural="línguas"
+                  />
                 </div>
                 <div className="min-w-0">
-                  <label htmlFor={idEpoca} className="block text-sm">
-                    época
-                  </label>
-                  <select
-                    id={idEpoca}
-                    value={epoca ?? ""}
-                    onChange={(e) => filtrar({ epoca: e.target.value || null })}
-                    className={`${campo} mt-1`}
-                  >
-                    <option value="">todas</option>
-                    {epocas.map((ep) => (
-                      <option key={ep.chave} value={ep.chave}>
-                        {ep.rotulo} ({ep.poetas})
-                      </option>
-                    ))}
-                  </select>
+                  <EscolhaComBusca
+                    comBusca={false}
+                    rotulo="época"
+                    opcoes={opcoesDeEpoca}
+                    valor={epoca}
+                    aoEscolher={(v) => filtrar({ epoca: v })}
+                    singular="época"
+                    plural="épocas"
+                  />
                 </div>
               </>
             )}
             <div className="min-w-0">
-              <label htmlFor={idOrdem} className="block text-sm">
-                ordem
-              </label>
-              <select
-                id={idOrdem}
-                value={ordem}
-                onChange={(e) => filtrar({ ordem: e.target.value as OrdemDoAcervo })}
-                className={`${campo} mt-1`}
-              >
-                {ORDENS_DO_ACERVO.map((o) => (
-                  <option key={o} value={o}>
-                    {ROTULOS_DAS_ORDENS[o]}
-                  </option>
-                ))}
-              </select>
+              <EscolhaComBusca
+                comBusca={false}
+                rotulo="ordem"
+                opcoes={opcoesDeOrdem}
+                valor={ordem}
+                aoEscolher={(v) => filtrar({ ordem: (v as OrdemDoAcervo | null) ?? FILTROS_PADRAO_DO_ACERVO.ordem })}
+                singular="ordem"
+                plural="ordens"
+              />
             </div>
           </div>
         </div>

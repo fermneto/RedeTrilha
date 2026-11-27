@@ -18,6 +18,7 @@ import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 
 import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EditorDePoema } from "@/components/EditorDePoema";
+import { EscolhaComBusca } from "@/components/EscolhaComBusca";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { IconePena } from "@/components/icones/IconePena";
 import { PoemaCard } from "@/components/PoemaCard";
@@ -59,7 +60,7 @@ function esperar(ms: number) {
   return new Promise<void>((ok) => setTimeout(ok, ms));
 }
 
-// Valor do <select> para "outra" língua: vai como null (desconhecida).
+// Valor da opção "outra" língua: vai como null (desconhecida).
 const OUTRA = "";
 
 // O poema em andamento: os dados de um rascunho e o rascunho já salvo, se houver.
@@ -258,34 +259,28 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
   );
   const ficha = (
     <div className="space-y-4">
-      <label className="block text-sm">
-        forma (opcional)
-        <select value={forma} onChange={(e) => setForma(e.target.value)} className={`${campo} mt-1`}>
-          <option value="">sem forma</option>
-          {FORMAS.map((f) => (
-            <option key={f} value={f}>
-              {nomeDaForma(f)}
-            </option>
-          ))}
-        </select>
-      </label>
+      <EscolhaComBusca
+        comBusca={false}
+        rotulo="forma (opcional)"
+        opcoes={[{ valor: null, rotulo: "sem forma" }, ...FORMAS.map((f) => ({ valor: f, rotulo: nomeDaForma(f) }))]}
+        valor={forma || null}
+        aoEscolher={(v) => setForma(v ?? "")}
+        singular="forma"
+        plural="formas"
+      />
 
-      {/* Discreto: quase todo poema é em português, o padrão. */}
-      <label className="flex items-center gap-2 text-xs text-tinta-suave">
-        língua do poema
-        <select
-          value={idioma}
-          onChange={(e) => setIdioma(e.target.value)}
-          className="min-h-11 cursor-pointer rounded-lg border border-borda bg-papel-alto px-2 text-xs text-tinta focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
-        >
-          {IDIOMAS_DO_COMPOSITOR.map((codigo) => (
-            <option key={codigo} value={codigo}>
-              {nomeDoIdioma(codigo)}
-            </option>
-          ))}
-          <option value={OUTRA}>outra</option>
-        </select>
-      </label>
+      <EscolhaComBusca
+        comBusca={false}
+        rotulo="língua do poema"
+        opcoes={[
+          ...IDIOMAS_DO_COMPOSITOR.map((codigo) => ({ valor: codigo as string | null, rotulo: nomeDoIdioma(codigo) })),
+          { valor: OUTRA, rotulo: "outra" },
+        ]}
+        valor={idioma}
+        aoEscolher={(v) => setIdioma(v ?? OUTRA)}
+        singular="língua"
+        plural="línguas"
+      />
 
       {original && <PoemaCard post={original} aninhado semCritica />}
       {rengaCitada && <RengaCard renga={rengaCitada} aninhado />}

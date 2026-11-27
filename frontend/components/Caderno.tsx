@@ -54,7 +54,8 @@ export function Caderno({ children }: { children: React.ReactNode }) {
           chave: caminho,
           rotulo: "página",
           esquerda: <div className="flex min-h-full flex-col px-(--recuo-da-folha) pb-6">{children}</div>,
-          direita: <ColunaDireita />,
+          // Nas preferências, busca, poema do dia e sugestões não fazem sentido.
+          direita: caminho === "/preferencias" ? undefined : <ColunaDireita />,
           direitaSoNoDuplo: true,
         },
       ]}

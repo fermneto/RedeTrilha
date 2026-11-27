@@ -68,7 +68,7 @@ export function TelaDeBoasVindas({ passo = 1, total = 1, largura = "estreita", a
 export function PassosNoSite({ passo = 1, total = 1, acoes, children }: Omit<Props, "largura">) {
   return (
     <div>
-      <CabecalhoPagina titulo="Preferências" comoTitulo={false} />
+      <CabecalhoPagina titulo="Preferências" comoTitulo={false} voltar />
       <div className="p-4">
         {total > 1 && (
           <p className="mb-3 text-sm text-tinta-suave tabular-nums">

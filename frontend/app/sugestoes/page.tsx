@@ -18,7 +18,7 @@ export default function SugestoesPage() {
   return (
     <div>
       <title>Quem seguir · Verso</title>
-      <CabecalhoPagina titulo="Quem seguir" />
+      <CabecalhoPagina titulo="Quem seguir" voltar />
       <div className="linha-da-folha flex flex-wrap items-center justify-between gap-3 border-b border-borda py-3">
         <p className="text-sm text-tinta-suave">
           Siga poetas para ver os poemas deles na aba Seguindo.{" "}
