@@ -197,7 +197,8 @@ function Explorar() {
 
   return (
     <div>
-      <header className="sticky top-0 z-10 border-b border-borda bg-papel">
+      {/* A barra presa vai de ponta a ponta da folha; o que está nela fica na margem. */}
+      <header className="sticky top-0 z-10 -mx-(--recuo-da-folha) border-b border-borda bg-papel px-(--recuo-da-folha)">
         <h1 className="sr-only">Explorar</h1>
         {aba === "poetas" ? (
           <BuscaDosPoetas />
