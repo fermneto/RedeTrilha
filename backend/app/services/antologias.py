@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from sqlalchemy import delete, exists, func, or_, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.antologia import Antologia, AntologiaPoema, AntologiaRenga
@@ -199,12 +200,12 @@ def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int)
     )
     if ja_esta is not None:
         return
-    db.add(
+    _gravar_vinculo(
+        db,
         AntologiaPoema(
             antologia_id=antologia.id, post_id=post_id, posicao=_proxima_posicao(db, antologia.id)
-        )
+        ),
     )
-    db.commit()
 
 
 def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
@@ -234,12 +235,12 @@ def adicionar_renga(db: Session, usuario: User, antologia_id: int, renga_id: int
     )
     if ja_esta is not None:
         return
-    db.add(
+    _gravar_vinculo(
+        db,
         AntologiaRenga(
             antologia_id=antologia.id, renga_id=renga_id, posicao=_proxima_posicao(db, antologia.id)
-        )
+        ),
     )
-    db.commit()
 
 
 def remover_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
@@ -251,6 +252,17 @@ def remover_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) 
         )
     )
     db.commit()
+
+
+def _gravar_vinculo(db: Session, vinculo: AntologiaPoema | AntologiaRenga) -> None:
+    """Grava o poema (ou a renga) na antologia. A constraint única barra a corrida
+    do clique duplo; a chamada que perde cai no IntegrityError e vale como já
+    adicionado, como em curtidas.py."""
+    db.add(vinculo)
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
 
 
 def _proxima_posicao(db: Session, antologia_id: int) -> int:

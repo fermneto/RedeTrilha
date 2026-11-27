@@ -413,6 +413,36 @@ def test_adicionar_e_tirar_repost_puro_age_no_original(client, ana, bia):
     assert client.get(f"/antologias/{antologia_id}", headers=ana).json()["poemas"] == []
 
 
+@pytest.mark.parametrize("lista", ["poemas", "rengas"])
+def test_adicionar_na_corrida_e_idempotente(client, como, monkeypatch, lista):
+    """Outra requisição grava o mesmo vínculo entre o SELECT e o commit: a
+    constraint única barra, e a que perde vale como já adicionado (não 500)."""
+    from app.db import SessionLocal
+    from app.models.antologia import AntologiaPoema, AntologiaRenga
+    from app.services import antologias
+
+    if lista == "poemas":
+        alvo, corpo = _poema(client, como("bia")), "post_id"
+        vinculo = lambda a: AntologiaPoema(antologia_id=a, post_id=alvo, posicao=1)  # noqa: E731
+    else:
+        alvo, corpo = _renga_de(client, como, "bia"), "renga_id"
+        vinculo = lambda a: AntologiaRenga(antologia_id=a, renga_id=alvo, posicao=1)  # noqa: E731
+    antologia_id = _antologia(client, como("ana"))
+    original = antologias._proxima_posicao
+
+    def concorrer(db, antologia_id):
+        with SessionLocal() as outra:
+            outra.add(vinculo(antologia_id))
+            outra.commit()
+        return original(db, antologia_id)
+
+    monkeypatch.setattr(antologias, "_proxima_posicao", concorrer)
+    r = client.post(f"/antologias/{antologia_id}/{lista}", json={corpo: alvo}, headers=como("ana"))
+
+    assert r.status_code == 204
+    assert client.get(f"/antologias/{antologia_id}", headers=como("ana")).json()["qtd"] == 1
+
+
 def test_marcando_post_inexistente_da_404(client, ana):
     _antologia(client, ana)
     assert client.get("/antologias?post_id=999", headers=ana).status_code == 404
