@@ -596,7 +596,7 @@ function CampoDaMensagem({ para, aoEnviar }: { para: string; aoEnviar: (texto: s
         disabled={vazio || passou || enviando}
         aria-label="Enviar"
         title="Enviar (Ctrl+Enter)"
-        className="mb-6 flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-destaque text-papel transition-[filter,opacity] duration-150 hover:brightness-110 disabled:cursor-default disabled:opacity-40"
+        className="mb-[1.3125rem] flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-destaque text-papel transition-[filter,opacity] duration-150 hover:brightness-110 disabled:cursor-default disabled:opacity-40"
       >
         <IconeEnviar className="h-5 w-5" />
       </button>
