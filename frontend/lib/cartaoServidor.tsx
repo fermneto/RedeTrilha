@@ -39,7 +39,7 @@ const APRESENTACAO = "Para quem lê e escreve poesia: o poema inteiro, a convers
 const REVALIDAR = 3600;
 const ESPERA_MS = 3000;
 
-const TAMANHO = { width: 1200, height: 630 };
+export const TAMANHO = { width: 1200, height: 630 };
 
 // ---- Dados
 
