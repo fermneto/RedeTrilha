@@ -787,7 +787,8 @@ export type Opcao = { codigo: string; rotulo: string };
 // UFs e os limites dos campos (a cópia de reserva está em lib/vocabulario.ts).
 export type OpcoesDePreferencias = {
   escolas: Opcao[];
-  formas: Opcao[];
+  formas: string[];
+  formas_com_rotulo: Opcao[];
   paises: string[];
   ufs: Opcao[];
   limites: Limites;
