@@ -32,7 +32,7 @@ from app.schemas.comentario import (
 from app.schemas.user import UserOut
 from app.services import ancoras, avisos, bloqueios
 from app.services import arvore_de_comentarios as arvore
-from app.services.posts import buscar, original_de, original_para_interagir
+from app.services.posts import original_para_interagir, original_visivel
 
 
 def comentar(
@@ -85,7 +85,7 @@ def respostas_do_poema(
     Com `verso`, só as críticas cuja âncora cobre aquele verso. 404 para quem o
     autor do poema bloqueou.
     """
-    poema, ocultos = _poema_visivel(db, usuario, original_de(db, post_id))
+    poema, ocultos = _poema_visivel(db, usuario, post_id)
     filtro = and_(Comentario.post_id == poema.id, Comentario.parent_id.is_(None))
     if verso is not None:
         filtro = and_(filtro, Comentario.id.in_(ancoras.ids_no_verso(poema, verso, ocultos)))
@@ -94,7 +94,7 @@ def respostas_do_poema(
 
 def versos_comentados(db: Session, usuario: User, post_id: int) -> VersosComentadosOut:
     """As marcas no corpo do poema: quantas críticas cobrem cada verso."""
-    poema, ocultos = _poema_visivel(db, usuario, original_de(db, post_id))
+    poema, ocultos = _poema_visivel(db, usuario, post_id)
     return ancoras.versos_comentados(db, poema, ocultos)
 
 
@@ -102,7 +102,7 @@ def respostas_do_comentario(
     db: Session, usuario: User, comentario_id: int, limit: int, cursor: str | None
 ) -> ComentarioPage:
     comentario = _buscar(db, comentario_id)
-    _, ocultos = _poema_visivel(db, usuario, buscar(db, comentario.post_id))
+    _, ocultos = _poema_visivel(db, usuario, comentario.post_id)
     if comentario.autor_id in ocultos and not comentario.removido:
         # Escondido sem respostas não existe; com respostas, elas continuam.
         arvore.buscar_visivel(db, Comentario, comentario_id, ocultos)
@@ -131,9 +131,10 @@ def _buscar(db: Session, comentario_id: int) -> Comentario:
     return comentario
 
 
-def _poema_visivel(db: Session, usuario: User, poema: Post) -> tuple[Post, set[int]]:
-    """O poema (404 se o autor bloqueou quem vê) e quem tem os comentários escondidos nele."""
-    bloqueios.garantir_que_ve(db, usuario.id, poema.autor_id, "poema não encontrado")
+def _poema_visivel(db: Session, usuario: User, post_id: int) -> tuple[Post, set[int]]:
+    """O original (`posts.original_visivel`: 404 se o autor bloqueou quem vê) e quem
+    tem os comentários escondidos nele."""
+    poema = original_visivel(db, usuario, post_id)
     return poema, bloqueios.ids_com_bloqueio(db, poema.autor_id)
 
 

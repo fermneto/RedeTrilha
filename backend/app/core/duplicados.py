@@ -29,13 +29,13 @@ texto, linear nos dois textos. Os 11 mil poemas dos JSONs levam uns 2 s.
 """
 
 import re
-import unicodedata
 from collections import defaultdict
 from collections.abc import Collection, Hashable, Sequence
 from dataclasses import dataclass, field
 from typing import Generic, TypeVar
 
 from app.core.marcas import texto_sem_marcas
+from app.core.texto import sem_acento
 
 K = TypeVar("K", bound=Hashable)
 
@@ -52,8 +52,7 @@ def normalizar(texto: str) -> str:
     """Só as palavras, em minúsculas e sem acento: "Allucinação!" → "allucinacao"."""
     if _PODE_TER_MARCA.search(texto):
         texto = texto_sem_marcas(texto)
-    texto = unicodedata.normalize("NFKD", texto.lower())
-    texto = "".join(c for c in texto if not unicodedata.combining(c))
+    texto = sem_acento(texto.lower())
     return " ".join(re.findall(r"\w+", texto))
 
 

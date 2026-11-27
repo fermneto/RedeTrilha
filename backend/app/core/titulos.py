@@ -21,10 +21,11 @@ parênteses, como em "The Faerie Queene (1590/1596)", não separa o caminho.
 """
 
 import re
-import unicodedata
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
+
+from app.core.texto import sem_acento
 
 # "(1912)", "(Augusto dos Anjos, 1912)" ou "(Goethe 1827)": o ano é o do livro (ou da
 # edição). Quem vem antes do ano tem de ser o autor: "(éd. 1874)" não dá ano.
@@ -54,9 +55,9 @@ class Poema:
     ano: int | None
 
 
-def _sem_acento(texto: str) -> str:
-    decomposto = unicodedata.normalize("NFKD", texto)
-    return "".join(c for c in decomposto if not unicodedata.combining(c)).casefold().strip()
+def _comparavel(texto: str) -> str:
+    """Sem acento, em casefold e sem espaço nas pontas, para comparar o nome do autor."""
+    return sem_acento(texto).casefold().strip()
 
 
 def _trechos_do_caminho(titulo: str) -> list[str]:
@@ -79,7 +80,7 @@ def _trechos_do_caminho(titulo: str) -> list[str]:
 def _e_o_autor(quem: str, autor: str) -> bool:
     """O nome do autor, o último nome ("Valéry" para "Paul Valéry") ou o nome com outro
     do meio ("Luís Vaz de Camões" para "Luís de Camões"): mesmo primeiro e último nome."""
-    quem, autor = _sem_acento(quem).split(), _sem_acento(autor).split()
+    quem, autor = _comparavel(quem).split(), _comparavel(autor).split()
     if not quem or not autor:
         return False
     return quem == autor or quem == autor[-1:] or (quem[0], quem[-1]) == (autor[0], autor[-1])

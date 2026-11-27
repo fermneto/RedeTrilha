@@ -34,14 +34,15 @@ from app.models.follow import Follow
 from app.models.post import Post
 from app.models.renga import Renga
 from app.models.user import User
-from app.services.users import buscar_por_username
+# O módulo, e não a função: users.py importa este arquivo (o import seria circular).
+from app.services import users
 
 MSG_BLOQUEEI = "você bloqueou esta pessoa; desbloqueie para interagir"
 
 
 def bloquear(db: Session, eu: User, username: str) -> None:
     """Idempotente: bloquear de novo não faz nada."""
-    outro = buscar_por_username(db, username)
+    outro = users.buscar_por_username(db, username)
     if outro.id == eu.id:
         raise HTTPException(status_code=422, detail="não dá para bloquear a si mesmo")
     if bloqueou(db, eu.id, outro.id):
@@ -64,7 +65,7 @@ def bloquear(db: Session, eu: User, username: str) -> None:
 
 def desbloquear(db: Session, eu: User, username: str) -> None:
     """Idempotente: desbloquear quem não está bloqueado não faz nada."""
-    outro = buscar_por_username(db, username)
+    outro = users.buscar_por_username(db, username)
     db.execute(
         delete(Bloqueio).where(Bloqueio.bloqueador_id == eu.id, Bloqueio.bloqueado_id == outro.id)
     )
@@ -85,8 +86,7 @@ def bloqueou(db: Session, quem_id: int, outro_id: int) -> bool:
 
 def eu_bloqueei(db: Session, eu: User, username: str) -> bool:
     """Para o perfil mostrar "Desbloquear". 404 se a pessoa não existe ou me bloqueou."""
-    outro = buscar_por_username(db, username)
-    garantir_que_ve(db, eu.id, outro.id, "usuário não encontrado")
+    outro = users.visivel_por_username(db, eu, username)
     return bloqueou(db, eu.id, outro.id)
 
 

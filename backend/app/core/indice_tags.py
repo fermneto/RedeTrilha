@@ -14,23 +14,17 @@ O services/indice_tags.py lê as linhas do banco e chama estas funções.
 
 import heapq
 import re
-import unicodedata
 from collections.abc import Iterable
 from datetime import datetime
 
 from app.core.datas import para_utc
 from app.core.marcas import texto_sem_marcas
+from app.core.texto import normalizar
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
 _FORA_DA_TAG = re.compile(r"[^a-z0-9_]")
 # "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
 FORMA_SEM_TAG = "outro"
-
-
-def normalizar(texto: str) -> str:
-    """casefold e sem acento: '#Solidão' e '#solidao' viram a mesma tag."""
-    sem_acento = unicodedata.normalize("NFKD", texto.casefold())
-    return "".join(c for c in sem_acento if not unicodedata.combining(c))
 
 
 def termo_de_tag(texto: str) -> str:

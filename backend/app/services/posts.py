@@ -188,6 +188,14 @@ def visivel(db: Session, usuario: User, post_id: int) -> Post:
     return post
 
 
+def original_visivel(db: Session, usuario: User, post_id: int) -> Post:
+    """O `original_de` (repost puro → o poema repostado), se quem pede pode vê-lo:
+    404 também se o autor bloqueou quem pede."""
+    original = original_de(db, post_id)
+    bloqueios.garantir_que_ve(db, usuario.id, original.autor_id, "poema não encontrado")
+    return original
+
+
 def original_para_interagir(db: Session, usuario: User, post_id: int) -> Post:
     """O `original_de` para curtir, comentar, repostar, citar ou mandar por mensagem:
     404 se o autor bloqueou quem age, 403 se quem age bloqueou o autor."""
@@ -232,14 +240,7 @@ def criar(db: Session, autor: User, dados: PostCreate, repost_removido: bool = F
     if renga is not None:
         # A renga é de todos: a citação avisa cada autor, como a curtida e o repost dela.
         db.add(CitacaoRenga(post_id=post.id, renga_id=renga.id))
-        avisos.avisar(
-            db,
-            autor,
-            [(pessoa, "citacao") for pessoa in rengas.ids_dos_autores(db, renga.id)],
-            dono_id=renga.criador_id,
-            post_id=post.id,
-            renga_id=renga.id,
-        )
+        rengas.avisar_autores(db, autor, renga, "citacao", post_id=post.id)
     # As tags entram no mesmo commit do poema: todo worker vê os dois juntos.
     indice_tags.indexar(db, post)
     db.commit()

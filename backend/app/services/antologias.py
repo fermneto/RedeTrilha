@@ -19,7 +19,7 @@ from app.schemas.user import UserOut
 from app.services import bloqueios
 from app.services import posts as posts_service
 from app.services import rengas as rengas_service
-from app.services.users import buscar_por_username
+from app.services.users import visivel_por_username
 
 
 def criar(db: Session, dono: User, dados: AntologiaCreate) -> AntologiaOut:
@@ -118,8 +118,7 @@ def listar_de(
 ) -> AntologiaPage:
     """Antologias de alguém; as privadas só aparecem para o próprio dono. Com bloqueio
     (services/bloqueios.py): 404 para quem o dono bloqueou e vazio para quem bloqueou o dono."""
-    dono = buscar_por_username(db, username)
-    bloqueios.garantir_que_ve(db, usuario.id, dono.id, "usuário não encontrado")
+    dono = visivel_por_username(db, usuario, username)
     if bloqueios.bloqueou(db, usuario.id, dono.id):
         return AntologiaPage(items=[], total=0, offset=offset, limit=limit)
     return _listar(db, dono, offset, limit, so_publicas=dono.id != usuario.id)
