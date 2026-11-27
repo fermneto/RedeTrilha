@@ -18,6 +18,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useId, useMemo, useState } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
+import { AutoresDaRenga, ListaDeAutores } from "@/components/AutoresDaRenga";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
@@ -230,8 +231,7 @@ function PaginaDaRenga({
           {renga.titulo}
         </h1>
         <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-          <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-          <ListaDeAutores autores={renga.autores} />
+          <AutoresDaRenga renga={renga} />
         </p>
         <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
           <SeloDaRenga fechada={renga.fechada} />{" "}
@@ -336,19 +336,6 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
         <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
       </span>
     </button>
-  );
-}
-
-function ListaDeAutores({ autores }: { autores: User[] }) {
-  return (
-    <>
-      {autores.map((autor, i) => (
-        <span key={autor.id} className="inline-flex items-center">
-          <NomeAutor usuario={autor} className="font-semibold text-tinta" />
-          {i < autores.length - 1 && <span aria-hidden="true">,</span>}
-        </span>
-      ))}
-    </>
   );
 }
 

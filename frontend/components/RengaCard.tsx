@@ -14,6 +14,7 @@
 import Link from "next/link";
 import { Fragment, useRef } from "react";
 
+import { AutoresDaRenga } from "@/components/AutoresDaRenga";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { BarraDeVersos, useVersosSelecionados } from "@/components/BarraDeVersos";
 import { useFolhas } from "@/components/CadernoFolhas";
@@ -70,13 +71,7 @@ export function RengaCard({ renga, atividade, por = [], aninhado = false, folha 
         <SeloDaRenga fechada={renga.fechada} />
       </div>
       <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-        {renga.autores.map((autor, i) => (
-          <span key={autor.id} className="inline-flex items-center">
-            <NomeAutor usuario={autor} className="font-semibold text-tinta" />
-            {i < renga.autores.length - 1 && <span aria-hidden="true">,</span>}
-          </span>
-        ))}
+        <AutoresDaRenga renga={renga} />
       </p>
 
       <ol ref={lista} aria-label="estrofes" className="mt-3 space-y-5">

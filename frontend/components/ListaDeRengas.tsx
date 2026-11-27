@@ -7,9 +7,9 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { AutoresDaRenga } from "@/components/AutoresDaRenga";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { EsqueletoDeRengas } from "@/components/Esqueleto";
-import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import {
@@ -158,13 +158,7 @@ function CartaoDaRenga({ renga }: { renga: Renga }) {
         </Link>
       </h2>
       <p className="relative mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-        {renga.autores.map((autor, i) => (
-          <span key={autor.id} className="inline-flex min-w-0 items-center">
-            <NomeAutor usuario={autor} className="font-semibold text-tinta" />
-            {i < renga.autores.length - 1 && <span aria-hidden="true">,</span>}
-          </span>
-        ))}
+        <AutoresDaRenga renga={renga} className="min-w-0" />
       </p>
       <p className="mt-2 text-[0.8125rem] leading-relaxed text-tinta-suave">
         <SeloDaRenga fechada={renga.fechada} />{" "}
