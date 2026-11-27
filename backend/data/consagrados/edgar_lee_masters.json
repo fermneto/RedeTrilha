@@ -1,0 +1,69 @@
+{
+  "username": "edgar_lee_masters",
+  "name": "Edgar Lee Masters",
+  "bio": "Poeta norte-americano. Spoon River Anthology (1915) é o livro dos epitáfios.",
+  "avatar_url": "",
+  "nascimento": 1868,
+  "morte": 1950,
+  "escolas": [
+    "realismo"
+  ],
+  "pais": "US",
+  "poemas": [
+    {
+      "titulo": "The Hill",
+      "texto": "The HillWhere are Elmer, Herman, Bert, Tom and Charley,\nThe weak of will, the strong of arm, the clown, the boozer, the fighter?\nAll, all, are sleeping on the hill.\n\nOne passed in a fever,\nOne was burned in a mine,\nOne was killed in a brawl,\nOne died in a jail,\nOne fell from a bridge toiling for children and wife—\nAll, all are sleeping, sleeping, sleeping on the hill.\n\nWhere are Ella, Kate, Mag, Lizzie and Edith,\nThe tender heart, the simple soul, the loud, the proud, the happy one?—\nAll, all, are sleeping on the hill.\n\nOne died in shameful child-birth,\nOne of a thwarted love,\nOne at the hands of a brute in a brothel,\nOne of a broken pride, in the search for heart's desire,\nOne after life in far-away London and Paris\nWas brought to her little space by Ella and Kate and Mag—\nAll, all are sleeping, sleeping, sleeping on the hill.\n\nWhere are Uncle Isaac and Aunt Emily,\nAnd old Towny Kincaid and Sevigne Houghton,\nAnd Major Walker who had talked\nWith venerable men of the revolution?—\nAll, all, are sleeping on the hill.\n\nThey brought them dead sons from the war,\nAnd daughters whom life had crushed,\nAnd their children fatherless, crying—\nAll, all are sleeping, sleeping, sleeping on the hill.\n\nWhere is Old Fiddler Jones\nWho played with life all his ninety years,\nBraving the sleet with bared breast,\nDrinking, rioting, thinking neither of wife nor kin,\nNor gold, nor love, nor heaven?\nLo! he babbles of the fish-frys of long ago,\nOf the horse-races of long ago at Clary's Grove,\nOf what Abe Lincoln said\nOne time at Springfield.",
+      "forma": "outro",
+      "obra": "Spoon River Anthology",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Spoon_River_Anthology_(1915)/The_Hill",
+      "tags": [
+        "amor",
+        "morte",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "Isabel, William and Albert",
+      "texto": "Soul of the Universe! Eternal Love!Making for change and death—but for life!Multiform, mysterious, exhaustless,It is not through you that our spirits become one—A bond in the flesh on earth,And mingled flames in this realm?We three, lovers, husbands of the same woman!First I, this woman that was,Who loved William and was his wife,And loved him none the less in death,Nor less when I became the wife,Of you, my adored Albert;Next I, this man William,Who loved you, Albert, in life,And next in death,Because you loved the Isabel I loved.And lastly, I who was Albert,Who loved you, William, because you loved her,Because she loved you,I, who was her husband to the last,Treasuring your memory with her—Being, O blissful fate, what you were to her,With something else which spoke for progress in love.This is the mystery, the final consummation,The illumination of passion,The realization of eternal lightFrom the love of man and woman on earth!",
+      "forma": "prosa_poetica",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/McClure%27s_Magazine/Volume_51/Number_10/Isabel%2C_William_and_Albert",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Keats to Fanny Brawne",
+      "texto": "KEATS TO FANNY BRAWNEFanny! If in your arms my soul could slip—\nArms that my love first fancied—not the grave!\nCities of Hate and Madness round me rave;\nAnd Love with anguished finger at the lip\nFares shelterless! These have my fellowship—\nMemory and Loneliness! What's left? To brave\nDeath! But before it Tragedy: not to crave\nYou changed or truly seen! The hemlock drip\nOf rains upon half-lived or ruined springs,\nWhere you dance, smiling, numbs me now, and soothes\nHopes that once sought a beauty gone before.\nLosses have stripped me! But the vanishings\nOf winter winds leave me to starry truths—\nWho once desired you, but desire no more!\n\nPoetry, A Magazine of Verse Edgar Lee Masters",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1921,
+      "fonte": "https://en.wikisource.org/wiki/Anthology_of_Magazine_Verse_for_1921/Keats_to_Fanny_Brawne",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Lusk Illington",
+      "texto": "One life at a time, one world at a time,One dream for working out in life—But oh, the price we pay, my friends,For the coveted achievement!For as to the mating of bodies and souls,The planting of your garden,For food and delight in life,It comes to an idiosyncrasyIf you stop to think it over:It's eyes of gray, or eyes of blue,It's a certain mouth, or color of hair,It's a nose that calls to something in you;That is the woman for me.And then you get the eyes, or nose,And that is all you get.And I who wanted a woman for wife—Star-like, clear and pure,Followed the instinct till I got her.And what was she? She was pure, no doubt—But so is filtered water!",
+      "forma": "prosa_poetica",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/McClure%27s_Magazine/Volume_51/Number_10/Lusk_Illington",
+      "tags": []
+    },
+    {
+      "titulo": "Robert Chapin",
+      "texto": "Have you stood in front of the iron bars,And watched the lion look over your head?He sees the palm-tree and the mate,And the waste of the tawny desert!Are you moved by the music, or the concourseOf melodious words?But how are you moved except for lifeThat made a self of you, respondingTo sounds or scenes of remembered places,Or other spheres, perhaps?Life is a cage! Beauty a visionOf a freedom once enjoyed.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/McClure%27s_Magazine/Volume_51/Number_10/Robert_Chapin",
+      "tags": []
+    }
+  ]
+}

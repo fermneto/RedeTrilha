@@ -1,0 +1,473 @@
+{
+  "username": "rupert_brooke",
+  "name": "Rupert Brooke",
+  "bio": "Poeta inglês. Os war sonnets de 1914, entre eles «The Soldier», são o que mais circula.",
+  "avatar_url": "",
+  "nascimento": 1887,
+  "morte": 1915,
+  "escolas": [],
+  "pais": "GB",
+  "poemas": [
+    {
+      "titulo": "The Island of Skyros",
+      "texto": "HERE, where we stood together, we three men,\n  Before the war had swept us to the East\nThree thousand miles away, I stand again\n  And hear the bells, and breathe, and go to feast.\nWe trod the same path, to the selfsame place,\n  Yet here I stand, having beheld their graves,\n  Skyros whose shadows the great seas erase,\n  And Seddul Bahr that ever more blood craves.\nSo, since we communed here, our bones have been\n  Nearer, perhaps, than they again will be,\nEarth and the worldwide battle lie between,\n  Death lies between, and friend-destroying sea.\nYet here, a year ago, we talked and stood\nAs I stand now, with pulses beating blood.\n\nI saw her like a shadow on the sky\n  In the last light, a blur upon the sea,\nThen the gale's darkness put the shadow by,\n  But from one grave that island talked to me;\nAnd, in the midnight, in the breaking storm,\n  I saw its blackness and a blinking light,\nAnd thought, \"So death obscures your gentle form,\n  So memory strives to make the darkness bright;\nAnd, in that heap of rocks, your body lies,\n  Part of the island till the planet ends,\nMy gentle comrade, beautiful and wise,\n  Part of this crag this bitter surge offends,\nWhile I, who pass, a little obscure thing,\nWar with this force, and breathe, and am its king.\"\n\nJohn Masefield",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1914,
+      "fonte": "https://en.wikisource.org/wiki/A_treasury_of_war_poetry%2C_British_and_American_poems_of_the_world_war%2C_1914-1919/The_Island_of_Skyros",
+      "tags": [
+        "morte",
+        "guerra",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "The Soldier",
+      "texto": "V. THE SOLDIER\n\nIf I should die, think only this of me:\n  That there's some corner of a foreign field\nThat is for ever England. There shall be\n  In that rich earth a richer dust concealed;\nA dust whom England bore, shaped, made aware,\n  Gave, once, her flowers to love, her ways to roam,\nA body of England's, breathing English air,\n  Washed by the rivers, blest by suns of home.\n\nAnd think, this heart, all evil shed away,\n  A pulse in the eternal mind, no less\n    Gives somewhere back the thoughts by England given;\nHer sights and sounds; dreams happy as her day;\n  And laughter, learnt of friends; and gentleness,\n    In hearts at peace, under an English heaven.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/The_Soldier",
+      "tags": [
+        "amor",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "The Soldier",
+      "texto": "POETS MILITANT\n\nIF I should die, think only this of me:\n  That there's some corner of a foreign field\nThat is for ever England. There shall be\n  In that rich earth a richer dust concealed;\nA dust whom England bore, shaped, made aware,\n  Gave once her flowers to love, her ways to roam,\nA body of England's, breathing English air,\n  Washed by the rivers, blest by suns of home.\n\nAnd think this heart, all evil shed away,\n  A pulse in the eternal mind, no less\n    Gives somewhere back the thoughts by England given;\nHer sights and sounds; dreams happy as her day;\n  And laughter, learnt of friends; and gentleness,\n    In hearts at peace, under an English heaven.\n\nRupert Brooke",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1914,
+      "fonte": "https://en.wikisource.org/wiki/A_treasury_of_war_poetry%2C_British_and_American_poems_of_the_world_war%2C_1914-1919/The_Soldier",
+      "tags": [
+        "amor",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "The Dead",
+      "texto": "THE FALLEN\n\nI\n\nBLOW out, you bugles, over the rich Dead!\n  There's none of these so lonely and poor of old\n  But, dying, has made us rarer gifts than gold.\nThese laid the world away; poured out the red\nSweet wine of youth; gave up the years to be\n  Of work and joy, and that unhoped serene,\n  That men call age; and those who would have been,\n    Their sons, they gave, their immortality.\n\n  Blow, bugles, blow! They brought us, for our dearth,\n    Holiness, lacked so long, and Love, and Pain.\n  Honour has come back, as a king, to earth,\n      And paid his subjects with a royal wage;\n    And Nobleness walks in our ways again;\n      And we have come into our heritage.\n\nII\n\n  These hearts were woven of human joys and cares\nWashed marvellously with sorrow, swift to mirth.\n  The years had given them kindness. Dawn was theirs,\nAnd sunset, and the colours of the earth.\n  These had seen movement and heard music; known\nSlumber and waking; loved; gone proudly friended;\n  Felt the quick stir of wonder; sat alone;\nTouched flowers and furs and cheeks. All this is ended.\n\n  There are waters blown by changing winds to laughter\n  And lit by the rich skies, all day. And after,\nFrost, with a gesture, stays the waves that dance\n  And wandering loveliness. He leaves a white\nUnbroken glory, a gathered radiance,\n  A width, a shining peace, under the night.\n\nRupert Brooke",
+      "forma": "outro",
+      "obra": null,
+      "ano": 1914,
+      "fonte": "https://en.wikisource.org/wiki/A_treasury_of_war_poetry%2C_British_and_American_poems_of_the_world_war%2C_1914-1919/The_Dead_(Brooke)",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Sonnet",
+      "texto": "SONNET (Suggested by some of the Proceedings of the\nSociety for Psychical Research)\n\nNot with vain tears, when we're beyond the sun,\n  We'll beat on the substantial doors, nor tread\n  Those dusty high-roads of the aimless dead\nPlaintive for Earth; but rather turn and run\nDown some close-covered by-way of the air,\n  Some low sweet alley between wind and wind,\n  Stoop under faint gleams, thread the shadows, find\nSome whispering ghost-forgotten nook, and there\n\nSpend in pure converse our eternal day;\n  Think each in each, immediately wise;\nLearn all we lacked before; hear, know, and say\n  What this tumultuous body now denies;\nAnd feel, who have laid our groping hands away;\n  And see, no longer blinded by our eyes.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Sonnet",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Channel Passage",
+      "texto": "The damned ship lurched and slithered. Quiet and quick\n  My cold gorge rose; the long sea rolled; I knew\nI must think hard of something, or be sick;\n  And could think hard of only one thing—you!\nYou, you alone could hold my fancy ever!\n  And with you memories come, sharp pain, and dole.\nNow there's a choice—heartache or tortured liver!\n  A sea-sick body, or a you-sick soul!\n\nDo I forget you? Retchings twist and tie me,\n  Old meat, good meals, brown gobbets, up I throw.\nDo I remember? Acrid return and slimy,\n  The sobs and slobber of a last years woe.\nAnd still the sick ship rolls. 'Tis hard, I tell ye,\nTo choose 'twixt love and nausea, heart and belly.",
+      "forma": "soneto",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/A_Channel_Passage",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "A Memory",
+      "texto": "A MEMORY (From a sonnet-sequence)\n\nSomewhile before the dawn I rose, and stept\n  Softly along the dim way to your room,\n  And found you sleeping in the quiet gloom,\nAnd holiness about you as you slept.\nI knelt there; till your waking fingers crept\n  About my head, and held it. I had rest\n  Unhoped this side of Heaven, beneath your breast.\nI knelt a long time, still; nor even wept.\n\nIt was great wrong you did me; and for gain\nOf that poor moment's kindliness, and ease,\nAnd sleepy mother-comfort!\nChild, you know\nHow easily love leaps out to dreams like these,\nWho has seen them true. And love that's wakened so\nTakes all too long to lay asleep again.\n\nWaikiki, October 1913",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/A_Memory",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Ante Aram",
+      "texto": "Before thy shrine I kneel, an unknown worshipper,\n  Chanting strange hymns to thee and sorrowful litanies,\nIncense of dirges, prayers that are as holy myrrh.\n\nAh, goddess, on thy throne of tears and faint low sighs,\n  Weary at last to theeward come the feet that err,\nAnd empty hearts grown tired of the world's vanities.\n\nHow fair this cool deep silence to a wanderer\n  Deaf with the roar of winds along the open skies!\nSweet, after sting and bitter kiss of sea-water,\n\nThe pale Lethean wine within thy chalices!\n  I come before thee, I, too tired wanderer,\nTo heed the horror of the shrine, the distant cries,\n\nAnd evil whispers in the gloom, or the swift whirr\nOf terrible wings—I, least of all thy votaries,\nWith a faint hope to see the scented darkness stir,\n\nAnd, parting, frame within its quiet mysteries\n  One face, with lips than autumn-lilies tenderer,\nAnd voice more sweet than the far plaint of viols\nis,\n\n  Or the soft moan of any grey-eyed lute-player.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Ante_Aram",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Beauty and Beauty",
+      "texto": "When Beauty and Beauty meet\n  All naked, fair to fair,\nThe earth is crying-sweet,\n  And scattering-bright the air,\nEddying, dizzying, closing round,\n  With soft and drunken laughter;\nVeiling all that may befall\n  After—after—\n\nWhere Beauty and Beauty met,\n  Earth's still a-tremble there,\nAnd winds are scented yet,\n  And memory-soft the air,\nBosoming, folding glints of light,\n  And shreds of shadowy laughter;\nNot the tears that fill the years\n  After—after—",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Beauty_and_Beauty",
+      "tags": []
+    },
+    {
+      "titulo": "Blue Evening",
+      "texto": "My restless blood now lies a-quiver,\n  Knowing that always, exquisitely,\nThis April twilight on the river\n  Stirs anguish in the heart of me.\n\nFor the fast world in that rare glimmer\n  Puts on the witchery of a dream,\nThe straight grey buildings, richly dimmer,\n  The fiery windows, and the stream\n\nWith willows leaning quietly over,\n  The still ecstatic fading skies . . .\nAnd all these, like a waiting lover,\n  Murmur and gleam, lift lustrous eyes,\n\nDrift close to me, and sideways bending\n  Whisper delicious words.\n            But I\nStretch terrible hands, uncomprehending,\n  Shaken with love; and laugh; and cry.\n\nMy agony made the willows quiver;\n  I heard the knocking of my heart\nDie loudly down the windless river,\n  I heard the pale skies fall apart,\n\nAnd the shrill stars' unmeaning laughter,\n  And my voice with the vocal trees\nWeeping. And Hatred followed after,\n  Shrilling madly down the breeze.\n\nIn peace from the wild heart of clamour,\n  A flower in moonlight, she was there,\nWas rippling down white ways of glamour\n  Quietly laid on wave and air.\n\nHer passing left no leaf a-quiver.\n  Pale flowers wreathed her white, white brows.\nHer feet were silence on the river;\n  And \"Hush!\" she said, between the boughs.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Blue_Evening",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Choriambics I",
+      "texto": "Ah! not now, when desire burns, and the wind calls, and the suns of spring\nLight-foot dance in the woods, whisper of life, woo me to wayfaring;\nAh! not now should you come, now when the road beckons, and good friends call,\nWhere are songs to be sung, fights to be fought, yea! and the best of all,\nLove, on myriad lips fairer than yours, kisses you could not give! . . .\nDearest, why should I mourn, whimper, and whine, I that have yet to live?\nSorrow will I forget, tears for the best, love on the lips of you,\nNow, when dawn in the blood wakes, and the sun laughs up the eastern blue;\nI'll forget and be glad!\nOnly at length, dear, when the great day ends,\nWhen love dies with the last light, and the last song has been sung, and friends\nAll are perished, and gloom strides on the heaven: then, as alone I lie,\n'Mid Death's gathering winds, frightened and dumb, sick for the past, may I\nFeel you suddenly there, cool at my brow; then may I hear the peace\nOf your voice at the last, whispering love, calling, ere all can cease\nIn the silence of death; then may I see dimly, and know, a space,\nBending over me, last light in the dark, once, as of old, your face.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Choriambics_I",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Choriambics II",
+      "texto": "Here the flame that was ash, shrine that was void, lost in the haunted wood,\nI have tended and loved, year upon year, I in the solitude\nWaiting, quiet and glad-eyed in the dark, knowing that once a gleam\nGlowed and went through the wood. Still I abode strong in a golden dream,\nUnrecaptured.\n      For I, I that had faith, knew that a face would glance\nOne day, white in the dim woods, and a voice call, and a radiance\nFill the grove, and the fire suddenly leap . . . and, in the heart of it,\nEnd of labouring, you! Therefore I kept ready the altar, lit\nThe flame, burning apart.\n     Face of my dreams vainly in vision white\nGleaming down to me, lo! hopeless I rise now. For about midnight\nWhispers grew through the wood suddenly, strange cries in the boughs above\nGrated, cries like a laugh. Silent and black then through the sacred grove\nGreat birds flew, as a dream, troubling the leaves, passing at length.\n         I knew\nLong expected and long loved, that afar, God of the dim wood, you\nSomewhere lay, as a child sleeping, a child suddenly reft from mirth,\nWhite and wonderful yet, white in your youth, stretched upon foreign earth,\nGod, immortal and dead!\n      Therefore I go; never to rest, or win\nPeace, and worship of you more, and the dumb wood and the shrine therein.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Choriambics_II",
+      "tags": [
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Clouds",
+      "texto": "Down the blue night the unending columns press\n  In noiseless tumult, break and wave and flow,\n  Now tread the far South, or lift rounds of snow\nUp to the white moon's hidden loveliness.\nSome pause in their grave wandering comradeless,\n  And turn with profound gesture vague and slow,\n  As who would pray good for the world, but know\nTheir benediction empty as they bless.\n\nThey say that the Dead die not, but remain\n  Near to the rich heirs of their grief and mirth.\n    I think they ride the calm mid-heaven, as these,\nIn wise majestic melancholy train,\n    And watch the moon, and the still-raging seas,\n  And men, coming and going on the earth.\n\nThe Pacific, October 1913",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Clouds",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Dawn",
+      "texto": "(From the train between Bologna and Milan, second class.)\n\nOpposite me two Germans snore and sweat.\n  Through sullen swirling gloom we jolt and roar.\nWe have been here for ever: even yet\n  A dim watch tells two hours, two aeons, more.\nThe windows are tight-shut and slimy-wet\n  With a night's fœtor. There are two hours more;\nTwo hours to dawn and Milan; two hours yet.\nOpposite me two Germans sweat and snore. . . .\n\nOne of them wakes, and spits, and sleeps again.\n  The darkness shivers. A wan light through the rain\nStrikes on our faces, drawn and white. Somewhere\n  A new day sprawls; and, inside, the foul air\nIs chill, and damp, and fouler than before. . . .\nOpposite me two Germans sweat and snore.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Dawn",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Day and Night",
+      "texto": "Through my heart's palace Thoughts unnumbered throng;\n  And there, most quiet and, as a child, most wise,\nHigh-throned you sit, and gracious. All day long\n  Great Hopes gold-armoured, jester Fantasies,\n  And pilgrim Dreams, and little beggar Sighs,\nBow to your benediction, go their way.\n  And the grave jewelled courtier Memories\nWorship and love and tend you, all the day.\n\nBut when I sleep, and all my thoughts go straying,\n  When the high session of the day is ended,\nAnd darkness comes; then, with the waning light,\n  By lilied maidens on your way attended,\nProud from the wonted throne, superbly swaying,\n  You, like a queen, pass out into the night.",
+      "forma": "soneto",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Day_and_Night",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Day That I Have Loved",
+      "texto": "Tenderly, day that I have loved, I close your eyes,\n  And smooth your quiet brow, and fold your thin dead hands.\nThe grey veils of the half-light deepen; colour dies.\n  I bear you, a light burden, to the shrouded sands,\n\nWhere lies your waiting boat, by wreaths of the\nsea's making\n  Mist-garlanded, with all grey weeds of the water\ncrowned.\nThere you'll be laid, past fear of sleep or hope of\nwaking;\n  And over the unmoving sea, without a sound,\n\nFaint hands will row you outward, out beyond our\nsight,\n  Us with stretched arms and empty eyes on the far-\ngleaming\nAnd marble sand. . . .\n     Beyond the shifting cold twilight,\n  Further than laughter goes, or tears, further than dreaming,\n\nThere'll be no port, no dawn-lit islands! But the drear\n  Waste darkening, and, at length, flame ultimate on the deep.\nOh, the last fire—and you, unkissed, unfriended there!\n  Oh, the lone way's red ending, and we not there to\nweep!\n\n(We found you pale and quiet, and strangely crowned with flowers,\n  Lovely and secret as a child. You came with us,\nCame happily, hand in hand with the young dancing hours,\n  High on the downs at dawn!) Void now and tenebrous,\n\nThe grey sands curve before me. . . .\n      From the inland meadows,\n  Fragrant of June and clover, floats the dark, and fills\nThe hollow sea's dead face with little creeping\nshadows,\n  And the white silence brims the hollow of the hills.\n\nClose in the nest is folded every weary wing,\n  Hushed all the joyful voices; and we, who held you dear,\nEastward we turn and homeward, alone, remembering . . .\n  Day that I loved, day that I loved, the Night is\nhere!",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Day_That_I_Have_Loved",
+      "tags": [
+        "morte",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Dead Men's Love",
+      "texto": "There was a damned successful Poet;\n  There was a Woman like the Sun.\nAnd they were dead. They did not know it.\n  They did not know their time was done.\n    They did not know his hymns\n    Were silence; and her limbs,\n    That had served Love so well,\n    Dust, and a filthy smell.\n\nAnd so one day, as ever of old,\n  Hands out, they hurried, knee to knee;\nOn fire to cling and kiss and hold\n  And, in the other's eyes, to see\n    Each his own tiny face,\n    And in that long embrace\n    Feel lip and breast grow warm\n    To breast and lip and arm.\n\nSo knee to knee they sped again,\n  And laugh to laugh they ran, I'm told,\nAcross the streets of Hell . . .\n            And then\n  They suddenly felt the wind blow cold,\n    And knew, so closely pressed,\n    Chill air on lip and breast,\n    And, with a sick surprise,\n    The emptiness of eyes.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Dead_Men%27s_Love",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Desertion",
+      "texto": "So light we were, so right we were, so fair faith shone,\nAnd the way was laid so certainly, that, when I'd gone,\nWhat dumb thing looked up at you? Was it something heard,\nOr a sudden cry, that meekly and without a word\nYou broke the faith, and strangely, weakly, slipped apart.\nYou gave in—you, the proud of heart, unbowed of heart!\nWas this, friend, the end of all that we could do?\nAnd have you found the best for you, the rest for you?\nDid you learn so suddenly (and I not by!)\nSome whispered story, that stole the glory from the sky,\nAnd ended all the splendid dream, and made you go\nSo dully from the fight we know, the light we know?\n\nO faithless! the faith remains, and I must pass\nGay down the way, and on alone. Under the grass\nYou wait; the breeze moves in the trees, and stirs, and calls,\nAnd covers you with white petals, with light petals.\nThere it shall crumble, frail and fair, under the sun,\nO little heart, your brittle heart; till day be done,\nAnd the shadows gather, falling light, and, white with dew,\nWhisper, and weep; and creep to you. Good sleep to you!",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Desertion",
+      "tags": []
+    },
+    {
+      "titulo": "Dining-Room Tea",
+      "texto": "When you were there, and you, and you,\nHappiness crowned the night; I too,\nLaughing and looking, one of all,\nI watched the quivering lamplight fall\nOn plate and flowers and pouring tea\nAnd cup and cloth; and they and we\nFlung all the dancing moments by\nWith jest and glitter. Lip and eye\nFlashed on the glory, shone and cried,\nImprovident, unmemoried;\nAnd fitfully and like a flame\nThe light of laughter went and came.\nProud in their careless transience moved\nThe changing faces that I loved.\n\nTill suddenly, and otherwhence,\nI looked upon your innocence.\nFor lifted clear and still and strange\nFrom the dark woven flow of change\nUnder a vast and starless sky\nI saw the immortal moment lie.\nOne instant I, an instant, knew\nAs God knows all. And it and you\nI, above Time, oh, blind! could see\nIn witless immortality.\n\nI saw the marble cup; the tea,\nHung on the air, an amber stream;\nI saw the fire's unglittering gleam,\nThe painted flame, the frozen smoke.\nNo more the flooding lamplight broke\nOn flying eyes and lips and hair;\nBut lay, but slept unbroken there,\nOn stiller flesh, and body breathless,\nAnd lips and laughter stayed and deathless,\nAnd words on which no silence grew.\nLight was more alive than you.\n\nFor suddenly, and otherwhence,\nI looked on your magnificence.\nI saw the stillness and the light,\nAnd you, august, immortal, white,\nHoly and strange; and every glint\nPosture and jest and thought and tint\nFreed from the mask of transiency,\nTriumphant in eternity,\nImmote, immortal.\n\n          Dazed at length\nHuman eyes grew, mortal strength\nWearied; and Time began to creep.\nChange closed about me like a sleep.\nLight glinted on the eyes I loved.\nThe cup was filled. The bodies moved.\nThe drifting petal came to ground.\nThe laughter chimed its perfect round.\nThe broken syllable was ended.\nAnd I, so certain and so friended,\nHow could I cloud, or how distress,\nThe heaven of your unconsciousness?\nOr shake at Time's sufficient spell,\nStammering of lights unutterable?\nThe eternal holiness of you,\nThe timeless end, you never knew,\nThe peace that lay, the light that shone.\nYou never knew that I had gone\nA million miles away, and stayed\nA million years. The laughter played\nUnbroken round me; and the jest\nFlashed on. And we that knew the best\nDown wonderful hours grew happier yet.\nI sang at heart, and talked, and eat,\nAnd lived from laugh to laugh, I too,\nWhen you were there, and you, and you.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Dining-Room_Tea",
+      "tags": [
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Doubts",
+      "texto": "When she sleeps, her soul, I know,\nGoes a wanderer on the air,\nWings where I may never go,\nLeaves her lying, still and fair,\nWaiting, empty, laid aside,\nLike a dress upon a chair. . . .\nThis I know, and yet I know\nDoubts that will not be denied.\n\nFor if the soul be not in place,\nWhat has laid trouble in her face?\nAnd, sits there nothing ware and wise\nBehind the curtains of her eyes,\nWhat is it, in the self's eclipse,\nShadows, soft and passingly,\nAbout the corners of her lips,\nThe smile that is essential she?\n\nAnd if the spirit be not there,\nWhy is fragrance in the hair?",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Doubts",
+      "tags": []
+    },
+    {
+      "titulo": "Dust",
+      "texto": "When the white flame in us is gone,\n  And we that lost the world's delight\nStiffen in darkness, left alone\n  To crumble in our separate night;\n\nWhen your swift hair is quiet in death,\n  And through the lips corruption thrust\nHas stilled the labour of my breath—\n  When we are dust, when we are dust!—\n\nNot dead, not undesirous yet,\n  Still sentient, still unsatisfied,\nWe'll ride the air, and shine, and flit,\n  Around the places where we died,\n\nAnd dance as dust before the sun,\n  And light of foot, and unconfined,\nHurry from road to road, and run\n  About the errands of the wind.\n\nAnd every mote, on earth or air,\n  Will speed and gleam, down later days,\nAnd like a secret pilgrim fare\n  By eager and invisible ways,\n\nNor ever rest, nor ever lie,\n  Till, beyond thinking, out of view,\nOne mote of all the dust that's I\n  Shall meet one atom that was you.\n\nThen in some garden hushed from wind,\n  Warm in a sunset's afterglow,\nThe lovers in the flowers will find\n  A sweet and strange unquiet grow\n\nUpon the peace; and, past desiring,\n  So high a beauty in the air,\nAnd such a light, and such a quiring,\n  And such a radiant ecstasy there,\n\nThey'll know not if it's fire, or dew,\n  Or out of earth, or in the height,\nSinging, or flame, or scent, or hue,\n  Or two that pass, in light, to light,\n\nOut of the garden, higher, higher. . . .\n  But in that instant they shall learn\nThe shattering ecstasy of our fire,\n  And the weak passionless hearts will burn\n\nAnd faint in that amazing glow,\n  Until the darkness close above;\nAnd they will know—poor fools, they'll know!—\n  One moment, what it is to love.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Dust",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Failure",
+      "texto": "Because God put His adamantine fate\n  Between my sullen heart and its desire,\nI swore that I would burst the Iron Gate,\n  Rise up, and curse Him on His throne of fire.\nEarth shuddered at my crown of blasphemy,\n  But Love was as a flame about my feet;\n  Proud up the Golden Stair I strode; and beat\nThrice on the Gate, and entered with a cry—\n\nAll the great courts were quiet in the sun,\n  And full of vacant echoes: moss had grown\nOver the glassy pavement, and begun\n  To creep within the dusty council-halls.\nAn idle wind blew round an empty throne\n  And stirred the heavy curtains on the walls.",
+      "forma": "soneto",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Failure",
+      "tags": [
+        "amor",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Finding",
+      "texto": "From the candles and dumb shadows,\n  And the house where love had died,\nI stole to the vast moonlight\n  And the whispering life outside.\nBut I found no lips of comfort,\n  No home in the moon's light\n(I, little and lone and frightened\n  In the unfriendly night),\nAnd no meaning in the voices. . . .\n  Far over the lands and through\nThe dark, beyond the ocean,\n  I willed to think of you!\nFor I knew, had you been with me\n  I'd have known the words of night,\nFound peace of heart, gone gladly\n  In comfort of that light.\n\nOh! the wind with soft beguiling\n  Would have stolen my thought away;\nAnd the night, subtly smiling,\n  Came by the silver way;\nAnd the moon came down and danced to me,\n  And her robe was white and flying;\nAnd trees bent their heads to me\n  Mysteriously crying;\nAnd dead voices wept around me;\n  And dead soft fingers thrilled;\nAnd the little gods whispered. . . .\n            But ever\n  Desperately I willed;\nTill all grew soft and far\n  And silent . . .\n            And suddenly\nI found you white and radiant,\n  Sleeping quietly,\nFar out through the tides of darkness.\n  And I there in that great light\nWas alone no more, nor fearful;\n  For there, in the homely night,\nWas no thought else that mattered,\n  And nothing else was true,\nBut the white fire of moonlight,\n  And a white dream of you.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Finding",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Flight",
+      "texto": "Voices out of the shade that cried,\n  And long noon in the hot calm places,\nAnd children's play by the wayside,\n  And country eyes, and quiet faces—\n  All these were round my steady paces.\n\nThose that I could have loved went by me;\n  Cool gardened homes slept in the sun;\nI heard the whisper of water nigh me,\n  Saw hands that beckoned, shone, were gone\n  In the green and gold. And I went on.\n\nFor if my echoing footfall slept,\n  Soon a far whispering there'd be\nOf a little lonely wind that crept\n  From tree to tree, and distantly\n  Followed me, followed me. . . .\n\nBut the blue vaporous end of day\n  Brought peace, and pursuit baffled quite,\nWhere between pine-woods dipped the way.\n  I turned, slipped in and out of sight.\n  I trod as quiet as the night.\n\nThe pine-boles kept perpetual hush;\n  And in the boughs wind never swirled.\nI found a flowering lowly bush,\n  And bowed, slid in, and sighed and curled,\n  Hidden at rest from all the world.\n\nSafe! I was safe, and glad, I knew!\n  Yet—with cold heart and cold wet brows\nI lay. And the dark fell. . . . There grew\n  Meward a sound of shaken boughs;\n  And ceased, above my intricate house;\n\nAnd silence, silence, silence found me. . . .\n  I felt the unfaltering movement creep\nAmong the leaves. They shed around me\n  Calm clouds of scent, that I did weep;\n  And stroked my face. I fell asleep.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Flight",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Hauntings",
+      "texto": "In the grey tumult of these after years\n  Oft silence falls; the incessant wranglers part;\nAnd less-than-echoes of remembered tears\n  Hush all the loud confusion of the heart;\nAnd a shade, through the toss'd ranks of mirth and crying\n  Hungers, and pains, and each dull passionate mood,—\nQuite lost, and all but all forgot, undying,\n  Comes back the ecstasy of your quietude.\n\nSo a poor ghost, beside his misty streams,\nIs haunted by strange doubts, evasive dreams,\n  Hints of a pre-Lethean life, of men,\nStars, rocks, and flesh, things unintelligible,\n  And light on waving grass, he knows not when,\nAnd feet that ran, but where, he cannot tell.\n\nThe Pacific, 1914",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Hauntings",
+      "tags": []
+    },
+    {
+      "titulo": "He Wonders Whether to Praise or to Blame Her",
+      "texto": "I have peace to weigh your worth, now all is over,\n  But if to praise or blame you, cannot say.\nFor, who decries the loved, decries the lover;\n  Yet what man lauds the thing he's thrown away?\n\nBe you, in truth, this dull, slight, cloudy naught,\n  The more fool I, so great a fool to adore;\nBut if you're that high goddess once I thought,\n  The more your godhead is, I lose the more.\nDear fool, pity the fool who thought you clever!\n  Dear wisdom, do not mock the fool that missed you!\nMost fair,—the blind has lost your face for ever!\n  Most foul,—how could I see you while I kissed you?\n\nSo . . . the poor love of fools and blind I've proved you,\nFor, foul or lovely, 'twas a fool that loved you.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/He_Wonders_Whether_to_Praise_or_to_Blame_Her",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Heaven",
+      "texto": "Fish (fly-replete, in depth of June,\nDawdling away their wat'ry noon)\nPonder deep wisdom, dark or clear,\nEach secret fishy hope or fear.\nFish say, they have their Stream and Pond;\nBut is there anything Beyond?\nThis life cannot be All, they swear,\nFor how unpleasant, if it were!\nOne may not doubt that, somehow, Good\nShall come of Water and of Mud;\nAnd, sure, the reverent eye must see\nA Purpose in Liquidity.\nWe darkly know, by Faith we cry,\nThe future is not Wholly Dry.\nMud unto mud!—Death eddies near—\nNot here the appointed End, not here!\nBut somewhere, beyond Space and Time.\nIs wetter water, slimier slime!\nAnd there (they trust) there swimmeth One\nWho swam ere rivers were begun,\nImmense, of fishy form and mind,\nSquamous, omnipotent, and kind;\nAnd under that Almighty Fin,\nThe littlest fish may enter in.\nOh! never fly conceals a hook,\nFish say, in the Eternal Brook,\nBut more than mundane weeds are there,\nAnd mud, celestially fair;\nFat caterpillars drift around,\nAnd Paradisal grubs are found;\nUnfading moths, immortal flies,\nAnd the worm that never dies.\nAnd in that Heaven of all their wish,\nThere shall be no more land, say fish.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Heaven",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Home",
+      "texto": "I came back late and tired last night\n  Into my little room,\nTo the long chair and the firelight\n  And comfortable gloom.\n\nBut as I entered softly in\n  I saw a woman there,\nThe line of neck and cheek and chin,\n  The darkness of her hair,\nThe form of one I did not know\n  Sitting in my chair.\n\nI stood a moment fierce and still,\n  Watching her neck and hair.\nI made a step to her; and saw\n  That there was no one there.\n\nIt was some trick of the firelight\n  That made me see her there.\nIt was a chance of shade and light\n  And the cushion in the chair.\n\nOh, all you happy over the earth,\n  That night, how could I sleep?\nI lay and watched the lonely gloom;\n  And watched the moonlight creep\nFrom wall to basin, round the room,\n  All night I could not sleep.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Home",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "In Examination",
+      "texto": "Lo! from quiet skies\nIn through the window my Lord the Sun!\nAnd my eyes\nWere dazzled and drunk with the misty gold,\nThe golden glory that drowned and crowned me\nEddied and swayed through the room . . .\n            Around me,\nTo left and to right,\nHunched figures and old,\nDull blear-eyed scribbling fools, grew fair,\nRinged round and haloed with holy light.\nFlame lit on their hair,\nAnd their burning eyes grew young and wise,\nEach as a God, or King of kings,\nWhite-robed and bright\n(Still scribbling all);\nAnd a full tumultuous murmur of wings\nGrew through the hall;\nAnd I knew the white undying Fire,\nAnd, through open portals,\nGyre on gyre,\nArchangels and angels, adoring, bowing,\nAnd a Face unshaded . . .\nTill the light faded;\nAnd they were but fools again, fools unknowing,\nStill scribbling, blear-eyed and stolid immortals.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/In_Examination",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Jealousy",
+      "texto": "When I see you, who were so wise and cool,\nGazing with silly sickness on that fool\nYou've given your love to, your adoring hands\nTouch his so intimately that each understands,\nI know, most hidden things; and when I know\nYour holiest dreams yield to the stupid bow\nOf his red lips, and that the empty grace\nOf those strong legs and arms, that rosy face,\nHas beaten your heart to such a flame of love,\nThat you have given him every touch and move,\nWrinkle and secret of you, all your life,\n—Oh! then I know I'm waiting, lover-wife,\nFor the great time when love is at a close,\nAnd all its fruit's to watch the thickening nose\nAnd sweaty neck and dulling face and eye,\nThat are yours, and you, most surely, till you die!\nDay after day you'll sit with him and note\nThe greasier tie, the dingy wrinkling coat;\nAs prettiness turns to pomp, and strength to fat,\nAnd love, love, love to habit!\n\n            And after that,\nWhen all that's fine in man is at an end,\nAnd you, that loved young life and clean, must tend\nA foul sick fumbling dribbling body and old,\nWhen his rare lips hang flabby and can't hold\nSlobber, and you're enduring that worst thing,\nSenility 's queasy furtive love-making,\nAnd searching those dear eyes for human meaning,\nPropping the bald and helpless head, and cleaning\nA scrap that life's flung by, and love's forgotten,—\nThen you'll be tired; and passion dead and rotten;\nAnd he'll be dirty, dirty!\n            O lithe and free\nAnd lightfoot, that the poor heart cries to see,\nThat's how I'll see your man and you!—\n            But you\n—Oh, when that time comes, you'll be dirty too!",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Jealousy",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Kindliness",
+      "texto": "When love has changed to kindliness—\nOh, love, our hungry lips, that press\nSo tight that Time's an old god's dream\nNodding in heaven, and whisper stuff\nSeven million years were not enough\nTo think on after, make it seem\nLess than the breath of children playing,\nA blasphemy scarce worth the saying,\nA sorry jest, \"When love has grown\nTo kindliness—to kindliness!\" . . .\nAnd yet—the best that either's known\nWill change, and wither, and be less,\nAt last, than comfort, or its own\nRemembrance. And when some caress\nTendered in habit (once a flame\nAll heaven sang out to) wakes the shame\nUnworded, in the steady eyes\nWe'll have,—that day, what shall we do?\nBeing so noble, kill the two\nWho've reached their second-best? Being wise,\nBreak cleanly off, and get away.\nFollow down other windier skies\nNew lures, alone? Or shall we stay,\nSince this is all we've known, content\nIn the lean twilight of such day,\nAnd not remember, not lament?\nThat time when all is over, and\nHand never flinches, brushing hand;\nAnd blood lies quiet, for all you're near;\nAnd it's but spoken words we hear,\nWhere trumpets sang; when the mere skies\nAre stranger and nobler than your eyes;\nAnd flesh is flesh, was flame before;\nAnd infinite hungers leap no more\nIn the chance swaying of your dress;\nAnd love has changed to kindliness.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Kindliness",
+      "tags": [
+        "amor",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Libido",
+      "texto": "How should I know? The enormous wheels of will\n  Drove me cold-eyed on tired and sleepless feet.\nNight was void arms and you a phantom still,\n  And day your far light swaying down the street.\nAs never fool for love, I starved for you;\n  My throat was dry and my eyes hot to see.\nYour mouth so lying was most heaven in view,\n  And your remembered smell most agony.\n\nLove wakens love! I felt your hot wrist shiver\n  And suddenly the mad victory I planned\n    Flashed real, in your burning bending head. . . .\nMy conqueror's blood was cool as a deep river\n  In shadow; and my heart beneath your hand\n    Quieter than a dead man on a bed.",
+      "forma": "soneto",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Libido",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Lines Written in the Belief That the Ancient Roman Festival of the Dead Was Called Ambarvalia",
+      "texto": "LINES WRITTEN IN THE BELIEF THAT THE\n ANCIENT ROMAN FESTIVAL OF THE DEAD\n WAS CALLED AMBARVALIA\n\nSwings the way still by hollow and hill,\n  And all the world's a song;\n\"She's far,\" it sings me, \"but fair,\" it rings me,\n  \"Quiet,\" it laughs, \"and strong!\"\n\nOh! spite of the miles and years between us,\n  Spite of your chosen part,\nI do remember; and I go\n  With laughter in my heart.\n\nSo above the little folk that know not,\n  Out of the white hill-town,\nHigh up I clamber; and I remember;\n  And watch the day go down.\n\nGold is my heart, and the world's golden,\n  And one peak tipped with light;\nAnd the air lies still about the hill\n  With the first fear of night;\n\nTill mystery down the soundless valley\n  Thunders, and dark is here;\nAnd the wind blows, and the light goes,\n  And the night is full of fear,\n\nAnd I know, one night, on some far height,\n  In the tongue I never knew,\nI yet shall hear the tidings clear\n  From them that were friends of you.\n\nThey'll call the news from hill to hill,\n  Dark and uncomforted,\nEarth and sky and the winds; and I\n  Shall know that you are dead.\n\nI shall not hear your trentals,\n  Nor eat your arval bread;\nFor the kin of you will surely do\n  Their duty by the dead.\n\nTheir little dull greasy eyes will water;\n  They'll paw you, and gulp afresh.\nThey'll sniffle and weep, and their thoughts will\ncreep\n  Like flies on the cold flesh.\n\nThey will put pence on your grey eyes,\n  Bind up your fallen chin,\nAnd lay you straight, the fools that loved you\n  Because they were your kin.\n\nThey will praise all the bad about you,\n  And hush the good away,\nAnd wonder how they'll do without you,\n  And then they'll go away.\n\nBut quieter than one sleeping,\n  And stranger than of old,\nYou will not stir for weeping,\n  You will not mind the cold;\n\nBut through the night the lips will laugh not,\n  The hands will be in place,\nAnd at length the hair be lying still\n  About the quiet face.\n\nWith snuffle and sniff and handkerchief,\n  And dim and decorous mirth,\nWith ham and sherry, they'll meet to bury\n  The lordliest lass of earth.\n\nThe little dead hearts will tramp ungrieving\n  Behind lone-riding you,\nThe heart so high, the heart so living,\n  Heart that they never knew.\n\nI shall not hear your trentals,\n  Nor eat your arval bread,\nNor with smug breath tell lies of death\n  To the unanswering dead.\n\nWith snuffle and sniff and handkerchief,\n  The folk who loved you not\nWill bury you, and go wondering\n  Back home. And you will rot.\n\nBut laughing and half-way up to heaven,\n  With wind and hill and star,\nI yet shall keep, before I sleep,\n  Your Ambarvalia.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Lines_Written_in_the_Belief_That_the_Ancient_Roman_Festival_of_the_Dead_Was_Called_Ambarvalia",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Love",
+      "texto": "Love is a breach in the walls, a broken gate,\n  Where that comes in that shall not go again;\nLove sells the proud heart's citadel to Fate.\n  They have known shame, who love unloved. Even then,\nWhen two mouths, thirsty each for each, find slaking,\n  And agony's forgot, and hushed the crying\nOf credulous hearts, in heaven—such are but taking\n  Their own poor dreams within their arms, and lying\nEach in his lonely night, each with a ghost.\n  Some share that night. But they know love grows\ncolder,\nGrows false and dull, that was sweet lies at most.\n  Astonishment is no more in hand or shoulder,\nBut darkens, and dies out from kiss to kiss.\nAll this is love; and all love is but this.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Love",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Mary and Gabriel",
+      "texto": "Young Mary, loitering once her garden way,\nFelt a warm splendour grow in the April day,\nAs wine that blushes water through. And soon,\nOut of the gold air of the afternoon,\nOne knelt before her: hair he had, or fire,\nBound back above his ears with golden wire,\nBaring the eager marble of his face.\nNot man's nor woman's was the immortal grace\nRounding the limbs beneath that robe of white,\nAnd lighting the proud eyes with changeless light,\nIncurious. Calm as his wings, and fair,\nThat presence filled the garden.\n            She stood there,\nSaying, \"What would you, Sir?\"\n            He told his word,\n\"Blessed art thou of women!\" Half she heard,\nHands folded and face bowed, half long had known,\nThe message of that clear and holy tone,\nThat fluttered hot sweet sobs about her heart;\nSuch serene tidings moved such human smart.\nHer breath came quick as little flakes of snow.\nHer hands crept up her breast. She did but know\nIt was not hers. She felt a trembling stir\nWithin her body, a will too strong for her\nThat held and filled and mastered all. With eyes\nClosed, and a thousand soft short broken sighs,\nShe gave submission; fearful, meek, and glad. . . .\n\n  She wished to speak. Under her breasts she had\nSuch multitudinous burnings, to and fro,\nAnd throbs not understood; she did not know\nIf they were hurt or joy for her; but only\nThat she was grown strange to herself, half lonely,\nAll wonderful, filled full of pains to come\nAnd thoughts she dare not think, swift thoughts and dumb,\nHuman, and quaint, her own, yet very far,\nDivine, dear, terrible, familiar . . .\nHer heart was faint for telling; to relate\nHer limbs' sweet treachery, her strange high estate,\nOver and over, whispering, half revealing,\nWeeping; and so find kindness to her healing.\n'Twixt tears and laughter, panic hurrying her,\nShe raised her eyes to that fair messenger.\nHe knelt unmoved, immortal; with his eyes\nGazing beyond her, calm to the calm skies;\nRadiant, untroubled in his wisdom, kind.\nHis sheaf of lilies stirred not in the wind.\nHow should she, pitiful with mortality,\nTry the wide peace of that felicity\nWith ripples of her perplexed shaken heart,\nAnd hints of human ecstasy, human smart,\nAnd whispers of the lonely weight she bore,\nAnd how her womb within was hers no more\nAnd at length hers?\n          Being tired, she bowed her head;\nAnd said, \"So be it!\"\n          The great wings were spread\nShowering glory on the fields, and fire.\nThe whole air, singing, bore him up, and higher,\nUnswerving, unreluctant. Soon he shone\nA gold speck in the gold skies; then was gone.\n\nThe air was colder, and grey. She stood alone.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Mary_and_Gabriel",
+      "tags": []
+    },
+    {
+      "titulo": "Memoir",
+      "texto": "Part I\n\nPart II\n\nPart III\n\nPart IV\n\nPart V\n\nPart VI\n\nPart VII\n\nPart VIII",
+      "forma": "outro",
+      "obra": "The Collected Poems of Rupert Brooke: With a Memoir",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_Poems_of_Rupert_Brooke%3A_With_a_Memoir/Memoir",
+      "tags": []
+    },
+    {
+      "titulo": "Menelaus and Helen",
+      "texto": "I\n\nHot through Troy's ruin Menelaus broke\n  To Priam's palace, sword in hand, to sate\n  On that adulterous whore a ten years' hate\nAnd a king's honour. Through red death, and smoke,\nAnd cries, and then by quieter ways he strode,\n  Till the still innermost chamber fronted him.\n  He swung his sword, and crashed into the dim\nLuxurious bower, flaming like a god.\n\nHigh sat white Helen, lonely and serene.\n  He had not remembered that she was so fair,\nAnd that her neck curved down in such a way;\nAnd he felt tired. He flung the sword away,\n  And kissed her feet, and knelt before her there,\nThe perfect Knight before the perfect Queen.\n\nII\n\nSo far the poet. How should he behold\n  That journey home, the long connubial years?\n  He does not tell you how white Helen bears\nChild on legitimate child, becomes a scold,\nHaggard with virtue. Menelaus bold\n  Waxed garrulous, and sacked a hundred Troys\n  'Twixt noon and supper. And her golden voice\nGot shrill as he grew deafer. And both were old.\n\nOften he wonders why on earth he went\n  Troyward, or why poor Paris ever came.\nOft she weeps, gummy-eyed and impotent;\n  Her dry shanks twitch at Paris' mumbled name.\nSo Menelaus nagged; and Helen cried;\nAnd Paris slept on by Scamander side.",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Menelaus_and_Helen",
+      "tags": [
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Mummia",
+      "texto": "As those of old drank mummia\n  To fire their limbs of lead,\nMaking dead kings from Africa\n  Stand pandar to their bed;\n\nDrunk on the dead, and medicined\n  With spiced imperial dust,\nIn a short night they reeled to find\n  Ten centuries of lust.\n\nSo I, from paint, stone, tale, and rhyme,\n  Stuffed love's infinity,\nAnd sucked all lovers of all time\n  To rarify ecstasy.\n\nHelen's the hair shuts out from me\n  Verona's livid skies;\nGypsy the lips I press; and see\n  Two Antonys in your eyes.\n\nThe unheard invisible lovely dead\n  Lie with us in this place,\nAnd ghostly hands above my head\n  Close face to straining face;\n\nTheir blood is wine along our limbs;\n  Their whispering voices wreathe\nSavage forgotten drowsy hymns\n  Under the names we breathe;\n\nWoven from their tomb, and one with it,\n  The night wherein we press;\nTheir thousand pitchy pyres have lit\n  Your flaming nakedness.\n\nFor the uttermost years have cried and clung\n  To kiss your mouth to mine;\nAnd hair long dust was caught, was flung,\n  Hand shaken to hand divine,\n\nAnd Life has fired, and Death not shaded,\n  All Time's uncounted bliss,\nAnd the height o' the world has flamed and faded,\n  Love, that our love be this!",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Mummia",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Mutability",
+      "texto": "They say there's a high windless world and strange,\n  Out of the wash of days and temporal tide,\n  Where Faith and Good, Wisdom and Truth abide,\nÆterna corpora, subject to no change.\nThere the sure suns of these pale shadows move;\n  There stand the immortal ensigns of our war;\n  Our melting flesh fixed Beauty there, a star,\nAnd perishing hearts, imperishable Love. . . .\n\nDear, we know only that we sigh, kiss, smile;\n  Each kiss lasts but the kissing; and grief goes over;\n  Love has no habitation but the heart.\nPoor straws! on the dark flood we catch awhile,\n  Cling, and are borne into the night apart.\n  The laugh dies with the lips, 'Love' with the lover.\n\nSouth Kensington—Makaweli, 1913",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/Mutability",
+      "tags": [
+        "amor",
+        "guerra",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "On the Death of Smet-Smet",
+      "texto": "ON THE DEATH OF SMET-SMET, THE HIPPOPOTAMUS-GODDESS\n\nSONG OF A TRIBE OF THE ANCIENT EGYPTIANS\n\n(The Priests within the Temple)\n\nShe was wrinkled and huge and hideous? She was our Mother.\nShe was lustful and lewd?—but a God; we had none other.\nIn the day She was hidden and dumb, but at nightfall moaned in the shade;\nWe shuddered and gave Her Her will in the darkness; we were afraid.\n\n{The People without)\n\n        She sent us pain,\n          And we bowed before Her;\n        She smiled again\n          And bade us adore Her.\n        She solaced our woe\n          And soothed our sighing;\n        And what shall we do\n          Now God is dying?\n\n(The Priests within)\n\nShe was hungry and ate our children;—how should we stay Her?\nShe took our young men and our maidens;—ours to obey Her.\nWe were loathèd and mocked and reviled of all nations; that was our pride.\nShe fed us, protected us, loved us, and killed us; now She has died.\n\n(The People without)\n\n        She was so strong;\n          But death is stronger.\n        She ruled us long;\n          But Time is longer.\n        She solaced our woe\n          And soothed our sighing;\n        And what shall we do\n          Now God is dying?",
+      "forma": "outro",
+      "obra": "The Collected poems of Rupert Brooke",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Collected_poems_of_Rupert_Brooke/On_the_Death_of_Smet-Smet",
+      "tags": [
+        "morte",
+        "deus"
+      ]
+    }
+  ]
+}

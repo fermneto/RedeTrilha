@@ -1,0 +1,306 @@
+{
+  "username": "anna_de_noailles",
+  "name": "Anna de Noailles",
+  "bio": "Poetisa francesa, nascida em Paris. Le Cœur innombrable (1901) é o livro mais citado.",
+  "avatar_url": "",
+  "nascimento": 1876,
+  "morte": 1933,
+  "escolas": [],
+  "pais": "FR",
+  "poemas": [
+    {
+      "titulo": "01",
+      "texto": "Celui qui met un frein à la fureur des flots\nSait aussi des méchants arrêter les complots…",
+      "forma": "outro",
+      "obra": "Le Livre de ma vie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Livre_de_ma_vie/01",
+      "tags": []
+    },
+    {
+      "titulo": "2",
+      "texto": "Laissons le lit et le sommeil\n﻿Cette journée,\nPour nous l’aurore au front vermeil\n﻿Est déjà née.\n\nLorsque le jour est le plus gai\nEn ce gracieux mois de mai,\n﻿Aimons, mignonne,\n\nContentons notre ardent désir,\nEn ce monde n’a de plaisir\n﻿Qui ne s’en donne…",
+      "forma": "outro",
+      "obra": "De la rive d’Europe à la rive d’Asie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/De_la_rive_d%E2%80%99Europe_%C3%A0_la_rive_d%E2%80%99Asie/2",
+      "tags": []
+    },
+    {
+      "titulo": "03",
+      "texto": "… Éteins-toi, cœur jeune et plein de flamme,\nLaisse régner l’esprit que longtemps tu troublas,\nTes amours désormais, tes maîtresses, hélas,\nC’est l’Allemagne, c’est la Flandre, c’est l’Espagne !",
+      "forma": "outro",
+      "obra": "La Domination",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/La_Domination/03",
+      "tags": []
+    },
+    {
+      "titulo": "04",
+      "texto": "Elle était pâle et pourtant rose,\nPetite avec de longs cheveux…",
+      "forma": "outro",
+      "obra": "Le Livre de ma vie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Livre_de_ma_vie/04",
+      "tags": []
+    },
+    {
+      "titulo": "05",
+      "texto": "﻿Avec le pain qu’il faut aux hommes\n﻿Le baiser qu’il faut aux enfants,",
+      "forma": "outro",
+      "obra": "Le Livre de ma vie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Livre_de_ma_vie/05",
+      "tags": []
+    },
+    {
+      "titulo": "07",
+      "texto": "À saint-Blaise, à la Zuecca,\nDans les prés fleuris cueillir la verveine…",
+      "forma": "outro",
+      "obra": "La Domination",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/La_Domination/07",
+      "tags": []
+    },
+    {
+      "titulo": "09",
+      "texto": "Sur le Guadalquivir, en sortant de Séville,\nQuand l’œil à l’horizon se tourne avec regret,\nLes dômes, les clochers, font comme une forêt ;\nÀ chaque tour de roue, il surgit une aiguille.\n\nD’abord la Giralda, dont l’ange d’or scintille,\nRose dans le ciel bleu, darde son minaret ;\nLa cathédrale énorme à son tour apparaît\nPar-dessus les maisons, qui vont à sa cheville.\n\nDe près, l’on n’aperçoit que des fragments d’arceaux :\nUn pignon biscornu, l’angle d’un mur maussade\nCache la flèche ouvrés et la riche façade.\n\nGrands hommes, obstrués et masqués par les sots,\nComme les hautes tours sur les toits de la ville,\nDe loin vos fronts grandis montent dans l’air tranquille !\n\nMais il te reste, ô Grec ! ton ciel bleu, ta mer bleue,\nTes grands aigles qui font d’un coup d’aile une lieue,\nTon soleil toujours pur dans toutes les saisons,\nLa sereine beauté des tièdes horizons,\nTa langue harmonieuse, ineffable, amollie,\nQue le temps a mêlée aux langues d’Italie\nComme aux flots de Baïa la vague de Samos ;\nLangue d’Homère où Dante a jeté quelques mots !\nIl te reste, trésor du grand homme candide,\nTon long fusil sculpté, ton yatagan splendide,\nTes larges caleçons de toile, tes caftans\nDe velours rouge et d’or, aux coudes éclatants !…",
+      "forma": "outro",
+      "obra": "Le Livre de ma vie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Livre_de_ma_vie/09",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "12",
+      "texto": "Le bâtiment vient de Majorque,\nDe Majorgue vient le bâtiment…\n\nEnfants, cueillez tour à tour\nDes jours de folie et des nuits d’amour…",
+      "forma": "outro",
+      "obra": "Le Livre de ma vie",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Livre_de_ma_vie/12",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "À la Nuit",
+      "texto": "Nuits où meurent l’azur, les bruits et les contours,\nOù les vives clartés s’éteignent une à une,\nÔ nuit, urne profonde où les cendres du jour\nDescendent mollement et dansent à la lune.\n\nJardin d’épais ombrage, abri des corps déments,\nGrand cœur en qui tout rêve et tout désir pénètre\nPour le repos charnel ou l’assouvissement,\nNuit pleine des sommeils et des fautes de l’être.\n\nNuit propice aux plaisirs, à l’oubli, tour à tour,\nOù dans le calme obscur l’âme s’ouvre et tressaille\nComme une fleur à qui le vent porte l’amour,\nOu bien s’abat ainsi qu’un chevreau dans la paille.\n\nNuit penchée au-dessus des villes et des eaux,\nToi qui regardes l’homme avec tes yeux d’étoiles,\nVois mon cœur bondissant ivre comme un bateau,\nDont le vent rompt le mât et fait claquer la toile.\n\nRegarde, nuit dont l’œil argente les cailloux,\nCe cœur phosphorescent dont la vive brûlure\nÉclairerait ainsi que les yeux des hiboux\nL’heure sans clair de lune où l’ombre n’est pas sûre.\n\nVois mon cœur plus rompu, plus lourd et plus amer\nQue le rude filet que les pêcheurs nocturnes\nLèvent, plein de poissons, d’algues et d’eau de mer\nDans la brume mouillée agile et taciturne.\n\nÀ ce cœur si rompu, si amer et si lourd,\nAccorde le dormir sans songes et sans peines,\nSauve-le du regret, de l’orgueil, de l’amour,\nÔ pitoyable nuit, mort brève, nuit humaine !…",
+      "forma": "outro",
+      "obra": "Le Cœur innombrable",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_C%C5%93ur_innombrable/%C3%80_la_Nuit",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "A Palerme, au jardin Tasca…",
+      "texto": "J’ai connu la beauté plénière,\nLe pacifique et noble éclat\nDe la vaste et pure lumière,\n\nJe me souviens du matin calme\nOù j’entrais, fendant la chaleur,\nDans ce paradis sous les palmes\nOù l’ombre est faite par des fleurs.\n\nL’heure ne marquait pas sa course\nSur le lisse cadran des cieux,\nOù le lourd soleil spacieux\nFait bouillonner ses blanches sources.\n\nJ’avançais dans ces beaux jardins\nDont l’opulence nonchalante\nSemble descendre avec dédain\nSur les passantes indolentes.\n\nL’ardeur des arbres à parfums\nFlamboyait, dense et clandestine ;\nJe cherchais parmi les collines\nNaxos, au nom doux et défunt.\n\nComme des ruches dans les plaines,\nDes entassements de citrons\nSous les arbres sombres et ronds\nFormaient des tours de porcelaine.\n\nLes parfums suaves, amers,\nDe ces citronniers aux fleurs blanches\nFlottaient sur les vivaces branches\nComme la fraîcheur sur la mer.\n\nCreusant la terre purpurine,\nD’alertes ruisseaux ombragés\nSemblaient les pieds aux bonds légers\nDe jeunes filles sarrasines !\n\nJe me taisais, j’étais sans vœux,\nSans mémoire et sans espérance ;\n\nJe languissais dans l’abondance.\n﻿Ô pays secrets et fameux,\n\nJ’ai vu vos grâces accomplies,\nVos blancs torrents, vos temples roux,\nVos flots glissants vers l’Ionie,\nMais mon but n’était pas en vous ;\n\nVos nuits flambantes et précises,\nVos maisons qu’un pliant rideau\nLivre au chaud caprice des brises ;\nLes pas sonores des chevreaux\nSur les pavés près des églises ;\n\nVos monuments tumultueux,\nBeaux comme des tiares de pierre,\nLes hauts cyprès des cimetières,\nEt le soir, la calme lumière\nSur les tombeaux voluptueux,\n\nLes quais crayeux, où les boutiques,\nRegorgeant de fruits noirs et secs,\nAffichent la noblesse antique\nDu splendide alphabet des Grecs ;\n\nL’étincelante ardeur du sol,\nOù passent, riches caravanes,\n\nDes mules vêtues en sultanes\nTrottant sous de blancs parasols,\n\nToutes ces beautés étrangères\nQue le cœur obtient sans effort,\nN’ont que des promesses de mort\nPour une âme intrépide et fière,\n\nEt j’ai su par ces chauds loisirs,\nPar ce goût des saveurs réelles,\nQu’on était, parmi vos plaisirs,\nPlus loin des choses éternelles\nQu’on ne l’était par le désir !…",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/A_Palerme%2C_au_jardin_Tasca%E2%80%A6",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "À Rudyard Kipling",
+      "texto": "Qu’il est beau, cet instant obscur et fortuné\nOù, dans l’humilité et le silence, est né\nUn de ces cœurs puissants, nouveaux et nécessaires,\nQui dilatent le globe au moment qu’ils l’enserrent,\nEt donnent aux humains la joie imaginaire\n﻿Et le bonheur d’être étonnés !\n\nMieux que le feu des Grecs sur la montagne antique,\nAnnonçant les hauts faits entre l’herbe et les cieux,\nL’enfant universel et cependant unique\nEst un brûlant sommet par qui tout communique,\n﻿Et le monde entre dans ses yeux.\n\nTout est dans le poète ; il s’ajoute lui-même\nAux siècles, aux trésors, aux nations, aux lois.\nL’univers languissant refleurit dès qu’il aime.\nIl est fort en son cœur, et pourtant il essaime,\n﻿Étant lui seul autour de soi !\n\nIl a tant absorbé et contenu l’espace\nQue, dans sa marche ferme et sa simplicité,\nIl transporte le monde alors qu’il se déplace.\nOn voit sur lui des flots, des astres, des cités,\nOn entend quand il songe, on entend quand il passe,\n﻿Se détendre l’immensité.\n\n— Le voici donc, pareil à sa forte Angleterre,\nÀ l’île de vigueur debout sur l’eau d’argent,\nCelui qui, d’un élan natif et volontaire,\nJoint au Nord obstiné l’Orient des mystères,\n﻿À la fois actif et songeant.\n\nSi noble que l’idée ait rendu son visage,\nLe ténébreux instinct parfois l’ensevelit,\nIl est tout recouvert de brillants paysages,\nIl ressemble au destin, il ressemble au voyage,\n﻿Et les parcours sont abolis.\n\nIl est baigné d’embruns, et pourtant il embaume,\nSa force est d’azur froid, mais les profonds étés\nL’ont saturé d’un rêve où glissent des fantômes,\nTelle l’Inde où l’on voit cheminer, dans l’arome,\n﻿Des peuples aux pas veloutés.\n\n— Comme un mol éventail de palmes qui s’inclinent,\nOn sent autour de lui frémir avec amour\nLe cortège enivrant des contes des Collines,\nOù, dans un bruit lointain de tambour vague et sourd,\nPassent des corps ambrés, en blanches mousselines,\nDes garçons aux yeux clairs, des filles cristallines,\nLes balles de polo heurtant la paix du jour,\n﻿Les gais poneys et le vautour !\n\nÔ somptuosité des palais de Lahore,\nGravité de l’Égypte, œil déçu des Bouddhas,\nBruit des lotus s’ouvrant dans la Chine, à l’aurore,\nEt la maison anglaise où tout humain s’honore,\n﻿Paisible entre ses vérandas.\n\n— Poète, créateur, saisons, forêts, navires,\nPar lui l’animal rêve et la cime respire,\nL’espace, entre son cœur et celui de Shakspeare,\n﻿Penche comme entre deux aimants.\n\n— Que loué soit aussi le héros dont les ailes\nSont deux drapeaux penchés sur des corps endormis,\nLui qui, ressuscitant les stoïques amis,\nSur les soldats de France et d’Angleterre a mis\n﻿Des épitaphes immortelles !\n\nFascinés par la franche et sublime lueur,\nQuel nom donnerons-nous à l’homme qu’on contemple\nAvec ce long silence attentif et songeur ?\nQuel terme est assez fier, quels mots sont assez amples ?\nQu’il soit nommé le Feu, l’Énergie et l’Exemple,\n﻿Qu’il soit nommé Consolateur !\n\nConsolateur puissant pour les jours sans courage,\nConsolateur secret pour les cœurs moins hardis,\nMain d’airain qui, puisant dans le tombeau des âges,\nA ramené soudain sur l’antique rivage\n﻿Un terrestre et frais paradis !\n\nVeuille l’humanité, dans sa plainte infinie,\nConsidérer parfois cet honneur sans pareil\nD’être, par ses enfants, divine et rajeunie.\nQu’elle efface les pleurs de sa face ternie,\nPuisque, lorsque l’azur a de muets soleils,\n﻿La sombre terre a le génie !",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/%C3%80_Rudyard_Kipling",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "À soi-même",
+      "texto": "Mon cœur, plein de douceur et plein d’étonnement,\nCessez de vous mêler à la foule des hommes,\nLeurs cris passent vos sens et votre entendement ;\nDemeurons l’être simple et tendre que nous sommes…\n\nCraignez les jeux cruels qu’on mène en leurs maisons,\nIls vous détourneraient de la sainte nature,\nDe l’odeur des jardins et du goût des saisons :\nAimez ce qui renaît, ce qui chante et qui dure.\n\nVivez sans rechercher leur amère union.\nRespirez au milieu des plantes et des bêtes,\nCe sont de fraternels et sages compagnons,\nInnocents, sérieux et doux comme vous êtes.\n\nDevant la nuit tranquille et la bonté du jour\nCes hommes ont le cœur plein de crainte et de haine,\nEt vous êtes enclin aux œuvres de l’amour\nQui répand sa rosée et ne sait pas sa peine.\n\n— Voyez comme leur bruit et leurs emportements\nAccablent le matin limpide et font injure\nÀ la raison, ainsi qu’au juste sentiment\nQui veut que l’on choisisse et goûte avec mesure\n\nBondissant sous le joug de leur pesante humeur\nIls sont bandés de peur, de colère et d’envie…\nEt pourtant le jour naît, suit son destin et meurt,\n— Ils ne changeront rien à l’ordre de la vie.\n\nMon cœur, entendez-vous cet oiseau buissonnier.\nTout, en dehors de l’air étincelant, est sombre,\nVoici l’été touffu, voyez ce marronnier,\nNous allons tous les deux nous vêtir de son ombre…",
+      "forma": "outro",
+      "obra": "Le Cœur innombrable",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_C%C5%93ur_innombrable/%C3%80_soi-m%C3%AAme",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Agrigente",
+      "texto": "Le ciel est chaud, le vent est mou ;\nQuel silence dans Agrigente !\nUn temple roux, sur un sol roux\nMet son reflet comme une tente…\n\nLes oiseaux chantent dans les airs ;\nLe soleil ravage la plaine ;\nJe vois, au bout de ce désert,\nL’indolente mer africaine.\n\nBrusquement un cri triste et fort\nPerce l’air intact et sans vie ;\n\nLa voix qui dit que Pan est mort\nM’a-t-elle jusqu’ici suivie ?\n\nEt puis l’air retombe ; la mer\nFrappe la rive comme un socle ;\nTout dort. Un fanal rouge et vert\nS’allume au vieux port Empédocle.\n\nL’ombre vient, par calmes remous ;\nDans l’éther pur et pathétique\nLes astres installent d’un coup\nLeur brasillante arithmétique !\n\n﻿Soudain, sous mon balcon branlant,\nJ’entends des moissonneurs, des filles\nDéfricher un champ de blé blanc,\nQui gicle au contact des faucilles ;\n\nEt leur fièvre, leur sèche ardeur,\nLeur clameur nocturne et païenne\nImitent, dans l’air plein d’odeurs,\nLe cri des nuits éleusiennes !\n\nUn pâtre, sur un lourd mulet,\nMonte la côte tortueuse ;\nSa chanson lascive accolait\nLa noble nuit silencieuse ;\n\nDans les lis, lourds de pollen brun,\nLe bêlement mélancolique\n\nD’une chèvre, ivre de parfums,\nSemble une flûte bucolique.\n\n﻿Donc, je vous vois, cité des dieux.\nLampe d’argile consumée,\nAgrigente au nom spacieux,\nVous que Pindare a tant aimée !\n\nPorteuse d’un songe éternel,\nÔ compagne de Pythagore !\nC’est vous cette ruche sans miel,\nCette éparse et gisante amphore !\n\nC’est vous ces enclos d’amandiers,\nCe sol dur que les bœufs gravissent,\nCe désert de sèches mélisses,\nOù mon âme vient mendier.\n\nAh ! quelle indigente agonie !\nEt l’on comprendrait mon émoi,\nSi l’on savait ce qu’est pour moi\nUn peu de l’Hellade infinie :\n\nCar, sur ce rivage humble et long,\nDans ce calme et morne désastre,\nLe vent des flûtes d’Apollon\nPasse entre mon cœur et les astres !\n\n﻿﻿﻿﻿﻿",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Agrigente",
+      "tags": [
+        "morte",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Ainsi les jours s’en vont…",
+      "texto": "Ainsi les jours s’en vont, rapides et sans but,\nNous les appelons doux quand ils sont monotones,\nEt l’âme, habituée à combattre, s’étonne\nDe ne plus espérer et de ne souffrir plus.\n\nQu’est-ce donc que l’on veut, qu’on espère et prépare,\nQue souhaitons-nous donc, quand, l’esprit le plus dispos\nQu’un bleu matin qui luit dans le vitrail des gares,\nNous sommes harassés de calme et de repos ?\n\nLes délices, la paix ne sont pas suffisantes,\nUn courageux élan veut aller jusqu’aux pleurs.\nLa passion convie à des fêtes sanglantes :\nTout est déception qui n’est pas la douleur !\n\nSouffrir, c’est tout l’espoir, toute la diligence\nQue nous mettons à fuir le paisible présent,\nLorsque ignorants du but et tentés par la chance\nNous rêvons au départ, brutal et complaisant.\n\nJe le sais et je songe à mes brûlants voyages,\nAu sol oriental, crayeux, sombre et vermeil,\nAu campanile aigu, brillant sur le rivage\nComme un blanc diamant lancé vers le soleil !\n\nJe songe au frais palais de Naples, à ses musées\nOù règne un blanc climat, nonchalant, engourdi,\nOù, dans l’albâtre grec, amplement s’arrondit\nLa face de Junon, éclatante et rusée !\n\nJe songe à cette salle illustre, où je voyais\nDes danseuses d’argent, dans leurs gaines de lave,\nFixer sur mon destin, — fortes, riantes, braves, —\nLeurs yeux d’émail, pareils à de sombres œillets.\n\nJe voix le vieil Homère et ses yeux sans prunelle\nOù mon triste regard s’enfonçait pas à pas,\n\nComme ces voiliers qui, sur la mer éternelle,\nSe perdent dans la brume et ne reviennent pas…\n\nJe me souviens de vous, jeune Milésienne,\nBeau torse mutilé qui demeurez debout,\nComme on voit, en été, les gerbes de blé roux\nNoblement se dresser dans l’onde aérienne ;\n\nEt de vous, Amazone à cheval, et pliant\nSous le choc d’une flèche impétueuse et fourbe,\nEt qui semblez mourir d’amour, en suppliant\nLe vague meurtrier qui vous blesse et vous courbe.\n\n﻿Aigle maigre et divin convoitant un enfant,\nJe vous vois, Jupiter, auprès de Ganymède ;\nVotre œil de proie, où brille un amour sans remède,\nMêle un rêve soumis à vos airs triomphants.\n\nJe me souviens de vous, jeune guerrier de marbre,\nAgile Harmodius auprès de votre ami,\nQui figurez, levant vos deux bras à demi,\nL’élan de l’épervier et du vent dans les arbres !\n\nQu’il fut beau le voyage anxieux que je fis\nSur des rives qu’assaille un été frénétique !\nEt je songe, ce soir, avec un cœur surpris,\nÀ ces temps où ma vie, errante et nostalgique,\n\nRessemblait par ses pleurs, ses rêves, ses défis,\nSon ardeur à mourir et ses sursauts lyriques,\nAux groupes des héros dans les musées antiques…\n\n﻿Nous les appelons doux quand ils sont monotones,",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Ainsi_les_jours_s%E2%80%99en_vont%E2%80%A6",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Amitié pour la mort",
+      "texto": "Amitié pour la mort, voyage sans encombre\nVers l’asile indulgent qui garde les fuyards !\nPaisible lâcheté sans reproche, dans l’ombre,\nLoin d’un constant décor d’azur ou de brouillards !\n\nGlissement vers le sol qu’on pressent et qu’on frôle\nPar les tâtonnements du sommeil épié :\nVertige mol et rond dormant sur notre épaule,\nChaîne silencieuse enroulée à nos pieds !\n\n— Je ne reverrai pas les yeux qui m’ont aimée,\nLa gaîté de la chair, le rire de l’esprit !\nMa peine rôde autour de la porte fermée,\nJe sais ce que mon cœur n’a pourtant pas compris !\n\nMais lorsque le doux soir, comme une récompense,\nTermine la journée aride et sans espoir,\nÔ morts qui me semblez la vie et l’abondance,\nJe songe qu’en mourant je saurais vous revoir, —\n\nCar l’esprit peut rêver autrement qu’il ne pense !",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Amiti%C3%A9_pour_la_mort",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Arles",
+      "texto": "Mes souvenirs, ce soir, me séparent de toi ;\nAu-dessus de tes yeux, de ta voix qui me parle,\nDe ce frais horizon d’églises et de toits,\nJ’entends, dans ma mémoire où frémit leur émoi,\n﻿Les hirondelles sur le ciel d’Arles !\n\nLa nuit était torride à l’heure du couchant.\nLes doux cieux languissaient comme une barcarolle ;\nDeux colonnes des Grecs, levant leurs bras touchants,\nSemblaient une Andromaque éplorée, et cherchant\n﻿À fléchir une ombre qui s’envole !\n\nCe qu’un beau soir contient de perfide langueur\nPloyait dans un silence empli de bruits infimes ;\nJe regardais, les mains retombant sur mon cœur,\nBriller ainsi qu’un vase où coule la chaleur,\n﻿Le pâle cloître de Saint-Trophime !\n\nUne brise amollie et peinte de parfums,\nGlissait, silencieuse, au bord gisant du Rhône.\nTout ce que l’on obtient me semblait importun,\nMes pensers, mes désirs, s’éloignaient un à un\n﻿Pour monter vers d’invisibles zones !\n\nÔ soleil, engourdi par les senteurs du thym,\nParfums de poivre et d’huile épandus sur la plaine,\nRochers blancs, éventés, où, dans l’air argentin,\nOn croit voir, se gorgeant des flots du ciel latin,\n﻿Les rapides Victoires d’Athènes !\n\nSoir torturé d’amour et de pesants tourments,\nGrands songes accablés des roseaux d’Aigues-Mortes,\nMusicale torpeur où volent des flamants,\nCouleur du soir divin qui promets et qui ments,\n﻿C’est ta détresse qui me transporte !\n\nAh ! les amants unis, qui dorment oubliés,\nDans les doux Alyscamps bercés du clair de lune,\nConnaissent, sous le vent léger des peupliers,\nLe bonheur de languir, assouvis et liés,\n﻿Dans la même amoureuse infortune ;\n\nMais les corps des vivants, aspirés par l’été,\nSont des sanglots secrets que tout l’azur élance.\nJe songeais sans parler, lointaine à vos côtés ;\nQui jamais avouera l’âpre infidélité\n﻿D’un cœur sensuel, dans le silence !…",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Arles",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Au pays de Rousseau",
+      "texto": "Le lac, plus lent qu’une huile azurée, se repose,\nEt le doux ciel, couleur d’abricot et de rose,\nPenche sur lui sa calme et pensive langueur.\nLes grillons, dans les prés, ont commencé leurs chœurs :\nScintillement sonore, et qui semble un cantique\nVers la première étoile, humble et mélancolique,\nQui fait trembler aux cieux sa liquide lueur…\n\nL’automne épand déjà ses fumeuses odeurs.\n\nUn voilier las, avec ses deux voiles dressées,\nRêve comme un clocher d’église délaissée.\nTouffus et frémissants dans le soir spacieux,\nLes peupliers ont l’air de hauts cyprès joyeux ;\nAu bord des champs où flotte une vapeur d’albâtre\nLes cloches des troupeaux semblent fêter le pâtre.\nTeinté de sombre argent, un cèdre contourné\nA le tumulte obscur d’un nuage enchaîné\nQui roule sur l’éther sa foudre ténébreuse…\nEt l’ombre vient, luisante, épandue, onctueuse.\nLes montagnes sur l’eau pèsent légèrement ;\nTout semble délicat, plein de détachement,\nOn ne sait quelle éparse et vague quiétude\nMédite. Un clair fanal, douce sollicitude,\nÉgoutte dans les flots son rubis scintillant.\n﻿Ô nuits de Lamartine et de Chateaubriand !\nVent dans les peupliers, sources sur les collines,\nTintement des grelots aux coursiers des berlines,\n\nVillages traversés, secrète humidité\nDes vallons où le frais silence est abrité !\nCalme lampe aux carreaux d’une humble hôtellerie,\nBruit pressé des torrents, travaux des bûcherons,\nVieux hêtres abattus dont les écorces font\nFlotter un parfum d’eau et de menuiserie,\nQuoi ! j’avais délaissé vos poignantes douceurs ?\nRetirée en un grave et mystique labeur,\nLe regard détourné, l’âme puissante et rude,\nJe montais vers ma paix et vers ma solitude !\n\n﻿Nature, accordez-moi le plus d’amour humain,\nLe plus de ses clartés, le plus de ses ténèbres,\nEt la grâce d’errer sur les communs chemins,\nLoin de toute grandeur isolée et funèbre ;\n\nAccordez-moi de vivre encor chez les vivants,\nD’entendre les moulins, le bruit de la scierie,\nLe rire des pays égayés par le vent,\nEt de tout recevoir avec un cœur qui prie,\n\nUn cœur toujours empli, toujours communicant,\nQui ne veut que sa part de la tâche des autres,\nEt qui ne rêve pas à l’écart, évoquant\nL’auréole orgueilleuse et triste des apôtres !\n\nQue tout me soit amour, douceur, humanité :\nLa vigne, le village et les feux de septembre,\n\nLes maisons rapprochées de si bonne amitié,\nL’universel labeur dans le secret des chambres ;\n\nEt que je ne sois plus, — au-dessus des abîmes\nOù mon farouche esprit se tenait asservi, —\nComme un aigle blessé en atteignant les cimes,\nQui ne peut redescendre, et qu’on n’a pas suivi !",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Au_pays_de_Rousseau",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Automne",
+      "texto": "Puisque le souvenir du noble été s’endort,\nAutomne, par quel âpre et lumineux effort,\n﻿Déjà toute fanée, abattue et moisie,\nJetez-vous ce brûlant accent de poésie ?\nVotre feuillage est las, meurtri, presque envolé.\nC’est fini, la beauté des vignes et du blé ;\nLe doux corps des étés en vous se décompose ;\nMais vous donnez ce soir une suprême rose.\n\n﻿Ah ! comme l’ample éclat de ce dernier beau jour\nSoudain réveille en moi le plus poignant amour !\nComme l’âme est par vous blessée et parfumée,\nTriste Automne, couleur de nèfle et de fumée !…",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Automne",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Avertissement",
+      "texto": "En novembre 1932, après une année cruelle de langueur et\nde souffrances, la comtesse de Noailles commença enfin de réunir\nce qu’elle appelait elle-même son dernier recueil de vers. Dans\nce livre, des strophes toutes récentes venaient s’associer à d’anciens poèmes, composés à des heures différentes de sa vie, et dont\nle caractère n’eût sans doute pas convenu au Poème de l’amourni à l’Honneur de souffrir.\n\nL’un de ceux-ci, Souvenirs d’un jardin d’Angleterre, date\nincontestablement de l’époque déjà lointaine des Vivants et desmorts. Contemporain de la pièce intitulée Un soir à Londres,il lui est identique par la structure et par le rythme. À cette\nunique exception près, le manuscrit appartient tout entier à la\npériode qui a suivi les Forces éternelles.\n\nPlusieurs de ces poèmes furent publiés dans la Revue de Parisdurant la dernière décade. Bonaparte, écrit pour le centenaire\nde la mort de Napoléon, avait paru antérieurement à la Revue de France. D’autres périodiques ont fait connaître ensuite, selon\nl’ordre des commémorations, divers morceaux de circonstance,\nsaluts à des tombes poétiques, couronnes votives pour des écrivains, des orateurs, des musiciens, hymnes d’admiration à des\nhéros de l’air. L’Illustration, qui avait offert à ses lecteurs leSouvenir des aïeux, où l’évocation de la terre paternelle s’achève\nsur une réminiscence émue et charmée du Voyage de Sparte,\naccueillit de même les Îles bienheureuses, petits commentaires\nlyriques pour des images auxquelles le poète se plaisait à reconnaître « une couleur de joyaux ».\n\nCe recueil une fois établi avec soin et divisé en trois parties,\nil fallut en choisir le titre. Recherche délicate, souci obsédant pour\nla malade. Un jour, il est vrai, songeant au distique fameux desÉblouissements :\n\nAccueillez-moi ce soir dans l’ombre où se confondentL’héroïsme et la volupté, le poète s’avisa enfin d’une inscription à son goût : Héroïsme et volupté… Les beaux vocables !… Et cependant, cette enseigne\nradieuse, triomphante, s’accordait-elle vraiment avec une œuvre\naux harmonies voilées, presque funèbres ? Non certes, et madame\nde Noailles s’en déprit aussitôt ; mais là-dessus, toute décision fut\najournée, et le temps, qui était bref, ne lui permit point de faire\nun autre choix. La fatalité seule devait imposer à ces feuillets\nposthumes le titre nu qui leur échoit.\n\nUne nouvelle série de poèmes allait d’ailleurs s’ouvrir dans le\ncourant de février 1933. Sans doute, la comtesse de Noailles paraissait alors incapable d’écrire, et le moindre entretien la\ncomblait de fatigue. N’importe ! avec une énergie inconcevable,\nsurnaturelle, elle se mit à improviser, tout haut, les pièces\ninédites sur lesquelles se terminent maintenant ses Derniers vers.\nDes mains pieuses les notaient à mesure, et ces dictées se poursuivirent, sans trop d’intervalles, jusqu’aux suprêmes journées\nde mars. La voix du poète, incertaine pour les propos usuels,\nretrouvait soudain une étonnante vigueur pour les concerts subtils\nde l’idée et du langage. Par un phénomène trop rare dans l’histoire de l’esprit, l’inspiration, en cette merveilleuse rencontre de\nla poésie avec la mort, semblait persévérer au delà du souffle\nmême, le chant survivre mystérieusement à la parole. Jusqu’au\nbord de la nuit définitive, aussi longtemps que la voyageuse n’eut\npoint achevé sa sombre route, ceux qui l’assistaient fidèlement,\nespérant contre tout espoir en un miracle des forces vitales, pouvaient encore la suivre à ce sillage de flamme.",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Avertissement",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Bien souvent, au moment",
+      "texto": "Bien souvent, au moment des suprêmes fatigues,\nQuand le corps sent ses maux faiblir et comme épars,\nEt, qu’assuré soudain de l’infini départ\nQui fut, avec l’amour, sa hantise prodigue,\n\nL’esprit prêt à s’enfuir jette un pâle regard\nSur ces membres lassés qu’on sent encore solides,\nEt le corps, désormais esclave du hasard,\nContemple cet envol qui l’abandonne au vide ;\n\nEt sachant qu’il fut tout, que lui seul animait\nLa passion charnelle ou bien spirituelle,\nIl ressent en mourant que le faible coup d’aile\nQu’il prenait pour l’esprit altier, ne fut jamais\nQue l’hôte présumé de l’ample citadelle\nQu’est le corps secouru par les veines fidèles.",
+      "forma": "soneto",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Bien_souvent%2C_au_moment",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Bittô",
+      "texto": "Le bourdonnant été, doré comme du miel,\nParfumé de citrons, de résine et de menthe,\nBalance au vent sucré son rêve sensuel\nEt baigne son visage au clair de l’eau dormante.\n\nLes pesants papillons ont alangui les fleurs,\nLe cylise odorant et la belle mélisse\nInfusent doucement dans la grande chaleur,\nLe soleil joue et luit sur les écorces lisses ;\n\nLes branches des sureaux et des figuiers mûris\nS’emplissent du remous des abeilles fidèles…\nComme le jour est gai, comme la plaine rit !\nLes prés chauds et roussis crépitent d’un bruit d’ailes.\n\nVoici qu’on voit venir, le soleil sur les yeux.\nLa petite Bittô, la danseuse aux crotales ;\nLa blancheur du chemin plaît à ses pieds joyeux\nQue la poussière brûle au travers des sandales.\n\nSon voile est de lin vert comme un nouveau raisin,\nSa robe est attachée à son épaule frêle,\nLa beauté du matin enorgueillit son sein\nEt son cœur est content comme une sauterelle.\n\nSes boîtes de parfums et son petit miroir\nFont un bruit de cailloux au fond de sa corbeille ;\nElle danse en marchant et s’amuse de voir,\nDes bords de chaque fleur, s’envoler des abeilles,\n\n— Ah ! Bittô, quel désir mène tes pieds distraits\nAux dangereux sentiers de la campagne ardente ?\nD’invisibles Erôs habitent les forêts\nEt des poisons subtils montent du cœur des plantes :\n\nRetourne te mêler aux travaux du matin,\nCar l’heure de midi promptement s’achemine,\nOu bien va regarder dans ton petit jardin\nSi la nuit a mûri les vertes aubergines…\n\nMais, rieuse et nouant ses deux mains à son cou.\nBittô n’écoute pas les prudentes paroles ;\nLe vent joueur s’enroule autour de ses genoux\nEt fait un bruit soyeux comme un ruban qui vole ;\n\nLe baume végétal qui flotte dans l’air bleu\nEnduit d’un miel léger son âme complaisante :\nElle vient, au travers des épis onduleux,\nS’asseoir près d’un étang où rêve l’eau luisante.\n\nAvides de s’unir au glorieux été,\nLa pivoine touffue et l’anémone rose\nSe pâment de désir et semblent rejeter\nLe lâche vêtement des corolles décloses.\n\n— Quelle silencieuse et palpitante ardeur\nRode autour de vos pieds, vous guette et vous accueille.\nBittô. Le soleil gonfle et mûrit votre cœur ;\nVotre cœur est tremblant comme un buisson de feuilles.\n\nDu flanc de la colline où le cassis bleuit\nVoici Criton qui vient faire boire ses chèvres\nÀ l’étang où Bittô sous la feuille qui luit\nS’amuse à retenir l’eau vive entre ses lèvres.\n\nIl s’est approché d’elle, il lui dit : « Ma Bittô,\nPrends ce fromage blanc et rond comme la lune,\nLa noix que j’ai sculptée au bout de mon couteau\nEt le panier de jonc où je mettais mes prunes. »\n\nIl lui fait de hardis et timides serments.\nIl l’entoure, il la presse, il tient ses mains, il joue…\n— Et Bittô, déjà lasse et faible infiniment\nSe couche dans ses bras et lui baise la joue…\n\n⁂\nComme elle est grave et pâle après l’âpre union !\n— Ô vous dont la pudeur tristement fut surprise,\nTendre corps plein de trouble et de confusion,\nBittô, je vous dirai votre grande méprise :\n\nLe rude et lourd baiser dont parlent les chansons\nNe guérit pas le mal dont vous étiez atteinte :\nVotre langueur venait de la verte saison\nDu parfum des mûriers et des chauds térébinthes.\n\nPensant vous délasser d’un tourment inconnu\nQui vous venait des champs, des feuilles, de la terre,\nVous avez sans prudence attaché vos bras nus\nAu cou du chevrier dont l’étreinte est amère :\n\nAmoureuse du jour vivant et de clarté,\nVous avez cru pouvoir apaiser sur sa bouche,\nDiseuse de mensonge et de frivolités,\nVotre désir de l’air, des fleurs, de l’eau farouche ;\n\nSentant que votre cœur, si lourd et si dolent,\nPesait à votre sein comme un nid aux ramures,\nVous avez cru qu’aux mains du berger violent\nIl pourrait s’effeuiller comme une rose mûre…\n\nAh ! Bittô, quelle ardeur et quelle volupté\nAuraient donc pu guérir votre malaise insigne ?\n— L’amant que vous vouliez, c’était le tendre Été\nSaturé d’aromate et de l’odeur des vignes !",
+      "forma": "outro",
+      "obra": "Le Cœur innombrable",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Le_C%C5%93ur_innombrable/Bitt%C3%B4",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Bonaparte",
+      "texto": "Grand mort, dont le regard chaque matin renaît,\nArgenté comme l’aube, ayant sa hardiesse,\nQuelle offrande apporter à vos pieds, si ce n’est\n﻿Le rappel de votre jeunesse ?\n\nConquérant infini, vous avez dédaigné\nL’instant perfide et vain qui fermait vos paupières.\n— Je songe aux soirs de mai où vous vous promeniez,\n﻿Habillé comme Robespierre,\n\nPareil aux autres, — plus nostalgique, et rêvant\nÀ l’odeur de la Corse, à ses cloches d’églises,\nAttentif, studieux, déchiffrant les savants,\n﻿Lisant la Nouvelle Héloïse.\n\nVous-même, qui portiez ce destin sans pareil,\nN’en pouviez rien savoir ! — Jeune homme maigre et leste,\nProfil d’aigle à jamais gravé sur le soleil,\n﻿Peut-être fûtes-vous modeste !\n\nVos deux noms familiers et toujours inouïs,\nSans surprendre épandaient leurs ineffables ondes :\nL’un tressaillant et mince, et l’autre épanoui\n﻿Comme l’immensité du monde !\n\nVous viviez, vous parliez, vos gestes, votre accent\nNe dérangeaient pas l’air où se meuvent les astres,\nVotre main, sans stupeur, sentait battre ce sang\n﻿Plein de triomphe et de désastres.\n\nDes villes et des bourgs, des plaines, des hameaux\nRespiraient calmement sans pressentir l’Histoire !\n— Ô matins de Turin, soirs de Millesimo,\n﻿Adolescence de la gloire !\n\nTristesse du héros, défiance du cœur,\nTumultueux désirs que la tendresse affine,\nEt ces baisers brûlants comme sous l’Équateur,\n﻿Dont vous parliez à Joséphine !\n\n— Dans un jardin du Rhin où passeront un jour\nVos régiments dorés que votre aspect déborde,\nBeethoven écrira pour vous ce chant d’amour\n﻿Que dans la tombe il vous accorde.\n\n— Et puis, comme un été qui n’a pas de couchant,\nLa gloire, feu constant, brûlant sur mille socles !\nEt puis, un jour, ce mot, rapide, altier, penchant,\n﻿Ce « Je viens comme Thémistocle… »\n\nEt le torride exil, et l’exhalation\nD’une plaine perdue entre l’air et la grève,\nEt puis, au loin la haine, — avec la passion\n﻿Qu’avaient pour vous les fronts qui rêvent ;\n\nEt votre mort, — et puis l’oubli, les jours, les ans,\nLa noble humanité recherchant la sagesse,\nHonorant les travaux, la paix, l’humain printemps,\n﻿— Ah ! je songe à votre jeunesse,\n\nÀ vos ordres donnés dans la hâte et l’ardeur,\nQuand Marseille et Toulon vous appelaient vers elles,\nEt que, votre habit bleu croisé sur votre cœur,\n﻿Les bras ouverts comme des ailes,\n\nVous repoussiez les chefs, l’ennemi, les tyrans,\nD’un élan furieux qui bondit et qui vibre ;\n— Ô jeune homme, plus tard dans l’Empereur sombrant,\n﻿Vous qui vouliez qu’on restât libre,\n\nJe songe à vous ce soir, sous l’Arc par vous bâti,\nOù, mieux que le soleil, vous donne la réplique,\n— Pareil à vous sans borne, et comme vous petit, —\n﻿Un soldat de la République !…",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Bonaparte",
+      "tags": [
+        "amor",
+        "morte",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "Bonté de l’univers que je croyais éteinte…",
+      "texto": "Tant vous aviez déçu la plus fidèle ardeur,\nJe ressens aujourd’hui vos suaves atteintes ;\nMa main touche, au jardin succulent de moiteur,\n﻿Le sucre indigo des jacinthes !\n\nLes oiseaux étourdis, au vol brusque ou glissant,\nDans le bleuâtre éther qu’emplit un chaud vertige,\nD’un gosier tout enduit du suc laiteux des tiges\nFont jaillir, comme un lis, leurs cris rafraîchissants !\n\n﻿Et, bien que le beau jour soit loin de la soirée,\nBien qu’encor le soleil étende sur les murs\nSa nappe de safran éclatante et moirée,\nDéjà la molle lune, au contour pâle et pur,\nComme un soupir figé rêve au fond de l’azur…",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Bont%C3%A9_de_l%E2%80%99univers_que_je_croyais_%C3%A9teinte%E2%80%A6",
+      "tags": []
+    },
+    {
+      "titulo": "Ce matin clair et vif…",
+      "texto": "Ce matin clair et vif comme un midi du pôle,\nOù le vent vient filer le blanc coton des saules,\nOù, sur le pré touffu, de guêpes entr’ouvert,\nOn croit voir crépiter un large soleil vert,\nOù glissent sur le Rhin, que franchit la cigogne,\nLes chalands engourdis qui montent vers Cologne,\nOù le village, avec ses lumineux sursauts,\nSemble un cercle d’enfants jouant avec de l’eau ;\nOù j’entends dans les airs les pliantes musiques\nQue font en se croisant les brises élastiques ;\nCe matin exalté, qui, stagnant ou volant,\nSemble appuyer à tout un baiser violent,\nOù la blanche chaleur, somnolente tigresse,\nReprend tout l’univers dans sa vaste caresse,\nJe songe, ô mon ami, dont je presse la main,\n\nAux forces du silence et du désir humain,\nPuisque le plus profond et plus lourd paysage\nNe vient que de mon cœur et de ton doux visage…\n\n﻿Où le vent vient filer le blanc coton des saules,",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Ce_matin_clair_et_vif%E2%80%A6",
+      "tags": []
+    },
+    {
+      "titulo": "Ce n’est donc rien",
+      "texto": "Ce n’est donc rien, sous l’œil des astres innombrables,\nTon chaud visage avec la liqueur du regard ?\nCe n’est donc rien, l’émail du rire désirable,\nQui fait surgir en nous de suaves égards ?\n\nCe n’est donc rien, ton corps de bronze pâle et d’ambre,\nTon équilibre droit et le cœur au côté ?\nCe n’est rien, la structure onduleuse des membres\nDont l’éclat tout d’abord prime la volupté ?\n\nParce que la nuit bleue a Véga de la Lyre,\nPégase, le Sextant, Andromède, Orion,\nNe serait-ce donc rien, ce surhumain délire\nOù le désir frémit ainsi qu’un alcyon ?\n\nNon, non : cet instant seul fut précis, juste et vaste.\nQue disions-nous ? Le monde en nos mains reposait.\nJe craignais ta douceur et tu craignais mon faste,\nEt chacun s’efforçait à taire ce qu’il sait.\n\nJe te prenais ta vie animale et pensante,\nJe tarissais ton cœur et t’emplissais de moi.\nEt notre âme, soudain en commun agissante,\nDans l’univers aigu élançait son émoi.\n\nPour ce plaisir confus, mais le seul nécessaire,\nOn lutte, on organise, on exécute, on va.\nDésir ! dans l’infini le seul instant sincère,\nToi le peu qu’on obtient de tout ce qu’on rêva,\nSeul, tu distends le cœur, l’éblouis et desserres\nL’étroit étonnement où tous les êtres errent,\nEt même le mourant, déjà sans atmosphère,\nNe comprenant plus rien au terrestre décor,\nSonge à ce diamant illuminant le corps.",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Ce_n%E2%80%99est_donc_rien",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Celui qui meurt peut tout",
+      "texto": "Celui qui meurt peut tout enseigner aux vivants.\nImmobile, jamais remué par le vent,\nInstallé dans sa case, accoté à son plâtre,\nIl ne voit plus passer ses amis idolâtres,\nEt, le regard perdu sous un rêve couvert,\nIl contemple le mal rongeant son univers.\n\nIl avait tout prévu dans sa raison agile ;\nIl savait que le sort n’accorde aucun égard\nÀ l’homme, tout paré de noblesses fragiles,\nDont il blesse le cœur ou l’émail du regard.\n\nComparant l’étroitesse aux choses infinies,\nIl songe à sa naissance où commençaient ses maux\nEt déguste l’horreur des longues agonies\nEn tenant d’un doigt sûr l’effrayant chalumeau.\n\nIl ne dit plus jamais la vérité sonore,\nSon ténébreux séjour n’a point d’autre habitant ;\nSes solides instincts lentement s’évaporent\nSous l’incertain décret de son geôlier, le Temps.\n\nIl avait dépensé la vigueur animale\nEt les nobles soucis aux astres accordés,\nSans jamais bien savoir que les heures fatales\nLui destinaient l’étrange et hideux coup de dés.\n\nLe courage est facile aux vivants pleins de rêves ;\nUn irritable honneur se mêlant à l’amour\nLeur apporte un habile et frémissant secours\nQui, lorsqu’ils vont sombrer, les porte et les soulève.\n\nMais celui dont l’esprit a trop longtemps lutté,\nOubliant les couleurs des saintes voluptés\nQui furent sa douceur, sa bonté, ses colères,\nFuyant le désarroi de n’aimer plus à plaire,\nTant la douleur du corps a de puissants bourreaux,\nRejoint la mâle paix muette des héros.",
+      "forma": "outro",
+      "obra": "Derniers vers (Anna de Noailles)",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Derniers_vers_(Anna_de_Noailles)/Celui_qui_meurt_peut_tout",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Ceux qui n’ont respiré…",
+      "texto": "Ceux qui n’ont respiré que les nuits de Hollande,\nLes tulipes des champs, les graines des bouleaux,\nLe vent rapide et court qui chante sur la lande,\nLes quais du Nord jetant leur goudron sur les flots,\n\nCeux qui n’ont contemplé que les blés et les vignes\nCroissant tardivement sous des cieux incertains,\nQui n’ont vu que la blanche indolence des cygnes\nQue Bruges fait flotter dans ses brumeux matins,\n\nCeux pour qui le soleil, au travers du mélèze,\nPendant les plus longs jours d’avril ou de juillet,\nRemplace la splendeur des campagnes malaises,\nEt les soirs sévillans enivrés par l’œillet,\n\nCeux-là, vivant enclos dans leurs frais béguinages,\nSouhaitent le futur et vague paradis,\nQui leur promet un large et flamboyant voyage\nOù s’embarquent les cœurs confiants et hardis.\n\nMais ceux qui, plus heureux, ont connu votre audace,\nÔ bleuâtre Orient ! Incendie azuré,\nPrince arrogant et fier, favori de l’espace,\nMonstre énorme, alangui, dévorant et doré ;\n\nCeux qui, sur le devant de leur ronde demeure,\nCoupole incandescente, opacité de chaux,\nOnt vu la haute palme éparpiller les heures,\nQui passent sans marquer leurs pieds sur les cieux chauds ;\n\nCeux qui rêvent le soir dans le grand clair de lune,\n﻿Aurore qui soudain met sa robe d’argent\nEt trempe de clarté la rue étroite et brune,\nEt le divin détail des choses et des gens,\n\nCeux qui, pendant les nuits d’ardente poésie,\nÉgrenant un collier fait de bois de cyprès,\nContemplent, aux doux sons des guitares d’Asie,\nLe long scintillement d’un jet d’eau mince et frais,\n\nCeux-là n’ont pas besoin des infinis célestes ;\nNul immortel jardin ne surpasse le leur ;\nIls épuisent le temps, pendant ces longues siestes\nOù leur corps étendu porte l’ombre des fleurs.\n\nLeur âme nonchalante, et d’azur suffoquée,\nCherche la Mort, pareille à l’ombrage attiédi\nQue font le vert platane et la jaune mosquée\nSur le col des pigeons, attristés par midi…",
+      "forma": "outro",
+      "obra": "Les Climats",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Les_Climats/Ceux_qui_n%E2%80%99ont_respir%C3%A9%E2%80%A6",
+      "tags": [
+        "morte"
+      ]
+    }
+  ]
+}

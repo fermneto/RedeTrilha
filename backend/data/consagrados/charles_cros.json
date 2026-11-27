@@ -1,0 +1,409 @@
+{
+  "username": "charles_cros",
+  "name": "Charles Cros",
+  "bio": "Poeta francês, também inventor. Le Coffret de santal reúne os poemas.",
+  "avatar_url": "",
+  "nascimento": 1842,
+  "morte": 1888,
+  "escolas": [],
+  "pais": "FR",
+  "poemas": [
+    {
+      "titulo": "À une attristée d’ambition",
+      "texto": "Comme hier, vous avez les souplesses étranges\n            Des tigresses et des jaguars,\nVos yeux dardent toujours sous leurs ombreuses franges\n            L’or acéré de leurs regards.\n\nVos mains ont, comme hier, sous leurs teintes d’aurores\n            Leur inexplicable vigueur ;\nElles trouvent encor sur les touches sonores\n            Des accords qui frôlent le cœur.\n\nComme hier, vous vivez dans les fécondes fièvres\n            Et dans les rêves exaltés,\nLes mots étincelants s’échappent de vos lèvres,\n            Échos des intimes clartés.\n\nTrop heureuse en ce monde et trop bien partagée,\n            Idéal et charnel pouvoir,\nVous avez tout, et vous êtes découragée,\n            Comme un ciel d’automne, le soir.\n\nNe rêvez pas d’accroître et de parfaire encore\n            Les dons que vous a faits le ciel.\nNe changez pas l’attrait suprême, qui s’ignore,\n            Pour un moindre, artificiel.\n\nIl faut que la beauté, vivante, écrite ou peinte\n            N’ait rien des soucis du chercheur.\nEt si la rose avait à composer sa teinte\n            Elle y perdrait charme et fraîcheur.\n\nDites-vous, pour chasser la tristesse rebelle,\n            En ornant de fleurs vos cheveux,\nQue, sans peine pour vous, ceux qui vous trouvent belle\n            Sauront le dire à nos neveux.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/%C3%80_une_attrist%C3%A9e_d%E2%80%99ambition",
+      "tags": []
+    },
+    {
+      "titulo": "À une chatte",
+      "texto": "Chatte blanche, chatte sans tache,\nJe te demande, dans ces vers,\nQuel secret dort dans tes yeux verts,\nQuel sarcasme sous ta moustache.\n\nTu nous lorgnes, pensant tout bas\nQue nos fronts pâles, que nos lèvres\nDéteintes en de folles fièvres,\nQue nos yeux creux ne valent pas\n\nTon museau que ton nez termine,\nRose comme un bouton de sein,\nTes oreilles dont le dessin\nCouronne fièrement ta mine.\n\nPourquoi cette sérénité ?\nAurais-tu la clé des problèmes\nQui nous font, frissonnants et blêmes,\nPasser le printemps et l’été ?\n\nDevant la mort qui nous menace,\nChats et gens, ton flair, plus subtil\nQue notre savoir, te dit-il\nOù va la beauté qui s’efface,\n\nOù va la pensée, où s’en vont\nLes défuntes splendeurs charnelles ?…\nChatte, détourne tes prunelles ;\nJ’y trouve trop de noir au fond.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/%C3%80_une_chatte",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "À une jeune fille",
+      "texto": "Pourquoi, tout à coup, quand tu joues,\nCes airs émus et soucieux ?\nQui te met cette fièvre aux yeux,\nCe rose marbré sur les joues ?\n\nTa vie était, jusqu’au moment\nOù ces vagues langueurs t’ont prise,\nUn ruisseau que frôlait la brise,\nUn matinal gazouillement.\n\nComme ta beauté se révèle\nAu-dessus de toute beauté,\nComme ton cœur semble emporté\nVers une existence nouvelle,\n\nComme en de mystiques ardeurs\nTu laisses planer haut ton âme.\nComme tu te sens naître femme\nÀ ces printanières odeurs,\n\nPeut-être que la destinée\nTe montre un glorieux chemin ;\nPeut-être ta nerveuse main\nMènera la terre enchaînée.\n\nÀ coup sûr, tu ne seras pas\nÉpouse heureuse, douce mère ;\nAucun attachement vulgaire\nNe peut te retenir en bas.\n\nAs-tu des influx de victoire\nDans tes beaux yeux clairs, pleins d’orgueil,\n\nComme en son virginal coup d’œil\nJeanne d’Arc, de haute mémoire ?\n\nDois-tu fonder des ordres saints,\nÊtre martyre ou prophétesse ?\nOu bien écouter l’âcre ivresse\nDu sang vif qui gonfle tes seins ?\n\nDois-tu, reine, bâtir des villes\nAux inoubliables splendeurs,\nEt pour ces vagues airs boudeurs\nFaire trembler les foules viles ?\n\nVa donc ! tout ploiera sous tes pas,\nQue tu sois la vierge idéale\nOu la courtisane fatale…\nSi la mort ne t’arrête pas.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/%C3%80_une_jeune_fille",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Aquarelle",
+      "texto": "Au bord du chemin, contre un églantier,\nSuivant du regard le beau cavalier\nQui vient de partir, Elle se repose,\nFille de seize ans, rose, en robe rose.\n\nEt l’Autre est debout, fringante. En ses yeux\nBrillent les éclairs d’un rêve orgueilleux…\nDiane mondaine à la fière allure,\nCorps souple, front blanc, noire chevelure.\n\nTandis que sa blonde amie en rêvant\nÉcoute les sons qu’apporte le vent,\nBruits sourds de galop, sons lointains de trompe,\n\nDiane se dit : « Rosette se trompe.\nQuand Il est parti tout pâle d’émoi,\nSon dernier regard n’était que pour moi. »",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Aquarelle",
+      "tags": []
+    },
+    {
+      "titulo": "Avenir",
+      "texto": "Les coquelicots noirs et les bleuets fanés\nDans le foin capiteux qui réjouit l’étable,\nLa lettre jaunie où mon aïeul respectable\nÀ mon aïeule fit des serments surannés,\n\nLa tabatière où mon grand-oncle a mis le nez,\nLe trictrac incrusté sur la petite table\nMe ravissent. Ainsi dans un temps supputable\nMes vers vous raviront, vous qui n’êtes pas nés.\n\nOr, je suis très vivant. Le vent qui vient m’envoie\nUne odeur d’aubépine en fleur et de lilas,\nLe bruit de mes baisers couvre le bruit des glas.\n\nÔ lecteurs à venir, qui vivez dans la joie\nDes seize ans, des lilas et des premiers baisers,\nVos amours font jouir mes os décomposés.",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Avenir",
+      "tags": []
+    },
+    {
+      "titulo": "Ballade du dernier amour",
+      "texto": "Mes souvenirs sont si nombreux\nQue ma raison n’y peut suffire.\nPourtant je ne vis que par eux,\nEux seuls me font pleurer et rire.\nLe présent est sanglant et noir ;\nDans l’avenir qu’ai-je à poursuivre ?\nCalme frais des tombeaux, le soir !…\nJe me suis trop hâté de vivre.\n\nAmours heureux ou malheureux,\nLourds regrets, satiété pire,\n\nYeux noirs veloutés, clairs yeux bleus,\nAux regards qu’on ne peut pas dire,\nCheveux noyant le démêloir\nCouleur d’or, d’ébène ou de cuivre,\nJ’ai voulu tout voir, tout avoir.\nJe me suis trop hâté de vivre.\n\nJe suis las. Plus d’amour. Je veux\nVivre seul, pour moi seul décrire\nJusqu’à l’odeur de tes cheveux,\nJusqu’à l’éclair de ton sourire,\nDire ton royal nonchaloir,\nT’évoquer entière en un livre\nPur et vrai comme ton miroir.\nJe me suis trop hâté de vivre.\n\nenvoi\nMa chanson, vapeur d’encensoir,\nChère envolée, ira te suivre.\nEn tes bras j’espérais pouvoir\nAttendre l’heure qui délivre ;\nTu m’as pris mon tour. Au revoir.\nJe me suis trop hâté de vivre.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Ballade_du_dernier_amour",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Bénédiction",
+      "texto": "Des femmes en peignoir, portant la boîte au lait,\nCraignaient de se crotter et montraient leur mollet.\nIls étaient trois, vêtus d’ulsters garnis de martre.\nIls rentraient, ce matin, d’une orgie à Montmartre,\nEt ces trois débauchés riaient du doux café\nQue l’épouse, à l’époux au lit, sert bien chauffé.\nUn prêtre, qui passait, rougit de ce blasphème.\nIls narguèrent le prêtre. Et l’un sifflota même\nQuelque chanson obscène, apprise aux Délass-Com.\nLe prêtre simplement, leur dit : Pax vobiscum !",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/B%C3%A9n%C3%A9diction",
+      "tags": []
+    },
+    {
+      "titulo": "Berceuse",
+      "texto": "Endormons-nous, petit chat noir.\nVoici que j’ai mis l’éteignoir\n               Sur la chandelle.\nTu vas penser à des oiseaux\nSous bois, à de félins museaux…\n               Moi rêver d’Elle.\n\nNous n’avons pas pris de café,\nEt, dans notre lit bien chauffé\n              (Qui veille pleure.)\n\nNous dormirons, pattes dans bras.\nPendant que tu ronronneras,\n            J’oublierai l’heure.\n\nSous tes yeux fins, appesantis,\nReluiront les oaristys\n            De la gouttière.\nComme chaque nuit, je croirai\nLa voir, qui froide a déchiré\n            Ma vie entière.\n\nEt ton cauchemar sur les toits\nTe dira l’horreur d’être trois\n            Dans une idylle.\nJe subirai les yeux railleurs\nDe son faux cousin, et ses pleurs\n            De crocodile.\n\nSi tu t’éveilles en sursaut\nGriffé, mordu, tombant du haut\n            Du toit, moi-même\nJe mourrai sous le coup félon\nD’une épée au bout du bras long\n            Du fat qu’elle aime.\n\nPuis, hors du lit, au matin gris,\nNous chercherons, toi, des souris\n               Moi, des liquides\nQui nous fassent oublier tout,\nCar, au fond, l’homme et le matou\n               Sont bien stupides.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Berceuse",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Bonne fortune",
+      "texto": "Tête penchée,\n    Œil battu,\nAinsi couchée\n    Qu’attends-tu ?\n\nSein qui tressaille,\n    Pleurs nerveux,\nFauve broussaille\n    De cheveux,\n\nFrissons de cygnes\n   Sur tes flancs,\nVoilà des signes\n   Trop parlants.\n\nTu n’es que folle\n   De ton corps.\nTon âme vole\n   Au dehors.\n\nQu’un autre vienne,\n   Tu feras\nLa même chaîne\n   De tes bras.\n\nJe hais le doute,\n   Et, plus fier,\nJe te veux toute,\n   Âme et chair.\n\nC’est moi (pas l’autre !)\n   Qui t’étreins\nEt qui me vautre\n   Sur tes seins.\n\nConnais, panthère,\n   Ton vainqueur\n\nOu je fais taire\n   Ta langueur.\n\nAttache et sangle\n   Ton esprit,\nOu je t’étrangle\n   Dans ton lit.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Bonne_fortune",
+      "tags": []
+    },
+    {
+      "titulo": "Brave Homme",
+      "texto": "En attendant qu’on m’enterre,\nAujourd’hui, j’veux êtr’très gai.\nFlon, flon flon, lariradondaire,\nGai, gai, gai, lariradondé.\n\nJe n’fais pas beaucoup d’affaires ;\nL’verr’cassé n’est pas d’mandé.\nFlon, flon, etc.\n\nMa pauvr’femm’non plus n’gagn’guère ;\nLui faut trop d’litr’s dans l’gésier.\nFlon, flon, etc.\n\nSa hott’, son croc d’chiffonnière,\nEll’vend tout pour un d’mi-s’tier.\n        Flon, flon, etc.\n\nEll’n’est pas belle, au contraire.\nIl m’sembl’bien qu’j’en ai assez.\n        Flon, flon, etc.\n\nJ’vas y emplir la gueule d’terre\nEt lui mettre un’corde aux pieds.\n        Flon, flon, etc.\n\nJ’vas la foutr’dans la rivière\nEt puis boire à sa santé.\n        Flon, flon, etc.\n\nIl pleure.\nMais contr’qui cogner mon verre ?\nQuoiqu’laid’c’est un’société !…\n        Flon, flon, etc.\n\nJ’la gard’! J’ai du temps à faire.\nEll’soign’ra ma vétusté.\nFlon, flon flon, lariradondaire,\nGai, gai, gai, lariradondé.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Brave_Homme",
+      "tags": []
+    },
+    {
+      "titulo": "Chanson de la côte",
+      "texto": "Voici rentrer l’officier de marine,\n           Il a de noirs favoris.\nLe vent de mer a gonflé sa narine,\nIl dit combien de vaisseaux il a pris.\n\nVoici rentrer l’officier de marine,\n           Il a deux beaux galons d’or.\nIl veut surprendre, au logis, Mathurine\nSa femme, son plus précieux trésor.\n\nVoici rentrer l’officier de marine,\n           Il veut revoir sa maison,\n\nSon lard qui sèche et ses sacs de farine,\nSes pommiers lourds de pommes à foison.\n\nRepars bien vite, officier de marine,\n          Tes pommiers on a coupé,\nTes sacs vidés, ton lard frit. Mathurine\nAvec des gens de terre t’a trompé.\n\nRepars bien vite, officier de marine,\n          Pour un voyage bien long.\nTes favoris seront blancs, ta narine\nSera ridée au troisième galon.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Chanson_de_la_c%C3%B4te",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Chanson des sculpteurs",
+      "texto": "Proclamons les princip’s de l’art !\n         Que tout l’mond’s’épanche !\nLe marbre est un’matière à part,\n         Y en n’a pas d’plus blanche.\n\nProclamons les princip’s de l’art !\n         Que personn’ne bouge !\nLa terr’glais’, c’est comm’le homard ;\n         Quand c’est cuit, c’est rouge.\n\nProclamons les princip’s de l’art !\n         Que tout l’mond’ s’amuse !\nLe bronz’ dure, à moins qu’ par hasard,\n         Pour des cloch’s on n’ l’use.\n\nProclamons les princip’s de l’art !\n         Que tout l’mond’ se soûle !\nQuoique l’plâtr’ soit un peu blafard,\n         Il coul’ bien dans l’moule.\n\nProclamons les princip’s de l’art !\n         Que tout l’mond’ s’entende !\nLes contours des femm’s, c’est du lard,\n         La chair, c’est d’ la viande.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Chanson_des_sculpteurs",
+      "tags": []
+    },
+    {
+      "titulo": "Chant éthiopien",
+      "texto": "Apportez-moi des fleurs odorantes,\nPour me parer, compagnes errantes,\nPour te charmer, ô mon bien-aimé.\nDéjà le vent s’élève embaumé.\n\nLe vent du soir fait flotter vos pagnes.\nDans vos cheveux, pourquoi, mes compagnes,\nEntrelacer ces perles de lait ?\nMon cou — dit-il — sans perles lui plaît.\n\nMon cou qu’il prend entre ses bras souples\nFrémit d’amour. Nous voyons par couples,\nTout près de nous, entre les roseaux,\nDans le muguet, jouer les oiseaux.\n\nLe blanc muguet fait des perles blanches.\nMon bien-aimé rattache à mes hanches\nMon pagne orné de muguet en fleur ;\nMes dents — dit-il — en ont la pâleur.\n\nMes blanches dents et mon sein qui cède\nMes longs cheveux, lui seul les possède.\nDepuis le soir où son œil m’a lui,\nIl est à moi ; moi je suis à lui.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Chant_%C3%A9thiopien",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Coin de tableau",
+      "texto": "Tiède et blanc était le sein.\nToute blanche était la chatte.\nLe sein soulevait la chatte.\nLa chatte griffait le sein.\n\nLes oreilles de la chatte\nFaisaient ombre sur le sein.\nRose était le bout du sein,\nComme le nez de la chatte.\n\nUn signe noir sur le sein\nIntrigua longtemps la chatte ;\nPuis, vers d’autres jeux, la chatte\nCourut, laissant nu le sein.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Coin_de_tableau",
+      "tags": []
+    },
+    {
+      "titulo": "Conclusion",
+      "texto": "J’ai rêvé les amours divins,\nL’ivresse des bras et des vins,\nL’or, l’argent, les royaumes vains,\n\nMoi, dix-huit ans, Elle, seize ans.\nParmi les sentiers amusants\nNous irions sur nos alezans.\n\nIl est loin le temps des aveux\nNaïfs, des téméraires vœux !\nJe n’ai d’argent qu’en mes cheveux.\n\nLes âmes dont j’aurais besoin\nEt les étoiles sont trop loin.\nJe vais mourir soûl, dans un coin.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Conclusion",
+      "tags": []
+    },
+    {
+      "titulo": "Conseil",
+      "texto": "Quand sur vos cheveux blonds, et fauves au soleil,\nVous mettez des rubans de velours noir, méchante,\nJe pense au tigre dont le pelage est pareil :\nFond roux, rayé de noir, splendeur de l’épouvante.\n\nQuand le rire fait luire, au calice vermeil\nDe vos lèvres, l’éclair de nacre inquiétante,\nQuand s’émeut votre joue en feu, c’est un réveil\nDe tigre : miaulements, dents blanches, mort qui tente.\n\nEt puis, regardez-vous. Même sans ce velours,\nQuoique plus belle, enfin vous ressemblez toujours\nÀ celui que parfois votre bouche dénigre.\n\nD’ailleurs si vous tombiez sous sa griffe, une fois ?\nOn ne peut pas savoir qui l’on rencontre au bois :\nMadame, il ne faut pas dire de mal du tigre.",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Conseil",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Croquis",
+      "texto": "Beau corps, mais mauvais caractère.\nElle ne veut jamais se taire,\nDisant, d’ailleurs d’un ton charmant,\nDes choses absurdes vraiment.\n\nN’ayant presque rien de la terre,\nDouce au tact comme une panthère.\nIl est dur d’être son amant ;\nMais, qui ne s’en dit pas fou, ment.\n\nPour dire tout ce qu’on en pense\nDe bien et de mal, la science\nEssaie et n’a pas réussi.\n\nEt pourquoi faire ? Elle se moque\nDe ce qu’on dit. Drôle d’époque\nOù les anges sont faits ainsi.",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Croquis",
+      "tags": []
+    },
+    {
+      "titulo": "Croquis de dos",
+      "texto": "Il travaille, le jour, dans un bazar tout neuf,\nCriant : « Tout est à treize, et là, tout à vingt-neuf ! »\nSa casquette est la plus superbe des casquettes,\nEn soie, et fait valoir ses courbes rouflaquettes.\nUn foulard jaune tourne autour de son cou gras\nEt rouge, que font voir ses cheveux tondus ras.\nComme sa connaissance a, ce soir, de l’ouvrage,\nIl est libre et content. Car jamais il ne rage,\nÀ moins qu’elle ne flâne. Aussi c’est d’un air grand\nQu’il s’écrie au café : « Garçon ! un mazagran ! »",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Croquis_de_dos",
+      "tags": []
+    },
+    {
+      "titulo": "Croquis d’hospitalité",
+      "texto": "Des parfums, des fleurs, des schalls, des colliers\n                Dans un château vaste.\nDes amants heureux sur tous les paliers,\n                Gens de haute caste.\nDes jambons jaunis, séchant sous l’auvent\n                De la cheminée.\n(On entend dehors la chanson du vent\n                Jamais terminée,\nLégende empruntée à des temps anciens\n                Plaintive ou lascive.)\n\nDes chats, doux aux mains, de rudes grands chiens.\n                On fait la lessive.\nDans un coin, parmi les arcs, les filets,\n                Les guêtres verdies,\nDes faisans rouillés, des geais violets,\n                Plumes refroidies.\nDes poissons luisant bleus sous le fil gris\n                De la carnassière\nDont s’embaumeront casseroles, grils,\n                Vapeurs de soupière.\n\nEt puis, à souper, tout le monde est gris\n                De vin et de bière.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Croquis_d%E2%80%99hospitalit%C3%A9",
+      "tags": []
+    },
+    {
+      "titulo": "Cœur simple",
+      "texto": "Dans les douces tiédeurs des chambres d’accouchées\nQuand à peine, à travers les fenêtres bouchées,\nEntre un filet de jour, j’aime, humble visiteur,\nLe bruit de l’eau qu’on verse en un irrigateur,\nEt les cuvettes à l’odeur de cataplasme.\nPuis la garde-malade avec son accès d’asthme,\nLes couches, où s’étend l’or des déjections,\nQui sèchent en fumant devant les clairs tisons,\nMe rappellent ma mère aux jours de mon enfance ;\nEt je bénis ma mère, et le ciel, et la France !",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/C%C5%93ur_simple",
+      "tags": []
+    },
+    {
+      "titulo": "Délabrement",
+      "texto": "Comme un appartement vide aux sales plafonds,\nAux murs nus, écorchés par les clous des peintures,\nD’où sont déménagés les meubles, les tentures,\nOù le sol est jonché de paille et de chiffons,\n\nAinsi, dévasté par les destins, noirs bouffons,\nMon esprit s’est rempli d’échos, de clartés dures.\nLes tableaux, rêves bleus et douces aventures,\nN’ont laissé que leur trace écrite en trous profonds.\n\nQue la pluie et le vent par la fenêtre ouverte\nCouvrent de moisissure âcre et de mousse verte\nTous ces débris, horreur des souvenirs aimés !\n\nQu’en ce délabrement, une nouvelle hôtesse\nNe revienne jamais traîner avec paresse,\nSur de nouveaux tapis, ses peignoirs parfumés !",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/D%C3%A9labrement",
+      "tags": []
+    },
+    {
+      "titulo": "Destinée",
+      "texto": "Quel est le but de tant d’ennuis ?\nNous vivons fiévreux, haletants,\nSans jouir des fleurs au printemps,\n         Du calme des nuits.\n\nPourquoi ces pénibles apprêts,\nCes labeurs que le doute froid\nTraverse, où nous trouvons l’effroi ?\n         Pour mourir après ?\n\nMais non. L’éternelle beauté\nEst le flambeau d’attraction\nVers qui le vivant papillon\n         Se trouve emporté.\n\nMais souvent le papillon d’or\nTrouve la mort au clair flambeau,\nC’est ainsi qu’en plus d’un tombeau\n         La vérité dort.\n\nCeux qui suivent retrouvent-ils\nCes pensers éteints au berceau ?\nQuel ruisseau redit du ruisseau\n         Les rythmes subtils ?",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Destin%C3%A9e",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Diamant enfumé",
+      "texto": "Il est des diamants aux si rares lueurs\nQue, pris par les voleurs ou perdus dans la rue,\nIls retournent toujours aux rois leurs possesseurs.\nAinsi j’ai retrouvé ma chère disparue.\n\nMais quelquefois, brisée, à des marchands divers\nLa pierre est revendue, à moins qu’un aspect rare\nNe la défende. En leurs couleurs, en leurs éclairs,\nSes débris trahiraient le destructeur barbare.\n\nAussi, je n’ai plus peur, diamant vaguement\nEnfumé, mais unique en ta splendeur voilée,\nDe te perdre. Toujours vers moi, ton seul amant,\nChère, tu reviendras des mains qui t’ont volée.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Diamant_enfum%C3%A9",
+      "tags": []
+    },
+    {
+      "titulo": "Distrayeuse",
+      "texto": "La chambre est pleine de parfums. Sur la table basse, dans des corbeilles, il y a du réséda, du jasmin et toutes sortes de petites fleurs rouges, jaunes et bleues.\n\nBlondes émigrantes du pays des longs crépuscules, du pays des rêves, les visions débarquent dans ma fantaisie. Elles y courent, y crient et s’y pressent tant, que je voudrais les en faire sortir.\n\nJe prends des feuilles de papier bien blanc et bien lisse, et des plumes couleur d’ambre qui glissent sur le papier avec des cris d’hirondelles. Je veux donner aux visions inquiètes l’abri du rythme et de la rime.\n\nMais voilà que sur le papier blanc et lisse, où glissait ma plume en criant comme une hirondelle sur un lac, tombent des fleurs de réséda, de jasmin et d’autres petites fleurs rouges, jaunes et bleues.\n\nC’était Elle, que je n’avais pas vue et qui secouait les bouquets des corbeilles sur la table basse.\n\nMais les visions s’agitaient toujours et voulaient repartir. Alors, oubliant qu’Elle était là, belle et blanche, j’ai soufflé contre les petites fleurs semées sur le papier et je me suis repris à courir après les visions, qui, sous leurs manteaux de voyageuses, ont des ailes traîtresses.\n\nJ’allais en emprisonner une, — sauvage fille au regard vert, — dans une étroite strophe,\n\nQuand Elle est venue s’accouder sur la table basse, à côté de moi, si bien que ses seins irritants caressaient le papier lisse.\n\nLe dernier vers de la strophe restait à souder. C’est ainsi qu’Elle m’en a empêché, et que la vision au regard vert s’est enfuie, ne laissant dans la strophe ouverte que son manteau de voyageuse et un peu de la nacre de ses ailes.\n\nOh ! la distrayeuse !… J’allais lui donner le baiser qu’elle attendait, quand les visions remuantes, les chères émigrantes aux odeurs lointaines ont reformé leurs danses dans ma fantaisie.\n\nAussi, j’ai oublié encore qu’Elle était là, blanche et nue. J’ai voulu clore l’étroite strophe par le dernier vers, indestructible chaîne d’acier idéal, niellée d’or stellaire, qu’incrustaient les splendeurs des couchants cristallisées dans ma mémoire.\n\nEt j’ai un peu écarté de la main ses seins gonflés de désirs irritants, qui masquaient sur le papier lisse la place du dernier vers. Ma plume a repris son vol, en criant comme l’hirondelle qui rase un lac tranquille, avant l’orage.\n\nMais voilà qu’Elle s’est étendue, belle, blanche et nue, sur la table basse, au-dessous des corbeilles, cachant sous son beau corps alangui la feuille entière de papier lisse.\n\nAlors les visions se sont envolées toutes bien loin, pour ne plus revenir.\n\nMes yeux, mes lèvres et mes mains se sont perdus dans l’aromatique broussaille de sa nuque, sous l’étreinte obstinée de ses bras et sur ses seins gonflés de désirs.\n\nEt je n’ai plus vu que ce beau corps alangui, tiède, blanc et lisse où tombaient, des corbeilles agitées, les résédas, les jasmins et d’autres petites fleurs rouges, jaunes et bleues.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Distrayeuse",
+      "tags": []
+    },
+    {
+      "titulo": "Don Juan",
+      "texto": "Au bord d’un étang bleu dont l’eau se ride\nSous le vent discret d’une nuit d’été,\nParmi les jasmins, foulant l’herbe humide\nAvez-vous jamais, rêveur, écouté\n\nLa voix de la vierge émue et timide\nQui furtive, un soir, pour vous a quitté\nLe foyer ami — depuis froid et vide —\nOù, les parents morts, plus rien n’est resté ?\n\nParfum de poison, volupté cruelle\nD’avoir arraché du sol ce lys frêle\nEt d’avoir hâté l’œuvre des tombeaux…\n\nÔ destruction de quels âpres charmes\nEs-tu donc parée ? Et, voilés de larmes,\nPourquoi les yeux clairs en sont-ils plus beaux ?",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Don_Juan",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Excuse",
+      "texto": "Aux arbres il faut un ciel clair,\nL’espace, le soleil et l’air,\nL’eau dont leur feuillage se mouille.\nIl faut le calme en la forêt,\nLa nuit, le vent tiède et discret\nAu rossignol, pour qu’il gazouille.\n\nIl te faut, dans les soirs joyeux,\nLe triomphe ; il te faut des yeux\nÉblouis de ta beauté fière.\nAu chercheur d’idéal il faut\nDes âmes lui faisant là-haut\nUne sympathique atmosphère.\n\nMais quand mauvaise est la saison,\nL’arbre perd fleurs et frondaison.\nSon bois seul reste, noir et grêle.\nEt sur cet arbre dépouillé,\nL’oiseau, grelottant et mouillé,\nReste muet, tête sous l’aile.\n\nAinsi ta splendeur, sur le fond\nQue les envieuses te font,\nPerd son nonchaloir et sa grâce.\nChez les nuls, qui ne voient qu’hier,\nLe poète, interdit et fier,\nRêvant l’art de demain, s’efface.\n\nArbres, oiseaux, femmes, rêveurs\nPerdent dans les milieux railleurs\nFeuillage, chant, beauté, puissance.\nDans la cohue où tu te plais,\nRegarde-moi, regarde-les,\nEt tu comprendras mon silence.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Excuse",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Fiat Lux",
+      "texto": "Il marche à l’heure vague où le jour tombe. Il marche,\nPortant ses hauts bâtons. Et, double ogive, l’arche\nDu pont encadre l’eau, couleur plume de coq.\nIl a chaud et n’a pas le sou pour prendre un bock.\nMais partout où ses pas résonnent, la lumière\nBrille. C’est l’allumeur humble de réverbère\nQui, rentrant pour la soupe, avec sa femme assis,\nL’embrasse, éclairé par la chandelle des six,\nSans se douter — aucune ignorance n’est vile\nQu’il a diamanté, simple, la grande ville.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Fiat_Lux",
+      "tags": []
+    },
+    {
+      "titulo": "Gagne-Petit",
+      "texto": "Il a tout fait, tous les métiers. Sa simple vie\nSe passe loin du bruit, loin des cris de l’envie\nEt des ambitions vaines du boulevard.\nPour ce jour attendu, qui s’annonce blafard,\nLes savants ont prédit, avant l’heure où se couche\nLe soleil, une éclipse. Et sa maîtresse accouche,\nApportant un enfant parmi tant de soucis !\nIl compte, pour dîner, sur ses verres noircis.\nCarrières de Montmartre, en vos antres de gypse,\nAbritez le marchand de verres pour éclipse !",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Gagne-Petit",
+      "tags": []
+    },
+    {
+      "titulo": "Heures sereines",
+      "texto": "J’ai pénétré bien des mystères\nDont les humains sont ébahis :\nGrimoires de tous les pays,\nÊtres et lois élémentaires.\n\nLes mots morts, les nombres austères\nLaissaient mes espoirs engourdis ;\nL’amour m’ouvrit ses paradis\nEt l’étreinte de ses panthères.\n\nLe pouvoir magique à mes mains\nSe dérobe encore. Aux jasmins\nLes chardons ont mêlé leurs haines.\n\nJe n’en pleure pas ; car le Beau\nQue je rêve, avant le tombeau,\nM’aura fait des heures sereines.",
+      "forma": "soneto",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Heures_sereines",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Insomnie",
+      "texto": "Voici le matin ridicule\nQui vient décolorer la nuit,\nRéveillant par son crépuscule\nLe chagrin, l’intrigue et le bruit.\n\nCorrects, le zinc et les ardoises\nDes toits coupent le ciel normal,\n\nOn dort, dans les maisons bourgeoises.\nJe ne dors pas. Quel est mon mal ?\n\nEst-ce une vie antérieure\nQui me poursuit de ses parfums ?\nCes gens vont grouiller tout à l’heure,\nDispersant mes rêves défunts.\n\nJe me souviens ! c’étaient des frères\nQue, chef bien-aimé, je menais\nÀ travers les vastes bruyères,\nLes aubépines, les genêts.\n\nOh ! quelle bien-aimée exquise\nAu doux cœur, aux yeux de velours !…\nUne autre terre fut conquise\nOù le soleil brillait toujours.\n\nL’or dont on fit des broderies,\nLes gemmes, cristaux des couchants,\nLes fleurs, énervantes féeries,\nLes aromates plein les champs\n\nM’ont enivré. J’ai mis des bagues,\nEt des perles dans mes cheveux.\nLes bayadères aux yeux vagues\nM’ont distrait de mes premiers vœux.\n\nAux monts où le soleil se couche\nEmporté par des étrangers,\nJ’ai pleuré, muet et farouche\nTous mes ravissements changés\n\nLes arômes en fades herbes,\nLes diamants en froid cristal,\nEn loups gris les tigres superbes,\nEn sapin banal le santal.\n\nPuis, mal consolé, sous les branches,\nJ’épiais dans les froids vallons\nLes filles qui passaient si blanches,\nSi graves, sous leurs cheveux blonds.\n\nMais ce n’était pas l’oubliée\nAux lèvres rouges de bétel\nÀ ma vie autrefois liée !…\nQue je souffre d’être immortel !\n\nCorrects, le zinc et les ardoises\nDes toits coupent le ciel normal,\nOn s’éveille aux maisons bourgeoises,\nJe crois que je meurs de mon mal.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Insomnie",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Jours d’épreuve",
+      "texto": "Jadis je logeais haut, tout contre la gouttière :\nTapi souvent à ma fenêtre en tabatière,\nRêvant à ma misère, à tant d’affronts subis,\nJ’écoutais les marchands de légumes, d’habits :\nEt les tuyaux des toits, chefs-d’œuvre des fumistes,\nRayaient de noir le fond de mes grands yeux si tristes,\nJ’entendais quelquefois un doux bruit de grelots,\nEt me penchant, j’aimais ce gros homme en sabots\nQui se hâtait pour vendre aux phthysiques jeunesses\nLa consolation du tiède lait d’ânesses.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Jours_d%E2%80%99%C3%A9preuve",
+      "tags": []
+    },
+    {
+      "titulo": "La Blessée",
+      "texto": "La blessée est contre un coussin\nTrempé du sang de la blessure\nQu’elle porte au-dessous du sein.\nQu’elle est blanche ! Le médecin\nN’a pas un seul mot qui rassure.\nCeux qui l’aiment, disent : « Ce soir,\nSera-t-elle vivante ou morte ? »\nLes pauvres dont elle est l’espoir\nRegardent au trou de la porte.\n\nÔ France, ainsi tes jours joyeux\nAvaient fui dans la nuit profonde.\nAinsi nous avons cru tes yeux\nÀ jamais fermés pour le monde.\n\nLa blessée est sauvée et dort\nDans son lit blanc, tout amaigrie.\nElle a frôlé de près la mort ;\nOn lui défend de parler fort,\nOn craint même qu’elle ne rie.\nMais dehors un vent attiédi\nVerdit déjà les noires cimes.\nComme elle s’ennuie, à midi,\nDes tisanes et des régimes !\n\nÔ France, ainsi tes jours joyeux\nAvaient fui dans la nuit profonde ;\nMais l’aube renaît et tes yeux\nSe sont entrouverts sur le monde.\n\nLa blessée enfin ce matin\nA trompé sa garde-malade.\nElle part d’un pas incertain.\nElle a voulu sentir le thym\nDans ce sentier qu’elle escalade.\nSes bras ne sont plus si fluets.\n\nElle est plus forte. « Oh ! la prairie ! »\nElle cueille et met des bleuets\nDans ses cheveux. Elle est guérie !\n\nÔ France, ainsi tes jours joyeux\nAvaient fui dans la nuit profonde.\nMais, voici le soleil ! Tes yeux\nRestent grands ouverts sur le monde.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/La_Bless%C3%A9e",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "La Dame en pierre",
+      "texto": "Sur ce couvercle de tombeau\n  Elle dort. L’obscur artiste\nQui l’a sculptée a vu le beau\n        Sans rien de triste.\n\nJoignant les mains, les yeux heureux\n  Sous le voile des paupières,\nElle a des rêves amoureux\n        Dans ses prières.\n\nSous les plis lourds du vêtement,\n   La chair apparaît rebelle,\nN’oubliant pas complètement\n       Qu’elle était belle.\n\nRamenés sur le sein glacé\n   Les bras, en d’étroites manches,\nRêvent l’amant qu’ont enlacé\n       Leurs chaînes blanches.\n\nLe lévrier, comme autrefois\n   Attendant une caresse,\nDort blotti contre les pieds froids\n       De sa maîtresse.\n\nTout le passé revit. Je vois\n   Les splendeurs seigneuriales,\nLes écussons et les pavois\n       Des grandes salles,\n\nLes hauts plafonds de bois, bordés\n   D’emblématiques sculptures,\nLes chasses, les tournois brodés\n       Sur les tentures.\n\nDans son fauteuil, sans nul souci\n   Des gens dont la chambre est pleine,\nÀ quoi peut donc rêver ainsi,\n       La châtelaine ?\n\nSes yeux où brillent par moment\n   Les fiertés intérieures,\nLisent mélancoliquement\n       Un livre d’heures.\n\nQuand une femme rêve ainsi\n   Fière de sa beauté rare,\nC’est quelque drame sans merci\n       Qui se prépare.\n\nPeut-être à temps, en pleine fleur,\n   Celle-ci fut mise en terre.\nBien qu’implacable, la douleur\n       En fut austère.\n\nL’amant n’a pas vu se ternir,\n   Au souffle de l’infidèle,\nLa pureté du souvenir\n       Qu’il avait d’elle.\n\nLa mort n’a pas atteint le beau.\n   La chair perverse est tuée,\nMais la forme est, sur un tombeau,\n       Perpétuée.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/La_Dame_en_pierre",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "La Vie idéale",
+      "texto": "Une salle avec du feu, des bougies,\nDes soupers toujours servis, des guitares,\nDes fleurets, des fleurs, tous les tabacs rares,\nOù l’on causerait pourtant sans orgies.\n\nAu printemps lilas, roses et muguets,\nEn été jasmins, œillets et tilleuls\nRempliraient la nuit du grand parc où, seuls\nParfois, les rêveurs fuiraient les bruits gais.\n\nLes hommes seraient tous de bonne race,\nDompteurs familiers des Muses hautaines,\nEt les femmes, sans cancans et sans haines,\nIllumineraient les soirs de leur grâce.\n\nEt l’on songerait, parmi ces parfums\nDe bras, d’éventails, de fleurs, de peignoirs,\nDe fins cheveux blonds, de lourds cheveux noirs,\nAux pays lointains, aux siècles défunts.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/La_Vie_id%C3%A9ale",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Lassitude",
+      "texto": "Pendant de longues périodes dans la vie courte, je m’efforce à rassembler mes pensées qui s’enfuient, je cherche les visions des bonnes heures.\n\nMais je trouve que mon âme est comme une maison désertée par les serviteurs.\n\nLe maître parcourt inquiet les corridors froids, n’ayant pas les clefs des pièces hospitalières où sont les merveilles qu’il a rapportées de tant de voyages.\n\nLes ravissements, les instants où je savais tenir l’univers en ma main royale, ont été bien courts et bien rares. Presque aussi rares sont pour moi les périodes de pensée normale. Le plus souvent je suis impuissant, je suis fou ; ce dont je me cache au dehors, sous les richesses conquises aux bonnes heures.\n\nQuelle drogue me rendra plus fréquente la pensée normale ? Quand je l’ai, quand elle se prolonge, ma poitrine puissante me permet de monter là où nulle senteur terrestre n’arrive plus, là où, dans le ravissement, j’exerce ma royauté.\n\nAprès de mauvais sommeils (d’où viennent-ils ?) voici que je ne suis plus là-haut. Je n’ai plus que le regret de ce que j’y ai senti. À peine me reste-t-il assez de lucidité et de courage pour rendre compte aux hommes de ce que j’y ai fait et me justifier auprès d’eux.\n\nJ’ai eu toutes les fiertés ; j’ai dédaigné les comptes à rendre et les justifications.\n\nMais quand la fièvre pesante m’a égaré et fait redescendre, puis-je vivre seul et sans soleil entre des murs de haine ?\n\nPourtant, les efforts que je consens à faire, malgré ma lassitude, loin de m’être comptés, ne me désignent-ils pas plutôt à la fureur des empressés qui s’agitent en bas ?",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Lassitude",
+      "tags": []
+    },
+    {
+      "titulo": "Le But",
+      "texto": "Le long des peupliers je marche, le front nu,\nPoitrine au vent, les yeux flagellés par la pluie.\nJe m’avance hagard vers le but inconnu.\n\nLe printemps a des fleurs dont le parfum m’ennuie,\nL’été promet, l’automne offre ses fruits, d’aspects\nIrritants ; l’hiver blanc, même, est sali de suie.\n\nQue les corbeaux, trouant mon ventre de leurs becs,\nMangent mon foie, où sont tant de colères folles,\nQue l’air et le soleil blanchissent mes os secs,\n\nEt, surtout, que le vent emporte mes paroles !",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Le_But",
+      "tags": []
+    },
+    {
+      "titulo": "Le Hareng saur",
+      "texto": "Il était un grand mur blanc ― nu, nu, nu,\nContre le mur une échelle ― haute, haute, haute,\nEt, par terre, un hareng saur ― sec, sec, sec.\n\nIl vient, tenant dans ses mains ― sales, sales, sales,\nUn marteau lourd, un grand clou ― pointu, pointu, pointu,\nUn peloton de ficelle ― gros, gros, gros.\n\nAlors il monte à l’échelle ― haute, haute, haute,\nEt plante le clou pointu ― toc, toc, toc,\nTout en haut du grand mur nu ― nu, nu, nu.\n\nIl laisse aller le marteau ― qui tombe, qui tombe, qui tombe,\nAttache au clou la ficelle ― longue, longue, longue,\nEt, au bout, le hareng saur ― sec, sec, sec.\n\nIl redescend de l’échelle ― haute, haute, haute,\nL’emporte avec le marteau ― lourd, lourd, lourd ;\nEt puis, il s’en va ailleurs ― loin, loin, loin.\n\nEt, depuis, le hareng saur ― sec, sec, sec,\nAu bout de cette ficelle ― longue, longue, longue,\nTrès lentement se balance ― toujours, toujours, toujours.\n\nJ’ai composé cette histoire ― simple, simple, simple,\nPour mettre en fureur les gens ― graves, graves, graves,\nEt amuser les enfants ― petits, petits, petits.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Le_Hareng_saur",
+      "tags": []
+    },
+    {
+      "titulo": "Le Meuble",
+      "texto": "À Madame Mauté de FleurvilleIl m’a fallu avoir le regard bien rapide, l’oreille bien fine, l’attention bien aiguisée,\n\nPour découvrir le mystère du meuble, pour pénétrer derrière les perspectives de marqueterie, pour atteindre le monde imaginaire à travers les petites glaces.\n\nMais j’ai enfin entrevu la fête clandestine, j’ai entendu les menuets minuscules, j’ai surpris les intrigues compliquées qui se trament dans le meuble.\n\nOn ouvre les battants, on voit comme un salon pour des insectes, on remarque les carrelages blancs, bruns et noirs en perspective exagérée.\n\nUne glace au milieu, une glace à droite, une glace à gauche, comme les portes dans les comédies symétriques. En vérité ces glaces sont des portes ouvertes sur l’imaginaire.\n\nMais une solitude évidemment inaccoutumée, une propreté dont on cherche le but en ce salon où il n’y a personne, un luxe sans raison pour un intérieur où ne régnerait que la nuit.\n\nOn est dupe de cela, on se dit « c’est un meuble et voilà tout », on pense qu’il n’y a rien derrière les glaces que le reflet de ce qui leur est présenté.\n\nInsinuations qui viennent de quelque part, mensonges soufflés à notre raison par une politique voulue, ignorances où nous tiennent certains intérêts que je n’ai pas à définir.\n\nPourtant je n’y veux plus mettre de prudence, je me moque de ce qui peut en arriver, je n’ai pas souci des rancunes fantastiques.\n\nQuand le meuble est fermé, quand l’oreille des importuns est bouchée par le sommeil ou remplie des bruits extérieurs, quand la pensée des hommes s’appesantit sur quelque objet positif,\n\nAlors d’étranges scènes se passent dans le salon du meuble ; quelques personnages de taille et d’aspect insolites sortent des petites glaces ; certains groupes, éclairés par des lueurs vagues, s’agitent en ces perspectives exagérées.\n\nDes profondeurs de la marqueterie, de derrière les colonnades simulées, du fond des couloirs postiches ménagés dans le revers des battants,\n\nS’avancent, en toilettes surannées, avec une démarche frétillante et pour une fête d’almanach extra-terrestre,\n\nDes élégants d’une époque de rêve, des jeunes filles cherchant un établissement en cette société de reflets et enfin les vieux parents, diplomates ventrus et douairières couperosées.\n\nSur le mur de bois poli, accrochées on ne sait comment, les girandoles s’allument. Au milieu de la salle, pendu au plafond qui n’existe pas, resplendit un lustre surchargé de bougies roses, grosses et longues comme des cornes de limaçons. Dans des cheminées imprévues, des feux flambent comme des vers luisants.\n\nQui a mis là ces fauteuils, profonds comme des coques de noisettes et disposés en cercle, ces tables surchargées de rafraîchissements immatériels ou d’enjeux microscopiques, ces rideaux somptueux — et lourds comme des toiles d’araignée ?\n\nMais le bal commence. L’orchestre, qu’on croirait composé de hannetons, jette ses notes, pétillements et sifflements imperceptibles. Les jeunes gens se donnent la main et se font des révérences.\n\nPeut-être même quelques baisers d’amour fictif s’échangent à la dérobée, des sourires sans idée se dissimulent sous les éventails en ailes de mouche, des fleurs fanées dans les corsages sont demandées et données en signe d’indifférence réciproque.\n\nCombien cela dure-t-il ? Quelles causeries s’élèvent dans ces fêtes ? Où va ce monde sans substance, après la soirée ?\n\nOn ne sait pas.\n\nPuisque, si l’on ouvre le meuble, les lumières et les feux s’éteignent ; les invités, élégants, coquettes et vieux parents disparaissent pêle-mêle, sans souci de leur dignité, dans les glaces, couloirs et colonnades ; les fauteuils, les tables et les rideaux s’évaporent.\n\nEt le salon reste vide, silencieux et propre ;\n\nAussi tout le monde le dit « c’est un meuble de marqueterie et voilà tout », sans se douter qu’aussitôt le regard détourné,\n\nDe petits visages narquois se hasardent à sortir des glaces symétriques, de derrière les colonnes incrustées, du fond des couloirs postiches.\n\nEt il faut un œil particulièrement exercé, minutieux et rapide, pour les surprendre quand ils s’éloignent en ces perspectives exagérées, lorsqu’ils se réfugient dans les profondeurs imaginaires des petites glaces, à l’instant où ils rentrent dans les cachettes irréelles du bois poli.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Le_Meuble",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Lendemain",
+      "texto": "Avec les fleurs, avec les femmes,\nAvec l’absinthe, avec le feu,\nOn peut se divertir un peu,\nJouer son rôle en quelque drame.\n\nL’absinthe bue un soir d’hiver\nÉclaire en vert l’âme enfumée,\nEt les fleurs, sur la bien-aimée\nEmbaument devant le feu clair.\n\nPuis les baisers perdent leurs charmes,\nAyant duré quelques saisons.\nLes réciproques trahisons\nFont qu’on se quitte un jour, sans larmes.\n\nOn brûle lettres et bouquets\nEt le feu se met à l’alcôve,\nEt, si la triste vie est sauve,\nRestent l’absinthe et ses hoquets.\n\nLes portraits sont mangés des flammes ;\nLes doigts crispés sont tremblotants…\nOn meurt d’avoir dormi longtemps\nAvec les fleurs, avec les femmes.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Lendemain",
+      "tags": []
+    },
+    {
+      "titulo": "Lento",
+      "texto": "Je veux ensevelir au linceul de la rime\nCe souvenir, malaise immense qui m’opprime.\n\nQuand j’aurai fait ces vers, quand tous les auront lus\nMon mal vulgarisé ne me poursuivra plus.\n\nCar ce mal est trop grand pour que seul je le garde\nAussi, j’ouvre mon âme à la foule criarde.\n\nAssiégez le réduit de mes rêves défunts,\nEt dispersez ce qu’il y reste de parfums.\n\nPiétinez le doux nid de soie et de fourrures ;\nFondez l’or, arrachez les pierres des parures.\n\nFaussez les instruments. Encrassez les lambris ;\nEt vendez à l’encan ce que vous aurez pris.\n\nPour que, si quelque soir l’obsession trop forte\nM’y ramène, plus rien n’y parle de la morte.\n\nQue pas un coin ne reste intime, indéfloré.\nPeut-être, seulement alors je guérirai.\n\n(Avec des rythmes lents, j’endors ma rêverie\nComme une mère fait de son enfant qui crie.)\n\nUn jour, j’ai mis mon cœur dans sa petite main\nEt, tous en fleur, mes chers espoirs du lendemain.\n\nL’amour paye si bien des trésors qu’on lui donne !\nEt l’amoureuse était si frêle, si mignonne !\n\nSi mignonne, qu’on l’eût prise pour une enfant\nTrop tôt belle et que son innocence défend.\n\nMais, elle m’a livré sa poitrine de femme,\nDont les soulèvements semblaient trahir une âme.\n\nElle a baigné mes yeux des lueurs de ses yeux,\nEt mes lèvres de ses baisers délicieux.\n\n(Avec des rythmes doux, j’endors ma rêverie\nComme une mère fait de son enfant qui crie.)\n\nMais, il ne faut pas croire à l’âme des contours,\nÀ la pensée enclose en deux yeux de velours.\n\nCar un matin, j’ai vu que ma chère amoureuse\nCachait un grand désastre en sa poitrine creuse.\n\nJ’ai vu que sa jeunesse était un faux dehors,\nQue l’âme était usée et les doux rêves morts.\n\nJ’ai senti la stupeur d’un possesseur avide\nQui trouve, en s’éveillant, sa maison nue et vide.\n\nJ’ai cherché mes trésors. Tous volés ou brisés !\nTous, jusqu’au souvenir de nos premiers baisers !\n\nAu jardin de l’espoir, l’âpre dévastatrice\nN’a rien laissé, voulant que rien n’y refleurisse.\n\nJ’ai ramassé mon cœur, mi-rongé dans un coin,\nEt je m’en suis allé je ne sais où, bien loin.\n\n(Avec des rythmes sourds, j’endors ma rêverie\nComme une mère fait de son enfant qui crie.)\n\nC’est fièrement, d’abord, que je m’en suis allé\nPensant qu’aux premiers froids, je serais consolé.\n\nSimulant l’insouci, je marchais par les rues.\nToutes, nous les avions ensemble parcourues !\n\nJe n’ai pas même osé fuir le mal dans les bois.\nNous nous y sommes tant embrassés autrefois !\n\nFermer les yeux ? Rêver ? Je n’avais pas dans l’âme\nUn coin qui n’eût gardé l’odeur de cette femme.\n\nJ’ai donc voulu, sentant s’effondrer ma raison,\nLa revoir, sans souci de sa défloraison.\n\nMais, je n’ai plus trouvé personne dans sa forme.\nAlors le désespoir m’a pris, lourd, terne, énorme.\n\nEt j’ai subi cela des mois, de bien longs mois,\nSi fort, qu’en trop parler me fait trembler la voix.\n\nMaintenant c’est fini. Souvenir qui m’opprimes,\nTu resteras, glacé, sous ton linceul de rimes.",
+      "forma": "outro",
+      "obra": "Le Coffret de santal (éd. 1879)",
+      "ano": 1879,
+      "fonte": "https://fr.wikisource.org/wiki/Le_Coffret_de_santal_(%C3%A9d._1879)/Lento",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "username": "amado_nervo",
+  "name": "Amado Nervo",
+  "bio": "Poeta mexicano. La amada inmóvil, póstumo, e os poemas místicos são o que mais circula.",
+  "avatar_url": "",
+  "nascimento": 1870,
+  "morte": 1919,
+  "escolas": [
+    "modernismo_hispanico"
+  ],
+  "pais": "MX",
+  "poemas": [
+    {
+      "titulo": "A Kempis",
+      "texto": "Ha muchos años que busco el yermo,\nha muchos años que vivo triste,\nha muchos años que estoy enfermo,\n¡y es por el libro que tú escribiste!\n\n¡Oh Kempis, antes de leerte amaba\nla luz, las vegas, el mar Océano;\nmas tú dijiste que todo acaba,\nque todo muere, que todo es vano!\n\nAntes, llevado de mis antojos,\nbesé los labios que al beso invitan,\nlas rubias trenzas, los grandes ojos,\n¡sin acordarme que se marchitan!\n\nMas como afirman doctores graves,\nque tú, maestro, citas y nombras,\nque el hombre pasa como las naves,\ncomo las nubes, como las sombras...,\n\nhuyo de todo terreno lazo,\nningún cariño mi mente alegra,\ny con tu libro bajo del brazo\nvoy recorriendo la noche negra...\n\n¡Oh Kempis, Kempis, asceta yermo,\npálido asceta, qué mal me hiciste!\n¡Ha muchos años que estoy enfermo,\ny es por el libro que tú escribiste!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/A_Kempis",
+      "tags": [
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Azrael",
+      "texto": "Azrael, abre tu ala negra, y honda,\ncobíjeme su palio sin medida,\ny que a su abrigo bienhechor se esconda\nla incurable tristeza de mi vida.\n\nAzrael, ángel bíblico, ángel fuerte,\nángel de redención, ángel sombrío,\nya es tiempo que consagres a la muerte\nmi cerebro sin luz: altar vacío...\n\nAzrael, mi esperanza es una enferma;\nya tramonta mi fe; llegó el ocaso,\nven, ahora es preciso que yo duerma...\n¿Morir..., dormir..., dormir...? ¡Soñar acaso!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Azrael",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Brahma no piensa",
+      "texto": "Ego sum quo sum.\n\nBrahma no piensa: pensar limita.\nBrahma no es bueno ni malo, pues\nlas cualidades en su infinita\nsubstancia huelgan. Brahma es lo que es.\n\nBrahma, en un éxtasis perenne, frío,\nsu propia esencia mirando está.\nSi duerme, el Cosmos torna al vacío:\nmas si despierta renacerá!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Brahma_no_piensa",
+      "tags": []
+    },
+    {
+      "titulo": "Cobardía",
+      "texto": "Pasó con su madre, qué rara belleza,\nqué rubios cabellos de trigo garzul,\nqué ritmo en el paso, que innata realeza\nde porte, qué formas bajo el fino tul.\nPasó con su madre, volvió la cabeza,\nme clavó muy hondo su mirada azul.\n\nQuedé como en éxtasis; con febril premura\n¡Síguela! gritaron cuerpo y alma al par.\nPero tuve miedo de amar con locura,\nde abrir mis heridas, que suelen sangrar,\ny  no obstante  toda mi sed de ternura,\ncerrando los ojos, la dejé pasar.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Cobard%C3%ADa_(Nervo)",
+      "tags": []
+    },
+    {
+      "titulo": "Deidad",
+      "texto": "Como duerme la chispa en el guijarro\ny la estatua en el barro,\nen ti duerme la divinidad.\nTan sólo en un dolor constante y fuerte\nal choque, brota de la piedra inerte\nel relámpago de la deidad.\nNo te quejes, por tanto, del destino,\npues lo que en tu interior hay de divino\nsólo surge merced a él.\nSoporta, si es posible, sonriendo,\nla vida que el artista va esculpiendo,\nel duro choque del cincel.\n\nQué importan para ti las horas malas,\nsi cada hora en tus nacientes alas\npone una pluma bella más?\nYa verás al cóndor en plena altura,\nya verás concluida la escultura,\nya verás, alma, ya verás...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Deidad",
+      "tags": []
+    },
+    {
+      "titulo": "El celaje",
+      "texto": "¿A dónde fuiste, amor; a dónde fuiste?\nSe extinguió en el poniente el manso fuego,\ny tú que me decías: \"hasta luego,\nvolveré por la noche\"... ¡No volviste!\n\n¿En qué zarzas tu pie divino heriste?\n¿Qué muro cruel te ensordeció a mi ruego?\n¿Qué nieve supo congelar tu apego\ny a tu memoria hurtar mi imagen triste?\n\n¡Amor, ya no vendrás! En vano, ansioso,\nde mi balcón atalayando vivo\nel campo verde y el confín brumoso.\n\nY me finge un celaje fugitivo\nnave de luz en que, al final reposo,\nva tu dulce fantasma pensativo.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_celaje_(Nervo)",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El día que me quieras",
+      "texto": "El día que me quieras tendrá más luz que junio;\nla noche que me quieras será de plenilunio,\ncon notas de Beethoven vibrando en cada rayo\nsus inefables cosas,\ny habrá juntas más rosas\nque en todo el mes de mayo.\n\nLas fuertes cristalinas\nirán por las laderas\nsaltando cantarinas,\nel día que me quieras.\n\nEl día que me quieras, los sotos escondidos\nresonarán arpegios nunca antes oídos.\nÉxtasis de tus ojos, todas las primaveras\nque hubo y habrá en el mundo, serán cuando me quieras.\n\nTomadas de la mano, cual rubias hermanitas\nluciendo golas cándidas, irán las margaritas\npor montes y praderas\ndelante de tus pasos, el día que me quieras...\nY si deshojan una, te diré inocente\npostrer pétalo blanco ¡Apasionadamente!\n\nAl reventar el alba del día que me quieras,\ntendrán todos los tréboles cuatro hojas agoreras\ny en el estanque, nido de gérmenes ignotos,\nflorecerán las místicas corolas de los lotos.\n\nEl día que me quieras será cada celaje\nala maravillosa; cada arrebol, miraje\nde las Mil y Una noches; cada brisa un cantar,\ncada árbol una lira, cada monte un altar.\n\nEl día que me quieras, para nosotros dos\ncabrá en un solo beso la beatitud de Dios.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_d%C3%ADa_que_me_quieras",
+      "tags": [
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "El torbellino",
+      "texto": "»Espíritu que naufraga\nen medio de un torbellino,\nporque manda mi destino\nque lo que no quiero haga;\n\n»frente al empuje brutal\nde mi terrible pasión,\nle pregunto a mi razón\ndónde están el bien y el mal;\n\n»quién se equivoca, quién yerra;\nla conciencia, que me grita:\n¡Resiste!, llena de cuita,\no el titán que me echa en tierra.\n\n»Si no es mío el movimiento\ngigante que me ha vencido,\n¿por qué, después de caído,\nme acosa el remordimiento?\n\n»La peña que fue de cuajo\narrancada y que se abisma,\nno se pregunta a sí misma\npor qué cayó tan abajo;\n\n»mientras que yo, ¡miserable!,\nsi combato, soy vencido,\ny si caigo, ya caído\naún me encuentro culpable,\n\n»¡y en el fondo de mi mal,\nni el triste consuelo siento\nde que mi derrumbamiento\nfue necesario y fatal!»\n\nAsí, lleno de ansiedad\nun hermano me decía,\ny yo le oí con piedad,\npensando en la vanidad\nde toda filosofía...,\n\ny clamé, después de oír\n«¡Oh mi sabio no saber,\nmi elocuente no argüir,\nmi regalado sufrir,\nmi ganancioso perder!»",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_torbellino",
+      "tags": []
+    },
+    {
+      "titulo": "En paz",
+      "texto": "Muy cerca de mi ocaso, yo te bendigo, vida,\nporque nunca me diste ni esperanza fallida,\nni trabajos injustos, ni pena inmerecida;\n\nporque veo al final de mi rudo camino\nque yo fui el arquitecto de mi propio destino;\n\nque si extraje la miel o la hiel de las cosas,\nfue porque en ellas puse hiel o mieles sabrosas:\ncuando planté rosales, coseché siempre rosas.\n\nCierto, a mis lozanías va a seguir el invierno:\n¡mas tú no me dijiste que mayo fuese eterno!\n\nHallé sin duda largas noches de mis penas;\nmas no me prometiste tú sólo noches buenas;\ny en cambio tuve algunas santamente serenas.\n\nAmé, fui amado, el sol acarició mi faz.\n¡Vida, nada me debes! ¡Vida, estamos en paz!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/En_paz",
+      "tags": []
+    },
+    {
+      "titulo": "Envío",
+      "texto": "La canción que me pediste\nla compuse y aquí está:\nCántala bajito y triste;\nella duerme (para siempre);\nla canción la arrullará\nCántala bajito y triste;\ncántala...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Env%C3%ADo_(Amado_Nervo)",
+      "tags": []
+    },
+    {
+      "titulo": "Éxtasis",
+      "texto": "Cada rosa gentil ayer nacida,\ncada aurora que apunta entre sonrojos,\ndejan mi alma en el éxtasis sumida\nnunca se cansan de mirar mis ojos\nel perpetuo milagro de la vida!\n\nAños ha que contemplo las estrellas\nen las diáfanas noches españolas\ny las encuentro cada vez mas bellas.\nAños ha que en el mar conmigo a solas,\ny aun me pasma el prodigio de las olas!\n\nCada vez hallo la naturaleza\nmás sobrenatural, más pura y santa,\nPara mí, en rededor, todo es belleza:\ny con la misma plenitud me encanta\nla boca de la madre cuando reza\nque la boca del niño cuando canta.\n\nQuiero ser inmortal con sed intensa,\nporque es maravilloso el panorama\ncon que nos brinda la creación inmensa;\nporque cada lucero me reclama,\ndiciéndome al brillar: \"Aquí se piensa,\ntambién aquí se lucha, aquí se ama.\"",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/%C3%89xtasis_(Nervo)",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Gratia Plena",
+      "texto": "Todo en ella encantaba, todo en ella atraía.\nSu mirada, su gesto, su sonrisa, su andar.\nEl ingenio de Francia de su boca fluía.\nEra llena de gracia como el Ave María,\n¡Quién la vió no la pudo ya jamás olvidar!\n\nIngenua como el agua, diáfana como el día,\nrubia y nevada cual margarita sin par,\nal influjo de su alma celeste, amanecía.\nEra llena de gracia, como el Ave María,\n¡Quién la vió no la pudo ya jamás olvidar!\n\nCierta dulce y amable dignidad la investía\nde no se que prestigio lejano y singular.\nMás que muchas princesas, princesa parecía\nEra llena de gracia como el Ave María,\n¡Quién la vió no la pudo ya jamás olvidar!\n\nYo gocé el privilegio de encontrarla en vía dolorosa;\npor ella tuvo fin mi anhelar y cadencias arcanas halló mi poesía.\nEra llena de gracia, como el Ave María,\n¡Quién la vió no la pudo ya jamás olvidar!\n\n¡Cuánto! ¡Cuánto la quise! Por diez años fue mía,\n¡pero flores tan bellas nunca pueden durar!\nEra llena de gracia, como el Ave María\ny a la fuente de Gracia de donde procedía se volvió,\n¡Como gota que se vuelve a la mar!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Gratia_Plena",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Identidad",
+      "texto": "Tat tuam asi(Tú eres esto: es decir, tú eres uno\ny lo mismo que cuanto te rodea;\ntú eres la cosa en sí)\n\nEl que sabe que es uno con Dios, logra el Nirvana:\nun Nirvana en que toda tiniebla se ilumina;\nvertiginoso ensanche de la conciencia humana,\nque es sólo proyección de la Idea Divina\nen el Tiempo...\n\nEl fenómeno, lo exterior, vano fruto\nde la ilusión, se extingue: ya no hay pluralidad,\ny el yo, extasiado, abísmase por fin en lo absoluto,\ny tiene como herencia toda la eternidad!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Identidad",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Kalpa",
+      "texto": "-¿Queréis que todo esto vuelva a empezar?\n-Sí -responden a coro.\nAlso Sprach Zarathustra\n\nEn todas las eternidades\nque a nuestro mundo precedieron,\n¿cómo negar que ya existieron\nplanetas con humanidades;\n\ny hubo Homeros que describieron\nlas primeras heroicidades,\ny hubo Shakespeares que ahondar supieron\ndel alma en las profundidades?\n\nSerpiente que muerdes tu cola,\ninflexible círculo, bola\nnegra, que giras sin cesar,\n\nrefrán monótono del mismo\ncanto, marea del abismo,\n¿sois cuento de nunca acabar?...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Kalpa",
+      "tags": []
+    },
+    {
+      "titulo": "La canción de flor de mayo",
+      "texto": "Flor de Mayo como un rayo\nde la tarde se moría...\nYo te quise, Flor de Mayo,\ntú lo sabes; ¡pero Dios no lo quería!\n\nLas olas vienen, las olas van,\ncantando vienen, cantando irán.\n\nFlor de Mayo ni se viste\nni se alhaja ni atavía;\n¡Flor de Mayo está muy triste!\n¡Pobrecita, pobrecita vida mía!\n\nCada estrella que palpita,\ndesde el cielo le habla así:\n\"Ven conmigo, Florecita,\nbrillarás en la extensión igual a mi\"\n\nFlor de Mayo, con desmayo,\nle responde: \"¡Pronto iré!\"\nSe nos muere Flor de Mayo,\n¡Flor de Mayo, la Elegida, se nos fue!\n\nLas olas vienen, las olas van,\ncantando vienen, llorando irán...\n\n\"¡No me dejes!\" yo le grito:\n\"¡No te vayas dueño mío,\nel espacio es infinito\ny es muy negro y hace frío, mucho frío!\"\n\nSin curarse de mi empeño,\nFlor de Mayo se alejó,\nY en la noche, como un sueño\nmisteriosamente triste se perdió.\n\nLas olas vienen, las olas van,\ncantando vienen, ¡ay, cómo irán!\n\nAl amparo de mi huerto\nuna sola flor crecía:\nFlor de Mayo, y se me ha muerto...\nYo la quise, ¡Pero Dios no lo quería!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_canci%C3%B3n_de_flor_de_mayo",
+      "tags": [
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "La mujer moderna y su papel en la evolución actual del mundo",
+      "texto": "Homenaje de gratitud\nde la Asociación \"Hijas\nde María\" de la Santa\nUnion de los S.S. C.C.\nEsmeralda 739====",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_mujer_moderna_y_su_papel_en_la_evoluci%C3%B3n_actual_del_mundo",
+      "tags": []
+    },
+    {
+      "titulo": "La puerta",
+      "texto": "Por esa puerta huyo, diciendo: \"¡Nunca!\"\nPor esa puerta ha de volver un día...\nAl cerrar esa puerta, dejo trunca\nla hebra de oro de la esperanza mía.\nPor esa puerta ha de volver un día.\n\nCada vez que el impulso de la brisa,\ncomo una mano débil, indecisa,\nlevemente sacude la vidriera\npalpita mas aprisa, mas aprisa\nmi corazón cobarde que la espera.\n\nDesde mi mesa de trabajo veo\nla puerta con que sueñan mis antojos,\ny acecha agazapado mi deseo\nen el trémulo fondo de sus ojos.\n\n¿Por cuánto tiempo, solitario, esquivo\nhe de aguardar con la mirada incierta\na que Dios me devuelva compasivo\na la mujer que huyó por esa puerta?\n\n¿Cuándo habrán de temblar esos cristales\nempujados por sus manos ducales\ny, con su beso ha de llegarme ella\ncual me llega en las noches invernales\nel ósculo piadoso de una estrella?\n\n¡Oh, Señor!, ya la Pálida esta alerta:\n¡oh, Señor!, ¡cae la tarde ya en mi vía\ny se congela mi esperanza yerta!\n¡Oh, Señor!, ¡haz que se abra al fin la puerta\ny entre por ella la adorada mía!\n¡Por esa puerta ha de volver un día!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_puerta_(Nervo)",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "La sombra del ala",
+      "texto": "Tú que piensas que no creo\ncuando argüímos los dos,\nno imaginas mi deseo,\nmi sed, mi hambre de Dios;\n\nni has escuchado mi grito\ndesesperante, que puebla\nla entraña de la tiniebla\ninvocando al Infinito;\n\nni ves a mi pensamiento,\nque empañado en producir\nideal, suele sufrir\ntorturas de alumbramiento.\n\nSi mi espíritu infecundo\ntu fertilidad tuviese,\nforjado ya un cielo hubiese\npara completar su mundo.\n\nPero di, qué esfuerzo cabe\nen un alma sin bandera\nque lleva por dondequiera\ntu torturador quién sabe!;\n\nque vive ayuna de fe\ny, con tenaz heroísmo,\nva pidiendo a cada abismo\ny a cada noche un por qué?\n\nDe todas suertes, me escuda\nmi sed de investigación,\nmi ansia de Dios, honda y muda;\ny hay más amor en mi duda\nque en tu tibia afirmación.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/La_sombra_del_ala",
+      "tags": [
+        "amor",
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Llénalo de amor",
+      "texto": "Siempre que haya un hueco en tu vida,\nAdolescente, joven, viejo:\nsiempre que haya un hueco en tu vida,\nllénalo de amor.\nEn cuanto sepas que tienes delante de ti un tiempo baldío,\nve a buscar al amor.\nNo pienses: \"Sufriré\".\nNo pienses: \"Me engañarán\".\nNo pienses: \"Dudaré\".\nVe, simplemente, diáfanamente, regocijadamente,\nen busca del amor.\n¿Qué índole de amor?\nNo importa.\nTodo amor está lleno de excelencia y de nobleza.\nAma como puedas, ama a quien puedas, ama todo lo que puedas...\npero ama siempre.\nNo te preocupes de la finalidad de tu amor.\nÉl lleva en sí mismo su finalidad.\nNo te juzgues incompleto porque no responden a tus ternuras:\nel amor lleva en sí su propia plenitud.\n\nSiempre que haya un hueco en tu vida,\nllénalo de amor.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Ll%C3%A9nalo_de_amor",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Los jardines interiores",
+      "texto": "A Don Enrique C. Creel,Mi amable Mecenas, mi distinguido amigo,Dedico este libro.A. N.\n\nÍNDICE",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Los_jardines_interiores",
+      "tags": []
+    },
+    {
+      "titulo": "Mi secreto",
+      "texto": "¿Mi secreto? ¡Es tan triste!\n¿Estoy perdido de amores por un ser desaparecido,\npor un alma liberta,\nque diez años fue mía, y que se ha ido...\n\n¿ Mi secreto? te lo diré al oído:\n¡Estoy enamorado de una muerta!\n\n¿Comprendes —tú que buscas los visibles\ntransportes, las reales, las tangibles\ncaricias de la hembra, que se plasma\na todos tus deseos invencibles—\nese imposible de los imposibles\nde adorar a un fantasma?\n\n¡Pues tal mi vida es y tal ha sido y será!\n\nSi por mí solo ha latido\nsu noble corazón, hoy mundo y yerto,\n¿he de mostrarme desagradecido\ny olvidarla, no más porque ha partido,\ny dejarla, no más porque se ha muerto?",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Mi_secreto",
+      "tags": []
+    },
+    {
+      "titulo": "Místicas",
+      "texto": "AMADO NERVO.Místicas1892—1895Flectamus genua.\n\n(Rit. Rom.)MÉXICO—IMPRENTA DE IGNACIO ESCALANTECalle del Hospital Real N. 3—1898",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/M%C3%ADsticas",
+      "tags": []
+    },
+    {
+      "titulo": "Pasas por el abismo de mi tristeza",
+      "texto": "Pasas por el abismo de mis tristezas\ncomo un rayo de luna sobre los mares,\nungiendo lo infinito de mis pesares\ncon el nardo y la mina de tus ternezas.\n\nYa tramonta mi vida; la tuya empiezas;\nmas, salvando del tiempo los valladares,\ncomo un rayo de luna sobre los mares\npasas por el abismo de mis tristezas.\n\nNo más en la tersura de mis cantares\ndejará el desencanto sus asperezas;\npues Dios, que dio a los cielos sus luminares,\nquiso que atravesaras por mis tristezas\ncomo un rayo de luna sobre los mares.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Pasas_por_el_abismo_de_mi_tristeza",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Plenitud",
+      "texto": "Esta es mi riqueza;\ntoda para ti.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Plenitud",
+      "tags": []
+    },
+    {
+      "titulo": "Réquiem",
+      "texto": "Oh Señor, Dios de los ejércitos,\neterno Padre, eterno Rey,\npor este mundo que creaste\ncon la virtud de tu poder;\nporque dijiste: la luz sea,\ny a tu palabra la luz fue;\nporque coexistes con el Verbo,\nporque contigo el Verbo es\ndesde los siglos de los siglos\ny sin mañana y sin ayer,\n¡requiem aeternam dona eis, Domine,\nel lux perpetua luceat eis!\n\nOh Jesucristo, por el frío\nde tu pesebre de Belem,\npor tus angustias en el Huerto,\npor el vinagre y por la hiel,\npor las espinas y las varas\ncon que tus carnes desgarré,\ny por la cruz en que borraste\ntodas las culpas de Israel;\nHijo del Hombre, desolado,\ntrágico Dios, tremendo Juez:\n¡requiem aeternam dona eis, Domine,\nel lux perpetua luceat eis!\n\nDivino Espíritu, Paráclito,\naspiración del gran Iavéh,\nque unes al Padre con el Hijo,\ny siendo El Uno sois los Tres;\npor la paloma de alas níveas,\npor la inviolada doncellez\nde aquella Virgen que en su vientre\nllevó al Mesías Emmanuel;\npor las ardientes lenguas rojas\ncon que inspiraste ciencia y fe\na los discípulos amados\nde Jesucristo, nuestro bien:\n¡requiem aeternam dona eis, Domine,\nel lux perpetua luceat eis!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/R%C3%A9quiem",
+      "tags": [
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Si tú me dices: ¡Ven!",
+      "texto": "Si tú me dices: \"¡ven\"!, Lo dejo todo...\nNo volveré siquiera la mirada,\npara mirar a la mujer amada...\nPero dímelo fuerte, de tal modo,\n\nque tu voz, como toque de llamada,\nvibre hasta en el más intimo recodo,\ndel ser, levante el alma de su lodo,\ny hiera el corazón como una espada.\n\nSi tú me dices: \"¡ven!\", Todo lo dejo.\nLlegaré a tu santuario casi viejo,\ny al fulgor de la luz crepuscular;\n\nmas he de compensarte mi retardo,\ndifundiéndome, ¡oh, Cristo!, Como un nardo\nde perfume sutil, ¡ante tu altar!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Si_t%C3%BA_me_dices%3A_%C2%A1Ven%21",
+      "tags": []
+    },
+    {
+      "titulo": "Si una espina me hiere",
+      "texto": "Si una espina me hiere, me aparto de la espina,\n...pero no la aborrezco! Cuando la mezquindad\nenvidiosa en mi clava los dardos de su inquina,\nesquívase en silencio mi planta, y se encamina hacia más puro\nambiente de amor y caridad.\n\n¿Rencores? ¡De qué sirven! ¿Qué logran los rencores?\nNi restañan heridas, ni corrigen el mal.\nMi rosal tiene apenas tiempo para dar flores,\ny no prodiga savias en pinchos punzadores:\nsi pasa mi enemigo cerca de mi rosal,\n\nse llevará las rosas de más sutil esencia;\ny si notare en ellas algún rojo vivaz,\nserá el de aquella sangre que su malevolencia\nde ayer vertió, al herirme con encono y violencia,\ny que el rosal devuelve, trocado en flor de paz!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Si_una_espina_me_hiere",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Sonetino",
+      "texto": "Alba en sonrojos\ntu faz parece:\n¡no abras los ojos,\nporque anochece!\n\nCierra -si enojos\nla luz te ofrece-\nlos labios rojos,\n¡porque amanece!\n\nSombra en derroches,\nluz: ¡sois bien mías!\nOjos oscuros:\n\n¡muy buenas noches!\nLabios maduros:\n¡muy buenos días!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Sonetino",
+      "tags": []
+    },
+    {
+      "titulo": "Uno con él",
+      "texto": "Eres uno con Dios, porque le amas,\n¡Tu pequeñez qué importa y tu miseria!;\neres uno con Dios, porque le amas.\n\nLe buscaste en los libros,\nle buscaste en los templos,\nle buscaste en los astros,\ny un día el corazón te dijo, trémulo:\n\"aquí está\", y desde entonces ya sois uno,\nya sois uno los dos, porque le amas.\n\nNo podrán separaros\nni el placer de la vida\nni el dolor de la muerte.\n\nEn el placer has de mirar su rostro,\nen el valor has de mirar su rostro\nen vida y muerte has de mirar su rostro.\n\n\"¡Dios!\" dirás en los besos,\ndirás \"Dios\" en los cantos,\ndirás \"Dios\" en los ayes.\n\nY comprendiendo al fin que es ilusorio\ntodo pecado (como toda vida),\ny que nada de El puede separarte,\nuno con Dios te sentirás por siempre:\n¡uno solo con Dios porque le amas!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Uno_con_%C3%A9l",
+      "tags": [
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Viejo estribillo",
+      "texto": "¿Quién es esa sirena de la voz tan doliente,\nde las carnes tan blancas, de la trenza tan bruna?\n-Es un rayo de luna que se baña en la fuente,\nes un rayo de luna...\n\n¿Quién gritando mi nombre la morada recorre?\n¿Quién me llama en las noches con tan trémulo acento?\n-Es un soplo de viento que solloza en la torre,\nes un soplo de viento...\n\nDí, quién eres, arcángel cuyas alas se abrasan\nen el fuego divino de la tarde y que subes\npor la gloria del éter? -Son las nubes que pasan;\nmira bien, son las nubes...\n\n¿Quién regó sus collares en el agua, Dios mío?\nLluvia son de diamantes en azul terciopelo...\n-Es la imagen del cielo que palpita en el río,\nes la imagen del cielo...\n\n¡Oh Señor! La belleza sólo es, pues, espejismo;\nnada más Tú eres cierto: ¡Se Tú mi último Dueño!\n¿Dónde hallarte, en el éter, en la tierra, en mí mismo?\n-Un poquito de ensueño te guiará en cada abismo,\nun poquito de ensueño...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Viejo_estribillo",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Yo no soy demasiado sabio",
+      "texto": "Yo no soy demasiado sabio para negarte,\nSeñor; encuentro lógica tu existencia divina;\nme basta con abrir los ojos para hallarte;\nla creación entera me convida a adorarte,\ny te adoro en la rosa y te adoro en la espina.\n¿Qué son nuestras angustias para querer\npor argüirte de cruel? ¿Sabemos por ventura\nsi tú con nuestras lágrimas fabricas las estrellas,\nsi los seres más altos, si las cosas más bellas\nse amasan con el noble barro de la amargura?\nEsperemos, suframos, no lancemos jamás\na lo Invisible nuestra negación como un reto.\nPobre criatura triste, ¡ya verás, ya verás!\nLa Muerte se aproxima.., y De sus labios oirás\nel celeste secreto!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Yo_no_soy_demasiado_sabio",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Yo vengo de un brumoso país lejano",
+      "texto": "regido por un viejo monarca triste...\nmi numen sólo busca lo que es arcano,\nmi numen sólo adora lo que no existe.\n\nTú lloras por un sueño que está lejano,\ntú aguardas un cariño que ya no existe;\nse pierden tus pupilas en el arcano\ncomo dos alas negras y estás muy triste.\n\nEres mía, nacimos de un mismo arcano\ny vamos, desdeñosos de cuanto existe,\nen pos de ese brumoso país lejano\nregido por un viejo monarca triste...",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Yo_vengo_de_un_brumoso_pa%C3%ADs_lejano",
+      "tags": []
+    }
+  ]
+}

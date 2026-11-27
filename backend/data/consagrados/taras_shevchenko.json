@@ -1,0 +1,68 @@
+{
+  "username": "taras_shevchenko",
+  "name": "Taras Shevchenko",
+  "bio": "Poeta ucraniano. Кобзар é o livro que reúne a obra lírica.",
+  "avatar_url": "",
+  "nascimento": 1814,
+  "morte": 1861,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "UA",
+  "poemas": [
+    {
+      "titulo": "Chustyna",
+      "texto": "U nedilu ne hulała\nNa szowk zaroblała,\nTa chustynu wyszywała,\nWyszywajuczy spiwała:\n „Chustynoczko mereżanaja,\n Wyszywanaja!“\nWyhaptuju, podaruju,\nA win mene pociłuje…\n Chustyno moja\n Malowanaja!\nA ja kosu rozplitaju,\nZ drużynoju pochożaju…\n Doleńko moja\n Matinko moja!\nZdywujut’ sia w ranci lude,\nSzczo w syroty chustka bude,\n Mereżanaja,\n Malowanaja“.\n Ottak wona wyszywała\nI w wikonce pohladala:\nCzy ne rewut’ krutorohi?\nCzy ne jde czumak z dorohy?\nIde czumak, z-za Łymanu\nZ czużym dobrom, beztałannyj,\nCzużi woły pohaniaje,\n\nPohaniajuczy spiwaje:\n „…Dołe moja, dołe!\nCzom ty ne takaja,\nJak dola czużaja?\nCzy ja pju czy hulaju?\nCzy syły ne maju?\nCzy do tebe doriżeńky\nU stepu ne znaju?\nCzy do tebe swoji dary\nJa ne posyłaju?\nJe u mene dary:\nOczy moji kari;\nMołoduju moju syłu\nBohaczi kupyły;\nMoże j diwczynu bez mene\nZ ynszym odrużyły…\nNawczyż mene, dołe,\nHulaty nawczy“!\n Taj zapłakaw siromacha,\nStepom iduczy…\n Oj zastohnaw sywyj puhacz\nW stepu na mohyli;\nZażuryłyś czumaczeńky,\nTiażko zażuryłyś:\n„Błahosłowy, otamane,\nKoło seła staty,\nTa ponesem towarysza\nW seło pryczaszczaty“!\n Spowidały, pryczaszczały\nJ worożok pytały;\nNe pomohło!.. Z nesciłenym\nW dorohu ruszały.\nCzy to pracia zadawyła\n\nMołoduju syłu?\nCzy to nud’ha newsypuszcza\nJoho z nih zwałyła?\nCzy to lude narobyły\nJomu mołodomu,\nSzczo prywezły joho z Donu\nNa wozi do domu?\nBłahaw Boha, szczob diwczynu\nChocz swoju pobaczyt’;\nNe dobłahaw!.. Pochowały,\nNichto j ne zapłacze…\nPostawyły hromadoju\nChrest nad syrotoju,\nTaj rozijszłyś. Jak byłyna,\nJak łyst za wodoju,\nPiszow kozak z sioho świtu,\nWse zabraw z soboju…\n A deż taja malowana\nSzytaja chustyna?\nA deż taja wesełaja\nDiwczyna — dytyna?\nNa nowomu chresti chustku\nWiter rozwiwaje,\nA diwczyna u czernyciach\nKosu rozplitaje…",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Chustyna",
+      "tags": []
+    },
+    {
+      "titulo": "Iwan Pidkowa",
+      "texto": "I.\nBuło kołyś — w Ukrajini\nRewiły harmaty;\nBuło kołyś — Zaporożci\nWmiły panuwaty!\nPanuwały, dobuwały\nI sławu i wolu;\nMynuło sia, ostały sia\nMohyły po polu!\nWysokiji ti mohyły,\nDe lahło spoczyty\nKozaćkeje biłe tiło,\nW kytajku powyte,\nWysokiji ti mohyły\nCzornijut’, jak hory,\nTa pro wolu nyszkom w poli\nZ witramy howorjat’.\nSwidok sławy didiwszczyny\nZ witrom rozmowlaje,\nA wnuk kosu nese w rosu,\nZa nymy spiwaje.\n\n Buło kołyś — w Ukrajini\nŁycho tańciuwało,\nŻurba w szynku med, horiłku\n\nPostawcem krużlała.\nBuło kołyś dobre żyty\nNa tij Ukrajini…\nA zhadajmo! może serce\nChocz trochy spoczyne.\n\nII.\nCzorna chmara z-za Łymanu\nNebo, sonce kryje;\nSynie more zwirjukoju\nTo stohne, to wyje,\nDnipra hirło zatopyło.\n„A nute, chłopiata,\nNa bajdaky! More hraje,\nChodim pohulaty!“\nWysypały Zaporożci,\nŁyman czowny wkryły.\n„Hrajże, more!“ zaspiwały,\nZapinyłyś chwyli, jak ti hory:\nNi zemli, ni neba.\nSerce mlije, a kozakam\nToho tilky j treba.\nPływut’ sobi ta spiwajut’,\nRybałka litaje,\nA poperedu otaman\nWede, kudy znaje.\nPochożaje wzdowż bajdaka,\nHasne lulka w roti;\nPohladaje siudy, tudy —\nDe-to but’ roboti?\n\nZakrutywszy czorni wusy,\nZa ucho czuprynu,\nPidniaw szapku; czowny stały.\n„Nechaj woroh hyne!\nNe w Synopu otamany,\nPanowe mołodci,\nA u Carhrad, do sułtana\nPojidemo w hosti!“\n— „Dobre, bat’ku otamane!“\nKruhom zarewiło.\n„Spasybi wam!“\n Nadiw szapku.\nZnowu zakypiło\nSynie more; wzdowż bajdaka\nZnowu pochożaje\nPan otaman, ta na chwylu\nMowczky pohladaje.",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Iwan_Pidkowa",
+      "tags": []
+    },
+    {
+      "titulo": "Nad Dniprowoju sahoju",
+      "texto": "Stojit’ jawir miż łozoju,\nMiż łozoju z jałynoju,\nZ czerwonoju kałynoju…\n\nDnipro berih ryje, ryje,\nJaworowi koriń myje;\nStojit’ staryj, pochyływ sia,\nMow kozak toj zażuryw sia.\n\nSzczo bez doli, bez rodyny\nTa bez wirnoji drużyny,\nBez drużyny i nadiji\nW samotyni posywije!\n\nJawir każe: „pochylu sia,\nTa w Dniprowi skupaju sia“.\nKozak każe: „pohulaju\nTa luboji poszukaju“.\n\nA kałyna z jałynoju\nTa hnuczkoju łozynoju,\nMow diwczatoczka iz haju\nWychożajuczy spiwajut’ —\n\nPowbyrani, zakwitczani\nTa z tałanom zaruczeni,\nDumky — hadońky ne majut’, —\nWjut’ sia, hnut’ sia ta spiwajut’…",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Nad_Dniprowoju_sahoju",
+      "tags": []
+    },
+    {
+      "titulo": "Rozryta mohyła",
+      "texto": "Swite tychyj, kraju myłyj,\nMoja Ukrajino!\n\nZa-szczo tebe splundrowano,\nZa-szczo, mamo, hynesz?\nCzy ty rano do schid soncia\nBohu ne mołyłaś?\nCzy ty ditoczok nepewnych\nZwyczaju ne wczyła?\n— „Mołyłaś ja, turbuwałaś,\nDeń i nicz ne spała,\nMojich ditok dohladała,\nZwyczaju nawczała.\nWyrostały moji kwity,\nMoji dobri dity, —\nPanuwała i ja kołyś\nNa szyrokim świti;\nPanuwała! O Bohdane,\nNerozumnyj synu!\nPodywyś teper na matir,\nNa swoju Wkrajinu,\nSzczo kołyszuczy spiwała\nPro swoju nedolu,\nSzczo spiwajuczy rydała,\nWyhladała wolu!..\nOj Bohdane, Bohdanoczku!\nJak-by buła znała,\nU kołyści-b pryduszyła,\nPid sercem pryspała!\nStepy moji zaprodani\nŻydowi, Nimoti!\nSyny moji na czużyni,\nNa czużij roboti;\nDnipro, brat mij, wysychaje,\nMene pokydaje,\nA mohyły moji myłi\n\nMoskal rozrywaje.\nNechaj ryje, rozkopuje,\nNe swoje szukaje;\nA tym czasom perewertni\nNechaj pidrostajut’,\nTa pomożut’ Moskałewi\nHospodarjuwaty,\nI z matery połatanu\nSoroczku zdijmaty!..\n Na czetwero rozkopana,\nRozryta mohyła.\nCzoho wony tam szukajut’?\nSzczo tam schoronyły\nStari bat’ky? — Ech jak-by to,\n Jak-by to znajty te,\n Szczo tam pochowały,\n Ne płakały-b dity,\n Maty-b ne rydała.",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Rozryta_mohy%C5%82a",
+      "tags": []
+    },
+    {
+      "titulo": "Weczir",
+      "texto": "Sadok wysznewyj koło chaty,\nChruszczi nad wyszniamy hudut’,\nPłuhatori z płuhamy jdut’;\nSpiwajut’ iduczy diwczata,\nA matery weczerjat’ żdut’.\n\nSemja weczerja koło chaty;\nWeczirnia zirońka wstaje;\nDoczka weczerjat’ podaje,\nA maty chocze nauczaty,\nTak sołowejko ne daje.\n\nPokłała maty koło chaty\nMałeńkych ditoczok swojich,\nSama zasnuła koło jich.\nZatychło wse. Tilko diwczata\nTa sołowejko ne zatych.",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Weczir",
+      "tags": []
+    },
+    {
+      "titulo": "Zapowit",
+      "texto": "Jak umru, to pochowajte\nMene na mohyli,\nSered stepu szyrokoho,\nNa Wkrajini myłij;\nSzczob łany szyrokopoli\nI Dnipro i kruczi\nBuło wydno, buło czuty,\nJak rewe rewuczyj!\n\n Jak ponese z Ukrajiny\nU synieje more\nKrow worożu, ottohdi ja\nI łany i hory —\nWse pokynu i połynu\nDo samoho Boha…\n Pochowajte ta wstawajte\nKajdany porwite,\nI wrażoju złoju krowju\nWolu okropite!\nI mene w semji wełykij,\nW semji wolnij, nowij,\nNe zabud’te pomjanuty\nNezłym tychym słowom!",
+      "forma": "outro",
+      "obra": "Kobzar’",
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/Kobzar%E2%80%99/Zapowit",
+      "tags": []
+    }
+  ]
+}

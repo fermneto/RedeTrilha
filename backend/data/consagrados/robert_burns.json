@@ -1,0 +1,396 @@
+{
+  "username": "robert_burns",
+  "name": "Robert Burns",
+  "bio": "Poeta escocês. Os poemas e as canções, entre elas A Red, Red Rose e Auld Lang Syne, seguem em circulação.",
+  "avatar_url": "",
+  "nascimento": 1759,
+  "morte": 1796,
+  "escolas": [
+    "romantismo"
+  ],
+  "pais": "GB",
+  "poemas": [
+    {
+      "titulo": "Elegy on the year 1788",
+      "texto": "ELEGY ON THE YEAR, 1778.\n\nSKETCH.\n\nFor Lords or Kings I dinna mourn,\nE'en let them die—for that they're born:\nBut oh! prodigious to reflec'!\nA Towmont, Sirs, is gane to wreck!\nO Eighty-eight, in thy sma' space\nWhat dire events hae taken place!\nOf what enjoyments thou hast reft us!\nIn what a pickle thou hast left us!\n The Spanish empire's tint a head,\nAnd my auld teethless Bawtie's dead!\nThe tulzie's sair 'tween Pitt an' Fox,\nAnd 'tween our Maggie's twa wee cocks;\nThe tane is game, a bludie devil,\nBut to the hen-birds unco civil;\nThe tither's something dour o' treadin,\nBut better stuff ne'er claw'd a midden.\n Ye ministers, come mount the poupit,\nAn' cry till ye be haerse an' roupet,\nFor Eighty-eight he wish'd you weel,\nAnd gied you a' baith gear an' meal;\nE'en monie a plack, and monie a peck,\nYe ken yoursels, for little feck.\n Ye bonie lasses, dight your een,\nFor some o' you hae tint a frien';\nIn Eighty-eight, ye ken, was ta'en\nWhat ye'll ne'er hae to gie again.\n Observe the very nowt an' sheep,\nHow dowf and daviely they creep;\nNay, even the yirth itsel does cry,\nFor E'mbrugh wells are grutten dry.\n O Eighty-nine, thou's but a bairn,\nAn' no owre auld, I hope, to learn!\nThou beardless boy, I pray tak care,\nThou now has got thy daddie's chair,\nNae hand-cuff'd, mizzl'd, hap-shackl'd Regent,\nBut, like himsel, a full free agent.\nBe sure ye follow out the plan\nNae waur than he did, honest man:\nAs muckle better as you can.\n\n January 1, 1789.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Elegy_on_the_year_1788",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "I Burn, I Burn",
+      "texto": "'I burn, I burn, as when thro' ripen'd corn,\nBy driving winds the crackling flames are borne,'\nNow maddening, wild, I curse that fatal night;\nNow bless the hour which charm'd my guilty sight.\nIn vain the laws their feeble force oppose :\nChain'd at his feet they groan, Love's vanquish'd foes;\nIn vain religion meets my sinking eye;\nI dare not combat—but I turn and fly;\nConscience in vain upbraids th' unhallowed fire;\nLove grasps his scorpions—stifled they expire!\nReason drops headlong from his sacred throne,\nYour dear idea reigns and reigns alone:\nEach thought intoxicated homage yields,\nAnd riots wanton in forbidden fields!\n\n By all on high adoring mortals know!\nBy all the conscious villain fears below!\nBy your dear self!—the last great oath I swear;\nNor life nor soul were ever half so dear!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/%27I_Burn%2C_I_Burn%27",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "In Vain Would Prudence",
+      "texto": "In vain would Prudence, with decorous sneer,\nPoint out a cens'ring world, and bid me fear;\nAbove that world on wings of love I rise,\nI know its worst- and can that worst despise.\n'Wrong'd, injur'd, shunn'd; unpitied, unredrest,\nThe mock'd quotation of the scorner's jest.'\nLet prudence' direst bodements on me fall,\nClarinda, rich reward! o'erpays them all!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/%27In_Vain_Would_Prudence%27",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Though Fickle Fortune",
+      "texto": "Though fickle Fortune has deceiv'd me,\n She promis'd fair and perform'd but ill;\nOf mistress, friends, and wealth bereav'd me,\n Yet I bear a heart shall support me still.—\n\nI'll act with prudence as far's I'm able,\n But if success I must never find,\nThen come misfortune, I bid thee welcome,\n I'll meet thee with an undaunted mind.—",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/%27Though_Fickle_Fortune%27",
+      "tags": []
+    },
+    {
+      "titulo": "'Twas na her bonie blue e'e",
+      "texto": "TUNE—'LADDIE, LIE NEAR ME.'\n\n'Twas na her bonie blue e'e was my ruin;\nFair tho' she be, that was ne'er my undoing;\n'Twas the dear smile when naebody did mind us,\n'Twas the bewitching, sweet, stown glance o' kindness.\n\nSair do I fear that to hope is denied me,\nSair do I fear that despair maun abide me;\nBut tho' fell fortune should fate us to sever,\nQueen shall she be in my bosom for ever.\n\nChloris, I'm thine wi' a passion sincerest,\nAnd thou hast plighted me love o' the dearest!\nAnd thou'rt the angel that never can alter,\nSooner the sun in his motion would falter.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/%27Twas_na_her_bonie_blue_e%27e",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Bard's Epitaph",
+      "texto": "Is there a whim-inspired fool,\nOwre fast for thought, owre hot for rule,\nOwre blate to seek, owre proud to snool,\n        Let him draw near;\nAnd owre this grassy heap sing dool,\n        And drap a tear.\n\nIs there a Bard of rustic song,\nWho, noteless, steals the crowds among,\nThat weekly this area throng,\n        O, pass not by!\nBut, with a frater-feeling strong,\n        Here, heave a sigh.\n\nIs there a man whose judgment clear,\nCan others teach the course to steer,\nYet runs, himself, life's mad career,\n        Wild as the wave;\nHere pause—and, thro' the starting tear,\n        Survey this grave.\n\nThe poor Inhabitant below\nWas quick to learn and wise to know,\nAnd keenly felt the friendly glow,\n        And softer flame,\nBut thoughtless follies laid him low,\n        And stain'd his name!\n\nReader, attend—whether thy soul\nSoars fancy's flights beyond the pole,\nOr darkling grubs this earthly hole,\n        In low pursuit;\nKnow, prudent, cautious self-control\n        Is wisdom's root.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Bard%27s_Epitaph",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Bottle and Friend",
+      "texto": " Here's a bottle and an honest friend!\n What wad ye wish for mair, man?\nWha kens, before his life may end,\n What his share may be o' care, man?\nThen catch the moments as they fly,\n And use them as ye ought, man:—\nBelieve me, happiness is shy,\n And comes not ay when sought, man.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Bottle_and_Friend",
+      "tags": []
+    },
+    {
+      "titulo": "A Farewell",
+      "texto": "Farewell, dear Friend! may guid luck hit you,\nAnd, mang her favourites admit you!\nIf e'er Detraction shore to smit you,\n        May nane believe him!\nAnd ony De'il that thinks to get you,\n        Good Lord deceive him.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Farewell",
+      "tags": []
+    },
+    {
+      "titulo": "A Grace before Dinner",
+      "texto": "O Thou, who kindly dost provide\n For every creature's want!\nWe bless thee, God of Nature wide,\n For all thy goodness lent:\nAnd, if it please thee, Heavenly Guide,\n May never worse be sent;\nBut whether granted, or denied,\n Lord, bless us with content!\nAmen!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Grace_before_Dinner",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "A Mother's Lament for the Death of her Son",
+      "texto": "TUNE—'FINLAYSTON HOUSE.'\n\n Fate gave the word, the arrow sped,\n And pierc'd my darling's heart;\nAnd with him all the joys are fled\n Life can to me impart!\nBy cruel hands the sapling drops,\n In dust dishonour'd laid:\nSo fell the pride of all my hopes,\n My age's future shade.\n\nThe mother-linnet in the brake\n Bewails her ravish'd young;\nSo I, for my lost darling's sake,\n Lament the live-day long.\nDeath, oft I've fear'd thy fatal blow,\n Now, fond, I bare my breast,\nO, do thou kindly lay me low\n With him I love, at rest!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Mother%27s_Lament_for_the_Death_of_her_Son",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Prayer in the prospect of Death",
+      "texto": "O Thou unknown, Almighty Cause\n Of all my hope and fear!\nIn whose dread presence, ere an hour,\n Perhaps I must appear!\n\nIf I have wander'd in those paths\n Of life I ought to shun;\nAs something, loudly in my breast,\n Remonstrates I have done;\n\nThou know'st that Thou hast formed me\n With passions wild and strong;\nAnd list'ning to their witching voice\n Has often led me wrong.\n\nWhere human weakness has come short,\n Or frailty stept aside,\nDo Thou, All-Good! for such Thou art,\n In shades of darkness hide.\n\nWhere with intention I have err'd,\n No other plea I have,\nBut, Thou art good; and Goodness still\n Delighteth to forgive.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Prayer_in_the_prospect_of_Death",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Prayer, under the pressure of violent anguish",
+      "texto": "O Thou Great Being what Thou art\n Surpasses me to know:\nYet sure I am, that known to Thee\n Are all Thy works below.\n\nThy creature here before Thee stands,\n All wretched and distrest;\nYet sure those ills that wring my soul\n Obey Thy high behest.\n\nSure, Thou, Almighty, canst not act\n From cruelty or wrath!\nO, free my weary eyes from tears,\n Or close them fast in death!\n\nBut if I must afflicted be,\n To suit some wise design;\nThen, man my soul with firm resolves\n To bear and not repine!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Prayer%2C_under_the_pressure_of_violent_anguish",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A red, red Rose",
+      "texto": "TUNE—'WISHAW'S FAVOURITE.'\n\nO, my luve's like a red, red rose,\n That's newly sprung in June:\nO, my luve's like the melodie\n That's sweetly play'd in tune.\n\nAs fair art thou, my bonie lass,\n So deep in luve am I:\nAnd I will luve thee still, my dear,\n Till a' the seas gang dry.\n\nTill a' the seas gang dry, my dear,\n And the rocks melt wi' the sun:\nI will luve thee still, my dear,\n While the sands o' life shall run.\n\nAnd fare thee weel, my only luve,\n And fare thee weel awhile!\nAnd I will come again, my luve,\n Tho' it were ten thousand mile.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_red%2C_red_Rose",
+      "tags": []
+    },
+    {
+      "titulo": "A Rose-bud by my early Walk",
+      "texto": "TUNE—'THE SHEPHERD'S WIFE.'\n\nAdown a corn-enclosed bawk,\nSae gently bent its thorny stalk,\n All on a dewy morning.\n\nEre twice the shades o' dawn are fled,\nIn a' its crimson glory spread,\nAnd drooping rich the dewy head,\n It scents the early morning.\n\nWithin the bush, her covert nest\nA little linnet fondly prest,\nThe dew sat chilly on her breast\n Sae early in the morning.\n\nShe soon shall see her tender brood,\nThe pride, the pleasure o' the wood,\nAmang the fresh green leaves bedew'd,\n Awake the early morning.\n\nSo thou, dear bird, young Jeany fair,\nOn trembling string or vocal air,\nShall sweetly pay the tender care\n That tents thy early morning.\n\nSo thou, sweet rose-bud, young and gay,\nShalt beauteous blaze upon the day,\nAnd bless the parent's evening ray\n That watch'd thy early morning.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Rose-bud_by_my_early_Walk",
+      "tags": []
+    },
+    {
+      "titulo": "A Toast. Given at a meeting of the Dumfriesshire Volunteers",
+      "texto": "A TOAST\n\nGIVEN AT A MEETING OF THE DUMFRIESSHIRE VOLUNTEERS, HELD TO COMMEMORATE THE ANNIVERSARY OF RODNEY'S VICTORY, APRIL 12TH, 1782.\n\nInstead of a Song, boys, I'll give you a Toast,—\nHere's the memory of those on the twelfth that we lost:\nThat we lost, did I say? nay, by heav'n, that we found,\nFor their fame it shall last while the world goes round.\nThe next in succession, I'll give you the King,\nWhoe'er would betray him, on high may he swing!\nAnd here's the grand fabric, our free Constitution,\nAs built on the base of the great Revolution;\nAnd longer with Politics, not to be cramm'd,\nBe Anarchy curs'd, and be Tyranny damn'd;\nAnd who would to Liberty e'er prove disloyal,\nMay his son be a hangman, and he his first trial!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Toast._Given_at_a_meeting_of_the_Dumfriesshire_Volunteers",
+      "tags": []
+    },
+    {
+      "titulo": "A Verse, repeated on taking leave at a place in the Highlands",
+      "texto": "A VERSE\n\nCOMPOSED AND REPEATED BY BURNS, TO THE MASTER OF THE HOUSE, ON TAKING LEAVE AT A PLACE IN THE HIGHLANDS, WHERE HE HAD BEEN HOSPITABLY ENTERTAINED.\n\nWhen death's dark stream I ferry o'er,\n A time that surely shall come;\nIn Heaven itself I'll ask no more,\n Than just a Highland welcome.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Verse%2C_repeated_on_taking_leave_at_a_place_in_the_Highlands",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Vision",
+      "texto": "TUNE—'CUMNOCK PSALMS.'\n\n As I stood by yon roofless tower,\n Where the wa' flower scents the dewy air,\nWhere the howlet mourns in her ivy bower,\n And tells the midnight moon her care;\n\nCHORUS.\nA lassie, all alone was making her moan,\n Lamenting our lads beyond the sea:\nIn the bluidy wars they fa', and our honour's gane an' a',\nAnd broken-hearted we maun die.\n\nThe winds were laid, the air was still,\n The stars they shot alang the sky;\nThe fox was howling on the hill,\n And the distant-echoing glens reply.\n\nThe stream, adown its hazelly path,\n Was rushing by the ruin'd wa',\nHasting to join the sweeping Nith,\n Whase distant roarings swell and fa'.\n\nThe cauld blue north was streaming forth\n Her lights, wi' hissing, eerie din;\nAthort the lift they start and shift,\n Like fortune's favours, tint as win.\n\nBy heedless chance I turn'd mine eyes,\n And, by the moon-beam, shook to see\nA stern and stalwart ghaist arise,\n Attir'd as minstrels wont to be.\n\nHad I a statue been o' stane,\n His darin look had daunted me:\nAnd on his bonnet grav'd was plain\n The sacred posy—Libertie!\n\nAnd frae his harp sic strains did flow,\n Might rous'd the slumbering dead to hear;\nBut oh, it was a tale of woe,\n As ever met a Briton's ear!\n\nHe sang wi' joy his former day,\n He weeping wail'd his latter times;\nBut what he said it was nae play,\n I winna venture't in my rhymes.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/A_Vision",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Address of Beelzebub to the President of the Highland Society",
+      "texto": "ADDRESS OF BEELZEBUB\n\nTO THE PRESIDENT OF THE HIGHLAND SOCIETY.\n\nLong life, my Lord, an' health be yours,\nUnskaith'd by hunger'd Highland boors;\nLord grant nae duddie desperate beggar,\nWi' dirk, claymore, or rusty trigger,\nMay twin auld Scotland o' a life\nShe likes—as lambkins like a knife.\nFaith, you and Applecross were right\nTo keep the Highland hounds in sight,\nI doubt na'! they wad bid nae better\nThan let them ance out owre the water\nThan up amang thae lakes and seas\nThey'll mak' what rules and laws they please;\nSome daring Hancocke, or a Franklin,\nMay set their Highland bluid a ranklin';\nSome Washington again may head them,\nOr some Montgomery fearless lead them,\nTill God knows what may be effected\nWhen by such heads and hearts directed—\nPoor dunghill sons of dirt and mire\nMay to Patrician rights aspire!\nNae sage North, now, nor sager Sackville,\nTo watch and premier o'er the pack vile,\nAn' whare will ye get Howes and Clintons\nTo bring them to a right repentance,\nTo cowe the rebel generation,\nAn' save the honour o' the nation?\nThey an' be d———d! what right hae they\nTo meat or sleep, or light o' day!\nFar less to riches, pow'r, or freedom,\nBut what your lordship likes to gie them?\nBut hear, my lord! Glengarry, hear!\nYour hand's owre light on them, I fear;\nYour factors, grieves, trustees, and bailies,\nI canna' say but they do gaylies;\nThey lay aside a' tender mercies,\nAn' tirl the hallions to the birses;\nYet while they're only poind't and herriet,\nThey'll keep their stubborn Highland spirit;\nBut smash them! crash them a' to spails!\nAn' rot the dyvors i' the jails!\nThe young dogs, swinge them to the labour!\nLet wark an' hunger mak' them sober!\nThe hizzies, if they're aughtlins fawsont,\nLet them in Drury-lane be lesson'd!\nAn' if the wives an' dirty brats\nE'en thigger at your doors an' yetts\nFlaffan wi' duds an' grey wi' beas',\nFrightin' awa your deucks an' geese,\nGet out a horsewhip or a jowler,\nThe langest thong, the fiercest growler,\nAn gar the tatter'd gypsies pack\nWi' a' their bastarts on their back!\nGo on, my lord! I lang to meet you,\nAn' in my house at hame to greet you;\nWi' common lords ye shanna mingle,\nThe benmost neuk beside the ingle,\nAt my right han' assign'd your seat\n'Tween Herod's hip an' Polycrate,—\nOr if you on your station tarrow\nBetween Almagro and Pizarro,\nA seat, I'm sure ye're weel deservin't;\nAn' till ye come—Your humble servant,\nBeelzebub.\nJune 1, Anno Mundi 5790.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_of_Beelzebub_to_the_President_of_the_Highland_Society",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Address to Edinburgh",
+      "texto": "Edina! Scotia's darling seat!\n All hail thy palaces and tow'rs,\nWhere once beneath a monarch's feet\n Sat Legislation's sov'reign pow'rs!\nFrom marking wildly-scatter'd flow'rs,\n As on the banks of Ayr I stray'd,\nAnd singing, lone, the ling'ring hours,\n I shelter in thy honour'd shade.\n\nHere wealth still swells the golden tide,\n As busy trade his labours plies;\nThere architecture's noble pride\n Bids elegance and splendour rise;\nHere justice, from her native skies,\n High wields her balance and her rod;\nThere learning, with his eagle eyes,\n Seeks science in her coy abode.\n\nThy Sons, Edina, social, kind,\n With open arms the stranger hail;\nTheir views enlarg'd, their lib'ral mind,\n Above the narrow, rural vale;\nAttentive still to sorrow's wail,\n Or modest merit's silent claim:\nAnd never may their sources fail!\n And never envy blot their name!\n\nThy daughters bright thy walks adorn,\n Gay as the gilded summer sky,\nSweet as the dewy milk-white thorn,\n Dear as the raptur'd thrill of joy!\nFair Burnet strikes th' adoring eye,\n Heaven's beauties on my fancy shine;\nI see the Sire of Love on high,\n And own his work indeed divine!\n\nThere watching high the least alarms,\n Thy rough, rude fortress gleams afar;\nLike some bold vet'ran, gray in arms,\n And mark'd with many a seamy scar:\nThe pond'rous wall and massy bar,\n Grim-rising o'er the rugged rock,\nHave oft withstood assailing war,\n And oft repell'd th' invader's shock.\n\nWith awe-struck thought, and pitying tears,\n I view that noble, stately dome,\nWhere Scotia's kings of other years,\n Fam'd heroes, had their royal home:\nAlas how changed the times to come!\n Their royal name low in the dust!\nTheir hapless race wild-wand'ring roam!\n Tho' rigid law cries out, 'twas just!\n\nWild beats my heart, to trace your steps,\n Whose ancestors, in days of yore,\nThro' hostile ranks and ruin'd gaps\n Old Scotia's bloody lion bore:\nEv'n I who sing in rustic lore,\n Haply my sires have left their shed,\nAnd fac'd grim danger's loudest roar,\n Bold-following where your fathers led!\n\nEdina! Scotia's darling seat!\n All hail thy palaces and tow'rs,\nWhere once beneath a monarch's feet\n Sat Legislation's sov'reign pow'rs!\nFrom marking wildly-scatter'd flow'rs,\n As on the banks of Ayr I stray'd,\nAnd singing, lone, the ling'ring hours,\n I shelter in thy honour'd shade.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_Edinburgh",
+      "tags": [
+        "amor",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "Address to General Dumourier",
+      "texto": "A PARODY ON ROBIN ADAIR.\n\n You're welcome to Despots, Dumourier;\nYou're welcome to Despots, Dumourier;\nHow does Dampiere do?\nAye, and Bournonville too?\nWhy did they not come along with you, Dumourier?\n\nI will fight France with you, Dumourier;\nI will fight France with you, Dumourier;\nI will fight France with you,\nI will take my chance with you;\nBy my soul I'll dance a dance with you, Dumourier.\n\nThen let us fight about, Dumourier;\nThen let us fight about, Dumourier;\nThen let us fight about,\nTill freedom's spark is out,\nThen we'll be damn'd no doubt—Dumourier.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_General_Dumourier",
+      "tags": []
+    },
+    {
+      "titulo": "Address to the Shade of Thomson, on crowning his Bust at Ednam",
+      "texto": "ADDRESS TO THE SHADE OF THOMSON,\n\nON CROWNING HIS BUST AT EDNAM, ROXBURGH-SHIRE, WITH BAYS.\n\n While virgin Spring, by Eden's flood,\n Unfolds her tender mantle green,\nOr pranks the sod in frolic mood,\n Or tunes Eolian strains between;\n\nWhile Summer with a matron grace\n Retreats to Dryburgh's cooling shade,\nYet oft, delighted, stops to trace\n The progress of the spiky blade;\n\nWhile Autumn, benefactor kind,\n By Tweed erects his aged head,\nAnd sees, with self-approving mind,\n Each creature on his bounty fed;\n\nWhile maniac Winter rages o'er\n The hills whence classic Yarrow flows,\nRousing the turbid torrent's roar,\n Or sweeping, wild, a waste of snows;\n\nSo long, sweet Poet of the year,\n Shall bloom that wreath thou well hast won;\nWhile Scotia, with exulting tear,\n Proclaims that Thomson was her son.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_the_Shade_of_Thomson%2C_on_crowning_his_Bust_at_Ednam",
+      "tags": []
+    },
+    {
+      "titulo": "Address to the Toothache",
+      "texto": "ADDRESS TO THE TOOTHACE,\n\nWRITTEN WHEN THE AUTHOR WAS GRIEVOUSLY TORMENTED BY THAT DISORDER.\n\nMy curse upon thy venom'd stang,\nThat shoots my tortur'd gums alang;\nAnd thro' my lugs gies monie a twang,\n      Wi' gnawing vengeance;\nTearing my nerves wi' bitter pang,\n      Like racking engines!\n\nWhen fevers burn, or ague freezes,\nRheumatics gnaw, or colic squeezes;\nOur neighbour's sympathy may ease us,\n      Wi' pitying moan;\nBut thee—thou hell o' a' diseases,\n      Aye mocks our groan!\n\nAdown my beard the slavers trickle!\nI throw the wee stools o'er the mickle,\nAs round the fire the giglets keckle\n      To see me loup;\nWhile, raving mad, I wish a heckle\n      Were in their doup.\n\nO' a' the numerous human dools,\nIll har'sts, daft bargains, cutty-stools,\nOr worthy friends rak'd i' the mools,\n      Sad sight to see!\nThe tricks o' knaves, or fash o' fools,\n      Thou bear'st the gree.\n\nWhere'er that place be priests ca' hell,\nWhence a' the tones o' mis'ry yell,\nAnd ranked plagues their numbers tell,\n      In dreadfu' raw,\nThou, Toothach, surely bear'st the bell\n      Amang them a'!\n\nO thou grim mischief-making chiel,\nThat gars the notes of discord squeel,\nTill daft mankind aft dance a reel\n      In gore a shoe-thick;—\nGie a' the faes o' Scotland's weal\n      A towmont's Toothach!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_the_Toothache",
+      "tags": []
+    },
+    {
+      "titulo": "Address to the Unco Guid, or the Rigidly Righteous",
+      "texto": " My son, these maxims make a rule,\n And lump them aye thegither;\nThe Rigid Righteous is a fool,\n The Rigid Wise anither:\nThe cleanest corn that e'er was dight\n May hae some pyles o' caff in;\nSo ne'er a fellow-creature slight\n For random fits o' daffin.\nSolomon.—Eccles. vii. 16.\n\n O ye wha are sae guid yoursel,\n Sae pious and sae holy,\nYe've nought to do but mark and tell\n Your Neebour's fauts and folly!\nWhase life is like a weel-gaun mill,\n Supply'd wi' store o' water,\nThe heapet happer's ebbing still,\n And still the clap plays clatter.\n\nHear me, ye venerable Core,\n As counsel for poor mortals,\nThat frequent pass douce Wisdom's door,\n For glaikit Folly's portals;\nI, for their thoughtless, careless sakes,\n Would here propone defences,\nTheir donsie tricks, their black mistakes,\n Their failings and mischances.\n\nYe see your state wi' their's compar'd,\n And shudder at the niffer,\nBut cast a moment's fair regard,\n What maks the mighty differ;\nDiscount what scant occasion gave\n That purity ye pride in,\nAnd (what's aft mair than a' the lave)\n Your better art o' hiding.\n\nThink, when your castigated pulse\n Gies now and then a wallop,\nWhat raging must his veins convulse,\n That still eternal gallop:\nWi' wind and tide fair i' your tail,\n Right on ye scud your sea-way;\nBut in the teeth o' baith to sail,\n It maks an unco leeway.\n\nSee Social life and Glee sit down,\n All joyous and unthinking,\nTill, quite transmugrify'd, they're grown\n Debauchery and Drinking:\nO would they stay to calculate\n Th' eternal consequences;\nOr your more dreaded hell to state,\n Damnation of expenses!\n\nYe high, exalted, virtuous Dames,\n Ty'd up in godly laces,\nBefore ye gie poor Frailty names,\n Suppose a change o' cases;\nA dear lov'd lad, convenience snug,\n A treacherous inclination—\nBut, let me whisper i' your lug,\n Ye're aiblins nae temptation.\n\nThen gently scan your brother Man,\n Still gentlier sister Woman;\nTho' they may gang a kennin wrang,\n To step aside is human:\nOne point must still be greatly dark,\n The moving Why they do it;\nAnd just as lamely can ye mark,\n How far perhaps they rue it.\n\nWho made the heart, 'tis He alone\n Decidedly can try us,\nHe knows each chord—its various tone,\n Each spring its various bias:\nThen at the balance let's be mute,\n We never can adjust it;\nWhat's done we partly may compute,\n But know not what's resisted.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_the_Unco_Guid%2C_or_the_Rigidly_Righteous",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Address to the Woodlark",
+      "texto": "ADDRESS TO THE WOOD-LARK.\n\nTUNE—\"WHERE'LL BONIE ANN LIE.'\n\nO stay, sweet warbling wood-lark, stay,\nNor quit for me the trembling spray,\nA hapless lover courts thy lay,\n Thy soothing fond complaining.\n\nAgain, again that tender part,\nThat I may catch thy melting art;\nFor surely that wad touch her heart,\n Wha kills me wi' disdaining.\n\nSay, was thy little mate unkind,\nAnd heard thee as the careless wind?\nOh, nocht but love and sorrow join'd\n Sic notes o' wae could wauken.\n\nThou tells o never-ending care;\nO' speechless grief, and dark despair;\nFor pity's sake, sweet bird, nae mair!\nOr my poor heart is broken!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address_to_the_Woodlark",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Address, spoken by Miss Fontenelle",
+      "texto": "ON HER BENEFIT NIGHT, DECEMBER 4, 1795, AT THE THEATRE, DUMFRIES.\n\nStill anxious to secure your partial favour,\nAnd not less anxious, sure, this night, than ever,\nA Prologue, Epilogue, or some such matter,\n'Twould vamp my bill, said I, if nothing better;\nSo sought a Poet, roosted near the skies,\nTold him I came to feast my curious eyes;\nSaid, nothing like his works was ever printed,\nAnd last, my Prologue-business slily hinted.\n'Ma'am, let me tell you,' quoth my man of rhymes,\n'I know your bent—these are no laughing times:\nCan you—but, Miss, I own I have my fears—\nDissolve in pause—and sentimental tears?\nWith laden sighs, and solemn-rounded sentence,\nRouse from his sluggish slumbers fell Repentance,\nPaint Vengeance as he takes his horrid stand,\nWaving on high the desolating brand,\nCalling the storms to bear him o'er a guilty land?'\n I could no more—askance the creature eyeing,\nD'ye think, said I, this face was made for crying?\nI'll laugh, that's poz—nay, more, the world shall know it,\nAnd so, your servant! gloomy Master Poet!\n Firm as my creed, Sirs, 'tis my fixed belief,\nThat Misery's another word for Grief;\nI also think—so may I be a bride!\nThat so much laughter, so much life enjoy'd.\n Thou man of crazy care and ceaseless sigh,\nStill under bleak Misfortune's blasting eye;\nDoom'd to that sorest task of man alive—\nTo make three guineas do the work of five:\nLaugh in Misfortune's face—the beldam witch!\nSay, you'll be merry, tho' you can't be rich.\n Thou other man of care, the wretch in love,\nWho long with jiltish arts and airs hast strove;\nWho, as the boughs all temptingly project,\nMeasur'st in desperate thought—a rope—thy neck—\nOr, where the beetling cliff o'erhangs the deep,\nPeerest to meditate the healing leap.\nWouldst thou be cur'd, thou silly, moping elf?\nLaugh at her follies—laugh e'en at thyself:\nLearn to despise those frowns now so terrific,\nAnd love a kinder—that's your grand specific.\n To sum up all, be merry, I advise;\nAnd as we're merry, may we still be wise.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Address%2C_spoken_by_Miss_Fontenelle",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Addressed to a Lady whom the Author feared he had offended",
+      "texto": "ADDRESSED TO A LADY\n\nWHOM THE AUTHOR FEARED HE HAD OFFENDED.\n\nRusticity's ungainly form\n May cloud the highest mind;\nBut when the heart is nobly warm,\n The good excuse will find.\n\nPropriety's cold cautious rules\n Warm fervour may o'erlook;\nBut spare poor sensibility\n The ungentle, harsh rebuke.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Addressed_to_a_Lady_whom_the_Author_feared_he_had_offended",
+      "tags": []
+    },
+    {
+      "titulo": "Adown winding Nith",
+      "texto": "TUNE—'THE MUCKIN O' GEORDIE'S BYRE.'\n\n Adown winding Nith I did wander,\n To mark the sweet flowers as they spring;\nAdown winding Nith I did wander,\n Of Phillis to muse and to sing.\n\nCHORUS.\nAwa wi' your belles and your beauties,\n They never wi' her can compare;\nWhaever has met wi' my Phillis,\n Has met wi' the queen o' the fair.\n\nThe daisy amus'd my fond fancy,\n So artless, so simple, so wild;\nThou emblem, said I, o' my Phillis,\n For she is Simplicity's child.\n   Awa, &c.\n\nThe rose-bud's the blush o' my charmer,\n Her sweet balmy lip when 'tis prest:\nHow fair and how pure is the lily,\n But fairer and purer her breast.\n   Awa, &c.\n\nYon knot of gay flowers in the arbour,\n They ne'er wi' my Phillis can vie:\nHer breath is the breath o' the woodbine,\n Its dew-drop o' diamond, her eye.\n   Awa', &c.\n\nHer voice is the song of the morning\n That wakes through the green-spreading grove\nWhen Phœbus peeps over the mountains,\nOn music, and pleasure, and love.\n   Awa, &c.\n\nBut beauty how frail and how fleeting,\n The bloom of a fine summer's day!\nWhile worth in the mind o' my Phillis\n Will flourish without a decay.\n   Awa, &c.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Adown_winding_Nith",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Afton Water",
+      "texto": " Flow gently, sweet Afton, among thy green braes,\nFlow gently, I'll sing thee a song in thy praise;\nMy Mary's asleep by thy murmuring stream,\nFlow gently, sweet Afton, disturb not her dream.\n\nThou stock-dove whose echo resounds thro' the glen,\nYe wild whistling blackbirds in yon thorny den,\nThou green-crested lapwing, thy screaming forbear,\nI charge you disturb not my slumbering fair.\n\nHow lofty, sweet Afton, thy neighbouring hills,\nFar mark'd with the courses of clear, winding rills;\nThere daily I wander as noon rises high,\nMy flocks and my Mary's sweet cot in my eye.\n\nHow pleasant thy banks and green valleys below,\nWhere wild in the woodlands the primroses blow;\nThere oft as mild ev'ning weeps over the lea,\nThe sweet-scented birk shades my Mary and me.\n\nThy crystal stream, Afton, how lovely it glides,\nAnd winds by the cot where my Mary resides;\nHow wanton thy waters her snowy feet lave,\nAs gathering sweet flow'rets she stems thy clear wave.\n\nFlow gently, sweet Afton, among thy green braes,\nFlow gently, sweet river, the theme of my lays;\nMy Mary's asleep by thy murmuring stream,\nFlow gently, sweet Afton, disturb not her dream.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Afton_Water",
+      "tags": []
+    },
+    {
+      "titulo": "Altho' thou maun never be mine",
+      "texto": "TUNE―'HERE'S A HEALTH TO THEM THAT'S AWA, HINEY.'\n\nCHORUS.\nHere's a health to ane I lo'e dear,\nHere's a health to ane I lo'e dear;\nThou art as sweet as the smile when fond lovers meet,\nAnd soft as their parting tear—Jessy!\n\nAltho' thou maun never be mine,\n Altho' even hope is denied;\n'Tis sweeter for thee despairing,\n Than aught in the world beside—Jessy!\n   Here's a health, &c.\n\nI mourn thro' the gay, gaudy day,\n As, hopeless, I muse on thy charms:\nBut welcome the dream o' sweet slumber,\n For then I am lockt in thy arms—Jessy!\n   Here's a health, &c.\n\nI guess by the dear angel smile,\n I guess by the love-rolling ee;\nBut why urge the tender confession\n 'Gainst fortune's fell cruel decree—Jessy!\n  Here's a health, &c.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Altho%27_thou_maun_never_be_mine",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Amang the Trees",
+      "texto": "TUNE—'THE KING OF FRANCE, HE RADE A RACE.'\n\n Amang the trees where humming bees\n At buds and flowers were hinging, O\nAuld Caledon drew out her drone,\n And to her pipe was singing; O\n'Twas Pibroch, Sang, Strathspey, or Reels,\n She dirl❜d them aff fu' clearly, O\nWhen there cam a yell o' foreign squeels,\n That dang her tapsalteerie, O—\n\nTheir capon craws and queer ha ha's,\n They made our lugs grow eerie; O\nThe hungry bike did scrape and pike\n Till we were wae and weary: O—\nBut a royal ghaist wha ance was cas'd\n A prisoner aughteen year awa,\nHe fir'd a fiddler in the north\n That dang them tapsalteerie, O.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Amang_the_Trees",
+      "tags": []
+    },
+    {
+      "titulo": "An excellent new Song. Third Ballad",
+      "texto": "AN EXCELLENT NEW SONG.\n\nTHIRD BALLAD.\n\nWha will buy my troggin,\n Fine election ware;\nBroken trade o' Broughton,\n A' in high repair.\n   Buy braw troggin,\n    Frae the banks o' Dee;\n   Wha wants troggin\n    Let him come to me.\n\nThere's a noble Earl's\n Fame and high renown,\nFor an auld sang—\n It's thought the gudes were stown.\n    Buy braw troggin, &c.\n\nHere's the worth o' Broughton\nIn a needle's ee;\nHere's a reputation\nTint by Balmaghie.\n    Buy braw troggin, &c.\n\nHere's an honest conscience\n Might a prince adorn;\nFrae the downs o' Tinwald—\n So was never worn.\n    Buy braw troggin, &c.\n\nHere's its stuff and lining,\n Cardoness' head;\nFine for a sodger\n A' the wale o' lead.\n    Buy braw troggin, &c.\n\nHere's a little wadset\n Buittles scrap o' truth,\nPawn'd in a gin-shop\n Quenching holy drouth.\n    Buy braw troggin, &c.\n\nHere's armorial bearings\n Frae the manse o' Urr;\nThe crest, an auld crab-apple\n Rotten at the core.\n    Buy braw troggin, &c.\n\nHere is Satan's picture,\n Like a bizzard gled,\nPouncing poor Redcastle\n Sprawlin' as a taed.\n    Buy braw troggin, &c.\n\nHere's the worth and wisdom\n Collieston can boast;\nBy a thievish midge\n They had been nearly lost.\n    Buy braw troggin, &c.\n\nHere is Murray's fragments\n O' the ten commands;\nGifted by black Jock\n To get them aff his hands.\n    Buy braw troggin, &c.\n\nSaw ye e'er sic troggin?\n If to buy ye're slack,\nHornie's turnin' chapman,—\n He'll buy a' the pack.\n    Buy braw troggin, &c.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/An_excellent_new_Song._Third_Ballad",
+      "tags": []
+    },
+    {
+      "titulo": "An' O! my Eppie",
+      "texto": "My jewel, my Eppie!\nWha wadna be happy\n Wi' Eppie Adair?\nBy love, and by beauty,\nBy law, and by duty,\nI swear to be true to\n My Eppie Adair.\n\nAn' O! my Eppie,\nMy jewel, my Eppie!\nWha wadna be happy\n Wi' Eppie Adair?\nA' pleasure exile me,\nDishonour defile me,\nIf e'er I beguile thee\n My Eppie Adair!",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/An%27_O%21_my_Eppie",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "And maun I still on Menie doat",
+      "texto": "TUNE—'JOCKEY'S GREY BREEKS.'\n\nAgain rejoicing nature sees\n Her robe assume its vernal hues,\nHer leafy locks wave in the breeze,\n All freshly steep'd in morning dews.\n\nCHORUS.\n And maun I still on Menie doat,\n  And bear the scorn that's in her e'e?\n For it's jet, jet black, an' it's like a hawk,\n  An' it winna let a body be!\n\nIn vain to me the cowslips blaw,\n In vain to me, the vi'lets spring;\nIn vain to me, in glen or shaw,\n The mavis and the lintwhite sing.\n  And maun I still, &c.\n\nThe merry ploughboy cheers his team,\n Wi' joy the tentie seedsman stalks,\nBut life to me's a weary dream,\n A dream of ane that never wauks.\n  And maun I still, &c.\n\nThe wanton coot the water skims,\n Amang the reeds the ducklings cry,\nThe stately swan majestic swims,\n And every thing is blest but I.\n  And maun I still, &c.\n\nThe sheep-herd steeks his faulding slap,\n And owre the moorlands whistles shill,\nWi' wild, unequal, wand'ring step\n I meet him on the dewy hill.\n  And maun I still, &c.\n\nAnd when the lark, 'tween light and dark,\n Blythe waukens by the daisy's side,\nAnd mounts and sings on flittering wings,\n A woe-worn ghaist I hameward glide.\n  And maun I still, &c.\n\nCome Winter, with thine angry howl,\n And raging bend the naked tree;\nThy gloom will soothe my cheerless soul,\n When Nature all is sad like me!\n And maun I still on Menie doat,\n  And bear the scorn that's in her e'e?\n For it's jet, jet black, an' it's like a hawk,\n  An' it winna let a body be.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/And_maun_I_still_on_Menie_doat",
+      "tags": []
+    },
+    {
+      "titulo": "Answer to a Poetical Epistle sent the Author by a Tailor",
+      "texto": "ANSWER TO A POETICAL EPISTLE\n\nSENT THE AUTHOR BY A TAILOR.\n\nWhat ails ye now, ye lousie bitch,\nTo thresh my back at sic a pitch?\nLosh, man! hae mercy wi' your natch,\n     Your bodkin's bauld,\nI didna suffer ha'f sae much\n     Frae Daddie Auld.\n\nWhat tho' at times when I grow crouse,\nI gi'e their wames a random pouse,\nIs that enough for you to souse\n     Your servant sae?\nGae mind your seam, ye prick-the-louse,\n     An' jag-the-flae.\n\nKing David o' poetic brief,\nWrought 'mang the lasses such mischief\nAs fill'd his after life wi' grief\n     An' bloody rants,\nAn yet he's rank'd amang the chief\n     O' lang-syne saunts.\n\nAnd maybe, Tam, for a' my cants,\nMy wicked rhymes, an' drucken rants,\nI'll gie auld cloven Clooty's haunts\n     An unco slip yet,\nAn' snugly sit amang the saunts,\n     At Davie's hip yet.\n\nBut fegs, the Session says I maun\nGae fa' upo' anither plan,\nThan garren lasses cowp the cran\n     Clean heels owre body,\nAnd sairly thole their mither's ban\n     Afore the howdy.\n\nThis leads me on, to tell for sport,\nHow I did wi' the Session sort—\nAuld Clinkum at the Inner port\n     Cry'd three times, 'Robin!\nCome hither, lad, an' answer for't,\n     Ye're blam'd for jobbin'.'\n\nWi' pinch I put a Sunday's face on,\nAn' snoov'd awa' before the Session—\nI made an open fair confession,\n     I scorn'd to lie;\nAn' syne Mess John, beyond expression,\n     Fell foul o' me.\n\nA furnicator-loun he call'd me,\nAn' said my faut frae bliss expell'd me;\nI own'd the tale was true he tell'd me,\n     But what the matter?'\nQuo' I, 'I fear unless ye geld me,\n     I'll ne'er be better.'\n\n'Geld you!' quo' he, 'and whatfor no?\nIf that your right hand, leg or toe,\nShould ever prove your sp'ritual foe,\n     You shou'd remember\nTo cut it aff, an' whatfore no\n     Your dearest member?'\n\n'Na, na,' quo' I, 'I'm no for that,\nGelding's nae better than 'tis ca't,\nI'd rather suffer for my faut,\n     A hearty flewit.\nAs sair owre hip as ye can draw't,\n     Tho' I should rue it.\n\n'Or gin ye like to end the bother,\nTo please us a', I've just ae ither,\nWhen next wi' yon lass I forgather,\n     Whate'er betide it,\nI'll frankly gi'e her't a'thegither,\n     An' let her guide it'\n\nBut, Sir, this pleas'd them warst ava,\nAn' therefore, Tam, when that I saw,\nI said, 'Gude night,' and cam awa,\n     And left the Session;\nI saw they were resolved a'\n     On my oppression.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Answer_to_a_Poetical_Epistle_sent_the_Author_by_a_Tailor",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Answer to Verses addressed to the Poet by the Guidwife of Wauchope House",
+      "texto": "ANSWER TO VERSES ADDRESSED TO THE POET\n\nBY THE GUIDWIFE OF WAUCHOPE HOUSE.\n\n GUIDWIFE,\nI mind it weel, in early date,\nWhen I was beardless, young and blate,\n An' first could thresh the barn,\nOr haud a yokin at the pleugh,\nAn' tho' forfoughten sair eneugh,\n Yet unco proud to learn:\nWhen first amang the yellow corn\n A man I reckon'd was,\nAnd wi' the lave ilk merry morn\n Could rank my rig and lass,\n  Still shearing, and clearing\n   The tither stooked raw,\n  Wi' claivers, an' haivers,\n   Wearing the day awa:\n\nEv'n then a wish, (I mind its power,)\nA wish that to my latest hour\n Shall strongly heave my breast;\nThat I for poor auld Scotland's sake,\nSome usefu' plan, or beuk could make,\n Or sing a sang at least.\nThe rough bur-thistle, spreading wide\n Amang the bearded bear,\nI turn'd the weeder-clips aside,\n An' spar'd the symbol dear:\n  No nation, no station,\n   My envy e'er could raise;\n  A Scot still, but blot still,\n   I knew nae higher praise.\n\nBut still the elements o' sang\nIn formless jumble, right an' wrang,\n Wild floated in my brain;\nTill on that har'st I said before,\nMy partner in the merry core,\n She rous'd the forming strain:\nI see her yet, the sonsie quean,\n That lighted up her jingle,\nHer witching smile, her pauky een,\n That gart my heart-strings tingle;\n  I fired, inspired,\n   At ev'ry kindling keek,\n  But bashing, and dashing,\n   I feared aye to speak.\n\nHealth to the sex, ilk guid chiel says,\nWi' merry dance in winter days,\n An' we to share in common:\nThe gust o' joy, the balm of woe,\nThe saul o' life, the heav'n below,\n Is rapture-giving woman.\nYe surly sumphs, who hate the name,\n Be mindfu' o' your mither:\nShe, honest woman, may think shame\n That ye're connected with her.\n  Ye're wae men, ye're nae men,\n   That slight the lovely dears;\n  To shame ye, disclaim ye,\n   Ilk honest birkie swears.\n\nFor you, no bred to barn or byre,\nWha sweetly tune the Scottish lyre,\n Thanks to you for your line:\nThe marbled plaid ye kindly spare,\nBy me should gratefully be ware;\n 'Twad please me to the nine.\nI'd be more vauntie o' my hap,\n Douce hingin' owre my curple,\nThan ony ermine ever lap,\n Or proud imperial purple.\n  Fareweel then, lang heal then,\n   An' plenty be your fa':\n  May losses and crosses\n   Ne'er at your hallan ca'.\nMarch, 1787.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/Answer_to_Verses_addressed_to_the_Poet_by_the_Guidwife_of_Wauchope_House",
+      "tags": []
+    },
+    {
+      "titulo": "As down the Burn they took their way",
+      "texto": " And thro' the flowery dale;\nHis cheek to hers he aft did lay,\n And love was ay the tale.\n\nWith 'Mary, when we shall return,\n Sic pleasure to renew?'\nQuoth Mary, 'Love, I like the burn,\n And ay shall follow you.'",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/As_down_the_Burn_they_took_their_way",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "As I was a Wandering",
+      "texto": "TUNE—'RINN MEUDIAL MO MHEALLADH.'\n\nAs I was a wand'ring ae midsummer e'enin',\n The pipers and youngsters were making their game;\nAmang them I spied my faithless fause lover,\n Which bled a' the wounds o' my dolour again.\n\nWeel, since he has left me, may pleasure gae wi' him;\n I may be distress'd, but I winna complain;\nI flatter my fancy I may get anither,\n My heart it shall never be broken for ane.\n\nI could get na sleeping till dawin' for greetin',\n The tears trickled down like the hail and the rain;\nHad I na got greetin', my heart wad a broken,\n For, oh! love forsaken's a tormenting pain.\n\nAlthough he has left me for greed o' the siller,\n I dinna envy him the gains he can win;\nI rather wad bear a' the lade o' my sorrow\n Than ever hae acted sae faithless to him.\n\nWeel, since he has left me, may pleasure gae wi' him,\n I may be distress'd, but I winna complain;\nI flatter my fancy I may get anither,\n My heart it shall never be broken for ane.",
+      "forma": "outro",
+      "obra": "The Poetical Works of Robert Burns",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poetical_Works_of_Robert_Burns/As_I_was_a_Wandering",
+      "tags": [
+        "amor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "username": "hart_crane",
+  "name": "Hart Crane",
+  "bio": "Poeta norte-americano. White Buildings (1926) e The Bridge (1930) são os livros de poemas.",
+  "avatar_url": "",
+  "nascimento": 1899,
+  "morte": 1932,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "US",
+  "poemas": [
+    {
+      "titulo": "Episode of Hands",
+      "texto": "The unexpected interest made him flush.\nSuddenly, he seemed to forget the pain,–\nConsented–and held out\nOne finger from the others.\n\nThe gash was bleeding, and a shaft of sun\nThat glittered in and out among the wheels,\nFell lightly, warmly, down into the wound.\n\nAnd as the fingers of the factory owner’s son,\nThat knew a grip for books and tennis\nAs well as one for iron and leather,–\nAs his taut, spare finger wound the gaze\nAround the thick bed of the wound,\nHis own hands seemed to him\nLike wings of butterflies\nFlickering in sunlight over summer fields.\n\nThe knots and notches–many in the wide\nDeep hand that lay in his,–seemed beautiful.\nThey were like the marks of wild ponies’ play,–\nBunches of new green breaking a hard turf.\n\nAnd factory sounds and factory thoughts\nWere banished from him by that larger, quieter hand\nThat lay in his with the sun upon it.\nAnd as the bandage knot was tightened\nThe two men smiled into each other’s eyes.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": 1920,
+      "fonte": "https://en.wikisource.org/wiki/Episode_of_Hands",
+      "tags": []
+    }
+  ]
+}

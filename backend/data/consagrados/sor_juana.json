@@ -1,0 +1,286 @@
+{
+  "username": "sor_juana",
+  "name": "Sor Juana Inés de la Cruz",
+  "bio": "Poetisa da Nova Espanha, no que hoje é o México. Primero sueño e os sonetos são o centro da obra.",
+  "avatar_url": "",
+  "nascimento": 1651,
+  "morte": 1695,
+  "escolas": [
+    "barroco"
+  ],
+  "pais": "MX",
+  "poemas": [
+    {
+      "titulo": "A una Rosa",
+      "texto": "Rosa divina, que en gentil cultura\nEres con tu fragante sutileza\nMagisterio purpúreo en la belleza,\nEnseñanza nevada a la hermosura.\n\nAmago de la humana arquitectura,\nEjemplo de la vana gentileza,\nEn cuyo ser unió naturaleza\nLa cuna alegre y triste sepultura.\n\n¡Cuán altiva en tu pompa, presumida\nsoberbia, el riesgo de morir desdeñas,\ny luego desmayada y encogida.\n\nDe tu caduco ser das mustias señas!\nCon que con docta muerte y necia vida,\nViviendo engañas y muriendo enseñas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/A_una_Rosa",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Al que ingrato me deja",
+      "texto": "Al que ingrato me deja busco amante;\ny al que amante me sigue dejo ingrata;\nconstante adoro a quién mi amor maltrata;\nmaltrato a quién mi amor busca constante.\n\nAl que trato de amor hallo diamante;\ny soy diamante al que de amor me trata;\ntriunfante quiero ver al que me mata;\ny mato al que me quiere ver triunfante.\n\nSi a éste pago, padece mi deseo;\nsi ruego a áquel, mi pundonor enojo;\nde entre ambos modos infeliz me veo.\n\nPero yo por mejor partido escojo;\nde quién no quiero ser violento empleo;\nque de quien no me quiere, vil despojo.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Al_que_ingrato_me_deja",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Al que ingrato me deja, busco amante",
+      "texto": "al que amante me sigue, dejo ingrata;\nconstante adoro a quien mi amor maltrata,\nmaltrato a quien mi amor busca constante.\n\n  Al que trato de amor, hallo diamante,\ny soy diamante al que de amor me trata,\ntriunfante quiero ver al que me mata\ny mato al que me quiere ver triunfante.\n\n  Si a éste pago, padece mi deseo;\nsi ruego a aquél, mi pundonor enojo;\nde entrambos modos infeliz me veo.\n\n  Pero yo, por mejor partido, escojo;\nde quien no quiero, ser violento empleo;\nque, de quien no me quiere, vil despojo.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Al_que_ingrato_me_deja%2C_busco_amante",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Amor inoportuno",
+      "texto": "Dos dudas en que escoger\nTengo, y no se a cual prefiera,\nPues vos sentís que no quiera\nY yo sintiera querer.\n\nCon que si a cualquiera lado\nQuiero inclinarme, es forzoso\nQuedando el uno gustoso\nQue otro quede disgustado.\n\nSi daros gusto me ordena\nLa obligación, es injusto\nQue por daros a vos gusto\nHaya yo de tener pena.\n\nY no juzgo que habrá quien\nApruebe sentencia tal,\nComo que me trate mal\nPor trataros a vos bien.\n\nMas por otra parte siento\nQue es también mucho rigor\nQue lo que os debo en amor\nPague en aborrecimiento.\n\nY aun irracional parece\nEste rigor, pues se infiere,\nSi aborrezco a quien me quiere\n¿qué haré con quien aborrezco?\n\nNo se como despacharos,\nPues hallo al determinarme\nQue amaros es disgustarme\nY no amaros disgustaros;\n\nPero dar un medio justo\nEn estas dudas pretendo,\nPues no queriendo, os ofendo,\nY queriéndoos me disgusto.\n\nY sea esta la sentencia,\nPorque no os podáis quejar,\nQue entre aborrecer y amar\nSe parta la diferencia,\n\nDe modo que entre el rigor\nY el llegar a querer bien,\nNi vos encontréis desdén\nNi yo pueda encontrar amor.\n\nEsto el discurso aconseja,\nPues con esta conveniencia\nNi yo quedo con violencia\nNi vos os partís con queja.\n\nY que estaremos infiero\nGustosos con lo que ofrezco;\nVos de ver que no aborrezco,\nYo de saber que no quiero.\n\nSólo este medio es bastante\nA ajustarnos, si os contenta,\nQue vos me logréis atenta\nSin que yo pase a lo amante,\n\nY así quedo en mi entender\nEsta vez bien con los dos;\nCon agradecer, con vos;\nConmigo, con no querer.\n\nQue aunque a nadie llega a darse\nEn este gusto cumplido,\nVer que es igual el partido\nServirá de resignarse.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Amor_inoportuno",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Ante la ausencia",
+      "texto": "Divino dueño mío,\nsi al tiempo de partirme\ntiene mi amante pecho\nalientos de quejarse,\noye mis penas, mira mis males.\n\nAliéntese el dolor,\nsi puede lamentarse,\ny a la vista de perderte\nmi corazón exhale\nllanto a la tierra, quejas al aire.\n\nApenas tus favores\nquisieron coronarme,\ndichoso más que todos,\nfelices como nadie,\ncuando los gustos fueron pesares.\n\nSin duda el ser dichoso\nes la culpa más grave,\npues mi fortuna adversa\ndispone que la pague\ncon que a mis ojos tus luces falten,\n\n¡Ay, dura ley de ausencia!\n¿quién podrá derogarte,\nsi a donde yo no quiero\nme llevas, sin llevarme,\ncon alma muerta, vivo cadáver?\n\n¿Será de tus favores\nsólo el corazón cárcel\npor ser aun el silencio\nsi quiero que los guarde,\ncustodio indigno, sigilo frágil?\n\nY puesto que me ausento,\npor el último vale\nte prometo rendido\nmi amor y fe constante,\nsiempre quererte, nunca olvidarte",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Ante_la_ausencia",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Cogióme sin prevención",
+      "texto": "Amor, astuto y tirano:\ncon capa de cortesano\nse me entró en el corazón.\nDescuidada la razón\ny sin armas los sentidos,\ndieron puerta inadvertidos;\ny él, por lograr sus enojos,\nmientras suspendió los ojos\nme salteó los oídos.\n\nDisfrazado entró y mañoso;\nmas ya que dentro se vio\ndel Paladión, salió\nde aquel disfraz engañoso;\ny, con ánimo furioso,\ntomando las armas luego,\nse descubrió astuto Griego\nque, iras brotando y furores,\nmatando los defensores,\npuso a toda el Alma fuego.\n\nY buscando sus violencias\nen ella al príamo fuerte,\ndio al Entendimiento muerte,\nque era Rey de las potencias;\ny sin hacer diferencias\nde real o plebeya grey,\nhaciendo general ley\nmurieron a sus puñales\nlos discursos racionales\nporque eran hijos del Rey.\n\nA Casandra su fiereza\nbuscó, y con modos tiranos,\nató a la Razón las manos,\nque era del Alma princesa.\nEn prisiones su belleza\nde soldados atrevidos,\nlamenta los no creídos\ndesastres que adivinó,\npues por más voces que dio\nno la oyeron los sentidos.\n\nTodo el palacio abrasado\nse ve, todo destruido;\nDeifobo allí mal herido,\naquí Paris maltratado.\nPrende también su cuidado\nla modestia en Polixena;\ny en medio de tanta pena,\ntanta muerte y confusión,\na la ilícita afición\nsólo reserva en Elena.\n\nYa la Ciudad, que vecina\nfue al Cielo, con tanto arder,\nsólo guarda de su ser\nvestigios, en su ruina.\nTodo el amor lo extermina;\ny con ardiente furor,\nsólo se oye, entre el rumor\ncon que su crueldad apoya:\n\"Aquí yace un Alma Troya\n¡Victoria por el Amor!\"",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Cogi%C3%B3me_sin_prevenci%C3%B3n",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "De amor y de discreción",
+      "texto": "En que satisface un recelo con la retórica del llanto.\n\nEsta tarde, mi bien, cuando te hablaba,\ncomo en tu rostro y tus acciones vía\nque con palabras no te persuadía,\nque el corazón me vieses deseaba;\ny Amor, que mis intentos ayudaba,\nvenció lo que imposible parecía:\npues entre el llanto, que el dolor vertía,\nel corazón deshecho destilaba.\n\nBaste ya de rigores, mi bien, baste;\nno te atormenten más celos tiranos,\nni el vil recelo tu quietud contraste\ncon sombras necias, con indicios vanos,\npues ya en líquido humor viste y tocaste\nmi corazón deshecho entre tus manos.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/De_amor_y_de_discreci%C3%B3n",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Detente sombra",
+      "texto": "Detente, sombra de mi bien esquivo,\nimagen del hechizo que más quiero,\nbella ilusión por quien alegre muero,\ndulce ficción por quien penosa vivo.\n\nSi al imán de tus gracias, atractivo,\nsirve mi pecho de obediente acero,\n¿para qué me enamoras lisonjero\nsi has de burlarme luego fugitivo?\n\nMas blasonar no puedes, satisfecho,\nde que triunfa de mí tu tiranía:\nque aunque dejas burlado el lazo estrecho\n\nque tu forma fantástica ceñía,\npoco importa burlar brazos y pecho\nsi te labra prisión mi fantasía.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Detente_sombra",
+      "tags": []
+    },
+    {
+      "titulo": "Día de Comunión",
+      "texto": "Amante dulce del alma,\nbien soberano a que aspiro,\ntú que sabes las ofensas\ncastigar a beneficios;\ndivino imán en que adoro\nhoy que tan propicio os miro\nque me animás a la osadía\nde poder llamaros mío;\nhoy, que en unión amorosa,\npareció a vuestro cariño,\nque si no estabais en mí\nera poco estar conmigo;\nhoy, que para examinar\nel afecto con que os sirvo,\nal corazón en persona\nhabéis entrado vos mismo,\npregunto ¿es amor o celos\ntan cuidadoso escrutinio?\nque quien lo registra todo\nda de sospechar indicios.\nMas ¡ay, bárbara ignorante,\ny que de errores he dicho,\ncomo si el estorbo humano\nobstara al lince divino!\nPara ver los corazones\nno es menester asistirlos;\nque para vos son patentes\nlas entrañas del abismo.\nCon una intuición presente\ntenéis en vuestro registro,\nel infinito pasado,\nhasta el presente finito;\nluego no necesitabais,\npara ver el pecho mío,\nsi lo estáis mirando sabio,\nentrar a mirarlo fino;\nluego es amor, no celos,\nlo que en vos miro.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/D%C3%ADa_de_Comuni%C3%B3n",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Dime vencedor rapaz",
+      "texto": "vencido de mi constancia,\n¿Qué ha sacado tu arrogancia\nde alterar mi firme paz?\nQue aunque de vencer capaz\nes la punta de tu arpón\nel más duro corazón\n¿qué importa el tiro violento,\nsi a pesar del vencimiento\nqueda viva la razón?\n\nTienes grande señorío;\npero tu jurisdicción\ndomina la inclinación,\nmas no pasa el albedrío.\nY así librarme confío\nde tu loco atrevimiento,\npues aunque rendida siento\ny presa la libertad,\nse rinde la voluntad\npero no el consentimiento.\n\nEn dos partes dividida\ntengo el alma en confusión:\nuna, esclava a la pasión,\ny otra, a la razón medida.\nGuerra civil, encendida,\naflige el pecho importuna:\nquiere vencer cada una,\ny entre fortunas tan varias,\nmorirán ambas contrarias\npero vencerá ninguna.\n\nCuando fuera, Amor, te vía,\nno merecí de ti palma;\ny hoy, que estás dentro del alma,\nes resistir valentía.\nCórrase, pues, tu porfía,\nde los triunfos que te gano:\npues cuando ocupas, tirano,\nel alma, sin resistillo,\ntienes vencido el Castillo\ne invencible el Castellano.\n\nInvicta razón alienta\narmas contra tu vil saña,\ny el pecho es corta campaña\na batalla tan sangrienta.\nY así, Amor, en vano intenta\ntu esfuerzo loco ofenderme:\npues podré decir, al verme\nexpirar sin entregarme,\nque conseguiste matarme\nmas no pudiste vencerme.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Dime_vencedor_rapaz",
+      "tags": [
+        "amor",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "Envía una rosa a la virreina",
+      "texto": "Ésa, que alegra y ufana\nde carmín fragante esmero,\ndel tiempo al ardor primero,\nse encendió llama de grama;\npreludio de la mañana\ndel rosicler más ufano\nes primicia del verano,\nLisi divina, que en fe\nde que la debió a tu pie\nla sacrifica tu mano.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Env%C3%ADa_una_rosa_a_la_virreina",
+      "tags": []
+    },
+    {
+      "titulo": "Esta tarde, mi bien",
+      "texto": "Esta tarde, mi bien, cuando te hablaba,\ncomo en tu rostro y tus acciones vía\nque con palabras no te persuadía,\nque el corazón me vieses deseaba;\n\ny Amor, que mis intentos ayudaba,\nvenció lo que imposible parecía:\npues entre el llanto, que el dolor vertía,\nel corazón deshecho destilaba.\n\nBaste ya de rigores, mi bien, baste:\nno te atormenten más celos tiranos,\nni el vil recelo tu inquietud contraste\n\ncon sombras necias, con indicios vanos,\npues ya en líquido humor viste y tocaste\nmi corazón deshecho entre tus manos.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Esta_tarde%2C_mi_bien",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Este amoroso tormento",
+      "texto": "que en mi corazón se ve,\nse que lo siento y no sé\nla causa porque lo siento\n\nSiento una grave agonía\npor lograr un devaneo,\nque empieza como deseo\ny para en melancolía.\n\ny cuando con mas terneza\nmi infeliz estado lloro\nsé que estoy triste e ignoro\nla causa de mi tristeza.\n\nSiento un anhelo tirano\npor la ocasión a que aspiro,\ny cuando cerca la miro\nyo misma aparto la mano.\nPorque si acaso se ofrece,\ndespués de tanto desvelo\nla desazona el recelo\no el susto la desvanece.\n\nY si alguna vez sin susto\nconsigo tal posesión\n(cualquiera) leve ocasión\nme malogra todo el gusto.\n\nSiento mal del mismo bien\ncon receloso temor\ny me obliga el mismo amor\ntal vez a mostrar desdén.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Este_amoroso_tormento",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Estos versos, lector mío",
+      "texto": "que a tu deleite consagro,\ny sólo tienen de buenos\nconocer yo que son malos,\nni disputártelos quiero,\nni quiero recomendarlos,\nporque eso fuera querer\nhacer de ellos mucho caso.\n\nNo agradecido te busco:\npues no debes, bien mirado,\nestimar lo que yo nunca\njuzgué que fuera a tus manos.\nEn tu libertad te pongo,\nsi quisieres censurarlos;\npues de que, al cabo, te estás\nen ella, estoy muy al cabo.\n\nNo hay cosa más libre que\nel entendimiento humano;\npues lo que Dios no violenta,\npor qué yo he de violentarlo?\n\nDi cuanto quisieres de ellos,\nque, cuanto más inhumano\nme los mordieres, entonces\nme quedas más obligado,\npues le debes a mi musa\nel más sazonado plato\n(que es el murmurar), según\nun adagio cortesano.\nY siempre te sirvo, pues,\no te agrado, o no te agrado:\nsi te agrado, te diviertes;\nmurmuras, si no te cuadro.\n\nBien pudiera yo decirte\npor disculpa, que no ha dado\nlugar para corregirlos\nla priesa de los traslados;\nque van de diversas letras,\ny que algunos, de muchachos,\nmatan de suerte el sentido\nque es cadáver el vocablo;\ny que, cuando los he hecho,\nha sido en el corto espacio\nque ferian al ocio las\nprecisiones de mi estado;\nque tengo poca salud\ny continuos embarazos,\ntales, que aun diciendo esto,\nllevo la pluma trotando.\n\nPero todo eso no sirve,\npues pensarás que me jacto\nde que quizá fueran buenos\na haberlos hecho despacio;\ny no quiero que tal creas,\nsino sólo que es el darlos\na la luz, tan sólo por\nobedecer un mandato.\n\nEsto es, si gustas creerlo,\nque sobre eso no me mato,\npues al cabo harás lo que\nse te pusiere en los cascos.\nY adiós, que esto no es más de\ndarte la muestra del paño:\nsi no te agrada la pieza,\nno desenvuelvas el fardo.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Estos_versos%2C_lector_m%C3%ADo",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Excusándose",
+      "texto": "Excusándose de un silencio en ocasión de\nun precepto para que le rompa\n\nPedirte, señora, quiero\nDe mi silencio perdón,\nSi lo que ha sido atención,\nLe hace parecer grosero.\n\nY no me podrás culpar\nSi hasta aquí mi proceder,\nPor ocuparse en querer\nSe ha olvidado de explicar.\n\nQue en mi amorosa pasión\nNo fue descuido ni mengua\nQuitar el uso a la lengua\nPor dárselo al corazón.\n\nNi de explicarme dejaba,\nQue como la pasión mía\nAcá en el alma te hablaba\n\nY en esta idea notable\nDichosamente vivía;\nPorque en mi mano tenía\nEl fingirte favorable.\n\nCon traza tan peregrina\nVivió mi esperanza vana\nPues te puedo hacer humana\nConcibiéndote divina.\n\n¡Oh, cuan loco llegué a verme\nen tus dichosos amores,\nque aun fingidos tus favores\npudieron enloquecerme!\n\n¡Oh, cuán loco llegué a verme\nen tus dichosos amores,\nque aun fingidos tus favores\npudieron enloquecerme!\n\n¡Oh, cómo en tu Sol hermoso\nmi ardiente afecto encendido,\npor cebarse en lo lúcido,\nolvidó lo peligroso!\n\nPerdona, si atrevimiento\nFue atreverme a tu ardor puro;\nQue no hay Sagrado seguro\nDe culpas de pensamiento.\n\nDe esta manera engañaba\nLa loca esperanza mía,\nY dentro de mí tenía\nTodo el bien que deseaba.\n\nMas ya tu precepto grave\nRompe mi silencio mudo;\nQue él solamente ser pudo\nDe mi respeto la llave.\n\nY aunque el amar tu belleza\nEs delito sin disculpa,\nCastíguense la culpa\nPrimero que la tibieza.\n\nNo quieras, pues, rigurosa,\nQue estando ya declarada,\nSea de veras desdichada\nQuien fue de burlas dichosa.\n\nSi culpas mi desacato,\nCulpa también tu licencia;\nQue si es mala mi obediencia,\nNo fue justo tu mandato.\n\nY si es culpable mi intento,\nSerá mi afecto preciso;\nPorque es amarte un delito\nDe que nunca me arrepiento.\n\nEsto en mis afectos halló,\nY más, que explicar no sé;\nMas tú, de lo que callé,\nInferirás lo que callo.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Excus%C3%A1ndose",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Feliciano me adora y le aborrezco",
+      "texto": "Lizardo me aborrece y yo le adoro;\nPor quien no me apetece ingrato, lloro,\nY al que me llora tierno, no apetezco.\n\nA quien más me desdora, el alma ofrezco;\nA quien me ofrece víctimas, desdoro;\nDesprecio al que enriquece mi decoro,\nY al que le hace desprecios enriquezco.\n\nSi con mi ofensa al uno reconvengo;\nMe reconviene el otro a mí ofendido;\nY a padecer de todos modos vengo;\n\nPues ambos atormentan mi sentido:\nAquéste con pedir lo que no tengo;\nY aquél con no tener lo que le pido.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Feliciano_me_adora_y_le_aborrezco",
+      "tags": []
+    },
+    {
+      "titulo": "Insinua su aversion a los vicios",
+      "texto": "En perseguirme, Mundo,  ¿Qué interesas?\n¿En qué te ofendo, cuando sólo intento\nponer bellezas en mi entendimiento\ny no mi entendimiento en las bellezas?\n\nYo no estimo tesoros ni riquezas;\ny así, siempre me causa más contento\nponer riquezas en mi pensamiento\nque no mi pensamiento en las riquezas.\n\nY no estimo hermosura que vencida,\nes despojo civil de las edades,\nni riqueza me agrada fementida,\n\nteniendo por mejor en mis verdades,\nconsumir vanidades de la vida\nque consumir la vida en vanidades.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Insinua_su_aversion_a_los_vicios",
+      "tags": []
+    },
+    {
+      "titulo": "Letras para cantar",
+      "texto": "Hirió blandamente el aire\nCon su dulce voz Narcisa,\nY él le repitió los ecos\nPor boca de las heridas.\n\nDe los celestiales Ejes\nEl rápido curso fija,\nY en los Elementos cesa\nla discordia nunca unida.\n\nAl dulce imán de su voz\nQuisieran, por asistirla,\nFirmamento ser el Móvil,\nEl Sol ser estrella fija.\n\nTan bella, sobre canora,\nQue el amor dudoso admira,\nSi se deben sus arpones\nA sus ecos, o a su vista.\n\nPorque tan confusamente\nHiere, que no se averigua,\nsi está en la voz la hermosura,\nO en los ojos la armonía.\n\nHomicidas sus facciones\nEl mortal cambio ejercitan;\nVoces, que alteran los ojos\nRayos que el labio fulmina.\n\nQuién podrá vivir seguro,\nsi su hermosura Divina\nCon los ojos y las voces\nDuplicadas armas vibra.\n\nEl Mar la admira Sirena,\nY con sus marinas Ninfas\nLe da en lenguas de las Aguas\nAlabanzas cristalinas:\nPero Fabio que es el blanco\nAdonde las flecha tira,\nAsí le dijo, culpando\nDe superfluas sus heridas:\nNo dupliques las armas,\nBella homicida,\nque está ociosa la muerte\nDonde no hay vida.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Letras_para_cantar",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Nacimiento de Cristo",
+      "texto": "De la más fragante rosa\nNació la abeja más bella,\nA quien el limpio rocío\nDio purísima materia.\n\nNace, pues, y apenas nace,\nCuando en la misma moneda,\nLo que en perlas recibió\nEmpieza a pagar en perlas.\n\nQue llora el alba, no es mucho\nQue es costumbre en su belleza;\nMas ¿quién hay que no se admire\nDe que el sol lágrimas vierta?\n\nSi es por secundar la rosa,\nEs ociosa diligencia,\nPues no es menester rocío\nDespués de nacer la abeja.\n\nY más cuando en la clausura\nDe su virginal pureza\nNi antecedente haber pudo,\nNi puede haber quien suceda,\n\n¿Pues a que fin es el llanto,\nque dulcemente riega?\nQuien no puede dar más fruto\n¿qué importa que estéril sea?\n\nMas ay, que la abeja tiene\nTan íntima dependencia\nSiempre con la rosa, que\nDepende su vida de ella;\n\nPues dándole néctar puro,\nQue sus fragancias engendran,\nNo sólo antes le concibe\nPero después le alimenta.\n\nHijo y madre, en tan divinas\nPeregrinas competencias,\nNinguno queda deudor,\nY ambos obligados quedan.\n\nLa abeja paga el rocío\nDe que la rosa la engendra,\nY ella vuelve a retornarle con\nLo mismo que la engendra.\n\nAyudando el uno al otro\nCon mutua correspondencia,\nLa abeja a la flor fecunda,\nY ella a la abeja sustenta.\n\nPues si por eso es el llanto,\nLlore Jesús, norabuena,\nQue lo que expende en rocío\nCobrará después en néctar.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Nacimiento_de_Cristo",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Pues estoy condenada",
+      "texto": "Fabio, a la muerte, por decreto tuyo,\ny la sentencia airada\nni la apelo, resisto ni la huyo,\nóyeme, que no hay reo tan culpado\na quien el confesar le sea negado.\n\nPorque te han informado,\ndices, de que mi pecho te ha ofendido,\nme has, fiero, condenado.\n¿Y pueden, en tu pecho endurecido\nmás la noticia incierta, que no es ciencia,\nque de tantas verdades la experiencia?\n\nSi a otros crédito has dado,\nFabio, ¿por qué a tus ojos se lo niegas,\ny el sentido trocado\nde la ley, al cordel mi cuello entregas,\npues liberal me amplías los rigores\ny avaro me restringes los favores?\n\nSi a otros ojos he visto,\nmátenme, Fabio, tus airados ojos;\nsi a otro cariño asisto,\nasístanme implacables tus enojos;\ny si otro amor del tuyo me divierte,\ntú, que has sido mi vida, me des muerte.\n\nSi a otro, alegre, he mirado,\nnunca alegre me mires ni te vea;\nsi le hablé con agrado,\neterno desagrado en ti posea;\ny si otro amor inquieta mi sentido,\nsáqueseme el alma tú, que mi alma has sido.\n\nMas, supuesto que muero,\nsin resistir a mi infeliz suerte,\nque me des sólo quiero\nlicencia de que escoja yo mi muerte;\ndeja la muerte a mi elección medida,\npues en la tuya pongo yo la vida.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Pues_estoy_condenada",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Redondillas",
+      "texto": "Hombres necios que acusáis\na la mujer, sin razón,\nsin ver que sois la ocasión\nde lo mismo que culpáis;\n\nsi con ansia sin igual\nsolicitáis su desdén,\npor qué queréis que obren bien\nsi las incitáis al mal?\n\nCombatís su resistencia\ny luego, con gravedad,\ndecís que fue liviandad\nlo que hizo la diligencia.\n\nParecer quiere el denuedo\nde vuestro parecer loco,\nal niño que pone el coco\ny luego le tiene miedo.\n\nQueréis, con presunción necia,\nhallar a la que buscáis\npara prentendida, Thais,\ny en la posesión, Lucrecia.\n\n¿Qué humor puede ser más raro\nque el que, falto de consejo,\nél mismo empaña el espejo\ny siente que no esté claro?\n\nCon el favor y el desdén\ntenéis condición igual,\nquejándoos, si os tratan mal,\nburlándoos, si os quieren bien.\n\nOpinión, ninguna gana,\npues la que más se recata,\nsi no os admite, es ingrata,\ny si os admite, es liviana.\n\nSiempre tan necios andáis\nque, con desigual nivel,\na una culpáis por cruel\ny a otra por fácil culpáis.\n\n¿Pues como ha de estar templada\nla que vuestro amor pretende?,\n¿si la que es ingrata ofende,\ny la que es fácil enfada?\n\nMas, entre el enfado y la pena\nque vuestro gusto refiere,\nbien haya la que no os quiere\ny quejaos en hora buena.\n\nDan vuestras amantes penas\na sus libertades alas,\ny después de hacerlas malas\nlas queréis hallar muy buenas.\n\n¿Cuál mayor culpa ha tenido\nen una pasión errada:\nla que cae de rogada,\no el que ruega de caído?\n\n¿O cuál es de más culpar,\naunque cualquiera mal haga;\nla que peca por la paga\no el que paga por pecar?\n\n¿Pues, para qué os espantáis\nde la culpa que tenéis?\nQueredlas cual las hacéis\no hacedlas cual las buscáis.\n\nDejad de solicitar,\ny después, con más razón,\nacusaréis la afición\nde la que os fuere a rogar.\n\nBien con muchas armas fundo\nque lidia vuestra arrogancia,\npues en promesa e instancia\njuntáis diablo, carne y mundo.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Redondillas",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Sentimientos de ausente",
+      "texto": "Amado dueño mío,\nEscucha un rato mis cansadas quejas,\nPues del viento las fío,\nQue breve las conduzca a tus orejas,\nSi no se desvanece el triste acento\nComo mis esperanzas en el viento.\n\nÓyeme con los ojos,\nYa que están tan distantes los oídos,\nY de ausentes enojos\nEn ecos de mi pluma mis gemidos;\nY ya que a ti no llega mi voz ruda,\nÓyeme sordo, pues me quejo muda.\n\nSi del campo te agradas,\nGoza de sus frescuras venturosas\nSin que aquestas cansadas\nLágrimas te detengan enfadosas;\nQue en él verás, si atento te entretienes\nEjemplo de mis males y mis bienes.\n\nSi al arroyo parlero\nVes, galán de las flores en el prado,\nQue amante y lisonjero\nA cuantas mira intima su cuidado,\nEn su corriente mi dolor te avisa\nQue a costa de mi llanto tiene risa.\n\nSi ves que triste llora\nSu esperanza marchita, en ramo verde,\nTórtola gemidora,\nEn él y en ella mi dolor te acuerde,\nQue imitan con verdor y con lamento,\nÉl mi esperanza y ella mi tormento.\n\nSi la flor delicada,\nSi la peña, que altiva no consiente\nDel tiempo ser hollada,\nAmbas me imitan, aunque variamente,\nYa con fragilidad, ya con dureza,\nMi dicha aquélla y ésta mi firmeza.\n\nSi ves el ciervo herido\nQue baja por el monte, acelerado\nBuscando dolorido\nAlivio del mal en un arroyo helado,\nY sediento al cristal se precipita,\nNo en el alivio en el dolor me imita,\n\nSi la liebre encogida\nHuye medrosa de los galgos fieros,\nY por salvar la vida\nNo deja estampa de los pies ligeros,\nTal mi esperanza en dudas y recelos\nSe ve acosa de villanos celos.\n\nSi ves el cielo claro,\nTal es la sencillez del alma mía;\nY si, de luz avaro,\nDe tinieblas emboza el claro día,\nes con su oscuridad y su inclemencia,\nimagen de mi vida en esta ausencia.\n\nAsí que, Fabio amado\nSaber puede mis males sin costarte\nLa noticia cuidado,\nPues puedes de los campos informarte;\nY pues yo a todo mi dolor ajusto,\nSaber mi pena sin dejar tu gusto.\nMas ¿cuándo ¡ay gloria mía!\nMereceré gozar tu luz serena?\n\n¿cuándo llegará el día\nque pongas dulce fin a tanta pena?\n¿cuándo veré tus ojos, dulce encanto,\ny de los míos quitarás el llanto?\n\n¿Cuándo tu voz sonora\nherirá mis oídos delicada,\ny el alma que te adora,\nde inundación de gozos anegada,\na recibirte con amante prisa\nsaldrá a los ojos desatada en risa?\n\n¿Cuándo tu luz hermosa\nrevestirá de gloria mis sentidos?\n¿y cuándo yo dichosa,\nmis suspiros daré por bien perdidos,\nteniendo en poco el precio de mi llanto?\nQue tanto ha de penar quien goza tanto.\n\n¿Cuándo de tu apacible\nrostro alegre veré el semblante afable,\ny aquel bien indecible\na toda humana pluma inexplicable?\nQue mal se ceñirá a lo definido\nLo que no cabe en todo lo sentido.\n\nVen, pues, mi prenda amada,\nQue ya fallece mi cansada vida\nDe esta ausencia pesada;\nVen, pues, que mientras tarda tu venida,\nAunque me cueste su verdor enojos,\nRegaré mi esperanza con mis ojos.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Sentimientos_de_ausente",
+      "tags": []
+    },
+    {
+      "titulo": "Soneto CXLV - A su retrato",
+      "texto": "Este que ves, engaño colorido,\nque, del arte ostentando los primores,\ncon falsos silogismos de colores\nes cauteloso engaño del sentido;\n\nÉste, en quien la lisonja ha pretendido\nexcusar de los años los horrores,\ny venciendo del tiempo los rigores\ntriunfar de la vejez y del olvido,\n\nEs un vano artificio del cuidado,\nes una flor al viento delicada,\nes un resguardo inútil para el hado:\n\nEs una necia diligencia errada,\nes un afán caduco y, bien mirado,\nes cadáver, es polvo, es sombra, es nada.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Soneto_CXLV_-_A_su_retrato",
+      "tags": []
+    },
+    {
+      "titulo": "Teme que su afecto",
+      "texto": "Teme que su afecto parezca\nGratitud y no fuerza\n\nSeñora, si la belleza\nQue en vos llego a contemplar\nEs bastante a conquistar\nLa más inculta dureza,\n\n¿Por qué hacéis que el sacrificio\nQue debo a vuestra luz pura\nDebiéndose a la hermosura\nSe atribuya al beneficio?\n\nCuando es bien que glorias cante,\nDe ser vos, quien me ha rendido,\n¿Queréis que lo agradecido\nSe equivoque con lo amante?\n\nVuestro favor me condena\nA otra especie de desdicha,\nPues me quitáis con la dicha\nEl mérito de la pena.\n\nSi no es que dais a entender\nQue favor tan singular,\nAunque se puede lograr,\nNo se puede merecer.\n\nCon razón, pues la hermosura\nAun llegada a poseerse,\nSi llega a merecerse,\nDejara de ser ventura.\n\nQue estar un digno cuidado\nCon razón correspondido,\nEs premio de lo servido,\nY no dicha de lo amado.\n\nQue dicha se ha de llamar\nSólo la que, a mi entender,\nNi se puede merecer,\nNi se pretende alcanzar.\n\nYa que este favor excede\nTanto a todos, al lograrse,\nQue no sólo no pagarse,\nMas ni agradecer se puede.\n\nPues desde el dichoso día\nQue vuestra belleza vi,\nTal del todo me rendí,\nQue no me quedó acción mía.\n\nCon lo cual, señora, muestro,\ny a decir mi amor se atreve,\nQue nadie pagaros debe,\nQue vos honréis lo que es vuestro.\n\nBien se que es atrevimiento\nPero el amor es testigo\nQue no se lo que me digo\nPor saber lo que me siento.\n\nY en fin, perdonad por Dios,\nSeñora, que os hable así,\nQue si yo estuviera en mí\nNo estuvierais en mí vos.\n\nSólo quiero suplicaros\nQue de mí recibáis hoy,\nNo sólo el alma que os doy,\nMas la que quisiera daros.",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Teme_que_su_afecto",
+      "tags": [
+        "amor",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Verde embeleso",
+      "texto": "Verde embeleso de la vida humana,\nloca esperanza, frenesí dorado,\nsueño de los despiertos intrincado,\ncomo de sueños, de tesoros vana;\n\nalma del mundo, senectud lozana,\ndecrépito verdor imaginado;\nel hoy de los dichosos esperado,\ny de los desdichados el mañana:\n\nsigan tu sombra en busca de tu día\nlos que, con verdes vidrios por anteojos,\ntodo lo ven pintado a su deseo;\n\nque yo, más cuerda en la fortuna mía,\ntengo en entrambas manos ambos ojos\ny solamente lo que toco veo.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Verde_embeleso",
+      "tags": []
+    }
+  ]
+}
