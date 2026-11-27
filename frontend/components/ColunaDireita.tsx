@@ -44,7 +44,7 @@ export function ColunaDireita() {
   }, [caminho]);
 
   return (
-    <aside aria-label="Descobrir" className="space-y-8 px-6 pt-10 pb-6 lg:px-10">
+    <aside aria-label="Descobrir" className="space-y-8 px-(--recuo-da-folha) pt-10 pb-6">
       {logado && (
         <>
           {!noExplorar && <BuscaDoExplorar variante="coluna" />}

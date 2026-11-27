@@ -56,6 +56,28 @@
     color-scheme: dark;
   }
 
+  /* A margem de toda folha do livro: o x onde começa o texto, contado da borda
+     da página (24 px no celular, 40 px a partir de 640 e 56 px na página dupla).
+     As folhas usam px-(--margem-da-folha); as que trazem um px-4 por dentro
+     (cabeçalho, abas, listas com divisória de ponta a ponta) usam o recuo, que
+     já desconta esse 1rem e deixa o texto na mesma margem. */
+  :root {
+    --margem-da-folha: 1.5rem;
+    --recuo-da-folha: calc(var(--margem-da-folha) - 1rem);
+  }
+
+  @media (min-width: 40rem) {
+    :root {
+      --margem-da-folha: 2.5rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --margem-da-folha: 3.5rem;
+    }
+  }
+
   body {
     background-color: var(--color-papel);
     color: var(--color-tinta);

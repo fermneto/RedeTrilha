@@ -191,7 +191,7 @@ function Caderno({
 // A troca de feed: dois botões de alternar, sem abas (as setas do teclado viram a página).
 function TrocaDeFeed({ atual, aoMudar }: { atual: Aba; aoMudar: (feed: Aba) => void }) {
   return (
-    <div role="group" aria-label="Feed" className="flex gap-5 px-6 pt-6 sm:px-10 lg:px-14 lg:pt-8">
+    <div role="group" aria-label="Feed" className="flex gap-5 px-(--margem-da-folha) pt-6 lg:pt-8">
       {FEEDS.map(({ valor, rotulo }) => {
         const ativo = valor === atual;
         return (

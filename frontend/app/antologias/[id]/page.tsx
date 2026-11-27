@@ -38,7 +38,7 @@ import {
 import { textoSemMarcas } from "@/lib/marcas";
 
 // A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
-const MOLDURA = "flex min-h-full flex-col pb-6 lg:px-6";
+const MOLDURA = "flex min-h-full flex-col px-(--recuo-da-folha) pb-6";
 
 // Uma folha do livro: a página da esquerda e, se houver, a da direita.
 function Folha({

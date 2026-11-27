@@ -38,7 +38,7 @@ export function FichaDaAntologia({ antologia }: { antologia: Antologia }) {
 
   const termo = "text-xs text-tinta-suave";
   return (
-    <aside aria-label="sobre a antologia" className="px-6 pt-10 pb-6 lg:px-10">
+    <aside aria-label="sobre a antologia" className="px-(--recuo-da-folha) pt-10 pb-6">
       <dl className="space-y-5 px-4">
         <div>
           <dt className={termo}>reunida por</dt>

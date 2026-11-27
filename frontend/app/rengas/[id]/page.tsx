@@ -57,7 +57,7 @@ const botaoPrincipal =
 const botaoSecundario =
   "realce min-h-11 cursor-pointer rounded-full border border-borda px-5 text-sm disabled:opacity-50";
 // A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
-const MOLDURA = "flex min-h-full flex-col pb-6 lg:px-6";
+const MOLDURA = "flex min-h-full flex-col px-(--recuo-da-folha) pb-6";
 const campo =
   "w-full rounded-xl border border-borda bg-papel px-3 py-2 text-tinta transition-colors duration-150 focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none";
 

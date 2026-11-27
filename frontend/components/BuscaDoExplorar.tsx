@@ -168,7 +168,7 @@ export function BuscaDoExplorar({
           .join(" e ");
 
   return (
-    <form role="search" aria-label="Buscar no Verso" onSubmit={enviar} className={`relative ${naColuna ? "pt-2" : "px-4 py-2"}`}>
+    <form role="search" aria-label="Buscar no Verso" onSubmit={enviar} className={`relative px-4 ${naColuna ? "pt-2" : "py-2"}`}>
       <label htmlFor={idCampo} className="sr-only">
         Buscar tag ou poeta (nome ou @username)
       </label>
@@ -222,7 +222,7 @@ export function BuscaDoExplorar({
         hidden={!mostrando}
         // Clicar numa opção não tira o foco do campo (senão o blur fecharia a lista antes).
         onMouseDown={(e) => e.preventDefault()}
-        className={`absolute top-full z-20 ${naColuna ? "inset-x-0 mt-1" : "inset-x-4"} max-h-[min(70dvh,32rem)] overflow-y-auto rounded-xl border border-borda bg-papel-alto py-1 [scrollbar-width:thin]`}
+        className={`absolute top-full z-20 inset-x-4 ${naColuna ? "mt-1" : ""} max-h-[min(70dvh,32rem)] overflow-y-auto rounded-xl border border-borda bg-papel-alto py-1 [scrollbar-width:thin]`}
       >
         {opcoes.length === 0 ? (
           <p className="px-4 py-3 text-sm text-tinta-suave">Nenhuma tag ou poeta com “{limpo}”.</p>
