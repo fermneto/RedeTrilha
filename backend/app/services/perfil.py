@@ -18,12 +18,11 @@ from app.services.feed import pagina_dos_autores
 from app.services.follows import contar_seguidores, contar_seguindo
 from app.services import bloqueios
 from app.services import preferencias
-from app.services.users import buscar_por_username
+from app.services.users import visivel_por_username
 
 
 def perfil(db: Session, username: str, usuario: User) -> PerfilOut:
-    pessoa = buscar_por_username(db, username)
-    bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
+    pessoa = visivel_por_username(db, usuario, username)
     return _montar(db, pessoa, usuario)
 
 
@@ -41,8 +40,7 @@ def poemas(
     """Como no X: poemas, citações, reposts puros e rengas da pessoa, mais novo primeiro.
     O repost puro aparece como o original com `repostado_por` = [a pessoa]; a renga,
     na estrofe mais recente dela, como um repost."""
-    pessoa = buscar_por_username(db, username)
-    bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
+    pessoa = visivel_por_username(db, usuario, username)
     # Quem bloqueou a pessoa abre o perfil dela só para desbloquear: não vê nada do
     # que ela publicou nem repostou.
     if bloqueios.bloqueou(db, usuario.id, pessoa.id):
@@ -59,8 +57,7 @@ def gostos(db: Session, username: str, usuario: User) -> Preferencias:
     Mesma regra de bloqueio dos poemas: quem me bloqueou dá 404; quem eu bloqueei
     vem vazio. Consagrado não tem linha nas preferências: vem vazio. Sem o lugar
     se a pessoa desligou "mostrar meu lugar no perfil"."""
-    pessoa = buscar_por_username(db, username)
-    bloqueios.garantir_que_ve(db, usuario.id, pessoa.id, "usuário não encontrado")
+    pessoa = visivel_por_username(db, usuario, username)
     if bloqueios.bloqueou(db, usuario.id, pessoa.id):
         return Preferencias()
     return preferencias.publicas(db, pessoa, usuario)
