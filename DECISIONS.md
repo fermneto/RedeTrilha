@@ -100,7 +100,7 @@ PRs, na seção "Decisões do Neto".
   - **Só domínio público:** autores **mortos até 1955** (domínio público no
     Brasil em 2026, 70 anos após a morte). O importador recusa quem morreu
     depois, e cada poema guarda a `fonte` (Wikisource ou Wikiquote).
-  - **No original:** 206 poetas e 12.395 poemas em 22 línguas. Bilac e Florbela
+  - **No original:** 206 poetas e 12.391 poemas em 22 línguas. Bilac e Florbela
     em português, Baudelaire em francês, Li Bai em chinês, Hafez em persa, Bashō
     em japonês. Os textos não foram editados: saíram só os poemas com defeito,
     e a limpeza foi mecânica (caracteres invisíveis e TAB no início dos versos,
@@ -1358,7 +1358,7 @@ tabela; não foi preciso. Os testes de avisos rodam também contra o Postgres 16
     domínio público. O relatório está em
     `backend/data/consagrados/_relatorio_expansao.md`. O scraper continua fora
     do repositório.
-  - O bloco de cults e lacunas (#199), de 155 para 206 poetas e para 12.395
+  - O bloco de cults e lacunas (#199), de 155 para 206 poetas e para 12.391
     poemas, também veio do agente scraper, a partir de uma lista de candidatos
     que o Neto aprovou: poetas cult que circulam nas redes, mulheres, América
     Latina, russos e eslavos e brasileiros que faltavam, sempre mortos até
