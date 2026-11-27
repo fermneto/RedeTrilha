@@ -19,17 +19,12 @@ from datetime import datetime
 
 from app.core.datas import para_utc
 from app.core.marcas import texto_sem_marcas
-from app.core.texto import sem_acento
+from app.core.texto import normalizar
 
 _PADRAO_TAG = re.compile(r"#([a-z0-9_]+)")
 _FORA_DA_TAG = re.compile(r"[^a-z0-9_]")
 # "outro" é a forma de quem não tem forma: virar tag só juntaria poemas sem nada em comum.
 FORMA_SEM_TAG = "outro"
-
-
-def normalizar(texto: str) -> str:
-    """casefold e sem acento: '#Solidão' e '#solidao' viram a mesma tag."""
-    return sem_acento(texto.casefold())
 
 
 def termo_de_tag(texto: str) -> str:

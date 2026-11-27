@@ -86,8 +86,7 @@ def bloqueou(db: Session, quem_id: int, outro_id: int) -> bool:
 
 def eu_bloqueei(db: Session, eu: User, username: str) -> bool:
     """Para o perfil mostrar "Desbloquear". 404 se a pessoa não existe ou me bloqueou."""
-    outro = users.buscar_por_username(db, username)
-    garantir_que_ve(db, eu.id, outro.id, "usuário não encontrado")
+    outro = users.visivel_por_username(db, eu, username)
     return bloqueou(db, eu.id, outro.id)
 
 
