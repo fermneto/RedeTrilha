@@ -12,6 +12,9 @@
 // O cursor de cada aba segue sendo o do backend, que já não repete na aba. O
 // mais curtido e a releitura da continuação do feed infinito (`subiu_por`
 // "curtidas" e "releitura") podem repetir por desenho, e passam pelo filtro sempre.
+// O que é da própria pessoa (o poema dela, o repost dela, o poema dela que alguém
+// repostou) também passa sempre no Seguindo: quem acabou de publicar procura o
+// poema ali, mesmo que já o tenha visto no Para você.
 //
 // Sem import de valor (só de tipo): os testes transpilam este arquivo sozinho.
 
@@ -54,16 +57,30 @@ export function abaVazia(): EstadoDaAba {
   return { itens: [], cursor: null, fim: false, posicao: INICIO_DO_CADERNO, fimEm: null };
 }
 
-// Os itens que a aba mostra: os que ninguém viu ainda e os que foram vistos nela.
+// O poema é de quem lê: escrito ou repostado por ela (o repost dela, ou ela entre
+// quem repostou, juntado pelo juntarAoFeed), ou o original de um repost puro.
+export function ehDaPessoa(item: ItemDoFeed, euId: number | null): boolean {
+  if (euId === null || item.tipo === "renga") return false;
+  return (
+    item.autor_id === euId ||
+    (item.texto === "" && item.repost_de?.autor_id === euId) ||
+    (item.repostado_por ?? []).some((u) => u.id === euId)
+  );
+}
+
+// Os itens que a aba mostra: os que ninguém viu ainda e os que foram vistos nela
+// (no Seguindo, também os da própria pessoa).
 export function visiveis(
   itens: ItemDoFeed[],
   chave: (item: ItemDoFeed) => string,
   vistos: Record<string, Aba>,
   aba: Aba,
+  euId: number | null = null,
 ): ItemDoFeed[] {
   return itens.filter(
     (item) =>
       (item.tipo !== "renga" && (item.subiu_por === "curtidas" || item.subiu_por === "releitura")) ||
+      (aba === "seguindo" && ehDaPessoa(item, euId)) ||
       (vistos[chave(item)] ?? aba) === aba,
   );
 }
