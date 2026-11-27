@@ -6,7 +6,7 @@ from app.models.follow import Follow
 from app.models.user import User
 from app.schemas.user import UserPage
 from app.services import avisos, bloqueios
-from app.services.users import buscar_por_username
+from app.services.users import buscar_por_username, visivel_por_username
 
 
 def seguir(db: Session, seguidor: User, username: str) -> None:
@@ -82,22 +82,15 @@ def ids_seguidos(db: Session, user_id: int) -> list[int]:
 def listar_seguidores(
     db: Session, usuario: User, username: str, offset: int, limit: int
 ) -> UserPage:
-    user = _dono_da_lista(db, usuario, username)
+    user = visivel_por_username(db, usuario, username)
     filtro = _sem_bloqueados(db, usuario, Follow.seguido_id == user.id, Follow.seguidor_id)
     return _pagina(db, filtro, Follow.seguidor_id, offset, limit)
 
 
 def listar_seguindo(db: Session, usuario: User, username: str, offset: int, limit: int) -> UserPage:
-    user = _dono_da_lista(db, usuario, username)
+    user = visivel_por_username(db, usuario, username)
     filtro = _sem_bloqueados(db, usuario, Follow.seguidor_id == user.id, Follow.seguido_id)
     return _pagina(db, filtro, Follow.seguido_id, offset, limit)
-
-
-def _dono_da_lista(db: Session, usuario: User, username: str) -> User:
-    """O dono da lista; 404 também se ele bloqueou quem vê."""
-    user = buscar_por_username(db, username)
-    bloqueios.garantir_que_ve(db, usuario.id, user.id, "usuário não encontrado")
-    return user
 
 
 def _sem_bloqueados(db: Session, usuario: User, filtro, coluna_outro):

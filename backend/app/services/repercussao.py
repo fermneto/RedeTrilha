@@ -23,7 +23,7 @@ from app.services import bloqueios, posts, rengas
 
 
 def curtidas_do_poema(db: Session, usuario: User, post_id: int, offset: int, limit: int) -> UserPage:
-    poema = _poema(db, usuario, post_id)
+    poema = posts.original_visivel(db, usuario, post_id)
     consulta = (
         select(User)
         .join(Curtida, Curtida.user_id == User.id)
@@ -35,7 +35,7 @@ def curtidas_do_poema(db: Session, usuario: User, post_id: int, offset: int, lim
 
 def reposts_do_poema(db: Session, usuario: User, post_id: int, offset: int, limit: int) -> UserPage:
     """Quem fez repost puro; quem citou está nas citações."""
-    poema = _poema(db, usuario, post_id)
+    poema = posts.original_visivel(db, usuario, post_id)
     consulta = (
         select(User)
         .join(Post, Post.autor_id == User.id)
@@ -46,13 +46,13 @@ def reposts_do_poema(db: Session, usuario: User, post_id: int, offset: int, limi
 
 
 def citacoes_do_poema(db: Session, usuario: User, post_id: int, offset: int, limit: int) -> PostPage:
-    poema = _poema(db, usuario, post_id)
+    poema = posts.original_visivel(db, usuario, post_id)
     consulta = select(Post).where(Post.repost_de_id == poema.id, ~Post.repost_puro)
     return _citacoes(db, usuario, consulta, offset, limit)
 
 
 def curtidas_da_renga(db: Session, usuario: User, renga_id: int, offset: int, limit: int) -> UserPage:
-    renga = _renga(db, usuario, renga_id)
+    renga = rengas.visivel(db, usuario, renga_id)
     consulta = (
         select(User)
         .join(CurtidaRenga, CurtidaRenga.user_id == User.id)
@@ -63,7 +63,7 @@ def curtidas_da_renga(db: Session, usuario: User, renga_id: int, offset: int, li
 
 
 def reposts_da_renga(db: Session, usuario: User, renga_id: int, offset: int, limit: int) -> UserPage:
-    renga = _renga(db, usuario, renga_id)
+    renga = rengas.visivel(db, usuario, renga_id)
     consulta = (
         select(User)
         .join(RepostRenga, RepostRenga.user_id == User.id)
@@ -74,26 +74,13 @@ def reposts_da_renga(db: Session, usuario: User, renga_id: int, offset: int, lim
 
 
 def citacoes_da_renga(db: Session, usuario: User, renga_id: int, offset: int, limit: int) -> PostPage:
-    renga = _renga(db, usuario, renga_id)
+    renga = rengas.visivel(db, usuario, renga_id)
     consulta = (
         select(Post)
         .join(CitacaoRenga, CitacaoRenga.post_id == Post.id)
         .where(CitacaoRenga.renga_id == renga.id)
     )
     return _citacoes(db, usuario, consulta, offset, limit)
-
-
-def _poema(db: Session, usuario: User, post_id: int) -> Post:
-    """O original (repost puro → o poema repostado), se quem pede pode vê-lo."""
-    original = posts.original_de(db, post_id)
-    bloqueios.garantir_que_ve(db, usuario.id, original.autor_id, "poema não encontrado")
-    return original
-
-
-def _renga(db: Session, usuario: User, renga_id: int):
-    renga = rengas.buscar(db, renga_id)
-    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
-    return renga
 
 
 def _pessoas(db: Session, usuario: User, consulta: Select, offset: int, limit: int) -> UserPage:

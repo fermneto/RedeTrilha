@@ -115,10 +115,9 @@ def listar(
 
 
 def detalhar(db: Session, usuario: User, renga_id: int) -> RengaDetalhe:
-    renga = _buscar(db, renga_id)
-    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
+    renga = visivel(db, usuario, renga_id)
     return _detalhe(
-        renga, _estrofes(db, renga.id), _convidados(db, renga.id), usuario, contar(db, [renga.id], usuario)
+        renga, estrofes(db, renga.id), _convidados(db, renga.id), usuario, contar(db, [renga.id], usuario)
     )
 
 
@@ -263,19 +262,7 @@ def acrescentar(db: Session, usuario: User, renga_id: int, texto: str) -> RengaD
     try:
         db.flush()
         # O criador e quem já escreveu uma estrofe ficam sabendo da nova.
-        autores = db.scalars(
-            select(EstrofeRenga.autor_id)
-            .where(EstrofeRenga.renga_id == renga.id)
-            .order_by(EstrofeRenga.posicao)
-        )
-        avisos.avisar(
-            db,
-            usuario,
-            [(pessoa, "estrofe") for pessoa in [renga.criador_id, *autores]],
-            dono_id=renga.criador_id,
-            renga_id=renga.id,
-            estrofe_id=estrofe.id,
-        )
+        avisar_autores(db, usuario, renga, "estrofe", estrofe_id=estrofe.id)
         db.commit()
     except IntegrityError:
         db.rollback()
@@ -325,8 +312,16 @@ def convidar(db: Session, usuario: User, renga_id: int, usernames: list[str]) ->
 
 
 def buscar(db: Session, renga_id: int) -> Renga:
-    """A renga; 404 se não existe. Público para as antologias."""
+    """A renga; 404 se não existe. Público para as antologias, o cartão e os comentários."""
     return _buscar(db, renga_id)
+
+
+def visivel(db: Session, usuario: User, renga_id: int) -> Renga:
+    """A renga, se quem pede pode vê-la, como o `posts.visivel`: vale o criador (404
+    também se ele bloqueou quem pede)."""
+    renga = _buscar(db, renga_id)
+    bloqueios.garantir_que_ve(db, usuario.id, renga.criador_id, "renga não encontrada")
+    return renga
 
 
 def para_interagir(db: Session, usuario: User, renga_id: int) -> Renga:
@@ -340,13 +335,38 @@ def para_interagir(db: Session, usuario: User, renga_id: int) -> Renga:
 
 def ids_dos_autores(db: Session, renga_id: int) -> list[int]:
     """Quem escreveu ao menos uma estrofe (o criador escreveu a 1ª), cada um uma vez,
-    na ordem da primeira estrofe: os autores que a curtida, o repost e a citação avisam."""
-    autores = db.scalars(
-        select(EstrofeRenga.autor_id)
-        .where(EstrofeRenga.renga_id == renga_id)
-        .order_by(EstrofeRenga.posicao)
+    na ordem da primeira estrofe: os autores que a estrofe nova, a curtida, o repost
+    e a citação avisam."""
+    return list(dict.fromkeys(e.autor_id for e in estrofes(db, renga_id)))
+
+
+def avisar_autores(db: Session, ator: User, renga: Renga, tipo: str, **alvo: int) -> None:
+    """Avisa os autores da renga (`ids_dos_autores`) do `tipo`, sem commit. `alvo` são
+    as colunas além da renga (`post_id` da citação, `estrofe_id` da estrofe nova)."""
+    avisos.avisar(
+        db,
+        ator,
+        [(autor, tipo) for autor in ids_dos_autores(db, renga.id)],
+        dono_id=renga.criador_id,
+        renga_id=renga.id,
+        **alvo,
     )
-    return list(dict.fromkeys(autores))
+
+
+def estrofes(db: Session, renga_id: int) -> list[EstrofeRenga]:
+    """As estrofes da renga, em ordem."""
+    return list(
+        db.scalars(
+            select(EstrofeRenga)
+            .where(EstrofeRenga.renga_id == renga_id)
+            .order_by(EstrofeRenga.posicao)
+        )
+    )
+
+
+def texto(db: Session, renga_id: int) -> str:
+    """O texto da renga (`texto_de`), lido do banco."""
+    return texto_de([e.texto for e in estrofes(db, renga_id)])
 
 
 def _impedimento(
@@ -407,16 +427,6 @@ def _buscar(db: Session, renga_id: int, travar: bool = False) -> Renga:
     if renga is None:
         raise HTTPException(status_code=404, detail="renga não encontrada")
     return renga
-
-
-def _estrofes(db: Session, renga_id: int) -> list[EstrofeRenga]:
-    return list(
-        db.scalars(
-            select(EstrofeRenga)
-            .where(EstrofeRenga.renga_id == renga_id)
-            .order_by(EstrofeRenga.posicao)
-        )
-    )
 
 
 def _convidados(db: Session, renga_id: int) -> list[User]:

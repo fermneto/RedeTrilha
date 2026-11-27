@@ -6,7 +6,7 @@ Como funciona uma página (3 consultas, sem N+1):
    poetas que passam pelos filtros de tipo, língua e época. As contagens vêm das
    subqueries de services/follows.py e services/perfil.py, juntadas por GROUP BY.
 2. A busca por nome, a ordem e o corte da página são feitos em Python sobre essas
-   linhas, com core/indice_tags.normalizar (casefold e sem acento), a mesma das tags.
+   linhas, com core/texto.normalizar, a mesma regra das tags.
    Motivo: o SQLite não tem como ignorar acento (não há `unaccent`, e o lower() dele
    só conhece ASCII), e no Postgres o `unaccent` é uma extensão a instalar. Uma
    coluna normalizada no User exigiria migração no Postgres do deploy, que o
@@ -27,7 +27,7 @@ from dataclasses import dataclass
 from sqlalchemy import Row, and_, case, false, func, select
 from sqlalchemy.orm import Session
 
-from app.core.indice_tags import normalizar
+from app.core.texto import normalizar
 from app.models.post import Post
 from app.models.user import User
 from app.schemas.acervo import (

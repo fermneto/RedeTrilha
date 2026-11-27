@@ -24,13 +24,7 @@ def repostar(db: Session, usuario: User, renga_id: int) -> None:
     renga = rengas.para_interagir(db, usuario, renga_id)
     if _repost(db, usuario, renga.id) is None:
         db.add(RepostRenga(user_id=usuario.id, renga_id=renga.id))
-        avisos.avisar(
-            db,
-            usuario,
-            [(autor, "repost") for autor in rengas.ids_dos_autores(db, renga.id)],
-            dono_id=renga.criador_id,
-            renga_id=renga.id,
-        )
+        rengas.avisar_autores(db, usuario, renga, "repost")
         try:
             db.commit()
         except IntegrityError:
