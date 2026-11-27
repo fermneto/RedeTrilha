@@ -458,3 +458,22 @@ def test_publicas_sem_as_de_quem_tem_bloqueio(client, ana, bia):
 
 def test_publicas_exige_login(client):
     assert client.get("/antologias/publicas").status_code == 401
+
+
+def _renga_de(client, como, quem: str) -> int:
+    corpo = {"titulo": "Renga do RU", "primeira_estrofe": "fila do RU\n  às onze"}
+    r = client.post("/rengas", json=corpo, headers=como(quem))
+    assert r.status_code == 201, r.text
+    return r.json()["id"]
+
+
+def test_antologia_de_quem_me_bloqueou_da_404_pelo_id(client, como):
+    poema = _poema(client, como("bia"))
+    mar = _antologia(client, como("bia"), "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": poema}, headers=como("bia"))
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    r = client.get(f"/antologias/{mar}", headers=como("caio"))
+    assert r.status_code == 404
+    assert r.json()["detail"] == "antologia não encontrada"
+    assert client.get(f"/antologias/{mar}", headers=como("ana")).status_code == 200

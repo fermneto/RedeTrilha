@@ -254,10 +254,12 @@ def _proxima_posicao(db: Session, antologia_id: int) -> int:
 
 
 def _buscar_visivel(db: Session, usuario: User, antologia_id: int) -> Antologia:
-    """404 se não existe ou se é privada de outra pessoa (não revela que existe)."""
+    """404 se não existe, se é privada de outra pessoa (não revela que existe) ou se o
+    dono bloqueou quem pede, como no perfil dele (`listar_de`)."""
     antologia = db.get(Antologia, antologia_id)
     if antologia is None or (not antologia.publica and antologia.dono_id != usuario.id):
         raise HTTPException(status_code=404, detail="antologia não encontrada")
+    bloqueios.garantir_que_ve(db, usuario.id, antologia.dono_id, "antologia não encontrada")
     return antologia
 
 
