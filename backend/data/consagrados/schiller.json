@@ -2613,7 +2613,7 @@
     {
       "titulo": "Der Tanz (Schiller) — Nicht der begeisternde Takt, den alle Wesen dir schlagen?",
       "texto": "Nicht der begeisternde Takt, den alle Wesen dir schlagen?\n\n      Nicht der wirbelnde Tanz, der durch den ewigen Raum\nLeuchtende Sonnen wälzt in künstlich schlängelnden Bahnen?\n      Handelnd fliehst du das Maaß, das du im Spiele doch ehrst?",
-      "forma": "quadra",
+      "forma": "outro",
       "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Der_Tanz_%28Schiller%29",
@@ -3505,15 +3505,6 @@
       "obra": null,
       "ano": null,
       "fonte": "https://de.wikisource.org/wiki/Zevs_zu_Herkules",
-      "tags": []
-    },
-    {
-      "titulo": "Zu Schiller’s Tell",
-      "texto": "Ich aber sprach: Ja, Herr, mit Gottes Hülfe\nGetrau ich mir’s und helf’ uns wohl hindannen.\nSo ward ich meiner Bande los und stand\nAm Steuerruder und fuhr redlich hin etc.",
-      "forma": "quadra",
-      "obra": null,
-      "ano": null,
-      "fonte": "https://de.wikisource.org/wiki/Zu_Schiller%E2%80%99s_Tell",
       "tags": []
     },
     {

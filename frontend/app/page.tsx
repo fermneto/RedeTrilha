@@ -14,7 +14,8 @@
 // Como no X, a leitura continua de onde parou (lib/sessaoDoFeed.ts): trocar de
 // aba, ir a outra página e voltar, seguir alguém ou recarregar reabre cada aba na
 // mesma folha, com o que já tinha carregado. Um poema visto numa aba não aparece
-// na outra. Recomeça do topo só tocando em Início estando no Início.
+// na outra, menos os seus, que estão sempre no Seguindo. Recomeça do topo só
+// tocando em Início estando no Início.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -112,6 +113,7 @@ function Caderno({
     aba,
     BUSCAR[aba],
     FOLHAS_DE_FOLGA,
+    euId,
   );
 
   // O mais curtido da continuação pode repetir: a folha repetida ganha chave própria.

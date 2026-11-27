@@ -7,7 +7,8 @@
 // repostou no rótulo da primeira ocorrência), e o erro para os pedidos até
 // "tentar de novo".
 //
-// `itens` já vem sem o que a pessoa viu primeiro na outra aba. Quando faltam
+// `itens` já vem sem o que a pessoa viu primeiro na outra aba (menos, no
+// Seguindo, o que é dela: `euId`, null enquanto não se sabe). Quando faltam
 // `folga` folhas para o fim do que está à vista, pede a próxima página; se ela
 // vier toda filtrada, o fim continua perto e pede outra, até achar itens. O feed
 // não acaba (só com a rede sem poemas).
@@ -67,7 +68,12 @@ function lembrarVisto(item: ItemVisto) {
   }
 }
 
-export function useFeedPorCursor(aba: Aba, buscar: (cursor: string | null) => Promise<FeedPage>, folga: number) {
+export function useFeedPorCursor(
+  aba: Aba,
+  buscar: (cursor: string | null) => Promise<FeedPage>,
+  folga: number,
+  euId: number | null,
+) {
   const [estado, setEstado] = useState<EstadoDaAba>(() => sessaoAtual().abas[aba] ?? abaVazia());
   const [vistos, setVistos] = useState(() => sessaoAtual().vistos);
   const [erro, setErro] = useState<string | null>(null);
@@ -75,11 +81,14 @@ export function useFeedPorCursor(aba: Aba, buscar: (cursor: string | null) => Pr
   const pedindo = useRef(false);
   const [pedidos, setPedidos] = useState(0);
 
-  const itens = useMemo(() => visiveis(estado.itens, chaveDoAlvo, vistos, aba), [estado.itens, vistos, aba]);
+  const itens = useMemo(
+    () => visiveis(estado.itens, chaveDoAlvo, vistos, aba, euId),
+    [estado.itens, vistos, aba, euId],
+  );
   const fimEm = estado.fimEm ?? null;
   const avisoEm = useMemo(
-    () => (fimEm !== null ? visiveis(estado.itens.slice(0, fimEm), chaveDoAlvo, vistos, aba).length : null),
-    [fimEm, estado.itens, vistos, aba],
+    () => (fimEm !== null ? visiveis(estado.itens.slice(0, fimEm), chaveDoAlvo, vistos, aba, euId).length : null),
+    [fimEm, estado.itens, vistos, aba, euId],
   );
   const folhas = itens.length + (avisoEm === null ? 0 : 1);
 
