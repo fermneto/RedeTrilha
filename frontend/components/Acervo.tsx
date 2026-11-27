@@ -10,8 +10,8 @@
 // vira BuscaDosPoetas (abaixo) e escreve o ?q= do Acervo. Um campo só na tela.
 //
 // No celular, os filtros ocupariam a tela inteira antes do primeiro poeta: ficam
-// recolhidos atrás do botão "filtros" (com quantos estão ligados), e o total e o
-// "limpar filtros" continuam à vista. A partir de 640 px, abertos como sempre.
+// recolhidos atrás do botão "filtros" (com quantos estão ligados), na mesma linha
+// do total e do "limpar filtros", que continuam à vista. A partir de 640 px, abertos como sempre.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
@@ -159,22 +159,13 @@ export function Acervo() {
   // direita passaria da tela e daria rolagem horizontal no celular.
   return (
     <div className="overflow-x-clip">
-      <div className="linha-da-folha space-y-4 border-b border-borda py-4">
+      <div className="linha-da-folha flex flex-col gap-4 border-b border-borda py-4">
         <p className="text-sm text-tinta-suave">Todos os poetas do acervo, os consagrados e os do Verso.</p>
-        <button
-          type="button"
-          aria-expanded={filtrosAbertos}
-          aria-controls={idDoPainel}
-          onClick={() => setFiltrosAbertos((aberto) => !aberto)}
-          className={`${chip} ${chipDesligado} inline-flex items-center gap-2 sm:hidden`}
+        {/* No celular, o painel abre abaixo da linha do botão; a partir de sm, fica acima do total. */}
+        <div
+          id={idDoPainel}
+          className={`${filtrosAbertos ? "" : "hidden"} order-last space-y-4 sm:order-none sm:block`}
         >
-          <IconeAjustes className="h-[1.125rem] w-[1.125rem]" />
-          <span className="tabular-nums">{ligados > 0 ? `filtros · ${ligados}` : "filtros"}</span>
-          <IconeAbrirLista
-            className={`h-4 w-4 transition-transform duration-150 ${filtrosAbertos ? "rotate-180" : ""}`}
-          />
-        </button>
-        <div id={idDoPainel} className={`${filtrosAbertos ? "" : "hidden"} space-y-4 sm:block`}>
           <div>
             <p id={idTipo} className="text-sm">
               tipo
@@ -259,11 +250,26 @@ export function Acervo() {
         </div>
 
         <div className="flex min-h-11 flex-wrap items-center justify-between gap-x-4">
-          <p role="status" className="text-sm text-tinta-suave tabular-nums">
-            {resultado && !erro
-              ? `${resultado.total} ${resultado.total === 1 ? "poeta" : "poetas"}`
-              : ""}
-          </p>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              aria-expanded={filtrosAbertos}
+              aria-controls={idDoPainel}
+              onClick={() => setFiltrosAbertos((aberto) => !aberto)}
+              className={`${chip} ${chipDesligado} inline-flex items-center gap-2 sm:hidden`}
+            >
+              <IconeAjustes className="h-[1.125rem] w-[1.125rem]" />
+              <span className="tabular-nums">{ligados > 0 ? `filtros · ${ligados}` : "filtros"}</span>
+              <IconeAbrirLista
+                className={`h-4 w-4 transition-transform duration-150 ${filtrosAbertos ? "rotate-180" : ""}`}
+              />
+            </button>
+            <p role="status" className="text-sm text-tinta-suave tabular-nums">
+              {resultado && !erro
+                ? `${resultado.total} ${resultado.total === 1 ? "poeta" : "poetas"}`
+                : ""}
+            </p>
+          </div>
           {comFiltro && limpar}
         </div>
       </div>
