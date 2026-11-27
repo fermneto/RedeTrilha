@@ -19,6 +19,7 @@ import {
   type Alvo,
   type AntologiaMarcada,
 } from "@/lib/api";
+import { abrirParaCima, faixaVisivel, type Faixa } from "@/lib/popover";
 import { LIMITES } from "@/lib/vocabulario";
 
 // Avisa a página aberta que um poema (ou uma renga) entrou ou saiu de uma
@@ -97,12 +98,20 @@ export function AntologiaSeletor({ alvo, classeBotao, classeCirculo, classeIcone
 // Cada antologia com a marca de "o poema está nela".
 type Linha = AntologiaMarcada;
 
-// Onde a tela acaba para o popover: no celular, a barra de navegação fixa
-// cobre o fim da tela, então o limite é o topo dela.
-function fimDaTela(): number {
+// A faixa da tela onde o popover aparece inteiro: a página do livro que rola (o
+// contêiner com overflow em volta do botão), sem o que fica preso por cima do fim
+// dela: a barra de navegação fixa do celular e o campo "Comente o poema" no pé da
+// conversa (#62).
+function faixaDoPopover(painel: HTMLElement, base: number): Faixa {
+  let rolagem = painel.parentElement;
+  while (rolagem && !/(auto|scroll)/.test(getComputedStyle(rolagem).overflowY)) rolagem = rolagem.parentElement;
+  const caixa = rolagem?.getBoundingClientRect();
+  const cobertas: number[] = [];
   const barra = document.querySelector<HTMLElement>('nav[aria-label="Principal"]');
-  const topo = barra && getComputedStyle(barra).position === "fixed" ? barra.getBoundingClientRect().top : 0;
-  return topo > 0 ? topo : window.innerHeight;
+  if (barra && getComputedStyle(barra).position === "fixed") cobertas.push(barra.getBoundingClientRect().top);
+  const pe = (rolagem ?? document).querySelector<HTMLElement>(".pe-da-conversa");
+  if (pe) cobertas.push(pe.getBoundingClientRect().top);
+  return faixaVisivel(window.innerHeight, caixa ? { inicio: caixa.top, fim: caixa.bottom } : null, cobertas, base);
 }
 
 function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
@@ -122,11 +131,9 @@ function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
   // Mede de novo quando o popover muda de altura (carregou, abriu a criação, erro).
   useLayoutEffect(() => {
     const ancora = painel.current?.parentElement?.getBoundingClientRect();
-    const altura = painel.current?.offsetHeight ?? 0;
-    if (!ancora) return;
-    const abaixo = fimDaTela() - ancora.bottom;
-    const acima = ancora.top;
-    setParaCima(altura + 8 > abaixo && acima > abaixo);
+    if (!painel.current || !ancora) return;
+    const faixa = faixaDoPopover(painel.current, ancora.bottom);
+    setParaCima(abrirParaCima({ topo: ancora.top, base: ancora.bottom }, painel.current.offsetHeight, faixa));
   }, [linhas, criando, erro]);
 
   // Uma requisição por abertura: o backend já diz em quais o poema (ou a renga) está.

@@ -15,7 +15,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 
 import { ArvoreComentarios } from "@/components/ArvoreComentarios";
 import { AutoresDaRenga, ListaDeAutores } from "@/components/AutoresDaRenga";
@@ -69,9 +69,19 @@ export default function RengaPage() {
   const [naoExiste, setNaoExiste] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const texto = renga ? textoDaRenga(renga.estrofes) : null;
-  // A árvore também recarrega as marcas depois de comentar ou apagar.
   const critica = useCriticaAncorada({ tipo: "renga", id }, texto);
   const { carregarMarcas } = critica;
+
+  // Chamado pela árvore depois de comentar ou apagar, como na página do poema: o
+  // contador de comentários das ações vem da renga, e as marcas nos versos, da
+  // crítica (#158). A árvore se carrega sozinha. Se a renga não vier, fica a que
+  // está na tela.
+  const recarregarConversa = useCallback(() => {
+    buscarRenga(id)
+      .then(setRenga)
+      .catch(() => undefined);
+    carregarMarcas();
+  }, [id, carregarMarcas]);
 
   useEffect(() => {
     if (!temToken()) {
@@ -186,7 +196,7 @@ export default function RengaPage() {
                     campoNoPe
                     alvo={{ tipo: "renga", id: renga.id }}
                     euId={eu?.id ?? null}
-                    aoMudar={carregarMarcas}
+                    aoMudar={recarregarConversa}
                     textoDoPoema={texto ?? ""}
                     selecao={critica.selecao}
                     aoLimparSelecao={() => critica.setSelecao(null)}
