@@ -1,12 +1,12 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { ApagarPoema } from "@/components/ApagarPoema";
-import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
+import { ArvoreComentarios } from "@/components/ArvoreComentarios";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
-import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
+import { CadernoFolhas } from "@/components/CadernoFolhas";
 import { poemaDe, rotuloDoPoema, VersoDoPoema } from "@/components/CadernoPoema";
 import { DaMesmaForma } from "@/components/DaMesmaForma";
 import { EsqueletoDaPaginaDoPoema } from "@/components/Esqueleto";
@@ -14,20 +14,18 @@ import { MaisDoAutor } from "@/components/MaisDoAutor";
 import { PoemaCard } from "@/components/PoemaCard";
 import { Repercussao } from "@/components/Repercussao";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
+import { useCriticaAncorada, type CriticaAncorada } from "@/hooks/useCriticaAncorada";
+import { useIrParaComentarios } from "@/hooks/useIrParaComentarios";
 import {
   buscarEu,
   buscarPoema,
-  buscarVersosComentados,
   caminhoDoLogin,
   formatarDataEHora,
-  lerVersosDaUrl,
   mensagemDeFalha,
   temToken,
   type Post,
-  type SelecaoDeVersos,
   type User,
 } from "@/lib/api";
-import { textoSemMarcas } from "@/lib/marcas";
 
 // Abaixo do título da página ("← Poema"), as margens do livro (MARGEM_DA_PAGINA)
 // com menos espaço em cima.
@@ -46,14 +44,8 @@ export default function PoemaPage() {
   const [eu, setEu] = useState<User | null>(null);
   const euId = eu?.id ?? null;
   const [erro, setErro] = useState<string | null>(null);
-  // Crítica ancorada (#71): versos selecionados, marcas por verso e o filtro da marca.
-  const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
-  const [marcas, setMarcas] = useState<Map<number, number>>(new Map());
-  const [verso, setVerso] = useState<number | null>(null);
-  // Versos pedidos por ?versos=2-4 (vindo de "comentar estes versos" num card):
-  // lidos uma vez, quando o poema chega, e passados uma vez aos versos.
-  const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
-  const leuAUrl = useRef(false);
+  const critica = useCriticaAncorada({ tipo: "poema", id }, poema ? textoComentado(poema) : null);
+  const { carregarMarcas } = critica;
 
   // Também chamado pela árvore depois de comentar ou apagar: o contador de
   // comentários do card e as marcas nos versos vêm do poema. A árvore se carrega sozinha.
@@ -65,11 +57,8 @@ export default function PoemaPage() {
       setErro(mensagemDeFalha(e, "não deu para carregar o poema"));
       return;
     }
-    // Sem as marcas, o poema continua legível: só não mostra os números.
-    buscarVersosComentados({ tipo: "poema", id })
-      .then(({ items }) => setMarcas(new Map(items.map((m) => [m.verso, m.comentarios]))))
-      .catch(() => setMarcas(new Map()));
-  }, [id]);
+    carregarMarcas();
+  }, [id, carregarMarcas]);
 
   useEffect(() => {
     if (!temToken()) {
@@ -81,19 +70,6 @@ export default function PoemaPage() {
       .then(setEu)
       .catch(() => setEu(null));
   }, [carregarPoema, router]);
-
-  useEffect(() => {
-    if (!poema || leuAUrl.current) return;
-    leuAUrl.current = true;
-    const versos = new URLSearchParams(window.location.search).get("versos");
-    setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoComentado(poema))));
-  }, [poema]);
-
-  // Os versos aplicam o pedido no mesmo commit (o efeito do filho roda antes);
-  // depois ele se apaga, para não voltar quando o original reaparece após a tradução.
-  useEffect(() => {
-    if (pedida) setPedida(null);
-  }, [pedida]);
 
   // Sem o poema ainda (ou com erro), uma folha só, com o aviso ou o esqueleto.
   if (erro || !poema)
@@ -140,14 +116,7 @@ export default function PoemaPage() {
             <div className="surgir">
               {topo}
               <div className={MARGEM_DO_POEMA}>
-                <PaginaDoPoema
-                  poema={poema}
-                  marcas={marcas}
-                  selecao={selecao}
-                  aoSelecionar={setSelecao}
-                  pedida={pedida}
-                  aoFiltrar={setVerso}
-                />
+                <PaginaDoPoema poema={poema} critica={critica} />
                 <DataDoPoema poema={original} />
                 {/* Repost puro mostra o original; ele se desfaz pelo botão "repostar". */}
                 {euId === poema.autor_id && !repostPuro(poema) && (
@@ -173,10 +142,10 @@ export default function PoemaPage() {
                     euId={euId}
                     aoMudar={carregarPoema}
                     textoDoPoema={textoComentado(poema)}
-                    selecao={selecao}
-                    aoLimparSelecao={() => setSelecao(null)}
-                    verso={verso}
-                    aoLimparFiltro={() => setVerso(null)}
+                    selecao={critica.selecao}
+                    aoLimparSelecao={() => critica.setSelecao(null)}
+                    verso={critica.verso}
+                    aoLimparFiltro={() => critica.setVerso(null)}
                   />
                 }
               />
@@ -190,53 +159,26 @@ export default function PoemaPage() {
 
 // O poema na página da esquerda, com os versos que se selecionam (#71). Comentar
 // os versos ou filtrar pela marca de um verso mostra a página dos comentários.
-function PaginaDoPoema({
-  poema,
-  marcas,
-  selecao,
-  aoSelecionar,
-  pedida,
-  aoFiltrar,
-}: {
-  poema: Post;
-  marcas: Map<number, number>;
-  selecao: SelecaoDeVersos | null;
-  aoSelecionar: (s: SelecaoDeVersos | null) => void;
-  pedida: SelecaoDeVersos | null;
-  aoFiltrar: (verso: number) => void;
-}) {
-  const { mostrar } = useFolhas();
-  // "comentar", no card do feed, abre /poema/{id}#comentarios: no celular, já na página deles.
-  useEffect(() => {
-    if (window.location.hash === "#comentarios") mostrar("d");
-  }, []);
+function PaginaDoPoema({ poema, critica }: { poema: Post; critica: CriticaAncorada }) {
+  const { aoComentar, aoFiltrar } = useIrParaComentarios(critica.setVerso);
   return (
     <PoemaCard
       post={poema}
       folha
       linkarTitulo={false}
       // A seleção é de versos do original: some quando a tradução entra na tela.
-      aoTraduzir={() => aoSelecionar(null)}
+      aoTraduzir={() => critica.setSelecao(null)}
       corpo={(exibido) => (
         <VersosComentaveis
           texto={exibido.texto}
           comTitulo={Boolean(exibido.titulo)}
           citar={{ tipo: "poema", id: exibido.id }}
-          marcas={marcas}
-          selecao={selecao}
-          aoSelecionar={aoSelecionar}
-          selecaoPedida={pedida}
-          aoComentar={(suave) =>
-            mostrar("d", () => {
-              const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
-              campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
-              campo?.focus({ preventScroll: true });
-            })
-          }
-          aoFiltrar={(n) => {
-            aoFiltrar(n);
-            mostrar("d", () => document.getElementById("comentarios")?.scrollIntoView({ behavior: "smooth" }));
-          }}
+          marcas={critica.marcas}
+          selecao={critica.selecao}
+          aoSelecionar={critica.setSelecao}
+          selecaoPedida={critica.pedida}
+          aoComentar={aoComentar}
+          aoFiltrar={aoFiltrar}
         />
       )}
     />
