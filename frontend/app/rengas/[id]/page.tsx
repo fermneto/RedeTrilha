@@ -375,13 +375,16 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
     <button
       type="button"
       onClick={aoIr}
-      className="mt-4 flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-xl border border-borda px-4 text-left text-sm transition-colors duration-150 hover:border-tinta-suave"
+      className="mt-4 flex min-h-11 w-full cursor-pointer items-center gap-2 rounded-xl border border-borda px-4 text-left text-sm whitespace-nowrap transition-colors duration-150 hover:border-tinta-suave"
     >
-      <span className="flex items-center gap-2 text-tinta-suave tabular-nums">
-        <IconeComentar className="h-[1.125rem] w-[1.125rem]" />
-        {comentarios} {comentarios === 1 ? "comentário" : "comentários"}
+      <IconeComentar className="h-[1.125rem] w-[1.125rem] shrink-0 text-tinta-suave" />
+      <span className="min-w-0 truncate">
+        <span className="text-tinta-suave tabular-nums">
+          {comentarios} {comentarios === 1 ? "comentário" : "comentários"}
+        </span>
+        <span className="text-tinta-suave"> · </span>
+        <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
       </span>
-      <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
     </button>
   );
 }
