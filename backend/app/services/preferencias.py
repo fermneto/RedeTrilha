@@ -49,7 +49,8 @@ def publicas(db: Session, pessoa: User, quem_ve: User) -> Preferencias:
 def opcoes() -> OpcoesDePreferencias:
     return OpcoesDePreferencias(
         escolas=[Opcao(codigo=c, rotulo=r) for c, r in ESCOLAS.items()],
-        formas=[Opcao(codigo=c, rotulo=r) for c, r in ROTULOS_DAS_FORMAS.items()],
+        formas=list(ROTULOS_DAS_FORMAS),
+        formas_com_rotulo=[Opcao(codigo=c, rotulo=r) for c, r in ROTULOS_DAS_FORMAS.items()],
         paises=sorted(PAISES),
         ufs=[Opcao(codigo=c, rotulo=r) for c, r in UFS.items()],
         limites=Limites(),

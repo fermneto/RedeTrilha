@@ -201,7 +201,7 @@ function BoasVindas() {
             />
             <Chips
               titulo="Formas"
-              opcoes={opcoes.formas}
+              opcoes={opcoes.formas_com_rotulo}
               marcadas={prefs.formas}
               aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
             />

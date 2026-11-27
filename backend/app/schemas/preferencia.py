@@ -78,8 +78,10 @@ class OpcoesDePreferencias(BaseModel):
     """O vocabulário das telas: o front não copia as listas nem os limites."""
 
     escolas: list[Opcao]
-    # Na ordem dos seletores, com o rótulo (o código não tem acento).
-    formas: list[Opcao]
+    # Os códigos, na ordem dos seletores: o contrato de antes, que segue valendo.
+    formas: list[str]
+    # As mesmas formas com o rótulo (o código não tem acento).
+    formas_com_rotulo: list[Opcao]
     paises: list[str]
     ufs: list[Opcao]
     limites: Limites

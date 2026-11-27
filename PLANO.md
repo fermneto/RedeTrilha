@@ -320,8 +320,9 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - Tabela `preferencias` (`user_id` PK, `escolas` JSON, `formas` JSON, `pais`,
   `uf`): `GET /preferencias` 🔒 e `PUT /preferencias` 🔒 (troca tudo; 422 para
   escola, forma, país ou UF fora das listas, ou UF sem `pais: "BR"`);
-  `GET /preferencias/opcoes` 🔒 devolve o vocabulário: `escolas` e `formas`
-  (`[{codigo, rotulo}]`, as formas na ordem de `FORMAS`), `paises`, `ufs` e
+  `GET /preferencias/opcoes` 🔒 devolve o vocabulário: `escolas`
+  (`[{codigo, rotulo}]`), `formas` (os códigos, na ordem de `FORMAS`),
+  `formas_com_rotulo` (`[{codigo, rotulo}]`, na mesma ordem), `paises`, `ufs` e
   `limites` (`{username_min, username_max, senha_min, senha_max, nome_max,
   bio_max, avatar_url_max, poema_titulo_max, antologia_nome_max,
   antologia_descricao_max, renga_titulo_max, renga_limite_padrao,
