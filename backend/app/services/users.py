@@ -32,8 +32,11 @@ def visivel_por_username(db: Session, usuario: User, username: str) -> User:
     return pessoa
 
 
+USERNAME_EXISTE = "username já existe"
+
+
 def garantir_username_livre(db: Session, username: str) -> None:
     """409 se o username já existe. Usado pelo registro."""
     if db.scalar(select(User.id).where(User.username == username)) is not None:
-        raise HTTPException(status_code=409, detail="username já existe")
+        raise HTTPException(status_code=409, detail=USERNAME_EXISTE)
 
