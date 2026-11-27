@@ -4,19 +4,17 @@
 // Cancelar volta para onde a pessoa estava (ou para o início, se abriu direto).
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
-import { caminhoDoLogin, criarAntologia, temToken } from "@/lib/api";
+import { useLoginObrigatorio } from "@/hooks/useSessaoObrigatoria";
+import { criarAntologia } from "@/lib/api";
 
 export default function NovaAntologiaPage() {
   const router = useRouter();
 
-  useEffect(() => {
-    if (!temToken()) router.replace(caminhoDoLogin());
-  }, [router]);
+  useLoginObrigatorio();
 
   return (
     <div>

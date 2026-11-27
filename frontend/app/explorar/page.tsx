@@ -32,12 +32,11 @@ import { lerPagina, lerSituacao, ListaDeRengas } from "@/components/ListaDeRenga
 import {
   buscarExplorar,
   caminhoDoAcervo,
-  caminhoDoLogin,
+  exigirLogin,
   hashtag,
   lerFiltrosDoAcervo,
   listarAntologiasPublicas,
   normalizarTag,
-  temToken,
 } from "@/lib/api";
 import { FORMAS, nomeDaForma } from "@/lib/vocabulario";
 
@@ -80,8 +79,7 @@ function Explorar() {
   const [logado, setLogado] = useState(false);
 
   useEffect(() => {
-    if (temToken()) setLogado(true);
-    else router.replace(caminhoDoLogin());
+    if (exigirLogin(router)) setLogado(true);
   }, [router]);
 
   // A aba Poetas se chamava Acervo: o ?aba=acervo dos links antigos vira

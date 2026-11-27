@@ -25,14 +25,13 @@ import { IconeRenga } from "@/components/icones/IconeRenga";
 import { IconeRepostar } from "@/components/icones/IconeRepostar";
 import {
   acaoDoAviso,
-  caminhoDoLogin,
+  exigirLogin,
   linkDoAviso,
   listarAvisos,
   marcarAvisosLidos,
   mensagemDeFalha,
   ouvirMensagens,
   quemNoAviso,
-  temToken,
   tempoRelativo,
   type Aviso,
   type TipoDeAviso,
@@ -76,10 +75,7 @@ export default function AvisosPage() {
   }, []);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
+    if (!exigirLogin(router)) return;
     recarregar();
     const cancelar = ouvirMensagens((evento) => {
       if (evento.tipo !== "aviso" && evento.tipo !== "conectou") return;

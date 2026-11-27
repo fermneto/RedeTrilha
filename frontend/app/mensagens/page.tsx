@@ -13,9 +13,8 @@ import { Avatar } from "@/components/Avatar";
 import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDeConversas } from "@/components/Esqueleto";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
 import {
-  buscarEu,
-  caminhoDoLogin,
   listarConversas,
   mensagemDeFalha,
   ouvirMensagens,
@@ -41,7 +40,7 @@ function Caixa() {
   const router = useRouter();
   // A aba fica na URL (?aba=pedidos), como no perfil.
   const aba: AbaDaCaixa = useSearchParams().get("aba") === "pedidos" ? "pedidos" : "conversas";
-  const [euId, setEuId] = useState<number | null>(null);
+  const euId = useSessaoObrigatoria()?.id ?? null;
   const [listas, setListas] = useState<Partial<Record<AbaDaCaixa, Lista>>>({});
   const [erro, setErro] = useState<string | null>(null);
   const espera = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -56,13 +55,7 @@ function Caixa() {
   }, []);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    buscarEu()
-      .then((eu) => setEuId(eu.id))
-      .catch(() => undefined);
+    if (!temToken()) return;
     recarregar();
     const cancelar = ouvirMensagens((evento) => {
       if (evento.tipo === "aviso") return;
@@ -73,7 +66,7 @@ function Caixa() {
       cancelar();
       if (espera.current) clearTimeout(espera.current);
     };
-  }, [router, recarregar]);
+  }, [recarregar]);
 
   async function carregarMais(qual: AbaDaCaixa) {
     const atual = listas[qual];

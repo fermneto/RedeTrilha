@@ -38,15 +38,16 @@ import {
   acrescentarEstrofe,
   buscarEu,
   buscarRenga,
-  caminhoDoLogin,
   convidarParaRenga,
+  ehIdValido,
+  ehNaoEncontrado,
   encerrarRenga,
   ErroDaApi,
+  exigirLogin,
   fimDasEstrofes,
   formatarDataEHora,
   lerUsernames,
   mensagemDeFalha,
-  temToken,
   textoDaRenga,
   type RengaDetalhe,
   type User,
@@ -84,11 +85,8 @@ export default function RengaPage() {
   }, [id, carregarMarcas]);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    if (!Number.isInteger(id) || id <= 0) {
+    if (!exigirLogin(router)) return;
+    if (!ehIdValido(id)) {
       setNaoExiste(true);
       return;
     }
@@ -100,7 +98,7 @@ export default function RengaPage() {
         setEu(u);
       })
       .catch((e) => {
-        if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
+        if (ehNaoEncontrado(e)) setNaoExiste(true);
         else setErro(mensagemDeFalha(e, "não deu para carregar a renga"));
       });
   }, [id, router, carregarMarcas]);

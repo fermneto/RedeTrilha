@@ -18,14 +18,14 @@
 // tocando em Início estando no Início.
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { CadernoFolhas, type Folha } from "@/components/CadernoFolhas";
 import { folhaDoItem, MARGEM_DA_PAGINA } from "@/components/CadernoPoema";
 import { EsqueletoDePoema } from "@/components/Esqueleto";
 import { useFeedPorCursor } from "@/hooks/useFeedPorCursor";
-import { buscarEu, buscarFeed, buscarParaVoce, caminhoDoLogin, temToken, type FeedPage } from "@/lib/api";
+import { useSessaoObrigatoria } from "@/hooks/useSessaoObrigatoria";
+import { buscarFeed, buscarParaVoce, type FeedPage } from "@/lib/api";
 import { EVENTO_FEED_RECOMECOU, guardarSessao, sessaoAtual, type Aba } from "@/lib/sessaoDoFeed";
 
 const POR_PAGINA = 20;
@@ -56,21 +56,10 @@ export default function FeedPage() {
 }
 
 function Inicio() {
-  const router = useRouter();
   const [feed, setFeed] = useState<Aba>(() => sessaoAtual().aba);
-  const [euId, setEuId] = useState<number | null>(null);
+  const euId = useSessaoObrigatoria()?.id ?? null;
   // Muda quando a pessoa pede o feed do topo (Início no Início): recomeça as duas abas.
   const [versao, setVersao] = useState(0);
-
-  useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    buscarEu()
-      .then((eu) => setEuId(eu.id))
-      .catch(() => setEuId(null));
-  }, [router]);
 
   useEffect(() => {
     const aoRecomecar = () => {

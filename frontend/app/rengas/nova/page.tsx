@@ -12,15 +12,8 @@ import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
-import {
-  caminhoDoLogin,
-  criarRenga,
-  ErroDaApi,
-  lerUsernames,
-  mensagemDeFalha,
-  temToken,
-  type ModoDaRenga,
-} from "@/lib/api";
+import { useLoginObrigatorio } from "@/hooks/useSessaoObrigatoria";
+import { criarRenga, ErroDaApi, lerUsernames, mensagemDeFalha, type ModoDaRenga } from "@/lib/api";
 import { LIMITES } from "@/lib/vocabulario";
 import { lerPoemaParaRenga } from "@/lib/trocaDeFormato";
 
@@ -44,9 +37,7 @@ export default function NovaRengaPage() {
   const [campos, setCampos] = useState<Record<string, string>>({});
   const id = useId();
 
-  useEffect(() => {
-    if (!temToken()) router.replace(caminhoDoLogin());
-  }, [router]);
+  useLoginObrigatorio();
 
   // O poema trazido do compositor, lido uma vez (e apagado) ao abrir a página.
   useEffect(() => {

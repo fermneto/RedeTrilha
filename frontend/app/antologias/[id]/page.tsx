@@ -25,12 +25,12 @@ import {
   apagarAntologia,
   buscarAntologia,
   buscarEu,
-  caminhoDoLogin,
   editarAntologia,
-  ErroDaApi,
+  ehIdValido,
+  ehNaoEncontrado,
+  exigirLogin,
   marcarNaAntologia,
   mensagemDeFalha,
-  temToken,
   type Alvo,
   type AntologiaDetalhe,
   type Post,
@@ -79,11 +79,8 @@ export default function AntologiaPage() {
   const [editando, setEditando] = useState(false);
 
   useEffect(() => {
-    if (!temToken()) {
-      router.replace(caminhoDoLogin());
-      return;
-    }
-    if (!Number.isInteger(id) || id <= 0) {
+    if (!exigirLogin(router)) return;
+    if (!ehIdValido(id)) {
       setNaoExiste(true);
       return;
     }
@@ -95,7 +92,7 @@ export default function AntologiaPage() {
       })
       .catch((e) => {
         // Privada de outra pessoa também dá 404: a tela não revela que ela existe.
-        if (e instanceof ErroDaApi && e.status === 404) setNaoExiste(true);
+        if (ehNaoEncontrado(e)) setNaoExiste(true);
         else setErro(mensagemDeFalha(e, "não deu para carregar a antologia"));
       });
   }, [id, router]);
