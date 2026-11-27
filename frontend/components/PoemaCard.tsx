@@ -196,7 +196,8 @@ function ResumoDaConversa({ poema }: { poema: Post }) {
   const { duplo, mostrar } = useFolhas();
   if (duplo) return null;
   // Numa linha só, mesmo em 390 px: as curtidas já estão na fileira de ações acima.
-  const comentarios = `${poema.comentarios} ${poema.comentarios === 1 ? "comentário" : "comentários"}`;
+  const n = poema.comentarios;
+  const comentarios = n === 0 ? "nenhum comentário" : `${n} ${n === 1 ? "comentário" : "comentários"}`;
   return (
     <>
       <div className="mt-6">

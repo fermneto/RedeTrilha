@@ -380,7 +380,9 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
       <IconeComentar className="h-[1.125rem] w-[1.125rem] shrink-0 text-tinta-suave" />
       <span className="min-w-0 truncate">
         <span className="text-tinta-suave tabular-nums">
-          {comentarios} {comentarios === 1 ? "comentário" : "comentários"}
+          {comentarios === 0
+            ? "nenhum comentário"
+            : `${comentarios} ${comentarios === 1 ? "comentário" : "comentários"}`}
         </span>
         <span className="text-tinta-suave"> · </span>
         <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
