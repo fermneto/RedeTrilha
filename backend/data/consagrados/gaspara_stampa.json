@@ -1,0 +1,406 @@
+{
+  "username": "gaspara_stampa",
+  "name": "Gaspara Stampa",
+  "bio": "Poetisa de Pádua. O Rime, publicado em 1554, é um cancioneiro de amor.",
+  "avatar_url": "",
+  "nascimento": 1523,
+  "morte": 1554,
+  "escolas": [
+    "renascimento_classicismo"
+  ],
+  "pais": "IT",
+  "poemas": [
+    {
+      "titulo": "Allo illustre mio Signore",
+      "texto": "Poi che le mie pene amorose, che per amor di V. S. porto\nscritte in diverse lettere e rime, non han possuto, una per una,\nnon pur far pietosa V. S. verso di me, ma farla né anco cortese\ndi scrivermi una parola, io mi son rissoluta di radunarle\ntutte in questo libro, per vedere se tutte insieme lo potranno\nfare. Qui dunque V. S. vedrá non il pelago delle passioni,\ndelle lagrime e de’ tormenti miei, perché è mar senza fondo;\nma un picciolo ruscello solo di esse; né pensi V. S. ch’io\nabbia ciò fatto per farla conoscente della sua crudeltá, perché\ncrudeltá non si può dire, dove non è obligo, né per contristarnela;\nma per farla piú tosto conoscente della sua grandezza\ned allegrarla. Perché, vedendo esser usciti dalla durezza vostra\nverso di me questi frutti, congeturerá quali saranno quelli, che\nusciranno dalla sua pietá, se averrá mai che i cieli me la faccino\npietosa: o obietto nobile, o obietto chiaro, o obietto divino,\npoi che tormentando ancora giovi e fai frutto. Legga\nV. S. dunque, quando averá triegua dalle sue maggiori e più\ncare cure, le note delle cure amorose e gravi della sua fidissima\ned infelicissima Anassilla; e da questa ombra prenda argomento\nquali ella le debba provare e sentir nell’animo; ché\ncerto, se accaderá giamai che la mia povera e mesta casa sia\nfatta degna del ricevere il suo grande oste, che è V. S., io\nson sicura che i letti, le camere, le sale e tutto racconteranno\ni lamenti, i singulti, i sospiri e le lagrime, che giorno e notte\nho sparse, chiamando il nome di V. S., benedicendo però\nsempre nel mezzo de’ miei maggior tormenti i cieli e la mia buona sorte della cagion d’essi: percioché assai meglio è per\nvoi, conte, morire, che gioir per qualunque. Ma che fo io?\nPerché senza bisogno tengo V. S. troppo lungamente a noia,\ningiuriando anco le mie rime, quasi che esse non sappian dir\nle lor ragioni, ed abbian bisogno dell’altrui aita? Rimettendomi\ndunque ad esse, farò fine, pregando V. S., per ultimo guiderdone\ndella mia fedelissima servitú, che nel ricever questo\npovero libretto mi sia cortese sol di un sospiro, il quale\nrefreschi cosí lontano la memoria della sua dimenticata ed abbandonata\nAnassilla. E tu, libretto mio, depositario delle mie\nlagrime, appreséntati nella piú umil forma che saprai, dinanzi\nal signor nostro, in compagnia della mia candida fede. E, se\nin recevendoti vedrai rasserenar pur un poco quei miei fatali\ned eterni lumi, beate tutte le nostre fatiche e felicissime tutte\nle nostre speranze; e cosí ti resta seco eternamente in pace.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Allo_illustre_mio_Signore",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "C",
+      "texto": "     O beata e dolcissima novella,\no caro annunzio, che mi promettete\nche tosto rivedrò le care e liete\nluci e la faccia graziosa e bella;\n     o mia ventura, o mia propizia stella,\nch’a tanto ben serbata ancor m’avete,\no fede, o speme, ch’a me sempre sète\nstate compagne in dura, aspra procella;\n     o cangiato in un punto viver mio\ndi mesto in lieto; o queto, almo e sereno\nfatto or di verno tenebroso e rio;\n     quando potrò giamai lodarvi a pieno?\ncome dir qual nel cor aggio disio?\ndi che letizia io l’abbia ingombro e pieno?",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/C",
+      "tags": []
+    },
+    {
+      "titulo": "CC",
+      "texto": "     Al partir vostro s’è con voi partita\nogni mia gioia ed ogni mia speranza,\nl’ardir, la forza, il core e la baldanza,\ne poco men che l’anima e la vita:\n     e restò sol, piú che mai fosse ardita,\nl’importuna ed ardente disianza,\nla quale in questa vostra lontananza\nmi dá, misera me! doglia infinita.\n     E, se da voi non vien qualche conforto\no di lettra o di messo o di venire,\ncerto, signor, il viver mio fia corto;\n     perché in amor non è altro il morire,\nper quel ch’a mille e mille prove ho scorto,\nche aver poca speranza e gran disire.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CC",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCC",
+      "texto": "     Alma onorata e saggia, che tornando,\ndopo sí lungo corso, onde venisti,\nvergine e pura qual dal ventre uscisti,\nlasciato hai noi piangendo e disiando,\n     ed or davanti al tuo principio stando,\na cui vivendo ancor qua giú t’unisti,\nde le degne opre tue mercede acquisti,\ne d’esser gita lui mai sempre amando,\n     mira dal cielo i tuoi diletti figli\nqual del tuo dipartir cordoglio prema,\net Adria, che con lor t’onora ed ama.\n     Quelli non è chi piú guidi o consigli\nsenza il tuo senno, e questa resta scema\ndi chi le mostri ognor come Dio s’ama.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCC",
+      "tags": []
+    },
+    {
+      "titulo": "CCCI",
+      "texto": "     Casta, cara e di Dio diletta ancella,\nche, vivuta fra noi tanti e tant’anni,\nti sei sempre schermita dagli inganni\ndi questa vita neghittosa e fella,\n     ed or semplice e pura verginella\nsei gita a volo a quei superni scanni,\nvero porto ed eterno degli affanni,\nd’ogni nostr’atra e torbida procella,\n     Adria ha visto e veder spera ancor segno\nde la tua santa e gloriosa vita,\ne fiorir frutti del tuo santo ingegno;\n     e de’ tuoi dolci figli insieme unita\nla schiera, che ti fu sí caro pegno,\npur te sospira mesta e sbigottita.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCI",
+      "tags": []
+    },
+    {
+      "titulo": "CCCII",
+      "texto": "     Quelle lagrime spesse e sospir molti,\nche mandati fuor i tuoi figli diletti,\npoi che salisti al regno degli eletti,\nalma felice, che dal ciel n’ascolti,\n     sien da la vera tua pietate accolti\nqual si conviene a’ lor ardenti affetti;\ne quei pensier or casti e benedetti\nsieno a la cura lor, se mai fûr, vòlti.\n     E, sí come qua giú fosti lor guida\ne madre e scorta, cosí su dal cielo\nsii lor la vera tramontana e fida;\n     sí che tutti infiammati di quel zelo,\nche per dritto sentier a te ne guida,\ndi quest’ombre qua giú squarciamo il velo.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCII",
+      "tags": []
+    },
+    {
+      "titulo": "CCCIII",
+      "texto": "     Quando quell’alma, i cui disiri ardenti\nsempre resse virtute ed onestate,\nfinito il corso di sua lunga etate,\nsalí al cielo, i mortai lumi spenti,\n     l’eterno Re de le ben nate genti\nraccolse lei ne la sua maestate,\ne quelle squadre angeliche e beate\nempiêro il ciel di non usati accenti.\n     — Vieni, diletta virginella e pura\n— s’udia dolce cantare, — a côrre il frutto\nde la tua castitá, lieta e sicura.\n     Vieni, fedel, ché disdiceva in tutto\nstar sí raro miracol di natura,\nsí gentil pianta, in un terreno asciutto.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCIII",
+      "tags": []
+    },
+    {
+      "titulo": "CCCIV",
+      "texto": "     Di queste tenebrose e fiere voglie,\nch’io drizzai ad amar cosa mortale,\nseguendo il van disio fallace e frale,\nche sí rio frutto di sue opre coglie,\n     s’avien che la tua grazia non mi spoglie,\npoi che per me la mia forza non vale,\ntemo che l’aversario empio infernale\nnon riporti di me l’amate spoglie.\n     Dolce Signor, che sei venuto in terra,\ned hai presa per me terrena vesta\nper combatter e vincer questa guerra,\n     dammi lo scudo di tua grazia, e desta\nin me virtú, sí ch’io getti per terra\nogni affetto terren, che mi molesta.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCIV",
+      "tags": [
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "CCCIX",
+      "texto": "     Volgi, Padre del cielo, a miglior calle\ni passi miei, onde ho giá cominciato\ndietro al folle disio, ch’avea voltato\na te, mio primo e vero ben, le spalle;\n     e con la grazia tua, che mai non falle,\na porgermi il tuo lume or sei pregato:\ntrâmi, onde uscir per me sol m’è vietato,\nda questa di miserie oscura valle.\n     E donami destrezza e virtú tale,\nche, posti i miei disir tutti ad un segno,\nsaglia ove, amando il nome tuo, si sale,\n     a fruire i tesori del tuo regno;\nsí ch’inutil per me non resti e frale\nla preziosa tua morte e ’l tuo legno.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCIX",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "CCCV",
+      "texto": "     Quelle piaghe profonde e l’acqua e ’l sangue,\nche nel tuo corpo glorioso io veggio,\nSignor, che, sceso dal celeste seggio,\nper vita al mondo dar restasti essangue,\n     che nel mio cor, che del fallir suo langue,\nvogli imprimer omai per grazia chieggio,\nsí ch’al fin del viaggio, che far deggio,\nnon trionfi di me l’inimico angue.\n     Scancella queste piaghe d’amor vano,\nche m’hanno quasi giá condotta a morte,\npur rimirando un bel sembiante umano.\n     Aprimi omai    del regno tuo le porte,\ne per salir a lui dammi la mano;\nperché a ciò far non giovano altre scorte.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCV",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "CCCVI",
+      "texto": "     Signor, che doni il paradiso e tolli,\ndoni e tolli a la molta e poca fede\n(per opre no, ch’a sí larga mercede\nsono i nostri operar deboli e folli),\n     da’ tuoi alti, celesti e sacri colli,\nov’è ’l soggiorno tuo proprio e la sede,\nchina gli occhi al mio cor, che mercé chiede\ndel suo fallir co’ miei umidi e molli.\n     E, perché suol la tua grazia sovente\nabuondare, ove il fallo è via maggiore,\nper mostrar la tua gloria maggiormente,\n     nel petto mio, ricetto d’ogni errore,\nentra col foco tuo vivo ed ardente,\ne, spento ogn’altro, accendivi il tu’ amore.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCVI",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCCVII",
+      "texto": "     — Volgi a me, peccatrice empia, la vista —\nmi grida il mio Signor che ’n croce pende;\ne dal mio cieco senso non s’intende\nla voce sua di vera pietá mista,\n     sí mi trasforma Amor empio e contrista,\ne d’altro foco il cor arde ed accende;\nsí l’alma al proprio e vero ben contende,\nche non si perde mai, poi che s’acquista.\n     La ragion saria ben facile e pronta\na seguire il suo meglio; ma la svia\nquesta fral carne, che con lei s’affronta.\n     Dunque apparir non può la luce mia,\nse ’l sol de la tua grazia non sormonta\na squarciar questa nebbia fosca e ria.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCVII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCCVIII",
+      "texto": "     Purga, Signor, omai    l’interno affetto\nde la mia coscienzia, sí ch’io miri\nsolo in te, te solo ami, te sospiri,\nmio glorioso, eterno e vero obietto.\n     Sgombra con la tua grazia dal mio petto\ntutt’altre voglie e tutt’altri disiri;\ne le cure d’amor tante e i sospiri,\nche m’accompagnan dietro al van diletto.\n     La bellezza ch’io amo è de le rare\nche mai facesti; ma, poi ch’è terrena,\na quella del tuo regno non è pare.\n     Tu per dritto sentier lá su mi mena,\nove per tempo non si può cangiare\nl’eterna vita in torbida, e serena.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCVIII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCCX",
+      "texto": "     Dunque io potrò, fattura empia ed ingrata,\namar bellezza umana e fral qual vetro,\ne l’eterna e celeste lasciar dietro\nde la somma Bontá, che m’ha creata,\n     e poi m’ha da la morte liberata\ne da l’inferno tenebroso e tetro,\nse del fallir mi pento qual fe’ Pietro,\npoi che tre volte giá l’ebbe negata?\n     Dunque io potrò veder di piaghe pieno\nil mio Fattor, per me sospeso in croce,\ne d’amor e di zel non venir meno?\n     Dunque non drizzerò pensieri e voce,\nogn’altro affetto uman spento e terreno,\nsolo a’ suoi strazi, a la sua pena atroce?",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCX",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "CCCXI",
+      "texto": "     Mesta e pentita de’ miei gravi errori\ne del mio vaneggiar tanto e sí lieve,\ne d’aver speso questo tempo breve\nde la vita fugace in vani amori,\n     a te, Signor, ch’intenerisci i cori,\ne rendi calda la gelata neve,\ne fai soave ogn’aspro peso e greve\na chiunque accendi di tuoi santi ardori,\n     ricorro; e prego che mi porghi mano\na trarmi fuor del pelago, onde uscire,\ns’io tentassi da me, sarebbe vano.\n     Tu volesti per noi, Signor, morire,\ntu ricomprasti tutto il seme umano;\ndolce Signor, non mi lasciar perire!",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCCXI",
+      "tags": []
+    },
+    {
+      "titulo": "CCI",
+      "texto": "     — È questa quella viva e salda fede,\nche promettevi a la tua pastorella,\nquando, partendo a la stagion novella,\nn’andasti ove ’l grande re gallico siede?\n     O di quanto il sol scalda e quanto vede\nperfido, ingrato in atto ed in favella;\nmisera me, che ti divenni ancella\nper riportarne sí scarsa mercede! —\n     Cosí l’afflitta e misera Anassilla\nlungo i bei lidi d’Adria iva chiamando\nil suo pastor, da cui ’l ciel dipartilla;\n     e l’acque e l’aure, dolce risonando,\nallor che ’l sol piú arde e piú sfavilla,\ni suoi sospir al ciel givan portando.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CCI",
+      "tags": []
+    },
+    {
+      "titulo": "CCII",
+      "texto": "     Poi che per mio destin volgeste in parte\npiedi e voler, onde perdei la spene\ndi riveder piú mai quelle serene\nluci, c’ho giá lodate in tante carte,\n     io mi volsi al gran Sole, e con quell’arte\ne quella luce, che da lui sol viene,\ntrassi fuor da le sirti e da l’arene\nil legno mio per via di remi e sarte.\n     La ragion fu le sarte, e i remi fûro\nla volontá, che a l’ira ed a l’orgoglio\nd’Amor si fece poi argine e muro.\n     Cosí, senza temer di dar in scoglio,\nmi vivo in porto omai queto e sicuro;\nd’un sol mi lodo, e di nessun mi doglio.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CCII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCIII",
+      "texto": "     Ardente mio disir, a che, pur vago\nde’ nostri danni, in parte stendi l’ale,\nov’è cui de’ miei strazi poco cale,\ne del mio trar fuor di quest’occhi un lago?\n     Ben si può del mio stato esser presago\nil partir de la speme fiacca e frale,\ne la memoria, che sí poco assale\nquel de le voglie mie tiranno e mago.\n     Egli a novi diletti aperto ha ’l seno,\ne di me sí fedele ha quella cura,\nche di chi non si vede e’ si può meno.\n     Dunque tu di tornar a me procura,\nché ’l turbar la mia pace e ’l mio sereno\nè troppo intempestiva cosa e dura.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CCIII",
+      "tags": []
+    },
+    {
+      "titulo": "CCIV",
+      "texto": "     Virtuti eccelse e doti illustri e chiare,\nch’alzate al cielo il mio real signore,\nsol co’ passi di gloria e d’alto onore\ngiá giunto in parte, ove non ha piú pare;\n     voi, voi sol voglio volgermi ad amare,\ntemprando il mio focoso e cieco amore,\nguidato sol da tenebre ed errore,\nove ambedue potrá forse annoiare.\n     Or, racquistato alquanto del mio lume,\npotrò specchiarmi in quel bel raggio ardente,\nche da prima m’elessi per mio nume;\n     e di cibo miglior pascer la mente,\ndove io pasceva i sensi per costume\ndi cosa, che si fugge via repente.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CCIV",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCIX",
+      "texto": "     Io non veggio giamai giunger quel giorno,\nove nacque Colui che carne prese,\nessendo Dio, per scancellar l’offese\ndel nostro padre al suo Fattor ritorno,\n     che non mi risovenga il modo adorno,\ncol quale, avendo Amor le reti tese\nfra due begli occhi ed un riso, mi prese:\nocchi, ch’or fan da me lunge soggiorno;\n     e de l’antico amor qualche puntura\nio non senta al desire ed al cor darmi,\nsí fu la piaga mia profonda e dura.\n     E, se non che ragion pur prende l’armi\ne vince il senso, questa acerba cura\nsarebbe or tal che non potrebbe aitarmi.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_d%27amore/CCIX",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCL",
+      "texto": "     Voi n’andaste, signor, senza me dove\nil gran troian fermò le schiere erranti,\nov’io nacqui, ove luce vidi innanti\ndolce sí, che lo star mi spiace altrove.\n     Ivi vedrete vaghe feste e nove,\nschiere di donne e di cortesi amanti,\ntanti, che ad onorar vengono, e tanti,\nun de li dèi piú cari al vero Giove.\n     Ed io, rimasa qui dov’Adria regna,\nseguo pur voi e ’l mio natio paese\ncol pensier, ché non è chi lo ritegna.\n     Venir col resto il mio signor contese;\nché, senza ordine suo, ch’io vada o vegna\nnon vuole Amor, poi che di lui m’accese.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCL",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLI",
+      "texto": "     Mentre, chiaro signor, per voi s’attende\na poggiar nel camin ch’al ciel vi mena\nper via di lingue e di scienzie e vena,\nche ’l vostro nome in tutto il mondo stende,\n     io, donna e vil, cui desir egual prende,\ne l’acque di Castalia ho viste a pena,\nvorrei venirvi dietro, e non ho lena,\nché la bassezza mia tant’opra offende.\n     Però mi resto, e di lontan sospiro\ni nobil frutti de l’ingegno vostro,\nche con tant’altri giá tant’anni ammiro.\n     Quei son la vera porpora e ’l ver’ostro,\ngli archi e le statue, se ben dritto miro,\nche rendon chiaro e caro il secol nostro.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLI",
+      "tags": []
+    },
+    {
+      "titulo": "CCLII",
+      "texto": "     Se voi non foste a maggior cose vòlto,\nonde ’l vostro splendor, Venier, sormonte,\navendo sí gran stil, rime sí pronte,\ne de’ lacci d’Amore essendo sciolto,\n     vi pregherei che ’l valor e ’l bel volto\ne l’altre grazie del mio chiaro conte\na la futura etá faceste cónte,\npoi che ’l poterlo fare a me è tolto;\n     e faceste ancor cónto il foco mio\ne la mia fede oltra ogni fede ardente,\ndegna d’eterna vita, e non d’oblio.\n     Ma, poi degno rispetto nol consente,\nvedrò, tal qual io sono, adombrarn’io\nuna minima parte solamente.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLIII",
+      "texto": "     Speron, ch’a l’opre chiare ed onorate\nspronate ognun col vostro vivo essempio,\nmentre d’ogni atto vile illustre scempio\ncon l’arme del valor vincendo fate,\n     poi che di seguir io vostre pedate\nper me l’ardente mio desir non empio,\nvoi, d’ogni cortesia ricetto e tempio,\na venir dopo voi la man mi date;\n     sí che, come ambedue produsse un nido,\nambedue alzi un vol, vostra mercede,\ne venga in parte anch’io del vostro grido.\n     Cosí d’Antenor quell’antica sede\nc questo d’Adria fortunato lido\nfaccian de’ vostri onor mai sempre fede.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLIII",
+      "tags": []
+    },
+    {
+      "titulo": "CCLIV",
+      "texto": "     Zanni, quel chiaro e quel felice ingegno,\nche splende in voi, e quel sommo valore,\ndi cui non ha, per quel che s’ode fuore,\nAdria piú ricco e piú leggiadro pegno,\n     io quanto posso umíle a inchinar vegno,\nserva di cortesia, serva d’Amore,\ndogliosa sol che in cosí santo ardore\nnon van le forze del disir al segno;\n     perché, a ridir per via di rime a pieno\nquanto io v’onoro e quanto è ’l vostro merto,\nogn’altro stil, che ’l vostro, verria meno.\n     Voi sol col passo saldo e passo certo\nin questo d’Adria e fortunato seno\nsalite al monte faticoso ed erto.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLIV",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLIX",
+      "texto": "     Se quanta acqua ha Castalia ed Elicona\nbeveste tutta e sí felicemente,\nchiaro signor, che poi le vene spente\nrestasser secche ad ogn’altra persona,\n     come poss’io, quando desio mi sprona\na dir di voi sí caldo e sí sovente,\nsperar di pur adombrar solamente\nquanto di voi si stima e si ragiona?\n     Anzi, perché non pur i versi miei\nnon posson dir quant’io v’onoro e còlo,\nma mille Lini meco e mille Orfei,\n     o voi dite di voi, o di me solo\nsappia il mondo ch’io vòlsi e non potei\nalzarmi pigra a sí gradito volo.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLIX",
+      "tags": []
+    },
+    {
+      "titulo": "CCLV",
+      "texto": "     Conte, quel vivo ed onorato raggio,\nche splende fuor del vostro chiaro ingegno\nper via di rime, ed è giá giunto a segno,\nche o l’ha con pochi, o non ha alcun paraggio,\n     è frutto sol del vostro santo e saggio\npetto, d’ogni virtú nido e sostegno;\nch’io per me propria, se a stimarmi vegno,\nnon pur per darne altrui, lume non aggio.\n     E, se talvolta vo spiegando in carte\noscure e basse qualche mio martíre,\nAmor, che me lo dá, dammi anche l’arte.\n     Voi per voi sol potete al ciel salire,\ncigno gentil, sí ch’altri non v’ha parte:\ncosí potess’io il vostro voi seguire!",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLV",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLVI",
+      "texto": "     Quel lume, che ’l mar d’Adria empie ed avampa\ndi sí bei frutti e di sí degni effetti,\nper via di prose e versi alti ed eletti,\nche natura ed Amor, conte, in voi stampa,\n     è lume proprio de la vostra lampa,\ne frutti de’ vostr’alti e bei concetti,\ne non reflesso degli oscuri obietti\ndi me misera, afflitta e lassa Stampa.\n     E, se vostra infinita caritade\nme bassa e grave di terreno peso\ndi cosí rare lode empie ed ingombra,\n     alfin ritorna in voi la chiaritade,\nche, di nessuna indegnitá ripreso,\nfate sparir la lode altrui qual ombra.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLVI",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "CCLVII",
+      "texto": "     O inaudita e rara cortesia,\ndonar i pregi del suo proprio onore\nad una donna umil, che ’l proprio core,\nnon pur altro, non ha che di lei sia!\n     Ben v’avea fra tutti altri alzato pria\na chiaro segno il vostro alto valore,\nsenza nova cercar gloria e splendore\nper questa disusata e rara via;\n     sí che non resti modo alcuno in terra,\nond’uom possa poggiar per farsi chiaro,\nnon cerco da l’illustre Vinciguerra.\n     O spirto, in mille guise eccelso e raro,\nqual vena d’eloquenzia petto serra,\nche possa gir a le tue lodi a paro?",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLVII",
+      "tags": []
+    },
+    {
+      "titulo": "CCLVIII",
+      "texto": "     Signor, da poi che l’acqua del mio pianto,\nche sí larga e sí spessa versar soglio,\nnon può rompere il saldo e duro scoglio\ndel cor del fratel vostro tanto o quanto,\n     vedete voi, cui so ch’egli ama tanto,\nse, scrivendogli umíle un mezzo foglio,\nper vincer l’ostinato e fiero orgoglio\ndi quel petto poteste aver il vanto.\n     Illustre Vinciguerra, io non disio\nda lui, se non che mi dica in due versi:\n— Pena, spera ed aspetta il tornar mio.—\n     Se ciò m’aviene, i miei sensi dispersi,\ncome pianta piantata appresso il rio,\nvoi vedrete in un punto riaversi.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLVIII",
+      "tags": []
+    },
+    {
+      "titulo": "CCLX",
+      "texto": "     Io vorrei ben, Molin (ma non ho l’ale\nda prender tanto e sí gradito volo),\nportar, scrivendo, a l’uno e l’altro polo\nl’alta cagion del mio foco immortale;\n     ché l’opra e la materia è tanta e tale,\ned io son sí dal mal vinta e dal duolo,\nche a ciò non basto, e voi bastate solo,\nod altrui stile al vostro stile eguale.\n     Voi far fiorir potete eternamente\nil colle ch’amo; voi farlo, lodando,\nnovo Parnaso a la futura gente.\n     Io vo ben ciò talor meco provando,\nquanto mi detta il mio desir ardente;\nma forse scemo sue lode cantando.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLX",
+      "tags": []
+    },
+    {
+      "titulo": "CCLXI",
+      "texto": "     Tu, ch’agli antichi spirti vai di paro,\ne con le dotte ed onorate rime\nrischiari l'acque e fai fiorir le cime\ndel colle, ove si sale oggi sí raro,\n     movi il canto, Molin, canoro e chiaro,\nse mai movesti; e ’l mio colle sublime\nfa’ fiorir fra le cose al mondo prime,\npoi ch’a me il ciel di farlo è stato avaro.\n     A me dié solo amarlo, e l’amo quanto\nsi puote amar; ma ’l celebrarlo poi\nè d’altro stil incarco, che di donna.\n     Qui convien sol la tua cetra e ’l tuo canto,\nchiaro signor; tu sol descriver puoi\nquesta del viver mio salda colonna.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXI",
+      "tags": []
+    },
+    {
+      "titulo": "CCLXII",
+      "texto": "     Voi, che fate sonar da Battro a Tile,\nonde il sol viene a noi, onde si parte,\nquel chiaro stil, che ’l cielo vi comparte,\nche può d’orrido verno far aprile,\n     o a soggetto men basso e men vile\nle vostre rime, in tutto ’l mondo sparte,\nrivolgete, o pregate Amor ex parte\nche faccia me a voi non dissimíle;\n     sí che, qual sono i vostri versi gai,\nsia egual la materia, e regni e viva\nquanto il sol gira, e quanto ne sperai.\n     Ché, s’ella è di valor in tutto priva\ne quei sí chiari, indegna opra dirai,\nd’Adria felice ed onorata riva.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLXIII",
+      "texto": "     Dotto, saggio, gentil, chiaro Bonetto,\nla cui bontá il bel nome ancor pareggia,\ne l’alta cortesia, che signoreggia\nil nobil cor, ch’a ogniun vi rende accetto,\n     saper bramo io dal vostro almo intelletto,\nche le cose segrete in Dio vagheggia,\nquale è piú, il danno o l’util che si veggia\nil mondo trar da l’amoroso affetto.\n     Ditemi ancor perché fu Amor dipinto\ngiá dagli antichi, e da’ moderni ancora\nsi pinge faretrato, ignudo e cieco.\n     Questo dubbio da voi mi sia distinto,\nche nel mio cor gran tempo giá dimora,\nmercé de l’ignoranzia ch’è ognor meco.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXIII",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLXIV",
+      "texto": "     È sí gradito e sí dolce l’obietto\ndel mio foco, signor, e tanto e tale,\nche di soffrir ardendo non mi cale\nogni acerbo martír, ogni dispetto.\n     Duolmi sol ch’io non sia degno ricetto\ndi tanto bene e a tanta fiamma eguale,\ne che ’l mio stil sia infermo, stanco e frale\na portar l’opra, ove giunge il concetto.\n     E sopra tutto duolmi che la ria\nmia fortuna s’ingegna sí sovente\na dilungar da me la gloria mia.\n     Che mi giova, signor, che fra la gente,\nillustre, come dite, e chiara io sia,\nse dentro l’alma mia gioia non sente?",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXIV",
+      "tags": []
+    },
+    {
+      "titulo": "CCLXIX",
+      "texto": "     Amica, dolce ed onorata schiera,\nschiera di cortesia e d’onestade,\nsoggiorno di valore e di beltade,\ndi diporti e di grazie madre vera,\n     io prego Amor e ’l ciel ch’unita, intera\nti conservi in felice e lunga etade,\ne questi giochi e questa libertade\nveggan tardi, o non mai, l’ultima sera.\n     Cosa non possa mai perversa e ria\nturbar per tempo alcun o disunire\ncosí dolce e gradita compagnia.\n     A me si dia per grazia di gioire\ncon lei molt’anni e con la fiamma mia,\nche sovra il ciel mi fa superba gire.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXIX",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLXV",
+      "texto": "     Il gran terror de le nimiche squadre,\nche sotto il piú felice imperadore\nfrenò sí spesso il tedesco furore,\nfatto ribelle a la sua santa madre,\n     come hai potuto tu, celeste Padre,\nveder degli anni suoi nel piú bel fiore,\nfra donne imbelli, empia mercé d’Amore,\ncader per man servili, indegne et adre?\n     Marte il suo bellicoso orrido carme\ncangi in sospiri omai, e con lui chiuda\nsotterra i suoi trofei, l’insegne e l’arme;\n     o d’esse almen la bella amica ignuda,\nVenere sua, come piú degna, n’arme,\npoi ch’ella è piú di lui sanguigna e cruda.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXV",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "CCLXVI",
+      "texto": "     Se da’ vostr’occhi, da l’avorio ed ostro,\nond’Amor manda fuor faci e quadrella,\nse dai tesor de l’anima, ch’ancella\nnacque d’alto valor nel divin chiostro,\n     ciò ch’io scrissi e cantai mi fu dimostro,\nper lor d’ogn’atto vil tornai rubella,\ne, se mercé di quelle e mercé d’ella,\ncol tempo avaro e con gl’ingegni giostro,\n     a voi deve ogni lingua dotta e chiara\nrendervi lode, poi che ’n voi s’accoglie\nvirtú, che ’l fosco mio sgombra e rischiara.\n     A voi de’ morte, che tutt’apre e scioglie,\nnon esser come agli altri empia ed amara,\ne ’l mondo ornarvi il crin di doppie foglie.",
+      "forma": "outro",
+      "obra": "Rime (Stampa)",
+      "ano": null,
+      "fonte": "https://it.wikisource.org/wiki/Rime_(Stampa)/Rime_varie/CCLXVI",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    }
+  ]
+}

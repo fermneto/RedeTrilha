@@ -1,0 +1,469 @@
+{
+  "username": "oscar_wilde",
+  "name": "Oscar Wilde",
+  "bio": "Escritor nascido em Dublin. Os poemas e The Ballad of Reading Gaol ficam ao lado da prosa.",
+  "avatar_url": "",
+  "nascimento": 1854,
+  "morte": 1900,
+  "escolas": ["decadentismo_esteticismo"],
+  "pais": "IE",
+  "poemas": [
+    {
+      "titulo": "A Fragment from the Agamemnon of Æschylos",
+      "texto": "(Lines 1140-1173)\n\n[The scene is the court-yard of the Palace at Argos. Agamemnon has already entered the House of Doom, and Clytemnestra has followed close on his heels. Cassandra is left alone upon the stage. The conscious terror of death and the burden of prophecy lie heavy upon her; terrible signs and visions greet her approach. She sees blood upon the lintel, and the smell of blood scares her, as some bird, from the door. The ghosts of the murdered children come to mourn with her. Her second sight pierces the Palace walls; she sees the fatal bath, the trammelling net, and the axe sharpened for her own ruin and her lord's.\n\nBut not even in the hour of her last anguish is Apollo merciful; her warnings are unheeded, her prophetic utterances made mock of.\n\nThe orchestra is filled with a chorus of old men weak, foolish, irresolute. They do not believe the weird woman of mystery till the hour for help is past, and the cry of Agamemnon echoes from the house, 'Oh me! I am stricken with a stroke of death.']\n\nCHORUS\n\n Thy prophecies are but a lying tale,\n For cruel gods have brought thee to this state,\n And of thyself and thine own wretched fate\nSing you this song and these unhallowed lays,\n Like the brown bird of grief insatiate\nCrying for sorrow of its dreary days;\n   Crying for Itys, Itys, in the vale—\n   The nightingale! The nightingale!\n\n CASSANDRA\n\nYet I would that to me they had given\n The fate of that singer so clear,\nFleet wings to fly up unto heaven,\n Away from all mourning and fear;\n For ruin and slaughter await me—the cleaving with sword and the spear.\n\n CHORUS\n\nWhence come these crowding fancies on thy brain,\n Sent by some god it may be, yet for naught?\nWhy dost thou sing with evil-tongued refrain,\nMoulding thy terrors to this hideous strain\n With shrill, sad cries, as if by death distraught?\nWhy dost thou tread that path of prophecy,\n    Where, upon either hand,\n    Landmarks for ever stand\nWith horrid legend for all men to see?\n\n CASSANDRA\n\nO bitter bridegroom who didst bear\n Ruin to those that loved thee true!\nO holy stream Scamander, where\n With gentle nurturement I grew\n In the first days, when life and love were new.\n\n And now—and now—it seems that I must lie\n In the dark land that never sees the sun;\nSing my sad songs of fruitless prophecy\n By the black stream Cokytos that doth run\n Through long, low hills of dreary Acheron.\n\n CHORUS\n\nAh, but thy word is clear!\nEven a child among men,\nEven a child might see\nWhat is lying hidden here.\nAh! I am smitten deep\nTo the heart with a deadly blow\nAt the evil fate of the maid,\nAt the cry of her song of woe!\nSorrows for her to bear!\nWonders for me to hear!\n\n CASSANDRA\n\nO my poor land laid waste with flame and fire!\n O ruined city overthrown by fate!\nAh, what availed the offerings of my Sire\n To keep the foreign foemen from the gate!\nAh, what availed the herds of pasturing kine\nTo save my country from the wrath divine!\n\n Ah, neither prayer nor priest availèd aught,\nNor the strong captains that so stoutly fought,\nFor the tall town lies desolate and low.\n And I, the singer of this song of woe,\nKnow, by the fire burning in my brain,\nThat Death, the healer of all earthly pain,\n Is close at hand! I will not shirk the blow.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/A_Fragment_from_the_Agamemnon_of_%C3%86schylos",
+      "tags": [
+        "amor",
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "A Vision",
+      "texto": "Two crownèd Kings, and One that stood alone\n With no green weight of laurels round his head,\n But with sad eyes as one uncomforted,\nAnd wearied with man's never-ceasing moan\nFor sins no bleating victim can atone,\n And sweet long lips with tears and kisses fed.\n Girt was he in a garment black and red,\nAnd at his feet I marked a broken stone\n Which sent up lilies, dove-like, to his knees.\nNow at their sight, my heart being lit with flame\nI cried to Beatricé, 'Who are these?'\nAnd she made answer, knowing well each name,\n 'Æschylos first, the second Sophokles,\n And last (wide stream of tears!) Euripides.'",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/A_Vision",
+      "tags": []
+    },
+    {
+      "titulo": "Ailinon, ailinon eipe",
+      "texto": "Αἴλινον, αἴλινον εἰπέ, τὸ δ' εὖ νικάτω.\n\nO well for him who lives at ease\n With garnered gold in wide domain,\n Nor heeds the splashing of the rain,\nThe crashing down of forest trees.\n\n O well for him who ne'er hath known\n The travail of the hungry years,\n A father grey with grief and tears,\nA mother weeping all alone.\n\n But well for him whose foot hath trod\n The weary road of toil and strife,\n Yet from the sorrows of his life\nBuilds ladders to be nearer God.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Ailinon%2C_ailinon_eipe",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Amor Intellectualis",
+      "texto": "Oft have we trod the vales of Castaly\n And heard sweet notes of sylvan music blown\n From antique reeds to common folk unknown:\nAnd often launched our bark upon that sea\nWhich the nine Muses hold in empery,\n And ploughed free furrows through the wave and foam,\n Nor spread reluctant sail for more safe home\nTill we had freighted well our argosy.\nOf which despoilèd treasures these remain,\n Sordello's passion, and the honeyed line\nOf young Endymion, lordly Tamburlaine\n Driving his pampered jades, and, more than these,\nThe seven-fold vision of the Florentine,\n And grave-browed Milton's solemn harmonies.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Amor_Intellectualis",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Apologia",
+      "texto": "Is it thy will that I should wax and wane,\n Barter my cloth of gold for hodden grey,\nAnd at thy pleasure weave that web of pain\n Whose brightest threads are each a wasted day?\n\n Is it thy will—Love that I love so well—\n That my Soul's House should be a tortured spot\nWherein, like evil paramours, must dwell\n The quenchless flame, the worm that dieth not?\n\n Nay, if it be thy will I shall endure,\n And sell ambition at the common mart,\nAnd let dull failure be my vestiture,\n And sorrow dig its grave within my heart.\n\n Perchance it may be better so—at least\n I have not made my heart a heart of stone,\nNor starved my boyhood of its goodly feast,\n Nor walked where Beauty is a thing unknown.\n\n Many a man hath done so; sought to fence\n In straitened bonds the soul that should be free,\nTrodden the dusty road of common sense,\n While all the forest sang of liberty.\n\n Not marking how the spotted hawk in flight\n Passed on wide pinion through the lofty air,\nTo where some steep untrodden mountain height\n Caught the last tresses of the Sun God's hair.\n\n Or how the little flower he trod upon,\n The daisy, that white-feathered shield of gold,\nFollowed with wistful eyes the wandering sun\n Content if once its leaves were aureoled.\n\n But surely it is something to have been\n The best belovèd for a little while,\nTo have walked hand in hand with Love, and seen\n His purple wings flit once across thy smile.\n\n Ay! though the gorgèd asp of passion feed\n On my boy's heart, yet have I burst the bars,\nStood face to face with Beauty, known indeed\n The Love which moves the Sun and all the stars!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Apologia",
+      "tags": [
+        "amor",
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "At Verona",
+      "texto": "How steep the stairs within Kings' houses are\n For exile-wearied feet as mine to tread,\n And O how salt and bitter is the bread\nWhich falls from this Hound's table,—better far\nThat I had died in the red ways of war,\n Or that the gate of Florence bare my head,\n Than to live thus, by all things comraded\nWhich seek the essence of my soul to mar.\n\n 'Curse God and die: what better hope than this?\n He hath forgotten thee in all the bliss\n Of his gold city, and eternal day'—\nNay peace: behind my prison's blinded bars\n I do possess what none can take away,\n My love, and all the glory of the stars.",
+      "forma": "soneto",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/At_Verona",
+      "tags": [
+        "amor",
+        "guerra",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Athanasia",
+      "texto": "To that gaunt House of Art which lacks for naught\n Of all the great things men have saved from Time,\nThe withered body of a girl was brought\n Dead ere the world's glad youth had touched its prime,\nAnd seen by lonely Arabs lying hid\nIn the dim womb of some black pyramid.\n\nBut when they had unloosed the linen band\n Which swathed the Egyptian's body,—lo! was found\nClosed in the wasted hollow of her hand\n A little seed, which sown in English ground\nDid wondrous snow of starry blossoms bear\nAnd spread rich odours through our spring-tide air.\n\nWith such strange arts this flower did allure\n That all forgotten was the asphodel,\nAnd the brown bee, the lily's paramour,\n Forsook the cup where he was wont to dwell,\nFor not a thing of earth it seemed to be,\nBut stolen from some heavenly Arcady.\n\nIn vain the sad narcissus, wan and white\n At its own beauty, hung across the stream,\nThe purple dragon-fly had no delight\n With its gold dust to make his wings a-gleam,\nAh! no delight the jasmine-bloom to kiss,\nOr brush the rain-pearls from the eucharis.\n\nFor love of it the passionate nightingale\n Forgot the hills of Thrace, the cruel king,\nAnd the pale dove no longer cared to sail\n Through the wet woods at time of blossoming,\nBut round this flower of Egypt sought to float,\nWith silvered wing and amethystine throat.\n\nWhile the hot sun blazed in his tower of blue\n A cooling wind crept from the land of snows,\nAnd the warm south with tender tears of dew\n Drenched its white leaves when Hesperos up-rose\nAmid those sea-green meadows of the sky\nOn which the scarlet bars of sunset lie.\n\nBut when o'er wastes of lily-haunted field\n The tired birds had stayed their amorous tune,\nAnd broad and glittering like an argent shield\n High in the sapphire heavens hung the moon,\nDid no strange dream or evil memory make\nEach tremulous petal of its blossoms shake?\n\nAh no! to this bright flower a thousand years\n Seemed but the lingering of a summer's day,\nIt never knew the tide of cankering fears\n Which turn a boy's gold hair to withered grey,\nThe dread desire of death it never knew,\nOr how all folk that they were born must rue.\n\nFor we to death with pipe and dancing go,\n Nor would we pass the ivory gate again,\nAs some sad river wearied of its flow\n Through the dull plains, the haunts of common men,\nLeaps lover-like into the terrible sea!\nAnd counts it gain to die so gloriously.\n\nWe mar our lordly strength in barren strife\n With the world's legions led by clamorous care,\nIt never feels decay but gathers life\n From the pure sunlight and the supreme air,\nWe live beneath Time's wasting sovereignty,\nIt is the child of all eternity.\n\nThe woes of man may serve an idle lay,\n Nor were it hard fond hearers to enthral,\nTelling how Egypt's glory passed away,\n How London from its pinnacle must fall;\nBut this white flower, the conqueror of time,\nSeems all too great for any boyish rhyme.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Athanasia",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Authorities",
+      "texto": "LIST OF EDITIONS, COMMENTARIES, ETC., USED OR CONSULTED\n\nText: edit. Dindorf, Oxford\n\nText: edit. Blaydes. 1886.\n\nText, with Notes, etc.: edit. Immanuel Bekker. 5 vols. 1829.\n\nText, with Notes, etc.: Brunck.\n\nText, with (German) Notes, etc.: Separate Plays: edit. Kock.\n\nText, with Notes, etc.: Separate Plays: edit. Rev. W. W. Merry. 1887–1901.\n\nTranslation: English, by W. J. Hickie. (Bohn’s Classical Library.)\n\nTranslation: English verse, ‘Knights,’ ‘Acharnians,’ ‘Clouds,’ ‘Wasps,’ by Mitchell. 1822.\n\nTranslation: English verse, ‘Knights,’ ‘Acharnians,’ ‘Birds,’ ‘Frogs,’ ‘Peace,’ by Hookham Frere. 1871.\n\nTranslation: English verse, Various Plays, by B. Bickley Rogers. 1867 onwards.\n\nTranslation: French, by C. Poyard. (“Chefs-d’œuvre des Littératures Anciennes.” Paris, Hachette. 1875.)\n\nTranslation: French, by Eugène Talbot, with Preface by Sully Prudhomme. 2 vols, Paris, Lemerre, 1897.\n\nTranslation: German, by Droysen.\n\n“Aristophanes” (Ancient Classics for English Readers): edit. W. Lucas Collins. 1897.\n\n“Aristophane et l’ancienne Comédie attique,” par Auguste Couat. Paris. 1889.\n\n“Aristophane et les Partis à Athens,” par Maurice Croiset. Paris, Fontemoing. 1906.\n\n“Beiträge zur inneren Geschichte Athens im Zeitalter des Pelopon. Krieges,” G. Gilbert. Leipzig. 1877.\n\n“Die attischen Politik seit Perikles,” J. Beloch. Leipzig. 1884.\n\n“Aristophanes und die historische Kritik,” Müller-Strübing. Leipzig. 1878.",
+      "forma": "outro",
+      "obra": "Aristophanes: The Eleven Comedies",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Aristophanes%3A_The_Eleven_Comedies/Authorities",
+      "tags": []
+    },
+    {
+      "titulo": "Ave Maria Gratia Plena",
+      "texto": "Was this His coming! I had hoped to see\n A scene of wondrous glory, as was told\n Of some great God who in a rain of gold\nBroke open bars and fell on Danae:\nOr a dread vision as when Semele\n Sickening for love and unappeased desire\n Prayed to see God's clear body, and the fire\nCaught her brown limbs and slew her utterly:\nWith such glad dreams I sought this holy place,\n And now with wondering eyes and heart I stand\n Before this supreme mystery of Love:\nSome kneeling girl with passionless pale face,\n An angel with a lily in his hand,\n And over both the white wings of a Dove.\n\nFlorence.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Ave_Maria_Gratia_Plena",
+      "tags": [
+        "amor",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Ballade de Marguerite",
+      "texto": "(NORMANDE)\n\nI am weary of lying within the chase\nWhen the knights are meeting in market-place.\n\n Nay, go not thou to the red-roofed town\nLest the hoofs of the war-horse tread thee down.\n\n But I would not go where the Squires ride,\nI would only walk by my Lady's side.\n\n Alack! and alack! thou art overbold,\nA Forester's son may not eat off gold.\n\n Will she love me the less that my Father is seen\nEach Martinmas day in a doublet green?\n\n Perchance she is sewing at tapestrie,\nSpindle and loom are not meet for thee.\n\n Ah, if she is working the arras bright\nI might ravel the threads by the fire-light.\n\n Perchance she is hunting of the deer,\nHow could you follow o'er hill and mere?\n\n Ah, if she is riding with the court,\nI might run beside her and wind the morte.\n\n Perchance she is kneeling in St Denys,\n(On her soul may our Lady have gramercy!)\n\n Ah, if she is praying in lone chapelle,\nI might swing the censer and ring the bell.\n\n Come in, my son, for you look sae pale,\nThe father shall fill thee a stoup of ale.\n\n But who are these knights in bright array?\nIs it a pageant the rich folks play?\n\n 'T is the King of England from over sea,\nWho has come unto visit our fair countrie.\n\n But why does the curfew toll sae low?\nAnd why do the mourners walk a-row?\n\n O 't is Hugh of Amiens my sister's son\nWho is lying stark, for his day is done.\n\n Nay, nay, for I see white lilies clear,\nIt is no strong man who lies on the bier.\n\n O 't is old Dame Jeannette that kept the hall,\nI knew she would die at the autumn fall.\n\n Dame Jeannette had not that gold-brown hair,\nOld Jeannette was not a maiden fair.\n\n O 't is none of our kith and none of our kin,\n(Her soul may our Lady assoil from sin!)\n\n But I hear the boy's voice chaunting sweet,\n'Elle est morte, la Marguerite.'\n\n Come in, my son, and lie on the bed,\nAnd let the dead folk bury their dead.\n\n O mother, you know I loved her true:\nO mother, hath one grave room for two?",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Ballade_de_Marguerite",
+      "tags": [
+        "amor",
+        "morte",
+        "guerra"
+      ]
+    },
+    {
+      "titulo": "By the Arno",
+      "texto": " The oleander on the wall\n Grows crimson in the dawning light,\n Though the grey shadows of the night\nLie yet on Florence like a pall.\n\n  The dew is bright upon the hill,\n And bright the blossoms overhead,\n But ah! the grasshoppers have fled,\nThe little Attic song is still.\n\n  Only the leaves are gently stirred\n By the soft breathing of the gale,\n And in the almond-scented vale\nThe lonely nightingale is heard.\n\n  The day will make thee silent soon,\n O nightingale sing on for love!\n While yet upon the shadowy grove\nSplinter the arrows of the moon.\n\n  Before across the silent lawn\n In sea-green vest the morning steals,\n And to love's frightened eyes reveals\nThe long white fingers of the dawn\n\n  Fast climbing up the eastern sky\n To grasp and slay the shuddering night,\n All careless of my heart's delight,\nOr if the nightingale should die.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/By_the_Arno",
+      "tags": [
+        "amor",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Camma",
+      "texto": "As one who poring on a Grecian urn\n Scans the fair shapes some Attic hand hath made,\n God with slim goddess, goodly man with maid,\nAnd for their beauty's sake is loth to turn\nAnd face the obvious day, must I not yearn\n For many a secret moon of indolent bliss\n When in the midmost shrine of Artemis\nI see thee standing, antique-limbed, and stern?\n\n And yet—methinks I 'd rather see thee play\n That serpent of old Nile, whose witchery\nMade Emperors drunken,—come, great Egypt, shake\n Our stage with all thy mimic pageants! Nay,\n I am grown sick of unreal passions, make\nThe world thine Actium, me thine Anthony!",
+      "forma": "soneto",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Camma",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Canzonet",
+      "texto": " I have no store\nOf gryphon-guarded gold;\n Now, as before,\nBare is the shepherd's fold.\n Rubies, nor pearls,\nHave I to gem thy throat;\n Yet woodland girls\nHave loved the shepherd's note.\n\n  Then, pluck a reed\nAnd bid me sing to thee,\n For I would feed\nThine ears with melody,\n Who art more fair\nThan fairest fleur-de-lys,\n More sweet and rare\nThan sweetest ambergris.\n\n  What dost thou fear?\nYoung Hyacinth is slain,\n Pan is not here,\nAnd will not come again.\n No hornèd Faun\nTreads down the yellow leas,\n No God at dawn\nSteals through the olive trees.\n\n  Hylas is dead,\nNor will he e'er divine\n Those little red\nRose-petalled lips of thine.\n On the high hill\nNo ivory dryads play,\n Silver and still\nSinks the sad autumn day.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Canzonet",
+      "tags": [
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Chanson",
+      "texto": "A ring of gold and a milk-white dove\n Are goodly gifts for thee,\nAnd a hempen rope for your own love\n To hang upon a tree.\n\n For you a House of Ivory,\n (Roses are white in the rose-bower)!\nA narrow bed for me to lie,\n (White, O white, is the hemlock flower)!\n\n Myrtle and jessamine for you,\n (O the red rose is fair to see)!\nFor me the cypress and the rue,\n (Fairest of all is rosemary)!\n\n For you three lovers of your hand,\n (Green grass where a man lies dead)!\nFor me three paces on the sand,\n (Plant lilies at my head)!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Chanson",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Chorus of Cloud Maidens",
+      "texto": "TRANSLATIONS\n\n(Ἀριστοφανους Νεφέλαι, 275-290, 298-313.)\n\nΣΤΡΟΦΗ\n\n Cloud maidens that float on for ever,\n Dew-sprinkled, fleet bodies, and fair,\nLet us rise from our Sire's loud river,\n   Great Ocean, and soar through the air\nTo the peaks of the pine-covered mountains where the pines hang as tresses of hair.\n  Let us seek the watch-towers undaunted,\n   Where the well-watered corn-fields abound,\n  And through murmurs of rivers nymph-haunted\n   The songs of the sea-waves resound;\nAnd the sun in the sky never wearies of spreading his radiance around.\n     Let us cast off the haze\n      Of the mists from our band,\n     Till with far-seeing gaze\n      We may look on the land..  .  .  .  .  .\n\nΑΝΤΙΣΤΡΟΦΗ\n\nCloud maidens that bring the rain-shower,\n To the Pallas-loved land let us wing,\nTo the land of stout heroes and Power,\n Where Kekrops was hero and king,\nWhere honour and silence is given\n To the mysteries that none may declare,\nWhere are gifts to the high gods in heaven\n When the house of the gods is laid bare,\nWhere are lofty roofed temples, and statues well carven and fair;\n Where are feasts to the happy immortals\nWhen the sacred procession draws near,\n Where garlands make bright the bright portals\nAt all seasons and months in the year;\n And when spring days are here,\nThen we tread to the wine-god a measure,\n In Bacchanal dance and in pleasure,\n'Mid the contests of sweet singing choirs,\n And the crash of loud lyres.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Chorus_of_Cloud_Maidens",
+      "tags": [
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Desespoir",
+      "texto": "The seasons send their ruin as they go,\n For in the spring the narciss shows its head\n Nor withers till the rose has flamed to red,\nAnd in the autumn purple violets blow,\nAnd the slim crocus stirs the winter snow;\n Wherefore yon leafless trees will bloom again\n And this grey land grow green with summer rain\nAnd send up cowslips for some boy to mow.\nBut what of life whose bitter hungry sea\n Flows at our heels, and gloom of sunless night\n Covers the days which never more return?\nAmbition, love and all the thoughts that burn\n We lose too soon, and only find delight\n In withered husks of some dead memory.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Desespoir",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "E Tenebris",
+      "texto": "Come down, O Christ, and help me! reach thy hand,\n For I am drowning in a stormier sea\n Than Simon on thy lake of Galilee:\nThe wine of life is spilt upon the sand,\nMy heart is as some famine-murdered land\n Whence all good things have perished utterly,\n And well I know my soul in Hell must lie\nIf I this night before God's throne should stand.\n'He sleeps perchance, or rideth to the chase,\n Like Baal, when his prophets howled that name\n From morn to noon on Carmel's smitten height.'\nNay, peace, I shall behold, before the night,\n The feet of brass, the robe more white than flame,\n The wounded hands, the weary human face.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/E_Tenebris",
+      "tags": [
+        "noite",
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Easter Day",
+      "texto": "The silver trumpets rang across the Dome:\n The people knelt upon the ground with awe:\n And borne upon the necks of men I saw,\nLike some great God, the Holy Lord of Rome.\nPriest-like, he wore a robe more white than foam,\n And, king-like, swathed himself in royal red,\n Three crowns of gold rose high upon his head:\nIn splendour and in light the Pope passed home.\nMy heart stole back across wide wastes of years\n To one who wandered by a lonely sea,\n And sought in vain for any place of rest:\n'Foxes have holes, and every bird its nest.\n I, only I, must wander wearily,\n And bruise my feet, and drink salt wine with tears.'",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Easter_Day",
+      "tags": [
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Ecclesiazusae",
+      "texto": " THE ECCLESIAZUSÆ\n\nOR\n\nWOMEN IN COUNCIL",
+      "forma": "outro",
+      "obra": "Aristophanes: The Eleven Comedies",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Aristophanes%3A_The_Eleven_Comedies/Ecclesiazusae",
+      "tags": []
+    },
+    {
+      "titulo": "Endymion",
+      "texto": "(FOR MUSIC)\n\nThe apple trees are hung with gold,\n And birds are loud in Arcady,\nThe sheep lie bleating in the fold,\nThe wild goat runs across the wold,\nBut yesterday his love he told,\n I know he will come back to me.\nO rising moon! O Lady moon!\n Be you my lover's sentinel,\n You cannot choose but know him well,\nFor he is shod with purple shoon,\nYou cannot choose but know my love,\n For he a shepherd's crook doth bear,\nAnd he is soft as any dove,\n And brown and curly is his hair.\n\n The turtle now has ceased to call\n Upon her crimson-footed groom,\nThe grey wolf prowls about the stall,\nThe lily's singing seneschal\nSleeps in the lily-bell, and all\n The violet hills are lost in gloom.\nO risen moon! O holy moon!\n Stand on the top of Helice,\n And if my own true love you see,\nAh! if you see the purple shoon,\nThe hazel crook, the lad's brown hair,\n The goat-skin wrapped about his arm,\nTell him that I am waiting where\n The rushlight glimmers in the Farm.\n\n The falling dew is cold and chill,\n And no bird sings in Arcady,\nThe little fauns have left the hill,\nEven the tired daffodil\nHas closed its gilded doors, and still\n My lover comes not back to me.\nFalse moon! False moon! O waning moon!\n Where is my own true lover gone,\n Where are the lips vermilion,\nThe shepherd's crook, the purple shoon?\nWhy spread that silver pavilion,\n Why wear that veil of drifting mist?\nAh! thou hast young Endymion,\n Thou hast the lips that should be kissed!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Endymion",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Fabien dei Franchi",
+      "texto": "IMPRESSIONS DE THÉÂTRE\n\nTo My Friend Henry Irving\n\nThe silent room, the heavy creeping shade,\n The dead that travel fast, the opening door,\n The murdered brother rising through the floor,\nThe ghost's white fingers on thy shoulders laid,\nAnd then the lonely duel in the glade,\n The broken swords, the stifled scream, the gore,\n Thy grand revengeful eyes when all is o'er,—\nThese things are well enough,—but thou wert made\n For more august creation! frenzied Lear\n Should at thy bidding wander on the heath\n With the shrill fool to mock him, Romeo\nFor thee should lure his love, and desperate fear\nPluck Richard's recreant dagger from its sheath—\n Thou trumpet set for Shakespeare's lips to blow!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Fabien_dei_Franchi",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "From Spring Days to Winter",
+      "texto": "UNCOLLECTED POEMS\n\n(FOR MUSIC)\n\nIn the glad spring time when leaves were green,\n O merrily the throstle sings!\nI sought, amid the tangled sheen,\nLove whom mine eyes had never seen,\n O the glad dove has golden wings!\n\n Between the blossoms red and white,\n O merrily the throstle sings!\nMy love first came into my sight,\nO perfect vision of delight,\n O the glad dove has golden wings!\n\n The yellow apples glowed like fire,\n O merrily the throstle sings!\nO Love too great for lip or lyre,\nBlown rose of love and of desire,\n O the glad dove has golden wings!\n\n But now with snow the tree is grey,\n Ah, sadly now the throstle sings!\nMy love is dead: ah! well-a-day,\nSee at her silent feet I lay\n A dove with broken wings!\n Ah, Love! ah, Love! that thou wert slain—\nFond Dove, fond Dove return again!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/From_Spring_Days_to_Winter",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Glykypikros Eros",
+      "texto": "FLOWER OF LOVE\n\nΓΛΥΚΥΠΙΚΡΟΣ ΕΡΩΣ\n\nSweet, I blame you not, for mine the fault was, had I not been made of common clay\nI had climbed the higher heights unclimbed yet, seen the fuller air, the larger day.\n\n From the wildness of my wasted passion I had struck a better, clearer song,\nLit some lighter light of freer freedom, battled with some Hydra-headed wrong.\n\n Had my lips been smitten into music by the kisses that but made them bleed,\nYou had walked with Bice and the angels on that verdant and enamelled mead.\n\n I had trod the road which Dante treading saw the suns of seven circles shine,\nAy! perchance had seen the heavens opening, as they opened to the Florentine.\n\n And the mighty nations would have crowned me, who am crownless now and without name,\nAnd some orient dawn had found me kneeling on the threshold of the House of Fame.\n\n I had sat within that marble circle where the oldest bard is as the young,\nAnd the pipe is ever dropping honey, and the lyre's strings are ever strung.\n\n Keats had lifted up his hymeneal curls from out the poppy-seeded wine,\nWith ambrosial mouth had kissed my forehead, clasped the hand of noble love in mine.\n\n And at springtide, when the apple-blossoms brush the burnished bosom of the dove,\nTwo young lovers lying in an orchard would have read the story of our love.\n\n Would have read the legend of my passion, known the bitter secret of my heart,\nKissed as we have kissed, but never parted as we two are fated now to part.\n\n For the crimson flower of our life is eaten by the cankerworm of truth,\nAnd no hand can gather up the fallen withered petals of the rose of youth.\n\n Yet I am not sorry that I loved you—ah! what else had I a boy to do,—\nFor the hungry teeth of time devour, and the silent-footed years pursue.\n\n Rudderless, we drift athwart a tempest, and when once the storm of youth is past,\nWithout lyre, without lute or chorus, Death the silent pilot comes at last.\n\n And within the grave there is no pleasure, for the blind worm battens on the root,\nAnd Desire shudders into ashes, and the tree of Passion bears no fruit\n\n Ah! what else had I to do but love you, God's own mother was less dear to me,\nAnd less dear the Cytheræan rising like an argent lily from the sea.\n\n I have made my choice, have lived my poems, and, though youth is gone in wasted days,\nI have found the lover's crown of myrtle better than the poet's crown of bays.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Glykypikros_Eros",
+      "tags": [
+        "amor",
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Hélas",
+      "texto": "POEMS\n\nTodrift with every passion till my soul\nIs a stringed lute on which all winds can play,\nIs it for this that I have given away\nMine ancient wisdom, and austere control?\nMethinks my life is a twice-written scroll\nScrawled over on some boyish holiday\nWith idle songs for pipe and virelay,\nWhich do but mar the secret of the whole.\nSurely there was a time I might have trod\nThe sunlit heights, and from life's dissonance\nStruck one clear chord to reach the ears of God:\nIs that time dead? lo! with a little rod\nI did but touch the honey of romance—\nAnd must I lose a soul's inheritance?",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/H%C3%A9las",
+      "tags": [
+        "morte",
+        "deus",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Her Voice",
+      "texto": "The wild bee reels from bough to bough\n With his furry coat and his gauzy wing,\nNow in a lily-cup, and now\n Setting a jacinth bell a-swing,\n    In his wandering;\nSit closer love: it was here I trow\n    I made that vow,\n\n Swore that two lives should be like one\n As long as the sea-gull loved the sea,\nAs long as the sunflower sought the sun,—\n It shall be, I said, for eternity\n    'Twixt you and me!\nDear friend, those times are over and done,\n    Love's web is spun.\n\n Look upward where the poplar trees\n Sway and sway in the summer air,\nHere in the valley never a breeze\n Scatters the thistledown, but there\n    Great winds blow fair\nFrom the mighty murmuring mystical seas,\n    And the wave-lashed leas.\n\n Look upward where the white gull screams,\n What does it see that we do not see?\nIs that a star? or the lamp that gleams\n On some outward voyaging argosy,—\n    Ah! can it be\nWe have lived our lives in a land of dreams!\n    How sad it seems.\n\n Sweet, there is nothing left to say\n But this, that love is never lost,\nKeen winter stabs the breasts of May\n Whose crimson roses burst his frost,\n    Ships tempest-tossed\nWill find a harbour in some bay,\n    And so we may.\n\n And there is nothing left to do\n But to kiss once again, and part,\nNay, there is nothing we should rue,\n I have my beauty,—you your Art,\n    Nay, do not start,\nOne world was not enough for two\n    Like me and you.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Her_Voice",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Humanitad",
+      "texto": "It is full winter now: the trees are bare,\n Save where the cattle huddle from the cold\nBeneath the pine, for it doth never wear\n The Autumn's gaudy livery whose gold\nHer jealous brother pilfers, but is true\nTo the green doublet; bitter is the wind, as though it blew\n\n From Saturn's cave; a few thin wisps of hay\n Lie on the sharp black hedges, where the wain\nDragged the sweet pillage of a summer's day\n From the low meadows up the narrow lane;\nUpon the half-thawed snow the bleating sheep\nPress close against the hurdles, and the shivering house-dogs creep\n\n From the shut stable to the frozen stream\n And back again disconsolate, and miss\nThe bawling shepherds and the noisy team;\n And overhead in circling listlessness\nThe cawing rooks whirl round the frosted stack,\nOr crowd the dripping boughs; and in the fen the ice-pools crack\n\n Where the gaunt bittern stalks among the reeds\n And flaps his wings, and stretches back his neck,\nAnd hoots to see the moon; across the meads\n Limps the poor frightened hare, a little speck;\nAnd a stray seamew with its fretful cry\nFlits like a sudden drift of snow against the dull grey sky.\n\n Full winter: and the lusty goodman brings\n His load of faggots from the chilly byre,\nAnd stamps his feet upon the hearth, and flings\n The sappy billets on the waning fire,\nAnd laughs to see the sudden lightening scare\nHis children at their play; and yet,—the Spring is in the air,\n\n Already the slim crocus stirs the snow,\n And soon yon blanchèd fields will bloom again\nWith nodding cowslips for some lad to mow,\n For with the first warm kisses of the rain\nThe winter's icy sorrow breaks to tears,\nAnd the brown thrushes mate, and with bright eyes the rabbit peers\n\n From the dark warren where the fir-cones lie,\n And treads one snowdrop under foot, and runs\nOver the mossy knoll, and blackbirds fly\n Across our path at evening, and the suns\nStay longer with us; ah! how good to see\nGrass-girdled Spring in all her joy of laughing greenery\n\n Dance through the hedges till the early rose,",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Humanitad",
+      "tags": []
+    },
+    {
+      "titulo": "Impression de Voyage",
+      "texto": "The sea was sapphire coloured, and the sky\n Burned like a heated opal through the air;\n We hoisted sail; the wind was blowing fair\nFor the blue lands that to the eastward lie.\nFrom the steep prow I marked with quickening eye\n Zakynthos, every olive grove and creek,\n Ithaca's cliff, Lycaon's snowy peak,\nAnd all the flower-strewn hills of Arcady.\nThe flapping of the sail against the mast,\n The ripple of the water on the side,\n The ripple of girls' laughter at the stern,\nThe only sounds:—when 'gan the West to burn,\n And a red sun upon the seas to ride,\n I stood upon the soil of Greece at last!\n\nKatakolo.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Impression_de_Voyage",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Impression du Matin",
+      "texto": "WIND FLOWERS\n\nThe Thames nocturne of blue and gold\n Changed to a Harmony in grey:\n A barge with ochre-coloured hay\nDropt from the wharf: and chill and cold\n\n The yellow fog came creeping down\n The bridges, till the houses' walls\n Seemed changed to shadows and St. Paul's\nLoomed like a bubble o'er the town.\n\n Then suddenly arose the clang\n Of waking life; the streets were stirred\n With country waggons: and a bird\nFlew to the glistening roofs and sang.\n\n But one pale woman all alone,\n The daylight kissing her wan hair,\n Loitered beneath the gas lamps' flare,\nWith lips of flame and heart of stone.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Impression_du_Matin",
+      "tags": []
+    },
+    {
+      "titulo": "Impression: Le Réveillon",
+      "texto": "THE FOURTH MOVEMENT\n\nIMPRESSION\n\nLE RÉVEILLON\n\n The sky is laced with fitful red,\n The circling mists and shadows flee,\n The dawn is rising from the sea,\nLike a white lady from her bed.\n\n   And jagged brazen arrows fall\n  Athwart the feathers of the night,\n  And a long wave of yellow light\nBreaks silently on tower and hall,\n\n   And spreading wide across the wold\n  Wakes into flight some fluttering bird,\n  And all the chestnut tops are stirred,\nAnd all the branches streaked with gold.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Impression%3A_Le_R%C3%A9veillon",
+      "tags": [
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "In the Forest",
+      "texto": "Out of the mid-wood's twilight\n Into the meadow's dawn,\nIvory limbed and brown-eyed,\n Flashes my Faun!\n\n He skips through the copses singing,\n And his shadow dances along,\nAnd I know not which I should follow,\n Shadow or song!\n\n O Hunter, snare me his shadow!\n O Nightingale, catch me his strain!\nElse moonstruck with music and madness\n I track him in vain!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/In_the_Forest",
+      "tags": []
+    },
+    {
+      "titulo": "In the Gold Room: A Harmony",
+      "texto": "IN THE GOLD ROOM\n\nA HARMONY\n\nHer ivory hands on the ivory keys\n Strayed in a fitful fantasy,\nLike the silver gleam when the poplar trees\n Rustle their pale leaves listlessly,\n Or the drifting foam of a restless sea\nWhen the waves show their teeth in the flying breeze.\n\n Her gold hair fell on the wall of gold\n Like the delicate gossamer tangles spun\nOn the burnished disk of the marigold,\n Or the sunflower turning to meet the sun\n When the gloom of the dark blue night is done,\nAnd the spear of the lily is aureoled.\n\n And her sweet red lips on these lips of mine\n Burned like the ruby fire set\nIn the swinging lamp of a crimson shrine,\n Or the bleeding wounds of the pomegranate,\n Or the heart of the lotus drenched and wet\nWith the spilt-out blood of the rose-red wine.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/In_the_Gold_Room%3A_A_Harmony",
+      "tags": [
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Italia",
+      "texto": "Italia! thou art fallen, though with sheen\n Of battle-spears thy clamorous armies stride\n From the north Alps to the Sicilian tide!\nAy! fallen, though the nations hail thee Queen\nBecause rich gold in every town is seen,\n And on thy sapphire-lake in tossing pride\n Of wind-filled vans thy myriad galleys ride\nBeneath one flag of red and white and green.\nO Fair and Strong! O Strong and Fair in vain!\n Look southward where Rome's desecrated town\n Lies mourning for her God-anointed King!\nLook heaven-ward! shall God allow this thing?\n Nay! but some flame-girt Raphael shall come down,\n And smite the Spoiler with the sword of pain.\n\nVenice.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Italia",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "La Bella Donna della mia Mente",
+      "texto": "My limbs are wasted with a flame,\n My feet are sore with travelling,\nFor, calling on my Lady's name,\n My lips have now forgot to sing.\n\n O Linnet in the wild-rose brake\n Strain for my Love thy melody,\nO Lark sing louder for love's sake,\n My gentle Lady passeth by.\n\n O almond-blossoms bend adown\n Until ye reach her drooping head;\nO twining branches weave a crown\n Of apple-blossoms white and red.\n\n She is too fair for any man\n To see or hold his heart's delight,\nFairer than Queen or courtesan\n Or moon-lit water in the night.\n\n Her hair is bound with myrtle leaves,\n (Green leaves upon her golden hair!)\nGreen grasses through the yellow sheaves\n Of autumn corn are not more fair.\n\n Her little lips, more made to kiss\n Than to cry bitterly for pain,\nAre tremulous as brook-water is,\n Or roses after evening rain.\n\n Her neck is like white melilote\n Flushing for pleasure of the sun,\nThe throbbing of the linnet's throat\n Is not so sweet to look upon.\n\n As a pomegranate, cut in twain,\n White-seeded, is her crimson mouth,\nHer cheeks are as the fading stain\n Where the peach reddens to the south.\n\n O twining hands! O delicate\n White body made for love and pain!\nO House of love! O desolate\n Pale flower beaten by the rain!\n\n God can bring Winter unto May,\n And change the sky to flame and blue,\nOr summer corn to gold from grey:\n One thing alone He cannot do.\n\n He cannot change my love to hate,\n Or make thy face less fair to see,\nThough now He knocketh at the gate\n With life and death—for you and me.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/La_Bella_Donna_della_mia_Mente",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "La Fuite de la Lune",
+      "texto": " To outer senses there is peace,\nA dreamy peace on either hand,\nDeep silence in the shadowy land,\nDeep silence where the shadows cease.\n\n   Save for a cry that echoes shrill\n  From some lone bird disconsolate;\n  A corncrake calling to its mate;\nThe answer from the misty hill.\n\n   And suddenly the moon withdraws\n  Her sickle from the lightening skies,\n  And to her sombre cavern flies,\nWrapped in a veil of yellow gauze.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/La_Fuite_de_la_Lune",
+      "tags": []
+    },
+    {
+      "titulo": "La Mer",
+      "texto": "A white mist drifts across the shrouds,\n A wild moon in this wintry sky\n Gleams like an angry lion's eye\nOut of a mane of tawny clouds.\n\n The muffled steersman at the wheel\n Is but a shadow in the gloom;—\n And in the throbbing engine room\nLeap the long rods of polished steel.\n\n The shattered storm has left its trace\n Upon this huge and heaving dome,\n For the thin threads of yellow foam\nFloat on the waves like ravelled lace.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/La_Mer",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Le Jardin",
+      "texto": "IMPRESSIONS\n\nI\n\nThe lily's withered chalice falls\n Around its rod of dusty gold,\n And from the beech-trees on the wold\nThe last wood-pigeon coos and calls.\n\n The gaudy leonine sunflower\n Hangs black and barren on its stalk,\n And down the windy garden walk\nThe dead leaves scatter,—hour by hour.\n\n Pale privet-petals white as milk\n Are blown into a snowy mass:\n The roses lie upon the grass\nLike little shreds of crimson silk.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Le_Jardin",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Le Jardin des Tuileries",
+      "texto": "This winter air is keen and cold,\n And keen and cold this winter sun,\n But round my chair the children run\nLike little things of dancing gold.\n\n Sometimes about the painted kiosk\n The mimic soldiers strut and stride,\n Sometimes the blue-eyed brigands hide\nIn the bleak tangles of the bosk.\n\n And sometimes, while the old nurse cons\n Her book, they steal across the square,\n And launch their paper navies where\nHuge Triton writhes in greenish bronze.\n\n And now in mimic flight they flee,\n And now they rush, a boisterous band—\n And, tiny hand on tiny hand,\nClimb up the black and leafless tree.\n\n Ah! cruel tree! if I were you,\n And children climbed me, for their sake\n Though it be winter I would break\nInto spring blossoms white and blue!",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Le_Jardin_des_Tuileries",
+      "tags": []
+    },
+    {
+      "titulo": "Le Panneau",
+      "texto": "FANTAISIES DÉCORATIVES\n\nI\n\nUnder the rose-tree's dancing shade\n There stands a little ivory girl,\n Pulling the leaves of pink and pearl\nWith pale green nails of polished jade.\n\n The red leaves fall upon the mould,\n The white leaves flutter, one by one,\n Down to a blue bowl where the sun,\nLike a great dragon, writhes in gold.\n\n The white leaves float upon the air,\n The red leaves flutter idly down,\n Some fall upon her yellow gown,\nAnd some upon her raven hair.\n\n She takes an amber lute and sings,\n And as she sings a silver crane\n Begins his scarlet neck to strain,\nAnd flap his burnished metal wings.\n\n She takes a lute of amber bright,\n And from the thicket where he lies\n Her lover, with his almond eyes,\nWatches her movements in delight.\n\n And now she gives a cry of fear,\n And tiny tears begin to start:\n A thorn has wounded with its dart\nThe pink-veined sea-shell of her ear.\n\n And now she laughs a merry note:\n There has fallen a petal of the rose\n Just where the yellow satin shows\nThe blue-veined flower of her throat.\n\n With pale green nails of polished jade,\n Pulling the leaves of pink and pearl,\n There stands a little ivory girl\nUnder the rose-tree's dancing shade.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Le_Panneau",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Les Ballons",
+      "texto": "Against these turbid turquoise skies\n The light and luminous balloons\n Dip and drift like satin moons,\nDrift like silken butterflies;\n\n Reel with every windy gust,\n Rise and reel like dancing girls,\n Float like strange transparent pearls,\nFall and float like silver dust.\n\n Now to the low leaves they cling,\n Each with coy fantastic pose,\n Each a petal of a rose\nStraining at a gossamer string.\n\n Then to the tall trees they climb,\n Like thin globes of amethyst,\n Wandering opals keeping tryst\nWith the rubies of the lime.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Les_Ballons",
+      "tags": []
+    },
+    {
+      "titulo": "Les Silhouettes",
+      "texto": "FLOWERS OF GOLD\n\nIMPRESSIONS\n\nI\n\n The sea is flecked with bars of grey,\nThe dull dead wind is out of tune,\nAnd like a withered leaf the moon\nIs blown across the stormy bay.\n\n   Etched clear upon the pallid sand\n  Lies the black boat: a sailor boy\n  Clambers aboard in careless joy\nWith laughing face and gleaming hand.\n\n   And overhead the curlews cry,\n  Where through the dusky upland grass\n  The young brown-throated reapers pass,\nLike silhouettes against the sky.",
+      "forma": "outro",
+      "obra": "The Poems of Oscar Wilde",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/The_Poems_of_Oscar_Wilde/Les_Silhouettes",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "username": "da_costa_e_silva",
+  "name": "Da Costa e Silva",
+  "bio": "Poeta piauiense. Sangue (1908) e Zodíaco (1916) são os livros.",
+  "avatar_url": "",
+  "nascimento": 1885,
+  "morte": 1950,
+  "escolas": [
+    "simbolismo"
+  ],
+  "pais": "BR",
+  "poemas": [
+    {
+      "titulo": "Hino do estado do Piauí",
+      "texto": "Salve a terra que aos céus arrebatas\nNossas almas nos dons que possuis\nA esperança nos verdes das matas\nA saudade das serras azuis\n\nPiauí, terra querida\nFilha do Sol do Equador\nPertencem-te a nossa vida\nNosso sonho, nosso amor!\nAs águas do Parnaíba\nRio abaixo, rio arriba\nEspalhem pelo sertão\nE levem pelas quebradas\nPelas várzeas e chapadas\nTeu canto de exaltação\n\nDesbravando-te os campos distantes\nNa missão do trabalho e da paz\nA aventura de dois bandeirantes\nA semente da pátria nos traz\n\nPiauí, terra querida\nFilha do Sol do Equador\nPertencem-te a nossa vida\nNosso sonho, nosso amor!\nAs águas do Parnaíba\nRio abaixo, rio arriba\nEspalhem pelo sertão\nE levem pelas quebradas\nPelas várzeas e chapadas\nTeu canto de exaltação\n\nSob o céu de imortal claridade\nNosso sangue vertemos por ti\nVendo a pátria pedir liberdade\nO primeiro que luta é o Piauí\n\nPiauí, terra querida\nFilha do Sol do Equador\nPertencem-te a nossa vida\nNosso sonho, nosso amor!\nAs águas do Parnaíba\nRio abaixo, rio arriba\nEspalhem pelo sertão\nE levem pelas quebradas\nPelas várzeas e chapadas\nTeu canto de exaltação.\n\nPossas tu no trabalho fecundo\nE com fé, fazer sempre melhor\nPara que no concerto do mundo\nO Brasil seja ainda maior\n\nPiauí, terra querida\nFilha do Sol do Equador\nPertencem-te a nossa vida\nNosso sonho, nosso amor!\nAs águas do Parnaíba\nRio abaixo, rio arriba\nEspalhem pelo sertão\nE levem pelas quebradas\nPelas várzeas e chapadas\nTeu canto de exaltação\n\nPossas tu conservando a pureza\nDo teu povo leal progredir\nEnvolvendo na mesma grandeza\nO passado, o presente e o porvir!\n\nPiauí, terra querida\nFilha do Sol do Equador\nPertencem-te a nossa vida\nNosso sonho, nosso amor!\nAs águas do Parnaíba\nRio abaixo, rio arriba\nEspalhem pelo sertão\nE levem pelas quebradas\nPelas várzeas e chapadas\nTeu canto de exaltação",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://pt.wikisource.org/wiki/Hino_do_estado_do_Piau%C3%AD",
+      "tags": [
+        "amor",
+        "saudade"
+      ]
+    }
+  ]
+}

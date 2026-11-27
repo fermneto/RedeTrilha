@@ -1,0 +1,21 @@
+{
+  "username": "lesya_ukrainka",
+  "name": "Lesya Ukrainka",
+  "bio": "Poetisa ucraniana, Larysa Kosach. Os poemas líricos e os dramáticos em verso são a obra.",
+  "avatar_url": "",
+  "nascimento": 1871,
+  "morte": 1913,
+  "escolas": ["romantismo"],
+  "pais": "UA",
+  "poemas": [
+    {
+      "titulo": "Первісні люде",
+      "texto": "Kardany garro,\nMammul garro,\nMela nadjo,\nNunga broo,\n\nБратіка знову,\nСина знову,\nБільше я\nНе побачу ніколи.\n\nТвоє тіло в Вейшематі,\nАле душа прийшла сюди\nІ збудила мене зо сну.\n Приспівка: Га-а, га-а, га-а, га!",
+      "forma": "outro",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://uk.wikisource.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D1%96%D1%81%D0%BD%D1%96_%D0%BB%D1%8E%D0%B4%D0%B5",
+      "tags": []
+    }
+  ]
+}

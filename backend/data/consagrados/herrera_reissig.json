@@ -1,0 +1,420 @@
+{
+  "username": "herrera_reissig",
+  "name": "Julio Herrera y Reissig",
+  "bio": "Poeta uruguaio. Los peregrinos de piedra (1909) reúne os sonetos mais lidos.",
+  "avatar_url": "",
+  "nascimento": 1875,
+  "morte": 1910,
+  "escolas": [
+    "modernismo_hispanico"
+  ],
+  "pais": "UY",
+  "poemas": [
+    {
+      "titulo": "Amor sádico",
+      "texto": "Ya no te amaba, sin dejar por eso\nDe amar la sombra de tu amor distante.\nYa no te amaba, y sin embargo el beso\nDe la repulsa nos unió un instante...\n\nAgrio placer y bárbaro embeleso\nCrispó mi faz, me demudó el semblante.\nYa no te amaba, y me turbé, no obstante,\nComo una virgen en un bosque espeso.\n\nY ya perdida para siempre, al verte\nAnochecer en el eterno luto,\n-Mudo el amor, el corazón inerte-,\n\nHuraño, atroz, inexorable, hirsuto...\nJamás viví como en aquella muerte,\nnunca te amé como en aquel minuto!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Amor_s%C3%A1dico",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Bostezo de luz",
+      "texto": "Cien fugas de agua viva rezan a la discreta\nventura de los campos sin lábaro y sin tronos.\nEl incienso sulfúrico que arde por los abonos,\nse hermana a los salobres yodos de la caleta...\n\nCon sus densos perfiles y sus abruptos conos,\na lo lejos, la abstracta serranía concreta\nuna como dormida tormenta violeta\nque el crepúsculo prisma de enigmáticos tonos.\n\nSilencio. Un gran silencio que anestesia y que embruja,\ny una supersticiosa soledad de Cartuja.\nRipian en la plazuela, sobre el único banco,\n\nel señor del Castillo con su galgo y su rifle...\nY allá en la carretera, que abre un bostezo blanco,\nse duerme la tartana lerda del mercachifle.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Bostezo_de_luz",
+      "tags": []
+    },
+    {
+      "titulo": "Bromuro",
+      "texto": "Burlando con frecuencia el vasallaje\nde la tutela familiar en juego,\nnos dimos citas, a favor del ciego\nazar, en el jardín, tras el follaje...\n\nFrufrutó de aventura tu aéreo traje,\nsugestivo de aromas y de espliego...\ny evaporada entre mis brazos, luego,\nsoñaste mundos de arrebol y encaje...\n\nLibres de la zozobra momentánea\n-sin recelarnos de emergencia alguna-\nen los breves silencios, oportuna\n\nte abandonabas a mi fe espontánea;\ny sobre un muro, al trascender, la luna\nnos denunciaba en frágil instantánea.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Bromuro",
+      "tags": []
+    },
+    {
+      "titulo": "Buen día",
+      "texto": "«Do re mi fa» de un piano de vidrio en el follaje...\nRegálase la brisa de un sacro olor a hinojos;\ny protegiendo el dulce descanso del villaje\nvela el paterno cielo con un billón de ojos...\n\nLumbres en la montaña vuelcan sobre el paisaje\nclaroscuros cromáticos y vagos infra-rojos;\npulula en monosílabos crescendos un salvaje\nrumor de insectos; ladran perros en los rastrojos.\n\nDe súbito, el sereno, en trasnochado canto,\npregona: «¡Son las cinco!» Tal como por encanto,\nde gárrulas comadres y vírgenes curiosas\n\nreviven los umbrales; y noche todavía,\ncruzan de boca en boca los ingenuos «buen día»\ncomo hilos de alegre rocío entre las rosas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Buen_d%C3%ADa",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Canícula",
+      "texto": "Labora la coqueta falange rusticana\nque se prepara el sábado para lucir en misa.\nZumba la pedrería musical siempre a prisa,\nde la colmena. Un grillo cri-cra entre la ventana...\n\nLa tarde suda fuego. No cesa la roldana...\nLa gente en los sembrados anda esta vez remisa,\ny hasta la dócil yunta, al aguijón sumisa,\nobedece, por cierto, que de muy mala gana.\n\nHolgando breves horas en la estación que enerva,\nzagales y zagalas se unen sobre la hierba...\nEllas descuidan blancas florescencias carnales,\n\nque muestran, aguas puras, su interior sin mancilla...\nCantan, juegan; y todos son un alma sencilla,\ntal como en las desnudas épocas fraternales.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Can%C3%ADcula",
+      "tags": []
+    },
+    {
+      "titulo": "Consagración",
+      "texto": "Surgió tu blanca majestad de raso,\ntoda sueño y fulgor, en la espesura;\ny era en vez de mi mano -atenta al caso-\nmi alma quien oprimía tu cintura...\n\nDe procaces sulfatos, una impura\nfragancia conspiraba a nuestro paso,\nen tanto que propicio a tu aventura\nllenóse de amapolas el ocaso.\n\nPálida de inquietud y casto asombro,\ntu frente declinó sobre mi hombro...\nUniéndome a tu ser, con suave impulso,\n\nal fin de mi especioso simulacro,\nde un largo beso te apuré convulso\n¡hasta las heces, como un vino sacro!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Consagraci%C3%B3n",
+      "tags": []
+    },
+    {
+      "titulo": "Decoración heráldica",
+      "texto": "Soñé que te encontrabas junto al muro\nglacial donde termina la existencia,\npaseando tu magnífica opulencia\nde doloroso terciopelo oscuro.\n\nTu pie, decoro del marfil más puro,\nhería, con satánica inclemencia,\nlas pobres almas, llenas de paciencia,\nque aún se brindaban a tu amor perjuro.\n\nMi dulce amor que sigue sin sosiego,\nigual que un triste corderito ciego,\nla huella perfumada de tu sombra,\n\nbuscó el suplicio de tu regio yugo,\ny bajo el raso de tu pie verdugo\npuse mi esclavo corazón de alfombra.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Decoraci%C3%B3n_her%C3%A1ldica",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Dominus vobiscum",
+      "texto": "Bosteza el buen Domingo, zángano de semana...\nEl trapero del burgo ronda las callejuelas;\ny enluta el Seminario, en dos sordas estelas,\nsu desfile simétrico, de una misma sotana.\n\nJunto a la fuente, donde chocan sus castañuelas\nlos sapos, el \"elenco\" debuta en la tartana;\ny beato, sobre tantas mansedumbres abuelas,\nel cielo inclina un gesto de bendición cristiana.\n\nDos turistas, muñecos rubios de rostro inmóvil,\nmaniobran la visita de un fogoso automóvil...\nCon su lente y sus frascos y su equipo de viaje,\n\ninvestiga el zootécnico, profesor de lombrices,\ny a su vera, dos chicos, en un gesto salvaje,\natisban, con los húmedos dedos en tas narices.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Dominus_vobiscum",
+      "tags": []
+    },
+    {
+      "titulo": "Ebriedad",
+      "texto": "Apurando la cena de aceitunas y nueces,\nLuth y Cloe se cambian una tersa caricia;\nbeben luego en el hoyo de la mano, tres veces,\nel agua azul que el cielo dio a la estación propicia.\n\nDel corpiño indiscreto, con ingenua malicia,\nella deja que alumbren púberas redondeces.\nY mientras Luth en éxtasis gusta sus embriagueces,\nCloe los bucles pálidos del amante acaricia.\n\nAnochece. Una bruma violeta hace vagos\nel aprisco y la torre, la montaña y los lagos...\nSofocados de dicha, de fragancias y trinos,\n\nella calla y apenas él suspírala: ¡Oh Cloe!\n¡Mas de pronto se abrazan al sentir que un oboe\ninterpreta fielmente sus silencios divinos!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Ebriedad",
+      "tags": []
+    },
+    {
+      "titulo": "El abrazo pitagórico",
+      "texto": "Bajo la madreselva que en la reja\nfiltró su encaje de verdor maduro,\nme perturbaba con el claroscuro\nde la ilusión, en la glorieta añeja...\n\nCristalizaba un pájaro su queja...\nY entre el húmedo incienso de sulfuro\nla luna de ámbar destacó al bromuro\nel caserío de rosada teja...\n\n¡Oh, Sumo Genio de las cosas! Todo\ntenía un canto, una sonrisa, un modo...\nUn rapto azul de amor, o Dios, quién sabe,\n\nnos sumó a modo de una doble ola,\ny en forma de «uno», en una sombra sola,\nlos dos crecimos en la noche grave...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_abrazo_pitag%C3%B3rico",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El alba",
+      "texto": "Humean en la vieja cocina hospitalaria\nlos rústicos candiles... Madrugadora leña\ninfunde una sabrosa fragancia lugareña;\ny el desayuno mima la vocación agraria...\n\nRebota en los collados la grita rutinaria\ndel boyero que a ratos deja la yunta y sueña...\nFilis prepara el huso. Tetis, mientras ordeña,\nofrece a Dios la leche blanca de su plegaria.\n\nAcongojando el valle con sus beatos nocturnos,\nsalen de los establos, lentos y taciturnos,\nlos ganados. La joven brisa se despereza...\n\nY como una pastora, en piadoso desvelo,\ncon sus ojos de bruma, de una dulce pereza,\nel Alba mira en éxtasis las estrellas del cielo.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_alba",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "El almuerzo",
+      "texto": "Llovió. Trisca a lo lejos un sol convaleciente,\nhaciendo entre las piedras brotar una alimaña\ny al son de los compactos resuellos del torrente,\ncon áspera sonrisa palpita la campaña...\n\nRumia en el precipicio una cabra pendiente;\nuna ternera rubia salta entre la maraña,\ny el cielo campesino contempla ingenuamente\nla arruga pensativa que tiene la montaña.\n\nSobre el tronco enastado de un abeto de nieve,\nha rato que se aman Damócaris y Hebe;\nuno con su cayado reanima las pavesas,\n\notro distrae el ocio con pláticas sencillas...\nY de la misma hortera comen higos y fresas,\nmanjares que la Dicha sazona en sus rodillas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_almuerzo",
+      "tags": []
+    },
+    {
+      "titulo": "El ama",
+      "texto": "Erudita en lejías, doctora en la compota\ny loro en los esdrújulos latines de la misa,\ntan ágil viste un santo, que zurce una camisa,\nen medio de una impávida circunstancia devota...\n\nPor cuanto el señor cura es más que un hombre, flota\nen el naufragio unánime su continencia lisa...\nY un tanto regañona, es a la vez sumisa,\ncon los cincuenta inviernos largos de su derrota.\n\nHada del gallinero. Genio de la despensa.\nElla en el paraíso fía la recompensa...\nCuando alegran sus vinos, el vicario la engríe\n\najustándole en chanza las pomposas casullas...\nY en sus manos canónicas, golondrinas y grullas\ncomulgan los recortes de las hostias que fríe.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_ama_(Herrera_y_Reissig)",
+      "tags": []
+    },
+    {
+      "titulo": "El ángelus",
+      "texto": "Salpica, se abre, humea, como la carne herida,\nbajo el fecundo tajo, la palpitante gleba;\nal ritmo de la yunta tiembla la corva esteva,\ny el vientre del terruño se despedaza en vida.\n\nÍmproba y larga ha sido como nunca la prueba...\nLa mujer, que afanosa preparó la comida,\nen procura del amo viene como abstraída,\ndando al pequeño el tibio, dulce licor que nieva.\n\nDe pronto, a la campana, todo el valle responde:\nla madre de rodillas su casto seno esconde;\ndetiénese el labriego y se descubre, y arde\n\nsu mirada en la súplica de piadosos consejos...\nTórnanse al campanario los bueyes. A lo lejos\nel estruendo del río emociona la tarde.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_%C3%A1ngelus",
+      "tags": []
+    },
+    {
+      "titulo": "El baño",
+      "texto": "Entre sauces que velan una anciana casuca,\ndonde se desvistieran devorando la risa,\nhacia el lago, Foloe, Safo y Ceres, de prisa\nse adelantan en medio de la tarde caduca.\n\nAtreve un pie Foloe, bautizase la nuca,\ny ante el espejo de ámbar arróbase indecisa;\nmeneando el talle, Safo respinga su camisa\ny corre, mientras Ceres gatea y se acurruca...\n\nDespués de agrias posturas y esperezos felinos,\ngimiendo un ¡ay! glorioso se abrazan a las ondas,\nque críspanse con lúbricos espasmos masculinos...\n\nMientras, ante el misterio de sus gracias redondas,\nLoth, Febo y David, púdicos tanto como ladinos,\nlas contemplan y pálidos huyen entre las frondas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_ba%C3%B1o",
+      "tags": []
+    },
+    {
+      "titulo": "El burgo",
+      "texto": "Junto al cielo en la cumbre de una sierra lampiña,\ntal como descansando de la marcha, se sienta\nel burgo, con su iglesia, su molino y su venta,\nen medio a un estridente mosaico de campiña.\n\nRegálase de oxígeno, de nuez sana y de piña...\nRige chillonamente gitana vestimenta:\nchales de siembra, rosas y una carga opulenta\nde ágatas, lapislázulis y collares de viña.\n\nNaturaleza pródiga lo embriaga de altruismo;\nel campo es su filósofo, su ley el catecismo.\nFieramente embutido en sus costumbres hoscas,\n\npor vanidad ni gloria mundanas se encapricha;\ntan cerca está del cielo que goza de su dicha,\ny se duerme al narcótico zumbido de las moscas...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_burgo",
+      "tags": []
+    },
+    {
+      "titulo": "El consejo",
+      "texto": "El astrónomo, el vate y el mentor se han reunido...\nLa montaña recoge la polémica agreste;\ny en el aire sonoro de campana celeste,\nlas tres voces retumban como un solo latido.\n\nConjeturan fiebrosos del principio escondido...\nLuego el mago predice la miseria y la peste;\nel poeta improvisa, mientras, vuelto al Oeste,\nel astrónomo anuncia que en Hispania ha llovido.\n\nEbrios de la divina majestad del tramonto,\nlos discursos se agravan.,. Es ya noche. De pronto,\narde en fuga una estrella... interrogan sus rastros\n\ncual mil ojos abiertos al Enigma Infinito:\nse hace triple el silencio del consejo erudito...\nDedos entre la sombra se alzan hacia los astros.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_consejo",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El cura",
+      "texto": "Es el Cura... Lo han visto las crestas silenciarías,\nluchando de rodillas con todos los reveses,\nsalvar en pleno invierno los riesgos montañeses\no trasponer de noche las rutas solitarias.\n\nDe su mano propicia, que hace crecer las mieses,\nsaltan como sortijas gracias involuntarias;\ny en su asno taumaturgo de indulgencias plenarias,\nhasta el umbral del cielo lleva a sus feligreses...\n\nEl pase del hisopo al zueco y la guadaña;\nél ordeña la pródiga ubre de su montaña\npara encender con oros el pobre altar de pino;\n\nde sus sermones fluyen suspiros de albahaca;\nel único pecado que tiene es un sobrino...\nY su piedad humilde lame como una vaca.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_cura",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El despertar",
+      "texto": "Alisia y Cloris abren de par en par la puerta\ny torpes, con el dorso de la mano haragana,\nrestréganse los húmedos ojos de lumbre incierta,\npor donde huyen los últimos sueños de la mañana...\n\nLa inocencia del día se lava en la fontana,\nel arado en el surco vagaroso despierta\ny en torno de la casa rectoral, la sotana\ndel cura se pasea gravemente en la huerta...\n\nTodo suspira y ríe. La placidez remota\nde la montaña sueña celestiales rutinas.\nEl esquilón repite siempre su misma nota\n\nde grillo de las cándidas églogas matutinas.\nY hacia la aurora sesgan agudas golondrinas\ncomo flechas perdidas de la noche en derrota.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_despertar",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El dintel de la vida",
+      "texto": "Oh, la brega que jacta de viruta y de pieles!...\nLas espesas comadres mascan livianas prosas;\nY en proverbiales éxodos, promiscuan las jocosas\nDiligencias, su carga, bajo los cascabeles...\n\nAh, dicha analfabeta sin resabios, ni hieles!\nEl rudo pan del Cielo sabe a tomillo y rosas.\nAh, bañarse en la atónita desnudez de las cosas\nY morir en los brazos de la buena Cibeles!\n\nOh, mañana inefable de la Vida! Oh, la franca\nRisa como de leche de la conciencia blanca!\nAnte el alba inocente -no bien la noche fuga-\n\nSe abre, entre la yerba viciosa de sus calles,\nLa dulce aldea: blanca violeta de los valles,\nSiempre dichosa y siempre buena porque madruga.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_dintel_de_la_vida",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El domingo",
+      "texto": "Te anuncia un ecuménico amasijo de hogaza,\nque el instinto del gato incuba antes que el horno.\nLa grey que se empavesa de sacrílego adorno\nte sustancia en un módico pavo real de zaraza...\n\nUn rezongo de abejas beatifica y solaza\ntu sopor, que no turban ni la rueca ni el torno...\nTú irritas a los sapos líricos del contorno;\ny plebeyo te insulta doble sol en la plaza...\n\n¡Oh domingo! La infancia de espíritu te sueña,\ny el pobre mendicante que es el que más te ordeña...\nTu genio bueno a todos cura de los ayunos,\n\nla Misa te prestigia con insignes vocablos,\n¡y te bendice el beato rumiar de los vacunos\nque sueñan en el tímido Bethlem de los establos!...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_domingo",
+      "tags": []
+    },
+    {
+      "titulo": "El entierro",
+      "texto": "Cuatro rudos gañanes, sobre el hombro herculoso\nsustentan el humilde féretro descubierto.\nEl cura ronca el salmo del eterno reposo,\ny redobla la esquila desde el valle hasta el huerto.\n\nLas melenas volcadas de dolor, con incierto\nritmo tardo y solemne adelantan al foso...\nY los torvos ancianos, con la vista en el muerto,\nse arrodillan en medio de un silencio espantoso.\n\n\"Adiós, alma bendita, paloma de los cielos\",\nreza el cura. Y unánimes desdoblan los pañuelos...\nPor fin, sobre la caja, con íntimo reproche,\n\ncada cual un puñado de tierra vil derrumba...\nTodo duerme. A intervalos lastiman en la noche,\nlos aullidos del perro que vela ante la tumba.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_entierro",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El espejo",
+      "texto": "Se hunden en una sorda crisis meditabunda...\nEl Ocaso suaviza los últimos enojos,\ny Neith enjuga el oro líquido de sus ojos,\ntriste como su hermana, la tarde moribunda...\n\nConspira en acres vahos la insinuación fecunda\nde la Naturaleza, por siembras y rastrojos;\ny ellos, que ora se brindan flores en vez de abrojos,\nsuman entrelazados una unidad profunda.\n\nLargamente, idealmente, como un sacro beleño,\nBión la apura de un beso hasta el fondo del sueño...\nPor no verla, en procura de un instante de calma,\n\ncierra, luego, los ojos, declinando en el hombro\nla armoniosa cabeza, y oh! dulcísimo asombro,\ncomo en un claro espejo, la contempla en el alma.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_espejo_(Herrera_y_Reissig)",
+      "tags": []
+    },
+    {
+      "titulo": "El genio de los campos",
+      "texto": "Por donde humea el último arado en los cultivos,\nagrias interjecciones el eco desentona.\nDe tarde en tarde el ámbito trasunta en su bordona\nla égloga que sueñan los campos subjetivos.\n\nAlamos oxidados y sauces compasivos...\nAldeanas con cestos de fruta. Una amazona...\nEl silencio en la inerte Cartuja congestiona\nde mística Edad Media los panoramas vivos.\n\nInsinúase un vaho de fresales maduros,\ncon sabrosas resinas y violentos sulfuros...\nBajo el vetusto puente, clásica linfa corre,\n\nholgándose entre vegas de ópalo y de raso;\nmientras, muecín sonámbulo, la esquila de la torre\ntraspasa de ultratumba y de Dios el ocaso.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_genio_de_los_campos",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "El guardabosque",
+      "texto": "La mesnada que aúlle o la sierpe se enrosque,\nvela impávido, y sólo que un mal sueño lo exija,\nsuspicaz corno un gato, duérmese el guardabosque\ncon su brazo de almohada y el buen sol por cobija...\n\nÉl se mira en su selva como un padre en su hija.\nY aunque cruja la nieve y aunque el cielo se enfosque\nla primera instantánea del oriente lo fija\ncomo a un genio hierático, Sacerdote del bosque.\n\nLos domingos visita la cocina del noble,\ny al entrar, en la puerta deja el palo de roble.\nDe jamón y pan duro y de lástimas toscas,\n\ncuelga al hombro un surtido y echa a andar taciturno;\ndel cual comen, durante la semana, por turno\nél, los gatos y el perro, la consorte y las moscas...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_guardabosque",
+      "tags": []
+    },
+    {
+      "titulo": "El labrador",
+      "texto": "Cual si pluguiese al Diablo -vaya un decir- engorda\nel granero vecino con la triple cosecha...\nY aunque él jura y zuequea, esta arcilla maltrecha\nsigue siendo madrastra o que realmente es sorda...\n\nMas con todo: ¡«Aires rubios!» -tesonero barbecha-,\ny bien que el medro esquivo no es una vaca gorda,\na Dios gracias la era patrimonial desborda...\ncuanto para ir capeando la estación contrahecha.\n\nY mientras el probable rendimiento calcula,\ncon un pan de la víspera entretiene su gula...\nSabe un gusto a consorte en la masa harto linda,\n\npor lo cual en domésticas bendiciones se arroba...\nY con ojos de humilde Lázaro, el terranova\natisba las migajas que a intervalos le brinda.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_labrador",
+      "tags": [
+        "deus"
+      ]
+    },
+    {
+      "titulo": "El monasterio",
+      "texto": "A una menesterosa disciplina sujeto,\nél no es nadie, él no luce, él no vive, él no medra.\nDescalzo en dura arcilla, con el sayal escueto,\nla cintura humillada por borlones de hiedra...\n\nAbatido en sus muros de rigor y respeto,\nni el alud, ni la peste, sólo el Diablo le arredra;\ny como un perro huraño, él muerde su secreto\ndebajo su capucha centenaria de piedra.\n\nEntre sus claustros húmedos, se inmola día y noche\npor ese mundo ingrato que le asesta un reproche...\nInmóvil ermitaño sin gesto y sin palabras,\n\nen su cabeza anidan cuervos y golondrinas;\nle arrancan el cabello de musgo algunas cabras\ny misericordiosas le cubren las glicinas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_monasterio",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "El regreso",
+      "texto": "La tierra ofrece el ósculo de un saludo paterno\nPasta un mulo la hierba mísera del camino\ny la montaña luce, al tardo sol de invierno,\ncomo una vieja aldeana, su delantal de lino.\n\nUn cielo bondadoso y un céfiro tierno...\nLa zagala descansa de codos bajo el pino,\ny densos los ganados, con paso paulatino,\nacuden a la música sacerdotal del cuerno.\n\nTrayendo sobre el hombro leña para la cena,\nel pastor, cuya ausencia no dura más de un día,\ncamina lentamente rumbo de la alquería.\n\nAl verlo la familia le da la enhorabuena...\nMientras el perro, en ímpetus de lealtad amena,\ndescribe coleando círculos de alegría.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_regreso",
+      "tags": []
+    },
+    {
+      "titulo": "El secreto",
+      "texto": "Se adoran. Timo atiende solícita al gobierno\nde su casuca blanca. Bion, a sus pocas reses.\nY bajo la tutela de días sin reveses,\nAmor retoza y medra como un cabrito tierno.\n\nCon casta dicha, Timo, en el claustro materno,\nsiente latir un nuevo corazón de tres meses...\nY sueña, en sus oscuros arrobos montañeses,\nque la penetra un rayo del Dinamismo Eterno.\n\nAnte el amante, presa de ardores purpurinos,\nse turba y el secreto tiembla en sus labios rojos:\nhuye, torna, sonríe, se oculta entre los pinos...\n\nBion calla, pero apenas descifra sus sonrojos\nla estrecha, y en un beso pone el alma en sus ojos\ndonde laten los últimos ópalos vespertinos.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_secreto",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "El teatro de los humildes",
+      "texto": "Es una ingenua página de la Biblia el paisaje...\nLa tarde en la montaña, moribunda se inclina,\ny el sol un postrer lampo, como una aguja fina,\npasa por los quiméricos miradores de encaje.\n\nUn vaho de infinita guturación salvaje,\nde abstracta disonancia, remota a la sordina...\nLa noche dulcemente sonríe ante el villaje\ncomo una buena muerte a una conciencia albina.\n\nSobre la gran campaña verde, azul y aceituna,\nse cuajan los apriscos en vagas nebulosas;\ncien estrellas lozanas han abierto una a una;\n\nRasca un grillo el silencio perfumado de rosas...\nEl molino en el fondo, abrazando a la luna,\ninspira de romántico viejo tiempo las cosas.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/El_teatro_de_los_humildes",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Epitalamio ancestral",
+      "texto": "Con pompa de brahmánicas unciones,\nabrióse el lecho de tus primaveras,\nante un lúbrico rito de panteras,\ny una erección de símbolos varones...\n\nAl trágico fulgor de los hachones,\nondeó la danza de las bayaderas\npor entre una apoteosis de banderas\ny de un siniestro trueno de leones.\n\nArdió al epitalamio de tu paso,\nun himno de trompetas fulgurantes...\nSobre mi corazón, los hierofantes\n\nungieron tu sandalia, urna de raso,\na tiempo que cien blancos elefantes,\nenroscaron su trompa hacia el ocaso.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Epitalamio_ancestral",
+      "tags": []
+    },
+    {
+      "titulo": "Exhalación suprema",
+      "texto": "Bajo el regio crepúsculo de oro azul y grosella,\nTítiro en la dulzaina solemniza su cuita,\nmientras Lux, taciturna de idilio en la hora aquella,\nbajo los abedules, sólo por él palpita...\n\nLux delira. En su alma ha nacido una estrella,\naspirando esa música tan honda y exquisita,\nque evapora un suspiro de la tarde infinita,\ncon todo lo que calla de más sublime en ella.\n\nEn su seno de virgen, late Amor un impronto\nde ansiedad que le asfixia... Es ya noche. De pronto,\nla dulzaina solloza un adiós mortecino,\n\ny silencia ante el éxtasis de los lagos azules.\nHa muerto un alma blanca bajo los abedules...\nVoces intermitentes zumban en el camino.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Exhalaci%C3%B3n_suprema",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Éxtasis",
+      "texto": "Bion y Lucina, émulos en fervoroso alarde,\npermútanse fragantes uvas, de boca a boca;\ny cuando Bion ladino la ebria fruta emboca\nfinge para que el juego lánguido se retarde...\n\nLuego, ante el oportuno carrillón de la tarde,\nque en sus almas perdidas inocencias evoca,\ncomo una corza tímida tiembla el amor cobarde,\ny una paz de los cielos el instinto sofoca...\n\nDespués de un tiempo inerte de silencioso arrimo,\nen que los dos ensayan la insinuación de un mimo,\nella lo invade todo con un suspiro blando;\n\n¡y él, que como una esencia gusta el sabroso fuego,\nraya un beso delgado sobre su nuca, y ciego\nen divinos transportes la disfruta soñando!",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/%C3%89xtasis_(Herrera_y_Reissig)",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "Fecundidad",
+      "texto": "«¡Adán, Adán, un beso!», dijo, y era\nque en una dolorosa sacudida,\nel absurdo nervioso de la vida\nle hizo temblar el dorso y la cadera...\n\nEl iris floreció como una ojera\nexótica. Y el «¡ay!» de una caída\nfue el más dulce dolor. Y fue una herida.\nLa más roja y eterna primavera...\n\n«¡Adán, Adán, procúrame un veneno!»,\ndijo, y en una crispación flagrante\nla eternidad atravesóle el seno...\n\nEntonces comenzó a latir el mundo.\nY el sol colgaba del cenit, triunfante\ncomo un ígneo testículo fecundo.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Fecundidad_(Herrera_y_Reissig)",
+      "tags": []
+    },
+    {
+      "titulo": "Fiat lux",
+      "texto": "Sobre el rojo diván de seda intacta,\ncon dibujos de exótica graminea,\njadeaba entre mis brazos tu virgínea\ny exangüe humanidad de curva abstracta...\n\nMiró el felino con sinuosa línea\nde opalo; y en la noche estupefacta,\ndesde el jardín, la Venus curvilínea\nmanifestaba su esbeltez compacta.\n\nAnte el alba, que izó nimbos grosellas,\najáronse las últimas estrellas...\nEl Cristo de tu lecho estaba mudo.\n\nY como un huevo, entre el plumón de armiño\nque un cisne fecundara, tu desnudo\nseno brotó del virginal corpiño...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Fiat_lux",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Fiesta popular de ultratumba",
+      "texto": "Un gran salón. Un trono. Cortinas. Graderías.\n(Adonis ríe con Eros de algo que ha visto en Aspasia)\nLas lunas de los espejos muestran sus pálidos días,\nY hay en el techo y la alfombra mil panoramas de Asia.\n\nLas lámparas se consumen en amarillas lujurias,\nY las estufas se encienden en pubertades de fuego;\n(Entran Sátiros, Gorgonas, Ménades, Ninfas y Furias;\nMientras recita unos versos el viejo patriarca griego).\n\nUnos pajes a la puerta visten dorado uniforme;\nCruzan la sala doncellas ornadas con velos blancos.\n(Anuncian: están Goliat y una señora biforme\nQue tiene la mitad pez, Barba Azul y sus dos zancos).\n\nUn buen Término se ríe de un efebo que se baña.\nTodos tiemblan de repente. (Entra el Hércules nervudo)\nGrita Petronio: ¡Falerno! Grita Luis Once: ¡Champaña!",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Fiesta_popular_de_ultratumba",
+      "tags": []
+    },
+    {
+      "titulo": "Galantería ingenua",
+      "texto": "A través de la bruma invernal y del limo,\ntras el hato, Fonoe cabra la senda terca;\nmas de pronto, un latido dícele que él se acerca...\nY, en efecto, oye el silbo de Melampo su primo.\n\nA la llama, el coloquio busca sabroso arrimo;\nluego inundan sus fiebres en la miel de la alberca;\nhasta que la incitante fruta de ajena cerca\nles brinda la luz verde dulce de su racimo.\n\nDespués ríen... ¡de nada! ¿para qué tendrán boca?\nY por fin -Dios lo quiso- él, de espaldas la choca\ny la estriega y la burla, ya que Amor bien maltrata...\n\nY ella en púdicas grimas, con dignidades tiernas\nde doncellez, se frunce el percal que recata\nla primicia insinuante de sus prósperas piernas...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Galanter%C3%ADa_ingenua",
+      "tags": [
+        "amor",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "Génesis",
+      "texto": "Los astros tienen las mejillas tiernas...\nLa Luna trunca es una paradoja\nespectro humana. Proserpina arroja\nsu sangre al mar. Las horas son eternas.\n\nJúpiter en la orgía desenoja\nsu ceño absurdo; y junto a las cisternas,\nlas Ménades, al sol que las sonroja,\narman la columnata de sus piernas.\n\nJuno duerme cien noches. ..Vorazmente,\nHércules niño, con precoz desvelo,\nen un lúbrico rapto de serpiente,\n\nle muerde el seno. Brama el Helesponto...\nSurge un lampo de leche. Y en el cielo\nla Vía Láctea escintiló de pronto.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/G%C3%A9nesis_(Herrera_y_Reissig)",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Idealidad exótica",
+      "texto": "Tal la exangüe cabeza, trunca y viva,\nde un mandarín decapitado, en una\nmacábrica ficción, rodó la luna\nsobre el absurdo de la perspectiva...\n\nBajo del velo, tu mirada bruna\nte dio el prestigio de una hunrí cautiva;\ny el cocodrilo, a flor de la moruna\nfuente, cantó su soledad esquiva.\n\nSusceptible quién sabe a qué difuntas\ndichas, plegada y con las manos juntas,\nte idealizaste en gesto sibilino,,,\n\nY a modo de espectrales obsesiones,\nla torva cornamenta de un molino\namenazaba las constelaciones...",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Idealidad_ex%C3%B3tica",
+      "tags": []
+    },
+    {
+      "titulo": "Idilio",
+      "texto": "La sombra de una nube sobre el césped recula...\nAclara entre montañas rosas la carretera\npor donde un coche antiguo, de tintinante mula,\nllena de ritornelos la tarde placentera.\n\nHundidos en la hierba gorda de la ribera,\nlos vacunos solemnes satisfacen su gula;\ny en lácteas vibraciones de ópalo, gesticula\nallá, bajo una encina, la mancha de una hoguera.\n\nEdipo y Diana, jóvenes libres de la campiña,\nhacen testigo al fuego de sus amores sabios;\ncon gestos y pellizcos recélanse de agravios;\n\nmientras él finge un largo mordisco, ella le guiña:\ny así las horas pasan en su inocente riña,\ncomo una suave pluma por unos bellos labios.",
+      "forma": "soneto",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://es.wikisource.org/wiki/Idilio_(Herrera_y_Reissig)",
+      "tags": []
+    }
+  ]
+}

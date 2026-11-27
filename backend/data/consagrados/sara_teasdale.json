@@ -1,0 +1,463 @@
+{
+  "username": "sara_teasdale",
+  "name": "Sara Teasdale",
+  "bio": "Poetisa de St. Louis. Love Songs levou o primeiro Pulitzer de poesia, em 1918.",
+  "avatar_url": "",
+  "nascimento": 1884,
+  "morte": 1933,
+  "escolas": ["modernismo_vanguardas"],
+  "pais": "US",
+  "poemas": [
+    {
+      "titulo": "Enough",
+      "texto": "It is enough for me by day\n  To walk the same bright earth with him;\nEnough that over us by night\n  The same great roof of stars is dim.\n\nI do not hope to bind the wind\n  Or set a fetter on the sea—\nIt is enough to feel his love\n  Blow by like music over me.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/Enough",
+      "tags": [
+        "amor",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Enough",
+      "texto": "It is enough for me by day\n  To walk the same bright earth with him;\nEnough that over us by night\n  The same great roof of stars is dim.\n\nI have no care to bind the wind\n  Or set a fetter on the sea—\nIt is enough to feel his love\n  Blow by like music over me.",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/Enough",
+      "tags": [
+        "amor",
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "A Little While",
+      "texto": "A little while when I am gone\n  My life will live in music after me,\nAs spun foam lifted and borne on\n  After the wave is lost in the full sea.\n\nA while these nights and days will burn\n  In song with the bright frailty of foam,\nLiving in light before they turn\n  Back to the nothingness that is their home.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22A_Little_While%22",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Did You Never Know?",
+      "texto": "Did you never know, long ago, how much you loved me—\n  That your love would never lessen and never go?\nYou were young then, proud and fresh-hearted,\n  You were too young to know.\n\nFate is a wind, and red leaves fly before it\n  Far apart, far away in the gusty time of year—\nSeldom we meet now, but when I hear you speaking,\n  I know your secret, my dear, my dear.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Did_You_Never_Know%3F%22",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "I Am Not Yours",
+      "texto": "I am not yours, not lost in you,\n  Not lost, although I long to be\nLost as a candle lit at noon,\n  Lost as a snowflake in the sea.\n\nYou love me, and I find you still\n  A spirit beautiful and bright,\nYet I am I, who long to be\n  Lost as a light is lost in light.\n\nOh plunge me deep in love—put out\n  My senses, leave me deaf and blind,\nSwept by the tempest of your love,\n  A taper in a rushing wind.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/%22I_Am_Not_Yours%22",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "I Am Not Yours",
+      "texto": "I am not yours, not lost in you,\n  Not lost, altho' I long to be\nLost as a candle lit at noon,\n  Lost as a snow-flake in the sea.\n\nYou love me, and I find you still\n  A spirit beautiful and bright,\nYet I am I, who long to be\n  Lost as a light is lost in light.\n\nOh plunge me deep in love—put out\n  My senses, leave me deaf and blind,\nSwept by the tempest of your love,\n  A taper in a rushing wind.",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/%22I_Am_Not_Yours%22",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "I Have Loved Hours at Sea",
+      "texto": "I have loved hours at sea, gray cities,\n  The fragile secret of a flower,\nMusic, the making of a poem\n  That gave me heaven for an hour;\n\nFirst stars above a snowy hill,\n  Voices of people kindly and wise.\nAnd the great look of love, long hidden,\n  Found at last in meeting eyes.\n\nI have loved much and been loved deeply—\n  Oh when my spirit's fire burns low,\nLeave me the darkness and the stillness,\n  I shall be tired and glad to go.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22I_Have_Loved_Hours_at_Sea%22",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "I Know the Stars",
+      "texto": "I know the stars by their names,\n  Aldebaran, Altair,\nAnd I know the path they take\n  Up heaven's broad blue stair.\n\nI know the secrets of men\n  By the look of their eyes,\nTheir gray thoughts, their strange thoughts\n  Have made me sad and wise.\n\nBut your eyes are dark to me\n  Though they seem to call and call—\nI cannot tell if you love me\n  Or do not love me at all.\n\nI know many things,\n  But the years come and go,\nI shall die not knowing\n  The thing I long to know.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22I_Know_the_Stars%22",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "I Thought of You",
+      "texto": "I thought of you and how you love this beauty,\n  And walking up the long beach all alone\nI heard the waves breaking in measured thunder\n  As you and I once heard their monotone.\n\nAround me were the echoing dunes, beyond me\n  The cold and sparkling silver of the sea—\nWe two will pass through death and ages lengthen\n  Before you hear that sound again with me.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22I_Thought_of_You%22",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "If I Must Go",
+      "texto": "If I must go to heaven's end\n  Climbing the ages like a stair,\nBe near me and forever bend\n  With the same eyes above me there;\nTime will fly past us like leaves flying,\n  We shall not heed, for we shall be\nBeyond living, beyond dying,\n  Knowing and known unchangeably.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22If_I_Must_Go%22",
+      "tags": []
+    },
+    {
+      "titulo": "It Is Not a Word",
+      "texto": "It is not a word spoken,\n  Few words are said;\nNor even a look of the eyes\n  Nor a bend of the head,\nBut only a hush of the heart\n  That has too much to keep,\nOnly memories waking\n  That sleep so light a sleep.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22It_Is_Not_a_Word%22",
+      "tags": []
+    },
+    {
+      "titulo": "It Will Not Change",
+      "texto": "It will not change now\n  After so many years;\nLife has not broken it\n  With parting or tears;\nDeath will not alter it,\n  It will live on\nIn all my songs for you\n  When I am gone.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22It_Will_Not_Change%22",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "Let It Be Forgotten",
+      "texto": "Let it be forgotten, as a flower is forgotten,\n  Forgotten as a fire that once was singing gold,\nLet it be forgotten for ever and ever,\n  Time is a kind friend, he will make us old.\n\nIf anyone asks, say it was forgotten\n  Long and long ago,\nAs a flower, as a fire, as a hushed footfall\n  In a long forgotten snow.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Let_It_Be_Forgotten%22",
+      "tags": []
+    },
+    {
+      "titulo": "Like Barley Bending",
+      "texto": "  In low fields by the sea,\nSinging in hard wind\n  Ceaselessly;\n\nLike barley bending\n  And rising again,\nSo would I, unbroken,\n  Rise from pain;\n\nSo would I softly,\n  Day long, night long,\nChange my sorrow\n  Into song.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Like_Barley_Bending%22",
+      "tags": [
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "My Heart Is Heavy",
+      "texto": "My heart is heavy with many a song\n  Like ripe fruit bearing down the tree,\nBut I can never give you one—\n  My songs do not belong to me.\n\nYet in the evening, in the dusk\n  When moths go to and fro,\nIn the gray hour if the fruit has fallen,\n  Take it, no one will know.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22My_Heart_Is_Heavy%22",
+      "tags": []
+    },
+    {
+      "titulo": "Oh Day of Fire and Sun",
+      "texto": "  Pure as a naked flame,\nBlue sea, blue sky and dun\n  Sands where he spoke my name;\n\nLaughter and hearts so high\n  That the spirit flew off free,\nLifting into the sky\n  Diving into the sea;\n\nOh day of fire and sun\n  Like a crystal burning,\nSlow days go one by one,\n  But you have no returning.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Oh_Day_of_Fire_and_Sun%22",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Oh You Are Coming",
+      "texto": "Oh you are coming, coming, coming,\n  How will hungry Time put by the hours till then?—\nBut why does it anger my heart to long so\n  For one man out of the world of men?\n\nOh I would live in myself only\n  And build my life lightly and still as a dream—\nAre not my thoughts clearer than your thoughts\n  And colored like stones in a running stream?\n\nNow the slow moon brightens in heaven,\n  The stars are ready, the night is here—\nOh why must I lose myself to love you,\n  My dear?",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Oh_You_Are_Coming%22",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Only in Sleep",
+      "texto": "Only in sleep I see their faces,\n  Children I played with when I was a child,\nLouise comes back with her brown hair braided,\n  Annie with ringlets warm and wild.\n\nOnly in sleep Time is forgotten—\n  What may have come to them, who can know?\n  Yet we played last night as long ago,\nAnd the doll-house stood at the turn of the stair.\n\nThe years had not sharpened their smooth round faces,\n  I met their eyes and found them mild—\nDo they, too, dream of me, I wonder,\n  And for them am I too a child?",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Only_in_Sleep%22",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Since There Is No Escape",
+      "texto": "Since there is no escape, since at the end\n  My body will be utterly destroyed,\nThis hand I love as I have loved a friend,\n  This body I tended, wept with and enjoyed;\nSince there is no escape even for me\n  Who love life with a love too sharp to bear:\nThe scent of orchards in the rain, the sea\n  And hours alone too still and sure for prayer—\nSince darkness waits for me, then all the more\nLet me go down as waves sweep to the shore\n  In pride; and let me sing with my last breath;\nIn these few hours of light I lift my head;\nLife is my lover—I shall leave the dead\n  If there is any way to baffle death.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22Since_There_Is_No_Escape%22",
+      "tags": [
+        "amor",
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "The Dreams of My Heart",
+      "texto": "The dreams of my heart and my mind pass,\n  Nothing stays with me long,\nBut I have had from a child\n  The deep solace of song;\n\nIf that should ever leave me,\n  Let me find death and stay\nWith things whose tunes are played out and forgotten\n  Like the rain of yesterday.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22The_Dreams_of_My_Heart%22",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "There Will Come Soft Rains",
+      "texto": "(War Time)\n\nThere will come soft rains and the smell of the ground,\nAnd swallows circling with their shimmering sound;\n\nAnd frogs in the pools singing at night,\nAnd wild plum-trees in tremulous white;\n\nRobins will wear their feathery fire\nWhistling their whims on a low fence-wire;\n\nAnd not one will know of the war, not one\nWill care at last when it is done.\n\nNot one would mind, neither bird nor tree\nIf mankind perished utterly;\n\nAnd Spring herself, when she woke at dawn,\nWould scarcely know that we were gone.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22There_Will_Come_Soft_Rains%22",
+      "tags": [
+        "guerra",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "What Do I Care?",
+      "texto": "What do I care, in the dreams and the languor of spring,\n  That my songs do not show me at all?\nFor they are a fragrance, and I am a flint and a fire,\n  I am an answer, they are only a call.\n\nBut what do I care, for love will be over so soon,\n  Let my heart have its say and my mind stand idly by,\nFor my mind is proud and strong enough to be silent,\n  It is my heart that makes my songs, not I.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/%22What_Do_I_Care%3F%22",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Ballad of Two Knights",
+      "texto": "TWO knights rode forth at early dawn\n  A-seeking maids to wed.\nSaid one, \"My lady must be fair,\n  With gold hair on her head.\"\n\nThen spake the other knight-at-arms:\n  \"I care not for her face,\nBut she I love must be a dove\n  For purity and grace.\"\n\nAnd each knight blew upon his horn\n  And went his separate way,\nAnd each knight found a lady-love\n  Before the fall of day.\n\nBut she was brown who should have had\n  The shining yellow hair—\nI ween the knights forgot their words\n  Or else they ceased to care.\n\nFor he who wanted purity\n  Brought home a wanton wild,\nAnd when each saw the other knight\n  I ween that each knight smiled.",
+      "forma": "outro",
+      "obra": "Helen of Troy and Other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Helen_of_Troy_and_Other_Poems/A_Ballad_of_Two_Knights",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Boy",
+      "texto": "Out of the noise of tired people working,\n  Harried with thoughts of war and lists of dead,\nHis beauty met me like a fresh wind blowing,\n  Clean boyish beauty and high-held head.\n\nEyes that told secrets, lips that would not tell them,\n  Fearless and shy the young unwearied eyes—\nMen die by millions now, because God blunders,\n  Yet to have made this boy he must be wise.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/A_Boy",
+      "tags": [
+        "morte",
+        "guerra",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "A Cry",
+      "texto": "Oh, there are eyes that he can see,\n  And hands to make his hands rejoice,\nBut to my lover I must be\n  Only a voice.\n\nOh, there are breasts to bear his head,\n  And lips whereon his lips can lie,\nBut I must be till I am dead\n  Only a cry.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/A_Cry",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Fantasy",
+      "texto": "HER voice is like clear water\n  That drips upon a stone\nIn forests far and silent\n  Where Quiet plays alone.\n\nHer thoughts are like the lotus\n  Abloom by sacred streams\nBeneath the temple arches\n  Where Quiet sits and dreams.\n\nHer kisses are the roses\n  That glow while dusk is deep\nIn Persian garden closes\n  Where Quiet falls asleep.",
+      "forma": "outro",
+      "obra": "Helen of Troy and Other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Helen_of_Troy_and_Other_Poems/A_Fantasy",
+      "tags": []
+    },
+    {
+      "titulo": "A Maiden",
+      "texto": "OH if I were the velvet rose\n  Upon the red rose vine,\nI'd climb to touch his window\n  And make his casement fine.\n\nAnd if I were the little bird\n  That twitters on the tree,\nAll day I'd sing my love for him\n  Till he should harken me.\n\nBut since I am a maiden\n  I go with downcast eyes,\nAnd he will never hear the songs\n  That he has turned to sighs.\n\nAnd since I am a maiden\n  My love will never know\nThat I could kiss him with a mouth\n  More red than roses blow.",
+      "forma": "outro",
+      "obra": "Helen of Troy and Other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Helen_of_Troy_and_Other_Poems/A_Maiden",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Minuet of Mozart's",
+      "texto": "ACROSS the dimly lighted room\n  The violin drew wefts of sound,\n  Airily they wove and wound\nAnd glimmered gold against the gloom.\n\nI watched the music turn to light,\n  But at the pausing of the bow,\n  The web was broken and the glow\nWas drowned within the wave of night.",
+      "forma": "outro",
+      "obra": "Helen of Troy and Other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Helen_of_Troy_and_Other_Poems/A_Minuet_of_Mozart%27s",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "A November Night",
+      "texto": "There! See the line of lights,\nA chain of stars down either side the street—\nWhy can't you lift the chain and give it to me,\nA necklace for my throat? I'd twist it round\nAnd you could play with it. You smile at me\nAs though I were a little dreamy child\nBehind whose eyes the fairies live. . . . And see,\nThe people on the street look up at us\nAll envious. We are a king and queen,\nOur royal carriage is a motor bus,\nWe watch our subjects with a haughty joy. . . .\nHow still you are! Have you been hard at work\nAnd are you tired to-night? It is so long\nSince I have seen you—four whole days, I think.\nMy heart is crowded full of foolish thoughts\nLike early flowers in an April meadow,\nAnd I must give them to you, all of them,\nBefore they fade. The people I have met,\nThe play I saw, the trivial, shifting things\nThat loom too big or shrink too little, shadows\nThat hurry, gesturing along a wall,\nHaunting or gay—and yet they all grow real\nAnd take their proper size here in my heart\nWhen you have seen them. . . . There's the Plaza now,\nA lake of light! To-night it almost seems\nThat all the lights are gathered in your eyes,\nDrawn somehow toward you. See the open park\nLying below us with a million lamps\nScattered in wise disorder like the stars.\nWe look down on them as God must look down\nOn constellations floating under Him\nTangled in clouds. . . . Come, then, and let us walk\nSince we have reached the park. It is our garden,\nAll black and blossomless this winter night,\nBut we bring April with us, you and I;\nWe set the whole world on the trail of spring.\nI think that every path we ever took\nHas marked our footprints in mysterious fire,\nDelicate gold that only fairies see.\nWhen they wake up at dawn in hollow tree-trunks\nAnd come out on the drowsy park, they look\nAlong the empty paths and say, \"Oh, here\nThey went, and here, and here, and here! Come, see,\nHere is their bench, take hands and let us dance\nAbout it in a windy ring and make\nA circle round it only they can cross\nWhen they come back again!\"…Look at the lake—\nDo you remember how we watched the swans\nThat night in late October while they slept?\nSwans must haw stately dreams, I think. But now\nThe lake bears only thin reflected lights\nThat shake a little. How I long to take\nOne from the cold black water—new-made gold\nTo give you in your hand! And see, and see,\nThere is a star, deep in the lake, a star!\n\nOh, dimmer than a pearl—if you stoop down\nYour hand could almost reach it up to me. . . .\n\nThere was a new frail yellow moon to-night—\nI wish you could have had it for a cup\nWith stars like dew to fill it to the brim. . . .\n\nHow cold it is! Even the lights are cold;\nThey have put shawls of fog around them, see!\nWhat if the air should grow so dimly white\nThat we would lose our way along the paths\nMade new by walls of moving mist receding\nThe more we follow. . . . What a silver night!\nThat was our bench the time you said to me\nThe long new poem—but how different now,\nHow eerie with the curtain of the fog\nMaking it strange to all the friendly trees!\nThere is no wind, and yet great curving scrolls\nCarve themselves, ever changing, in the mist.\nWalk on a little, let me stand here watching\nTo see you, too, grown strange to me and far. . . .\nI used to wonder how the park would be\nIf one night we could have it all alone—\nNo lovers with close arm-encircled waists\nTo whisper and break in upon our dreams.\nAnd now we haw it! Every wish comes true!\nWe are alone now in a fleecy world;\nEven the stars have gone. We two alone!\n\nPrinted in the United States of America.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/A_November_Night",
+      "tags": [
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "A Prayer",
+      "texto": "When I am dying, let me know\nThat I loved the blowing snow\n  Although it stung like whips;\nThat I loved all lovely things\nAnd I tried to take their stings\n  With gay unembittered lips;\nThat I loved with all my strength,\nTo my soul's full depth and length,\n  Careless if my heart must break,\nThat I sang as children sing\nFitting tunes to everything,\n  Loving life for its own sake.",
+      "forma": "outro",
+      "obra": "Flame and Shadow",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Flame_and_Shadow/A_Prayer",
+      "tags": []
+    },
+    {
+      "titulo": "A Prayer",
+      "texto": "Until I lose my soul and lie\n  Blind to the beauty of the earth,\nDeaf though shouting wind goes by,\n  Dumb in a storm of mirth;\n\nUntil my heart is quenched at length\n  And I have left the land of men,\nOh, let me love with all my strength\n  Careless if I am loved again.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/A_Prayer",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Prayer",
+      "texto": "Until I lose my soul and lie\n  Blind to the beauty of the earth,\nDeaf tho' a lyric wind goes by,\n  Dumb in a storm of mirth;\n\nUntil my heart is quenched at length\n  And I have left the land of men,\nOh let me love with all my strength\n  Careless if I am loved again.",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/A_Prayer",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Song of the Princess",
+      "texto": "THE princess has her lovers,\n  A score of knights has she,\nAnd each can sing a madrigal,\n  And praise her gracefully.\n\nBut Love that is so bitter\n  Hath put within her heart\nA longing for the scornful knight\n  Who silent stands apart.\n\nAnd tho' the others praise and plead,\n  She maketh no reply,\nYet for a single word from him,\n  I ween that she would die.",
+      "forma": "outro",
+      "obra": "Helen of Troy and Other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Helen_of_Troy_and_Other_Poems/A_Song_of_the_Princess",
+      "tags": [
+        "amor",
+        "saudade"
+      ]
+    },
+    {
+      "titulo": "A Song to Eleonora Duse in \"Francesca da Rimini",
+      "texto": "Oh would I were the roses, that lie against her hands,\nThe heavy burning roses she touches as she stands!\n\nDear hands that hold the roses, where mine would love to be,\nOh leave, oh leave the roses, and hold the hands of me!\n\nShe draws the heart from out them, she draws away their breath,—\nOh would that I might perish and find so sweet a death!",
+      "forma": "outro",
+      "obra": "Sonnets to Duse and other Poems",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Sonnets_to_Duse_and_other_Poems/A_Song_to_Eleonora_Duse_in_%22Francesca_da_Rimini%22",
+      "tags": [
+        "amor",
+        "morte"
+      ]
+    },
+    {
+      "titulo": "A Winter Bluejay",
+      "texto": "Crisply the bright snow whispered,\nCrunching beneath our feet;\nBehind us as we walked along the parkway,\nOur shadows danced,\nFantastic shapes in vivid blue.\nAcross the lake the skaters\nFlew to and fro,\nWith sharp turns weaving\nA frail invisible net.\nIn ecstasy the earth\nDrank the silver sunlight;\nIn ecstasy the skaters\nDrank the wine of speed;\nIn ecstasy we laughed\nDrinking the wine of love.\nHad not the music of our joy\nSounded its highest note?\nBut no,\nFor suddenly, with lifted eyes you said,\n\"Oh look!\"\nThere, on the black bough of a snow flecked maple,\nFearless and gay as our love,\nA bluejay cocked his crest!\nOh who can tell the range of joy\nOr set the bounds of beauty?",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/A_Winter_Bluejay",
+      "tags": [
+        "amor"
+      ]
+    },
+    {
+      "titulo": "A Winter Night",
+      "texto": "My window-pane is starred with frost,\n  The world is bitter cold to-night,\nThe moon is cruel, and the wind\n  Is like a two-edged sword to smite.\n\nGod pity all the homeless ones,\n  The beggars pacing to and fro,\nGod pity all the poor to-night\n  Who walk the lamp-lit streets of snow.\n\nMy room is like a bit of June,\n  Warm and close-curtained fold on fold,\nBut somewhere, like a homeless child,\n  My heart is crying in the cold.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/A_Winter_Night",
+      "tags": [
+        "noite",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "After Death",
+      "texto": "Now while my lips are living\n  Their words must stay unsaid,\nAnd will my soul remember\n  To speak when I am dead?\n\nYet if my soul remembered\n  You would not heed it, dear,\nFor now you must not listen,\n  And then you could not hear.",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/After_Death",
+      "tags": [
+        "morte"
+      ]
+    },
+    {
+      "titulo": "After Love",
+      "texto": "There is no magic any more,\n  We meet as other people do,\nYou work no miracle for me\n  Nor I for you.\n\nYou were the wind and I the sea—\n  There is no splendor any more,\nI have grown listless as the pool\n  Beside the shore.\n\nBut though the pool is safe from storm\n  And from the tide has found surcease,\nIt grows more bitter than the sea,\n  For all its peace.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/After_Love",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "After Love",
+      "texto": "There is no magic when we meet,\n  We speak as other people do,\nYou work no miracle for me\n  Nor I for you.\n\nYou were the wind and I the sea—\n  There is no splendor any more,\nI have grown listless as the pool\n  Beside the shore.\n\nBut tho' the pool is safe from storm\n  And from the tide has found surcease,\nIt grows more bitter than the sea,\n  For all its peace.",
+      "forma": "outro",
+      "obra": "Rivers to the Sea (Collection)",
+      "ano": null,
+      "fonte": "https://en.wikisource.org/wiki/Rivers_to_the_Sea_(Collection)/After_Love",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "After Parting",
+      "texto": "Oh, I have sown my love so wide\n  That he will find it everywhere;\nIt will awake him in the night,\n  It will enfold him in the air.\n\nI set my shadow in his sight\n  And I have winged it with desire,\nThat it may be a cloud by day,\n  And in the night a shaft of fire.",
+      "forma": "outro",
+      "obra": "Love Songs (1917)",
+      "ano": 1917,
+      "fonte": "https://en.wikisource.org/wiki/Love_Songs_(1917)/After_Parting",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    }
+  ]
+}

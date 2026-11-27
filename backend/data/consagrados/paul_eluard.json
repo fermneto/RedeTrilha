@@ -1,0 +1,248 @@
+{
+  "username": "paul_eluard",
+  "name": "Paul Éluard",
+  "bio": "Poeta surrealista francês. Capitale de la douleur (1926) é o livro mais lido.",
+  "avatar_url": "",
+  "nascimento": 1895,
+  "morte": 1952,
+  "escolas": [
+    "modernismo_vanguardas"
+  ],
+  "pais": "FR",
+  "poemas": [
+    {
+      "titulo": "Bientôt",
+      "texto": "De tous les printemps du monde\nCelui-ci est le plus laid\nEntre toutes mes façons d’être\nLa confiante est la meilleure\n\nL’herbe soulève la neige\nComme la pierre d’un tombeau\nMoi je dors dans la tempête\nEt je m’éveille les yeux clairs\n\nLe lent le petit temps s’achève\nOù toute rue devait passer\nPar mes plus intimes retraites\nPour que je rencontre quelqu’un\n\nJe n’entends pas parler les monstres\nJe les connais ils ont tout dit\nJe ne vois que les beaux visages\nLes bons visages sûrs d’eux-mêmes\n\nSûrs de ruiner bientôt leurs maîtres.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Bient%C3%B4t",
+      "tags": []
+    },
+    {
+      "titulo": "Celle de toujours, toute",
+      "texto": "Si je vous dis : « j’ai tout abandonné »\nC’est qu’elle n’est pas celle de mon corps,\nJe ne m’en suis jamais vanté,\nCe n’est pas vrai\nEt la brume de fond où je me meus\nNe sait jamais si j’ai passé.\n\nL’éventail de sa bouche, le reflet de ses yeux,\nJe suis le seul à en parler,\nJe suis le seul qui soit cerné\nPar ce miroir si nul où l’air circule à travers moi\nEt l’air a un visage, un visage aimé,\nUn visage aimant, ton visage,\nÀ toi qui n’as pas de nom et que les autres ignorent,\nLa mer te dit : sur moi, le ciel te dit : sur moi,\nLes astres te devinent, les nuages t’imaginent\nEt le sang répandu aux meilleurs moments,\nLe sang de la générosité\nTe porte avec délices.\n\nJe chante la grande joie de te chanter,\nLa grande joie de t’avoir ou de ne pas t’avoir,\n\nLa candeur de t’attendre, l’innocence de te connaître,\nO toi qui supprimes l’oubli, l’espoir et l’ignorance,\nQui supprimes l’absence et qui me mets au monde ;\nJe chante pour chanter, je t’aime pour chanter\nLe mystère où l’amour me crée et se délivre.\n\nTu es pure, tu es encore plus pure que moi-même.",
+      "forma": "verso_livre",
+      "obra": "Capitale de la douleur",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Capitale_de_la_douleur/Nouveaux_Po%C3%A8mes/Celle_de_toujours%2C_toute",
+      "tags": [
+        "amor",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "Couvre-feu",
+      "texto": "Que voulez-vous la porte était gardée\nQue voulez-vous nous étions enfermés\nQue voulez-vous la rue était barrée\nQue voulez-vous la ville était matée\nQue voulez-vous elle était affamée\nQue voulez-vous nous étions désarmés\nQue voulez-vous la nuit était tombée\nQue voulez-vous nous nous sommes aimés.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Couvre-feu",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Dimanche après-midi",
+      "texto": "S’enlaçaient les domaines voûtés d’une aurore grise dans un pays gris, sans passions, timide,\n\nS’enlaçaient les cieux implacables, les mers interdites, les terres stériles,\n\nS’enlaçaient les galops inlassables de chevaux maigres, les rues où les voitures ne passaient plus, les chiens et les chats mourants,\n\nS’auréolaient de pâleur charmante les femmes, les enfants et les malades aux sens limpides,\n\nS’auréolaient les apparences, les jours sans fin, jours sans lumière, les nuits absurdes,\n\nS’auréolait l’espoir d’une neige définitive, marquant au front la haine,\n\nS’épaississaient les astres, s’amincissaient les lèvres, s’élargissaient les fronts comme des tables inutiles,\n\nSe courbaient les sommets accessibles, s’adoucissaient les plus fades tourments, se plaisait la nature à ne jouer qu’un rôle,\n\nSe répondaient les muets, s’écoutaient les sourds, se regardaient les aveugles\n\nDans ces domaines confondus où même les larmes n’avaient plus que des miroirs boueux, dans ce pays éternel qui mêlait les pays futurs, dans ce pays où le soleil allait secouer ses cendres.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Dimanche_apr%C3%A8s-midi",
+      "tags": []
+    },
+    {
+      "titulo": "Douter du crime",
+      "texto": "Une seule corde une seule torche un seul homme\nÉtrangla dix hommes\nBrûla un village\nAvilit un peuple\n\nLa douce chatte installée dans la vie\nComme une perle dans sa coquille\nLa douce chatte a mangé ses petits.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Douter_du_crime",
+      "tags": []
+    },
+    {
+      "titulo": "Dressé par la famine",
+      "texto": "L’enfant répond toujours je mange\nViens-tu je mange\nDors-tu je mange.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Dress%C3%A9_par_la_famine",
+      "tags": []
+    },
+    {
+      "titulo": "Du dedans",
+      "texto": "Premier commandement du vent\nLa pluie enveloppe le jour\nPremier signal d’avoir à tendre\nLa voile claire de nos yeux\n\nAu front d’une seule maison\nAu flanc de la muraille tendre\nAu sein d’une serre endormie\nNous fixons un feu velouté\n\nDehors la terre se dégrade\nDehors la tanière des morts\nS’écroule et glisse dans la boue\n\nUne rose écorchée bleuit.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Du_dedans",
+      "tags": []
+    },
+    {
+      "titulo": "Du dehors",
+      "texto": "La nuit le froid la solitude\nOn m’enferma soigneusement\nMais les branches cherchaient leur voie dans la prison\nAutour de moi l’herbe trouva le ciel\nOn verrouilla le ciel\nMa prison s’écroula\nLe froid vivant le froid brûlant m’eut bien en main.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Du_dehors",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "La courbe de tes yeux",
+      "texto": "La courbe de tes yeux fait le tour de mon cœur,\nUn rond de danse et de douceur,\nAuréole du temps, berceau nocturne et sûr,\nEt si je ne sais plus tout ce que j’ai vécu\nC’est que tes yeux ne m’ont pas toujours vu.\n\nFeuilles de jour et mousse de rosée,\nRoseaux du vent, sourires parfumés,\nAiles couvrant le monde de lumière,\nBateaux chargés du ciel et de la mer,\nChasseurs des bruits et sources des couleurs\n\nParfums éclos d’une couvée d’aurores\nQui gît toujours sur la paille des astres,\nComme le jour dépend de l’innocence\nLe monde entier dépend de tes yeux purs\nEt tout mon sang coule dans leurs regards.",
+      "forma": "verso_livre",
+      "obra": "Capitale de la douleur",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Capitale_de_la_douleur/Nouveaux_Po%C3%A8mes/La_courbe_de_tes_yeux",
+      "tags": [
+        "mar"
+      ]
+    },
+    {
+      "titulo": "La dernière nuit",
+      "texto": "Ce petit monde meurtrier\nEst orienté vers l’innocent\nLui ôte le pain de la bouche\nEt donne sa maison au feu\nLui prend sa veste et ses souliers\nLui prend son temps et ses enfants\n\nCe petit monde meurtrier\nConfond les morts et les vivants\nBlanchit la boue gracie les traîtres\nTransforme la parole en bruit\n\nMerci minuit douze fusils\nRendent la paix à l’innocent\nEt c’est aux foules d’enterrer\nSa chair sanglante et son ciel noir\nEt c’est aux foules de comprendre\nLa faiblesse des meurtriers.\n\nLe prodige serait une légère poussée contre le mur\nCe serait de pouvoir secouer cette poussière\nCe serait d’être unis.\n\nIls avaient mis à vif ses mains courbé son dos\nIls avaient creusé un trou dans sa tête\nEt pour mourir il avait dû souffrir\nToute sa vie.\n\nBeauté créée pour les heureux\nBeauté tu cours un grand danger\n\nCes mains croisées sur tes genoux\nSont les outils d’un assassin\n\nCette bouche chantant très haut\nSert de sébile au mendiant\n\nEt cette coupe de lait pur\nDevient le sein d’une putain.\n\nLes pauvres ramassaient leur pain dans le ruisseau\nLeur regard couvrait la lumière\nEt ils n’avaient plus peur la nuit\n\nTrès faibles leur faiblesse les faisait sourire\nDans le fond de leur ombre ils emportaient leur corps\nIls ne se voyaient plus qu’à travers leur détresse\nIls ne se servaient plus que d’un langage intime\nEt j’entendais parler doucement prudemment\nD’un ancien espoir grand comme la main\n\nJ’entendais calculer\nLes dimensions multipliées de la feuille d’automne\nLa fonte de la vague au sein de la mer calme\nJ’entendais calculer\nLes dimensions multipliées de la force future.\n\nJe suis né derrière une façade affreuse\nJ’ai mangé j’ai ri j’ai rêvé j’ai eu honte\nJ’ai vécu comme une ombre\nEt pourtant j’ai su chanter le soleil\n\nLe soleil entier celui qui respire\nDans chaque poitrine et dans tous les yeux\nLa goutte de candeur qui luit après les larmes.\n\nNous jetons le fagot des ténèbres au feu\nNous brisons les serrures rouillées de l’injustice\nDes hommes vont venir qui n’ont plus peur d’eux-mêmes\nCar ils sont sûrs de tous les hommes\nCar l’ennemi à figure d’homme disparaît.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/La_derni%C3%A8re_nuit",
+      "tags": [
+        "noite",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "La halte des heures",
+      "texto": "Immenses mots dits doucement\nGrand soleil les volets fermés\nUn grand navire au fil de l’eau\nSes voiles partageant le vent\n\nBouche bien faite pour cacher\nUne autre bouche et le serment\nDe ne rien dire qu’à deux voix\nDu secret qui raye la nuit\n\nLe seul rêve des innocents\nUn seul murmure un seul matin\nEt les saisons à l’unisson\nColorant de neige et de feu\n\nUne foule enfin réunie.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/La_halte_des_heures",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Le rôle des femmes",
+      "texto": "En chantant les servantes s’élancent\nPour rafraîchir la place où l’on tuait\nPetites filles en poudre vite agenouillées\nLeurs mains aux soupiraux de la fraîcheur\nSont bleues comme une expérience\nUn grand matin joyeux\n\nFaites face à leurs mains les morts\nFaites face à leurs yeux liquides\nC’est la toilette des éphémères\nLa dernière toilette de la vie\nLes pierres descendent disparaissent\nDans l’eau vaste essentielle\n\nLa dernière toilette des heures\nÀ peine un souvenir ému\nAux puits taris de la vertu\nAux longues absences encombrantes\nEt l’on s’abandonne à la chair très tendre\nAux prestiges de la faiblesse.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Le_r%C3%B4le_des_femmes",
+      "tags": []
+    },
+    {
+      "titulo": "Les Petits Justes",
+      "texto": "Sur la maison du rire\nUn oiseau rit dans ses ailes.\nLe monde est si léger\nQu’il n’est plus à sa place\nEt si gai\nQu’il ne lui manque rien.\n\nPourquoi suis-je si belle ?\nParce que mon maître me lave.\n\nAvec tes yeux je change comme avec les lunes\nEt je suis tour à tour et de plomb et de plume,\nUne eau mystérieuse et noire qui t’enserre\nOu bien dans tes cheveux ta légère victoire.\n\nUne couleur madame, une couleur monsieur,\nUne aux seins, une aux cheveux,\n﻿La bouche des passions\n﻿Et si vous voyez rouge\nLa plus belle est à vos genoux.\n\nÀ faire rire la certaine,\nÉtait-elle en pierre ?\nElle s’effondra.\n\nLe monstre de la fuite hume même les plumes\nDe cet oiseau roussi par le feu du fusil.\nSa plainte vibre tout le long d’un mur de larmes\nEt les ciseaux des yeux coupent la mélodie\nQui bourgeonnait déjà dans le cœur du chasseur.\n\nLa nature s’est prise aux filets de ta vie.\nL’arbre, ton ombre, montre sa chair nue : le ciel.\nIl a la voix du sable et les gestes du vent\nEt tout ce que tu dis bouge derrière toi.\n\nElle se refuse toujours à comprendre, à entendre,\nElle rit pour cacher sa terreur d’elle-même.\nElle a toujours marché sous les arches des nuits\nEt partout où elle a passé\nElle a laissé\nL’empreinte des choses brisées.\n\nSur ce ciel délabré, sur ces vitres d’eau douce,\nQuel visage viendra, coquillage sonore,\nAnnoncer que la nuit de l’amour touche au jour,\nBouche ouverte liée à la bouche fermée.\n\nInconnue, elle était ma forme préférée,\nCelle qui m’enlevait le souci d’être un homme,\nEt je la vois et je la perds et je subis\nMa douleur, comme un peu de soleil dans l’eau froide.\n\nLes hommes qui changent et se ressemblent\nOnt, au cours de leurs jours, toujours fermé les yeux\nPour dissiper la brume de dérision\nEtc…",
+      "forma": "verso_livre",
+      "obra": "Capitale de la douleur",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Capitale_de_la_douleur/Les_Petits_Justes",
+      "tags": [
+        "amor",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Liberté",
+      "texto": "Sur mes cahiers d’écolier\nSur mon pupitre et les arbres\nSur le sable sur la neige\nJ’écris ton nom\n\nSur toutes les pages lues\nSur toutes les pages blanches\nPierre sang papier ou cendre\nJ’écris ton nom\n\nSur les images dorées\nSur les armes des guerriers\nSur la couronne des rois\nJ’écris ton nom\n\nSur la jungle et le désert\nSur les nids sur les genêts\nSur l’écho de mon enfance\nJ’écris ton nom\n\nSur les merveilles des nuits\nSur le pain blanc des journées\nSur les saisons fiancées\nJ’écris ton nom\n\nSur tous mes chiffons d’azur\nSur l’étang soleil moisi\nSur le lac lune vivante\nJ’écris ton nom\n\nSur les champs sur l’horizon\nSur les ailes des oiseaux\nEt sur le moulin des ombres\nJ’écris ton nom\n\nSur chaque bouffée d’aurore\nSur la mer sur les bateaux\nSur la montagne démente\nJ’écris ton nom\n\nSur la mousse des nuages\nSur les sueurs de l’orage\nSur la pluie épaisse et fade\nJ’écris ton nom\n\nSur les formes scintillantes\nSur les cloches des couleurs\nSur la vérité physique\nJ’écris ton nom\n\nSur les sentiers éveillés\nSur les routes déployées\nSur les places qui débordent\nJ’écris ton nom\n\nSur la lampe qui s’allume\nSur la lampe qui s’éteint\nSur mes maisons réunies\nJ’écris ton nom\n\nSur le fruit coupé en deux\nDu miroir et de ma chambre\nSur mon lit coquille vide\nJ’écris ton nom\n\nSur mon chien gourmand et tendre\nSur ses oreilles dressées\nSur sa patte maladroite\nJ’écris ton nom.\n\nSur le tremplin de ma porte\nSur les objets familiers\nSur le flot du feu béni\nJ’écris ton nom\n\nSur toute chair accordée\nSur le front de mes amis\nSur chaque main qui se tend\nJ’écris ton nom\n\nSur la vitre des surprises\nSur les lèvres attentives\nBien au-dessus du silence\nJ’écris ton nom\n\nSur mes refuges détruits\nSur mes phares écroulés\nSur les murs de mon ennui\nJ’écris ton nom\n\nSur l’absence sans désir\nSur la solitude nue\nSur les marches de la mort\nJ’écris ton nom\n\nSur la santé revenue\nSur le risque disparu\nSur l’espoir sans souvenir\nJ’écris ton nom\n\nEt par le pouvoir d’un mot\nJe recommence ma vie\nJe suis né pour te connaître\nPour te nommer\n\nLiberté.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Libert%C3%A9",
+      "tags": [
+        "morte",
+        "mar"
+      ]
+    },
+    {
+      "titulo": "L’habitude",
+      "texto": "Toutes mes petites amies sont bossues :\nElles aiment leur mère.\nTous mes animaux sont obligatoires,\nIls ont des pieds de meuble\nEt des mains de fenêtre.\nLe vent se déforme,\nIl lui faut un habit sur mesure,\nDémesuré.\nVoilà pourquoi\nJe dis la vérité sans la dire.",
+      "forma": "verso_livre",
+      "obra": "Capitale de la douleur",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Capitale_de_la_douleur/Mourir_de_ne_pas_mourir/L%E2%80%99habitude",
+      "tags": []
+    },
+    {
+      "titulo": "Max Ernst",
+      "texto": "Dans un coin l’inceste agile\nTourne autour de la virginité d’une petite robe\nDans un coin le ciel délivré\nAux épines de l’orage laisse des boules blanches.\n\nDans un coin plus clair de tous les yeux\nOn attend les poissons d’angoisse.\nDans un coin la voiture de verdure de l’été\nImmobile glorieuse et pour toujours.\n\nÀ la lueur de la jeunesse\nDes lampes allumées très tard\n\nLa première montre ses seins que tuent des insectes rouges.",
+      "forma": "verso_livre",
+      "obra": "Capitale de la douleur",
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Capitale_de_la_douleur/R%C3%A9p%C3%A9titions/Max_Ernst",
+      "tags": []
+    },
+    {
+      "titulo": "Patience",
+      "texto": "Toi ma patiente ma patience ma parente\nGorge haut suspendue orgue de la nuit lente\nRévérence cachant tous les ciels dans sa grâce\nPrépare à la vengeance un lit d’où je naîtrai.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Patience",
+      "tags": [
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Première marche, la voix d’un autre",
+      "texto": "Riant du ciel et des planètes\nLa bouche imbibée de confiance\nLes sages\nVeulent des fils\nEt des fils de leurs fils\nJusqu’à périr d’usure\n\nLe temps ne pèse que les fous\nL’abîme est seul à verdoyer\nEt les sages sont ridicules.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Premi%C3%A8re_marche%2C_la_voix_d%E2%80%99un_autre",
+      "tags": []
+    },
+    {
+      "titulo": "Sur les pentes inférieures",
+      "texto": "Aussi bas que le silence\nD’un mort planté dans la terre\nRien que ténèbres en tête\n\nAussi monotone et sourd\nQue l’automne dans la mare\nCouverte de honte mate\n\nLe poison veuf de sa fleur\nEt de ses bêtes dorées\nCrache sa nuit sur les hommes.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Sur_les_pentes_inf%C3%A9rieures",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Un feu sans tache",
+      "texto": "La menace sous le ciel rouge\nVenait d’en bas des mâchoires\nDes écailles des anneaux\nD’une chaîne glissante et lourde\n\nLa vie était distribuée\nLargement pour que la mort\nPrît au sérieux le tribut\nQu’on lui payait sans compter\n\nLa mort était le dieu d’amour\nEt les vainqueurs dans un baiser\nS’évanouissaient sur leurs victimes\nLa pourriture avait du cœur\n\nEt pourtant sous le ciel rouge\nSous les appétits de sang\nSous la famine lugubre\nLa caverne se ferma\n\nLa terre utile effaça\nLes tombes creusées d’avance\nLes enfants n’eurent plus peur\nDes profondeurs maternelles\n\nEt la bêtise et la démence\nEt la bassesse firent place\nÀ des hommes frères des hommes\nNe luttant plus contre la vie\n\nÀ des hommes indestructibles.",
+      "forma": "verso_livre",
+      "obra": "Poésie et vérité 1942",
+      "ano": 1942,
+      "fonte": "https://fr.wikisource.org/wiki/Po%C3%A9sie_et_v%C3%A9rit%C3%A9_1942/Un_feu_sans_tache",
+      "tags": [
+        "amor",
+        "morte",
+        "deus"
+      ]
+    },
+    {
+      "titulo": "L'Amour, la poésie",
+      "texto": "A haute voix\nL'amour agile se leva\nAvec de si brillants éclats\nQue dans son grenier le cerveau\nEut peur de toute avouer.\n\nA haute voix\nTous les corbeaux du sang couvrirent\nLa mémoire d'autres naissances\nPuis renversés dans la lumière\nL'avenir roué de baisers.\n\nInjustice impossible un seul être est au monde\nL'amour choisit l’amour sans changer de visage.\n\nSes yeux sont des tours de lumière\nSous le front de sa nudité.\n\nA fleur de transparence\nLes retours de pensées\nAnnulent les mots qui sont sourds.\n\nElle efface toutes les images\nElle éblouit l'amour et ses ombres rétives\nElle aime — elle aime à s’oublier.\n\nLes représentants tout puissants du désir\nDes yeux graves nouveau-nés\nPour supprimer la lumière\nL’arc de tes seins tendu par un aveugle\nQui se souvient de tes mains\nTa faible chevelure\nEst dans le fleuve ignorant de ta tête\nCaresses au fil de la peau\n\nEt ta bouche qui se tait\nPeut prouver l’impossible.\n\nJe te l’ai dit pour les nuages\nJe te l’ai dit pour l’arbre de la mer\nPour chaque vague pour les oiseaux dans les feuilles\nPour les cailloux du bruit\nPour les mains familières\nPour l’œil qui devient visage ou paysage\nEt le sommeil lui rend le ciel de sa couleur\nPour toute la nuit bue\nPour la grille des routes\nPour la fenêtre ouverte pour un front découvert\nJe te l’ai dit pour tes pensées pour tes paroles\nToute caresse toute confiance se survivent.\n\nPlus c’était un baiser\nMoins les mains sur les yeux\nLes halos de la lumière\nAux lèvres de l’horizon\nEt des tourbillons de sang\nQui se livraient au silence.\n\nToi la seule et j’entends les herbes de ton rire\nToi c’est ta tête qui t’enlève\nEt du haut des dangers de mort\nSous les globes brouillés de la pluie des vallées\nSous la lumière lourde sous le ciel de terre\nTu enfantes la chute.\n\nLes oiseaux ne sont plus un abri suffisant\nNi la paresse ni la fatigue\nLe souvenir des bois et des ruisseaux fragiles\nAu matin des caprices\nAu matin des caresses visibles\nAu grand matin de l’absence la chute.\n\nLes barques de tes yeux s’égarent\nDans la dentelle des disparitions\nLe gouffre est dévoilé aux autres de l’éteindre\nLes ombres que tu crées n’ont pas droit à la nuit.\n\nLa terre est bleue comme une orange\nJamais une erreur les mots ne mentent pas\nils ne vous donnent plus à chanter\nAu tour des baisers de s’entendre\nLes fous et les amours\nElle sa bouche d’alliance\nTous les secrets tous les sourires\nEt quels vêtements d’indulgence\nA la croire toute nue.\n\nLes guêpes fleurissent vert\nL’aube se passe autour du cou\nUn collier de fenêtres\n\nDes ailes couvrent les feuilles\nTu as toutes les joies solaires\nTout le soleil sur la terre\nSur les chemins de ta beauté.",
+      "forma": "verso_livre",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/L%27Amour%2C_la_po%C3%A9sie",
+      "tags": [
+        "amor",
+        "morte",
+        "noite"
+      ]
+    },
+    {
+      "titulo": "Une leçon de morale",
+      "texto": "Préface UNE LEÇON DE MORALE. ITout se marie Nusch L’heure embrasse le silence Horloge des subtiles noces Ô mort interminable Ombres Volonté d’y voir clair Les souvenirs et le présent Les sept voiles Dans les pires conditions L’enfance maîtresse L’aurore fixe Je l’aime elle m’aimait Sans rire Le désespoir besoin d’aimer Dernier jour de l’hiver Rêves Mauvaise nuit bon jour Lazare À l’échelle animale Le langage des couleurs Le grand voyage La beauté du diable Et celui qui parlait de loin Tout est sauvé UNE LEÇON DE MORALE. IIGrèce ma rose de raison Si la Grèce était délivrée",
+      "forma": "prosa_poetica",
+      "obra": null,
+      "ano": null,
+      "fonte": "https://fr.wikisource.org/wiki/Une_le%C3%A7on_de_morale",
+      "tags": [
+        "morte",
+        "noite"
+      ]
+    }
+  ]
+}
