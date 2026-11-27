@@ -165,6 +165,23 @@
   .poema-corpo u {
     text-underline-offset: 0.18em;
   }
+
+  /* O poema cortado no feed e no poema do dia: as três últimas linhas mostradas
+     somem até o transparente, para dizer que o poema continua. É máscara, não
+     véu de cor: o papel tem grão e muda no escuro. O corte sempre termina num
+     verso (nunca em linha vazia), então o degradê cai sobre texto. 5.25em é o
+     fallback de 3lh com a altura de linha do card (1.75). A seleção continua. */
+  .poema-cortado {
+    --esmaecer: 5.25em;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--esmaecer)), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--esmaecer)), transparent);
+  }
+
+  @supports (height: 1lh) {
+    .poema-cortado {
+      --esmaecer: 3lh;
+    }
+  }
 }
 
 /* O esqueleto do carregamento (components/Esqueleto.tsx): as peças num tom de

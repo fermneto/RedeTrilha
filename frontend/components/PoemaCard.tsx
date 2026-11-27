@@ -406,7 +406,7 @@ function Corpo({
 
   return (
     <>
-      <p ref={elemento} lang={lang} className={`poema-corpo ${comTitulo ? "mt-2" : "mt-1"}`}>
+      <p ref={elemento} lang={lang} className={`poema-corpo ${comTitulo ? "mt-2" : "mt-1"}${cortar ? " poema-cortado" : ""}`}>
         {mostrados.map((linha, i) => (
           <Fragment key={i}>
             {i > 0 && "\n"}

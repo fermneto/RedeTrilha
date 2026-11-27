@@ -135,7 +135,7 @@ function PoemaDoDia({ recolhivel }: { recolhivel?: Recolhivel }) {
     <Bloco titulo="Poema do dia" recolhivel={recolhivel}>
       <div className="surgir px-4 pb-4">
         {poema.titulo && <p className="poema-titulo mt-1 text-[1.0625rem]">{poema.titulo}</p>}
-        <p className="poema-corpo mt-2 text-[0.9375rem] leading-[1.7]">
+        <p className={`poema-corpo mt-2 text-[0.9375rem] leading-[1.7]${corte === null ? "" : " poema-cortado"}`}>
           <TextoFormatado texto={corte === null ? poema.texto : versos.slice(0, corte).join("\n")} />
         </p>
         <p className="mt-3 text-sm text-tinta-suave">
