@@ -2,8 +2,10 @@
 // Um campo de escolha com busca (combobox do WAI-ARIA com listbox), no lugar do
 // <select> de país e de estado das Preferências: o campo mostra a opção escolhida;
 // tocar nele (ou na seta) abre a lista, e o que se digita filtra, sem acento nem
-// caixa ("sao" acha "São Paulo"). Teclado: setas sobem e descem, Home e End vão
-// às pontas, Enter escolhe, Esc e Tab fecham sem mudar nada. Fechar (também ao
+// caixa ("sao" acha "São Paulo"), também pela sigla ("PB", "PT"); o "prefiro não
+// dizer" fica sempre no topo. Teclado: setas sobem e descem, Home e End vão às
+// pontas, Enter e Tab escolhem a opção ativa (o Tab segue adiante), Esc fecha sem
+// mudar nada. Fechar (também ao
 // tocar fora) volta o campo ao valor escolhido. A lista abre para baixo ou, sem
 // espaço, para cima, com a altura do espaço que sobra entre o campo, o teclado do
 // celular e o recorte da página do livro. A parte pura (filtro e lado da lista)
@@ -15,6 +17,7 @@ import { IconeAbrirLista } from "@/components/icones/IconeAbrirLista";
 import { IconeMarcado } from "@/components/icones/IconeMarcado";
 import { opcaoVizinha } from "@/lib/api";
 import {
+  achadas,
   ALTURA_MAXIMA_DA_LISTA,
   filtrarOpcoes,
   lugarDaLista,
@@ -151,18 +154,22 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
         fechar();
         break;
       case "Tab":
-        fechar();
+        // Com uma opção ativa, o Tab a escolhe e o foco segue adiante.
+        if (aberta && ativa >= 0 && visiveis[ativa]) escolher(visiveis[ativa]);
+        else fechar();
         break;
     }
   }
 
   const termo = busca?.trim() ?? "";
+  const quantas = achadas(visiveis);
+  const nenhuma = termo !== "" && quantas === 0;
   const aviso =
     !aberta || busca === null
       ? ""
-      : visiveis.length === 0
+      : nenhuma
         ? `nenhum ${singular}`
-        : `${visiveis.length} ${visiveis.length === 1 ? singular : plural}`;
+        : `${quantas} ${quantas === 1 ? singular : plural}`;
 
   return (
     <div ref={raiz} className="relative">
@@ -184,7 +191,9 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
             const texto = e.target.value;
             setBusca(texto);
             setAberta(true);
-            setAtiva(texto.trim() && filtrarOpcoes(opcoes, texto).length > 0 ? 0 : -1);
+            // A primeira opção achada fica ativa ("prefiro não dizer", no topo, não conta).
+            const novas = filtrarOpcoes(opcoes, texto);
+            setAtiva(texto.trim() ? novas.findIndex((o) => o.valor !== null) : -1);
           }}
           onFocus={(e) => e.target.select()}
           onClick={() => !aberta && abrir()}
@@ -250,7 +259,7 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
             );
           })}
         </ul>
-        {visiveis.length === 0 && (
+        {nenhuma && (
           <p className="px-3 py-3 text-sm text-tinta-suave">
             Nenhum {singular} com “{termo}”.
           </p>

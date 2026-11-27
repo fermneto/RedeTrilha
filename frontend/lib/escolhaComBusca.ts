@@ -11,21 +11,29 @@ export function semAcentos(texto: string): string {
   return texto.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
 }
 
-// As opções que batem com a busca: primeiro as que começam pelo termo, depois as
-// que têm uma palavra começando por ele, por fim as que só o contêm; dentro de
-// cada grupo, na ordem original (Brasil continua antes dos outros). Busca vazia
-// devolve tudo.
+// As opções que batem com a busca. A opção sem valor ("prefiro não dizer") nunca
+// é filtrada e fica sempre no topo. Depois vem a sigla exata (o valor: o código
+// ISO do país, "PT", ou a UF, "PB"), as que começam pelo termo, as que têm uma
+// palavra começando por ele e, por fim, as que só o contêm; dentro de cada grupo,
+// na ordem original (Brasil continua antes dos outros). Busca vazia devolve tudo.
 export function filtrarOpcoes(opcoes: OpcaoDeEscolha[], busca: string): OpcaoDeEscolha[] {
   const termo = semAcentos(busca.trim());
   if (!termo) return opcoes;
-  const grupos: OpcaoDeEscolha[][] = [[], [], []];
+  const grupos: OpcaoDeEscolha[][] = [[], [], [], [], []];
   for (const opcao of opcoes) {
     const rotulo = semAcentos(opcao.rotulo);
-    if (rotulo.startsWith(termo)) grupos[0].push(opcao);
-    else if (rotulo.split(/[\s\-–(),.]+/).some((p) => p.startsWith(termo))) grupos[1].push(opcao);
-    else if (rotulo.includes(termo)) grupos[2].push(opcao);
+    if (opcao.valor === null) grupos[0].push(opcao);
+    else if (semAcentos(opcao.valor) === termo) grupos[1].push(opcao);
+    else if (rotulo.startsWith(termo)) grupos[2].push(opcao);
+    else if (rotulo.split(/[\s\-–(),.]+/).some((p) => p.startsWith(termo))) grupos[3].push(opcao);
+    else if (rotulo.includes(termo)) grupos[4].push(opcao);
   }
   return grupos.flat();
+}
+
+// Quantas das opções achadas são de fato um lugar (sem contar "prefiro não dizer").
+export function achadas(opcoes: OpcaoDeEscolha[]): number {
+  return opcoes.filter((o) => o.valor !== null).length;
 }
 
 export const ALTURA_MAXIMA_DA_LISTA = 288;

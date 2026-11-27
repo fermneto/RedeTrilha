@@ -9,11 +9,17 @@ const fonte = readFileSync(new URL("../lib/escolhaComBusca.ts", import.meta.url)
 const js = ts.transpileModule(fonte, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText;
-const { ALTURA_MAXIMA_DA_LISTA, filtrarOpcoes, lugarDaLista, semAcentos } = await import(
+const { achadas, ALTURA_MAXIMA_DA_LISTA, filtrarOpcoes, lugarDaLista, semAcentos } = await import(
   `data:text/javascript;base64,${Buffer.from(js).toString("base64")}`
 );
 
-const opcoes = (...rotulos) => rotulos.map((rotulo, i) => ({ valor: i === 0 ? null : rotulo, rotulo }));
+// A primeira é a sem valor ("prefiro não dizer"); as outras têm valor = rótulo,
+// ou a sigla dada como "Rótulo:SIGLA".
+const opcoes = (...rotulos) =>
+  rotulos.map((r, i) => {
+    const [rotulo, sigla] = r.split(":");
+    return { valor: i === 0 ? null : (sigla ?? rotulo), rotulo };
+  });
 const rotulos = (lista) => lista.map((o) => o.rotulo);
 
 test("tira acento e caixa", () => {
@@ -29,20 +35,38 @@ test("busca vazia devolve tudo, na ordem de antes", () => {
 
 test("acha sem acento e sem caixa", () => {
   const ufs = opcoes("prefiro não dizer", "Paraíba", "São Paulo", "Rio Grande do Sul");
-  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "sao")), ["São Paulo"]);
-  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "PARAI")), ["Paraíba"]);
-  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "não")), ["prefiro não dizer"]);
+  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "sao")), ["prefiro não dizer", "São Paulo"]);
+  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "PARAI")), ["prefiro não dizer", "Paraíba"]);
 });
 
 test("quem começa pelo termo vem antes de quem só o contém", () => {
   const paises = opcoes("prefiro não dizer", "Brasil", "Nicarágua", "Papua-Nova Guiné", "Porto Rico", "Portugal", "Guatemala", "Guiné");
-  assert.deepEqual(rotulos(filtrarOpcoes(paises, "por")), ["Porto Rico", "Portugal"]);
-  assert.deepEqual(rotulos(filtrarOpcoes(paises, "gua")), ["Guatemala", "Nicarágua"]);
-  assert.deepEqual(rotulos(filtrarOpcoes(paises, "guine")), ["Guiné", "Papua-Nova Guiné"]);
+  const lugares = (busca) => rotulos(filtrarOpcoes(paises, busca)).slice(1);
+  assert.deepEqual(lugares("por"), ["Porto Rico", "Portugal"]);
+  assert.deepEqual(lugares("gua"), ["Guatemala", "Nicarágua"]);
+  assert.deepEqual(lugares("guine"), ["Guiné", "Papua-Nova Guiné"]);
 });
 
-test("sem nada que bata, a lista fica vazia", () => {
-  assert.deepEqual(filtrarOpcoes(opcoes("prefiro não dizer", "Brasil"), "xyz"), []);
+test("\"prefiro não dizer\" fica sempre no topo e não conta como achada", () => {
+  const paises = opcoes("prefiro não dizer", "Brasil:BR", "Portugal:PT");
+  assert.deepEqual(rotulos(filtrarOpcoes(paises, "port")), ["prefiro não dizer", "Portugal"]);
+  assert.equal(achadas(filtrarOpcoes(paises, "port")), 1);
+});
+
+test("acha pela sigla, e a sigla exata vem primeiro", () => {
+  const paises = opcoes("prefiro não dizer", "Brasil:BR", "Portugal:PT", "Peru:PE");
+  assert.deepEqual(rotulos(filtrarOpcoes(paises, "br")), ["prefiro não dizer", "Brasil"]);
+  assert.deepEqual(rotulos(filtrarOpcoes(paises, "PT")), ["prefiro não dizer", "Portugal"]);
+  const ufs = opcoes("prefiro não dizer", "Pará:PA", "Paraíba:PB", "Paraná:PR", "Pernambuco:PE");
+  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "pb")), ["prefiro não dizer", "Paraíba"]);
+  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "pe")), ["prefiro não dizer", "Pernambuco"]);
+  assert.deepEqual(rotulos(filtrarOpcoes(ufs, "pa")), ["prefiro não dizer", "Pará", "Paraíba", "Paraná"]);
+});
+
+test("sem nada que bata, sobra só \"prefiro não dizer\"", () => {
+  const achou = filtrarOpcoes(opcoes("prefiro não dizer", "Brasil"), "xyz");
+  assert.deepEqual(rotulos(achou), ["prefiro não dizer"]);
+  assert.equal(achadas(achou), 0);
 });
 
 test("a lista abre para baixo, e para cima só se lá couber mais", () => {
