@@ -27,7 +27,9 @@ type Props = {
 
 export function FormatoDeEscrita({ atual, aoEscolher, children }: Props) {
   return (
-    <nav aria-label="O que escrever" className="px-4 py-3">
+    // data-sem-folhear: a troca de formato pode ser segurada (a pergunta da
+    // antologia), e o livro não deve folhear sem sair da página (Folhear.tsx).
+    <nav aria-label="O que escrever" data-sem-folhear="" className="px-4 py-3">
       <ul className="inline-flex rounded-full border border-borda p-1">
         {FORMATOS.map(({ valor, rotulo, href }) => {
           const ativo = valor === atual;
