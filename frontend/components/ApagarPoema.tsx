@@ -31,8 +31,8 @@ export function ApagarPoema({ postId, aoApagar }: Props) {
   }
 
   return (
-    // pl-17: alinha com o texto do card (px-4 + avatar de 40 px + gap-3).
-    <div className="pr-4 pb-3 pl-17">
+    // Sem recuo próprio: o rótulo fica na margem da folha, no eixo da data acima.
+    <div className="pb-3">
       <ConfirmacaoInline
         pergunta="apagar o poema?"
         rotulo={apagando ? "apagando..." : "apagar poema"}
