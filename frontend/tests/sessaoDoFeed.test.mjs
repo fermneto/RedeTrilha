@@ -25,6 +25,23 @@ test("o visto numa aba some da outra; o não visto aparece nas duas", () => {
   assert.deepEqual(visiveis(itens, chave, vistos, "seguindo").map(chave), ["poema-1", "poema-2", "poema-3"]);
 });
 
+test("o que é da própria pessoa fica sempre no Seguindo, mesmo visto no Para você", () => {
+  const EU = 7;
+  const outro = { id: 8 };
+  const meu = poema(1, { autor_id: EU });
+  const repostDoMeu = poema(2, { autor_id: 8, texto: "", repost_de: poema(1, { autor_id: EU }) });
+  const repostei = poema(3, { autor_id: 8, repostado_por: [outro, { id: EU }] });
+  const alheio = poema(4, { autor_id: 8, repostado_por: [outro] });
+  const itens = [meu, repostDoMeu, repostei, alheio];
+  const vistos = { "poema-1": "para-voce", "poema-2": "para-voce", "poema-3": "para-voce", "poema-4": "para-voce" };
+  assert.deepEqual(visiveis(itens, chave, vistos, "seguindo", EU).map(chave), ["poema-1", "poema-2", "poema-3"]);
+  // Sem saber quem lê ainda, a regra é a de sempre.
+  assert.deepEqual(visiveis(itens, chave, vistos, "seguindo", null), []);
+  // O resto não muda: visto no Seguindo, o próprio poema sai do Para você.
+  const noSeguindo = { "poema-1": "seguindo" };
+  assert.deepEqual(visiveis([meu], chave, noSeguindo, "para-voce", EU), []);
+});
+
 test("fica com a aba em que foi visto primeiro", () => {
   const um = marcarVisto({}, "poema-1", "seguindo");
   assert.deepEqual(um, { "poema-1": "seguindo" });

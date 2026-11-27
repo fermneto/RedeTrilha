@@ -8,12 +8,18 @@
 //
 // A busca pelo nome não fica aqui: é o campo do topo do Explorar, que na aba Poetas
 // vira BuscaDosPoetas (abaixo) e escreve o ?q= do Acervo. Um campo só na tela.
+//
+// No celular, os filtros ocupariam a tela inteira antes do primeiro poeta: ficam
+// recolhidos atrás do botão "filtros" (com quantos estão ligados), na mesma linha
+// do total e do "limpar filtros", que continuam à vista. A partir de 640 px, abertos como sempre.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 
 import { CartaoDoAcervo } from "@/components/CartaoDoAcervo";
 import { EsqueletoDeCartoes } from "@/components/Esqueleto";
+import { IconeAbrirLista } from "@/components/icones/IconeAbrirLista";
+import { IconeAjustes } from "@/components/icones/IconeAjustes";
 import { Paginacao } from "@/components/Paginacao";
 import { CampoDaBusca } from "@/components/BuscaDoExplorar";
 import {
@@ -66,6 +72,9 @@ export function Acervo() {
   const idLingua = useId();
   const idEpoca = useId();
   const idOrdem = useId();
+  const idDoPainel = useId();
+  // Só vale no celular: a partir de sm, o painel fica sempre aberto.
+  const [filtrosAbertos, setFiltrosAbertos] = useState(false);
   const [resultado, setResultado] = useState<Page<PoetaDoAcervo> | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
@@ -126,13 +135,17 @@ export function Acervo() {
   );
 
   const comFiltro = Boolean(q.trim() || lingua || epoca || tipo !== FILTROS_PADRAO_DO_ACERVO.tipo);
+  // Os filtros do painel fora do padrão, os mesmos que o "limpar filtros" desfaz.
+  // A busca pelo nome fica no topo, à vista; a ordem não filtra, só arruma.
+  const ligados = [tipo !== FILTROS_PADRAO_DO_ACERVO.tipo, lingua, epoca].filter(Boolean).length;
   const limpar = (
     <button
       type="button"
       onClick={() => filtrar({ tipo: FILTROS_PADRAO_DO_ACERVO.tipo, q: "", lingua: null, epoca: null })}
       className="min-h-11 cursor-pointer text-sm font-semibold text-destaque hover:underline"
     >
-      limpar filtros
+      {/* No celular, "limpar" cabe na linha do botão de filtros e do total. */}
+      limpar<span className="hidden sm:inline"> filtros</span>
     </button>
   );
 
@@ -147,96 +160,117 @@ export function Acervo() {
   // direita passaria da tela e daria rolagem horizontal no celular.
   return (
     <div className="overflow-x-clip">
-      <div className="linha-da-folha space-y-4 border-b border-borda py-4">
+      <div className="linha-da-folha flex flex-col gap-4 border-b border-borda py-4">
         <p className="text-sm text-tinta-suave">Todos os poetas do acervo, os consagrados e os do Verso.</p>
-        <div>
-          <p id={idTipo} className="text-sm">
-            tipo
-          </p>
-          <div role="group" aria-labelledby={idTipo} className="mt-1 flex flex-wrap gap-2">
-            {TIPOS_DO_ACERVO.map((t) => (
-              <button
-                key={t}
-                type="button"
-                aria-pressed={tipo === t}
-                onClick={() => filtrar({ tipo: t })}
-                className={`${chip} ${tipo === t ? chipLigado : chipDesligado}`}
-              >
-                {ROTULOS_DOS_TIPOS[t]}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {tipo !== "do_verso" && (
-            <>
-              <div className="min-w-0">
-                <label htmlFor={idLingua} className="block text-sm">
-                  língua
-                </label>
-                <select
-                  id={idLingua}
-                  value={lingua ?? ""}
-                  onChange={(e) => filtrar({ lingua: e.target.value || null })}
-                  className={`${campo} mt-1`}
+        {/* No celular, o painel abre abaixo da linha do botão; a partir de sm, fica acima do total. */}
+        <div
+          id={idDoPainel}
+          className={`${filtrosAbertos ? "" : "hidden"} order-last space-y-4 sm:order-none sm:block`}
+        >
+          <div>
+            <p id={idTipo} className="text-sm">
+              tipo
+            </p>
+            <div role="group" aria-labelledby={idTipo} className="mt-1 flex flex-wrap gap-2">
+              {TIPOS_DO_ACERVO.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  aria-pressed={tipo === t}
+                  onClick={() => filtrar({ tipo: t })}
+                  className={`${chip} ${tipo === t ? chipLigado : chipDesligado}`}
                 >
-                  <option value="">todas</option>
-                  {lingua && !linguas.some((l) => l.codigo === lingua) && (
-                    <option value={lingua}>{nomeDoIdioma(lingua)}</option>
-                  )}
-                  {linguas.map((l) => (
-                    <option key={l.codigo} value={l.codigo}>
-                      {nomeDoIdioma(l.codigo)} ({l.poetas})
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="min-w-0">
-                <label htmlFor={idEpoca} className="block text-sm">
-                  época
-                </label>
-                <select
-                  id={idEpoca}
-                  value={epoca ?? ""}
-                  onChange={(e) => filtrar({ epoca: e.target.value || null })}
-                  className={`${campo} mt-1`}
-                >
-                  <option value="">todas</option>
-                  {epocas.map((ep) => (
-                    <option key={ep.chave} value={ep.chave}>
-                      {ep.rotulo} ({ep.poetas})
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </>
-          )}
-          <div className="min-w-0">
-            <label htmlFor={idOrdem} className="block text-sm">
-              ordem
-            </label>
-            <select
-              id={idOrdem}
-              value={ordem}
-              onChange={(e) => filtrar({ ordem: e.target.value as OrdemDoAcervo })}
-              className={`${campo} mt-1`}
-            >
-              {ORDENS_DO_ACERVO.map((o) => (
-                <option key={o} value={o}>
-                  {ROTULOS_DAS_ORDENS[o]}
-                </option>
+                  {ROTULOS_DOS_TIPOS[t]}
+                </button>
               ))}
-            </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {tipo !== "do_verso" && (
+              <>
+                <div className="min-w-0">
+                  <label htmlFor={idLingua} className="block text-sm">
+                    língua
+                  </label>
+                  <select
+                    id={idLingua}
+                    value={lingua ?? ""}
+                    onChange={(e) => filtrar({ lingua: e.target.value || null })}
+                    className={`${campo} mt-1`}
+                  >
+                    <option value="">todas</option>
+                    {lingua && !linguas.some((l) => l.codigo === lingua) && (
+                      <option value={lingua}>{nomeDoIdioma(lingua)}</option>
+                    )}
+                    {linguas.map((l) => (
+                      <option key={l.codigo} value={l.codigo}>
+                        {nomeDoIdioma(l.codigo)} ({l.poetas})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="min-w-0">
+                  <label htmlFor={idEpoca} className="block text-sm">
+                    época
+                  </label>
+                  <select
+                    id={idEpoca}
+                    value={epoca ?? ""}
+                    onChange={(e) => filtrar({ epoca: e.target.value || null })}
+                    className={`${campo} mt-1`}
+                  >
+                    <option value="">todas</option>
+                    {epocas.map((ep) => (
+                      <option key={ep.chave} value={ep.chave}>
+                        {ep.rotulo} ({ep.poetas})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            )}
+            <div className="min-w-0">
+              <label htmlFor={idOrdem} className="block text-sm">
+                ordem
+              </label>
+              <select
+                id={idOrdem}
+                value={ordem}
+                onChange={(e) => filtrar({ ordem: e.target.value as OrdemDoAcervo })}
+                className={`${campo} mt-1`}
+              >
+                {ORDENS_DO_ACERVO.map((o) => (
+                  <option key={o} value={o}>
+                    {ROTULOS_DAS_ORDENS[o]}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
         <div className="flex min-h-11 flex-wrap items-center justify-between gap-x-4">
-          <p role="status" className="text-sm text-tinta-suave tabular-nums">
-            {resultado && !erro
-              ? `${resultado.total} ${resultado.total === 1 ? "poeta" : "poetas"}`
-              : ""}
-          </p>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              aria-expanded={filtrosAbertos}
+              aria-controls={idDoPainel}
+              onClick={() => setFiltrosAbertos((aberto) => !aberto)}
+              className={`${chip} ${chipDesligado} inline-flex items-center gap-2 sm:hidden`}
+            >
+              <IconeAjustes className="h-[1.125rem] w-[1.125rem]" />
+              <span className="tabular-nums">{ligados > 0 ? `filtros · ${ligados}` : "filtros"}</span>
+              <IconeAbrirLista
+                className={`h-4 w-4 transition-transform duration-150 ${filtrosAbertos ? "rotate-180" : ""}`}
+              />
+            </button>
+            <p role="status" className="text-sm text-tinta-suave tabular-nums">
+              {resultado && !erro
+                ? `${resultado.total} ${resultado.total === 1 ? "poeta" : "poetas"}`
+                : ""}
+            </p>
+          </div>
           {comFiltro && limpar}
         </div>
       </div>
