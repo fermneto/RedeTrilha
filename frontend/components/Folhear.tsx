@@ -148,10 +148,15 @@ export function Folhear({ miolo, caminho, duplo }: { miolo: RefObject<HTMLElemen
     if (frente) {
       pousar(frente, 1000 - c.n);
       frente.style.transformOrigin = s === 1 ? "left center" : "right center";
+      // A face some no meio do giro (90 graus) em vez de confiar no
+      // backface-visibility: no Safari, as partes da página com camada própria
+      // (o cabeçalho, a área que rola) ignoram o do pai e aparecem espelhadas.
       giro = frente.animate(
         [
-          { transform: "rotateY(0deg)", boxShadow: sombra() },
-          { transform: `rotateY(${-180 * s}deg)`, boxShadow: sombra() },
+          { transform: "rotateY(0deg)", boxShadow: sombra(), opacity: 1 },
+          { offset: 0.5, transform: `rotateY(${-90 * s}deg)`, opacity: 1 },
+          { offset: 0.5, opacity: 0 },
+          { transform: `rotateY(${-180 * s}deg)`, boxShadow: sombra(), opacity: 0 },
         ],
         opcoes,
       );
@@ -162,8 +167,10 @@ export function Folhear({ miolo, caminho, duplo }: { miolo: RefObject<HTMLElemen
       verso.style.transformOrigin = s === 1 ? "right center" : "left center";
       const chegada = verso.animate(
         [
-          { transform: `rotateY(${180 * s}deg)`, boxShadow: sombra() },
-          { transform: "rotateY(0deg)", boxShadow: "0 0 0 transparent" },
+          { transform: `rotateY(${180 * s}deg)`, boxShadow: sombra(), opacity: 0 },
+          { offset: 0.5, transform: `rotateY(${90 * s}deg)`, opacity: 0 },
+          { offset: 0.5, opacity: 1 },
+          { transform: "rotateY(0deg)", boxShadow: "0 0 0 transparent", opacity: 1 },
         ],
         opcoes,
       );
