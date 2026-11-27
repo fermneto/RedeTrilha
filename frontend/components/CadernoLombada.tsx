@@ -146,13 +146,21 @@ function useLombada(): { marcadores: Marcador[]; escrevendo: boolean; aoTocar: (
 }
 
 // O número a ler, sobre o ícone. Acima de 99, "99+". Um selo de papel em
-// destaque: na capa, a única cor além da gravura.
-function Contador({ n }: { n: number }) {
+// destaque: na capa, a única cor além da gravura. Nos dois tamanhos o centro do
+// selo fica na borda de cima do ícone, com o selo encostado no canto dele:
+// `posicao` é a da lombada (ícone de 28 px numa casa de 56) ou a do celular
+// (22 px numa de 44).
+const POSICAO_DO_CONTADOR = {
+  lombada: "top-[0.4375rem] left-[calc(50%+0.625rem)]",
+  celular: "top-1 left-[calc(50%+0.5rem)]",
+} as const;
+
+function Contador({ n, posicao }: { n: number; posicao: keyof typeof POSICAO_DO_CONTADOR }) {
   if (n === 0) return null;
   return (
     <span
       aria-hidden="true"
-      className="absolute top-1 left-[calc(50%+0.5rem)] min-w-[1.125rem] rounded-full bg-destaque px-1 py-0.5 text-center text-[0.625rem] leading-none font-bold text-papel tabular-nums"
+      className={`absolute ${POSICAO_DO_CONTADOR[posicao]} min-w-[1.125rem] rounded-full bg-destaque px-1 py-0.5 text-center text-[0.625rem] leading-none font-bold text-papel tabular-nums`}
     >
       {n > 99 ? "99+" : n}
     </span>
@@ -197,7 +205,7 @@ export function Lombada() {
               className="gravado relative flex h-14 w-14 items-center justify-center rounded-xl"
             >
               <Simbolo m={m} classe="h-7 w-7" avatar="m" />
-              <Contador n={m.contador} />
+              <Contador n={m.contador} posicao="lombada" />
             </Link>
           </li>
         ))}
@@ -244,7 +252,7 @@ export function LombadaDoCelular() {
               className="gravado relative flex h-11 w-full max-w-14 items-center justify-center rounded-lg"
             >
               <Simbolo m={m} classe="h-[1.375rem] w-[1.375rem]" />
-              <Contador n={m.contador} />
+              <Contador n={m.contador} posicao="celular" />
             </Link>
           </li>
         ))}
