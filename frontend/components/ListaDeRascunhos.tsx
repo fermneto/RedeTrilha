@@ -143,10 +143,9 @@ function ItemDoRascunho({ rascunho, citado, aoApagar, aoPublicar }: PropsDoItem)
       {/* O manuscrito todo leva ao compositor; para o teclado, o "abrir no compositor" abaixo. */}
       <Link href={caminho} tabIndex={-1} aria-hidden="true" className="group mt-3 block">
         {rascunho.titulo && <p className="poema-titulo group-hover:underline">{rascunho.titulo}</p>}
-        <p className={`poema-corpo ${rascunho.titulo ? "mt-2" : ""}`}>
+        <p className={`poema-corpo ${rascunho.titulo ? "mt-2" : ""}${cortado ? " poema-cortado poema-cortado-curto" : ""}`}>
           <TextoFormatado texto={previa} />
         </p>
-        {cortado && <p className="poema-corpo text-tinta-suave">…</p>}
       </Link>
 
       <AcoesDoRascunho
