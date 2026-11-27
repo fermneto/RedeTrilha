@@ -33,14 +33,13 @@ import {
   buscarExplorar,
   caminhoDoAcervo,
   caminhoDoLogin,
-  FORMAS,
   hashtag,
   lerFiltrosDoAcervo,
   listarAntologiasPublicas,
-  nomeDaForma,
   normalizarTag,
   temToken,
 } from "@/lib/api";
+import { FORMAS, nomeDaForma } from "@/lib/vocabulario";
 
 const ABAS = [
   { valor: "poemas", rotulo: "Poemas" },

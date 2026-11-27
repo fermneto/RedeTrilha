@@ -12,6 +12,7 @@ import { useEffect, useId, useState } from "react";
 import { AntologiaFormulario } from "@/components/AntologiaFormulario";
 import { SeloPrivada } from "@/components/AntologiaLista";
 import { ouvirMudancas } from "@/components/AntologiaSeletor";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
 import { ConfirmacaoInline } from "@/components/ConfirmacaoInline";
@@ -138,7 +139,7 @@ export default function AntologiaPage() {
         esquerda={
           <>
             {cabecalho}
-            <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+            <AvisoDeErro className="m-4">{erro}</AvisoDeErro>
           </>
         }
       />

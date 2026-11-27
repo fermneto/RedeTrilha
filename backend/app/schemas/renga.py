@@ -3,16 +3,17 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from app.core.limites import (
+    RENGA_CONVIDADOS_MAX,
+    RENGA_LIMITE_MAX,
+    RENGA_LIMITE_MIN,
+    RENGA_LIMITE_PADRAO,
+    RENGA_TITULO_MAX,
+)
 from app.schemas.pagina import Pagina
 from app.schemas.user import UserOut
 
 Modo = Literal["aberta", "convidados"]
-
-# Quantas estrofes a renga pode ter, contando a do criador.
-LIMITE_PADRAO = 12
-LIMITE_MIN = 3
-LIMITE_MAX = 40
-CONVIDADOS_MAX = 50
 
 
 def _validar_estrofe(texto: str) -> str:
@@ -29,12 +30,12 @@ def _validar_titulo(titulo: str) -> str:
 
 
 class RengaCreate(BaseModel):
-    titulo: str = Field(max_length=200)
+    titulo: str = Field(max_length=RENGA_TITULO_MAX)
     primeira_estrofe: str
     modo: Modo = "aberta"
-    limite: int = Field(default=LIMITE_PADRAO, ge=LIMITE_MIN, le=LIMITE_MAX)
+    limite: int = Field(default=RENGA_LIMITE_PADRAO, ge=RENGA_LIMITE_MIN, le=RENGA_LIMITE_MAX)
     # Usernames; só no modo "convidados". O criador sempre escreve.
-    convidados: list[str] = Field(default=[], max_length=CONVIDADOS_MAX)
+    convidados: list[str] = Field(default=[], max_length=RENGA_CONVIDADOS_MAX)
 
     _titulo = field_validator("titulo")(_validar_titulo)
     _estrofe = field_validator("primeira_estrofe")(_validar_estrofe)
@@ -53,7 +54,7 @@ class EstrofeCreate(BaseModel):
 
 
 class ConvitesCreate(BaseModel):
-    usernames: list[str] = Field(min_length=1, max_length=CONVIDADOS_MAX)
+    usernames: list[str] = Field(min_length=1, max_length=RENGA_CONVIDADOS_MAX)
 
 
 class EstrofeOut(BaseModel):

@@ -10,21 +10,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CapaDaEntrada, useAbrirCapa } from "@/components/CapaDoLivro";
-import {
-  buscarEu,
-  cadastrar,
-  entrar,
-  ErroDaApi,
-  mensagemDeFalha,
-  salvarToken,
-  SENHA_MAX,
-  SENHA_MIN,
-  temToken,
-  USERNAME_FORMATO,
-  USERNAME_MAX,
-  USERNAME_MIN,
-} from "@/lib/api";
+import { buscarEu, cadastrar, entrar, ErroDaApi, mensagemDeFalha, salvarToken, temToken } from "@/lib/api";
+import { LIMITES, USERNAME_FORMATO } from "@/lib/vocabulario";
 
 // Os nomes batem com os campos do RegistroIn, para casar com o `loc` do 422.
 type Campo = "name" | "username" | "password";
@@ -36,18 +25,18 @@ const ORDEM: Campo[] = ["name", "username", "password"];
 function validar(name: string, username: string, senha: string): Erros {
   const erros: Erros = {};
   if (!name.trim()) erros.name = "conte como quer ser chamado";
-  if (username.length < USERNAME_MIN || username.length > USERNAME_MAX) {
-    erros.username = `o username precisa ter de ${USERNAME_MIN} a ${USERNAME_MAX} caracteres`;
+  if (username.length < LIMITES.username_min || username.length > LIMITES.username_max) {
+    erros.username = `o username precisa ter de ${LIMITES.username_min} a ${LIMITES.username_max} caracteres`;
   } else if (!USERNAME_FORMATO.test(username)) {
     erros.username = "use só letras minúsculas, números e _";
   }
   // O backend conta bytes (bcrypt): acentos e emojis ocupam mais de um.
-  if (senha.length < SENHA_MIN) {
-    erros.password = `a senha precisa ter pelo menos ${SENHA_MIN} caracteres`;
-  } else if (new TextEncoder().encode(senha).length > SENHA_MAX) {
+  if (senha.length < LIMITES.senha_min) {
+    erros.password = `a senha precisa ter pelo menos ${LIMITES.senha_min} caracteres`;
+  } else if (new TextEncoder().encode(senha).length > LIMITES.senha_max) {
     erros.password =
-      `a senha pode ter no máximo ${SENHA_MAX} caracteres ` +
-      `(${SENHA_MAX} bytes; acentos e emojis ocupam mais de um)`;
+      `a senha pode ter no máximo ${LIMITES.senha_max} caracteres ` +
+      `(${LIMITES.senha_max} bytes; acentos e emojis ocupam mais de um)`;
   }
   return erros;
 }
@@ -207,7 +196,7 @@ export default function CadastroPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              maxLength={USERNAME_MAX}
+              maxLength={LIMITES.username_max}
               autoComplete="username"
               autoCapitalize="none"
               autoCorrect="off"
@@ -217,7 +206,7 @@ export default function CadastroPage() {
               className={`${campo} mt-1 font-normal`}
             />
             <span id="dica-username" className="mt-1 block text-xs font-normal text-tinta-suave">
-              Letras minúsculas, números e _, de {USERNAME_MIN} a {USERNAME_MAX} caracteres.
+              Letras minúsculas, números e _, de {LIMITES.username_min} a {LIMITES.username_max} caracteres.
             </span>
             {erroDoCampo("username")}
           </label>
@@ -237,7 +226,7 @@ export default function CadastroPage() {
               className={`${campo} mt-1 font-normal`}
             />
             <span id="dica-senha" className="mt-1 block text-xs font-normal text-tinta-suave">
-              De {SENHA_MIN} a {SENHA_MAX} caracteres.
+              De {LIMITES.senha_min} a {LIMITES.senha_max} caracteres.
             </span>
             {erroDoCampo("password")}
           </label>
@@ -246,7 +235,7 @@ export default function CadastroPage() {
               foco vai para o primeiro campo com erro, que o leitor de tela lê junto. */}
           <div aria-live="polite">
             {erroGeral && (
-              <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erroGeral}</p>
+              <AvisoDeErro>{erroGeral}</AvisoDeErro>
             )}
           </div>
 

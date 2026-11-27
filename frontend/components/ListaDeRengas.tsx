@@ -7,9 +7,10 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { AutoresDaRenga } from "@/components/AutoresDaRenga";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { EsqueletoDeRengas } from "@/components/Esqueleto";
-import { NomeAutor } from "@/components/NomeAutor";
 import { Paginacao } from "@/components/Paginacao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import {
@@ -112,7 +113,7 @@ export function ListaDeRengas({ situacao, pagina }: { situacao: FiltroDasRengas 
         </nav>
       </div>
 
-      {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro className="m-4">{erro}</AvisoDeErro>}
       {!erro && !resultado && <EsqueletoDeRengas quantos={6} />}
       {resultado && resultado.items.length === 0 && (
         <div className="px-4 py-10 text-center">
@@ -158,13 +159,7 @@ function CartaoDaRenga({ renga }: { renga: Renga }) {
         </Link>
       </h2>
       <p className="relative mt-1 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-        <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-        {renga.autores.map((autor, i) => (
-          <span key={autor.id} className="inline-flex min-w-0 items-center">
-            <NomeAutor usuario={autor} className="font-semibold text-tinta" />
-            {i < renga.autores.length - 1 && <span aria-hidden="true">,</span>}
-          </span>
-        ))}
+        <AutoresDaRenga renga={renga} className="min-w-0" />
       </p>
       <p className="mt-2 text-[0.8125rem] leading-relaxed text-tinta-suave">
         <SeloDaRenga fechada={renga.fechada} />{" "}

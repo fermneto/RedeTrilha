@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 
 import { ItemDoIndice } from "@/components/ItemDoIndice";
-import { buscarExplorar, caminhoDaForma, nomeDaForma, poemasDeOutraPessoa, type Post } from "@/lib/api";
+import { buscarExplorar, caminhoDaForma, poemasDeOutraPessoa, type Post } from "@/lib/api";
+import { nomeDaForma } from "@/lib/vocabulario";
 
 const QUANTOS = 3;
 // A página do Explorar de onde saem: folga para os do próprio autor e o aberto.

@@ -1,6 +1,8 @@
 // Fetch tipado, único ponto de contato com o backend.
 // Envia o token da auth em Authorization: Bearer (guia 01, Parte 2).
 
+import { FORMAS, type Limites } from "./vocabulario";
+
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 const CHAVE_TOKEN = "token";
@@ -213,38 +215,7 @@ export type Page<T> = {
 
 // ---- Poemas (H6): espelham backend/app/schemas/{post,feed}.py e os comentários ----
 
-// Mesma ordem de FORMAS em backend/app/schemas/post.py.
-export const FORMAS = [
-  "soneto",
-  "haicai",
-  "trova",
-  "quadra",
-  "cordel",
-  "verso_livre",
-  "prosa_poetica",
-  "outro",
-] as const;
-
-export type Forma = (typeof FORMAS)[number];
-
-// Rótulo legível de cada forma, com acento (o valor guardado não tem).
-const NOMES_DAS_FORMAS: Record<Forma, string> = {
-  soneto: "soneto",
-  haicai: "haicai",
-  trova: "trova",
-  quadra: "quadra",
-  cordel: "cordel",
-  verso_livre: "verso livre",
-  prosa_poetica: "prosa poética",
-  outro: "outro",
-};
-
-// Forma fora da lista (não deveria vir do backend) fica só com "_" virando espaço.
-export function nomeDaForma(forma: string): string {
-  return NOMES_DAS_FORMAS[forma as Forma] ?? forma.replace(/_/g, " ");
-}
-
-// A forma também vira tag (#soneto).
+// A forma (lib/vocabulario.ts) também vira tag (#soneto).
 function ehForma(tag: string): boolean {
   return (FORMAS as readonly string[]).includes(tag);
 }
@@ -446,22 +417,13 @@ export type NovoPoema = {
   renga_citada_id?: number;
 };
 
-// Línguas do seletor do compositor, português primeiro (o padrão). "outra" manda null.
-export const IDIOMAS_DO_COMPOSITOR = ["pt", "es", "en", "fr", "it", "de", "la"] as const;
-
 // Há sessão no navegador? Sem token, as rotas protegidas devolvem 401.
 export function temToken(): boolean {
   return typeof window !== "undefined" && Boolean(localStorage.getItem(CHAVE_TOKEN));
 }
 
 // ---- Login e cadastro (P3): espelham backend/app/schemas/auth.py ----
-
-// Mesmas regras do Username e do RegistroIn no backend.
-export const USERNAME_MIN = 3;
-export const USERNAME_MAX = 30;
-export const USERNAME_FORMATO = /^[a-z0-9_]+$/;
-export const SENHA_MIN = 8;
-export const SENHA_MAX = 72;
+// Os limites do cadastro estão em lib/vocabulario.ts.
 
 export type NovoCadastro = { username: string; name: string; password: string };
 
@@ -821,8 +783,15 @@ export type Preferencias = {
 
 export type Opcao = { codigo: string; rotulo: string };
 
-// O vocabulário vem do backend: escolas com rótulo, formas, códigos de país e UFs.
-export type OpcoesDePreferencias = { escolas: Opcao[]; formas: string[]; paises: string[]; ufs: Opcao[] };
+// O vocabulário vem do backend: escolas e formas com rótulo, códigos de país,
+// UFs e os limites dos campos (a cópia de reserva está em lib/vocabulario.ts).
+export type OpcoesDePreferencias = {
+  escolas: Opcao[];
+  formas: Opcao[];
+  paises: string[];
+  ufs: Opcao[];
+  limites: Limites;
+};
 
 export function buscarPreferencias(): Promise<Preferencias> {
   return apiGet<Preferencias>("/preferencias");
@@ -938,10 +907,6 @@ export function nomeDoIdioma(codigo: string): string {
 }
 
 // ---- Antologias (P5): espelham backend/app/schemas/antologia.py ----
-
-// Mesmos limites de AntologiaCreate.
-export const ANTOLOGIA_NOME_MAX = 100;
-export const ANTOLOGIA_DESCRICAO_MAX = 1000;
 
 export type Antologia = {
   id: number;
@@ -1151,12 +1116,6 @@ export function caminhoDoAcervo(filtros: FiltrosDoAcervo, pagina: number): strin
 
 // ---- Rengas (poema colaborativo): espelham backend/app/schemas/renga.py ----
 
-// Os mesmos limites de RengaCreate (LIMITE_PADRAO, LIMITE_MIN, LIMITE_MAX).
-export const RENGA_LIMITE_PADRAO = 12;
-export const RENGA_LIMITE_MIN = 3;
-export const RENGA_LIMITE_MAX = 40;
-export const RENGA_TITULO_MAX = 200;
-
 export type ModoDaRenga = "aberta" | "convidados";
 export type SituacaoDaRenga = "aberta" | "fechada";
 
@@ -1358,10 +1317,6 @@ export function lerUsernames(texto: string): string[] {
 }
 
 // ---- Oficina do compositor: espelha backend/app/schemas/oficina.py ----
-
-// O mesmo MAX_CARACTERES do backend: acima disso a oficina não marca (o poema
-// continua sem limite).
-export const OFICINA_MAX_CARACTERES = 10_000;
 
 export type VersoAnalisado = {
   // null em linha em branco ou sem palavras.
@@ -1662,9 +1617,6 @@ export function previaDoRascunho(texto: string, quantos: number): { previa: stri
 }
 
 // ---- Mensagens diretas: espelham backend/app/schemas/mensagem.py ----
-
-// LIMITE_TEXTO_MENSAGEM do backend.
-export const MENSAGEM_MAX_CARACTERES = 10_000;
 
 export type SituacaoDaConversa = "caixa" | "pedido" | "recusada";
 export type AbaDaCaixa = "conversas" | "pedidos";

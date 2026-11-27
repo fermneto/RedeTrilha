@@ -7,12 +7,8 @@
 
 import { type RefObject, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
-import {
-  type AnaliseDoRascunho,
-  analisarRascunho,
-  marcaDoVerso,
-  OFICINA_MAX_CARACTERES,
-} from "@/lib/api";
+import { type AnaliseDoRascunho, analisarRascunho, marcaDoVerso } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 
 type OpcoesDaOficina = { silabas: boolean; rimas: boolean };
 type Opcao = keyof OpcoesDaOficina;
@@ -47,7 +43,7 @@ type Oficina = {
 export function useOficina(texto: string, forma: string): Oficina {
   const [opcoes, setOpcoes] = useState<OpcoesDaOficina>(PADRAO);
   const [analise, setAnalise] = useState<AnaliseDoRascunho | null>(null);
-  const longoDemais = texto.length > OFICINA_MAX_CARACTERES;
+  const longoDemais = texto.length > LIMITES.oficina_max_caracteres;
   // Com os dois toggles desligados não há análise, nem o aviso de forma.
   const ativa = opcoes.silabas || opcoes.rimas;
 
@@ -236,7 +232,7 @@ export function OficinaPainel({ oficina }: { oficina: Oficina }) {
         )}
       </div>
       {longoDemais && (opcoes.silabas || opcoes.rimas) && (
-        <p>Texto longo demais para a oficina marcar (até {OFICINA_MAX_CARACTERES} caracteres).</p>
+        <p>Texto longo demais para a oficina marcar (até {LIMITES.oficina_max_caracteres} caracteres).</p>
       )}
       {(opcoes.silabas || opcoes.rimas) && analise?.aviso && <p role="status">{analise.aviso}</p>}
     </div>

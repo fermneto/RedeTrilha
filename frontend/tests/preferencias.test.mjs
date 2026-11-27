@@ -1,15 +1,11 @@
 // Testa as funções do onboarding (lib/api.ts), transpilando o arquivo como em
 // anosDeVida.test.mjs. Rode com `npm test`.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import ts from "typescript";
 
-const fonte = readFileSync(new URL("../lib/api.ts", import.meta.url), "utf8");
-const js = ts.transpileModule(fonte, {
-  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const { abertaDireto, alternarNaLista, caminhoDasPreferencias, caminhoDosGostos, ehTelaDeBoasVindas, passoInicial, nomeDoPais, passosDasPreferencias } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+import { importarLib } from "./importarLib.mjs";
+
+const { abertaDireto, alternarNaLista, caminhoDasPreferencias, caminhoDosGostos, ehTelaDeBoasVindas, passoInicial, nomeDoPais, passosDasPreferencias } = await importarLib("api");
 
 test("alternar marca e desmarca sem repetir", () => {
   assert.deepEqual(alternarNaLista([], "barroco"), ["barroco"]);
@@ -74,7 +70,7 @@ test("cancelar: aberta direto nas preferências não tem página do Verso antes"
 });
 
 test("gostos: o lugar com a UF por extenso, as formas sem \"outro\" e com o link do Explorar", async () => {
-  const { lugarDosGostos, formasDoPerfil, caminhoDaForma } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+  const { lugarDosGostos, formasDoPerfil, caminhoDaForma } = await importarLib("api");
   const vazio = { escolas: [], formas: [], pais: null, uf: null, mostrar_lugar: true };
   const ufs = [{ codigo: "PB", rotulo: "Paraíba" }];
   assert.equal(lugarDosGostos(vazio, ufs), null);

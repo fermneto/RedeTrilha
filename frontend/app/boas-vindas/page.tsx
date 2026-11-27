@@ -18,6 +18,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { ReverAsDicas } from "@/components/DicasDoLivro";
 import { EscolhaComBusca } from "@/components/EscolhaComBusca";
 import { EscolhaDoTema } from "@/components/EscolhaDoTema";
@@ -39,7 +40,6 @@ import {
   destinoSeguro,
   ehTelaDeBoasVindas,
   mensagemDeFalha,
-  nomeDaForma,
   nomeDoPais,
   passoInicial,
   passosDasPreferencias,
@@ -201,7 +201,7 @@ function BoasVindas() {
             />
             <Chips
               titulo="Formas"
-              opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
+              opcoes={opcoes.formas}
               marcadas={prefs.formas}
               aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
             />
@@ -211,9 +211,9 @@ function BoasVindas() {
         {opcoes && passo === "regiao" && <Regiao opcoes={opcoes} prefs={prefs} aoMudar={setPrefs} />}
 
         {erro && (
-          <p role="alert" className="mt-8 rounded-xl border border-destaque p-3 text-sm text-destaque">
+          <AvisoDeErro className="mt-8" role="alert">
             {erro}
-          </p>
+          </AvisoDeErro>
         )}
       </Moldura>
       {!telaCheia && (

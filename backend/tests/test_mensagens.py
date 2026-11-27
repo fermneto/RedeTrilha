@@ -5,7 +5,7 @@ tests/test_mensagens_stream.py."""
 import pytest
 
 from app.core.caixa_de_entrada import avancar_leitura, situacao_de_quem_recebe
-from app.schemas.mensagem import LIMITE_TEXTO_MENSAGEM
+from app.core.limites import MENSAGEM_MAX_CARACTERES
 
 
 def abrir(client, como, quem: str, com: str) -> dict:
@@ -274,11 +274,11 @@ def test_texto_preserva_quebras_e_tem_limite(client, como):
     for texto in ["", "  \n "]:
         r = client.post(f"/mensagens/conversas/{conversa}/mensagens", json={"texto": texto}, headers=como("ana"))
         assert r.status_code == 422
-    longo = "a" * (LIMITE_TEXTO_MENSAGEM + 1)
+    longo = "a" * (MENSAGEM_MAX_CARACTERES + 1)
     r = client.post(f"/mensagens/conversas/{conversa}/mensagens", json={"texto": longo}, headers=como("ana"))
     assert r.status_code == 422
-    assert str(LIMITE_TEXTO_MENSAGEM) in r.text
-    enviar(client, como, "ana", conversa, "a" * LIMITE_TEXTO_MENSAGEM)
+    assert str(MENSAGEM_MAX_CARACTERES) in r.text
+    enviar(client, como, "ana", conversa, "a" * MENSAGEM_MAX_CARACTERES)
 
 
 def test_limite_de_mensagens_por_minuto(client, como, monkeypatch):

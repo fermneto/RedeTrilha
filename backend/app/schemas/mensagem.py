@@ -3,12 +3,11 @@ from typing import Literal
 
 from pydantic import BaseModel, model_validator
 
+from app.core.limites import MENSAGEM_MAX_CARACTERES
 from app.schemas.post import PostOut
 from app.schemas.renga import RengaDetalhe
 from app.schemas.user import UserOut
 
-# Uma mensagem pode ser um poema colado inteiro, mas não um livro.
-LIMITE_TEXTO_MENSAGEM = 10_000
 # Anti-spam: mensagens por pessoa no último minuto, contadas no banco.
 MENSAGENS_POR_MINUTO = 30
 
@@ -32,8 +31,8 @@ class MensagemCreate(BaseModel):
 
     @model_validator(mode="after")
     def _texto_ou_poema(self) -> "MensagemCreate":
-        if len(self.texto) > LIMITE_TEXTO_MENSAGEM:
-            raise ValueError(f"a mensagem tem até {LIMITE_TEXTO_MENSAGEM} caracteres")
+        if len(self.texto) > MENSAGEM_MAX_CARACTERES:
+            raise ValueError(f"a mensagem tem até {MENSAGEM_MAX_CARACTERES} caracteres")
         if self.post_id is not None and self.renga_id is not None:
             raise ValueError("a mensagem leva um poema ou uma renga, não os dois")
         if not self.texto.strip() and self.post_id is None and self.renga_id is None:

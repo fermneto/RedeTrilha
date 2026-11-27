@@ -4,18 +4,15 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from app.core.limites import OFICINA_MAX_CARACTERES
 from app.schemas.post import FORMAS
-
-# Teto da análise, para a rota sem login não virar abuso. O poema continua sem limite; só a oficina para de marcar acima disto.
-# Espelhado em OFICINA_MAX_CARACTERES no frontend/lib/api.ts.
-MAX_CARACTERES = 10_000
 
 
 class AnalisePedido(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     # Analisado como veio: nada de strip, as quebras de linha alinham as marcas.
-    texto: str = Field(max_length=MAX_CARACTERES)
+    texto: str = Field(max_length=OFICINA_MAX_CARACTERES)
     # Só para o aviso de forma (soneto, haicai); as outras formas não avisam.
     forma: str | None = None
 

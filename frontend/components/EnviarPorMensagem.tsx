@@ -16,11 +16,11 @@ import {
   buscarQuemRecebeMensagem,
   enviarMensagem,
   listarConversas,
-  MENSAGEM_MAX_CARACTERES,
   mensagemDeFalha,
   type Alvo,
   type User,
 } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 
 type Props = {
   alvo: Alvo;
@@ -171,7 +171,7 @@ function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
               ref={campoTexto}
               value={texto}
               onChange={(e) => setTexto(e.target.value)}
-              maxLength={MENSAGEM_MAX_CARACTERES}
+              maxLength={LIMITES.mensagem_max_caracteres}
               rows={2}
               className="mt-1 block w-full resize-none rounded-xl border border-borda bg-papel px-3 py-2 font-serifada text-sm text-tinta focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
             />

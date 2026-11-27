@@ -13,6 +13,7 @@ from pydantic import (
     field_validator,
 )
 
+from app.core.limites import AVATAR_URL_MAX, BIO_MAX, NOME_MAX, USERNAME_MAX, USERNAME_MIN
 from app.schemas.pagina import Pagina
 
 # Nomes que colidem com rotas do front (/perfil, /explorar...) ou da API
@@ -25,20 +26,18 @@ USERNAMES_RESERVADOS = frozenset(
 )
 
 _URL_HTTP = TypeAdapter(HttpUrl)
-_PADRAO_USERNAME = re.compile(r"[a-z0-9_]{3,30}")
+_PADRAO_USERNAME = re.compile(rf"[a-z0-9_]{{{USERNAME_MIN},{USERNAME_MAX}}}")
 
-# Limites de cadastro e perfil, com as mensagens em português que o front mostra
-# (o 422 do pydantic chega à tela pelo request() de lib/api.ts). Os limites ficam
-# nos validadores, e não em Field(max_length=...), porque o Field responde em inglês.
-LIMITE_NOME = 80
-LIMITE_BIO = 1000
-LIMITE_AVATAR_URL = 500
+# Os limites de cadastro e perfil (core/limites.py) ficam nos validadores, com as
+# mensagens em português que o front mostra (o 422 do pydantic chega à tela pelo
+# request() de lib/api.ts), e não em Field(max_length=...), que responde em inglês.
 
 
 def _validar_username(username: str) -> str:
     if not _PADRAO_USERNAME.fullmatch(username):
         raise ValueError(
-            "o username precisa ter de 3 a 30 caracteres: letras minúsculas, números ou _"
+            f"o username precisa ter de {USERNAME_MIN} a {USERNAME_MAX} caracteres: "
+            "letras minúsculas, números ou _"
         )
     if username in USERNAMES_RESERVADOS:
         raise ValueError(f"o username \"{username}\" é reservado pelo Verso; escolha outro")
@@ -46,14 +45,14 @@ def _validar_username(username: str) -> str:
 
 
 def _validar_nome(nome: str) -> str:
-    if not nome.strip() or len(nome) > LIMITE_NOME:
-        raise ValueError(f"o nome é obrigatório e tem até {LIMITE_NOME} caracteres")
+    if not nome.strip() or len(nome) > NOME_MAX:
+        raise ValueError(f"o nome é obrigatório e tem até {NOME_MAX} caracteres")
     return nome
 
 
 def _validar_bio(bio: str) -> str:
-    if len(bio) > LIMITE_BIO:
-        raise ValueError(f"a bio tem até {LIMITE_BIO} caracteres")
+    if len(bio) > BIO_MAX:
+        raise ValueError(f"a bio tem até {BIO_MAX} caracteres")
     return bio
 
 
@@ -61,8 +60,8 @@ def _validar_avatar_url(url: str) -> str:
     """"" (sem foto) ou uma URL http(s). Guarda a URL como veio, sem normalizar."""
     if url == "":
         return url
-    if len(url) > LIMITE_AVATAR_URL:
-        raise ValueError(f"a avatar_url tem até {LIMITE_AVATAR_URL} caracteres")
+    if len(url) > AVATAR_URL_MAX:
+        raise ValueError(f"a avatar_url tem até {AVATAR_URL_MAX} caracteres")
     try:
         _URL_HTTP.validate_python(url)
     except ValidationError:

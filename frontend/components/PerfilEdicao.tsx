@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { editarPerfil, mensagemDeFalha, type Perfil } from "@/lib/api";
 
 type Props = {
@@ -67,7 +68,7 @@ export function PerfilEdicao({ perfil, aoSalvar, aoCancelar }: Props) {
         />
       </label>
 
-      {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro cantos="pequenos">{erro}</AvisoDeErro>}
 
       <div className="flex gap-2">
         <button

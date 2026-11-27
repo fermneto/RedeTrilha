@@ -4,14 +4,9 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-import {
-  ANTOLOGIA_DESCRICAO_MAX,
-  ANTOLOGIA_NOME_MAX,
-  ErroDaApi,
-  mensagemDeFalha,
-  type Antologia,
-  type NovaAntologia,
-} from "@/lib/api";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
+import { ErroDaApi, mensagemDeFalha, type Antologia, type NovaAntologia } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 
 type Props = {
   // Valores iniciais (na edição); sem eles, uma antologia nova e pública.
@@ -78,7 +73,7 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           required
-          maxLength={ANTOLOGIA_NOME_MAX}
+          maxLength={LIMITES.antologia_nome_max}
           placeholder="Poemas de chuva"
           aria-invalid={erroDoNome !== null}
           aria-describedby={erroDoNome ? idErroNome : undefined}
@@ -96,14 +91,14 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
         <textarea
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
-          maxLength={ANTOLOGIA_DESCRICAO_MAX}
+          maxLength={LIMITES.antologia_descricao_max}
           rows={3}
           placeholder="Para ler na marquise, esperando a chuva passar."
           aria-describedby={idContador}
           className={`${campo} mt-1 resize-y font-normal`}
         />
         <span id={idContador} className="mt-1 block text-right text-xs font-normal text-tinta-suave tabular-nums">
-          {descricao.length}/{ANTOLOGIA_DESCRICAO_MAX}
+          {descricao.length}/{LIMITES.antologia_descricao_max}
         </span>
       </label>
 
@@ -121,9 +116,9 @@ export function AntologiaFormulario({ inicial, textoDoBotao, aoEnviar, aoCancela
       </div>
 
       {erro && (
-        <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <AvisoDeErro role="alert">
           {erro}
-        </p>
+        </AvisoDeErro>
       )}
 
       <div className="flex flex-wrap gap-2">

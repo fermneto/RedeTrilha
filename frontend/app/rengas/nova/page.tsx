@@ -8,6 +8,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { FormatoDeEscrita } from "@/components/FormatoDeEscrita";
@@ -17,13 +18,10 @@ import {
   ErroDaApi,
   lerUsernames,
   mensagemDeFalha,
-  RENGA_LIMITE_MAX,
-  RENGA_LIMITE_MIN,
-  RENGA_LIMITE_PADRAO,
-  RENGA_TITULO_MAX,
   temToken,
   type ModoDaRenga,
 } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 import { lerPoemaParaRenga } from "@/lib/trocaDeFormato";
 
 const MODOS: { valor: ModoDaRenga; rotulo: string; explicacao: string }[] = [
@@ -39,7 +37,7 @@ export default function NovaRengaPage() {
   const [titulo, setTitulo] = useState("");
   const [estrofe, setEstrofe] = useState("");
   const [modo, setModo] = useState<ModoDaRenga>("aberta");
-  const [limite, setLimite] = useState(RENGA_LIMITE_PADRAO);
+  const [limite, setLimite] = useState(LIMITES.renga_limite_padrao);
   const [convidados, setConvidados] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
@@ -100,7 +98,7 @@ export default function NovaRengaPage() {
             id={`${id}-titulo`}
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
-            maxLength={RENGA_TITULO_MAX}
+            maxLength={LIMITES.renga_titulo_max}
             placeholder="Renga da chuva no CCHLA"
             aria-invalid={Boolean(campos.titulo)}
             aria-describedby={campos.titulo ? `${id}-titulo-erro` : undefined}
@@ -186,8 +184,8 @@ export default function NovaRengaPage() {
             id={`${id}-limite`}
             type="number"
             inputMode="numeric"
-            min={RENGA_LIMITE_MIN}
-            max={RENGA_LIMITE_MAX}
+            min={LIMITES.renga_limite_min}
+            max={LIMITES.renga_limite_max}
             value={limite}
             onChange={(e) => setLimite(Number(e.target.value))}
             aria-invalid={Boolean(campos.limite)}
@@ -199,14 +197,14 @@ export default function NovaRengaPage() {
             className={`mt-1 block text-xs ${campos.limite ? "text-destaque" : "text-tinta-suave"}`}
           >
             {campos.limite ??
-              `De ${RENGA_LIMITE_MIN} a ${RENGA_LIMITE_MAX}, contando a sua. Ao chegar nele, a renga fecha.`}
+              `De ${LIMITES.renga_limite_min} a ${LIMITES.renga_limite_max}, contando a sua. Ao chegar nele, a renga fecha.`}
           </span>
         </div>
 
         {erro && (
-          <p role="alert" className="rounded-xl border border-destaque p-3 text-sm text-destaque">
+          <AvisoDeErro role="alert">
             {erro}
-          </p>
+          </AvisoDeErro>
         )}
 
         <button

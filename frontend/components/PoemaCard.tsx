@@ -24,7 +24,6 @@ import {
   hashtag,
   idiomaDoNavegador,
   mensagemDeFalha,
-  nomeDaForma,
   nomeDoIdioma,
   rotuloDoComentario,
   traduzirPoema,
@@ -33,6 +32,7 @@ import {
   type Traducao,
   type User,
 } from "@/lib/api";
+import { nomeDaForma } from "@/lib/vocabulario";
 import {
   alternarTraducao,
   type EstadoDaTraducao,

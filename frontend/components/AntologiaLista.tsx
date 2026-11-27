@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EsqueletoDeAntologias } from "@/components/Esqueleto";
 import { mensagemDeFalha, type Antologia, type Page } from "@/lib/api";
 
@@ -53,7 +54,7 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
   return (
     <div>
       {erro && (
-        <div role="alert" className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">
+        <AvisoDeErro className="m-4" role="alert" como="div">
           <p>{erro}</p>
           <button
             type="button"
@@ -62,7 +63,7 @@ export function AntologiaLista({ buscar, vazio, comDono = false }: Props) {
           >
             tentar de novo
           </button>
-        </div>
+        </AvisoDeErro>
       )}
 
       {antologias.length > 0 && (

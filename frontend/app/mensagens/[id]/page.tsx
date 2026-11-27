@@ -30,7 +30,6 @@ import {
   enviarMensagem,
   ErroDaApi,
   marcarLida,
-  MENSAGEM_MAX_CARACTERES,
   mensagemDeFalha,
   ouvirMensagens,
   quandoEditado,
@@ -41,11 +40,12 @@ import {
   type Conversa,
   type Mensagem,
 } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 
 // Duas mensagens seguidas com mais que isto entre elas ganham a hora embaixo.
 const INTERVALO_DA_HORA_MS = 5 * 60_000;
 // O contador de caracteres só aparece perto do limite.
-const AVISO_DE_CARACTERES = MENSAGEM_MAX_CARACTERES - 1000;
+const AVISO_DE_CARACTERES = LIMITES.mensagem_max_caracteres - 1000;
 
 export default function ConversaPage() {
   const router = useRouter();
@@ -542,7 +542,7 @@ function CampoDaMensagem({ para, aoEnviar }: { para: string; aoEnviar: (texto: s
   }, [texto]);
 
   const vazio = !texto.trim();
-  const passou = texto.length > MENSAGEM_MAX_CARACTERES;
+  const passou = texto.length > LIMITES.mensagem_max_caracteres;
 
   async function enviar(e?: React.FormEvent) {
     e?.preventDefault();
@@ -583,7 +583,7 @@ function CampoDaMensagem({ para, aoEnviar }: { para: string; aoEnviar: (texto: s
           <span>Enter quebra a linha; Ctrl+Enter envia.</span>
           {texto.length > AVISO_DE_CARACTERES && (
             <span className={`tabular-nums ${passou ? "font-semibold text-destaque" : ""}`}>
-              {texto.length.toLocaleString("pt-BR")}/{MENSAGEM_MAX_CARACTERES.toLocaleString("pt-BR")}
+              {texto.length.toLocaleString("pt-BR")}/{LIMITES.mensagem_max_caracteres.toLocaleString("pt-BR")}
             </span>
           )}
         </p>

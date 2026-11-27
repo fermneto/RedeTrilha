@@ -15,9 +15,11 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 
-import { ArvoreComentarios, ID_DO_CAMPO_DE_COMENTARIO } from "@/components/ArvoreComentarios";
+import { ArvoreComentarios } from "@/components/ArvoreComentarios";
+import { AutoresDaRenga, ListaDeAutores } from "@/components/AutoresDaRenga";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { AcoesDaRenga } from "@/components/BarraDeAcoes";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { CadernoFolhas, useFolhas } from "@/components/CadernoFolhas";
@@ -30,11 +32,12 @@ import { NomeAutor } from "@/components/NomeAutor";
 import { Repercussao } from "@/components/Repercussao";
 import { SeloDaRenga } from "@/components/SeloDaRenga";
 import { VersosComentaveis } from "@/components/VersosComentaveis";
+import { useCriticaAncorada, type CriticaAncorada } from "@/hooks/useCriticaAncorada";
+import { useIrParaComentarios } from "@/hooks/useIrParaComentarios";
 import {
   acrescentarEstrofe,
   buscarEu,
   buscarRenga,
-  buscarVersosComentados,
   caminhoDoLogin,
   convidarParaRenga,
   encerrarRenga,
@@ -42,15 +45,12 @@ import {
   fimDasEstrofes,
   formatarDataEHora,
   lerUsernames,
-  lerVersosDaUrl,
   mensagemDeFalha,
   temToken,
   textoDaRenga,
   type RengaDetalhe,
-  type SelecaoDeVersos,
   type User,
 } from "@/lib/api";
-import { textoSemMarcas } from "@/lib/marcas";
 
 const botaoPrincipal =
   "min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50";
@@ -68,23 +68,10 @@ export default function RengaPage() {
   const [eu, setEu] = useState<User | null>(null);
   const [naoExiste, setNaoExiste] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-  // Crítica ancorada: versos selecionados, marcas por verso e o filtro da marca.
-  const [selecao, setSelecao] = useState<SelecaoDeVersos | null>(null);
-  const [marcas, setMarcas] = useState<Map<number, number>>(new Map());
-  const [verso, setVerso] = useState<number | null>(null);
-  // ?versos=2-4: lido uma vez, quando a renga chega, e passado uma vez aos versos.
-  const [pedida, setPedida] = useState<SelecaoDeVersos | null>(null);
-  const leuAUrl = useRef(false);
-
-  // Também chamado pela árvore depois de comentar ou apagar. Sem as marcas, a
-  // renga continua legível: só não mostra os números.
-  const carregarMarcas = useCallback(
-    () =>
-      buscarVersosComentados({ tipo: "renga", id })
-        .then(({ items }) => setMarcas(new Map(items.map((m) => [m.verso, m.comentarios]))))
-        .catch(() => setMarcas(new Map())),
-    [id],
-  );
+  const texto = renga ? textoDaRenga(renga.estrofes) : null;
+  // A árvore também recarrega as marcas depois de comentar ou apagar.
+  const critica = useCriticaAncorada({ tipo: "renga", id }, texto);
+  const { carregarMarcas } = critica;
 
   useEffect(() => {
     if (!temToken()) {
@@ -108,19 +95,6 @@ export default function RengaPage() {
       });
   }, [id, router, carregarMarcas]);
 
-  useEffect(() => {
-    if (!renga || leuAUrl.current) return;
-    leuAUrl.current = true;
-    const versos = new URLSearchParams(window.location.search).get("versos");
-    setPedida(lerVersosDaUrl(versos, textoSemMarcas(textoDaRenga(renga.estrofes))));
-  }, [renga]);
-
-  // Os versos aplicam o pedido no mesmo commit; depois ele se apaga.
-  useEffect(() => {
-    if (pedida) setPedida(null);
-  }, [pedida]);
-
-  const texto = renga ? textoDaRenga(renga.estrofes) : "";
   // O autor de cada estrofe, embaixo do último verso dela.
   const rodape = useMemo(() => {
     const mapa = new Map<number, React.ReactNode>();
@@ -172,7 +146,7 @@ export default function RengaPage() {
       </div>,
     );
   if (erro)
-    return umaFolha(erro, <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>);
+    return umaFolha(erro, <AvisoDeErro className="m-4">{erro}</AvisoDeErro>);
   if (!renga) return umaFolha("carregando a renga", <EsqueletoDaPaginaDaRenga />);
 
   // Como o poema: na página dupla, a renga na esquerda e, na direita, as ações,
@@ -195,13 +169,9 @@ export default function RengaPage() {
                 renga={renga}
                 souCriador={eu?.id === renga.criador.id}
                 aoMudar={setRenga}
-                texto={texto}
+                texto={texto ?? ""}
                 rodape={rodape}
-                marcas={marcas}
-                selecao={selecao}
-                aoSelecionar={setSelecao}
-                pedida={pedida}
-                aoFiltrar={setVerso}
+                critica={critica}
               />
             </div>
           ),
@@ -217,11 +187,11 @@ export default function RengaPage() {
                     alvo={{ tipo: "renga", id: renga.id }}
                     euId={eu?.id ?? null}
                     aoMudar={carregarMarcas}
-                    textoDoPoema={texto}
-                    selecao={selecao}
-                    aoLimparSelecao={() => setSelecao(null)}
-                    verso={verso}
-                    aoLimparFiltro={() => setVerso(null)}
+                    textoDoPoema={texto ?? ""}
+                    selecao={critica.selecao}
+                    aoLimparSelecao={() => critica.setSelecao(null)}
+                    verso={critica.verso}
+                    aoLimparFiltro={() => critica.setVerso(null)}
                   />
                 }
               />
@@ -243,28 +213,17 @@ function PaginaDaRenga({
   aoMudar,
   texto,
   rodape,
-  marcas,
-  selecao,
-  aoSelecionar,
-  pedida,
-  aoFiltrar,
+  critica,
 }: {
   renga: RengaDetalhe;
   souCriador: boolean;
   aoMudar: (renga: RengaDetalhe) => void;
   texto: string;
   rodape: Map<number, React.ReactNode>;
-  marcas: Map<number, number>;
-  selecao: SelecaoDeVersos | null;
-  aoSelecionar: (s: SelecaoDeVersos | null) => void;
-  pedida: SelecaoDeVersos | null;
-  aoFiltrar: (verso: number) => void;
+  critica: CriticaAncorada;
 }) {
   const { duplo, mostrar } = useFolhas();
-  // "comentar", no card do feed, abre /rengas/{id}#comentarios: no celular, já na página deles.
-  useEffect(() => {
-    if (window.location.hash === "#comentarios") mostrar("d");
-  }, []);
+  const { aoComentar, aoFiltrar } = useIrParaComentarios(critica.setVerso);
 
   return (
     <>
@@ -273,8 +232,7 @@ function PaginaDaRenga({
           {renga.titulo}
         </h1>
         <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 text-sm text-tinta-suave">
-          <span>{renga.fechada ? "um poema de" : "escrita por"}</span>
-          <ListaDeAutores autores={renga.autores} />
+          <AutoresDaRenga renga={renga} />
         </p>
         <p className="mt-3 text-[0.8125rem] leading-relaxed text-tinta-suave">
           <SeloDaRenga fechada={renga.fechada} />{" "}
@@ -299,21 +257,12 @@ function PaginaDaRenga({
             texto={texto}
             citar={{ tipo: "renga", id: renga.id }}
             rodape={rodape}
-            marcas={marcas}
-            selecao={selecao}
-            aoSelecionar={aoSelecionar}
-            selecaoPedida={pedida}
-            aoComentar={(suave) =>
-              mostrar("d", () => {
-                const campo = document.getElementById(ID_DO_CAMPO_DE_COMENTARIO);
-                campo?.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "center" });
-                campo?.focus({ preventScroll: true });
-              })
-            }
-            aoFiltrar={(n) => {
-              aoFiltrar(n);
-              mostrar("d", () => document.getElementById("comentarios")?.scrollIntoView({ behavior: "smooth" }));
-            }}
+            marcas={critica.marcas}
+            selecao={critica.selecao}
+            aoSelecionar={critica.setSelecao}
+            selecaoPedida={critica.pedida}
+            aoComentar={aoComentar}
+            aoFiltrar={aoFiltrar}
           />
         </div>
 
@@ -388,19 +337,6 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
         <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>
       </span>
     </button>
-  );
-}
-
-function ListaDeAutores({ autores }: { autores: User[] }) {
-  return (
-    <>
-      {autores.map((autor, i) => (
-        <span key={autor.id} className="inline-flex items-center">
-          <NomeAutor usuario={autor} className="font-semibold text-tinta" />
-          {i < autores.length - 1 && <span aria-hidden="true">,</span>}
-        </span>
-      ))}
-    </>
   );
 }
 

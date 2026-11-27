@@ -10,6 +10,7 @@ import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 
 import { Abas } from "@/components/Abas";
 import { Avatar } from "@/components/Avatar";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDeConversas } from "@/components/Esqueleto";
 import {
@@ -94,7 +95,7 @@ function Caixa() {
   return (
     <div>
       <CabecalhoPagina titulo="Mensagens" />
-      {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro className="m-4">{erro}</AvisoDeErro>}
       <Abas
         abas={abas}
         atual={aba}

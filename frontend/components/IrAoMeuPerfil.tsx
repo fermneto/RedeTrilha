@@ -7,6 +7,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { buscarEu, caminhoDoLogin, mensagemDeFalha, temToken } from "@/lib/api";
 
 export function IrAoMeuPerfil({ aba }: { aba?: "rascunhos" | "antologias" }) {
@@ -23,6 +24,6 @@ export function IrAoMeuPerfil({ aba }: { aba?: "rascunhos" | "antologias" }) {
       .catch((e) => setErro(mensagemDeFalha(e, "não deu para abrir o perfil")));
   }, [router, aba]);
 
-  if (erro) return <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>;
+  if (erro) return <AvisoDeErro className="m-4">{erro}</AvisoDeErro>;
   return <p className="px-4 py-8 text-sm text-tinta-suave">carregando...</p>;
 }

@@ -15,6 +15,7 @@ import { Abas } from "@/components/Abas";
 import Link from "next/link";
 
 import { AntologiaLista } from "@/components/AntologiaLista";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CadernoFolhas } from "@/components/CadernoFolhas";
 import { MARGEM_DA_PAGINA } from "@/components/CadernoPoema";
 import { EsqueletoDePerfil } from "@/components/Esqueleto";
@@ -112,7 +113,7 @@ function PerfilDoPoeta() {
             rotulo: erro ?? "carregando o perfil",
             esquerda: erro ? (
               <div className={MARGEM_DA_PAGINA}>
-                <p className="rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>
+                <AvisoDeErro>{erro}</AvisoDeErro>
               </div>
             ) : (
               <div className="px-(--recuo-da-folha) pt-4 lg:pt-8">

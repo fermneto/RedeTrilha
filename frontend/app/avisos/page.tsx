@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Avatar } from "@/components/Avatar";
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { CabecalhoPagina } from "@/components/CabecalhoPagina";
 import { EsqueletoDeAvisos } from "@/components/Esqueleto";
 import { IconeAvisos } from "@/components/icones/IconeAvisos";
@@ -104,7 +105,7 @@ export default function AvisosPage() {
   return (
     <div>
       <CabecalhoPagina titulo="Avisos" />
-      {erro && <p className="m-4 rounded-xl border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro className="m-4">{erro}</AvisoDeErro>}
       {!lista ? (
         !erro && <EsqueletoDeAvisos quantos={6} />
       ) : lista.itens.length === 0 ? (

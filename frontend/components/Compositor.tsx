@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 
+import { AvisoDeErro } from "@/components/AvisoDeErro";
 import { EditorDePoema } from "@/components/EditorDePoema";
 import { OficinaMarcas, OficinaPainel, useOficina } from "@/components/OficinaMarcas";
 import { IconePena } from "@/components/icones/IconePena";
@@ -27,10 +28,7 @@ import {
   buscarRenga,
   criarRascunho,
   editarRascunho,
-  FORMAS,
-  IDIOMAS_DO_COMPOSITOR,
   mensagemDeFalha,
-  nomeDaForma,
   nomeDoIdioma,
   publicarPoema,
   publicarRascunho,
@@ -38,6 +36,7 @@ import {
   type Post,
   type RengaDetalhe,
 } from "@/lib/api";
+import { FORMAS, IDIOMAS_DO_COMPOSITOR, nomeDaForma } from "@/lib/vocabulario";
 
 // As fases do botão "publicar" (data-fase, globals.css) e quanto cada uma dura
 // no mínimo: o círculo, a pena que entra, a escrita e a pena que se desfaz em partículas.
@@ -295,7 +294,7 @@ export function Compositor({ citarId, citarRengaId = null, textoInicial = "", ra
         </p>
       )}
 
-      {erro && <p className="rounded border border-destaque p-3 text-sm text-destaque">{erro}</p>}
+      {erro && <AvisoDeErro cantos="pequenos">{erro}</AvisoDeErro>}
 
       <button
         type="submit"
