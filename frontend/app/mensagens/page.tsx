@@ -25,6 +25,7 @@ import {
   type ConversaNaCaixa,
   type EventoDeMensagem,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const buscarConversas = (cursor: string | null) => listarConversas("conversas", cursor);
 const buscarPedidos = (cursor: string | null) => listarConversas("pedidos", cursor);
@@ -178,7 +179,7 @@ function LinhaDaConversa({ conversa, euId }: { conversa: ConversaNaCaixa; euId: 
           <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-destaque px-1.5 text-[0.6875rem] font-bold text-papel tabular-nums">
             {conversa.nao_lidas}
           </span>
-          <span className="sr-only">{conversa.nao_lidas === 1 ? "mensagem não lida" : "mensagens não lidas"}</span>
+          <span className="sr-only">{noPlural(conversa.nao_lidas, "mensagem não lida", "mensagens não lidas")}</span>
         </span>
       )}
     </Link>

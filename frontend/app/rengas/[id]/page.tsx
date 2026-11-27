@@ -52,6 +52,7 @@ import {
   type RengaDetalhe,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const botaoPrincipal =
   "min-h-11 cursor-pointer rounded-full bg-destaque px-5 text-sm font-bold text-papel transition-[filter] duration-150 hover:brightness-110 disabled:cursor-wait disabled:opacity-50";
@@ -339,7 +340,7 @@ function IrParaAConversa({ comentarios, aoIr }: { comentarios: number; aoIr: () 
         <span className="text-tinta-suave tabular-nums">
           {comentarios === 0
             ? "nenhum comentário"
-            : `${comentarios} ${comentarios === 1 ? "comentário" : "comentários"}`}
+            : `${comentarios} ${noPlural(comentarios, "comentário", "comentários")}`}
         </span>
         <span className="text-tinta-suave"> · </span>
         <span className="font-semibold text-destaque">{comentarios > 0 ? "ver a conversa" : "comentar"}</span>

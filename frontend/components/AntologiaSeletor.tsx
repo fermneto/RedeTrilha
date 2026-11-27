@@ -19,6 +19,7 @@ import {
   type Alvo,
   type AntologiaMarcada,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 import { abrirParaCima, faixaVisivel, type Faixa } from "@/lib/popover";
 import { LIMITES } from "@/lib/vocabulario";
 
@@ -255,7 +256,7 @@ function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
                 <span className="shrink-0 text-xs text-tinta-suave tabular-nums">
                   <span className="sr-only">, </span>
                   {l.qtd}
-                  <span className="sr-only"> {l.qtd === 1 ? "poema" : "poemas"}</span>
+                  <span className="sr-only"> {noPlural(l.qtd, "poema", "poemas")}</span>
                 </span>
               </label>
             </li>

@@ -23,6 +23,7 @@ import {
   lugarDaLista,
   type OpcaoDeEscolha,
 } from "@/lib/escolhaComBusca";
+import { noPlural } from "@/lib/numeros";
 
 type Props = {
   rotulo: string;
@@ -167,7 +168,7 @@ export function EscolhaComBusca({ rotulo, opcoes, valor, aoEscolher, singular, p
       ? ""
       : nenhuma
         ? `nenhum ${singular}`
-        : `${quantas} ${quantas === 1 ? singular : plural}`;
+        : `${quantas} ${noPlural(quantas, singular, plural)}`;
 
   return (
     <div ref={raiz} className="relative">

@@ -29,6 +29,7 @@ import { IconeInicio } from "@/components/icones/IconeInicio";
 import { IconeMensagens } from "@/components/icones/IconeMensagens";
 import { IconePerfil } from "@/components/icones/IconePerfil";
 import type { PropsIcone } from "@/components/icones/Icone";
+import { noPlural } from "@/lib/numeros";
 import { recomecarFeed } from "@/lib/sessaoDoFeed";
 import {
   buscarEu,
@@ -52,8 +53,8 @@ type Marcador = {
 // O rótulo lido pelo leitor de tela: "Mensagens, 3 não lidas", "Avisos, 1 novo".
 function rotuloComContador(rotulo: string, n: number): string {
   if (n === 0) return rotulo;
-  if (rotulo === "Avisos") return `${rotulo}, ${n} ${n === 1 ? "novo" : "novos"}`;
-  return `${rotulo}, ${n} ${n === 1 ? "não lida" : "não lidas"}`;
+  if (rotulo === "Avisos") return `${rotulo}, ${n} ${noPlural(n, "novo", "novos")}`;
+  return `${rotulo}, ${n} ${noPlural(n, "não lida", "não lidas")}`;
 }
 
 function useLombada(): { marcadores: Marcador[]; escrevendo: boolean; aoTocar: (href: string) => void } {

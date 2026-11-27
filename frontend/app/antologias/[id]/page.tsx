@@ -38,6 +38,7 @@ import {
   type RengaDetalhe,
 } from "@/lib/api";
 import { textoSemMarcas } from "@/lib/marcas";
+import { noPlural } from "@/lib/numeros";
 
 // A moldura das rotas que não desenham as próprias folhas (components/Caderno.tsx).
 const MOLDURA = "flex min-h-full flex-col px-(--recuo-da-folha) pb-6";
@@ -423,7 +424,7 @@ function Cabecalho({
           <NomeAutor usuario={antologia.dono} className="font-semibold text-tinta" />
           <span aria-hidden="true">·</span>
           <span className="tabular-nums">
-            {antologia.qtd} {antologia.qtd === 1 ? "poema" : "poemas"}
+            {antologia.qtd} {noPlural(antologia.qtd, "poema", "poemas")}
           </span>
           {!antologia.publica && (
             <span className="inline-flex items-center gap-x-1.5">

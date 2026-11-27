@@ -50,6 +50,7 @@ import {
   type PassoDasPreferencias,
   type Preferencias,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 
 const BRASIL = "BR";
 const TITULOS: Record<PassoDasPreferencias, string> = {
@@ -247,7 +248,7 @@ function Chips({
         {titulo}
         {marcadas.length > 0 && (
           <span className="font-normal text-tinta-suave tabular-nums">
-            · {marcadas.length} {marcadas.length === 1 ? "marcada" : "marcadas"}
+            · {marcadas.length} {noPlural(marcadas.length, "marcada", "marcadas")}
           </span>
         )}
       </legend>

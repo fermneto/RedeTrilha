@@ -32,6 +32,7 @@ import {
   type Traducao,
   type User,
 } from "@/lib/api";
+import { noPlural } from "@/lib/numeros";
 import { nomeDaForma } from "@/lib/vocabulario";
 import {
   alternarTraducao,
@@ -197,7 +198,7 @@ function ResumoDaConversa({ poema }: { poema: Post }) {
   if (duplo) return null;
   // Numa linha só, mesmo em 390 px: as curtidas já estão na fileira de ações acima.
   const n = poema.comentarios;
-  const comentarios = n === 0 ? "nenhum comentário" : `${n} ${n === 1 ? "comentário" : "comentários"}`;
+  const comentarios = n === 0 ? "nenhum comentário" : `${n} ${noPlural(n, "comentário", "comentários")}`;
   return (
     <>
       <div className="mt-6">
