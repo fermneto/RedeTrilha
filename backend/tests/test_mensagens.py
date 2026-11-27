@@ -263,6 +263,25 @@ def test_compartilhar_poema_inclusive_apagado_e_repost(client, como):
     ]
 
 
+def test_poema_e_renga_de_quem_me_bloqueou_nao_aparecem_na_mensagem(client, como):
+    """Como no GET de cada um (404): quem o autor bloqueou não lê o poema nem a renga
+    que outra pessoa mandou; a mensagem chega sem eles. Os outros leem normalmente."""
+    poema = client.post("/posts", json={"texto": "a maré\nsobe"}, headers=como("bia")).json()["id"]
+    corpo = {"titulo": "Renga do RU", "primeira_estrofe": "fila do RU\n  às onze"}
+    renga = client.post("/rengas", json=corpo, headers=como("bia")).json()["id"]
+    conversa = abrir(client, como, "ana", "caio")["id"]
+    enviar(client, como, "ana", conversa, "olha", post_id=poema)
+    enviar(client, como, "ana", conversa, "e esta", renga_id=renga)
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    itens = client.get(f"/mensagens/conversas/{conversa}/mensagens", headers=como("caio")).json()["items"]
+    assert [(m["texto"], m["post"], m["renga"]) for m in itens] == [("olha", None, None), ("e esta", None, None)]
+    ultima = caixa(client, como, "caio", "pedidos")[0]["ultima_mensagem"]
+    assert ultima["renga"] is None
+    itens = client.get(f"/mensagens/conversas/{conversa}/mensagens", headers=como("ana")).json()["items"]
+    assert itens[0]["post"]["id"] == poema and itens[1]["renga"]["id"] == renga
+
+
 # ---------- limites ----------
 
 
