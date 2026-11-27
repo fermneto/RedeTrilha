@@ -477,3 +477,35 @@ def test_antologia_de_quem_me_bloqueou_da_404_pelo_id(client, como):
     assert r.status_code == 404
     assert r.json()["detail"] == "antologia não encontrada"
     assert client.get(f"/antologias/{mar}", headers=como("ana")).status_code == 200
+
+
+def test_antologia_de_terceiro_sem_o_que_e_de_quem_me_bloqueou(client, como):
+    da_bia = _poema(client, como("bia"))
+    da_ana = _poema(client, como("ana"), "sol\n\nno muro")
+    renga_da_bia = _renga_de(client, como, "bia")
+    mar = _antologia(client, como("ana"), "Mar")
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": da_bia}, headers=como("ana"))
+    client.post(f"/antologias/{mar}/rengas", json={"renga_id": renga_da_bia}, headers=como("ana"))
+    client.post(f"/antologias/{mar}/poemas", json={"post_id": da_ana}, headers=como("ana"))
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+
+    det = client.get(f"/antologias/{mar}", headers=como("caio")).json()
+    assert [p["id"] for p in det["poemas"]] == [da_ana]
+    assert det["rengas"] == []
+    assert det["ordem"] == [{"tipo": "poema", "id": da_ana}]
+    assert det["qtd"] == 1
+    assert len(client.get(f"/antologias/{mar}", headers=como("ana")).json()["ordem"]) == 3
+
+
+def test_nao_guarda_o_poema_nem_a_renga_de_quem_tem_bloqueio(client, como):
+    da_bia = _poema(client, como("bia"))
+    renga_da_bia = _renga_de(client, como, "bia")
+    assert client.post("/usuarios/caio/bloqueio", headers=como("bia")).status_code == 204
+    assert client.post("/usuarios/bia/bloqueio", headers=como("ana")).status_code == 204
+    for quem, status in (("caio", 404), ("ana", 403)):
+        minha = _antologia(client, como(quem))
+        r = client.post(f"/antologias/{minha}/poemas", json={"post_id": da_bia}, headers=como(quem))
+        assert r.status_code == status
+        r = client.post(f"/antologias/{minha}/rengas", json={"renga_id": renga_da_bia}, headers=como(quem))
+        assert r.status_code == status
+        assert client.get(f"/antologias/{minha}", headers=como(quem)).json()["qtd"] == 0

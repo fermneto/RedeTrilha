@@ -126,13 +126,16 @@ def listar_de(
 
 def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
     """Dados da antologia + poemas (como PostOut) e rengas (como RengaDetalhe), cada
-    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela)."""
+    lista na ordem de inserção, e a `ordem` dos dois juntos (a lista da tela).
+
+    Ficam fora os poemas e as rengas de quem bloqueou quem lê, como no GET de cada um."""
     antologia = _buscar_visivel(db, usuario, antologia_id)
+    ocultos = bloqueios.quem_bloqueou(db, usuario.id)
     posts = list(
         db.scalars(
             select(Post)
             .join(AntologiaPoema, AntologiaPoema.post_id == Post.id)
-            .where(AntologiaPoema.antologia_id == antologia_id)
+            .where(AntologiaPoema.antologia_id == antologia_id, Post.autor_id.not_in(ocultos))
             .order_by(AntologiaPoema.posicao, AntologiaPoema.id)
         )
     )
@@ -145,12 +148,15 @@ def detalhar(db: Session, usuario: User, antologia_id: int) -> AntologiaDetalhe:
         )
     )
     detalhes = rengas_service.detalhar_varias(db, usuario, renga_ids)
-    rengas = [detalhes[i] for i in renga_ids if i in detalhes]
+    rengas = [detalhes[i] for i in renga_ids if i in detalhes and detalhes[i].criador.id not in ocultos]
+    visiveis = {("poema", p.id) for p in poemas} | {("renga", r.id) for r in rengas}
     return AntologiaDetalhe(
         **_para_saida(antologia, qtd=len(poemas) + len(rengas)).model_dump(),
         poemas=poemas,
         rengas=rengas,
-        ordem=[ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id)],
+        ordem=[
+            ItemDaOrdem(tipo=tipo, id=i) for tipo, i in ordem(db, antologia_id) if (tipo, i) in visiveis
+        ],
     )
 
 
@@ -183,7 +189,7 @@ def ordem(db: Session, antologia_id: int, limite: int | None = None) -> list[tup
 def adicionar_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -> None:
     """Idempotente: adicionar um poema que já está na antologia não faz nada."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
-    posts_service.buscar(db, post_id)
+    posts_service.original_para_interagir(db, usuario, post_id)
     ja_esta = db.scalar(
         select(AntologiaPoema).where(
             AntologiaPoema.antologia_id == antologia.id,
@@ -215,7 +221,7 @@ def remover_poema(db: Session, usuario: User, antologia_id: int, post_id: int) -
 def adicionar_renga(db: Session, usuario: User, antologia_id: int, renga_id: int) -> None:
     """Idempotente: adicionar uma renga que já está na antologia não faz nada."""
     antologia = _buscar_do_dono(db, usuario, antologia_id)
-    rengas_service.buscar(db, renga_id)
+    rengas_service.para_interagir(db, usuario, renga_id)
     ja_esta = db.scalar(
         select(AntologiaRenga).where(
             AntologiaRenga.antologia_id == antologia.id, AntologiaRenga.renga_id == renga_id
