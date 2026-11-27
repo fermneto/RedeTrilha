@@ -19,13 +19,13 @@ import {
   buscarPoema,
   listarRascunhos,
   mensagemDeFalha,
-  nomeDaForma,
   previaDoRascunho,
   publicarRascunho,
   quandoEditado,
   type Post,
   type Rascunho,
 } from "@/lib/api";
+import { nomeDaForma } from "@/lib/vocabulario";
 
 // Quantos versos do começo aparecem na lista (linhas em branco entre estrofes contam).
 const VERSOS_NA_PREVIA = 4;

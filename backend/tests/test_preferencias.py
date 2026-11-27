@@ -2,6 +2,9 @@
 
 import pytest
 
+from app.core import limites
+from app.schemas.post import FORMAS
+
 
 def test_sem_preferencias_vem_tudo_vazio(client, como):
     r = client.get("/preferencias", headers=como("ana"))
@@ -54,10 +57,28 @@ def test_opcoes_trazem_o_vocabulario(client, como):
     assert len(opcoes["escolas"]) == 18
     assert {"codigo": "modernismo_hispanico", "rotulo": "modernismo hispânico"} in opcoes["escolas"]
     assert {"codigo": "realismo", "rotulo": "realismo"} in opcoes["escolas"]
-    assert "soneto" in opcoes["formas"]
+    assert opcoes["formas"][0] == {"codigo": "soneto", "rotulo": "soneto"}
+    assert {"codigo": "prosa_poetica", "rotulo": "prosa poética"} in opcoes["formas"]
+    assert [f["codigo"] for f in opcoes["formas"]] == FORMAS
     assert "BR" in opcoes["paises"] and len(opcoes["paises"]) == 249
     assert {"codigo": "PB", "rotulo": "Paraíba"} in opcoes["ufs"]
     assert len(opcoes["ufs"]) == 27
+
+
+def test_opcoes_trazem_os_limites_dos_campos(client, como):
+    """Os mesmos números com que os schemas validam: o front confere antes de enviar."""
+    lim = client.get("/preferencias/opcoes", headers=como("ana")).json()["limites"]
+    assert lim["username_min"] == limites.USERNAME_MIN == 3
+    assert lim["senha_max"] == limites.SENHA_MAX == 72
+    assert lim["renga_limite_padrao"] == limites.RENGA_LIMITE_PADRAO
+    assert lim["mensagem_max_caracteres"] == limites.MENSAGEM_MAX_CARACTERES
+    assert set(lim) == {
+        "username_min", "username_max", "senha_min", "senha_max", "nome_max", "bio_max",
+        "avatar_url_max", "poema_titulo_max", "antologia_nome_max", "antologia_descricao_max",
+        "renga_titulo_max", "renga_limite_padrao", "renga_limite_min", "renga_limite_max",
+        "renga_convidados_max", "oficina_max_caracteres", "mensagem_max_caracteres",
+    }
+    assert all(lim[nome] == getattr(limites, nome.upper()) for nome in lim)
 
 
 def test_preferencias_exigem_login(client):

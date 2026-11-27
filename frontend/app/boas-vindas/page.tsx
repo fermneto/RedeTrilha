@@ -40,7 +40,6 @@ import {
   destinoSeguro,
   ehTelaDeBoasVindas,
   mensagemDeFalha,
-  nomeDaForma,
   nomeDoPais,
   passoInicial,
   passosDasPreferencias,
@@ -202,7 +201,7 @@ function BoasVindas() {
             />
             <Chips
               titulo="Formas"
-              opcoes={opcoes.formas.map((f) => ({ codigo: f, rotulo: nomeDaForma(f) }))}
+              opcoes={opcoes.formas}
               marcadas={prefs.formas}
               aoAlternar={(c) => setPrefs({ ...prefs, formas: alternarNaLista(prefs.formas, c) })}
             />

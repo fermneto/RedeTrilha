@@ -6,8 +6,8 @@ from app.models.preferencia import Preferencia
 from app.models.privacidade_dos_gostos import PrivacidadeDosGostos
 from app.models.user import User
 from app.schemas.escola import ESCOLAS
-from app.schemas.post import FORMAS
-from app.schemas.preferencia import Opcao, OpcoesDePreferencias, Preferencias
+from app.schemas.post import ROTULOS_DAS_FORMAS
+from app.schemas.preferencia import Limites, Opcao, OpcoesDePreferencias, Preferencias
 from app.schemas.regiao import PAISES, UFS
 
 
@@ -49,7 +49,8 @@ def publicas(db: Session, pessoa: User, quem_ve: User) -> Preferencias:
 def opcoes() -> OpcoesDePreferencias:
     return OpcoesDePreferencias(
         escolas=[Opcao(codigo=c, rotulo=r) for c, r in ESCOLAS.items()],
-        formas=list(FORMAS),
+        formas=[Opcao(codigo=c, rotulo=r) for c, r in ROTULOS_DAS_FORMAS.items()],
         paises=sorted(PAISES),
         ufs=[Opcao(codigo=c, rotulo=r) for c, r in UFS.items()],
+        limites=Limites(),
     )

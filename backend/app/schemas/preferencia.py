@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
+from app.core import limites
 from app.schemas.escola import validar_escolas
 from app.schemas.post import FORMAS
 from app.schemas.regiao import BRASIL, UFS, validar_pais
@@ -50,10 +51,35 @@ class Opcao(BaseModel):
     rotulo: str
 
 
+class Limites(BaseModel):
+    """Os limites dos campos (core/limites.py), para o front conferir antes de enviar."""
+
+    username_min: int = limites.USERNAME_MIN
+    username_max: int = limites.USERNAME_MAX
+    senha_min: int = limites.SENHA_MIN
+    # Em bytes (UTF-8).
+    senha_max: int = limites.SENHA_MAX
+    nome_max: int = limites.NOME_MAX
+    bio_max: int = limites.BIO_MAX
+    avatar_url_max: int = limites.AVATAR_URL_MAX
+    poema_titulo_max: int = limites.POEMA_TITULO_MAX
+    antologia_nome_max: int = limites.ANTOLOGIA_NOME_MAX
+    antologia_descricao_max: int = limites.ANTOLOGIA_DESCRICAO_MAX
+    renga_titulo_max: int = limites.RENGA_TITULO_MAX
+    renga_limite_padrao: int = limites.RENGA_LIMITE_PADRAO
+    renga_limite_min: int = limites.RENGA_LIMITE_MIN
+    renga_limite_max: int = limites.RENGA_LIMITE_MAX
+    renga_convidados_max: int = limites.RENGA_CONVIDADOS_MAX
+    oficina_max_caracteres: int = limites.OFICINA_MAX_CARACTERES
+    mensagem_max_caracteres: int = limites.MENSAGEM_MAX_CARACTERES
+
+
 class OpcoesDePreferencias(BaseModel):
-    """O vocabulário das telas do onboarding: o front não copia as listas."""
+    """O vocabulário das telas: o front não copia as listas nem os limites."""
 
     escolas: list[Opcao]
-    formas: list[str]
+    # Na ordem dos seletores, com o rótulo (o código não tem acento).
+    formas: list[Opcao]
     paises: list[str]
     ufs: list[Opcao]
+    limites: Limites

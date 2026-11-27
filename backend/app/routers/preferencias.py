@@ -25,7 +25,7 @@ def salvar(
     return service.salvar(db, user, dados)
 
 
-# Listas fixas do código (escolas, formas, países).
+# Listas fixas do código (escolas, formas, países, UFs) e os limites dos campos.
 @router.get("/opcoes", response_model=OpcoesDePreferencias, dependencies=[cache(3600)])
 def opcoes(_: User = Depends(get_current_user)):
     return service.opcoes()

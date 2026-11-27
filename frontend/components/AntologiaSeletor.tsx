@@ -12,7 +12,6 @@ import { EsqueletoDoMenu } from "@/components/Esqueleto";
 import { IconeAdicionarAntologia } from "@/components/icones/IconeAdicionarAntologia";
 import { useFecharAoSair } from "@/hooks/useFecharAoSair";
 import {
-  ANTOLOGIA_NOME_MAX,
   criarAntologia,
   listarMinhasAntologiasMarcando,
   marcarNaAntologia,
@@ -20,6 +19,7 @@ import {
   type Alvo,
   type AntologiaMarcada,
 } from "@/lib/api";
+import { LIMITES } from "@/lib/vocabulario";
 
 // Avisa a página aberta que um poema (ou uma renga) entrou ou saiu de uma
 // antologia pelo popover (o detalhe da antologia o tira da lista na hora). Evento
@@ -271,7 +271,7 @@ function Popover({ id, alvo }: { id: string; alvo: Alvo }) {
                 ref={campoNome}
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                maxLength={ANTOLOGIA_NOME_MAX}
+                maxLength={LIMITES.antologia_nome_max}
                 required
                 className="mt-1 w-full rounded-xl border border-borda bg-papel px-3 py-2 text-sm text-tinta focus:border-destaque focus:ring-2 focus:ring-destaque/25 focus:outline-none"
               />

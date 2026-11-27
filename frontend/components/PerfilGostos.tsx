@@ -1,8 +1,8 @@
 "use client";
 // Os gostos da pessoa na página da esquerda do perfil: as escolas, as formas e o
 // lugar que ela marcou no onboarding (públicos, GET /usuarios/{username}/gostos).
-// Os rótulos das escolas e das UFs vêm de /preferencias/opcoes; os das formas, de
-// nomeDaForma; o país, do Intl. Cada forma leva aos poemas dela no Explorar; a
+// Os rótulos das escolas, das formas e das UFs vêm de /preferencias/opcoes; o
+// país, do Intl. Cada forma leva aos poemas dela no Explorar; a
 // forma "outro" fica de fora. O lugar some para os outros se a pessoa desligou
 // "mostrar meu lugar no perfil" (o backend já tira). Nada a mostrar (ou consagrado, que não tem
 // preferências): o bloco não aparece; no próprio perfil, fica o convite para
@@ -18,12 +18,13 @@ import {
   caminhoDasPreferencias,
   formasDoPerfil,
   lugarDosGostos,
-  nomeDaForma,
+  type Opcao,
 } from "@/lib/api";
+import { nomeDaForma } from "@/lib/vocabulario";
 
 type Gostos = {
   escolas: string[];
-  formas: string[];
+  formas: Opcao[];
   lugar: string | null;
 };
 
@@ -40,9 +41,10 @@ export function PerfilGostos({ username, proprio }: Props) {
     Promise.all([buscarGostosDe(username), buscarOpcoesDePreferencias()])
       .then(([g, opcoes]) => {
         const escola = new Map(opcoes.escolas.map((o) => [o.codigo, o.rotulo]));
+        const forma = new Map(opcoes.formas.map((o) => [o.codigo, o.rotulo]));
         return {
           escolas: g.escolas.map((c) => escola.get(c) ?? c),
-          formas: formasDoPerfil(g.formas),
+          formas: formasDoPerfil(g.formas).map((c) => ({ codigo: c, rotulo: forma.get(c) ?? nomeDaForma(c) })),
           lugar: lugarDosGostos(g, opcoes.ufs),
         };
       })
@@ -97,10 +99,10 @@ export function PerfilGostos({ username, proprio }: Props) {
             <dt className="text-sm text-tinta-suave">formas</dt>
             <dd className="font-serifada break-words">
               {gostos.formas.map((f, i) => (
-                <Fragment key={f}>
+                <Fragment key={f.codigo}>
                   {i > 0 && " · "}
-                  <Link href={caminhoDaForma(f)} className={LINK_DA_FORMA}>
-                    {nomeDaForma(f)}
+                  <Link href={caminhoDaForma(f.codigo)} className={LINK_DA_FORMA}>
+                    {f.rotulo}
                   </Link>
                 </Fragment>
               ))}

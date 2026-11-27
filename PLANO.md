@@ -161,7 +161,14 @@ são texto puro, sem interpretação. A oficina mede, as `#tags` se extraem e o
 é escolhido no texto sem marcas e exibido formatado).
 
 `FORMAS = ["soneto", "haicai", "trova", "quadra", "cordel", "verso_livre", "prosa_poetica", "outro"]`
-fica em `backend/app/schemas/post.py` e é espelhada em `frontend/lib/api.ts`.
+fica em `backend/app/schemas/post.py`, tirada de `ROTULOS_DAS_FORMAS` (código →
+rótulo, "prosa_poetica" → "prosa poética"). Os limites dos campos (username,
+senha, nome, bio, título, antologia, renga, oficina, mensagem) ficam em
+`backend/app/core/limites.py`, e os schemas validam com eles. O servidor é a
+fonte: `GET /preferencias/opcoes` entrega as formas com rótulo e os limites;
+`frontend/lib/vocabulario.ts` guarda a única cópia de reserva, para o que não
+espera a rede (validação do cadastro, seletores do compositor e do Explorar), e
+`tests/vocabulario.test.mjs` confere que ela bate com o backend.
 
 - `PostCreate`: `titulo`, `texto` (não pode ficar em branco), `forma`, `idioma`
   e `repost_de_id` (com texto, é citação), ou `renga_citada_id` (citação de uma
@@ -313,8 +320,13 @@ O `GET /explorar` e o `GET /tags/{tag}/posts` continuam em `PostPage`, sem `tipo
 - Tabela `preferencias` (`user_id` PK, `escolas` JSON, `formas` JSON, `pais`,
   `uf`): `GET /preferencias` 🔒 e `PUT /preferencias` 🔒 (troca tudo; 422 para
   escola, forma, país ou UF fora das listas, ou UF sem `pais: "BR"`);
-  `GET /preferencias/opcoes` 🔒 devolve o vocabulário (escolas com rótulo,
-  formas, países e UFs). `ESCOLAS` (15 códigos) fica em `schemas/escola.py`;
+  `GET /preferencias/opcoes` 🔒 devolve o vocabulário: `escolas` e `formas`
+  (`[{codigo, rotulo}]`, as formas na ordem de `FORMAS`), `paises`, `ufs` e
+  `limites` (`{username_min, username_max, senha_min, senha_max, nome_max,
+  bio_max, avatar_url_max, poema_titulo_max, antologia_nome_max,
+  antologia_descricao_max, renga_titulo_max, renga_limite_padrao,
+  renga_limite_min, renga_limite_max, renga_convidados_max,
+  oficina_max_caracteres, mensagem_max_caracteres}`, de `core/limites.py`). `ESCOLAS` (15 códigos) fica em `schemas/escola.py`;
   países (ISO 3166-1 alfa-2) e UFs em `schemas/regiao.py`.
 - Os gostos são públicos (#181): `GET /usuarios/{username}/gostos` 🔒 devolve
   as preferências da pessoa no mesmo formato de `GET /preferencias` (só
@@ -649,7 +661,7 @@ Tabelas novas (nenhuma coluna em tabela existente): `conversas` (`menor_id`,
 - `POST /mensagens/conversas/{id}/mensagens` 🔒 `{"texto", "post_id"}` → 201
   `MensagemOut` (`id`, `conversa_id`, `autor_id`, `texto`, `post: PostOut |
   null`, `post_removido`, `created_at`). Texto em branco sem poema ou acima de
-  `LIMITE_TEXTO_MENSAGEM` (10.000) → 422; mais de `MENSAGENS_POR_MINUTO` (30)
+  `MENSAGEM_MAX_CARACTERES` (10.000, `core/limites.py`) → 422; mais de `MENSAGENS_POR_MINUTO` (30)
   da mesma pessoa no último minuto → 429; bloqueio em qualquer direção → 403.
   Repost puro compartilha o original. Mandar marca como lido até ali e aceita
   um pedido. Apagar o poema deixa a mensagem com `post_removido: true`.

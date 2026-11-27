@@ -28,10 +28,7 @@ import {
   buscarRenga,
   criarRascunho,
   editarRascunho,
-  FORMAS,
-  IDIOMAS_DO_COMPOSITOR,
   mensagemDeFalha,
-  nomeDaForma,
   nomeDoIdioma,
   publicarPoema,
   publicarRascunho,
@@ -39,6 +36,7 @@ import {
   type Post,
   type RengaDetalhe,
 } from "@/lib/api";
+import { FORMAS, IDIOMAS_DO_COMPOSITOR, nomeDaForma } from "@/lib/vocabulario";
 
 // As fases do botão "publicar" (data-fase, globals.css) e quanto cada uma dura
 // no mínimo: o círculo, a pena que entra, a escrita e a pena que se desfaz em partículas.
