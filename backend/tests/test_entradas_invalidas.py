@@ -125,5 +125,69 @@ def test_cursor_fora_do_banco_e_cursor_invalido(client, como, rota, bruto):
     assert r.json()["detail"] == "cursor inválido"
 
 
+NUL = "a\x00b"
+
+
+@pytest.mark.parametrize(
+    "metodo, rota, corpo",
+    [
+        ("POST", "/posts", {"texto": NUL}),
+        ("POST", "/posts", {"texto": "ok", "titulo": NUL}),
+        ("POST", "/rascunhos", {"texto": NUL}),
+        ("POST", "/antologias", {"nome": NUL}),
+        ("POST", "/antologias", {"nome": "ok", "descricao": NUL}),
+        ("POST", "/rengas", {"titulo": "ok", "primeira_estrofe": NUL}),
+        ("POST", "/rengas", {"titulo": NUL, "primeira_estrofe": "ok"}),
+        ("POST", "/rengas", {"titulo": "ok", "primeira_estrofe": "ok", "modo": "convidados", "convidados": [NUL]}),
+        ("PATCH", "/usuarios/eu", {"bio": NUL}),
+        ("PATCH", "/usuarios/eu", {"name": NUL}),
+        ("POST", "/oficina/analise", {"texto": NUL}),
+        ("POST", "/mensagens/conversas", {"username": NUL}),
+        ("POST", "/auth/registro", {"username": "abc", "name": NUL, "password": "senha-forte-123"}),
+        ("POST", "/auth/registro", {"username": "abc", "name": "Abc", "password": "senha-forte\x00123"}),
+        ("POST", "/auth/login", {"username": NUL, "password": "senha-forte-123"}),
+    ],
+)
+def test_texto_com_caractere_nulo_da_422(client, como, metodo, rota, corpo):
+    """O Postgres não guarda o caractere NUL num texto: antes, a gravação dava 500."""
+    r = client.request(metodo, rota, json=corpo, headers=como("ana"))
+    assert r.status_code == 422, r.text
+
+
+def test_texto_com_caractere_nulo_preso_a_um_poema_da_422(client, como):
+    pid = _poema(client, como)
+    ana = como("ana")
+    assert client.post(f"/posts/{pid}/comentarios", json={"texto": NUL}, headers=ana).status_code == 422
+    rascunho = client.post("/rascunhos", json={"texto": "ok"}, headers=ana).json()["id"]
+    assert client.patch(f"/rascunhos/{rascunho}", json={"texto": NUL}, headers=ana).status_code == 422
+    renga = client.post("/rengas", json={"titulo": "ok", "primeira_estrofe": "um"}, headers=ana).json()["id"]
+    r = client.post(f"/rengas/{renga}/estrofes", json={"texto": NUL}, headers=como("bia"))
+    assert r.status_code == 422
+    conversa = client.post("/mensagens/conversas", json={"username": "bia"}, headers=ana).json()["id"]
+    r = client.post(f"/mensagens/conversas/{conversa}/mensagens", json={"texto": NUL}, headers=ana)
+    assert r.status_code == 422
+
+
+def test_texto_com_quebras_e_recuos_continua_valendo(client, como):
+    texto = "  primeiro verso\n\n\tsegundo\r\n"
+    assert client.post("/posts", json={"texto": texto}, headers=como("ana")).json()["texto"] == texto
+
+
+def test_dado_que_o_banco_recusa_da_422_e_nao_500(client, como, monkeypatch):
+    """Rede de segurança: um valor que escapou da validação (como o NUL num username
+    de rota, que o Postgres recusa) e que o banco recusa vira 422, não 500."""
+    from sqlalchemy.exc import DataError
+
+    from app.services import perfil
+
+    def recusar(*_args, **_kwargs):
+        raise DataError("SELECT ...", {}, ValueError("PostgreSQL text fields cannot contain NUL (0x00) bytes"))
+
+    monkeypatch.setattr(perfil, "perfil", recusar)
+    r = client.get("/usuarios/ana", headers=como("ana"))
+    assert r.status_code == 422
+    assert r.json()["detail"] == "dado inválido"
+
+
 def test_id_no_teto_do_int4_continua_404(client, como):
     assert client.get(f"/posts/{2**31 - 1}", headers=como("ana")).status_code == 404

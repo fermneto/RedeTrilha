@@ -11,6 +11,7 @@ from fastapi import Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from sqlalchemy.exc import DataError
 
 # Mensagens por `type` do pydantic; `{chave}` vem do `ctx` do erro.
 MENSAGENS = {
@@ -61,3 +62,10 @@ def traduzir(erro: dict) -> dict:
 async def erro_de_validacao(_: Request, exc: RequestValidationError) -> JSONResponse:
     erros = [traduzir(erro) for erro in exc.errors()]
     return JSONResponse(status_code=422, content={"detail": jsonable_encoder(erros)})
+
+
+async def dado_recusado_pelo_banco(_: Request, __: DataError) -> JSONResponse:
+    """Rede de segurança: um valor que passou pela validação e que o banco recusa
+    (um NUL num username de rota, um número fora da coluna) é erro do pedido, 422,
+    e não 500. Os schemas e os tipos de `deps.py` barram os casos conhecidos antes."""
+    return JSONResponse(status_code=422, content={"detail": "dado inválido"})

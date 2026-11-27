@@ -14,6 +14,7 @@ from pydantic import (
 )
 
 from app.core.limites import AVATAR_URL_MAX, BIO_MAX, NOME_MAX, USERNAME_MAX, USERNAME_MIN
+from app.schemas.entrada import Entrada
 from app.schemas.pagina import Pagina
 
 # Nomes que colidem com rotas do front (/perfil, /explorar...) ou da API
@@ -76,7 +77,7 @@ Bio = Annotated[str, AfterValidator(_validar_bio)]
 AvatarUrl = Annotated[str, AfterValidator(_validar_avatar_url)]
 
 
-class UserCreate(BaseModel):
+class UserCreate(Entrada):
     """Dados de um poeta do seed (scripts/seed.py), validados antes de ir ao banco."""
 
     username: Username
@@ -112,7 +113,7 @@ class PerfilOut(UserOut):
 _ROTULOS = {"name": "o nome", "bio": "a bio", "avatar_url": "a avatar_url"}
 
 
-class PerfilUpdate(BaseModel):
+class PerfilUpdate(Entrada):
     """PATCH /usuarios/eu: só os campos enviados mudam. Mesmos limites do UserCreate."""
 
     name: Nome | None = None

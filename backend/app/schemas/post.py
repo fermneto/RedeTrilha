@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.core.limites import POEMA_TITULO_MAX
-from app.schemas.entrada import IdDeEntrada
+from app.schemas.entrada import Entrada, IdDeEntrada
 from app.schemas.idioma import IDIOMA_PADRAO, validar_idioma
 from app.schemas.pagina import Pagina
 from app.schemas.renga import RengaDetalhe
@@ -37,7 +37,7 @@ def _validar_forma(forma: str | None) -> str | None:
     return forma
 
 
-class PostCreate(BaseModel):
+class PostCreate(Entrada):
     titulo: str | None = Field(default=None, max_length=POEMA_TITULO_MAX)
     texto: str
     forma: str | None = None

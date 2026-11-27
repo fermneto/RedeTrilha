@@ -3,7 +3,7 @@ from typing import Literal
 
 from pydantic import BaseModel, field_validator
 
-from app.schemas.entrada import IdDeEntrada, Int4
+from app.schemas.entrada import Entrada, IdDeEntrada, Int4
 from app.schemas.user import UserOut
 
 
@@ -25,7 +25,7 @@ class AncoraOut(BaseModel):
     trecho: str
 
 
-class ComentarioCreate(BaseModel):
+class ComentarioCreate(Entrada):
     texto: str
     parent_id: IdDeEntrada | None = None
     # Só no 1º nível: as respostas herdam o trecho do comentário pai.
